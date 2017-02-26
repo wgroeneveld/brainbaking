@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>mssql</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="mssql" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/db/mssql/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>mssql</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="mssql">MSSQL</h1>
+
+<h3 id="clustered-indexen-aanpassen-door-ze-eerst-te-resolven-in-een-cursor">clustered indexen aanpassen door ze eerst te resolven in een cursor</h3>
+
+<p>Onderstaand stukje code for future reference&hellip;</p>
+
+<pre><code class="language-sql">DECLARE @constraint NVARCHAR(MAX)
+DECLARE @cmd NVARCHAR(MAX)
+DECLARE @table NVARCHAR(MAX)
+
+DECLARE FKCURSOR CURSOR FOR 
+select distinct name,object_name(parent_object_id) from sys.objects where object_id in 
+(   select fk.constraint_object_id from sys.foreign_key_columns as fk
+    where fk.referenced_object_id = 
+    	(select object_id from sys.tables where name = 'Reference')
+)
+
+OPEN FKCURSOR
+
+FETCH NEXT FROM FKCURSOR 
+INTO @constraint, @table
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	SET @cmd = N'ALTER TABLE [dbo].['+@table+'] DROP CONSTRAINT ' +  @constraint
+	EXEC sp_executeSQL @cmd;
+
+   FETCH NEXT FROM FKCURSOR 
+    INTO @constraint, @table
+END 
+CLOSE FKCURSOR;
+DEALLOCATE FKCURSOR;
+</code></pre>
+
+<h3 id="constraints-met-auto-names-verwijderen-als-een-kolom-hierop-depent">constraints met auto-names verwijderen als een kolom hierop depent</h3>
+
+<p>Gebruik information schemes om de data hier uit te halen.</p>
+
+<p>Bvb onderstaande code verwijdert de kolom &lsquo;isDefault&rsquo;, nadat alle constraints hierrond verwijderd zijn.</p>
+
+<pre><code class="language-sql">declare @cname varchar(100)
+declare @query nvarchar(max)
+set @cname = (
+
+SELECT
+    default_constraints.name
+FROM 
+    sys.all_columns
+
+        INNER JOIN
+    sys.tables
+        ON all_columns.object_id = tables.object_id
+
+        INNER JOIN 
+    sys.schemas
+        ON tables.schema_id = schemas.schema_id
+
+        INNER JOIN
+    sys.default_constraints
+        ON all_columns.default_object_id = default_constraints.object_id
+
+WHERE 
+        schemas.name = 'dbo'
+    AND tables.name = 'tblhtmltemplate'
+    AND all_columns.name = 'isdefault')
+
+	set @query = 'alter table tblhtmltemplate drop constraint ' + @cname 
+
+if @cname is not null begin
+	exec sp_executesql @query
+end
+
+IF  EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name######'tblHtmlTemplate' AND column_name 'isDefault')
+BEGIN
+	alter table tblhtmltemplate drop column isdefault;
+END;
+
+</code></pre>
+
+<h3 id="functies-aanmaken-om-mysql-syntax-te-mimicken">functies aanmaken om MySQL syntax te mimicken</h3>
+
+<pre><code class="language-sql">SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION ifnull 
+(
+	-- Add the parameters for the function here
+	@value1 datetime, @returnvalue int
+)
+RETURNS datetime
+AS
+BEGIN
+	return isnull(@value1, @returnvalue)
+
+END
+GO
+</code></pre>
+
+<p>Zou <code>IFNull</code> moeten mimicken, maar je kan enkel <code>select dbo.ifnull()</code> doen ipv de native syntax&hellip;</p>
+
+<h3 id="waar-zijn-de-db-files-op-de-schijf-ergens-geplaatst">Waar zijn de DB files op de schijf ergens geplaatst?</h3>
+
+<pre><code class="language-sql">SELECT name, physical_name AS current_file_location
+FROM sys.master_files
+</code></pre>
+
+<p>Zie ook <a href="https://msdn.microsoft.com/en-us/library/ms143547.aspx">MSDN: MSSQL DB file locations</a></p>
+
+<h3 id="alter-databases-gaan-traag">Alter databases gaan traag</h3>
+
+<ol>
+<li>uitvoeren met <code>WITH ROLLBACK IMMEDIATE;</code></li>
+<li>uitvoeren in <code>SINGLE_USER</code> mode (set op db niveau, dan terug naar <code>MULTI_USER</code> zetten)</li>
+</ol>
+
+<h3 id="query-notifications">Query notifications</h3>
+
+<p>Service broker aan zetten: <code>ALTER DATABASE db_name SET ENABLE_BROKER with rollback immediate</code></p>
+
+<p>Hoe checken of reeds enabled is? <code>select name, database_id, service_broker_guid from sys.databases where is_broker_enabled = 1;</code></p>
+
+<p>❗ service broker GUIDs zijn dezelfde indien DB gekopiëerd is, bijgevolg krijg je deze fout indien je <code>ENABLE_BROKER</code> tracht uit te voeren op zo&rsquo;n kopie:</p>
+
+<pre><code>cannot be enabled because there is already an enabled Service Broker with the same ID
+</code></pre>
+
+<p>Fix: (<a href="http://www.mssqltips.com/sqlservertip/2789/sql-server-service-broker-error-database-cannot-be-enabled/">bron</a>) maak een nieuwe broker GUID aan met <code>SET NEW_BROKER</code>.</p>
+
+<h5 id="in-combinatie-met-nhibernate-syscache2">In combinatie met NHibernate Syscache2</h5>
+
+<p>Zie</p>
+
+<ul>
+<li><a href="http:*developer.empinia.org/svn/empinia/vendor/bin/nhibernate/trunk/Doc/html/caches.html">http:*developer.empinia.org/svn/empinia/vendor/bin/nhibernate/trunk/Doc/html/caches.html</a></li>
+<li><a href="http:*tamingcode.com/2013/07/01/cacheable-queries-pitfalls/">http:*tamingcode.com/2013/07/01/cacheable-queries-pitfalls/</a></li>
+</ul>
+
+<h4 id="hoe-weet-ik-nu-of-notification-works">Hoe weet ik nu of notification works?</h4>
+
+<p>We moeten zien of de <strong>Broker:Conversation</strong> berichten correct op- en afgestuurd worden. Dit kan je best nagaan in SQL Server Profiler:</p>
+
+<p><img style='float: left; width: nolink |px;' src='/img//code/db/sqlprofiling.png'></p>
+
+<p>Volgende dingen zouden moeten gebeuren:</p>
+
+<ol>
+<li>STARTED_OUTBOUND bericht (conversation)</li>
+<li>CONVERSING bericht (conversation) van .Net SqlClient applicationName</li>
+<li>QN:Subscription van .Net SqlClient applicationName</li>
+<li>QN:Dynamics event subclass Clock run om te zien of het event gequeued is.</li>
+</ol>
+
+<h4 id="pitfalls-en-errors">Pitfalls en errors</h4>
+
+<h5 id="system-invalidoperationexception-when-using-sqldependency-without-providing-an-options-value-sqldependency-start-must-be-called-prior-to-execution-of-a-command-added-to-the-sqldependency-instance">System.InvalidOperationException: When using SqlDependency without providing an options value, SqlDependency.Start() must be called prior to execution of a command added to the SqlDependency instance.</h5>
+
+<p><a href="http://richarddingwall.name/2009/10/09/nhibernate-caches-syscache2-dont-forget-to-call-sqldependency-start/">Bron</a></p>
+
+<p><code>SqlDependency.Start(conString)</code> aanroepen vóór de setup van bvb de NHibernate session factory. Dit moet je zelf doen, ook al gebruik je SysCache2 met regions.</p>
+
+<p>❗ altijd eerst Stop aanroepen!</p>
+
+<h5 id="cannot-execute-as-the-database-principal-because-the-principal-dbo-does-not-exist">Cannot execute as the database principal because the principal &ldquo;dbo&rdquo; does not exist</h5>
+
+<p>In SQL Server profiler zichtbaar bij broker events - dit komt vanwege te weinig rechten.</p>
+
+<p><code>use [DBNAME] EXEC sp_changedbowner 'sa</code>&rsquo; lost dit probleem op (zie profiling)</p>
+
+<h3 id="mssql-specifieke-syntax">MSSQL specifieke syntax</h3>
+
+<h5 id="batch-processing">Batch processing</h5>
+
+<p><code>GO</code>:</p>
+
+<p>The GO command isn&rsquo;t a Transact-SQL statement, but a special command recognized by several MS utilities including SQL Server Management Studio code editor.</p>
+
+<p>The GO command is used to group SQL commands into batches which are sent to the server together. The commands included in the batch, that is, the set of commands since the last GO command or the start of the session, must be logically consistent. For example, you can&rsquo;t define a variable in one batch and then use it in another since the scope of the variable is limited to the batch in which it&rsquo;s defined.</p>
+
+<p>Zie ook <a href="http:*msdn.microsoft.com/en-us/library/ms188037.aspx">http:*msdn.microsoft.com/en-us/library/ms188037.aspx</a>.</p>
+
+<p>❗ Dit is blijkbaar ook wijzigbaar naar een karakterset naar keuze in Management studio options:</p>
+
+<p><img style='float: left; width: nolink |px;' src='/img//code/db/go_option_mssql.png'></p>
+
+<h5 id="rename-columns">Rename columns</h5>
+
+<pre><code class="language-sql">EXEC sp_RENAME 'TableName.OldColumnName' , 'NewColumnName', 'COLUMN'
+</code></pre>
+
+<h5 id="werken-met-datums">werken met datums</h5>
+
+<p><code>GETDATE()</code> is een now timestamp (in MySQL is dit <code>CURDATE()</code>. Records selecteren met een bepaalde timestamp (&ldquo;vanaf&rdquo;):</p>
+
+<pre><code class="language-sql">select * from table where datecolumn &gt;= Convert(datetime, '2014-09-11');
+</code></pre>
+
+<p>In Oracle is dit bijvoorbeeld <code>TO_DATE('26/JAN/2011','dd/mon/yyyy')</code> in plaats van <code>Convert()</code> - in MySQL kan dit rechtstreeks in een bepaald formaat: <code>WHERE start_date &gt;'2012-11-18';</code></p>
+
+<h3 id="monitoring">Monitoring</h3>
+
+<h5 id="ado-net-connection-pool-monitoring">ADO .NET Connection pool monitoring</h5>
+
+<p>Mogelijk met <strong>Performance monitor</strong> in Win32 (Run -&gt; <code>perfmon</code>).</p>
+
+<p>Step-by-step uitleg: (oude versie) <a href="http://www.c-sharpcorner.com/uploadfile/CMouli/monitoring-database-connections-using-performance-counters/">Monitoring DB connections using performance counters</a></p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/ms254503.aspx">Mogelijke counters - MSDN</a>:</p>
+
+<ol>
+<li>NumberOfActiveConnections</li>
+<li>NumberOfFreeConnections</li>
+<li>NumberOfPooledConnections</li>
+<li>&hellip;</li>
+</ol>
+
+<p><img style='float: left;' src='/img//code/db/addcounters.png |'></p>
+
+<p>Alles ivm DB connecties in .NET is ook mogelijk te bekijken met de <a href="http://www.red-gate.com/products/dotnet-development/ants-performance-profiler/">ANTS Performance profiler</a>.</p>
+
+<h5 id="aantal-momenteel-actieve-threads-bezien">Aantal momenteel actieve threads bezien</h5>
+
+<pre><code class="language-sql">SELECT 
+    DB_NAME(dbid) as DBName, 
+    COUNT(dbid) as NumberOfConnections,
+    loginame as LoginName
+FROM
+    sys.sysprocesses
+WHERE 
+    dbid &gt; 0
+GROUP BY 
+    dbid, loginame
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

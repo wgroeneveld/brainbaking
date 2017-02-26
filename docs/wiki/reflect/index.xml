@@ -1,0 +1,2225 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>home on Brain Baking</title>
+    <link>http://www.brainbaking.com/wiki/reflect/index.xml</link>
+    <description>Recent content in home on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://www.brainbaking.com/wiki/reflect/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mssql</title>
+      <link>http://www.brainbaking.com/wiki/code/db/mssql/</link>
+      <pubDate>Tue, 24 May 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/mssql/</guid>
+      <description>
+
+&lt;h1 id=&#34;mssql&#34;&gt;MSSQL&lt;/h1&gt;
+
+&lt;h3 id=&#34;clustered-indexen-aanpassen-door-ze-eerst-te-resolven-in-een-cursor&#34;&gt;clustered indexen aanpassen door ze eerst te resolven in een cursor&lt;/h3&gt;
+
+&lt;p&gt;Onderstaand stukje code for future reference&amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;DECLARE @constraint NVARCHAR(MAX)
+DECLARE @cmd NVARCHAR(MAX)
+DECLARE @table NVARCHAR(MAX)
+
+DECLARE FKCURSOR CURSOR FOR 
+select distinct name,object_name(parent_object_id) from sys.objects where object_id in 
+(   select fk.constraint_object_id from sys.foreign_key_columns as fk
+    where fk.referenced_object_id = 
+    	(select object_id from sys.tables where name = &#39;Reference&#39;)
+)
+
+OPEN FKCURSOR
+
+FETCH NEXT FROM FKCURSOR 
+INTO @constraint, @table
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	SET @cmd = N&#39;ALTER TABLE [dbo].[&#39;+@table+&#39;] DROP CONSTRAINT &#39; +  @constraint
+	EXEC sp_executeSQL @cmd;
+
+   FETCH NEXT FROM FKCURSOR 
+    INTO @constraint, @table
+END 
+CLOSE FKCURSOR;
+DEALLOCATE FKCURSOR;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;constraints-met-auto-names-verwijderen-als-een-kolom-hierop-depent&#34;&gt;constraints met auto-names verwijderen als een kolom hierop depent&lt;/h3&gt;
+
+&lt;p&gt;Gebruik information schemes om de data hier uit te halen.&lt;/p&gt;
+
+&lt;p&gt;Bvb onderstaande code verwijdert de kolom &amp;lsquo;isDefault&amp;rsquo;, nadat alle constraints hierrond verwijderd zijn.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;declare @cname varchar(100)
+declare @query nvarchar(max)
+set @cname = (
+
+SELECT
+    default_constraints.name
+FROM 
+    sys.all_columns
+
+        INNER JOIN
+    sys.tables
+        ON all_columns.object_id = tables.object_id
+
+        INNER JOIN 
+    sys.schemas
+        ON tables.schema_id = schemas.schema_id
+
+        INNER JOIN
+    sys.default_constraints
+        ON all_columns.default_object_id = default_constraints.object_id
+
+WHERE 
+        schemas.name = &#39;dbo&#39;
+    AND tables.name = &#39;tblhtmltemplate&#39;
+    AND all_columns.name = &#39;isdefault&#39;)
+
+	set @query = &#39;alter table tblhtmltemplate drop constraint &#39; + @cname 
+
+if @cname is not null begin
+	exec sp_executesql @query
+end
+
+IF  EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name######&#39;tblHtmlTemplate&#39; AND column_name &#39;isDefault&#39;)
+BEGIN
+	alter table tblhtmltemplate drop column isdefault;
+END;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;functies-aanmaken-om-mysql-syntax-te-mimicken&#34;&gt;functies aanmaken om MySQL syntax te mimicken&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION ifnull 
+(
+	-- Add the parameters for the function here
+	@value1 datetime, @returnvalue int
+)
+RETURNS datetime
+AS
+BEGIN
+	return isnull(@value1, @returnvalue)
+
+END
+GO
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zou &lt;code&gt;IFNull&lt;/code&gt; moeten mimicken, maar je kan enkel &lt;code&gt;select dbo.ifnull()&lt;/code&gt; doen ipv de native syntax&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;waar-zijn-de-db-files-op-de-schijf-ergens-geplaatst&#34;&gt;Waar zijn de DB files op de schijf ergens geplaatst?&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT name, physical_name AS current_file_location
+FROM sys.master_files
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;https://msdn.microsoft.com/en-us/library/ms143547.aspx&#34;&gt;MSDN: MSSQL DB file locations&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;alter-databases-gaan-traag&#34;&gt;Alter databases gaan traag&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;uitvoeren met &lt;code&gt;WITH ROLLBACK IMMEDIATE;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;uitvoeren in &lt;code&gt;SINGLE_USER&lt;/code&gt; mode (set op db niveau, dan terug naar &lt;code&gt;MULTI_USER&lt;/code&gt; zetten)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;query-notifications&#34;&gt;Query notifications&lt;/h3&gt;
+
+&lt;p&gt;Service broker aan zetten: &lt;code&gt;ALTER DATABASE db_name SET ENABLE_BROKER with rollback immediate&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Hoe checken of reeds enabled is? &lt;code&gt;select name, database_id, service_broker_guid from sys.databases where is_broker_enabled = 1;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ service broker GUIDs zijn dezelfde indien DB gekopiëerd is, bijgevolg krijg je deze fout indien je &lt;code&gt;ENABLE_BROKER&lt;/code&gt; tracht uit te voeren op zo&amp;rsquo;n kopie:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cannot be enabled because there is already an enabled Service Broker with the same ID
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Fix: (&lt;a href=&#34;http://www.mssqltips.com/sqlservertip/2789/sql-server-service-broker-error-database-cannot-be-enabled/&#34;&gt;bron&lt;/a&gt;) maak een nieuwe broker GUID aan met &lt;code&gt;SET NEW_BROKER&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;in-combinatie-met-nhibernate-syscache2&#34;&gt;In combinatie met NHibernate Syscache2&lt;/h5&gt;
+
+&lt;p&gt;Zie&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http:*developer.empinia.org/svn/empinia/vendor/bin/nhibernate/trunk/Doc/html/caches.html&#34;&gt;http:*developer.empinia.org/svn/empinia/vendor/bin/nhibernate/trunk/Doc/html/caches.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http:*tamingcode.com/2013/07/01/cacheable-queries-pitfalls/&#34;&gt;http:*tamingcode.com/2013/07/01/cacheable-queries-pitfalls/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;hoe-weet-ik-nu-of-notification-works&#34;&gt;Hoe weet ik nu of notification works?&lt;/h4&gt;
+
+&lt;p&gt;We moeten zien of de &lt;strong&gt;Broker:Conversation&lt;/strong&gt; berichten correct op- en afgestuurd worden. Dit kan je best nagaan in SQL Server Profiler:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/db/sqlprofiling.png&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Volgende dingen zouden moeten gebeuren:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;STARTED_OUTBOUND bericht (conversation)&lt;/li&gt;
+&lt;li&gt;CONVERSING bericht (conversation) van .Net SqlClient applicationName&lt;/li&gt;
+&lt;li&gt;QN:Subscription van .Net SqlClient applicationName&lt;/li&gt;
+&lt;li&gt;QN:Dynamics event subclass Clock run om te zien of het event gequeued is.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;pitfalls-en-errors&#34;&gt;Pitfalls en errors&lt;/h4&gt;
+
+&lt;h5 id=&#34;system-invalidoperationexception-when-using-sqldependency-without-providing-an-options-value-sqldependency-start-must-be-called-prior-to-execution-of-a-command-added-to-the-sqldependency-instance&#34;&gt;System.InvalidOperationException: When using SqlDependency without providing an options value, SqlDependency.Start() must be called prior to execution of a command added to the SqlDependency instance.&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://richarddingwall.name/2009/10/09/nhibernate-caches-syscache2-dont-forget-to-call-sqldependency-start/&#34;&gt;Bron&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;SqlDependency.Start(conString)&lt;/code&gt; aanroepen vóór de setup van bvb de NHibernate session factory. Dit moet je zelf doen, ook al gebruik je SysCache2 met regions.&lt;/p&gt;
+
+&lt;p&gt;❗ altijd eerst Stop aanroepen!&lt;/p&gt;
+
+&lt;h5 id=&#34;cannot-execute-as-the-database-principal-because-the-principal-dbo-does-not-exist&#34;&gt;Cannot execute as the database principal because the principal &amp;ldquo;dbo&amp;rdquo; does not exist&lt;/h5&gt;
+
+&lt;p&gt;In SQL Server profiler zichtbaar bij broker events - dit komt vanwege te weinig rechten.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;use [DBNAME] EXEC sp_changedbowner &#39;sa&lt;/code&gt;&amp;rsquo; lost dit probleem op (zie profiling)&lt;/p&gt;
+
+&lt;h3 id=&#34;mssql-specifieke-syntax&#34;&gt;MSSQL specifieke syntax&lt;/h3&gt;
+
+&lt;h5 id=&#34;batch-processing&#34;&gt;Batch processing&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;GO&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;The GO command isn&amp;rsquo;t a Transact-SQL statement, but a special command recognized by several MS utilities including SQL Server Management Studio code editor.&lt;/p&gt;
+
+&lt;p&gt;The GO command is used to group SQL commands into batches which are sent to the server together. The commands included in the batch, that is, the set of commands since the last GO command or the start of the session, must be logically consistent. For example, you can&amp;rsquo;t define a variable in one batch and then use it in another since the scope of the variable is limited to the batch in which it&amp;rsquo;s defined.&lt;/p&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http:*msdn.microsoft.com/en-us/library/ms188037.aspx&#34;&gt;http:*msdn.microsoft.com/en-us/library/ms188037.aspx&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;❗ Dit is blijkbaar ook wijzigbaar naar een karakterset naar keuze in Management studio options:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/db/go_option_mssql.png&#39;&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;rename-columns&#34;&gt;Rename columns&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;EXEC sp_RENAME &#39;TableName.OldColumnName&#39; , &#39;NewColumnName&#39;, &#39;COLUMN&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;werken-met-datums&#34;&gt;werken met datums&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;GETDATE()&lt;/code&gt; is een now timestamp (in MySQL is dit &lt;code&gt;CURDATE()&lt;/code&gt;. Records selecteren met een bepaalde timestamp (&amp;ldquo;vanaf&amp;rdquo;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select * from table where datecolumn &amp;gt;= Convert(datetime, &#39;2014-09-11&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In Oracle is dit bijvoorbeeld &lt;code&gt;TO_DATE(&#39;26/JAN/2011&#39;,&#39;dd/mon/yyyy&#39;)&lt;/code&gt; in plaats van &lt;code&gt;Convert()&lt;/code&gt; - in MySQL kan dit rechtstreeks in een bepaald formaat: &lt;code&gt;WHERE start_date &amp;gt;&#39;2012-11-18&#39;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h3&gt;
+
+&lt;h5 id=&#34;ado-net-connection-pool-monitoring&#34;&gt;ADO .NET Connection pool monitoring&lt;/h5&gt;
+
+&lt;p&gt;Mogelijk met &lt;strong&gt;Performance monitor&lt;/strong&gt; in Win32 (Run -&amp;gt; &lt;code&gt;perfmon&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Step-by-step uitleg: (oude versie) &lt;a href=&#34;http://www.c-sharpcorner.com/uploadfile/CMouli/monitoring-database-connections-using-performance-counters/&#34;&gt;Monitoring DB connections using performance counters&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://msdn.microsoft.com/en-us/library/ms254503.aspx&#34;&gt;Mogelijke counters - MSDN&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;NumberOfActiveConnections&lt;/li&gt;
+&lt;li&gt;NumberOfFreeConnections&lt;/li&gt;
+&lt;li&gt;NumberOfPooledConnections&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left;&#39; src=&#39;http://www.brainbaking.com/img//code/db/addcounters.png |&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Alles ivm DB connecties in .NET is ook mogelijk te bekijken met de &lt;a href=&#34;http://www.red-gate.com/products/dotnet-development/ants-performance-profiler/&#34;&gt;ANTS Performance profiler&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;aantal-momenteel-actieve-threads-bezien&#34;&gt;Aantal momenteel actieve threads bezien&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT 
+    DB_NAME(dbid) as DBName, 
+    COUNT(dbid) as NumberOfConnections,
+    loginame as LoginName
+FROM
+    sys.sysprocesses
+WHERE 
+    dbid &amp;gt; 0
+GROUP BY 
+    dbid, loginame
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>resources</title>
+      <link>http://www.brainbaking.com/wiki/code/csharp/resources/</link>
+      <pubDate>Fri, 09 Oct 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/csharp/resources/</guid>
+      <description>
+
+&lt;h1 id=&#34;c-resources&#34;&gt;C# Resources&lt;/h1&gt;
+
+&lt;h2 id=&#34;in-tests&#34;&gt;In Tests&lt;/h2&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/csharp/testing/&#34;&gt;code/csharp/testing&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;web-config&#34;&gt;Web config&lt;/h2&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/dd465326(VS.100).aspx&#34;&gt;http://msdn.microsoft.com/en-us/library/dd465326(VS.100).aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;.NET 4&lt;/code&gt; voorziet een manier om de &lt;code&gt;Web.config&lt;/code&gt; file automatisch te &lt;strong&gt;transformeren&lt;/strong&gt; afhankelijk van uw build configuratie (Debug, Release, custom). Je hebt hier 2 files:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Web.config (base)&lt;/li&gt;
+&lt;li&gt;Web.[BuildConfigName].config (transformer)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Wat in de tweede file staat, gaat toegepast worden op de eerste file. Je kan dus niet zomaar zaken copypasten en overschrijven, maar moet tags die je wil replacen &lt;strong&gt;XDT&lt;/strong&gt; transformaties op definiëren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;appSettings&amp;gt;
+  &amp;lt;add key######&amp;quot;Bla&amp;quot; value&amp;quot;blie&amp;quot;/&amp;gt;
+&amp;lt;/appSettings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;met transformer&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;appSettings xdt:Transform=&amp;quot;Replace&amp;quot;&amp;gt;
+  &amp;lt;add key######&amp;quot;Bla&amp;quot; value&amp;quot;bloebloe&amp;quot;/&amp;gt;
+&amp;lt;/appSettings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zal de hele &lt;code&gt;appSettings&lt;/code&gt; tag vervangen in de base file. Vergeet dat attribuut en er gebeurt niets.&lt;/p&gt;
+
+&lt;h2 id=&#34;embedded-resources-ophalen&#34;&gt;Embedded resources ophalen&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        private Stream GetIconAsStream(string icon)
+        {
+            return Assembly.GetExecutingAssembly()
+                           .GetManifestResourceStream(
+                               &amp;quot;Full.Namespace.Of.Class.dir.to.image&amp;quot; +
+                               icon);
+        }
+
+        private void CopyIconsToDir(string dir, params string[] iconNames)
+        {
+            foreach (var icon in iconNames)
+            {
+                var downloadStream = GetIconAsStream(icon);
+                var tmpFileCreate = File.Create(dir + &amp;quot;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&amp;quot; + icon);
+                downloadStream.CopyTo(tmpFileCreate);
+                tmpFileCreate.Close();
+                downloadStream.Close();
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;csproj-file-inlezen-parsen&#34;&gt;.CSPROJ file inlezen &amp;amp; parsen&lt;/h2&gt;
+
+&lt;p&gt;Waarom is dit handig? Om bijvoorbeeld te kunnen kijken welke files allemaal included zijn in uw project en met een test alle SQL files verplicht te laten embedden. &lt;br/&gt;&lt;br/&gt;
+(Op die manier staan ze niet als &amp;ldquo;Content&amp;rdquo; in de XML structuur). Regex op loslaten of XML parsen.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        private static string ReadProjectFile()
+        {
+            var dbAssembly = typeof(AbstractUpdater).Assembly;
+            * format: &#39;file:*/C:/Sources/project/UnitTestproject/bin/Debug/project.UnitTest.DLL&#39;
+            var projectDir = dbAssembly.CodeBase.Substring(0, dbAssembly.CodeBase.IndexOf(&amp;quot;.UnitTest&amp;quot;, StringComparison.InvariantCulture));
+            var csprojFile = Directory.GetFiles(projectDir.Replace(&amp;quot;file:///&amp;quot;, &amp;quot;&amp;quot;), &amp;quot;*.csproj&amp;quot;)[0];
+
+            var csproj = File.ReadAllText(csprojFile);
+            return csproj;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;managed-resources-disposen&#34;&gt;Managed resources disposen&lt;/h2&gt;
+
+&lt;p&gt;❗ Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx&#34;&gt;Dispose Pattern @ MSDN&lt;/a&gt;; volgende template:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;public class DisposableResourceHolder : IDisposable {
+ 
+    private SafeHandle resource; // handle to a resource
+
+    public DisposableResourceHolder(){
+        this.resource = ... // allocates the resource
+    }
+
+    public void Dispose(){
+        Dispose(true);
+        GC.SuppressFinalize(this); // tell the GC disposing it isn&#39;t needed anymore
+    }
+
+    protected virtual void Dispose(bool disposing){
+        if (disposing){
+            if (resource!= null) resource.Dispose();
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;using&#34;&gt;using()&lt;/h4&gt;
+
+&lt;p&gt;De .NET CLR vertaalt&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;using (MyResource myRes = new MyResource())
+{
+    myRes.DoSomething();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;naar&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;{ // limits scope of myRes
+    MyResource myRes= new MyResource();
+    try
+    {
+        myRes.DoSomething();
+    }
+    finally
+    {
+        // Check for a null resource.
+        if (myRes!= null)
+            // Call the object&#39;s Dispose method.
+            ((IDisposable)myRes).Dispose();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Moet dan uw object de interface &lt;code&gt;IDisposable&lt;/code&gt; implementeren? Harde cast toch?&lt;/p&gt;
+
+&lt;h4 id=&#34;java-vs-c&#34;&gt;Java VS C#&lt;/h4&gt;
+
+&lt;p&gt;Beiden plaatsten objecten in een finalizer queue maar het uitvoeren hiervan is nooit gegarandeerd (crash process, iets anders dat kan gebeuren, &amp;hellip;). &lt;code&gt;IDisposable&lt;/code&gt; kan gebruikt worden om managed resources op te kuisen, &lt;strong&gt;maar moet manueel aangeroepen worden&lt;/strong&gt; door clients die dit object gebruiken - hier is ook nog niets van gegarandeerd! Behalve in een &lt;code&gt;using(obj) { }&lt;/code&gt; block - hierna wordt &lt;code&gt;Dispose()&lt;/code&gt; aangeroepen, ook als er ondertussen een of andere Exception opgetreden is. In Java 6 en lager moet je dit met &lt;code&gt;try { } finally { }&lt;/code&gt; manueel doen.&lt;/p&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/java/resources/&#34;&gt;java resources wiki pagina&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>logica</title>
+      <link>http://www.brainbaking.com/wiki/theorie/logica/</link>
+      <pubDate>Thu, 23 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/theorie/logica/</guid>
+      <description>
+
+&lt;h1 id=&#34;logica&#34;&gt;Logica&lt;/h1&gt;
+
+&lt;h3 id=&#34;logic-matters-refs&#34;&gt;&amp;ldquo;Logic Matters&amp;rdquo; refs&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.logicmatters.net/igt/godel-without-tears/&#34;&gt;Gödel without Tears&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sqlite</title>
+      <link>http://www.brainbaking.com/wiki/code/db/sqlite/</link>
+      <pubDate>Fri, 17 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/sqlite/</guid>
+      <description>
+
+&lt;h1 id=&#34;sqlite&#34;&gt;SQLite&lt;/h1&gt;
+
+&lt;h3 id=&#34;ddls-copypasten-van-oracle&#34;&gt;DDLs copypasten van Oracle&lt;/h3&gt;
+
+&lt;p&gt;Bijvoorbeeld de gegenereerde versie (SQL tab) van Oracle SQL Developer overnemen gaat niet zomaar.&lt;/p&gt;
+
+&lt;p&gt;Er zijn enkele verschillen:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;NOT NULL ENABLE&lt;/code&gt; wegdoen. &lt;code&gt;NOT NULL&lt;/code&gt; maakt niets uit aangezien het in-memory is om te testen!&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;USING INDEX&lt;/code&gt; blabla na de &lt;code&gt;PRIMARY KEY&lt;/code&gt; statements zijn ook allemaal niet nodig (&lt;code&gt;STORAGE&lt;/code&gt; etc)&lt;/li&gt;
+&lt;li&gt;speciale defaults of syscalls zoals &lt;code&gt;sys_guid()&lt;/code&gt; bestaan niet.&lt;/li&gt;
+&lt;li&gt;definities van groottes: wegdoen van &lt;code&gt;BYTE&lt;/code&gt;: &lt;code&gt;VARCHAR2(26)&lt;/code&gt; dus.&lt;/li&gt;
+&lt;li&gt;opletten met datums: zie onder.&lt;/li&gt;
+&lt;li&gt;Namespace mag ook weg bij &lt;code&gt;CREATE TABLE &amp;quot;SPACE&amp;quot;.&amp;quot;NAME&amp;quot; (&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;connection-strings&#34;&gt;Connection strings&lt;/h3&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.connectionstrings.com/sqlite/&#34;&gt;http://www.connectionstrings.com/sqlite/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;file-based&#34;&gt;File based&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;Data Source######c:&amp;lt;br/&amp;gt;mydb.db;Version3;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;in-memory&#34;&gt;In-memory&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;Data Source######:memory:;Version3;New=True;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Conventie &lt;code&gt;Data Source=&lt;/code&gt; notatie gehanteerd door &lt;a href=&#34;http:*www.connectionstrings.com/sqlite/&#34;&gt;http:*www.connectionstrings.com/sqlite/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Andere notatie&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FullUri######file::memory:?cacheshared
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notatie gehanteerd door &lt;a href=&#34;https:*www.sqlite.org/inmemorydb.html&#34;&gt;https:*www.sqlite.org/inmemorydb.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Versie en New hoeft blijkbaar niet (?)&lt;/p&gt;
+
+&lt;p&gt;❗ Elke keer als je een connectie opendoet gaat SQLite de inmemory DB state restoren naar default (dus leeg). Als je dus bvb;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;connectie open&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CREATE TABLE;&lt;/code&gt; brol uitvoeren&lt;/li&gt;
+&lt;li&gt;connectie sluiten&lt;/li&gt;
+&lt;li&gt;roep andere method aan&lt;/li&gt;
+&lt;li&gt;connectie open&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SELECT * FROM TABLE;&lt;/code&gt; brol uitvoeren&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;BOEM no such table&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://stackoverflow.com/questions/17477246/sqlite-in-memory-database-create-table-does-not-work&#34;&gt;SQLite in memory create table does not work&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;❗ Hou dus 1x een connectie open voor unit testen bij een &lt;code&gt;[SetUp]&lt;/code&gt; en geef referenties door.&lt;/p&gt;
+
+&lt;h5 id=&#34;extra-opties-meegeven-via-de-connection-string&#34;&gt;Extra opties meegeven via de connection string&lt;/h5&gt;
+
+&lt;p&gt;Je kan &lt;code&gt;PRAGMA&lt;/code&gt; parameters zoals &lt;a href=&#34;http://www.sqlite.org/pragma.html#pragma_locking_mode&#34;&gt;deze&lt;/a&gt; meegeven.&lt;/p&gt;
+
+&lt;h3 id=&#34;integreren-met-c&#34;&gt;Integreren met C#&lt;/h3&gt;
+
+&lt;h4 id=&#34;db-connectie&#34;&gt;DB Connectie&lt;/h4&gt;
+
+&lt;p&gt;Gebruik &lt;a href=&#34;http://system.data.sqlite.org/index.html/doc/trunk/www/index.wiki&#34;&gt;http://system.data.sqlite.org/index.html/doc/trunk/www/index.wiki&lt;/a&gt; (package &lt;code&gt;System.data.SQLite (x86/x64)&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Voor &lt;code&gt;OleDb&lt;/code&gt; C# code, is er voor elke klasse een equivalent in de &lt;code&gt;SQLite&lt;/code&gt; namespace, bijvoorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        private SQLiteConnection SqLiteDbConnection()
+        {
+            return new SQLiteConnection()
+                {
+                    ConnectionString ###### &amp;quot;Data Sourcemydb.s3db;&amp;quot;,
+                    Flags = SQLiteConnectionFlags.LogAll
+                };
+        }
+
+        public void SetupDb()
+        {
+            using (var connection = SqLiteDbConnection())
+            {
+                connection.Open();
+                var transaction = connection.BeginTransaction();
+                var sqLiteCommand = new SQLiteCommand()
+                    {
+                        Connection = (SQLiteConnection) connection,
+                        CommandType = CommandType.Text,
+                        CommandText = GetSchemaCreateSql()
+                    };
+                sqLiteCommand.ExecuteNonQuery();
+                transaction.Commit();
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;builden-op-x86-x64-systemen&#34;&gt;Builden op x86/x64 systemen&lt;/h4&gt;
+
+&lt;p&gt;Afhankelijk van welke package manager je gebruikt (NuGet bvb.) kan een &lt;code&gt;SQLite.interop.dll&lt;/code&gt; in submapjes &lt;code&gt;x86&lt;/code&gt; en &lt;code&gt;x64&lt;/code&gt; geplaatst worden (Copy always als content). Lokaal werkt dit, maar op de build pc (die bijvoorbeeld enkel 32-bit is) niet, omdat de DLL op dezelfde plaats als de executable verwacht wordt. Hier zijn een paar mogelijke oplossingen voor:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Gebruik enkel de 32bit versie. (er is zo&amp;rsquo;n specifieke package voor)&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Hint&amp;rdquo; de DLL loader om de juiste te gebruiken&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;[System.Runtime.InteropServices.DllImport(&amp;quot;kernel32.dll&amp;quot;, CharSet ###### System.Runtime.InteropServices.CharSet.Unicode, SetLastError  true)]
+    [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)]
+    static extern bool SetDllDirectory(string lpPathName);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    [STAThread]
+    static void Main()
+    {
+        int wsize = IntPtr.Size;
+        string libdir ###### (wsize  4)?&amp;quot;x86&amp;quot;:&amp;quot;x64&amp;quot;;
+        string appPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+        SetDllDirectory(System.IO.Path.Combine(appPath, libdir));
+        // ...
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http:*stackoverflow.com/questions/13028069/unable-to-load-dll-sqlite-interop-dll&#34;&gt;http:*stackoverflow.com/questions/13028069/unable-to-load-dll-sqlite-interop-dll&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;net-dates-en-sqlite-dates&#34;&gt;.NET dates en SQLite dates&lt;/h4&gt;
+
+&lt;p&gt;Als je een &lt;code&gt;DATE&lt;/code&gt; kolom hebt, en een SQL zoals gewoon &lt;code&gt;select * from blah;&lt;/code&gt; uitvoert, kan je de volgende fout krijgen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;String was not recognized as a valid DateTime
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dit komt doordat SQLite dynamisch getypeerd is en voor hem een date hetzelfde als een char is, gebruik daarvoor de &lt;code&gt;date()&lt;/code&gt; functie om zelf te parsen! Beetje vervelend in de queries&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Een andere mogelijkheid is &lt;code&gt;DateTimeFormat=Ticks&lt;/code&gt; in de connection string meegeven.&lt;/p&gt;
+
+&lt;h4 id=&#34;creating-integration-tests-using-record-objects&#34;&gt;Creating integration tests, using Record objects&lt;/h4&gt;
+
+&lt;p&gt;Maak objecten die extenden van &lt;code&gt;DatabaseInsertable&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    public abstract class DatabaseInsertable
+    {
+        protected abstract string GetTable();
+
+        public override string ToString()
+        {
+            var fieldDict = FieldDictionary();
+            var fields = &amp;quot;(&amp;quot; + string.Join(&amp;quot;,&amp;quot;, fieldDict.Keys) + &amp;quot;)&amp;quot;;
+            var values = &amp;quot;(&amp;quot; + string.Join(&amp;quot;,&amp;quot;, fieldDict.Values) + &amp;quot;)&amp;quot;;
+
+            return &amp;quot;insert into &amp;quot; + GetTable() + fields + &amp;quot; values &amp;quot; + values;
+        }
+
+        public void Save()
+        {
+            DbConnection.Instance.CreateCommand(ToString()).ExecuteNonQuery();
+        }
+
+        private Dictionary&amp;lt;string, string&amp;gt; FieldDictionary()
+        {
+            var dictionary = new Dictionary&amp;lt;string, string&amp;gt;();
+
+            foreach (var info in this.GetType().GetFields())
+            {
+                if (info.GetValue(this) != null)
+                {
+                    dictionary.Add(info.Name, &amp;quot;&#39;&amp;quot; + info.GetValue(this).ToString() + &amp;quot;&#39;&amp;quot;);
+                }
+            }
+
+            return dictionary;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zoals bijvoorbeeld&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    internal class UnitRecord : DatabaseInsertable
+    {
+        public string creator;
+        public string guid;
+
+        protected override string GetTable()
+        {
+            return &amp;quot;UNIT&amp;quot;;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gebruik:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;new UnitRecord() { creator ###### &amp;quot;bla&amp;quot;; guid  &amp;quot;lala&amp;quot;; }.Save(); // done!
+// execute your SUT stuff here
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;DbConnection&lt;/code&gt; gebruikt dan de SQLite versie om een &amp;ldquo;unit&amp;rdquo; record aan te maken in de DB. Merk op dat de properties 100% moeten overeenkomen.&lt;/p&gt;
+
+&lt;p&gt;Het enige speciale wat in &lt;code&gt;IntegrationTestCase&lt;/code&gt; gedefiniëerd is, is de &amp;ldquo;gewone&amp;rdquo; &lt;code&gt;OleDbConnection&lt;/code&gt; vervangen door de SQLite verie:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    public abstract class IntegrationTestCase
+    {
+        protected SqLitedbConnection connection;
+
+        [TestInitialize]
+        public void CleanDb()
+        {
+            this.connection = new SqLitedbConnection();
+            DbConnection.Instance = connection; // instead of OleDbConnection, lazyloaded singleton getter property. 
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Omdat Ole en SQLite soms andere interfaces hebben moeten we er zelf een anticorruptie laag (de IConnection interface) tussen zetten:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Common;
+
+    public interface IdbConnection
+    {
+        object QueryProcedure(string procedure, IDictionary&amp;lt;string, object&amp;gt; parameters, string outputParameter);
+
+        DbParameter CreateParameter(string field, object value);
+
+        DbCommand CreateCommand(string query);
+
+        DataSet Query(DbCommand command);
+
+        DataSet Query(string query);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Het verschil is altijd een &lt;code&gt;SQLiteCommand&lt;/code&gt; in plaats van een &lt;code&gt;OleDbCommand&lt;/code&gt; aanmaken. Er zijn soms ook subtiele verschillen in het aanmaken en doorgeven van de parameters.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>linqtosql</title>
+      <link>http://www.brainbaking.com/wiki/code/csharp/linqtosql/</link>
+      <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/csharp/linqtosql/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-csharp-linqtosql&#34;&gt;code:csharp &amp;gt;&amp;gt; Linqtosql&lt;/h1&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;https://msdn.microsoft.com/en-us/library/bb425822.aspx&#34;&gt;MSDN LinqToSql pagina&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;basic&#34;&gt;Basic&lt;/h2&gt;
+
+&lt;p&gt;Principe is een &lt;strong&gt;DataContext&lt;/strong&gt; object aanmaken waar je je connectionstring aan meegeeft (&lt;code&gt;Log&lt;/code&gt; kan naar &lt;code&gt;Console.Out&lt;/code&gt; ofzo). Vanaf dan via het context object werken:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;context.GetTable&amp;lt;T&amp;gt;().Where(t ######&amp;gt; t.Property  x).ToList()&lt;/code&gt; om te queryen&lt;/li&gt;
+&lt;li&gt;bij deleten of wijzigen: &lt;code&gt;.Attach(entity)&lt;/code&gt; en &lt;code&gt;.DeleteOnSubmit(entity)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Modellen: annoteren met &lt;code&gt;[Table(Name######&amp;quot;tabelnaam&amp;quot;)]&lt;/code&gt;, kolommen met &lt;code&gt;[Column(Name&amp;quot;kolomnaam&amp;quot;, IsPrimaryKey ###### true, IsDbGenerated  true)]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Wijzigingen doorvoeren met &lt;code&gt;SubmitChanges()&lt;/code&gt; door simpelweg properties van modellen te wijzigen, zoals een &amp;ldquo;echte&amp;rdquo; ER tool.&lt;/p&gt;
+
+&lt;h2 id=&#34;advanced&#34;&gt;Advanced&lt;/h2&gt;
+
+&lt;h4 id=&#34;manytoone-relaties-en-domain-driven-design&#34;&gt;ManyToOne relaties en domain driven design&lt;/h4&gt;
+
+&lt;p&gt;In het model: &lt;code&gt;[Association(ThisKey ###### &amp;quot;ReferenceId&amp;quot;, IsForeignKey  true)]&lt;/code&gt; attribuut toevoegen.&lt;/p&gt;
+
+&lt;p&gt;Als je een Fetch wil doen en associaties ook wenst op te halen moet je dit &lt;strong&gt;altijd meegeven&lt;/strong&gt;: &lt;code&gt;new DataLoadOptions().LoadWith&amp;lt;T&amp;gt;(t =&amp;gt; t.AssociationProperty)&lt;/code&gt;. Ook deze loadoptions meegeven aan de context.&lt;/p&gt;
+
+&lt;p&gt;Indien dit overgeslagen wordt, zal bij een ToList in LINQ die property niet opgehaald worden. Dit is vervelend om elke keer mee te geven - kan ook generiek, bijvoorbeeld zo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        private static void AddLoadOptions&amp;lt;T&amp;gt;(DataContext context) where T : class, new()
+        {
+            if (IsAssociation&amp;lt;T&amp;gt;())
+            {
+                var loadOps = new DataLoadOptions();
+                ((IAssociationModel)new T()).AssociationsToLoad(loadOps);
+                context.LoadOptions = loadOps;
+            }
+        }
+
+        private static bool IsAssociation&amp;lt;T&amp;gt;() where T : class, new()
+        {
+            return typeof(IAssociationModel).IsAssignableFrom(typeof(T));
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;AddLoadOptions&lt;/code&gt; altijd aanroepen wanneer een fetch in een repository zou gebeuren. Dit zit er op de interface:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    public interface IAssociationModel
+    {
+        IList&amp;lt;object&amp;gt; AssocationsToAttach();
+
+        void AssociationsToLoad(DataLoadOptions loadOps);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zo kan iedere entiteit zijn eigen &lt;code&gt;LoadWith&lt;/code&gt; oproepen.&lt;/p&gt;
+
+&lt;h4 id=&#34;transacties&#34;&gt;Transacties&lt;/h4&gt;
+
+&lt;p&gt;Gebruik &lt;code&gt;TransactionScope&lt;/code&gt; object, aanmaken voor je iets doet en &lt;code&gt;.Complete()&lt;/code&gt; of &lt;code&gt;.Dispose()&lt;/code&gt; oproepen. &lt;br/&gt;&lt;br/&gt;
+Om dit niet de helel tidj zelf te moeten beheren, complexiteit opbergen in een basis Repository klasse, zoiets:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;            using (var repo = Repository.Instance.Transactional())
+            {
+               Fetch(); // ...
+               Delete(); 
+               // ...
+            }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;om dan in de &lt;code&gt;Dispose()&lt;/code&gt; de transactie te completen. De transactionele method maakt een scope aan.&lt;/p&gt;
+
+&lt;h2 id=&#34;compleet-voorbeeld-repository&#34;&gt;Compleet voorbeeld repository&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-chsarp&#34;&gt;    public class Repository : IRepository
+    {
+        private readonly string _ConnectionString;
+
+        private DataContext _CurrentContext;
+        private TransactionScope _TransactionScope;
+
+        public Repository(string connectionString)
+        {
+            _ConnectionString = connectionString;
+        }
+
+        private Repository(Repository baseRepo)
+            : this(baseRepo._ConnectionString)
+        {
+            _CurrentContext = CreateContext();
+            _TransactionScope = new TransactionScope();
+        }
+
+        public static IRepository Instance { get; set; }
+
+        private bool InTransaction
+        {
+            get { return _TransactionScope != null; }
+        }
+
+        public void Add&amp;lt;T&amp;gt;(T entity) where T : class, new()
+        {
+            InContext(context =&amp;gt;
+            {
+                var table = context.GetTable&amp;lt;T&amp;gt;();
+
+                if (IsAssociation&amp;lt;T&amp;gt;())
+                {
+                    foreach (var toAttach in ((IAssociationModel)entity).AssocationsToAttach())
+                    {
+                        context.GetTable(toAttach.GetType()).Attach(toAttach);
+                    }
+                }
+                table.InsertOnSubmit(entity);
+            });
+        }
+
+        public void Add&amp;lt;T&amp;gt;(IEnumerable&amp;lt;T&amp;gt; entities) where T : class
+        {
+            InContext(context =&amp;gt; context.GetTable&amp;lt;T&amp;gt;().InsertAllOnSubmit(entities));
+        }
+
+        public void CommitChanges&amp;lt;T&amp;gt;(T entity) where T : class
+        {
+            InContext(context =&amp;gt;
+            {
+                var entityTable = context.GetTable&amp;lt;T&amp;gt;();
+                if (!InTransaction)
+                {
+                    entityTable.Attach(entity);
+                }
+                context.Refresh(RefreshMode.KeepCurrentValues, entity);
+            });
+        }
+
+        public int Count&amp;lt;T&amp;gt;(ICanModifyIQueryable&amp;lt;T&amp;gt; queryModifier) where T : class, new()
+        {
+            return InContext(context =&amp;gt;
+            {
+                AddLoadOptions&amp;lt;T&amp;gt;(context);
+
+                IQueryable&amp;lt;T&amp;gt; list = context.GetTable&amp;lt;T&amp;gt;();
+
+                list = queryModifier.ModifyForCount(list);
+
+                return list.Count();
+            });
+        }
+
+        public void Delete&amp;lt;T&amp;gt;(T entity) where T : class
+        {
+            InContext(context =&amp;gt;
+            {
+                var entityTable = context.GetTable&amp;lt;T&amp;gt;();
+                if (!InTransaction)
+                {
+                    entityTable.Attach(entity);
+                }
+                entityTable.DeleteOnSubmit(entity);
+            });
+        }
+
+        public void Dispose()
+        {
+            CompleteTransaction();
+        }
+
+        public List&amp;lt;T&amp;gt; Fetch&amp;lt;T&amp;gt;() where T : class, new()
+        {
+            return InContext(context =&amp;gt;
+            {
+                AddLoadOptions&amp;lt;T&amp;gt;(context);
+                return context.GetTable&amp;lt;T&amp;gt;().ToList();
+            });
+        }
+
+        public List&amp;lt;T&amp;gt; FetchBy&amp;lt;T&amp;gt;(Expression&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt; whereClause) where T : class, new()
+        {
+            return InContext(context =&amp;gt;
+            {
+                AddLoadOptions&amp;lt;T&amp;gt;(context);
+
+                return context.GetTable&amp;lt;T&amp;gt;()
+                    .Where(whereClause)
+                    .ToList();
+            });
+        }
+
+        public List&amp;lt;T&amp;gt; FetchBy&amp;lt;T&amp;gt;(ICanModifyIQueryable&amp;lt;T&amp;gt; queryModifier) where T : class, new()
+        {
+            return InContext(context =&amp;gt;
+            {
+                AddLoadOptions&amp;lt;T&amp;gt;(context);
+
+                IQueryable&amp;lt;T&amp;gt; list = context.GetTable&amp;lt;T&amp;gt;();
+
+                list = queryModifier.Modify(list);
+
+                return list.ToList();
+            });
+        }
+
+        public IRepository Transactional()
+        {
+            return new Repository(this);
+        }
+
+        private static void AddLoadOptions&amp;lt;T&amp;gt;(DataContext context) where T : class, new()
+        {
+            if (IsAssociation&amp;lt;T&amp;gt;())
+            {
+                var loadOps = new DataLoadOptions();
+                ((IAssociationModel)new T()).AssociationsToLoad(loadOps);
+                context.LoadOptions = loadOps;
+            }
+        }
+
+        private static bool IsAssociation&amp;lt;T&amp;gt;() where T : class, new()
+        {
+            return typeof(IAssociationModel).IsAssignableFrom(typeof(T));
+        }
+
+        private void CompleteTransaction()
+        {
+            if (_CurrentContext ###### null || !InTransaction)
+            {
+                return;
+            }
+
+            try
+            {
+                _CurrentContext.SubmitChanges();
+                _TransactionScope.Complete();
+            }
+            finally
+            {
+                _TransactionScope.Dispose();
+                _CurrentContext.Dispose();
+
+                _TransactionScope = null;
+                _CurrentContext = null;
+            }
+        }
+
+        private DataContext CreateContext()
+        {
+            return new DataContext(_ConnectionString) { Log = Console.Out };
+        }
+
+        private void InContext(Action&amp;lt;DataContext&amp;gt; action)
+        {
+            InContext(context =&amp;gt;
+            {
+                action(context);
+                return true;
+            });
+        }
+
+        private T InContext&amp;lt;T&amp;gt;(Func&amp;lt;DataContext, T&amp;gt; action)
+        {
+            var context = _CurrentContext;
+            var newContext = false;
+
+            if (context ###### null)
+            {
+                context = CreateContext();
+                newContext = true;
+            }
+
+            try
+            {
+                //      context.Log = Console.Out;
+                var value = action(context);
+                if (newContext)
+                {
+                    context.SubmitChanges();
+                }
+                return value;
+            }
+            finally
+            {
+                if (newContext)
+                {
+                    context.Dispose();
+                }
+            }
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>http://www.brainbaking.com/wiki/tech/security/</link>
+      <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/tech/security/</guid>
+      <description>
+
+&lt;h1 id=&#34;tech-security&#34;&gt;tech &amp;gt;&amp;gt; Security&lt;/h1&gt;
+
+&lt;h2 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h2&gt;
+
+&lt;h5 id=&#34;conversie-certificaten&#34;&gt;Conversie certificaten&lt;/h5&gt;
+
+&lt;p&gt;PFX naar PEM: &lt;code&gt;openssl pkcs12 -in [.pfx] -out [.pem]&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;pkcs7-signing-van-bestanden&#34;&gt;PKCS7 signing van bestanden&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;openssl smime -sign -in [tosignfile] -signer [privatekeyfile] -passin [passw] -outform PEM -out [outfile]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Paar dingen om op te letten:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;infile moet in UTF-8 encoded zonder UTF-8 identifier weggeschreven zijn. In C# bvb zo &lt;code&gt;File.WriteAllText(inFile, data, new UTF8Encoding(false));&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;privatekeyfile moet een PEM bestand zijn&lt;/li&gt;
+&lt;li&gt;output door openssl bevat begin en eind PKCS7 notaties, plus newlines op het laatste. Als die wegmoeten, replacen!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Voorbeeld om enkel signed data uit te halen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;                return signed
+                    .Replace(&amp;quot;-----BEGIN PKCS7-----&amp;quot;, &amp;quot;&amp;quot;)
+                    .Replace(&amp;quot;-----END PKCS7-----&amp;quot;, &amp;quot;&amp;quot;)
+                    .TrimStart(&#39;&amp;lt;br/&amp;gt;r&#39;, &#39;&amp;lt;br/&amp;gt;n&#39;)
+                    .TrimEnd(&#39;&amp;lt;br/&amp;gt;r&#39;, &#39;&amp;lt;br/&amp;gt;n&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>nexusdeploy</title>
+      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</guid>
+      <description>
+
+&lt;h1 id=&#34;nexus-deploy-artifacts-script&#34;&gt;Nexus deploy artifacts script&lt;/h1&gt;
+
+&lt;p&gt;Wat doet dit?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;haalt laatste versie van package op uit nuget nexus repository&lt;/li&gt;
+&lt;li&gt;download nuget package &amp;amp; unzipt &amp;amp; haalt DLL file hier uit (kan 4.5 4.0 of 3.5 versie zijn)&lt;/li&gt;
+&lt;li&gt;kopiëert dit naar doelserver&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Integraal deel van &amp;ldquo;deployen&amp;rdquo; in verband met modules, wordt bvb gebruikt in &lt;a href=&#34;http://www.brainbaking.com/wiki/code/build/teamcity/&#34;&gt;Teamcity&lt;/a&gt; configuration&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;nokogiri&#39; # gem install nokogiri first! 
+require &#39;net/http&#39;
+require &#39;zip&#39;	# gem install rubyzip first!
+require &#39;optparse&#39;
+require &#39;time&#39;
+
+def deploy_artifact(artifact, server, repo)
+	if repo.nil? then
+		repo = &amp;quot;http://server:8888/nexus/service/local/repositories/nuget-prereleases/&amp;quot;
+	else
+		repo = repo.sub(&amp;quot;/local/nuget/&amp;quot;, &amp;quot;/local/repositories/&amp;quot;)
+	end
+	nexus_url = &amp;quot;#{repo}content/#{artifact}/&amp;quot;
+	print &amp;quot;-- Deploy artifact #{artifact} to #{server} from #{repo}&amp;lt;br/&amp;gt;n&amp;quot;
+
+	print &amp;quot;fetching artifacts from nexus... &amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;t#{nexus_url}&amp;lt;br/&amp;gt;n&amp;quot;
+	response = Net::HTTP.get_response(URI.parse(nexus_url))
+	xml = Nokogiri::XML(response.body).xpath(&amp;quot;//content-item&amp;quot;).map { |entry|
+		hash = Hash.new
+		hash[&#39;url&#39;] = entry.css(&amp;quot;resourceURI&amp;quot;).text
+		hash[&#39;buildnr&#39;] = entry.css(&amp;quot;text&amp;quot;).text
+		hash[&#39;date&#39;] = Time.parse(entry.css(&amp;quot;lastModified&amp;quot;).text)
+
+		hash
+	}.sort { |one,two| two[&#39;date&#39;] &amp;lt;=&amp;gt; one[&#39;date&#39;] }.first
+
+	if xml.nil? then
+		throw &amp;quot;Geen XML kunnen parsen uit URL, ligt nexus plat?&amp;quot;
+	end
+
+	artifactContentUri = xml[&#39;url&#39;]
+	artifactBuildNr = xml[&#39;buildnr&#39;]
+	artifactDate = xml[&#39;date&#39;]
+
+	print &amp;quot;fetching last artifact (modified date #{artifactDate}) package file from nexus... &amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;t#{artifactContentUri}&amp;lt;br/&amp;gt;n&amp;quot;
+	artifact_uri = Nokogiri::XML(Net::HTTP.get_response(URI.parse(artifactContentUri)).body).css(&amp;quot;resourceURI&amp;quot;).text
+
+	print &amp;quot;fetching artifact (buildnr. #{artifactBuildNr}) itself from nexus... &amp;lt;br/&amp;gt;n&amp;quot;
+	nupkg_file = &amp;quot;#{artifact}-#{artifactBuildNr}.nupkg&amp;quot;
+	open(nupkg_file, &amp;quot;wb&amp;quot;) do |file|
+	    file.write(Net::HTTP.get_response(URI.parse(artifact_uri)).body)
+	end
+
+	def unzip_and_copy(zip_file, pattern, server)
+		zippedfile = zip_file.glob(pattern).first
+		unless zippedfile.nil?
+			fname = zippedfile.name.split(&#39;/&#39;).last
+			print &amp;quot;&amp;lt;br/&amp;gt;tFound file to copy: #{fname}&amp;lt;br/&amp;gt;n&amp;quot;
+			toname = &amp;quot;#{server}&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;#{fname}&amp;quot;
+			File.delete(toname) if File.exist?(toname)
+			zippedfile.extract(toname)
+		end
+	end
+
+	print &amp;quot;unzipping nuget package...&amp;lt;br/&amp;gt;n&amp;quot;
+	Zip::File.open(nupkg_file) do |zip_file|
+		unzip_and_copy zip_file, &#39;lib/net35/*.dll&#39;, server
+		unzip_and_copy zip_file, &#39;lib/net40/*.dll&#39;, server
+		unzip_and_copy zip_file, &#39;lib/net45/*.dll&#39;, server
+	end
+	File.delete(nupkg_file)
+	print &amp;quot;-- done, extracted to #{server}.&amp;lt;br/&amp;gt;n&amp;quot;
+end
+
+# ex. usage: 
+# deploy_artifact &#39;ModASR&#39;, &amp;quot;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;server&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;c$&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;websites&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TestDemo3&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;bin&amp;quot;
+options = {}
+ARGV &amp;lt;&amp;lt; &#39;-h&#39; if ARGV.empty?
+OptionParser.new do |opts|
+	opts.banner = &amp;quot;Usage: deploy_artifact.rb [options]&amp;quot;
+	opts.on(&#39;-r&#39;, &#39;--repo REPOSITORY_URL&#39;, &#39;nexus repository url (bvb http://server:8888/nexus/service/local/repositories/nuget-prereleases/ - with trailing slash)&#39;) { |v| options[:repo] = v }
+	opts.on(&#39;-m&#39;, &#39;--modules NAME&#39;, &#39;module name (comma separated)&#39;) { |v| options[:modules] = v }
+	opts.on(&#39;-s&#39;, &#39;--server NAME&#39;, &#39;server target bin directory&#39;) { |v| options[:server] = v }
+	opts.on(&#39;-h&#39;, &#39;--help&#39;, &#39;prints this help&#39;) { |v|
+		puts opts
+		exit
+	}
+end.parse!
+
+options[:modules].split(&amp;quot;,&amp;quot;).each do |mod|
+	deploy_artifact mod, options[:server], options[:repo]
+end
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>persistence</title>
+      <link>http://www.brainbaking.com/wiki/code/csharp/persistence/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/csharp/persistence/</guid>
+      <description>
+
+&lt;h1 id=&#34;persistence&#34;&gt;Persistence&lt;/h1&gt;
+
+&lt;h2 id=&#34;nhibernate&#34;&gt;NHibernate&lt;/h2&gt;
+
+&lt;h3 id=&#34;second-level-caching&#34;&gt;Second level caching&lt;/h3&gt;
+
+&lt;p&gt;Gebruik &lt;a href=&#34;http://www.codeproject.com/Articles/529016/NHibernate-Second-Level-Caching-Implementation&#34;&gt;SysCache2&lt;/a&gt; voor Web projecten. Hoe enablen? DLL ref + in config:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;            Configuration.SessionFactory().Caching.Through&amp;lt;SysCacheProvider&amp;gt;().WithDefaultExpiration(60);
+            Configuration.SetProperty(Environment.UseSecondLevelCache, &amp;quot;true&amp;quot;);
+            Configuration.SetProperty(Environment.UseQueryCache, &amp;quot;true&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In hbm mappings moet je entiteiten cache-baar markeren (read-only, read-write, &amp;hellip; zie docs) met &lt;code&gt;&amp;lt;cache usage=&amp;quot;read-write&amp;quot; /&amp;gt;&lt;/code&gt;. Vanaf dan kan je aan Criteria of LINQ queries dingen doen als:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Session.Query&amp;lt;Obj&amp;gt;().Cachable().List()&lt;/code&gt; of&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Session.CreateCriteria&amp;lt;Obj&amp;gt;().SetCachable(true)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Groeperen in &amp;ldquo;regions&amp;rdquo; is ook mogelijk, mee te geven met criteria.&lt;/p&gt;
+
+&lt;h4 id=&#34;clearing-everything&#34;&gt;Clearing everything&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;            SessionFactory.EvictQueries();
+            foreach (var collectionMetadata in SessionFactory.GetAllCollectionMetadata())
+                SessionFactory.EvictCollection(collectionMetadata.Key);
+            foreach (var classMetadata in SessionFactory.GetAllClassMetadata())
+                SessionFactory.EvictEntity(classMetadata.Key);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;using-regions&#34;&gt;Using regions&lt;/h4&gt;
+
+&lt;p&gt;Sectie toevoegen in &lt;code&gt;configSections&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;section name######&amp;quot;syscache2&amp;quot; type&amp;quot;NHibernate.Caches.SysCache2.SysCacheSection, NHibernate.Caches.SysCache2&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En dan dit stuk bijvoorbeeld om syscache2 te configureren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;syscache2&amp;gt;
+    &amp;lt;cacheRegion name######&amp;quot;RegionName&amp;quot; priority&amp;quot;High&amp;quot;&amp;gt;
+      &amp;lt;dependencies&amp;gt;
+        &amp;lt;commands&amp;gt;
+          &amp;lt;add name=&amp;quot;test&amp;quot;
+            command=&amp;quot;Select col from dbo.[Table]&amp;quot;
+            connectionName=&amp;quot;default&amp;quot;
+            connectionStringProviderType=&amp;quot;Utilities.Connection.SysCache2ConnectionStringProvider, PFW.Utilities&amp;quot;/&amp;gt;
+        &amp;lt;/commands&amp;gt;
+      &amp;lt;/dependencies&amp;gt;
+    &amp;lt;/cacheRegion&amp;gt;
+  &amp;lt;/syscache2&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Queries en entiteiten laten cachen via die naam.&lt;/p&gt;
+
+&lt;p&gt;Er is een standaard connectionStringProvider die uit het &lt;code&gt;connectionStrings&lt;/code&gt; stuk uit de web/app.config uw string uitleest geïmplementeerd: &lt;code&gt;ConfigConnectionStringProvider&lt;/code&gt;. Indien iets custom nodig zoals in bovenstaand voorbeeld, afleiden van &lt;code&gt;IConnectionStringProvider&lt;/code&gt; en zelf de connectionstring voorzien (connectionName wordt als parameter meegegeven maar is in dit geval nutteloos).&lt;/p&gt;
+
+&lt;p&gt;Op database niveau moet je ook nog een aantal dingen nagaan:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Is de dbo user eigenaar van de database voor het region command uit te voeren? (&lt;code&gt;use [DbName] EXEC sp_changedbowner &#39;sa&lt;/code&gt;&amp;rsquo;)&lt;/li&gt;
+&lt;li&gt;Is de broker service actief? Indien neen zet aan, zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/db/mssql/&#34;&gt;code/db/mssql&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;linq-or-queries-schrijven&#34;&gt;LINQ OR queries schrijven&lt;/h3&gt;
+
+&lt;p&gt;AND queries zijn makkelijk te schrijven met &lt;code&gt;.Where()&lt;/code&gt; chaining in LINQ. Hoe doe je dit met SQL ORs? Met de PredicateBuilder:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    /// &amp;lt;summary&amp;gt;
+    */ http:*www.albahari.com/nutshell/predicatebuilder.aspx
+    /// &amp;lt;/summary&amp;gt;
+    public static class PredicateBuilder
+    {
+        public static Expression&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt; And&amp;lt;T&amp;gt;(this Expression&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt; expr1,
+            Expression&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt; expr2)
+        {
+            var invokedExpr = Expression.Invoke(expr2, expr1.Parameters);
+            return Expression.Lambda&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt;
+                (Expression.AndAlso(expr1.Body, invokedExpr), expr1.Parameters);
+        }
+
+        public static Expression&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt; False&amp;lt;T&amp;gt;()
+        {
+            return f =&amp;gt; false;
+        }
+
+        public static Expression&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt; Or&amp;lt;T&amp;gt;(this Expression&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt; expr1,
+            Expression&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt; expr2)
+        {
+            var invokedExpr = Expression.Invoke(expr2, expr1.Parameters);
+            return Expression.Lambda&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt;
+                (Expression.OrElse(expr1.Body, invokedExpr), expr1.Parameters);
+        }
+
+        public static Expression&amp;lt;Func&amp;lt;T, bool&amp;gt;&amp;gt; True&amp;lt;T&amp;gt;()
+        {
+            return f =&amp;gt; true;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;            var pred = PredicateBuilder.False&amp;lt;IOccupation&amp;gt;();
+            pred ###### pred.Or(occ &amp;gt; new List&amp;lt;decimal&amp;gt;() {1, 2}.Contains(occ.Id));
+            pred ###### pred.Or(occ &amp;gt; new List&amp;lt;decimal&amp;gt;() {1, 2}.Contains(occ.Id));
+            Session.Query&amp;lt;IOccupation&amp;gt;()
+                .Where(pred)
+                .ToList();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;sessie-contexten&#34;&gt;Sessie contexten&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.nhforge.org/doc/nh/en/index.html#architecture-current-session&#34;&gt;Current session architecture&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Te mappen in xml:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;property name=&amp;quot;current_session_context_class&amp;quot;&amp;gt;thread_static&amp;lt;/property&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zelf te (un-)binden via:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;            var session = sessionFactory.OpenSession();
+            if (!CurrentSessionContext.HasBind(sessionFactory))
+            {
+                CurrentSessionContext.Bind(session);
+            }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dan kan je &lt;code&gt;SessionFactory.GetCurrentSession()&lt;/code&gt; gebruiken.&lt;/p&gt;
+
+&lt;p&gt;Een typische manier van werken is session-per-request, in begin van request een sessie openen &amp;amp; binden, en op het einde sluiten. Dit zorgt voor problemen bij asynchrone calls omdat de sessie gebind wordt op &lt;code&gt;HttpContext&lt;/code&gt; die dan uiteraard verdwenen is. Een tussenoplossing is werken met een hybride sessie context: gebruik de HTTP context indien mogelijk, werk anders met een &lt;code&gt;ThreadStatic&lt;/code&gt; variabele. Bijvoorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    public class HybridWebSessionContext : WebSessionContext
+    {
+        private const string _SessionFactoryMapKey = &amp;quot;NHibernate.Context.WebSessionContext.SessionFactoryMapKey&amp;quot;;
+
+        [ThreadStatic]
+        private static IDictionary _ThreadSessionMap;
+
+        private ISession ThreadSession
+        {
+            set
+            {
+                if (_ThreadSessionMap ###### null)
+                {
+                    _ThreadSessionMap = new Dictionary&amp;lt;ISessionFactoryImplementor, ISession&amp;gt;();
+                }
+                if (value ###### null)
+                {
+                    _ThreadSessionMap.Remove(_Factory);
+                }
+                else
+                {
+                    _ThreadSessionMap[_Factory] = value;
+                }
+            }
+        }
+
+        private readonly ISessionFactoryImplementor _Factory;
+
+        // This constructor should be kept, otherwise NHibernate will fail to create an instance of this class.
+        public HybridWebSessionContext(ISessionFactoryImplementor factory) : base(factory)
+        {
+            _Factory = factory;
+        }
+
+        protected override IDictionary GetMap()
+        {
+            var currentContext = ReflectiveHttpContext.HttpContextCurrentGetter();
+            if (currentContext != null)
+            {
+                return ReflectiveHttpContext.HttpContextCurrentItems[_SessionFactoryMapKey] as IDictionary;
+            }
+
+            return _ThreadSessionMap;
+        }
+
+        protected override ISession Session
+        {
+            set
+            {
+                base.Session = value;
+                ThreadSession = value;
+            }
+        }
+
+        protected override void SetMap(IDictionary value)
+        {
+            var currentContext = ReflectiveHttpContext.HttpContextCurrentGetter();
+            
+            if (currentContext != null)
+            {
+                ReflectiveHttpContext.HttpContextCurrentItems[_SessionFactoryMapKey] = value;
+                return;
+            }
+            _ThreadSessionMap = value;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Die dan in de hibernate config injecteren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;configuration.SetProperty(NHibernate.Cfg.Environment.CurrentSessionContextClass, typeof(HybridWebSessionContext).AssemblyQualifiedName);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Op die manier werkt &lt;code&gt;Bind()&lt;/code&gt; altijd.&lt;/p&gt;
+
+&lt;p&gt;❗ Geen sessie factory sluiten op het einde van de request maar enkel de &lt;code&gt;ISession&lt;/code&gt; - uw pooling zit in de factory!&lt;/p&gt;
+
+&lt;p&gt;############ Transacties ############&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.mattwrock.com/post/2010/12/26/Getting-TransactionScope-to-play-nice-with-NHibernate.aspx&#34;&gt;Getting TransactionScope to play nice with NHibernate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://thatextramile.be/blog/2008/10/batching-nhibernates-dm-statements/&#34;&gt;Batching NHibernate&amp;rsquo;s DML Statements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener&#34;&gt;NHibernate IPreUpdateEventListener &amp;amp; IPreInsertEventListener&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;######= Multiple nested transactions ######=&lt;/p&gt;
+
+&lt;p&gt;is &lt;strong&gt;niet&lt;/strong&gt; mogelijk in NHibernate! Hier kan je rond werken door een dummy te retourneren (wel &lt;code&gt;ISession.BeginTransaction()&lt;/code&gt; decoreren op de onderstaande manier)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        public ITransaction BeginTransaction()
+        {
+            if (_Session.Transaction.IsActive)
+            {
+                // bad programmer&#39;s code, nice going. nested transactions are not supported in NHibernate! 
+                * see http:*rajputyh.blogspot.be/2011/02/nested-transaction-handling-with.html and http://stackoverflow.com/questions/1192111/how-do-i-do-nested-transactions-in-nhibernate
+                return new HibernateTransactionDummy();
+            }
+
+            var newTransaction = _Session.BeginTransaction();
+            return newTransaction;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;######= Locking ######=&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ayende.com/blog/3946/nhibernate-mapping-concurrency&#34;&gt;NHibernate mapping &amp;amp; concurrency&lt;/a&gt; - pessimistic locking kan gedaan worden door in een query de &lt;code&gt;LockMode&lt;/code&gt; mee te geven:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;var person = session.Get&amp;lt;Person&amp;gt;(1,LockMode.Upgrade);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Binnen een transactie uiteraard. Dit genereert &lt;code&gt;with(updlock, rowlock)&lt;/code&gt; in de &lt;code&gt;SELECT&lt;/code&gt; statements. De lock wordt gereleased wanneer de transactie gecommit wordt. Dit is &lt;a href=&#34;http://stackoverflow.com/questions/19873880/understanding-effects-of-with-updlock-rowlock-on-a-query-in-sql-server&#34;&gt;blijkbaar geen table lock&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;code&gt;updlock&lt;/code&gt; will place update locks on every row being touched (selected) - so this means until the end of the transaction (explicit or implicit), the row(s) touched by the SELECT will have an update lock on them which allows for other transactions to read, but not update or delete the row. The &lt;code&gt;rowlock&lt;/code&gt; just indicates that you want row-level locks instead of page or table locks. That lock makes sense if you need to select first, then update a row within the same explicit transaction.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It doesn&amp;rsquo;t make it run any faster, and can cause other transactions to be blocked&lt;/p&gt;
+
+&lt;p&gt;############ Event listeners ############&lt;/p&gt;
+
+&lt;p&gt;❗ in events als &lt;code&gt;IPreInsertEventListener&lt;/code&gt; moet je zowel het object (via &lt;code&gt;@Event.Entity&lt;/code&gt;) als de state (via &lt;code&gt;@Event.State&lt;/code&gt;) wijzigen. Hoe werkt dit met &lt;code&gt;IPersistEventListener&lt;/code&gt;?&lt;/p&gt;
+
+&lt;p&gt;Custom event listener die de Java annotaties zoals &lt;code&gt;@PrePersist&lt;/code&gt; ea mogelijk maakt in C# met attributes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    public class HibernateAttributeEventListener : IPreUpdateEventListener, IPreInsertEventListener, IPersistEventListener, IFlushEntityEventListener
+    {
+        public bool OnPreUpdate(PreUpdateEvent @event)
+        {
+            InvokeMethodsWithAttribute(@event.Entity, @event.Session, typeof(PreUpdate));
+            return false;
+        }
+
+        public bool OnPreInsert(PreInsertEvent @event)
+        {
+            InvokeMethodsWithAttribute(@event.Entity, @event.Session, typeof(PreInsert));
+            return false;
+        }
+
+        public void OnPersist(PersistEvent @event)
+        {
+            InvokeMethodsWithAttribute(@event.Entity, @event.Session, typeof(PrePersist));
+        }
+
+        public void OnPersist(PersistEvent @event, IDictionary createdAlready)
+        {
+        }
+
+        public void OnFlushEntity(FlushEntityEvent @event)
+        {
+        }
+
+        private static void InvokeMethodsWithAttribute(object entity, ISession session, Type attributeType)
+        {
+            entity.GetType()
+                .GetMethods()
+                .Where(method =&amp;gt; method.GetCustomAttributes(attributeType, false).Length &amp;gt; 0)
+                .ForEach(method =&amp;gt; Invoke(entity, session, method));
+        }
+
+        private static void Invoke(object entity, ISession session, MethodInfo method)
+        {
+            var parameters = method.GetParameters();
+            if (parameters.Length ###### 0)
+            {
+                method.Invoke(entity, new object[] {});
+            } else if (parameters.Length ###### 1 &amp;amp;&amp;amp; parameters[0].ParameterType ###### typeof (ISession))
+            {
+                method.Invoke(entity, new object[] {session});
+            }
+            else
+            {
+                throw new ArgumentException(&amp;quot;Error while invoking attribute event method, only 0 or 1 params (ISession) is supported!&amp;quot;);
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dit kan je dan aan de config hangen met &lt;code&gt;_Configuration.EventListeners.PreInsertEventListeners = new IPreInsertEventListener[] {new HibernateAttributeEventListener()};&lt;/code&gt; - moet per type listener dat je wenst te gebruiken. De attributes zijn zo gedefiniëerd (enkel op method):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    [AttributeUsage(AttributeTargets.Method)]
+    public class PrePersist : Attribute
+    {
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ Indien state wijzigt in &lt;code&gt;PrePersist&lt;/code&gt; of &lt;code&gt;PreUpdate&lt;/code&gt; moet je ook de @event.State wijzigen, naast de state van het object zelf.&lt;/p&gt;
+
+&lt;p&gt;Voor details zie &lt;a href=&#34;http:*ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener&#34;&gt;http:*ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Een manier is bvb om dirty field checks te doen met reflectie:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        public static Dictionary&amp;lt;string, object&amp;gt; GetFieldValues(this Type type, object obj)
+        {
+            return type.GetProperties().ToDictionary(
+                property =&amp;gt; property.Name,
+                property =&amp;gt; property.GetValue(obj, null));
+        }
+
+        private static void Set(IEntityPersister persister, object[] state, string propertyName, object value)
+        {
+            var index = Array.IndexOf(persister.PropertyNames, propertyName);
+            if (index ###### -1)
+                return;
+            state[index] = value;
+        }
+
+// ...
+var initialFieldValues = @event.Entity.GetType().GetFieldValues(@event.Entity);
+// invoke [makes some fields dirty]
+UpdateDirtyFieldValuesInState(@event, state, initialFieldValues);
+
+        private static void UpdateDirtyFieldValuesInState(AbstractPreDatabaseOperationEvent @event, object[] state, Dictionary&amp;lt;string, object&amp;gt; initialFieldValues)
+        {
+            foreach (var actualValue in @event.Entity.GetType().GetFieldValues(@event.Entity))
+            {
+                if (!Equals(initialFieldValues[actualValue.Key], actualValue.Value))
+                {
+                    Set(@event.Persister, state, actualValue.Key, actualValue.Value);
+                }
+            }
+        }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;############ Identity generators ############&lt;/p&gt;
+
+&lt;p&gt;❗ &lt;code&gt;identity&lt;/code&gt; gebruikt de native autoincrement aan de DB maar is helemaal niet performant, maakt &lt;code&gt;batch_size&lt;/code&gt; redundant - veel roundtrips nodig. Een alternatief bijvoorbeeld:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://daniel.wertheim.se/2011/03/08/nhibernate-custom-id-generator/&#34;&gt;NHibernate – Custom Id-generator based on hilo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://docs.jboss.org/hibernate/orm/3.3/reference/en/html/mapping.html&#34;&gt;Hibernate doc: mappings&lt;/a&gt; voor alle mogelijkheden.&lt;/p&gt;
+
+&lt;p&gt;Een custom generator die een tabel gebruikt met een kolom die de entity weergeeft werkt zo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    public class NHibIdGenerator : TableHiLoGenerator
+    {
+        public override void Configure(IType type, IDictionary&amp;lt;string, string&amp;gt; parms, Dialect dialect)
+        {
+            if (!parms.ContainsKey(&amp;quot;table&amp;quot;))
+                parms.Add(&amp;quot;table&amp;quot;, &amp;quot;NHibHiLoIdentities&amp;quot;);
+
+            if (!parms.ContainsKey(&amp;quot;column&amp;quot;))
+                parms.Add(&amp;quot;column&amp;quot;, &amp;quot;NextHiValue&amp;quot;);
+
+            if (!parms.ContainsKey(&amp;quot;max_lo&amp;quot;))
+                parms.Add(&amp;quot;max_lo&amp;quot;, &amp;quot;100&amp;quot;);
+
+            if (!parms.ContainsKey(&amp;quot;where&amp;quot;))
+                parms.Add(&amp;quot;where&amp;quot;, string.Format(&amp;quot;EntityName=&#39;{0}&#39;&amp;quot;, parms[&amp;quot;target_table&amp;quot;]));
+
+            base.Configure(type, parms, dialect);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En dan in de hibernate mapping:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;id name######&amp;quot;Id&amp;quot; column&amp;quot;`id`&amp;quot;&amp;gt;
+      &amp;lt;generator class=&amp;quot;Utilities.Database.NHibIdGenerator, Utilities&amp;quot; /&amp;gt;
+    &amp;lt;/id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Na de komma staat de full-qualified assembly.&lt;/p&gt;
+
+&lt;p&gt;############ Probleemoplossing ############&lt;/p&gt;
+
+&lt;h6 id=&#34;can-only-generate-ids-as-part-of-bulk-insert-with-either-sequence-or-post-insert-style-generators&#34;&gt;can only generate ids as part of bulk insert with either sequence or post-insert style generators&lt;/h6&gt;
+
+&lt;p&gt;Identity generator voor die bepaalde tabel moet een custom post-insert generator zijn (zoals bovenstaande &lt;code&gt;hilo&lt;/code&gt; generator). Waarom? Dit gaat:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;eerst in bluk inserts doen&lt;/li&gt;
+&lt;li&gt;dan in bulk ids bepalen afhankelijk van custom generator (bvb tabel met next id)&lt;/li&gt;
+&lt;li&gt;dan in bulk update uitvoeren om id te plaatsten in db&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Dit betekent ook dat de ID kolom nullable moet zijn en er geen native generator in de weg mag zitten.&lt;/p&gt;
+
+&lt;h6 id=&#34;there-is-already-an-open-datareader-associated-with-this-connection-which-must-be-closed-first&#34;&gt;There is already an open DataReader associated with this Connection which must be closed first&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code&gt;Exception: 
+Exception has been thrown by the target of an invocation.
+Inner Exception: 
+MySql.Data.MySqlClient.MySqlException (0x80004005): There is already an open DataReader associated with this Connection which must be closed first. at MySql.Data.MySqlClient.ExceptionInterceptor.Throw(Exception exception) at MySql.Data.MySqlClient.MySqlCommand.Throw(Exception ex) at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior) at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery() at MySql.Data.MySqlClient.MySqlTransaction.Rollback() at NHibernate.Transaction.AdoTransaction.Dispose(Boolean isDisposing) in d:&amp;lt;br/&amp;gt;BuildAgents&amp;lt;br/&amp;gt;BuildAgentTwo&amp;lt;br/&amp;gt;work&amp;lt;br/&amp;gt;9126a46c2421d993&amp;lt;br/&amp;gt;PFW.Base&amp;lt;br/&amp;gt;NHibernate&amp;lt;br/&amp;gt;Transaction&amp;lt;br/&amp;gt;AdoTransaction.cs:line 368 at NHibernate.Transaction.AdoTransaction.Dispose() in d:&amp;lt;br/&amp;gt;BuildAgents&amp;lt;br/&amp;gt;BuildAgentTwo&amp;lt;br/&amp;gt;work&amp;lt;br/&amp;gt;9126a46c2421d993&amp;lt;br/&amp;gt;PFW.Base&amp;lt;br/&amp;gt;NHibernate&amp;lt;br/&amp;gt;Transaction&amp;lt;br/&amp;gt;AdoTransaction.cs:line 340 at 
+...
+
+Exception:Exception has been thrown by the target of an invocation.Inner Exception:System.InvalidOperationException: There is already an open DataReader associated with this Command which must be closed first. at System.Data.SqlClient.SqlInternalConnectionTds.ValidateConnectionForExecute(SqlCommand command) at System.Data.SqlClient.SqlInternalTransaction.Rollback() at System.Data.SqlClient.SqlInternalTransaction.Dispose(Boolean disposing) at System.Data.SqlClient.SqlTransaction.Dispose(Boolean disposing) at NHibernate.Transaction.AdoTransaction.Dispose(Boolean isDisposing) at PFW.Utilities.Layers.ServiceLayer.TransactionalAttribute.OnExit(MethodExecutionArgs args) at ServiceLayer.Person.PersonBaseSL.Persist(IPersonBase person) at FacadeLayer.Person.PersonBaseRF.Persist(HttpRequest request)  Exception:Exception has been thrown by the target of an invocation.Inner Exception:System.InvalidOperationException: There is already an open DataReader associated with this Command which must be closed first. at System.Data.SqlClient.SqlInternalConnectionTds.ValidateConnectionForExecute(SqlCommand command) at System.Data.SqlClient.SqlInternalTransaction.Rollback() at System.Data.SqlClient.SqlInternalTransaction.Dispose(Boolean disposing) at System.Data.SqlClient.SqlTransaction.Dispose(Boolean disposing) at NHibernate.Transaction.AdoTransaction.Dispose(Boolean isDisposing) at
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Als we kijken in de code van &lt;code&gt;MySqlCommand&lt;/code&gt; vinden we:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    private void CheckState()
+    {
+      if (this.connection ###### null)
+        this.Throw((Exception) new InvalidOperationException(&amp;quot;Connection must be valid and open.&amp;quot;));
+      if (this.connection.State != ConnectionState.Open &amp;amp;&amp;amp; !this.connection.SoftClosed)
+        this.Throw((Exception) new InvalidOperationException(&amp;quot;Connection must be valid and open.&amp;quot;));
+      if (!this.connection.IsInUse || this.internallyCreated)
+        return;
+      this.Throw((Exception) new MySqlException(&amp;quot;There is already an open DataReader associated with this Connection which must be closed first.&amp;quot;));
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;IsInUse&lt;/code&gt; wordt gezet in de setter van &lt;code&gt;Reader&lt;/code&gt; in &lt;code&gt;MySqlConnection&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Zowel in &lt;code&gt;MySqlClient&lt;/code&gt; als &lt;code&gt;SqlClient&lt;/code&gt;, dus client onafhankelijk&lt;/li&gt;
+&lt;li&gt;Volgens google betekent dit dat we &lt;code&gt;ISession&lt;/code&gt; objecten delen over verschillende threads/requests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;❗ Probleem was dat wij &lt;a href=&#34;http://www.postsharp.net/aspects/examples/transaction&#34;&gt;PostSharp&lt;/a&gt; gebruiken maar op de attribute class state bijhielden (de transactie zelf) om die bij onexit te kunnen committen. Andere users herbruiken diezelfde klasse blijkbaar, waarbij user1 transacties van user2 gaat committen etc. Correcte implementatie - zie link postsharp als voorbeeld; of:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    [Serializable]
+    public class TransactionalAttribute : OnMethodBoundaryAspect
+    {
+        public override void OnEntry(MethodExecutionArgs args)
+        {
+            NHibernateFactory.CurrentSession.BeginTransaction();
+            base.OnEntry(args);
+        }
+
+        public override void OnExit(MethodExecutionArgs args)
+        {
+            NHibernateFactory.CurrentSession.Transaction.Dispose();
+            base.OnExit(args);
+        }
+
+        public override void OnSuccess(MethodExecutionArgs args)
+        {
+            NHibernateFactory.CurrentSession.Transaction.Commit();
+            base.OnSuccess(args);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Blijkbaar mag ook &lt;code&gt;MethodExecutionArgs&lt;/code&gt; gebruikt worden om tijdelijk state in te storen die je bij &lt;code&gt;OnExit()&lt;/code&gt; terug kan resolven - zie voorbeeld op de &lt;a href=&#34;http://www.postsharp.net/aspects/examples/transaction&#34;&gt;PostSharp website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h6 id=&#34;detached-entity-passed-to-persist-in-een-test&#34;&gt;Detached entity passed to persist (in een test)&lt;/h6&gt;
+
+&lt;p&gt;Uw Id niet zelf meegeven, steekt een generator in uw mapping&amp;hellip;&lt;/p&gt;
+
+&lt;h6 id=&#34;system-argumentoutofrangeexception-index-was-out-of-range-must-be-non-negative-and-less-than-the-size-of-the-collection&#34;&gt;System.ArgumentOutOfRangeException : Index was out of range. Must be non-negative and less than the size of the collection.&lt;/h6&gt;
+
+&lt;p&gt;Oplossing: in hibernate mapping file staan twee keer kolommen gedefiniëerd (eventueel onder een &lt;code&gt;composite-id&lt;/code&gt;) - deze moet &lt;code&gt;update&lt;/code&gt; en &lt;code&gt;insert&lt;/code&gt; attributes op &lt;code&gt;false&lt;/code&gt; hebben, of niet dubbel gemapped worden, hier kan Hibernate blijkbaar niet mee om gaan&amp;hellip;&lt;/p&gt;
+
+&lt;h6 id=&#34;no-data-type-for-node-entityproperty&#34;&gt;No data type for node [entityProperty]&lt;/h6&gt;
+
+&lt;p&gt;Bij een &lt;code&gt;HQL&lt;/code&gt; query, wanneer je meer dan 8 properties select, &lt;strong&gt;moet&lt;/strong&gt; je een alias gebruiken:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select entity.one, entity.two, entity.three, ... from Entity entity where entity.Id in (10, 11)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;en dus niet&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select one, two, three from Entity where Id in (10, 11)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id=&#34;the-multi-part-identifier-occupation0-functieid-could-not-be-bound&#34;&gt;The multi-part identifier &amp;ldquo;occupation0_.functieid&amp;rdquo; could not be bound.&lt;/h6&gt;
+
+&lt;p&gt;Impliciete en expliciete joins worden gemixed in uw select statement (al dan niet gewild door NHibernate). Probleem:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT tbl1.col1, tbl2.col2, tbl3.col3
+FROM tbla tbl1, tblb tbl2
+   INNER JOIN tblc tbl3 on tbl1.joincol = tbl1.joincol
+WHERE tbl1.joincol2 = tbl2.joincol2
+AND tbl2.joincol3 = tbl3.joincol3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;er wordt zowel met &lt;code&gt;INNER JOIN&lt;/code&gt; als met &lt;code&gt;WHERE&lt;/code&gt; een join gelegd naar andere tabellen. In MSSQL geeft dit problemen (sommige andere DBs niet?). Mogelijke oplossingen in NHibernate:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Gebruik Criteria om alles expliciet te joinen (joepie&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;Selecteer in een LINQ query geen entiteit maar de Id en map die achteraf&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h6 id=&#34;error-code-1054-unknown-column-personlite2-werknemerid-in-on-clause&#34;&gt;Error Code: 1054. Unknown column &amp;lsquo;personlite2_.WerknemerID&amp;rsquo; in &amp;lsquo;on clause&amp;rsquo;&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Multiple join in HQL die in de verkeerde volgorde staat? Draai &lt;code&gt;join x as y join y as z&lt;/code&gt; eens om, zodat de joins andersom gelegd worden.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Concreet voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT col1, col2, col3 
+FROM bliebloe
+INNER JOIN tabel alias ON alias.x = bliebloe.y,
+col4,
+INNER JOIN tabel2 alias2 ON alias2.x = bliebloe.y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zou moeten zijn:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT col1, col2, col3 
+FROM bliebloe
+INNER JOIN tabel alias ON alias.x = bliebloe.y,
+INNER JOIN tabel2 alias2 ON alias2.x = bliebloe.y,
+col4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Maar hoe vertellen we &lt;code&gt;Hibernate&lt;/code&gt; dit? &lt;strong&gt;zet expliciete joins in uw HQL&lt;/strong&gt; in de gewenste volgorde:&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;select a.x, b.y, c.z
+from a
+join a.h as b
+join a.i as c&amp;rdquo;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In MySQL: syntax join mixen ###### no go, zoals select * from table1, table2 where table1.id  table2.key join bla join blie - zowel met komma als met de join operator joinen. Doet Hibernate normaal niet.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>svnlog</title>
+      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</guid>
+      <description>
+
+&lt;h1 id=&#34;svnlog&#34;&gt;Svnlog&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;nokogiri&#39; # gem install nokogiri first! 
+require &#39;csv&#39;
+require &#39;date&#39;
+
+# Ex. XML: &amp;lt;log&amp;gt; ... &amp;lt;/log&amp;gt;
+# &amp;lt;logentry revision=&amp;quot;x&amp;quot;&amp;gt;
+# =&amp;gt; &amp;lt;author&amp;gt;name&amp;lt;/author&amp;gt;
+# =&amp;gt; &amp;lt;date&amp;gt;yyyy-mm-ddThh:mm:ssss&amp;lt;/date&amp;gt;
+# =&amp;gt; &amp;lt;msg&amp;gt;message&amp;lt;/msg&amp;gt;
+# &amp;lt;/logentry&amp;gt;
+
+puts &amp;quot;SVN Release notes creator&amp;quot;
+puts &amp;quot;---------&amp;quot;
+
+puts &amp;quot;Revision from? (ex revision &#39;8722&#39; or date {YYYY-MM-DD} or &#39;HEAD&#39;) &amp;gt; &amp;quot;
+revFrom = gets.chomp
+puts &amp;quot;Revision to? &amp;gt; &amp;quot;
+revTo = gets.chomp
+
+puts &amp;quot;Getting log from SVN, hang in there... &amp;quot;
+
+rmFile = File.open(&#39;svnlog_redmine.txt&#39;, &#39;w&#39;)
+btFile = File.open(&#39;svnlog_bridgetrak.txt&#39;, &#39;w&#39;)
+storyFile = File.open(&#39;svnlog_stories.txt&#39;, &#39;w&#39;)
+csv = CSV.open(&#39;svnlog.csv&#39;, &#39;wb&#39;)
+
+[ &#39;.&#39;, &#39;PFW.Base&#39; ].map { |dir|
+	puts &amp;quot; -- processing dir &#39;#{dir}&#39; ...&amp;quot;
+	rawxml = `cd #{dir} &amp;amp;&amp;amp; svn log --xml --revision #{revFrom}:#{revTo}`
+
+	xml = Nokogiri::XML(rawxml)
+	xml.xpath(&amp;quot;//logentry&amp;quot;).map { |entry|
+		hash = Hash.new
+		hash[&#39;rev&#39;] = entry.attr(&amp;quot;revision&amp;quot;)
+		hash[&#39;author&#39;] = entry.css(&amp;quot;author&amp;quot;).text
+		hash[&#39;date&#39;] = DateTime.strptime(entry.css(&amp;quot;date&amp;quot;).text, &#39;%Y-%m-%dT%H:%M:%S&#39;)
+		hash[&#39;msg&#39;] = entry.css(&amp;quot;msg&amp;quot;).text.strip.tr(&amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;, &amp;quot;&amp;quot;)
+		hash[&#39;btIssues&#39;] = hash[&#39;msg&#39;].scan(/bt#([0-9]+)/i).flatten.uniq
+		hash[&#39;rmIssues&#39;] = hash[&#39;msg&#39;].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &amp;quot;http://server.cloudapp.net/redmine/issues/#{rm}&amp;quot; }
+		hash[&#39;stories&#39;] = hash[&#39;msg&#39;].scan(/story#(&amp;lt;br/&amp;gt;S+)&amp;lt;br/&amp;gt;s/i).flatten.uniq
+
+		hash
+	}
+}.flatten.sort_by { |hash| hash[&#39;date&#39;] }.each do |entry|
+	rm = entry[&#39;rmIssues&#39;].join(&#39;, &#39;)
+	csv &amp;lt;&amp;lt; [ &#39;r&#39; + entry[&#39;rev&#39;], entry[&#39;date&#39;], entry[&#39;author&#39;], entry[&#39;msg&#39;], rm ]
+	entry[&#39;btIssues&#39;].each do |issue|
+		btFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
+	entry[&#39;rmIssues&#39;].each do |issue|
+		rmFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
+	entry[&#39;stories&#39;].each do |issue|
+		storyFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
+end
+
+
+puts &amp;quot;----&amp;quot;
+puts &amp;quot;DONE: see svnlog.csv &amp;amp; svnlog_X.txt files&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>teamcity</title>
+      <link>http://www.brainbaking.com/wiki/code/build/teamcity/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/build/teamcity/</guid>
+      <description>
+
+&lt;h1 id=&#34;teamcity&#34;&gt;Teamcity&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Build pipeline&lt;/strong&gt; voor continuous deployment: zie &lt;a href=&#34;http:*robdmoore.id.au/blog/2012/09/01/maintainable-teamcity-continuous-deployment-pipeline-configuration/&#34;&gt;http:*robdmoore.id.au/blog/2012/09/01/maintainable-teamcity-continuous-deployment-pipeline-configuration/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;parameters-comboboxen-checkboxen&#34;&gt;Parameters: comboboxen/checkboxen&lt;/h3&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/build/tc_deploy_params.png|&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Demo omgeving&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Dit ingeven in &amp;ldquo;spec&amp;rdquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select display######&#39;prompt&#39; label&#39;Demo omgeving&#39; data_11######&#39;FixDemo&#39; data_10&#39;FixDev&#39; data_02######&#39;TestDemo1&#39; data_01&#39;Package&#39; data_04######&#39;TestDemo3&#39; data_03&#39;TestDemo2&#39; data_06######&#39;TestDemo5&#39; data_05&#39;TestDemo4&#39; data_08######&#39;TestDemo7&#39; data_07&#39;TestDemo6&#39; data_09=&#39;SERVERNAME&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Modules&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Dit ingeven in &amp;ldquo;spec&amp;rdquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select data_7######&#39;Modx&#39; data_5&#39;Mody.DAL&#39; data_6######&#39;Modz&#39; ... multiple&#39;true&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wordt dan comma-separated doorgegeven via &lt;code&gt;%Modules%&lt;/code&gt; parameter dat je kan gebruiken in build configuration.&lt;/p&gt;
+
+&lt;h3 id=&#34;artifacts-bijhouden&#34;&gt;Artifacts bijhouden&lt;/h3&gt;
+
+&lt;p&gt;Edit build settings &amp;gt; Artifact paths &amp;gt; &lt;code&gt;**/packaged.zip&lt;/code&gt; om alle files die zo heten als artifact te bewaren. &lt;br/&gt;&lt;br/&gt;
+Probleem met HDD space kan opgelost worden met &lt;a href=&#34;http:*confluence.jetbrains.com/display/TCD8/Clean-Up&#34;&gt;http:*confluence.jetbrains.com/display/TCD8/Clean-Up&lt;/a&gt;: Clean-up settings are configured under Administration | Project-related Settings | Build History Clean-up.&lt;/p&gt;
+
+&lt;p&gt;Gevolg is dat gebuilde zipfiles gedownload kunnen worden op deze manier:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/build/builddeploy.png&#39;&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>scripts</title>
+      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/</link>
+      <pubDate>Wed, 29 Apr 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-ruby-scripts&#34;&gt;code:ruby &amp;gt;&amp;gt; Scripts&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>reflectie</title>
+      <link>http://www.brainbaking.com/wiki/code/csharp/reflectie/</link>
+      <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/csharp/reflectie/</guid>
+      <description>
+
+&lt;h1 id=&#34;reflectie&#34;&gt;Reflectie&lt;/h1&gt;
+
+&lt;h2 id=&#34;get-type-based-on-string&#34;&gt;Get Type based on string&lt;/h2&gt;
+
+&lt;p&gt;Probleem: een fully qualified classname in string vorm is geen &lt;code&gt;Type&lt;/code&gt; en &lt;code&gt;Type.GetType()&lt;/code&gt; gaat standaard in de huidige assembly kijken of die klasse daar in steekt. Hoe haal ik dit type op als ik niet vanbuiten weet in welke assembly ik moet gaan kijken? Via uw &lt;code&gt;AppDomain&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;                    return AppDomain.CurrentDomain.GetAssemblies()
+                        .Single(app ######&amp;gt; app.GetType(fullClassName) ! null)
+                        .GetType(fullClassName);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;get-subclasses-interfaces-of-class&#34;&gt;Get Subclasses/interfaces of class&lt;/h2&gt;
+
+&lt;p&gt;Gebruik &lt;code&gt;type.Assembly.GetTypes()&lt;/code&gt; en filter verder.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Als je een &lt;strong&gt;interface&lt;/strong&gt; wil hebben, moet je &lt;code&gt;IsAssignableFrom()&lt;/code&gt; gebruiken (in de omgekeerde richting).&lt;/li&gt;
+&lt;li&gt;Als je een &lt;strong&gt;subklasse&lt;/strong&gt; wil hebben, moet je ofwel de &lt;code&gt;.BaseType&lt;/code&gt; property gebruiken als direct kind, ofwel de &lt;code&gt;IsSubclassOf()&lt;/code&gt; method.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        public string HandleMessage(IHostService hostService)
+        {
+            var requestType = typeof (IHostServiceNativeRequest);
+            var handlerType = requestType.Assembly.GetTypes()
+                                         .Where(requestType.IsAssignableFrom)
+                                         .Single(t ######&amp;gt; (NativeRequestInstance(t)).Key  Key);
+
+            return NativeRequestInstance(handlerType).ParseRequest(hostService);
+        }
+
+        private IHostServiceNativeRequest NativeRequestInstance(Type t)
+        {
+            return (IHostServiceNativeRequest) Activator.CreateInstance(t);
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reflective-instantiation&#34;&gt;Reflective instantiation&lt;/h2&gt;
+
+&lt;p&gt;Zie vorig voorbeeld; een nieuwe instantie van een &lt;code&gt;Type&lt;/code&gt; maken kan via &lt;code&gt;Activator.CreateInstance()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;protected-constructor-with-arguments&#34;&gt;Protected constructor with arguments&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;            return (T)Activator.CreateInstance(typeof(T),
+                BindingFlags.NonPublic | BindingFlags.CreateInstance | BindingFlags.Instance,
+                null, new object[] { arg1 }, CultureInfo.CurrentCulture);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;appdomains&#34;&gt;AppDomains&lt;/h2&gt;
+
+&lt;h5 id=&#34;q-ik-wil-een-dll-dynamisch-laden&#34;&gt;Q: Ik wil een DLL dynamisch laden&lt;/h5&gt;
+
+&lt;p&gt;Gebruik &lt;code&gt;Assembly.LoadFrom(string)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;q-ik-wil-loopen-over-alle-appdomains&#34;&gt;Q: Ik wil loopen over alle AppDomains&lt;/h5&gt;
+
+&lt;p&gt;Niet zo simpel te realiseren: (zie &lt;a href=&#34;http:*stackoverflow.com/questions/14758915/get-all-processes-with-their-corresponding-app-domains&#34;&gt;http:*stackoverflow.com/questions/14758915/get-all-processes-with-their-corresponding-app-domains&lt;/a&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;private static List&amp;lt;AppDomainInf&amp;gt; GetAppDomains()
+    {
+        IList&amp;lt;AppDomain&amp;gt; mAppDomainsList = new List&amp;lt;AppDomain&amp;gt;();
+        List&amp;lt;AppDomainInf&amp;gt; mAppDomainInfos = new List&amp;lt;AppDomainInf&amp;gt;();
+
+        IntPtr menumHandle = IntPtr.Zero;
+        ICorRuntimeHost host = new CorRuntimeHost();
+
+        try
+        {
+            host.EnumDomains(out menumHandle);
+            object mTempDomain = null;
+
+            //add all the current app domains running
+            while (true)
+            {
+                host.NextDomain(menumHandle, out mTempDomain);
+                if (mTempDomain ###### null) break;
+                AppDomain tempDomain = mTempDomain as AppDomain;
+                mAppDomainsList.Add((tempDomain));
+            }
+
+            //retrieve every app domains detailed information
+            foreach (var appDomain in mAppDomainsList)
+            {
+                AppDomainInf domainInf = new AppDomainInf();
+
+                domainInf.Assemblies = GetAppDomainAssemblies(appDomain);
+                domainInf.AppDomainName = appDomain.FriendlyName;
+
+                mAppDomainInfos.Add(domainInf);
+            }
+
+            return mAppDomainInfos;
+        }
+        catch (Exception)
+        {
+            throw; //rethrow
+        }
+        finally
+        {
+            host.CloseEnum(menumHandle);
+            Marshal.ReleaseComObject(host);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ref toevoegen, mscoree.tld in .NET root folder.&lt;/p&gt;
+
+&lt;p&gt;############= Generic Type arguments &amp;amp; reflectie ############=&lt;/p&gt;
+
+&lt;h6 id=&#34;q-ik-wil-een-type-meegeven-dat-moet-extenden-van-een-basisklasse-waarna-ik-dat-type-wil-instantiëren&#34;&gt;Q: Ik wil een Type meegeven dat moet extenden van een basisklasse, waarna ik dat type wil instantiëren.&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;protected IList&amp;lt;TInsertable&amp;gt; Load&amp;lt;TInsertable&amp;gt;() where TInsertable : DatabaseInsertable
+{
+    var myInstance = Activator.CreateInstance(typeof(TInsertable));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ &lt;code&gt;Type&lt;/code&gt; zelf is niet generic omdat dit at-runtime gebruikt wordt voor typeinformatie en de andere dingen at-compiletime. Je kan dus geen &lt;code&gt;Type&amp;lt;T&amp;gt; where T : MyClass&lt;/code&gt; gebruiken, zoals in Java bijvoorbeeld &lt;code&gt;Class&amp;lt;? extends MyClass&amp;gt;&lt;/code&gt; gebruikt wordt. Merk op dat in Java er met het generic type argument geen klasse aangemaakt kan worden, zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/java/reflectie/&#34;&gt;code/java/reflectie&lt;/a&gt; voor java.&lt;/p&gt;
+
+&lt;h6 id=&#34;q-ik-wil-een-variabel-aantal-generic-type-argumenten-definiëren&#34;&gt;Q: Ik wil een variabel aantal generic type argumenten definiëren&lt;/h6&gt;
+
+&lt;p&gt;Genaaid, dit gaat niet. Kijk maar naar bijvoorbeeld &lt;code&gt;Func&amp;lt;&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Func&amp;lt;in T1, in T2, out Result&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Func&amp;lt;in T1, in T2, in T3, out Result&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Func&amp;lt;in T1, in T2, in T3, in T4, out Result&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Je kan die wel allemaal laten refereren naar één (private) methode die &lt;code&gt;params[]&lt;/code&gt; gebruikt, bijvoorbeeld onderstaande count:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        protected int Count&amp;lt;TInsertable&amp;gt;()
+            where TInsertable : DatabaseInsertable
+        {
+            return Count(typeof (TInsertable));
+        }
+
+        protected int Count&amp;lt;TInsertable1, TInsertable2&amp;gt;()
+            where TInsertable1 : DatabaseInsertable
+            where TInsertable2 : DatabaseInsertable
+        {
+            return Count(typeof (TInsertable1), typeof (TInsertable2));
+        }
+
+        protected int Count&amp;lt;TInsertable1, TInsertable2, TInsertable3&amp;gt;() 
+            where TInsertable1 : DatabaseInsertable
+            where TInsertable2 : DatabaseInsertable
+            where TInsertable3 : DatabaseInsertable
+        {
+            return Count(typeof (TInsertable1), typeof (TInsertable2), typeof (TInsertable3));
+        }
+
+        private int Count(params Type[] insertableTypes)
+        {
+            var count = 0;
+            foreach (var type in insertableTypes)
+            {
+                var select = &amp;quot;select count(*) from &amp;quot; + GetTableOfType(type);
+                count += Int32.Parse(factory.CreateCommand(this.connection, select).ExecuteScalar().ToString());
+            }
+            return count;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;############= Reflectie en dynamisch code genereren ############=&lt;/p&gt;
+
+&lt;p&gt;Mogelijk met &lt;strong&gt;Reflection EMIT&lt;/strong&gt;, om dynamisch IL code te genereren. IL is de bytecode tussenlaag in .NET, die je ook in C# kan schrijven.&lt;/p&gt;
+
+&lt;p&gt;Compleet voorbeeld: &lt;a href=&#34;http://www.codeproject.com/Articles/121568/Dynamic-Type-Using-Reflection-Emit&#34;&gt;http://www.codeproject.com/Articles/121568/Dynamic-Type-Using-Reflection-Emit&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bijvoorbeeld, om een getal te delen door een ander met &lt;code&gt;getal / other&lt;/code&gt;, genereert de volgende code dit in IL:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;MethodBuilder mDivide = tbuilder.DefineMethod(&amp;quot;Divide&amp;quot;, MethodAttributes.Public |
+    MethodAttributes.HideBySig |
+    MethodAttributes.NewSlot |
+    MethodAttributes.Virtual |
+    MethodAttributes.Final,
+    CallingConventions.Standard,
+    typeof(System.Single),
+    new Type[] { typeof(System.Int32), typeof(System.Int32) });
+mDivide.SetImplementationFlags(MethodImplAttributes.Managed);
+ILGenerator dil = mDivide.GetILGenerator();
+
+dil.Emit(OpCodes.Nop);
+Label lblTry = dil.BeginExceptionBlock();
+
+dil.Emit(OpCodes.Nop);
+dil.Emit(OpCodes.Ldarg_1);
+dil.Emit(OpCodes.Ldarg_2);
+dil.Emit(OpCodes.Div);
+dil.Emit(OpCodes.Conv_R4); // Converts to Float32
+dil.Emit(OpCodes.Stloc_1);
+dil.Emit(OpCodes.Leave, lblTry);
+
+dil.BeginCatchBlock(typeof(DivideByZeroException));
+dil.Emit(OpCodes.Stloc_0);
+dil.Emit(OpCodes.Nop);
+dil.Emit(OpCodes.Ldstr, &amp;quot;ZeroDivide exception : {0}&amp;quot;);
+dil.Emit(OpCodes.Ldloc_0);
+MethodInfo minfo = typeof(DivideByZeroException).GetMethod(&amp;quot;get_Message&amp;quot;);
+dil.Emit(OpCodes.Callvirt, minfo);
+MethodInfo wl = typeof(System.Console).GetMethod(&amp;quot;WriteLine&amp;quot;, new Type[] 
+                                      { typeof(string), typeof(object) });
+dil.Emit(OpCodes.Call, wl);
+dil.Emit(OpCodes.Nop);
+dil.Emit(OpCodes.Ldc_R4, 0.0);
+dil.Emit(OpCodes.Stloc_1);
+dil.Emit(OpCodes.Leave_S, lblTry);
+
+dil.EndExceptionBlock();
+dil.Emit(OpCodes.Nop);
+dil.Emit(OpCodes.Ldloc_1);
+dil.Emit(OpCodes.Ret);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Genereert dit in IL:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.method public hidebysig newslot virtual final 
+            instance float32  Divide(int32 firstnum,
+                        int32 secondnum) cil managed
+    {
+        // Code size       39 (0x27)
+        .maxstack  2
+        .locals init (class [mscorlib]System.DivideByZeroException V_0,
+                float32 V_1)
+        IL_0000:  nop
+        .try
+        {
+        IL_0001:  nop
+        IL_0002:  ldarg.1
+        IL_0003:  ldarg.2
+        IL_0004:  div
+        IL_0005:  conv.r4
+        IL_0006:  stloc.1
+        IL_0007:  leave.s    IL_0024
+        }  // end .try
+        catch [mscorlib]System.DivideByZeroException 
+        {
+        IL_0009:  stloc.0
+        IL_000a:  nop
+        IL_000b:  ldstr      &amp;quot;ZeroDivide exception : {0}&amp;quot;
+        IL_0010:  ldloc.0
+        IL_0011:  callvirt   instance string [mscorlib]System.Exception::get_Message()
+        IL_0016:  call       void [mscorlib]System.Console::WriteLine(string,
+                                                                        object)
+        IL_001b:  nop
+        IL_001c:  ldc.r4     0.0
+        IL_0021:  stloc.1
+        IL_0022:  leave.s    IL_0024
+        }  // end handler
+        IL_0024:  nop
+        IL_0025:  ldloc.1
+        IL_0026:  ret
+    }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>wordpress</title>
+      <link>http://www.brainbaking.com/wiki/code/php/wordpress/</link>
+      <pubDate>Thu, 29 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/php/wordpress/</guid>
+      <description>
+
+&lt;h1 id=&#34;wordpress-specifiek&#34;&gt;Wordpress specifiek&lt;/h1&gt;
+
+&lt;h4 id=&#34;wordpress-bootstrapping-buiten-wp-omgeving-om&#34;&gt;Wordpress bootstrapping buiten WP omgeving om&lt;/h4&gt;
+
+&lt;p&gt;Om eender wat te kunnen doen (WP functies in php uitvoeren bvb, zoals &lt;code&gt;get_posts&lt;/code&gt;) moet je de wp omgeving bootstrappen (laden db, config, &amp;hellip;).&lt;/p&gt;
+
+&lt;p&gt;Dit kan je uit wp-blog-header.php halen, die in index.php geinclude wordt:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;require_once(&#39;wp-load.php&#39; );
+wp();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vanaf dan is alles beschikbaar. Dus &lt;strong&gt;niet manueel wp-include php files includen&lt;/strong&gt;, anders wordt stuff ge-herdefinieerd!&lt;/p&gt;
+
+&lt;h4 id=&#34;specifieke-post-includen&#34;&gt;Specifieke post includen&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://codex.wordpress.org/Template_Tags/get_posts&#34;&gt;get_posts&lt;/a&gt; documentatie.&lt;/p&gt;
+
+&lt;p&gt;Voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$args ###### array( &#39;posts_per_page&#39; &amp;gt; 5, &#39;orderby&#39; =&amp;gt; &#39;rand&#39; );
+$posts = get_posts( $args );
+
+foreach($posts as $post) {
+	* data specific to wp_posts - http:*codex.wordpress.org/Database_Description#Table:_wp_posts
+	echo &amp;quot;post id &amp;quot; . $post-&amp;gt;ID;
+	echo &amp;quot;title: &amp;quot; . $post-&amp;gt;post_title;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;comment-form-voor-specifieke-post&#34;&gt;Comment form voor specifieke post&lt;/h5&gt;
+
+&lt;p&gt;Ook mogelijk, zie &lt;a href=&#34;http://codex.wordpress.org/Function_Reference/comment_form&#34;&gt;comment_form documentatie&lt;/a&gt; - zoiets: &lt;code&gt;comment_form(null, $id);&lt;/code&gt; - stijl ea in te stellen met eerste param.&lt;/p&gt;
+
+&lt;h4 id=&#34;oud-domein-nieuw-domein&#34;&gt;Oud domein -&amp;gt; nieuw domein&lt;/h4&gt;
+
+&lt;p&gt;Instelbaar in &lt;code&gt;wp-admin&lt;/code&gt; van Wordpress zelf, maar je moet manueel de tabel &lt;code&gt;wp_posts&lt;/code&gt; updaten want er staan overal hardcoded links:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;UPDATE wp_posts SET post_content = REPLACE(post_content, &#39;savesourdough.com&#39;, &#39;redzuurdesem.be&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http:*dev.mysql.com/doc/refman/5.0/en/replace.html&#34;&gt;http:*dev.mysql.com/doc/refman/5.0/en/replace.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>gems</title>
+      <link>http://www.brainbaking.com/wiki/code/ruby/gems/</link>
+      <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/ruby/gems/</guid>
+      <description>
+
+&lt;h1 id=&#34;ruby-gems&#34;&gt;Ruby Gems&lt;/h1&gt;
+
+&lt;h3 id=&#34;gemfile-dependencies-installeren&#34;&gt;Gemfile dependencies installeren&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Heb je ruby geïnstalleerd? Dan is &lt;code&gt;gem&lt;/code&gt; beschikbaar.&lt;/li&gt;
+&lt;li&gt;Heb je &lt;code&gt;bundler&lt;/code&gt; geïnstalleerd? Dan is &lt;code&gt;bundler&lt;/code&gt; beschikbaar. Indien neen: &lt;code&gt;gem install bundler&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Is er een &lt;code&gt;Gemfile&lt;/code&gt; beschikbaar? Gebruik dan bundler met &lt;code&gt;bundle install&lt;/code&gt; om alles lokaal te installeren.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;problemen-met-installeren-van-packagse&#34;&gt;Problemen met installeren van packagse&lt;/h4&gt;
+
+&lt;h5 id=&#34;building-native-extension-makefile-target-pattern-contains-no-stop&#34;&gt;Building native extension: Makefile target pattern contains no %. Stop.&lt;/h5&gt;
+
+&lt;p&gt;Probleem met Gemfile &amp;gt; 2.3.0 en Ruby 1.9.3 samen met Ruby devkit. Zie &lt;a href=&#34;https:*github.com/rubygems/rubygems/issues/977&#34;&gt;Native gem installation doesn&amp;rsquo;t work on Windows with &amp;gt;= 2.4.0 #977&lt;/a&gt; en &lt;a href=&#34;https:*groups.google.com/forum/#!topic/rubyinstaller/k19SeJijpKU/discussion&#34;&gt;Google discussion group&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oplossing: revert gems naar een oudere versie met &lt;code&gt;gem update --system 2.3.0&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;fetcherror-ssl-connect-returned1&#34;&gt;FetchError: SSL_Connect returned1&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;Gem::RemoteFetcher::FetchError: SSL_connect returned######1 errno0 state=SSLv3 read server certificate B: certificate verify failed (h
+ttps://rubygems.org/gems/kramdown-1.2.0.gem)
+An error occurred while installing kramdown (1.2.0), and Bundler cannot
+continue.
+Make sure that `gem install kramdown -v &#39;1.2.0&#39;` succeeds before bundling.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Op te lossen door &lt;code&gt;gem update --system&lt;/code&gt; uit te voeren.
+Lees &lt;a href=&#34;http:*stackoverflow.com/questions/10246023/bundle-install-fails-with-ssl-certificate-verification-error&#34;&gt;hier&lt;/a&gt; meer over, of &lt;a href=&#34;http:*ga.be/blog/2013/10/02/fixing-rubygems-ssl-issues-certificate-verify-failed/&#34;&gt;hier&lt;/a&gt; voor de Mac oplossing.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>htaccess</title>
+      <link>http://www.brainbaking.com/wiki/code/htaccess/</link>
+      <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/htaccess/</guid>
+      <description>
+
+&lt;h1 id=&#34;htaccess-stuff&#34;&gt;.htaccess stuff&lt;/h1&gt;
+
+&lt;p&gt;Basisprincipe van rewriterules: altijd &lt;code&gt;RewriteEngine On&lt;/code&gt; en &lt;code&gt;RewriteBase /&lt;/code&gt; toevoegen.&lt;/p&gt;
+
+&lt;p&gt;Daarna: &lt;code&gt;RewriteCond&lt;/code&gt; slaat enkel op &lt;strong&gt;éérstvolgende&lt;/strong&gt; &lt;code&gt;RewriteRule&lt;/code&gt; regel.&lt;/p&gt;
+
+&lt;h4 id=&#34;request-exceeded-the-limit-of-10-internal-redirects-due-to-probable-configuration-error&#34;&gt;Request exceeded the limit of 10 internal redirects due to probable configuration error&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://stackoverflow.com/questions/1611506/request-exceeded-the-limit-of-10-internal-redirects-due-to-probable-configuratio&#34;&gt;bron&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Gebruik &lt;code&gt;!^map/&lt;/code&gt; voor de rule om bepaalde folders uit te sluiten als ze al herschreven zijn.&lt;/p&gt;
+
+&lt;h4 id=&#34;square-bracket-rules-rewrite-flags&#34;&gt;square bracket rules: rewrite flags&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/docs/2.2/rewrite/flags.html&#34;&gt;zie ook docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;NC: case insensitive&lt;/li&gt;
+&lt;li&gt;L: stop processing other rules (final)&lt;/li&gt;
+&lt;li&gt;R=123: redirect HTTP code&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;redirecten-moved&#34;&gt;Redirecten - moved&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://enarion.net/web/htaccess/migrate-domains/&#34;&gt;bron&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Van oud naar nieuw domeinnaam:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RewriteCond %{HTTP_HOST} savesourdough.com$ [NC]
+RewriteRule ^(.*)$ http://www.redzuurdesem.be/$1 [L,R=301]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Kan ook om bvb van &lt;code&gt;www&lt;/code&gt; naar &lt;code&gt;http&lt;/code&gt; of omgekeerd te redirecten.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;^(.*)$&lt;/code&gt; catcht alles achter het domein in een parameter &lt;code&gt;$1&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;redirecten-verschillende-domeinen&#34;&gt;Redirecten - verschillende domeinen&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;RewriteEngine On
+
+#ADD TRAILING SLASH TO DIRECTORY IF NONE EXISTS
+RewriteRule ^([^&amp;lt;br/&amp;gt;.]+[^/])$ http://%{HTTP_HOST}/$1/ [L]
+
+RewriteCond %{HTTP_HOST} ^(www.)?site1.com$ [NC]
+RewriteCond %{REQUEST_URI} !site1/ [NC]
+RewriteRule ^(.*)$ /site1/$1 [L]
+
+RewriteCond %{HTTP_HOST} ^(www.)?site2.com$ [NC]
+RewriteCond %{REQUEST_URI} !site/ [NC]
+RewriteRule ^(.*)$ /site2/$1 [L]
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

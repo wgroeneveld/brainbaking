@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Unit testing in Legacy Projects: VB6</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="Unit testing in Legacy Projects: VB6" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/vb6-unit-testing/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Unit testing in Legacy Projects: VB6</h1>
+      
+      
+      
+      <span class="post-meta">27 December 2016</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/unit-testing">unit testing</a> </li>
+      
+       <li><a href="/tags/vb6">VB6</a> </li>
+      
+      </ul>
+
+      <article role="main" class="blog-post">
+          <p>Thanks to the <a href="https://ihadthisideaonce.com/2015/05/13/postmodern-vb6-a-quick-start-with-simplyvbunit/">Postmodern VB6</a> article I&rsquo;ve found on the internetz, I decided to give <a href="simplyvbunit.sourceforge.net">SimplyVBUnit</a> a try. My job requires sporadic visual basic 6 code changes in the big legacy project we&rsquo;re converting to C#. It&rsquo;s an administrative system bound to Belgium laws so as you can imagine they change every few months and the old software still has to be complaint to those crazy new rules. As a result, we sometimes dabble in VB6 code. It feels more like drowning, really.</p>
+
+<p>Unit testing is what keeps me from rage-quitting on every project. The SimplyVBUnit syntax is quite nice if you&rsquo;re used to writing NUnit tests: they also work with <code>Assert.That</code> for instance:</p>
+
+<pre><code class="language-vb">Public Sub MyTestMethod_WithSomeArg_ShouldReturn45
+  Dim isType As Boolean
+  isType = MyTestMethod(arg1)
+
+  Assert.That isType, Iz.EqualTo(45)
+End Sub
+</code></pre>
+
+<p><img src="/img/simplyvbunit.png" alt="simply vb unit screenshot" /></p>
+
+<p>The test code is very readable thanks to the <a href="https://nunit.org/index.php?p=documentation">NUnit</a> influence on SimplyVBUnit. The package is very easy to install, but there are a few gotcha&rsquo;s.
+You need to create a separate VBP file (Visual Basic Project) which acts as your UnitTest project with a reference to the SimplyVBUnit package. That&rsquo;s easy enough, but it&rsquo;s a project. That means it can&rsquo;t reference other projects! Our software is basically one large project with heaps of muddy code. Compiling the EXE and referencing that one is not an option for us. That leaves us with a few alternatives:</p>
+
+<ul>
+<li>Package the test runner and the dependency in your production code. (Hmmm&hellip;)</li>
+<li>Create a DLL project and move the test code to the DLL. This requires another build step in our already-too-long-manual-deployment procedure. Nope.</li>
+<li>Create a group (vbg), include both projects, and include modules/forms/class modules to be tested in the unit test project as an existing file. This means both projects will include the same source files. SourceSafe actually notices this if you have a file checked out and will ask you to update the &ldquo;other&rdquo; file in the second project.</li>
+</ul>
+
+<p>The group makes it possible to open everything at once. Unit tests live in a subfolder. This is our vbg file:</p>
+
+<pre><code>VBGROUP 5.0
+Project=program.vbp
+StartupProject=UnitTests\UnitTests.vbp
+</code></pre>
+
+<p>Utilizing two projects in one group means switching between both as a startup project. One could use the group to develop and start tests but the vbps for debugging or so. It&rsquo;s all still fairly new for us so we&rsquo;ll see where this will end.
+Unit tests are useless if they aren&rsquo;t run (automatically). At this moment we try to avoid coding anything in VB6 at all. If we do, we run the tests manually. At least some parts of the code are tested without bootstrapping the whole application and plowing through various forms to get to the part where you actually changed something&hellip;</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="http://www.brainbaking.com/post/react-in-extjs/" data-toggle="tooltip" data-placement="top" title="Migrating from Extjs to React gradually">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

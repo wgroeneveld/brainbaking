@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/tools/index.xml</link>
+    <description>Recent content in Tools on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>resharper</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/resharper/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/resharper/</guid>
+      <description>
+
+&lt;h1 id=&#34;resharper&#34;&gt;ReSharper&lt;/h1&gt;
+
+&lt;p&gt;Documentatie:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jetbrains.com/resharper/docs/ReSharper70DefaultKeymap_VS_scheme.pdf&#34;&gt;​Default keymap PDF overview​&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jetbrains.com/resharper/docs/ReSharper70DefaultKeymap_IDEA_scheme.pdf&#34;&gt;IntelliJ keymap PDF overview​&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shortcut-ref-vs-eclipse&#34;&gt;Shortcut ref VS Eclipse&lt;/h2&gt;
+
+&lt;p&gt;| Eclipse shortcut | ReSharper shortcut | description
+| CTRL+D | CTRL+L | remove line
+| ALT+DOWN | CTRL+D | duplicate line
+| CTRL+SPACE (CTRL+ENTER) | CTRL+SPACE (TAB) | code completion, select in combobox
+| ALT+SHIFT+UP/DOWN | CTRL+ALT+LEFT/RIGHT | Extend/Shrink selection
+| CTRL+SHIFT+/ | CTRL+ALT+/ | commend line
+| CTRL+SHIFT+1 | ALT+ENTER | quick fix
+| ALT+UP/DOWN | CTRL+SHIFT+ALT+UP/DOWN | move line
+| CTRL+SHIFT+O | CTRL+E, &amp;copy;/F | organize imports (and format etc, F = silent)
+| CTRL+F11 | CTRL+U, U | rerun last
+| CTRL+O | ALT+&lt;br/&gt; | Go to file member
+| CTRL+SHIFT+G | CTRL+SHIFT+ALT+F12 (SHIFT+F12) | find usages
+| F3 | F12 | go to definition
+| CTRL+SHIFT+. | SHIFT+ALT+PGDN | go to next error
+| CTR+, | SHIFT+ALT+PGUP | go to previous error
+| ALT+SHIFT+I | CTRL+R, I | inline variable
+| ALT+SHIFT+R | CTRL+R, R | rename
+| ALT+SHIFT+M | CTRL+R, M | extract method
+| ALT+SHIFT+C | CTRL+R, S | change method signature
+| CTRL+SHIFT+B | F9 | toggle breakpoint
+| CTRL+M | SHIFT+ALT+ENTER | toggle full screen mode&lt;/p&gt;
+
+&lt;p&gt;​   ​   ​&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sublime</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/sublime/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/sublime/</guid>
+      <description>
+
+&lt;h1 id=&#34;sublime-text-protips&#34;&gt;Sublime Text protips&lt;/h1&gt;
+
+&lt;p&gt;&lt;img style=&#39;width: |px;&#39; src=&#39;http://www.brainbaking.com/img//code/tools/subl_plugins.png&#39;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;handige-links&#34;&gt;Handige links&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Keyb shortcuts&lt;/strong&gt; voor &lt;strong&gt;mac&lt;/strong&gt;: &lt;a href=&#34;http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_osx.html&#34;&gt;http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_osx.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tips voor &lt;strong&gt;python devs&lt;/strong&gt; ea: &lt;a href=&#34;http://opensourcehacker.com/2012/05/11/sublime-text-2-tips-for-python-and-web-developers/&#34;&gt;http://opensourcehacker.com/2012/05/11/sublime-text-2-tips-for-python-and-web-developers/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;must-have-plugins&#34;&gt;Must-have plugins&lt;/h2&gt;
+
+&lt;p&gt;Installeren via &lt;a href=&#34;http://wbond.net/sublime_packages/package_control&#34;&gt;Sublime Package Control&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/SublimeLinter/SublimeLinter&#34;&gt;SublimeLinter&lt;/a&gt; - linting in verschillende talen (ook CoffeeScript)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Kronuz/SublimeCodeIntel&#34;&gt;SublimeCodeIntel&lt;/a&gt; - autocompletion in verschillende talen. Werkt zoals in eclipse, gebruik &lt;code&gt;ctrl+shift+space&lt;/code&gt; voor box te triggeren.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kemayo/sublime-text-2-git/wiki&#34;&gt;git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jdc0589/JsFormat&#34;&gt;jsFormat&lt;/a&gt; (mapt by default op &lt;code&gt;cmd+alt+F&lt;/code&gt;, heb het remapped naar eclipse equiv. &lt;code&gt;cmd+shift+F&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/davidpeckham/FilterLines&#34;&gt;FilterLines&lt;/a&gt; om door logging te ploegen - greplike in subl.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;user-configuratie&#34;&gt;(user) configuratie&lt;/h2&gt;
+
+&lt;p&gt;Hoofddocumentatie: &lt;a href=&#34;http://docs.sublimetext.info/en/latest/reference/settings.html&#34;&gt;http://docs.sublimetext.info/en/latest/reference/settings.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In &lt;code&gt;JSON&lt;/code&gt; formaat, zie &lt;code&gt;ctrl+shift+P&lt;/code&gt;: &lt;code&gt;Preferences: Settings - User&lt;/code&gt;. Proxy definiëren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
+	&amp;quot;debug&amp;quot;: true,
+
+	&amp;quot;http_proxy&amp;quot;: &amp;quot;vdabproxy.vdab.be:8080&amp;quot;,
+	&amp;quot;https_proxy&amp;quot;: &amp;quot;vdabproxy.vdab.be:8080&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dit werkt niet als je &lt;code&gt;Package Control&lt;/code&gt; nog moet installeren aangezien de settings specifiek hiervoor zijn.&lt;br/&gt;&lt;br/&gt;
+Plugin manueel in plugin dir slepen.&lt;/p&gt;
+
+&lt;h2 id=&#34;development-in-sublime&#34;&gt;Development in Sublime&lt;/h2&gt;
+
+&lt;h3 id=&#34;build-systems&#34;&gt;Build Systems&lt;/h3&gt;
+
+&lt;p&gt;CTRL+B (menu build) werkt door een &lt;code&gt;.sublime-build&lt;/code&gt; file met configuratie voor de batch die in (onder windows &lt;code&gt;C:&amp;lt;br/&amp;gt;Users&amp;lt;br/&amp;gt;bkwog&amp;lt;br/&amp;gt;AppData&amp;lt;br/&amp;gt;Roaming&amp;lt;br/&amp;gt;Sublime Text 2&amp;lt;br/&amp;gt;Packages&amp;lt;br/&amp;gt;[lang]&lt;/code&gt;) uw package dir leven. Een voorbeeld van zo&amp;rsquo;n file voor ruby, by default:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+	&amp;quot;cmd&amp;quot;: [&amp;quot;ruby&amp;quot;, &amp;quot;$file&amp;quot;],
+	&amp;quot;file_regex&amp;quot;: &amp;quot;^(...*?):([0-9]*):?([0-9]*)&amp;quot;,
+	&amp;quot;selector&amp;quot;: &amp;quot;source.ruby&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Syntax: &lt;a href=&#34;http://docs.sublimetext.info/en/latest/file_processing/build_systems.html&#34;&gt;http://docs.sublimetext.info/en/latest/file_processing/build_systems.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://addyosmani.com/blog/custom-sublime-text-build-systems-for-popular-tools-and-languages/&#34;&gt;Adding custom build systems for popular tools and languages&lt;/a&gt; - bijvoorbeeld grunt etc.&lt;/p&gt;
+
+&lt;h3 id=&#34;ruby-development&#34;&gt;Ruby development&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://thunderboltlabs.com/blog/2013/11/19/efficiency-with-sublime-text-and-ruby/&#34;&gt;Efficiency with Sublime text and Ruby&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;python-development&#34;&gt;Python development&lt;/h3&gt;
+
+&lt;h4 id=&#34;must-have-plugins-1&#34;&gt;Must have plugins&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PyLint voor code checking&lt;/li&gt;
+&lt;li&gt;autocompletion: &lt;a href=&#34;http:*screamingatmyscreen.com/2013/9/sublime-text-as-python-ide-jedi/&#34;&gt;jedi&lt;/a&gt; of &lt;a href=&#34;https:*sublime.wbond.net/packages/Anaconda&#34;&gt;Anaconda&lt;/a&gt; zijn de beste specifiek voor Python.&lt;/li&gt;
+&lt;li&gt;Voor checkins: Git &amp;amp; GitGutter&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Voor Jedi moet je uw project file aanmaken (&amp;amp; Project -&amp;gt; Add Folder to Project &amp;hellip; base dir kiezen): ziet er bijvoorbeeld zo uit&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
+	&amp;quot;folders&amp;quot;:
+	[
+		{
+			&amp;quot;path&amp;quot;: &amp;quot;/D/Github/polyglata/01_calculatestring/python&amp;quot;
+		}
+	]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dan kan de autocompleter alles terug vinden. Handige shortcuts: &lt;code&gt;CTRL+SHIFT+G&lt;/code&gt; goto/find definition. &lt;code&gt;ALT+SHIFT+F&lt;/code&gt;: find all references.&lt;/p&gt;
+
+&lt;h4 id=&#34;building-etc&#34;&gt;Building etc&lt;/h4&gt;
+
+&lt;p&gt;Kan ook de &lt;code&gt;SublimeREPL&lt;/code&gt; gebruiken, en dan deze in een window langs uw code plaatsen. Keyboard shortcuts zoals &lt;code&gt;CTRL+SHIFT+, F&lt;/code&gt; kopiëren heel de file naar de REPL om te evalueren. De huidige file builden met &lt;strong&gt;CTRL+B&lt;/strong&gt; (Tools -&amp;gt; Build System -&amp;gt; Python).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>visualstudio</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/visualstudio/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/visualstudio/</guid>
+      <description>
+
+&lt;h1 id=&#34;visual-studio&#34;&gt;Visual Studio&lt;/h1&gt;
+
+&lt;h3 id=&#34;handige-plugins&#34;&gt;Handige plugins&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.codemaid.net/&#34;&gt;http://www.codemaid.net/&lt;/a&gt; - auto-cleanup on save, integratie resharper&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/tools/resharper/&#34;&gt;code/tools/resharper&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;debugging&#34;&gt;Debugging&lt;/h3&gt;
+
+&lt;h4 id=&#34;pdb-files-auto-resolven-remote-symbolsource-enablen&#34;&gt;PDB files auto-resolven: remote SymbolSource enablen&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.symbolsource.org/Public/Wiki/Using&#34;&gt;Using SymbolSource&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Go to Tools -&amp;gt; Options -&amp;gt; Debugger -&amp;gt; General.&lt;/li&gt;
+&lt;li&gt;Uncheck “Enable Just My Code (Managed only)”.&lt;/li&gt;
+&lt;li&gt;Uncheck “Enable .NET Framework source stepping”. Yes, it is misleading, but if you don&amp;rsquo;t, then Visual Studio will ignore your custom server order (see further on) and only use it&amp;rsquo;s own servers.&lt;/li&gt;
+&lt;li&gt;Check “Enable source server support”.&lt;/li&gt;
+&lt;li&gt;Uncheck “Require source files to exactly match the original version”&lt;/li&gt;
+&lt;li&gt;Go to Tools -&amp;gt; Options -&amp;gt; Debugger -&amp;gt; Symbols.&lt;/li&gt;
+&lt;li&gt;Select a folder for the local symbol/source cache. You may experience silent failures in getting symbols if it doesn&amp;rsquo;t exist or is read-only for some reason.&lt;/li&gt;
+&lt;li&gt;Add symbol servers under “Symbol file (.pdb) locations”. Pay attention to the correct order, because some servers may contain symbols for the same binaries: with or without sources. We recommend the following setup:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://referencesource.microsoft.com/symbols&#34;&gt;http://referencesource.microsoft.com/symbols&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://srv.symbolsource.org/pdb/Public&#34;&gt;http://srv.symbolsource.org/pdb/Public&lt;/a&gt; or the authenticated variant (see above)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://srv.symbolsource.org/pdb/MyGet&#34;&gt;http://srv.symbolsource.org/pdb/MyGet&lt;/a&gt; or the authenticated variant (see above)&lt;/li&gt;
+&lt;li&gt;(other symbol servers with sources)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://msdl.microsoft.com/download/symbols&#34;&gt;http://msdl.microsoft.com/download/symbols&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;(other symbol servers without sources)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>tfs</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/tfs/</link>
+      <pubDate>Fri, 31 Jan 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/tfs/</guid>
+      <description>
+
+&lt;h1 id=&#34;team-foundation-server&#34;&gt;Team Foundation Server&lt;/h1&gt;
+
+&lt;h2 id=&#34;changing-the-default-check-in-action&#34;&gt;Changing the default check-in action&lt;/h2&gt;
+
+&lt;p&gt;By default worden work items op &amp;ldquo;resolved&amp;rdquo; gezet. Dit is meestal geen gewenst gedrag. &lt;strong&gt;Niet automatisch oplosbaar&lt;/strong&gt;: zie &lt;a href=&#34;http://www.codesmartnothard.com/2013/02/09/ChangingTheDefaultCheckInOptionToAssociateInTFS2012.aspx&#34;&gt;http://www.codesmartnothard.com/2013/02/09/ChangingTheDefaultCheckInOptionToAssociateInTFS2012.aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Voor items op state &amp;ldquo;new&amp;rdquo; kan je deze key wijzigen in registry: &lt;code&gt;HKEY_CURRENT_USER&amp;lt;br/&amp;gt;Software&amp;lt;br/&amp;gt;Microsoft&amp;lt;br/&amp;gt;VisualStudio&amp;lt;br/&amp;gt;**11.0**&amp;lt;br/&amp;gt;TeamFoundation&amp;lt;br/&amp;gt;SourceControl&amp;lt;br/&amp;gt;Behavior @ResolveAsDefaultCheckinAction = &amp;quot;False&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;find-latest-work-items&#34;&gt;Find latest work items&lt;/h2&gt;
+
+&lt;p&gt;Hoe kan ik mijn laatste &amp;ldquo;Related work item&amp;rdquo; terug ophalen om aan de in te checken changeset dezelfde items te koppelen? &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;Custom query toevoegen: zie &lt;a href=&#34;http://robertgreiner.com/2011/04/how-to-get-your-entire-work-item-history-in-tfs/&#34;&gt;http://robertgreiner.com/2011/04/how-to-get-your-entire-work-item-history-in-tfs/&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Changed By Contains @Me
+And Revised Date &amp;gt;= @Today - 30
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>eclipse</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/eclipse/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/eclipse/</guid>
+      <description>
+
+&lt;h1 id=&#34;eclipse-tips-tricks&#34;&gt;Eclipse tips &amp;amp; tricks&lt;/h1&gt;
+
+&lt;h2 id=&#34;shortcuts-die-ik-nog-niet-vanbuiten-ken&#34;&gt;Shortcuts die ik nog niet vanbuiten ken&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CTRL+(SHIFT)+E: view open editors &amp;amp; quickfind!!&lt;/li&gt;
+&lt;li&gt;CTRL+M: minimize/maximize editor&lt;/li&gt;
+&lt;li&gt;CTRL+
+
+&lt;ul&gt;
+&lt;li&gt;F6: switch editor&lt;/li&gt;
+&lt;li&gt;F7: switch view&lt;/li&gt;
+&lt;li&gt;F8: switch perspective&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CTRL+ALT+
+
+&lt;ul&gt;
+&lt;li&gt;R: run server&lt;/li&gt;
+&lt;li&gt;D: debug server&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CTLR+SHIFT+NUMPAD/: minimize all trees in package explorer (handig bij link with editor)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;custom-preferences&#34;&gt;Custom preferences&lt;/h2&gt;
+
+&lt;h4 id=&#34;static-imports&#34;&gt;Static imports&lt;/h4&gt;
+
+&lt;p&gt;CTRL+3, &amp;ldquo;favorites&amp;rdquo; (Java/Editor/Context assist) -&amp;gt; New Type.&lt;br/&gt;&lt;br/&gt;
+Zeker handig voor &lt;em&gt;Assertions&lt;/em&gt; van FEST Assert.&lt;/p&gt;
+
+&lt;h4 id=&#34;eclipse-3-5-en-ctrl-f11-rerun-last-test&#34;&gt;Eclipse 3.5+ en CTRL+F11 (rerun last test)&lt;/h4&gt;
+
+&lt;p&gt;CTRL+3, &amp;ldquo;launching&amp;rdquo; (Run-Debug/Launching) -&amp;gt; launch operation op &amp;ldquo;always launch prev. launched app&amp;rdquo; zetten.&lt;/p&gt;
+
+&lt;h4 id=&#34;goto-next-search-occurence-combineren-met-next-prev-annotation&#34;&gt;Goto next Search Occurence combineren met next/prev. Annotation&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;next&lt;/strong&gt;: CTRL+SHIFT+; (punt)&lt;br/&gt;&lt;br/&gt;
+&lt;strong&gt;prev.&lt;/strong&gt;: CTRL+,&lt;/p&gt;
+
+&lt;p&gt;Om de shortcuts &lt;em&gt;Next/prev Annotation&lt;/em&gt; te koppelen aan zoekresultaten (gearceerd door Eclipse):&lt;br/&gt;&lt;br/&gt;
+General-&amp;gt;Editors-&amp;gt;Text Editors-&amp;gt;Annotations-&amp;gt;Search Results-&amp;gt;Include in next/previous navigation aanvinken.&lt;/p&gt;
+
+&lt;h4 id=&#34;formatting-en-chaining&#34;&gt;Formatting en chaining&lt;/h4&gt;
+
+&lt;p&gt;Om niet de hele tijd commentaar te moeten plakken achter elk chained commando (anders formatteert eclipse dit allemaal op één lijn), kan je de optie &lt;em&gt;&amp;ldquo;Never linewrap&amp;rdquo;&lt;/em&gt; aanzetten in Java Formatter.&lt;/p&gt;
+
+&lt;h2 id=&#34;plugins&#34;&gt;Plugins&lt;/h2&gt;
+
+&lt;h4 id=&#34;enforce-keyboard-shortcuts&#34;&gt;Enforce keyboard shortcuts&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.mousefeed.com/&#34;&gt;http://www.mousefeed.com/&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;
+❗ Knoppen waar geen snelkoppeling voor zijn werken &lt;strong&gt;niet&lt;/strong&gt; indien deze plugin geïnstalleerd is. (bug?)&lt;/p&gt;
+
+&lt;h2 id=&#34;hacks&#34;&gt;Hacks&lt;/h2&gt;
+
+&lt;h4 id=&#34;junit-failure-trace-iets-wijsmaken&#34;&gt;JUnit Failure Trace iets wijsmaken&lt;/h4&gt;
+
+&lt;p&gt;Wanneer een JUnit test in het &lt;em&gt;fail&lt;/em&gt; bericht een stracktrace regel emuleert, kan je door dubbelklikken ook daadwerkelijk naar eender welke java file op een bepaalde lijn springen, zoals het dubbelklikken op de failure trace van een bepaalde lijn zich gedraagd. Voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;		fail(&amp;quot;Found duplicate entries in MESSAGES.PROPERTIES:&amp;lt;br/&amp;gt;r&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;r&amp;lt;br/&amp;gt;n&amp;quot;
+				+ &amp;quot;	at be..i18n.DuplicateValuesInMessagesPropertiesTest.findDuplicateValuesInMessagesProperties(DuplicateValuesInMessagesPropertiesTest.java:30)&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Uw eigen regel gaat eerste staan, en eclipse &amp;ldquo;denkt&amp;rdquo; dat het een deel van de stacktrace is. &lt;br/&gt;&lt;br/&gt;
+Jammer genoeg niet bruikbaar voor properties files (&amp;rdquo;&lt;em&gt;Test class not found in selected project&lt;/em&gt;&amp;rdquo;)&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/git/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/git/</guid>
+      <description>
+
+&lt;h1 id=&#34;git&#34;&gt;Git&lt;/h1&gt;
+
+&lt;h3 id=&#34;van-een-remote-branch-changes-binnen-halen&#34;&gt;Van een remote branch changes binnen halen&lt;/h3&gt;
+
+&lt;p&gt;Stel: ik heb een fork gemaakt maar wil van de &amp;ldquo;upstream&amp;rdquo; de veranderingen binnen halen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote add upstream git://github.com/user/bla.git
+git fetch upstream
+git merge upstream/master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En dan eventueel merge conflicten oplossen.&lt;/p&gt;
+
+&lt;h3 id=&#34;stap-voor-stap&#34;&gt;Stap-voor-stap&lt;/h3&gt;
+
+&lt;p&gt;setup git voor &lt;em&gt;windows&lt;/em&gt;: volg instructies op &lt;a href=&#34;http://help.github.com/win-set-up-git/&#34;&gt;http://help.github.com/win-set-up-git/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;stap-voor-stap-ssh&#34;&gt;Stap-voor-stap SSH&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Installeer &lt;code&gt;cygwin&lt;/code&gt; met de volgende packages:
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;ssh&lt;/code&gt; en varianten&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;corkscrew&lt;/code&gt; voor proxy indien nodig&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;genereer voor uw pc public &lt;code&gt;ssh&lt;/code&gt; keys met &lt;code&gt;ssh-keygen -t rsa -C &amp;quot;[email]&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Kopieer de public key in &lt;code&gt;~/.ssh/id_rsa.pub&lt;/code&gt; en voeg dit aan uw profiel op github.com toe hier: &lt;a href=&#34;https://github.com/account/ssh&#34;&gt;https://github.com/account/ssh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Zet de ssh proxy indien nodig - zie onder&lt;/li&gt;
+&lt;li&gt;Test connectie met &lt;code&gt;ssh -T git@github.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;stap-voor-stap-git&#34;&gt;Stap-voor-stap Git&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Set username &amp;amp; email:
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git config --global user.name &amp;quot;[name]&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global user.email &amp;quot;[email]&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Set github user &amp;amp; github token - terug te inden op github account settings:
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git config --global github.user [user]&lt;/code&gt; zonder quotes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global github.token [token]&lt;/code&gt; zonder quotes&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Kleurtjes toevoegen aan de git shell (rood/groen voor unstaged/staged files): &lt;code&gt;git config --global color.ui true&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;in-depth-guide&#34;&gt;In-depth guide&lt;/h3&gt;
+
+&lt;h4 id=&#34;links-en-resources&#34;&gt;Links en resources&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://progit.org/book/&#34;&gt;http://progit.org/book/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.github.com/&#34;&gt;http://www.github.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;basisconfiguratie-gitignore&#34;&gt;Basisconfiguratie .gitignore&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;https://github.com/github/gitignore&#34;&gt;https://github.com/github/gitignore&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;conflict-resolutie&#34;&gt;Conflict resolutie&lt;/h4&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width:  |px;&#39; src=&#39;http://www.brainbaking.com/img//code/tools/trees.png&#39;&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;outgoing-changes-resetten-en-een-pull-doen&#34;&gt;Outgoing changes resetten en een pull doen&lt;/h5&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git reset --hard&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;En daarna&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git pull&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;❗ een harde reset uitvoeren op het verkeerde moment kan u van de main branch afhalen: zie &lt;a href=&#34;http://blog.plover.com/prog/git-reset.html&#34;&gt;http://blog.plover.com/prog/git-reset.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;a-tale-of-three-trees&#34;&gt;A tale of three trees&lt;/h5&gt;
+
+&lt;p&gt;Git gebruikt intern als version control systeem 3 trees: head, index &amp;amp; work. &lt;br/&gt;&lt;br/&gt;
+Als conflicten auto-merged kunnen worden met een &lt;code&gt;pull&lt;/code&gt; komt dit rechtstreeks in uw lokale repository. Anders moet je mergen met &lt;code&gt;git mergetool -y&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na de merge moet je lokaal committen - dit zijn dan de wijzigingen die van de remote repository gepulled werden.&lt;/p&gt;
+
+&lt;p&gt;Meer informatie &amp;amp; uitleg op:
+  * &lt;a href=&#34;http://www.infoq.com/presentations/A-Tale-of-Three-Trees&#34;&gt;http://www.infoq.com/presentations/A-Tale-of-Three-Trees&lt;/a&gt;
+  * &lt;a href=&#34;http://progit.org&#34;&gt;http://progit.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;configuratie-ssh&#34;&gt;Configuratie SSH&lt;/h4&gt;
+
+&lt;p&gt;SSH proxy definiëren: create &lt;code&gt;config&lt;/code&gt; file in &lt;code&gt;~/.ssh&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ProxyCommand /usr/bin/corkscrew proxy.x.be 8080 %h %p
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Opgelet&lt;/strong&gt; &lt;code&gt;corkscrew&lt;/code&gt; ook nog downloaden (cygwin opgelet)&lt;/p&gt;
+
+&lt;h4 id=&#34;configuratie-git&#34;&gt;Configuratie GIT&lt;/h4&gt;
+
+&lt;p&gt;Alle configuratie flags kunnen aangepast worden met &lt;code&gt;git config --global [key] [value]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Een proxy definieren: key &lt;code&gt;http.proxy&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;het-verschil-zien-tussen-de-lokale-gecommite-gegevens-en-de-remote&#34;&gt;Het verschil zien tussen de lokale gecommite gegevens en de remote&lt;/h4&gt;
+
+&lt;p&gt;Indien reeds van unstaged -&amp;gt; staged -&amp;gt; committed gegaan, voor de &lt;code&gt;git push&lt;/code&gt; te doen, wat is het verschil??&lt;/p&gt;
+
+&lt;p&gt;Enkel zichtbaar via &lt;code&gt;git log&lt;/code&gt;, dan het detail daarvan proberen te raadplegen met &lt;code&gt;git show [begin hashtag logentry]]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;merge-tool-configureren&#34;&gt;Merge tool configureren&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;download kdiff3 (&lt;a href=&#34;http://kdiff3.sourceforge.net/&#34;&gt;http://kdiff3.sourceforge.net/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;configure git mergetool:
+
+&lt;ol&gt;
+&lt;li&gt;git config &amp;ndash;global merge.tool kdiff3&lt;/li&gt;
+&lt;li&gt;git config &amp;ndash;global mergetool.kdiff3.path &amp;ldquo;C:&lt;br/&gt;Program Files (x86)&lt;br/&gt;KDiff3&lt;br/&gt;kdiff3.exe&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;git config &amp;ndash;global mergetool.trustexitcode false&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;use mergetool: git mergetool -y&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;cheat-sheet&#34;&gt;Cheat sheet&lt;/h4&gt;
+
+&lt;h5 id=&#34;een-repository-initieel-aanmaken&#34;&gt;Een repository initieel aanmaken&lt;/h5&gt;
+
+&lt;p&gt;Gegeven: een project directory waar men een repository van wil maken.&lt;/p&gt;
+
+&lt;p&gt;^ Actie     ^ Commando ^
+| &lt;em&gt;initieel aanmaken nodige git bestanden&lt;/em&gt; | &lt;code&gt;git init&lt;/code&gt; |
+| &lt;em&gt;remote repository toevoegen&lt;/em&gt; | &lt;code&gt;git add origin [url]&lt;/code&gt; |&lt;/p&gt;
+
+&lt;p&gt;Bij een &lt;code&gt;git add&lt;/code&gt; commando zou de url in geval van &lt;em&gt;github&lt;/em&gt; zoiets kunnen zijn:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git@github.com:jefklak/jasmine-sync-flow.git&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&#34;een-remote-repository-lokaal-plaatsen&#34;&gt;Een remote repository lokaal plaatsen&lt;/h5&gt;
+
+&lt;p&gt;In een bepaalde root directory (maakt subdir automatisch aan):&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git clone git@github.com:jefklak/jasmine-junit-runner.git&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Om dan zaken &lt;em&gt;upstream&lt;/em&gt; te pushen kan je &lt;code&gt;git remote add upstream [url]]&lt;/code&gt; en &lt;code&gt;git push upstream&lt;/code&gt; gebruiken.&lt;/p&gt;
+
+&lt;h5 id=&#34;state-veranderen-aan-een-repository&#34;&gt;State veranderen aan een repository&lt;/h5&gt;
+
+&lt;p&gt;&lt;em&gt;Altijd eerst lokaal committen&lt;/em&gt;, dán die snapshot pushen naar de remote server!&lt;/p&gt;
+
+&lt;p&gt;^ Actie     ^ Commando ^
+| &lt;em&gt;files toevoegen om te committen&lt;/em&gt; | &lt;code&gt;git add [dir]/*&lt;/code&gt; |
+| &lt;em&gt;te committen status bekijken&lt;/em&gt; | &lt;code&gt;git status&lt;/code&gt; |
+| &lt;em&gt;change committen&lt;/em&gt; | &lt;code&gt;git commit -a -m [msg]&lt;/code&gt; |
+| &lt;em&gt;gecommitte snapshot pushen (naar master)&lt;/em&gt; | &lt;code&gt;git push&lt;/code&gt; |
+| &lt;em&gt;gecommitte snapshot pushen (naar x)&lt;/em&gt; | &lt;code&gt;git push -u origin x&lt;/code&gt; |&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>hacking</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/hacking/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/hacking/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-tools-hacking&#34;&gt;code:tools &amp;gt;&amp;gt; Hacking&lt;/h1&gt;
+
+&lt;h4 id=&#34;http-streams-monitoren-etc&#34;&gt;HTTP streams monitoren etc&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Op Windows: &lt;a href=&#34;http://www.fiddler2.com/fiddler2/version.asp&#34;&gt;http://www.fiddler2.com/fiddler2/version.asp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Voor Firefox: &amp;ldquo;Poster&amp;rdquo; plugin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;unlocking-stuf&#34;&gt;Unlocking stuf&lt;/h4&gt;
+
+&lt;p&gt;&amp;ldquo;Unlocker&amp;rdquo; werkt blijkbaar niet op windows 7 - dit wel: &lt;a href=&#34;http://lockhunter.com/&#34;&gt;http://lockhunter.com/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-tools-home&#34;&gt;code:tools &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>intellij</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/intellij/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/intellij/</guid>
+      <description>
+
+&lt;h1 id=&#34;intellij-voor-eclipse-users&#34;&gt;IntelliJ voor Eclipse users&lt;/h1&gt;
+
+&lt;h2 id=&#34;shortcuts&#34;&gt;Shortcuts&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://dattein.com/blog/eclipse-vs-intellij-keyboard-shortcuts/&#34;&gt;Eclipse VS IntelliJ Keyboard shortcuts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheet/ccc?key######0ApdQuwFHc0y-dERsc2U4QzRBZVlPaHl4S091R2FiOUE#gid0&#34;&gt;Shortcuts google docs&lt;/a&gt; van Janick&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jetbrains.com/idea/documentation/migration_faq.html&#34;&gt;IntelliJ Q&amp;amp;A for Eclipse users&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;-&amp;gt; &lt;a href=&#34;http://www.catalysts.cc/wissenswertes/intellij-idea-and-eclipse-shortcuts/?lang=en&#34;&gt;IntelliJ and Eclipse shortcuts&lt;/a&gt; meest interessante?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;❗ Eclipse to IntelliJ shortcut plugin voor IntelliJ: &lt;a href=&#34;http://plugins.intellij.net/plugin/?idea&amp;amp;id=6827&#34;&gt;http://plugins.intellij.net/plugin/?idea&amp;amp;id=6827&lt;/a&gt;
+Source hier beschikbaar: &lt;a href=&#34;https://github.com/janickr/shortcuttranslator&#34;&gt;https://github.com/janickr/shortcuttranslator&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;de-meest-voorkomende-shortcuts-vergelijken&#34;&gt;De meest voorkomende shortcuts vergelijken&lt;/h4&gt;
+
+&lt;p&gt;| &lt;strong&gt;Betekenis&lt;/strong&gt; | &lt;strong&gt;Eclipse shortcut&lt;/strong&gt; | &lt;strong&gt;IntelliJ shortcut&lt;/strong&gt; |
+| Open Type | CTRL+SHIFT+T | CTRL+N |
+| Close Editor | CTRL+W | CTRL+F4 |
+| Delete line | CTRL+D | CTRL+Y |&lt;/p&gt;
+
+&lt;h4 id=&#34;intellij-configureren-voor-play-2-0&#34;&gt;IntelliJ Configureren voor Play-2.0&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://jetbrains.dzone.com/articles/configuring-intellij-idea&#34;&gt;http://jetbrains.dzone.com/articles/configuring-intellij-idea&lt;/a&gt;
+Wat nog te doen?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Op project, F4, Global Libraries, toevoegen: playinstalldir&lt;br/&gt;framework&lt;br/&gt;sbt&lt;br/&gt;boot&lt;br/&gt;scala-2.9.1&lt;br/&gt;lib en &lt;br/&gt;play&lt;br/&gt;play-2.0&lt;br/&gt;beta&lt;/li&gt;
+&lt;li&gt;Voeg aan diezelfde global lib toe: attach directories play&lt;br/&gt;src&lt;br/&gt;main&lt;br/&gt;java&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

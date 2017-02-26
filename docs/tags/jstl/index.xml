@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jstl on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/jstl/index.xml</link>
+    <description>Recent content in Jstl on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/jstl/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>jstl</title>
+      <link>http://www.brainbaking.com/wiki/code/jsp/jstl/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/jsp/jstl/</guid>
+      <description>
+
+&lt;h1 id=&#34;jstl-snippets&#34;&gt;JSTL Snippets&lt;/h1&gt;
+
+&lt;h2 id=&#34;installatie-1-2&#34;&gt;Installatie 1.2&lt;/h2&gt;
+
+&lt;p&gt;Requirements: Web container 2.5 &lt;code&gt;http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&lt;/code&gt; (dit is stricter dan de voorgaande!)&lt;/p&gt;
+
+&lt;p&gt;Jars kopiëren naar WEB-INF lib.&lt;br/&gt;&lt;br/&gt;
+standard-x.jar mag verwijderd worden dit is een oude versie. jstl-api en jstl-impl moeten aanwezig zijn.&lt;/p&gt;
+
+&lt;p&gt;Hierna is het mogelijk om met &lt;em&gt;&lt;code&gt;$&lt;/code&gt;&lt;/em&gt; expressies te gebruiken in jsps.&lt;/p&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Opgelet&lt;/strong&gt; - dollar wordt aan de server kant geëvalueerd, dat wil zeggen dat dit een conflict geeft met &lt;a href=&#34;http://code.google.com/p/trimpath/wiki/JavaScriptTemplates&#34;&gt;TrimPath Javascript Templates&lt;/a&gt; die aan de client kan geëvalueerd worden.&lt;/p&gt;
+
+&lt;h2 id=&#34;datums-formatteren&#34;&gt;Datums formatteren&lt;/h2&gt;
+
+&lt;p&gt;Doen met:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt; &amp;lt;fmt:formatDate pattern######&amp;quot;dd/MM/yyyy&amp;quot; value&amp;quot;${entity.date}&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Opgelet&lt;/strong&gt; - Voor JSTL 1.2 kan value wel een EL expressie zijn, daarvoor niet.&lt;br/&gt;&lt;br/&gt;
+Hiervoor dien je deze taglib te gebruiken: &lt;code&gt;*http:*java.sun.com/**jsp**/jstl/fmt//&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Het standaard pattern is brol, en dat altijd meegeven is vervelend. Uw eigen tag maken en &lt;code&gt;setPattern()&lt;/code&gt; aanroepen werkt, maar gebruik de juiste klasse om af te leiden!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class DisplayDateTag extends org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag { 
+  @Override
+  public void setValue(Date value) {
+     super.setValue(value); // &#39;cause JSP uses reflection...
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In plaats van &lt;code&gt;org.apache.taglibs.standard.tag.el.fmt.FormatDateTag&lt;/code&gt;. Waarom?&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Actually, there are two taglib directives that correspond to the JSTL core  library because in JSTL 1.0 the EL is optional. All four of the JSTL 1.0 custom tag libraries have alternate versions that use JSP expressions rather than the EL for specifying dynamic attribute values. Because these alternate libraries rely on JSP&amp;rsquo;s more traditional request-time attribute values, they are referred to as the RT libraries, whereas those using the expression language are referred to as the EL libraries. Developers distinguish between the two versions of each library using alternate taglib  directives. The directive for using the RT version of the core library is shown in Listing 8. Given our current focus on the EL, however, it is the first of these directives that is needed.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.ibm.com/developerworks/java/library/j-jstl0211.html&#34;&gt;http://www.ibm.com/developerworks/java/library/j-jstl0211.html&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Opgelet&lt;/strong&gt; - Om EL expressies goed te kunnen doorgeven Ipv. te evalueren op de JSP moet dit in de TLD staan:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;attribute&amp;gt;
+            &amp;lt;name&amp;gt;value&amp;lt;/name&amp;gt;
+            &amp;lt;required&amp;gt;true&amp;lt;/required&amp;gt;
+            &amp;lt;rtexprvalue&amp;gt;true&amp;lt;/rtexprvalue&amp;gt; &amp;lt;!-- belangrijk --&amp;gt;
+        &amp;lt;/attribute&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

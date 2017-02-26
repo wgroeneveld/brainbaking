@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Win on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/win/index.xml</link>
+    <description>Recent content in Win on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/win/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>win</title>
+      <link>http://www.brainbaking.com/wiki/unix/cmd/win/</link>
+      <pubDate>Fri, 05 Apr 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/unix/cmd/win/</guid>
+      <description>
+
+&lt;h1 id=&#34;windows-stuff&#34;&gt;Windows stuff&lt;/h1&gt;
+
+&lt;h4 id=&#34;list-processes&#34;&gt;list processes&lt;/h4&gt;
+
+&lt;p&gt;Te doen via:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tasklist&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wmic process get [caption/commandline/...]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wmic process list | more&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;kill-specific-process&#34;&gt;Kill specific process&lt;/h4&gt;
+
+&lt;h5 id=&#34;by-window-title&#34;&gt;By window title&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;taskkill /F /FI &amp;quot;WINDOWTITLE eq Administrator:  STUBS&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ er zijn TWEE SPATIES tussen Administrator en uw eigenlijke title. Hoe zet je dan die title in een bat of cmd file?&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;TITLE STUBS&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;by-commandline&#34;&gt;By commandline&lt;/h5&gt;
+
+&lt;p&gt;Stel: een &lt;code&gt;java&lt;/code&gt; proces draait met een bepaalde jar, maar je weet niet welke je moet afschieten omdat er nog een server draait. Oplossing: zoek op commandline:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;wmic process where (commandline like &#39;%stubs.jar%&#39;) delete&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ het &lt;code&gt;%&lt;/code&gt; teken moet je escapen in een cmd of bat file omdat dit blijkbaar iets met argumenten te maken heeft (wuh?). Dit doe je door er 2 naast elkaar te plaatsen: &lt;code&gt;like %%stubs.jar%%&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

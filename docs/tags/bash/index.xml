@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bash on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/bash/index.xml</link>
+    <description>Recent content in Bash on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>bash</title>
+      <link>http://www.brainbaking.com/wiki/unix/cmd/bash/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/unix/cmd/bash/</guid>
+      <description>
+
+&lt;h1 id=&#34;bash-scripting&#34;&gt;Bash Scripting&lt;/h1&gt;
+
+&lt;h4 id=&#34;rerun-last-command&#34;&gt;Rerun last command&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;!!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Joink.&lt;/p&gt;
+
+&lt;h4 id=&#34;bash-opties-uit-een-shell-script-halen&#34;&gt;bash opties uit een shell script halen&lt;/h4&gt;
+
+&lt;p&gt;Gepikt van &lt;a href=&#34;http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash&#34;&gt;http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
+for i in $*
+do
+case $i in
+    -p######*|--prefix*)
+    PREFIX######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;`
+
+    ;;
+    -s######*|--searchpath*)
+    SEARCHPATH######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;`
+    ;;
+    -l######*|--lib*)
+    DIR######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;`
+    ;;
+    --default)
+    DEFAULT=YES
+    ;;
+    *)
+            # unknown option
+    ;;
+esac
+done
+echo PREFIX = ${PREFIX}
+echo SEARCH PATH = ${SEARCHPATH}
+echo DIRS = ${DIR}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Makkelijker dan &lt;code&gt;getopts()&lt;/code&gt;?&lt;/p&gt;
+
+&lt;h4 id=&#34;pipen-en-multiple-lines-in-shell-scripts&#34;&gt;Pipen en multiple lines in shell scripts&lt;/h4&gt;
+
+&lt;p&gt;Dit is legale shell code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+cat dinges.log |
+  cut -d &#39; &#39; -f 3
+  grep &#39;Exception&#39; |
+  uniq
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;De pipe aan het begin van een nieuwe lijn alleszins niet. Ook &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; of &lt;code&gt;&amp;gt;&lt;/code&gt; kan niet het begin zijn van een nieuwe lijn, dan wordt een spatie gepiped naar de outputstream.&lt;/p&gt;
+
+&lt;h4 id=&#34;array-loops&#34;&gt;array loops&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;names=( Jennifer Tonya Anna Sadie )
+for name in ${names[@]}
+do
+  echo $name
+  # other stuff on $name
+done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ook mogelijk om bvb een counter bij te houden met &lt;code&gt;for (( i = 0 ; i &amp;lt; ${#names[@]} ; i++ ))&lt;/code&gt;. Array waarde accessen met &lt;code&gt;${names[$i]}&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Inline arrays &amp;ldquo;maken&amp;rdquo; en over lopen gaat met &lt;code&gt;for VAR in &#39;a&#39; &#39;b&#39; &#39;c&#39; do ... done&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;argumenten-samen-rapen-in-een-variabele&#34;&gt;argumenten samen rapen in een variabele&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;DIR_EXCLUDES=(eclipsecompiled test bin target)
+FILE_EXCLUDES=(messages errors)
+
+SEARCH=&amp;quot;&amp;quot;
+
+for FILE_EXCLUDE in ${FILE_EXCLUDES[@]}
+do
+	SEARCH=&amp;quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&amp;quot;
+done
+for DIR_EXCLUDE in ${DIR_EXCLUDES[@]}
+do
+	SEARCH=&amp;quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&amp;quot;
+done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ dit werkt &lt;strong&gt;niet&lt;/strong&gt; als er een dubbele quote bij komt kijken in de vorm van &lt;code&gt;&amp;lt;br/&amp;gt;&amp;quot;&lt;/code&gt; - vreemd? uit te zoeken&amp;hellip;&lt;/p&gt;
+
+&lt;h4 id=&#34;controleren-of-een-string-in-een-variabele-steekt&#34;&gt;Controleren of een string in een variabele steekt&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://stackoverflow.com/questions/229551/string-contains-in-bash&#34;&gt;http://stackoverflow.com/questions/229551/string-contains-in-bash&lt;/a&gt; - makkelijkste manieren zijn&lt;/p&gt;
+
+&lt;h5 id=&#34;met-grep&#34;&gt;met grep&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;if grep -q &#39;|&#39; &amp;lt;&amp;lt;&amp;lt;$line; then
+  echo &amp;quot;jup&amp;quot;
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;met-regexp&#34;&gt;met regexp&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;if [[ &amp;quot;$line&amp;quot; =~ &amp;quot;|&amp;quot; ]]; then
+  echo &amp;quot;jup&amp;quot;
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;loopen-over-alle-lijnen-van-bepaalde-output-voor-verdere-processing&#34;&gt;Loopen over alle lijnen van bepaalde output voor verdere processing&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;`cat somefile` | while read line
+do
+  echo &amp;quot;lijn $line&amp;quot;
+done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dit kan ook maar dan moet je de separator variabele voor &lt;code&gt;for&lt;/code&gt; aanpassen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;IFS=$&#39;&amp;lt;br/&amp;gt;n&#39;
+for line in `cat somefile`
+do
+  echo &amp;quot;lijn $line&amp;quot;
+done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ By default splitst for &lt;strong&gt;op spaties&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

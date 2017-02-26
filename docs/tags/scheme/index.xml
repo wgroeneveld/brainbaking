@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scheme on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/scheme/index.xml</link>
+    <description>Recent content in Scheme on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/scheme/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>edwin-shortcuts</title>
+      <link>http://www.brainbaking.com/wiki/code/scheme/edwin-shortcuts/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/scheme/edwin-shortcuts/</guid>
+      <description>
+
+&lt;h1 id=&#34;mit-scheme-edwin-shortcuts&#34;&gt;MIT-Scheme Edwin shortcuts&lt;/h1&gt;
+
+&lt;p&gt;Afkortingen: C ###### Control, M  ALT (don&amp;rsquo;t ask&amp;hellip;)&lt;/p&gt;
+
+&lt;h3 id=&#34;file-manipulatie&#34;&gt;File manipulatie&lt;/h3&gt;
+
+&lt;p&gt;| &lt;strong&gt;afkorting&lt;/strong&gt; | &lt;strong&gt;gevolg&lt;/strong&gt; |
+| C-X s  | save alle open files van alle buffers (vraagt per buffer&amp;hellip;) |
+| C-X C-S | save zonder vragen |
+| C-X C-F | find file of open nieuwe onbestaande (enter drukken = in buffer files browsen) |&lt;/p&gt;
+
+&lt;h3 id=&#34;buffer-stuff&#34;&gt;Buffer stuff&lt;/h3&gt;
+
+&lt;p&gt;| &lt;strong&gt;afkorting&lt;/strong&gt; | &lt;strong&gt;gevolg&lt;/strong&gt; |
+| C-U C-V | repeat last command |
+| C-C C-C | break operation (&amp;lsquo;Quits&amp;rsquo;) - in case of unlimited iterative recursive loop |
+| C-X [hoedje] | vergroot huidige buffer met één lijn |
+| C-X (getal) | open (getal) aantal buffers |
+| C-X o | toggle buffer (visible) |
+| C-X b | switch buffer met naam |
+| C-X k | kill buffer (vraagt evt bevestiging) |
+| M-o | evaluate buffer contents |
+| C-J | indent bij nieuwe line |
+| TAB | indent huidige regel (&amp;lt;&amp;gt; tab x lijnen prepended) |
+| C-X h | selecteer de hele buffer inhoud |&lt;/p&gt;
+
+&lt;p&gt;❗ Vergeet niet dat het nodig is om een file te saven in een andere buffer als ge &lt;code&gt;load()&lt;/code&gt; gebruikt en die probeert te evalueren, zoals bijvoorbeeld een unit test&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;text-manipulatie-etc&#34;&gt;Text manipulatie etc&lt;/h3&gt;
+
+&lt;p&gt;| &lt;strong&gt;afkorting&lt;/strong&gt; | &lt;strong&gt;gevolg&lt;/strong&gt; |
+| C-A | ga naar begin lijn |
+| C-K | kill line |
+| M-W | copy selected |
+| C-&lt;space&gt; | select stuff |
+| C-Y | niet yank maar paste&amp;hellip; Jup. |
+| C-X u | undo (stackable) |&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/code/scheme/labs/1/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/scheme/labs/1/</guid>
+      <description>
+
+&lt;h1 id=&#34;labs-chapter-1&#34;&gt;Labs: Chapter 1&lt;/h1&gt;
+
+&lt;h4 id=&#34;section-1&#34;&gt;Section 1&lt;/h4&gt;
+
+&lt;h5 id=&#34;1-1&#34;&gt;1.1&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (- a b)
+  (+ a b))
+
+(- 4 3)
+
+(define (een-of-twee een twee)
+  (if (= een 1)
+      een
+      twee))
+
+(define bla
+  (een-of-twee 3 5))
+
+(een-of-twee 2 3)
+
+(define a 6)
+(define b (+ 3 3))
+(= a b)
+
+(cond ((= a 4) 6)
+      ((= b 4) (+ 6 7 a))
+      (else 25))
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-2&#34;&gt;1.2&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(+ 5 (+ 4 (- 2 (- 3 (+ 6 4/5)))))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-3&#34;&gt;1.3&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (sq a)
+  (* a a))
+
+(define (sum-sq a b)
+  (+ (sq a) (sq b)))
+
+(define (sum-sq-largest a b c)
+  (if (&amp;gt; b c)
+      (sum-sq a b)
+      (sum-sq a c)))
+
+(define (sum-squares-two-largest a b c)
+  (if (&amp;gt; a b)
+      (sum-sq-largest a b c)
+      (sum-sq-largest b a c)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-3-tests&#34;&gt;1.3: tests&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(load &amp;quot;./test-manager/load.scm&amp;quot;)
+(load &amp;quot;./ex_1_003.scm&amp;quot;)
+
+(in-test-group sum-squares-two-largest
+ (define-test (last-two-largest)
+   (assert-equals (sum-squares-two-largest 1 2 3) 13))
+ (define-test (first-two-largest)
+   (assert-equals (sum-squares-two-largest 3 2 1) 13))
+ (define-test (first-and-last-largest)
+   (assert-equals (sum-squares-two-largest 3 1 2) 13))
+ (define-test (all-zeros)
+   (assert-equals (sum-squares-two-largest 0 0 0) 0)))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-5&#34;&gt;1.5&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;Oefening:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (p) (p))
+
+(define (test x y)
+ (if (= x 0)
+     0
+	 y))
+	 
+(test 0 (p))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hoe wordt dit door de interpreter geëvalueerd in applicative-order evaluation?&lt;/p&gt;
+
+&lt;p&gt;(evaluate the arguments and then apply)
+&lt;code&gt;(test 0 (p))&lt;/code&gt; ######&amp;gt; &lt;code&gt;(if ( 0 0) 0 (p))&lt;/code&gt; ######&amp;gt; 0 aangezien &lt;code&gt;( 0 0)&lt;/code&gt; naar true evalueert en bijgevolg dus (p) nooit geëvalueerd wordt!&lt;/p&gt;
+
+&lt;p&gt;Hoe wordt dit door de interpreter geëvalueerd in normal-order evaluation?&lt;/p&gt;
+
+&lt;p&gt;(fully expand and then reduce)
+&lt;code&gt;(test 0 (p))&lt;/code&gt; ######&amp;gt; &lt;code&gt;(if ( 0 0) 0 (p))&lt;/code&gt; ######&amp;gt; &lt;code&gt;(if ( 0 0) 0 (p))&lt;/code&gt; =&amp;gt; &amp;hellip; (oneindige lus, constant (p) vervangen door implementatie die zelf (p) is)&lt;/p&gt;
+
+&lt;h5 id=&#34;1-6&#34;&gt;1.6&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;#|
+
+wat loopt er mis nu -&amp;gt;
+(define (sqrt-iter guess x)
+  (cond
+   ((good-enough? guess x) guess)
+   (sqrt-iter (improve guess x) x)))
+
+opnieuw invullen:
+(define (sqrt-iter guess x)
+  (cond
+   ((good-enough? guess x) guess)
+   (cond
+    ((good-enough? guess x) guess)
+    (sqrt-iter...
+
+Bouwt zo een oneindige lus met condition en terug sqrt-iter...
+
+|#
+
+(define (sqrt-iter guess x)
+  (new-if (good-enough? guess x)
+      guess
+      (sqrt-iter (improve guess x)
+		 x)))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (good-enough? guess x)
+  (&amp;lt; (abs (- (square guess) x)) 0.001))
+
+(define (sqrt x)
+  (sqrt-iter 1.0 x))
+
+(define (new-if clause iftrue iffalse)
+  (cond (clause iftrue)
+	(else iffalse)))
+
+(sqrt 2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-7&#34;&gt;1.7&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (good-enough? guess x)
+  (&amp;lt; (abs (- (square guess) x)) 0.001))
+
+; de square van een klein getal is kleiner! 0.01x0.01 = 0.001 wat al in bovenstaande conditie staat
+; dit wil zeggen dat good-enough heel snel true gaat retourneren, zodat onze square root definitie stopt
+; met berekenen. 
+
+; de wortel van een groot getal kan nooit accuraat genoeg zijn omdat we stoppen op 0.001 na de komma.
+; daardoor stopt good-enough? ook weer te vroeg. we hebben dus een andere implementatie nodig. 
+
+
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+  guess
+  (sqrt-iter (improve guess x) x)))
+
+(define (better-sqrt-iter guess previous-guess x)
+  (if (better-enough? guess previous-guess)
+      guess
+      (better-sqrt-iter (improve guess x) guess x)))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (better-enough? guess previous-guess)
+  (and (not (= guess previous-guess))
+  (&amp;lt; (/ (abs (- guess previous-guess)) previous-guess) 0.00001)))
+
+(define (sqrt x)
+  (sqrt-iter 1.0 x))
+
+(define (better-sqrt x)
+  (better-sqrt-iter 1.0 1.0 x))
+
+(better-sqrt 23945890000)
+(sqrt 23945890000)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-8&#34;&gt;1.8&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (cube-iter guess x)
+  (if (good-enough? guess x)
+  guess
+  (cube-iter (improve guess x) x)))
+
+(define (cube x)
+  (* x x x))
+
+(define (good-enough? guess x)
+  (&amp;lt; (abs (- (cube guess) x)) 0.001))
+
+(define (improve guess x)
+  (display &amp;quot; improve &amp;quot;)
+  (display guess)
+  (display &amp;quot; - &amp;quot;)
+  (display x)
+  (/ (+ (/ x (square guess))
+	(* 2 guess))
+     3))
+
+(define (cube-root x)
+  (cube-iter 1.0 x))
+
+(cube-root 16)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-9&#34;&gt;1.9&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;eerste + define&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(define (+ a b)
+  (if (= a 0)
+   b
+   (inc (+ (dec a) b))))
+
+(+ 4 5) ######&amp;gt; (if ( 4 0) 5 (inc (+ (dec 4) 5))) 
+		######&amp;gt; (if ( 4 0) 5 (inc ((if (= (dec 4) 0) 5 (inc (+ (dec (dec 4)) 5))))))
+		######&amp;gt; (if ( 4 0) 5 (inc ((if (###### (dec 4) 0) 5 (inc ((if ( (dec (dec 4)) 0) 5 (inc (+ (dec (dec (dec 4))) 5)))))))))
+		=&amp;gt; .. (wordt altijd maar langer, en dan op een bepaald moment minder, dus dit is duidelijk liniair recursief
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;tweede + define&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(define (+ a b)
+  (if (= a 0)
+   b
+   (+ (dec a) (inc b))))
+   
+(+ 4 5) ######&amp;gt; (if ( 4 0) 5 (+ (dec 4) (inc b)))
+		######&amp;gt; (if ( 4 0) 5 ((if (= (dec 4) 0) (inc b) (+ (dec (dec 4)) (inc (inc b))))))
+		######&amp;gt; (if ( 4 0) 5 ((if (###### (dec 4) 0) (inc b) ((if ( (dec (dec 4)) 0) (inc (inc b)) (+ (dec (dec 4)) (inc (inc b))))))))
+		=&amp;gt; .. Hetzelfde dus. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-10&#34;&gt;1.10&lt;/h5&gt;
+
+&lt;p&gt;Algoritme:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (A x y)
+  (cond ((= y 0) 0)
+		((= x 0) (* 2 y))
+		((= y 1) 2)
+		(else (A (- x 1)
+			(A x (- y 1))))))
+
+(A 2 4)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Oplossen met variabelen:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#1: (A 1 10)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  (cond ((= 10 0) 0)
+		((= 1 0) (* 2 10))
+		((= 10 1) 2)
+		(else (A (- 1 1)
+			(A 1 (- 10 1))))))
+
+		=&amp;gt; (A 0 (A 1 9))
+waarbij (A 1 9) = 
+
+  (cond ((= 9 0) 0)
+		((= 1 0) (* 2 9))
+		((= 9 1) 2)
+		(else (A (- 1 1)
+			(A 1 (- 9 1))))))
+		=&amp;gt; (A 0 (A 1 8) etc
+
+waarbij (A 1 1) = 2
+		
+dus (A 1 10) = (A 0 (A 1 9))
+			 = (A 0 (A 0 (A 1 8)))
+			 = ...
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 1))))))))))
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 2)))))))))
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 4))))))))
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 8)))))))
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 16))))))
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 32)))))
+			 = (A 0 (A 0 (A 0 (A 0 64))))
+			 = (A 0 (A 0 (A 0 128)))
+			 = (A 0 (A 0 (A 0 128)))
+			 = (A 0 (A 0 256))
+			 = (A 0 512)
+			 = 1024
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;mathematische definities:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fn ###### (A 0 n)  2n
+gn ###### (A 1 n)  2^n
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-10-tests&#34;&gt;1.10: tests&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(load &amp;quot;./test-manager/load.scm&amp;quot;)
+(load &amp;quot;./ex_1_010.scm&amp;quot;)
+
+(in-test-group ackermann
+ (define-test (a-1-10)
+   (assert-equals (A 1 10) 1024)))
+
+(run-registered-tests) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-11&#34;&gt;1.11&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;; f(n) = n if n &amp;lt; 3
+; f(n) ###### f(n - 1) + 2f(n - 2) + 3f(n - 3) if n &amp;gt; 3
+; write a program that defines f recursively and iteratively
+
+(define (fn n)
+  (cond
+   ((&amp;lt; n 3) n)
+   (else (+ (+ (fn (- n 1)) (* 2 (fn (- n 2)))) (* 3 (fn (- n 3)))))
+   ))
+
+(define (fn-it n)
+  (define (fn-it-loop fn1 fn2 fn3 count)
+    (if (= count n)
+    fn3
+    (fn-it-loop (+ fn1 (* 2 fn2) (* 3 fn3))
+		fn1
+		fn2
+		(+ count 1))))
+  (fn-it-loop 2 1 0 0))
+
+(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+; this should be refactored into passing the function as a pointer
+; and only calling all assertions once...
+; todo after the tests pass!
+
+(in-test-group
+ fn-functie
+ (define (define-tests-fn fnfunc)
+   (define-each-test
+     (check (= (fnfunc 0) 0) &amp;quot;fn0&amp;lt;3 should be 0&amp;quot;))
+   (define-each-test
+     (check (= (fnfunc 2) 2) &amp;quot;fn2&amp;lt;3 should be 2&amp;quot;))
+   (define-each-test
+     (check (= (fnfunc 3) 4) &amp;quot;fn3 should be 4&amp;quot;))
+   (define-each-test
+     (check (= (fnfunc 4) 11) &amp;quot;fn4 should be 11&amp;quot;))
+   (define-each-test
+     (assert-equals (fnfunc 5) 25))
+   (define-each-test
+     (assert-equals (fnfunc 0) 0)))
+ (define-tests-fn fn)
+ (define-tests-fn fn-it))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-12&#34;&gt;1.12&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;
+(define (pascal entry row)
+  (cond ((= 0 entry) 0)
+	((and (###### 0 row) ( 1 entry)) 1)
+	((= 0 row) 0)
+	(else (+ (pascal (- entry 1) (- row 1)) (pascal entry (- row 1))))))
+
+
+(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+(in-test-group
+ pascal
+ (define-test (first-row-is-one)
+   (assert-equals (pascal 1 0) 1))
+ (define-test (zero-entry-is-always-zero)
+   (assert-equals (pascal 0 234) 0)
+   (assert-equals (pascal 0 23) 0)
+   (assert-equals (pascal 0 0) 0))
+ (define-test (pascal-row1)
+   (assert-equals (pascal 1 1) 1)
+   (assert-equals (pascal 2 1) 1))
+ (define-test (pascal-row2)
+   (assert-equals (pascal 1 2) 1)
+   (assert-equals (pascal 2 2) 2)
+   (assert-equals (pascal 3 2) 1))
+ (define-test (pascal-row4)
+   (assert-equals (pascal 1 4) 1)
+   (assert-equals (pascal 2 4) 4)
+   (assert-equals (pascal 3 4) 6)
+   (assert-equals (pascal 4 4) 4)
+   (assert-equals (pascal 5 4) 1))
+ (define-test (pascal-row3)
+   (assert-equals (pascal 1 3) 1)
+   (assert-equals (pascal 2 3) 3)
+   (assert-equals (pascal 3 3) 3)
+   (assert-equals (pascal 4 3) 1)))
+	       
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-14&#34;&gt;1.14&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;
+(count-change 11)
+-----------------
+
+= (cc 11 5) (amount, kinds-of-coins)
+= (+ (cc 11 4) (cc -39 5))
+###### (+ (+ (cc 11 3) (cc -14 4)) 0) &amp;gt; amount &amp;lt; 0? altijd 0 vanaf nu
+= (+ (cc 11 2) (cc 1 3))
+= (+ (+ (cc 11 1) (cc 6 2)) (cc 1 2))
+= ... 
+Opgezet in boom vorm:
+
+cc(11, 5)
+    |
+   11,4
+    |
+   11,3
+    |
+   1,3    --    11,2
+    |             | 
+   0,2 			 6,2     --     11,1
+				  | 			 |
+				1,2  --  6,1	11,0    --  10,1
+											 |
+											10,0   --  9,1
+														|
+														9,0    --  8,1
+																    |
+																	8,0 -- 7,1
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;voor &lt;code&gt;cc(x, 1)&lt;/code&gt; worden er telkens 2 branches gemaakt waarvan er 1 aftakt: &lt;code&gt;cc(x-1, 1)&lt;/code&gt; en &lt;code&gt;cc(x, 0) = 0&lt;/code&gt;
+voor &lt;code&gt;cc(x, 5)&lt;/code&gt; wordt er naar rechts afgetakt voor elke &amp;ldquo;kind of coin&amp;rdquo;: op 2 en 1&lt;/p&gt;
+
+&lt;p&gt;Dus de recusie diepte is O(n) aangezien voor een hoger getal er één extra branch aangemaakt wordt.
+Het geheugengebruik (space) hangt af van de kind of coins parameter. O(n^kinds-of-coins)&lt;/p&gt;
+
+&lt;h5 id=&#34;1-15&#34;&gt;1.15&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;(sine 12.15)
+= (p (sine 4.05))
+= (p (p (sine (1.35))))
+= (p (p (p (sine (0.45)))))
+= (p (p (p (p (sine (0.15))))))
+= (p (p (p (p (p (sine (0.05)))))))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Stopconditie gaat af, laatste sine = 0.05 zelf. P werd dus 5x uitgevoerd.&lt;/p&gt;
+
+&lt;p&gt;Om de tijdscomplexiteit te berekenen, proberen we eens met een groter getal:
+  1. (sine 100) -&amp;gt; 7x sine uitvoeren
+  1. (sine 255555) -&amp;gt; 12x sine uitvoeren
+Het aantal stappen neemt bijna niet toe maar is wel proportioneel aan a zelf.&lt;/p&gt;
+
+&lt;p&gt;Aangezien we altijd delen door 3, en stoppen indien &amp;lt; 0.01, wordt het probleem voor extreem grote getallen nog snel opgelost. Dus:&lt;br/&gt;&lt;br/&gt;
+######&amp;gt; &lt;strong&gt;&lt;code&gt;O(a)  3log(a)&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Gegeven dat de cube en p functies in tijd en geheugen een complexiteit van O(1) hebben. &lt;br/&gt;&lt;br/&gt;
+(Geen recursie, altijd dezelfde calls en geheugengebruik voor eender welke input n)&lt;/p&gt;
+
+&lt;h5 id=&#34;1-16&#34;&gt;1.16&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;; ab^n = cte
+; (b^n/2)^2 = (b^2)^n/2 en de originele formule:
+; b^n = (b^n/2)^2 indien n even
+; b^n = b*b^n-1   indien n oneven
+
+(define (exp b n)
+  (define (even? n)
+    (= (remainder n 2) 0))
+
+  (define (exp-it b n a)
+    (display &amp;quot;exp it &amp;quot;)
+    (display b)
+    (display &amp;quot; &amp;quot;)
+    (display n)
+    (display &amp;quot; &amp;quot;)
+    (display a)
+    (newline)
+    (cond
+     ((= n 0) a)
+     ((even? n)
+      (exp-it (square b) (/ n 2) a))
+     (else (exp-it b (- n 1) (* b a)))))
+	    
+  (exp-it b n 1))
+
+
+(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+(in-test-group
+ fast-exp
+ (define-test (exp-of-something-zero-is-one)
+   (assert-equals (exp 103 0) 1))
+ (define-test (exp-of-ten-to-one-is-ten)
+   (assert-equals (exp 10 1) 10))
+ (define-test (exp-random-numbers)
+   (assert-equals (exp 4 3) 64)
+   (assert-equals (exp 10 2) 100)
+   (assert-equals (exp 3 6) 729)))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-17&#34;&gt;1.17&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (slow-multi a b)
+  (if (= b 0)
+      0
+      (+ a (slow-multi a (- b 1)))))
+
+(define (double a)
+  (* a 2))
+(define (halve a)
+  (/ a 2))
+
+(define (multi a b)
+  (cond
+   ((= b 0) 0)
+   ((even? b) (double (multi a (halve b))))
+   (else (+ a (multi a (- b 1))))))
+
+
+(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+(in-test-group
+ fast-multiplications
+ (define-test (boundary-conditions)
+   (assert-equals (multi 45 0) 0)
+   (assert-equals (multi 45 1) 45))
+ (define-test (simple-multiplications)
+   (assert-equals (multi 2 2) 4)
+   (assert-equals (multi 3 4) 12)
+   (assert-equals (multi 10 5) 50)))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-18&#34;&gt;1.18&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (stack . args)
+  (display args)
+  (newline))
+
+(define (multi a b)
+
+  (define (double a)
+    (* a 2))
+  (define (halve a)
+    (/ a 2))
+
+  (define (multi-it a b product)
+    (stack &amp;quot;multi-it&amp;quot; a b product)  
+    (cond
+     ((= b 0) product)
+     ((even? b) (multi-it (double a) (halve b) product))
+     (else (multi-it a (- b 1) (+ a product)))))
+
+  (multi-it a b 0))
+
+(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+(in-test-group
+ multi
+ (define-test (checking-them-bounds-dawg)
+   (assert-equals (multi 2 0) 0)
+   (assert-equals (multi 2 1) 2))
+ (define-test (checking-them-simple-numbers-yo)
+   (assert-equals (multi 2 2) 4)
+   (assert-equals (multi 5 10) 50)
+   (assert-equals (multi 3 4) 12)))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>labs</title>
+      <link>http://www.brainbaking.com/wiki/code/scheme/labs/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/scheme/labs/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-scheme-labs&#34;&gt;code:scheme &amp;gt;&amp;gt; Labs&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>scheme</title>
+      <link>http://www.brainbaking.com/wiki/code/scheme/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/scheme/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-scheme&#34;&gt;code &amp;gt;&amp;gt; Scheme&lt;/h1&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Exercices&lt;/strong&gt; &lt;a href=&#34;http://www.brainbaking.com/wiki/code/scheme/labs/1/&#34;&gt;chapter 1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;code/scheme|js&amp;rsquo;&amp;gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;variable-arguments&#34;&gt;Variable arguments&lt;/h3&gt;
+
+&lt;p&gt;Bron: &lt;a href=&#34;http://www.cs.utexas.edu/ftp/garbage/cs345/schintro-v14/schintro_68.html&#34;&gt;http://www.cs.utexas.edu/ftp/garbage/cs345/schintro-v14/schintro_68.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (stack . args)
+  (display args))
+
+(define (plus a b)
+  (stack a b)
+  (+ a b))
+  
+(plus 1 2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Print in een lijst &lt;code&gt;(1 2)&lt;/code&gt; af. In scheme is het mogelijk om args op te splitsen, alles dat na de &amp;ldquo;.&amp;rdquo; komt, wordt samengenomen als een lijst in een speciale variabele die de rest van de argumenten binnen pakt. Je kan dus ook x aantal argumenten &amp;ldquo;vast&amp;rdquo; zetten en de rest laten opvangen door een lijst. &lt;code&gt;display&lt;/code&gt; print alles in lijst vorm af.&lt;/p&gt;
+
+&lt;h3 id=&#34;conditional-expressions-and-predicates&#34;&gt;Conditional Expressions and Predicates&lt;/h3&gt;
+
+&lt;h5 id=&#34;debugging-purposes&#34;&gt;Debugging purposes&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;(display arg)&lt;/code&gt; print argument in de &lt;code&gt;*scheme*&lt;/code&gt; buffer af. (pakt een &lt;strong&gt;lijst&lt;/strong&gt; binnen: bvb &lt;code&gt;(display &#39;(&amp;quot;bezig met afdrukken van &amp;quot; arg1 arg2))&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;(newline)&lt;/code&gt; maakt een nieuwe lijn in diezelfde buffer.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;de-undefined-variabele&#34;&gt;de &amp;lsquo;undefined&amp;rsquo; variabele&lt;/h5&gt;
+
+&lt;p&gt;Een conditional operator die door alle gevallen heen valt (zoals een switch zonder default), retourneert de variabele &lt;strong&gt;unspecific&lt;/strong&gt;. Dit is een reserved keyword:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+(in-test-group conditionals
+ (define x 0)
+ (define-test (case-fall-through-returns-undefined)
+   (assert-equals unspecific
+		  (cond ((&amp;lt; x 0) 1)
+			((&amp;gt; x 0) 1)))
+   ))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Het is niet mogelijk om die variabele te overschrijven met &lt;code&gt;(define unspecific 8934)&lt;/code&gt;, volgende fout wordt dan gegenereerd: &amp;ldquo;Premature reference to reserved name: unspecific.&amp;rdquo;&lt;/p&gt;
+
+&lt;h3 id=&#34;implementaties&#34;&gt;Implementaties&lt;/h3&gt;
+
+&lt;p&gt;❗ Shortucts voor Emacs geïntegreerd in MIT-Scheme: zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/scheme/edwin-shortcuts/&#34;&gt;code/scheme/edwin-shortcuts&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MIT-Scheme: &lt;a href=&#34;http://www.gnu.org/s/mit-scheme/&#34;&gt;http://www.gnu.org/s/mit-scheme/&lt;/a&gt; -&amp;gt; ingebouwde emacs evaluator&lt;/li&gt;
+&lt;li&gt;Racket: &lt;a href=&#34;http://racket-lang.org/&#34;&gt;http://racket-lang.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;testen-schrijven&#34;&gt;Testen schrijven&lt;/h3&gt;
+
+&lt;p&gt;Testing framework: Zie &lt;a href=&#34;http://web.mit.edu/~axch/www/testing-1.2.html&#34;&gt;http://web.mit.edu/~axch/www/testing-1.2.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Inladen test-manager &amp;amp; testen definen en kunnen wrappen in elkaar à-la Jasmine in JS:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+(in-test-group my-first-tests
+
+  (in-test-group getallekes
+    
+	 (define-test (add-simple-numbers)
+	   (assert-equals (my-add 1 2) 3)))
+	   
+	(in-test-group meer-getallekes
+	 (define-test (add-more-complex-numbers)
+	   (assert-equals (my-add 3 7) 10))))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Achteraf altijd &lt;strong&gt;&lt;code&gt;run-registered-tests&lt;/code&gt;&lt;/strong&gt; evalueren, in de default scheme editor wordt dan de test output getoond. (Default editor = &lt;strong&gt;scheme&lt;/strong&gt;*, gewoon enter drukken bij open doen nieuwe editor)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

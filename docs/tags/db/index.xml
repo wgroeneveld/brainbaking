@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Db on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/db/index.xml</link>
+    <description>Recent content in Db on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/db/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mssql</title>
+      <link>http://www.brainbaking.com/wiki/code/db/mssql/</link>
+      <pubDate>Tue, 24 May 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/mssql/</guid>
+      <description>
+
+&lt;h1 id=&#34;mssql&#34;&gt;MSSQL&lt;/h1&gt;
+
+&lt;h3 id=&#34;clustered-indexen-aanpassen-door-ze-eerst-te-resolven-in-een-cursor&#34;&gt;clustered indexen aanpassen door ze eerst te resolven in een cursor&lt;/h3&gt;
+
+&lt;p&gt;Onderstaand stukje code for future reference&amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;DECLARE @constraint NVARCHAR(MAX)
+DECLARE @cmd NVARCHAR(MAX)
+DECLARE @table NVARCHAR(MAX)
+
+DECLARE FKCURSOR CURSOR FOR 
+select distinct name,object_name(parent_object_id) from sys.objects where object_id in 
+(   select fk.constraint_object_id from sys.foreign_key_columns as fk
+    where fk.referenced_object_id = 
+    	(select object_id from sys.tables where name = &#39;Reference&#39;)
+)
+
+OPEN FKCURSOR
+
+FETCH NEXT FROM FKCURSOR 
+INTO @constraint, @table
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	SET @cmd = N&#39;ALTER TABLE [dbo].[&#39;+@table+&#39;] DROP CONSTRAINT &#39; +  @constraint
+	EXEC sp_executeSQL @cmd;
+
+   FETCH NEXT FROM FKCURSOR 
+    INTO @constraint, @table
+END 
+CLOSE FKCURSOR;
+DEALLOCATE FKCURSOR;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;constraints-met-auto-names-verwijderen-als-een-kolom-hierop-depent&#34;&gt;constraints met auto-names verwijderen als een kolom hierop depent&lt;/h3&gt;
+
+&lt;p&gt;Gebruik information schemes om de data hier uit te halen.&lt;/p&gt;
+
+&lt;p&gt;Bvb onderstaande code verwijdert de kolom &amp;lsquo;isDefault&amp;rsquo;, nadat alle constraints hierrond verwijderd zijn.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;declare @cname varchar(100)
+declare @query nvarchar(max)
+set @cname = (
+
+SELECT
+    default_constraints.name
+FROM 
+    sys.all_columns
+
+        INNER JOIN
+    sys.tables
+        ON all_columns.object_id = tables.object_id
+
+        INNER JOIN 
+    sys.schemas
+        ON tables.schema_id = schemas.schema_id
+
+        INNER JOIN
+    sys.default_constraints
+        ON all_columns.default_object_id = default_constraints.object_id
+
+WHERE 
+        schemas.name = &#39;dbo&#39;
+    AND tables.name = &#39;tblhtmltemplate&#39;
+    AND all_columns.name = &#39;isdefault&#39;)
+
+	set @query = &#39;alter table tblhtmltemplate drop constraint &#39; + @cname 
+
+if @cname is not null begin
+	exec sp_executesql @query
+end
+
+IF  EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name######&#39;tblHtmlTemplate&#39; AND column_name &#39;isDefault&#39;)
+BEGIN
+	alter table tblhtmltemplate drop column isdefault;
+END;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;functies-aanmaken-om-mysql-syntax-te-mimicken&#34;&gt;functies aanmaken om MySQL syntax te mimicken&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION ifnull 
+(
+	-- Add the parameters for the function here
+	@value1 datetime, @returnvalue int
+)
+RETURNS datetime
+AS
+BEGIN
+	return isnull(@value1, @returnvalue)
+
+END
+GO
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zou &lt;code&gt;IFNull&lt;/code&gt; moeten mimicken, maar je kan enkel &lt;code&gt;select dbo.ifnull()&lt;/code&gt; doen ipv de native syntax&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;waar-zijn-de-db-files-op-de-schijf-ergens-geplaatst&#34;&gt;Waar zijn de DB files op de schijf ergens geplaatst?&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT name, physical_name AS current_file_location
+FROM sys.master_files
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;https://msdn.microsoft.com/en-us/library/ms143547.aspx&#34;&gt;MSDN: MSSQL DB file locations&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;alter-databases-gaan-traag&#34;&gt;Alter databases gaan traag&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;uitvoeren met &lt;code&gt;WITH ROLLBACK IMMEDIATE;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;uitvoeren in &lt;code&gt;SINGLE_USER&lt;/code&gt; mode (set op db niveau, dan terug naar &lt;code&gt;MULTI_USER&lt;/code&gt; zetten)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;query-notifications&#34;&gt;Query notifications&lt;/h3&gt;
+
+&lt;p&gt;Service broker aan zetten: &lt;code&gt;ALTER DATABASE db_name SET ENABLE_BROKER with rollback immediate&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Hoe checken of reeds enabled is? &lt;code&gt;select name, database_id, service_broker_guid from sys.databases where is_broker_enabled = 1;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ service broker GUIDs zijn dezelfde indien DB gekopiëerd is, bijgevolg krijg je deze fout indien je &lt;code&gt;ENABLE_BROKER&lt;/code&gt; tracht uit te voeren op zo&amp;rsquo;n kopie:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cannot be enabled because there is already an enabled Service Broker with the same ID
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Fix: (&lt;a href=&#34;http://www.mssqltips.com/sqlservertip/2789/sql-server-service-broker-error-database-cannot-be-enabled/&#34;&gt;bron&lt;/a&gt;) maak een nieuwe broker GUID aan met &lt;code&gt;SET NEW_BROKER&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;in-combinatie-met-nhibernate-syscache2&#34;&gt;In combinatie met NHibernate Syscache2&lt;/h5&gt;
+
+&lt;p&gt;Zie&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http:*developer.empinia.org/svn/empinia/vendor/bin/nhibernate/trunk/Doc/html/caches.html&#34;&gt;http:*developer.empinia.org/svn/empinia/vendor/bin/nhibernate/trunk/Doc/html/caches.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http:*tamingcode.com/2013/07/01/cacheable-queries-pitfalls/&#34;&gt;http:*tamingcode.com/2013/07/01/cacheable-queries-pitfalls/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;hoe-weet-ik-nu-of-notification-works&#34;&gt;Hoe weet ik nu of notification works?&lt;/h4&gt;
+
+&lt;p&gt;We moeten zien of de &lt;strong&gt;Broker:Conversation&lt;/strong&gt; berichten correct op- en afgestuurd worden. Dit kan je best nagaan in SQL Server Profiler:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/db/sqlprofiling.png&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Volgende dingen zouden moeten gebeuren:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;STARTED_OUTBOUND bericht (conversation)&lt;/li&gt;
+&lt;li&gt;CONVERSING bericht (conversation) van .Net SqlClient applicationName&lt;/li&gt;
+&lt;li&gt;QN:Subscription van .Net SqlClient applicationName&lt;/li&gt;
+&lt;li&gt;QN:Dynamics event subclass Clock run om te zien of het event gequeued is.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;pitfalls-en-errors&#34;&gt;Pitfalls en errors&lt;/h4&gt;
+
+&lt;h5 id=&#34;system-invalidoperationexception-when-using-sqldependency-without-providing-an-options-value-sqldependency-start-must-be-called-prior-to-execution-of-a-command-added-to-the-sqldependency-instance&#34;&gt;System.InvalidOperationException: When using SqlDependency without providing an options value, SqlDependency.Start() must be called prior to execution of a command added to the SqlDependency instance.&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://richarddingwall.name/2009/10/09/nhibernate-caches-syscache2-dont-forget-to-call-sqldependency-start/&#34;&gt;Bron&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;SqlDependency.Start(conString)&lt;/code&gt; aanroepen vóór de setup van bvb de NHibernate session factory. Dit moet je zelf doen, ook al gebruik je SysCache2 met regions.&lt;/p&gt;
+
+&lt;p&gt;❗ altijd eerst Stop aanroepen!&lt;/p&gt;
+
+&lt;h5 id=&#34;cannot-execute-as-the-database-principal-because-the-principal-dbo-does-not-exist&#34;&gt;Cannot execute as the database principal because the principal &amp;ldquo;dbo&amp;rdquo; does not exist&lt;/h5&gt;
+
+&lt;p&gt;In SQL Server profiler zichtbaar bij broker events - dit komt vanwege te weinig rechten.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;use [DBNAME] EXEC sp_changedbowner &#39;sa&lt;/code&gt;&amp;rsquo; lost dit probleem op (zie profiling)&lt;/p&gt;
+
+&lt;h3 id=&#34;mssql-specifieke-syntax&#34;&gt;MSSQL specifieke syntax&lt;/h3&gt;
+
+&lt;h5 id=&#34;batch-processing&#34;&gt;Batch processing&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;GO&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;The GO command isn&amp;rsquo;t a Transact-SQL statement, but a special command recognized by several MS utilities including SQL Server Management Studio code editor.&lt;/p&gt;
+
+&lt;p&gt;The GO command is used to group SQL commands into batches which are sent to the server together. The commands included in the batch, that is, the set of commands since the last GO command or the start of the session, must be logically consistent. For example, you can&amp;rsquo;t define a variable in one batch and then use it in another since the scope of the variable is limited to the batch in which it&amp;rsquo;s defined.&lt;/p&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http:*msdn.microsoft.com/en-us/library/ms188037.aspx&#34;&gt;http:*msdn.microsoft.com/en-us/library/ms188037.aspx&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;❗ Dit is blijkbaar ook wijzigbaar naar een karakterset naar keuze in Management studio options:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/db/go_option_mssql.png&#39;&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;rename-columns&#34;&gt;Rename columns&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;EXEC sp_RENAME &#39;TableName.OldColumnName&#39; , &#39;NewColumnName&#39;, &#39;COLUMN&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;werken-met-datums&#34;&gt;werken met datums&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;GETDATE()&lt;/code&gt; is een now timestamp (in MySQL is dit &lt;code&gt;CURDATE()&lt;/code&gt;. Records selecteren met een bepaalde timestamp (&amp;ldquo;vanaf&amp;rdquo;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select * from table where datecolumn &amp;gt;= Convert(datetime, &#39;2014-09-11&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In Oracle is dit bijvoorbeeld &lt;code&gt;TO_DATE(&#39;26/JAN/2011&#39;,&#39;dd/mon/yyyy&#39;)&lt;/code&gt; in plaats van &lt;code&gt;Convert()&lt;/code&gt; - in MySQL kan dit rechtstreeks in een bepaald formaat: &lt;code&gt;WHERE start_date &amp;gt;&#39;2012-11-18&#39;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h3&gt;
+
+&lt;h5 id=&#34;ado-net-connection-pool-monitoring&#34;&gt;ADO .NET Connection pool monitoring&lt;/h5&gt;
+
+&lt;p&gt;Mogelijk met &lt;strong&gt;Performance monitor&lt;/strong&gt; in Win32 (Run -&amp;gt; &lt;code&gt;perfmon&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Step-by-step uitleg: (oude versie) &lt;a href=&#34;http://www.c-sharpcorner.com/uploadfile/CMouli/monitoring-database-connections-using-performance-counters/&#34;&gt;Monitoring DB connections using performance counters&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://msdn.microsoft.com/en-us/library/ms254503.aspx&#34;&gt;Mogelijke counters - MSDN&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;NumberOfActiveConnections&lt;/li&gt;
+&lt;li&gt;NumberOfFreeConnections&lt;/li&gt;
+&lt;li&gt;NumberOfPooledConnections&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left;&#39; src=&#39;http://www.brainbaking.com/img//code/db/addcounters.png |&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Alles ivm DB connecties in .NET is ook mogelijk te bekijken met de &lt;a href=&#34;http://www.red-gate.com/products/dotnet-development/ants-performance-profiler/&#34;&gt;ANTS Performance profiler&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;aantal-momenteel-actieve-threads-bezien&#34;&gt;Aantal momenteel actieve threads bezien&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT 
+    DB_NAME(dbid) as DBName, 
+    COUNT(dbid) as NumberOfConnections,
+    loginame as LoginName
+FROM
+    sys.sysprocesses
+WHERE 
+    dbid &amp;gt; 0
+GROUP BY 
+    dbid, loginame
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sqlite</title>
+      <link>http://www.brainbaking.com/wiki/code/db/sqlite/</link>
+      <pubDate>Fri, 17 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/sqlite/</guid>
+      <description>
+
+&lt;h1 id=&#34;sqlite&#34;&gt;SQLite&lt;/h1&gt;
+
+&lt;h3 id=&#34;ddls-copypasten-van-oracle&#34;&gt;DDLs copypasten van Oracle&lt;/h3&gt;
+
+&lt;p&gt;Bijvoorbeeld de gegenereerde versie (SQL tab) van Oracle SQL Developer overnemen gaat niet zomaar.&lt;/p&gt;
+
+&lt;p&gt;Er zijn enkele verschillen:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;NOT NULL ENABLE&lt;/code&gt; wegdoen. &lt;code&gt;NOT NULL&lt;/code&gt; maakt niets uit aangezien het in-memory is om te testen!&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;USING INDEX&lt;/code&gt; blabla na de &lt;code&gt;PRIMARY KEY&lt;/code&gt; statements zijn ook allemaal niet nodig (&lt;code&gt;STORAGE&lt;/code&gt; etc)&lt;/li&gt;
+&lt;li&gt;speciale defaults of syscalls zoals &lt;code&gt;sys_guid()&lt;/code&gt; bestaan niet.&lt;/li&gt;
+&lt;li&gt;definities van groottes: wegdoen van &lt;code&gt;BYTE&lt;/code&gt;: &lt;code&gt;VARCHAR2(26)&lt;/code&gt; dus.&lt;/li&gt;
+&lt;li&gt;opletten met datums: zie onder.&lt;/li&gt;
+&lt;li&gt;Namespace mag ook weg bij &lt;code&gt;CREATE TABLE &amp;quot;SPACE&amp;quot;.&amp;quot;NAME&amp;quot; (&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;connection-strings&#34;&gt;Connection strings&lt;/h3&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.connectionstrings.com/sqlite/&#34;&gt;http://www.connectionstrings.com/sqlite/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;file-based&#34;&gt;File based&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;Data Source######c:&amp;lt;br/&amp;gt;mydb.db;Version3;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;in-memory&#34;&gt;In-memory&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;Data Source######:memory:;Version3;New=True;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Conventie &lt;code&gt;Data Source=&lt;/code&gt; notatie gehanteerd door &lt;a href=&#34;http:*www.connectionstrings.com/sqlite/&#34;&gt;http:*www.connectionstrings.com/sqlite/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Andere notatie&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FullUri######file::memory:?cacheshared
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notatie gehanteerd door &lt;a href=&#34;https:*www.sqlite.org/inmemorydb.html&#34;&gt;https:*www.sqlite.org/inmemorydb.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Versie en New hoeft blijkbaar niet (?)&lt;/p&gt;
+
+&lt;p&gt;❗ Elke keer als je een connectie opendoet gaat SQLite de inmemory DB state restoren naar default (dus leeg). Als je dus bvb;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;connectie open&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CREATE TABLE;&lt;/code&gt; brol uitvoeren&lt;/li&gt;
+&lt;li&gt;connectie sluiten&lt;/li&gt;
+&lt;li&gt;roep andere method aan&lt;/li&gt;
+&lt;li&gt;connectie open&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SELECT * FROM TABLE;&lt;/code&gt; brol uitvoeren&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;BOEM no such table&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://stackoverflow.com/questions/17477246/sqlite-in-memory-database-create-table-does-not-work&#34;&gt;SQLite in memory create table does not work&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;❗ Hou dus 1x een connectie open voor unit testen bij een &lt;code&gt;[SetUp]&lt;/code&gt; en geef referenties door.&lt;/p&gt;
+
+&lt;h5 id=&#34;extra-opties-meegeven-via-de-connection-string&#34;&gt;Extra opties meegeven via de connection string&lt;/h5&gt;
+
+&lt;p&gt;Je kan &lt;code&gt;PRAGMA&lt;/code&gt; parameters zoals &lt;a href=&#34;http://www.sqlite.org/pragma.html#pragma_locking_mode&#34;&gt;deze&lt;/a&gt; meegeven.&lt;/p&gt;
+
+&lt;h3 id=&#34;integreren-met-c&#34;&gt;Integreren met C#&lt;/h3&gt;
+
+&lt;h4 id=&#34;db-connectie&#34;&gt;DB Connectie&lt;/h4&gt;
+
+&lt;p&gt;Gebruik &lt;a href=&#34;http://system.data.sqlite.org/index.html/doc/trunk/www/index.wiki&#34;&gt;http://system.data.sqlite.org/index.html/doc/trunk/www/index.wiki&lt;/a&gt; (package &lt;code&gt;System.data.SQLite (x86/x64)&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Voor &lt;code&gt;OleDb&lt;/code&gt; C# code, is er voor elke klasse een equivalent in de &lt;code&gt;SQLite&lt;/code&gt; namespace, bijvoorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        private SQLiteConnection SqLiteDbConnection()
+        {
+            return new SQLiteConnection()
+                {
+                    ConnectionString ###### &amp;quot;Data Sourcemydb.s3db;&amp;quot;,
+                    Flags = SQLiteConnectionFlags.LogAll
+                };
+        }
+
+        public void SetupDb()
+        {
+            using (var connection = SqLiteDbConnection())
+            {
+                connection.Open();
+                var transaction = connection.BeginTransaction();
+                var sqLiteCommand = new SQLiteCommand()
+                    {
+                        Connection = (SQLiteConnection) connection,
+                        CommandType = CommandType.Text,
+                        CommandText = GetSchemaCreateSql()
+                    };
+                sqLiteCommand.ExecuteNonQuery();
+                transaction.Commit();
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;builden-op-x86-x64-systemen&#34;&gt;Builden op x86/x64 systemen&lt;/h4&gt;
+
+&lt;p&gt;Afhankelijk van welke package manager je gebruikt (NuGet bvb.) kan een &lt;code&gt;SQLite.interop.dll&lt;/code&gt; in submapjes &lt;code&gt;x86&lt;/code&gt; en &lt;code&gt;x64&lt;/code&gt; geplaatst worden (Copy always als content). Lokaal werkt dit, maar op de build pc (die bijvoorbeeld enkel 32-bit is) niet, omdat de DLL op dezelfde plaats als de executable verwacht wordt. Hier zijn een paar mogelijke oplossingen voor:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Gebruik enkel de 32bit versie. (er is zo&amp;rsquo;n specifieke package voor)&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Hint&amp;rdquo; de DLL loader om de juiste te gebruiken&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;[System.Runtime.InteropServices.DllImport(&amp;quot;kernel32.dll&amp;quot;, CharSet ###### System.Runtime.InteropServices.CharSet.Unicode, SetLastError  true)]
+    [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)]
+    static extern bool SetDllDirectory(string lpPathName);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    [STAThread]
+    static void Main()
+    {
+        int wsize = IntPtr.Size;
+        string libdir ###### (wsize  4)?&amp;quot;x86&amp;quot;:&amp;quot;x64&amp;quot;;
+        string appPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+        SetDllDirectory(System.IO.Path.Combine(appPath, libdir));
+        // ...
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http:*stackoverflow.com/questions/13028069/unable-to-load-dll-sqlite-interop-dll&#34;&gt;http:*stackoverflow.com/questions/13028069/unable-to-load-dll-sqlite-interop-dll&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;net-dates-en-sqlite-dates&#34;&gt;.NET dates en SQLite dates&lt;/h4&gt;
+
+&lt;p&gt;Als je een &lt;code&gt;DATE&lt;/code&gt; kolom hebt, en een SQL zoals gewoon &lt;code&gt;select * from blah;&lt;/code&gt; uitvoert, kan je de volgende fout krijgen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;String was not recognized as a valid DateTime
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dit komt doordat SQLite dynamisch getypeerd is en voor hem een date hetzelfde als een char is, gebruik daarvoor de &lt;code&gt;date()&lt;/code&gt; functie om zelf te parsen! Beetje vervelend in de queries&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Een andere mogelijkheid is &lt;code&gt;DateTimeFormat=Ticks&lt;/code&gt; in de connection string meegeven.&lt;/p&gt;
+
+&lt;h4 id=&#34;creating-integration-tests-using-record-objects&#34;&gt;Creating integration tests, using Record objects&lt;/h4&gt;
+
+&lt;p&gt;Maak objecten die extenden van &lt;code&gt;DatabaseInsertable&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    public abstract class DatabaseInsertable
+    {
+        protected abstract string GetTable();
+
+        public override string ToString()
+        {
+            var fieldDict = FieldDictionary();
+            var fields = &amp;quot;(&amp;quot; + string.Join(&amp;quot;,&amp;quot;, fieldDict.Keys) + &amp;quot;)&amp;quot;;
+            var values = &amp;quot;(&amp;quot; + string.Join(&amp;quot;,&amp;quot;, fieldDict.Values) + &amp;quot;)&amp;quot;;
+
+            return &amp;quot;insert into &amp;quot; + GetTable() + fields + &amp;quot; values &amp;quot; + values;
+        }
+
+        public void Save()
+        {
+            DbConnection.Instance.CreateCommand(ToString()).ExecuteNonQuery();
+        }
+
+        private Dictionary&amp;lt;string, string&amp;gt; FieldDictionary()
+        {
+            var dictionary = new Dictionary&amp;lt;string, string&amp;gt;();
+
+            foreach (var info in this.GetType().GetFields())
+            {
+                if (info.GetValue(this) != null)
+                {
+                    dictionary.Add(info.Name, &amp;quot;&#39;&amp;quot; + info.GetValue(this).ToString() + &amp;quot;&#39;&amp;quot;);
+                }
+            }
+
+            return dictionary;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zoals bijvoorbeeld&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    internal class UnitRecord : DatabaseInsertable
+    {
+        public string creator;
+        public string guid;
+
+        protected override string GetTable()
+        {
+            return &amp;quot;UNIT&amp;quot;;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gebruik:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;new UnitRecord() { creator ###### &amp;quot;bla&amp;quot;; guid  &amp;quot;lala&amp;quot;; }.Save(); // done!
+// execute your SUT stuff here
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;DbConnection&lt;/code&gt; gebruikt dan de SQLite versie om een &amp;ldquo;unit&amp;rdquo; record aan te maken in de DB. Merk op dat de properties 100% moeten overeenkomen.&lt;/p&gt;
+
+&lt;p&gt;Het enige speciale wat in &lt;code&gt;IntegrationTestCase&lt;/code&gt; gedefiniëerd is, is de &amp;ldquo;gewone&amp;rdquo; &lt;code&gt;OleDbConnection&lt;/code&gt; vervangen door de SQLite verie:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    public abstract class IntegrationTestCase
+    {
+        protected SqLitedbConnection connection;
+
+        [TestInitialize]
+        public void CleanDb()
+        {
+            this.connection = new SqLitedbConnection();
+            DbConnection.Instance = connection; // instead of OleDbConnection, lazyloaded singleton getter property. 
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Omdat Ole en SQLite soms andere interfaces hebben moeten we er zelf een anticorruptie laag (de IConnection interface) tussen zetten:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Common;
+
+    public interface IdbConnection
+    {
+        object QueryProcedure(string procedure, IDictionary&amp;lt;string, object&amp;gt; parameters, string outputParameter);
+
+        DbParameter CreateParameter(string field, object value);
+
+        DbCommand CreateCommand(string query);
+
+        DataSet Query(DbCommand command);
+
+        DataSet Query(string query);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Het verschil is altijd een &lt;code&gt;SQLiteCommand&lt;/code&gt; in plaats van een &lt;code&gt;OleDbCommand&lt;/code&gt; aanmaken. Er zijn soms ook subtiele verschillen in het aanmaken en doorgeven van de parameters.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>http://www.brainbaking.com/wiki/code/db/mysql/</link>
+      <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/mysql/</guid>
+      <description>
+
+&lt;h1 id=&#34;mysql&#34;&gt;MySQL&lt;/h1&gt;
+
+&lt;h3 id=&#34;db-syncing&#34;&gt;DB Syncing&lt;/h3&gt;
+
+&lt;p&gt;Mogelijk met verschillende tools, over verschillende DB types heen. Bvb om schema&amp;rsquo;s te syncen tussen MSSQL DBs en MySQL DBs, etc etc. Enkele voorbeeldtools:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MSSQL: AdeptSQL Diff &lt;a href=&#34;http:*www.adeptsql.com/&#34;&gt;http:*www.adeptsql.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;MYSQL: SQLyog &lt;a href=&#34;https:*www.webyog.com/&#34;&gt;https:*www.webyog.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Maakt een SQL DDL aan met het verschil tussen database schema&amp;rsquo;s naar keuze.&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/db/powertools.png&#39;&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;ado-net-connection&#34;&gt;ADO.NET connection&lt;/h3&gt;
+
+&lt;h5 id=&#34;pooling&#34;&gt;Pooling&lt;/h5&gt;
+
+&lt;p&gt;Enabled by default, zie &lt;a href=&#34;http://dev.mysql.com/doc/connector-net/en/connector-net-connection-options.html&#34;&gt;Connector .NET Connection options&lt;/a&gt;; voorbeeld:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Server######server; Port3306; Database######db; Uidroot; Pwd######root; Poolingtrue;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Dingen als maximum pool size, initial size etc ook instelbaar (zie link)&lt;/p&gt;
+
+&lt;h3 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h3&gt;
+
+&lt;h5 id=&#34;configuratie-properties-via-sql-uitlezen&#34;&gt;configuratie properties via SQL uitlezen&lt;/h5&gt;
+
+&lt;p&gt;Bijvoorbeeld &lt;strong&gt;max connections&lt;/strong&gt;: &lt;code&gt;show variables like &amp;quot;max_connections&amp;quot;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Allemaal aanpasbaar via &lt;code&gt;set global max_connections = 200;&lt;/code&gt; (root rechten required)&lt;/p&gt;
+
+&lt;h5 id=&#34;aantal-momenteel-actieve-threads-bezien&#34;&gt;Aantal momenteel actieve threads bezien&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;SHOW GLOBAL STATUS where variable_name like &#39;%Threads%&#39;;&lt;/code&gt; geeft:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Variable_name          value
+----------------------------
+Delayed_insert_threads	0
+Slow_launch_threads	0
+Threads_cached	8
+Threads_connected	56
+Threads_created	138
+Threads_running	2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;huidige-connecties-killen&#34;&gt;Huidige connecties killen&lt;/h5&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.mysqlperformanceblog.com/2009/05/21/mass-killing-of-mysql-connections/&#34;&gt;Mass killing of MySQL connections&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Gaat &lt;strong&gt;niet rechtstreeks&lt;/strong&gt;; eerst een file maken met &lt;code&gt;kill&lt;/code&gt; commands en die dan sourcen in een mysql command line:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;select concat(&#39;KILL &#39;, id, &#39;;&#39;) from information_schema.processlist where host like &#39;%myhost%&#39; into outfile &#39;c:&amp;lt;br/&amp;gt;a.txt&#39;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ Forward slashen in Windows gebruiken, of dubbele backslash.&lt;/p&gt;
+
+&lt;p&gt;Stap 2: &lt;code&gt;source c:/a.txt&lt;/code&gt; - géén single quotes hierrond (anders error code 22) en geen single baskslash (anders error code 2, = file not found)&lt;/p&gt;
+
+&lt;p&gt;MySQL command line opstarten: ga naar bin dir van installed server, en execute &lt;code&gt;mysql --user###### --pass&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>oledb</title>
+      <link>http://www.brainbaking.com/wiki/code/db/oledb/</link>
+      <pubDate>Thu, 27 Feb 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/oledb/</guid>
+      <description>
+
+&lt;h1 id=&#34;oledb&#34;&gt;Oledb&lt;/h1&gt;
+
+&lt;h2 id=&#34;named-parameter-problem&#34;&gt;Named parameter problem&lt;/h2&gt;
+
+&lt;p&gt;Blijkbaar werkt &lt;code&gt;OleDbCommand&lt;/code&gt; nooit met named parameters, maar is de &lt;strong&gt;volgorde van toevoegen&lt;/strong&gt; zeer belangrijk. In De query zelf worden &amp;lsquo;?&amp;rsquo; tekens gebruikt om een parameter aan te duiden. Dit is zeer vervelend, en maakt het abstraheren van de DB laag moeilijk - andere DB providers staan bijvoorbeeld &lt;code&gt;@parameter&lt;/code&gt; toe, waarbij de naam wel uitmaakt. Hoe lossen we dat op?&lt;/p&gt;
+
+&lt;h4 id=&#34;convert-named-parameters-into-positional-ones&#34;&gt;Convert named parameters into positional ones&lt;/h4&gt;
+
+&lt;p&gt;Hocus pocus: (zie ook &lt;a href=&#34;http://stackoverflow.com/questions/2407685/oledbparameters-and-parameter-names&#34;&gt;http://stackoverflow.com/questions/2407685/oledbparameters-and-parameter-names&lt;/a&gt; etc)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        public static OleDbCommand ConvertNamedParametersToPositionalParameters(OleDbCommand command)
+        {
+            // OleDb does NOT use named parameters, but we want them! (uses &#39;?&#39;)
+            var newParameters = new List&amp;lt;OleDbParameter&amp;gt;();
+
+            command.CommandText ###### Regex.Replace(command.CommandText, &amp;quot;(@&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;w*)&amp;quot;, match &amp;gt;
+            {
+                var parameter ###### command.Parameters.OfType&amp;lt;OleDbParameter&amp;gt;().FirstOrDefault(a &amp;gt; a.ParameterName ###### match.Groups[1].Value);
+                if (parameter != null)
+                {
+                    var parameterIndex = newParameters.Count;
+
+                    var newParameter = command.CreateParameter();
+                    newParameter.OleDbType = parameter.OleDbType;
+                    newParameter.ParameterName = &amp;quot;param_&amp;quot; + match + &amp;quot;_&amp;quot; + parameterIndex.ToString();
+                    newParameter.Value = parameter.Value;
+
+                    newParameters.Add(newParameter);
+                }
+
+                return &amp;quot;?&amp;quot;;
+            });
+
+            command.Parameters.Clear();
+            command.Parameters.AddRange(newParameters.ToArray());
+            return command;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;######= Gewenste Resultaat ######=&lt;/p&gt;
+
+&lt;p&gt;Maakt het mogelijk om dit te doen:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;SELECT * FROM TABLE WHERE column ###### @name1 AND column2  @name2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;voeg aan command &lt;code&gt;new OleDbParameter(&amp;quot;@name1&amp;quot;, value)&lt;/code&gt; toe&lt;/li&gt;
+&lt;li&gt;wordt automagically vervangen door vorige method (kan als extension gebruikt worden)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;❗ In &lt;a href=&#34;http://www.brainbaking.com/wiki/code/db/sqlite/&#34;&gt;code/db/sqlite&lt;/a&gt; wordt dit by default ondersteund&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sql</title>
+      <link>http://www.brainbaking.com/wiki/code/db/sql/</link>
+      <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/sql/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-db-sql&#34;&gt;code:db &amp;gt;&amp;gt; Sql&lt;/h1&gt;
+
+&lt;h2 id=&#34;stored-procedures&#34;&gt;Stored procedures&lt;/h2&gt;
+
+&lt;h3 id=&#34;oproepen&#34;&gt;Oproepen&lt;/h3&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://stackoverflow.com/questions/3991721/run-stored-procedure-in-sql-developer&#34;&gt;http://stackoverflow.com/questions/3991721/run-stored-procedure-in-sql-developer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Gegeven: een procedure &lt;code&gt;GETPERMISSIONSALL&lt;/code&gt; als volgt gedeclareerd:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;create or replace 
+PROCEDURE &amp;quot;GETPERMISSIONALL&amp;quot; ( v_actCreator in VARCHAR2, v_repGuid in VARCHAR2, v_userid INT, v_retHasPermission out SMALLINT)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;De laatste parameter is de return waarde (kunnen meerdere dingen zijn dus). Hoe roep ik nu zoiets aan?&lt;/p&gt;
+
+&lt;h4 id=&#34;in-sql-developer&#34;&gt;In SQL Developer&lt;/h4&gt;
+
+&lt;p&gt;Definiëer eerst uw variabelen, om ze daarna eventueel af te drukken -&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SET serveroutput on;
+DECLARE
+    v_actCreator VARCHAR2(100);
+    v_repGuid VARCHAR2(100);
+    v_userid int;
+    Output smallint;
+BEGIN
+    /* Assign values to IN parameters */
+    v_actCreator := &#39;19980121164845.106.1 7&#39;;
+    v_repGuid := &#39;2466B39EFDA94D5E9249D252FF25C4D6&#39;;
+    v_userid := 540;
+
+    /* Call procedure within package, identifying schema if necessary */
+    GETPERMISSIONALL(v_actCreator, v_repGuid, v_userid, Output);
+
+    /* Display OUT parameters */
+    dbms_output.put_line(&#39;Output: &#39; || Output);
+END;
+/
+-- Display OUT parameters
+-- print :Output;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;werken-met-ref-cursor&#34;&gt;Werken met REF CURSOR&lt;/h5&gt;
+
+&lt;p&gt;Probleemstelling:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Uw procedure retourneert een &lt;code&gt;REF CURSOR&lt;/code&gt; als IN en OUT variabele&lt;/li&gt;
+&lt;li&gt;Je wil over deze gaan loopen en ergens een resultaat afdrukken of vergelijken&lt;/li&gt;
+&lt;li&gt;openen van een &lt;code&gt;REF CURSOR&lt;/code&gt; gaat niet.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Gebruik in een &lt;code&gt;LOOP&lt;/code&gt; dadelijk &lt;code&gt;FETCH&lt;/code&gt; &lt;code&gt;INTO&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SET serveroutput ON;
+DECLARE
+  P_USERID NUMBER;
+  MY_P_CURSOR C2MV5_DEV.PKG_WFSEC.Validation_Send_Item_Cursor;
+  cursor_element C2MV5_DEV.PKG_WFSEC.WFSEC_Send_Item_T;
+BEGIN
+  P_USERID := 11;
+  
+  PKG_WFSEC.FETCHSENDITEMS(
+    P_USERID =&amp;gt; P_USERID,
+    P_CURSOR =&amp;gt; MY_P_CURSOR
+  );
+
+ WHILE TRUE LOOP
+    FETCH MY_P_CURSOR INTO cursor_element;
+    EXIT WHEN MY_P_CURSOR%NOTFOUND;
+
+    DBMS_OUTPUT.PUT_LINE(cursor_element.executingdoctorname);
+  END LOOP;
+
+END;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Merk op dat hier bijvoorbeeld &lt;code&gt;cursor_element&lt;/code&gt; van een bepaald type is dat in een package gedefinieerd is, dat de cursor ook retourneert (&lt;code&gt;TYPE Validation_Send_Item_Cursor IS REF CURSOR RETURN WFSEC_Send_Item_T;&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h4 id=&#34;in-c&#34;&gt;In C#&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        public object QueryProcedure(string procedure, IDictionary&amp;lt;string, object&amp;gt; parameters, string outputParameter)
+        {
+            var command = new OleDbCommand(procedure);
+            foreach (var item in parameters)
+            {
+                   command.Parameters.AddWithValue(item.Key, item.Value);
+            }
+            var output = command.Parameters.AddWithValue(outputParameter, 0);
+            output.Direction = ParameterDirection.Output;
+
+            QueryProcedure(command);
+            return output.Value;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;unit-testen&#34;&gt;Unit testen&lt;/h3&gt;
+
+&lt;h4 id=&#34;met-sql-developer&#34;&gt;Met SQL Developer&lt;/h4&gt;
+
+&lt;p&gt;zie &lt;a href=&#34;http://docs.oracle.com/cd/E15846_01/doc.21/e15222/unit_testing.htm&#34;&gt;Oracle docs: Unit Testing in SQL Developer 3+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ Read this first: &lt;a href=&#34;http://www.fuzzy.cz/en/articles/unit-testing-plsql-code-in-sql-developer-problems/&#34;&gt;Unit Testing PL/SQL In SQL Developer problems&lt;/a&gt; - toch niet zo geweldig? &lt;br/&gt;&lt;br/&gt;
+Kan blijkbaar al niet apart gerund worden (mee in de build? een of nadere bat file van SQLDev zelf?)&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left;&#39; src=&#39;http://www.brainbaking.com/img//code/db/unittest_sqldev.png |&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Als uw stored procedure data wijzigt kan je in de startup en teardown process stappen toevoegen: &amp;ldquo;table or row copy&amp;rdquo;, om die daarna terug te zetten.&lt;/p&gt;
+
+&lt;h5 id=&#34;test-gerelateerde-tabellen-opkuisen&#34;&gt;Test gerelateerde tabellen opkuisen&lt;/h5&gt;
+
+&lt;p&gt;Als je database-onafhankelijk testen wil draaien, kan je deze ook exporteren en importeren, en daarna runnen. Een import verwijdert echter niet oude niet-relevante unit tests, dus opkuisen van de UT repository is wel vereist. Hier is een &lt;code&gt;SQL&lt;/code&gt; stored proc. om de boel te automatiseren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SET serveroutput ON;
+DECLARE
+    queryStr VARCHAR2(100);
+    tableName VARCHAR2(900);
+    cursor tableCursor is SELECT table_name FROM dba_tables where owner =&#39;user&#39; and table_name like &#39;UT_TEST_%&#39; or table_name like &#39;UT_SUITE_%&#39;;
+BEGIN
+
+dbms_output.enable(10000);
+DBMS_OUTPUT.PUT_LINE(&#39;Cleaning unit test tables&#39;);
+
+open tableCursor;
+fetch tableCursor into tableName;
+
+WHILE (tableCursor%FOUND) LOOP
+  queryStr := &#39;delete from &#39; ||tableName;
+  execute immediate queryStr;
+  --DBMS_OUTPUT.PUT_LINE(queryStr);
+  fetch tableCursor into tableName;
+END LOOP;
+close tableCursor;
+
+commit;
+DBMS_OUTPUT.PUT_LINE(&#39;SUCCESS - all cleaned!&#39;);
+
+END;
+/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dit kan je runnen met &lt;code&gt;sqlplus&lt;/code&gt; op de volgende manier:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sqlplus user/pass@db @&amp;quot;fullpath_to_filename.sql&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ Let op met spaties in filename, gebruik daarom dubbele quotes hierboven.&lt;/p&gt;
+
+&lt;h5 id=&#34;command-line-testen-runnen&#34;&gt;Command-line testen runnen&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;ututil -run -suite -name [name] -repo [repo] -db [db] -log 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Uw repository naam is dezelfde als de DB naam als je Tools &amp;gt; Unit Test &amp;gt; Create/Update Repository&amp;hellip; gekozen hebt via SQL Developer.&lt;/p&gt;
+
+&lt;p&gt;❗ &lt;code&gt;ututil&lt;/code&gt; kan de db connectie namen &lt;strong&gt;niet resolven bij TNS&lt;/strong&gt; - Gebruik &lt;strong&gt;Connection Identifier&lt;/strong&gt; (copypaste desnoods van &lt;code&gt;tnsnames.ora&lt;/code&gt;)&lt;br/&gt;&lt;br/&gt;
+Fout die je anders krijgt:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;D:&amp;lt;br/&amp;gt;oracle&amp;lt;br/&amp;gt;sqldeveloper&amp;lt;br/&amp;gt;sqldeveloper&amp;lt;br/&amp;gt;bin&amp;gt;ututil -run -test -name GETPERMISSIONALL -repo CHCDEV -db CHCTEST -log 3
+SEVERE oracle.jdeveloper.db.ConnectionException: Could not connect to database CHCTEST. The error encountered was: Ongeldige verbindingsgegevens opgeg
+even.
+Controleer de notatie van de URL voor de opgegeven driver.
+        oracle.jdeveloper.db.DatabaseConnections.getUniqueConnection(DatabaseConnections.java:514)
+SEVERE null - oracle.dbtools.unit_test.utils.UtUtils.getRunnerConnection(UtUtils.java:141)
+Unable to run test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;integratie-met-de-build-c&#34;&gt;Integratie met de build: C#&lt;/h5&gt;
+
+&lt;p&gt;Een &lt;code&gt;SqlDeveloperTest&lt;/code&gt; klasse die het volgende doet:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;voer &lt;code&gt;sqlplus&lt;/code&gt; uit met bovenstaande cleanup script dat alle repository tabellen cleart&lt;/li&gt;
+&lt;li&gt;voer &lt;code&gt;ututil&lt;/code&gt; uit met &lt;code&gt;-imp -repo [repo] -file [xmlfile]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;voer &lt;code&gt;ututil&lt;/code&gt; uit met &lt;code&gt;-run&lt;/code&gt; zoals boven aangegeven.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;De eigenlijke unit testen leven dan in uw source control omgeving zoals &lt;code&gt;TFS&lt;/code&gt;, in die ene xml file. Op die manier kan je branchen en zo zonder dat die testen vasthangen aan je DB schema. Joepie!&lt;/p&gt;
+
+&lt;h2 id=&#34;problemen&#34;&gt;Problemen&lt;/h2&gt;
+
+&lt;h4 id=&#34;not-in-retourneert-geen-enkele-resultaten&#34;&gt;NOT IN retourneert geen enkele resultaten ??&lt;/h4&gt;
+
+&lt;p&gt;voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select * from sch_vac.VAC_TAKEN 
+where  ikl_id is not null
+and ikl_id not in (select iklnummer from VAC_WERFRES_KANDIDATEN)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;There are serious problems with subqueries that may return NULL values. It is a good idea to discourage the use of the NOT IN clause (which invokes a subquery) and to prefer &lt;strong&gt;NOT EXISTS&lt;/strong&gt; (which invokes a correlated subquery), since the query returns no rows if any rows returned by the subquery contain null values.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Oplossing is dus:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select * from vac_taken taak where ikl_id is not null
+and not exists (select 1 from vac_werfres_kandidaten where iklnummer = taak.ikl_id)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>postgresql</title>
+      <link>http://www.brainbaking.com/wiki/code/db/postgresql/</link>
+      <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/postgresql/</guid>
+      <description>
+
+&lt;h1 id=&#34;postgresql&#34;&gt;PostgreSQL&lt;/h1&gt;
+
+&lt;p&gt;Documentatie: &lt;a href=&#34;http://www.postgresql.org/docs/9.1/static/view-pg-locks.html&#34;&gt;http://www.postgresql.org/docs/9.1/static/view-pg-locks.html&lt;/a&gt;
+pgAdmin: &lt;a href=&#34;http://www.pgadmin.org/&#34;&gt;http://www.pgadmin.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ Heeft géén commit &amp;amp; rollbacks, alles wat uitgevoerd wordt kan niet teruggedraaid worden!&lt;/p&gt;
+
+&lt;h4 id=&#34;metadata-tabellen-bekijken&#34;&gt;Metadata tabellen bekijken&lt;/h4&gt;
+
+&lt;h5 id=&#34;alle-views-van-een-bepaald-schema&#34;&gt;Alle views van een bepaald schema&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;SELECT count(*) FROM information_schema.views where table_schema = &#39;public&#39;;&lt;/code&gt;, vergeet niet dat &lt;code&gt;table_schema&lt;/code&gt; &lt;code&gt;pg_catalog&lt;/code&gt; is voor de metadata tabellen die altijd bestaan in postgres.&lt;/p&gt;
+
+&lt;h5 id=&#34;alle-kolommen&#34;&gt;Alle kolommen&lt;/h5&gt;
+
+&lt;p&gt;Voorbeeld om alle floats te selecteren (kan afrondingsfouten bevatten, gebruik &lt;code&gt;numeric&lt;/code&gt; in de plaats):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT * FROM information_schema.columns where
+(data_type = &#39;real&#39; or
+ data_type like &#39;double%&#39;)
+ and table_schema = &#39;public&#39;
+ and table_name not like &#39;view_%&#39;
+ and table_name not like &#39;lookup_%&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;dump-van-db-nemen&#34;&gt;Dump van DB nemen&lt;/h4&gt;
+
+&lt;p&gt;Gebruik hiervoor &lt;code&gt;pgdump&lt;/code&gt; in bin folder van postgres install dir:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C:&amp;lt;br/&amp;gt;Program Files&amp;lt;br/&amp;gt;PostgreSQL&amp;lt;br/&amp;gt;9.1&amp;lt;br/&amp;gt;bin&amp;gt;pg_dump --host######10.16.42.35 --port5432 --username######postgres --schemapublic --format=c --schema-only repository.db &amp;gt; postgresdump_20111020.dmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Verklaring:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--format&lt;/code&gt;: c (custom), d (directory), t (tar), p (plain text)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--schema&lt;/code&gt;: dump enkel dit stuk&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-db-home&#34;&gt;code:db &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

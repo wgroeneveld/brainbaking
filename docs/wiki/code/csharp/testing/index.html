@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>testing</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="testing" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/csharp/testing/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>testing</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="testing-met-c-net">Testing met C#/.NET</h1>
+
+<h2 id="test-frameworks">Test frameworks</h2>
+
+<h3 id="selenium-webdriver">Selenium/WebDriver</h3>
+
+<p>Zie <a href="http://www.joecolantonio.com/2012/07/31/getting-started-using-selenium-2-0-webdriver-for-ie-in-visual-studio-c/">http://www.joecolantonio.com/2012/07/31/getting-started-using-selenium-2-0-webdriver-for-ie-in-visual-studio-c/</a> - essentiëel identiek aan Java.</p>
+
+<h4 id="chaining-fluent-acceptance-criteria-definitions">Chaining - fluent acceptance criteria definitions</h4>
+
+<p>Een typische test zou er dan zo kunnen uitzien:</p>
+
+<pre><code class="language-csharp">        [Test]
+        public void OpenAdminAuthenticationManagement()
+        {
+            LogInto()
+                .OpenAdministrationAuthenticationManagement()
+                .AuthenticationGrid
+                .ShouldContainMinAmountRows(1)
+                .DoubleClickOnRowNr(0)
+                .ExpectOpened&lt;ModifyUserDetailWindow&gt;()
+                .UserNameShouldContainSomeValue();
+        }
+</code></pre>
+
+<ol>
+<li>Gebruik overal <code>return this</code></li>
+<li>Wanneer je niet wil upcasten en in een abstract component <code>ClickSave()</code> uw subtype moet retourneren: <code>public class Panel&lt;T&gt; : Window where T : Panel&lt;T&gt;</code> en <code>return (T) this</code></li>
+<li>Wanneer je niet weet wat het volgend scherm is, gebruik <code>ExpectOpened&lt;Type&gt;()</code> dat via <a href="/wiki/code/csharp/reflectie/">code/csharp/reflectie</a> een instantie aanmaakt van uw component.</li>
+</ol>
+
+<h3 id="nunit">NUnit</h3>
+
+<h4 id="attributes">Attributes</h4>
+
+<p>Zoals in JUnit&rsquo;s annotaties <code>@Before</code> en <code>@Test</code> kan je hier <code>[SetUp]</code> en <code>[Test]</code> gebruiken. Een test klasse moet met de attribute <code>[TestFixture]</code> geplakt worden.</p>
+
+<p>Zie <a href="http://blogs.msdn.com/b/nnaderi/archive/2007/02/01/mstest-vs-nunit-frameworks.aspx">MSTest en NUnit comparison</a></p>
+
+<p><strong>Hoe kan ik dit via command-line uitvoeren?</strong></p>
+
+<p>Installeer <a href="http://nunit.org/?p=download">NUnit</a> en pas uw <code>PATH</code> aan zodat de install dir er in steekt (program files<br/>nunit). Vanaf dan kan je <code>nunit-console test.dll</code> via commandline gebruiken om de test zo uit te voeren.</p>
+
+<h3 id="mstest">MSTest</h3>
+
+<h4 id="attributes-1">Attributes</h4>
+
+<p>Zoals in JUnit&rsquo;s annotaties <code>@Before</code> en <code>@Test</code> kan je hier <code>[TestInitialize]</code> en <code>[TestMethod]</code> gebruiken. Er zijn enkele &ldquo;pitfalls&rdquo; -</p>
+
+<p><code>[ClassInitialize]</code>, zogezegd het equivalent van <code>@BeforeClass</code>, werkt <strong>niet</strong> op base classes: zie <a href="http://blogs.msdn.com/b/densto/archive/2008/05/16/using-a-base-class-for-your-unit-test-classes.aspx">http://blogs.msdn.com/b/densto/archive/2008/05/16/using-a-base-class-for-your-unit-test-classes.aspx</a></p>
+
+<p>Een mogelijke &ldquo;oplossing&rdquo; is dit: (let op, niet helemaal hetzelfde)</p>
+
+<pre><code class="language-csharp">[TestClass]
+public abstract class TestBase
+{
+    [AssemblyInitializeAttribute]
+    public static void Initialize(TestContext context)
+    {
+        // put your initialize code here
+    }
+}
+</code></pre>
+
+<p>Of overal de base aanroepen&hellip;</p>
+
+<h2 id="mocking-en-stubbing">Mocking en stubbing</h2>
+
+<h3 id="microsoft-fakes">Microsoft Fakes</h3>
+
+<p>Zie <a href="http://msdn.microsoft.com/en-US/library/hh549175">http://msdn.microsoft.com/en-US/library/hh549175</a></p>
+
+<p>Als je <code>Fakes</code> toevoegt als reference, gebeurt er het volgende (enkel voor interfaces):</p>
+
+<blockquote>
+<p>The special piece of magic here is the class StubIStockFeed. For every interface in the referenced assembly, the Microsoft Fakes mechanism generates a stub class. The name of the stub class is the derived from the name of the interface, with &ldquo;Fakes.Stub&rdquo; as a prefix, and the parameter type names appended.</p>
+</blockquote>
+
+<h3 id="rhino-mocks">Rhino Mocks</h3>
+
+<p>Zie <a href="http://www.hibernatingrhinos.com/oss/rhino-mocks">http://www.hibernatingrhinos.com/oss/rhino-mocks</a></p>
+
+<h5 id="automatisch-mocking-fields-initializeren">Automatisch mocking fields initializeren</h5>
+
+<pre><code class="language-csharp">    public abstract class AbstractTestCase
+    {
+        [TestInitialize]
+        public void CreateMocksBasedOnNamingConvention()
+        {
+            this.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(x =&gt; x.Name.EndsWith(&quot;Mock&quot;)).All(InitMock);
+        }
+
+        private bool InitMock(FieldInfo field)
+        {
+            field.SetValue(this, MockRepository.GenerateMock(field.FieldType, new Type[]{}));
+            return true;
+        }
+    }
+</code></pre>
+
+<p>Hupla.</p>
+
+<h2 id="resources-en-deployment">Resources en deployment</h2>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/ms182475.aspx">How to deploy files for tests</a></p>
+
+<p>Er moeten aan een aantal condities voldaan worden:</p>
+
+<ul>
+<li>een mstest <code>.testsettings</code> XML file waar de tag <code>&lt;DeploymentEnabled/&gt;</code> op <code>true</code> staat (extra te deployen files zijn daar kinderen van) - dit kan automatisch geëdit worden met VS2010 maar blijkbaar niet meer met VS2012&hellip; Als de tag zelf niet voorkomt werkt het in 2012 ook nog (?)</li>
+<li>een resource hebben die op <code>Content</code> en <code>Copy</code> staat</li>
+<li>Een <code>DeploymentItem</code> attribute hebben die de te kopiëren file specifiëert (merk op dat subfolders hier ook ingevuld moeten zijn)</li>
+</ul>
+
+<pre><code class="language-csharp">    [TestClass]
+    [DeploymentItem(&quot;IEDriverServer.exe&quot;)]
+    public abstract class EndToEndTestCase
+    {
+    }
+</code></pre>
+
+<p>De deployment items zijn niet nodig als de testen uitgevoerd worden vanuit de bin folder. Meestal is dit een aparte MSTest locatie (temp zoals <code>C:&lt;br/&gt;Users&lt;br/&gt;bkwog&lt;br/&gt;AppData&lt;br/&gt;Local&lt;br/&gt;Temp&lt;br/&gt;TestResults&lt;br/&gt;bkwog_HI18261 2013-12-23 10_28_54</code>) waar dan resources niet bij steken maar enkel DLLs en PDBs - bijgevolg problemen&hellip;</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

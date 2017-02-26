@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>resources</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="resources" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/csharp/resources/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>resources</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="c-resources">C# Resources</h1>
+
+<h2 id="in-tests">In Tests</h2>
+
+<p>Zie <a href="/wiki/code/csharp/testing/">code/csharp/testing</a></p>
+
+<h2 id="web-config">Web config</h2>
+
+<p>Zie <a href="http://msdn.microsoft.com/en-us/library/dd465326(VS.100).aspx">http://msdn.microsoft.com/en-us/library/dd465326(VS.100).aspx</a></p>
+
+<p><code>.NET 4</code> voorziet een manier om de <code>Web.config</code> file automatisch te <strong>transformeren</strong> afhankelijk van uw build configuratie (Debug, Release, custom). Je hebt hier 2 files:</p>
+
+<ul>
+<li>Web.config (base)</li>
+<li>Web.[BuildConfigName].config (transformer)</li>
+</ul>
+
+<p>Wat in de tweede file staat, gaat toegepast worden op de eerste file. Je kan dus niet zomaar zaken copypasten en overschrijven, maar moet tags die je wil replacen <strong>XDT</strong> transformaties op definiëren:</p>
+
+<pre><code class="language-xml">&lt;appSettings&gt;
+  &lt;add key######&quot;Bla&quot; value&quot;blie&quot;/&gt;
+&lt;/appSettings&gt;
+</code></pre>
+
+<p>met transformer</p>
+
+<pre><code class="language-xml">&lt;appSettings xdt:Transform=&quot;Replace&quot;&gt;
+  &lt;add key######&quot;Bla&quot; value&quot;bloebloe&quot;/&gt;
+&lt;/appSettings&gt;
+</code></pre>
+
+<p>Zal de hele <code>appSettings</code> tag vervangen in de base file. Vergeet dat attribuut en er gebeurt niets.</p>
+
+<h2 id="embedded-resources-ophalen">Embedded resources ophalen</h2>
+
+<pre><code class="language-csharp">        private Stream GetIconAsStream(string icon)
+        {
+            return Assembly.GetExecutingAssembly()
+                           .GetManifestResourceStream(
+                               &quot;Full.Namespace.Of.Class.dir.to.image&quot; +
+                               icon);
+        }
+
+        private void CopyIconsToDir(string dir, params string[] iconNames)
+        {
+            foreach (var icon in iconNames)
+            {
+                var downloadStream = GetIconAsStream(icon);
+                var tmpFileCreate = File.Create(dir + &quot;&lt;br/&gt;&lt;br/&gt;&quot; + icon);
+                downloadStream.CopyTo(tmpFileCreate);
+                tmpFileCreate.Close();
+                downloadStream.Close();
+            }
+        }
+</code></pre>
+
+<h2 id="csproj-file-inlezen-parsen">.CSPROJ file inlezen &amp; parsen</h2>
+
+<p>Waarom is dit handig? Om bijvoorbeeld te kunnen kijken welke files allemaal included zijn in uw project en met een test alle SQL files verplicht te laten embedden. <br/><br/>
+(Op die manier staan ze niet als &ldquo;Content&rdquo; in de XML structuur). Regex op loslaten of XML parsen.</p>
+
+<pre><code class="language-csharp">        private static string ReadProjectFile()
+        {
+            var dbAssembly = typeof(AbstractUpdater).Assembly;
+            * format: 'file:*/C:/Sources/project/UnitTestproject/bin/Debug/project.UnitTest.DLL'
+            var projectDir = dbAssembly.CodeBase.Substring(0, dbAssembly.CodeBase.IndexOf(&quot;.UnitTest&quot;, StringComparison.InvariantCulture));
+            var csprojFile = Directory.GetFiles(projectDir.Replace(&quot;file:///&quot;, &quot;&quot;), &quot;*.csproj&quot;)[0];
+
+            var csproj = File.ReadAllText(csprojFile);
+            return csproj;
+        }
+</code></pre>
+
+<h2 id="managed-resources-disposen">Managed resources disposen</h2>
+
+<p>❗ Zie <a href="http://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx">Dispose Pattern @ MSDN</a>; volgende template:</p>
+
+<pre><code class="language-csharp">public class DisposableResourceHolder : IDisposable {
+ 
+    private SafeHandle resource; // handle to a resource
+
+    public DisposableResourceHolder(){
+        this.resource = ... // allocates the resource
+    }
+
+    public void Dispose(){
+        Dispose(true);
+        GC.SuppressFinalize(this); // tell the GC disposing it isn't needed anymore
+    }
+
+    protected virtual void Dispose(bool disposing){
+        if (disposing){
+            if (resource!= null) resource.Dispose();
+        }
+    }
+}
+</code></pre>
+
+<h4 id="using">using()</h4>
+
+<p>De .NET CLR vertaalt</p>
+
+<pre><code class="language-csharp">using (MyResource myRes = new MyResource())
+{
+    myRes.DoSomething();
+}
+</code></pre>
+
+<p>naar</p>
+
+<pre><code class="language-csharp">{ // limits scope of myRes
+    MyResource myRes= new MyResource();
+    try
+    {
+        myRes.DoSomething();
+    }
+    finally
+    {
+        // Check for a null resource.
+        if (myRes!= null)
+            // Call the object's Dispose method.
+            ((IDisposable)myRes).Dispose();
+    }
+}
+</code></pre>
+
+<p>Moet dan uw object de interface <code>IDisposable</code> implementeren? Harde cast toch?</p>
+
+<h4 id="java-vs-c">Java VS C#</h4>
+
+<p>Beiden plaatsten objecten in een finalizer queue maar het uitvoeren hiervan is nooit gegarandeerd (crash process, iets anders dat kan gebeuren, &hellip;). <code>IDisposable</code> kan gebruikt worden om managed resources op te kuisen, <strong>maar moet manueel aangeroepen worden</strong> door clients die dit object gebruiken - hier is ook nog niets van gegarandeerd! Behalve in een <code>using(obj) { }</code> block - hierna wordt <code>Dispose()</code> aangeroepen, ook als er ondertussen een of andere Exception opgetreden is. In Java 6 en lager moet je dit met <code>try { } finally { }</code> manueel doen.</p>
+
+<p>Zie <a href="/wiki/code/java/resources/">java resources wiki pagina</a></p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

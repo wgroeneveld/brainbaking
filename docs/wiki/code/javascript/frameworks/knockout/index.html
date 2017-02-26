@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>knockout</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="knockout" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/frameworks/knockout/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>knockout</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="knockout-js">Knockout JS</h1>
+
+<h2 id="paged-client-side-table-zelf-voorzien">Paged client-side table zelf voorzien</h2>
+
+<p>❗ Zie <a href="http://jsfiddle.net/rniemeyer/5Xr2X/">http://jsfiddle.net/rniemeyer/5Xr2X/</a></p>
+
+<blockquote>
+<p>The basic idea is that you have a dependentObservable that represents the rows in your current page and bind your table to it. You would slice the overall array to get the rows for the page. Then, you have pager buttons/links that manipulate the page index, which causes the dependentObservable to be re-evaluated resulting in the current rows.</p>
+</blockquote>
+
+<p>Op deze manier met <code>dependentObservable</code>:</p>
+
+<pre><code class="language-javascript">var myns = {};
+myns.DisplayFields = function(jsondata) {
+    var viewModel = {
+        fields: ko.observableArray(jsondata),
+        sortByName: function() { //plus any custom functions I would like to perform
+            this.items.sort(function(a, b) {
+                return a.Name &lt; b.Name ? -1 : 1;
+            });
+        },
+        pageSize: ko.observable(10),
+        pageIndex: ko.observable(0),
+        previousPage: function() {
+            this.pageIndex(this.pageIndex() - 1);
+        },
+        nextPage: function() {
+            this.pageIndex(this.pageIndex() + 1);
+        }
+    };
+
+    viewModel.maxPageIndex = ko.dependentObservable(function() {
+        return Math.floor(this.fields().length / this.pageSize());
+    }, viewModel);
+
+    viewModel.pagedRows = ko.dependentObservable(function() {
+        var size = this.pageSize();
+        var start = this.pageIndex() * size;
+        return this.fields.slice(start, start + size);
+    }, viewModel);
+
+    ko.applyBindings(viewModel);
+};
+</code></pre>
+
+<h2 id="layout-js-update-trigger-nodig">Layout JS Update trigger nodig?</h2>
+
+<p>(Via <a href="http://stackoverflow.com/questions/5598751/knockoutjs-utilizing-jquery-tablesorter-with-a-jquery-tmpl-generated-table">Stack overflow</a>)</p>
+
+<p>Stel dat na het updaten van de DOM door <code>KnockoutJS</code>, er nog styling nodig is door bvb <code>jQuery</code>. <br/><br/>
+Zelf de event aanroepen zoals <code>$(el).repaint()</code> werkt altijd maar is enorm vervelend. <code>Knockout</code> ondersteutn ook <em>binding handlers</em>:</p>
+
+<pre><code class="language-javascript">ko.bindingHandlers.triggerUpdate = {
+    update: function (element, valueAccessor) {
+        ko.utils.unwrapObservable(valueAccessor()); //need to just access the observable to create the subscription
+        $(element).trigger(&quot;repaint&quot;); // or whatever you'll need
+    }
+}
+</code></pre>
+
+<p>Het element binden:</p>
+
+<pre><code class="language-html">&lt;table id######&quot;mytable&quot; data-bind&quot;triggerUpdate: items&quot;&gt;
+</code></pre>
+
+<p><code>triggerUpdate</code> is een zelf aangemaakte <em>binding handler</em>. Voor meer info, zie <a href="http://knockoutjs.com/documentation/custom-bindings.html">http://knockoutjs.com/documentation/custom-bindings.html</a></p>
+
+<h2 id="js-logica-in-data-volledig-scheiden">JS Logica in data-* volledig scheiden</h2>
+
+<p><strong>Probleem</strong>: Knockout gebruikt veel <code>data-</code> HTML5 attributen om gedrag van elementen te bepalen. <br/><br/>
+Dit zou ideaal gezien opgesplitst moeten worden (unit testable etc):</p>
+
+<pre><code class="language-html">&lt;button type######&quot;submit&quot; data-bind&quot;enable: languageToAdd().length &gt; 0, click: addLanguage&quot;&gt;Add&lt;/button&gt;
+</code></pre>
+
+<p><strong>Oplossing</strong>: Schrijf een stukje custom JS dat de <code>data-bind</code> attribuut zelf zet gebaseerd op een ander model dan uw klassiek <code>viewModel</code> - bvb. <code>bindingsModel</code>.</p>
+
+<p>Bijvoorbeeld:</p>
+
+<pre><code class="language-javascript">var bindings = {
+   inputs: ['name', 'bio', 'twitterHandle', 'state', 'photoUrl'],
+   options: ['languages'],
+   custom: { languageToAdd: 'value: languageToAdd, valueUpdate: &quot;afterkeydown&quot;' }
+};
+
+modelBinder.createBindings(bindings);
+</code></pre>
+
+<p>Dit is het custom gedeelte:</p>
+
+<pre><code class="language-javascript">var modelBinder = {};
+modelBinder.createBindings = function (bindlist) {
+    function setBinding(id, value) {
+        var el = document.getElementById(id);
+        if (el) {
+            el.setAttribute('data-bind', value);
+        }
+    }
+    
+    for(var inputsKey in bindlist.inputs) {
+        if (bindlist.inputs.hasOwnProperty(inputsKey)) {
+            setBinding(bindlist.inputs[inputsKey], 'value: ' + bindlist.inputs[inputsKey]);
+        }
+    }
+        
+    for(var optionsKey in bindlist.options) {
+        if (bindlist.inputs.hasOwnProperty(optionsKey)) {
+            setBinding(bindlist.options[optionsKey], 'options: ' + bindlist.options[optionsKey]);
+        }
+    }
+        
+    for(var key in bindlist.custom) {
+        if (bindlist.custom.hasOwnProperty(key)) {
+            setBinding(key, bindlist.custom[key]);
+        }
+    }
+};
+</code></pre>
+
+<p>Zodat we in HTML enkel dit hebben:</p>
+
+<pre><code class="language-html">&lt;button type######&quot;submit&quot; id&quot;languageToAdd&quot;&gt;Add&lt;/button&gt;
+</code></pre>
+
+<p>Bron: <a href="http://userinexperience.com/?p=633">http://userinexperience.com/?p=633</a></p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

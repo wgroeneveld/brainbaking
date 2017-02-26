@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rest on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/rest/index.xml</link>
+    <description>Recent content in Rest on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/rest/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>rest</title>
+      <link>http://www.brainbaking.com/wiki/code/java/rest/</link>
+      <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/rest/</guid>
+      <description>
+
+&lt;h1 id=&#34;rest-calls-plegen-met-java&#34;&gt;Rest Calls plegen met Java&lt;/h1&gt;
+
+&lt;h2 id=&#34;jersey&#34;&gt;Jersey&lt;/h2&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;User Guide&lt;/strong&gt;: &lt;a href=&#34;http://jersey.java.net/nonav/documentation/latest/user-guide.html&#34;&gt;http://jersey.java.net/nonav/documentation/latest/user-guide.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;server&#34;&gt;Server&lt;/h3&gt;
+
+&lt;h5 id=&#34;maven&#34;&gt;maven&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;jersey-server&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;jersey-json&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;jersey-servlet&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;jersey-json&lt;/code&gt; is niet nodig als je geen &lt;code&gt;JSON&lt;/code&gt; wil gebruiken. &lt;code&gt;jersey-servlet&lt;/code&gt; ook niet als je geen Servlet 2.x gebruikt.&lt;/p&gt;
+
+&lt;h5 id=&#34;servlet-2-x-config&#34;&gt;servlet 2.x config&lt;/h5&gt;
+
+&lt;p&gt;Dit moet in &lt;code&gt;web.xml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;	&amp;lt;servlet&amp;gt;
+		&amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt;
+		&amp;lt;servlet-class&amp;gt;com.sun.jersey.spi.container.servlet.ServletContainer&amp;lt;/servlet-class&amp;gt;
+		&amp;lt;init-param&amp;gt;
+			&amp;lt;param-name&amp;gt;com.sun.jersey.config.property.packages&amp;lt;/param-name&amp;gt;
+			&amp;lt;param-value&amp;gt;be.klak.package&amp;lt;/param-value&amp;gt;
+		&amp;lt;/init-param&amp;gt;
+		&amp;lt;init-param&amp;gt;
+			&amp;lt;param-name&amp;gt;com.sun.jersey.api.json.POJOMappingFeature&amp;lt;/param-name&amp;gt;
+			&amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt;
+		&amp;lt;/init-param&amp;gt;		
+		&amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt;
+	&amp;lt;/servlet&amp;gt;
+	&amp;lt;servlet-mapping&amp;gt;
+		&amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt;
+		&amp;lt;url-pattern&amp;gt;/rest/*&amp;lt;/url-pattern&amp;gt;
+	&amp;lt;/servlet-mapping&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;!-- prevents classes that use reflection which is not allowed in GAE --&amp;gt;
+		&amp;lt;init-param&amp;gt;
+			&amp;lt;param-name&amp;gt;com.sun.jersey.config.feature.DisableWADL&amp;lt;/param-name&amp;gt;
+			&amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt;
+		&amp;lt;/init-param&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine&#34;&gt;http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;voorbeeld&#34;&gt;voorbeeld&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Path(&amp;quot;/gc&amp;quot;)
+public class Controller {
+
+	@GET
+	@Path(&amp;quot;/path&amp;quot;)
+	@Produces(APPLICATION_JSON)
+	public List&amp;lt;Pojo&amp;gt; getStuff() {
+		return stuffRepo().getAll();
+	}
+
+	@POST
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Path(&amp;quot;/bla/receive&amp;quot;)
+	public Response received(String data) {
+		return ok().build();
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;waarbij &lt;code&gt;ok()&lt;/code&gt; op &lt;code&gt;javax.ws.rs.Response&lt;/code&gt; zit.&lt;/p&gt;
+
+&lt;h3 id=&#34;client&#34;&gt;Client&lt;/h3&gt;
+
+&lt;h5 id=&#34;maven-1&#34;&gt;maven&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;jersey-client&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;voorbeeld-1&#34;&gt;voorbeeld&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;com.sun.jersey.api.client.Client&lt;/code&gt; client:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;		Client.create()
+				.resource(getGatecontrolServer() + &amp;quot;/rest/gc/houses/receive&amp;quot;)
+				.type(TEXT_PLAIN)
+				.post(&amp;quot;request body data&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;header-control-bvb-caching&#34;&gt;Header control (bvb caching)&lt;/h3&gt;
+
+&lt;p&gt;Kan via een filter factory die je meegeeft aan de init params van de servlet in web.xml:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;init-param&amp;gt;
+			&amp;lt;param-name&amp;gt;com.sun.jersey.spi.container.ResourceFilters&amp;lt;/param-name&amp;gt;
+			&amp;lt;param-value&amp;gt;be.klak.rest.CacheFilterFactory&amp;lt;/param-value&amp;gt;
+		&amp;lt;/init-param&amp;gt;
+&amp;lt;/xml&amp;gt;
+
+```java
+public class CacheFilterFactory implements ResourceFilterFactory {
+
+	@Override
+	public List&amp;lt;ResourceFilter&amp;gt; create(AbstractMethod am) {
+		if (hasNoCacheAnnotationOnClass(am) != null) {
+			return Collections.&amp;lt;ResourceFilter&amp;gt; singletonList(new CacheResponseFilter());
+		}
+
+		return new ArrayList&amp;lt;&amp;gt;();
+	}
+
+	private CacheControlHeaderNoCache hasNoCacheAnnotationOnClass(AbstractMethod am) {
+		return am.getResource().getResourceClass().getAnnotation(CacheControlHeaderNoCache.class);
+	}
+
+	private static class CacheResponseFilter implements ResourceFilter, ContainerResponseFilter {
+
+		@Override
+		public ContainerRequestFilter getRequestFilter() {
+			return null;
+		}
+
+		@Override
+		public ContainerResponseFilter getResponseFilter() {
+			return this;
+		}
+
+		@Override
+		public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
+			response.getHttpHeaders().putSingle(HttpHeaders.CACHE_CONTROL, &amp;quot;no-cache&amp;quot;);
+			return response;
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Annotatie ziet er zo uit:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.TYPE, ElementType.METHOD })
+public @interface CacheControlHeaderNoCache {
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vanaf dan kan je die gewoon op een resource klasse plakken, zoals &lt;code&gt;@Produces&lt;/code&gt; en &lt;code&gt;@Consumes&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

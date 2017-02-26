@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mssql on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/mssql/index.xml</link>
+    <description>Recent content in Mssql on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mssql</title>
+      <link>http://www.brainbaking.com/wiki/code/db/mssql/</link>
+      <pubDate>Tue, 24 May 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/mssql/</guid>
+      <description>
+
+&lt;h1 id=&#34;mssql&#34;&gt;MSSQL&lt;/h1&gt;
+
+&lt;h3 id=&#34;clustered-indexen-aanpassen-door-ze-eerst-te-resolven-in-een-cursor&#34;&gt;clustered indexen aanpassen door ze eerst te resolven in een cursor&lt;/h3&gt;
+
+&lt;p&gt;Onderstaand stukje code for future reference&amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;DECLARE @constraint NVARCHAR(MAX)
+DECLARE @cmd NVARCHAR(MAX)
+DECLARE @table NVARCHAR(MAX)
+
+DECLARE FKCURSOR CURSOR FOR 
+select distinct name,object_name(parent_object_id) from sys.objects where object_id in 
+(   select fk.constraint_object_id from sys.foreign_key_columns as fk
+    where fk.referenced_object_id = 
+    	(select object_id from sys.tables where name = &#39;Reference&#39;)
+)
+
+OPEN FKCURSOR
+
+FETCH NEXT FROM FKCURSOR 
+INTO @constraint, @table
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	SET @cmd = N&#39;ALTER TABLE [dbo].[&#39;+@table+&#39;] DROP CONSTRAINT &#39; +  @constraint
+	EXEC sp_executeSQL @cmd;
+
+   FETCH NEXT FROM FKCURSOR 
+    INTO @constraint, @table
+END 
+CLOSE FKCURSOR;
+DEALLOCATE FKCURSOR;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;constraints-met-auto-names-verwijderen-als-een-kolom-hierop-depent&#34;&gt;constraints met auto-names verwijderen als een kolom hierop depent&lt;/h3&gt;
+
+&lt;p&gt;Gebruik information schemes om de data hier uit te halen.&lt;/p&gt;
+
+&lt;p&gt;Bvb onderstaande code verwijdert de kolom &amp;lsquo;isDefault&amp;rsquo;, nadat alle constraints hierrond verwijderd zijn.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;declare @cname varchar(100)
+declare @query nvarchar(max)
+set @cname = (
+
+SELECT
+    default_constraints.name
+FROM 
+    sys.all_columns
+
+        INNER JOIN
+    sys.tables
+        ON all_columns.object_id = tables.object_id
+
+        INNER JOIN 
+    sys.schemas
+        ON tables.schema_id = schemas.schema_id
+
+        INNER JOIN
+    sys.default_constraints
+        ON all_columns.default_object_id = default_constraints.object_id
+
+WHERE 
+        schemas.name = &#39;dbo&#39;
+    AND tables.name = &#39;tblhtmltemplate&#39;
+    AND all_columns.name = &#39;isdefault&#39;)
+
+	set @query = &#39;alter table tblhtmltemplate drop constraint &#39; + @cname 
+
+if @cname is not null begin
+	exec sp_executesql @query
+end
+
+IF  EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name######&#39;tblHtmlTemplate&#39; AND column_name &#39;isDefault&#39;)
+BEGIN
+	alter table tblhtmltemplate drop column isdefault;
+END;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;functies-aanmaken-om-mysql-syntax-te-mimicken&#34;&gt;functies aanmaken om MySQL syntax te mimicken&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION ifnull 
+(
+	-- Add the parameters for the function here
+	@value1 datetime, @returnvalue int
+)
+RETURNS datetime
+AS
+BEGIN
+	return isnull(@value1, @returnvalue)
+
+END
+GO
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zou &lt;code&gt;IFNull&lt;/code&gt; moeten mimicken, maar je kan enkel &lt;code&gt;select dbo.ifnull()&lt;/code&gt; doen ipv de native syntax&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;waar-zijn-de-db-files-op-de-schijf-ergens-geplaatst&#34;&gt;Waar zijn de DB files op de schijf ergens geplaatst?&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT name, physical_name AS current_file_location
+FROM sys.master_files
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;https://msdn.microsoft.com/en-us/library/ms143547.aspx&#34;&gt;MSDN: MSSQL DB file locations&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;alter-databases-gaan-traag&#34;&gt;Alter databases gaan traag&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;uitvoeren met &lt;code&gt;WITH ROLLBACK IMMEDIATE;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;uitvoeren in &lt;code&gt;SINGLE_USER&lt;/code&gt; mode (set op db niveau, dan terug naar &lt;code&gt;MULTI_USER&lt;/code&gt; zetten)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;query-notifications&#34;&gt;Query notifications&lt;/h3&gt;
+
+&lt;p&gt;Service broker aan zetten: &lt;code&gt;ALTER DATABASE db_name SET ENABLE_BROKER with rollback immediate&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Hoe checken of reeds enabled is? &lt;code&gt;select name, database_id, service_broker_guid from sys.databases where is_broker_enabled = 1;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ service broker GUIDs zijn dezelfde indien DB gekopiëerd is, bijgevolg krijg je deze fout indien je &lt;code&gt;ENABLE_BROKER&lt;/code&gt; tracht uit te voeren op zo&amp;rsquo;n kopie:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cannot be enabled because there is already an enabled Service Broker with the same ID
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Fix: (&lt;a href=&#34;http://www.mssqltips.com/sqlservertip/2789/sql-server-service-broker-error-database-cannot-be-enabled/&#34;&gt;bron&lt;/a&gt;) maak een nieuwe broker GUID aan met &lt;code&gt;SET NEW_BROKER&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;in-combinatie-met-nhibernate-syscache2&#34;&gt;In combinatie met NHibernate Syscache2&lt;/h5&gt;
+
+&lt;p&gt;Zie&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http:*developer.empinia.org/svn/empinia/vendor/bin/nhibernate/trunk/Doc/html/caches.html&#34;&gt;http:*developer.empinia.org/svn/empinia/vendor/bin/nhibernate/trunk/Doc/html/caches.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http:*tamingcode.com/2013/07/01/cacheable-queries-pitfalls/&#34;&gt;http:*tamingcode.com/2013/07/01/cacheable-queries-pitfalls/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;hoe-weet-ik-nu-of-notification-works&#34;&gt;Hoe weet ik nu of notification works?&lt;/h4&gt;
+
+&lt;p&gt;We moeten zien of de &lt;strong&gt;Broker:Conversation&lt;/strong&gt; berichten correct op- en afgestuurd worden. Dit kan je best nagaan in SQL Server Profiler:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/db/sqlprofiling.png&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Volgende dingen zouden moeten gebeuren:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;STARTED_OUTBOUND bericht (conversation)&lt;/li&gt;
+&lt;li&gt;CONVERSING bericht (conversation) van .Net SqlClient applicationName&lt;/li&gt;
+&lt;li&gt;QN:Subscription van .Net SqlClient applicationName&lt;/li&gt;
+&lt;li&gt;QN:Dynamics event subclass Clock run om te zien of het event gequeued is.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;pitfalls-en-errors&#34;&gt;Pitfalls en errors&lt;/h4&gt;
+
+&lt;h5 id=&#34;system-invalidoperationexception-when-using-sqldependency-without-providing-an-options-value-sqldependency-start-must-be-called-prior-to-execution-of-a-command-added-to-the-sqldependency-instance&#34;&gt;System.InvalidOperationException: When using SqlDependency without providing an options value, SqlDependency.Start() must be called prior to execution of a command added to the SqlDependency instance.&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://richarddingwall.name/2009/10/09/nhibernate-caches-syscache2-dont-forget-to-call-sqldependency-start/&#34;&gt;Bron&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;SqlDependency.Start(conString)&lt;/code&gt; aanroepen vóór de setup van bvb de NHibernate session factory. Dit moet je zelf doen, ook al gebruik je SysCache2 met regions.&lt;/p&gt;
+
+&lt;p&gt;❗ altijd eerst Stop aanroepen!&lt;/p&gt;
+
+&lt;h5 id=&#34;cannot-execute-as-the-database-principal-because-the-principal-dbo-does-not-exist&#34;&gt;Cannot execute as the database principal because the principal &amp;ldquo;dbo&amp;rdquo; does not exist&lt;/h5&gt;
+
+&lt;p&gt;In SQL Server profiler zichtbaar bij broker events - dit komt vanwege te weinig rechten.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;use [DBNAME] EXEC sp_changedbowner &#39;sa&lt;/code&gt;&amp;rsquo; lost dit probleem op (zie profiling)&lt;/p&gt;
+
+&lt;h3 id=&#34;mssql-specifieke-syntax&#34;&gt;MSSQL specifieke syntax&lt;/h3&gt;
+
+&lt;h5 id=&#34;batch-processing&#34;&gt;Batch processing&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;GO&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;The GO command isn&amp;rsquo;t a Transact-SQL statement, but a special command recognized by several MS utilities including SQL Server Management Studio code editor.&lt;/p&gt;
+
+&lt;p&gt;The GO command is used to group SQL commands into batches which are sent to the server together. The commands included in the batch, that is, the set of commands since the last GO command or the start of the session, must be logically consistent. For example, you can&amp;rsquo;t define a variable in one batch and then use it in another since the scope of the variable is limited to the batch in which it&amp;rsquo;s defined.&lt;/p&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http:*msdn.microsoft.com/en-us/library/ms188037.aspx&#34;&gt;http:*msdn.microsoft.com/en-us/library/ms188037.aspx&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;❗ Dit is blijkbaar ook wijzigbaar naar een karakterset naar keuze in Management studio options:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/db/go_option_mssql.png&#39;&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;rename-columns&#34;&gt;Rename columns&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;EXEC sp_RENAME &#39;TableName.OldColumnName&#39; , &#39;NewColumnName&#39;, &#39;COLUMN&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;werken-met-datums&#34;&gt;werken met datums&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;GETDATE()&lt;/code&gt; is een now timestamp (in MySQL is dit &lt;code&gt;CURDATE()&lt;/code&gt;. Records selecteren met een bepaalde timestamp (&amp;ldquo;vanaf&amp;rdquo;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select * from table where datecolumn &amp;gt;= Convert(datetime, &#39;2014-09-11&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In Oracle is dit bijvoorbeeld &lt;code&gt;TO_DATE(&#39;26/JAN/2011&#39;,&#39;dd/mon/yyyy&#39;)&lt;/code&gt; in plaats van &lt;code&gt;Convert()&lt;/code&gt; - in MySQL kan dit rechtstreeks in een bepaald formaat: &lt;code&gt;WHERE start_date &amp;gt;&#39;2012-11-18&#39;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h3&gt;
+
+&lt;h5 id=&#34;ado-net-connection-pool-monitoring&#34;&gt;ADO .NET Connection pool monitoring&lt;/h5&gt;
+
+&lt;p&gt;Mogelijk met &lt;strong&gt;Performance monitor&lt;/strong&gt; in Win32 (Run -&amp;gt; &lt;code&gt;perfmon&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Step-by-step uitleg: (oude versie) &lt;a href=&#34;http://www.c-sharpcorner.com/uploadfile/CMouli/monitoring-database-connections-using-performance-counters/&#34;&gt;Monitoring DB connections using performance counters&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://msdn.microsoft.com/en-us/library/ms254503.aspx&#34;&gt;Mogelijke counters - MSDN&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;NumberOfActiveConnections&lt;/li&gt;
+&lt;li&gt;NumberOfFreeConnections&lt;/li&gt;
+&lt;li&gt;NumberOfPooledConnections&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left;&#39; src=&#39;http://www.brainbaking.com/img//code/db/addcounters.png |&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Alles ivm DB connecties in .NET is ook mogelijk te bekijken met de &lt;a href=&#34;http://www.red-gate.com/products/dotnet-development/ants-performance-profiler/&#34;&gt;ANTS Performance profiler&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;aantal-momenteel-actieve-threads-bezien&#34;&gt;Aantal momenteel actieve threads bezien&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT 
+    DB_NAME(dbid) as DBName, 
+    COUNT(dbid) as NumberOfConnections,
+    loginame as LoginName
+FROM
+    sys.sysprocesses
+WHERE 
+    dbid &amp;gt; 0
+GROUP BY 
+    dbid, loginame
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

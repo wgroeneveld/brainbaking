@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>teamtest</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="teamtest" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/c/testing/teamtest/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>teamtest</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="visual-studio-2005-teamtest-framework">Visual Studio 2005 TeamTest Framework</h1>
+
+<p>Hoofdartikel (2005, C# voorbeelden): <a href="http://msdn.microsoft.com/en-us/library/ms379625(v=vs.80).aspx">http://msdn.microsoft.com/en-us/library/ms379625(v=vs.80).aspx</a></p>
+
+<p><strong>Waarom</strong>?</p>
+
+<ol>
+<li>Zelfde syntax als built-in C# unit tests voor Visual Studio</li>
+<li>Makkelijker te lezen dan bvb <a href="/wiki/code/c/testing/gtest/">code/c/testing/gtest</a></li>
+<li>Garbage collector van Managed C++, joepie (?)</li>
+<li>Toch mogelijk om unmanaged native C++ te testen (zie onder), integratie VStudio.</li>
+</ol>
+
+<p><strong>Waarom niet</strong>?</p>
+
+<ol>
+<li>Dropped support voor VS2012? zie <a href="/wiki/code/c/testing/testexplorer/">code/c/testing/testexplorer</a> in de plaats (native C++)</li>
+<li><code>/cli</code> flag miserie (zie onder)</li>
+<li>Onduidelijke syntax voor hardcore C++ users die niet aan C# gewend zijn</li>
+</ol>
+
+<h2 id="visual-studio-2008">Visual Studio 2008</h2>
+
+<p>Hiervoor moeten we een apart test project aanmaken dat met <strong>/CLR</strong> flag compileert om de .NET test suites te gebruiken (<code>using namespace   Microsoft::VisualStudio::TestTools::UnitTesting;</code>):</p>
+
+<p>Project &gt; configuration properties &gt; General &gt; Common Language Runtime support</p>
+
+<p><img style='float: left;' src='/img//code/c/testing/clr_unittests.png |'></p>
+
+<p>Dit staat op <code>/clr:safe</code> indien je met VStudio 2008 een nieuwe test aan maakt via menu Test &gt; New Test &gt; Unit Test</p>
+
+<p>Een voorbeeld header file om te testen:</p>
+
+<pre><code class="language-c">class MyClass {
+public:
+	MyClass() {};
+
+	int addUp(int one, int two);
+};
+</code></pre>
+
+<pre><code class="language-c">#include &quot;myclass.h&quot;
+#include &lt;iostream&gt;
+using namespace std;
+
+int MyClass::addUp(int one, int two)
+{
+	return one + two;
+}
+</code></pre>
+
+<h4 id="managed-test-code-schrijven">Managed test code schrijven</h4>
+
+<p>Gebruik dezelfde manier als .NET Unit Testing framework met attributes - dit vereist dus de CLR flag. Voorbeeld:</p>
+
+<pre><code class="language-c">#include &quot;stdafx.h&quot;
+#include &quot;../libtest/myclass.h&quot;
+
+using namespace System;
+using namespace System::Text;
+using namespace System::Collections::Generic;
+using namespace	Microsoft::VisualStudio::TestTools::UnitTesting;
+
+namespace unittests
+{
+	[TestClass]
+	public ref class MyClassTest
+	{
+
+	public: 
+
+		[TestMethod]
+		void AddOne()
+		{
+			Assert::AreEqual(3, MyClass().addUp(1, 2));
+		};
+	};
+}
+</code></pre>
+
+<p><strong>Assert</strong> heeft een hoop static methods</p>
+
+<h4 id="een-externe-klasse-testen-die-van-een-lib-komt">een externe klasse testen die van een lib komt</h4>
+
+<p>Als je vanuit je test project wil refereren naar productie code/projecten, kan dit een probleem zijn:</p>
+
+<pre><code>MyClassTest.obj : error LNK2028: unresolved token (0A00000A) &quot;public: __thiscall MyClass::MyClass(void)&quot; (??0MyClass@@$$FQAE@XZ) referenced in function &quot;public: void __clrcall unittests::MyClassTest::AddOne(void)&quot; (?AddOne@MyClassTest@unittests@@$$FQ$AAMXXZ)
+MyClassTest.obj : error LNK2028: unresolved token (0A00000B) &quot;public: int __thiscall MyClass::addUp(int,int)&quot; (?addUp@MyClass@@$$FQAEHHH@Z) referenced in function &quot;public: void __clrcall unittests::MyClassTest::AddOne(void)&quot; (?AddOne@MyClassTest@unittests@@$$FQ$AAMXXZ)
+MyClassTest.obj : error LNK2019: unresolved external symbol &quot;public: int __thiscall MyClass::addUp(int,int)&quot; (?addUp@MyClass@@$$FQAEHHH@Z) referenced in function &quot;public: void __clrcall unittests::MyClassTest::AddOne(void)&quot; (?AddOne@MyClassTest@unittests@@$$FQ$AAMXXZ)
+</code></pre>
+
+<p>Dat wil zeggen, het compileert, maat het linkt niet. Oplossing: Voeg dit toe aan uw <code>stdafx.cpp</code>:</p>
+
+<pre><code class="language-c">#pragma comment(lib, &quot;../Debug/libtest.lib&quot;)
+</code></pre>
+
+<p>gegeven dat &ldquo;libtest&rdquo; uw project under test is. Vanaf dan kan je normaal header files includen in uw test cpp file, zie boven.</p>
+
+<h4 id="een-externe-klasse-testen-die-van-een-dll-komt">een externe klasse testen die van een DLL komt</h4>
+
+<p>Er wordt pas een <code>.lib</code> file gegenereerd wanneer je <code>declspec(dllexport)</code> definiëert - wanneer niets exported is, kan er ook niets imported worden&hellip; Dus <code>myClass</code> aanpassen:</p>
+
+<pre><code class="language-c">
+#ifdef FRIENDCLASS_EXPORT
+    #define FRIENDCLASS __declspec(dllexport)
+#else
+    #define FRIENDCLASS __declspec(dllimport)
+#endif
+
+class FRIENDCLASS MyClass {
+public:
+	MyClass();
+
+	int addUp(int one, int two);
+};
+</code></pre>
+
+<p>En dan het libtest project compileren met de extra preprocessor definitie <code>FRIENDCLASS_EXPORT</code> zodat in commandline <code>/D &quot;FRIENDCLASS_EXPORT&quot;</code> erbij komt. Zie ook <a href="http://msdn.microsoft.com/en-us/library/hhzbb5c8(v=vs.80).aspx">MSDN Preprocessor definitions</a>, nu kunnen we hierop checken in de code met <code>#ifdef</code>. Bovenstaande code doet een export wanneer gedefiniëerd, en een import anders - dit gebeurt wanneer we de header file includen vanuit onze test cpp file.</p>
+
+<h4 id="debugging">Debugging</h4>
+
+<p>❗ <a href="http://msdn.microsoft.com/en-us/library/958x11bc(v=vs.80).aspx">Debug information format flags</a>: <code>/ZI</code> (&ldquo;Edit and Continue feature&rdquo;, retry drukken bij assertion failure) is <strong>niet</strong> ondersteund in combinatie met <code>/cli</code>. Debuggen gaat wel op <code>/Zi</code> niveau.</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Grep on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/grep/index.xml</link>
+    <description>Recent content in Grep on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/grep/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>grep</title>
+      <link>http://www.brainbaking.com/wiki/unix/cmd/grep/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/unix/cmd/grep/</guid>
+      <description>
+
+&lt;h1 id=&#34;greppin-away&#34;&gt;Greppin&amp;rsquo; away&lt;/h1&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Combinatievoorbeeld met find&lt;/strong&gt; te vinden op &lt;a href=&#34;http://www.brainbaking.com/wiki/unix/cmd/&#34;&gt;unix/cmd&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;surrounding-lines-while-greppin&#34;&gt;Surrounding lines while greppin&amp;rsquo;&lt;/h4&gt;
+
+&lt;p&gt;Dit heet &lt;strong&gt;lines in context&lt;/strong&gt; in &lt;em&gt;man grep&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;grep -B 3 -A 2 foo README.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Verklaring: Zoek foo in readme.txt met 3 lijnen boven en 2 lijnen onderaan. &lt;br/&gt;&lt;br/&gt;
+Indien aantal lijnen gelijk, gebruik simpelweg &lt;code&gt;-C [x]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;inverse-grepping&#34;&gt;Inverse grepping&lt;/h4&gt;
+
+&lt;h5 id=&#34;in-file-contents&#34;&gt;In file contents&lt;/h5&gt;
+
+&lt;p&gt;Om te zoeken naar bijvoorbeeld &amp;lsquo;hond&amp;rsquo;, maar niet &amp;lsquo;kat&amp;rsquo;, moet je inverse zoeken voor kat:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat file | grep &#39;hond&#39; | grep -v &#39;kat&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;finding-pattern-a-or-b&#34;&gt;Finding pattern a OR b&lt;/h4&gt;
+
+&lt;p&gt;Combineren gaat met het pipe character (escaped) &lt;code&gt;&amp;lt;br/&amp;gt;|&lt;/code&gt; - voorbeeld zoekt naar hond of kat:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat file | grep &#39;hond&amp;lt;br/&amp;gt;|kat&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ Normale manier is &lt;code&gt;egrep pattern1|pattern2&lt;/code&gt; gebruiken of &lt;code&gt;grep -E pattern1|pattern2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;toon-meer-info-bij-context&#34;&gt;Toon meer info bij context&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;grep &#39;zoekstring&#39; file.bla -n -H 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Print ook line numbers &amp;amp; filename, vooral handig wanneer dit van een &lt;code&gt;-exec&lt;/code&gt; commando komt van een search, bijvoorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;find . -name &amp;quot;*.php&amp;quot; -exec grep &#39;backlink&#39; {} -C 2 -n -H &amp;lt;br/&amp;gt;; &amp;gt; find_backlinks.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Zoek alle .php files vanaf de current directory&lt;/li&gt;
+&lt;li&gt;Zoek in alle gevonden files naar &amp;lsquo;backlink&amp;rsquo;&lt;/li&gt;
+&lt;li&gt;Print 2 bovenste en onderste context lijnen af&lt;/li&gt;
+&lt;li&gt;Print lijn nummer en prefix met bestandsnaam&lt;/li&gt;
+&lt;li&gt;Output alles naar find_backlinks.txt&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;De &lt;code&gt;-print&lt;/code&gt; flag bij find print de filename af voor elke gevonden file die naar de &lt;code&gt;-exec&lt;/code&gt; doorgegeven wordt.&lt;/p&gt;
+
+&lt;p&gt;❗ Onder Solaris een commando uitvoeren met &lt;code&gt;-exec&lt;/code&gt; moet dit ook nog gewrapped worden met een shell executable, zo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;find . -name &amp;quot;*.php&amp;quot; -exec sh -c &#39;grep -n &amp;quot;backlink&amp;quot; $1&#39; {} {}&amp;lt;br/&amp;gt;; -print
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vergeet niet dat grep ook &lt;strong&gt;andere argumenten&lt;/strong&gt; (of volgorde) heeft (eerst flags dan search pattern en file, geen -C option etc)!&lt;br/&gt;&lt;br/&gt;
+Zie &lt;a href=&#34;http://www.compuspec.net/reference/os/solaris/find/find_and_execute_with_pipe.shtml&#34;&gt;http://www.compuspec.net/reference/os/solaris/find/find_and_execute_with_pipe.shtml&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>jstl</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="jstl" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/jsp/jstl/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>jstl</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="jstl-snippets">JSTL Snippets</h1>
+
+<h2 id="installatie-1-2">Installatie 1.2</h2>
+
+<p>Requirements: Web container 2.5 <code>http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd</code> (dit is stricter dan de voorgaande!)</p>
+
+<p>Jars kopiëren naar WEB-INF lib.<br/><br/>
+standard-x.jar mag verwijderd worden dit is een oude versie. jstl-api en jstl-impl moeten aanwezig zijn.</p>
+
+<p>Hierna is het mogelijk om met <em><code>$</code></em> expressies te gebruiken in jsps.</p>
+
+<p>❗ <strong>Opgelet</strong> - dollar wordt aan de server kant geëvalueerd, dat wil zeggen dat dit een conflict geeft met <a href="http://code.google.com/p/trimpath/wiki/JavaScriptTemplates">TrimPath Javascript Templates</a> die aan de client kan geëvalueerd worden.</p>
+
+<h2 id="datums-formatteren">Datums formatteren</h2>
+
+<p>Doen met:</p>
+
+<pre><code class="language-xml"> &lt;fmt:formatDate pattern######&quot;dd/MM/yyyy&quot; value&quot;${entity.date}&quot; /&gt;
+</code></pre>
+
+<p>❗ <strong>Opgelet</strong> - Voor JSTL 1.2 kan value wel een EL expressie zijn, daarvoor niet.<br/><br/>
+Hiervoor dien je deze taglib te gebruiken: <code>*http:*java.sun.com/**jsp**/jstl/fmt//</code></p>
+
+<p>Het standaard pattern is brol, en dat altijd meegeven is vervelend. Uw eigen tag maken en <code>setPattern()</code> aanroepen werkt, maar gebruik de juiste klasse om af te leiden!</p>
+
+<pre><code class="language-java">public class DisplayDateTag extends org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag { 
+  @Override
+  public void setValue(Date value) {
+     super.setValue(value); // 'cause JSP uses reflection...
+  }
+}
+</code></pre>
+
+<p>In plaats van <code>org.apache.taglibs.standard.tag.el.fmt.FormatDateTag</code>. Waarom?</p>
+
+<blockquote>
+<p>Actually, there are two taglib directives that correspond to the JSTL core  library because in JSTL 1.0 the EL is optional. All four of the JSTL 1.0 custom tag libraries have alternate versions that use JSP expressions rather than the EL for specifying dynamic attribute values. Because these alternate libraries rely on JSP&rsquo;s more traditional request-time attribute values, they are referred to as the RT libraries, whereas those using the expression language are referred to as the EL libraries. Developers distinguish between the two versions of each library using alternate taglib  directives. The directive for using the RT version of the core library is shown in Listing 8. Given our current focus on the EL, however, it is the first of these directives that is needed.</p>
+</blockquote>
+
+<p>Zie <a href="http://www.ibm.com/developerworks/java/library/j-jstl0211.html">http://www.ibm.com/developerworks/java/library/j-jstl0211.html</a>.</p>
+
+<p>❗ <strong>Opgelet</strong> - Om EL expressies goed te kunnen doorgeven Ipv. te evalueren op de JSP moet dit in de TLD staan:</p>
+
+<pre><code class="language-xml">        &lt;attribute&gt;
+            &lt;name&gt;value&lt;/name&gt;
+            &lt;required&gt;true&lt;/required&gt;
+            &lt;rtexprvalue&gt;true&lt;/rtexprvalue&gt; &lt;!-- belangrijk --&gt;
+        &lt;/attribute&gt;
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

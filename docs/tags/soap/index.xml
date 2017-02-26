@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Soap on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/soap/index.xml</link>
+    <description>Recent content in Soap on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/soap/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>soap</title>
+      <link>http://www.brainbaking.com/wiki/code/java/soap/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/soap/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-java-soap&#34;&gt;code:java &amp;gt;&amp;gt; Soap&lt;/h1&gt;
+
+&lt;h3 id=&#34;een-simpele-soap-client-maken-als-unit-test&#34;&gt;Een simpele SOAP Client maken als Unit Test&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    @Test
+    public void processManageCustomers() throws Exception {
+        URL url = new URL(&amp;quot;http://localhost:8888/bla&amp;quot;);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+        setSOAPPostHeaders(conn);
+        IOUtils.copy(new FileInputStream(new File(&amp;quot;src/test/resources/example.xml&amp;quot;)), conn.getOutputStream());
+
+        String result = IOUtils.toString(conn.getInputStream());
+        assertThat(result).contains(&amp;quot;&amp;lt;return&amp;gt;something&amp;lt;/return&amp;gt;&amp;quot;);
+    }
+
+    private void setSOAPPostHeaders(HttpURLConnection conn) throws ProtocolException {
+        conn.setRequestProperty(&amp;quot;Content-Type&amp;quot;, &amp;quot;text/xml; charset=utf-8&amp;quot;);
+        conn.setRequestProperty(&amp;quot;SOAPAction&amp;quot;, &amp;quot;&amp;quot;);
+        conn.setRequestMethod(&amp;quot;POST&amp;quot;);
+        conn.setDoOutput(true);
+        conn.setDoInput(true);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gebruik makende van &lt;code&gt;apache commons&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;endpoint-url-met-jax-ws-goed-zetten&#34;&gt;Endpoint URL met JAX-WS goed zetten&lt;/h3&gt;
+
+&lt;p&gt;Twee mogelijkheden:&lt;/p&gt;
+
+&lt;p&gt;ofwel zit de URL juist op de server in de WSDL, in dat geval kan je de gegenereerde Service aanmaken met een url naar de remote WSDL:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;BlaService service = new BlaService(new URL(&amp;quot;http://server.com/soapaction?wsdl&amp;quot;), new QName(&amp;quot;namespace.com&amp;quot;, &amp;quot;localpart&amp;quot;));
+service.getPort().doStuff();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Deze gaat van de wsdl dit uitlezen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;wsdl:definitions xmlns######&amp;quot;http:*schemas.xmlsoap.org/wsdl/&amp;quot; xmlns:Port_0&amp;quot;http:*www.x.com/endpoint/&amp;quot; ... /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Als dat verkeerd geconfigureerd staat heb je nog een tweede mogelijkheid, via property &lt;code&gt;BindingProvider.ENDPOINT_ADDRESS_PROPERTY&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;try { 
+            EmployeeServiceService service = new EmployeeServiceService();
+            EmployeeService port = service.getEmployeeServicePort();
+
+            BindingProvider bp = (BindingProvider)port;
+            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, &amp;quot;http://server1.grallandco.com:8282/HumanRessources/EmployeeServiceService&amp;quot;);
+
+            Employee emp = port.getEmployee(123);
+// continue doing stuff
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://tugdualgrall.blogspot.be/2009/02/jax-ws-how-to-configure-service-end_17.html&#34;&gt;http://tugdualgrall.blogspot.be/2009/02/jax-ws-how-to-configure-service-end_17.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;logging-enablen-voor-sun-jax-ws&#34;&gt;Logging enablen voor Sun JAX-WS&lt;/h3&gt;
+
+&lt;p&gt;Gemakkelijke methode :met een JVM argument: &lt;code&gt;-Dcom.sun.xml.ws.transport.http.client.HttpTransportPipe.dump=&amp;quot;true&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Moeilijke methode: met een &lt;code&gt;HandlerResolver&lt;/code&gt; die tussen de chain in hangt (weet niet meer precies hoe dat moet, op te zoeken)&lt;/p&gt;
+
+&lt;h3 id=&#34;multipart-soap-stub-server-maken&#34;&gt;Multipart SOAP Stub server maken&lt;/h3&gt;
+
+&lt;h4 id=&#34;response-opbouwen&#34;&gt;Response opbouwen&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.java2s.com/Open-Source/Java-Document/Groupware/hipergate/com/oreilly/servlet/MultipartResponse.java.htm&#34;&gt;http://www.java2s.com/Open-Source/Java-Document/Groupware/hipergate/com/oreilly/servlet/MultipartResponse.java.htm&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Aandachtspuntjes:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;content type in de HEADER meesturen (niet als &lt;code&gt;servlet output stream.println()&lt;/code&gt;): &lt;code&gt;multipart/related&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Per part moet &amp;ldquo;Content-Id&amp;rdquo; meegestuurd worden. Voor een binair stuk moet dat dan overeenkomen met de HREF dat in uw SOAP XML envelop zit:&lt;/li&gt;
+&lt;li&gt;Binaire gegevens gewoon als byte array wegscvhrijven met &lt;code&gt;stream.write()&lt;/code&gt;, maar vergeet niet content type op dit part op &lt;code&gt;application/octet-stream&lt;/code&gt; te zetten.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;S:Envelope xmlns:S=&amp;quot;http://schemas.xmlsoap.org/soap/envelope/&amp;quot;&amp;gt;
+   &amp;lt;S:Body&amp;gt;
+      &amp;lt;ns4:HistoriekPdfResponse xmlns:ns4######&amp;quot;s/historiek&amp;quot; xmlns:ns3&amp;quot;http:/ices/uitnodiging&amp;quot; xmlns:ns2######&amp;quot;http:/itnodiging&amp;quot; xmlns&amp;quot;http://www.dd.be/historiek&amp;quot;&amp;gt;
+         &amp;lt;ns4:Pdf&amp;gt;
+            &amp;lt;Include href######&amp;quot;cid:0ba9135c-8663-4346-89b1-770c64383499@example.jaxws.sun.com&amp;quot; xmlns&amp;quot;http://www.w3.org/2004/08/xop/include&amp;quot;/&amp;gt;
+         &amp;lt;/ns4:Pdf&amp;gt;
+      &amp;lt;/ns4:HistoriekPdfResponse&amp;gt;
+   &amp;lt;/S:Body&amp;gt;
+&amp;lt;/S:Envelope&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hierboven is de content id 0ba91&amp;hellip; zonder &amp;ldquo;cid&amp;rdquo;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

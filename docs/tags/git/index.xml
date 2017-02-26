@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/git/index.xml</link>
+    <description>Recent content in Git on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>git</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/git/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/git/</guid>
+      <description>
+
+&lt;h1 id=&#34;git&#34;&gt;Git&lt;/h1&gt;
+
+&lt;h3 id=&#34;van-een-remote-branch-changes-binnen-halen&#34;&gt;Van een remote branch changes binnen halen&lt;/h3&gt;
+
+&lt;p&gt;Stel: ik heb een fork gemaakt maar wil van de &amp;ldquo;upstream&amp;rdquo; de veranderingen binnen halen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote add upstream git://github.com/user/bla.git
+git fetch upstream
+git merge upstream/master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En dan eventueel merge conflicten oplossen.&lt;/p&gt;
+
+&lt;h3 id=&#34;stap-voor-stap&#34;&gt;Stap-voor-stap&lt;/h3&gt;
+
+&lt;p&gt;setup git voor &lt;em&gt;windows&lt;/em&gt;: volg instructies op &lt;a href=&#34;http://help.github.com/win-set-up-git/&#34;&gt;http://help.github.com/win-set-up-git/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;stap-voor-stap-ssh&#34;&gt;Stap-voor-stap SSH&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Installeer &lt;code&gt;cygwin&lt;/code&gt; met de volgende packages:
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;ssh&lt;/code&gt; en varianten&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;corkscrew&lt;/code&gt; voor proxy indien nodig&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;genereer voor uw pc public &lt;code&gt;ssh&lt;/code&gt; keys met &lt;code&gt;ssh-keygen -t rsa -C &amp;quot;[email]&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Kopieer de public key in &lt;code&gt;~/.ssh/id_rsa.pub&lt;/code&gt; en voeg dit aan uw profiel op github.com toe hier: &lt;a href=&#34;https://github.com/account/ssh&#34;&gt;https://github.com/account/ssh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Zet de ssh proxy indien nodig - zie onder&lt;/li&gt;
+&lt;li&gt;Test connectie met &lt;code&gt;ssh -T git@github.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;stap-voor-stap-git&#34;&gt;Stap-voor-stap Git&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Set username &amp;amp; email:
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git config --global user.name &amp;quot;[name]&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global user.email &amp;quot;[email]&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Set github user &amp;amp; github token - terug te inden op github account settings:
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git config --global github.user [user]&lt;/code&gt; zonder quotes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global github.token [token]&lt;/code&gt; zonder quotes&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Kleurtjes toevoegen aan de git shell (rood/groen voor unstaged/staged files): &lt;code&gt;git config --global color.ui true&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;in-depth-guide&#34;&gt;In-depth guide&lt;/h3&gt;
+
+&lt;h4 id=&#34;links-en-resources&#34;&gt;Links en resources&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://progit.org/book/&#34;&gt;http://progit.org/book/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.github.com/&#34;&gt;http://www.github.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;basisconfiguratie-gitignore&#34;&gt;Basisconfiguratie .gitignore&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;https://github.com/github/gitignore&#34;&gt;https://github.com/github/gitignore&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;conflict-resolutie&#34;&gt;Conflict resolutie&lt;/h4&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width:  |px;&#39; src=&#39;http://www.brainbaking.com/img//code/tools/trees.png&#39;&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;outgoing-changes-resetten-en-een-pull-doen&#34;&gt;Outgoing changes resetten en een pull doen&lt;/h5&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git reset --hard&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;En daarna&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git pull&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;❗ een harde reset uitvoeren op het verkeerde moment kan u van de main branch afhalen: zie &lt;a href=&#34;http://blog.plover.com/prog/git-reset.html&#34;&gt;http://blog.plover.com/prog/git-reset.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;a-tale-of-three-trees&#34;&gt;A tale of three trees&lt;/h5&gt;
+
+&lt;p&gt;Git gebruikt intern als version control systeem 3 trees: head, index &amp;amp; work. &lt;br/&gt;&lt;br/&gt;
+Als conflicten auto-merged kunnen worden met een &lt;code&gt;pull&lt;/code&gt; komt dit rechtstreeks in uw lokale repository. Anders moet je mergen met &lt;code&gt;git mergetool -y&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na de merge moet je lokaal committen - dit zijn dan de wijzigingen die van de remote repository gepulled werden.&lt;/p&gt;
+
+&lt;p&gt;Meer informatie &amp;amp; uitleg op:
+  * &lt;a href=&#34;http://www.infoq.com/presentations/A-Tale-of-Three-Trees&#34;&gt;http://www.infoq.com/presentations/A-Tale-of-Three-Trees&lt;/a&gt;
+  * &lt;a href=&#34;http://progit.org&#34;&gt;http://progit.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;configuratie-ssh&#34;&gt;Configuratie SSH&lt;/h4&gt;
+
+&lt;p&gt;SSH proxy definiëren: create &lt;code&gt;config&lt;/code&gt; file in &lt;code&gt;~/.ssh&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ProxyCommand /usr/bin/corkscrew proxy.x.be 8080 %h %p
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Opgelet&lt;/strong&gt; &lt;code&gt;corkscrew&lt;/code&gt; ook nog downloaden (cygwin opgelet)&lt;/p&gt;
+
+&lt;h4 id=&#34;configuratie-git&#34;&gt;Configuratie GIT&lt;/h4&gt;
+
+&lt;p&gt;Alle configuratie flags kunnen aangepast worden met &lt;code&gt;git config --global [key] [value]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Een proxy definieren: key &lt;code&gt;http.proxy&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;het-verschil-zien-tussen-de-lokale-gecommite-gegevens-en-de-remote&#34;&gt;Het verschil zien tussen de lokale gecommite gegevens en de remote&lt;/h4&gt;
+
+&lt;p&gt;Indien reeds van unstaged -&amp;gt; staged -&amp;gt; committed gegaan, voor de &lt;code&gt;git push&lt;/code&gt; te doen, wat is het verschil??&lt;/p&gt;
+
+&lt;p&gt;Enkel zichtbaar via &lt;code&gt;git log&lt;/code&gt;, dan het detail daarvan proberen te raadplegen met &lt;code&gt;git show [begin hashtag logentry]]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;merge-tool-configureren&#34;&gt;Merge tool configureren&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;download kdiff3 (&lt;a href=&#34;http://kdiff3.sourceforge.net/&#34;&gt;http://kdiff3.sourceforge.net/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;configure git mergetool:
+
+&lt;ol&gt;
+&lt;li&gt;git config &amp;ndash;global merge.tool kdiff3&lt;/li&gt;
+&lt;li&gt;git config &amp;ndash;global mergetool.kdiff3.path &amp;ldquo;C:&lt;br/&gt;Program Files (x86)&lt;br/&gt;KDiff3&lt;br/&gt;kdiff3.exe&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;git config &amp;ndash;global mergetool.trustexitcode false&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;use mergetool: git mergetool -y&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;cheat-sheet&#34;&gt;Cheat sheet&lt;/h4&gt;
+
+&lt;h5 id=&#34;een-repository-initieel-aanmaken&#34;&gt;Een repository initieel aanmaken&lt;/h5&gt;
+
+&lt;p&gt;Gegeven: een project directory waar men een repository van wil maken.&lt;/p&gt;
+
+&lt;p&gt;^ Actie     ^ Commando ^
+| &lt;em&gt;initieel aanmaken nodige git bestanden&lt;/em&gt; | &lt;code&gt;git init&lt;/code&gt; |
+| &lt;em&gt;remote repository toevoegen&lt;/em&gt; | &lt;code&gt;git add origin [url]&lt;/code&gt; |&lt;/p&gt;
+
+&lt;p&gt;Bij een &lt;code&gt;git add&lt;/code&gt; commando zou de url in geval van &lt;em&gt;github&lt;/em&gt; zoiets kunnen zijn:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git@github.com:jefklak/jasmine-sync-flow.git&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&#34;een-remote-repository-lokaal-plaatsen&#34;&gt;Een remote repository lokaal plaatsen&lt;/h5&gt;
+
+&lt;p&gt;In een bepaalde root directory (maakt subdir automatisch aan):&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git clone git@github.com:jefklak/jasmine-junit-runner.git&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Om dan zaken &lt;em&gt;upstream&lt;/em&gt; te pushen kan je &lt;code&gt;git remote add upstream [url]]&lt;/code&gt; en &lt;code&gt;git push upstream&lt;/code&gt; gebruiken.&lt;/p&gt;
+
+&lt;h5 id=&#34;state-veranderen-aan-een-repository&#34;&gt;State veranderen aan een repository&lt;/h5&gt;
+
+&lt;p&gt;&lt;em&gt;Altijd eerst lokaal committen&lt;/em&gt;, dán die snapshot pushen naar de remote server!&lt;/p&gt;
+
+&lt;p&gt;^ Actie     ^ Commando ^
+| &lt;em&gt;files toevoegen om te committen&lt;/em&gt; | &lt;code&gt;git add [dir]/*&lt;/code&gt; |
+| &lt;em&gt;te committen status bekijken&lt;/em&gt; | &lt;code&gt;git status&lt;/code&gt; |
+| &lt;em&gt;change committen&lt;/em&gt; | &lt;code&gt;git commit -a -m [msg]&lt;/code&gt; |
+| &lt;em&gt;gecommitte snapshot pushen (naar master)&lt;/em&gt; | &lt;code&gt;git push&lt;/code&gt; |
+| &lt;em&gt;gecommitte snapshot pushen (naar x)&lt;/em&gt; | &lt;code&gt;git push -u origin x&lt;/code&gt; |&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

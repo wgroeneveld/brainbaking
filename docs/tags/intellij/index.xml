@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Intellij on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/intellij/index.xml</link>
+    <description>Recent content in Intellij on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>intellij</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/intellij/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/intellij/</guid>
+      <description>
+
+&lt;h1 id=&#34;intellij-voor-eclipse-users&#34;&gt;IntelliJ voor Eclipse users&lt;/h1&gt;
+
+&lt;h2 id=&#34;shortcuts&#34;&gt;Shortcuts&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://dattein.com/blog/eclipse-vs-intellij-keyboard-shortcuts/&#34;&gt;Eclipse VS IntelliJ Keyboard shortcuts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheet/ccc?key######0ApdQuwFHc0y-dERsc2U4QzRBZVlPaHl4S091R2FiOUE#gid0&#34;&gt;Shortcuts google docs&lt;/a&gt; van Janick&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jetbrains.com/idea/documentation/migration_faq.html&#34;&gt;IntelliJ Q&amp;amp;A for Eclipse users&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;-&amp;gt; &lt;a href=&#34;http://www.catalysts.cc/wissenswertes/intellij-idea-and-eclipse-shortcuts/?lang=en&#34;&gt;IntelliJ and Eclipse shortcuts&lt;/a&gt; meest interessante?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;❗ Eclipse to IntelliJ shortcut plugin voor IntelliJ: &lt;a href=&#34;http://plugins.intellij.net/plugin/?idea&amp;amp;id=6827&#34;&gt;http://plugins.intellij.net/plugin/?idea&amp;amp;id=6827&lt;/a&gt;
+Source hier beschikbaar: &lt;a href=&#34;https://github.com/janickr/shortcuttranslator&#34;&gt;https://github.com/janickr/shortcuttranslator&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;de-meest-voorkomende-shortcuts-vergelijken&#34;&gt;De meest voorkomende shortcuts vergelijken&lt;/h4&gt;
+
+&lt;p&gt;| &lt;strong&gt;Betekenis&lt;/strong&gt; | &lt;strong&gt;Eclipse shortcut&lt;/strong&gt; | &lt;strong&gt;IntelliJ shortcut&lt;/strong&gt; |
+| Open Type | CTRL+SHIFT+T | CTRL+N |
+| Close Editor | CTRL+W | CTRL+F4 |
+| Delete line | CTRL+D | CTRL+Y |&lt;/p&gt;
+
+&lt;h4 id=&#34;intellij-configureren-voor-play-2-0&#34;&gt;IntelliJ Configureren voor Play-2.0&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://jetbrains.dzone.com/articles/configuring-intellij-idea&#34;&gt;http://jetbrains.dzone.com/articles/configuring-intellij-idea&lt;/a&gt;
+Wat nog te doen?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Op project, F4, Global Libraries, toevoegen: playinstalldir&lt;br/&gt;framework&lt;br/&gt;sbt&lt;br/&gt;boot&lt;br/&gt;scala-2.9.1&lt;br/&gt;lib en &lt;br/&gt;play&lt;br/&gt;play-2.0&lt;br/&gt;beta&lt;/li&gt;
+&lt;li&gt;Voeg aan diezelfde global lib toe: attach directories play&lt;br/&gt;src&lt;br/&gt;main&lt;br/&gt;java&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

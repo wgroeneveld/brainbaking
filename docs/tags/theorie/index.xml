@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Theorie on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/theorie/index.xml</link>
+    <description>Recent content in Theorie on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/theorie/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>logica</title>
+      <link>http://www.brainbaking.com/wiki/theorie/logica/</link>
+      <pubDate>Thu, 23 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/theorie/logica/</guid>
+      <description>
+
+&lt;h1 id=&#34;logica&#34;&gt;Logica&lt;/h1&gt;
+
+&lt;h3 id=&#34;logic-matters-refs&#34;&gt;&amp;ldquo;Logic Matters&amp;rdquo; refs&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.logicmatters.net/igt/godel-without-tears/&#34;&gt;Gödel without Tears&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

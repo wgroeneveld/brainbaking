@@ -8,6 +8,8 @@ pygmentCodeFences = true
 #disqusShortname = "XXX"
 #googleAnalytics = "XXX"
 
+publishDir = "docs"
+
 [taxonomies]
 tag = "tags"
 

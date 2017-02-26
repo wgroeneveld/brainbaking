@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>play2</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="play2" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/java/play2/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>play2</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="play-2-0">Play 2.0</h1>
+
+<h2 id="testing-in-play-2-0">Testing in Play 2.0</h2>
+
+<h3 id="controller-testen">Controller testen</h3>
+
+<p>een controller &ldquo;action&rdquo; (= method vanuit route) testen doen we op een &ldquo;functionele&rdquo; manier in plaats van de method direct aan te roepen:</p>
+
+<p><strong>controller</strong></p>
+
+<pre><code class="language-java">	public static Result buyHorse() {
+		Form&lt;Horse&gt; horseForm = form(Horse.class);
+		Horse horse = horseForm.bindFromRequest().get();
+                System.out.println(horse.id);
+        }
+</code></pre>
+
+<p><strong>unit test</strong></p>
+
+<pre><code class="language-java">	@Test
+	public void buyHorse() {
+		HashMap&lt;String, String&gt; map = new HashMap&lt;&gt;();
+		map.put(&quot;id&quot;, &quot;12&quot;);
+
+		callAction(HorseMarket.buyHorse(), new FakeRequest().withFormUrlEncodedBody(map));
+	}
+</code></pre>
+
+<p>Waarbij hierboven <code>HorseMarket</code> de routes ref is en niet de <code>HorseMarket</code> controller klasse zelf - deze:</p>
+
+<pre><code class="language-java">import static controllers.routes.ref.HorseMarket;
+</code></pre>
+
+<p>❗ De bovenstaande test zal &ldquo;12&rdquo; afdrukken, gegeven dat <code>setId()</code> gegenereerd is. <br/><br/>
+Play2 genereert blijkbaar getters &amp; setters voor EBean Modellen volgens <a href="https://github.com/playframework/Play20/wiki/JavaEbean:">https://github.com/playframework/Play20/wiki/JavaEbean:</a></p>
+
+<blockquote>
+<p>Play has been designed to generate getter/setter automatically, to ensure compatibility with libraries that expect them to be available at runtime (ORM, Databinder, JSON Binder, etc). If Play detects any user-written getter/setter in the Model, it will not generate getter/setter in order to avoid any conflict.</p>
+</blockquote>
+
+<p>Wordt voor testing blijkbaar niet gegenereerd?</p>
+
+<h3 id="integratie-testen-en-ebean">Integratie testen en EBean</h3>
+
+<p>Zie ook <a href="http://blog.matthieuguillermin.fr/2012/03/unit-testing-tricks-for-play-2-0-and-ebean/">http://blog.matthieuguillermin.fr/2012/03/unit-testing-tricks-for-play-2-0-and-ebean/</a></p>
+
+<p>De database moet gesetup worden door alles met <code>runningFakeApplication()</code> te draaien (static onder <code>play.test.Helper</code>):</p>
+
+<pre><code class="language-java">@Test
+public void save() {
+  running(fakeApplication(), new Runnable() {
+    public void run() {
+      // Here is your real test code
+      Company company = new Company(&quot;My Company&quot;);
+      company.save();
+      assertThat(company.id).isNotNull();
+    }
+  });
+}
+</code></pre>
+
+<p>Dit is heel omslachtig en moet overal in een test gedaan worden. Oplossing: voorzie een static <code>@BeforeClass</code> dit éénmalig de setup doet:</p>
+
+<pre><code class="language-java">public class BaseModelTest {
+  public static FakeApplication app;
+ 
+  @BeforeClass
+  public static void startApp() {
+    app = Helpers.fakeApplication(Helpers.inMemoryDatabase());
+    Helpers.start(app);
+  }
+ 
+  @AfterClass
+  public static void stopApp() {
+    Helpers.stop(app);
+  }
+}
+</code></pre>
+
+<p>Dan heb je de <code>Runnable</code> van de eerste code niet meer nodig.</p>
+
+<h5 id="ebean-enhancer-als-javaagent-gebruiken">EBean enhancer als javaagent gebruiken</h5>
+
+<p>Testen draaien in Eclipse in plaats van in de play2 console kan je doen door <code>-javaagent:/path/to/ebean/ebean-x.y.z-agent.jar</code> mee te geven met JRE env. <br/><br/>
+Hiervoor moet je eerst EBean zelf nog downloaden want de agent zit <strong>niet</strong> in de play2 local repo: <a href="http://www.avaje.org/download.html">http://www.avaje.org/download.html</a></p>
+
+<h2 id="setup">Setup</h2>
+
+<ul>
+<li>Voor IntelliJ: <a href="http://jetbrains.dzone.com/articles/configuring-intellij-idea">http://jetbrains.dzone.com/articles/configuring-intellij-idea</a></li>
+<li>Voor Eclipse: <a href="https://groups.google.com/forum/#!topic/play-framework/U44m-kOG3bk">https://groups.google.com/forum/#!topic/play-framework/U44m-kOG3bk</a></li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>Play 1.2 Dependency management werkt via <code>dependencies.yml</code>: <a href="http://www.playframework.org/documentation/1.2.1/dependency">http://www.playframework.org/documentation/1.2.1/dependency</a></p>
+
+<p>Play 2.0 werkt met Scala en <strong>SBT</strong> als dep management: <a href="https://github.com/playframework/Play20/wiki/SBTDependencies">https://github.com/playframework/Play20/wiki/SBTDependencies</a> <br/><br/>
+SBT staat voor <a href="http://brizzled.clapper.org/id/92/">Simple Build Tool</a> &lt;- meer info &amp; vergelijkingen met Gradle, Ivy ea.</p>
+
+<p>Volg de volgende stappen:</p>
+
+<ol>
+<li>Pas Build.scala aan - zie onder</li>
+<li>Draai in de <code>play</code> console <code>eclipse</code> (zoals classpath updating: <code>mvn eclipse:eclipse</code>)</li>
+</ol>
+
+<pre><code class="language-scala">import sbt._
+import Keys._
+import PlayProject._
+
+object ApplicationBuild extends Build {
+    val appName         = &quot;main&quot;
+    val appVersion      = &quot;1.0&quot;
+
+    val appDependencies = Seq(
+    	&quot;org.easytesting&quot; % &quot;fest-assert&quot; % &quot;1.4&quot; % &quot;test&quot;
+      // Add your project dependencies here,
+    )
+
+    val main = PlayProject(appName, appVersion, appDependencies).settings(defaultJavaSettings:_*).settings(		
+                // The following line is NOT NEEDED by default! 
+		resolvers += &quot;Maven2 Repository&quot; at &quot;http://repo1.maven.org/maven2&quot;
+    )
+}
+</code></pre>
+
+<p>Play dependency tree printen gaat ook - voor meer commando&rsquo;s, zie <code>help</code> in de <code>play</code> console.</p>
+
+<h2 id="querying">Querying</h2>
+
+<p>Gegeven de entiteit:</p>
+
+<pre><code class="language-java">@Entity
+public class Auto {
+  @Id
+  public Long id;
+}
+</code></pre>
+
+<p>en de volgende test:</p>
+
+<pre><code class="language-java">public class AutoIntegrationTest {
+  @Test
+  public void canBePersisted() {
+     new Auto().save();
+  }
+}
+</code></pre>
+
+<h4 id="in-play-2-0">In Play 2.0</h4>
+
+<p><code>List&lt;Auto&gt; autos = Ebean.find(Auto.class).findList();</code></p>
+
+<h4 id="in-play-1-2">In Play 1.2</h4>
+
+<p><code>List&lt;Auto&gt; autos = Auto.list();</code></p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linking on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/linking/index.xml</link>
+    <description>Recent content in Linking on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/linking/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>linking</title>
+      <link>http://www.brainbaking.com/wiki/code/c/linking/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/linking/</guid>
+      <description>
+
+&lt;h1 id=&#34;linking-obj-dlls&#34;&gt;Linking obj/dlls&lt;/h1&gt;
+
+&lt;p&gt;Probleemstelling: verschillende &lt;strong&gt;solutions&lt;/strong&gt;, code over solutions heen willen gebruiken.&lt;/p&gt;
+
+&lt;p&gt;Dit compileert by default altijd, maar tijdens het linken van de gecompileerde files loopt het mis. Waarom? Omdat er geen &lt;code&gt;dllexport&lt;/code&gt; voorzien is.
+&lt;br/&gt;&lt;br/&gt; Op te lossen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#ifndef RESOURCE_UTILS_H
+#define RESOURCE_UTILS_H
+
+#include &amp;quot;Utility.h&amp;quot;
+
+#ifdef _DLL
+	#define DllExImport __declspec(dllexport)
+#else
+	#define DllExImport __declspec(dllimport)
+#endif
+
+
+class DllExImport ResourceUtils
+{
+public:
+	static RAIIObject&amp;lt;HICON&amp;gt; getIcon(int resourceId);
+	static RAIIObject&amp;lt;HICON&amp;gt; getIcon(HINSTANCE resourceHandleInstance, int resourceId);
+
+private:
+	ResourceUtils() {}
+};
+
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;in de cpp file hoeft niets speciaal meer te staan.&lt;/p&gt;
+
+&lt;h4 id=&#34;functies-exposen-voor-native-calls&#34;&gt;Functies exposen voor native calls&lt;/h4&gt;
+
+&lt;p&gt;Zelfde principe om klassen te exposen met &lt;code&gt;_ _declspec(dllexport)&lt;/code&gt;. Gebruik eventueel std calls (C# heeft dit nodig): &lt;code&gt;DllExImport MyStruct* _ _stdcall GetSignals();&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;properties-van-solutions&#34;&gt;Properties van solutions&lt;/h4&gt;
+
+&lt;h5 id=&#34;die-de-te-exporteren-code-bevat&#34;&gt;Die de te exporteren code bevat&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Configuration type: Dynamic Libraray (DLL)&lt;/li&gt;
+&lt;li&gt;Incremental linking: Yes (/INCREMENTAL)&lt;/li&gt;
+&lt;li&gt;Link Linkage Deps: Yes&lt;/li&gt;
+&lt;li&gt;Output file: *.dll&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5 id=&#34;die-de-code-bevat-die-gebruik-maakt-van-de-dll&#34;&gt;Die de code bevat die gebruik maakt van de dll&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Linker; Input: Additional dependencies ../OtherSolution.lib&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;shared-libraries-linken-in-unix&#34;&gt;Shared libraries linken in Unix&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;declspec&lt;/code&gt; is Win32 specifiek. Lees alles over GCC Visibility in &lt;a href=&#34;http://gcc.gnu.org/wiki/Visibility&#34;&gt;GNU GCC Wiki on Visibility&lt;/a&gt;. Komt op dit neer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#if defined(_MSC_VER)
+    //  Microsoft 
+    #define EXPORT __declspec(dllexport)
+    #define IMPORT __declspec(dllimport)
+#elif defined(_GCC)
+    //  GCC
+    #define EXPORT __attribute__((visibility(&amp;quot;default&amp;quot;)))
+    #define IMPORT
+#else
+    //  do nothing and hope for the best?
+    #define EXPORT
+    #define IMPORT
+    #pragma warning Unknown dynamic link import/export semantics.
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://www.akkadia.org/drepper/dsohowto.pdf&#34;&gt;How to write shared Libraries&lt;/a&gt; by Ulrich Drepper.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

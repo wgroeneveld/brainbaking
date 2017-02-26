@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Innerclasses on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/innerclasses/index.xml</link>
+    <description>Recent content in Innerclasses on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/innerclasses/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>innerclasses</title>
+      <link>http://www.brainbaking.com/wiki/code/java/dynamica/innerclasses/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/dynamica/innerclasses/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-java-dynamica-innerclasses&#34;&gt;code:java:dynamica &amp;gt;&amp;gt; Innerclasses&lt;/h1&gt;
+
+&lt;p&gt;Java is geen dynamische taal maar je kan wel gebruik maken van een aantal handige trucjes om duplicatie te vermijden.
+Bijvoorbeeld om &lt;strong&gt;state bij te houden&lt;/strong&gt; en de implementatie zelf in een &lt;strong&gt;inner klasse&lt;/strong&gt; te voorzien:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    private interface CrmEndpointWorker {
+        void call(Holder&amp;lt;Status&amp;gt; status, Holder&amp;lt;String&amp;gt; result);
+    }
+
+    public CrmImportGatewayAction forCreation() {
+        return new CrmImportGatewayAction(Action.CREATE);
+    }
+
+    public CrmImportGatewayAction forUpdating() {
+        return new CrmImportGatewayAction(Action.UPDATE);
+    }
+
+    public CrmImportGatewayAction forDeletion() {
+        return new CrmImportGatewayAction(Action.DELETE);
+    }
+
+    public CrmImportGatewayAction forDeactivating() {
+        return new CrmImportGatewayAction(Action.DEACTIVATE);
+    }
+
+    public class CrmImportGatewayAction {
+
+        private final Action actionType;
+
+        public CrmImportGatewayAction(Action actionType) {
+            this.actionType = actionType;
+        }
+
+        private CrmEndpointWorker accessdeviceAction(final List&amp;lt;Accessdevice&amp;gt; devices) {
+            return new CrmEndpointWorker() {
+
+                @Override
+                public void call(Holder&amp;lt;Status&amp;gt; status, Holder&amp;lt;String&amp;gt; result) {
+                    getEndpoint().accessdeviceAction(actionType, new CrmConverter().convertDevices(devices), status, result);
+                }
+            };
+        }
+
+        public String sendAccessdevices(List&amp;lt;Accessdevice&amp;gt; devices) {
+            return callCrmEndpoint(accessdeviceAction(devices));
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wat is hier cool aan?
+In plaats van 4 verschillende methods te voorzien op deze klasse:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;voor creation&lt;/li&gt;
+&lt;li&gt;voor deletion&lt;/li&gt;
+&lt;li&gt;voor updating&lt;/li&gt;
+&lt;li&gt;voor activating&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Kan je dit nu zo doen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;service.forCreation().sendAccessdevices();
+service.forDeletion().sendAccessdevices();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En de &lt;code&gt;Enum actionType&lt;/code&gt; is toegankelijk binnen die inner klasse en wordt zo mee doorgegeven naar in dit geval de SOAP Endpoint call.&lt;/p&gt;
+
+&lt;p&gt;Prachtig, toch?&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

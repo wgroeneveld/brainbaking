@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/security/index.xml</link>
+    <description>Recent content in Security on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>security</title>
+      <link>http://www.brainbaking.com/wiki/tech/security/</link>
+      <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/tech/security/</guid>
+      <description>
+
+&lt;h1 id=&#34;tech-security&#34;&gt;tech &amp;gt;&amp;gt; Security&lt;/h1&gt;
+
+&lt;h2 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h2&gt;
+
+&lt;h5 id=&#34;conversie-certificaten&#34;&gt;Conversie certificaten&lt;/h5&gt;
+
+&lt;p&gt;PFX naar PEM: &lt;code&gt;openssl pkcs12 -in [.pfx] -out [.pem]&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;pkcs7-signing-van-bestanden&#34;&gt;PKCS7 signing van bestanden&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;openssl smime -sign -in [tosignfile] -signer [privatekeyfile] -passin [passw] -outform PEM -out [outfile]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Paar dingen om op te letten:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;infile moet in UTF-8 encoded zonder UTF-8 identifier weggeschreven zijn. In C# bvb zo &lt;code&gt;File.WriteAllText(inFile, data, new UTF8Encoding(false));&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;privatekeyfile moet een PEM bestand zijn&lt;/li&gt;
+&lt;li&gt;output door openssl bevat begin en eind PKCS7 notaties, plus newlines op het laatste. Als die wegmoeten, replacen!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Voorbeeld om enkel signed data uit te halen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;                return signed
+                    .Replace(&amp;quot;-----BEGIN PKCS7-----&amp;quot;, &amp;quot;&amp;quot;)
+                    .Replace(&amp;quot;-----END PKCS7-----&amp;quot;, &amp;quot;&amp;quot;)
+                    .TrimStart(&#39;&amp;lt;br/&amp;gt;r&#39;, &#39;&amp;lt;br/&amp;gt;n&#39;)
+                    .TrimEnd(&#39;&amp;lt;br/&amp;gt;r&#39;, &#39;&amp;lt;br/&amp;gt;n&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

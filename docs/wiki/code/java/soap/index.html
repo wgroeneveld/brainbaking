@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>soap</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="soap" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/java/soap/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>soap</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="code-java-soap">code:java &gt;&gt; Soap</h1>
+
+<h3 id="een-simpele-soap-client-maken-als-unit-test">Een simpele SOAP Client maken als Unit Test</h3>
+
+<pre><code class="language-java">    @Test
+    public void processManageCustomers() throws Exception {
+        URL url = new URL(&quot;http://localhost:8888/bla&quot;);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+        setSOAPPostHeaders(conn);
+        IOUtils.copy(new FileInputStream(new File(&quot;src/test/resources/example.xml&quot;)), conn.getOutputStream());
+
+        String result = IOUtils.toString(conn.getInputStream());
+        assertThat(result).contains(&quot;&lt;return&gt;something&lt;/return&gt;&quot;);
+    }
+
+    private void setSOAPPostHeaders(HttpURLConnection conn) throws ProtocolException {
+        conn.setRequestProperty(&quot;Content-Type&quot;, &quot;text/xml; charset=utf-8&quot;);
+        conn.setRequestProperty(&quot;SOAPAction&quot;, &quot;&quot;);
+        conn.setRequestMethod(&quot;POST&quot;);
+        conn.setDoOutput(true);
+        conn.setDoInput(true);
+    }
+</code></pre>
+
+<p>Gebruik makende van <code>apache commons</code></p>
+
+<h3 id="endpoint-url-met-jax-ws-goed-zetten">Endpoint URL met JAX-WS goed zetten</h3>
+
+<p>Twee mogelijkheden:</p>
+
+<p>ofwel zit de URL juist op de server in de WSDL, in dat geval kan je de gegenereerde Service aanmaken met een url naar de remote WSDL:</p>
+
+<pre><code class="language-java">BlaService service = new BlaService(new URL(&quot;http://server.com/soapaction?wsdl&quot;), new QName(&quot;namespace.com&quot;, &quot;localpart&quot;));
+service.getPort().doStuff();
+</code></pre>
+
+<p>Deze gaat van de wsdl dit uitlezen:</p>
+
+<pre><code class="language-xml">&lt;wsdl:definitions xmlns######&quot;http:*schemas.xmlsoap.org/wsdl/&quot; xmlns:Port_0&quot;http:*www.x.com/endpoint/&quot; ... /&gt;
+</code></pre>
+
+<p>Als dat verkeerd geconfigureerd staat heb je nog een tweede mogelijkheid, via property <code>BindingProvider.ENDPOINT_ADDRESS_PROPERTY</code>:</p>
+
+<pre><code class="language-java">try { 
+            EmployeeServiceService service = new EmployeeServiceService();
+            EmployeeService port = service.getEmployeeServicePort();
+
+            BindingProvider bp = (BindingProvider)port;
+            bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, &quot;http://server1.grallandco.com:8282/HumanRessources/EmployeeServiceService&quot;);
+
+            Employee emp = port.getEmployee(123);
+// continue doing stuff
+</code></pre>
+
+<p>Zie <a href="http://tugdualgrall.blogspot.be/2009/02/jax-ws-how-to-configure-service-end_17.html">http://tugdualgrall.blogspot.be/2009/02/jax-ws-how-to-configure-service-end_17.html</a></p>
+
+<h3 id="logging-enablen-voor-sun-jax-ws">Logging enablen voor Sun JAX-WS</h3>
+
+<p>Gemakkelijke methode :met een JVM argument: <code>-Dcom.sun.xml.ws.transport.http.client.HttpTransportPipe.dump=&quot;true&quot;</code></p>
+
+<p>Moeilijke methode: met een <code>HandlerResolver</code> die tussen de chain in hangt (weet niet meer precies hoe dat moet, op te zoeken)</p>
+
+<h3 id="multipart-soap-stub-server-maken">Multipart SOAP Stub server maken</h3>
+
+<h4 id="response-opbouwen">Response opbouwen</h4>
+
+<p>Zie <a href="http://www.java2s.com/Open-Source/Java-Document/Groupware/hipergate/com/oreilly/servlet/MultipartResponse.java.htm">http://www.java2s.com/Open-Source/Java-Document/Groupware/hipergate/com/oreilly/servlet/MultipartResponse.java.htm</a></p>
+
+<p>Aandachtspuntjes:</p>
+
+<ol>
+<li>content type in de HEADER meesturen (niet als <code>servlet output stream.println()</code>): <code>multipart/related</code></li>
+<li>Per part moet &ldquo;Content-Id&rdquo; meegestuurd worden. Voor een binair stuk moet dat dan overeenkomen met de HREF dat in uw SOAP XML envelop zit:</li>
+<li>Binaire gegevens gewoon als byte array wegscvhrijven met <code>stream.write()</code>, maar vergeet niet content type op dit part op <code>application/octet-stream</code> te zetten.</li>
+</ol>
+
+<pre><code class="language-xml">&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+   &lt;S:Body&gt;
+      &lt;ns4:HistoriekPdfResponse xmlns:ns4######&quot;s/historiek&quot; xmlns:ns3&quot;http:/ices/uitnodiging&quot; xmlns:ns2######&quot;http:/itnodiging&quot; xmlns&quot;http://www.dd.be/historiek&quot;&gt;
+         &lt;ns4:Pdf&gt;
+            &lt;Include href######&quot;cid:0ba9135c-8663-4346-89b1-770c64383499@example.jaxws.sun.com&quot; xmlns&quot;http://www.w3.org/2004/08/xop/include&quot;/&gt;
+         &lt;/ns4:Pdf&gt;
+      &lt;/ns4:HistoriekPdfResponse&gt;
+   &lt;/S:Body&gt;
+&lt;/S:Envelope&gt;
+</code></pre>
+
+<p>Hierboven is de content id 0ba91&hellip; zonder &ldquo;cid&rdquo;.</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>reflectie</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="reflectie" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/java/reflectie/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>reflectie</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="reflectie-classpath-scanning-etc">Reflectie, Classpath scanning etc</h1>
+
+<h3 id="oplijsten-van-fields-die-enkel-boolean-en-true-zijn">Oplijsten van fields die enkel boolean en true zijn</h3>
+
+<pre><code class="language-java">	public static String listTrueBooleanFields(Object object) {
+		List&lt;String&gt; parts = Lists.newArrayList();
+		try {
+			for (Field field : object.getClass().getDeclaredFields()) {
+				boolean accessibleFlag = field.isAccessible();
+				field.setAccessible(true);
+				if (isTrueBooleanField(object, field)) {
+					parts.add(makeCamelCaseNatural(field.getName()));
+				}
+				field.setAccessible(accessibleFlag);
+			}
+		} catch (Exception ex) {
+			throw new RuntimeException(ex);
+		}
+
+		return StringUtils.join(parts, &quot;, &quot;);
+	}
+
+	private static boolean isTrueBooleanField(Object object, Field field) throws IllegalAccessException {
+		return isBoolean(field) &amp;&amp; (Boolean) field.get(object);
+	}
+
+	private static boolean isBoolean(Field field) {
+		return Boolean.class.isAssignableFrom(field.getType()) || boolean.class.isAssignableFrom(field.getType());
+	}
+</code></pre>
+
+<h3 id="nieuwe-instantie-van-een-klasse-met-default-constructor">Nieuwe instantie van een klasse met default constructor</h3>
+
+<pre><code class="language-java">public class ReflectionUtils {
+
+	public static &lt;T&gt; T createNewInstanceOf(Class&lt;T&gt; classToCreate) {
+		try {
+			Constructor&lt;T&gt; noArgConstructor = classToCreate.getDeclaredConstructor();
+
+			boolean accessibleFlag = noArgConstructor.isAccessible();
+			noArgConstructor.setAccessible(true);
+
+			T newInstance = noArgConstructor.newInstance();
+
+			noArgConstructor.setAccessible(accessibleFlag);
+			return newInstance;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+}
+</code></pre>
+
+<h3 id="class-files-vinden-in-bepaalde-packages">Class files vinden in bepaalde packages</h3>
+
+<h4 id="met-spring">Met Spring</h4>
+
+<p>Met hulp van spring classes zoals <code>org.springframework.core.io.support.ResourcePatternResolver</code> en <code>org.springframework.core.type.classreading.MetadataReaderFactory</code>:</p>
+
+<pre><code class="language-java">			String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
+					ClassUtils.convertClassNameToResourcePath(basePackage) + &quot;/&quot; + this.resourcePattern;
+			Resource[] resources = this.resourcePatternResolver.getResources(packageSearchPath);
+
+			for (int i = 0; i &lt; resources.length; i++) {
+				Resource resource = resources[i];
+				MetadataReader metadataReader = this.metadataReaderFactory.getMetadataReader(resource);
+				if (isCandidateComponent(metadataReader)) {
+					Class&lt;?&gt; clazz = null;
+					try {
+						clazz = Class.forName(metadataReader.getClassMetadata().getClassName());
+					} catch (ClassNotFoundException e) {
+						e.printStackTrace();
+					}
+					candidates.add(clazz);
+				}
+			}
+</code></pre>
+
+<p><code>CLASSPATH_ALL_URL_PREFIX</code> is <strong><code>&quot;classpath*:&quot;</code></strong>.</p>
+
+<p>De <code>isCandidateComponent</code> method accepteert of verwerpt een item afhankelijk van de metadata met hulp van de spring interface <code>org.springframework.core.type.filter.TypeFilter</code>:</p>
+
+<pre><code class="language-java">		for (TypeFilter tf : this.includeFilters) {
+			if (tf.match(metadataReader, this.metadataReaderFactory)) {
+				return true;
+			}
+		}
+</code></pre>
+
+<p>Het is ook mogelijk om een &ldquo;default&rdquo; filter te voorzien die alles include: <code>new RegexPatternTypeFilter(Pattern.compile(&quot;.*&quot;));</code>.</p>
+
+<h5 id="subtypes-van-een-bepaalde-klasse-vinden">Subtypes van een bepaalde klasse vinden</h5>
+
+<p>Kan ook met de bovenstaande code (de <code>ClassPathScanningCandidateComponentProvider</code> dus):</p>
+
+<pre><code class="language-java">	public &lt;T&gt; Set&lt;Class&lt;?&gt;&gt; getSubTypesOf(Class&lt;T&gt; type) {
+		ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
+		provider.addIncludeFilter(new AssignableTypeFilter(type));
+		Set&lt;Class&lt;?&gt;&gt; candidateSubtypes = provider.findCandidateComponents(getPackageToScan());
+		candidateSubtypes.remove(type);
+		return candidateSubtypes;
+	}
+</code></pre>
+
+<h5 id="get-only-concrete-subclasses">get only concrete subclasses</h5>
+
+<p>In combinatie met bovenstaande method:</p>
+
+<pre><code class="language-java">	public &lt;T&gt; Set&lt;Class&lt;?&gt;&gt; getConcreteSubTypesOf(Class&lt;T&gt; type) {
+		Set&lt;Class&lt;?&gt;&gt; result = new HashSet&lt;Class&lt;?&gt;&gt;();
+		for (Class&lt;?&gt; aClass : getSubTypesOf(type)) {
+			if (isConcrete(aClass)) {
+				result.add(aClass);
+			}
+		}
+		return result;
+	}
+
+	private boolean isConcrete(Class&lt;?&gt; aClass) {
+		return !Modifier.isAbstract(aClass.getModifiers());
+	}
+</code></pre>
+
+<h4 id="zonder-spring">Zonder Spring</h4>
+
+<p>Gebruik <a href="http://code.google.com/p/reflections/">http://code.google.com/p/reflections/</a> -</p>
+
+<pre><code class="language-java">Reflections reflections = new Reflections(&quot;my.project.prefix&quot;);
+Set&lt;Class&lt;? extends SomeClassOrInterface&gt;&gt; subTypes = reflections.getSubTypesOf(SomeClassOrInterface.class);
+</code></pre>
+
+<h4 id="alles-zelf-doen">Alles zelf doen?</h4>
+
+<p>Slecht idee, enige optie is alle class files van het classpath als files behandelen, <code>Class.forName</code> gebruiken om classes in te laden (<strong>slecht idee</strong>) en <code>instanceof</code> ofzoiets gebruiken. Bytecode scanning gebeurt door de twee bovenstaanden, maar is niet triviaal zelf te doen.</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

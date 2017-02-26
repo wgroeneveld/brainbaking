@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>.NET Memory management VS JVM Memory management</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content=".NET Memory management VS JVM Memory management" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/memory-management-vs-java/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>.NET Memory management VS JVM Memory management</h1>
+      
+        
+      <h2 class="post-subheading">Increasing your maximum heap size in .NET? Tough luck.</h2>
+      
+      
+      
+      
+      <span class="post-meta">24 October 2014</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/memory-management">memory management</a> </li>
+      
+       <li><a href="/tags/clr">CLR</a> </li>
+      
+       <li><a href="/tags/.net">.NET</a> </li>
+      
+       <li><a href="/tags/jvm">JVM</a> </li>
+      
+      </ul>
+
+      <article role="main" class="blog-post">
+          <p>Memory management is something to keep in mind when deploying and running applications on top of the JVM. Parameters like <code>Xmx</code> and <code>Xms</code> are things to juggle with when it comes to finding the perfect balance between too much memory hogging (at app startup) and too little, especially if you&rsquo;re working with heavy duty entity mapping frameworks like Hibernate (and you&rsquo;re not so good at writing fast HQL).
+When we bumped into an <code>OutOfMemoryException</code> in .NET, I got an Xmx flashback and started searching on how to do the same with the CLR.</p>
+
+<p>Turns out you can&rsquo;t.</p>
+
+<p>You can&rsquo;t set max heap size in .Net unless you host the CLR yourself in a process. (<a href="http://stackoverflow.com/questions/301393/can-i-and-do-i-ever-want-to-set-the-maximum-heap-size-in-net">source</a>)
+To control the memory allocations of CLR including the max heap size, you need to use the hosting api to host the clr and specifically use the &ldquo;Memory manager interfaces&rdquo;, some starter info can be found here <a href="http://msdn.microsoft.com/en-us/magazine/cc163567.aspx">MSDN Magazine, column CLR Inside Out : CLR Hosting APIs</a></p>
+
+<p>The heap does indeed keep growing until it can&rsquo;t grow any more. (Obviously this is &ldquo;after attempting to recover memory through GC, grow the heap&rdquo;.) Basically there isn&rsquo;t nearly as much tuning available in the .NET GC as in Java. You can choose the server GC or the client one, and I think there&rsquo;s an option for turning on/off the concurrent GC (I&rsquo;ll find links in a minute) but that&rsquo;s basically it.</p>
+
+<p>See also:
+  - <a href="http://www.atalasoft.com/cs/blogs/rickm/archive/2008/05/14/choosing-the-right-garbage-collector-settings-for-your-application-net-memory-management-part-4.aspx">Choosing the right garbage collector for your .NET Application</a></p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="http://www.brainbaking.com/post/faking-domain-logic/" data-toggle="tooltip" data-placement="top" title="Faking domain logic">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="http://www.brainbaking.com/post/unit-testing-extjs-ui/" data-toggle="tooltip" data-placement="top" title="Unit Testing Extjs UI with Siesta">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

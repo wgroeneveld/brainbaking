@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>htaccess</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="htaccess" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/htaccess/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>htaccess</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="htaccess-stuff">.htaccess stuff</h1>
+
+<p>Basisprincipe van rewriterules: altijd <code>RewriteEngine On</code> en <code>RewriteBase /</code> toevoegen.</p>
+
+<p>Daarna: <code>RewriteCond</code> slaat enkel op <strong>éérstvolgende</strong> <code>RewriteRule</code> regel.</p>
+
+<h4 id="request-exceeded-the-limit-of-10-internal-redirects-due-to-probable-configuration-error">Request exceeded the limit of 10 internal redirects due to probable configuration error</h4>
+
+<p><a href="http://stackoverflow.com/questions/1611506/request-exceeded-the-limit-of-10-internal-redirects-due-to-probable-configuratio">bron</a></p>
+
+<p>Gebruik <code>!^map/</code> voor de rule om bepaalde folders uit te sluiten als ze al herschreven zijn.</p>
+
+<h4 id="square-bracket-rules-rewrite-flags">square bracket rules: rewrite flags</h4>
+
+<p><a href="http://httpd.apache.org/docs/2.2/rewrite/flags.html">zie ook docs</a></p>
+
+<ol>
+<li>NC: case insensitive</li>
+<li>L: stop processing other rules (final)</li>
+<li>R=123: redirect HTTP code</li>
+</ol>
+
+<h4 id="redirecten-moved">Redirecten - moved</h4>
+
+<p><a href="http://enarion.net/web/htaccess/migrate-domains/">bron</a></p>
+
+<p>Van oud naar nieuw domeinnaam:</p>
+
+<pre><code>RewriteCond %{HTTP_HOST} savesourdough.com$ [NC]
+RewriteRule ^(.*)$ http://www.redzuurdesem.be/$1 [L,R=301]
+</code></pre>
+
+<ol>
+<li>Kan ook om bvb van <code>www</code> naar <code>http</code> of omgekeerd te redirecten.</li>
+<li><code>^(.*)$</code> catcht alles achter het domein in een parameter <code>$1</code></li>
+</ol>
+
+<h4 id="redirecten-verschillende-domeinen">Redirecten - verschillende domeinen</h4>
+
+<pre><code>RewriteEngine On
+
+#ADD TRAILING SLASH TO DIRECTORY IF NONE EXISTS
+RewriteRule ^([^&lt;br/&gt;.]+[^/])$ http://%{HTTP_HOST}/$1/ [L]
+
+RewriteCond %{HTTP_HOST} ^(www.)?site1.com$ [NC]
+RewriteCond %{REQUEST_URI} !site1/ [NC]
+RewriteRule ^(.*)$ /site1/$1 [L]
+
+RewriteCond %{HTTP_HOST} ^(www.)?site2.com$ [NC]
+RewriteCond %{REQUEST_URI} !site/ [NC]
+RewriteRule ^(.*)$ /site2/$1 [L]
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

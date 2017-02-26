@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>pitfalls</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="pitfalls" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/pitfalls/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>pitfalls</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="pitfalls">Pitfalls</h1>
+
+<p>❗ Gebruik aub <strong><a href="http://www.jslint.com">JSLint</a></strong> om onderstaande &ldquo;probleempjes&rdquo; makkelijker te kunnen tracen en aanpassen.</p>
+
+<p><a href="https://developer.mozilla.org/en/JavaScript/Strict_mode">Strict mode</a> in ECMA5 is ook iets héél handig.</p>
+
+<p>-&gt; Meer (al dan niet grappige) pitfalls/weetjes: <a href="http://www.wtfjs.com/">http://www.wtfjs.com/</a></p>
+
+<h3 id="objecten">Objecten</h3>
+
+<p>Javascript gebruikt intern de <code>toString()</code> functie wanneer objecten als keys worden toegekend. Dit wil zeggen dat eigenlijk de string representatie als key gebruikt wordt. Bijvoorbeeld:</p>
+
+<pre><code class="language-javascript">var obj = {};
+var key1 = new Object();
+var key2 = new Object();
+
+obj[key1] = &quot;hi&quot;;
+obj[key2] = &quot;yo&quot;;
+
+console.log(obj[key1]);  // ##### yo???
+</code></pre>
+
+<p>#####= arguments #####=</p>
+
+<h5 id="arguments-on-the-fly-veranderen">arguments on-the-fly veranderen</h5>
+
+<p>Zonder <code>use strict</code> (ES5) kan je een binnenkomend argument ook toekennen aan een andere waarde. Hierdoor verandert de waarde van <code>arguments[0]</code>! De <code>arguments</code> lijst houdt dus een pointer bij naar de variabele die de value van het argument vasthoudt, en niet naar de value zelf. In strict mode wel. Voorbeeld:</p>
+
+<pre><code class="language-javascript">function bla(a) {
+  a = 5;
+  console.log(arguments[0]);
+}
+bla(1); // 5, in strict mode 1
+</code></pre>
+
+<h5 id="arguments-is-geen-array">arguments is geen array</h5>
+
+<p>Snel &ldquo;effe&rdquo; lopen over alle argumentjes:</p>
+
+<pre><code class="language-javascript">function aha() {
+  arguments.forEach(function(itm) { // syntax error ???
+    console.log(itm);
+  });
+}
+aha(1, 2, 3);
+</code></pre>
+
+<p>Inderdaad: <code>Array.isPrototypeOf(arguments) ##### false</code>. Dus de <code>.length</code> property werkt op een andere manier, en van die hidden <code>.callee</code> dingen (die niet werken in strict mode) zitten er ook op&hellip;</p>
+
+<p>Oplossing:</p>
+
+<pre><code class="language-javascript">function aha() {
+  var args = Array.prototype.slice.call(arguments);
+  args.forEach(function(itm) {
+    console.log(itm);
+  });
+}
+aha(1, 2, 3);
+</code></pre>
+
+<p>#####= Falsey values #####=</p>
+
+<p>De volgende values evalueren allemaal naar <code>false</code> in bvb een <code>if()</code> block:</p>
+
+<ol>
+<li><code>null</code></li>
+<li><code>0</code> als <code>number</code></li>
+<li><code>&quot;&quot;</code> als <code>string</code></li>
+<li><code>false</code> als <code>boolean</code></li>
+<li><code>undefined</code></li>
+<li><code>NaN</code></li>
+</ol>
+
+<p>Deze dingen lukken ook niet:</p>
+
+<pre><code class="language-javascript">if(new Boolean(false)) {
+   alert(&quot;ik ben false jong!&quot;); // oei tis nie waar hé?
+}
+</code></pre>
+
+<p>Mogelijke Oplossingen:
+  1. gebruik altijd <code>.valueOf()</code> van de object counterparts van alle primitives!
+  2. gebruik <code>Boolean(false)</code> (zonder new), zie <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean">Mozilla Boolean Dev docs</a></p>
+
+<p>Lees hier meer over in <a href="http:*javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/">The secret life of Javascript Primitives</a> en <a href="http:*javascriptweblog.wordpress.com/2010/05/03/the-value-of-valueof/">the value of valueOf</a>.</p>
+
+<p>#####= Typecasting #####=</p>
+
+<p>^ code ^ resultaat ^
+| [] + 23 | de string &ldquo;23&rdquo; |
+| [1, 2] + 23 | de string &ldquo;1, 223&rdquo; |
+| false + 23 | het getal 23 |
+| true + 23 | het getal 24 |
+| &ldquo;kadootje&rdquo; + 23 | de string &ldquo;kadootje23&rdquo; |
+| undefined + 23 | NaN |
+| null + 23 | het getal 23 |</p>
+
+<p>#####= Parsing #####=</p>
+
+<p><code>parseInt(&quot;08&quot;)</code> neemt automatisch aan dat de waarde naar octal values omgezet moet worden. Dit evalueert naar het getal <code>0</code>.<br/><br/>
+Oplossing: <code>parseInt(&quot;08&quot;, 10)</code> - het tweede argument geeft de eenheid aan (10 = decimaal).</p>
+
+<p>#####= de wereld breken (undefined) #####=</p>
+
+<p><code>undefined</code> is een toplevel variabele die als value de primitive value <code>undefined</code> heeft. <br/><br/>
+Zodra je <code>undefined</code> (de variabele) toekent aan iets anders, is die primitive value weg en is alles naar de zak. Voorbeeld:</p>
+
+<p>Dit is opgelost in ECMA5 door sommige properties al dan niet writable te maken. <code>undefined</code> is daar dus readonly. Check dit in Firefox 4:</p>
+
+<pre><code class="language-javascript">var undefinedProps = Object.getOwnPropertyDescriptor(window, &quot;undefined&quot;)
+undefinedProps.writable ##### false; // locked down!
+</code></pre>
+
+<p>#####= Javascript en puntkomma&rsquo;s #####=</p>
+
+<p>Geen enkele lijn hoeft een <code>;</code> te bevatten, javascript voegt deze automatisch toe bij het evalueren. Dit kan ook miserie veroorzaken:</p>
+
+<pre><code class="language-javascript">function geefIets() {
+  return 
+  {
+     iets: &quot;wow&quot;
+  };
+}
+
+geefIets(); // undefined: unreachable code!
+</code></pre>
+
+<p>Los dit op door de accolade na de return te plaatsen in plaats van de newline.</p>
+
+<p>#####= ECMA5: map, forEach, filter: de 3 parameters #####=</p>
+
+<p>Sinds ECMA5 is het héél handig om bijvoorbeeld voor een array van strings elk element individueel te manipuleren en een nieuwe array terug te geven.<br/><br/>
+Stel, ik wil <code>string</code>s naar <code>number</code>s omvormen:</p>
+
+<pre><code class="language-javascript">[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;].map(parseInt); // returns [1, NaN, NaN ] ???
+</code></pre>
+
+<p>Whoops? <code>parseInt</code> heeft als tweede variabele de eenheid (decimaal, hexa, &hellip;) en alle array manipulatie functies geven altijd 3 argumenten mee: het element, de index en de array zelf. Conflict!</p>
+
+<p>Oplossing: closures!</p>
+
+<p>#####= Arrays zijn &ldquo;speciale&rdquo; associatieve objecten #####=</p>
+
+<p>Dit zegt de <a href="http:*bclary.com/2004/11/07/#a-15.4ECMAScript specificatie">http:*bclary.com/2004/11/07/#a-15.4ECMAScript specificatie</a>:</p>
+
+<blockquote>
+<p>Array objects give special treatment to a certain class of property names. A property name P (in the form of a string value) is an array index if and only if <strong>ToString(ToUint32(P)) is equal to P and ToUint32(P) is not equal to 2^32 - 1</strong>. Every Array object has a length property whose value is always a nonnegative integer less than 2^32. The value of the length property is numerically greater than the name of every property whose name is an array index; whenever a property of an Array object is created or changed, other properties are adjusted as necessary to maintain this invariant. Specifically, whenever a property is added whose name is an array index, the length property is changed, if necessary, to be one more than the numeric value of that array index; and whenever the length property is changed, every property whose name is an array index whose value is not smaller than the new length is automatically deleted. This constraint applies only to properties of the Array object itself and is unaffected by length or array index properties that may be inherited from its prototype.</p>
+</blockquote>
+
+<p>Dat wil zeggen dat:</p>
+
+<ol>
+<li>zodra de <code>.length</code> property gewijzigd wordt, er verschillende dingen gebeuren:
+
+<ol>
+<li>Indien kleiner wordt: alle properties kleiner dan de lengte worden automatisch verwijderd</li>
+<li>Indien groter wordt: allemaal nieuwe elementen met <code>undefined</code> als value (<em>impliciet</em>!)</li>
+</ol></li>
+<li>Alle &ldquo;integer&rdquo; values (zie geweldige formule) zijn &ldquo;speciale&rdquo; properties die de <code>length</code> property ook aanpassen.</li>
+</ol>
+
+<p>Wat gebeurt er als ik de <code>length</code> property boven het maximum zet?</p>
+
+<pre><code class="language-javascript">var arr = [1];
+arr.length = Math.pow(2, 32) - 1; // max allowed
+arr.length++; // RangeError: invalid array length (na lang denken van de parser)
+</code></pre>
+
+<p>❗ de <code>length</code> property wordt gebruikt door utility functies zoals <code>push</code>, <code>concat</code> etc, dus als deze niet correct werkt zoals hierboven beschreven gebeuren en vreemde dingen!</p>
+
+<p>Meer info: zie <a href="http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/">How to subclass an Array</a></p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

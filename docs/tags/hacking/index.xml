@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hacking on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/hacking/index.xml</link>
+    <description>Recent content in Hacking on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/hacking/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>hacking</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/hacking/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/hacking/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-tools-hacking&#34;&gt;code:tools &amp;gt;&amp;gt; Hacking&lt;/h1&gt;
+
+&lt;h4 id=&#34;http-streams-monitoren-etc&#34;&gt;HTTP streams monitoren etc&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Op Windows: &lt;a href=&#34;http://www.fiddler2.com/fiddler2/version.asp&#34;&gt;http://www.fiddler2.com/fiddler2/version.asp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Voor Firefox: &amp;ldquo;Poster&amp;rdquo; plugin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;unlocking-stuf&#34;&gt;Unlocking stuf&lt;/h4&gt;
+
+&lt;p&gt;&amp;ldquo;Unlocker&amp;rdquo; werkt blijkbaar niet op windows 7 - dit wel: &lt;a href=&#34;http://lockhunter.com/&#34;&gt;http://lockhunter.com/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

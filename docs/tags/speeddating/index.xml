@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Speeddating on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/speeddating/index.xml</link>
+    <description>Recent content in Speeddating on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/speeddating/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>speeddating</title>
+      <link>http://www.brainbaking.com/wiki/reflect/retros/speeddating/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/reflect/retros/speeddating/</guid>
+      <description>
+
+&lt;h1 id=&#34;speeddating&#34;&gt;Speeddating&lt;/h1&gt;
+
+&lt;h3 id=&#34;contents&#34;&gt;Contents&lt;/h3&gt;
+
+&lt;p&gt;After the intro everybody is asked to reflect on possible ammeliorations for the working of the team and to choose 1 of them.&lt;/p&gt;
+
+&lt;p&gt;Afterwards the speed dating starts. Team members work in pairs in 5 minutes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;they are asked first to express their appreciation for one another&lt;/li&gt;
+&lt;li&gt;each proposes his/her ammelioration and they have a discussion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Each 5 minutes the team members switch pairs.
+To conclude all ameliorations are proposed to the group, the most important are chosen and SMART actions for those are fixed.&lt;/p&gt;
+
+&lt;h3 id=&#34;shuffling&#34;&gt;Shuffling&lt;/h3&gt;
+
+&lt;p&gt;Shuffling system for 8 members in the group:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Round1	 	Round2	 	 	Round3	 	 	Round4	 	 	Round5	 	 	Round6	 	 	Round7	 
+1	8	 	8	7	 	7	6	 	6	5	 	1	3	 	1	7	 	1	5
+2	7	 	1	5	 	8	5	 	7	4	 	2	4	 	2	8	 	2	6
+3	6	 	2	4	 	1	4	 	8	3	 	5	7	 	3	5	 	3	7
+4	5	 	3	1	 	2	3	 	1	2	 	6	8	 	4	6	 	4	8
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Resharper on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/resharper/index.xml</link>
+    <description>Recent content in Resharper on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/resharper/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>resharper</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/resharper/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/resharper/</guid>
+      <description>
+
+&lt;h1 id=&#34;resharper&#34;&gt;ReSharper&lt;/h1&gt;
+
+&lt;p&gt;Documentatie:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jetbrains.com/resharper/docs/ReSharper70DefaultKeymap_VS_scheme.pdf&#34;&gt;​Default keymap PDF overview​&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jetbrains.com/resharper/docs/ReSharper70DefaultKeymap_IDEA_scheme.pdf&#34;&gt;IntelliJ keymap PDF overview​&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shortcut-ref-vs-eclipse&#34;&gt;Shortcut ref VS Eclipse&lt;/h2&gt;
+
+&lt;p&gt;| Eclipse shortcut | ReSharper shortcut | description
+| CTRL+D | CTRL+L | remove line
+| ALT+DOWN | CTRL+D | duplicate line
+| CTRL+SPACE (CTRL+ENTER) | CTRL+SPACE (TAB) | code completion, select in combobox
+| ALT+SHIFT+UP/DOWN | CTRL+ALT+LEFT/RIGHT | Extend/Shrink selection
+| CTRL+SHIFT+/ | CTRL+ALT+/ | commend line
+| CTRL+SHIFT+1 | ALT+ENTER | quick fix
+| ALT+UP/DOWN | CTRL+SHIFT+ALT+UP/DOWN | move line
+| CTRL+SHIFT+O | CTRL+E, &amp;copy;/F | organize imports (and format etc, F = silent)
+| CTRL+F11 | CTRL+U, U | rerun last
+| CTRL+O | ALT+&lt;br/&gt; | Go to file member
+| CTRL+SHIFT+G | CTRL+SHIFT+ALT+F12 (SHIFT+F12) | find usages
+| F3 | F12 | go to definition
+| CTRL+SHIFT+. | SHIFT+ALT+PGDN | go to next error
+| CTR+, | SHIFT+ALT+PGUP | go to previous error
+| ALT+SHIFT+I | CTRL+R, I | inline variable
+| ALT+SHIFT+R | CTRL+R, R | rename
+| ALT+SHIFT+M | CTRL+R, M | extract method
+| ALT+SHIFT+C | CTRL+R, S | change method signature
+| CTRL+SHIFT+B | F9 | toggle breakpoint
+| CTRL+M | SHIFT+ALT+ENTER | toggle full screen mode&lt;/p&gt;
+
+&lt;p&gt;​   ​   ​&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

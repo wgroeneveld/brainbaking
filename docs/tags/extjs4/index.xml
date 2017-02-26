@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Extjs4 on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/extjs4/index.xml</link>
+    <description>Recent content in Extjs4 on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/extjs4/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>extjs4</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/extjs4/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/extjs4/</guid>
+      <description>
+
+&lt;h1 id=&#34;extjs4&#34;&gt;Extjs4&lt;/h1&gt;
+
+&lt;p&gt;Documentatie: &lt;a href=&#34;http://docs.sencha.com/ext-js/4-0/#!/api/&#34;&gt;http://docs.sencha.com/ext-js/4-0/#!/api/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;aanmaken-van-klassen-en-managers-die-loaden&#34;&gt;Aanmaken van klassen en managers die loaden&lt;/h2&gt;
+
+&lt;p&gt;Met &lt;code&gt;Ext.define&lt;/code&gt; maak je een klasse aan, met &lt;code&gt;Ext.create&lt;/code&gt; maak je een instantie van die klasse.&lt;/p&gt;
+
+&lt;p&gt;Een klasse heeft:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;configs&lt;/li&gt;
+&lt;li&gt;methods&lt;/li&gt;
+&lt;li&gt;properties&lt;/li&gt;
+&lt;li&gt;events&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Waarbij de &lt;code&gt;configs&lt;/code&gt; de gegevens zijn doorgegeven met accolades:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Ext.define(&#39;test&#39;, {
+  // config stuff
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Die configs worden &lt;strong&gt;herbruikt&lt;/strong&gt; voor alle instanties die aangemaakt worden met &lt;code&gt;Ext.create&lt;/code&gt;!! Dat staat op &amp;ldquo;klasse&amp;rdquo; niveau (ook al bestaat dat niet in JS&amp;hellip;)&lt;/p&gt;
+
+&lt;h2 id=&#34;stores-herbruiken&#34;&gt;Stores herbruiken&lt;/h2&gt;
+
+&lt;p&gt;Gegeven een store:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Ext.define(&#39;Evita.store.masterdata.KeywordType&#39;, {
+    extend: &#39;Ext.data.EvitaStore&#39;,
+	model: &#39;Evita.model.parkingfacility.MasterdataType&#39;,
+    proxy: {
+		type: &#39;evitaAjax&#39;,
+		api:{
+			read: &#39;getMasterdataKeywordByTypeName.json&#39;
+		}
+	}
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gevraagd: hoe herbruik ik die store definitie, terwijl telkens &lt;strong&gt;nieuwe instanties&lt;/strong&gt; op de view gebruikt worden, om dan &lt;code&gt;extraParams&lt;/code&gt; die telkens anders zijn mee te geven met ajax?&lt;/p&gt;
+
+&lt;p&gt;❗ reeds &lt;code&gt;extraParams&lt;/code&gt; opgeven in de store definitie zorgt ervoor dat die proxy herbruikt wordt, wat je hier niet wilt.&lt;/p&gt;
+
+&lt;p&gt;Oplossing: gebruik &lt;code&gt;Ext.create&lt;/code&gt; in plaats van te refereren naar de &lt;code&gt;xtype&lt;/code&gt;, die gaat door de &lt;code&gt;StoreManager&lt;/code&gt; opgezocht &amp;amp; hetbruikt worden anders (1 instantie).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
+		    			xtype : &#39;combo&#39;,
+			    		store : Ext.create(&#39;Evita.store.masterdata.KeywordType&#39;),
+			    		storeMasterdataTypeName: &#39;MaturityOfParkingFacility&#39;,
+			    		valueField : &#39;code&#39;,
+			    		displayField : &#39;value&#39;,
+		    			name : &#39;maturity&#39;,
+		    			id: &#39;ParkingFacilityCreate_masterdata_maturity&#39;,
+		    		}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Loop in de controller over alle stores om dan bvb &lt;code&gt;extraParams&lt;/code&gt; in te stellen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    	view.down(&#39;form&#39;).query(&#39;combo&#39;).forEach(function(combo) {
+			combo.getStore().proxy.extraParams[&#39;masterdataTypeName&#39;] = combo.storeMasterdataTypeName;
+			combo.getStore().proxy.extraParams[&#39;countryId&#39;] = wizardData.general.countryId;
+    	});
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

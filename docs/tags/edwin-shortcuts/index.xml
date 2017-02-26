@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Edwin Shortcuts on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/edwin-shortcuts/index.xml</link>
+    <description>Recent content in Edwin Shortcuts on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/edwin-shortcuts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>edwin-shortcuts</title>
+      <link>http://www.brainbaking.com/wiki/code/scheme/edwin-shortcuts/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/scheme/edwin-shortcuts/</guid>
+      <description>
+
+&lt;h1 id=&#34;mit-scheme-edwin-shortcuts&#34;&gt;MIT-Scheme Edwin shortcuts&lt;/h1&gt;
+
+&lt;p&gt;Afkortingen: C ###### Control, M  ALT (don&amp;rsquo;t ask&amp;hellip;)&lt;/p&gt;
+
+&lt;h3 id=&#34;file-manipulatie&#34;&gt;File manipulatie&lt;/h3&gt;
+
+&lt;p&gt;| &lt;strong&gt;afkorting&lt;/strong&gt; | &lt;strong&gt;gevolg&lt;/strong&gt; |
+| C-X s  | save alle open files van alle buffers (vraagt per buffer&amp;hellip;) |
+| C-X C-S | save zonder vragen |
+| C-X C-F | find file of open nieuwe onbestaande (enter drukken = in buffer files browsen) |&lt;/p&gt;
+
+&lt;h3 id=&#34;buffer-stuff&#34;&gt;Buffer stuff&lt;/h3&gt;
+
+&lt;p&gt;| &lt;strong&gt;afkorting&lt;/strong&gt; | &lt;strong&gt;gevolg&lt;/strong&gt; |
+| C-U C-V | repeat last command |
+| C-C C-C | break operation (&amp;lsquo;Quits&amp;rsquo;) - in case of unlimited iterative recursive loop |
+| C-X [hoedje] | vergroot huidige buffer met één lijn |
+| C-X (getal) | open (getal) aantal buffers |
+| C-X o | toggle buffer (visible) |
+| C-X b | switch buffer met naam |
+| C-X k | kill buffer (vraagt evt bevestiging) |
+| M-o | evaluate buffer contents |
+| C-J | indent bij nieuwe line |
+| TAB | indent huidige regel (&amp;lt;&amp;gt; tab x lijnen prepended) |
+| C-X h | selecteer de hele buffer inhoud |&lt;/p&gt;
+
+&lt;p&gt;❗ Vergeet niet dat het nodig is om een file te saven in een andere buffer als ge &lt;code&gt;load()&lt;/code&gt; gebruikt en die probeert te evalueren, zoals bijvoorbeeld een unit test&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;text-manipulatie-etc&#34;&gt;Text manipulatie etc&lt;/h3&gt;
+
+&lt;p&gt;| &lt;strong&gt;afkorting&lt;/strong&gt; | &lt;strong&gt;gevolg&lt;/strong&gt; |
+| C-A | ga naar begin lijn |
+| C-K | kill line |
+| M-W | copy selected |
+| C-&lt;space&gt; | select stuff |
+| C-Y | niet yank maar paste&amp;hellip; Jup. |
+| C-X u | undo (stackable) |&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

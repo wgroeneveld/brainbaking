@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Encoding on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/encoding/index.xml</link>
+    <description>Recent content in Encoding on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/encoding/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>encoding</title>
+      <link>http://www.brainbaking.com/wiki/code/java/encoding/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/encoding/</guid>
+      <description>
+
+&lt;h1 id=&#34;page-encoding&#34;&gt;Page Encoding&lt;/h1&gt;
+
+&lt;p&gt;Alles zou in UTF-8 mode moeten staan. Daarvoor moeten verschillende dingen aangepast worden.
+Een goede manier om te proberen of dit werkt is in een inputfield ALT+456 te typen
+Dat zou &lt;em&gt;╚&lt;/em&gt; moeten genereren, een 90° gedraaide dubbelgelijnde hoek.&lt;/p&gt;
+
+&lt;p&gt;Inspect via debug in een action geeft op de form dan normaal ǈ als het niet correct geëncode is.
+De waarde naar de DB kopiëren en dan terugkomen terwijl de DB niet correct geëncode is geeft &lt;em&gt;+&lt;/em&gt; weer dan.
+De waarde op inspect geeft vreemde vierkante tekens als uw struts filter niet correct gemapt is (zie onder).
+Dit is nodig om POST gegevens te kunnen decoderen vanuit UTF-8!&lt;/p&gt;
+
+&lt;h2 id=&#34;eclipse-console-output-naar-utf-8&#34;&gt;Eclipse console output naar UTF-8&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://paranoid-engineering.blogspot.com/2008/05/getting-unicode-output-in-eclipse.html&#34;&gt;http://paranoid-engineering.blogspot.com/2008/05/getting-unicode-output-in-eclipse.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;add -Dfile.encoding=UTF-8 to your eclipse.ini&lt;/li&gt;
+&lt;li&gt;make sure your Eclipse Console font supports Unicode. You can try it out by typing unicode characters directly to console with keyboard. Console Font is set in Window -&amp;gt; Preferences -&amp;gt; General -&amp;gt; Appearance -&amp;gt; Colors and Fonts -&amp;gt; Debug -&amp;gt; Console Font&lt;/li&gt;
+&lt;li&gt;if you are NOT using Windows, set your system encoding to UTF-8. You should now see Unicode characters in Console after restarting Eclipse.&lt;/li&gt;
+&lt;li&gt;if you are using Windows or do not want to change your OS encoding, you will have to avoid using System.out stream directly. Instead, wrap it up with java.io.printstream:&lt;code&gt;java
+PrintStream sysout = new PrintStream(System.out, true, &amp;quot;UTF-8&amp;quot;);
+sysout.println(&amp;quot;&amp;lt;br/&amp;gt;u2297&amp;lt;br/&amp;gt;u0035&amp;lt;br/&amp;gt;u039e&amp;lt;br/&amp;gt;u322F&amp;lt;br/&amp;gt;u5193&amp;quot;);
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;if you are using Log4J with Console Appender, make sure to set the encoding property to UTF-8. Example:&lt;code&gt;java
+#TRACE appender
+log4j.appender.stdout.trace=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.trace.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.trace.encoding=UTF-8
+log4j.appender.stdout.trace.layout.ConversionPattern=%p [%c] - %m%n
+log4j.appender.stdout.trace.Threshold=TRACE
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;##Tomcat server in UTF-8 zetten&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://wiki.apache.org/tomcat/FAQ/CharacterEncoding#Q3&#34;&gt;http://wiki.apache.org/tomcat/FAQ/CharacterEncoding#Q3&lt;/a&gt;
+Vooral:
+Set URIEncoding=&amp;ldquo;UTF-8&amp;rdquo; on your &lt;Connector&gt; in server.xml&lt;/p&gt;
+
+&lt;p&gt;##Zet uw webpagina rendering in UTF-8&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Overal in jsps charencoding=UTF-8 ipv ISO plaatsen (in de header en in de jsp directive)&lt;/li&gt;
+&lt;li&gt;Voor struts: een filter maken die op de request de encoding manueel naar UTF-8 plaatst (zie apache link bovenaan)&lt;br/&gt;&lt;br/&gt; Die doet het volgende in de filter:&lt;code&gt;java
+ public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
+            ServletException {
+      request.setCharacterEncoding(&amp;quot;UTF-8&amp;quot;);
+      chain.doFilter(request, response);
+ }
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;In struts-config de controller in UTF-8 encoden&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;##Oracle database server in UTF-8 zetten&lt;/p&gt;
+
+&lt;p&gt;Voor DBAs, niet te vergeten natuurlijk, anders worden speciale chars die niet in ISO liggen incorrect opgeslaan.
+Men kan zelf controleren welke encoding momenteel gebruikt wordt met&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT * FROM NLS_DATABASE_PARAMETERS WHERE PARAMETER = &#39;NLS_CHARACTERSET&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Kan bvb. &lt;em&gt;WE8MSWIN1252&lt;/em&gt; uitkomen.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

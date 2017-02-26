@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>angular</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="angular" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/frameworks/angular/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>angular</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="angular">Angular</h1>
+
+<p>Testing: zie <a href="/wiki/code/javascript/testing/angular/">code/javascript/testing/angular</a></p>
+
+<h4 id="caching-in-http">Caching in HTTP</h4>
+
+<p><code>IE8</code> cachet by default alle XHR requests en daar kan je niet zomaar iets aan veranderen. Een unieke URL elke keer callen is een oplossing (met <code>new Date().getTime()</code> bijvoorbeeld), maar je kan ook aan de server kant de <code>Cache-Control</code> header parameter op <code>no-cache</code> zetten.</p>
+
+<p>Zie issue <a href="https://github.com/angular/angular.js/issues/1418">https://github.com/angular/angular.js/issues/1418</a></p>
+
+<h3 id="hoe-werkt-under-the-hood">Hoe werkt &hellip; under the hood?</h3>
+
+<h4 id="dependency-injection">dependency injection</h4>
+
+<p>Zie <a href="http://www.alexrothenberg.com/2013/02/11/the-magic-behind-angularjs-dependency-injection.html">http://www.alexrothenberg.com/2013/02/11/the-magic-behind-angularjs-dependency-injection.html</a></p>
+
+<p>TLDR: ze gebruiken <code>toString()</code> om argument namen te parsen, zodat de volgorde niet uitmaakt wat het normaal wel doet in de magische array <code>arguments</code>!</p>
+
+<h4 id="het-watchen-van-variabelen-en-objecten">Het watchen van variabelen en objecten</h4>
+
+<p>In de <code>$digest()</code> loop, die constant draait (een achterwaardse loop, zie de <a href="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js">source code</a>, zoek voor bijvoorbeeld <code>$$watchers</code>, dat is de array van te watchen objecten), wordt er constant gekeken naar het object en gekeken of dat niet hetzelfde is als de &ldquo;laatste&rdquo;. Met &ldquo;laatste&rdquo; bedoelen we een kopie van het object, zodat we altijd een pointer naar de actuele referentie hebben.</p>
+
+<p><img style='float: left; width: nolink|px;' src='/img//code/javascript/frameworks/concepts-runtime.png'></p>
+
+<p>Het werkt eigenlijk ongeveer zoals <code>ObjectObserver</code> van https:*github.com/rafaelw/ChangeSummary - in nieuwe browsers zoals Chrome Canary kan er &ldquo;native&rdquo; gekeken worden naar object veranderingen door <code>Object.observe()</code> te gebruiken - zie het <a href="http:*updates.html5rocks.com/2012/11/Respond-to-change-with-Object-observe">html5rocks artikel</a>.</p>
+
+<p>Een belangrijke link: <a href="http://docs.angularjs.org/guide/concepts">http://docs.angularjs.org/guide/concepts</a></p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Knockout on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/knockout/index.xml</link>
+    <description>Recent content in Knockout on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/knockout/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>knockout</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/knockout/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/knockout/</guid>
+      <description>
+
+&lt;h1 id=&#34;knockout-js&#34;&gt;Knockout JS&lt;/h1&gt;
+
+&lt;h2 id=&#34;paged-client-side-table-zelf-voorzien&#34;&gt;Paged client-side table zelf voorzien&lt;/h2&gt;
+
+&lt;p&gt;❗ Zie &lt;a href=&#34;http://jsfiddle.net/rniemeyer/5Xr2X/&#34;&gt;http://jsfiddle.net/rniemeyer/5Xr2X/&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The basic idea is that you have a dependentObservable that represents the rows in your current page and bind your table to it. You would slice the overall array to get the rows for the page. Then, you have pager buttons/links that manipulate the page index, which causes the dependentObservable to be re-evaluated resulting in the current rows.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Op deze manier met &lt;code&gt;dependentObservable&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var myns = {};
+myns.DisplayFields = function(jsondata) {
+    var viewModel = {
+        fields: ko.observableArray(jsondata),
+        sortByName: function() { //plus any custom functions I would like to perform
+            this.items.sort(function(a, b) {
+                return a.Name &amp;lt; b.Name ? -1 : 1;
+            });
+        },
+        pageSize: ko.observable(10),
+        pageIndex: ko.observable(0),
+        previousPage: function() {
+            this.pageIndex(this.pageIndex() - 1);
+        },
+        nextPage: function() {
+            this.pageIndex(this.pageIndex() + 1);
+        }
+    };
+
+    viewModel.maxPageIndex = ko.dependentObservable(function() {
+        return Math.floor(this.fields().length / this.pageSize());
+    }, viewModel);
+
+    viewModel.pagedRows = ko.dependentObservable(function() {
+        var size = this.pageSize();
+        var start = this.pageIndex() * size;
+        return this.fields.slice(start, start + size);
+    }, viewModel);
+
+    ko.applyBindings(viewModel);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;layout-js-update-trigger-nodig&#34;&gt;Layout JS Update trigger nodig?&lt;/h2&gt;
+
+&lt;p&gt;(Via &lt;a href=&#34;http://stackoverflow.com/questions/5598751/knockoutjs-utilizing-jquery-tablesorter-with-a-jquery-tmpl-generated-table&#34;&gt;Stack overflow&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Stel dat na het updaten van de DOM door &lt;code&gt;KnockoutJS&lt;/code&gt;, er nog styling nodig is door bvb &lt;code&gt;jQuery&lt;/code&gt;. &lt;br/&gt;&lt;br/&gt;
+Zelf de event aanroepen zoals &lt;code&gt;$(el).repaint()&lt;/code&gt; werkt altijd maar is enorm vervelend. &lt;code&gt;Knockout&lt;/code&gt; ondersteutn ook &lt;em&gt;binding handlers&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;ko.bindingHandlers.triggerUpdate = {
+    update: function (element, valueAccessor) {
+        ko.utils.unwrapObservable(valueAccessor()); //need to just access the observable to create the subscription
+        $(element).trigger(&amp;quot;repaint&amp;quot;); // or whatever you&#39;ll need
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Het element binden:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;table id######&amp;quot;mytable&amp;quot; data-bind&amp;quot;triggerUpdate: items&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;triggerUpdate&lt;/code&gt; is een zelf aangemaakte &lt;em&gt;binding handler&lt;/em&gt;. Voor meer info, zie &lt;a href=&#34;http://knockoutjs.com/documentation/custom-bindings.html&#34;&gt;http://knockoutjs.com/documentation/custom-bindings.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;js-logica-in-data-volledig-scheiden&#34;&gt;JS Logica in data-* volledig scheiden&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Probleem&lt;/strong&gt;: Knockout gebruikt veel &lt;code&gt;data-&lt;/code&gt; HTML5 attributen om gedrag van elementen te bepalen. &lt;br/&gt;&lt;br/&gt;
+Dit zou ideaal gezien opgesplitst moeten worden (unit testable etc):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;button type######&amp;quot;submit&amp;quot; data-bind&amp;quot;enable: languageToAdd().length &amp;gt; 0, click: addLanguage&amp;quot;&amp;gt;Add&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Oplossing&lt;/strong&gt;: Schrijf een stukje custom JS dat de &lt;code&gt;data-bind&lt;/code&gt; attribuut zelf zet gebaseerd op een ander model dan uw klassiek &lt;code&gt;viewModel&lt;/code&gt; - bvb. &lt;code&gt;bindingsModel&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Bijvoorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var bindings = {
+   inputs: [&#39;name&#39;, &#39;bio&#39;, &#39;twitterHandle&#39;, &#39;state&#39;, &#39;photoUrl&#39;],
+   options: [&#39;languages&#39;],
+   custom: { languageToAdd: &#39;value: languageToAdd, valueUpdate: &amp;quot;afterkeydown&amp;quot;&#39; }
+};
+
+modelBinder.createBindings(bindings);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dit is het custom gedeelte:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var modelBinder = {};
+modelBinder.createBindings = function (bindlist) {
+    function setBinding(id, value) {
+        var el = document.getElementById(id);
+        if (el) {
+            el.setAttribute(&#39;data-bind&#39;, value);
+        }
+    }
+    
+    for(var inputsKey in bindlist.inputs) {
+        if (bindlist.inputs.hasOwnProperty(inputsKey)) {
+            setBinding(bindlist.inputs[inputsKey], &#39;value: &#39; + bindlist.inputs[inputsKey]);
+        }
+    }
+        
+    for(var optionsKey in bindlist.options) {
+        if (bindlist.inputs.hasOwnProperty(optionsKey)) {
+            setBinding(bindlist.options[optionsKey], &#39;options: &#39; + bindlist.options[optionsKey]);
+        }
+    }
+        
+    for(var key in bindlist.custom) {
+        if (bindlist.custom.hasOwnProperty(key)) {
+            setBinding(key, bindlist.custom[key]);
+        }
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zodat we in HTML enkel dit hebben:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;button type######&amp;quot;submit&amp;quot; id&amp;quot;languageToAdd&amp;quot;&amp;gt;Add&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bron: &lt;a href=&#34;http://userinexperience.com/?p=633&#34;&gt;http://userinexperience.com/?p=633&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>performance</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="performance" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/performance/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>performance</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="javascript-performance">Javascript Performance</h1>
+
+<p>❗ <strong>Best practices on performance</strong>: zie http:*developer.yahoo.com/performance/rules.html en ook http:*sites.google.com/site/io/even-faster-web-sites</p>
+
+<h2 id="script-volgorde">Script volgorde</h2>
+
+<ol>
+<li>de <code>&lt;head/&gt;</code> tag wordt door de browser geparsed, inclusief sequentiëel alle <code>&lt;script/&gt;</code> blocks. Op dit moment kunnen scripts <em>GEEN</em> DOM Manipulatie doen.</li>
+<li>de <code>&lt;body/&gt;</code> tag wordt door de browser geparsed, &hellip;</li>
+<li>de DOM tree is geladen nadat alle elementen in body geparsed zijn, dus events als <code>$(document).ready</code> worden gefired.</li>
+<li>de resources worden verder geladen (<code>&lt;img/&gt;</code> source attributes, dynamische script of css tags - zie volgende sectie -, en eventuele frames)</li>
+<li>de hele pagina is geladen, dus events als <code>window.onload</code> worden gefired.</li>
+</ol>
+
+<p>Hou hier rekening mee bij het includen van scripts in pagina&rsquo;s. Zorg ervoor dat nét na de opbouw van de DOM tree zoveel mogelijk scripts uitgevoerd kunnen worden. Waarom?</p>
+
+<ul>
+<li>De gebruiker heeft reeds (gedeeltelijk) visuele feedback ontvangen over de pagina - geen volledig blank scherm</li>
+<li>Images die groot zijn duren lang om in te laden, wacht daarom nooit op een window load event. Externe domeinen kunnen ook plat liggen.</li>
+</ul>
+
+<h2 id="async-script-loading">Async Script loading</h2>
+
+<h4 id="het-probleem">Het probleem</h4>
+
+<p><code>&lt;script/&gt;</code> tags inladen door browsers <strong>blokkeert alles</strong>, zelfs <em>cross-domain</em>!</p>
+
+<p>Dit wil zeggen dat voor het inladen van images of andere scripts of eender wat in de DOM tree, eerst het volledige script moet geëvalueerd worden. Waarom is dit zo?</p>
+
+<ol>
+<li>Het kan zijn dat in een script tag <code>window.location = 'bla';</code> staat, dus de rest evalueren redundant is</li>
+<li>Het kan zijn dat in een script tag <code>document.write()</code> gebruikt wordt, dus dit eerst moet uitgevoerd worden (DOM manipulatie)</li>
+</ol>
+
+<p>Moderne browsers (&gt;= FF3, IE8) maken het mogelijk om resources <em>parallel</em> in te laden. Hiermee bedoel ik images en andere resources. Voor oudere browsers is dit dichtgeschroefd tot 2 items parallel, per domein. Resources verspreiden over verschillende domeinen versnelt dus het laden van een pagina!</p>
+
+<p>❗ In Firefox worden CSS files via <code>&lt;link/&gt;</code> ook sequentiëel ingeladen, in IE8 parallel. Dit is op dezelfde manier op te lossen.</p>
+
+<h4 id="de-oplossing">De oplossing</h4>
+
+<h5 id="include-scripts-op-het-einde-van-de-pagina">Include scripts op het einde van de pagina</h5>
+
+<p>Bij voorkeur net voor de <code>&lt;/body&gt;</code> tag wordt afgesloten. Dit heeft <em>geen enkele</em> impact op performantie, aangezien het javascript block nog altijd geëvalueerd moet worden, maar is voor de gebruiker veel aangenamer, omdat hij de pagina letterlijk &ldquo;ziet&rdquo; laden. Wanneer er bijvoorbeeld een zwaar javascript filetje door de head tag gesleurd moet worden, en dit evalueren 3 seconden kan duren, ervaart de gebruiker 3 seconden lang totaal niets. Dit is super irriterend!</p>
+
+<h5 id="non-blocking-loading">Non-blocking loading</h5>
+
+<p>Gebruik non-blocking javascript block loads: zie <a href="http://yuiblog.com/blog/2008/07/22/non-blocking-scripts/">http://yuiblog.com/blog/2008/07/22/non-blocking-scripts/</a></p>
+
+<p>Zonder:</p>
+
+<p><img style='' src='/img//code/javascript/js_sequential.jpg|'></p>
+
+<pre><code class="language-javascript">function loadScript() {
+	for(var i = 0; i &lt; arguments.length; i++) {
+		var js = document.createElement(&quot;script&quot;);
+		var head = document.getElementsByTagName(&quot;head&quot;)[0];
+
+		js.src = arguments[i];
+		js.type = &quot;text/javascript&quot;;
+		head.appendChild(js);
+	}
+}
+</code></pre>
+
+<p>Met:</p>
+
+<p><img style='' src='/img//code/javascript/js_parallel.jpg|'></p>
+
+<p>-&gt; Dit is natuurlijk maar een voorbeeld en het gaat in dit geval over banale javascript files.</p>
+
+<p>Wat zou hier moeten opvallen? (Dat het uit de cache komt maakt hier <em>totaal niet uit</em>!) Je kan aan de bruine balk (&ldquo;blocked&rdquo; indicatie bij firebug) zien dat in screenshot een de scripts op elkaar wachten om uitgevoerd te worden, en bij screenshot twee is dit niet het geval.</p>
+
+<p>Problemen kunnen zo wel ontstaan als het ene afhankelijk is van het andere&hellip; <br/><br/>
+Daarom ook altijd best practices volgen en <em>separation of concerns</em> zo goed mogelijk toepassen!</p>
+
+<h4 id="asynchrone-scripts-koppelen-aan-elkaar">Asynchrone scripts koppelen aan elkaar</h4>
+
+<p>Een van de grotere problemen van de bovenstaande oplossing is de afhankelijkheid van bijvoorbeeld inline script tags met externe die dan vanaf nu <em>lazy-loaded</em> zijn via <code>loadScript()</code>. Hoe weet ik wanneer een bepaald script ingeladen en geëvalueerd werd, als dit nu allemaal parallel gebeurt? Op de volgende manier zou dit heel elegant zijn:</p>
+
+<pre><code class="language-html">&lt;script src=&quot;jquery.js&quot;&gt;
+  $('.bla').show(); // and more jQuery dependant stuff
+&lt;/script&gt;
+</code></pre>
+
+<p>❗ Dit werkt <strong>niet</strong>. Momenteel moet men twee <code>script</code> tags gebruiken&hellip;</p>
+
+<p>Stel u voor dat we jquery via <code>loadScript()</code> laden. Het zou kunnen dat bovenstaand script block dus uitgevoerd wordt voordat <code>$</code> gedefiniëerd is op toplevel scope. Oei. Nu zorgt de <code>src</code> attribute ervoor dat <strong>altijd</strong> eerst die externe resource volledig geladen is (jquery.js), vooraleer de interne tekst te evalueren (de CSS selector <code>.bla</code> tonen). Libraries bootstrappen kan je dus daarin doen, nadat ze geladen zijn.</p>
+
+<p>-&gt; Indien het laden van de externe resource niet lukt, wordt de code die binnen de script tags staan ook <strong>niet</strong> uitgevoerd!</p>
+
+<p>Een stap verder zou zijn de library zichzelf bootstrappen, door <code>loadScript()</code> lichtjes aan te passen:</p>
+
+<pre><code class="language-javascript">function loadScript() {
+	for(var i = 0; i &lt; arguments.length; i++) {
+		var js = document.createElement(&quot;script&quot;);
+		var head = document.getElementsByTagName(&quot;head&quot;)[0];
+
+		js.src = arguments[i].src;
+		js.type = &quot;text/javascript&quot;;
+		js.text = arguments[i].callback.toString();
+		head.appendChild(js);
+	}
+}
+
+//usage:
+loadScript({ src: 'jQuery.js',
+             callback: function() {
+                $('.bla').show();
+             }
+});
+</code></pre>
+
+<p>In de js file zelf kunnen we de tekst van de script tag die onszelf inlaadt (wow) dan evalueren ((Zie <a href="http://api.jquery.com/jQuery.globalEval/">http://api.jquery.com/jQuery.globalEval/</a> - geen <code>eval()</code> hier dus):</p>
+
+<pre><code class="language-javascript">// library code, blablablah
+
+var scripts = document.getElementsByTagName(&quot;script&quot;);
+var curScript = scripts[ scripts.length - 1 ];
+var script = curScript.innerHTML;
+if (script) {
+    jQuery.globalEval(script);
+}
+</code></pre>
+
+<p>Zie ook http:*www.stevesouders.com/blog/2008/12/27/coupling-async-scripts/ en http:*ejohn.org/blog/degrading-script-tags/ voor meer info.</p>
+
+<h2 id="async-module-definition-amd-pattern">Async Module Definition (AMD) pattern</h2>
+
+<p>Zie presentatie hier: <a href="http://unscriptable.com/code/Using-AMD-loaders/#0">http://unscriptable.com/code/Using-AMD-loaders/#0</a></p>
+
+<p>Komt op dit neer:</p>
+
+<pre><code class="language-javascript">define(['dep1', 'dep2'], function(dep1ref, dep2ref) {
+  function private() {}
+
+  return { public1: &quot;lala&quot;, public2: &quot;loeloe&quot; };
+});
+// more defines
+
+require('mod1', function(mod1ref) {
+  // do stuff with mod1
+});
+</code></pre>
+
+<h2 id="head-js-parallel-loading-serial-executing">Head.js: parallel loading &amp; serial executing</h2>
+
+<p><a href="http://headjs.com/">http://headjs.com/</a> - Bevat een JS loader module dat <em>parallel</em> scripts laadt, maar in seriële volgorde de scripts uitvoert (of net niet). Zo heb je maar één script in de <code>&lt;HEAD/&gt;</code> tag nodig om te laden voordat de rest van de pagina geladen wordt. Onderaan de pagina wordt de rest geladen met Headjs:</p>
+
+<pre><code class="language-javascript">// use jQuery on the body of the page even though it is not included yet
+head.ready(function() {
+   $(&quot;#my&quot;).jquery_plugin();
+});
+ 
+// load jQuery whenever you wish bottom of the page
+head.js(&quot;/path/to/jquery.js&quot;);
+</code></pre>
+
+<p>Wat is allemaaal mogelijk?</p>
+
+<ul>
+<li>Parellel laden + serieel uitvoeren (afhankelijk van elkaar in volgorde)</li>
+<li>Serieel laden + serieel uitvoeren</li>
+<li>JS feature checking</li>
+<li>callbacks per script dat geladen is (evt gelabeled)</li>
+<li>&hellip;</li>
+</ul>
+
+<p>Dus nooit meer <strong>zelf load scripts schrijven</strong> maar gewoon <em>headJS</em> gebruiken!</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

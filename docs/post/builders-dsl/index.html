@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Enhancing the builder pattern with closures</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="Enhancing the builder pattern with closures" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/builders-dsl/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="/img/Enhancing%20the%20builder%20pattern%20with%20closures.jpg"></div>
+  
+
+  <header class="header-section has-img">
+  
+    <div class="big-img intro-header">
+        <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Enhancing the builder pattern with closures</h1>
+      
+        
+      <h2 class="post-subheading">the trainwreck/builder/chaining pattern can be dangerous and here&#39;s why</h2>
+      
+      
+      
+      
+      <span class="post-meta">14 November 2013</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+      <span class='img-desc'></span>
+    </div>
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Enhancing the builder pattern with closures</h1>
+      
+        
+      <h2 class="post-subheading">the trainwreck/builder/chaining pattern can be dangerous and here&#39;s why</h2>
+      
+      
+      
+      
+      <span class="post-meta">14 November 2013</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/closures">closures</a> </li>
+      
+       <li><a href="/tags/groovy">groovy</a> </li>
+      
+       <li><a href="/tags/c">C#</a> </li>
+      
+       <li><a href="/tags/javascript">javascript</a> </li>
+      
+       <li><a href="/tags/java">java</a> </li>
+      
+       <li><a href="/tags/functional-programming">functional programming</a> </li>
+      
+      </ul>
+
+      <article role="main" class="blog-post">
+          
+
+<p>This post is inspired by Venkat Subramaniam&rsquo;s <a href="http://www.devoxx.be/dv13-venkat-subramaniam.html">Devoxx 2013 talk Thinking Functional Style</a>. See downloads at <a href="http://www.agiledeveloper.com/downloads.html">agiledeveloper.com</a> which has a rather cool Groovy example.</p>
+
+<h3 id="classic-builders">Classic builders</h3>
+
+<p>For years, I&rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &ldquo;Object Mothers&rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters. That quickly became very cumbersome to work with. Most of the time, the code will  look like this, whether it&rsquo;s C# or Java doesn&rsquo;t really matter:</p>
+
+<pre><code>public class UserBuilder
+{
+    private UserType_V1_0 type = UserType_V1_0.Administrator;
+    private string code = &quot;code&quot;;
+
+    public User_V1_0 Build()
+    {
+        User_V1_0 user = new User_V1_0(code, &quot;name&quot;, type, &quot;id&quot;, &quot;campusId&quot;, true);
+        return user;
+    }
+
+    public UserBuilder WithCode(string code)
+    {
+        this.code = code;
+        return this;
+    }
+
+    public UserBuilder WithType(UserType_V1_0 type)
+    {
+        this.type = type;
+        return this;
+    }
+}
+</code></pre>
+
+<p>Used this way:</p>
+
+<pre><code>  var user = new UserBuilder()
+    .withCode(&quot;AB&quot;)
+    .Build();
+</code></pre>
+
+<p>Okay, what&rsquo;s happening here?</p>
+
+<ul>
+<li>Builder objects have <code>withX()</code> methods, returning <code>this</code> to be able to chain, to fill up every required variable</li>
+<li>default values are provided, so we&rsquo;re not obliged to call every method if we&rsquo;re only interested in one field.</li>
+<li>At the end of the chain, we call <code>Build()</code>, which returns our object.</li>
+</ul>
+
+<h3 id="enhanced-builders">Enhanced builders</h3>
+
+<p>I&rsquo;ve never given it much thought, but yes, there are some problems with this implementation (as with everything). The most important one being, can you reuse your instantiated builder? No? Yes? We never assign it, but we <strong>could</strong> if we really wanted to. Since we&rsquo;re <strong>mutating the builder</strong>, you are definatly getting into trouble.</p>
+
+<p>Using a lambda to pass in the work on our builder might solve this:</p>
+
+<pre><code>public class UserBuilder
+{
+    private UserType_V1_0 type = UserType_V1_0.Administrator;
+    private string code = &quot;code&quot;;
+
+    private UserBuilder()
+    {
+    }
+
+    private User_V1_0 Build()
+    {
+        return new User_V1_0(code, &quot;name&quot;, type, &quot;id&quot;, &quot;campusId&quot;, true);
+    }
+
+    public static User_V1_0 Build(Func&lt;UserBuilder, UserBuilder&gt; block)
+    {
+        var builder = new UserBuilder();
+        block(builder);
+        return builder.Build();
+    }
+
+    public UserBuilder WithCode(string code)
+    {
+        this.code = code;
+        return this;
+    }
+
+    public UserBuilder WithType(UserType_V1_0 type)
+    {
+        this.type = type;
+        return this;
+    }
+}
+</code></pre>
+
+<p>Used this way:</p>
+
+<pre><code>  var user = UserBuilder.Build(_ =&gt;
+    _.WithCode(&quot;AB&quot;)
+           .withType(UserType_V1_0.NursingStaff));
+</code></pre>
+
+<p>Notice that using the character <code>_</code> is a convention if there&rsquo;s only one parameter for the lambda, it could also be called &ldquo;builder&rdquo; but we still need to use this, as <code>block(builder)</code> passes in the temp created builder. What did we solve?</p>
+
+<ul>
+<li>The actual builder instance is bound within the <code>Build()</code> scope. You&rsquo;ll never be able to assign it when using the static method.</li>
+<li>One might say, we reduced some redundancy in the implementation by eliminating the need to call the final <code>Build()</code> method, but it&rsquo;s simply being moved.</li>
+</ul>
+
+<h3 id="supercharged-builders">Supercharged builders</h3>
+
+<p>In Groovy (the devoxx example), we can cleverly use the <code>.delegate</code> mechanism to eliminate the need to chain at all. Groovy also reduces the syntax noise a bit (brackets, semicolons). We could create a <code>Build</code> method like this:</p>
+
+<pre><code>  public static User_V1_0 Build(block) {
+    new UserBuilder().with block;
+    // does the same as cloning the block, assigning it with .delegate and executing it. 
+  }
+</code></pre>
+
+<p>Used this way:</p>
+
+<pre><code>  UserBuilder.Build {
+     Code &quot;AB&quot; // Same as Code(&quot;AB&quot;);
+     Type UserType_V1_0.NursingStaff
+  }
+</code></pre>
+
+<p>How does this work?</p>
+
+<ul>
+<li>The <code>Code()</code> method does not exist in our block closure, but we assign a delegate to it: our temp lexically scoped <code>UserBuilder</code> instance - that&rsquo;s where the method lives. When the code is executed, Groovy first looks for a method within the block, and then tries to fetch it via the delegate.</li>
+</ul>
+
+<p>For more information on groovy delegates, see the <a href="http://groovy.codehaus.org/Delegation+Pattern">Groovy documentation: Delegation Pattern</a>. This works thanks to the late binding of the language and won&rsquo;t statically typed languages such as C#. You might be able to come close using <code>LINQ</code> expression trees, but that requires a lot of effort to write a simple DSL.</p>
+
+<h3 id="leveraging-this-principle-to-dsls">Leveraging this principle to DSLs</h3>
+
+<p>In Javascript, you can also manage to do something like that using <code>.prototype</code> and <a href="http://brainbaking.com/wiki/code/javascript/inheritance">prototypal inheritance</a> and <code>apply()</code> to dynamically bind the <code>this</code> context (see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">Function.prototype.apply MDN</a>).</p>
+
+<p>Of course, builders are completely redundant in JS. Just create a <code>JSON</code> object using <code>{ key: value }</code>. Done. But this principle might be interesting for things like creating a &ldquo;mailer&rdquo; - as in the devoxx 2013 example:</p>
+
+<pre><code>var mailerPrototype = {
+    from: function() { console.log(&quot;from&quot;); },
+    to: function() { console.log(&quot;to&quot;); },
+    sub: function() { console.log(&quot;sub&quot;); },
+    body: function() { console.log(&quot;body&quot;); },
+    send: function() { console.log(&quot;sending...&quot;); }
+};
+
+var mailer = function() {};
+mailer.mail = function(block) {
+    // .prototype magic happens inside Object.create()
+    block.apply(Object.create(mailerPrototype));
+}
+
+// this still sucks, I don't want to use 'this.', can use chaining... 
+mailer.mail(function() {
+    this.from(&quot;me@gmail.com&quot;);
+    this.to(&quot;you@gmail.com&quot;);
+    this.sub(&quot;this is my subject&quot;);
+    this.body(&quot;hello&quot;);
+    this.send();
+});
+</code></pre>
+
+<p>You&rsquo;ll still need <code>this.</code>, sadly. This is not needed in Groovy:</p>
+
+<pre><code>mailer.mail {
+    from &quot;me@gmail.com&quot;
+    to &quot;you@gmail.com&quot;
+    sub &quot;this is my subject&quot;
+    body &quot;hello&quot;
+    send()
+}
+</code></pre>
+
+<p>Now <strong>that</strong> looks readable. To be able to create something like that, a language has to:</p>
+
+<ul>
+<li>have functions as first-class citizens.</li>
+<li>have a clean syntax, to be able to reduce a lot of noise (CoffeeScript can get this done for JS for instance)</li>
+<li>have late binding or duck typing</li>
+</ul>
+
+<p>That said, going back to Java 7 is going to be a major pain in the ass. No, I do not want to create usesless interfaces! (Tip: use <code>Function</code> and <code>Predicate</code> from <a href="https://code.google.com/p/guava-libraries/">Google Guava</a>).</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="http://www.brainbaking.com/post/integration-testing-sqlite/" data-toggle="tooltip" data-placement="top" title="Integration Testing with SQLite">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="http://www.brainbaking.com/post/metaprogramming-convention-dry/" data-toggle="tooltip" data-placement="top" title="Metaprogramming instead of duplication">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

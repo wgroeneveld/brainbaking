@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oledb on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/oledb/index.xml</link>
+    <description>Recent content in Oledb on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/oledb/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>oledb</title>
+      <link>http://www.brainbaking.com/wiki/code/db/oledb/</link>
+      <pubDate>Thu, 27 Feb 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/oledb/</guid>
+      <description>
+
+&lt;h1 id=&#34;oledb&#34;&gt;Oledb&lt;/h1&gt;
+
+&lt;h2 id=&#34;named-parameter-problem&#34;&gt;Named parameter problem&lt;/h2&gt;
+
+&lt;p&gt;Blijkbaar werkt &lt;code&gt;OleDbCommand&lt;/code&gt; nooit met named parameters, maar is de &lt;strong&gt;volgorde van toevoegen&lt;/strong&gt; zeer belangrijk. In De query zelf worden &amp;lsquo;?&amp;rsquo; tekens gebruikt om een parameter aan te duiden. Dit is zeer vervelend, en maakt het abstraheren van de DB laag moeilijk - andere DB providers staan bijvoorbeeld &lt;code&gt;@parameter&lt;/code&gt; toe, waarbij de naam wel uitmaakt. Hoe lossen we dat op?&lt;/p&gt;
+
+&lt;h4 id=&#34;convert-named-parameters-into-positional-ones&#34;&gt;Convert named parameters into positional ones&lt;/h4&gt;
+
+&lt;p&gt;Hocus pocus: (zie ook &lt;a href=&#34;http://stackoverflow.com/questions/2407685/oledbparameters-and-parameter-names&#34;&gt;http://stackoverflow.com/questions/2407685/oledbparameters-and-parameter-names&lt;/a&gt; etc)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        public static OleDbCommand ConvertNamedParametersToPositionalParameters(OleDbCommand command)
+        {
+            // OleDb does NOT use named parameters, but we want them! (uses &#39;?&#39;)
+            var newParameters = new List&amp;lt;OleDbParameter&amp;gt;();
+
+            command.CommandText ###### Regex.Replace(command.CommandText, &amp;quot;(@&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;w*)&amp;quot;, match &amp;gt;
+            {
+                var parameter ###### command.Parameters.OfType&amp;lt;OleDbParameter&amp;gt;().FirstOrDefault(a &amp;gt; a.ParameterName ###### match.Groups[1].Value);
+                if (parameter != null)
+                {
+                    var parameterIndex = newParameters.Count;
+
+                    var newParameter = command.CreateParameter();
+                    newParameter.OleDbType = parameter.OleDbType;
+                    newParameter.ParameterName = &amp;quot;param_&amp;quot; + match + &amp;quot;_&amp;quot; + parameterIndex.ToString();
+                    newParameter.Value = parameter.Value;
+
+                    newParameters.Add(newParameter);
+                }
+
+                return &amp;quot;?&amp;quot;;
+            });
+
+            command.Parameters.Clear();
+            command.Parameters.AddRange(newParameters.ToArray());
+            return command;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;######= Gewenste Resultaat ######=&lt;/p&gt;
+
+&lt;p&gt;Maakt het mogelijk om dit te doen:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;SELECT * FROM TABLE WHERE column ###### @name1 AND column2  @name2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;voeg aan command &lt;code&gt;new OleDbParameter(&amp;quot;@name1&amp;quot;, value)&lt;/code&gt; toe&lt;/li&gt;
+&lt;li&gt;wordt automagically vervangen door vorige method (kan als extension gebruikt worden)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;❗ In &lt;a href=&#34;http://www.brainbaking.com/wiki/code/db/sqlite/&#34;&gt;code/db/sqlite&lt;/a&gt; wordt dit by default ondersteund&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Angular on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/angular/index.xml</link>
+    <description>Recent content in Angular on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>angular</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/testing/angular/</link>
+      <pubDate>Wed, 05 Jun 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/testing/angular/</guid>
+      <description>
+
+&lt;h1 id=&#34;angularjs-testing&#34;&gt;AngularJS testing&lt;/h1&gt;
+
+&lt;p&gt;Voorbeeld voor angular app met mocks en testing en al: &lt;a href=&#34;https://github.com/angular/angular-seed&#34;&gt;angular-seed&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;mocking-en-zo&#34;&gt;Mocking en zo&lt;/h3&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://docs.angularjs.org/api/angular.mock.module&#34;&gt;angular.mock.module&lt;/a&gt; - twee hoofdfuncties die belangrijk zijn: &lt;code&gt;module()&lt;/code&gt; en &lt;code&gt;inject()&lt;/code&gt;. Het eerste maakt de module aan en het tweede zorgt voor de mock dependency injectie. Bijvoorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;angular
+	.module(&#39;bla.services&#39;, [])
+	
+	.factory(&#39;$bla&#39;, [&#39;$http&#39;, function($http) {
+            // do stuff with $http, like a .get
+            return { go: function() {} }
+        }])
+;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Je kan dus met &lt;code&gt;$bla.go()&lt;/code&gt; een http call uitvoeren waarbij &lt;code&gt;$bla&lt;/code&gt; een geïnjecteerde variabele kan zijn in een Angular controller. Je kan met &lt;a href=&#34;http://docs.angularjs.org/api/ngMock.$httpBackend&#34;&gt;$httpBackend&lt;/a&gt; een &lt;code&gt;$http&lt;/code&gt; mock injecteren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;describe(&amp;quot;bla service test&amp;quot;, function() {
+  var $http, $inject;
+  beforeEach(module(&#39;bla.services&#39;));
+  beforeEach(inject(function($injector) {
+    $inject = $injector;
+    $http = $injector.get(&#39;$httpBackend&#39;);
+    $http.when(&#39;GET&#39;, &#39;rest/bla&#39;).respond({ &#39;obj&#39;: 1 });
+  });
+  
+  it(&amp;quot;should test stuff&amp;quot;, function() {
+    var $bla = $inject.get(&#39;$bla&#39;); // at this moment, service function evaluates
+    expect($bla.go().obj).toEqual(1);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;eigen-mocks-in-het-dependency-systeem-van-angularjs-steken&#34;&gt;eigen mocks in het dependency systeem van angularjs steken&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var myMock;
+beforeEach(function() {
+  myMock = function() { return { toMock: function() {} } };
+  module(&#39;app.services&#39;, function($provide) {
+    $provide.value(&#39;myMock&#39;, myMock);
+  });
+  
+  // if you want, you can now use inject() to for instance mock $http
+  it(&amp;quot;should bla&amp;quot;, inject(function($injector) {
+    var App = $inject.get(&#39;App&#39;);
+    // expect(); in here
+  }));
+});
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>angular</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/angular/</link>
+      <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/angular/</guid>
+      <description>
+
+&lt;h1 id=&#34;angular&#34;&gt;Angular&lt;/h1&gt;
+
+&lt;p&gt;Testing: zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/testing/angular/&#34;&gt;code/javascript/testing/angular&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;caching-in-http&#34;&gt;Caching in HTTP&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;IE8&lt;/code&gt; cachet by default alle XHR requests en daar kan je niet zomaar iets aan veranderen. Een unieke URL elke keer callen is een oplossing (met &lt;code&gt;new Date().getTime()&lt;/code&gt; bijvoorbeeld), maar je kan ook aan de server kant de &lt;code&gt;Cache-Control&lt;/code&gt; header parameter op &lt;code&gt;no-cache&lt;/code&gt; zetten.&lt;/p&gt;
+
+&lt;p&gt;Zie issue &lt;a href=&#34;https://github.com/angular/angular.js/issues/1418&#34;&gt;https://github.com/angular/angular.js/issues/1418&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;hoe-werkt-under-the-hood&#34;&gt;Hoe werkt &amp;hellip; under the hood?&lt;/h3&gt;
+
+&lt;h4 id=&#34;dependency-injection&#34;&gt;dependency injection&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.alexrothenberg.com/2013/02/11/the-magic-behind-angularjs-dependency-injection.html&#34;&gt;http://www.alexrothenberg.com/2013/02/11/the-magic-behind-angularjs-dependency-injection.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;TLDR: ze gebruiken &lt;code&gt;toString()&lt;/code&gt; om argument namen te parsen, zodat de volgorde niet uitmaakt wat het normaal wel doet in de magische array &lt;code&gt;arguments&lt;/code&gt;!&lt;/p&gt;
+
+&lt;h4 id=&#34;het-watchen-van-variabelen-en-objecten&#34;&gt;Het watchen van variabelen en objecten&lt;/h4&gt;
+
+&lt;p&gt;In de &lt;code&gt;$digest()&lt;/code&gt; loop, die constant draait (een achterwaardse loop, zie de &lt;a href=&#34;http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js&#34;&gt;source code&lt;/a&gt;, zoek voor bijvoorbeeld &lt;code&gt;$$watchers&lt;/code&gt;, dat is de array van te watchen objecten), wordt er constant gekeken naar het object en gekeken of dat niet hetzelfde is als de &amp;ldquo;laatste&amp;rdquo;. Met &amp;ldquo;laatste&amp;rdquo; bedoelen we een kopie van het object, zodat we altijd een pointer naar de actuele referentie hebben.&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: nolink|px;&#39; src=&#39;http://www.brainbaking.com/img//code/javascript/frameworks/concepts-runtime.png&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Het werkt eigenlijk ongeveer zoals &lt;code&gt;ObjectObserver&lt;/code&gt; van https:*github.com/rafaelw/ChangeSummary - in nieuwe browsers zoals Chrome Canary kan er &amp;ldquo;native&amp;rdquo; gekeken worden naar object veranderingen door &lt;code&gt;Object.observe()&lt;/code&gt; te gebruiken - zie het &lt;a href=&#34;http:*updates.html5rocks.com/2012/11/Respond-to-change-with-Object-observe&#34;&gt;html5rocks artikel&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Een belangrijke link: &lt;a href=&#34;http://docs.angularjs.org/guide/concepts&#34;&gt;http://docs.angularjs.org/guide/concepts&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

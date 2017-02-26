@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/python/index.xml</link>
+    <description>Recent content in Python on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Bye autotools hello Scons</title>
+      <link>http://www.brainbaking.com/post/scons-building/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/scons-building/</guid>
+      <description>
+
+&lt;p&gt;Remember this?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;./configure&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;make&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;make install&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That&amp;rsquo;s not so bad, as long as you have the right compiler and linker flags configured, depending on the target OS. The real problem, however, is trying to figure out how to alter something if you didn&amp;rsquo;t write the &lt;code&gt;Makefile&lt;/code&gt; yourself. Or if you in fact did write it, but it was some time ago. Two days. No, four hours.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-problem&#34;&gt;The problem&lt;/h3&gt;
+
+&lt;p&gt;Try to study the autoconf and automake flow diagram, explained &lt;a href=&#34;http://en.wikipedia.org/wiki/GNU_build_system&#34;&gt;on Wikipedia: the GNU build system&lt;/a&gt;. Headache coming up? Suppose we would like to use these &amp;hellip; uhm, &amp;ldquo;thingies&amp;rdquo;, for a simple C++ project.&lt;/p&gt;
+
+&lt;p&gt;First, let me define simple:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It has some (shared) library dependencies&lt;/li&gt;
+&lt;li&gt;The source lives in &lt;code&gt;src&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Since it&amp;rsquo;s obviously written the TDD way, the tests live in &lt;code&gt;test&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Onward, to the &lt;code&gt;Makefile&lt;/code&gt; creation station!
+This is a sample file, from the &lt;a href=&#34;https://code.google.com/p/googletest/source/browse/trunk/make/Makefile&#34;&gt;Google Test Makefile&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GTEST_DIR = ..
+
+USER_DIR = ../samples
+
+CPPFLAGS += -isystem $(GTEST_DIR)/include
+CXXFLAGS += -g -Wall -Wextra -pthread
+
+TESTS = sample1_unittest
+GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
+                $(GTEST_DIR)/include/gtest/internal/*.h
+
+all : $(TESTS)
+
+clean :
+    rm -f $(TESTS) gtest.a gtest_main.a *.o
+
+GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
+gtest-all.o : $(GTEST_SRCS_)
+    $(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
+            $(GTEST_DIR)/src/gtest-all.cc
+
+gtest_main.o : $(GTEST_SRCS_)
+    $(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
+            $(GTEST_DIR)/src/gtest_main.cc
+
+gtest.a : gtest-all.o
+    $(AR) $(ARFLAGS) $@ $^
+
+gtest_main.a : gtest-all.o gtest_main.o
+    $(AR) $(ARFLAGS) $@ $^
+
+sample1.o : $(USER_DIR)/sample1.cc $(USER_DIR)/sample1.h $(GTEST_HEADERS)
+    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1.cc
+
+sample1_unittest.o : $(USER_DIR)/sample1_unittest.cc \
+                     $(USER_DIR)/sample1.h $(GTEST_HEADERS)
+    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1_unittest.cc
+
+sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
+    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This first builds the gtest_main.a binary, to be able to link that with our test after the source (sample1.o) has been is built. The syntax is clumsy, simple files require me to have a deep knowledge how flags and linking work, and I don&amp;rsquo;t want to specify everything in one block.&lt;/p&gt;
+
+&lt;p&gt;As esr in his blog post &lt;a href=&#34;http://esr.ibiblio.org/?p=3089&#34;&gt;Scons is full of win today&lt;/a&gt; said, it&amp;rsquo;s a maintenance nightmare. What to do?&lt;/p&gt;
+
+&lt;p&gt;There are a few alternatives which aim to cover everything autotools does, such as &lt;code&gt;QMake&lt;/code&gt; from Trolltech or &lt;code&gt;CMake&lt;/code&gt; (that actually generates Makefiles. You&amp;rsquo;re not helping, CMake!). Or, one could go for &lt;a href=&#34;http://scons.org/&#34;&gt;Scons&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;build-your-software-better&#34;&gt;build your software, better.&lt;/h3&gt;
+
+&lt;p&gt;Scons starts with a single &lt;code&gt;SConstruct&lt;/code&gt; file, which acts as the makefile. You can bootstrap the default build target using the &lt;code&gt;scons&lt;/code&gt; command. (cleaning with &lt;code&gt;scons --clean&lt;/code&gt;). The big deal here is that the contents of that file is simply python (2.7, I know)!&lt;/p&gt;
+
+&lt;p&gt;Want to write a utility function to gather all your &lt;code&gt;cpp&lt;/code&gt; files? Fine, go ahead, &lt;code&gt;def mystuff():&lt;/code&gt; (you do know this already exists, right? Use &lt;code&gt;Glob()&lt;/code&gt;) Want to unit test these, and include them? Done. Want to split up everything per source directory? Use &lt;code&gt;SConscript&lt;/code&gt; files and include these from within your root &lt;code&gt;SConstruct&lt;/code&gt; using &lt;code&gt;SConscript(&#39;file&#39;, &#39;envVarToExport&#39;)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is my blueprint construct file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;env = Environment(CXX = &#39;g++&#39;)
+
+gtest = env.SConscript(&#39;lib/gtest/SConscript&#39;, &#39;env&#39;)
+src = env.SConscript(&#39;src/SConscript&#39;, &#39;env&#39;)
+out = env.SConscript(&#39;test/SConscript&#39;, &#39;env gtest src&#39;)
+
+# output is an array with path to built binaries. We only built one file - run it (includes gtest_main).
+test = Command( target = &amp;quot;testoutput&amp;quot;,
+                source = str(out[0]),
+                action = str(out[0]) )
+AlwaysBuild(test)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Things to note:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Scons works with &lt;a href=&#34;http://www.scons.org/doc/2.3.1/HTML/scons-user.html#chap-environments&#34;&gt;Environments&lt;/a&gt; which can be shared and cloned (see below)&lt;/li&gt;
+&lt;li&gt;You can share variables with the second parameter&lt;/li&gt;
+&lt;li&gt;Executing after a build also works, passing in the result of conscripts.&lt;/li&gt;
+&lt;li&gt;Ensure to always build your test with &lt;code&gt;AlwaysBuild()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is the conscript which builds google test:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Import(&#39;env&#39;)
+env = env.Clone(CPPPATH = &#39;./:./include&#39;)
+
+env.Append(CXXFLAGS = [&#39;-g&#39;, &#39;-Wall&#39;, &#39;-Wextra&#39;, &#39;-pthread&#39;])
+gtest = env.Library(target = &#39;gtest&#39;, source = [&#39;src/gtest-all.cc&#39;, &#39;src/gtest_main.cc&#39;])
+
+Return(&#39;gtest&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Things to note:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fetch the shared variables with &lt;code&gt;Import()&lt;/code&gt; and return stuff with &lt;code&gt;Return()&lt;/code&gt; (it&amp;rsquo;s a function)&lt;/li&gt;
+&lt;li&gt;specify flags all you want.&lt;/li&gt;
+&lt;li&gt;Building something? &lt;code&gt;Program()&lt;/code&gt;, &lt;code&gt;Library()&lt;/code&gt; or &lt;code&gt;SharedLibrary()&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Source:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Import(&#39;env&#39;)
+env = env.Clone(CPPPATH = &#39;./&#39;)
+src = env.Library(target = &#39;wizards&#39;, source = Glob(&#39;*.cc&#39;))
+
+Return(&#39;src&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Things to note:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Glob()&lt;/code&gt; auto-reads all files in the current dir.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And finally, test, linking both source and google test:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Import(&#39;env&#39;, &#39;gtest&#39;, &#39;src&#39;)
+env = env.Clone()
+
+env.Append(LIBPATH = [&#39;#lib/gtest&#39;, &#39;#src&#39;])
+env.Append(LIBS = [gtest, src])
+out = env.Program(target = &#39;wizards_unittests&#39;, source = Glob(&#39;*.cc&#39;))
+
+Return(&#39;out&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Things to note:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use the hashtag &lt;code&gt;#&lt;/code&gt; to point to the root dir where the &lt;code&gt;SConstruct&lt;/code&gt; file resides.&lt;/li&gt;
+&lt;li&gt;Linking is as simple as providing &lt;code&gt;LIBS&lt;/code&gt; and the right path.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So where does that leave us? Yes there&amp;rsquo;s still &amp;ldquo;syntax&amp;rdquo; to be learned, even if you&amp;rsquo;re a seasoned python developer; you need to know which function to use for what, that&amp;rsquo;s what the excellent &lt;a href=&#34;http://www.scons.org/doc/2.3.1/HTML/scons-user.html&#34;&gt;scons doc&lt;/a&gt; is for. I know it made my life a lot easier while trying to do something simple and this is only the tip of the iceberg. Scons is relatively popular according to Stack Overflow, the documentation is excellent and if all else fails you can write your own garbage in a full-fledged dynamic language.&lt;/p&gt;
+
+&lt;p&gt;The only really irritating bit is the python 2.7 dependency, so don&amp;rsquo;t forget to use &lt;a href=&#34;https://pypi.python.org/pypi/virtualenv&#34;&gt;virtualenv&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>meta</title>
+      <link>http://www.brainbaking.com/wiki/code/python/meta/</link>
+      <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/python/meta/</guid>
+      <description>
+
+&lt;h1 id=&#34;metaprogramming&#34;&gt;Metaprogramming&lt;/h1&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://www.brainbaking.com/wiki/code/python/classes/&#34;&gt;code/python/classes&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;type-the-metaclass-of-a-class&#34;&gt;type, the metaclass of a class&lt;/h3&gt;
+
+&lt;p&gt;Resources:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://eli.thegreenplace.net/2011/08/14/python-metaclasses-by-example/&#34;&gt;Python metaclasses by example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python/100037#100037&#34;&gt;Extremely detailed, stackoverflow: what is a metaclass in python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jeffknupp.com/blog/2013/12/28/improve-your-python-metaclasses-and-dynamic-classes-with-type/&#34;&gt;Improve your python with metaclasses&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>classes</title>
+      <link>http://www.brainbaking.com/wiki/code/python/classes/</link>
+      <pubDate>Wed, 12 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/python/classes/</guid>
+      <description>
+
+&lt;h1 id=&#34;classes&#34;&gt;Classes&lt;/h1&gt;
+
+&lt;p&gt;Handige links:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.diveintopython.net/object_oriented_framework/special_class_methods2.html&#34;&gt;special class methods like _ &lt;em&gt;getattr&lt;/em&gt; _ and _ &lt;em&gt;new&lt;/em&gt; _&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.diveintopython3.net/native-datatypes.html#tuples&#34;&gt;dive into python - native datatypes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://python-history.blogspot.be/2010/06/inside-story-on-new-style-classes.html&#34;&gt;Inside story on new style classes&lt;/a&gt; - ter info: Python3 heeft &lt;strong&gt;enkel&lt;/strong&gt; &amp;ldquo;newstyle&amp;rdquo; classes!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;method-overriding&#34;&gt;Method overriding&lt;/h3&gt;
+
+&lt;p&gt;Is &lt;strong&gt;niet mogelijk&lt;/strong&gt;. Gebruik default values!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def func(i, j ###### 2, k  3):
+    return i + j + k
+
+func(1) # 6
+func(1, 1) # 5
+func(1, 1, 1) # 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wat wel gaat, evt met decorators, zie &lt;a href=&#34;http://www.artima.com/weblogs/viewpost.jsp?thread=101605&#34;&gt;Five-minute multimethods in Python&lt;/a&gt; - is &lt;code&gt;_ _call_ _&lt;/code&gt; implementeren en dan met metaprogrammeren te loopen over alle methods en te kijken of de argumenten overeen komen met het type dat required is. Fancypancy!&lt;/p&gt;
+
+&lt;h5 id=&#34;opgelet-met-pitfalls&#34;&gt;Opgelet met pitfalls&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;Nummer 1&lt;/strong&gt;: default variables worden herbruikt:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;When Python executes a “def” statement, it takes some ready-made pieces (including the compiled code for the function body and the current namespace), and creates a new function object. When it does this, it also evaluates the default values. [&amp;hellip;] Another way to reset the defaults is to simply re-execute the same “def” statement. Python will then create a new binding to the code object, evaluate the defaults, and assign the function object to the same variable as before. But again, only do that if you know exactly what you’re doing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Default als &lt;code&gt;arr ###### []&lt;/code&gt; Gaat de array muteren. Heel handig voor memoization, heel verwarrend anders. Oplossing? &lt;code&gt;arr  None&lt;/code&gt; en dan &lt;code&gt;arr ###### [] if arr  None&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://effbot.org/zone/default-values.htm&#34;&gt;Default parameter values in Python&lt;/a&gt; voor in-depth uitleg.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nummer 2&lt;/strong&gt;: &lt;em&gt;Python’s nested scopes bind to variables, not object values&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for i in range(10):
+    def callback():
+        print &amp;quot;clicked button&amp;quot;, i
+    UI.Button(&amp;quot;button %s&amp;quot; % i, callback)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;variabele &lt;code&gt;i&lt;/code&gt; gaat altijd 9 zijn - wordt niet op value gebind. Oplossing is explicit binding door de functie definitie van &lt;code&gt;callback():&lt;/code&gt; te veranderen naar &lt;code&gt;callback(i=i):&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;fields-dynamisch-definiëren&#34;&gt;Fields dynamisch definiëren&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;Thing(a######1, b2)&lt;/code&gt; kan op een paar manieren gedefiniëerd worden.&lt;/p&gt;
+
+&lt;h5 id=&#34;fields-expliciet-declareren&#34;&gt;fields expliciet declareren&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Thing:
+   def __init__(self, a, b):
+       self.a, self.b = a, b
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;dynamisch-uw-eigen-dictionary-updaten&#34;&gt;dynamisch uw eigen dictionary updaten&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Thing:
+   def __init__(self, **kwargs):
+       self.__dict__.update(kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ Dit is uiteraard heel gevaarlijk aangezien het al uw method bodies kan vervangen door een param value. BOEM.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;* *name&lt;/code&gt;(zonder spatie, wiki markup, nvdr) geeft alle argumenten in een &lt;a href=&#34;http://docs.python.org/2/library/stdtypes.html#typesmapping&#34;&gt;dict&lt;/a&gt; terug. &lt;code&gt;*name&lt;/code&gt; gaat ook, geeft u een lijst van argumenten terug. Combinatie gaat ook, één ster moet voor de tweede komen. Zoiets is dus mogelijk: &lt;code&gt;def _ _init_ _(self, arg1, arg2, *allargs, * *allargsasdict)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;alles-als-een-message-passing-systeem-zien&#34;&gt;Alles als een message passing systeem zien&lt;/h5&gt;
+
+&lt;p&gt;In Ruby is er een andere manier om &lt;code&gt;def name block end&lt;/code&gt; te schrijven, hoe het geïnterpreteerd wordt: &lt;code&gt;self.class.send(:name, args) { block }&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def opt_to_s opt={}
+  opt.empty? ? &#39;&#39; : &#39; &#39; + opt.map {|e,v| &amp;quot;#{e}=&amp;lt;br/&amp;gt;&amp;quot;#{v}&amp;lt;br/&amp;gt;&amp;quot;&amp;quot;}.join(&#39;, &#39;)
+end
+
+[:html, :body, :h1].each do |el|
+  start=&amp;quot;&amp;lt;#{el}&amp;quot;
+  fin=&amp;quot;&amp;lt;/#{el}&amp;gt;&amp;quot;
+  self.class.send(:define_method, el) {|options={}, &amp;amp;blk| start + opt_to_s(options) + &#39;&amp;gt;&#39; + blk.call + fin}
+end
+
+# Now, we can neatly nest tags and content
+html do
+  body do
+    h1 :class######&amp;gt;&amp;quot;bold-h1&amp;quot;, :id&amp;gt;&amp;quot;h1_99&amp;quot; do
+      &amp;quot;header&amp;quot;
+    end
+  end
+end
+ ######&amp;gt; &amp;quot;&amp;lt;body&amp;gt;&amp;lt;h1 class&amp;lt;br/&amp;gt;&amp;quot;bold-h1&amp;lt;br/&amp;gt;&amp;quot;, id=&amp;lt;br/&amp;gt;&amp;quot;h1_99&amp;lt;br/&amp;gt;&amp;quot;&amp;gt;header&amp;lt;/h1&amp;gt;&amp;lt;/body&amp;gt;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Voilà, een DSL in no-time. Holy crap. &lt;a href=&#34;http://rubylearning.com/blog/2010/11/03/do-you-understand-rubys-objects-messages-and-blocks/&#34;&gt;Bron: do you understand ruby&amp;rsquo;s objects messages and blocks?&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;superclassing&#34;&gt;Superclassing&lt;/h3&gt;
+
+&lt;p&gt;Klassen aanmaken is niet al te moeilijk, maar een call uitvoeren naar de overridden method is iets minder evident: zie &lt;a href=&#34;http://docs.python.org/2/library/functions.html#super&#34;&gt;super() in python docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Een voorbeeld van een custom http handler:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class HttpHandler(SimpleHTTPRequestHandler):
+	def readStatus(self):
+		return {
+			&amp;quot;Status&amp;quot;: &amp;quot;blabla&amp;quot;,
+			&amp;quot;StartTime&amp;quot;: &amp;quot;&amp;quot;
+		}
+
+	def do_GET(self):
+		try:
+			print(&#39;serving %s now&#39; % self.path)
+			if &amp;quot;status.json&amp;quot; in self.path:
+				self.send_response(200)
+				self.send_header(&#39;Content-type&#39;, &#39;text/json&#39;)
+				self.end_headers()
+				self.wfile.write(json.dumps(self.readStatus()).encode())
+			else:
+				SimpleHTTPRequestHandler.do_GET(self)
+
+		except IOError:
+			self.send_error(500, &#39;internal server error in server python source: %s&#39; % self.path)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wat is hier speciaal aan:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;super.do_GET(self)&lt;/code&gt; =&amp;gt; &lt;code&gt;SimpleHTTPRequestHandler.do_GET(self)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;eigen method aanroepen: &lt;code&gt;self.readStatus()&lt;/code&gt; met de &lt;code&gt;self&lt;/code&gt; prefix&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;diamond-inheritance&#34;&gt;Diamond inheritance&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;BaseClass.method()&lt;/code&gt; is impliciet hetzelfde als &lt;code&gt;super().method()&lt;/code&gt;, behalve dat je met &lt;code&gt;super&lt;/code&gt; een argument kan meegeven, over welke superklasse het gaat.&lt;/p&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://www.artima.com/weblogs/viewpost.jsp?thread=236275&#34;&gt;Things to know about Python&amp;rsquo;s super()&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;closures-en-lambda-s&#34;&gt;Closures en lambda&amp;rsquo;s&lt;/h3&gt;
+
+&lt;p&gt;functies in functies aanmaken werkt perfect, &amp;ldquo;closed over&amp;rdquo; die lexicale scope, net zoals je zou verwachten zoals bijvoorbeeld in javascript:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;	def readBuildStatus(self):
+		html = urllib.request.urlopen(&amp;quot;http://bla/lastbuildstatus.htm&amp;quot;).read().decode()
+		def extractVersion():
+			versionString = &amp;quot;Version: &amp;quot;
+			versionIndex = html.find(&amp;quot;Version: &amp;quot;)
+			return html[versionIndex + len(versionString) : versionIndex + len(versionString) + len(&amp;quot;YYYY.MM&amp;quot;)]
+		def extractStatus():
+			return &amp;quot;Succeeded&amp;quot; if html.find(&amp;quot;SUCCESS&amp;quot;) != -1 else &amp;quot;Failed&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;de twee andere methods lezen de &lt;code&gt;html&lt;/code&gt; variabele uit. Hier hoef je geen &lt;code&gt;self.&lt;/code&gt; prefix te gebruiken, binnen de &lt;code&gt;readBuildStatus()&lt;/code&gt; functie zelf - hierbuiten zijn de closures verdwenen natuurlijk (out of scope).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ironpython</title>
+      <link>http://www.brainbaking.com/wiki/code/python/ironpython/</link>
+      <pubDate>Fri, 07 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/python/ironpython/</guid>
+      <description>
+
+&lt;h1 id=&#34;ironpython&#34;&gt;IronPython&lt;/h1&gt;
+
+&lt;p&gt;Interessante links:
+  * &lt;a href=&#34;http://www.voidspace.org.uk/ironpython/dark-corners.shtml&#34;&gt;Iron Python In Action - Dark corners&lt;/a&gt;
+  * &lt;a href=&#34;http://ironpython.net/documentation/dotnet/&#34;&gt;IronPython .NET Integration documentation&lt;/a&gt;
+  * &lt;a href=&#34;https://pytools.codeplex.com/&#34;&gt;Python Tools for Visual Studio&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;c-python-interop&#34;&gt;C#/Python interop&lt;/h3&gt;
+
+&lt;h4 id=&#34;c-in-python&#34;&gt;C# in Python&lt;/h4&gt;
+
+&lt;h5 id=&#34;overerving&#34;&gt;Overerving&lt;/h5&gt;
+
+&lt;p&gt;In Python C# klassen over laten erven gaat zonder meer. Constructors werken &lt;strong&gt;niet&lt;/strong&gt; via &lt;code&gt;_ _init_ _&lt;/code&gt; maar via new:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;strong&gt;init&lt;/strong&gt; method is the Python initializer method. It is an instance method and so receives the instance as the first argument, which by convention is called self. If you want to override the .NET constructor (responsible for creating the instance) then from Python you override the &lt;strong&gt;new&lt;/strong&gt; class method.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import clr
+clr.AddReference(&#39;System.Windows.Forms&#39;)
+
+from System.Windows.Forms import (
+    Application, Form
+)
+
+
+class MainForm(Form):
+
+    def __new__(cls, text):
+        instance = Form.__new__(cls)
+        instance.Text = text
+
+        return instance
+
+app = MainForm(&#39;Hello World&#39;)
+Application.Run(app)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;python-in-c&#34;&gt;Python in C#&lt;/h4&gt;
+
+&lt;h5 id=&#34;de-script-engine-manueel-firen&#34;&gt;De script engine manueel firen&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt; using IronPython;  
+ using IronPython.Modules;  
+ using System.Text;  
+
+ public class ScriptExample {  
+     [MenuItem(&amp;quot;Python/HelloWorld&amp;quot;)]  
+     public static void ScriptTest()  
+     {  
+         // create the engine  
+         var ScriptEngine = IronPython.Hosting.Python.CreateEngine();  
+         // and the scope (ie, the python namespace)  
+         var ScriptScope = ScriptEngine.CreateScope();  
+         // execute a string in the interpreter and grab the variable  
+         string example ###### &amp;quot;output  &#39;hello world&#39;&amp;quot;;  
+         var ScriptSource = ScriptEngine.CreateScriptSourceFromString(example);  
+         ScriptSource.Execute(ScriptScope);  
+         string came_from_script = ScriptScope.GetVariable&amp;lt;string&amp;gt;(&amp;quot;output&amp;quot;);  
+         // Should be what we put into &#39;output&#39; in the script.  
+         Debug.Log(came_from_script);              
+     }  
+ }  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Via &lt;a href=&#34;http://techartsurvival.blogspot.ca/2013/12/embedding-ironpython-in-unity-tech-art.html&#34;&gt;Embedding IronPython in Unity&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;visual-studio-integration&#34;&gt;Visual Studio Integration&lt;/h3&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: direct&amp;800 |px;&#39; src=&#39;http://www.brainbaking.com/img//code/python/ide.png&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Installeer IronPython &amp;amp; Python tools for VS. File -&amp;gt; New Project -&amp;gt; IronPython Application.&lt;/p&gt;
+
+&lt;h5 id=&#34;references-leggen&#34;&gt;References leggen&lt;/h5&gt;
+
+&lt;p&gt;References voor het python project zijn niet voldoende, je moet ook het &lt;strong&gt;Search Paths&lt;/strong&gt; mapje updaten, kan enkel op dll toegevoegd worden.&lt;/p&gt;
+
+&lt;p&gt;Vanaf dan kan je via &lt;code&gt;clr&lt;/code&gt; de imports doen zoals &lt;code&gt;using&lt;/code&gt; in C#:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import clr
+clr.AddReferenceByName(&#39;Wizards&#39;)
+from Wizards import *
+# use some class from the Wizards namespace below.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;unit-testen-uitvoeren&#34;&gt;Unit testen uitvoeren&lt;/h5&gt;
+
+&lt;p&gt;❗ MSTest &amp;amp; Test Explorer werkt automatisch en herkent alle testen - ReSharpner werkt niet meer. Een test python file uitvoeren kan ook met F5 (file als startup file), en &lt;code&gt;unittest.main()&lt;/code&gt; erbij plaatsen.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;python&#34;&gt;Python&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Pythonic:
+    `&#39;I can access this doc using instance.__doc__, holy cow?`&#39;
+    def __init__(self, arg, *args, **dict):
+        pass
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;😳&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;code&gt;pass&lt;/code&gt; statement in Python is like a empty set of curly braces (&lt;code&gt;{}&lt;/code&gt;) in Java or C.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;simpele-server-opstarten&#34;&gt;Simpele server opstarten&lt;/h2&gt;
+
+&lt;p&gt;Waarom? Om &lt;strong&gt;lokale files&lt;/strong&gt; makkelijk te kunnen serven (handig voor JS)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python -m SimpleHTTPServer 8080
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Poof.&lt;/p&gt;
+
+&lt;h2 id=&#34;python-2-vs-3&#34;&gt;Python 2 vs 3&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;in py3 is &lt;code&gt;print&lt;/code&gt; een functie geworden, gebruik dus &lt;code&gt;()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;de &lt;code&gt;SimpleHTTPRequestHandler&lt;/code&gt; klassen ea zijn verhuisd naar &lt;code&gt;http.server&lt;/code&gt;, gebruik &lt;code&gt;from http.server import SimpleHTTPRequestHandler, HTTPServer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;super()&lt;/code&gt; kan zonder argumenten gebruikt worden&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>packages</title>
+      <link>http://www.brainbaking.com/wiki/code/python/packages/</link>
+      <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/python/packages/</guid>
+      <description>
+
+&lt;h1 id=&#34;package-management&#34;&gt;Package Management&lt;/h1&gt;
+
+&lt;p&gt;Pain in the ass. Geen built-in beschikbaar, gebruik &lt;strong&gt;pip&lt;/strong&gt;. Zie &lt;a href=&#34;http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows&#34;&gt;http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Installatie (windows dan) - let op, hangt zelfs van minor versie van python af:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install setuptools &lt;a href=&#34;http://www.lfd.uci.edu/~gohlke/pythonlibs/#setuptools&#34;&gt;http://www.lfd.uci.edu/~gohlke/pythonlibs/#setuptools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Install pip &lt;a href=&#34;http://www.lfd.uci.edu/~gohlke/pythonlibs/#pip&#34;&gt;http://www.lfd.uci.edu/~gohlke/pythonlibs/#pip&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Alternatief: grab &lt;a href=&#34;https://raw.github.com/pypa/pip/master/contrib/get-pip.py&#34;&gt;get-pip.py&lt;/a&gt; en laat evalueren door python, haalt automatisch ook setuptools af.&lt;/p&gt;
+
+&lt;p&gt;Vanaf dan &lt;code&gt;pip install [package]&lt;/code&gt; (voeg python base dir/Scripts toe aan uw &lt;code&gt;PATH&lt;/code&gt;). Packages worden dan (als binary) ook in de scripts folder gedownload.&lt;/p&gt;
+
+&lt;h5 id=&#34;upgrades-uitvoeren&#34;&gt;Upgrades uitvoeren&lt;/h5&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;To upgrade an existing setuptools (or distribute), run pip install -U setuptools&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>http://www.brainbaking.com/wiki/code/python/testing/</link>
+      <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/python/testing/</guid>
+      <description>
+
+&lt;h1 id=&#34;python-unit-testing&#34;&gt;Python Unit Testing&lt;/h1&gt;
+
+&lt;h2 id=&#34;unittest-module&#34;&gt;unittest module&lt;/h2&gt;
+
+&lt;p&gt;Spreekt voor zich:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import unittest
+from calculator import Calculator
+
+class TestCalculator(unittest.TestCase):
+
+	def setUp(self):
+		self.calc = Calculator().calculate;
+
+	def test_calculateBasicNumberReturnsNumber(self):
+ 		self.assertEqual(3, self.calc(&#39;3&#39;))
+
+	def test_calculateSimpleMultiplicationReturnsResult(self):
+		self.assertEqual(10, self.calc(&#39;5*2&#39;))
+
+	def test_calculateInvalidStringShouldThrowException(self):
+		self.assertRaises(ValueError, self.calc, (&#39;blabl&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://docs.python.org/3/library/unittest.html&#34;&gt;http://docs.python.org/3/library/unittest.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;setUp&lt;/code&gt; wordt automatisch aangeroepen. Beforeclass, aftereach etc etc bestaat ook.&lt;/li&gt;
+&lt;li&gt;alle methods met &lt;code&gt;test_&lt;/code&gt; worden automatisch herkend.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;hoe-voer-ik-dit-nu-uit&#34;&gt;Hoe voer ik dit nu uit?&lt;/h4&gt;
+
+&lt;p&gt;Dit stuk onder uw py file plakken:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;if __name__ ###### &#39;__main__&#39;:
+	unittest.main()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En dan &lt;code&gt;python -m unittest -v calculatorTest&lt;/code&gt;. de v flag geeft wat extra output, anders staat er gewoon OK. De test op zich builden in bijvoorbeeld sublime met de main method erin zorgt er ook voor dat deze automatisch uitgevoerd wordt.&lt;/p&gt;
+
+&lt;p&gt;######= automatic test case discovery ######=&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;python -m unittest discover&lt;/code&gt; gaat alle unit testen vanaf huidig dir scannen en uitvoeren (instelbaar met params). Moet voldoen aan:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;extenden van &lt;code&gt;unittest.TestCase&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;voldoen aan python module structuur. Testen in files met prefix &amp;ldquo;test_x.py&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Indien in subfolder &amp;ldquo;test&amp;rdquo;: vergeet geen &amp;ldquo;&lt;strong&gt;init&lt;/strong&gt;.py&amp;rdquo; file.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;############= autotest ############=&lt;/p&gt;
+
+&lt;p&gt;Mogelijk met onder andere &lt;code&gt;autonose&lt;/code&gt; (nose is een alternatief voor unittest) en &lt;code&gt;sniffer&lt;/code&gt;. Om die te installeren moet je via de &lt;a href=&#34;http://www.brainbaking.com/wiki/code/python/packages/&#34;&gt;pip package manager&lt;/a&gt; gaan, en dan gewoon sniffer uitvoeren in uw base directory.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

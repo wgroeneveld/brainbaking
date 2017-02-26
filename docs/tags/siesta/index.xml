@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Siesta on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/siesta/index.xml</link>
+    <description>Recent content in Siesta on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/siesta/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Unit Testing Extjs UI with Siesta</title>
+      <link>http://www.brainbaking.com/post/unit-testing-extjs-ui/</link>
+      <pubDate>Tue, 23 Dec 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/unit-testing-extjs-ui/</guid>
+      <description>
+
+&lt;h3 id=&#34;webdriver-js-heavy-frameworks&#34;&gt;WebDriver &amp;amp; js-heavy frameworks&lt;/h3&gt;
+
+&lt;p&gt;Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&amp;rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &amp;hellip; like you&amp;rsquo;re used to when using client/server desktop applications. You define components on a view, behavior on a controller, and data and the way it&amp;rsquo;s loaded on the model.&lt;/p&gt;
+
+&lt;p&gt;The problem with Javascript-heavy frameworks like this is that if your team does not have a lot of experience using JS in general, it can get extremely messy and cluttered. Which it did, coupled with a lot of regression (a misplaced &amp;ldquo;;&amp;rdquo; could break an entire part of the application), we needed an automated way to catch up with those bugs.
+Since I have a lot of experience with WebDriver, we started using it to write scenario tests when the application is deployed. A test should emulate customer behavior: click on a menu, expect a window to be opened, fill in a form and expect something else to happen. It&amp;rsquo;s not isolated but tests everything together.&lt;/p&gt;
+
+&lt;p&gt;WebDriver is great, but since a lot of javascript events are happening in the background it&amp;rsquo;s very difficult to write a easily usable DSL to manipulate the UI. One has to wait for ajax calls to finish, for DOM elements to appear or disappear, and so on. Tests became instable and failed sometimes, even sometimes on the CI build but never on your development environment. It takes more and more time to find &amp;amp; fix those things.&lt;/p&gt;
+
+&lt;h3 id=&#34;a-possible-solution-siesta&#34;&gt;A possible solution: Siesta&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.bryntum.com/products/siesta/&#34;&gt;Siesta&lt;/a&gt; is a product from Bryntum especially written to unit test Extjs applications, focussing on the UI. Sounds nice, so we decided to check it out as a possible alternative to WebDriver. As the website states:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Siesta is a JavaScript unit testing tool that can help you test any JavaScript code and also perform testing of the DOM and simulate user interactions. The tool can be used together with any type of JavaScript codebase – jQuery, Ext JS, NodeJS, Dojo, YUI etc. Using the API, you can choose from many types of assertions ranging from simple logical JS object&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Sounds good, right?&lt;/p&gt;
+
+&lt;p&gt;The setup isn&amp;rsquo;t too difficult, after a few hours of fiddling I managed to bootstrap our Extjs application using this index.js file:&lt;/p&gt;
+
+&lt;p&gt;var Harness = Siesta.Harness.Browser.ExtJS;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    Harness.configure({
+        title       : &#39;Test Suite&#39;,
+        loaderPath  : { 
+            &#39;Ext&#39;: &#39;../extjs&#39;,
+            &#39;Ext.ux&#39;: &#39;../extjs/ux&#39;,
+            &#39;MyApp&#39;: &#39;../app&#39;
+        },
+        preload     : [
+            // version of ExtJS used by your application
+            &#39;../extjs/resources/css/ext-all.css&#39;,
+            &#39;../resources/css/workb.css&#39;,
+
+            // version of ExtJS used by your application
+            &#39;../extjs/ext-all-debug.js&#39;,
+            &#39;./app-vars.js&#39;,
+            {
+                text: &amp;quot;Ext.Loader.setConfig({ &#39;Ext&#39;: &#39;../extjs&#39;, &#39;Ext.ux&#39;: &#39;../extjs/ux&#39;, &#39;MyApp&#39;: &#39;../app&#39; })&amp;quot;
+            },
+            &#39;../extjs/overrides/javascript-overrides.js&#39;,
+            &#39;../extjs/overrides/PFW-overrides.js&#39;,
+            &#39;../app/app.js&#39;
+        ]
+    });
+
+    Harness.start(
+        &#39;tests/001_sanity.t.js&#39;,
+        &#39;tests/002_window.t.js&#39;
+    );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Some pitfalls: &lt;code&gt;loaderPath&lt;/code&gt; isn&amp;rsquo;t evaluated in the preload so you have to reset it with &lt;code&gt;Ext.Loader.setConfig()&lt;/code&gt; and I had to alter our app.js file. Our directory structure looks like this:&lt;/p&gt;
+
+&lt;p&gt;root
+&amp;ndash; app
+&amp;ndash; extjs
+&amp;mdash;- ux
+&amp;ndash; siesta
+&amp;mdash;- tests&lt;/p&gt;
+
+&lt;p&gt;So you have to watch out for relative paths like &lt;code&gt;appFolder&lt;/code&gt; in app.js:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Ext.application({
+    name: &#39;MyApp&#39;,
+    appFolder: (_siesta ? &#39;../&#39; : &#39;&#39;) + &#39;app&#39;,
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that, you can start writing tests. Looking at the examples, the test flow looks a lot like our current WebDriver tests (wait for rows present, wait x seconds, click on this, do that). Here&amp;rsquo;s a simple test to create a view and check if the grid has some rows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;StartTest(function(t) {
+    t.diag(&amp;quot;Creating some window&amp;quot;);
+
+    var view = Ext.create(&#39;MyApp.view.SomeOverview&#39;, {
+        renderTo: Ext.getBody() // required
+    });
+    var grid = view.down(&amp;quot;grid&amp;quot;);
+
+    t.chain(
+        { waitFor : &#39;rowsVisible&#39;, args : grid }
+    );
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;{{urls.media}}/siesta.png&#34; alt=&#34;siesta view test in action&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Siesta also comes with it&amp;rsquo;s downsides though.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JS Test code is really messy. Chaining, async calls, ugly data setup for stores, &amp;hellip; A simple test can get complicated fast and requires advanced JS knowledge not everybody in our team has.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;waitFor&lt;/code&gt; exposes the same problems we have with our current WebDriver tests, so it&amp;rsquo;s not that much of an improvement&lt;/li&gt;
+&lt;li&gt;Test data setup cannot be reused from our backend integration tests (we use the builder pattern there to create data in the DB)&lt;/li&gt;
+&lt;li&gt;Creating a view to test doesn&amp;rsquo;t test the controller and vice versa. Still too low level for us.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The biggest problem is that it&amp;rsquo;s still more an integration/unit test than a scenario test and quite tightly coupled to your implementation. Since our implementation is far from perfect, Siesta is not the optimal solution for us. For example, we create stores inside our views and load them in &lt;code&gt;initComponent()&lt;/code&gt;. No way to provide a stub store with some dummy data. We&amp;rsquo;d have to refactor 200+ views to create tests. Of course tests should be written before the implementation&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;If you would like to know more about Siesta or JS BDD testing, take a look at&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pivotallabs.com/sencha-touch-bdd-part-5-controller-testing/&#34;&gt;Pivotallabs blog post&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.bryntum.com/docs/siesta/#!/guide/siesta_getting_started&#34;&gt;Siesta API doc: Getting started&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>inleiding</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="inleiding" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/inleiding/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>inleiding</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="javascript-inleiding">Javascript Inleiding</h1>
+
+<h3 id="primitives">Primitives</h3>
+
+<h4 id="soorten">Soorten</h4>
+
+<p>In javascript zijn er slechts 3 primitives:</p>
+
+<ol>
+<li><code>string</code> (geassocieerd object: <code>String</code>)</li>
+<li><code>boolean</code> (geassocieerd object: <code>Boolean</code>)</li>
+<li><code>number</code> (geassocieerd object: <code>Number</code>)</li>
+</ol>
+
+<p>Primitives zijn <strong>immutable</strong>! Toekennen van properties maakt ook een tijdelijk object aan, dus dit heeft geen nut.</p>
+
+<h5 id="soort-afchecken">Soort afchecken</h5>
+
+<p>Aangezien JS loosely typed is, kunnen we nooit weten wat er nu in <code>var variabele;</code> steekt op een bepaald moment in de code.<br/><br/>
+Om dit op te lossen kan men <code>typeof</code> gebruiken, een functie die een string teruggeeft wat het type van die variabele is.</p>
+
+<p>Typeof retourneert in het geval van een object, de string <code>object</code>, in alle andere gevallen de bovenstaande primitive namen.</p>
+
+<h4 id="object-coercing">Object coercing</h4>
+
+<p>-&gt; <em>(Lees eerst het stuk over objecten etc aub!)</em></p>
+
+<p>Elk van de primitives worden door Javascript automatisch geconverteerd naar hun object representatie wanneer men properties of functies hierop probeert toe te passen. Bvb:</p>
+
+<pre><code class="language-javascript">var someString = &quot;someString&quot;;
+
+someString.indexOf(&quot;String&quot;); // indexOf() wordt op new String(&quot;someString&quot;) opgeroepen
+</code></pre>
+
+<p>Direct nadat dit geëvalueerd wordt schiet de garbage collector aan de gang en wordt het tijdelijk object verwijderd.</p>
+
+<pre><code class="language-javascript">var tekst = &quot;dit is tekst jong&quot;;
+tekst.length = 3; // -&gt; String object created &amp; garbage-collected
+console.log(tekst); // dit is tekst jong (old primitive value)
+</code></pre>
+
+<p>Het object dat wordt aangemaakt bijhouden en daar de lengte van afkappen is zelfs gevaarlijk:</p>
+
+<pre><code class="language-javascript">var s = new String(&quot;ss&quot;);
+s.length = 1;
+
+for(var i = 0; i &lt; s.length; i++) {
+  console.log(s[i]); // prints only once 's'
+}
+console.log(s); // prints 'ss'??
+</code></pre>
+
+<p>Als we weten dat een object aangemaakt wordt zodra we een property oproepen, vraagt een mens zich af, hoe zit dat met <code>number</code>s? De <code>.</code> accessor wordt hier gebruikt om komma&rsquo;s voor te stellen&hellip; Wel, aangezien elk object ook values van properties kan retourneren via de <code>[]</code> operator (zie later), werkt dit dus wel:</p>
+
+<pre><code class="language-javascript">21.54[&quot;toFixed&quot;]() // returns 22, way cool!
+</code></pre>
+
+<p>Zie <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number">Mozilla MDC Docs: JS Reference: Number</a> voor wat mogelijke functies zijn op <code>Number</code>.</p>
+
+<h3 id="objecten-en-functies">Objecten en Functies</h3>
+
+<p>Douglas Crockford:</p>
+
+<blockquote>
+<p>An object is a dynamic collection of properties.</p>
+</blockquote>
+
+<p>As opposed to &ldquo;<em>instances of classes</em>&rdquo;.</p>
+
+<p>Een <em>functie</em> in JS kan net zoals andere waarden toegekend worden aan een variabele. Een functie ís in feite een waarde. Dit is anders in bijvoorbeeld Java, een &ldquo;functie&rdquo; (method) is een syntax block code die uitgevoerd kan worden. Wanneer een functie aan een property van een object gekoppeld is spreken we van een method op dat object.</p>
+
+<p>Een object bevat properties. Een functie is een rij van expressies die één waarde retourneert voor dezelfde input te evalueren. Bekijk een &ldquo;functie&rdquo; als zijn mathematische beschrijving: <code>f(x)</code>.</p>
+
+<h4 id="object-literals">Object Literals</h4>
+
+<p>Een object definiëren gaat heel makkelijk:</p>
+
+<pre><code class="language-javascript">var Ezel = new Object();
+Ezel.poten = 4;
+Ezel.balk = function() {
+   console.log(&quot;iaia met mijn &quot; + this.poten + &quot; poten&quot;);
+};
+</code></pre>
+
+<p>Zodra een <code>Object</code> gemaakt wordt, kunnen eender welke property keys toegekend worden met eender welke variabele. Dit kan ook op een <em>associatieve</em> manier, bijvoorbeeld <code>Ezel[&quot;poten&quot;] = 4;</code>.</p>
+
+<p>Bekijk het volgend stukje code:</p>
+
+<pre><code class="language-javascript">var Ezel = {
+  poten: 4,
+  balk: function() {
+    console.log(&quot;iaia met mijn &quot; + this.poten + &quot; poten&quot;);
+  }
+};
+</code></pre>
+
+<p>Hier wordt een object door middel van een <strong>literal</strong> gedefiniëerd. De correcte manier om de ezel te laten balken is <code>Ezel.balk()</code>. Merk op dat <code>Ezel</code> een gewoon object met wat simpele properties is, bekijk het als een map. Dit is een instantie van <code>Object</code>: <code>typeof Ezel</code> retourneert dit.</p>
+
+<h5 id="json-en-object-literals">JSON en Object Literals</h5>
+
+<p><a href="http://www.json.org/js.html">JSON</a> ((JavaScript Object Notation)) is een subset van JavaScript, dus door de JS Compiler op te roepen met <code>eval()</code> is het heel eenvoudig om JSON Strings te evalueren. Een JSON Object is in feite een JS Object Literal:</p>
+
+<pre><code class="language-javascript">var JSONObj = {
+  &quot;bindings&quot;: [
+    { &quot;key&quot;: &quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot; },
+    { &quot;key&quot;: &quot;value3&quot;, &quot;key2&quot;: &quot;value4&quot; }
+  ]
+}
+</code></pre>
+
+<p>Dat object kan via een string opgebouwd worden door <code>eval()</code> te gebruiken, maar dit is <strong>gevaarlijk</strong> aangezien van een externe webserver ook JS functies in dat data object kunnen zitten! Gebruik daarvoor altijd een JSON Parser, zoals de built-in <code>JSON.parse()</code>.</p>
+
+<p>Om de omgekeerde weg uit te gaan, van object naar string, gebruik <code>JSON.stringify()</code>. Meer uitleg, zie bovenstaande link.</p>
+
+<h4 id="functie-literals">Functie Literals</h4>
+
+<p>Een functie definiëren gaat op drie manieren:</p>
+
+<ol>
+<li><code>function bla() { ... }</code> - de normale manier, een <strong>function statement</strong>.</li>
+<li><code>var bla = function() { ...}</code> - een <strong>function literal</strong>, ofwel een <em>lambda function</em> (Lisp referentie). In feite een closure die toevallig toegekend wordt aan variabele <code>bla</code>.</li>
+<li><code>var bla = new Function(&quot;&quot;, &quot;...&quot;)</code> met als eerste argument de argumenten van de functie, allemaal in <code>string</code> vorm.</li>
+</ol>
+
+<p>De onderstaande code definiëert bijvoorbeeld in lambda-stijl een functie genaamd Ezel:</p>
+
+<pre><code class="language-javascript">var Ezel = function() {
+  this.poten = 4;
+  this.balk = function() {
+    console.log(&quot;iaia met mijn &quot; + this.poten + &quot; poten&quot;);
+  }
+};
+</code></pre>
+
+<p>Merk de verschillen op met het bovenstaande:</p>
+
+<ul>
+<li><code>function()</code> staat voor <code>{</code>.</li>
+<li><code>this</code> wordt gebruikt om keys aan te spreken! Waarom? zie <strong><a href="/wiki/code/javascript/scoping/">scoping</a></strong>.</li>
+<li>De functie bevat gewone statements met <code>=</code> en niet met <code>:</code>. Dit is geen object maar een functie!</li>
+</ul>
+
+<p>❗ De functie die net aangemaakt is kan nu als constructor dienen. Die werd intern ook aan de Ezel <code>prototype</code> property gekoppeld:</p>
+
+<pre><code class="language-javascript">Ezel.prototype.constructor
+</code></pre>
+
+<p>De correcte manier om de ezel te laten balken is <code>new Ezel().balk()</code>.<br/><br/>
+Meer info over hoe <code>new</code> werkt om de ezel instance de poten en de balk functie toe te kennen: zie <a href="/wiki/code/javascript/inheritance/">code/javascript/inheritance</a>.</p>
+
+<h5 id="functies-zijn-objecten">Functies zijn objecten</h5>
+
+<blockquote>
+<p>Functions are first class Objects!</p>
+</blockquote>
+
+<p>Bewijs: (Uitleg: zie <a href="/wiki/code/javascript/inheritance/">inheritance</a>)</p>
+
+<pre><code class="language-javascript">Function.prototype.__proto__ ##### Object.prototype;
+(function fn(){}).__proto__ ##### Function.prototype;
+</code></pre>
+
+<p>Dus functies zijn <em>ook</em> associatieve maps, dus <code>(function(){}).bla = 3;</code> werkt perfect! Zie <a href="/wiki/code/javascript/scoping/">scoping</a>, deel &ldquo;Object/Class Member variables&rdquo;.</p>
+
+<h5 id="de-kracht-van-closures">De kracht van closures</h5>
+
+<p>In Javascript is élke functie een <em>closure</em>! In sommige andere talen kan enkel een closure &ldquo;deep bindings&rdquo; uitvoeren (= scope chain bijhouden, zie scoping deel), of een functie opnieuw retourneren. In JS is er geen verschil tussen een literal function en een gewone, buiten de notatie - een literal bind een anonieme functie aan een variabele. Zoiets kan dus perfect:</p>
+
+<pre><code class="language-javascript">a = function() {
+  var aGetal = 10;
+  return function() {
+    var bGetal = 20;
+    return function() {
+      var cGetal = 30;
+      
+      return aGetal + bGetal + cGetal;
+    }
+  }
+}
+
+a()()() // 60
+</code></pre>
+
+<p>Merk op dat de <code>()</code> operator een functie uivoert, en hier alles 3x genest is, maar toch de binnenste functie een referentie naar <code>aGetal</code> kan gebruiken, gedefiniëert in de buitenste functie! Lees hierover meer in het scoping gedeelte.</p>
+
+<h5 id="declaratie-van-functie-literals">Declaratie van functie literals</h5>
+
+<p>In javascript worden variabelen die met <code>var</code> gedeclareerd worden <strong>altijd</strong> vooraan geplaatst, ook impliciet. Dit wil zeggen dat wanneer ik een function literal definieer, eigenlijk het volgende gebeurt:</p>
+
+<pre><code class="language-javascript">function x() {
+  alert(&quot;yo&quot;);
+  var b = function() { };
+} // is for the JS parser equal to:
+
+function xParsed() {
+  var b;
+  alert(&quot;yo&quot;);
+  b = function() { };
+}
+</code></pre>
+
+<p>Wanneer je <code>b()</code> probeert uit te voeren vóórdat b effectief geïnitialiseerd is, ontploft de boel. Let hier dus op, en gebruik als dit niet mogelijk is geen literal. Bij naamgevingen binnen een scope geldt een volgorde:</p>
+
+<ol>
+<li>Language-defined (<code>this</code>, <code>arguments</code>)</li>
+<li>Formal-defined (arguments)</li>
+<li>Function-defined</li>
+<li>Variable-defined</li>
+</ol>
+
+<p>Dat wil zeggen dat wanneer je twee keer x probeert toe te kennen aan een getal én een functie, heeft de functie voorrang.</p>
+
+<p>❗ Uitzondering: een formeel argument met naam <code>arguments</code> heeft voorrang op lang-defined <code>arguments</code>. Bad practice&hellip;</p>
+
+<h5 id="itereren-over-properties-van-objecten">Itereren over properties van objecten</h5>
+
+<p>Vergeet niet dat in Javascript alle objecten (zowel object literals als instanties van functies) zich gedragen als een <a href="https://en.wikipedia.org/wiki/Associative%20array" target="_blank">Associative array</a>
+ - en dat we dus ook kunnen lopen over alle keys:</p>
+
+<pre><code class="language-javascript">var N = { one: 1, two: 2 };
+for(key in N) {
+  console.log(key + &quot; represents as value: &quot; + N[key]); 
+}
+</code></pre>
+
+<p>Om de value van een bepaalde key op te halen kan je natuurlijk ook <code>eval('N.' + key)</code> gebruiken - alle wegen leiden tot Rome&hellip;</p>
+
+<h5 id="controleren-of-een-key-in-een-object-array-beschikbaar-is">Controleren of een key in een object/array beschikbaar is</h5>
+
+<p>Dit kan op enkele manieren:</p>
+
+<ol>
+<li><code>'key' in object</code> ((Opgelet: <code>in</code> kan misleidend effect hebben bij gebruik in combinatie met prototypal inheritance, zie later!))</li>
+<li><code>object.hasOwnProperty('key')</code> -&gt; gaat wel <code>false</code> retourneren bij overgenomen keys vanuit prototypes. Zie later.</li>
+<li>nogmaals itereren (er zijn betere ideeën, dit is de neiging die veel mensen hebben, te procedureel denken!)</li>
+</ol>
+
+<p>Wat géén goede manier is:</p>
+
+<pre><code class="language-javascript">var Obj = {
+  x: 'x',
+  u: null,
+  un: undefined
+};
+
+Obj.x ###### undefined // false, so it must exist as a key, right?
+Obj.u ###### undefined // whoops, true? oplossing: gebruik '#####'
+Obj.un ##### undefined // whoops, still true? value kan ook undefined zijn natuurlijk!
+</code></pre>
+
+<p>#####= Varargs #####=</p>
+
+<pre><code class="language-javascript">function f() {
+  return arguments[0] + arguments[1];
+}
+f(1, 2) // ###### 3
+</code></pre>
+
+<p>Indien er geen argumenten gespecifiëerd zijn, zijn ze allemaal <em>optioneel</em>! Dit wil zeggen dat een functie aangeroepen kan worden zonder het aantal argumenten 100% te laten overeen komen.</p>
+
+<h6 id="anonymus-functions-en-recursie">anonymus functions en recursie</h6>
+
+<p><code>arguuments</code> heeft nog een speciale property: <code>arguments.callee(...)</code> dat de huidige functie voorstelt, hiermee kan je jezelf aanroepen!</p>
+
+<p>❗ Dit gaat een syntax error geven bij ECMA Script standaard 5 in <em>strict</em> mode</p>
+
+<h6 id="verplicht-alle-argumenten-invullen">verplicht alle argumenten invullen</h6>
+
+<pre><code class="language-javascript">function f(x, y, z) {
+  if(arguments.length != arguments.callee.length) {
+    throw new Error(&quot;kapot wabezig&quot;);
+  }
+}
+f(1, 2) // ###### 3
+</code></pre>
+
+<p>Het is natuurlijk makkelijker om <code>!= 3</code> hardcoded te plaatsen, maar dit kan extracted worden naar een aparte functie.</p>
+
+<h6 id="function-overloading">Function overloading</h6>
+
+<p>Overloading bestaat niet in JS aangezien de tweede definitie van de functie de eerste overschrijft (de property &ldquo;functienaam&rdquo; in het object, zeg maar). <br/><br/>
+Het is wel mogelijk om één functie te maken die delegeert, zie <a href="http://ejohn.org/blog/javascript-method-overloading/">http://ejohn.org/blog/javascript-method-overloading/</a></p>
+
+<p>Maak handig gebruik van het feit dat de <code>.length</code> property ook op functies opgeroepen kunnen worden! (Telt enkel de gedefiniëerde)</p>
+
+<pre><code class="language-javascript">(function x(y, z) {}).length ###### 2; // y and z
+</code></pre>
+
+<p>#####= this Keyword #####=</p>
+
+<p>Zie <a href="/wiki/code/javascript/scoping/">scoping</a></p>
+
+<p>#####= Aspect Oriented Programming in JS #####=</p>
+
+<p>Via AOP kan men net voor of na een bepaalde functie gedrag toevoegen zonder dat een component dat die functie aanroept daar weet van heeft. Het is zo makkelijk om bijvoorbeeld logging toe te voegen. In Java wordt Spring AOP gedaan via proxy beans die van dezelfde interface afleiden en daarna delegeren, of via AspectJ die rechtstreeks bytecode wijzigt.</p>
+
+<p>In Javascript kan dat makkelijker, omdat we de referentie naar een functie gewoon kunnen &ldquo;vast&rdquo; pakken. Stel dat ik voordat de ezel balkt wil loggen &ldquo;ik ga balken&rdquo;:</p>
+
+<pre><code class="language-javascript">var oldBalkF = Ezel.prototype.balk; // vereist dat balk via `prototype` werd toegevoegd
+Ezel.prototype.balk = function() {
+  console.log(&quot;ik ga balken! &quot;);
+  oldBalkF.call(this);
+}
+new Ezel().balk(); // print log eerst
+</code></pre>
+
+<p>Hier merken we twee dingen op:</p>
+
+<ol>
+<li>In de nieuwe balk functie kan <strong>niet</strong> zomaar <code>oldBalkF()</code> uitgevoerd worden dan is mijn <code>this</code> referentie naar de ezel instantie weer weg.</li>
+<li>De <code>window</code> scope werd vervuild door oldBalkF, die nog steeds toegankelijk is. Hier zijn twee oplossingen voor:
+
+<ol>
+<li><code>delete oldBalkF;</code> na de <code>call</code> instructie (extra werk)</li>
+<li>Gebruik een anonieme functie die direct uitgevoerd wordt die de scope bewaakt!</li>
+</ol></li>
+</ol>
+
+<p>#####= undefined #####=</p>
+
+<p>Refereren naar een property in een object dat niet bestaat, geeft ons de speciale waarde <code>undefined</code>.<br/><br/>
+Merk op dat dit <em>niet hezelfde</em> is als <code>null</code>. Toch zijn ze gerelateerd:</p>
+
+<pre><code class="language-javascript">var x = {
+  one: 1
+};
+if(x.two ###### null) {
+   3;
+}
+</code></pre>
+
+<p>Dit geeft 3 omdat <code>x.two ##### undefined</code> en <code>null ###### undefined</code>. Aangezien <code>null</code> in een if test by default <code>true</code> retourneert, kan de if test korter: <code>if(x.two) { ... }</code>.</p>
+
+<p>Zo is het makkelijk om optionele argumenten van functies na te gaan:</p>
+
+<pre><code class="language-javascript">function count(one, two, three) {
+  if(!two) two = 0;
+  if(!three) three = 0;
+  return one + two + three;
+}
+</code></pre>
+
+<p>❗ <code>undefined</code> is een window-scope variabele die initiëel de value <code>undefined</code> heeft, dit is dus géén keyword, pas op!</p>
+
+<p>#####= By Value versus By Reference #####=</p>
+
+<p>^ Type ^ Copied by ^ Passed By ^ Compared by ^
+| number | Value | Value | Value |
+| boolean | Value | Value | Value |
+| string | Immutable | Immutable | Value |
+| object | Reference | Reference | Reference |</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

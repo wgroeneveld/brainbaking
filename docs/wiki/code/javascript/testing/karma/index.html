@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>karma</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="karma" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/testing/karma/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>karma</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="karma-testacular">Karma (Testacular)</h1>
+
+<p>Ook integratie met <a href="/wiki/code/javascript/testing/phantomjs/">code/javascript/testing/phantomjs</a> mogelijk.</p>
+
+<h3 id="installatie">Installatie</h3>
+
+<p>Om de Karma testen gedraaid te krijgen moet Node geïnstalleerd zijn samen met karma (<code>npm install karma -g</code>)</p>
+
+<p>Voor de <strong>ANSI console</strong> in eclipse: <a href="http://www.mihai-nita.net/eclipse/">http://www.mihai-nita.net/eclipse/</a> installeren</p>
+
+<p>Voor de Karma Phantom launcher in eclipse: dit importeren (launch file)</p>
+
+<pre><code class="language-xml">&lt;?xml version######&quot;1.0&quot; encoding&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;launchConfiguration type=&quot;org.eclipse.ui.externaltools.ProgramLaunchConfigurationType&quot;&gt;
+&lt;listAttribute key=&quot;org.eclipse.debug.ui.favoriteGroups&quot;&gt;
+&lt;listEntry value=&quot;org.eclipse.ui.externaltools.launchGroup&quot;/&gt;
+&lt;/listAttribute&gt;
+&lt;stringAttribute key######&quot;org.eclipse.ui.externaltools.ATTR_LOCATION&quot; value&quot;${workspace_loc:/vitrine/src/test/javascript/test.bat}&quot;/&gt;
+&lt;stringAttribute key######&quot;org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY&quot; value&quot;${workspace_loc:/vitrine/src/test/javascript}&quot;/&gt;
+&lt;/launchConfiguration&gt;
+</code></pre>
+
+<p>Debuggen met eclipse gaat blijkbaar niet, daarvoor moet je best <a href="http://www.jetbrains.com/webstorm/">http://www.jetbrains.com/webstorm/</a> gebruiken. Wat ik nog heb bijgeleerd van jasmine: een individuele test tijdelijk draaien die je door <code>iit()</code> te gebruiken ipv <code>it()</code> (twee i&rsquo;s).</p>
+
+<p>Referentiemateriaal:</p>
+
+<p>Angular &amp; service mocking:
+  1. <a href="http://docs.angularjs.org/guide/dev_guide.services.testing_services">http://docs.angularjs.org/guide/dev_guide.services.testing_services</a>
+  2. <a href="http://docs.angularjs.org/api/ngMock.$httpBackend">http://docs.angularjs.org/api/ngMock.$httpBackend</a></p>
+
+<p>Jasmine
+  1. <a href="https://github.com/pivotal/jasmine/wiki/Spies">https://github.com/pivotal/jasmine/wiki/Spies</a></p>
+
+<p>Karma
+  1. <a href="https://github.com/angular/angular-seed/">https://github.com/angular/angular-seed/</a>
+  2. <a href="http://karma-runner.github.io/0.8/intro/configuration.html">http://karma-runner.github.io/0.8/intro/configuration.html</a></p>
+
+<p>Node - config
+  1. <a href="https://npmjs.org/doc/config.html#proxy">https://npmjs.org/doc/config.html#proxy</a></p>
+
+<pre><code>npm config set proxy http://proxy.be:8080
+npm config set https-proxy http://proxy.be:8080
+</code></pre>
+
+<h3 id="integratie-in-maven">Integratie in maven</h3>
+
+<pre><code class="language-xml">			&lt;plugin&gt;
+				&lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+				&lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
+				&lt;version&gt;1.2.1&lt;/version&gt;
+				&lt;executions&gt;
+					&lt;execution&gt;
+						&lt;id&gt;jsunit&lt;/id&gt;
+						&lt;phase&gt;test&lt;/phase&gt;
+						&lt;goals&gt;
+							&lt;goal&gt;exec&lt;/goal&gt;
+						&lt;/goals&gt;
+					&lt;/execution&gt;
+				&lt;/executions&gt;
+				&lt;configuration&gt;
+					&lt;skip&gt;${skipTests}&lt;/skip&gt;
+					&lt;successCodes&gt;
+						&lt;successCode&gt;0&lt;/successCode&gt;
+						&lt;successCode&gt;1&lt;/successCode&gt;&lt;!-- on failing test, don't get a build 
+							error --&gt;
+					&lt;/successCodes&gt;
+					&lt;executable&gt;${basedir}/src/test/javascript/build.bat&lt;/executable&gt;
+					&lt;workingDirectory&gt;${basedir}/src/test/javascript&lt;/workingDirectory&gt;
+				&lt;/configuration&gt;
+			&lt;/plugin&gt;
+</code></pre>
+
+<p>Bovenstaande <code>skip</code> config houdt dus ook rekening met bvb <code>mvn clean install -DskipTests</code> - de <code>test</code> phase van maven wordt <strong>niet</strong> geskipped maar de testen wel door de <code>maven-failsafe-plugin</code> - bijgevolg worden goals die aan de test fase hangen ook nog uitgevoerd.</p>
+
+<pre><code class="language-bash">@echo off
+
+set PHANTOMJS_BIN=C:&lt;br/&gt;&lt;br/&gt;dvl.home&lt;br/&gt;&lt;br/&gt;prj&lt;br/&gt;&lt;br/&gt;vitrine&lt;br/&gt;&lt;br/&gt;tools&lt;br/&gt;&lt;br/&gt;phantomjs&lt;br/&gt;&lt;br/&gt;phantomjs.exe
+karma start --log-level=debug --single-run
+</code></pre>
+
+<p>❗ Opgelet in <strong>windows</strong> met de paden, geen quotes gebruiken en dubbele backslashes wél gebruiken, anders werkt het niet en blijft karma hangen.</p>
+
+<h3 id="een-voorbeeld-conf-file-voor-een-angular-app">Een voorbeeld conf file voor een Angular app</h3>
+
+<pre><code class="language-javascript">basePath = '.';
+
+files = [
+  JASMINE,
+  JASMINE_ADAPTER,
+  '../../main/webapp/js/lib/jquery*.js',
+  '../../main/webapp/js/lib/angular.min.js',
+  '../../main/webapp/js/lib/angular-*.js',
+  '../../main/webapp/js/**/*.js',
+  'lib/*.js',
+  'specs/*.js'
+];
+
+// Nodig voor Jenkins en in de build te integreren: singleRun ipv autoWatch
+autoWatch = true;
+//singleRun = true;
+
+browsers = ['PhantomJS'];
+reporters = ['dots', 'junit'];
+
+junitReporter = {
+  outputFile: '../../../target/surefire-reports/be.vdab.vitrine.javascripts.xml',
+  suite: 'unit'
+};
+
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

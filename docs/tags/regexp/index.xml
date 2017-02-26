@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Regexp on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/regexp/index.xml</link>
+    <description>Recent content in Regexp on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/regexp/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>regexp</title>
+      <link>http://www.brainbaking.com/wiki/code/regexp/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/regexp/</guid>
+      <description>
+
+&lt;h1 id=&#34;regexp-stuff&#34;&gt;Regexp Stuff&lt;/h1&gt;
+
+&lt;h2 id=&#34;eclipse-regexp-find-replace&#34;&gt;Eclipse Regexp Find &amp;amp; replace&lt;/h2&gt;
+
+&lt;h3 id=&#34;autowired-fields-als-method-omvormen&#34;&gt;Autowired fields als method omvormen&lt;/h3&gt;
+
+&lt;p&gt;Probleem: ik wil voor elke autowired field een private method aanmaken die diezelfde field retourneert om snel te kunnen inlinen. Dus dit staat er:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Autowired
+private SjabloonService&amp;lt;VonnisArrestSjabloon, VonnisArrestSjabloonDTO&amp;gt; vonnisArrestSjabloonService;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En dit gaat bijkomen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; SjabloonService&amp;lt;VonnisArrestSjabloon, VonnisArrestSjabloonDTO&amp;gt; vonnisArrestSjabloonService() {
+        return vonnisArrestSjabloonService;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Zoeken op&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;private (&amp;lt;br/&amp;gt;w+(&amp;lt;[&amp;lt;br/&amp;gt;w&amp;lt;br/&amp;gt;,&amp;lt;br/&amp;gt;s]+&amp;gt;)?) (&amp;lt;br/&amp;gt;w+);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Vervangen door&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$0public $1 $3() { return $3; }&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ &amp;ldquo;&lt;code&gt;&amp;lt;br/&amp;gt;n&lt;/code&gt;&amp;rdquo; toevoegen tussenin gaf een fout in Eclipse, snel &amp;ldquo;&lt;code&gt;;&lt;/code&gt;&amp;rdquo; vervangen door &amp;ldquo;&lt;code&gt;;&amp;lt;br/&amp;gt;n&lt;/code&gt;&amp;rdquo; in Notepad++ werkte wel.&lt;/p&gt;
+
+&lt;h3 id=&#34;javadoc-bij-overrides-verwijderen&#34;&gt;Javadoc bij Overrides verwijderen&lt;/h3&gt;
+
+&lt;p&gt;Probleem: ik wil mottige Javadoc verwijderen die automatisch gegenereerd wordt bij &lt;code&gt;@Override&lt;/code&gt; methods.&lt;/p&gt;
+
+&lt;p&gt;** Zoeken op**&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;br/&amp;gt;}([&amp;lt;br/&amp;gt;s]*)/&amp;lt;br/&amp;gt;*&amp;lt;br/&amp;gt;*[^&amp;lt;br/&amp;gt;{]*@Override&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Vervangen door&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;}&amp;lt;br/&amp;gt;1@Override&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;urls-matchen-en-html-tags-toevoegen&#34;&gt;Urls matchen en HTML tags toevoegen&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Zoeken op&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;/(https?:(.[^&lt;br/&gt;s]+))/&lt;/p&gt;
+
+&lt;p&gt;Doet het volgende:
+  1. http met eventueel secure
+  2. dubbelpunt
+  3. één of meer keer (plus)
+  4. een karakter (punt)
+  5. behalve (vierkante haakjes)
+  6. spatie (backslash s)
+  7. capture alles in een argument met haakjes (voor dollar in replace)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Vervangen door&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;a&amp;gt;$1&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;bepaalde-substrings-met-een-prefix-matchen&#34;&gt;Bepaalde substrings met een prefix matchen&lt;/h3&gt;
+
+&lt;p&gt;Bijvoorbeeld &lt;code&gt;@Jef: hey coole!&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Zoeken op&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;/@(&amp;lt;br/&amp;gt;w+)/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Makkelijker omdat backslash w alfanumerieke waarden covert, en men weet wat de startende character is.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

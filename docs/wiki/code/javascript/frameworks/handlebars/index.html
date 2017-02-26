@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>handlebars</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="handlebars" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/frameworks/handlebars/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>handlebars</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="handlebars">Handlebars</h1>
+
+<p>Algemene uitleg ea:</p>
+
+<ol>
+<li><a href="http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/#more-621">http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/#more-621</a></li>
+<li><a href="http://handlebarsjs.com/">http://handlebarsjs.com/</a></li>
+<li><a href="http://tryhandlebarsjs.com/">http://tryhandlebarsjs.com/</a></li>
+</ol>
+
+<h3 id="yeoman-integratie">Yeoman integratie</h3>
+
+<p>Zie <a href="https://github.com/yeoman/yeoman/wiki/Handlebars-integration">https://github.com/yeoman/yeoman/wiki/Handlebars-integration</a> en <a href="/wiki/code/javascript/frameworks/yeoman/">code/javascript/frameworks/yeoman</a></p>
+
+<p>Maakt gebruik van <code>grunt</code> - Zie <a href="https://github.com/gruntjs/grunt-contrib-handlebars/">https://github.com/gruntjs/grunt-contrib-handlebars/</a></p>
+
+<p>Aanpassingen in <code>Gruntfile.js</code>:</p>
+
+<pre><code class="language-javascript">  grunt.initConfig({
+
+    // Project configuration
+    // ---------------------
+
+	handlebars: {
+		compile: {
+			files: {
+				&quot;app/scripts/templates.js&quot;: [
+					&quot;app/templates/*.hbs&quot;
+				]
+			}, 
+			options: {
+				amd: true,
+				processName: function(filename) {
+					return filename
+						.replace('app/templates/', '')
+						.replace(/&lt;br/&gt;.hbs$/, '');
+				}
+			}
+		}
+	},
+// ...
+
+    watch: {
+      handlebars: {
+      	files: [
+      		'app/templates/*.hbs'
+      	],
+      	tasks: 'handlebars reload'
+      },
+// ...
+
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
+};
+
+</code></pre>
+
+<p><code>grunt handlebars</code> compileert dan alles in &ldquo;app/templates&rdquo; (.hbs files) naar &ldquo;app/scripts/templates.js&rdquo;. Als je <code>amd: true</code> meegeeft in <code>options</code> wrapt de grunt task dit in <code>define(['handlebars'], function(Handlebars) { ... });</code>. Handlebars heeft geen AMD module, meer hierover, zie requirejs.</p>
+
+<h3 id="templates-async-laden">Templates (async) laden</h3>
+
+<p>Standaard worden templates included in de <code>HTML</code> met een <code>&lt;script/&gt;</code> tag op deze manier:</p>
+
+<pre><code class="language-html">&lt;script id######&quot;header&quot; type&quot;text/x-handlebars-template&quot;&gt;
+ &lt;div&gt; Name: &lt;img style='margin-left: auto; margin-right: auto;' src='/img/headerTitle'&gt; &lt;/div&gt;
+&lt;/script&gt;
+</code></pre>
+
+<p>Dit wordt snel een dikke knoeiboel als er heel veel files zijn in één HTML file. Oplossingen:</p>
+
+<ol>
+<li>Gebruik RequireJS</li>
+<li>Laadt ze via <code>jQuery.ajax</code> in op moment dat het nodig is: <a href="http://stackoverflow.com/questions/8366733/external-template-in-underscore">http://stackoverflow.com/questions/8366733/external-template-in-underscore</a></li>
+</ol>
+
+<p>Blijkbaar is er een plugin in AMD/RequireJS dat het mogelijk maakt om text in te laden, zo:</p>
+
+<pre><code class="language-javascript">// The define function is part of the AMD mechanism for loading 
+define([
+    'jquery',
+    'underscore',
+    'handlebars',
+// Require.js text plugin loads the HTML template pages
+    'text!templates/user_account.html',
+    'text!templates/user_profile.html'], 
+function ($, _, Backbone, HandleBars, UserAccount_Template, UserProfile_Template) {
+ ...
+});
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

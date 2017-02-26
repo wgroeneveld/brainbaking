@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>classes</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="classes" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/python/classes/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>classes</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="classes">Classes</h1>
+
+<p>Handige links:</p>
+
+<ul>
+<li><a href="http://www.diveintopython.net/object_oriented_framework/special_class_methods2.html">special class methods like _ <em>getattr</em> _ and _ <em>new</em> _</a></li>
+<li><a href="http://www.diveintopython3.net/native-datatypes.html#tuples">dive into python - native datatypes</a></li>
+<li><a href="http://python-history.blogspot.be/2010/06/inside-story-on-new-style-classes.html">Inside story on new style classes</a> - ter info: Python3 heeft <strong>enkel</strong> &ldquo;newstyle&rdquo; classes!</li>
+</ul>
+
+<h3 id="method-overriding">Method overriding</h3>
+
+<p>Is <strong>niet mogelijk</strong>. Gebruik default values!</p>
+
+<pre><code class="language-python">def func(i, j ###### 2, k  3):
+    return i + j + k
+
+func(1) # 6
+func(1, 1) # 5
+func(1, 1, 1) # 3
+</code></pre>
+
+<p>Wat wel gaat, evt met decorators, zie <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=101605">Five-minute multimethods in Python</a> - is <code>_ _call_ _</code> implementeren en dan met metaprogrammeren te loopen over alle methods en te kijken of de argumenten overeen komen met het type dat required is. Fancypancy!</p>
+
+<h5 id="opgelet-met-pitfalls">Opgelet met pitfalls</h5>
+
+<p><strong>Nummer 1</strong>: default variables worden herbruikt:</p>
+
+<blockquote>
+<p>When Python executes a “def” statement, it takes some ready-made pieces (including the compiled code for the function body and the current namespace), and creates a new function object. When it does this, it also evaluates the default values. [&hellip;] Another way to reset the defaults is to simply re-execute the same “def” statement. Python will then create a new binding to the code object, evaluate the defaults, and assign the function object to the same variable as before. But again, only do that if you know exactly what you’re doing.</p>
+</blockquote>
+
+<p>Default als <code>arr ###### []</code> Gaat de array muteren. Heel handig voor memoization, heel verwarrend anders. Oplossing? <code>arr  None</code> en dan <code>arr ###### [] if arr  None</code>.</p>
+
+<p>Zie ook <a href="http://effbot.org/zone/default-values.htm">Default parameter values in Python</a> voor in-depth uitleg.</p>
+
+<p><strong>Nummer 2</strong>: <em>Python’s nested scopes bind to variables, not object values</em>.</p>
+
+<pre><code class="language-python">for i in range(10):
+    def callback():
+        print &quot;clicked button&quot;, i
+    UI.Button(&quot;button %s&quot; % i, callback)
+</code></pre>
+
+<p>variabele <code>i</code> gaat altijd 9 zijn - wordt niet op value gebind. Oplossing is explicit binding door de functie definitie van <code>callback():</code> te veranderen naar <code>callback(i=i):</code>.</p>
+
+<h3 id="fields-dynamisch-definiëren">Fields dynamisch definiëren</h3>
+
+<p><code>Thing(a######1, b2)</code> kan op een paar manieren gedefiniëerd worden.</p>
+
+<h5 id="fields-expliciet-declareren">fields expliciet declareren</h5>
+
+<pre><code class="language-python">class Thing:
+   def __init__(self, a, b):
+       self.a, self.b = a, b
+</code></pre>
+
+<h5 id="dynamisch-uw-eigen-dictionary-updaten">dynamisch uw eigen dictionary updaten</h5>
+
+<pre><code class="language-python">class Thing:
+   def __init__(self, **kwargs):
+       self.__dict__.update(kwargs)
+</code></pre>
+
+<p>❗ Dit is uiteraard heel gevaarlijk aangezien het al uw method bodies kan vervangen door een param value. BOEM.</p>
+
+<p><code>* *name</code>(zonder spatie, wiki markup, nvdr) geeft alle argumenten in een <a href="http://docs.python.org/2/library/stdtypes.html#typesmapping">dict</a> terug. <code>*name</code> gaat ook, geeft u een lijst van argumenten terug. Combinatie gaat ook, één ster moet voor de tweede komen. Zoiets is dus mogelijk: <code>def _ _init_ _(self, arg1, arg2, *allargs, * *allargsasdict)</code>.</p>
+
+<h5 id="alles-als-een-message-passing-systeem-zien">Alles als een message passing systeem zien</h5>
+
+<p>In Ruby is er een andere manier om <code>def name block end</code> te schrijven, hoe het geïnterpreteerd wordt: <code>self.class.send(:name, args) { block }</code></p>
+
+<pre><code class="language-ruby">def opt_to_s opt={}
+  opt.empty? ? '' : ' ' + opt.map {|e,v| &quot;#{e}=&lt;br/&gt;&quot;#{v}&lt;br/&gt;&quot;&quot;}.join(', ')
+end
+
+[:html, :body, :h1].each do |el|
+  start=&quot;&lt;#{el}&quot;
+  fin=&quot;&lt;/#{el}&gt;&quot;
+  self.class.send(:define_method, el) {|options={}, &amp;blk| start + opt_to_s(options) + '&gt;' + blk.call + fin}
+end
+
+# Now, we can neatly nest tags and content
+html do
+  body do
+    h1 :class######&gt;&quot;bold-h1&quot;, :id&gt;&quot;h1_99&quot; do
+      &quot;header&quot;
+    end
+  end
+end
+ ######&gt; &quot;&lt;body&gt;&lt;h1 class&lt;br/&gt;&quot;bold-h1&lt;br/&gt;&quot;, id=&lt;br/&gt;&quot;h1_99&lt;br/&gt;&quot;&gt;header&lt;/h1&gt;&lt;/body&gt;&quot;
+</code></pre>
+
+<p>Voilà, een DSL in no-time. Holy crap. <a href="http://rubylearning.com/blog/2010/11/03/do-you-understand-rubys-objects-messages-and-blocks/">Bron: do you understand ruby&rsquo;s objects messages and blocks?</a></p>
+
+<h3 id="superclassing">Superclassing</h3>
+
+<p>Klassen aanmaken is niet al te moeilijk, maar een call uitvoeren naar de overridden method is iets minder evident: zie <a href="http://docs.python.org/2/library/functions.html#super">super() in python docs</a></p>
+
+<p>Een voorbeeld van een custom http handler:</p>
+
+<pre><code class="language-python">class HttpHandler(SimpleHTTPRequestHandler):
+	def readStatus(self):
+		return {
+			&quot;Status&quot;: &quot;blabla&quot;,
+			&quot;StartTime&quot;: &quot;&quot;
+		}
+
+	def do_GET(self):
+		try:
+			print('serving %s now' % self.path)
+			if &quot;status.json&quot; in self.path:
+				self.send_response(200)
+				self.send_header('Content-type', 'text/json')
+				self.end_headers()
+				self.wfile.write(json.dumps(self.readStatus()).encode())
+			else:
+				SimpleHTTPRequestHandler.do_GET(self)
+
+		except IOError:
+			self.send_error(500, 'internal server error in server python source: %s' % self.path)
+
+</code></pre>
+
+<p>Wat is hier speciaal aan:</p>
+
+<ul>
+<li><code>super.do_GET(self)</code> =&gt; <code>SimpleHTTPRequestHandler.do_GET(self)</code></li>
+<li>eigen method aanroepen: <code>self.readStatus()</code> met de <code>self</code> prefix</li>
+</ul>
+
+<h4 id="diamond-inheritance">Diamond inheritance</h4>
+
+<p><code>BaseClass.method()</code> is impliciet hetzelfde als <code>super().method()</code>, behalve dat je met <code>super</code> een argument kan meegeven, over welke superklasse het gaat.</p>
+
+<p>Zie ook <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=236275">Things to know about Python&rsquo;s super()</a></p>
+
+<h3 id="closures-en-lambda-s">Closures en lambda&rsquo;s</h3>
+
+<p>functies in functies aanmaken werkt perfect, &ldquo;closed over&rdquo; die lexicale scope, net zoals je zou verwachten zoals bijvoorbeeld in javascript:</p>
+
+<pre><code class="language-python">	def readBuildStatus(self):
+		html = urllib.request.urlopen(&quot;http://bla/lastbuildstatus.htm&quot;).read().decode()
+		def extractVersion():
+			versionString = &quot;Version: &quot;
+			versionIndex = html.find(&quot;Version: &quot;)
+			return html[versionIndex + len(versionString) : versionIndex + len(versionString) + len(&quot;YYYY.MM&quot;)]
+		def extractStatus():
+			return &quot;Succeeded&quot; if html.find(&quot;SUCCESS&quot;) != -1 else &quot;Failed&quot;
+</code></pre>
+
+<p>de twee andere methods lezen de <code>html</code> variabele uit. Hier hoef je geen <code>self.</code> prefix te gebruiken, binnen de <code>readBuildStatus()</code> functie zelf - hierbuiten zijn de closures verdwenen natuurlijk (out of scope).</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

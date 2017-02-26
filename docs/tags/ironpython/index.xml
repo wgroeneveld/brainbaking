@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ironpython on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/ironpython/index.xml</link>
+    <description>Recent content in Ironpython on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/ironpython/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ironpython</title>
+      <link>http://www.brainbaking.com/wiki/code/python/ironpython/</link>
+      <pubDate>Fri, 07 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/python/ironpython/</guid>
+      <description>
+
+&lt;h1 id=&#34;ironpython&#34;&gt;IronPython&lt;/h1&gt;
+
+&lt;p&gt;Interessante links:
+  * &lt;a href=&#34;http://www.voidspace.org.uk/ironpython/dark-corners.shtml&#34;&gt;Iron Python In Action - Dark corners&lt;/a&gt;
+  * &lt;a href=&#34;http://ironpython.net/documentation/dotnet/&#34;&gt;IronPython .NET Integration documentation&lt;/a&gt;
+  * &lt;a href=&#34;https://pytools.codeplex.com/&#34;&gt;Python Tools for Visual Studio&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;c-python-interop&#34;&gt;C#/Python interop&lt;/h3&gt;
+
+&lt;h4 id=&#34;c-in-python&#34;&gt;C# in Python&lt;/h4&gt;
+
+&lt;h5 id=&#34;overerving&#34;&gt;Overerving&lt;/h5&gt;
+
+&lt;p&gt;In Python C# klassen over laten erven gaat zonder meer. Constructors werken &lt;strong&gt;niet&lt;/strong&gt; via &lt;code&gt;_ _init_ _&lt;/code&gt; maar via new:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;strong&gt;init&lt;/strong&gt; method is the Python initializer method. It is an instance method and so receives the instance as the first argument, which by convention is called self. If you want to override the .NET constructor (responsible for creating the instance) then from Python you override the &lt;strong&gt;new&lt;/strong&gt; class method.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import clr
+clr.AddReference(&#39;System.Windows.Forms&#39;)
+
+from System.Windows.Forms import (
+    Application, Form
+)
+
+
+class MainForm(Form):
+
+    def __new__(cls, text):
+        instance = Form.__new__(cls)
+        instance.Text = text
+
+        return instance
+
+app = MainForm(&#39;Hello World&#39;)
+Application.Run(app)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;python-in-c&#34;&gt;Python in C#&lt;/h4&gt;
+
+&lt;h5 id=&#34;de-script-engine-manueel-firen&#34;&gt;De script engine manueel firen&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt; using IronPython;  
+ using IronPython.Modules;  
+ using System.Text;  
+
+ public class ScriptExample {  
+     [MenuItem(&amp;quot;Python/HelloWorld&amp;quot;)]  
+     public static void ScriptTest()  
+     {  
+         // create the engine  
+         var ScriptEngine = IronPython.Hosting.Python.CreateEngine();  
+         // and the scope (ie, the python namespace)  
+         var ScriptScope = ScriptEngine.CreateScope();  
+         // execute a string in the interpreter and grab the variable  
+         string example ###### &amp;quot;output  &#39;hello world&#39;&amp;quot;;  
+         var ScriptSource = ScriptEngine.CreateScriptSourceFromString(example);  
+         ScriptSource.Execute(ScriptScope);  
+         string came_from_script = ScriptScope.GetVariable&amp;lt;string&amp;gt;(&amp;quot;output&amp;quot;);  
+         // Should be what we put into &#39;output&#39; in the script.  
+         Debug.Log(came_from_script);              
+     }  
+ }  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Via &lt;a href=&#34;http://techartsurvival.blogspot.ca/2013/12/embedding-ironpython-in-unity-tech-art.html&#34;&gt;Embedding IronPython in Unity&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;visual-studio-integration&#34;&gt;Visual Studio Integration&lt;/h3&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: direct&amp;800 |px;&#39; src=&#39;http://www.brainbaking.com/img//code/python/ide.png&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Installeer IronPython &amp;amp; Python tools for VS. File -&amp;gt; New Project -&amp;gt; IronPython Application.&lt;/p&gt;
+
+&lt;h5 id=&#34;references-leggen&#34;&gt;References leggen&lt;/h5&gt;
+
+&lt;p&gt;References voor het python project zijn niet voldoende, je moet ook het &lt;strong&gt;Search Paths&lt;/strong&gt; mapje updaten, kan enkel op dll toegevoegd worden.&lt;/p&gt;
+
+&lt;p&gt;Vanaf dan kan je via &lt;code&gt;clr&lt;/code&gt; de imports doen zoals &lt;code&gt;using&lt;/code&gt; in C#:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import clr
+clr.AddReferenceByName(&#39;Wizards&#39;)
+from Wizards import *
+# use some class from the Wizards namespace below.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;unit-testen-uitvoeren&#34;&gt;Unit testen uitvoeren&lt;/h5&gt;
+
+&lt;p&gt;❗ MSTest &amp;amp; Test Explorer werkt automatisch en herkent alle testen - ReSharpner werkt niet meer. Een test python file uitvoeren kan ook met F5 (file als startup file), en &lt;code&gt;unittest.main()&lt;/code&gt; erbij plaatsen.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

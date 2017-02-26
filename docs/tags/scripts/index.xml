@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scripts on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/scripts/index.xml</link>
+    <description>Recent content in Scripts on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>nexusdeploy</title>
+      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</guid>
+      <description>
+
+&lt;h1 id=&#34;nexus-deploy-artifacts-script&#34;&gt;Nexus deploy artifacts script&lt;/h1&gt;
+
+&lt;p&gt;Wat doet dit?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;haalt laatste versie van package op uit nuget nexus repository&lt;/li&gt;
+&lt;li&gt;download nuget package &amp;amp; unzipt &amp;amp; haalt DLL file hier uit (kan 4.5 4.0 of 3.5 versie zijn)&lt;/li&gt;
+&lt;li&gt;kopiëert dit naar doelserver&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Integraal deel van &amp;ldquo;deployen&amp;rdquo; in verband met modules, wordt bvb gebruikt in &lt;a href=&#34;http://www.brainbaking.com/wiki/code/build/teamcity/&#34;&gt;Teamcity&lt;/a&gt; configuration&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;nokogiri&#39; # gem install nokogiri first! 
+require &#39;net/http&#39;
+require &#39;zip&#39;	# gem install rubyzip first!
+require &#39;optparse&#39;
+require &#39;time&#39;
+
+def deploy_artifact(artifact, server, repo)
+	if repo.nil? then
+		repo = &amp;quot;http://server:8888/nexus/service/local/repositories/nuget-prereleases/&amp;quot;
+	else
+		repo = repo.sub(&amp;quot;/local/nuget/&amp;quot;, &amp;quot;/local/repositories/&amp;quot;)
+	end
+	nexus_url = &amp;quot;#{repo}content/#{artifact}/&amp;quot;
+	print &amp;quot;-- Deploy artifact #{artifact} to #{server} from #{repo}&amp;lt;br/&amp;gt;n&amp;quot;
+
+	print &amp;quot;fetching artifacts from nexus... &amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;t#{nexus_url}&amp;lt;br/&amp;gt;n&amp;quot;
+	response = Net::HTTP.get_response(URI.parse(nexus_url))
+	xml = Nokogiri::XML(response.body).xpath(&amp;quot;//content-item&amp;quot;).map { |entry|
+		hash = Hash.new
+		hash[&#39;url&#39;] = entry.css(&amp;quot;resourceURI&amp;quot;).text
+		hash[&#39;buildnr&#39;] = entry.css(&amp;quot;text&amp;quot;).text
+		hash[&#39;date&#39;] = Time.parse(entry.css(&amp;quot;lastModified&amp;quot;).text)
+
+		hash
+	}.sort { |one,two| two[&#39;date&#39;] &amp;lt;=&amp;gt; one[&#39;date&#39;] }.first
+
+	if xml.nil? then
+		throw &amp;quot;Geen XML kunnen parsen uit URL, ligt nexus plat?&amp;quot;
+	end
+
+	artifactContentUri = xml[&#39;url&#39;]
+	artifactBuildNr = xml[&#39;buildnr&#39;]
+	artifactDate = xml[&#39;date&#39;]
+
+	print &amp;quot;fetching last artifact (modified date #{artifactDate}) package file from nexus... &amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;t#{artifactContentUri}&amp;lt;br/&amp;gt;n&amp;quot;
+	artifact_uri = Nokogiri::XML(Net::HTTP.get_response(URI.parse(artifactContentUri)).body).css(&amp;quot;resourceURI&amp;quot;).text
+
+	print &amp;quot;fetching artifact (buildnr. #{artifactBuildNr}) itself from nexus... &amp;lt;br/&amp;gt;n&amp;quot;
+	nupkg_file = &amp;quot;#{artifact}-#{artifactBuildNr}.nupkg&amp;quot;
+	open(nupkg_file, &amp;quot;wb&amp;quot;) do |file|
+	    file.write(Net::HTTP.get_response(URI.parse(artifact_uri)).body)
+	end
+
+	def unzip_and_copy(zip_file, pattern, server)
+		zippedfile = zip_file.glob(pattern).first
+		unless zippedfile.nil?
+			fname = zippedfile.name.split(&#39;/&#39;).last
+			print &amp;quot;&amp;lt;br/&amp;gt;tFound file to copy: #{fname}&amp;lt;br/&amp;gt;n&amp;quot;
+			toname = &amp;quot;#{server}&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;#{fname}&amp;quot;
+			File.delete(toname) if File.exist?(toname)
+			zippedfile.extract(toname)
+		end
+	end
+
+	print &amp;quot;unzipping nuget package...&amp;lt;br/&amp;gt;n&amp;quot;
+	Zip::File.open(nupkg_file) do |zip_file|
+		unzip_and_copy zip_file, &#39;lib/net35/*.dll&#39;, server
+		unzip_and_copy zip_file, &#39;lib/net40/*.dll&#39;, server
+		unzip_and_copy zip_file, &#39;lib/net45/*.dll&#39;, server
+	end
+	File.delete(nupkg_file)
+	print &amp;quot;-- done, extracted to #{server}.&amp;lt;br/&amp;gt;n&amp;quot;
+end
+
+# ex. usage: 
+# deploy_artifact &#39;ModASR&#39;, &amp;quot;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;server&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;c$&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;websites&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TestDemo3&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;bin&amp;quot;
+options = {}
+ARGV &amp;lt;&amp;lt; &#39;-h&#39; if ARGV.empty?
+OptionParser.new do |opts|
+	opts.banner = &amp;quot;Usage: deploy_artifact.rb [options]&amp;quot;
+	opts.on(&#39;-r&#39;, &#39;--repo REPOSITORY_URL&#39;, &#39;nexus repository url (bvb http://server:8888/nexus/service/local/repositories/nuget-prereleases/ - with trailing slash)&#39;) { |v| options[:repo] = v }
+	opts.on(&#39;-m&#39;, &#39;--modules NAME&#39;, &#39;module name (comma separated)&#39;) { |v| options[:modules] = v }
+	opts.on(&#39;-s&#39;, &#39;--server NAME&#39;, &#39;server target bin directory&#39;) { |v| options[:server] = v }
+	opts.on(&#39;-h&#39;, &#39;--help&#39;, &#39;prints this help&#39;) { |v|
+		puts opts
+		exit
+	}
+end.parse!
+
+options[:modules].split(&amp;quot;,&amp;quot;).each do |mod|
+	deploy_artifact mod, options[:server], options[:repo]
+end
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>svnlog</title>
+      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</guid>
+      <description>
+
+&lt;h1 id=&#34;svnlog&#34;&gt;Svnlog&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;nokogiri&#39; # gem install nokogiri first! 
+require &#39;csv&#39;
+require &#39;date&#39;
+
+# Ex. XML: &amp;lt;log&amp;gt; ... &amp;lt;/log&amp;gt;
+# &amp;lt;logentry revision=&amp;quot;x&amp;quot;&amp;gt;
+# =&amp;gt; &amp;lt;author&amp;gt;name&amp;lt;/author&amp;gt;
+# =&amp;gt; &amp;lt;date&amp;gt;yyyy-mm-ddThh:mm:ssss&amp;lt;/date&amp;gt;
+# =&amp;gt; &amp;lt;msg&amp;gt;message&amp;lt;/msg&amp;gt;
+# &amp;lt;/logentry&amp;gt;
+
+puts &amp;quot;SVN Release notes creator&amp;quot;
+puts &amp;quot;---------&amp;quot;
+
+puts &amp;quot;Revision from? (ex revision &#39;8722&#39; or date {YYYY-MM-DD} or &#39;HEAD&#39;) &amp;gt; &amp;quot;
+revFrom = gets.chomp
+puts &amp;quot;Revision to? &amp;gt; &amp;quot;
+revTo = gets.chomp
+
+puts &amp;quot;Getting log from SVN, hang in there... &amp;quot;
+
+rmFile = File.open(&#39;svnlog_redmine.txt&#39;, &#39;w&#39;)
+btFile = File.open(&#39;svnlog_bridgetrak.txt&#39;, &#39;w&#39;)
+storyFile = File.open(&#39;svnlog_stories.txt&#39;, &#39;w&#39;)
+csv = CSV.open(&#39;svnlog.csv&#39;, &#39;wb&#39;)
+
+[ &#39;.&#39;, &#39;PFW.Base&#39; ].map { |dir|
+	puts &amp;quot; -- processing dir &#39;#{dir}&#39; ...&amp;quot;
+	rawxml = `cd #{dir} &amp;amp;&amp;amp; svn log --xml --revision #{revFrom}:#{revTo}`
+
+	xml = Nokogiri::XML(rawxml)
+	xml.xpath(&amp;quot;//logentry&amp;quot;).map { |entry|
+		hash = Hash.new
+		hash[&#39;rev&#39;] = entry.attr(&amp;quot;revision&amp;quot;)
+		hash[&#39;author&#39;] = entry.css(&amp;quot;author&amp;quot;).text
+		hash[&#39;date&#39;] = DateTime.strptime(entry.css(&amp;quot;date&amp;quot;).text, &#39;%Y-%m-%dT%H:%M:%S&#39;)
+		hash[&#39;msg&#39;] = entry.css(&amp;quot;msg&amp;quot;).text.strip.tr(&amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;, &amp;quot;&amp;quot;)
+		hash[&#39;btIssues&#39;] = hash[&#39;msg&#39;].scan(/bt#([0-9]+)/i).flatten.uniq
+		hash[&#39;rmIssues&#39;] = hash[&#39;msg&#39;].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &amp;quot;http://server.cloudapp.net/redmine/issues/#{rm}&amp;quot; }
+		hash[&#39;stories&#39;] = hash[&#39;msg&#39;].scan(/story#(&amp;lt;br/&amp;gt;S+)&amp;lt;br/&amp;gt;s/i).flatten.uniq
+
+		hash
+	}
+}.flatten.sort_by { |hash| hash[&#39;date&#39;] }.each do |entry|
+	rm = entry[&#39;rmIssues&#39;].join(&#39;, &#39;)
+	csv &amp;lt;&amp;lt; [ &#39;r&#39; + entry[&#39;rev&#39;], entry[&#39;date&#39;], entry[&#39;author&#39;], entry[&#39;msg&#39;], rm ]
+	entry[&#39;btIssues&#39;].each do |issue|
+		btFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
+	entry[&#39;rmIssues&#39;].each do |issue|
+		rmFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
+	entry[&#39;stories&#39;].each do |issue|
+		storyFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
+end
+
+
+puts &amp;quot;----&amp;quot;
+puts &amp;quot;DONE: see svnlog.csv &amp;amp; svnlog_X.txt files&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>scripts</title>
+      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/</link>
+      <pubDate>Wed, 29 Apr 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-ruby-scripts&#34;&gt;code:ruby &amp;gt;&amp;gt; Scripts&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

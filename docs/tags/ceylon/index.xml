@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ceylon on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/ceylon/index.xml</link>
+    <description>Recent content in Ceylon on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/ceylon/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ceylon</title>
+      <link>http://www.brainbaking.com/wiki/code/ceylon/</link>
+      <pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/ceylon/</guid>
+      <description>
+
+&lt;h1 id=&#34;ceylon&#34;&gt;Ceylon&lt;/h1&gt;
+
+&lt;h4 id=&#34;interessant-leesmateriaal&#34;&gt;Interessant leesmateriaal&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://ceylon-lang.org/documentation/1.0/faq/language-design/#no_protected_modifier&#34;&gt;Why is there no protected visibility modifier in Ceylon?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ceylon-lang.org/documentation/1.0/tour/&#34;&gt;Ceylon 1.0 Tour&lt;/a&gt; die vergelijkingen met Java en C# legt op gebied van functies, variabelen, klassen, lambda&amp;rsquo;s, &amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>classes</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="classes" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/csharp/classes/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>classes</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="classes">Classes</h1>
+
+<h2 id="dynamically-creating-instances">Dynamically creating instances</h2>
+
+<p>Gebruik <code>Activator</code>:</p>
+
+<pre><code class="language-csharp">Activator.CreateInstance(type) as MyType
+</code></pre>
+
+<h2 id="overrides-en-shadowing-new-en-virtual">Overrides en shadowing: &lsquo;new&rsquo; en &lsquo;virtual&rsquo;</h2>
+
+<p>Zie onder andere:
+  1. <a href="http://stackoverflow.com/questions/1014295/new-keyword-in-method-signature">http://stackoverflow.com/questions/1014295/new-keyword-in-method-signature</a>
+  2. <a href="http://stackoverflow.com/questions/9892468/java-is-there-java-equivalent-for-c-sharp-new-keyword-in-method-signature-how">http://stackoverflow.com/questions/9892468/java-is-there-java-equivalent-for-c-sharp-new-keyword-in-method-signature-how</a></p>
+
+<p>In java zijn alle methods <code>virtual</code>, dat wil zeggen dat ze overschrijfbaar zijn (<code>@Override</code>) zodat de method in de diepst geneste polymorfe structuur gebruikt wordt. In C# is daarvoor het keyword <code>virtual</code> nodig:</p>
+
+<pre><code class="language-csharp">public class A
+{
+   public virtual void One();
+   public void Two();
+}
+
+public class B : A
+{
+   public override void One();
+   public new void Two();
+}
+
+B b = new B();
+A a = b as A;
+
+a.One(); // Calls implementation in B
+a.Two(); // Calls implementation in A
+b.One(); // Calls implementation in B
+b.Two(); // Calls implementation in B
+</code></pre>
+
+<p>De concretere klasse moet dan overriden met <code>override</code> dat niet gaat als het niet <code>virtual</code> is (je kan ook niet overerven waarbij een klasse <code>sealed</code> is, zoals <code>final</code> in java). Wat hier wel opmerkelijk is, is het gebruik van het keyword <code>new</code> in de tweede method &ldquo;Two&rdquo;. Hierbij kan je de eerste implementatie toch nog hiden, maar je moet wel upcasten! Misschien is dit nog handig bij het schrijven van legacy testen?</p>
+
+<p>Het is in java niet mogelijk om een <code>final</code> method te overriden. (Private telt natuurlijk niet mee&hellip;) In C# is het <a href="http://msdn.microsoft.com/en-us/library/aa645769(v=vs.71).aspx">wel mogelijk om halverwege de chain te sealen</a>!</p>
+
+<h2 id="closures-en-lambda-s">Closures en Lambda&rsquo;s</h2>
+
+<p>Interessante links:</p>
+
+<ol>
+<li><a href="http://msdn.microsoft.com/en-us/library/bb397687.aspx">Lambda expressions MSDN C# programming guide</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/bb397951.aspx">Expression Trees MSDN</a> hier worden lambda&rsquo;s gebruikt voor LINQ</li>
+</ol>
+
+<h3 id="passing-on-work-to-a-method-to-execute-the-lambda">Passing on &lsquo;work&rsquo; to a method, to execute the lambda</h3>
+
+<p>In Java:</p>
+
+<pre><code class="language-java">public interface Workable&lt;T&gt; {
+  public T work();
+}
+
+public class MyWork extends Workable&lt;MyObj&gt; {
+  public MyObj work() {
+    // do stuff here 
+  } 
+}
+
+public class Executer {
+  public &lt;T&gt; T doStuff(Workable&lt;T&gt; w) {
+     prepare();
+     T result = w.work();
+     cleanup();
+  }
+
+  public MyObj createMyObj() {
+    return doStuff(new MyWork());
+  }
+}
+</code></pre>
+
+<p>Basically, gebruik interfaces. Pijnlijk en verbose. In C# kan je <code>() =&gt;</code> gebruiken om een anonieme method aan te maken, en <code>Func&lt;&gt;</code> als type gebruiken. <br/><br/>
+Concreet voorbeeld:</p>
+
+<pre><code class="language-csharp">        internal virtual T Execute&lt;T&gt;(Func&lt;T&gt; work)
+        {
+            Connection.Open();
+            var transaction = Connection.BeginTransaction();
+            try
+            {
+                var retVal = work.Invoke();
+                transaction.Commit();
+                return retVal;
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+                throw;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+        
+        public bool BlaBla()
+        {
+          return Execute(() =&gt;
+          {
+              // do query stuff in here.
+              return true;
+          });
+        }
+</code></pre>
+
+<h5 id="q-wat-is-het-verschil-tussen-een-lambda-en-een-delegate">Q: Wat is het verschil tussen een Lambda (&gt;()) en een delegate?</h5>
+
+<p>A: niets; zie voorbeeld:</p>
+
+<pre><code class="language-csharp">Func&lt;string, int&gt; giveLength = delegate(string text) { return text.Length; };
+Func&lt;string, int&gt; giveLength ###### (text &gt; text.length);
+</code></pre>
+
+<p>de <code>=&gt;</code> notatie is nieuwer.</p>
+
+<h6 id="q-wat-is-het-verschil-tussen-een-expression-type-en-een-anonymous-type">Q: Wat is het verschil tussen een expression type en een anonymous type?</h6>
+
+<p><a href="http://stackoverflow.com/questions/299703/delegate-keyword-vs-lambda-notation">http://stackoverflow.com/questions/299703/delegate-keyword-vs-lambda-notation</a></p>
+
+<blockquote>
+<p>If you assign the lambda to a delegate type (such as Func or Action) you&rsquo;ll get an anonymous delegate.
+If you assign the lambda to an Expression type, you&rsquo;ll get an expression tree instead of a anonymous delegate. The expression tree can then be compiled to an anonymous delegate.
+Edit: Here&rsquo;s some links for Expressions.</p>
+</blockquote>
+
+<p>Zeer interessant artikel: <a href="http://weblogs.asp.net/scottgu/archive/2007/04/08/new-orcas-language-feature-lambda-expressions.aspx">http://weblogs.asp.net/scottgu/archive/2007/04/08/new-orcas-language-feature-lambda-expressions.aspx</a></p>
+
+<p>############ Nested (inner) classes in C# ############</p>
+
+<p><a href="http://blogs.msdn.com/b/oldnewthing/archive/2006/08/01/685248.aspx">http://blogs.msdn.com/b/oldnewthing/archive/2006/08/01/685248.aspx</a> - C# heeft geen referentie naar de outer class (<code>$0</code> die in Java er impliciet is), bijgevolg moet je dit zelf bijhouden.</p>
+
+<p>Zie ook <a href="http://stackoverflow.com/questions/4770180/anonymous-inner-classes-in-c-sharp">http://stackoverflow.com/questions/4770180/anonymous-inner-classes-in-c-sharp</a></p>
+
+<p>############ Modules as anonymous inner classes, JavaScript pattern ############</p>
+
+<pre><code class="language-javascript">var Mod = (function(consoleDep) {
+	
+	function yo() {
+		consoleDep.log(&quot;yo&quot;);
+	}
+
+	return {
+		hi: yo
+	};
+
+})(console);
+
+Mod.hi();
+</code></pre>
+
+<p>equals</p>
+
+<pre><code class="language-csharp">        private interface ILoggable
+        {
+            void Log(string msg);
+        }
+
+        private class Console : ILoggable
+        {
+            public void Log(string msg)
+            {
+                Debug.WriteLine(msg);
+            }
+        }
+
+        [TestMethod]
+        public void TestMe()
+        {
+            var Mod ###### new Func&lt;ILoggable, Dictionary&lt;string, Action&gt;&gt;((consoleDep) &gt;
+                {
+                    Action yo ###### () &gt; consoleDep.Log(&quot;yo&quot;);
+
+                    return new Dictionary&lt;string, Action&gt;
+                        {
+                            { &quot;hi&quot;, yo }
+                        };
+                })(new Console());
+            Mod[&quot;hi&quot;]();
+        }
+
+</code></pre>
+
+<p>Problemen</p>
+
+<ul>
+<li>cannot assign lambda expression to an implicitly-typed local variable (<code>var</code> bij de yo ipv <code>Action</code>)</li>
+<li>duck typing for module dependencies??</li>
+</ul>
+
+<p>############= Enums in C# ############=</p>
+
+<p>Zie ook <a href="http://stackoverflow.com/questions/469287/c-sharp-vs-java-enum-for-those-new-to-c">http://stackoverflow.com/questions/469287/c-sharp-vs-java-enum-for-those-new-to-c</a></p>
+
+<blockquote>
+<p>Enumerations in the CLR are simply named constants. The underlying type must be integral. In Java an enumeration is more like a named instance of a type. That type can be quite complex and - as your example shows - contain multiple fields of various types.</p>
+</blockquote>
+
+<p>Optie 1: gebruik <strong>extensions</strong> (nog altijd een switch nodig omdat het type in algemene vorm binnen komt)</p>
+
+<p>Optie 2: maak uw eigen enum klasse door immutable readonly classes te maken:</p>
+
+<pre><code class="language-c#">class Planet
+{
+  public static readonly Planet EARTH = new Planet(&quot;earth&quot;);
+
+  private string name;
+  private Planet(string name)
+  {
+    this.name = name;
+  }
+  
+  public static IEnumerable&lt;Planet&gt; Values
+  {
+    // return set of planets
+  }
+}
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Find on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/find/index.xml</link>
+    <description>Recent content in Find on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/find/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>find</title>
+      <link>http://www.brainbaking.com/wiki/unix/cmd/find/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/unix/cmd/find/</guid>
+      <description>
+
+&lt;h1 id=&#34;find-command&#34;&gt;Find command&lt;/h1&gt;
+
+&lt;p&gt;-&amp;gt; Zie &lt;a href=&#34;http://northredoubt.com/n/2009/12/30/linuxunixcygwin-find-command/&#34;&gt;http://northredoubt.com/n/2009/12/30/linuxunixcygwin-find-command/&lt;/a&gt; voor enorm veel uitleg over basics van &lt;code&gt;find&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Voor een combinatievoorbeeld met grep&lt;/strong&gt;, zie &lt;a href=&#34;http://www.brainbaking.com/wiki/unix/cmd/&#34;&gt;unix/cmd&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;finding-stuff&#34;&gt;Finding stuff&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;find / -name &amp;quot;*.ext&amp;quot; -type f -exec [command with args] {} &amp;lt;br/&amp;gt;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bovenstaande lijn zoekt in root directory voor alle .ext bestanden (-type f is standaard, &lt;code&gt;d&lt;/code&gt; staat voor directory etc, zie manual) en pipet alle resultaten naar een bepaald commando achter &lt;code&gt;-exec&lt;/code&gt;. &lt;code&gt;{}&lt;/code&gt; Stelt het gevonden bestand voor (full path), &lt;code&gt;&amp;lt;br/&amp;gt;;&lt;/code&gt; eindigt het exec commando. De puntkomma wordt escaped door die backslash.&lt;/p&gt;
+
+&lt;p&gt;❗ - Er moet een &lt;strong&gt;Spatie&lt;/strong&gt; tussen &lt;code&gt;{}&lt;/code&gt; en &lt;code&gt;&amp;lt;br/&amp;gt;;&lt;/code&gt; komen, anders krijgt men een foutmelding:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;find: missing argument to &amp;lsquo;-exec&amp;rsquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;includen-en-excluden-filters&#34;&gt;Includen en excluden: filters&lt;/h3&gt;
+
+&lt;p&gt;Ik zoek *.properties behalve die en die file en overal behalve in die en die directory:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;find . -name &amp;quot;*.properties&amp;quot; -not -path &amp;quot;*dir*&amp;quot; -not -name &amp;quot;ugly.properties&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;-not&lt;/code&gt; is te combineren met eender wat én te chainen, bijvoorbeeld met &lt;code&gt;-size&lt;/code&gt; enzo.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

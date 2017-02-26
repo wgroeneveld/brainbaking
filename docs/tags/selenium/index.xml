@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Selenium on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/selenium/index.xml</link>
+    <description>Recent content in Selenium on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/selenium/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>selenium</title>
+      <link>http://www.brainbaking.com/wiki/code/java/testing/selenium/</link>
+      <pubDate>Wed, 23 Jul 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/testing/selenium/</guid>
+      <description>
+
+&lt;h1 id=&#34;selenium-scenario-testing&#34;&gt;Selenium Scenario Testing&lt;/h1&gt;
+
+&lt;p&gt;Ter info: Webdriver = selenium 2.x.&lt;/p&gt;
+
+&lt;h2 id=&#34;webdriver-samen-met-phantomjs&#34;&gt;Webdriver samen met PhantomJS&lt;/h2&gt;
+
+&lt;h4 id=&#34;opzet&#34;&gt;opzet&lt;/h4&gt;
+
+&lt;p&gt;Headless webdriver testen draaien gaat met &lt;code&gt;HTMLUnit&lt;/code&gt; - vanaf 2.x zit &lt;code&gt;org.openqa.selenium.htmlunit.HtmlUnitDriver&lt;/code&gt; ook in de jar. De JS die daar evaluated wordt is echter &lt;code&gt;Rhino&lt;/code&gt; JS en niet native browser stuff. We kunnen in de plaats &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/&#34;&gt;code/javascript/testing/phantomjs&lt;/a&gt; gebruiken - deze driver zit in een andere jar. In de centrale maven repo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt;
+			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.github.detro.ghostdriver&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;phantomjsdriver&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.0.3&amp;lt;/version&amp;gt;
+			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/detro/ghostdriver&#34;&gt;ghostdriver&lt;/a&gt; is de ingebouwde koppeling tussen phantomjs en webdriver (selenium server). Dit zit ingebouwd in phantomjs als je deze uitvoert met &lt;code&gt;--webdriver=[port]&lt;/code&gt; - wat de service voor u doet.&lt;/p&gt;
+
+&lt;h4 id=&#34;in-de-java-code&#34;&gt;In de java code&lt;/h4&gt;
+
+&lt;p&gt;Onderstaande voorbeeldcode maakt het mogelijk om zowel met &lt;code&gt;chrome&lt;/code&gt; als met &lt;code&gt;phantomjs&lt;/code&gt; te werken:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public abstract class WebdriverTest extends IntegrationTest {
+
+	private static ChromeDriverService service;
+	private static WebDriver driver;
+
+	static {
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+
+			@Override
+			public void run() {
+				driver.quit();
+				if (service != null) {
+					service.stop();
+				}
+			}
+		});
+	}
+
+	private static void startService() {
+		try {
+			service = new ChromeDriverService.Builder()
+					.usingDriverExecutable(new File(properties().getChromeDriverExecutable()))
+					.usingAnyFreePort().build();
+			service.start();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Before
+	public void gaNaarStartpagina() {
+		getDriver().get(vitrineUrl());
+	}
+
+	protected static WebDriver getDriver() {
+		if (driver ###### null) {
+			driver = startDriver();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		}
+		return driver;
+	}
+
+	private static RemoteWebDriver startDriver() {
+		if (properties().isChromeWebdriverNodig()) {
+			startService();
+			return new ChromeDriver(service);
+		}
+		return new PhantomJSDriver(phantomJSCapabilities());
+	}
+
+	private static DesiredCapabilities phantomJSCapabilities() {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setJavascriptEnabled(true);
+		capabilities.setCapability(&amp;quot;takesScreenshot&amp;quot;, false);
+		capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, properties().getPhantomJSExecutable());
+		capabilities.setCapability(PHANTOMJS_CLI_ARGS, new String[] { &amp;quot;--webdriver-loglevel=DEBUG&amp;quot; });
+		return capabilities;
+	}
+
+	protected String toString(DateMidnight date) {
+		return date.toString(&amp;quot;dd/MM/yyyy&amp;quot;);
+	}
+
+	protected ZoekPage startPagina() {
+		return new ZoekPage(driver);
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;essentiëel is het gewoon &lt;code&gt;new PhantomJSDriver(new DesiredCapabilities())&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;############= Webdriver samen met IE ############=&lt;/p&gt;
+
+&lt;p&gt;######= Opzet ######=&lt;/p&gt;
+
+&lt;p&gt;Bij fouten als &amp;ldquo;Protected Mode must be set to the same value&amp;rdquo; (zie &lt;a href=&#34;https://code.google.com/p/selenium/issues/detail?id=1795&#34;&gt;hier&lt;/a&gt; heb je een specifieke switch nodig:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	private static DesiredCapabilities ieCapabilities() {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+		return capabilities;
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Voor de rest is de setup gelijkaardig aan die van chrome - het maken van de service&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	private static void startIEService() {
+		ieService = new InternetExplorerDriverService.Builder()
+				.usingDriverExecutable(new File(properties().getIEDriverExecutable()))
+				.usingAnyFreePort()
+				.build();
+		try {
+			ieService.start();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En het maken van de driver via &lt;code&gt;return new InternetExplorerDriver(ieService, ieCapabilities());&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;############= Selenium IDE scenarios opnemen ############=&lt;/p&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://seleniumhq.org/projects/ide/&#34;&gt;Selenium IDE Plugin voor Firefox&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;######= identificatie van elementen ######=
+Bij voorkeur dien je elke knop, link, invoerveld, enz&amp;hellip; een &amp;lsquo;id&amp;rsquo; te geven zodat Selenium dit object op id kan terugvinden.&lt;/p&gt;
+
+&lt;p&gt;In een aantal gevallen is het niet mogelijk om het object op object id terug te vinden. Dit is bijvoorbeeld gegenereerde code van het metis framework. Hieronder een overzicht en welke oplossing best te nemen&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bvb op Login scherm: klikken op de knop &amp;lsquo;inloggen&amp;rsquo; genereert als target: img[contains(@src,&amp;lsquo;http:*localhost:8080/Hospes/static/images/form/buttons/key.png&amp;rsquo;)] =&amp;gt; hieruit de http:*localhost:8080 weghalen&lt;/li&gt;
+&lt;li&gt;klikken op een menu item registreert vaak enkel het openen van het menu en niet het menu item zelf. Hiervoor kan je firebug nemen om het desbetreffende menu item te inspecten en manueel in de target de juiste target invullen (bvb menuItemText2)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;######=click(AndWait)######=&lt;/p&gt;
+
+&lt;p&gt;Bij het opnemen van scenario&amp;rsquo;s gaat Selenium bij elke klik op een link, button een &amp;lsquo;click&amp;rsquo; als command registreren. Indien deze click een pagina refresh genereert, moet je manueel het commando vervangen door clickAndWait. Indien je een dubbelklik deed, gaat Selenium IDE ook een click registreren. Deze moet je vervangen door een doubleClickAndWait.&lt;/p&gt;
+
+&lt;p&gt;######=Assert / Verify ######=&lt;/p&gt;
+
+&lt;p&gt;Wat is het verschil tussen assertX en verifyX?
+assert stopt de test, verify gaat door.
+Zie DOC: &lt;a href=&#34;http://seleniumhq.org/docs/04_selenese_commands.html#assertion-or-verification&#34;&gt;http://seleniumhq.org/docs/04_selenese_commands.html#assertion-or-verification&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Selenium gaat niet automatisch asserts toevoegen. Je kan als het scenario opgenomen is, manueel asserts toevoegen. assertValue, assertTextPresent, assertEnabled, assertDisabled &amp;hellip; .
+Een heel aantal asserts kan je door een snelle muisklik toevoegen.
+* Tekst xxx selecteren in de pagina, rechtermuisknop verifyTextPresent xxx aanklikken voegt een commando toe om deze tekst te asserten.
+* Een input field: aanklikken, en rechtermuisknop: verifyElementPresent.
+* Rechtermuisknop eender waar: Show all available commands: toont alle mogelijke commando&amp;rsquo;s op huidige pagina&lt;/p&gt;
+
+&lt;p&gt;######=assertEnabled vs assertEditable######=&lt;/p&gt;
+
+&lt;p&gt;assertEnabled bestaat niet, je moet assertEditable gebruiken.&lt;/p&gt;
+
+&lt;p&gt;######= goto(label) en looping ######=&lt;/p&gt;
+
+&lt;p&gt;Kan met de &lt;a href=&#34;https://github.com/darrenderidder/sideflow&#34;&gt;sideflow&lt;/a&gt; Selenium IDE plugin voor firefox (custom js file, zie instructies daar)&lt;/p&gt;
+
+&lt;p&gt;############= Troubleshooting ############=&lt;/p&gt;
+
+&lt;h6 id=&#34;element-is-not-currently-visible-and-so-may-not-be-interacted-with&#34;&gt;element is not currently visible and so may not be interacted with&lt;/h6&gt;
+
+&lt;p&gt;Enkele mogelijke problemen:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Scherm resolutie door element dat vanonder op de pagina zit maar nu van de pagina af valt&lt;/li&gt;
+&lt;li&gt;Z-index: ander element hangt boven het huidig element en er kan niet mee geïnterageerd worden&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;############= Known Issues ############=&lt;/p&gt;
+
+&lt;p&gt;######= Popup in IE verliest sessie ######=
+zie ook: &lt;a href=&#34;http://jira.openqa.org/browse/SRC-501&#34;&gt;http://jira.openqa.org/browse/SRC-501&lt;/a&gt;
+In onze seleniumtesten omzeild door elke test waarin waitForPopUp voor IE niet uit te voeren &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;######= IE en onchange javascript problemen ######=
+Elementen waar javascript achter hangt bij een onchange van een element, worden NIET gefired vanuit IE - wanneer men bij selenium een select commando uitvoert. Om de onclick en onchange eventen te laten triggeren moet men ervoor en erna een gewone click uitvoeren. Dus zo:&lt;/p&gt;
+
+&lt;p&gt;click(element)
+select(element, value)
+click(element)&lt;/p&gt;
+
+&lt;p&gt;######= IE en hidden elementen problemen ######=
+Het is niet mogelijk om verifyTextNotPresent te gebruiken voor een hidden div met wat tekst. Daarvoor moet assertVisible en assertNotVisible gebruikt worden - let op dat de value nu geen tekst waarde maar een selector is zoals alle anderen.&lt;/p&gt;
+
+&lt;p&gt;######= IE en verifyValue problemen die af en toe opduiken######=
+Soms faalt een verifyValue, omdat de verwachte waarde ook écht niet in het verwachte inputveldje staat. Vermoedelijk heeft het iets te maken met de rendertijd van IE, en wanneer Selenium beslist van te verifyen.
+Op te lossen door waitForTextPresent te gebruiken. Het &amp;ldquo;waitForValue&amp;rdquo;, noch &amp;ldquo;waitForElement&amp;rdquo; + &amp;ldquo;verifyValue&amp;rdquo; commands werken eveneens niet.&lt;/p&gt;
+
+&lt;p&gt;######= click op een link werkt niet (link optesplitst in 2 lijnen) ######=&lt;/p&gt;
+
+&lt;p&gt;Known issue, zie &lt;a href=&#34;http://code.google.com/p/selenium/issues/detail?id=1020&#34;&gt;http://code.google.com/p/selenium/issues/detail?id=1020&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Het probleem is dat selenium &lt;code&gt;boundingRect&lt;/code&gt; gebruikt en op het midden daarvan klikt, als een link opgesplitst is kan het zijn dat selenium nét niet op de link zelf maar bvb de cell klikt en er niets gebeurt.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

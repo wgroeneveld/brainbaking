@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>inheritance</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="inheritance" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/inheritance/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>inheritance</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="javascript-inheritance">Javascript Inheritance</h1>
+
+<blockquote>
+<p>JavaScript uses prototypal inheritance. This means that Javascript does not distinguish between classes/prototypes and instances and, therefore, we can add our desired behavior directly to the instance.</p>
+</blockquote>
+
+<h2 id="new-operator">&ldquo;new&rdquo; operator</h2>
+
+<p>Zie <a href="http://unitstep.net/blog/2008/01/24/javascript-and-inheritance/">http://unitstep.net/blog/2008/01/24/javascript-and-inheritance/</a> <br/><br/>
+Gegeven de volgende functie:</p>
+
+<pre><code class="language-javascript">function X(bla) {
+  this.x = bla;
+  console.log(&quot;doeiets&quot;);
+  this.ding = function() { return this.x; };
+}
+</code></pre>
+
+<p>Wat gebeurt er bij de klassieke manier van een &ldquo;klasse&rdquo; initialiseren? Zo:</p>
+
+<pre><code class="language-javascript">new X(&quot;argument&quot;).ding()
+</code></pre>
+
+<p>Omdat geen klassen bestaan, wordt er eigenlijk een &ldquo;leeg&rdquo; object aangemaakt en het prototype van het bestaand object aangepast door <code>call</code> te gebruiken:</p>
+
+<pre><code class="language-javascript">var johnDoe = function(){};
+X.call(johnDoe, &quot;dinges&quot;)
+johnDoe.ding()
+johnDoe.x ###### &quot;dinges&quot;
+</code></pre>
+
+<p>Wat gebeurt hier?</p>
+
+<ol>
+<li><code>function(){}</code> is een <em>closure</em>, dus een <em>function</em>, zonder inhoud.</li>
+<li>de <code>call</code> functie roept een functie aan en vervangt de <code>this</code> referentie (<strong>context</strong>) door het meegegeven argument</li>
+<li>Bijgevolg wordt in <code>X()</code>, <code>this.x = bla</code> gedaan, dat wil zeggen dat vanaf nu onze anonieme closure de property <code>x</code> <strong>bevat</strong>, samen met alle functies die binnen <code>X</code> gedefinieerd zijn.</li>
+</ol>
+
+<p>Merk op dat &ldquo;bevat&rdquo; impliceert dat het object johnDoe natuurlijk nu ook geheugen toegekend krijgt om de variabele &ldquo;x&rdquo; op te slaan. Dit in contrast met <em>prototypal inheritance</em>, zie volgend stuk.</p>
+
+<p>Eender welke functie heeft een <code>prototype</code>. Een &ldquo;lege&rdquo; functie bevat een dynamische &ldquo;constructor&rdquo; (de functie zelf) met lege body:</p>
+
+<pre><code class="language-javascript">(function(){}).prototype
+</code></pre>
+
+<p>######= Gewenst gedrag - wat waar plaatsen ######=</p>
+
+<ul>
+<li>Indien ik een functie of een variabele heb die anders kan zijn naargelang de implementatie (definiëer de &ldquo;naamgeving&rdquo;), plaats deze dan in de <strong>constructor</strong> functie.</li>
+<li>Indien ik een functie of een variabele heb die specifiek voor die functie is en niet gaat veranderen, plaats deze dan <strong>in het concreet object</strong> via <code>this.</code>.</li>
+<li>Indien ik een functie of een variabele heb die ik tijdelijk wens te gebruiken, plaats deze dan <strong>in het concreet object</strong> via <code>var</code> ((Maak slim gebruik van scope chaining om zaken te encapsuleren!)).</li>
+</ul>
+
+<p>Typisch bevatten constructor functies ook <em>geen</em> return waarden ((dit retourneert dus impliciet <code>undefined</code>)) - we gebruiken deze functies toch altijd in combinatie met de <code>new</code> operator, dus kennen de nieuwe instantie van het object direct toe aan een variabele.</p>
+
+<p>############= prototype gebruiken als inheritance ############=</p>
+
+<p>-&gt; Meer informatie inclusief grafen met uitgebreide uitleg hoe prototype en constructors werken: zie <a href="http://joost.zeekat.nl/constructors-considered-mildly-confusing.html">http://joost.zeekat.nl/constructors-considered-mildly-confusing.html</a></p>
+
+<p>Aangezien we aan objecten hun functions kunnen via <code>.prototype</code>, is het niet moeilijk om een object zich te laten gedragen als zijn &ldquo;ouder&rdquo;. Neem bijvoorbeeld een dier object, en een concrete ezel implementatie die een extra functie &ldquo;balk&rdquo; definiëert.</p>
+
+<pre><code class="language-javascript">function Vierpotige() {
+   this.aantalPoten = 4;
+   this.eetIets = function() {
+     console.log(&quot;omnomnom&quot;);
+   }
+}
+
+function Ezel() {
+  this.balk = function() {
+    console.log(&quot;IEE-AA enzo&quot;);
+  }  
+}
+
+Ezel.prototype = new Vierpotige();
+var ezeltje = new Ezel();
+ezeltje.eetIets(); // aha! outputs 'omnom' en 'als ezel fret ik ook nog gras enzo'
+</code></pre>
+
+<p>Wat gebeurt hier precies?</p>
+
+<ol>
+<li>Vierpotige bevat een property aantalPoten en een functie eetIets.</li>
+<li>de constructor functie Vierpotige wordt aangeroepen zodra een Ezel aangemaakt wordt, zodat properties en functies overgenomen worden.</li>
+<li>een nieuwe ezel eet iets via een prototype functie van een lege Vierpotige.</li>
+</ol>
+
+<p>❗ <strong>Opgelet</strong> Vierpotige.prototype bevat enkel de constructor functie zelf en <em>NIET</em> &ldquo;eetIets&rdquo;, daarom dat we Ezel.prototype gelijk stellen aan een nieuwe lege vierpotige. Dit zou niet werken:</p>
+
+<pre><code class="language-javascript">Ezel.prototype = Vierpotige.prototype;
+new Ezel().eetIets() // kapot
+</code></pre>
+
+<p>Tenzij we eetIets definiëren via <code>Vierpotige.prototype.eetIets = function() { ... }</code> - <em>maar</em> dan kan <code>aantalPoten</code> niet meer vanaf een ezel accessed worden.</p>
+
+<p>Nu de prototype property van Ezel en Vierpotige gelijk zijn, kunnen we het prototype uitbreiden met een functie en die direct op ons nieuw ezeltje toepassen:</p>
+
+<pre><code class="language-javascript">Vierpotige.prototype.verteer = function() {
+  console.log(&quot;ist wc bezet??&quot;)
+}
+ezeltje.verteer()
+</code></pre>
+
+<p>❗ <strong>Waarschuwing</strong> het prototype van <code>Vierpotige</code> aanpassen past ook elke <code>Ezel</code> instantie aan, dit is énorm gevaarlijk als er publieke properties zoals <code>aantalPoten</code> gedefiniëerd zijn! Want in tegenstelling tot wat velen denken, worden properties <strong>niet</strong> gekopiëerd! Dus dit zou het aantal poten van ALLE ezels aanpassen:</p>
+
+<pre><code class="language-javascript">dier = new Vierpotige();
+Ezel.prototype = dier;
+new Ezel().aantalPoten ###### 4; // true
+dier.aantalPoten = 2;
+new Ezel().aantalPoten ###### 4; // false
+</code></pre>
+
+<p>######= Properties overriden ######=</p>
+
+<p>Prototypal inheritance werkt omdat JS bij elke property lookup kijkt in welk object die referentie gedefiniëerd is. Is dat het huidig object, neem dan die waarde. Indien neen, kijk in het <code>prototype</code> object. Indien neen, kijk in het <code>prototype</code> object van dat object, en zo maar door tot op <code>Object</code> niveau. We kunnen zo ook een property van een prototype zelf overriden, door ander gedrag te definiëren, of zelfs de super aan te roepen:</p>
+
+<pre><code class="language-javascript">Vierpotige.prototype.eetIets = function() {
+  console.log(&quot;vierpotige eten&quot;);
+}
+Ezel.prototype.eetIets = function() {
+    Vierpotige.prototype.eetIets(); // &quot;super&quot;
+    console.log(&quot;als ezel fret ik ook nog gras enzo&quot;);
+}
+</code></pre>
+
+<p>######= Built-in JS types extenden ######=</p>
+
+<p>❗ Extend <strong>nooit</strong> <code>Object.prototype</code>! Waarom? Omdat Eender welk object een instantie van <code>Object</code> is, dus zijn prototype heeft, en met een <code>for(x in prop)</code> deze property nu ineens toegankelijk is voor elk object. Een leeg object <code>{ }</code> wordt verwacht géén properties te hebben!</p>
+
+<pre><code class="language-javascript">Object.prototype.hack = function() {}
+for(x in {}) {
+  console.log(x); // print &quot;hack&quot;, zou hier niet in mogen komen
+}
+</code></pre>
+
+<p>############ Checken op inheritance ############</p>
+
+<p>Met Javascript kan men door middel van <code>typeof</code> controleren van welk type een variabele is. Dat komt neer op:</p>
+
+<ul>
+<li>object (<code>{}</code>)</li>
+<li>function (<code>function() {}</code>)</li>
+<li>string (<code>&quot;&quot;</code>)</li>
+<li>number (<code>-47.2</code>)</li>
+</ul>
+
+<p>Het is niet zo interessant om te gebruiken voor eigen inheritance. Daarvoor dient <code>instanceof</code>:</p>
+
+<pre><code class="language-javascript">ezeltje instanceof Vierpotige ###### true
+ezeltje instanceof Ezel ###### true
+new Vierpotige() instanceof Ezel ###### false
+</code></pre>
+
+<p>######= Zelf inheritance afchecken met prototype ######=</p>
+
+<h6 id="met-constructors">met constructors</h6>
+
+<p>Dit is een zeer beperkte manier dat geen rekening houdt met &ldquo;inheritance&rdquo;:</p>
+
+<pre><code class="language-javascript">function instanceOf(One, Two) {
+  return One.constructor ###### Two;
+}
+
+instanceOf(Ezel, Vierpotige) // true
+</code></pre>
+
+<p>Aangezien elk object een <code>.constructor</code> property heeft die afgeleid werd vanuit de constructor functie die aangeroepen werd, kan men op deze manier een simpele check afwegen. Een praktischer voorbeeld is <code>(typeof (new Date()) ###### object) &amp;&amp; (new Date().constructor ###### Date)</code>.</p>
+
+<h6 id="met-proto">met <strong>proto</strong></h6>
+
+<p>Het <code>instanceof</code> keyword kijkt natuurlijk naar de <code>prototype</code> properties van beide objecten om te controleren of object a van object b komt. Dit kan men ook zelf doen:</p>
+
+<pre><code class="language-javascript">function instanceOf(One, Two) {
+  return One.prototype.__proto__ ###### Two.prototype;
+}
+
+instanceOf(Ezel, Vierpotige) // true
+</code></pre>
+
+<p>Hoe kan dit kloppen?</p>
+
+<ol>
+<li>Herinner u dit statement: <code>Ezel.prototype = new Vierpotige();</code>. Dit stelt de <code>prototype</code> van Ezel gelijk aan die van een vierpotige. Het enige wat in de <code>prototype</code> van Vierpotige steekt is de <code>verteer()</code> functie, de rest werd via de constructor functie overgekopiëerd!</li>
+<li>De magic property <code>_ _proto_ _</code> wordt intern gezet zodra een prototype wordt toegekend aan een object. Aangezien Ezel zelf ook prototype functies heeft specifiek voor ezels, kunnen we die van Vierpotige niet overriden, maar wel gebruiken.</li>
+</ol>
+
+<p>❗ Bekijk iets toevoegen via <code>.property</code> als iets toevoegen aan het algemeen prototype object, en iets rechtstreeks toevoegen via een key als iets toevoegen op een instance van dat prototype object. In andere dynamische talen stelt <code>property</code> de <code>metaClass</code> voor, maar JS werkt enkel met functies.</p>
+
+<p>De betere oplossing: <strong><code>isPrototypeOf()</code></strong>! Zie <a href="/wiki/code/javascript/magic_properties/">magic_properties</a></p>
+
+<p>❗ <strong><code>_ _proto_ _</code> is een <strong>instance</strong> property, <code>.prototype</code> een constructor function property</strong></p>
+
+<h6 id="met-properties">met properties</h6>
+
+<p>Door <code>hasOwnProperty()</code> te gebruiken kan je nagaan of een property overgenomen is of niet. Vanaf JS 1.5.</p>
+
+<p>############= call als inheritance ############=</p>
+
+<p>De klassieke inheritance structuur zoals in Java en C++ kan beter benaderd worden door <code>call</code> te gebruiken. Herbekijk onze ezels:</p>
+
+<pre><code class="language-javascript">function Vierpotige() {
+   this.aantalPoten = 4;
+   this.eetIets = function() {
+     console.log(&quot;omnomnom&quot;);
+   }
+}
+
+function Ezel() {
+  Vierpotige.call(this);
+  this.balk = function() {
+    console.log(&quot;IEE-AA enzo&quot;);
+  }
+}
+
+var ezeltje = new Ezel();
+ezeltje.eetIets(); // aha! outputs omnom
+</code></pre>
+
+<p>Door als eerste statement in de constructor functie van <code>Ezel</code> een <code>call</code> te plaatsen naar onze &ldquo;parent&rdquo;, <em>kopiëren</em> we alle keys en values die daarin gedefiniëerd staan. In tegenstelling tot prototypal inheritance kost dit dus veel meer geheugengebruik, en is dit beperkter om uit te breiden. We linken eigenlijk impliciet twee functies aan elkaar door waarden over te nemen, maar iets aanpassen aan <code>Vierpotige</code> gaat de <code>Ezel</code> op geen ekele manier doen veranderen.</p>
+
+<p>############= prototypal inheritance toepassen ############=</p>
+
+<p>In plaats van <code>new</code> overal te gebruiken zonder te weten wat hierachter ligt, kan men <code>create</code> ook gebruiken:</p>
+
+<pre><code class="language-javascript">if (typeof Object.create !###### 'function') {
+    Object.create = function (o) {
+        function F() {}
+        F.prototype = o;
+        return new F();
+    };
+}
+newObject = Object.create(oldObject);
+</code></pre>
+
+<p>Zie <a href="http://javascript.crockford.com/prototypal.html">http://javascript.crockford.com/prototypal.html</a></p>
+
+<p>############ Een minder verbose manier om extra properties te definiëren ############</p>
+
+<p>Zie <a href="http://howtonode.org/prototypical-inheritance">http://howtonode.org/prototypical-inheritance</a> -</p>
+
+<pre><code class="language-javascript">Object.defineProperty(Object.prototype, &quot;spawn&quot;, {value: function (props) {
+  var defs = {}, key;
+  for (key in props) {
+    if (props.hasOwnProperty(key)) {
+      defs[key] = {value: props[key], enumerable: true};
+    }
+  }
+  return Object.create(this, defs);
+}});
+</code></pre>
+
+<p>Op die manier kan je <code>BaseObj.spawn({'extraProp': 'extraValue'});</code> gebruiken, zonder de relatieve verbose manier van extra properties te moeten gebuiken die <code>Object.create</code> <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/create#Classical_inheritance_with_Object.create">handhaaft</a>.</p>
+
+<p>############= Prototype JS en Class.create ############=</p>
+
+<p>Javascript frameworks proberen altijd inheritance makkelijker te maken voor klassieke OO developers door functies te modelleren als klassen. In <a href="http://www.prototypejs.org/api/class">Prototype JS</a> kan men zoiets doen:</p>
+
+<pre><code class="language-javascript">
+var Animal = Class.create({
+  initialize: function() {
+    this.something = &quot;wow&quot;;
+  },
+
+  speak: function() {
+    console.log(this.something);
+  }
+});
+
+var Snake = Class.create(Animal, {
+  hiss: function() {
+    this.speak();
+  }
+});
+</code></pre>
+
+<p>Snake leidt af van Animal, en de <code>initialize()</code> functies stellen de constructor functies voor. Wat gebeurt er dan achter de schermen bij <code>Class.create({...})</code>?</p>
+
+<ol>
+<li>Net zoals hierboven wordt de constructor functie via <code>apply</code> aangeroepen (zelfde als call). Enkel wordt als <code>this</code> een lege functie toegevoegd.</li>
+<li><code>Object.extend()</code> wordt gebruikt om alle keys van de parent te kopiëren naar de nieuwe lege functie. (zie <a href="/wiki/code/javascript/frameworks/">code/javascript/frameworks</a>)</li>
+<li>De <code>prototype</code> property van de parent wordt net zoals hierboven gezet op de nieuwe &ldquo;klasse&rdquo;.</li>
+<li>Speciale gevallen zoals een &ldquo;lege constructor&rdquo; functie indien nodig, intern bijhouden wat sub- en superklassen van elkaar zijn, etc.</li>
+</ol>
+
+<p>In essentie komt het neer op &ldquo;<em>syntax sugaring</em>&rdquo; zodat het klassieke OO model gebruikt kan worden - terwijl er onderliggend iets anders gebeurt.<br/><br/>
+Meer info over deze implementatie: <a href="http://code.google.com/p/inheritance/">http://code.google.com/p/inheritance/</a></p>
+
+<p>############= Multiple inheritance ############=</p>
+
+<p>Perfect mogelijk, of slechts delen van object A en alles van B voor object C gebruiken (<strong>mixins</strong>!). Simpelweg alles van de ene <code>prototype</code> property naar de andere overzetten wat nodig is:</p>
+
+<p>######= Methode 1 ######=</p>
+
+<pre><code class="language-javascript">function A(){};
+A.prototype.a = function() { return &quot;a&quot;; }
+A.prototype.c = function() { return &quot;a&quot;; }
+function B(){};
+B.prototype.b = function() { return &quot;b&quot;; }
+
+function C(){};
+for(prop in B.prototype) {
+  C.prototype[prop] = B.prototype[prop];
+}
+C.prototype.a = A.prototype.a;
+C.prototype.c = function() { return &quot;c&quot;; }
+
+var c = new C();
+c.a() ###### &quot;a&quot;;
+c.b() ###### &quot;b&quot;;
+c.c() ###### &quot;c&quot;;
+</code></pre>
+
+<p>######= Methode 2 ######=</p>
+
+<p>Creeër de illusie om constructor(s) aan te roepen in een constructor functie van een ander object:</p>
+
+<pre><code class="language-javascript">function B() {
+  this.b = function() { return &quot;b&quot;; }
+}
+function C() {
+  this.c = function() { return &quot;c&quot;; }
+}
+ 
+function A() {
+  this.a = function() { return &quot;a&quot;; }
+  this.super = B;
+  this.super2 = C;
+  this.super(); // kopiëer de b functie in A, maar inherit niet!
+  this.super2();
+}
+
+
+var a = new A();
+a.a() ###### &quot;a&quot;;
+a.b() ###### &quot;b&quot;;
+a.c() ###### &quot;c&quot;;
+</code></pre>
+
+<p>######= Problemen met mixins ######=</p>
+
+<p>❗ Dit is géén authentieke multiple inheritance. Hier zijn twee problemen aan gekoppeld:</p>
+
+<ol>
+<li>Zodra via <code>B.prototype</code> een nieuwe functie toegevoegd wordt, zal C deze <strong>niet</strong> overpakken omdat <code>C.prototype</code> niet <em>gelijk</em> gesteld werd aan die van A of B</li>
+<li>En bijgevolg dus ook de <code>instanceof</code> operator naar de zak is:</li>
+</ol>
+
+<pre><code class="language-javascript">c instanceof C ###### true
+(c instanceof B || c instanceof A) ###### false
+</code></pre>
+
+<p>Als dit echt nodig is kan men zoiets zelf implementeren door weer te loopen via <code>for(prop in x.prototype) { ... }</code> en te checken of alle keys voorkomen in een object.</p>
+
+<p>Zie Mozilla Dev center: <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Guide/Details_of_the_Object_Model#No_Multiple_Inheritance">Details of the Object Model</a></p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

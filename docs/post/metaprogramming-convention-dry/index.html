@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Metaprogramming instead of duplication</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="Metaprogramming instead of duplication" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/metaprogramming-convention-dry/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="/img/Metaprogramming%20instead%20of%20duplication.jpg"></div>
+  
+
+  <header class="header-section has-img">
+  
+    <div class="big-img intro-header">
+        <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Metaprogramming instead of duplication</h1>
+      
+        
+      <h2 class="post-subheading">convention over duplication, good or bad?</h2>
+      
+      
+      
+      
+      <span class="post-meta">14 March 2014</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+      <span class='img-desc'></span>
+    </div>
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Metaprogramming instead of duplication</h1>
+      
+        
+      <h2 class="post-subheading">convention over duplication, good or bad?</h2>
+      
+      
+      
+      
+      <span class="post-meta">14 March 2014</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/c">C#</a> </li>
+      
+       <li><a href="/tags/java">java</a> </li>
+      
+       <li><a href="/tags/metaprogramming">metaprogramming</a> </li>
+      
+       <li><a href="/tags/reflection">reflection</a> </li>
+      
+       <li><a href="/tags/unit-testing">unit testing</a> </li>
+      
+       <li><a href="/tags/mocking">mocking</a> </li>
+      
+      </ul>
+
+      <article role="main" class="blog-post">
+          <p>So&hellip; What&rsquo;s up with all that duplication in your unit tests? Let&rsquo;s take a look at a very recognizable pattern when for instance using <code>RhinoMock</code> in <code>C#</code>:</p>
+
+<pre><code>    [TestInitialize]
+    public void SetUp()
+    {
+        dbConfigurationMock = MockRepository.GenerateMock&lt;IDbConfiguration&gt;();
+        mountPointLoaderMock = MockRepository.GenerateMock&lt;IMountPointLoader&gt;();
+        userEnvironmentFactoryMock = MockRepository.GenerateMock&lt;IUserEnvironmentFactory&gt;();
+        userEnvironmentLoaderMock = MockRepository.GenerateMock&lt;IUserEnvironmentLoader&gt;();
+        // ...
+</code></pre>
+
+<p>We agreed to suffix each instance variable with &lsquo;Mock&rsquo; if it&rsquo;s a mock. That way, when you scroll down to an actual test case, it&rsquo;s clear to everyone what&rsquo;s what: mocks, stubs, actual implementations, and so forth. So why should I repeat myself again and again but initializing a bunch of mocks using <code>GenerateMock</code>?</p>
+
+<p>In Java using Mockito, the <code>@Mock</code> annotation automagically instantiates a mock for you, provided you annotated your test class with <code>@RunWith(MockitoJUnitRunner.class)</code>. I would like to apply this pattern to MSTest but there&rsquo;s not a single hook to be found where I can plug in my initialization code. Thanks a bunch.</p>
+
+<p>Example taken from <a href="http://docs.mockito.googlecode.com/">Mockito docs</a></p>
+
+<pre><code>public class ArticleManagerTest {
+
+    @Mock private ArticleCalculator calculator;
+    @Mock private ArticleDatabase database;
+    @Mock private UserProvider userProvider;
+
+    private ArticleManager manager;
+</code></pre>
+
+<p>Now, this &ldquo;problem&rdquo; is easily solved with a bit of metaprogramming and an abstract class:</p>
+
+<ul>
+<li>Loop over (private) fields</li>
+<li>Filter out suffixed with &lsquo;Mock&rsquo;</li>
+
+<li><p>Initialize.</p>
+
+<pre><code>public abstract class AbstractTestCase
+{
+    [TestInitialize]
+    public void CreateMocksBasedOnNamingConvention()
+    {
+        this.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(x =&gt; x.Name.EndsWith(&quot;Mock&quot;)).All(InitMock);
+    }
+
+    private bool InitMock(FieldInfo field)
+    {
+        field.SetValue(this, MockRepository.GenerateMock(field.FieldType, new Type[]{}));
+        return true;
+    }
+}
+</code></pre></li>
+</ul>
+
+<p>Very easy with <code>LINQ</code>. The question is - is metaprogramming or reflection in this case &ldquo;allowed&rdquo;? Do you think this is &ldquo;bad&rdquo; (because it&rsquo;s implicit), or is the convention of suffixing your fields with &lsquo;Mock&rsquo; good enough? The base test case could also be named something like <code>MockInitializingTestCase</code> if that makes you feel better.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="http://www.brainbaking.com/post/builders-dsl/" data-toggle="tooltip" data-placement="top" title="Enhancing the builder pattern with closures">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="http://www.brainbaking.com/post/scons-building/" data-toggle="tooltip" data-placement="top" title="Bye autotools hello Scons">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

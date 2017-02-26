@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eclipse on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/eclipse/index.xml</link>
+    <description>Recent content in Eclipse on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Visual Studio 2012 for Eclipse users</title>
+      <link>http://www.brainbaking.com/post/vstudio-missing-features/</link>
+      <pubDate>Mon, 14 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/vstudio-missing-features/</guid>
+      <description>
+
+&lt;p&gt;When switching over to a new editor and new language, I can sometimes get frustrated by missing features I got (very) attached to. This excludes the obvious difference in shortcut keys.&lt;/p&gt;
+
+&lt;h3 id=&#34;shortcuts-and-refactoring-tools&#34;&gt;Shortcuts and refactoring tools&lt;/h3&gt;
+
+&lt;p&gt;One plugin to rule them all: &lt;a href=&#34;http://www.jetbrains.com/resharper/&#34;&gt;ReSharpner&lt;/a&gt;. This productivity tool brings back the incredible development speed to the Visual Studio platform. You can almost map the eclipse (or IntelliJ, since they guys from JetBrains developed it) keys to the ReSharpner keys. If you&amp;rsquo;re used to quickly refactor out variables, introduce classes from parameters or create test classes, you&amp;rsquo;ll be in heaven.&lt;/p&gt;
+
+&lt;p&gt;The following shortcuts can be mapped (you&amp;rsquo;re welcome):&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Eclipse shortcut&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;ReSharpner shortcut&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;description&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CTRL+D&lt;/td&gt;
+&lt;td&gt;CTRL+L&lt;/td&gt;
+&lt;td&gt;remove line&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ALT+DOWN&lt;/td&gt;
+&lt;td&gt;CTRL+D&lt;/td&gt;
+&lt;td&gt;duplicate line&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTRL+SPACE (CTRL+ENTER)&lt;/td&gt;
+&lt;td&gt;CTRL+SPACE (TAB)&lt;/td&gt;
+&lt;td&gt;code completion, select in combobox&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ALT+SHIFT+UP/DOWN&lt;/td&gt;
+&lt;td&gt;CTRL+ALT+LEFT/RIGHT&lt;/td&gt;
+&lt;td&gt;Extend/Shrink selection&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTRL+SHIFT+/&lt;/td&gt;
+&lt;td&gt;CTRL+ALT+/&lt;/td&gt;
+&lt;td&gt;commend line&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTRL+SHIFT+1&lt;/td&gt;
+&lt;td&gt;ALT+ENTER&lt;/td&gt;
+&lt;td&gt;quick fix&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ALT+UP/DOWN&lt;/td&gt;
+&lt;td&gt;CTRL+SHIFT+ALT+UP/DOWN&lt;/td&gt;
+&lt;td&gt;move line&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTRL+SHIFT+O&lt;/td&gt;
+&lt;td&gt;CTRL+E, &amp;copy;/F&lt;/td&gt;
+&lt;td&gt;organize imports (and format etc, F = silent)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTRL+F11&lt;/td&gt;
+&lt;td&gt;CTRL+U, U&lt;/td&gt;
+&lt;td&gt;rerun last&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTRL+O&lt;/td&gt;
+&lt;td&gt;ALT+&lt;/td&gt;
+&lt;td&gt;Go to file member&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTRL+SHIFT+G&lt;/td&gt;
+&lt;td&gt;CTRL+SHIFT+ALT+F12 (SHIFT+F12)&lt;/td&gt;
+&lt;td&gt;find usages&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;F3&lt;/td&gt;
+&lt;td&gt;F12&lt;/td&gt;
+&lt;td&gt;go to definition&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTRL+SHIFT+.&lt;/td&gt;
+&lt;td&gt;SHIFT+ALT+PGDN&lt;/td&gt;
+&lt;td&gt;go to next error&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTR+,&lt;/td&gt;
+&lt;td&gt;SHIFT+ALT+PGUP&lt;/td&gt;
+&lt;td&gt;go to previous error&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ALT+SHIFT+I&lt;/td&gt;
+&lt;td&gt;CTRL+R, I&lt;/td&gt;
+&lt;td&gt;inline variable&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ALT+SHIFT+R&lt;/td&gt;
+&lt;td&gt;CTRL+R, R&lt;/td&gt;
+&lt;td&gt;rename&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ALT+SHIFT+M&lt;/td&gt;
+&lt;td&gt;CTRL+R, M&lt;/td&gt;
+&lt;td&gt;extract method&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;ALT+SHIFT+C&lt;/td&gt;
+&lt;td&gt;CTRL+R, S&lt;/td&gt;
+&lt;td&gt;change method signature&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTRL+SHIFT+B&lt;/td&gt;
+&lt;td&gt;F9&lt;/td&gt;
+&lt;td&gt;toggle breakpoint&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CTRL+M&lt;/td&gt;
+&lt;td&gt;SHIFT+ALT+ENTER&lt;/td&gt;
+&lt;td&gt;toggle full screen mode&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;&lt;/td&gt;
+&lt;td&gt;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/td&gt;
+&lt;td&gt;&amp;mdash;&amp;mdash;&amp;ndash;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Other interesting links:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jetbrains.com/resharper/docs/ReSharper70DefaultKeymap_IDEA_scheme.pdf&#34;&gt;Default keymap PDF overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jetbrains.com/resharper/docs/ReSharper70DefaultKeymap_IDEA_scheme.pdf&#34;&gt;IntelliJ keymap PDF overview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;comparing-files-with-each-other&#34;&gt;Comparing files with each other&lt;/h3&gt;
+
+&lt;p&gt;Simply comparing two files within the editor can be a pain - the easiest way to do it in Eclipse is just select both files, rightclick and select &amp;ldquo;compare&amp;rdquo;. No such option here. You can compare a file with a previous version from TFS, but not two physically different files, weird. Install &lt;a href=&#34;http://vscommands.squaredinfinity.com/&#34;&gt;VSCommands&lt;/a&gt; and that problem is also solved:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;{{urls.media}}/compare_files_vstudio2012.png&#34; alt=&#34;compare files in vstudio&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It uses the built-in VS2012 comparison window, which is quite nice.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>eclipse</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/eclipse/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/eclipse/</guid>
+      <description>
+
+&lt;h1 id=&#34;eclipse-tips-tricks&#34;&gt;Eclipse tips &amp;amp; tricks&lt;/h1&gt;
+
+&lt;h2 id=&#34;shortcuts-die-ik-nog-niet-vanbuiten-ken&#34;&gt;Shortcuts die ik nog niet vanbuiten ken&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CTRL+(SHIFT)+E: view open editors &amp;amp; quickfind!!&lt;/li&gt;
+&lt;li&gt;CTRL+M: minimize/maximize editor&lt;/li&gt;
+&lt;li&gt;CTRL+
+
+&lt;ul&gt;
+&lt;li&gt;F6: switch editor&lt;/li&gt;
+&lt;li&gt;F7: switch view&lt;/li&gt;
+&lt;li&gt;F8: switch perspective&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CTRL+ALT+
+
+&lt;ul&gt;
+&lt;li&gt;R: run server&lt;/li&gt;
+&lt;li&gt;D: debug server&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CTLR+SHIFT+NUMPAD/: minimize all trees in package explorer (handig bij link with editor)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;custom-preferences&#34;&gt;Custom preferences&lt;/h2&gt;
+
+&lt;h4 id=&#34;static-imports&#34;&gt;Static imports&lt;/h4&gt;
+
+&lt;p&gt;CTRL+3, &amp;ldquo;favorites&amp;rdquo; (Java/Editor/Context assist) -&amp;gt; New Type.&lt;br/&gt;&lt;br/&gt;
+Zeker handig voor &lt;em&gt;Assertions&lt;/em&gt; van FEST Assert.&lt;/p&gt;
+
+&lt;h4 id=&#34;eclipse-3-5-en-ctrl-f11-rerun-last-test&#34;&gt;Eclipse 3.5+ en CTRL+F11 (rerun last test)&lt;/h4&gt;
+
+&lt;p&gt;CTRL+3, &amp;ldquo;launching&amp;rdquo; (Run-Debug/Launching) -&amp;gt; launch operation op &amp;ldquo;always launch prev. launched app&amp;rdquo; zetten.&lt;/p&gt;
+
+&lt;h4 id=&#34;goto-next-search-occurence-combineren-met-next-prev-annotation&#34;&gt;Goto next Search Occurence combineren met next/prev. Annotation&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;next&lt;/strong&gt;: CTRL+SHIFT+; (punt)&lt;br/&gt;&lt;br/&gt;
+&lt;strong&gt;prev.&lt;/strong&gt;: CTRL+,&lt;/p&gt;
+
+&lt;p&gt;Om de shortcuts &lt;em&gt;Next/prev Annotation&lt;/em&gt; te koppelen aan zoekresultaten (gearceerd door Eclipse):&lt;br/&gt;&lt;br/&gt;
+General-&amp;gt;Editors-&amp;gt;Text Editors-&amp;gt;Annotations-&amp;gt;Search Results-&amp;gt;Include in next/previous navigation aanvinken.&lt;/p&gt;
+
+&lt;h4 id=&#34;formatting-en-chaining&#34;&gt;Formatting en chaining&lt;/h4&gt;
+
+&lt;p&gt;Om niet de hele tijd commentaar te moeten plakken achter elk chained commando (anders formatteert eclipse dit allemaal op één lijn), kan je de optie &lt;em&gt;&amp;ldquo;Never linewrap&amp;rdquo;&lt;/em&gt; aanzetten in Java Formatter.&lt;/p&gt;
+
+&lt;h2 id=&#34;plugins&#34;&gt;Plugins&lt;/h2&gt;
+
+&lt;h4 id=&#34;enforce-keyboard-shortcuts&#34;&gt;Enforce keyboard shortcuts&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.mousefeed.com/&#34;&gt;http://www.mousefeed.com/&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;
+❗ Knoppen waar geen snelkoppeling voor zijn werken &lt;strong&gt;niet&lt;/strong&gt; indien deze plugin geïnstalleerd is. (bug?)&lt;/p&gt;
+
+&lt;h2 id=&#34;hacks&#34;&gt;Hacks&lt;/h2&gt;
+
+&lt;h4 id=&#34;junit-failure-trace-iets-wijsmaken&#34;&gt;JUnit Failure Trace iets wijsmaken&lt;/h4&gt;
+
+&lt;p&gt;Wanneer een JUnit test in het &lt;em&gt;fail&lt;/em&gt; bericht een stracktrace regel emuleert, kan je door dubbelklikken ook daadwerkelijk naar eender welke java file op een bepaalde lijn springen, zoals het dubbelklikken op de failure trace van een bepaalde lijn zich gedraagd. Voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;		fail(&amp;quot;Found duplicate entries in MESSAGES.PROPERTIES:&amp;lt;br/&amp;gt;r&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;r&amp;lt;br/&amp;gt;n&amp;quot;
+				+ &amp;quot;	at be..i18n.DuplicateValuesInMessagesPropertiesTest.findDuplicateValuesInMessagesProperties(DuplicateValuesInMessagesPropertiesTest.java:30)&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Uw eigen regel gaat eerste staan, en eclipse &amp;ldquo;denkt&amp;rdquo; dat het een deel van de stacktrace is. &lt;br/&gt;&lt;br/&gt;
+Jammer genoeg niet bruikbaar voor properties files (&amp;rdquo;&lt;em&gt;Test class not found in selected project&lt;/em&gt;&amp;rdquo;)&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

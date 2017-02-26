@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>monitoring</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="monitoring" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/java/monitoring/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>monitoring</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="monitoring">Monitoring</h1>
+
+<h2 id="jboss-as-a-windows-service-monitoring-params">JBOSS As a Windows service &amp; monitoring params</h2>
+
+<p><a href="https://community.jboss.org/wiki/JBossNativeWindows">https://community.jboss.org/wiki/JBossNativeWindows</a></p>
+
+<p>Als JBoss via <code>jbossvc.exe</code> als een windows service geconfigureerd is, lijkt het moeilijk om <code>JAVA_OPTS</code> mee te geven om JMX poorten in te stellen e.a. (debugging misschien) - zie onder. Die executable callt basically <code>run.bat</code>, dus alle customizaties gewoon daar doen.</p>
+
+<p>Staat standaard dit in:</p>
+
+<pre><code>set JAVA_OPTS######-Dprogram.name%PROGNAME% %JAVA_OPTS%
+</code></pre>
+
+<h2 id="java-jmx-monitoring">Java JMX Monitoring</h2>
+
+<p>Op de JVM: gebeurt met <strong>JMX</strong>.</p>
+
+<h5 id="enablen">Enablen</h5>
+
+<p>Params voor JMX te enablen op de queue:</p>
+
+<pre><code>-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port######3000 -Dcom.sun.management.jmxremote.sslfalse -Dcom.sun.management.jmxremote.authenticate=false&quot;
+</code></pre>
+
+<h5 id="jmx-urls-opbouwen">JMX URLs opbouwen</h5>
+
+<pre><code class="language-service:jmx:rmi:*/jndi/rmi:*server.com:3000/jmxrmi```">
+indien de remote server op server.com draait op poort 3000 (zie boven). Drie slashen na 1ste rmi, twee na de 2de en 1 tussen jndi en rmi in.
+
+##### Java Monitoring console 
+
+Opstarten van **jconsole.exe** in JVM bin folder, gebruik bovenstaande URL. &lt;br/&gt;&lt;br/&gt;
+Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te voeren, plus de draaiende JVM te monitoren qua geheugen etc. 
+
+##### Spring gebruiken om beans te exposen 
+
+```java
+	&lt;bean class=&quot;org.springframework.jmx.export.MBeanExporter&quot;&gt;
+		&lt;property name=&quot;beans&quot;&gt;
+			&lt;map&gt;
+				&lt;entry key######&quot;bean:nameBeanName&quot; value-ref=&quot;someBean&quot; /&gt;
+			&lt;/map&gt;
+		&lt;/property&gt;
+		&lt;property name######&quot;registrationBehaviorName&quot; value&quot;REGISTRATION_IGNORE_EXISTING&quot; /&gt;
+	&lt;/bean&gt;
+</code></pre>
+
+<h2 id="geheugen-monitoren">Geheugen monitoren</h2>
+
+<p>Kan bijvoorbeeld met <strong>VisualVM</strong> - je kan met JMX connecten en dan een dump nemen op de remote locatie waar de JVM op draait. Als er een <code>PermGen space</code> out of memory zich voor doet kunnen we de dump file analyseren en er hopelijk iets nuttig uit halen.</p>
+
+<h5 id="automatisch-een-dump-nemen-na-out-of-memory">Automatisch een dump nemen na out of memory</h5>
+
+<p>Doen met volgende JVM params:</p>
+
+<pre><code>-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=/var/log/tomcat/dumps
+</code></pre>
+
+<p>Zorg ervoor dat het heap dump path schrijfbaar is&hellip;</p>
+
+<h5 id="permgen-en-reflectie">PermGen en reflectie</h5>
+
+<p>Als er een hele hoop klassen tegelijk aangemaakt worden (inner classes = PermGen space, objecten zitten gewoon op de heap, beginnend met eden), komt de PermGen space misschien in het gedrang. Aan te passen met:</p>
+
+<pre><code>-XX:MaxPermSize=400M
+</code></pre>
+
+<p>❗ Deze worden blijkbaar door de JVM standaard niet garbage-collected. Zie <a href="http://stackoverflow.com/questions/3334911/what-does-jvm-flag-cmsclassunloadingenabled-actually-do">http://stackoverflow.com/questions/3334911/what-does-jvm-flag-cmsclassunloadingenabled-actually-do</a> - je kan dit wel forceren met de volgende parameters:</p>
+
+<pre><code>-XX:+CMSPermGenSweepingEnabled
+-XX:+CMSClassUnloadingEnabled 
+</code></pre>
+
+<p>Er wordt daar een voorbeeld aangehaald ivm JAXB die een hoop proxy objecten tegelijk aanmaakt via <code>java.lang.reflect.Proxy</code>. Een entity root kopiëren door middel van relfectie cloning zou bijvoorbeeld ook een potentiëel probleem kunnen zijn.</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

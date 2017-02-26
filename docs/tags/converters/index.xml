@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Converters on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/converters/index.xml</link>
+    <description>Recent content in Converters on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/converters/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>converters</title>
+      <link>http://www.brainbaking.com/wiki/unix/converters/</link>
+      <pubDate>Sat, 19 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/unix/converters/</guid>
+      <description>
+
+&lt;h1 id=&#34;converters&#34;&gt;Converters&lt;/h1&gt;
+
+&lt;h2 id=&#34;video-converting-concatenating-etc&#34;&gt;Video converting/concatenating etc&lt;/h2&gt;
+
+&lt;p&gt;Met behulp van &lt;code&gt;ffmpeg&lt;/code&gt; (&lt;a href=&#34;https://trac.ffmpeg.org/wiki/How%20to%20concatenate%20(join,%20merge)%20media%20files):&#34;&gt;https://trac.ffmpeg.org/wiki/How%20to%20concatenate%20(join,%20merge)%20media%20files):&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;concatting&#34;&gt;Concatting&lt;/h4&gt;
+
+&lt;p&gt;Alle files die eindigen op mp4:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ffmpeg -f concat -i &amp;lt;(printf &amp;quot;file &#39;%s&#39;&amp;lt;br/&amp;gt;n&amp;quot; ./*.mp4) -c copy output.mp4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gaat ook met &lt;code&gt;mplayer&lt;/code&gt; en de tool &lt;code&gt;mencoder&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mencoder -oac pcm -ovc copy -idx -o all.mp4 1.mp4 2.mp4 3.mp4 4.mp4 5.mp4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;resizing-compressing&#34;&gt;Resizing (compressing)&lt;/h4&gt;
+
+&lt;p&gt;Ook met &lt;code&gt;ffmpeg&lt;/code&gt; - bijvoorbeeld reduceren naar &amp;ldquo;medium&amp;rdquo; quality. Neem alle mp4s in folder:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for i in *.mp4 ; do ffmpeg -i &amp;quot;$i&amp;quot; -c:a copy -preset medium &amp;quot;${i%.*}_medium.${i##*.}&amp;quot;; done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Voor meer presets zoals &amp;ldquo;medium&amp;rdquo;, zie &lt;a href=&#34;http://trac.ffmpeg.org/wiki/x264EncodingGuide&#34;&gt;http://trac.ffmpeg.org/wiki/x264EncodingGuide&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

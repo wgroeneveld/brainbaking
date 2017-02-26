@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Meta on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/meta/index.xml</link>
+    <description>Recent content in Meta on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>meta</title>
+      <link>http://www.brainbaking.com/wiki/code/python/meta/</link>
+      <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/python/meta/</guid>
+      <description>
+
+&lt;h1 id=&#34;metaprogramming&#34;&gt;Metaprogramming&lt;/h1&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://www.brainbaking.com/wiki/code/python/classes/&#34;&gt;code/python/classes&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;type-the-metaclass-of-a-class&#34;&gt;type, the metaclass of a class&lt;/h3&gt;
+
+&lt;p&gt;Resources:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://eli.thegreenplace.net/2011/08/14/python-metaclasses-by-example/&#34;&gt;Python metaclasses by example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python/100037#100037&#34;&gt;Extremely detailed, stackoverflow: what is a metaclass in python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jeffknupp.com/blog/2013/12/28/improve-your-python-metaclasses-and-dynamic-classes-with-type/&#34;&gt;Improve your python with metaclasses&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>meta</title>
+      <link>http://www.brainbaking.com/wiki/code/ruby/meta/</link>
+      <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/ruby/meta/</guid>
+      <description>
+
+&lt;h1 id=&#34;metaprogramming-in-ruby&#34;&gt;Metaprogramming in Ruby&lt;/h1&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://www.brainbaking.com/wiki/code/ruby/classes/&#34;&gt;code/ruby/classes&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://madebydna.com/all/code/2011/06/24/eigenclasses-demystified.html&#34;&gt;Eigenclasses demystified&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://hopsoft.github.io/blog/ruby-metaprogramming-idioms/&#34;&gt;Ruby metaprogramming idioms&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.jimmycuadra.com/posts/metaprogramming-ruby-class-eval-and-instance-eval&#34;&gt;class_eval and instance_eval&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>meta</title>
+      <link>http://www.brainbaking.com/wiki/code/csharp/meta/</link>
+      <pubDate>Thu, 13 Feb 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/csharp/meta/</guid>
+      <description>
+
+&lt;h1 id=&#34;metaprogramming&#34;&gt;Metaprogramming&lt;/h1&gt;
+
+&lt;h3 id=&#34;tests-on-source-code-contents&#34;&gt;Tests on source code contents&lt;/h3&gt;
+
+&lt;p&gt;Wat is de bedoeling? Lees alle source files in en check of er iets in voorkomt (in onderstaand geval &lt;code&gt;Bla.Instance&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;De &lt;code&gt;GoUpThreeDirs&lt;/code&gt; is omdat bij unit testen draaien dit in rootDir/unitTestProject/Bin/Debug uitgevoerd wordt, dat is de huidige dir. wij hebben nodig: rootDir/sourceCodeProject.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        [TestMethod]
+        public void StaticInstanceShouldNeverBeUsedExceptInAllowedCases()
+        {
+            foreach (var file in Directory.GetFiles(GetSourcePath(), &amp;quot;*.cs&amp;quot;, SearchOption.AllDirectories))
+            {
+                var source = File.ReadAllText(file);
+                if (source.Contains(typeof(Bla).Name + &amp;quot;.Instance&amp;quot;) &amp;amp;&amp;amp; NoStaticRefAllowedInThatFile(file))
+                {
+                    Assert.Fail(&amp;quot;file &amp;quot; + file + &amp;quot; contains a static reference to Bla which is not allowed!&amp;quot; +
+                        &amp;quot;Please use Dependency Injection instead, take a look at the existing repositories as an example.&amp;quot;);
+                }
+            }
+        }
+
+        private bool NoStaticRefAllowedInThatFile(string file)
+        {
+            List&amp;lt;Type&amp;gt; allowedTypesWithInstanceRef = new List&amp;lt;Type&amp;gt;()
+            {
+                typeof(Bla),
+                typeof(Blie)
+            };
+
+            return allowedTypesWithInstanceRef.All(x =&amp;gt; !file.Contains(x.Name));
+        }
+
+        private static string GetSourcePath()
+        {
+            return GoUpThreeDirectories(Environment.CurrentDirectory) + &amp;quot;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;ProjectNameOfSourceCode&amp;quot;;
+        }
+
+        private static string GoUpThreeDirectories(string dir)
+        {
+            string rootDir = dir;
+            for (var i ###### 1; i &amp;lt; 3; i++)
+            {
+                rootDir = rootDir.Substring(0, rootDir.LastIndexOf(&amp;quot;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&amp;quot;, StringComparison.Ordinal));
+            }
+            return rootDir;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

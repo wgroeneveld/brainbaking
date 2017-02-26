@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dont_make_me_think on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/dont_make_me_think/index.xml</link>
+    <description>Recent content in Dont_make_me_think on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/dont_make_me_think/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>dont_make_me_think</title>
+      <link>http://www.brainbaking.com/wiki/books/dont_make_me_think/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/books/dont_make_me_think/</guid>
+      <description>
+
+&lt;h1 id=&#34;don-t-make-me-think&#34;&gt;Don&amp;rsquo;t Make me Think&lt;/h1&gt;
+
+&lt;p&gt;Author: Steve Krug&lt;br/&gt;&lt;br/&gt;
+Subtitle: A common sense approach to Web usability (SE)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.librarything.com/work/12322&#34;&gt;Librarything link&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;1-don-t-make-me-think&#34;&gt;1. Don&amp;rsquo;t make me Think&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If something is hard to use, I just don&amp;rsquo;t use it as much.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Duidelijkheid is belangrijker bij een website overzicht dan iets wat denkwerk vereist - vandaar de titel van het boek. Niet moeten nadenken &lt;em&gt;hoe&lt;/em&gt; exact iets gebruikt moet worden, maar iets als vanzelfsprekend aanzien.&lt;/p&gt;
+
+&lt;h4 id=&#34;2-how-we-really-use-the-web&#34;&gt;2. How we really use the Web&lt;/h4&gt;
+
+&lt;p&gt;Niemand leest een hele webpagina, men scant sommige tekst blokken en werpt een snelle &amp;ldquo;blik&amp;rdquo; op elke pagina. &lt;br/&gt;&lt;br/&gt; Facts of life:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;We don&amp;rsquo;t read pages, we scan them.&lt;/li&gt;
+&lt;li&gt;We don&amp;rsquo;t make optimal choices, we satisfice. (We klikken niet altijd op de beste link maar de meest aannemelijke)&lt;/li&gt;
+&lt;li&gt;We don&amp;rsquo;t figure out how things work, we muddle through. (Als we iets vinden dat werkt, blijven we dit gebruiken)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;3-billboard-design-101&#34;&gt;3. Billboard design 101&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Maak een duidelijke visuele hiërarchie op de website:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hoe belangrijker iets, hoe meer aanwezig (groter lettertype bvb)&lt;/li&gt;
+&lt;li&gt;dingen die logischerwijze samenhoren ook effectief samen plaatsen (menu groepen)&lt;/li&gt;
+&lt;li&gt;Visueel dingen &amp;ldquo;nesten&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Gebruik conventies in plaats van alles opnieuw uit te vinden.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Maak duidelijk wat klikbaar is&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Vermijd een te &amp;ldquo;drukke&amp;rdquo; website (door bvb te veel borders rond menu&amp;rsquo;s te plaatsen)&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;5-omit-needless-words&#34;&gt;5. Omit needless words&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Vigorous writing is concise. A sentence should contain no unnecessary words, a paragraph no unnecessary sentences, for the same reason that a drawing should have no unnecessary lines and a machine no unnecessary parts. ((William Strunk Jr. and E.B. White, &lt;em&gt;The elements of style&lt;/em&gt;))&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Happy talk must die (welkom op onze blablabla website die blablablayawn doet)&lt;/li&gt;
+&lt;li&gt;Instructions must die (klik hier en volg stap 1 tot en met 224 blabla)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;6-street-signs-and-breadcrumbs&#34;&gt;6. Street signs and Breadcrumbs&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;People won&amp;rsquo;t use your website if they can&amp;rsquo;t find their way around it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Vergelijk op een website iets zoeken met in een warenhuis iets zoeken. Je kan ofwel &amp;ldquo;browsen&amp;rdquo; door te navigeren met plaatjes in de rijen, ofwel direct aan personeel vragen waar object x ligt. Als je na een tijdje nog altijd niet gevonden hebt wat je zoekt verlaat je de winkel. Plaats daarom een zoek formulier zo zichtbaar mogelijk, en zorg voor correcte en duidelijke navigatie.&lt;/p&gt;
+
+&lt;p&gt;Extra problemen met internet browsen: we hebben geen idee van schaalbaarheid, geen idee van directie of locatie&amp;hellip; Een website zou 5 basis elementen altijd aanwezig moeten hebben:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Site ID (linksboven, kan op een homepage meer plaats innemen)&lt;/li&gt;
+&lt;li&gt;Een manier om naar de homepage te gaan (buiten klikken op het logo)&lt;/li&gt;
+&lt;li&gt;Een manier om te zoeken&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Utilities&amp;rdquo; (basis links zoals hoe x doen)&lt;/li&gt;
+&lt;li&gt;Secties (de navigatie)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;De homepage is hierop een uitzondering (zie volgend stuk)&lt;br/&gt;&lt;br/&gt;
+Pagina benaming is ook heel belangrijk: consistent, op de juiste plaats en altijd aanwezig.&lt;/p&gt;
+
+&lt;h5 id=&#34;navigatie&#34;&gt;Navigatie&lt;/h5&gt;
+
+&lt;p&gt;&amp;ldquo;You are here&amp;rdquo; -&amp;gt; breadcrumbs (best bovenaan te plaatsen)
+  * Altijd bovenaan plaatsen
+  * Gebruik &amp;gt; tussen levels in
+  * Gebruik een kleiner lettertype
+  * Gebruik &amp;ldquo;you are here&amp;rdquo; prefix
+  * Zet laatste item in bold (huidige pagina dus)
+  * Dit is geen vervanging voor een volledige pagina naam!&lt;/p&gt;
+
+&lt;p&gt;Tabs als navigatie
+  * Leggen zichzelf uit
+  * Moeilijk om te missen
+  * Mooi met de juiste style (evt JS)
+  * Ze stellen een fysieke fichebak voor (geven de illusie dat een actieve tab &amp;ldquo;naar voren&amp;rdquo; komt, met extra contrast)&lt;/p&gt;
+
+&lt;h4 id=&#34;7-home-page&#34;&gt;7. Home Page&lt;/h4&gt;
+
+&lt;p&gt;De homepage zou voor de volgende zaken moeten zorgen:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Site identiteit, missie (waar dient de site voor?)&lt;/li&gt;
+&lt;li&gt;Site hiërarchie (wat kan ik hier vinden? Wat doe ik hier?)&lt;/li&gt;
+&lt;li&gt;Zoeken!&lt;/li&gt;
+&lt;li&gt;Stukjes om te &lt;em&gt;teasen&lt;/em&gt;, content promo (stukken van een artikel, tijd-gerelateerde content)&lt;/li&gt;
+&lt;li&gt;Promotie, reclame deals, &amp;hellip;&lt;/li&gt;
+&lt;li&gt;Snelkoppelingen naar bepaalde (belangrijkere) secties buiten de navigatie om&lt;/li&gt;
+&lt;li&gt;Registratie indien nodig&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Aangezien iedereen iets anders zoekt op een website, maar er slechts één homepage is, moet deze zo robuust mogelijk gemaakt worden zodat alle surfers specifiek voor hun voldoende informatie kunnen verzamelen om te beslissen of ze op de juiste pagina zitten of niet, en dan eventueel over te gaan naar zoeken of navigatie zelf.&lt;/p&gt;
+
+&lt;p&gt;Het moet duidelijk zijn vanaf de home page wat de site doet, wat ze te bieden heeft, en ook wat niet! Gebruik hiervoor als hulp een &lt;strong&gt;tagline&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Home page navigatie kan uniek zijn ten opzichte van de rest van de webpagina. Het logo kan bijvoorbeeld ook groter en duidelijker aanwezig zijn. Het is wel de bedoeling dat alles consistent samen loopt.&lt;/p&gt;
+
+&lt;p&gt;Vermijd overmatig gebruik van comboboxen, zeker als navigatie! (Of pulldown menu&amp;rsquo;s). Ze verbergen de eigenlijke menu items, zijn snel onoverzichtelijk en moelijk om te scannen voor onze ogen.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

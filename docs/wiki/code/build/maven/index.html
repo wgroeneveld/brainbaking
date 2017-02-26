@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>maven</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="maven" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/build/maven/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>maven</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="maven2-build-stuff">Maven2 Build stuff</h1>
+
+<p>❗ <strong>properties</strong> guide: <a href="http://docs.codehaus.org/display/MAVENUSER/MavenPropertiesGuide">http://docs.codehaus.org/display/MAVENUSER/MavenPropertiesGuide</a></p>
+
+<h2 id="javascript-files-automatisch-minify-en">javascript files automatisch minify-en</h2>
+
+<pre><code class="language-xml">	&lt;profiles&gt;
+		&lt;profile&gt;
+			&lt;id&gt;minify&lt;/id&gt;
+			&lt;build&gt;
+				&lt;plugins&gt;
+					&lt;plugin&gt;
+						&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+						&lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+						&lt;version&gt;2.1.1&lt;/version&gt;
+						&lt;configuration&gt;
+							&lt;warSourceExcludes&gt;**/js/**&lt;/warSourceExcludes&gt;
+						&lt;/configuration&gt;
+					&lt;/plugin&gt;
+					&lt;plugin&gt;
+						&lt;groupId&gt;net.tqh.plugins&lt;/groupId&gt;
+						&lt;artifactId&gt;uglifyjs-maven-plugin&lt;/artifactId&gt;
+						&lt;version&gt;1.0&lt;/version&gt;
+						&lt;configuration&gt;
+							&lt;sourceDirectory&gt;src/main/webapp/js&lt;/sourceDirectory&gt;
+							&lt;outputDirectory&gt;target/${project.name}-${version}/js&lt;/outputDirectory&gt;
+						&lt;/configuration&gt;
+						&lt;executions&gt;
+							&lt;execution&gt;
+								&lt;phase&gt;prepare-package&lt;/phase&gt;
+								&lt;goals&gt;
+									&lt;goal&gt;uglify&lt;/goal&gt;
+								&lt;/goals&gt;
+							&lt;/execution&gt;
+						&lt;/executions&gt;
+					&lt;/plugin&gt;
+				&lt;/plugins&gt;
+			&lt;/build&gt;
+		&lt;/profile&gt;
+	&lt;/profiles&gt;
+</code></pre>
+
+<p>Bron: https:*github.com/mishoo/UglifyJS - maven plugin gebruikt <code>Rhino</code> om dit uit te voeren. Kan ook met <code>node</code> uitgevoerd worden - gebruik bij voorkeur <code>r.js</code> (zie http:*requirejs.org/docs/optimization.html)</p>
+
+<h2 id="argumenten-als-system-property-meegeven-aan-testen">Argumenten als system property meegeven aan testen</h2>
+
+<p>Maven forkt by default dus <code>-Dbla=blie</code> gaat niet werken, dit is een property voor het maven java commando, maar niet voor de test zelf.</p>
+
+<p>Oplossing: <code>mvn test -DargLine######&quot;-Dsystem.test.propertytest&quot;</code></p>
+
+<p><strong>argLine</strong> gebruiken. Zie:</p>
+
+<ol>
+<li><a href="http://www.cowtowncoder.com/blog/archives/2010/04/entry_385.html">http://www.cowtowncoder.com/blog/archives/2010/04/entry_385.html</a></li>
+<li><a href="http://docs.codehaus.org/display/MAVENUSER/MavenPropertiesGuide">maven properties guide</a></li>
+</ol>
+
+<h2 id="een-single-deps-jar-mekan-met-maven-assembly">Een single-deps jar mekan met maven assembly</h2>
+
+<pre><code class="language-xml"> &lt;plugin&gt;
+            &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;archive&gt;
+                    &lt;manifest&gt;
+                        &lt;mainClass&gt;fully.qualified.MainClass&lt;/mainClass&gt;
+                    &lt;/manifest&gt;
+                &lt;/archive&gt;
+                &lt;descriptorRefs&gt;
+                    &lt;descriptorRef&gt;jar-with-dependencies&lt;/descriptorRef&gt;
+                &lt;/descriptorRefs&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+</code></pre>
+
+<p>En dan met <code>mvn assembly:single</code> uitvoeren. Dit maakt in uw target dir een file genaamd <code>bla-1.0-SNAPSHOT-jar-with-dependencies.jar</code>. <code>java -jar [jar]</code> werkt dan.</p>
+
+<h2 id="een-test-jar-maken-met-maven-assembly">Een test jar maken met maven assembly</h2>
+
+<p>Met <code>maven assembly</code> kan je files packagen na het compileren van tests maar voor het runnen. Op die manier kunnen we dus bvb class files in een jar packagen (of resources in een zip). Daarna manueel installeren in de repository ofzoiets.</p>
+
+<p>Plugin:</p>
+
+<pre><code class="language-xml">			&lt;plugin&gt;
+				&lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
+				&lt;version&gt;2.2-beta-2&lt;/version&gt;
+				&lt;executions&gt;
+					&lt;execution&gt;
+						&lt;id&gt;create-test-dependency&lt;/id&gt;
+						&lt;phase&gt;process-test-classes&lt;/phase&gt;
+						&lt;goals&gt;
+							&lt;goal&gt;single&lt;/goal&gt;
+						&lt;/goals&gt;
+						&lt;configuration&gt;
+							&lt;finalName&gt;gatecontrol&lt;/finalName&gt;
+							&lt;attach&gt;false&lt;/attach&gt;
+							&lt;descriptors&gt;
+								&lt;descriptor&gt;test-assembly.xml&lt;/descriptor&gt;
+							&lt;/descriptors&gt;
+						&lt;/configuration&gt;
+					&lt;/execution&gt;
+				&lt;/executions&gt;
+			&lt;/plugin&gt;
+</code></pre>
+
+<p>De externe assembly file:</p>
+
+<pre><code class="language-xml">&lt;assembly&gt;
+  &lt;id&gt;testjar&lt;/id&gt;
+  &lt;formats&gt;
+    &lt;format&gt;jar&lt;/format&gt;
+  &lt;/formats&gt;
+  &lt;includeBaseDirectory&gt;false&lt;/includeBaseDirectory&gt;
+  ```ets
+    ```et
+      &lt;directory&gt;target/test-classes&lt;/directory&gt;
+      &lt;outputDirectory&gt;/&lt;/outputDirectory&gt;
+      &lt;includes&gt;
+        &lt;include&gt;**&lt;/include&gt;
+      &lt;/includes&gt;
+    &lt;/fileSet&gt;
+  &lt;/fileSets&gt;
+&lt;/assembly&gt;
+</code></pre>
+
+<p>❗ test jars zijn precies niet <strong>transitief</strong> qua dependencies? <br/><br/>
+Als je een test-jar (die dus op <code>scope test</code> staat) wil includen in je eigen <code>assembly:single</code> jar, kan je <code>classifier tests</code> gebruiken:</p>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;be.bla&lt;/groupId&gt;
+  &lt;artifactId&gt;bla-blie&lt;/artifactId&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+  &lt;classifier&gt;tests&lt;/classifier&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>Dan wordt die test jar mee gepackaged, maar zijn dependencies blijbkaar niet?</p>
+
+<h2 id="profiles-en-properties">Profiles en properties</h2>
+
+<h4 id="activebydefault">activeByDefault</h4>
+
+<p>Zie <a href="http://java.dzone.com/articles/maven-profile-best-practices">http://java.dzone.com/articles/maven-profile-best-practices</a> - <strong>nooit</strong> gebruiken! Waarom?</p>
+
+<blockquote>
+<p>This flag activates the profile if no other profile is activated. Consequently, it will fail to activate the profile if any other profile is activated. This seems like a simple rule which would be hard to misunderstand, but in fact it&rsquo;s surprisingly easy to be fooled by its behaviour. When you run a multimodule build, the activeByDefault flag will fail to operate when any profile is activated, even if the profile is not defined in the module where the activeByDefault flag occurs.</p>
+</blockquote>
+
+<p>In plaats daar van:</p>
+
+<pre><code class="language-xml">&lt;profile id=&quot;nofoobar&quot;&gt;
+    &lt;activation&gt;
+        &lt;property&gt;
+            &lt;name&gt;!foo.bar&lt;/name&gt;
+        &lt;/property&gt;
+    &lt;/activation&gt;
+&lt;/profile&gt;
+</code></pre>
+
+<h2 id="jaxb-generatie">JAXB generatie</h2>
+
+<h4 id="genereer-endpoints-vanaf-wsdl">Genereer endpoints vanaf WSDL</h4>
+
+<pre><code class="language-xml">			&lt;plugin&gt;
+				&lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+				&lt;artifactId&gt;jaxws-maven-plugin&lt;/artifactId&gt;
+				&lt;version&gt;${org.codehaus.mojo.jaxws.maven.plugin.version}&lt;/version&gt;
+				&lt;executions&gt;
+					&lt;execution&gt;
+						&lt;goals&gt;
+							&lt;goal&gt;wsimport&lt;/goal&gt;
+						&lt;/goals&gt;
+					&lt;/execution&gt;
+				&lt;/executions&gt;
+				&lt;configuration&gt;
+					&lt;wsdlDirectory&gt;src/resources/wsdl&lt;/wsdlDirectory&gt;
+					&lt;packageName&gt;com.x.interfaces.ws&lt;/packageName&gt;
+					&lt;sourceDestDir&gt;${project.build.directory}/generated-sources/jaxws&lt;/sourceDestDir&gt;
+				&lt;/configuration&gt;
+				&lt;dependencies&gt;
+					&lt;dependency&gt;
+						&lt;groupId&gt;com.sun.xml.ws&lt;/groupId&gt;
+						&lt;artifactId&gt;jaxws-tools&lt;/artifactId&gt;
+						&lt;version&gt;${com.sun.xml.ws.jaxws.version}&lt;/version&gt;
+					&lt;/dependency&gt;
+				&lt;/dependencies&gt;
+			&lt;/plugin&gt;
+</code></pre>
+
+<p>Zie <a href="http://rphgoossens.wordpress.com/2011/02/20/developing-a-contract-first-jax-ws-webservice/">http://rphgoossens.wordpress.com/2011/02/20/developing-a-contract-first-jax-ws-webservice/</a></p>
+
+<p>Genereer de code met <code>mvn jaxws:wsimport</code> goal.</p>
+
+<h4 id="genereer-jaxb-java-objecten-vanaf-xsd">Genereer JAXB Java objecten vanaf XSD</h4>
+
+<p>Zelfde pincipe, andere <code>goal</code>:</p>
+
+<pre><code class="language-xml">			&lt;plugin&gt;
+				&lt;groupId&gt;org.jvnet.jaxb2.maven2&lt;/groupId&gt;
+				&lt;artifactId&gt;maven-jaxb2-plugin&lt;/artifactId&gt;
+				&lt;version&gt;${org.jvnet.jaxb2.maven2.maven.jaxb2.plugin.version}&lt;/version&gt;
+				&lt;executions&gt;
+					&lt;execution&gt;
+						&lt;id&gt;crm_generation&lt;/id&gt;
+						&lt;goals&gt;
+							&lt;goal&gt;generate&lt;/goal&gt;
+						&lt;/goals&gt;
+						&lt;configuration&gt;
+							&lt;schemaDirectory&gt;src/main/schema&lt;/schemaDirectory&gt;
+							&lt;schemaIncludes&gt;
+								&lt;include&gt;y.wsdl&lt;/include&gt;
+							&lt;/schemaIncludes&gt;
+							&lt;schemaLanguage&gt;WSDL&lt;/schemaLanguage&gt;
+							&lt;generatePackage&gt;com.x.interfaces&lt;/generatePackage&gt;
+						&lt;/configuration&gt;
+					&lt;/execution&gt;
+				&lt;/executions&gt;
+			&lt;/plugin&gt;
+</code></pre>
+
+<h2 id="integratie-met-ant">Integratie met Ant</h2>
+
+<p>Maven kan ook ant tasks uitvoeren. Dit door ant code te embedden in de pom.xml op de volgende manier:</p>
+
+<pre><code class="language-xml">		   &lt;plugin&gt;
+		    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+		    &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+		     
+		    &lt;configuration&gt;
+		     &lt;tasks&gt;
+		      &lt;property name######&quot;target.war&quot; value&quot;bla.war&quot; /&gt;
+		      &lt;property name######&quot;zip.name&quot; value&quot;bla.zip&quot; /&gt;
+		      
+		      &lt;ant antfile######&quot;build.xml&quot; inheritRefs&quot;true&quot; inheritAll=&quot;true&quot;&gt;
+		      	&lt;target name=&quot;buildZip&quot; /&gt;
+		      &lt;/ant&gt;
+		     &lt;/tasks&gt;
+		    &lt;/configuration&gt;
+		    
+		    &lt;goals&gt;
+		     &lt;goal&gt;install&lt;/goal&gt;
+		    &lt;/goals&gt;
+		   &lt;/plugin&gt;
+</code></pre>
+
+<p>Binnen de configuration tag zit ant code, met de ant tag roep ik een externe build xml aan. Op die manier kan je dus een ant buildfile volledig naast een pom.xml maven2 file plaatsen, en properties doorgeven! Die ant task wordt uitgevoerd met het commando <code>mvn antrun:run</code> of bij bepaalde geconfigureerde goals.</p>
+
+<p>Voorbeeld: <a href="http://maven.apache.org/plugins/maven-antrun-plugin/">http://maven.apache.org/plugins/maven-antrun-plugin/</a></p>
+
+<h4 id="aan-bepaalde-phase-hangen">Aan bepaalde phase hangen</h4>
+
+<p>Zie <a href="http://www.avajava.com/tutorials/lessons/what-are-the-phases-of-the-maven-default-lifecycle.html">http://www.avajava.com/tutorials/lessons/what-are-the-phases-of-the-maven-default-lifecycle.html</a></p>
+
+<p>Om nog rap een property file te kopiëren, best aan <code>prapare-package</code> phase hangen (maven 2.1+):</p>
+
+<pre><code class="language-xml">	 &lt;profiles&gt;
+	   &lt;profile&gt;
+	     &lt;id&gt;env&lt;/id&gt;
+	     &lt;activation&gt;
+	     	&lt;property&gt;
+	     		&lt;name&gt;env&lt;/name&gt;
+	     	&lt;/property&gt;
+	     &lt;/activation&gt;
+	     &lt;build&gt;
+	       &lt;plugins&gt;
+	         &lt;plugin&gt;
+	           &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+	           &lt;executions&gt;
+	             &lt;execution&gt;
+	               &lt;phase&gt;prepare-package&lt;/phase&gt;
+	               &lt;goals&gt;
+	                 &lt;goal&gt;run&lt;/goal&gt;
+	               &lt;/goals&gt;
+	               &lt;configuration&gt;
+	                 &lt;tasks&gt;
+						&lt;echo message=&quot;Env property detected, copying ${env} to output directory...&quot; /&gt;
+                   		&lt;copy file######&quot;src/main/resources/template/env.${env}.properties&quot; tofile&quot;${project.build.outputDirectory}/env.properties&quot;/&gt;
+	                 &lt;/tasks&gt;
+	               &lt;/configuration&gt;
+	             &lt;/execution&gt;
+	           &lt;/executions&gt;
+	         &lt;/plugin&gt;
+         &lt;/plugins&gt;
+        &lt;/build&gt;
+       &lt;/profile&gt;
+     &lt;/profiles&gt;
+</code></pre>
+
+<h2 id="javadoc-genereren">Javadoc genereren</h2>
+
+<p>Deze plugin nodig:</p>
+
+<pre><code class="language-xml">		    &lt;plugin&gt;
+		        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+		        &lt;artifactId&gt;maven-javadoc-plugin&lt;/artifactId&gt;
+		        &lt;version&gt;2.7&lt;/version&gt;
+		        &lt;configuration&gt;
+		          &lt;reportOutputDirectory&gt;release/doc&lt;/reportOutputDirectory&gt;
+		          &lt;destDir&gt;javadoc&lt;/destDir&gt;
+		          &lt;doctitle&gt;API for ${project.name} ${project.version}&lt;/doctitle&gt;
+		          &lt;windowtitle&gt;API for ${project.name} ${project.version}&lt;/windowtitle&gt;
+		        &lt;/configuration&gt;
+		   &lt;/plugin&gt;
+</code></pre>
+
+<p>❗ output dir = <code>${reportOutputDirectory}/${destDir}</code><br/><br/>
+Voorbeeld: <a href="http://maven.apache.org/plugins/maven-javadoc-plugin/examples/output-configuration.html">http://maven.apache.org/plugins/maven-javadoc-plugin/examples/output-configuration.html</a></p>
+
+<h2 id="deployen-met-maven">Deployen met maven</h2>
+
+<h3 id="jetty-integratie-en-auto-deploy">Jetty integratie en auto-deploy</h3>
+
+<h4 id="jetty-run">jetty run</h4>
+
+<p>Integratie met jetty en maven2: gebruik <code>mvn jetty:run</code> om automatisch de jetty server op te starten.<br/><br/>
+Het is ook mogelijk om die te laten scannen voor resource changes met <code>scanIntervalSeconds</code> - server start automatisch (normaal gezien&hellip;)</p>
+
+<pre><code class="language-xml">			&lt;plugin&gt;
+				&lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
+				&lt;artifactId&gt;maven-jetty-plugin&lt;/artifactId&gt;
+				&lt;version&gt;6.1.26&lt;/version&gt;
+				&lt;configuration&gt;
+					&lt;stopPort&gt;9966&lt;/stopPort&gt;
+					&lt;stopKey&gt;comeet&lt;/stopKey&gt;
+					&lt;scanIntervalSeconds&gt;5&lt;/scanIntervalSeconds&gt;
+					&lt;connectors&gt;
+						&lt;connector implementation=&quot;org.mortbay.jetty.nio.SelectChannelConnector&quot;&gt;
+							&lt;port&gt;8089&lt;/port&gt;
+						&lt;/connector&gt;
+					&lt;/connectors&gt;
+				&lt;/configuration&gt;
+			&lt;/plugin&gt;
+</code></pre>
+
+<p>❗ Vanaf Jetty plugin 7 zijn packages hernoemd en zo, zie <a href="http://wiki.eclipse.org/Jetty">http://wiki.eclipse.org/Jetty</a> en de migratie van 6-&gt;7-&gt;&hellip;9</p>
+
+<h5 id="debug-poort-instellingen">Debug poort instellingen</h5>
+
+<p>Gebruikt <code>MAVEN_OPTS</code> JVM parameters (omdat het proces niet geforked wordt?): <a href="http://docs.codehaus.org/display/JETTY/Debugging+with+the+Maven+Jetty+Plugin+inside+Eclipse">http://docs.codehaus.org/display/JETTY/Debugging+with+the+Maven+Jetty+Plugin+inside+Eclipse</a></p>
+
+<pre><code>-Xdebug -Xnoagent -Djava.compiler######NONE -Xrunjdwp:transportdt_socket,address######4000,servery,suspend=y
+</code></pre>
+
+<h5 id="jndi-datasources-definiëren">JNDI Datasources definiëren</h5>
+
+<p>Kan in webapp/WEB-INF/jetty-env.xml:</p>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE Configure PUBLIC &quot;-*Mort Bay Consulting*DTD Configure*EN&quot; &quot;http:*jetty.mortbay.org/configure.dtd&quot;&gt;
+
+&lt;Configure class=&quot;org.mortbay.jetty.webapp.WebAppContext&quot;&gt;
+
+	&lt;New id######&quot;partnerwerkingDataSource&quot; class&quot;org.mortbay.jetty.plus.naming.Resource&quot;&gt;
+		&lt;Arg&gt;jdbc/partnerwerkingDataSource&lt;/Arg&gt;
+		&lt;Arg&gt;
+			&lt;New class=&quot;oracle.jdbc.pool.OracleDataSource&quot;&gt;
+				&lt;Set name=&quot;URL&quot;&gt;${database.url}&lt;/Set&gt;
+				&lt;Set name=&quot;user&quot;&gt;${database.user}&lt;/Set&gt;
+				&lt;Set name=&quot;password&quot;&gt;${database.password}&lt;/Set&gt;
+			&lt;/New&gt;
+		&lt;/Arg&gt;
+	&lt;/New&gt;
+
+&lt;/Configure&gt;
+</code></pre>
+
+<p>wordt dan automatisch door <code>jetty:run</code> opgepikt.</p>
+
+<h4 id="auto-start-bij-integratie-testen-failsafe-plugin">auto-start bij integratie testen (failsafe plugin)</h4>
+
+<p>Als we aan bovenstaande plugin ook nog <code>executions</code> opgeven, start jetty automatisch bij <code>pre-integration-test</code> en stopt hij automatisch bij <code>-post-integration-test</code>:</p>
+
+<pre><code class="language-xml">				&lt;executions&gt;
+					&lt;execution&gt;
+						&lt;id&gt;start-jetty&lt;/id&gt;
+						&lt;phase&gt;pre-integration-test&lt;/phase&gt;
+						&lt;goals&gt;
+							&lt;goal&gt;run&lt;/goal&gt;
+						&lt;/goals&gt;
+						&lt;configuration&gt;
+							&lt;scanIntervalSeconds&gt;0&lt;/scanIntervalSeconds&gt;
+							&lt;daemon&gt;true&lt;/daemon&gt;
+						&lt;/configuration&gt;
+					&lt;/execution&gt;
+					&lt;execution&gt;
+						&lt;id&gt;stop-jetty&lt;/id&gt;
+						&lt;phase&gt;post-integration-test&lt;/phase&gt;
+						&lt;goals&gt;
+							&lt;goal&gt;stop&lt;/goal&gt;
+						&lt;/goals&gt;
+					&lt;/execution&gt;
+				&lt;/executions&gt;
+</code></pre>
+
+<p><code>daemon</code> moet op <strong>true</strong> staan omdat de bovenstaande plugin (jetty6) geen fork doet en dan natuurlijk geen testen gedraaid worden&hellip;</p>
+
+<h3 id="tomcat-deploy">Tomcat deploy</h3>
+
+<p>Op verschillende omgevingen deployen kan door verschillende profielen aan te maken in de pom.xml file, en dan als env. parameter <code>-Denv=[gewenste env value]</code> de te deployen mee te geven:</p>
+
+<pre><code class="language-xml">	&lt;profiles&gt;
+		&lt;profile&gt;
+			&lt;activation&gt;
+				&lt;property&gt;
+					&lt;name&gt;env&lt;/name&gt;
+					&lt;value&gt;test&lt;/value&gt;
+				&lt;/property&gt;
+			&lt;/activation&gt;
+
+			&lt;properties&gt;
+				&lt;server.url&gt;http://blatomcat:8888/manager&lt;/server.url&gt;
+				&lt;server.username&gt;user&lt;/server.username&gt;
+				&lt;server.password&gt;pass&lt;/server.password&gt;
+			&lt;/properties&gt;
+		&lt;/profile&gt;
+	&lt;/profiles&gt;
+</code></pre>
+
+<p>Die properties die hierboven staan worden dan in deze plugin ingevuld:</p>
+
+<pre><code class="language-xml">			&lt;plugin&gt;
+				&lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+				&lt;artifactId&gt;tomcat-maven-plugin&lt;/artifactId&gt;
+				&lt;version&gt;1.0-beta-1&lt;/version&gt;
+				&lt;configuration&gt;
+					&lt;url&gt;${server.url}&lt;/url&gt;
+					&lt;username&gt;${server.username}&lt;/username&gt;
+					&lt;password&gt;${server.password}&lt;/password&gt;
+				&lt;/configuration&gt;
+			&lt;/plugin&gt;
+</code></pre>
+
+<p>Uitvoeren met <code>mvn tomcat:deploy [-Denv=x]</code><br/><br/>
+Voorbeelden en meer uitleg: <a href="http://mojo.codehaus.org/tomcat-maven-plugin/">http://mojo.codehaus.org/tomcat-maven-plugin/</a></p>
+
+<h2 id="war-name-veranderen">War name veranderen</h2>
+
+<p>Staat default op <code>${project.build.finalName}</code> wat neerkomt op artifactId-version.war.</p>
+
+<p>Te veranderen door <code>&lt;warName&gt;blar&lt;/warName&gt;</code> in <code>&lt;configuration/&gt;</code> te plaatsen in de <code>maven-war-plugin</code>.<br/><br/>
+<strong>Zonder</strong> .war ext. dus.
+Zie <a href="http://maven.apache.org/plugins/maven-war-plugin/war-mojo.html#warName">http://maven.apache.org/plugins/maven-war-plugin/war-mojo.html#warName</a></p>
+
+<h2 id="jar-source-code-downloaden">Jar source code downloaden</h2>
+
+<pre><code>mvn dependency:sources
+</code></pre>
+
+<p>Ook mogelijk in de pom door per dependency <code>downloadSources</code> op <code>true</code> te zetten, of via de <code>eclipse:eclipse</code> goal plugin:</p>
+
+<pre><code class="language-xml">&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-eclipse-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;downloadSources&gt;true&lt;/downloadSources&gt;
+                &lt;downloadJavadocs&gt;true&lt;/downloadJavadocs&gt;
+                ... other stuff ...
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plgins&gt;
+&lt;/build&gt;
+</code></pre>
+
+<p>Vergeet niet dan als property <code>-DdownloadSources=true</code> mee te geven.</p>
+
+<h4 id="eclipse-eclipse-genereert-ook-de-project-file">eclipse:eclipse genereert ook de .project file</h4>
+
+<p>Library dependencies worden daar automatisch aan toegevoegd, maar alles staat onder <strong>M2_REPO</strong>/org/&hellip;/bla.jar en Eclipse moet weten waar lokaal de repository staat. Zie ook <a href="http://maven.apache.org/guides/mini/guide-ide-eclipse.html">http://maven.apache.org/guides/mini/guide-ide-eclipse.html</a> - Dit commando uitvoeren &amp; eclipse herstarten:</p>
+
+<p><code>mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt; eclipse:add-maven-repo</code></p>
+
+<h4 id="automatisch-source-files-encoden">Automatisch source files encoden</h4>
+
+<p>Je kan met die plugin ook extra configuratie meegeven die de <code>.java</code> files qua encoding goed zet:</p>
+
+<pre><code class="language-xml">&lt;additionalConfig&gt;
+	```
+		&lt;name&gt;.settings/org.eclipse.core.resources.prefs&lt;/name&gt;
+			&lt;content&gt;
+           				&lt;![CDATA[eclipse.preferences.version######1${line.separator}encoding/&lt;project&gt;${project.build.sourceEncoding}${line.separator}]]&gt;
+			&lt;/content&gt;
+	```
+&lt;/additionalConfig&gt;
+</code></pre>
+
+<h2 id="dependency-tree-tonen">Dependency tree tonen</h2>
+
+<pre><code>mvn dependency:tree &gt; deptree.out
+</code></pre>
+
+<p>Produceert rommel in het volgend formaat:</p>
+
+<pre><code>[INFO] [dependency:tree {execution: default-cli}]
+[INFO] be.--api:jar:2.21-SNAPSHOT
+[INFO] +- be.-support:jar:7.21-SNAPSHOT:compile
+[INFO] |  +- org.easytesting:fest-assert:jar:1.2:test (scope managed from compile)
+[INFO] |  |  &lt;br/&gt;- org.easytesting:fest-util:jar:1.1:test
+[INFO] |  +- com.thoughtworks.xstream:xstream:jar:1.3.1:compile
+[INFO] |  |  &lt;br/&gt;- xpp3:xpp3_min:jar:1.1.4c:compile
+[INFO] |  +- javax.ws.rs:jsr311-api:jar:1.1.1:compile
+[INFO] |  +- org.objenesis:objenesis:jar:1.2:compile
+[INFO] |  +- net.sf.ehcache:ehcache:jar:1.6.0:compile
+[INFO] |  +- log4j:log4j:jar:1.2.15:compile
+[INFO] |  |  &lt;br/&gt;- javax.mail:mail:jar:1.4:compile
+[INFO] |  +- commons-codec:commons-codec:jar:1.3:compile
+[INFO] |  +- jmimemagic:jmimemagic:jar:0.1.2:compile
+[INFO] |  |  +- oro:oro:jar:2.0.8:compile
+[INFO] |  |  &lt;br/&gt;- commons-logging:commons-logging:jar:1.1.1:compile (version managed from 1.0.4)
+[INFO] |  +- commons-io:commons-io:jar:1.4:compile
+[INFO] |  +- org.htmlcleaner:htmlcleaner:jar:2.1:compile
+..
+</code></pre>
+
+<h2 id="een-bepaalde-test-draaien-via-maven">Een bepaalde test draaien via Maven</h2>
+
+<pre><code>mvn test -Dtest=[testClass] -P [profile]
+</code></pre>
+
+<p>Waarbij <code>profile</code> het profiel is die de surefire plugin heeft - bijvoorbeeld:</p>
+
+<pre><code class="language-xml">&lt;profile&gt;
+	&lt;id&gt;endtoend&lt;/id&gt;
+	&lt;activation&gt;
+		&lt;property&gt;
+			&lt;name&gt;endtoend&lt;/name&gt;
+		&lt;/property&gt;
+	&lt;/activation&gt;
+	&lt;build&gt;
+		&lt;plugins&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+				&lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+				&lt;executions&gt;
+					&lt;execution&gt;
+						&lt;phase&gt;integration-test&lt;/phase&gt;
+						&lt;goals&gt;
+							&lt;goal&gt;test&lt;/goal&gt;
+						&lt;/goals&gt;
+						&lt;configuration&gt;
+							&lt;testFailureIgnore&gt;true&lt;/testFailureIgnore&gt;
+							&lt;skip&gt;false&lt;/skip&gt;
+							&lt;argLine&gt;-Xms128M -Xmx512M -XX:MaxPermSize=512M&lt;/argLine&gt;
+						&lt;/configuration&gt;
+					&lt;/execution&gt;
+				&lt;/executions&gt;
+			&lt;/plugin&gt;
+		&lt;/plugins&gt;
+	&lt;/build&gt;
+&lt;/profile&gt;
+</code></pre>
+
+<p>❗ Als een bepaalde jar nog deployed moet worden (naar Jetty bvb) voor het runnen van de test (scenario testen zoals selenium en webdriver), moet de <code>install</code> in plaats van <code>test</code> goal uitgevoerd worden. <br/><br/>
+Het kan <em>ook</em> zijn dat nog zaken geïnstalleerd moeten worden in de lokale Maven repository (het root project) -&gt; eerst <code>mvn clean install</code> op het root project doen (voor <em>vac</em> is dit zo). Dit is omdat het endtoend project daarop afhangt, en de compile dan faalt.</p>
+
+<h2 id="een-jar-manueel-in-de-repository-installeren">Een jar manueel in de repository installeren</h2>
+
+<p>Gebruik het volgende commando:</p>
+
+<blockquote>
+<p><code>mvn install:install-file -Dfile######x.jar -DgroupIdcom.group -DartifactId######jarName -Dversion1.0.0 -Dpackaging=jar</code></p>
+</blockquote>
+
+<p>Wens je dit in de <strong>remote repository</strong> te installeren, gebruik dan <code>mvn deploy:deploy-file</code> met als extra parameter de url van de repository via de <code>-Durl=repoUrl</code> optie.</p>
+
+<h2 id="de-maven-java-compiler-versie-goed-zetten">De maven java compiler versie goed zetten</h2>
+
+<p>Gebeurt in een plugin in de <code>build</code> fase:</p>
+
+<pre><code class="language-xml">	&lt;build&gt;
+		&lt;finalName&gt;test&lt;/finalName&gt;
+		&lt;plugins&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+				&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+				&lt;configuration&gt;
+					&lt;encoding&gt;UTF-8&lt;/encoding&gt;
+					&lt;source&gt;1.6&lt;/source&gt;
+					&lt;target&gt;1.6&lt;/target&gt;
+				&lt;/configuration&gt;
+			&lt;/plugin&gt;
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

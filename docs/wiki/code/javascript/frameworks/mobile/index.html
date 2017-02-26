@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>mobile</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="mobile" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/frameworks/mobile/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>mobile</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="js-clientside-mobile-frameworks">JS Clientside Mobile frameworks</h1>
+
+<h2 id="native-applicaties-deployen">Native applicaties deployen</h2>
+
+<p>Gebruik <a href="http://www.phonegap.com/">http://www.phonegap.com/</a> om met CSS3+HTML5+JS een native applicatie te builden - ondersteuning voor iOS, Android, Blackberry etc.<br/><br/>
+Ondersteunt ook <strong>native hardware</strong> zoals camera, accelerometer, GPS etc - zie <a href="http://docs.phonegap.com/phonegap_media_capture_capture.md.html#Capture">Documentatie</a></p>
+
+<h5 id="websockets-in-phonegap">WebSockets in Phonegap</h5>
+
+<p>Zit in de milestone 1.0 planning - nog niet officiëel ondersteund.</p>
+
+<ol>
+<li>Voor <strong>Android</strong>: Zie http:*anismiles.wordpress.com/2011/02/03/websocket-support-in-android%E2%80%99s-phonegap-apps/ en <a href="https:*github.com/anismiles/websocket-android-phonegap">source</a></li>
+<li>Voor <strong>iPhone</strong>: Zie http:*remysharp.com/2010/10/04/websockets-in-phonegap-projects/ en <a href="https:*github.com/remy/PhoneGap-Plugin-WebSocket">source</a></li>
+</ol>
+
+<h2 id="mobile-apps-viewports">Mobile apps &amp; Viewports</h2>
+
+<p>In de <code>&lt;head/&gt;</code> tag is het belangrijk om viewport meta-informatie aan te geven zoals:</p>
+
+<pre><code class="language-html">&lt;meta name######&quot;viewport&quot; content&quot;width######device-width, initial-scale1.0&quot;&gt; 
+</code></pre>
+
+<p>Waarom? <a href="https:*docs.google.com/present/view?id######dkx3qtm_22dxsrgcf4&amp;pli1">daarom</a> - zie <a href="http:*html5boilerplate.com/mobile/">HTML5 mobile boilerplate</a> en <a href="http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html">A pixel is not a pixel is not a pixel</a>.</p>
+
+<h2 id="jquery-mobile">jQuery Mobile</h2>
+
+<p>-&gt; Zie ook <a href="http://www.slideshare.net/todd_anderson/jquery-mobile-progressive-enhancement-with-html5-8302294">jQuery Mobile: Progressive Enhancement with HTML5</a> slideshare</p>
+
+<h3 id="zelf-een-pagina-ophalen-en-tonen">Zelf een pagina ophalen en tonen</h3>
+
+<pre><code class="language-javascript">//create markup
+var newPage ###### $(&quot;&lt;div data-rolepage data-url######yay&gt;&lt;div data-roleheader&gt;&lt;h1&gt;YAY!!!!&lt;/h1&gt;&lt;/div&gt;&lt;div data-role######content&gt;&lt;img srchttp://bukk.it/yay.gif /&gt;&lt;/div&gt;&lt;/div&quot;);
+
+//append it to the page container
+newPage.appendTo( $.mobile.pageContainer );
+
+//go to it
+$.mobile.changePage( newPage );
+</code></pre>
+
+<p>Zie <a href="http://jquerymobile.com/test/docs/api/events.html">http://jquerymobile.com/test/docs/api/events.html</a></p>
+
+<h3 id="problemen-met-rerenderen-mobile-widgets-doe-het-zelf">Problemen met rerenderen Mobile widgets? doe het zelf!</h3>
+
+<p>Zie <a href="https:*github.com/bnolan/Backbone-Mobile/blob/master/application.coffee">Coffeescript+Backbone+Mobile</a> oplossing en <a href="http:*bennolan.com/2010/11/23/backbone-and-jquery-mobile.html">Corresponderende blogpost</a>:</p>
+
+<p><img style='float: left; width: nolink&|px;' src='/img//code/javascript/frameworks/floempie.jpg'></p>
+
+<pre><code class="language-javascript">	function render() {
+		var activePage = $.mobile.activePage; // this also works: $(&quot;.ui-page-active&quot;)
+		activePage.find('ul[data-role]').listview();
+		activePage.find('div[data-role=&quot;fieldcontain&quot;]').fieldcontain();
+		activePage.find('button[data-role=&quot;button&quot;]').button();
+		activePage.find('input,textarea').textinput();
+		activePage.page();
+	}
+</code></pre>
+
+<p>Dit ziet er wel resource intensitief uit en zou op een mobiel device nogal kunnen &ldquo;floepen&rdquo;. ((De bijhorende tekening is Copyright Kabouter Wesley enzo))</p>
+
+<p>Wanneer je enkele <code>&lt;li/&gt;</code> elementen aan bijvoorbeeld een <code>listview</code> toevoegt, zou een <code>.listview(&quot;refresh&quot;)</code> call genoeg moeten zijn. Dit restylet enkel de nodige LI elementen, terwijl zonder argumenten de hele lijst <em>from scratch</em> re-rendert. Dit kost veel meer tijd&hellip;</p>
+
+<p>❗ JS Frameworks die content dynamisch re-renderen zoals <strong>KnockoutJS</strong> of <strong>Backbone</strong> vervangen de hele lijst in de DOM tree. Dit wil zeggen dat <code>refresh</code> niet genoeg zal zijn&hellip;</p>
+
+<h3 id="custom-jquery-events">Custom jQuery events</h3>
+
+<p>jQuery Mobile laadt pagina transities allemaal in één single page HTML. Het DOM Loaded event wordt dus maar één keer afgevuurd. Hoe moet je custom JS uitvoeren bij het &ldquo;laden&rdquo; van één pagina?</p>
+
+<pre><code class="language-javascript">$(&quot;#myPage&quot;).live('pageshow', function() {
+ // in here!
+});
+</code></pre>
+
+<p>Waarbij <code>myPage</code> een <code>&lt;div id######&quot;myPage&quot; data-role&quot;page&quot;&gt;</code> element is.</p>
+
+<p>❗ Gebruik <code>live</code> omdat op het moment dat die code geëvalueerd wordt, die pagina waarschijnlijk nog niet aan de DOM hangt! (jQuery mobile intern)</p>
+
+<p>Meer custom events:</p>
+
+<ul>
+<li><code>pageshow</code></li>
+<li><code>pagehide</code></li>
+<li><code>pagecreate</code></li>
+<li><code>pagebeforecreate</code></li>
+<li><code>pagebeforeshow</code></li>
+<li><code>pagebeforehide</code></li>
+</ul>
+
+<p>Zie <a href="http://jquerymobile.com/test/docs/api/events.html">http://jquerymobile.com/test/docs/api/events.html</a></p>
+
+<h3 id="pagina-transities-passing-data">Pagina transities: passing data</h3>
+
+<p>jQuery Mobile is niet designed om 100% Client-side only Javascript applicaties te ondersteunen. <code>form</code> elementen worden gesubmit met een <code>POST</code> naar een server, nieuwe pagina&rsquo;s kunnen vanuit een server (PHP, JSP, &hellip;) dynamisch opgebouwd worden. Hoe geven we tussen page transities, puur in Javascript, gegevens door?</p>
+
+<ol>
+<li><code>GET</code> parameters manueel toevoegen en parsen vanuit de URL: <em>geen goed idee</em> omdat jQuery Mobile hashing etc toevoegt aan de URL voor navigatie!</li>
+<li>Zelf de transitie state bijhouden in een view objectje.</li>
+</ol>
+
+<p>Het tweede kan door bijvoorbeeld een <code>onclick</code> event te registreren en HTML5 <code>data</code> attributes te gebruiken om IDs bij te houden:</p>
+
+<pre><code class="language-javascript">$(&quot;.vacatureLink&quot;).click(function() {
+	application.setVacatureId($(this).data(&quot;id&quot;));
+});
+</code></pre>
+
+<p>Met bijvoorbeeld een KnockoutJS template:</p>
+
+<pre><code class="language-html">&lt;img style='' src='/img/each vacatures'&gt;
+	&lt;li&gt;
+		&lt;a href######&quot;detail.html&quot; data-id&quot;${id}&quot; class=&quot;vacatureLink&quot;&gt;${vacatureGegevens.aantalJobs} ${gezochtProfiel.functieNaam} ( ${kandidaten.length} kandidaten )&lt;/a&gt;
+	&lt;/li&gt;
+&lt;img style='' src='/img//each'&gt;
+</code></pre>
+
+<p>De transitie naar detail.html gebeurt ná onze <code>click</code> event handler. Bij het laden van de page op detail.html doen we &ldquo;iets&rdquo; met onze id:</p>
+
+<pre><code class="language-javascript">$(&quot;#detailsVacature&quot;).live('pagebeforeshow', function() {
+	var id = application.getVacatureId();
+	// doe iets?
+});
+</code></pre>
+
+<p>Het is natuurlijk nog beter als die logica gewoon in de <code>setVacatureId</code> functie steekt die reeds is aangeroepen.</p>
+
+<h2 id="andere-js-mobile-frameworks">Andere JS Mobile frameworks</h2>
+
+<ol>
+<li><a href="http://joapp.com/">http://joapp.com/</a></li>
+<li><a href="http://www.sencha.com/products/touch/">http://www.sencha.com/products/touch/</a> (ExtJS based)</li>
+<li><a href="http://www.jqtouch.com/">http://www.jqtouch.com/</a> (jQuery based - ouder, dev. overgeschakeld naar Sencha Touch)</li>
+<li><a href="http://www.winktoolkit.org/">http://www.winktoolkit.org/</a> (Dojo based)</li>
+<li><a href="http://xuijs.com/">http://xuijs.com/</a> (micro DOM manipulation framework)</li>
+<li><a href="http://www.ipfaces.org/content/java">http://www.ipfaces.org/content/java</a> (jsp-style bwerk)</li>
+<li><a href="http://dhtmlx.com/touch/samples/">http://dhtmlx.com/touch/samples/</a></li>
+<li><a href="http://www.nimblekit.com/index.php">http://www.nimblekit.com/index.php</a> (native iOS only!)</li>
+<li><a href="http://www.the-m-project.org/">http://www.the-m-project.org/</a> (jQuery Mobile + Expresso, NodeJS build tool)</li>
+</ol>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

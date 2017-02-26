@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>ironpython</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="ironpython" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/python/ironpython/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>ironpython</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="ironpython">IronPython</h1>
+
+<p>Interessante links:
+  * <a href="http://www.voidspace.org.uk/ironpython/dark-corners.shtml">Iron Python In Action - Dark corners</a>
+  * <a href="http://ironpython.net/documentation/dotnet/">IronPython .NET Integration documentation</a>
+  * <a href="https://pytools.codeplex.com/">Python Tools for Visual Studio</a></p>
+
+<h3 id="c-python-interop">C#/Python interop</h3>
+
+<h4 id="c-in-python">C# in Python</h4>
+
+<h5 id="overerving">Overerving</h5>
+
+<p>In Python C# klassen over laten erven gaat zonder meer. Constructors werken <strong>niet</strong> via <code>_ _init_ _</code> maar via new:</p>
+
+<blockquote>
+<p>The <strong>init</strong> method is the Python initializer method. It is an instance method and so receives the instance as the first argument, which by convention is called self. If you want to override the .NET constructor (responsible for creating the instance) then from Python you override the <strong>new</strong> class method.</p>
+</blockquote>
+
+<pre><code class="language-python">import clr
+clr.AddReference('System.Windows.Forms')
+
+from System.Windows.Forms import (
+    Application, Form
+)
+
+
+class MainForm(Form):
+
+    def __new__(cls, text):
+        instance = Form.__new__(cls)
+        instance.Text = text
+
+        return instance
+
+app = MainForm('Hello World')
+Application.Run(app)
+</code></pre>
+
+<h4 id="python-in-c">Python in C#</h4>
+
+<h5 id="de-script-engine-manueel-firen">De script engine manueel firen</h5>
+
+<pre><code class="language-csharp"> using IronPython;  
+ using IronPython.Modules;  
+ using System.Text;  
+
+ public class ScriptExample {  
+     [MenuItem(&quot;Python/HelloWorld&quot;)]  
+     public static void ScriptTest()  
+     {  
+         // create the engine  
+         var ScriptEngine = IronPython.Hosting.Python.CreateEngine();  
+         // and the scope (ie, the python namespace)  
+         var ScriptScope = ScriptEngine.CreateScope();  
+         // execute a string in the interpreter and grab the variable  
+         string example ###### &quot;output  'hello world'&quot;;  
+         var ScriptSource = ScriptEngine.CreateScriptSourceFromString(example);  
+         ScriptSource.Execute(ScriptScope);  
+         string came_from_script = ScriptScope.GetVariable&lt;string&gt;(&quot;output&quot;);  
+         // Should be what we put into 'output' in the script.  
+         Debug.Log(came_from_script);              
+     }  
+ }  
+</code></pre>
+
+<p>Via <a href="http://techartsurvival.blogspot.ca/2013/12/embedding-ironpython-in-unity-tech-art.html">Embedding IronPython in Unity</a>.</p>
+
+<h3 id="visual-studio-integration">Visual Studio Integration</h3>
+
+<p><img style='float: left; width: direct&800 |px;' src='/img//code/python/ide.png'></p>
+
+<p>Installeer IronPython &amp; Python tools for VS. File -&gt; New Project -&gt; IronPython Application.</p>
+
+<h5 id="references-leggen">References leggen</h5>
+
+<p>References voor het python project zijn niet voldoende, je moet ook het <strong>Search Paths</strong> mapje updaten, kan enkel op dll toegevoegd worden.</p>
+
+<p>Vanaf dan kan je via <code>clr</code> de imports doen zoals <code>using</code> in C#:</p>
+
+<pre><code class="language-python">import clr
+clr.AddReferenceByName('Wizards')
+from Wizards import *
+# use some class from the Wizards namespace below.
+</code></pre>
+
+<h5 id="unit-testen-uitvoeren">Unit testen uitvoeren</h5>
+
+<p>❗ MSTest &amp; Test Explorer werkt automatisch en herkent alle testen - ReSharpner werkt niet meer. Een test python file uitvoeren kan ook met F5 (file als startup file), en <code>unittest.main()</code> erbij plaatsen.</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

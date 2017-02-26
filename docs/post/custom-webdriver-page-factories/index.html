@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Custom Webdriver Page Factories</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="Custom Webdriver Page Factories" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/custom-webdriver-page-factories/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="/img/Custom%20Webdriver%20Page%20Factories.jpg"></div>
+  
+
+  <header class="header-section has-img">
+  
+    <div class="big-img intro-header">
+        <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Custom Webdriver Page Factories</h1>
+      
+        
+      <h2 class="post-subheading">Wrapping WebElements to reduce boilerplate clutter</h2>
+      
+      
+      
+      
+      <span class="post-meta">22 September 2014</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+      <span class='img-desc'></span>
+    </div>
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Custom Webdriver Page Factories</h1>
+      
+        
+      <h2 class="post-subheading">Wrapping WebElements to reduce boilerplate clutter</h2>
+      
+      
+      
+      
+      <span class="post-meta">22 September 2014</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/unit-testing">unit testing</a> </li>
+      
+       <li><a href="/tags/java">java</a> </li>
+      
+       <li><a href="/tags/c">C#</a> </li>
+      
+       <li><a href="/tags/webdriver">webdriver</a> </li>
+      
+       <li><a href="/tags/scenario-testing">scenario testing</a> </li>
+      
+      </ul>
+
+      <article role="main" class="blog-post">
+          <p>The problem: Webdriver elements returned by <code>driver.FindElement()</code> are too generic. There&rsquo;re the <code>Text</code>, <code>SendKeys()</code> and <code>Click()</code> methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like <code>ShouldContainValue</code> or <code>Type</code> (okay, that&rsquo;s a one-to-one mapping with <code>SendKeys()</code>, but it&rsquo;s a lot less technical!). Instead of</p>
+
+<pre><code>    [FindsBy(How = How.CssSelector, Using = &quot;.ux-desktop-taskbar-startbutton&quot;)]
+    private IWebElement startButton;
+
+    [FindsBy(How = How.CssSelector, Using = &quot;.other&quot;)]
+    private IWebElement whatever;
+</code></pre>
+
+<p>You&rsquo;d find code like</p>
+
+<pre><code>    [FindsBy(How = How.CssSelector, Using = &quot;.ux-desktop-taskbar-startbutton&quot;)]
+    private HTMLSubmitButton startButton;
+
+    [FindsBy(How = How.CssSelector, Using = &quot;.other&quot;)]
+    private HTMLInputBox whatever;
+</code></pre>
+
+<p>In java, this is not that difficult. Normally all fields annotated with FindsBy are filled in via reflection with <code>PageFactory.InitElements()</code>. (warning: this creates proxies and does not yet actually do the lookup in the DOM tree. This is a good thing, as filling the fields usually happens inside the constructor of a page object.). <code>initElements</code> returns the filled page, you can do a few things from there:</p>
+
+<ul>
+<li>postprocess the page and decorate your fields</li>
+<li>create your own page factory and create your own fields, wrapped around the webdriver proxies</li>
+</ul>
+
+<p>In C#, you&rsquo;re in trouble - the class is sealed, and the proxy classes are internal. Creating your own factory is possible, but produces fuzzy code:</p>
+
+<pre><code>internal class PageFactory
+{
+    private PageFactory()
+    {
+    }
+
+    private static By FindsByAttributeToBy(FindsByAttribute attribute)
+    {
+        return (By) typeof (FindsByAttribute).GetProperty(&quot;Finder&quot;, BindingFlags.NonPublic | BindingFlags.Instance).GetValue(attribute);
+    }
+
+    public static void InitElements(IWebDriver driver, object page)
+    {
+        foreach (FieldInfo field in FindAllFieldsAndProperties(page.GetType()))
+        {
+            Attribute[] findsByAttribs = Attribute.GetCustomAttributes(field, typeof (FindsByAttribute), true);
+            if (findsByAttribs.Length &gt; 0)
+            {
+                var findsByAttribute = (findsByAttribs[0] as FindsByAttribute);
+                if (field.FieldType == typeof (IWebElement))
+                {
+                    field.SetValue(page, FindElement(driver, FindsByAttributeToBy(findsByAttribute)));
+                }
+                else if (typeof (IEnumerable).IsAssignableFrom(field.FieldType))
+                {
+                    field.SetValue(page, FindElements(driver, FindsByAttributeToBy(findsByAttribute)));
+                }
+            }
+        }
+    }
+
+    private static IWebElement FindElement(IWebDriver driver, By by)
+    {
+        // warning: create WebProxyElement instead of directly doing a lookup
+        return driver.FindElement(by);
+    }
+
+    private static IReadOnlyCollection&lt;IWebElement&gt; FindElements(IWebDriver driver, By by)
+    {
+        // warning: create WebListProxyElement instead of directly doing a lookup
+        return driver.FindElements(by);
+    }
+
+    private static IEnumerable&lt;FieldInfo&gt; FindAllFieldsAndProperties(Type type)
+    {
+        var list = new List&lt;FieldInfo&gt;();
+        list.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.Public));
+        for (; type != (Type) null; type = type.BaseType)
+        {
+            list.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic));
+        }
+        return list;
+    }
+}
+</code></pre>
+
+<p>If you have a keen eye, you notice a few things:</p>
+
+<ul>
+<li>caching of the attribute wouldn&rsquo;t work anymore. The default C# WebDriver implementation is fuzzy and I didn&rsquo;t want to copypaste code I won&rsquo;t use.</li>
+<li>proxying won&rsquo;t work anymore, you&rsquo;d have to use reflection to instantiate internal classes.</li>
+<li>reflection has been used to fetch the <code>By</code> instance of the <code>FindsByAttribute</code>. Yay.</li>
+</ul>
+
+<p>The above solution is too complex to solve a simple thing. Instead of a custom page factory, in C# we now use extension methods on <code>IWebElement</code>. Another possibility would to create wrapper objects on-the-fly but you&rsquo;d still have to map the &ldquo;raw&rdquo; web elements on page objects.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="http://www.brainbaking.com/post/scons-building/" data-toggle="tooltip" data-placement="top" title="Bye autotools hello Scons">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="http://www.brainbaking.com/post/faking-domain-logic/" data-toggle="tooltip" data-placement="top" title="Faking domain logic">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

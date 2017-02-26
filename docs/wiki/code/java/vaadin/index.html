@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>vaadin</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="vaadin" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/java/vaadin/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>vaadin</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="vaadin-7">Vaadin 7</h1>
+
+<h2 id="javascript-uitvoeren-in-de-frontent">Javascript uitvoeren in de frontent</h2>
+
+<pre><code class="language-java">@JavaScript({ &quot;https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js&quot;, &quot;js_label.js&quot; })
+public class JsLabel extends AbstractJavaScriptComponent {
+
+	public JsLabel(String xhtml) {
+		getState().xhtml = xhtml;
+	}
+
+	@Override
+	protected JsLabelState getState() {
+		return (JsLabelState) super.getState();
+	}
+
+	public static class JsLabelState extends JavaScriptComponentState {
+		public String xhtml;
+	}
+
+}
+</code></pre>
+
+<p>en bijbehorende js_label.js file - plaats in <code>src/main/resources</code> onder zelfde subdir als package van java file&hellip;</p>
+
+<pre><code class="language-javascript">be_vdab_nonstop_presentation_form_JsLabel = function() {
+  var e = this.getElement();
+	
+  this.onStateChange = function() {
+    jQuery(e).html(this.getState().xhtml); 
+  }
+}
+</code></pre>
+
+<h2 id="mainui">MainUI</h2>
+
+<pre><code class="language-java">@PreserveOnRefresh
+@Theme(&quot;yourTheme&quot;)
+public class MainUI extends UI {
+	@Override
+	protected final void init(VaadinRequest request) {
+		setNavigator(new MyNavigator(this));
+		initDefaultScreen();
+		getNavigator().navigate();
+	}
+
+	private void initDefaultScreen() {
+		getNavigator().addView(&quot;&quot;, BlahScherm.class);
+	}
+
+	public void refresh() {
+		Component content = getContent();
+		setContent(new VerticalLayout());
+		setContent(content);
+	}
+
+}
+</code></pre>
+
+<p>Waarbij <code>BlahScherm</code> <code>View</code> implementeert (extends <code>CustomComponent</code>)</p>
+
+<p>Parameters van de URL afhalen en afhankelijk daarvan ergens naar navigeren kan gebeuren in <code>MyNavigator</code> die extends <code>Navigator</code>. In de constructor <code>addView()</code> aanroepen (keyvalue pair)</p>
+
+<h2 id="utilities-om-in-componenten-te-zoeken">Utilities om in componenten te zoeken</h2>
+
+<pre><code class="language-java">public class VaadinUtilties {
+
+	public static &lt;T extends AbstractComponent&gt; T findComponentWithin(HasComponents otherComponent, Class&lt;T&gt; componentClass, String id) {
+		return findOnly(otherComponent, componentClass, metId(id));
+	}
+
+	public static &lt;E extends Component&gt; E findOnly(HasComponents container, final Class&lt;E&gt; componentClass, Predicate&lt;? super E&gt; predicate) {
+		return getOnlyElement(filter(findAll(container, componentClass), predicate));
+	}
+
+	public static &lt;E extends Component&gt; E findOnly(HasComponents container, final Class&lt;E&gt; componentClass) {
+		return findOnly(container, componentClass, alwaysTrue());
+	}
+
+	public static &lt;E extends Component&gt; Set&lt;E&gt; findAll(HasComponents container, Class&lt;E&gt; componentClass) {
+		if (container instanceof CustomField) {
+			initCustomField((CustomField&lt;?&gt;) container);
+		}
+		Set&lt;E&gt; result = newHashSet(filter(container, componentClass));
+		for (HasComponents subContainer : filter(container, HasComponents.class)) {
+			result.addAll(findAll(subContainer, componentClass));
+		}
+		return result;
+	}
+
+	public static void initCustomField(CustomField&lt;?&gt; customField) {
+		customField.iterator().next();
+	}
+
+	public static boolean isVisibleOnScreen(Component component) {
+		return component.isVisible() &amp;&amp; parentIsVisible(component);
+	}
+
+	private static boolean parentIsVisible(Component component) {
+		if (component.getParent() ###### null) {
+			return true;
+		} else {
+			return isVisibleOnScreen(component.getParent());
+		}
+	}
+
+	public static Predicate&lt;Component&gt; metCaption(final String caption) {
+		return new Predicate&lt;Component&gt;() {
+			public boolean apply(Component component) {
+				return StringUtils.equals(component.getCaption(), caption);
+			}
+		};
+	}
+
+	public static Predicate&lt;Component&gt; captionContains(final String caption) {
+		return new Predicate&lt;Component&gt;() {
+			public boolean apply(Component component) {
+				return StringUtils.contains(component.getCaption(), caption);
+			}
+		};
+	}
+
+	public static Predicate&lt;Label&gt; value(final String value) {
+		return new Predicate&lt;Label&gt;() {
+			public boolean apply(Label label) {
+				return StringUtils.equals(label.getValue(), value);
+			}
+		};
+	}
+
+	public static Predicate&lt;Label&gt; valueContains(final String value) {
+		return new Predicate&lt;Label&gt;() {
+			public boolean apply(Label label) {
+				return StringUtils.contains(label.getValue(), value);
+			}
+		};
+	}
+
+	public static Predicate&lt;Component&gt; metId(final String id) {
+		return new Predicate&lt;Component&gt;() {
+			public boolean apply(Component component) {
+				return StringUtils.equals(component.getId(), id);
+			}
+		};
+	}
+
+}
+
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

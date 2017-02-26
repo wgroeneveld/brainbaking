@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>yeoman</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="yeoman" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/frameworks/yeoman/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>yeoman</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="build-tools-yeoman-grunt-requirejs-ea">Build tools: Yeoman, Grunt, RequireJS ea</h1>
+
+<p>Zie ook integratie met <a href="/wiki/code/javascript/frameworks/handlebars/">code/javascript/frameworks/handlebars</a>.</p>
+
+<p>Help nodig? Vast? &gt;&gt;</p>
+
+<ul>
+<li><a href="http://gruntjs.com/installing-grunt">http://gruntjs.com/installing-grunt</a></li>
+<li><a href="http://yeoman.io/commandline.html">http://yeoman.io/commandline.html</a></li>
+<li><a href="http://requirejs.org/docs/api.html">http://requirejs.org/docs/api.html</a></li>
+<li><a href="https://github.com/twitter/bower">https://github.com/twitter/bower</a></li>
+<li><a href="https://npmjs.org/doc/">https://npmjs.org/doc/</a></li>
+</ul>
+
+<p>Meer info over Yeoman, tooling support, scaffolding, etc:</p>
+
+<ul>
+<li><a href="https://plus.google.com/115133653231679625609/posts/h8shHWJtcKd">https://plus.google.com/115133653231679625609/posts/h8shHWJtcKd</a></li>
+</ul>
+
+<h2 id="deploying">Deploying</h2>
+
+<h4 id="naar-een-ftp-server">Naar een FTP server</h4>
+
+<p>Gebruik <code>grunt-ftp-deploy</code> node plugin: <a href="https://github.com/zonak/grunt-ftp-deploy">https://github.com/zonak/grunt-ftp-deploy</a></p>
+
+<pre><code class="language-javascript">'ftp-deploy': {
+  build: {
+    auth: {
+      host: 'server.com',
+      port: 21,
+      authKey: 'key1'
+    },
+    src: '/path/to/source/folder',
+    dest: '/path/to/destination/folder',
+    exclusions: ['/path/to/source/folder/**/.DS_Store', '/path/to/source/folder/**/Thumbs.db', 'dist/tmp']
+  }
+}
+</code></pre>
+
+<p>❗ auth key ref verwijst naar <code>.ftppass</code> in working dir</p>
+
+<h2 id="testing">Testing</h2>
+
+<h4 id="mocha">Mocha</h4>
+
+<p>Zie <a href="http://visionmedia.github.com/mocha/">http://visionmedia.github.com/mocha/</a></p>
+
+<p>Built-in support voor yeoman. Verschil met jasmine:</p>
+
+<ol>
+<li>mocha heeft geen assertions. Yeoman gebruikt by default [<a href="http://chaijs.com/|chaiJS">http://chaijs.com/|chaiJS</a>] assertions.</li>
+<li>mocha heeft geen spies.</li>
+</ol>
+
+<h4 id="jasmine">Jasmine</h4>
+
+<p>Integratie met Grunt mogelijk met <a href="https://github.com/creynders/grunt-jasmine-task">https://github.com/creynders/grunt-jasmine-task</a> en dan in <code>Gruntfile.js</code>:</p>
+
+<pre><code class="language-javascript">grunt.loadNpmTasks('grunt-jasmine-task');
+jasmine: {
+  all: ['specs/specrunner.html']
+},
+</code></pre>
+
+<h2 id="package-managing">Package managing</h2>
+
+<p>Modules worden via de node package manager, <code>npm</code> geïnstalleerd, al dan niet globaal met de <code>-g</code> flag:</p>
+
+<pre><code>sudo npm install grunt-contrib-handlebars --save-dev
+</code></pre>
+
+<p><code>-g</code> betekent <strong>niet</strong> lokaal installeren maar in een bin folder op het systeem. Waarom/wanneer het ene of het andere kiezen? <a href="http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation/">http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation/</a></p>
+
+<h2 id="requirejs">RequireJS</h2>
+
+<p>Zie requirejs.org/docs/api.html</p>
+
+<h4 id="amd-structuur">AMD Structuur</h4>
+
+<p>Main file:</p>
+
+<pre><code class="language-javascript">require.config({
+
+});
+ 
+require(['app'], function(app) {
+	// main module which fires up everything
+});
+</code></pre>
+
+<p>Na includen van Rjs in html:</p>
+
+<pre><code class="language-html">    &lt;script data-main######&quot;scripts/main&quot; src&quot;scripts/vendor/require.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Gaat rjs afhankelijk van <code>data-main</code> de hoofd JS file inladen (bovenstaande). That&rsquo;s it!</p>
+
+<p>Module files:</p>
+
+<pre><code class="language-javascript">define(['dep1', 'dep2'], function(dep1, dep2) {
+
+  // dep1, dep2 accessible &amp; loaded
+
+  return {
+    api: function() { ... }
+  };
+
+});
+</code></pre>
+
+<p>Rjs gaat eerst dep1 en dep2 laden en dan de bovenstaande code pas. Hiervoor moeten natuurlijk beide andere APIs ook <code>AMD</code> wrapped zijn. <a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a> staat voor <strong>&ldquo;Async Module Definition&rdquo;</strong></p>
+
+<h4 id="wat-doe-ik-als-een-api-geen-amd-gebruikt">Wat doe ik als een API geen AMD gebruikt</h4>
+
+<p>Gebruik <code>shim</code> config van Rjs: requirejs.org/docs/api.html#config-shim</p>
+
+<pre><code class="language-javascript">require.config({
+  shim: {
+  	'handlebars': {
+  		exports: 'Handlebars'
+  	}
+  },
+
+  paths: {
+    jquery: 'vendor/jquery.min',
+    handlebars: './../components/handlebars/handlebars.runtime'
+  }
+});
+ 
+require(['handlebars'], function(Handlebars) {
+	// gogo!
+});
+</code></pre>
+
+<p>Wat is hier gebeurd:</p>
+
+<ul>
+<li><code>jquery</code> en <code>handlebars</code> includen wordt via een bepaald pad ingeladen in plaats van het standaard pad</li>
+<li><code>handlebars</code> gaat gewrapped worden in een AMD module, die <code>Handlebars</code> als variabele exporteert.</li>
+</ul>
+
+<h4 id="hoe-verander-ik-mijn-relatieve-include-paden">Hoe verander ik mijn (relatieve) include paden</h4>
+
+<p>Als je <code>grunt</code> gebruikt, in <code>Gruntfile.js</code> de hoofd Rjs config file alteren:</p>
+
+<pre><code class="language-javascript">    rjs: {
+      // no minification, is done by the min task
+      optimize: 'none',
+      baseUrl: './scripts',
+      wrap: true,
+      name: 'main'
+    },
+</code></pre>
+
+<p>Bovenstaande gaat altijd vanaf mapje scripts beginnen lezen.</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

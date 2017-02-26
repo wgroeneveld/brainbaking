@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>strategie</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="strategie" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/java/testing/strategie/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>strategie</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="test-strategie">Test strategie</h1>
+
+<p>Er zijn verschillende soorten testen en deze komen (eventueel) in elke laag terug.</p>
+
+<h2 id="unit-testen">Unit testen</h2>
+
+<pre><code>* Wat? Testen of een kleine unit/component op zich werkt.
+* Welke gevallen? alle gevallen: elk successpad (alle boundary conditions), alle mogelijke failure paden
+* Eventueel vriendjes van deze component wegmocken (let op voor mockitis!)
+* Testen zonder databank of andere integratie (rest calls)
+* Extenden van BaseTestCase -&gt; NOOIT meer `[MockitoAnnotations.initMocks(this)](http://mockito.googlecode.com/svn/branches/1.6/javadoc/org/mockito/MockitoAnnotations.html)` uitvoeren!! We gebruiken nu de PowerMockRunner.
+* Elke entity/aggregate root moet een xxxBuilder klasse hebben om test data te maken.
+</code></pre>
+
+<p>Bijvoorbeeld bij web testen is het meestal beter om de stubs van ActionMapping, HttpServletRequest etc te gebruiken dan een mock aan te maken. -&gt;</p>
+
+<pre><code class="language-java">public void BlaActionTest extends StrutsTestCase {
+  @Test
+  public void testDit() {
+	 action.doeIets(mappingStub, requestStub, ...) // ipv mock
+  }
+}
+</code></pre>
+
+<p>Opletten met PowerMock static mocks - zo weinig mogelijk gebruiken, de <code>PowerMock</code> class loader is nogal een memory-hog.</p>
+
+<p>We gebruiken nu in plaats van Hamcrest assertThat altijd FEST Assert.
+Manual/wiki hier: <a href="http://docs.codehaus.org/display/FEST/FEST-Assert">http://docs.codehaus.org/display/FEST/FEST-Assert</a>
+Het komt erop neer dat je nooit meer dan 1x hoeft te static-importen door <code>assertThat(blabla).isX().hasY()</code>&hellip; en alles (indien gewenst) te chainen.</p>
+
+<h2 id="integratie-testen">Integratie testen</h2>
+
+<pre><code>* Testen dat de integratie van een aantal componenten met een extern infrastructure systeem correct werkt
+* Test persistentie van domain objecten + queries : d.i. integratie met databank
+* Extenden van IntegrationTestCase
+</code></pre>
+
+<h2 id="postdeploy-testen">Postdeploy testen</h2>
+
+<pre><code>* Testen dat de applicatie als geheel werkt.
+* Testen vereisen een gedeployde applicatie 
+* [code/java/testing/selenium](/wiki/code/java/testing/selenium/). Voor specifieke commando's van selenium en pitfalls, zie de wiki link!
+</code></pre>
+
+<p>❗ <strong>Argument Catching matchers</strong> - Indien je denkt deze matcher nodig te hebben bij het unit testen is het misschien beter om na te denken over de implementatie die getest wordt. Zit deze OK in elkaar qua design? Meestal helpt een beetje refactoren beter dan die matcher te schrijven of je integratie-test een klein stukje.</p>
+
+<p>❗ <strong>Falende Selenium Testen</strong> - Best eens nakijken of er geen testen ontbreken in de code die dit zou moeten opvangen. Anders wordt er te veel berust op de selenium testen die alles zouden moeten afdekken.</p>
+
+<h1 id="testen-per-laag">Testen per Laag</h1>
+
+<h2 id="domein">Domein</h2>
+
+<p>Alle domain code wordt geunit-tested.</p>
+
+<p>Alle persistentie code (elk veld) wordt geïntegratietested
+    * elk field op een entity/aggregateroot
+    * elke relatie tussen entities/aggregateroots
+    * elke query + fields waar men op kan filteren</p>
+
+<h2 id="presentatie">Presentatie</h2>
+
+<p>Dit zijn selenium testen, waarbij men het volgende wil testen:
+    * Of het scherm in het algemeen &ldquo;werkt&rdquo; door de titel te asserten (ipv verify: direct falen dan)
+    * Of ik velden kan invullen en saven, en daarna terug kan opvragen
+    * Of ik wanneer het kan bepaalde velden <em>in bepaalde gevallen al dan niet kan zien</em> (combobox hide/show)<br/><br/>Dit is belangrijk!
+    * Belangrijke validaties (bijvoorbeeld datum van &lt; datum tot, maar niet ingeldige datum)
+    * Of ik records kan verwijderen uit een lijst wanneer mogelijk
+    * Flow tussen verschillende schermen: bvb. van aanmaken vreemdeling naar aanvraag naar bepaalde tab
+    * Effecten van struts configuratie bvb: errorhandler <code>DomainValidationExceptionHandler</code> correct geconfigureerd?</p>
+
+<p>Het is belangrijk om voor Javascript-specifieke zaken ook testen te schrijven omdat bijvoorbeeld <a href="/wiki/code/jsp/jstl/">code/jsp/jstl</a> geen exception throwt indien er geen bean gevonden is met dollar.</p>
+
+<p>Unit testen voor de weblaag:
+    * Op de form de init aggregate root en update aggregate root (create/update) (en eventueel andere methods)
+    * Eventueel: action methodes testen (indien eenvoudig te testen, anders via selenium integratie test)</p>
+
+<h2 id="application">Application</h2>
+
+<pre><code>* In principe zou deze laag heel dun moeten zijn, de logica bevindt zich in de domein laag. De applicatie laag zou enkel mogen delegeren, voor zo'n zaken zijn we eerder pragmatisch en schrijven we geen testen. &lt;br/&gt;&lt;br/&gt;
+</code></pre>
+
+<p>❗ <strong>Let Op</strong> - Wanneer er toch logica in dreigt te komen (bvb <code>if()... {}</code>) -&gt; natuurlijk wél testen!</p>
+
+<h2 id="infrastructure">Infrastructure</h2>
+
+<pre><code>* Alle code unit testen
+* Hera gateway integratie testen: eventueel in HeraStub een 'speciaal geval' zetten dat een fout genereert zodat je de correct de foutafhandeling test
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

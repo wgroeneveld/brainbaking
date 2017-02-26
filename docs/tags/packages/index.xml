@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Packages on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/packages/index.xml</link>
+    <description>Recent content in Packages on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/packages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>packages</title>
+      <link>http://www.brainbaking.com/wiki/code/python/packages/</link>
+      <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/python/packages/</guid>
+      <description>
+
+&lt;h1 id=&#34;package-management&#34;&gt;Package Management&lt;/h1&gt;
+
+&lt;p&gt;Pain in the ass. Geen built-in beschikbaar, gebruik &lt;strong&gt;pip&lt;/strong&gt;. Zie &lt;a href=&#34;http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows&#34;&gt;http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Installatie (windows dan) - let op, hangt zelfs van minor versie van python af:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install setuptools &lt;a href=&#34;http://www.lfd.uci.edu/~gohlke/pythonlibs/#setuptools&#34;&gt;http://www.lfd.uci.edu/~gohlke/pythonlibs/#setuptools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Install pip &lt;a href=&#34;http://www.lfd.uci.edu/~gohlke/pythonlibs/#pip&#34;&gt;http://www.lfd.uci.edu/~gohlke/pythonlibs/#pip&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Alternatief: grab &lt;a href=&#34;https://raw.github.com/pypa/pip/master/contrib/get-pip.py&#34;&gt;get-pip.py&lt;/a&gt; en laat evalueren door python, haalt automatisch ook setuptools af.&lt;/p&gt;
+
+&lt;p&gt;Vanaf dan &lt;code&gt;pip install [package]&lt;/code&gt; (voeg python base dir/Scripts toe aan uw &lt;code&gt;PATH&lt;/code&gt;). Packages worden dan (als binary) ook in de scripts folder gedownload.&lt;/p&gt;
+
+&lt;h5 id=&#34;upgrades-uitvoeren&#34;&gt;Upgrades uitvoeren&lt;/h5&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;To upgrade an existing setuptools (or distribute), run pip install -U setuptools&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

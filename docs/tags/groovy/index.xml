@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Groovy on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/groovy/index.xml</link>
+    <description>Recent content in Groovy on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Enhancing the builder pattern with closures</title>
+      <link>http://www.brainbaking.com/post/builders-dsl/</link>
+      <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/builders-dsl/</guid>
+      <description>
+
+&lt;p&gt;This post is inspired by Venkat Subramaniam&amp;rsquo;s &lt;a href=&#34;http://www.devoxx.be/dv13-venkat-subramaniam.html&#34;&gt;Devoxx 2013 talk Thinking Functional Style&lt;/a&gt;. See downloads at &lt;a href=&#34;http://www.agiledeveloper.com/downloads.html&#34;&gt;agiledeveloper.com&lt;/a&gt; which has a rather cool Groovy example.&lt;/p&gt;
+
+&lt;h3 id=&#34;classic-builders&#34;&gt;Classic builders&lt;/h3&gt;
+
+&lt;p&gt;For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters. That quickly became very cumbersome to work with. Most of the time, the code will  look like this, whether it&amp;rsquo;s C# or Java doesn&amp;rsquo;t really matter:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class UserBuilder
+{
+    private UserType_V1_0 type = UserType_V1_0.Administrator;
+    private string code = &amp;quot;code&amp;quot;;
+
+    public User_V1_0 Build()
+    {
+        User_V1_0 user = new User_V1_0(code, &amp;quot;name&amp;quot;, type, &amp;quot;id&amp;quot;, &amp;quot;campusId&amp;quot;, true);
+        return user;
+    }
+
+    public UserBuilder WithCode(string code)
+    {
+        this.code = code;
+        return this;
+    }
+
+    public UserBuilder WithType(UserType_V1_0 type)
+    {
+        this.type = type;
+        return this;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Used this way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  var user = new UserBuilder()
+    .withCode(&amp;quot;AB&amp;quot;)
+    .Build();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Okay, what&amp;rsquo;s happening here?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Builder objects have &lt;code&gt;withX()&lt;/code&gt; methods, returning &lt;code&gt;this&lt;/code&gt; to be able to chain, to fill up every required variable&lt;/li&gt;
+&lt;li&gt;default values are provided, so we&amp;rsquo;re not obliged to call every method if we&amp;rsquo;re only interested in one field.&lt;/li&gt;
+&lt;li&gt;At the end of the chain, we call &lt;code&gt;Build()&lt;/code&gt;, which returns our object.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;enhanced-builders&#34;&gt;Enhanced builders&lt;/h3&gt;
+
+&lt;p&gt;I&amp;rsquo;ve never given it much thought, but yes, there are some problems with this implementation (as with everything). The most important one being, can you reuse your instantiated builder? No? Yes? We never assign it, but we &lt;strong&gt;could&lt;/strong&gt; if we really wanted to. Since we&amp;rsquo;re &lt;strong&gt;mutating the builder&lt;/strong&gt;, you are definatly getting into trouble.&lt;/p&gt;
+
+&lt;p&gt;Using a lambda to pass in the work on our builder might solve this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class UserBuilder
+{
+    private UserType_V1_0 type = UserType_V1_0.Administrator;
+    private string code = &amp;quot;code&amp;quot;;
+
+    private UserBuilder()
+    {
+    }
+
+    private User_V1_0 Build()
+    {
+        return new User_V1_0(code, &amp;quot;name&amp;quot;, type, &amp;quot;id&amp;quot;, &amp;quot;campusId&amp;quot;, true);
+    }
+
+    public static User_V1_0 Build(Func&amp;lt;UserBuilder, UserBuilder&amp;gt; block)
+    {
+        var builder = new UserBuilder();
+        block(builder);
+        return builder.Build();
+    }
+
+    public UserBuilder WithCode(string code)
+    {
+        this.code = code;
+        return this;
+    }
+
+    public UserBuilder WithType(UserType_V1_0 type)
+    {
+        this.type = type;
+        return this;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Used this way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  var user = UserBuilder.Build(_ =&amp;gt;
+    _.WithCode(&amp;quot;AB&amp;quot;)
+           .withType(UserType_V1_0.NursingStaff));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that using the character &lt;code&gt;_&lt;/code&gt; is a convention if there&amp;rsquo;s only one parameter for the lambda, it could also be called &amp;ldquo;builder&amp;rdquo; but we still need to use this, as &lt;code&gt;block(builder)&lt;/code&gt; passes in the temp created builder. What did we solve?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The actual builder instance is bound within the &lt;code&gt;Build()&lt;/code&gt; scope. You&amp;rsquo;ll never be able to assign it when using the static method.&lt;/li&gt;
+&lt;li&gt;One might say, we reduced some redundancy in the implementation by eliminating the need to call the final &lt;code&gt;Build()&lt;/code&gt; method, but it&amp;rsquo;s simply being moved.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;supercharged-builders&#34;&gt;Supercharged builders&lt;/h3&gt;
+
+&lt;p&gt;In Groovy (the devoxx example), we can cleverly use the &lt;code&gt;.delegate&lt;/code&gt; mechanism to eliminate the need to chain at all. Groovy also reduces the syntax noise a bit (brackets, semicolons). We could create a &lt;code&gt;Build&lt;/code&gt; method like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  public static User_V1_0 Build(block) {
+    new UserBuilder().with block;
+    // does the same as cloning the block, assigning it with .delegate and executing it. 
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Used this way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  UserBuilder.Build {
+     Code &amp;quot;AB&amp;quot; // Same as Code(&amp;quot;AB&amp;quot;);
+     Type UserType_V1_0.NursingStaff
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;How does this work?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;Code()&lt;/code&gt; method does not exist in our block closure, but we assign a delegate to it: our temp lexically scoped &lt;code&gt;UserBuilder&lt;/code&gt; instance - that&amp;rsquo;s where the method lives. When the code is executed, Groovy first looks for a method within the block, and then tries to fetch it via the delegate.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more information on groovy delegates, see the &lt;a href=&#34;http://groovy.codehaus.org/Delegation+Pattern&#34;&gt;Groovy documentation: Delegation Pattern&lt;/a&gt;. This works thanks to the late binding of the language and won&amp;rsquo;t statically typed languages such as C#. You might be able to come close using &lt;code&gt;LINQ&lt;/code&gt; expression trees, but that requires a lot of effort to write a simple DSL.&lt;/p&gt;
+
+&lt;h3 id=&#34;leveraging-this-principle-to-dsls&#34;&gt;Leveraging this principle to DSLs&lt;/h3&gt;
+
+&lt;p&gt;In Javascript, you can also manage to do something like that using &lt;code&gt;.prototype&lt;/code&gt; and &lt;a href=&#34;http://brainbaking.com/wiki/code/javascript/inheritance&#34;&gt;prototypal inheritance&lt;/a&gt; and &lt;code&gt;apply()&lt;/code&gt; to dynamically bind the &lt;code&gt;this&lt;/code&gt; context (see &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply&#34;&gt;Function.prototype.apply MDN&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Of course, builders are completely redundant in JS. Just create a &lt;code&gt;JSON&lt;/code&gt; object using &lt;code&gt;{ key: value }&lt;/code&gt;. Done. But this principle might be interesting for things like creating a &amp;ldquo;mailer&amp;rdquo; - as in the devoxx 2013 example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var mailerPrototype = {
+    from: function() { console.log(&amp;quot;from&amp;quot;); },
+    to: function() { console.log(&amp;quot;to&amp;quot;); },
+    sub: function() { console.log(&amp;quot;sub&amp;quot;); },
+    body: function() { console.log(&amp;quot;body&amp;quot;); },
+    send: function() { console.log(&amp;quot;sending...&amp;quot;); }
+};
+
+var mailer = function() {};
+mailer.mail = function(block) {
+    // .prototype magic happens inside Object.create()
+    block.apply(Object.create(mailerPrototype));
+}
+
+// this still sucks, I don&#39;t want to use &#39;this.&#39;, can use chaining... 
+mailer.mail(function() {
+    this.from(&amp;quot;me@gmail.com&amp;quot;);
+    this.to(&amp;quot;you@gmail.com&amp;quot;);
+    this.sub(&amp;quot;this is my subject&amp;quot;);
+    this.body(&amp;quot;hello&amp;quot;);
+    this.send();
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You&amp;rsquo;ll still need &lt;code&gt;this.&lt;/code&gt;, sadly. This is not needed in Groovy:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mailer.mail {
+    from &amp;quot;me@gmail.com&amp;quot;
+    to &amp;quot;you@gmail.com&amp;quot;
+    sub &amp;quot;this is my subject&amp;quot;
+    body &amp;quot;hello&amp;quot;
+    send()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now &lt;strong&gt;that&lt;/strong&gt; looks readable. To be able to create something like that, a language has to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;have functions as first-class citizens.&lt;/li&gt;
+&lt;li&gt;have a clean syntax, to be able to reduce a lot of noise (CoffeeScript can get this done for JS for instance)&lt;/li&gt;
+&lt;li&gt;have late binding or duck typing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That said, going back to Java 7 is going to be a major pain in the ass. No, I do not want to create usesless interfaces! (Tip: use &lt;code&gt;Function&lt;/code&gt; and &lt;code&gt;Predicate&lt;/code&gt; from &lt;a href=&#34;https://code.google.com/p/guava-libraries/&#34;&gt;Google Guava&lt;/a&gt;).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

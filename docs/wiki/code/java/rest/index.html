@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>rest</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="rest" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/java/rest/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>rest</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="rest-calls-plegen-met-java">Rest Calls plegen met Java</h1>
+
+<h2 id="jersey">Jersey</h2>
+
+<p>❗ <strong>User Guide</strong>: <a href="http://jersey.java.net/nonav/documentation/latest/user-guide.html">http://jersey.java.net/nonav/documentation/latest/user-guide.html</a></p>
+
+<h3 id="server">Server</h3>
+
+<h5 id="maven">maven</h5>
+
+<pre><code class="language-xml">		&lt;dependency&gt;
+			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+			&lt;artifactId&gt;jersey-server&lt;/artifactId&gt;
+			&lt;version&gt;1.17&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+			&lt;artifactId&gt;jersey-json&lt;/artifactId&gt;
+			&lt;version&gt;1.17&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+			&lt;artifactId&gt;jersey-servlet&lt;/artifactId&gt;
+			&lt;version&gt;1.17&lt;/version&gt;
+		&lt;/dependency&gt;
+</code></pre>
+
+<p><code>jersey-json</code> is niet nodig als je geen <code>JSON</code> wil gebruiken. <code>jersey-servlet</code> ook niet als je geen Servlet 2.x gebruikt.</p>
+
+<h5 id="servlet-2-x-config">servlet 2.x config</h5>
+
+<p>Dit moet in <code>web.xml</code>:</p>
+
+<pre><code class="language-xml">	&lt;servlet&gt;
+		&lt;servlet-name&gt;jersey-serlvet&lt;/servlet-name&gt;
+		&lt;servlet-class&gt;com.sun.jersey.spi.container.servlet.ServletContainer&lt;/servlet-class&gt;
+		&lt;init-param&gt;
+			&lt;param-name&gt;com.sun.jersey.config.property.packages&lt;/param-name&gt;
+			&lt;param-value&gt;be.klak.package&lt;/param-value&gt;
+		&lt;/init-param&gt;
+		&lt;init-param&gt;
+			&lt;param-name&gt;com.sun.jersey.api.json.POJOMappingFeature&lt;/param-name&gt;
+			&lt;param-value&gt;true&lt;/param-value&gt;
+		&lt;/init-param&gt;		
+		&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+	&lt;/servlet&gt;
+	&lt;servlet-mapping&gt;
+		&lt;servlet-name&gt;jersey-serlvet&lt;/servlet-name&gt;
+		&lt;url-pattern&gt;/rest/*&lt;/url-pattern&gt;
+	&lt;/servlet-mapping&gt;
+</code></pre>
+
+<p>❗ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:</p>
+
+<pre><code class="language-xml">		&lt;!-- prevents classes that use reflection which is not allowed in GAE --&gt;
+		&lt;init-param&gt;
+			&lt;param-name&gt;com.sun.jersey.config.feature.DisableWADL&lt;/param-name&gt;
+			&lt;param-value&gt;true&lt;/param-value&gt;
+		&lt;/init-param&gt;
+</code></pre>
+
+<p>Zie <a href="http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine">http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine</a></p>
+
+<h5 id="voorbeeld">voorbeeld</h5>
+
+<pre><code class="language-java">@Path(&quot;/gc&quot;)
+public class Controller {
+
+	@GET
+	@Path(&quot;/path&quot;)
+	@Produces(APPLICATION_JSON)
+	public List&lt;Pojo&gt; getStuff() {
+		return stuffRepo().getAll();
+	}
+
+	@POST
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Path(&quot;/bla/receive&quot;)
+	public Response received(String data) {
+		return ok().build();
+	}
+</code></pre>
+
+<p>waarbij <code>ok()</code> op <code>javax.ws.rs.Response</code> zit.</p>
+
+<h3 id="client">Client</h3>
+
+<h5 id="maven-1">maven</h5>
+
+<pre><code class="language-xml">		&lt;dependency&gt;
+			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+			&lt;artifactId&gt;jersey-client&lt;/artifactId&gt;
+			&lt;version&gt;1.17&lt;/version&gt;
+		&lt;/dependency&gt;
+</code></pre>
+
+<h5 id="voorbeeld-1">voorbeeld</h5>
+
+<p><code>com.sun.jersey.api.client.Client</code> client:</p>
+
+<pre><code class="language-java">		Client.create()
+				.resource(getGatecontrolServer() + &quot;/rest/gc/houses/receive&quot;)
+				.type(TEXT_PLAIN)
+				.post(&quot;request body data&quot;);
+</code></pre>
+
+<h3 id="header-control-bvb-caching">Header control (bvb caching)</h3>
+
+<p>Kan via een filter factory die je meegeeft aan de init params van de servlet in web.xml:</p>
+
+<pre><code class="language-xml">		&lt;init-param&gt;
+			&lt;param-name&gt;com.sun.jersey.spi.container.ResourceFilters&lt;/param-name&gt;
+			&lt;param-value&gt;be.klak.rest.CacheFilterFactory&lt;/param-value&gt;
+		&lt;/init-param&gt;
+&lt;/xml&gt;
+
+```java
+public class CacheFilterFactory implements ResourceFilterFactory {
+
+	@Override
+	public List&lt;ResourceFilter&gt; create(AbstractMethod am) {
+		if (hasNoCacheAnnotationOnClass(am) != null) {
+			return Collections.&lt;ResourceFilter&gt; singletonList(new CacheResponseFilter());
+		}
+
+		return new ArrayList&lt;&gt;();
+	}
+
+	private CacheControlHeaderNoCache hasNoCacheAnnotationOnClass(AbstractMethod am) {
+		return am.getResource().getResourceClass().getAnnotation(CacheControlHeaderNoCache.class);
+	}
+
+	private static class CacheResponseFilter implements ResourceFilter, ContainerResponseFilter {
+
+		@Override
+		public ContainerRequestFilter getRequestFilter() {
+			return null;
+		}
+
+		@Override
+		public ContainerResponseFilter getResponseFilter() {
+			return this;
+		}
+
+		@Override
+		public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
+			response.getHttpHeaders().putSingle(HttpHeaders.CACHE_CONTROL, &quot;no-cache&quot;);
+			return response;
+		}
+	}
+}
+</code></pre>
+
+<p>Annotatie ziet er zo uit:</p>
+
+<pre><code class="language-java">@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.TYPE, ElementType.METHOD })
+public @interface CacheControlHeaderNoCache {
+}
+</code></pre>
+
+<p>Vanaf dan kan je die gewoon op een resource klasse plakken, zoals <code>@Produces</code> en <code>@Consumes</code>.</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,1021 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/home/index.xml</link>
+    <description>Recent content in Home on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/home/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;reflect-retros&#34;&gt;reflect &amp;gt;&amp;gt; Retros&lt;/h1&gt;
+
+&lt;h5 id=&#34;inhoud&#34;&gt;Inhoud&lt;/h5&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;reflect/retros|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;referenties&#34;&gt;Referenties&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The &lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Agile%20Retrospectives&#34; target=&#34;_blank&#34;&gt;Agile Retrospectives&lt;/a&gt;
+ boek&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://agileretrospectivewiki.org/index.php?title=Main_Page&#34;&gt;http://agileretrospectivewiki.org/index.php?title=Main_Page&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-ruby-home&#34;&gt;code:ruby &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;code-ruby&#34;&gt;code &amp;gt;&amp;gt; Ruby&lt;/h1&gt;
+
+&lt;h3 id=&#34;certifications&#34;&gt;Certifications&lt;/h3&gt;
+
+&lt;p&gt;See &lt;a href=&#34;http://railsapps.github.io/openssl-certificate-verify-failed.html&#34;&gt;http://railsapps.github.io/openssl-certificate-verify-failed.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Voor OSX:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rvm -v
+rvm osx-ssl-certs status all
+rvm osx-ssl-certs update all
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-php-home&#34;&gt;code:php &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/</link>
+      <pubDate>Tue, 29 Jul 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/</guid>
+      <description>
+
+&lt;h1 id=&#34;javascript&#34;&gt;Javascript&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Use functions to guard your scope and optimize encapsulation, gentlemen!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;JS in één-twéé-drié:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/present/edit?id######0AXaRvIf-WHu3ZGRjNnFnN2pfMmM3ajVmdjN0&amp;amp;hlen&amp;amp;authkey=COqTqcsL&#34;&gt;https://docs.google.com/present/edit?id######0AXaRvIf-WHu3ZGRjNnFnN2pfMmM3ajVmdjN0&amp;amp;hlen&amp;amp;authkey=COqTqcsL&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ JS &lt;strong&gt;fiddles&lt;/strong&gt;: &lt;a href=&#34;http://jsfiddle.net/user/jefklak/fiddles/&#34;&gt;http://jsfiddle.net/user/jefklak/fiddles/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;JS Must watch videos&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https:*github.com/vjdhama/js-must-watch&#34;&gt;https:*github.com/vjdhama/js-must-watch&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h4&gt;
+
+&lt;p&gt;Om &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/inheritance/&#34;&gt;Prototypal Inheritance&lt;/a&gt; te kunnen begrijpen, moeten eerst een aantal andere zaken duidelijk worden.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;De basislegging van Javascript versus klassieke class-based OO systemen:
+
+&lt;ol&gt;
+&lt;li&gt;Hoe werken &lt;code&gt;function&lt;/code&gt; referenties en declaraties&lt;/li&gt;
+&lt;li&gt;Functies en objecten in functies steken om klassen te emuleren:
+
+&lt;ol&gt;
+&lt;li&gt;Er is geen verschil tussen functies en variabelen, het zijn allemaal key/value pairs (&amp;rdquo;&lt;em&gt;first-class citizens&lt;/em&gt;&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;De &lt;code&gt;delete&lt;/code&gt; operator gebruiken om een key te verwijderen uit een object&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Closures als functies definiëren&lt;/li&gt;
+&lt;li&gt;Constructors als functies definiëren&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Het aanroepen van functies:
+
+&lt;ol&gt;
+&lt;li&gt;De werking van de &lt;code&gt;this&lt;/code&gt; operator, functies zijn pas &lt;em&gt;gebonden&lt;/em&gt; als ze aangeroepen worden! (&amp;ldquo;methods&amp;rdquo; ((een method is altijd gebonden aan een instance, een functie niet)) bestaan niet)&lt;/li&gt;
+&lt;li&gt;Aanroeping door middel van &lt;code&gt;call&lt;/code&gt; (vararg) en &lt;code&gt;apply&lt;/code&gt; (array arg) en de verandering van &lt;code&gt;this&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Via string evaluatie met &lt;code&gt;eval&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;de interne werking van de &lt;code&gt;new&lt;/code&gt; operator&lt;/li&gt;
+&lt;li&gt;Inheritance opbouwen afhankelijk van de &lt;code&gt;prototype&lt;/code&gt; property&lt;/li&gt;
+&lt;li&gt;Inheritance afchecken met &lt;code&gt;instanceof&lt;/code&gt;, het verschil tussen dat en &lt;code&gt;typeof&lt;/code&gt; kennen&lt;/li&gt;
+&lt;li&gt;Mixins kunnen gebruiken in JS met:
+
+&lt;ol&gt;
+&lt;li&gt;Doen alsof de constructor van een parent object wordt aangeroepen&lt;/li&gt;
+&lt;li&gt;Direct bepaalde functie referenties overkopiëren met &lt;code&gt;prototype&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;De limitaties hiervan kennen (échte multiple inheritance bestaat niet)&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;referenties&#34;&gt;Referenties&lt;/h3&gt;
+
+&lt;h5 id=&#34;nog-te-bekijken-boeken&#34;&gt;Nog te bekijken boeken&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Test%20Driven%20Javascript%20Development&#34; target=&#34;_blank&#34;&gt;Test Driven Javascript Development&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=High%20Performance%20Javascript&#34; target=&#34;_blank&#34;&gt;High Performance Javascript&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Javascript%20Patterns&#34; target=&#34;_blank&#34;&gt;Javascript Patterns&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;intern&#34;&gt;Intern&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/inleiding/&#34;&gt;inleiding&lt;/a&gt; bevat: constructor functies, &lt;code&gt;this&lt;/code&gt; en &lt;code&gt;delete&lt;/code&gt; keywords, closures en AOP in JS&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/inheritance/&#34;&gt;inheritance&lt;/a&gt; bevat: &lt;code&gt;new&lt;/code&gt;, &lt;code&gt;typeof&lt;/code&gt; en &lt;code&gt;instanceof&lt;/code&gt; keyword, inheritance via &lt;code&gt;prototype&lt;/code&gt;, mixins gebruiken en multiple inheritance faken&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/frameworks/&#34;&gt;frameworks&lt;/a&gt; bevat: uitleg hoe interne werking van Prototype JS &lt;code&gt;Object.Extend&lt;/code&gt; werkt, verschillen tussen jQuery en Prototype JS&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/snippets/&#34;&gt;snippets&lt;/a&gt; bevat: herbruikbare stukken JS code&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/scoping/&#34;&gt;scoping&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/magic_properties/&#34;&gt;magic properties&lt;/a&gt; beschikbaar in de console, in Firefox, of in Javascript 1.8.5 (ECMA impl. V5)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/troubleshooting/&#34;&gt;troubleshooting&lt;/a&gt; in verschillende browsers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/performance/&#34;&gt;performance&lt;/a&gt; (dynamic script loading etc)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/csharp/testing/&#34;&gt;testing&lt;/a&gt; en automatisatie in CI omgevingen&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/serverside/&#34;&gt;serverside&lt;/a&gt; Javascript parsing en implementaties&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/pitfalls/&#34;&gt;pitfalls&lt;/a&gt; bevat het leukste deel van eender welke taal bijleren!!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/async/&#34;&gt;async&lt;/a&gt; blocks schrijven, integratie testen met async blocks etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Volledige inhoudsopgave:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;code/javascript|js context navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;extern&#34;&gt;Extern&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;Blogs, algemene howtos en nieuws items&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http:*dailyjs.com/&#34;&gt;http:*dailyjs.com/&lt;/a&gt;: A Javascript blog (ook meer NodeJS-oriented)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://perfectionkills.com/&#34;&gt;Perfection kills: exploring Javascript by Example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ejohn.org/category/blog/&#34;&gt;John Resig blog&lt;/a&gt; - de bedenker van jQuery en experimenteur met ECMA5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Documentatie en in-depth manuals&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en/JavaScript/Reference&#34;&gt;Mozilla Developer Javascript Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://yuiblog.com/crockford/&#34;&gt;Crockford on Javascript&lt;/a&gt; - YUIBlog talks&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.crockford.com/&#34;&gt;Dougles Crockford&amp;rsquo;s Wrrrld Wide Web&lt;/a&gt; met hoop interessante javascript-gerelateerde pagina&amp;rsquo;s!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Specifieke frameworks/APIs&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http:*knockoutjs.com/&#34;&gt;http:*knockoutjs.com/&lt;/a&gt;: GUI logica loskoppelen van domein logica met knockout &lt;em&gt;&amp;ldquo;observables&amp;rdquo;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http:*www.commonjs.org/&#34;&gt;CommonsJS&lt;/a&gt; - Javascript ecosystem for building webservers, desktop apps and more (voorbeeldimplementatie: &lt;a href=&#34;http:*nodejs.org/&#34;&gt;node.js&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http:*jqapi.com/&#34;&gt;http:*jqapi.com/&lt;/a&gt; jQuery API buiten officiële website&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http:*howtonode.org/&#34;&gt;http:*howtonode.org/&lt;/a&gt; Tutorials on NodeJS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;nog-uit-te-pluizen&#34;&gt;Nog uit te pluizen&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;- [ ] JavascriptMVC een kans geven&lt;/li&gt;
+&lt;li&gt;- [ ] Live.js eens in detail bekijken &amp;ldquo;ooit&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;- [ ] Coffeescript uitgebreider toepassen&lt;/li&gt;
+&lt;li&gt;- [x] Jasmine en een JsTestDriver gebruiken met Maven build&lt;/li&gt;
+&lt;li&gt;- [ ] Node.js uitproberen&lt;/li&gt;
+&lt;li&gt;- [x] Envjs uitproberen&lt;/li&gt;
+&lt;li&gt;- [x] Zien hoe DDD in JS toegepast kan worden: ontkoppeling GUI/Domein logica: Sproutcore/Knockout?&lt;/li&gt;
+&lt;li&gt;- [ ] Interne werking Shizzle Selector&lt;/li&gt;
+&lt;li&gt;- [x] Volgorde van inladen scripts, gedrag bij dynamische script tags in DOM tree&lt;/li&gt;
+&lt;li&gt;- [ ] Garbarge collection details&lt;/li&gt;
+&lt;li&gt;- [ ] &lt;code&gt;:checked&lt;/code&gt; van jQuery werkt precies niet 100% in envJS - &lt;code&gt;.click()&lt;/code&gt; wel. Hoe komt dat??&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;python&#34;&gt;Python&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Pythonic:
+    `&#39;I can access this doc using instance.__doc__, holy cow?`&#39;
+    def __init__(self, arg, *args, **dict):
+        pass
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;😳&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;code&gt;pass&lt;/code&gt; statement in Python is like a empty set of curly braces (&lt;code&gt;{}&lt;/code&gt;) in Java or C.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;simpele-server-opstarten&#34;&gt;Simpele server opstarten&lt;/h2&gt;
+
+&lt;p&gt;Waarom? Om &lt;strong&gt;lokale files&lt;/strong&gt; makkelijk te kunnen serven (handig voor JS)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python -m SimpleHTTPServer 8080
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Poof.&lt;/p&gt;
+
+&lt;h2 id=&#34;python-2-vs-3&#34;&gt;Python 2 vs 3&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;in py3 is &lt;code&gt;print&lt;/code&gt; een functie geworden, gebruik dus &lt;code&gt;()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;de &lt;code&gt;SimpleHTTPRequestHandler&lt;/code&gt; klassen ea zijn verhuisd naar &lt;code&gt;http.server&lt;/code&gt;, gebruik &lt;code&gt;from http.server import SimpleHTTPRequestHandler, HTTPServer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;super()&lt;/code&gt; kan zonder argumenten gebruikt worden&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-java-home&#34;&gt;code:java &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Mon, 05 Aug 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;c-c-home&#34;&gt;C/C++ &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;nuttige-links&#34;&gt;Nuttige links&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://denniskubes.com/2012/08/16/the-5-minute-guide-to-c-pointers/&#34;&gt;The 5 minute guide to C Pointers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pw1.netcom.com/~tjensen/ptr/pointers.htm&#34;&gt;A tutorial on Pointers and Arrays in C&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;c-home&#34;&gt;C# Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Wed, 17 Jul 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-c-testing-home&#34;&gt;code:c:testing &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/code/</link>
+      <pubDate>Wed, 10 Jul 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-home&#34;&gt;code &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;books-home&#34;&gt;books &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;links&#34;&gt;Links&lt;/h2&gt;
+
+&lt;h4 id=&#34;online-digitale-resources&#34;&gt;Online digitale resources&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;http:*www.scribd.com/ (bvb &lt;a href=&#34;http:*www.scribd.com/doc/36486402/jQuery-novice-to-Ninja&#34;&gt;jQuery novice to Ninja&lt;/a&gt;) (betalend)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;building-compiling&#34;&gt;Building &amp;amp; Compiling&lt;/h1&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;log-management&#34;&gt;Log management&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.splunk.com/&#34;&gt;http://www.splunk.com/&lt;/a&gt; om zaken visueel samen te vatten, zelfde exceptions uit logs te halen, statistiekjes te trekken, &amp;hellip;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/unix/cmd/&#34;&gt;unix/cmd&lt;/a&gt; tools zoals grep en sed gebruiken om de rest manueel te doen!&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-db-home&#34;&gt;code:db &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/code/scheme/labs/1/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/scheme/labs/1/</guid>
+      <description>
+
+&lt;h1 id=&#34;labs-chapter-1&#34;&gt;Labs: Chapter 1&lt;/h1&gt;
+
+&lt;h4 id=&#34;section-1&#34;&gt;Section 1&lt;/h4&gt;
+
+&lt;h5 id=&#34;1-1&#34;&gt;1.1&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (- a b)
+  (+ a b))
+
+(- 4 3)
+
+(define (een-of-twee een twee)
+  (if (= een 1)
+      een
+      twee))
+
+(define bla
+  (een-of-twee 3 5))
+
+(een-of-twee 2 3)
+
+(define a 6)
+(define b (+ 3 3))
+(= a b)
+
+(cond ((= a 4) 6)
+      ((= b 4) (+ 6 7 a))
+      (else 25))
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-2&#34;&gt;1.2&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(+ 5 (+ 4 (- 2 (- 3 (+ 6 4/5)))))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-3&#34;&gt;1.3&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (sq a)
+  (* a a))
+
+(define (sum-sq a b)
+  (+ (sq a) (sq b)))
+
+(define (sum-sq-largest a b c)
+  (if (&amp;gt; b c)
+      (sum-sq a b)
+      (sum-sq a c)))
+
+(define (sum-squares-two-largest a b c)
+  (if (&amp;gt; a b)
+      (sum-sq-largest a b c)
+      (sum-sq-largest b a c)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-3-tests&#34;&gt;1.3: tests&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(load &amp;quot;./test-manager/load.scm&amp;quot;)
+(load &amp;quot;./ex_1_003.scm&amp;quot;)
+
+(in-test-group sum-squares-two-largest
+ (define-test (last-two-largest)
+   (assert-equals (sum-squares-two-largest 1 2 3) 13))
+ (define-test (first-two-largest)
+   (assert-equals (sum-squares-two-largest 3 2 1) 13))
+ (define-test (first-and-last-largest)
+   (assert-equals (sum-squares-two-largest 3 1 2) 13))
+ (define-test (all-zeros)
+   (assert-equals (sum-squares-two-largest 0 0 0) 0)))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-5&#34;&gt;1.5&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;Oefening:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (p) (p))
+
+(define (test x y)
+ (if (= x 0)
+     0
+	 y))
+	 
+(test 0 (p))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hoe wordt dit door de interpreter geëvalueerd in applicative-order evaluation?&lt;/p&gt;
+
+&lt;p&gt;(evaluate the arguments and then apply)
+&lt;code&gt;(test 0 (p))&lt;/code&gt; ######&amp;gt; &lt;code&gt;(if ( 0 0) 0 (p))&lt;/code&gt; ######&amp;gt; 0 aangezien &lt;code&gt;( 0 0)&lt;/code&gt; naar true evalueert en bijgevolg dus (p) nooit geëvalueerd wordt!&lt;/p&gt;
+
+&lt;p&gt;Hoe wordt dit door de interpreter geëvalueerd in normal-order evaluation?&lt;/p&gt;
+
+&lt;p&gt;(fully expand and then reduce)
+&lt;code&gt;(test 0 (p))&lt;/code&gt; ######&amp;gt; &lt;code&gt;(if ( 0 0) 0 (p))&lt;/code&gt; ######&amp;gt; &lt;code&gt;(if ( 0 0) 0 (p))&lt;/code&gt; =&amp;gt; &amp;hellip; (oneindige lus, constant (p) vervangen door implementatie die zelf (p) is)&lt;/p&gt;
+
+&lt;h5 id=&#34;1-6&#34;&gt;1.6&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;#|
+
+wat loopt er mis nu -&amp;gt;
+(define (sqrt-iter guess x)
+  (cond
+   ((good-enough? guess x) guess)
+   (sqrt-iter (improve guess x) x)))
+
+opnieuw invullen:
+(define (sqrt-iter guess x)
+  (cond
+   ((good-enough? guess x) guess)
+   (cond
+    ((good-enough? guess x) guess)
+    (sqrt-iter...
+
+Bouwt zo een oneindige lus met condition en terug sqrt-iter...
+
+|#
+
+(define (sqrt-iter guess x)
+  (new-if (good-enough? guess x)
+      guess
+      (sqrt-iter (improve guess x)
+		 x)))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (good-enough? guess x)
+  (&amp;lt; (abs (- (square guess) x)) 0.001))
+
+(define (sqrt x)
+  (sqrt-iter 1.0 x))
+
+(define (new-if clause iftrue iffalse)
+  (cond (clause iftrue)
+	(else iffalse)))
+
+(sqrt 2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-7&#34;&gt;1.7&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (good-enough? guess x)
+  (&amp;lt; (abs (- (square guess) x)) 0.001))
+
+; de square van een klein getal is kleiner! 0.01x0.01 = 0.001 wat al in bovenstaande conditie staat
+; dit wil zeggen dat good-enough heel snel true gaat retourneren, zodat onze square root definitie stopt
+; met berekenen. 
+
+; de wortel van een groot getal kan nooit accuraat genoeg zijn omdat we stoppen op 0.001 na de komma.
+; daardoor stopt good-enough? ook weer te vroeg. we hebben dus een andere implementatie nodig. 
+
+
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+  guess
+  (sqrt-iter (improve guess x) x)))
+
+(define (better-sqrt-iter guess previous-guess x)
+  (if (better-enough? guess previous-guess)
+      guess
+      (better-sqrt-iter (improve guess x) guess x)))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (better-enough? guess previous-guess)
+  (and (not (= guess previous-guess))
+  (&amp;lt; (/ (abs (- guess previous-guess)) previous-guess) 0.00001)))
+
+(define (sqrt x)
+  (sqrt-iter 1.0 x))
+
+(define (better-sqrt x)
+  (better-sqrt-iter 1.0 1.0 x))
+
+(better-sqrt 23945890000)
+(sqrt 23945890000)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-8&#34;&gt;1.8&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (cube-iter guess x)
+  (if (good-enough? guess x)
+  guess
+  (cube-iter (improve guess x) x)))
+
+(define (cube x)
+  (* x x x))
+
+(define (good-enough? guess x)
+  (&amp;lt; (abs (- (cube guess) x)) 0.001))
+
+(define (improve guess x)
+  (display &amp;quot; improve &amp;quot;)
+  (display guess)
+  (display &amp;quot; - &amp;quot;)
+  (display x)
+  (/ (+ (/ x (square guess))
+	(* 2 guess))
+     3))
+
+(define (cube-root x)
+  (cube-iter 1.0 x))
+
+(cube-root 16)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-9&#34;&gt;1.9&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;eerste + define&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(define (+ a b)
+  (if (= a 0)
+   b
+   (inc (+ (dec a) b))))
+
+(+ 4 5) ######&amp;gt; (if ( 4 0) 5 (inc (+ (dec 4) 5))) 
+		######&amp;gt; (if ( 4 0) 5 (inc ((if (= (dec 4) 0) 5 (inc (+ (dec (dec 4)) 5))))))
+		######&amp;gt; (if ( 4 0) 5 (inc ((if (###### (dec 4) 0) 5 (inc ((if ( (dec (dec 4)) 0) 5 (inc (+ (dec (dec (dec 4))) 5)))))))))
+		=&amp;gt; .. (wordt altijd maar langer, en dan op een bepaald moment minder, dus dit is duidelijk liniair recursief
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;tweede + define&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(define (+ a b)
+  (if (= a 0)
+   b
+   (+ (dec a) (inc b))))
+   
+(+ 4 5) ######&amp;gt; (if ( 4 0) 5 (+ (dec 4) (inc b)))
+		######&amp;gt; (if ( 4 0) 5 ((if (= (dec 4) 0) (inc b) (+ (dec (dec 4)) (inc (inc b))))))
+		######&amp;gt; (if ( 4 0) 5 ((if (###### (dec 4) 0) (inc b) ((if ( (dec (dec 4)) 0) (inc (inc b)) (+ (dec (dec 4)) (inc (inc b))))))))
+		=&amp;gt; .. Hetzelfde dus. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-10&#34;&gt;1.10&lt;/h5&gt;
+
+&lt;p&gt;Algoritme:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (A x y)
+  (cond ((= y 0) 0)
+		((= x 0) (* 2 y))
+		((= y 1) 2)
+		(else (A (- x 1)
+			(A x (- y 1))))))
+
+(A 2 4)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Oplossen met variabelen:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#1: (A 1 10)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  (cond ((= 10 0) 0)
+		((= 1 0) (* 2 10))
+		((= 10 1) 2)
+		(else (A (- 1 1)
+			(A 1 (- 10 1))))))
+
+		=&amp;gt; (A 0 (A 1 9))
+waarbij (A 1 9) = 
+
+  (cond ((= 9 0) 0)
+		((= 1 0) (* 2 9))
+		((= 9 1) 2)
+		(else (A (- 1 1)
+			(A 1 (- 9 1))))))
+		=&amp;gt; (A 0 (A 1 8) etc
+
+waarbij (A 1 1) = 2
+		
+dus (A 1 10) = (A 0 (A 1 9))
+			 = (A 0 (A 0 (A 1 8)))
+			 = ...
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 1 1))))))))))
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 2)))))))))
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 4))))))))
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 8)))))))
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 16))))))
+			 = (A 0 (A 0 (A 0 (A 0 (A 0 32)))))
+			 = (A 0 (A 0 (A 0 (A 0 64))))
+			 = (A 0 (A 0 (A 0 128)))
+			 = (A 0 (A 0 (A 0 128)))
+			 = (A 0 (A 0 256))
+			 = (A 0 512)
+			 = 1024
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;mathematische definities:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fn ###### (A 0 n)  2n
+gn ###### (A 1 n)  2^n
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-10-tests&#34;&gt;1.10: tests&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(load &amp;quot;./test-manager/load.scm&amp;quot;)
+(load &amp;quot;./ex_1_010.scm&amp;quot;)
+
+(in-test-group ackermann
+ (define-test (a-1-10)
+   (assert-equals (A 1 10) 1024)))
+
+(run-registered-tests) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-11&#34;&gt;1.11&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;; f(n) = n if n &amp;lt; 3
+; f(n) ###### f(n - 1) + 2f(n - 2) + 3f(n - 3) if n &amp;gt; 3
+; write a program that defines f recursively and iteratively
+
+(define (fn n)
+  (cond
+   ((&amp;lt; n 3) n)
+   (else (+ (+ (fn (- n 1)) (* 2 (fn (- n 2)))) (* 3 (fn (- n 3)))))
+   ))
+
+(define (fn-it n)
+  (define (fn-it-loop fn1 fn2 fn3 count)
+    (if (= count n)
+    fn3
+    (fn-it-loop (+ fn1 (* 2 fn2) (* 3 fn3))
+		fn1
+		fn2
+		(+ count 1))))
+  (fn-it-loop 2 1 0 0))
+
+(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+; this should be refactored into passing the function as a pointer
+; and only calling all assertions once...
+; todo after the tests pass!
+
+(in-test-group
+ fn-functie
+ (define (define-tests-fn fnfunc)
+   (define-each-test
+     (check (= (fnfunc 0) 0) &amp;quot;fn0&amp;lt;3 should be 0&amp;quot;))
+   (define-each-test
+     (check (= (fnfunc 2) 2) &amp;quot;fn2&amp;lt;3 should be 2&amp;quot;))
+   (define-each-test
+     (check (= (fnfunc 3) 4) &amp;quot;fn3 should be 4&amp;quot;))
+   (define-each-test
+     (check (= (fnfunc 4) 11) &amp;quot;fn4 should be 11&amp;quot;))
+   (define-each-test
+     (assert-equals (fnfunc 5) 25))
+   (define-each-test
+     (assert-equals (fnfunc 0) 0)))
+ (define-tests-fn fn)
+ (define-tests-fn fn-it))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-12&#34;&gt;1.12&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;
+(define (pascal entry row)
+  (cond ((= 0 entry) 0)
+	((and (###### 0 row) ( 1 entry)) 1)
+	((= 0 row) 0)
+	(else (+ (pascal (- entry 1) (- row 1)) (pascal entry (- row 1))))))
+
+
+(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+(in-test-group
+ pascal
+ (define-test (first-row-is-one)
+   (assert-equals (pascal 1 0) 1))
+ (define-test (zero-entry-is-always-zero)
+   (assert-equals (pascal 0 234) 0)
+   (assert-equals (pascal 0 23) 0)
+   (assert-equals (pascal 0 0) 0))
+ (define-test (pascal-row1)
+   (assert-equals (pascal 1 1) 1)
+   (assert-equals (pascal 2 1) 1))
+ (define-test (pascal-row2)
+   (assert-equals (pascal 1 2) 1)
+   (assert-equals (pascal 2 2) 2)
+   (assert-equals (pascal 3 2) 1))
+ (define-test (pascal-row4)
+   (assert-equals (pascal 1 4) 1)
+   (assert-equals (pascal 2 4) 4)
+   (assert-equals (pascal 3 4) 6)
+   (assert-equals (pascal 4 4) 4)
+   (assert-equals (pascal 5 4) 1))
+ (define-test (pascal-row3)
+   (assert-equals (pascal 1 3) 1)
+   (assert-equals (pascal 2 3) 3)
+   (assert-equals (pascal 3 3) 3)
+   (assert-equals (pascal 4 3) 1)))
+	       
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-14&#34;&gt;1.14&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;
+(count-change 11)
+-----------------
+
+= (cc 11 5) (amount, kinds-of-coins)
+= (+ (cc 11 4) (cc -39 5))
+###### (+ (+ (cc 11 3) (cc -14 4)) 0) &amp;gt; amount &amp;lt; 0? altijd 0 vanaf nu
+= (+ (cc 11 2) (cc 1 3))
+= (+ (+ (cc 11 1) (cc 6 2)) (cc 1 2))
+= ... 
+Opgezet in boom vorm:
+
+cc(11, 5)
+    |
+   11,4
+    |
+   11,3
+    |
+   1,3    --    11,2
+    |             | 
+   0,2 			 6,2     --     11,1
+				  | 			 |
+				1,2  --  6,1	11,0    --  10,1
+											 |
+											10,0   --  9,1
+														|
+														9,0    --  8,1
+																    |
+																	8,0 -- 7,1
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;voor &lt;code&gt;cc(x, 1)&lt;/code&gt; worden er telkens 2 branches gemaakt waarvan er 1 aftakt: &lt;code&gt;cc(x-1, 1)&lt;/code&gt; en &lt;code&gt;cc(x, 0) = 0&lt;/code&gt;
+voor &lt;code&gt;cc(x, 5)&lt;/code&gt; wordt er naar rechts afgetakt voor elke &amp;ldquo;kind of coin&amp;rdquo;: op 2 en 1&lt;/p&gt;
+
+&lt;p&gt;Dus de recusie diepte is O(n) aangezien voor een hoger getal er één extra branch aangemaakt wordt.
+Het geheugengebruik (space) hangt af van de kind of coins parameter. O(n^kinds-of-coins)&lt;/p&gt;
+
+&lt;h5 id=&#34;1-15&#34;&gt;1.15&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;(sine 12.15)
+= (p (sine 4.05))
+= (p (p (sine (1.35))))
+= (p (p (p (sine (0.45)))))
+= (p (p (p (p (sine (0.15))))))
+= (p (p (p (p (p (sine (0.05)))))))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Stopconditie gaat af, laatste sine = 0.05 zelf. P werd dus 5x uitgevoerd.&lt;/p&gt;
+
+&lt;p&gt;Om de tijdscomplexiteit te berekenen, proberen we eens met een groter getal:
+  1. (sine 100) -&amp;gt; 7x sine uitvoeren
+  1. (sine 255555) -&amp;gt; 12x sine uitvoeren
+Het aantal stappen neemt bijna niet toe maar is wel proportioneel aan a zelf.&lt;/p&gt;
+
+&lt;p&gt;Aangezien we altijd delen door 3, en stoppen indien &amp;lt; 0.01, wordt het probleem voor extreem grote getallen nog snel opgelost. Dus:&lt;br/&gt;&lt;br/&gt;
+######&amp;gt; &lt;strong&gt;&lt;code&gt;O(a)  3log(a)&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Gegeven dat de cube en p functies in tijd en geheugen een complexiteit van O(1) hebben. &lt;br/&gt;&lt;br/&gt;
+(Geen recursie, altijd dezelfde calls en geheugengebruik voor eender welke input n)&lt;/p&gt;
+
+&lt;h5 id=&#34;1-16&#34;&gt;1.16&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;; ab^n = cte
+; (b^n/2)^2 = (b^2)^n/2 en de originele formule:
+; b^n = (b^n/2)^2 indien n even
+; b^n = b*b^n-1   indien n oneven
+
+(define (exp b n)
+  (define (even? n)
+    (= (remainder n 2) 0))
+
+  (define (exp-it b n a)
+    (display &amp;quot;exp it &amp;quot;)
+    (display b)
+    (display &amp;quot; &amp;quot;)
+    (display n)
+    (display &amp;quot; &amp;quot;)
+    (display a)
+    (newline)
+    (cond
+     ((= n 0) a)
+     ((even? n)
+      (exp-it (square b) (/ n 2) a))
+     (else (exp-it b (- n 1) (* b a)))))
+	    
+  (exp-it b n 1))
+
+
+(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+(in-test-group
+ fast-exp
+ (define-test (exp-of-something-zero-is-one)
+   (assert-equals (exp 103 0) 1))
+ (define-test (exp-of-ten-to-one-is-ten)
+   (assert-equals (exp 10 1) 10))
+ (define-test (exp-random-numbers)
+   (assert-equals (exp 4 3) 64)
+   (assert-equals (exp 10 2) 100)
+   (assert-equals (exp 3 6) 729)))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-17&#34;&gt;1.17&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (slow-multi a b)
+  (if (= b 0)
+      0
+      (+ a (slow-multi a (- b 1)))))
+
+(define (double a)
+  (* a 2))
+(define (halve a)
+  (/ a 2))
+
+(define (multi a b)
+  (cond
+   ((= b 0) 0)
+   ((even? b) (double (multi a (halve b))))
+   (else (+ a (multi a (- b 1))))))
+
+
+(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+(in-test-group
+ fast-multiplications
+ (define-test (boundary-conditions)
+   (assert-equals (multi 45 0) 0)
+   (assert-equals (multi 45 1) 45))
+ (define-test (simple-multiplications)
+   (assert-equals (multi 2 2) 4)
+   (assert-equals (multi 3 4) 12)
+   (assert-equals (multi 10 5) 50)))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-18&#34;&gt;1.18&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scheme&#34;&gt;(define (stack . args)
+  (display args)
+  (newline))
+
+(define (multi a b)
+
+  (define (double a)
+    (* a 2))
+  (define (halve a)
+    (/ a 2))
+
+  (define (multi-it a b product)
+    (stack &amp;quot;multi-it&amp;quot; a b product)  
+    (cond
+     ((= b 0) product)
+     ((even? b) (multi-it (double a) (halve b) product))
+     (else (multi-it a (- b 1) (+ a product)))))
+
+  (multi-it a b 0))
+
+(load &amp;quot;./test-manager/load.scm&amp;quot;)
+
+(in-test-group
+ multi
+ (define-test (checking-them-bounds-dawg)
+   (assert-equals (multi 2 0) 0)
+   (assert-equals (multi 2 1) 2))
+ (define-test (checking-them-simple-numbers-yo)
+   (assert-equals (multi 2 2) 4)
+   (assert-equals (multi 5 10) 50)
+   (assert-equals (multi 3 4) 12)))
+
+(run-registered-tests)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-tools-home&#34;&gt;code:tools &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

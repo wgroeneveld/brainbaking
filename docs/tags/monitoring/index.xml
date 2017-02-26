@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Monitoring on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/monitoring/index.xml</link>
+    <description>Recent content in Monitoring on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>monitoring</title>
+      <link>http://www.brainbaking.com/wiki/code/java/monitoring/</link>
+      <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/monitoring/</guid>
+      <description>
+
+&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
+
+&lt;h2 id=&#34;jboss-as-a-windows-service-monitoring-params&#34;&gt;JBOSS As a Windows service &amp;amp; monitoring params&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://community.jboss.org/wiki/JBossNativeWindows&#34;&gt;https://community.jboss.org/wiki/JBossNativeWindows&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Als JBoss via &lt;code&gt;jbossvc.exe&lt;/code&gt; als een windows service geconfigureerd is, lijkt het moeilijk om &lt;code&gt;JAVA_OPTS&lt;/code&gt; mee te geven om JMX poorten in te stellen e.a. (debugging misschien) - zie onder. Die executable callt basically &lt;code&gt;run.bat&lt;/code&gt;, dus alle customizaties gewoon daar doen.&lt;/p&gt;
+
+&lt;p&gt;Staat standaard dit in:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;set JAVA_OPTS######-Dprogram.name%PROGNAME% %JAVA_OPTS%
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;java-jmx-monitoring&#34;&gt;Java JMX Monitoring&lt;/h2&gt;
+
+&lt;p&gt;Op de JVM: gebeurt met &lt;strong&gt;JMX&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;enablen&#34;&gt;Enablen&lt;/h5&gt;
+
+&lt;p&gt;Params voor JMX te enablen op de queue:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port######3000 -Dcom.sun.management.jmxremote.sslfalse -Dcom.sun.management.jmxremote.authenticate=false&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;jmx-urls-opbouwen&#34;&gt;JMX URLs opbouwen&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-service:jmx:rmi:*/jndi/rmi:*server.com:3000/jmxrmi```&#34;&gt;
+indien de remote server op server.com draait op poort 3000 (zie boven). Drie slashen na 1ste rmi, twee na de 2de en 1 tussen jndi en rmi in.
+
+##### Java Monitoring console 
+
+Opstarten van **jconsole.exe** in JVM bin folder, gebruik bovenstaande URL. &amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;
+Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te voeren, plus de draaiende JVM te monitoren qua geheugen etc. 
+
+##### Spring gebruiken om beans te exposen 
+
+```java
+	&amp;lt;bean class=&amp;quot;org.springframework.jmx.export.MBeanExporter&amp;quot;&amp;gt;
+		&amp;lt;property name=&amp;quot;beans&amp;quot;&amp;gt;
+			&amp;lt;map&amp;gt;
+				&amp;lt;entry key######&amp;quot;bean:nameBeanName&amp;quot; value-ref=&amp;quot;someBean&amp;quot; /&amp;gt;
+			&amp;lt;/map&amp;gt;
+		&amp;lt;/property&amp;gt;
+		&amp;lt;property name######&amp;quot;registrationBehaviorName&amp;quot; value&amp;quot;REGISTRATION_IGNORE_EXISTING&amp;quot; /&amp;gt;
+	&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;geheugen-monitoren&#34;&gt;Geheugen monitoren&lt;/h2&gt;
+
+&lt;p&gt;Kan bijvoorbeeld met &lt;strong&gt;VisualVM&lt;/strong&gt; - je kan met JMX connecten en dan een dump nemen op de remote locatie waar de JVM op draait. Als er een &lt;code&gt;PermGen space&lt;/code&gt; out of memory zich voor doet kunnen we de dump file analyseren en er hopelijk iets nuttig uit halen.&lt;/p&gt;
+
+&lt;h5 id=&#34;automatisch-een-dump-nemen-na-out-of-memory&#34;&gt;Automatisch een dump nemen na out of memory&lt;/h5&gt;
+
+&lt;p&gt;Doen met volgende JVM params:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=/var/log/tomcat/dumps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zorg ervoor dat het heap dump path schrijfbaar is&amp;hellip;&lt;/p&gt;
+
+&lt;h5 id=&#34;permgen-en-reflectie&#34;&gt;PermGen en reflectie&lt;/h5&gt;
+
+&lt;p&gt;Als er een hele hoop klassen tegelijk aangemaakt worden (inner classes = PermGen space, objecten zitten gewoon op de heap, beginnend met eden), komt de PermGen space misschien in het gedrang. Aan te passen met:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-XX:MaxPermSize=400M
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ Deze worden blijkbaar door de JVM standaard niet garbage-collected. Zie &lt;a href=&#34;http://stackoverflow.com/questions/3334911/what-does-jvm-flag-cmsclassunloadingenabled-actually-do&#34;&gt;http://stackoverflow.com/questions/3334911/what-does-jvm-flag-cmsclassunloadingenabled-actually-do&lt;/a&gt; - je kan dit wel forceren met de volgende parameters:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-XX:+CMSPermGenSweepingEnabled
+-XX:+CMSClassUnloadingEnabled 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Er wordt daar een voorbeeld aangehaald ivm JAXB die een hoop proxy objecten tegelijk aanmaakt via &lt;code&gt;java.lang.reflect.Proxy&lt;/code&gt;. Een entity root kopiëren door middel van relfectie cloning zou bijvoorbeeld ook een potentiëel probleem kunnen zijn.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

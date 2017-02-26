@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Appendix on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/appendix/index.xml</link>
+    <description>Recent content in Appendix on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/appendix/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>appendix</title>
+      <link>http://www.brainbaking.com/wiki/appendix/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/appendix/</guid>
+      <description>&lt;p&gt;&lt;del&gt;NOTOC&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/alphaindex&gt;|&amp;lsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

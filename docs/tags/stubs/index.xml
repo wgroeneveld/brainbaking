@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stubs on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/stubs/index.xml</link>
+    <description>Recent content in Stubs on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/stubs/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>stubs</title>
+      <link>http://www.brainbaking.com/wiki/code/java/testing/stubs/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/testing/stubs/</guid>
+      <description>
+
+&lt;h1 id=&#34;stubs&#34;&gt;Stubs&lt;/h1&gt;
+
+&lt;h2 id=&#34;embedded-jetty&#34;&gt;Embedded Jetty&lt;/h2&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://docs.codehaus.org/display/JETTY/Embedding+Jetty&#34;&gt;http://docs.codehaus.org/display/JETTY/Embedding+Jetty&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Stub Http server:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class StubHttpServer implements StubServer {
+
+	private RequestRecordingFilter filter = new RequestRecordingFilter();
+
+	private int port;
+
+	private Server httpServer;
+
+	private Map&amp;lt;String, ResettableHttpServlet&amp;gt; servlets = new HashMap&amp;lt;String, ResettableHttpServlet&amp;gt;();
+
+	public StubHttpServer(int port) {
+		this.port = port;
+	}
+
+	public void addHttpServlet(String uri, final HttpServlet servlet) {
+		addHttpServlet(uri, new ResettableHttpServlet() {
+
+			@Override
+			public void reset() {
+			}
+
+			@Override
+			public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+				servlet.service(req, res);
+			}
+
+		});
+	}
+
+	public void addHttpServlet(String uri, ResettableHttpServlet servlet) {
+		this.servlets.put(uri, servlet);
+	}
+
+	public boolean hasReceivedRequest(String method, String uri) {
+		return filter.hasReceivedRequest(method, uri);
+	}
+
+	public boolean hasMatchingRequest(String method, String uriRegex) {
+		return filter.hasMatchingRequest(method, uriRegex);
+	}
+
+	public void reset() {
+		filter.reset();
+		for (ResettableHttpServlet servlet : servlets.values()) {
+			servlet.reset();
+		}
+	}
+
+	public void start() throws Exception {
+		if (httpServer ###### null) {
+			httpServer = new Server();
+			SocketConnector connector = new SocketConnector();
+			connector.setPort(port);
+			httpServer.setConnectors(new Connector[] { connector });
+			Context root = new Context(httpServer, &amp;quot;/&amp;quot;, Context.SESSIONS);
+			root.addFilter(new FilterHolder(filter), &amp;quot;/*&amp;quot;, 0);
+			for (String servletMapping : servlets.keySet()) {
+				root.addServlet(new ServletHolder(servlets.get(servletMapping)), servletMapping);
+			}
+			httpServer.start();
+
+			Runtime.getRuntime().addShutdownHook(new Thread() {
+
+				@Override
+				public void run() {
+					StubHttpServer.this.stop();
+				}
+			});
+		}
+	}
+
+	public void stop() {
+		if (httpServer != null) {
+			try {
+				httpServer.stop();
+			} catch (Exception e) {
+				// ignore
+			} finally {
+				httpServer = null;
+			}
+		}
+	}
+
+	@Override
+	public void startGooiExceptionIndienPoortNogNietVrij() throws Exception {
+		start();
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Concreet voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@StubServer(port = OEStubServer.PORT)
+public class OEStubServer extends be.test.stubserver.StubHttpServer {
+
+	public static final int PORT = 9106;
+
+	private static OEStubServer INSTANCE;
+
+	public synchronized static OEStubServer getInstance() {
+		if (INSTANCE ###### null) {
+			INSTANCE = new OEStubServer();
+		}
+		return INSTANCE;
+	}
+
+	private OeClientAwareServlet oeClientAwareServlet = new OeClientAwareServlet();
+
+	private OEStubServer() {
+		super(PORT);
+		addHttpServlet(&amp;quot;/*&amp;quot;, oeClientAwareServlet);
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;De annotatie &lt;code&gt;@StubServer&lt;/code&gt; is louter ter informatie. Het belangrijkste is &lt;code&gt;addHttpServlet()&lt;/code&gt; van de &lt;code&gt;javax.servlet.http.HttpServlet&lt;/code&gt; klasse (hier leidt &lt;code&gt;OeClientAwareServlet&lt;/code&gt; van af). Dan wordt &lt;code&gt;doGet&lt;/code&gt; of &lt;code&gt;doPost&lt;/code&gt; ook geïmplementeerd. That&amp;rsquo;s it!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

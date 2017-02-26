@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>scoping</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="scoping" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/scoping/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>scoping</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="javascript-scoping">Javascript Scoping</h1>
+
+<h3 id="toplevel-scope">Toplevel Scope</h3>
+
+<p>Een stuk Javascript in een HTML pagina, zonder eender welke functie te definiëren, werkt altijd op <strong>top-level scope</strong>. Dat stelt het <code>window</code> object voor, waar we ook resolutie gegevens en dergelijke kunnen uithalen. Dus simpele variabelen declareren om in HTML te kunnen gebruiken werkt altijd op de globale scope:</p>
+
+<pre><code class="language-javascript">var customerEmail = document.getElementById(&quot;username&quot;) + &quot;@&quot; + document.getElementById(&quot;domain&quot;) + &quot;.com&quot;;
+window.customerEmail // what did I do?? (null@null.com if unknown IDs)
+</code></pre>
+
+<p>Om te vermijden dat we alles op het <code>window</code> object &ldquo;dumpen&rdquo;, schrijven we nette functies die zaken zoals tijdelijke variabelen en private stukken code <em>encapsuleren</em>.</p>
+
+<h4 id="variabele-declaratie">Variabele declaratie</h4>
+
+<p>Variabelen definiëren gaat met <code>var</code> (zoals hierboven), máár <em>globale</em> (window-scope) variabelen kunnen gedeclareerd worden zonder dit. Pas hiermee op:</p>
+
+<pre><code class="language-javascript">woot = &quot;leet&quot;;
+function yo() {
+  woot = &quot;omg&quot;; // whoops, I changed a global var
+  meerWoot = &quot;leet&quot;;
+  var wootwoot = &quot;one!!1&quot;;
+}
+
+yo();
+window.woot ##### &quot;leet&quot; // false
+window.meerWoot ##### &quot;leet&quot; // true
+window.wootwoot ##### undefined // true
+</code></pre>
+
+<p>Dit verklaart de nood om <code>var</code> te gebruiken om <em>lokale</em> variabelen te definiëren.<br/><br/>
+Merk op dat hier <code>wootwoot</code> énkel binnen de functie <code>yo()</code> leeft, dus via de Javascript <em>Garbage Collector</em> weggesmeten wordt zodra die functie volledig geëvalueerd is.</p>
+
+<p>#####= Nested en Block scope #####=</p>
+
+<p>Functies in functies in functies zijn perfect mogelijk, en de binnenste functies hebben toegang tot de scope van alle anderen.</p>
+
+<p>❗ In tegenstelling tot Java e.a. beschikt JS <strong>niet over block scope</strong>. Dit wil zeggen:</p>
+
+<pre><code class="language-javascript">var f1 = 10;
+function f() {
+  console.log(f1); // 10? Nope, undefined!
+  var f1 = 1;
+  function z() {
+    var z1 = 2;
+    if(f1 ###### 1) {
+       var z2 = 2;
+    }
+    
+    return z1 + z2; // z2 nog steeds toegankelijk
+  }
+}
+</code></pre>
+
+<p>Waarom logt dit <code>undefined</code>, terwijl op global scope aan f1 10 toegekend wordt? Omdat een tweede variabele genaamd f1 in de <em>body</em> van de functie gedeclareerd wordt, wordt die versie gebruikt, <strong>ook al is deze nog niet toegekend!</strong>. Wow.</p>
+
+<p>JS Is dus buiten de <em>lexicale scoping</em> ook nog eens <em>function-level scoped</em>.</p>
+
+<p>Een duidelijker voorbeeld via <a href="http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting:">http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting:</a></p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt; 
+int main() { 
+    int x = 1; 
+    printf(&quot;%d, &quot;, x); // 1 
+    if (1) { 
+        int x = 2; 
+        printf(&quot;%d, &quot;, x); // 2 
+    } 
+    printf(&quot;%d&lt;br/&gt;n&quot;, x); // 1 
+}
+</code></pre>
+
+<p>Print logischerwijze 1, 2, 1, juist? Doe hetzelfde eens in javascript:</p>
+
+<pre><code class="language-javascript">var x = 1; 
+console.log(x); // 1 
+if (true) { 
+    var x = 2; 
+    console.log(x); // 2 
+} 
+console.log(x); // 2
+</code></pre>
+
+<p><em>BOOM</em>. <br/><br/>
+Dit komt doordat <code>if</code> statements geen nieuwe scope introduceren, enkel <code>function</code> definities! Een oplossing is een anonieme functie gebruiken en die direct evalueren:</p>
+
+<pre><code class="language-javascript">function foo() { 
+    var x = 1; 
+    if (x) { 
+        (function () { 
+            var x = 2; 
+            // some other code 
+        }()); 
+    } 
+    // x is still 1. 
+}
+</code></pre>
+
+<h5 id="scope-chain">Scope chain</h5>
+
+<p>Elke JS Executie context heeft een <strong>scope chain</strong> toegekend. Dit is een lijst van objecten waar de interpreter door gaat om een variabele x op te kunnen zoeken (Dit proces heet <em>variable name resolution</em>). Men begint met de huidige context van de functie die opgeroepen wordt. Indien variabele x daar niet gedefiniëerd is, ga een scope hoger, en zo voort.</p>
+
+<p>In <em>top-level</em> JS (op window scope) bevat de scope chain slechts één object, het &ldquo;globaal&rdquo; object. (<code>window</code>)</p>
+
+<h5 id="event-handler-scope-chain">Event handler scope chain</h5>
+
+<p>Bij het uitvoeren van events in de DOM Tree zitten er buiten <code>window</code> nog enkele andere objecten op de scope chain: het object dat het event zelf triggerde. Het is dus mogelijk om rechtstreeks vanuit een <code>onclick</code> event van een <code>input</code> tag, een ander <code>form</code> element aan te spreken zonder dit eerst te resolven via de klassieke <code>getElementById()</code>:</p>
+
+<pre><code class="language-html">&lt;head&gt;
+&lt;script&gt;
+function load() {
+  document.getElementById(&quot;text&quot;).onclick = function() {
+     alert(anders.value);
+  }
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body onload=&quot;load();&quot;&gt;
+&lt;input type######&quot;text&quot; id&quot;text&quot; value=&quot;blabla&quot; /&gt;
+&lt;input type######&quot;text&quot; id&quot;anders&quot; value=&quot;blieblie&quot; /&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>merk op dat <code>anders.value</code> mogelijk is doordat het DOM element text mee op de scope chain zit. <br/><br/>
+Dit is vanzelfsprekend serieus verwarrend en <strong>bad practice</strong>, Firebug waarschuwt hier ook voor:</p>
+
+<blockquote>
+<p>Element referenced by ID/NAME in the global scope. Use W3C standard document.getElementById() instead.</p>
+</blockquote>
+
+<p>Dit kan serieuze problemen met zich mee brengen, zeker wanneer mensen niet goed weten hoe javascript te gebruiken en bijvoorbeeld for loopjes schrijven door variabelen op toplevel scope te introduceren:</p>
+
+<pre><code class="language-html">
+&lt;head&gt;
+&lt;script&gt;
+function Iets(e) {
+	return function() {
+		alert(j); // DOM Element: Div met id &quot;j&quot;, al hebben we nergens j gedefiniëerd!!! 
+		
+		// j = 0: BOOM in IE: Object doesn't support this property or method
+		// reden =&gt; in IE is dit een readonly property, Gecko parsers zijn lakser hierin
+		for(j = 0; j &lt; 10; j++) {
+		  // whatever
+		}
+		
+		alert(j); // 10
+	}
+}
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h2&gt;Javascript event scopechain voorbeeld&lt;/h2&gt;
+
+&lt;div id######&quot;j&quot; onclick&quot;Iets()()&quot;&gt;
+ Klik hierop aub
+&lt;/div&gt;
+&lt;/body&gt;
+
+</code></pre>
+
+<h5 id="scope-tijdelijk-aanpassen">Scope tijdelijk aanpassen</h5>
+
+<pre><code class="language-javascript">with(window.screen) {
+  console.log(width);
+}
+</code></pre>
+
+<p>Al is <code>var screen = window.screen; screen.width</code> natuurlijk even makkelijk.</p>
+
+<p>#####= Private Member variables #####=</p>
+
+<p>❗ &ldquo;Functies en variabelen in objecten zijn overal en altijd toegankelijk&rdquo;. <strong>DIT IS FOUT</strong>! Bekijk het volgende voorbeeld (zie <a href="http://www.crockford.com/javascript/private.html">private members</a> docs):</p>
+
+<pre><code class="language-javascript">function Func(param) {
+   this.publicMember = param;
+   var privateMember = 10;
+   var me = this;
+   
+   this.publicFunction = function() {
+      console.log(this.publicMember);
+   };
+   
+   // could be function privateFunction() {
+   var privateFunction = function() {
+      console.log(privateMember);
+      console.log(this.publicMember); // BOOM
+      console.log(me.publicMember);   // OK
+   };
+}
+
+new Func(10).privateFunction() // BOEM
+</code></pre>
+
+<p>Zodra we <code>this</code> gebruiken om members in een constructor functie te steken wordt het publiek. Zodra we gewoon variabelen definiëren, ook al zijn het closures zoals <code>privateFunction</code>, is dit <em>niet</em> toegankelijk voor de buitenwereld! Dit wil zeggen dat het zelfs niet toegankelijk is voor <code>.prototype</code>-toegevoegde functies.</p>
+
+<p>Merk op dat we aan <code>privateMember</code> kunnen zonder <code>this</code> te gebruiken om naar iets te refereren. Dit komt omdat die members in de context van het object zitten.<br/><br/>
+Een probleem dat zich voordoet is dat de <code>this</code> pointer binnen private functions natuurlijk weer gereset wordt tot op <code>window</code> scope. Om dit op te lossen kunnen we een private variabele voorzien die refereert naar <code>this</code>, daarvoor dient <code>me</code>.</p>
+
+<h6 id="private-public-en-prototype-functies">Private, Public en prototype functies</h6>
+
+<p>Een <strong>private</strong> functie is een functie die in de constructor functie gedefiniëerd is als <em>member variabele</em>, en dus geldig is binnen de context van die functie. <br/><br/>
+Een <strong>privileged</strong> functie is een functie die in de constructor functie gedefiniëerd is met de <em>this accessor</em>. Deze functies kunnen private functies aanroepen omdat ze binnen de context van de constructor functie leven, en zijn ook aanroepbaar van buitenaf.<br/><br/>
+Een <strong>public</strong> functie is een functie die in het <em>prototype</em> leeft van een object((privileged en public zijn in feite gelijk, onderscheid wordt gemaakt om public variables te scheidden)). Private members zijn hier niet toegankelijk, privileged wel. Een voorbeeld (vervolg):</p>
+
+<pre><code class="language-javascript">Func.prototype.publicThing = function() {
+   alert(this.publicMember);
+   return this.privateMember; // BOOM
+};
+</code></pre>
+
+<p>#####= Object/Class Member variables #####=</p>
+
+<p>In typische OO talen zoals Java en C++ kunnen ook &ldquo;statics&rdquo; gedefiniëerd worden die enkel op klasse niveau leven. Zoiets is heel simpel te realiseren met Javascript, door een property op de constructor functie zelf te steken:</p>
+
+<pre><code class="language-javascript">function Const() {
+   this.c = &quot;const&quot;;
+   c = &quot;globalConst&quot;;
+}
+
+Const.C = &quot;C&quot;;
+
+
+c ###### &quot;globalConst&quot;; // remember, window scope
+new Const().c ###### &quot;const&quot;;
+new Const().C != undefined
+</code></pre>
+
+<p>Dit noemen we &ldquo;class&rdquo; properties, in plaats van &ldquo;instance&rdquo; properties.</p>
+
+<p>#####= Anonieme functies gebruiken om members private te maken #####=</p>
+
+<p>Probleem: publieke functies die aan een object hangen met <code>this.functie = function() { ... }</code> zijn toegankelijk. Ik wil iets groeperen zonder <code>window</code> scope te vervuilen. Hoe kan ik één functie opsplitsen zonder de andere te <em>exposen</em>?<br/><br/>
+Oplossing:</p>
+
+<pre><code class="language-javascript">var Stuff = (function() {
+
+  function doeStap1() {
+    console.log(&quot;private things in here&quot;);
+    return 3;
+  }
+  
+  function doeStap2Met1(een) {
+    return een * 2;
+  }
+
+  return {
+    doeStuff: function() {
+      return doeStap2Met1(doeStap1());
+    }
+  }
+
+})()
+console.log(Stuff); // outputs Object met &quot;doeStuff&quot; key
+console.log(Stuff.doeStuff()); // 6
+</code></pre>
+
+<blockquote>
+<p>In JavaScript, as opposed to statically scoped languages, all variables are scoped to the function in which they&rsquo;re defined (not the &ldquo;block&rdquo; as defined by curly braces). The above code snippet creates an anonymous function and immediately executes it. This has the effect of creating a scope in which variables can be defined, and anything in the containing scope is still accessible.</p>
+</blockquote>
+
+<p>Zie <a href="http://trephine.org/t/index.php?title=Aspect_Oriented_JavaScript">http://trephine.org/t/index.php?title=Aspect_Oriented_JavaScript</a></p>
+
+<p>Wat gebeurt er?</p>
+
+<ol>
+<li>Wrap een lege functie in Stuff, waar x aantal functies in zitten die wat werk doen.</li>
+<li>In plaats van dat toe te kennen aan Stuff, evalueer direct de nieuwe functie met <code>(function() { ... })()</code>. Wat terugkomt is een closure functie die <code>doeStuff</code> definieert, de rest is niet zichtbaar.</li>
+</ol>
+
+<p>#####= Expliciet objecten binden met call/apply #####=</p>
+
+<p>Neem als voorbeeld terug de ezel. Die zal bij het balken &ldquo;iaia met mijn 4 poten&rdquo; op de console afdrukken. Zodra de balk functie aangeroepen wordt, <em>bind</em> Javascript de ezel aan het <code>this</code> keyword, zodat poten correct opgezocht kan worden. Stel nu dat ik een spin wil laten balken, zonder de spin de balk functie te laten refereren/mixen vanuit de ezel:</p>
+
+<pre><code class="language-javascript">var Spin = function() {
+  this.poten = 8;
+};
+var tarantula = new Spin();
+new Ezel().balk.call(tarantula); // iaia met mijn 8 poten
+</code></pre>
+
+<p>Wat gebeurt hier?</p>
+
+<ol>
+<li>Ik maak een nieuw object aan met ook een poten property</li>
+<li>balk gebruikt de poten property maar ik wil mijn spin gebruiken in plaats van de 4 poten van de ezel!</li>
+<li>gebruik <code>call</code> om balk uit te voeren, en geef als argument mijn spin mee, zodat de balk functie gebind wordt op mijn spin in plaats van de nieuwe ezel instantie</li>
+</ol>
+
+<p>Het is ook mogelijk om zonder argument <code>call</code> uit te voeren:</p>
+
+<pre><code class="language-javascript">var poten = 100;
+new Ezel().balk.call(); // iaia met mijn 100 poten
+</code></pre>
+
+<p>Hoezo 100? <code>this</code> wordt dan <code>window</code>, de hoogst mogelijke scope, en daar is net toevallig ook een poten variabele op gedefiniëerd. Als dat niet zo was gaf dit als output &ldquo;iaia met mijn undefined poten&rdquo;.</p>
+
+<h5 id="impliciete-unbound-objecten">Impliciete unbound objecten</h5>
+
+<p>Het vorige voorbeeld toont aan hoe je expliciet <code>this</code> kan &ldquo;unbinden&rdquo;. Dit gebeurt ook regelmatig intern impliciet, bijvoorbeeld met <code>setTimeout</code> of met events zoals <code>blabla.onclick</code>. <br/><br/>
+De oplossing hiervoor is <strong>closures</strong> gebruiken. Bekijk dit voorbeeld:</p>
+
+<pre><code class="language-javascript">function SomeClass() {
+  this.message = &quot;hallo&quot;;
+
+  this.startLooping = function() {
+    setInterval(this.doeBijInterval, 1000);
+  };
+  
+  this.doeBijInterval = function() {
+    console.log(this.message);  // BOOOEEMM
+  }
+}
+ 
+new SomeClass().startLooping();
+</code></pre>
+
+<p>Wat loopt hier mis? ((Buiten het feit dat setInterval niet altijd mag uitgevoerd worden, er moet een guard clause rond, setInterval retourneert een id!))<br/><br/>
+doeBijInterval wordt hier om de seconde uitgevoerd, en this.message wordt afgedrukt. <code>this</code> verwijst op dat moment <em>niet</em> meer naar de instantie van SomeClass!</p>
+
+<p>De oplossing, een closure meegeven aan <code>setInterval</code> die kan werken op de instance:</p>
+
+<pre><code class="language-javascript">function SomeClass() {
+  this.message = &quot;hallo&quot;;
+
+  this.startLooping = function() {
+    var instance = this; // OK, SomeClass instance
+    setInterval(function() {
+      instance.doeBijInterval(); // this = window scope, gebruik de instance var.
+    }, 1000);
+  };
+  
+  this.doeBijInterval = function() {
+    console.log(this.message);  // Da werkt ofwa
+  }
+}
+ 
+new SomeClass().startLooping();
+</code></pre>
+
+<h5 id="loop-closures">loop closures</h5>
+
+<p>Een ander voorbeeld waar het mis kan gaan (ref. <a href="http://trephine.org/t/index.php?title=JavaScript_loop_closures">http://trephine.org/t/index.php?title=JavaScript_loop_closures</a> !):</p>
+
+<pre><code class="language-javascript">var list = [ 'a', 'b', 'c' ];
+for (var i######0, llist.length; i&lt;l; i++) {
+  var item = list[i];
+  setTimeout( function(){ alert(item); }, 1000 ); // print 3x 'c'
+}
+</code></pre>
+
+<p>Hoe kan dit 3x &lsquo;c&rsquo; afdrukken en niet &lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;?</p>
+
+<ol>
+<li>In de lus ken ik aan item de huidige index van de array toe.</li>
+<li>Voer een functie uit die een seconde in de toekomst uitegevoerd wordt. [NOG NIET]. Repeat lus tot klaar.</li>
+</ol>
+
+<p>Zodra de events verwerkt worden, is item reeds de laatste in de rij. Oei. De oplossing, weeral closures:</p>
+
+<pre><code class="language-javascript">var list = [ 'a', 'b', 'c' ];
+for (var i######0, llist.length; i&lt;l; i++) (function(item){
+  setTimeout( function(){ alert(item); }, 1000 );
+})(list[i]);
+</code></pre>
+
+<p>Hier wordt een anonieme functie aangemaakt die <em>direct</em> geëvalueerd wordt met <code>list[i]</code> als parameter, zodat elke closure uniek gebonden is aan de juiste parameter.<br/><br/>
+Zie AOP hieronder voor meer uitleg over anonieme functies.</p>
+
+<p>#####= Samenvatting: module pattern #####=</p>
+
+<p>Wanneer we alle bovenstaande technieken toepassen, krijgen we typisch in Javascript iets zoals dit:</p>
+
+<pre><code class="language-javascript">var MyGlobalNewModule = (function(module) {
+    var privateVar = 3;
+    function privateFn() {
+      privateVar += 3;
+    }
+    
+    // decorate or use module here if wanted.
+    return {
+      publicProperty: &quot;hello&quot;,
+      publicFn: function() {
+        return privateFn() - 2;
+      }
+    };
+})(GlobalModule);
+</code></pre>
+
+<p>Wat zit hier in verwoven?</p>
+
+<ol>
+<li>private variables en functions zitten in de anonieme functie scope</li>
+<li>andere modules zijn toegankelijk via een argument, en <em>niet</em> via de directe variabele</li>
+<li>publieke functies worden <em>exposed</em> via een object dat teruggegeven wordt.</li>
+</ol>
+
+<p>Zo werken bijvoorbeeld de API en plugins van <strong>jQuery</strong>.</p>
+
+<p>❗ Anonieme functies declareren en uitvoeren kan op twee manieren in JS: via <code>(function() { ... })()</code> en via <code>(function() { ... }())</code>. Merk het verschil in <strong>haakjes</strong> op. Het resultaat is exact hetzelfde, er is alleen een semantisch verschil, namelijk dat bij de eerste expressie de haakjes de <em>functie expressie</em> vasthoudt, en bij de tweede expressie de <em>call expressie</em> (het resultaat van de functie)</p>
+
+<p>Zie <a href="http://stackoverflow.com/questions/3783007/is-there-a-difference-between-function-and-function">stackoverflow</a> voor meer uitleg - schematisch:</p>
+
+<pre><code>
+               CallExpression
+                |         |
+       FunctionExpression |
+                |         |
+                V         V
+    (function() {       }());
+    ^                      ^
+    |--PrimaryExpression --|
+</code></pre>
+
+<p>VS</p>
+
+<pre><code>          PrimaryExpression
+                |
+         FunctionExpression
+                |
+                V
+    (function() {       })();
+    ^                      ^
+    |--  CallExpression  --|
+
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

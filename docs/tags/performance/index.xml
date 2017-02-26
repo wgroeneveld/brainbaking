@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Performance on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/performance/index.xml</link>
+    <description>Recent content in Performance on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>performance</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/performance/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/performance/</guid>
+      <description>
+
+&lt;h1 id=&#34;javascript-performance&#34;&gt;Javascript Performance&lt;/h1&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Best practices on performance&lt;/strong&gt;: zie http:*developer.yahoo.com/performance/rules.html en ook http:*sites.google.com/site/io/even-faster-web-sites&lt;/p&gt;
+
+&lt;h2 id=&#34;script-volgorde&#34;&gt;Script volgorde&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;de &lt;code&gt;&amp;lt;head/&amp;gt;&lt;/code&gt; tag wordt door de browser geparsed, inclusief sequentiëel alle &lt;code&gt;&amp;lt;script/&amp;gt;&lt;/code&gt; blocks. Op dit moment kunnen scripts &lt;em&gt;GEEN&lt;/em&gt; DOM Manipulatie doen.&lt;/li&gt;
+&lt;li&gt;de &lt;code&gt;&amp;lt;body/&amp;gt;&lt;/code&gt; tag wordt door de browser geparsed, &amp;hellip;&lt;/li&gt;
+&lt;li&gt;de DOM tree is geladen nadat alle elementen in body geparsed zijn, dus events als &lt;code&gt;$(document).ready&lt;/code&gt; worden gefired.&lt;/li&gt;
+&lt;li&gt;de resources worden verder geladen (&lt;code&gt;&amp;lt;img/&amp;gt;&lt;/code&gt; source attributes, dynamische script of css tags - zie volgende sectie -, en eventuele frames)&lt;/li&gt;
+&lt;li&gt;de hele pagina is geladen, dus events als &lt;code&gt;window.onload&lt;/code&gt; worden gefired.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Hou hier rekening mee bij het includen van scripts in pagina&amp;rsquo;s. Zorg ervoor dat nét na de opbouw van de DOM tree zoveel mogelijk scripts uitgevoerd kunnen worden. Waarom?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;De gebruiker heeft reeds (gedeeltelijk) visuele feedback ontvangen over de pagina - geen volledig blank scherm&lt;/li&gt;
+&lt;li&gt;Images die groot zijn duren lang om in te laden, wacht daarom nooit op een window load event. Externe domeinen kunnen ook plat liggen.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;async-script-loading&#34;&gt;Async Script loading&lt;/h2&gt;
+
+&lt;h4 id=&#34;het-probleem&#34;&gt;Het probleem&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;script/&amp;gt;&lt;/code&gt; tags inladen door browsers &lt;strong&gt;blokkeert alles&lt;/strong&gt;, zelfs &lt;em&gt;cross-domain&lt;/em&gt;!&lt;/p&gt;
+
+&lt;p&gt;Dit wil zeggen dat voor het inladen van images of andere scripts of eender wat in de DOM tree, eerst het volledige script moet geëvalueerd worden. Waarom is dit zo?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Het kan zijn dat in een script tag &lt;code&gt;window.location = &#39;bla&#39;;&lt;/code&gt; staat, dus de rest evalueren redundant is&lt;/li&gt;
+&lt;li&gt;Het kan zijn dat in een script tag &lt;code&gt;document.write()&lt;/code&gt; gebruikt wordt, dus dit eerst moet uitgevoerd worden (DOM manipulatie)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Moderne browsers (&amp;gt;= FF3, IE8) maken het mogelijk om resources &lt;em&gt;parallel&lt;/em&gt; in te laden. Hiermee bedoel ik images en andere resources. Voor oudere browsers is dit dichtgeschroefd tot 2 items parallel, per domein. Resources verspreiden over verschillende domeinen versnelt dus het laden van een pagina!&lt;/p&gt;
+
+&lt;p&gt;❗ In Firefox worden CSS files via &lt;code&gt;&amp;lt;link/&amp;gt;&lt;/code&gt; ook sequentiëel ingeladen, in IE8 parallel. Dit is op dezelfde manier op te lossen.&lt;/p&gt;
+
+&lt;h4 id=&#34;de-oplossing&#34;&gt;De oplossing&lt;/h4&gt;
+
+&lt;h5 id=&#34;include-scripts-op-het-einde-van-de-pagina&#34;&gt;Include scripts op het einde van de pagina&lt;/h5&gt;
+
+&lt;p&gt;Bij voorkeur net voor de &lt;code&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; tag wordt afgesloten. Dit heeft &lt;em&gt;geen enkele&lt;/em&gt; impact op performantie, aangezien het javascript block nog altijd geëvalueerd moet worden, maar is voor de gebruiker veel aangenamer, omdat hij de pagina letterlijk &amp;ldquo;ziet&amp;rdquo; laden. Wanneer er bijvoorbeeld een zwaar javascript filetje door de head tag gesleurd moet worden, en dit evalueren 3 seconden kan duren, ervaart de gebruiker 3 seconden lang totaal niets. Dit is super irriterend!&lt;/p&gt;
+
+&lt;h5 id=&#34;non-blocking-loading&#34;&gt;Non-blocking loading&lt;/h5&gt;
+
+&lt;p&gt;Gebruik non-blocking javascript block loads: zie &lt;a href=&#34;http://yuiblog.com/blog/2008/07/22/non-blocking-scripts/&#34;&gt;http://yuiblog.com/blog/2008/07/22/non-blocking-scripts/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Zonder:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/javascript/js_sequential.jpg|&#39;&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function loadScript() {
+	for(var i = 0; i &amp;lt; arguments.length; i++) {
+		var js = document.createElement(&amp;quot;script&amp;quot;);
+		var head = document.getElementsByTagName(&amp;quot;head&amp;quot;)[0];
+
+		js.src = arguments[i];
+		js.type = &amp;quot;text/javascript&amp;quot;;
+		head.appendChild(js);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Met:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/javascript/js_parallel.jpg|&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; Dit is natuurlijk maar een voorbeeld en het gaat in dit geval over banale javascript files.&lt;/p&gt;
+
+&lt;p&gt;Wat zou hier moeten opvallen? (Dat het uit de cache komt maakt hier &lt;em&gt;totaal niet uit&lt;/em&gt;!) Je kan aan de bruine balk (&amp;ldquo;blocked&amp;rdquo; indicatie bij firebug) zien dat in screenshot een de scripts op elkaar wachten om uitgevoerd te worden, en bij screenshot twee is dit niet het geval.&lt;/p&gt;
+
+&lt;p&gt;Problemen kunnen zo wel ontstaan als het ene afhankelijk is van het andere&amp;hellip; &lt;br/&gt;&lt;br/&gt;
+Daarom ook altijd best practices volgen en &lt;em&gt;separation of concerns&lt;/em&gt; zo goed mogelijk toepassen!&lt;/p&gt;
+
+&lt;h4 id=&#34;asynchrone-scripts-koppelen-aan-elkaar&#34;&gt;Asynchrone scripts koppelen aan elkaar&lt;/h4&gt;
+
+&lt;p&gt;Een van de grotere problemen van de bovenstaande oplossing is de afhankelijkheid van bijvoorbeeld inline script tags met externe die dan vanaf nu &lt;em&gt;lazy-loaded&lt;/em&gt; zijn via &lt;code&gt;loadScript()&lt;/code&gt;. Hoe weet ik wanneer een bepaald script ingeladen en geëvalueerd werd, als dit nu allemaal parallel gebeurt? Op de volgende manier zou dit heel elegant zijn:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;script src=&amp;quot;jquery.js&amp;quot;&amp;gt;
+  $(&#39;.bla&#39;).show(); // and more jQuery dependant stuff
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ Dit werkt &lt;strong&gt;niet&lt;/strong&gt;. Momenteel moet men twee &lt;code&gt;script&lt;/code&gt; tags gebruiken&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Stel u voor dat we jquery via &lt;code&gt;loadScript()&lt;/code&gt; laden. Het zou kunnen dat bovenstaand script block dus uitgevoerd wordt voordat &lt;code&gt;$&lt;/code&gt; gedefiniëerd is op toplevel scope. Oei. Nu zorgt de &lt;code&gt;src&lt;/code&gt; attribute ervoor dat &lt;strong&gt;altijd&lt;/strong&gt; eerst die externe resource volledig geladen is (jquery.js), vooraleer de interne tekst te evalueren (de CSS selector &lt;code&gt;.bla&lt;/code&gt; tonen). Libraries bootstrappen kan je dus daarin doen, nadat ze geladen zijn.&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; Indien het laden van de externe resource niet lukt, wordt de code die binnen de script tags staan ook &lt;strong&gt;niet&lt;/strong&gt; uitgevoerd!&lt;/p&gt;
+
+&lt;p&gt;Een stap verder zou zijn de library zichzelf bootstrappen, door &lt;code&gt;loadScript()&lt;/code&gt; lichtjes aan te passen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function loadScript() {
+	for(var i = 0; i &amp;lt; arguments.length; i++) {
+		var js = document.createElement(&amp;quot;script&amp;quot;);
+		var head = document.getElementsByTagName(&amp;quot;head&amp;quot;)[0];
+
+		js.src = arguments[i].src;
+		js.type = &amp;quot;text/javascript&amp;quot;;
+		js.text = arguments[i].callback.toString();
+		head.appendChild(js);
+	}
+}
+
+//usage:
+loadScript({ src: &#39;jQuery.js&#39;,
+             callback: function() {
+                $(&#39;.bla&#39;).show();
+             }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In de js file zelf kunnen we de tekst van de script tag die onszelf inlaadt (wow) dan evalueren ((Zie &lt;a href=&#34;http://api.jquery.com/jQuery.globalEval/&#34;&gt;http://api.jquery.com/jQuery.globalEval/&lt;/a&gt; - geen &lt;code&gt;eval()&lt;/code&gt; hier dus):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// library code, blablablah
+
+var scripts = document.getElementsByTagName(&amp;quot;script&amp;quot;);
+var curScript = scripts[ scripts.length - 1 ];
+var script = curScript.innerHTML;
+if (script) {
+    jQuery.globalEval(script);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie ook http:*www.stevesouders.com/blog/2008/12/27/coupling-async-scripts/ en http:*ejohn.org/blog/degrading-script-tags/ voor meer info.&lt;/p&gt;
+
+&lt;h2 id=&#34;async-module-definition-amd-pattern&#34;&gt;Async Module Definition (AMD) pattern&lt;/h2&gt;
+
+&lt;p&gt;Zie presentatie hier: &lt;a href=&#34;http://unscriptable.com/code/Using-AMD-loaders/#0&#34;&gt;http://unscriptable.com/code/Using-AMD-loaders/#0&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Komt op dit neer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;define([&#39;dep1&#39;, &#39;dep2&#39;], function(dep1ref, dep2ref) {
+  function private() {}
+
+  return { public1: &amp;quot;lala&amp;quot;, public2: &amp;quot;loeloe&amp;quot; };
+});
+// more defines
+
+require(&#39;mod1&#39;, function(mod1ref) {
+  // do stuff with mod1
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;head-js-parallel-loading-serial-executing&#34;&gt;Head.js: parallel loading &amp;amp; serial executing&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://headjs.com/&#34;&gt;http://headjs.com/&lt;/a&gt; - Bevat een JS loader module dat &lt;em&gt;parallel&lt;/em&gt; scripts laadt, maar in seriële volgorde de scripts uitvoert (of net niet). Zo heb je maar één script in de &lt;code&gt;&amp;lt;HEAD/&amp;gt;&lt;/code&gt; tag nodig om te laden voordat de rest van de pagina geladen wordt. Onderaan de pagina wordt de rest geladen met Headjs:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// use jQuery on the body of the page even though it is not included yet
+head.ready(function() {
+   $(&amp;quot;#my&amp;quot;).jquery_plugin();
+});
+ 
+// load jQuery whenever you wish bottom of the page
+head.js(&amp;quot;/path/to/jquery.js&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wat is allemaaal mogelijk?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Parellel laden + serieel uitvoeren (afhankelijk van elkaar in volgorde)&lt;/li&gt;
+&lt;li&gt;Serieel laden + serieel uitvoeren&lt;/li&gt;
+&lt;li&gt;JS feature checking&lt;/li&gt;
+&lt;li&gt;callbacks per script dat geladen is (evt gelabeled)&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dus nooit meer &lt;strong&gt;zelf load scripts schrijven&lt;/strong&gt; maar gewoon &lt;em&gt;headJS&lt;/em&gt; gebruiken!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

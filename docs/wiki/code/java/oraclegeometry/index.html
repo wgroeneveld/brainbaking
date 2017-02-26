@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>oraclegeometry</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="oraclegeometry" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/java/oraclegeometry/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>oraclegeometry</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="oracle-geometries">Oracle Geometries</h1>
+
+<h2 id="sdo-geometry-mappen-in-de-db">SDO_GEOMETRY Mappen in de DB</h2>
+
+<p>Via Hibernate: met een <code>UserType</code> implementatie</p>
+
+<pre><code class="language-java">    public Object nullSafeGet(ResultSet resultSet, String[] strings, Object o) throws HibernateException, SQLException {
+        STRUCT geometry = (STRUCT) resultSet.getObject(strings[0]);
+
+        if (resultSet.wasNull() || geometry ###### null) {
+            return null;
+        }
+        return new Geometry(JGeometry.load(geometry));
+    }
+
+    /**
+     * setNull(i, Types.OTHER or Types.STRUCT) results in &quot;unknown column type&quot; exceptions!
+     */
+    public void nullSafeSet(PreparedStatement preparedStatement, Object o, int i) throws HibernateException, SQLException {
+        if (o ###### null) {
+            preparedStatement.setNull(i, Types.STRUCT, OracleSpatialDialect.MSYS + &quot;.&quot; + OracleSpatialDialect.SDO_GEOM_TYPE_COLUMN);
+        } else {
+            if (o instanceof Geometry) {
+                Connection oracleConnection = ((DelegatingConnection) preparedStatement.getConnection()).getInnermostDelegate();
+                STRUCT struct = JGeometry.store(((Geometry) o).getInnerGeometry(), oracleConnection);
+                preparedStatement.setObject(i, struct);
+            }
+        }
+    }
+</code></pre>
+
+<p>Merk op dat de <code>store()</code> method op <code>JGeometry</code> effectief een oracle connectie object nodig heeft (harde cast gebeurt in de implementatie). een struct object kan dan omgevormd worden naar <code>JGeometry</code> (te downloaden: <em>sdoapi</em> jar, Oracle Spatial Java API). Het <code>Geometry</code> object is iets dat hierrond gewrapped is. Dit heeft een aantal voordelen:</p>
+
+<ol>
+<li>Afscheiden spatial api dependency rest van de code</li>
+<li>Makkelijk converteren van <code>SDO_GEOMETRY('...') String</code> waarde naar object en omgekeerd</li>
+</ol>
+
+<p>############= Van String naar Object en omgekeerd ############=</p>
+
+<pre><code class="language-java">public class Geometry implements Cloneable, Serializable {
+
+	private static final String MDSYS_POINT_TYPE = &quot;MDSYS.SDO_POINT_TYPE&quot;;
+	private static final String MDSYS_ORDINATE_ARR = &quot;MDSYS.SDO_ORDINATE_ARRAY&quot;;
+	private static final String MDSYS_ELEMENT_ARR = &quot;MDSYS.SDO_ELEM_INFO_ARRAY&quot;;
+	private static final String MDSYS_GEOM = &quot;MDSYS.SDO_GEOMETRY&quot;;
+
+	final static int SRID = 327680;
+
+	private final JGeometry geometry;
+
+	public Geometry() {
+		this.geometry = null;
+	}
+
+	public Geometry(String sdoGeometry) throws GeometryConversionException {
+		try {
+			this.geometry = disassembleSdoGeometry(sdoGeometry);
+		} catch (Exception disassemblingEx) {
+			throw new GeometryConversionException(disassemblingEx);
+		}
+	}
+
+	public Geometry(JGeometry jGeometry) {
+		this.geometry = jGeometry;
+	}
+
+	public JGeometry getInnerGeometry() {
+		return geometry;
+	}
+
+	@Override
+	public String toString() {
+		return toSDOGeometryString();
+	}
+
+	private JGeometry disassembleSdoGeometry(String sdoGeometry) {
+		return new JGeometry(retrieveGeometryType(sdoGeometry), //
+				retrieveSRID(sdoGeometry), //
+				retrievePointTypeX(sdoGeometry), //
+				retrievePointTypeY(sdoGeometry), //
+				retrievePointTypeZ(sdoGeometry), //
+				retrieveElemInfo(sdoGeometry), //
+				retrieveOrdinatesArray(sdoGeometry) //
+		);
+	}
+
+	private int retrieveGeometryType(String sdoGeometry) {
+		String geometryType = StringUtils.substringBetween(sdoGeometry, &quot;(&quot;, &quot;,&quot;);
+		return Integer.parseInt(geometryType.trim());
+	}
+
+	private int retrieveSRID(String sdoGeometry) {
+		String sridString = StringUtils.substringBetween(sdoGeometry, &quot;,&quot;, &quot;,&quot;);
+		return Integer.parseInt(sridString.trim());
+	}
+
+	private double retrievePointTypeX(String sdoGeometry) {
+		return retrievePointTypes(sdoGeometry)[0];
+	}
+
+	private double retrievePointTypeY(String sdoGeometry) {
+		return retrievePointTypes(sdoGeometry)[1];
+	}
+
+	private double retrievePointTypeZ(String sdoGeometry) {
+		return retrievePointTypes(sdoGeometry)[2];
+	}
+
+	private double[] retrievePointTypes(String sdoGeometry) {
+		double[] result = new double[3];
+		String pointTypesAsString = StringUtils.substringBetween(sdoGeometry, MDSYS_POINT_TYPE + &quot;(&quot;, &quot;)&quot;);
+		if (pointTypesAsString != null) {
+			result = toDoubleArray(pointTypesAsString);
+		}
+		return result;
+	}
+
+	private int[] retrieveElemInfo(String sdoGeometry) {
+		String elemInfoArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ELEMENT_ARR + &quot;(&quot;, &quot;)&quot;);
+		return toIntArray(elemInfoArray);
+	}
+
+	private double[] retrieveOrdinatesArray(String sdoGeometry) {
+		String ordinatesArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ORDINATE_ARR + &quot;(&quot;, &quot;)&quot;);
+		return toDoubleArray(ordinatesArray);
+	}
+
+	public String toSDOGeometryString() {
+		if (geometry ###### null)
+			return null;
+
+		StringBuilder string = new StringBuilder(MDSYS_GEOM + &quot;(&quot;);
+		string.append(getGeometryType() + &quot;,&quot;);
+		string.append(geometry.getSRID() + &quot;,&quot;);
+
+		if (geometry.getPoint() ###### null) {
+			string.append(&quot;null,&quot;);
+		} else {
+			string.append(MDSYS_POINT_TYPE);
+			string.append(toStringDoubleArray(geometry.getPoint()));
+			string.append(&quot;,&quot;);
+		}
+
+		if (geometry.getElemInfo() ###### null) {
+			string.append(&quot;null,&quot;);
+		} else {
+			string.append(MDSYS_ELEMENT_ARR);
+			string.append(toStringIntArray(geometry.getElemInfo()));
+			string.append(&quot;,&quot;);
+		}
+
+		if (geometry.getOrdinatesArray() ###### null) {
+			string.append(&quot;null&quot;);
+		} else {
+			string.append(MDSYS_ORDINATE_ARR);
+			string.append(toStringDoubleArray(geometry.getOrdinatesArray()));
+		}
+		return string.append(&quot;)&quot;).toString();
+	}
+
+	private int getGeometryType() {
+		return (geometry.getDimensions() * 1000 + geometry.getType());
+	}
+
+	@Override
+	public Object clone() {
+		return (geometry ###### null ? new Geometry() : new Geometry((JGeometry) geometry.clone()));
+	}
+
+	@Override
+	public int hashCode() {
+		return (geometry ###### null ? 0 : geometry.hashCode());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Geometry))
+			return false;
+		JGeometry other = ((Geometry) obj).geometry;
+
+		return new EqualsBuilder().append(geometry, other).isEquals();
+	}
+</code></pre>
+
+<p>############= Joins uitvoeren ############=</p>
+
+<p>Een Join kan uitgevoerd worden met een Oracle Geometry functie in de database: <a href="http://download.oracle.com/docs/html/A85337_01/sdo_objg.htm#857626">SDO_GEOM.SDO_UNION</a>. Die voegt twee <code>SDO_GEOMETRY</code> objecten samen tot een maar er is ook nog metadata nodig dat ergens anders zit:</p>
+
+<pre><code class="language-sql">SELECT SDO_GEOM.SDO_UNION(?, diminfo, ?, diminfo) FROM ALL_SDO_GEOM_METADATA WHERE owner ###### ? and table_name  ?
+</code></pre>
+
+<p><code>NULL</code> is toegelaten dus het is zo eenvoudig om een recursieve method aan te maken.</p>
+
+<p>❗ <strong>Opgelet</strong> Het is nodig om de voorgaande SQL in een <code>PreparedStatement</code> te steken indien de geometrie coördinaten +1.000 items bevatten. Zelfs in SQL Developer gaat dit niet. Foutboodschap dan: <strong><em>ORA-00939</em>: too many arguments for function</strong></p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

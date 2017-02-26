@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Domain Driven Design on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/domain-driven-design/index.xml</link>
+    <description>Recent content in Domain Driven Design on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/domain-driven-design/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Faking domain logic</title>
+      <link>http://www.brainbaking.com/post/faking-domain-logic/</link>
+      <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/faking-domain-logic/</guid>
+      <description>&lt;p&gt;Sometimes, life is just a little bit more difficult than you imagined the day before. Sometimes, you have to work on a legacy codebase with custom frameworks rooted so deeply you&amp;rsquo;re having lot&amp;rsquo;s of trouble trying to build around them. To make it a bit more concrete, here&amp;rsquo;s an example: imagine a separate DLL for interfaces and a separate DLL for the implementation. This decision was made because we use NHibernate as a data mapper and not to write beautiful domain driven design code. As a result, writing domain logic methods on our &amp;ldquo;domain&amp;rdquo; objects is impossible because we have three implementations.&lt;/p&gt;
+
+&lt;p&gt;There are a few solutions. The first would be the classic solution, called a &amp;ldquo;service layer&amp;rdquo; where you simply dump random &amp;ldquo;domain&amp;rdquo; logic. Done.&lt;/p&gt;
+
+&lt;p&gt;Then there&amp;rsquo;s a slightly better solution involving abstract classes. But it makes things more complicated, and it&amp;rsquo;s not always allowed to inherit from those classes. Besides, in which DLL should you put them? Dependency Entanglement. Welcome to hotel Cali&amp;mdash; erm, DLL Hell.&lt;/p&gt;
+
+&lt;p&gt;So, option number three: use extensions on those interfaces.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    public interface IVacancy
+    {
+        public string Description { get; set; }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;would have these implementations:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    public class FulltimeVacancy : IVacancy
+    {
+        public string Description { get { // ... }; set { field = value; }}
+    }
+    public class HalftimeVacancy : IVacancy
+    {
+        public string Description { get { // ... }; set { field = value; }}
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If I&amp;rsquo;d want to implement something like &lt;code&gt;RetrieveLocation()&lt;/code&gt; based on for example google maps and other properties, I can place the entry point in an extension class:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    public static class IVacancyExtensions
+    {
+        public static string RetrieveLocation(this IVacancy vacancy)
+        {
+            // do your thing
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using the right namespace imports, I&amp;rsquo;m able to call the above method on any concrete implementation of &lt;code&gt;IVacancy&lt;/code&gt;, regardless of it&amp;rsquo;s (DLL) location. Now, why would I want to keep code like this as close to the original object as possible? this has multiple reasons:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It makes code easier to read &amp;amp; refactor.&lt;/li&gt;
+&lt;li&gt;It reduces the chance of duplication in another service layer, as people often hit &amp;ldquo;CTRL+SPACE&amp;rdquo; to find a method from an object or a piece of logic, and don&amp;rsquo;t go looking in service classes.&lt;/li&gt;
+&lt;li&gt;It makes code easier to discuss (since it&amp;rsquo;s also easier to read).&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s isolated and thus easier to test.&lt;/li&gt;
+&lt;li&gt;It avoids a lot of &lt;a href=&#34;http://martinfowler.com/bliki/CodeSmell.html&#34;&gt;other code smells&lt;/a&gt; (deserves it&amp;rsquo;s own article).&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

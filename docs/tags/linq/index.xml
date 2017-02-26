@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linq on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/linq/index.xml</link>
+    <description>Recent content in Linq on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/linq/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>linq</title>
+      <link>http://www.brainbaking.com/wiki/code/csharp/linq/</link>
+      <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/csharp/linq/</guid>
+      <description>
+
+&lt;h1 id=&#34;collections-iterating-linq-profit&#34;&gt;Collections, Iterating, ???, Linq (profit)&lt;/h1&gt;
+
+&lt;h2 id=&#34;yield-hocus-pocus&#34;&gt;yield hocus pocus&lt;/h2&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://blogs.msdn.com/b/oldnewthing/archive/2008/08/12/8849519.aspx&#34;&gt;The implementation of iterators in C#&lt;/a&gt; - wordt uitgelegd hoe &lt;code&gt;yield&lt;/code&gt; door de compiler geïnterpreteerd wordt.&lt;/p&gt;
+
+&lt;p&gt;Hiermee is het mogelijk om heel snel uw eigen &lt;code&gt;IEnumerable&lt;/code&gt; te maken.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“yield”, [&amp;hellip;] which allows you to quickly write iterators without worrying about preserving state.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;folding-selecting-etc&#34;&gt;Folding, selecting, etc&lt;/h2&gt;
+
+&lt;h3 id=&#34;closing-over-the-loop-variable&#34;&gt;Closing over the loop variable&lt;/h3&gt;
+
+&lt;p&gt;Main article: &lt;a href=&#34;http://blogs.msdn.com/b/ericlippert/archive/2009/11/12/closing-over-the-loop-variable-considered-harmful.aspx&#34;&gt;http://blogs.msdn.com/b/ericlippert/archive/2009/11/12/closing-over-the-loop-variable-considered-harmful.aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Opgelet met &lt;code&gt;foreach&lt;/code&gt; en de manier waarop die geïmplementeerd is (onder C# 5):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;  {
+    IEnumerator&amp;lt;int&amp;gt; e = ((IEnumerable&amp;lt;int&amp;gt;)values).GetEnumerator();
+    try
+    { 
+      int m; // OUTSIDE THE ACTUAL LOOP
+      while(e.MoveNext())
+      {
+        m = (int)(int)e.Current;
+        funcs.Add(()=&amp;gt;m);
+      }
+    }
+    finally
+    { 
+      if (e != null) ((IDisposable)e).Dispose();
+    }
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;de variabele &lt;code&gt;m&lt;/code&gt; verandert constant. Wanneer we in een loop dan een &lt;code&gt;delegate&lt;/code&gt; gebruiken die de variabele uitleest, krijgen we op moment van executie slechts de laatste waarde!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;var values = new List&amp;lt;int&amp;gt;() { 100, 110, 120 };
+var funcs = new List&amp;lt;Func&amp;lt;int&amp;gt;&amp;gt;();
+foreach(var v in values) 
+  funcs.Add( ()=&amp;gt;v );
+foreach(var f in funcs) 
+  Console.WriteLine(f()); // print 120, 120, 120, whoops??
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;side-effects&#34;&gt;side-effects&lt;/h3&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://blogs.msdn.com/b/ericlippert/archive/2009/05/18/foreach-vs-foreach.aspx&#34;&gt;foreach vs ForEach&lt;/a&gt;: &lt;code&gt;LINQ&lt;/code&gt; is ontwikkeld om side-effect free te werken, dit wil zeggen dat er altijd een nieuwe collectie aangemaakt wordt. De volgende code is niet voldoende om in een method een lijst te sorteren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;private void sortMe(IEnumerable&amp;lt;string&amp;gt; toSort) {
+  toSort.ToList().Sort(); // ToList() returns a new list! as it should be
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;naming&#34;&gt;naming&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Gebruik &lt;code&gt;Select()&lt;/code&gt; in plaats van de JS &lt;code&gt;transform()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Aggregate&lt;/code&gt; is een native &lt;code&gt;foldLeft&lt;/code&gt; - gebruik &lt;code&gt;Reverse&lt;/code&gt; om van achter naar voor te beginnen.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;All&lt;/code&gt; retrourneert een boolean en is om te controleren of er elementen in een collectie zitten, niet om te transformen of te loopen!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;achterliggende-implementatiedetails&#34;&gt;Achterliggende implementatiedetails&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://community.bartdesmet.net/blogs/bart/archive/2008/08/17/folding-left-right-and-the-linq-aggregation-operator.aspx&#34;&gt;http://community.bartdesmet.net/blogs/bart/archive/2008/08/17/folding-left-right-and-the-linq-aggregation-operator.aspx&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

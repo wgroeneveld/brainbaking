@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postgresql on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/postgresql/index.xml</link>
+    <description>Recent content in Postgresql on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>postgresql</title>
+      <link>http://www.brainbaking.com/wiki/code/db/postgresql/</link>
+      <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/db/postgresql/</guid>
+      <description>
+
+&lt;h1 id=&#34;postgresql&#34;&gt;PostgreSQL&lt;/h1&gt;
+
+&lt;p&gt;Documentatie: &lt;a href=&#34;http://www.postgresql.org/docs/9.1/static/view-pg-locks.html&#34;&gt;http://www.postgresql.org/docs/9.1/static/view-pg-locks.html&lt;/a&gt;
+pgAdmin: &lt;a href=&#34;http://www.pgadmin.org/&#34;&gt;http://www.pgadmin.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ Heeft géén commit &amp;amp; rollbacks, alles wat uitgevoerd wordt kan niet teruggedraaid worden!&lt;/p&gt;
+
+&lt;h4 id=&#34;metadata-tabellen-bekijken&#34;&gt;Metadata tabellen bekijken&lt;/h4&gt;
+
+&lt;h5 id=&#34;alle-views-van-een-bepaald-schema&#34;&gt;Alle views van een bepaald schema&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;SELECT count(*) FROM information_schema.views where table_schema = &#39;public&#39;;&lt;/code&gt;, vergeet niet dat &lt;code&gt;table_schema&lt;/code&gt; &lt;code&gt;pg_catalog&lt;/code&gt; is voor de metadata tabellen die altijd bestaan in postgres.&lt;/p&gt;
+
+&lt;h5 id=&#34;alle-kolommen&#34;&gt;Alle kolommen&lt;/h5&gt;
+
+&lt;p&gt;Voorbeeld om alle floats te selecteren (kan afrondingsfouten bevatten, gebruik &lt;code&gt;numeric&lt;/code&gt; in de plaats):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT * FROM information_schema.columns where
+(data_type = &#39;real&#39; or
+ data_type like &#39;double%&#39;)
+ and table_schema = &#39;public&#39;
+ and table_name not like &#39;view_%&#39;
+ and table_name not like &#39;lookup_%&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;dump-van-db-nemen&#34;&gt;Dump van DB nemen&lt;/h4&gt;
+
+&lt;p&gt;Gebruik hiervoor &lt;code&gt;pgdump&lt;/code&gt; in bin folder van postgres install dir:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C:&amp;lt;br/&amp;gt;Program Files&amp;lt;br/&amp;gt;PostgreSQL&amp;lt;br/&amp;gt;9.1&amp;lt;br/&amp;gt;bin&amp;gt;pg_dump --host######10.16.42.35 --port5432 --username######postgres --schemapublic --format=c --schema-only repository.db &amp;gt; postgresdump_20111020.dmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Verklaring:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--format&lt;/code&gt;: c (custom), d (directory), t (tar), p (plain text)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--schema&lt;/code&gt;: dump enkel dit stuk&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

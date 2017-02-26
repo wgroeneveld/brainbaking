@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teamcity on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/teamcity/index.xml</link>
+    <description>Recent content in Teamcity on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/teamcity/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>teamcity</title>
+      <link>http://www.brainbaking.com/wiki/code/build/teamcity/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/build/teamcity/</guid>
+      <description>
+
+&lt;h1 id=&#34;teamcity&#34;&gt;Teamcity&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Build pipeline&lt;/strong&gt; voor continuous deployment: zie &lt;a href=&#34;http:*robdmoore.id.au/blog/2012/09/01/maintainable-teamcity-continuous-deployment-pipeline-configuration/&#34;&gt;http:*robdmoore.id.au/blog/2012/09/01/maintainable-teamcity-continuous-deployment-pipeline-configuration/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;parameters-comboboxen-checkboxen&#34;&gt;Parameters: comboboxen/checkboxen&lt;/h3&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/build/tc_deploy_params.png|&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Demo omgeving&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Dit ingeven in &amp;ldquo;spec&amp;rdquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select display######&#39;prompt&#39; label&#39;Demo omgeving&#39; data_11######&#39;FixDemo&#39; data_10&#39;FixDev&#39; data_02######&#39;TestDemo1&#39; data_01&#39;Package&#39; data_04######&#39;TestDemo3&#39; data_03&#39;TestDemo2&#39; data_06######&#39;TestDemo5&#39; data_05&#39;TestDemo4&#39; data_08######&#39;TestDemo7&#39; data_07&#39;TestDemo6&#39; data_09=&#39;SERVERNAME&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Modules&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Dit ingeven in &amp;ldquo;spec&amp;rdquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select data_7######&#39;Modx&#39; data_5&#39;Mody.DAL&#39; data_6######&#39;Modz&#39; ... multiple&#39;true&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wordt dan comma-separated doorgegeven via &lt;code&gt;%Modules%&lt;/code&gt; parameter dat je kan gebruiken in build configuration.&lt;/p&gt;
+
+&lt;h3 id=&#34;artifacts-bijhouden&#34;&gt;Artifacts bijhouden&lt;/h3&gt;
+
+&lt;p&gt;Edit build settings &amp;gt; Artifact paths &amp;gt; &lt;code&gt;**/packaged.zip&lt;/code&gt; om alle files die zo heten als artifact te bewaren. &lt;br/&gt;&lt;br/&gt;
+Probleem met HDD space kan opgelost worden met &lt;a href=&#34;http:*confluence.jetbrains.com/display/TCD8/Clean-Up&#34;&gt;http:*confluence.jetbrains.com/display/TCD8/Clean-Up&lt;/a&gt;: Clean-up settings are configured under Administration | Project-related Settings | Build History Clean-up.&lt;/p&gt;
+
+&lt;p&gt;Gevolg is dat gebuilde zipfiles gedownload kunnen worden op deze manier:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/build/builddeploy.png&#39;&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

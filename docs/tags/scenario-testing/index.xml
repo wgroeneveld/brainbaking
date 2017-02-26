@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scenario Testing on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/scenario-testing/index.xml</link>
+    <description>Recent content in Scenario Testing on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/scenario-testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Webdriver Exception Handling</title>
+      <link>http://www.brainbaking.com/post/webdriver-exception-handling/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/webdriver-exception-handling/</guid>
+      <description>&lt;p&gt;As the previous post indicated, we&amp;rsquo;re trying to stabilize our scenario tests created with WebDriver. One of the things we did was trying to capture as much data as possible if something goes wrong. Something like a typical &lt;code&gt;ElementNotFoundException&lt;/code&gt;, or the less common &lt;code&gt;StaleElementException&lt;/code&gt; (detached from DOM after evaluation) - these things can be hard to trace if you don&amp;rsquo;t run the tests locally. We also stumbled upon the &amp;ldquo;it works on my machine&amp;rdquo; problem - tests succeeding on one development machine but not on the other - mostly related due to timing issues.&lt;/p&gt;
+
+&lt;p&gt;So, what should you do when something goes wrong?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;capture what happened! (screenshot)&lt;/li&gt;
+&lt;li&gt;capture what happened! (exception stacktrace logging)&lt;/li&gt;
+&lt;li&gt;capture what happened! (serverside logging)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;WebDriver has a &lt;code&gt;GetScreenshot()&lt;/code&gt; method you can use to dump an image to a file on exception. We used a bit of pointcut magic using PostSharp to automagically handle every exception without manually having to write each &lt;code&gt;try { }&lt;/code&gt; clause.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    WebDriver().GetScreenshot().SaveAsFile(fileName + &amp;quot;.png&amp;quot;, ImageFormat.Png);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After saving the image, we also capture the exception and some extra serverside logging:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        File.WriteAllText(fileName + &amp;quot;.txt&amp;quot;,
+            &amp;quot;-- Resolved URL: &amp;quot; + ScenarioFixture.Instance.ResolveHostAndPort() + Environment.NewLine +
+            &amp;quot;-- Actual URL: &amp;quot; + ScenarioFixture.Instance.Driver.Url + Environment.NewLine +
+            &amp;quot;-- Exception Message: &amp;quot; + ex.Message + Environment.NewLine +
+            &amp;quot;-- Stacktrace: &amp;quot; + Environment.NewLine + ex.StackTrace + Environment.NewLine + Environment.NewLine +
+            &amp;quot;-- Service log: &amp;quot; + Environment.NewLine + ReadServiceLogFromDeployedApp());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because the webservice is deployed somewhere else (scenario tests run againsst the nightly build IIS webserver), we need to access the logfiles using a ´GET´ call, done with RestSharp:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    private static string ReadServiceLogFromDeployedApp()
+    {
+        var restClient = new RestClient(ScenarioFixture.Instance.ResolveHostAndPort());
+        var restRequest = new RestRequest(&amp;quot;log/servicelog.txt&amp;quot;);
+        restRequest.AddHeader(&amp;quot;Content-Type&amp;quot;, &amp;quot;text/plain&amp;quot;);
+        restRequest.AddHeader(&amp;quot;Accept&amp;quot;, &amp;quot;text/plain&amp;quot;);
+        var response = restClient.Execute(restRequest);
+        return response.Content;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, to easily access those files (the screenshot and the written log for each failing test), we wrap the exception in another exception containing a direct link to both files. That enables every developer to simply browse to the failing test on our CI env (teamcity) and simply click on the link!&lt;/p&gt;
+
+&lt;p&gt;To be able to do that, combined with the pointcut, implement the &lt;code&gt;OnException()&lt;/code&gt; hook and call the above code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Serializable]
+[ScenarioExceptionAspect(AttributeExclude = true)]
+public class ScenarioExceptionAspect : OnMethodBoundaryAspect
+{
+    public override void OnException(MethodExecutionArgs args)
+    {
+        var exceptionFileName = Directory.GetCurrentDirectory() + @&amp;quot;/&amp;quot; + WebDriverExceptionHandler.Handle(args.Exception);
+
+        exceptionFileName = exceptionFileName.Replace(@&amp;quot;C:&amp;quot;, @&amp;quot;file://teamcity/c$&amp;quot;);
+        exceptionFileName = exceptionFileName.Replace(@&amp;quot;\&amp;quot;, @&amp;quot;/&amp;quot;);
+
+        throw new Exception(&amp;quot;Scenario test failed&amp;quot;
+            + Environment.NewLine
+            + &amp;quot; -- Screenshot: &amp;quot; + exceptionFileName + &amp;quot;.png&amp;quot;
+            + Environment.NewLine
+            + &amp;quot; -- Log: &amp;quot; + exceptionFileName + &amp;quot;.txt&amp;quot;, args.Exception);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This introduces one more problem: what if you want to trigger an exception, something like &lt;code&gt;ExpectedException(typeof(InvalidArgumentException))&lt;/code&gt;? We&amp;rsquo;ll still end up in our aspect and we&amp;rsquo;ll take a screenshot and dump everything. We fixed this by taking a peek at the live stacktrace. I know it&amp;rsquo;s far from ideal, but it serves it&amp;rsquo;s purpose and works pretty well for the moment.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    private static bool ExpectedSomeException(StackTrace trace)
+    {
+        const int arbitraryMaxDepthToLookForAttribs = 5;
+        for (var stackElements = 1; stackElements &amp;lt;= arbitraryMaxDepthToLookForAttribs; stackElements++)
+        {
+            if (AnyExpectedExceptionInAttribute(trace, stackElements))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    private static bool AnyExpectedExceptionInAttribute(StackTrace trace, int stackElements)
+    {
+        var callingMethod = trace.GetFrame(stackElements).GetMethod();
+        var anyExpectedExceptionAttrib = callingMethod.GetCustomAttributes(typeof(ExpectedExceptionAttribute), true).Any();
+        return anyExpectedExceptionAttrib;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Every instance of a new &lt;code&gt;StackTrace&lt;/code&gt; element will contain all stack data from that point on, so create one in the onException method, otherwise remember to look &amp;ldquo;deeper&amp;rdquo; or further into the stack itself. Yes we could solve that using recursion instead of with an arbitrary number of elements inside a for loop, but we were trying to solve something else and this stood in the way so naturally the reaction was to not invest too much time.&lt;/p&gt;
+
+&lt;p&gt;What&amp;rsquo;s the outcome? This:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Test(s) failed. System.Exception : Scenario test failed
+&amp;ndash; Screenshot: file://teamcity/c$/buildagents/buildAgentOne/work/10dbfc9caad025f8/Proj/ScenarioTests/bin/Debug/ex-15-01-14-15-56-02.png
+&amp;ndash; Log: file://teamcity/c$/buildagents/buildAgentOne/work/10dbfc9caad025f8/Proj/ScenarioTests/bin/Debug/ex-15-01-14-15-56-02.txt
+ &amp;mdash;-&amp;gt; System.Exception : Root menu could not be opened after 10 tries?
+  at Proj.ScenarioTests.ScenarioExceptionAspect.OnException(MethodExecutionArgs args) in c:\buildagents\buildAgentOne\work\10dbfc9caad025f8\Proj\Proj.ScenarioTests\ScenarioExceptionAttributeHandler.cs:line 36
+&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Custom Webdriver Page Factories</title>
+      <link>http://www.brainbaking.com/post/custom-webdriver-page-factories/</link>
+      <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/custom-webdriver-page-factories/</guid>
+      <description>&lt;p&gt;The problem: Webdriver elements returned by &lt;code&gt;driver.FindElement()&lt;/code&gt; are too generic. There&amp;rsquo;re the &lt;code&gt;Text&lt;/code&gt;, &lt;code&gt;SendKeys()&lt;/code&gt; and &lt;code&gt;Click()&lt;/code&gt; methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like &lt;code&gt;ShouldContainValue&lt;/code&gt; or &lt;code&gt;Type&lt;/code&gt; (okay, that&amp;rsquo;s a one-to-one mapping with &lt;code&gt;SendKeys()&lt;/code&gt;, but it&amp;rsquo;s a lot less technical!). Instead of&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)]
+    private IWebElement startButton;
+
+    [FindsBy(How = How.CssSelector, Using = &amp;quot;.other&amp;quot;)]
+    private IWebElement whatever;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You&amp;rsquo;d find code like&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)]
+    private HTMLSubmitButton startButton;
+
+    [FindsBy(How = How.CssSelector, Using = &amp;quot;.other&amp;quot;)]
+    private HTMLInputBox whatever;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In java, this is not that difficult. Normally all fields annotated with FindsBy are filled in via reflection with &lt;code&gt;PageFactory.InitElements()&lt;/code&gt;. (warning: this creates proxies and does not yet actually do the lookup in the DOM tree. This is a good thing, as filling the fields usually happens inside the constructor of a page object.). &lt;code&gt;initElements&lt;/code&gt; returns the filled page, you can do a few things from there:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;postprocess the page and decorate your fields&lt;/li&gt;
+&lt;li&gt;create your own page factory and create your own fields, wrapped around the webdriver proxies&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In C#, you&amp;rsquo;re in trouble - the class is sealed, and the proxy classes are internal. Creating your own factory is possible, but produces fuzzy code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;internal class PageFactory
+{
+    private PageFactory()
+    {
+    }
+
+    private static By FindsByAttributeToBy(FindsByAttribute attribute)
+    {
+        return (By) typeof (FindsByAttribute).GetProperty(&amp;quot;Finder&amp;quot;, BindingFlags.NonPublic | BindingFlags.Instance).GetValue(attribute);
+    }
+
+    public static void InitElements(IWebDriver driver, object page)
+    {
+        foreach (FieldInfo field in FindAllFieldsAndProperties(page.GetType()))
+        {
+            Attribute[] findsByAttribs = Attribute.GetCustomAttributes(field, typeof (FindsByAttribute), true);
+            if (findsByAttribs.Length &amp;gt; 0)
+            {
+                var findsByAttribute = (findsByAttribs[0] as FindsByAttribute);
+                if (field.FieldType == typeof (IWebElement))
+                {
+                    field.SetValue(page, FindElement(driver, FindsByAttributeToBy(findsByAttribute)));
+                }
+                else if (typeof (IEnumerable).IsAssignableFrom(field.FieldType))
+                {
+                    field.SetValue(page, FindElements(driver, FindsByAttributeToBy(findsByAttribute)));
+                }
+            }
+        }
+    }
+
+    private static IWebElement FindElement(IWebDriver driver, By by)
+    {
+        // warning: create WebProxyElement instead of directly doing a lookup
+        return driver.FindElement(by);
+    }
+
+    private static IReadOnlyCollection&amp;lt;IWebElement&amp;gt; FindElements(IWebDriver driver, By by)
+    {
+        // warning: create WebListProxyElement instead of directly doing a lookup
+        return driver.FindElements(by);
+    }
+
+    private static IEnumerable&amp;lt;FieldInfo&amp;gt; FindAllFieldsAndProperties(Type type)
+    {
+        var list = new List&amp;lt;FieldInfo&amp;gt;();
+        list.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.Public));
+        for (; type != (Type) null; type = type.BaseType)
+        {
+            list.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic));
+        }
+        return list;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you have a keen eye, you notice a few things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;caching of the attribute wouldn&amp;rsquo;t work anymore. The default C# WebDriver implementation is fuzzy and I didn&amp;rsquo;t want to copypaste code I won&amp;rsquo;t use.&lt;/li&gt;
+&lt;li&gt;proxying won&amp;rsquo;t work anymore, you&amp;rsquo;d have to use reflection to instantiate internal classes.&lt;/li&gt;
+&lt;li&gt;reflection has been used to fetch the &lt;code&gt;By&lt;/code&gt; instance of the &lt;code&gt;FindsByAttribute&lt;/code&gt;. Yay.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The above solution is too complex to solve a simple thing. Instead of a custom page factory, in C# we now use extension methods on &lt;code&gt;IWebElement&lt;/code&gt;. Another possibility would to create wrapper objects on-the-fly but you&amp;rsquo;d still have to map the &amp;ldquo;raw&amp;rdquo; web elements on page objects.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

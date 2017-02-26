@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>async</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="async" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/javascript/async/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>async</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="async-coding-in-js">Async coding in JS</h1>
+
+<p><a href="http://www.infoq.com/articles/surviving-asynchronous-programming-in-javascript">Asynchronous programming in JS: APIs interview</a> (infoQ)</p>
+
+<h2 id="het-probleem">Het probleem</h2>
+
+<p>Alle events in javascript zijn asynchroon. Dat wil zeggen dat we geen idee hebben wanneer de eigenlijke code uitgevoerd is, en we een <strong>callback closure</strong> moeten meegeven, die verder werkt als de asynchrone code uitgevoerd is.</p>
+
+<p>Dit is oké voor 1-2 asynchrone calls. Maar stel u voor dat we 4+ async calls moeten maken om werk gedaan te krijgen. Typisch dingen zoals:</p>
+
+<ul>
+<li>setTimeouts</li>
+<li>animaties (jQuery ea)</li>
+<li>AJAX calls (REST, naar domein logica, bewaren, opvragen, veranderen, &hellip;)</li>
+</ul>
+
+<h3 id="een-integratietest-schrijven-in-js">Een integratietest schrijven in JS</h3>
+
+<p>In <em>Java</em> kunnen we gewoon wat methods oproepen die data persisteert, daarna de eigenlijke <em>asserts</em> schrijven en eventueel in de <code>@After</code> met JUnit data cleanup uitvoeren:</p>
+
+<pre><code class="language-java">DomainObj obj = new DomainObjPersister()
+   .withA()
+   .withLala(&quot;lala&quot;)
+   .persist();
+
+ChildObj child = new ChildObjPersister()
+   .withParent(obj)
+   .persist();
+
+assertThat(child.getStuff()).isNotEmpty();
+</code></pre>
+
+<p>Om <code>child</code> te kunnen persisteren moeten we <code>obj</code> als parent meegeven, dus die call moet eerst uitgevoerd zijn. Alle persisters gaan naar de database. Dit zou in javascript zoiets zijn=
+<img style='float: left; width: nolink&|px;' src='/img//code/javascript/kill-it-with-fire.gif'></p>
+
+<pre><code class="language-javascript">$.ajax('/domain/obj/store', {
+  success: function(obj) {
+    $.ajax('/domain/child/store', {
+      success: function(child) {
+        assertThat(child.getStuff()).isNotEmpty();
+      }, ...
+    });
+  },
+  type: 'PUT',
+  dataType: 'json',
+  data: JSON.stringify({ key: 'value', key2: 'value2' })
+});
+</code></pre>
+
+<p>Dus een callback wrappen in een callback wrappen in een callback.</p>
+
+<h4 id="async-event-loop-hulpjes">Async event loop hulpjes</h4>
+
+<p>Zie ook <a href="http://vimeo.com/96425312">Philip Roberts: Help, I&rsquo;m stuck in an event-loop</a></p>
+
+<p><img style='float: left; width: nolink |px;' src='/img//code/javascript/476470428_960.jpg'></p>
+
+<p>Tooltje om event loop te visualiseren zodat je ziet wat er gebeurt. Breaken in chrome helpt natuurlijk ook, gewoon naar de call stack kijken&hellip;</p>
+
+<h4 id="asynchroon-testen-in-jasmine">Asynchroon testen in Jasmine</h4>
+
+<p>Met <strong>Jasmine</strong> is het (beperkt) mogelijk om te wachten tot dat een stukje werk uitgevoerd is voordat de assertions afgegaan worden. <br/><br/>
+Dit kan op de volgende manier:</p>
+
+<pre><code class="language-javascript">
+it(&quot;should be green, right??&quot;, function() {
+  var asyncCallFinished = false;
+  function callback(someObj) {
+    asyncCallFinished = true;
+  }
+  doAsyncCall(callback);
+
+  waitsFor(function() {
+    return asyncCallFinished ##### true;
+  });
+
+  runs(function() {
+     expect(stuff).toBeLotsBetter();
+  });
+
+});
+
+</code></pre>
+
+<p>Pitfalls:</p>
+
+<ul>
+<li>Ge moet closure scope gebruiken om een variabele bij te houden om te controleren of de async call klaar is in een callback</li>
+<li>Ge moet <code>waitsFor()</code> gebruiken, intern pollt Jasmine waarschijnlijk gewoon&hellip;</li>
+<li>Ge moet eigenlijke assertions wrappen in <code>runs()</code> omdat <code>waitsFor()</code> direct retourneert en opzich async is.</li>
+</ul>
+
+<p>De assertion functiepointers die meegegeven worden met <code>runs()</code> worden intern opgeslaan en bijgehouden totdat de closure van <code>waitsFor()</code> <code>true</code> retourneert. Daarna wordt ook alles pas meegegeven met de Jasmine reporter (logging, output etc). Redelijk omslachtig, aangezien 3+ async calls dan <code>waitsFor()</code> moeten wrappen. Geen oplossing.</p>
+
+<h5 id="asynchroon-testen-met-qunit">Asynchroon testen met QUnit</h5>
+
+<pre><code class="language-javascript">asyncTest(&quot;should be green, right??&quot;, function() {  
+  var stuff = gogo();
+  function callback(obj) {
+    equal(obj.stuff, 2);
+    start();
+  }
+  
+  doAsyncCall(callback);
+
+});
+</code></pre>
+
+<p>Pitfalls:</p>
+
+<ul>
+<li>In de callback van uw async stuk code moeten zoals verwacht uw assertions zitten</li>
+<li>Ge moet een speciale test method gebruiken, <code>asyncTest()</code></li>
+<li>Ge moet na uw assertions <code>start()</code> aanroepen (??)</li>
+</ul>
+
+<p>#####== De oplossing #####==</p>
+
+<p><a href="https://github.com/willconant/flow-js">https://github.com/willconant/flow-js</a> e.a. (of iets zelfgemaakt in die aard).</p>
+
+<p>Herneem bovenstaande integratietest code in javascript, maar dan met flow.js geschreven:</p>
+
+<pre><code class="language-javascript">flow.exec(
+  function() {
+    $.ajax('/domain/obj/store', {
+      success: this,
+      type: 'PUT',
+      dataType: 'json',
+      data: JSON.stringify({ key: 'value', key2: 'value2' })
+    });  
+  },
+  function(obj) {
+    $.ajax('/domain/child/store', {
+      success: this, ...
+    }); 
+  },
+  function(child) {
+    assertThat(child.getStuff()).isNotEmpty();
+  }
+);
+</code></pre>
+
+<p>Pitfalls:</p>
+
+<ul>
+<li>Error handling wordt opgefreten - gebruik Firebug&rsquo;s <strong>debug on all errors</strong> knop in de console. (anders mechanisme maken dat ze doorgooit van closure1 naar 2 ea)</li>
+<li><code>curry()</code> gaat niet lukken aangezien de <code>this</code> pas in de closure zelf de juiste waarde krijgt.</li>
+<li><code>this</code> moet meegegeven worden als callback, dus te intensief gebruik makend van <code>this</code> pointer in eigen code kan BOEM geven.</li>
+</ul>
+
+<p>flow.js geeft het resultaat van closure1 mee als argument aan closure2 (via <code>arguments</code>) en zo maar door, dat is mega handig.</p>
+
+<h5 id="synchrone-code-code-combineren-met-asynchrone-in-flow-js">Synchrone code code combineren met asynchrone in flow.js</h5>
+
+<p>Enige minpunt is dat de callback <code>this()</code> moet expliciet aangeroepen worden om van closureX naar closureY over te stappen! <br/><br/>
+Los dit op met een utility functie:</p>
+
+<pre><code class="language-javascript">flow.sync = function(work) {
+  return function() {
+    this(work.apply(this, Array.prototype.slice.call(arguments, 0)));
+  }
+}
+</code></pre>
+
+<p>Zodat we dit kunnen doen:</p>
+
+<pre><code class="language-javascript">flow.exec(
+  function() {
+    asyncStuff(this);
+  },
+  flow.sync(function(resultfromPrev) {
+    console.log(&quot;lol&quot;); // no this() required afterwards
+  }),
+  function(resultFromSyncStuff) {
+    doMoreAsyncStuff(this);
+  }
+);
+</code></pre>
+
+<h5 id="in-een-asynchrone-closure-parallel-werken">In een asynchrone closure parallel werken</h5>
+
+<p>Gebruik <code>this.MULTI()</code> als callback ipv <code>this</code> (zie voorbeeld hieronder)</p>
+
+<h5 id="flow-js-combineren-met-jasmine">flow.js combineren met Jasmine</h5>
+
+<p>Om de smeerlapperij van <code>waitsFor()</code> weg te werken kunnen we ook <code>flow.exec</code> gebruiken.</p>
+
+<p>❗ De laatste stap gaat <strong>altijd</strong> een <code>runs()</code> moeten bevatten voor de reporter om aan te duiden dat assertions uitgevoerd worden, aangezien de <code>exec()</code> functie direct retourneert. Dus moeten we 1x wachten, totdat de hele &ldquo;flow&rdquo; gedaan is. We kunnen dit combineren met BDD en een mini-DSL hierrond schrijven. Resultaat:</p>
+
+<pre><code class="language-javascript">function when() {
+	var flowDone = false;
+	var slice = Array.prototype.slice;
+	var argsArray = slice.call(arguments, 0);
+	var laatsteArgumenten;
+	
+	argsArray.push(function() {
+		laatsteArgumenten = slice.call(arguments, 0);
+		flowDone = true;
+	});
+	
+	flow.exec.apply(this, argsArray);
+	waitsFor(function() {
+		return flowDone ##### true;
+	});
+	
+	return {
+		then: function(assertionsFn) {
+			runs(function() {
+				assertionsFn.apply(this, laatsteArgumenten);
+			});
+		}
+	};
+}
+</code></pre>
+
+<p>Voorbeeldcode:</p>
+
+<pre><code class="language-javascript">
+describe(&quot;plaatsen domein&quot;, function() {
+	it(&quot;wanneer ik alle plaatsen ophaal, kan ik hier domeinspecifieke functies aan opvragen&quot;, function() {
+		var plaatsen;
+		when(
+			function() {
+				DOMEIN.plaatsRepository.bewaarPlaats(plaats, this.MULTI());
+				DOMEIN.plaatsRepository.bewaarPlaats(anderePlaats, this.MULTI());
+			},
+			function() {
+				DOMEIN.plaatsRepository.haalPlaatsenOp(this);
+			}
+		).then(
+			function(opgehaaldePlaatsen) {
+				opgehaaldePlaatsen.forEach(function(plaats) {
+					expect(plaats.geefMeting).toBeDefined();
+				});
+			}
+		);
+	});
+});
+</code></pre>
+
+<p>Merk op dat de closure meegeven in <code>then()</code> (slechts 1 mogelijk voor assertions) als <strong>argument</strong> het resultaat van de laatste closure in <code>when()</code> meekrijgt!</p>
+
+<p>#####== jQuery 1.6: Deferred en piping #####==</p>
+
+<p>Vanaf <strong>jQuery 1.6</strong> is het mogelijk om met <code>$.Deferred</code> te werken, dat het mogelijk maakt om een closure uit te voeren op het moment dat &ldquo;werk&rdquo; gedaan is. Met werk bedoelen we:</p>
+
+<ol>
+<li>fx: <code>.animate</code> ea</li>
+<li>http: <code>.ajax</code> ea</li>
+<li>custom code die zelf een <code>$.Deferred</code> object retourneren</li>
+</ol>
+
+<h5 id="promising-stuff">Promising stuff</h5>
+
+<p>Alle async operaties worden aan een <em>queue</em> toegevoegd van het jQuery element zelf. Je kan op eender welk moment vragen aan dat queue object, dat wanneer alle items zijn verwerkt er iets speciaals uigevoerd wordt:</p>
+
+<pre><code class="language-javascript">$('#blink').fadeOut().promise().done(function() {
+  console.log('done blinking!');
+});
+</code></pre>
+
+<p>Dit kan dus ook met <code>$.ajax</code>.</p>
+
+<h5 id="zelf-deferred-code-schrijven">Zelf Deferred code schrijven</h5>
+
+<p>Maak een deferred object aan door <code>$.Deferred()</code> aan te roepen. Op dat moment kan je <code>done()</code> hierop zoals in het vorige voorbeeld aanroepen. Bijvoorbeeld:</p>
+
+<pre><code class="language-javascript">
+function startStuff() {
+  var df = $.Deferred();
+  setTimeout(1000, function() {
+    console.log('done async call');
+    df.resolve();
+  });
+  return df.promise();
+}
+
+startStuff().done(function() {
+  console.log('really really done with &quot;start stuff&quot;!');
+});
+</code></pre>
+
+<h5 id="multiple-elements-in-queue-piping">Multiple elements in queue: piping</h5>
+
+<p>Stel dat eerst element #1 animatie triggert, dan #2, en daarna nog logica dient te gebeuren. Dit kan ook met <code>$.Deferred</code>, door <code>.pipe()</code> te gebruiken om verder te breiden aan de queue.</p>
+
+<pre><code class="language-javascript">$(&quot;button&quot;).bind( &quot;click&quot;, function() {
+	$(&quot;p&quot;).append( &quot;Started...&quot;);
+	var div1 ###### $(&quot;#div1&quot;), div2  $(&quot;#div2&quot;);
+
+	var df = $.Deferred();
+	df.pipe(function() {
+		return div1.fadeOut(&quot;slow&quot;)
+	}).pipe(function() {
+		return div2.fadeOut()
+	}).done(function() {
+		$(&quot;p&quot;).append( &quot;  --  DONE&quot;);
+	});
+	df.resolve(); 
+});
+</code></pre>
+
+<p>❗ Pas op, in de <code>.pipe()</code> functie moet een nieuw <strong>promised object</strong> geretourneerd worden! Dat nieuw object wordt als return value van de vorige pipe gebruikt. Op die manier wordt er dus <em>chaining</em> toegepast.</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

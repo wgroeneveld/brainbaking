@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nativecalls on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/nativecalls/index.xml</link>
+    <description>Recent content in Nativecalls on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/nativecalls/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>nativecalls</title>
+      <link>http://www.brainbaking.com/wiki/code/csharp/nativecalls/</link>
+      <pubDate>Fri, 13 Dec 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/csharp/nativecalls/</guid>
+      <description>
+
+&lt;h1 id=&#34;c-native-calls-uitvoeren&#34;&gt;C++ Native calls uitvoeren&lt;/h1&gt;
+
+&lt;h4 id=&#34;voorbeeld-project&#34;&gt;Voorbeeld project&lt;/h4&gt;
+
+&lt;p&gt;Wat is het probleem:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Ik wil Native C++ methods kunnen aanroepen vanuit C#. Dit kan met de &lt;code&gt;DllImport&lt;/code&gt; attribute.&lt;/li&gt;
+&lt;li&gt;Ik wil structs kunnen remarshallen die uit de native code komen. Dit kan met &lt;code&gt;StructLayout&lt;/code&gt; en &lt;code&gt;PtrToStructrue&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Ik wil een char* mappen op een C# string: gebruik &lt;code&gt;[MarshalAsAttribute(UnmanagedType.LPStr)]&lt;/code&gt; in uw C# struct.&lt;/li&gt;
+&lt;li&gt;Ik wil parameters mee kunnen geven: gebruik de juiste calling method (STD of DECL) instelling, zie &lt;code&gt;CallingConvention&lt;/code&gt; op &lt;code&gt;UnmanagedFunctionPointer&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#pragma once
+
+#ifdef _DLL 
+#define DllExImport __declspec(dllexport) 
+#else 
+#define DllExImport __declspec(dllimport) 
+#endif
+
+struct MyStruct
+{
+	char* id;
+	char* description;
+};
+
+DllExImport MyStruct* __stdcall GetSignals();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;quot;stdafx.h&amp;quot;
+#include &amp;quot;TestClass.h&amp;quot;
+
+DllExImport MyStruct* __stdcall GetSignals()
+{
+	static MyStruct a[] =
+	{
+		{ &amp;quot;id1&amp;quot;, &amp;quot;desc1&amp;quot; },
+		{ &amp;quot;id2&amp;quot;, &amp;quot;desc2&amp;quot; },
+		{ &amp;quot;id3&amp;quot;, &amp;quot;desc3&amp;quot; }
+	};
+	return a;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;namespace structArrayImportTest
+{
+    #region
+
+    using System;
+    using System.Runtime.InteropServices;
+
+    #endregion
+
+    internal class StructImporter
+    {
+        // Charset.Ansi is not needed it seems
+        [DllImport(&amp;quot;kernel32.dll&amp;quot;, EntryPoint = &amp;quot;LoadLibrary&amp;quot;)]
+        private static extern IntPtr LoadLibrary(
+            [MarshalAs(UnmanagedType.LPStr)] string lpLibFileName);
+
+        [DllImport(&amp;quot;kernel32.dll&amp;quot;, EntryPoint = &amp;quot;GetProcAddress&amp;quot;)]
+        private static extern IntPtr GetProcAddress(IntPtr hModule,
+                                                    [MarshalAs(UnmanagedType.LPStr)] string lpProcName);
+
+        [DllImport(&amp;quot;kernel32&amp;quot;, SetLastError ###### true, EntryPoint  &amp;quot;GetProcAddress&amp;quot;)]
+        private static extern IntPtr GetProcAddressOrdinal(IntPtr hModule, IntPtr procName);
+
+        [DllImport(&amp;quot;kernel32.dll&amp;quot;, EntryPoint = &amp;quot;FreeLibrary&amp;quot;)]
+        private static extern bool FreeLibrary(int hModule);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public class MyStruct
+        {
+            [MarshalAsAttribute(UnmanagedType.LPStr)]
+            public string _id;
+            [MarshalAsAttribute(UnmanagedType.LPStr)]
+            public string _description;
+        }
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        public delegate IntPtr fGetSignals();
+
+        public fGetSignals GetSignals;
+
+        public void Import()
+        {
+            IntPtr lib = LoadLibrary(@&amp;quot;C:&amp;lt;br/&amp;gt;Users&amp;lt;br/&amp;gt;bkwog&amp;lt;br/&amp;gt;Documents&amp;lt;br/&amp;gt;Visual Studio 2012&amp;lt;br/&amp;gt;Projects&amp;lt;br/&amp;gt;structArrayExportTest&amp;lt;br/&amp;gt;Debug&amp;lt;br/&amp;gt;structArrayExportTest.dll&amp;quot;);
+            // gebruik dumpbin /exports [bla.dll] om ordinal &amp;amp; name van exported functions te bepalen.
+            IntPtr signalsHandle = GetProcAddressOrdinal(lib, new IntPtr(1));
+            GetSignals = (fGetSignals) Marshal.GetDelegateForFunctionPointer(signalsHandle, typeof (fGetSignals));
+            IntPtr myStructs = GetSignals();
+
+            int structSize = Marshal.SizeOf(typeof(MyStruct));
+            Console.WriteLine(structSize);
+
+            for (int i = 0; i &amp;lt; 3; ++i)
+            {
+                // What&#39;s the difference between toInt32 &amp;amp; 64 here? Both work...
+                IntPtr data = new IntPtr(myStructs.ToInt64() + structSize * i);
+                MyStruct ms = (MyStruct)Marshal.PtrToStructure(data, typeof(MyStruct));
+
+                Console.WriteLine(&amp;quot;id: &amp;quot; + ms._id + &amp;quot; - descr: &amp;quot; + ms._description );
+            }
+        }
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;calling-convention&#34;&gt;Calling convention&lt;/h4&gt;
+
+&lt;p&gt;In te stellen via C++ project settings -&amp;gt; advanced -&amp;gt; calling convention, voor alles, of per functie met &lt;code&gt;__stdcall&lt;/code&gt;. C# werkt hiet default mee. Aanpasbaar in het attribute, zie boven.&lt;/p&gt;
+
+&lt;p&gt;Als de calling convention niet overeen zou komen, krijg je bij het uitvoeren in de C# code de volgende fout:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;call to PInvoke function &amp;lsquo;structArrayImportTest!structArrayImportTest.StructImporter+fGetSignals::Invoke&amp;rsquo; has unbalanced the stack. This is likely because the managed PInvoke signature does not match the unmanaged target signature. Check that the calling convention and parameters of the PInvoke signature match the target unmanaged signature.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;dumpbin&#34;&gt;dumpbin&lt;/h4&gt;
+
+&lt;p&gt;Als je niet met ordinals wenst te werken maar de volledige naam van de functie kan jet met &lt;code&gt;dumpbin.exe&lt;/code&gt; dit achterhalen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C:&amp;lt;br/&amp;gt;Program Files (x86)&amp;lt;br/&amp;gt;Microsoft Visual Studio 10.0&amp;lt;br/&amp;gt;Common7&amp;lt;br/&amp;gt;IDE&amp;gt;dumpbin /exports TfsAdmin.exe structArrayExportTest.dll
+Microsoft (R) COFF/PE Dumper Version 10.00.40219.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file TfsAdmin.exe
+
+File Type: EXECUTABLE IMAGE
+
+Dump of file structArrayExportTest.dll
+
+File Type: DLL
+
+  Section contains the following exports for structArrayExportTest.dll
+
+    00000000 characteristics
+    52A888CA time date stamp Wed Dec 11 16:46:18 2013
+        0.00 version
+           1 ordinal base
+           2 number of functions
+           2 number of names
+
+    ordinal hint RVA      name
+
+          1    0 00011113 ?GetSignals@@YAPAUTestStruct@@XZ
+          2    1 000110E6 ?GetSize@@YAPAHXZ
+
+  Summary
+
+        1000 .data
+        1000 .idata
+        3000 .rdata
+        3000 .reloc
+       11000 .rsrc
+        8000 .text
+       10000 .textbss
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Merk op dat de functie &lt;code&gt;GetSignals&lt;/code&gt; hier niet die naam heeft, maar &lt;code&gt;?GetSignals@@YAPAUTestStruct@@XZ&lt;/code&gt;!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

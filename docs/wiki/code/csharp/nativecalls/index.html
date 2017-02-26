@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>nativecalls</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="nativecalls" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/csharp/nativecalls/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>nativecalls</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="c-native-calls-uitvoeren">C++ Native calls uitvoeren</h1>
+
+<h4 id="voorbeeld-project">Voorbeeld project</h4>
+
+<p>Wat is het probleem:</p>
+
+<ol>
+<li>Ik wil Native C++ methods kunnen aanroepen vanuit C#. Dit kan met de <code>DllImport</code> attribute.</li>
+<li>Ik wil structs kunnen remarshallen die uit de native code komen. Dit kan met <code>StructLayout</code> en <code>PtrToStructrue</code>.</li>
+<li>Ik wil een char* mappen op een C# string: gebruik <code>[MarshalAsAttribute(UnmanagedType.LPStr)]</code> in uw C# struct.</li>
+<li>Ik wil parameters mee kunnen geven: gebruik de juiste calling method (STD of DECL) instelling, zie <code>CallingConvention</code> op <code>UnmanagedFunctionPointer</code>.</li>
+</ol>
+
+<pre><code class="language-c++">#pragma once
+
+#ifdef _DLL 
+#define DllExImport __declspec(dllexport) 
+#else 
+#define DllExImport __declspec(dllimport) 
+#endif
+
+struct MyStruct
+{
+	char* id;
+	char* description;
+};
+
+DllExImport MyStruct* __stdcall GetSignals();
+</code></pre>
+
+<pre><code class="language-c++">#include &quot;stdafx.h&quot;
+#include &quot;TestClass.h&quot;
+
+DllExImport MyStruct* __stdcall GetSignals()
+{
+	static MyStruct a[] =
+	{
+		{ &quot;id1&quot;, &quot;desc1&quot; },
+		{ &quot;id2&quot;, &quot;desc2&quot; },
+		{ &quot;id3&quot;, &quot;desc3&quot; }
+	};
+	return a;
+}
+</code></pre>
+
+<pre><code class="language-csharp">namespace structArrayImportTest
+{
+    #region
+
+    using System;
+    using System.Runtime.InteropServices;
+
+    #endregion
+
+    internal class StructImporter
+    {
+        // Charset.Ansi is not needed it seems
+        [DllImport(&quot;kernel32.dll&quot;, EntryPoint = &quot;LoadLibrary&quot;)]
+        private static extern IntPtr LoadLibrary(
+            [MarshalAs(UnmanagedType.LPStr)] string lpLibFileName);
+
+        [DllImport(&quot;kernel32.dll&quot;, EntryPoint = &quot;GetProcAddress&quot;)]
+        private static extern IntPtr GetProcAddress(IntPtr hModule,
+                                                    [MarshalAs(UnmanagedType.LPStr)] string lpProcName);
+
+        [DllImport(&quot;kernel32&quot;, SetLastError ###### true, EntryPoint  &quot;GetProcAddress&quot;)]
+        private static extern IntPtr GetProcAddressOrdinal(IntPtr hModule, IntPtr procName);
+
+        [DllImport(&quot;kernel32.dll&quot;, EntryPoint = &quot;FreeLibrary&quot;)]
+        private static extern bool FreeLibrary(int hModule);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public class MyStruct
+        {
+            [MarshalAsAttribute(UnmanagedType.LPStr)]
+            public string _id;
+            [MarshalAsAttribute(UnmanagedType.LPStr)]
+            public string _description;
+        }
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        public delegate IntPtr fGetSignals();
+
+        public fGetSignals GetSignals;
+
+        public void Import()
+        {
+            IntPtr lib = LoadLibrary(@&quot;C:&lt;br/&gt;Users&lt;br/&gt;bkwog&lt;br/&gt;Documents&lt;br/&gt;Visual Studio 2012&lt;br/&gt;Projects&lt;br/&gt;structArrayExportTest&lt;br/&gt;Debug&lt;br/&gt;structArrayExportTest.dll&quot;);
+            // gebruik dumpbin /exports [bla.dll] om ordinal &amp; name van exported functions te bepalen.
+            IntPtr signalsHandle = GetProcAddressOrdinal(lib, new IntPtr(1));
+            GetSignals = (fGetSignals) Marshal.GetDelegateForFunctionPointer(signalsHandle, typeof (fGetSignals));
+            IntPtr myStructs = GetSignals();
+
+            int structSize = Marshal.SizeOf(typeof(MyStruct));
+            Console.WriteLine(structSize);
+
+            for (int i = 0; i &lt; 3; ++i)
+            {
+                // What's the difference between toInt32 &amp; 64 here? Both work...
+                IntPtr data = new IntPtr(myStructs.ToInt64() + structSize * i);
+                MyStruct ms = (MyStruct)Marshal.PtrToStructure(data, typeof(MyStruct));
+
+                Console.WriteLine(&quot;id: &quot; + ms._id + &quot; - descr: &quot; + ms._description );
+            }
+        }
+
+    }
+}
+</code></pre>
+
+<h4 id="calling-convention">Calling convention</h4>
+
+<p>In te stellen via C++ project settings -&gt; advanced -&gt; calling convention, voor alles, of per functie met <code>__stdcall</code>. C# werkt hiet default mee. Aanpasbaar in het attribute, zie boven.</p>
+
+<p>Als de calling convention niet overeen zou komen, krijg je bij het uitvoeren in de C# code de volgende fout:</p>
+
+<blockquote>
+<p>call to PInvoke function &lsquo;structArrayImportTest!structArrayImportTest.StructImporter+fGetSignals::Invoke&rsquo; has unbalanced the stack. This is likely because the managed PInvoke signature does not match the unmanaged target signature. Check that the calling convention and parameters of the PInvoke signature match the target unmanaged signature.</p>
+</blockquote>
+
+<h4 id="dumpbin">dumpbin</h4>
+
+<p>Als je niet met ordinals wenst te werken maar de volledige naam van de functie kan jet met <code>dumpbin.exe</code> dit achterhalen:</p>
+
+<pre><code>C:&lt;br/&gt;Program Files (x86)&lt;br/&gt;Microsoft Visual Studio 10.0&lt;br/&gt;Common7&lt;br/&gt;IDE&gt;dumpbin /exports TfsAdmin.exe structArrayExportTest.dll
+Microsoft (R) COFF/PE Dumper Version 10.00.40219.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file TfsAdmin.exe
+
+File Type: EXECUTABLE IMAGE
+
+Dump of file structArrayExportTest.dll
+
+File Type: DLL
+
+  Section contains the following exports for structArrayExportTest.dll
+
+    00000000 characteristics
+    52A888CA time date stamp Wed Dec 11 16:46:18 2013
+        0.00 version
+           1 ordinal base
+           2 number of functions
+           2 number of names
+
+    ordinal hint RVA      name
+
+          1    0 00011113 ?GetSignals@@YAPAUTestStruct@@XZ
+          2    1 000110E6 ?GetSize@@YAPAHXZ
+
+  Summary
+
+        1000 .data
+        1000 .idata
+        3000 .rdata
+        3000 .reloc
+       11000 .rsrc
+        8000 .text
+       10000 .textbss
+</code></pre>
+
+<p>Merk op dat de functie <code>GetSignals</code> hier niet die naam heeft, maar <code>?GetSignals@@YAPAUTestStruct@@XZ</code>!</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

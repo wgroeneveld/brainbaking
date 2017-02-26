@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Resources on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/resources/index.xml</link>
+    <description>Recent content in Resources on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/resources/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>resources</title>
+      <link>http://www.brainbaking.com/wiki/code/csharp/resources/</link>
+      <pubDate>Fri, 09 Oct 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/csharp/resources/</guid>
+      <description>
+
+&lt;h1 id=&#34;c-resources&#34;&gt;C# Resources&lt;/h1&gt;
+
+&lt;h2 id=&#34;in-tests&#34;&gt;In Tests&lt;/h2&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/csharp/testing/&#34;&gt;code/csharp/testing&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;web-config&#34;&gt;Web config&lt;/h2&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/dd465326(VS.100).aspx&#34;&gt;http://msdn.microsoft.com/en-us/library/dd465326(VS.100).aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;.NET 4&lt;/code&gt; voorziet een manier om de &lt;code&gt;Web.config&lt;/code&gt; file automatisch te &lt;strong&gt;transformeren&lt;/strong&gt; afhankelijk van uw build configuratie (Debug, Release, custom). Je hebt hier 2 files:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Web.config (base)&lt;/li&gt;
+&lt;li&gt;Web.[BuildConfigName].config (transformer)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Wat in de tweede file staat, gaat toegepast worden op de eerste file. Je kan dus niet zomaar zaken copypasten en overschrijven, maar moet tags die je wil replacen &lt;strong&gt;XDT&lt;/strong&gt; transformaties op definiëren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;appSettings&amp;gt;
+  &amp;lt;add key######&amp;quot;Bla&amp;quot; value&amp;quot;blie&amp;quot;/&amp;gt;
+&amp;lt;/appSettings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;met transformer&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;appSettings xdt:Transform=&amp;quot;Replace&amp;quot;&amp;gt;
+  &amp;lt;add key######&amp;quot;Bla&amp;quot; value&amp;quot;bloebloe&amp;quot;/&amp;gt;
+&amp;lt;/appSettings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zal de hele &lt;code&gt;appSettings&lt;/code&gt; tag vervangen in de base file. Vergeet dat attribuut en er gebeurt niets.&lt;/p&gt;
+
+&lt;h2 id=&#34;embedded-resources-ophalen&#34;&gt;Embedded resources ophalen&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        private Stream GetIconAsStream(string icon)
+        {
+            return Assembly.GetExecutingAssembly()
+                           .GetManifestResourceStream(
+                               &amp;quot;Full.Namespace.Of.Class.dir.to.image&amp;quot; +
+                               icon);
+        }
+
+        private void CopyIconsToDir(string dir, params string[] iconNames)
+        {
+            foreach (var icon in iconNames)
+            {
+                var downloadStream = GetIconAsStream(icon);
+                var tmpFileCreate = File.Create(dir + &amp;quot;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&amp;quot; + icon);
+                downloadStream.CopyTo(tmpFileCreate);
+                tmpFileCreate.Close();
+                downloadStream.Close();
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;csproj-file-inlezen-parsen&#34;&gt;.CSPROJ file inlezen &amp;amp; parsen&lt;/h2&gt;
+
+&lt;p&gt;Waarom is dit handig? Om bijvoorbeeld te kunnen kijken welke files allemaal included zijn in uw project en met een test alle SQL files verplicht te laten embedden. &lt;br/&gt;&lt;br/&gt;
+(Op die manier staan ze niet als &amp;ldquo;Content&amp;rdquo; in de XML structuur). Regex op loslaten of XML parsen.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        private static string ReadProjectFile()
+        {
+            var dbAssembly = typeof(AbstractUpdater).Assembly;
+            * format: &#39;file:*/C:/Sources/project/UnitTestproject/bin/Debug/project.UnitTest.DLL&#39;
+            var projectDir = dbAssembly.CodeBase.Substring(0, dbAssembly.CodeBase.IndexOf(&amp;quot;.UnitTest&amp;quot;, StringComparison.InvariantCulture));
+            var csprojFile = Directory.GetFiles(projectDir.Replace(&amp;quot;file:///&amp;quot;, &amp;quot;&amp;quot;), &amp;quot;*.csproj&amp;quot;)[0];
+
+            var csproj = File.ReadAllText(csprojFile);
+            return csproj;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;managed-resources-disposen&#34;&gt;Managed resources disposen&lt;/h2&gt;
+
+&lt;p&gt;❗ Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx&#34;&gt;Dispose Pattern @ MSDN&lt;/a&gt;; volgende template:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;public class DisposableResourceHolder : IDisposable {
+ 
+    private SafeHandle resource; // handle to a resource
+
+    public DisposableResourceHolder(){
+        this.resource = ... // allocates the resource
+    }
+
+    public void Dispose(){
+        Dispose(true);
+        GC.SuppressFinalize(this); // tell the GC disposing it isn&#39;t needed anymore
+    }
+
+    protected virtual void Dispose(bool disposing){
+        if (disposing){
+            if (resource!= null) resource.Dispose();
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;using&#34;&gt;using()&lt;/h4&gt;
+
+&lt;p&gt;De .NET CLR vertaalt&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;using (MyResource myRes = new MyResource())
+{
+    myRes.DoSomething();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;naar&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;{ // limits scope of myRes
+    MyResource myRes= new MyResource();
+    try
+    {
+        myRes.DoSomething();
+    }
+    finally
+    {
+        // Check for a null resource.
+        if (myRes!= null)
+            // Call the object&#39;s Dispose method.
+            ((IDisposable)myRes).Dispose();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Moet dan uw object de interface &lt;code&gt;IDisposable&lt;/code&gt; implementeren? Harde cast toch?&lt;/p&gt;
+
+&lt;h4 id=&#34;java-vs-c&#34;&gt;Java VS C#&lt;/h4&gt;
+
+&lt;p&gt;Beiden plaatsten objecten in een finalizer queue maar het uitvoeren hiervan is nooit gegarandeerd (crash process, iets anders dat kan gebeuren, &amp;hellip;). &lt;code&gt;IDisposable&lt;/code&gt; kan gebruikt worden om managed resources op te kuisen, &lt;strong&gt;maar moet manueel aangeroepen worden&lt;/strong&gt; door clients die dit object gebruiken - hier is ook nog niets van gegarandeerd! Behalve in een &lt;code&gt;using(obj) { }&lt;/code&gt; block - hierna wordt &lt;code&gt;Dispose()&lt;/code&gt; aangeroepen, ook als er ondertussen een of andere Exception opgetreden is. In Java 6 en lager moet je dit met &lt;code&gt;try { } finally { }&lt;/code&gt; manueel doen.&lt;/p&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/java/resources/&#34;&gt;java resources wiki pagina&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>resources</title>
+      <link>http://www.brainbaking.com/wiki/code/java/resources/</link>
+      <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/resources/</guid>
+      <description>
+
+&lt;h1 id=&#34;resource-handling&#34;&gt;Resource handling&lt;/h1&gt;
+
+&lt;h2 id=&#34;opkuisen-in-try-finally-block&#34;&gt;Opkuisen in try/finally block&lt;/h2&gt;
+
+&lt;p&gt;Vanaf &lt;strong&gt;Java 7&lt;/strong&gt; zit er ook ARM (automatic resource block management) in met een aanpassing op de &lt;code&gt;try&lt;/code&gt; blocks:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;try (
+FileInputStream stockQuoteReader = new FileInputStream(&amp;quot;StockQuotes.txt&amp;quot;);
+FileOutputStream stockQuoteWriter = new FileOutputStream(&amp;quot;StockQuotes.txt&amp;quot;)
+) {
+      int var;
+      while((var###### stockQuoteReader.read()) ! -1 )
+            stockQuoteWriter.write();
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The new construct extends try blocks to declare resources much like is the case with for loops. Any resource declared within a try block opening will be closed. Hence, the new construct shields you from having to pair try blocks with corresponding finally blocks that are dedicated to proper resource management. A semicolon separates each resource&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Zie ook: http:*javarevisited.blogspot.com/2011/09/arm-automatic-resource-management-in.html#ixzz2rnNBbT9G en http:*www.oracle.com/technetwork/articles/java/trywithresources-401775.html&lt;/p&gt;
+
+&lt;p&gt;Opgelet:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Whatever resource we are using should be subtypes of &lt;strong&gt;AutoCloseable&lt;/strong&gt; other wise will get compile time error.&lt;/li&gt;
+&lt;li&gt;The resources which we are using are closed in reverse order means stockQuoteWriter.close() will be called first then stockQuoteReader.close().&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Read more: &lt;a href=&#34;http://javarevisited.blogspot.com/2011/09/arm-automatic-resource-management-in.html#ixzz2rnNnTi8b&#34;&gt;http://javarevisited.blogspot.com/2011/09/arm-automatic-resource-management-in.html#ixzz2rnNnTi8b&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;java-vs-c&#34;&gt;Java VS C#&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/csharp/resources/&#34;&gt;csharp resources wiki pagina&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;AutoClosable&lt;/code&gt; is een interface die te vergelijken is met &lt;code&gt;IDisposable&lt;/code&gt; in C#.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

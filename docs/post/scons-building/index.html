@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Bye autotools hello Scons</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="Bye autotools hello Scons" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/scons-building/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="/img/Bye%20autotools%20hello%20Scons.jpg"></div>
+  
+
+  <header class="header-section has-img">
+  
+    <div class="big-img intro-header">
+        <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Bye autotools hello Scons</h1>
+      
+        
+      <h2 class="post-subheading">Building C&#43;&#43; projects with Scons</h2>
+      
+      
+      
+      
+      <span class="post-meta">26 March 2014</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+      <span class='img-desc'></span>
+    </div>
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Bye autotools hello Scons</h1>
+      
+        
+      <h2 class="post-subheading">Building C&#43;&#43; projects with Scons</h2>
+      
+      
+      
+      
+      <span class="post-meta">26 March 2014</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/c&#43;&#43;">C&#43;&#43;</a> </li>
+      
+       <li><a href="/tags/python">python</a> </li>
+      
+       <li><a href="/tags/build-ecosystem">build ecosystem</a> </li>
+      
+      </ul>
+
+      <article role="main" class="blog-post">
+          
+
+<p>Remember this?</p>
+
+<ul>
+<li><code>./configure</code></li>
+<li><code>make</code></li>
+<li><code>make install</code></li>
+</ul>
+
+<p>That&rsquo;s not so bad, as long as you have the right compiler and linker flags configured, depending on the target OS. The real problem, however, is trying to figure out how to alter something if you didn&rsquo;t write the <code>Makefile</code> yourself. Or if you in fact did write it, but it was some time ago. Two days. No, four hours.</p>
+
+<h3 id="the-problem">The problem</h3>
+
+<p>Try to study the autoconf and automake flow diagram, explained <a href="http://en.wikipedia.org/wiki/GNU_build_system">on Wikipedia: the GNU build system</a>. Headache coming up? Suppose we would like to use these &hellip; uhm, &ldquo;thingies&rdquo;, for a simple C++ project.</p>
+
+<p>First, let me define simple:</p>
+
+<ul>
+<li>It has some (shared) library dependencies</li>
+<li>The source lives in <code>src</code></li>
+<li>Since it&rsquo;s obviously written the TDD way, the tests live in <code>test</code></li>
+</ul>
+
+<p>Onward, to the <code>Makefile</code> creation station!
+This is a sample file, from the <a href="https://code.google.com/p/googletest/source/browse/trunk/make/Makefile">Google Test Makefile</a>:</p>
+
+<pre><code>GTEST_DIR = ..
+
+USER_DIR = ../samples
+
+CPPFLAGS += -isystem $(GTEST_DIR)/include
+CXXFLAGS += -g -Wall -Wextra -pthread
+
+TESTS = sample1_unittest
+GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
+                $(GTEST_DIR)/include/gtest/internal/*.h
+
+all : $(TESTS)
+
+clean :
+    rm -f $(TESTS) gtest.a gtest_main.a *.o
+
+GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
+gtest-all.o : $(GTEST_SRCS_)
+    $(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
+            $(GTEST_DIR)/src/gtest-all.cc
+
+gtest_main.o : $(GTEST_SRCS_)
+    $(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
+            $(GTEST_DIR)/src/gtest_main.cc
+
+gtest.a : gtest-all.o
+    $(AR) $(ARFLAGS) $@ $^
+
+gtest_main.a : gtest-all.o gtest_main.o
+    $(AR) $(ARFLAGS) $@ $^
+
+sample1.o : $(USER_DIR)/sample1.cc $(USER_DIR)/sample1.h $(GTEST_HEADERS)
+    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1.cc
+
+sample1_unittest.o : $(USER_DIR)/sample1_unittest.cc \
+                     $(USER_DIR)/sample1.h $(GTEST_HEADERS)
+    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1_unittest.cc
+
+sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
+    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+</code></pre>
+
+<p>This first builds the gtest_main.a binary, to be able to link that with our test after the source (sample1.o) has been is built. The syntax is clumsy, simple files require me to have a deep knowledge how flags and linking work, and I don&rsquo;t want to specify everything in one block.</p>
+
+<p>As esr in his blog post <a href="http://esr.ibiblio.org/?p=3089">Scons is full of win today</a> said, it&rsquo;s a maintenance nightmare. What to do?</p>
+
+<p>There are a few alternatives which aim to cover everything autotools does, such as <code>QMake</code> from Trolltech or <code>CMake</code> (that actually generates Makefiles. You&rsquo;re not helping, CMake!). Or, one could go for <a href="http://scons.org/">Scons</a>.</p>
+
+<h3 id="build-your-software-better">build your software, better.</h3>
+
+<p>Scons starts with a single <code>SConstruct</code> file, which acts as the makefile. You can bootstrap the default build target using the <code>scons</code> command. (cleaning with <code>scons --clean</code>). The big deal here is that the contents of that file is simply python (2.7, I know)!</p>
+
+<p>Want to write a utility function to gather all your <code>cpp</code> files? Fine, go ahead, <code>def mystuff():</code> (you do know this already exists, right? Use <code>Glob()</code>) Want to unit test these, and include them? Done. Want to split up everything per source directory? Use <code>SConscript</code> files and include these from within your root <code>SConstruct</code> using <code>SConscript('file', 'envVarToExport')</code>.</p>
+
+<p>This is my blueprint construct file:</p>
+
+<pre><code>env = Environment(CXX = 'g++')
+
+gtest = env.SConscript('lib/gtest/SConscript', 'env')
+src = env.SConscript('src/SConscript', 'env')
+out = env.SConscript('test/SConscript', 'env gtest src')
+
+# output is an array with path to built binaries. We only built one file - run it (includes gtest_main).
+test = Command( target = &quot;testoutput&quot;,
+                source = str(out[0]),
+                action = str(out[0]) )
+AlwaysBuild(test)
+</code></pre>
+
+<p>Things to note:</p>
+
+<ul>
+<li>Scons works with <a href="http://www.scons.org/doc/2.3.1/HTML/scons-user.html#chap-environments">Environments</a> which can be shared and cloned (see below)</li>
+<li>You can share variables with the second parameter</li>
+<li>Executing after a build also works, passing in the result of conscripts.</li>
+<li>Ensure to always build your test with <code>AlwaysBuild()</code></li>
+</ul>
+
+<p>This is the conscript which builds google test:</p>
+
+<pre><code>Import('env')
+env = env.Clone(CPPPATH = './:./include')
+
+env.Append(CXXFLAGS = ['-g', '-Wall', '-Wextra', '-pthread'])
+gtest = env.Library(target = 'gtest', source = ['src/gtest-all.cc', 'src/gtest_main.cc'])
+
+Return('gtest')
+</code></pre>
+
+<p>Things to note:</p>
+
+<ul>
+<li>Fetch the shared variables with <code>Import()</code> and return stuff with <code>Return()</code> (it&rsquo;s a function)</li>
+<li>specify flags all you want.</li>
+<li>Building something? <code>Program()</code>, <code>Library()</code> or <code>SharedLibrary()</code>.</li>
+</ul>
+
+<p>Source:</p>
+
+<pre><code>Import('env')
+env = env.Clone(CPPPATH = './')
+src = env.Library(target = 'wizards', source = Glob('*.cc'))
+
+Return('src')
+</code></pre>
+
+<p>Things to note:</p>
+
+<ul>
+<li><code>Glob()</code> auto-reads all files in the current dir.</li>
+</ul>
+
+<p>And finally, test, linking both source and google test:</p>
+
+<pre><code>Import('env', 'gtest', 'src')
+env = env.Clone()
+
+env.Append(LIBPATH = ['#lib/gtest', '#src'])
+env.Append(LIBS = [gtest, src])
+out = env.Program(target = 'wizards_unittests', source = Glob('*.cc'))
+
+Return('out')
+</code></pre>
+
+<p>Things to note:</p>
+
+<ul>
+<li>Use the hashtag <code>#</code> to point to the root dir where the <code>SConstruct</code> file resides.</li>
+<li>Linking is as simple as providing <code>LIBS</code> and the right path.</li>
+</ul>
+
+<p>So where does that leave us? Yes there&rsquo;s still &ldquo;syntax&rdquo; to be learned, even if you&rsquo;re a seasoned python developer; you need to know which function to use for what, that&rsquo;s what the excellent <a href="http://www.scons.org/doc/2.3.1/HTML/scons-user.html">scons doc</a> is for. I know it made my life a lot easier while trying to do something simple and this is only the tip of the iceberg. Scons is relatively popular according to Stack Overflow, the documentation is excellent and if all else fails you can write your own garbage in a full-fledged dynamic language.</p>
+
+<p>The only really irritating bit is the python 2.7 dependency, so don&rsquo;t forget to use <a href="https://pypi.python.org/pypi/virtualenv">virtualenv</a>.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="http://www.brainbaking.com/post/metaprogramming-convention-dry/" data-toggle="tooltip" data-placement="top" title="Metaprogramming instead of duplication">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="http://www.brainbaking.com/post/custom-webdriver-page-factories/" data-toggle="tooltip" data-placement="top" title="Custom Webdriver Page Factories">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

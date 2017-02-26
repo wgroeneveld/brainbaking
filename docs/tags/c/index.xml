@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/c/index.xml</link>
+    <description>Recent content in C on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>gtest</title>
+      <link>http://www.brainbaking.com/wiki/code/c/testing/gtest/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/testing/gtest/</guid>
+      <description>
+
+&lt;h1 id=&#34;google-test&#34;&gt;Google Test&lt;/h1&gt;
+
+&lt;p&gt;Downloaden op &lt;a href=&#34;https://code.google.com/p/googletest/downloads/list&#34;&gt;https://code.google.com/p/googletest/downloads/list&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Waarom&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Platform onafhankelijk&lt;/li&gt;
+&lt;li&gt;Snelheid&lt;/li&gt;
+&lt;li&gt;Geen gezeik met Managed C++, compatibel met &amp;ldquo;eender wat&amp;rdquo; (enige vereiste: &lt;code&gt;cc&lt;/code&gt; compiler variant)&lt;/li&gt;
+&lt;li&gt;Wordt veel gebruikt (Chromium, Stack overflow)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Waarom niet&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;slechte of geen integratie met VStudio (zie onder)&lt;/li&gt;
+&lt;li&gt;wéér een andere syntax dan MS .NET testen&lt;/li&gt;
+&lt;li&gt;beetje awkward assertions&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;assertions-schrijven&#34;&gt;Assertions schrijven&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;../BaseCode/BaseCode.h&amp;quot;
+
+#include &amp;quot;gtest/gtest.h&amp;quot;
+
+TEST(MyTestCase, MyTest_Success)
+{
+    EXPECT_EQ(2, MySum(1, 1));
+}
+
+TEST(MyTestCase, MyTest_Failure)
+{
+    EXPECT_EQ(3, MySum(1, 2));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Waarbij dan &lt;code&gt;BaseCode&lt;/code&gt; uw system under test zaken bevat (waar &lt;code&gt;MySum&lt;/code&gt; defined is)&lt;/p&gt;
+
+&lt;h4 id=&#34;builden-met-scons-en-g&#34;&gt;Builden met scons en g++&lt;/h4&gt;
+
+&lt;p&gt;Tested in Cygwin Win7 &amp;amp; OSX 10.9&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;Import(&#39;env&#39;)
+env ###### env.Clone(CPPPATH  &#39;./:./include&#39;)
+
+env.Append(CXXFLAGS = [&#39;-g&#39;, &#39;-Wall&#39;, &#39;-Wextra&#39;, &#39;-pthread&#39;])
+gtest ###### env.Library(target  &#39;gtest&#39;, source = [&#39;src/gtest-all.cc&#39;, &#39;src/gtest_main.cc&#39;])
+
+Return(&#39;gtest&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/build/scons/&#34;&gt;code/build/scons&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;builden-met-visual-studio&#34;&gt;Builden met Visual Studio&lt;/h4&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left;&#39; src=&#39;http://www.brainbaking.com/img//code/c/testing/screenshot.png|&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://leefrancis.org/2010/11/17/google-test-gtest-setup-with-microsoft-visual-studio-2008-c/&#34;&gt;http://leefrancis.org/2010/11/17/google-test-gtest-setup-with-microsoft-visual-studio-2008-c/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Er zijn 2 &lt;code&gt;.sln&lt;/code&gt; files voorzien in de msvc subdir bij de zipfile, één voor statische links en één voor dynamische. Afhankelijk van uw project (.DLL of .LIB gegenereerde uitkomst), ga je één van beiden moeten compileren. Als je van plan bent om &lt;code&gt;/MDd&lt;/code&gt; te gebruiken (dll + debugging), gebruik dan &lt;code&gt;gtest-md.sln&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Daarna kan je een nieuwe solution maken, package naar executable om de test zelf te runnen (om gtest testen te draaien). Verander deze dingen in het project:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;General &amp;gt; Configuration type  = Application (.EXE)&lt;/li&gt;
+&lt;li&gt;C/C++ &amp;gt; General &amp;gt; Additional Include dirs naar gtest/include verwijzen&lt;/li&gt;
+&lt;li&gt;C/C++ &amp;gt; Preprocessor &amp;gt; definitions toevoegen &lt;code&gt;_VARIADIC_MAX=10&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Code generation &amp;gt; Runtime library op &lt;code&gt;/MDd&lt;/code&gt; of &lt;code&gt;/MTd&lt;/code&gt; juist zetten (zie boven)&lt;/li&gt;
+&lt;li&gt;Linker &amp;gt; Additional Library directories &amp;gt; gtest/Debug (staan reeds binaries indien compiled)&lt;/li&gt;
+&lt;li&gt;Linker &amp;gt; Input &amp;gt; Additional dependencies = gtestd.lib;gtest_maind.lib;(rest)&lt;/li&gt;
+&lt;li&gt;Linker &amp;gt; System &amp;gt; SubSystem Console &lt;code&gt;/SYBSYSTEM:CONSOLE&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Linker &amp;gt; Input &amp;gt; Module Definition file leeg (indien van DLL naar EXE veranderd kan hier wat brol in zitten)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;visual-studio-2012-en-std-problemen&#34;&gt;Visual Studio 2012 en STD problemen&lt;/h4&gt;
+
+&lt;p&gt;Fouten als&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1&amp;gt;a:&amp;lt;br/&amp;gt;gtest&amp;lt;br/&amp;gt;include&amp;lt;br/&amp;gt;gtest&amp;lt;br/&amp;gt;gtest-printers.h(550): error C2977: &#39;std::tuple&#39; : too many template arguments
+1&amp;gt;          b:&amp;lt;br/&amp;gt;program files (x86)&amp;lt;br/&amp;gt;microsoft visual studio 2012&amp;lt;br/&amp;gt;vc&amp;lt;br/&amp;gt;include&amp;lt;br/&amp;gt;utility(73) : see declaration of &#39;std::tuple&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Op te lossen met een preprocessor macro _VARIADIC_MAX=10, zie &lt;a href=&#34;http://stackoverflow.com/questions/12558327/google-test-in-visual-studio-2012&#34;&gt;http://stackoverflow.com/questions/12558327/google-test-in-visual-studio-2012&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;integratie-met-visual-studio-2008-2010&#34;&gt;Integratie met Visual Studio &lt;sup&gt;2008&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2010&lt;/sub&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://googletestaddin.codeplex.com/documentation&#34;&gt;GoogleTestAddin&lt;/a&gt; (kopieer 2 files naar C:&lt;br/&gt;Users&lt;br/&gt;bkwog&lt;br/&gt;Documents&lt;br/&gt;Visual Studio 2008&lt;br/&gt;Addins, map misschien nog aanmaken)&lt;/p&gt;
+
+&lt;p&gt;Niet super nuttig, een knopje om testen snel te herdraaien (of één die geselecteerd is), beter dan post-build actie zie boven&amp;hellip;&lt;/p&gt;
+
+&lt;h4 id=&#34;integratie-met-visual-studio-2012&#34;&gt;Integratie met Visual Studio 2012&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://visualstudiogallery.msdn.microsoft.com/f00c0f72-ac71-4c80-bf8b-6fe381548031&#34;&gt;Google Test Adapter&lt;/a&gt; plugin (1.1 - geen actieve development?)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>linking</title>
+      <link>http://www.brainbaking.com/wiki/code/c/linking/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/linking/</guid>
+      <description>
+
+&lt;h1 id=&#34;linking-obj-dlls&#34;&gt;Linking obj/dlls&lt;/h1&gt;
+
+&lt;p&gt;Probleemstelling: verschillende &lt;strong&gt;solutions&lt;/strong&gt;, code over solutions heen willen gebruiken.&lt;/p&gt;
+
+&lt;p&gt;Dit compileert by default altijd, maar tijdens het linken van de gecompileerde files loopt het mis. Waarom? Omdat er geen &lt;code&gt;dllexport&lt;/code&gt; voorzien is.
+&lt;br/&gt;&lt;br/&gt; Op te lossen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#ifndef RESOURCE_UTILS_H
+#define RESOURCE_UTILS_H
+
+#include &amp;quot;Utility.h&amp;quot;
+
+#ifdef _DLL
+	#define DllExImport __declspec(dllexport)
+#else
+	#define DllExImport __declspec(dllimport)
+#endif
+
+
+class DllExImport ResourceUtils
+{
+public:
+	static RAIIObject&amp;lt;HICON&amp;gt; getIcon(int resourceId);
+	static RAIIObject&amp;lt;HICON&amp;gt; getIcon(HINSTANCE resourceHandleInstance, int resourceId);
+
+private:
+	ResourceUtils() {}
+};
+
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;in de cpp file hoeft niets speciaal meer te staan.&lt;/p&gt;
+
+&lt;h4 id=&#34;functies-exposen-voor-native-calls&#34;&gt;Functies exposen voor native calls&lt;/h4&gt;
+
+&lt;p&gt;Zelfde principe om klassen te exposen met &lt;code&gt;_ _declspec(dllexport)&lt;/code&gt;. Gebruik eventueel std calls (C# heeft dit nodig): &lt;code&gt;DllExImport MyStruct* _ _stdcall GetSignals();&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;properties-van-solutions&#34;&gt;Properties van solutions&lt;/h4&gt;
+
+&lt;h5 id=&#34;die-de-te-exporteren-code-bevat&#34;&gt;Die de te exporteren code bevat&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Configuration type: Dynamic Libraray (DLL)&lt;/li&gt;
+&lt;li&gt;Incremental linking: Yes (/INCREMENTAL)&lt;/li&gt;
+&lt;li&gt;Link Linkage Deps: Yes&lt;/li&gt;
+&lt;li&gt;Output file: *.dll&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5 id=&#34;die-de-code-bevat-die-gebruik-maakt-van-de-dll&#34;&gt;Die de code bevat die gebruik maakt van de dll&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Linker; Input: Additional dependencies ../OtherSolution.lib&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;shared-libraries-linken-in-unix&#34;&gt;Shared libraries linken in Unix&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;declspec&lt;/code&gt; is Win32 specifiek. Lees alles over GCC Visibility in &lt;a href=&#34;http://gcc.gnu.org/wiki/Visibility&#34;&gt;GNU GCC Wiki on Visibility&lt;/a&gt;. Komt op dit neer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#if defined(_MSC_VER)
+    //  Microsoft 
+    #define EXPORT __declspec(dllexport)
+    #define IMPORT __declspec(dllimport)
+#elif defined(_GCC)
+    //  GCC
+    #define EXPORT __attribute__((visibility(&amp;quot;default&amp;quot;)))
+    #define IMPORT
+#else
+    //  do nothing and hope for the best?
+    #define EXPORT
+    #define IMPORT
+    #pragma warning Unknown dynamic link import/export semantics.
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zie ook &lt;a href=&#34;http://www.akkadia.org/drepper/dsohowto.pdf&#34;&gt;How to write shared Libraries&lt;/a&gt; by Ulrich Drepper.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mfc</title>
+      <link>http://www.brainbaking.com/wiki/code/c/mfc/</link>
+      <pubDate>Thu, 12 Dec 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/mfc/</guid>
+      <description>
+
+&lt;h1 id=&#34;mfc&#34;&gt;MFC&lt;/h1&gt;
+
+&lt;p&gt;❗ MFC en AFX &lt;a href=&#34;http://en.wikipedia.org/wiki/Microsoft_Foundation_Class_Library&#34;&gt;is hetzelfde&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;One interesting quirk of MFC is the use of &amp;ldquo;Afx&amp;rdquo; as the prefix for many functions, macros and the standard precompiled header name &amp;ldquo;stdafx.h&amp;rdquo;. During early development what became MFC was called &amp;ldquo;Application Framework Extensions&amp;rdquo; and abbreviated &amp;ldquo;Afx&amp;rdquo;. The name Microsoft Foundation Classes (MFC) was adopted too late in the release cycle to change these references&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;strings-in-mfc&#34;&gt;Strings in MFC&lt;/h3&gt;
+
+&lt;p&gt;Gebruik &lt;code&gt;CString&lt;/code&gt; - werkt niet op non-win32 omgevingen.&lt;/p&gt;
+
+&lt;h5 id=&#34;formatting&#34;&gt;Formatting&lt;/h5&gt;
+
+&lt;p&gt;Formatten kan bijvoorbeeld met &lt;code&gt;string.Format(_T(&amp;quot;%s in %d&amp;quot;), otherString, otherDecimal);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ Om een string te intialiseren en toe te kennen moet je wel de &lt;code&gt;_T&lt;/code&gt; macro gebruiken&lt;/p&gt;
+
+&lt;h5 id=&#34;substringen&#34;&gt;Substringen&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;Find&lt;/code&gt; is hetzelfde als &lt;code&gt;indexOf&lt;/code&gt; in andere talen.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;CString HostServiceProxy::GetCouponFromResponseString(CString response)
+{
+	CString couponKey ###### _T(&amp;quot;Coupon&amp;quot;);
+	CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
+
+	return couponPart.Left(couponPart.Find(_T(&amp;quot;;&amp;quot;)));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;resource-handling&#34;&gt;Resource handling&lt;/h3&gt;
+
+&lt;p&gt;Icons en images worden opgeslagen in .rc files die als resources in de code gekoppeld kunnen worden aan bijvoorbeeld een &lt;code&gt;CButton&lt;/code&gt;. Hoe?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;	HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
+	if(hImage ###### NULL)
+		ASSERT(FALSE);	
+
+	HICON image = static_cast&amp;lt;HICON&amp;gt;(hImage);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;HICON&lt;/code&gt; is van &lt;code&gt;WinDef.h&lt;/code&gt; en &lt;code&gt;::LoadImage&lt;/code&gt; zit op &lt;code&gt;WinUser.h&lt;/code&gt;. Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/windows/desktop/ms648045(v=vs.85).aspx&#34;&gt;MSDN doc&lt;/a&gt; voor LoadImage.&lt;/p&gt;
+
+&lt;p&gt;######= De juiste resource handle vastkrijgen ######=&lt;/p&gt;
+
+&lt;p&gt;Als je een MFC DLL maakt, gaat &lt;code&gt;AfxGetResourceHandle()&lt;/code&gt; verwijzen naar de resource handle van uw DLL zelf. Als je dus resources wil vastpakken van een andere DLL heb je pech. Als je geen MFC DLL maakt kan je dit aanpassen met &lt;code&gt;AFX_MANAGE_STATE(AfxGetStaticModuleState( ))&lt;/code&gt;. &lt;strong&gt;Dit gooit echter linking errors&lt;/strong&gt; ( error LNK2005: _DllMain@12 already defined) indien je dit vanuit een MFC DLL aanroept - dan is dit niet nodig.&lt;/p&gt;
+
+&lt;p&gt;Meer uitleg hierover: zie &lt;a href=&#34;http://support.microsoft.com/kb/161589&#34;&gt;http://support.microsoft.com/kb/161589&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;❗ de Afx resource handle kan &lt;strong&gt;altijd&lt;/strong&gt; gewijzigd worden door leuke dingen te doen als:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;	HINSTANCE old = AfxGetResourceHandle();
+	AfxSetResourceHandle(GetModuleHandle(&amp;quot;andereModule&amp;quot;));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gebruik daarom best &lt;code&gt;::GetModuleHandle(char*)&lt;/code&gt; bij &lt;code&gt;::LoadImage&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;######= Resources op het juiste moment terug vrijgeven ######=&lt;/p&gt;
+
+&lt;p&gt;Resources worden meestal gewrapped in kleine objectjes die bij de constructor de resource alloceren en bij de destructor deze terug vrijgeven in plaats van in &lt;code&gt;try { ... }&lt;/code&gt; zoiets te moeten doen in Java. Dit pattern is &lt;a href=&#34;http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization&#34;&gt;RAII&lt;/a&gt; of &amp;ldquo;Resource Acquisition Is Initialization&amp;rdquo;. Voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;template&amp;lt;class TObject&amp;gt;
+class RAIIObject
+{
+public:
+	explicit RAIIObject(const TObject&amp;amp; obj) : m_Object(obj) {}
+	RAIIObject() {}
+	~RAIIObject() {ReleaseObject();}
+	RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const TObject&amp;amp; obj) {if(&amp;amp;obj ! &amp;amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
+	RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; obj) {if(&amp;amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
+	TObject&amp;amp; GetObject() {return m_Object;}
+	const TObject&amp;amp; GetObject() const {return m_Object;}
+	operator TObject&amp;amp;() {return m_Object;}
+	operator const TObject&amp;amp;() const {return m_Object;}
+private:
+	void ReleaseObject();
+	TObject m_Object;
+};
+
+template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;HICON&amp;gt;::ReleaseObject() {::DestroyIcon(m_Object); m_Object = NULL;}
+template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;CBrush&amp;gt;::ReleaseObject() {m_Object.DeleteObject();}
+template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;CBitmap&amp;gt;::ReleaseObject() {m_Object.DeleteObject();}
+template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;CFont&amp;gt;::ReleaseObject() {m_Object.DeleteObject();}
+template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;CMenu&amp;gt;::ReleaseObject() {m_Object.DestroyMenu();}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>win32specifics</title>
+      <link>http://www.brainbaking.com/wiki/code/c/win32specifics/</link>
+      <pubDate>Thu, 12 Dec 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/win32specifics/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-c-win32-api-specifics&#34;&gt;code:c &amp;gt;&amp;gt; Win32 API specifics&lt;/h1&gt;
+
+&lt;h4 id=&#34;get-loaded-dll-info-from-given-process&#34;&gt;Get Loaded DLL info from given process&lt;/h4&gt;
+
+&lt;p&gt;huidig proces: &lt;code&gt;GetCurrentProcessId()&lt;/code&gt; - dit is een &lt;code&gt;HANDLE&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;CString ExceptionHandler::GetLoadedDllInfo() const
+{
+	CString dlls = _T(&amp;quot;&amp;quot;);
+	HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
+	if(process ###### NULL)
+	{
+		return dlls;
+	}
+
+	 HMODULE hMods[1024];
+	 DWORD cbNeeded;
+	 BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;amp;cbNeeded);
+	 if(!modules)
+	 {
+		 return dlls;
+	 }
+
+	for (int i = 0; i &amp;lt; (cbNeeded / sizeof(HMODULE)); i++)
+	{
+		TCHAR szModName[MAX_PATH];
+
+		if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
+		{
+			dlls.Format(_T(&amp;quot;%s, %s&amp;quot;), dlls, szModName);
+		}
+	}
+
+	CloseHandle(process);
+	return dlls;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hiervoor moet je &lt;code&gt;#include &amp;lt;psapi.h&amp;gt;&lt;/code&gt; includen én de psapi.lib file mee linken! Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/windows/desktop/ms682631(v=vs.85).aspx&#34;&gt;EnumProcessModules MSDN&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>basics</title>
+      <link>http://www.brainbaking.com/wiki/code/c/basics/</link>
+      <pubDate>Mon, 02 Dec 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/basics/</guid>
+      <description>
+
+&lt;h1 id=&#34;c-basics&#34;&gt;C(++) Basics&lt;/h1&gt;
+
+&lt;h2 id=&#34;scope&#34;&gt;Scope&lt;/h2&gt;
+
+&lt;p&gt;C++ heeft block level scope, net als Java, alleen is het mogelijk om een variabele binnen een for loop dezelfde naam te geven als een die buiten die block gedefiniëerd is, terwijl dat in Java niet gaat:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int j;
+for(int i = 0; i &amp;lt; 10; i++) {
+  int j = i + 1; // compile fout in java
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;pointer-scope&#34;&gt;Pointer scope&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Auto_ptr&#34;&gt;auto_ptr&lt;/a&gt; kan gebruikt worden om een pointer automatisch te verwijderen met &lt;code&gt;delete&lt;/code&gt; wanneer deze scope verliest - alle andere zaken moet je zelf opkuisen.
+❗ Dit is deprecated in C++ 11, gebruik &lt;a href=&#34;https://en.wikipedia.org/wiki/Smart_pointer#unique_ptr&#34;&gt;unique_ptr&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Voorbeeld van wikipedia:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;memory&amp;gt;
+using namespace std;
+ 
+int main(int argc, char **argv)
+{
+    int *i = new int;
+    auto_ptr&amp;lt;int&amp;gt; x(i);
+    auto_ptr&amp;lt;int&amp;gt; y;
+ 
+    y = x;
+ 
+    cout &amp;lt;&amp;lt; x.get() &amp;lt;&amp;lt; endl; // Print NULL
+    cout &amp;lt;&amp;lt; y.get() &amp;lt;&amp;lt; endl; // Print non-NULL address i
+ 
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;overloading-virtual&#34;&gt;overloading: &amp;lsquo;virtual&amp;rsquo;&lt;/h2&gt;
+
+&lt;p&gt;In java wordt by default het diepste gedefiniëerde element opgeroepen, in C++ ben je verplicht &lt;code&gt;virtual&lt;/code&gt; te gebruiken als &amp;ldquo;optimalisatie&amp;rdquo; wordt dit standaard niet gedaan&amp;hellip; Voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;class Simple
+{
+public:
+	Simple() : someMember(3) {}
+	virtual int guessNumber();
+	int someMember;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;simplecpp.h&amp;quot;
+
+int Simple::guessNumber()
+{
+	return 5;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Als je nu &lt;code&gt;guessNumber()&lt;/code&gt; wil overschrijven in een subklasse kan dit:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;simplecpp.h&amp;quot;
+
+class Complexer : public Simple
+{
+public:
+	Complexer() {}
+	int guessNumber();
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Merk op, te overschrijven method heropsommen in header file&amp;hellip; (??) - hier hoeft geen &lt;code&gt;virtual&lt;/code&gt; meer bij dan.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;complexer.h&amp;quot;
+
+int Complexer::guessNumber()
+{
+	return 10;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wat is hier de uitkomst van:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;
+#include &amp;quot;complexer.h&amp;quot;
+#include &amp;lt;iostream&amp;gt;
+
+int main()
+{
+	Simple* simple = new Complexer();
+	std::cout &amp;lt;&amp;lt; simple-&amp;gt;guessNumber();
+	delete simple;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Haal &lt;code&gt;virtual&lt;/code&gt; weg. 5. &lt;br/&gt;&lt;br/&gt;
+Definiëer &lt;code&gt;Complexer&lt;/code&gt; zo:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;Complexer* complexer = new Complexer();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En het is altijd 10.&lt;/p&gt;
+
+&lt;h2 id=&#34;initialisatie&#34;&gt;Initialisatie&lt;/h2&gt;
+
+&lt;p&gt;(Voorbeelden van bovenstaande)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;complexer.h&amp;quot;
+#include &amp;lt;iostream&amp;gt;
+
+int main()
+{
+	Simple simpleInitialized; // oops, I created something?
+	// Simple simpleInitialized = NULL; cannot convert from &#39;int&#39; to &#39;Simple&#39; (#define NULL 0)
+
+	Simple* simplePtr;
+
+	std::cout &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n initialiezd: &amp;quot; &amp;lt;&amp;lt; simplePtr-&amp;gt;someMember;
+	// Run-Time Check Failure #3 - The variable &#39;simplePtr&#39; is being used without being initialized
+
+	delete simplePtr;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wat is hier speciaal aan?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In C++ wordt altijd een object aangemaakt als je ze declareert. In Java niet!&lt;/li&gt;
+&lt;li&gt;In C++ is &lt;code&gt;NULL&lt;/code&gt; gedefiniëerd als &lt;code&gt;#define NULL 0&lt;/code&gt; - je kan dus niet zomaar iets toekennen hieraan. In C++ 11 heb je &lt;code&gt;nullptr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Je kan wel een pointer declareren zonder een waarde toe te kennen, en dit geeft dan een run-time fout (zou bvb een &lt;code&gt;NullPointerException&lt;/code&gt; gooien in java)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;typecasting&#34;&gt;Typecasting&lt;/h2&gt;
+
+&lt;p&gt;Uitgebreide uitleg: zie &lt;a href=&#34;http://www.cplusplus.com/doc/tutorial/typecasting/&#34;&gt;http://www.cplusplus.com/doc/tutorial/typecasting/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In C++ is één impliciete conversie mogelijk door middel van de constructor, bijvoorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;class Something
+{
+ public:
+   Something(int i) : myVar(i) {}
+ private:
+  int myVar;
+}
+
+int getal = 10;
+Something something = getal; // use constructor
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Om dit tegen te gaan kan je altijd het &lt;code&gt;explicit&lt;/code&gt; keyword gebruiken, zodat je dit moet doen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;Something something = Something(getal); // expliciet oproepen constructor
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Je kan &lt;code&gt;staic_cast&amp;lt;Type&amp;gt;(var)&lt;/code&gt; gebruiken om explicit constructors aan te roepen, zo kunnen ze dan toch nog gecast worden.&lt;/p&gt;
+
+&lt;h2 id=&#34;c-11-goodies&#34;&gt;C++ 11 goodies&lt;/h2&gt;
+
+&lt;p&gt;Algemeen: &lt;a href=&#34;http://www.informit.com/articles/article.aspx?p=1910142&#34;&gt;How C++ 11 helps boost your productivity&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.codeproject.com/Articles/277612/Using-lambdas-Cplusplus-vs-Csharp-vs-Cplusplus-CX&#34;&gt;Lambdas&lt;/a&gt; zijn mogelijk&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nullptr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;auto&lt;/code&gt; keyword, zoals &lt;code&gt;var&lt;/code&gt; in C# - dit is typesafe en door de compiler zelf bepaald.&lt;/li&gt;
+&lt;li&gt;100% multithreading support, zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/c/threading/&#34;&gt;code/c/threading&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>preprocessing</title>
+      <link>http://www.brainbaking.com/wiki/code/c/preprocessing/</link>
+      <pubDate>Mon, 02 Dec 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/preprocessing/</guid>
+      <description>
+
+&lt;h1 id=&#34;preprocessing&#34;&gt;Preprocessing&lt;/h1&gt;
+
+&lt;h2 id=&#34;handige-macro-s&#34;&gt;Handige macro&amp;rsquo;s&lt;/h2&gt;
+
+&lt;h5 id=&#34;exception-debug-informatie-expanden&#34;&gt;Exception/Debug informatie expanden&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#define _ERROR_STR2(a) #a
+#define _ERROR_STR(a) _ERROR_STR2(a)
+#define ERROR_INFO(fn) _T(_ERROR_STR(__FILE__&amp;quot; line: &amp;quot;__LINE__&amp;quot; function: &amp;quot;fn))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Te gebruiken als &lt;code&gt;someFn(ERROR_INFO(&amp;quot;bla&amp;quot;))&lt;/code&gt;. Merk op dat &lt;code&gt;__FUNCTION__&lt;/code&gt; of &lt;code&gt;__FUNC__&lt;/code&gt; ook gebruikt kan worden, afhankelijk van de C++ compiler, maar dit is geen deel van de standaard (vanaf C++ v11).&lt;/p&gt;
+
+&lt;p&gt;De &lt;code&gt;#a&lt;/code&gt; notatie wordt gebruikt om iets te &lt;a href=&#34;http://gcc.gnu.org/onlinedocs/cpp/Stringification.html&#34;&gt;stringifyen&lt;/a&gt; in de preprocessor, vandaar de delegate:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Sometimes you may want to convert a macro argument into a string constant. Parameters are not replaced inside string constants, but you can use the ‘#’ preprocessing operator instead. When a macro parameter is used with a leading ‘#’, the preprocessor replaces it with the literal text of the actual argument, converted to a string constant. Unlike normal parameter replacement, the argument is not macro-expanded first. This is called stringification.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>threading</title>
+      <link>http://www.brainbaking.com/wiki/code/c/threading/</link>
+      <pubDate>Mon, 02 Dec 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/threading/</guid>
+      <description>
+
+&lt;h1 id=&#34;threading&#34;&gt;Threading&lt;/h1&gt;
+
+&lt;p&gt;Handige links:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.codeproject.com/Articles/7953/Thread-Synchronization-for-Beginners&#34;&gt;Thread synchronization for beginners&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;thread-safe-singleton-pattern&#34;&gt;Thread-safe Singleton pattern&lt;/h2&gt;
+
+&lt;p&gt;Bijna onmogelijk in C++ &amp;lt; v11 blijkbaar?&lt;/p&gt;
+
+&lt;p&gt;Onderstaand voorbeeld gebruikt Win32 code (&lt;code&gt;WaitForSingleObject&lt;/code&gt;) en een mutex om te wachten:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#pragma once
+#include &amp;lt;WinBase.h&amp;gt;
+
+class AddinProcessService 
+{
+    static AddinProcessService *singletonInstance;
+	AddinProcessService() : m_coupon(_T(&amp;quot;&amp;quot;)), m_hostServiceAddress(_T(&amp;quot;&amp;quot;)) {}
+
+  public:
+
+	inline const CString&amp;amp; GetHostServiceAddress() const
+	{
+		return m_hostServiceAddress;
+	}
+	inline const CString&amp;amp; GetCoupon() const
+	{
+		return m_coupon;
+	}
+	inline void SetCoupon(CString coupon)
+	{
+		m_coupon = coupon;
+	}
+	inline void SetHostServiceAddress(CString address) 
+	{
+		m_hostServiceAddress = address;
+	}
+
+    static AddinProcessService* getSingletonInstance()
+    {
+		static volatile int initialized = 0;
+		static HANDLE mtx;
+
+		if (!initialized)
+		{
+    		if (!mtx)
+    		{
+    			HANDLE mymtx;
+    			mymtx = CreateMutex(NULL, 0, NULL);
+    			if (InterlockedCompareExchangePointer(&amp;amp;mtx, mymtx, NULL) != NULL)
+    				CloseHandle(mymtx);
+    		}
+
+    		WaitForSingleObject(mtx, 0);
+    		if (!initialized)
+    		{
+    			libInitInternal();
+    			initialized = 1;
+    		}
+    		ReleaseMutex(mtx);
+		}
+		return singletonInstance;
+    };
+
+private:
+	CString m_hostServiceAddress;
+	CString m_coupon;
+
+	static void libInitInternal()
+	{
+		singletonInstance = new AddinProcessService();
+	}
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ Vergeet niet in de cpp file uw singletonInstance pointer te declareren, anders krijg je linker errors: &lt;code&gt;AddinProcessService* AddinProcessService::singletonInstance;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In UNIX kan men &lt;a href=&#34;https://computing.llnl.gov/tutorials/pthreads/&#34;&gt;pthreads&lt;/a&gt; gebruiken, ongeveer op deze manier:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;static Foo &amp;amp;getInst()
+{
+  static Foo *inst = NULL;
+  if(inst ###### NULL)
+  {
+    pthread_mutex_lock(&amp;amp;mutex);
+    if(inst ###### NULL)
+      inst = new Foo(...);
+    pthread_mutex_unlock(&amp;amp;mutex);
+  }
+  return *inst;    
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dan kan je &lt;code&gt;#ifdef WIN32&lt;/code&gt; gebruiken om te switchen tussen beide implementaties.&lt;/p&gt;
+
+&lt;p&gt;############ C++ 11 multithreading ############&lt;/p&gt;
+
+&lt;p&gt;Vanaf C++ 11 zijn multithreads 100% native supported, dit wil zeggen dat manueel locken met een &lt;code&gt;mutex&lt;/code&gt; overbodig wordt. Bovenstaande singleton kan gereduceerd worden tot (merk het &lt;strong&gt;static&lt;/strong&gt; keyword op, dat is het belangrijkste voor de autolock):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;static Singleton&amp;amp; get(){
+  static Singleton instance;
+  return instance;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Voor meer info, zie &lt;a href=&#34;http://stackoverflow.com/questions/11711920/how-to-implement-multithread-safe-singleton-in-c11-without-using-mutex&#34;&gt;http://stackoverflow.com/questions/11711920/how-to-implement-multithread-safe-singleton-in-c11-without-using-mutex&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>testexplorer</title>
+      <link>http://www.brainbaking.com/wiki/code/c/testing/testexplorer/</link>
+      <pubDate>Thu, 05 Sep 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/testing/testexplorer/</guid>
+      <description>
+
+&lt;h1 id=&#34;visual-studio-2012-test-explorer-framework&#34;&gt;Visual Studio 2012 Test Explorer framework&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Waarom&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Integratie VStudio, zelfde manier om te &amp;ldquo;runnen&amp;rdquo; als C# testen&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;unmanaged&lt;/strong&gt; (native) C++ code testen zonder vettige &lt;code&gt;/cli&lt;/code&gt; mode die nodig is.&lt;/li&gt;
+&lt;li&gt;Voor mixed team C#/C++ misschien beter/makkelijker?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Waarom niet&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Weeral iets anders, Team Test buiten? Wat gaat het zijn voor VS3013?&lt;/li&gt;
+&lt;li&gt;Niet 100% dezelfde syntax als C# (toch al closer, maar bvb geen attributes etc)&lt;/li&gt;
+&lt;li&gt;VS2012 only momentel, dus 2008 = kinkloppen&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Voorbeeld project in VS2012: &lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/c/testing/math_testexplorer_vs2012.zip|&#39;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;assertions-schrijven&#34;&gt;Assertions schrijven&lt;/h4&gt;
+
+&lt;p&gt;Gebruik namespace &lt;code&gt;CppUnitTestFramework&lt;/code&gt; - voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#pragma once
+#include &amp;quot;stdafx.h&amp;quot;
+#include &amp;quot;CppUnitTest.h&amp;quot;
+#include &amp;quot;PlusStub.cpp&amp;quot;
+#include &amp;quot;../Math/Plus.h&amp;quot;
+#include &amp;quot;../Math/Calculator.h&amp;quot;
+
+using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+
+namespace calc
+{
+	TEST_CLASS(CalculatorTest)
+	{
+	private:
+		int nStartValue;
+		Calculator* calc;
+
+		void CreateCalcSUT()
+		{
+			calc = new Calculator(nStartValue);
+		}
+
+	public:
+		/*testcase template:
+		TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
+		{
+		param specialParam = specialvalue;
+		...
+		param expectation = whatYouExpect;
+		...
+		(SUT creation)
+		(call methods)
+		...
+		assert(s)
+		}*/
+
+
+		TEST_METHOD_INITIALIZE(InitialiseDefaults)
+		{
+			calc = NULL;
+			nStartValue = 5;
+		}
+
+		TEST_METHOD_CLEANUP(CleanupObjects)
+		{
+			delete calc;
+		}
+
+		TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
+		{
+			int nExpectedValue = 0;
+			calc = new Calculator();
+			Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
+		}
+
+		TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
+		{
+			nStartValue = 5;
+			int nExpectedValue = 5;
+			CreateCalcSUT();
+			Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
+		}
+
+	};
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/c/testing/cppunittesting.png|&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Zelfde manier om assertions te schrijven.
+❗ dit test project heeft GEEN &lt;code&gt;/clr&lt;/code&gt; flag, dus is ook &lt;strong&gt;unmanaged&lt;/strong&gt;, dat is het voordeel.&lt;/p&gt;
+
+&lt;p&gt;Zoals gezien op screencap is dit volledig geïntegreerd met VStudio 2012.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://msdn.microsoft.com/en-us/library/hh270864.aspx&#34;&gt;Meer informatie over het nieuwe cpp testing framework &amp;lsquo;Test Explorer&amp;rsquo;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Mon, 05 Aug 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;c-c-home&#34;&gt;C/C++ &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;nuttige-links&#34;&gt;Nuttige links&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://denniskubes.com/2012/08/16/the-5-minute-guide-to-c-pointers/&#34;&gt;The 5 minute guide to C Pointers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pw1.netcom.com/~tjensen/ptr/pointers.htm&#34;&gt;A tutorial on Pointers and Arrays in C&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>http://www.brainbaking.com/wiki/</link>
+      <pubDate>Wed, 17 Jul 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/</guid>
+      <description>
+
+&lt;h1 id=&#34;code-c-testing-home&#34;&gt;code:c:testing &amp;gt;&amp;gt; Home&lt;/h1&gt;
+
+&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
+
+&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>teamtest</title>
+      <link>http://www.brainbaking.com/wiki/code/c/testing/teamtest/</link>
+      <pubDate>Wed, 17 Jul 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/testing/teamtest/</guid>
+      <description>
+
+&lt;h1 id=&#34;visual-studio-2005-teamtest-framework&#34;&gt;Visual Studio 2005 TeamTest Framework&lt;/h1&gt;
+
+&lt;p&gt;Hoofdartikel (2005, C# voorbeelden): &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/ms379625(v=vs.80).aspx&#34;&gt;http://msdn.microsoft.com/en-us/library/ms379625(v=vs.80).aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Waarom&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Zelfde syntax als built-in C# unit tests voor Visual Studio&lt;/li&gt;
+&lt;li&gt;Makkelijker te lezen dan bvb &lt;a href=&#34;http://www.brainbaking.com/wiki/code/c/testing/gtest/&#34;&gt;code/c/testing/gtest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Garbage collector van Managed C++, joepie (?)&lt;/li&gt;
+&lt;li&gt;Toch mogelijk om unmanaged native C++ te testen (zie onder), integratie VStudio.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Waarom niet&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Dropped support voor VS2012? zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/c/testing/testexplorer/&#34;&gt;code/c/testing/testexplorer&lt;/a&gt; in de plaats (native C++)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/cli&lt;/code&gt; flag miserie (zie onder)&lt;/li&gt;
+&lt;li&gt;Onduidelijke syntax voor hardcore C++ users die niet aan C# gewend zijn&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;visual-studio-2008&#34;&gt;Visual Studio 2008&lt;/h2&gt;
+
+&lt;p&gt;Hiervoor moeten we een apart test project aanmaken dat met &lt;strong&gt;/CLR&lt;/strong&gt; flag compileert om de .NET test suites te gebruiken (&lt;code&gt;using namespace   Microsoft::VisualStudio::TestTools::UnitTesting;&lt;/code&gt;):&lt;/p&gt;
+
+&lt;p&gt;Project &amp;gt; configuration properties &amp;gt; General &amp;gt; Common Language Runtime support&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&#39;float: left;&#39; src=&#39;http://www.brainbaking.com/img//code/c/testing/clr_unittests.png |&#39;&gt;&lt;/p&gt;
+
+&lt;p&gt;Dit staat op &lt;code&gt;/clr:safe&lt;/code&gt; indien je met VStudio 2008 een nieuwe test aan maakt via menu Test &amp;gt; New Test &amp;gt; Unit Test&lt;/p&gt;
+
+&lt;p&gt;Een voorbeeld header file om te testen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;class MyClass {
+public:
+	MyClass() {};
+
+	int addUp(int one, int two);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;myclass.h&amp;quot;
+#include &amp;lt;iostream&amp;gt;
+using namespace std;
+
+int MyClass::addUp(int one, int two)
+{
+	return one + two;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;managed-test-code-schrijven&#34;&gt;Managed test code schrijven&lt;/h4&gt;
+
+&lt;p&gt;Gebruik dezelfde manier als .NET Unit Testing framework met attributes - dit vereist dus de CLR flag. Voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;stdafx.h&amp;quot;
+#include &amp;quot;../libtest/myclass.h&amp;quot;
+
+using namespace System;
+using namespace System::Text;
+using namespace System::Collections::Generic;
+using namespace	Microsoft::VisualStudio::TestTools::UnitTesting;
+
+namespace unittests
+{
+	[TestClass]
+	public ref class MyClassTest
+	{
+
+	public: 
+
+		[TestMethod]
+		void AddOne()
+		{
+			Assert::AreEqual(3, MyClass().addUp(1, 2));
+		};
+	};
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Assert&lt;/strong&gt; heeft een hoop static methods&lt;/p&gt;
+
+&lt;h4 id=&#34;een-externe-klasse-testen-die-van-een-lib-komt&#34;&gt;een externe klasse testen die van een lib komt&lt;/h4&gt;
+
+&lt;p&gt;Als je vanuit je test project wil refereren naar productie code/projecten, kan dit een probleem zijn:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;MyClassTest.obj : error LNK2028: unresolved token (0A00000A) &amp;quot;public: __thiscall MyClass::MyClass(void)&amp;quot; (??0MyClass@@$$FQAE@XZ) referenced in function &amp;quot;public: void __clrcall unittests::MyClassTest::AddOne(void)&amp;quot; (?AddOne@MyClassTest@unittests@@$$FQ$AAMXXZ)
+MyClassTest.obj : error LNK2028: unresolved token (0A00000B) &amp;quot;public: int __thiscall MyClass::addUp(int,int)&amp;quot; (?addUp@MyClass@@$$FQAEHHH@Z) referenced in function &amp;quot;public: void __clrcall unittests::MyClassTest::AddOne(void)&amp;quot; (?AddOne@MyClassTest@unittests@@$$FQ$AAMXXZ)
+MyClassTest.obj : error LNK2019: unresolved external symbol &amp;quot;public: int __thiscall MyClass::addUp(int,int)&amp;quot; (?addUp@MyClass@@$$FQAEHHH@Z) referenced in function &amp;quot;public: void __clrcall unittests::MyClassTest::AddOne(void)&amp;quot; (?AddOne@MyClassTest@unittests@@$$FQ$AAMXXZ)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dat wil zeggen, het compileert, maat het linkt niet. Oplossing: Voeg dit toe aan uw &lt;code&gt;stdafx.cpp&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#pragma comment(lib, &amp;quot;../Debug/libtest.lib&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;gegeven dat &amp;ldquo;libtest&amp;rdquo; uw project under test is. Vanaf dan kan je normaal header files includen in uw test cpp file, zie boven.&lt;/p&gt;
+
+&lt;h4 id=&#34;een-externe-klasse-testen-die-van-een-dll-komt&#34;&gt;een externe klasse testen die van een DLL komt&lt;/h4&gt;
+
+&lt;p&gt;Er wordt pas een &lt;code&gt;.lib&lt;/code&gt; file gegenereerd wanneer je &lt;code&gt;declspec(dllexport)&lt;/code&gt; definiëert - wanneer niets exported is, kan er ook niets imported worden&amp;hellip; Dus &lt;code&gt;myClass&lt;/code&gt; aanpassen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;
+#ifdef FRIENDCLASS_EXPORT
+    #define FRIENDCLASS __declspec(dllexport)
+#else
+    #define FRIENDCLASS __declspec(dllimport)
+#endif
+
+class FRIENDCLASS MyClass {
+public:
+	MyClass();
+
+	int addUp(int one, int two);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En dan het libtest project compileren met de extra preprocessor definitie &lt;code&gt;FRIENDCLASS_EXPORT&lt;/code&gt; zodat in commandline &lt;code&gt;/D &amp;quot;FRIENDCLASS_EXPORT&amp;quot;&lt;/code&gt; erbij komt. Zie ook &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/hhzbb5c8(v=vs.80).aspx&#34;&gt;MSDN Preprocessor definitions&lt;/a&gt;, nu kunnen we hierop checken in de code met &lt;code&gt;#ifdef&lt;/code&gt;. Bovenstaande code doet een export wanneer gedefiniëerd, en een import anders - dit gebeurt wanneer we de header file includen vanuit onze test cpp file.&lt;/p&gt;
+
+&lt;h4 id=&#34;debugging&#34;&gt;Debugging&lt;/h4&gt;
+
+&lt;p&gt;❗ &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/958x11bc(v=vs.80).aspx&#34;&gt;Debug information format flags&lt;/a&gt;: &lt;code&gt;/ZI&lt;/code&gt; (&amp;ldquo;Edit and Continue feature&amp;rdquo;, retry drukken bij assertion failure) is &lt;strong&gt;niet&lt;/strong&gt; ondersteund in combinatie met &lt;code&gt;/cli&lt;/code&gt;. Debuggen gaat wel op &lt;code&gt;/Zi&lt;/code&gt; niveau.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

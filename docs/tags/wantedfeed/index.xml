@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wantedfeed on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/wantedfeed/index.xml</link>
+    <description>Recent content in Wantedfeed on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/wantedfeed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>wantedfeed</title>
+      <link>http://www.brainbaking.com/wiki/books/wantedfeed/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/books/wantedfeed/</guid>
+      <description>&lt;style type######&#34;text/css&#34; media&#34;screen&#34;&gt;
+      
+      #goodreads_container {
+float: right;
+background-color: #F2F2DD;
+      }
+      
+  .gr_custom_container_1314639342 {
+    /* customize your Goodreads widget container here*/
+    border: 1px solid gray;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    padding: 10px 5px 10px 5px;
+    color: #000000;          
+    width: 300px
+  }
+  .gr_custom_header_1314639342 {
+    /* customize your Goodreads header here*/
+    border-bottom: 1px solid gray;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 120% !important;
+    margin-left: 0px !important;
+  }
+  .gr_custom_each_container_1314639342 {
+    /* customize each individual book container here */
+    width: 100%;
+    clear: both;
+    margin-bottom: 10px;
+    overflow: auto;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #aaa;
+  }
+  .gr_custom_book_container_1314639342 { 
+    /* customize your book covers here */
+    overflow: hidden;
+    height: 60px;
+    
+      float: left;
+      margin-right: 4px;
+      width: 39px;
+      }
+  .gr_custom_author_1314639342 {
+    /* customize your author names here */
+    font-size: 10px;
+  }
+  .gr_custom_tags_1314639342 {
+    /* customize your tags here */
+    font-size: 10px;
+    color: gray;
+  }
+  .gr_custom_rating_1314639342 {
+    /* customize your rating stars here */
+    float: right;
+  }
+&lt;/style&gt;
+
+&lt;div id=&#34;goodreads_container&#34;&gt;
+&lt;div id=&#34;gr_custom_widget_1314639342&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type######&#34;text/javascript&#34; charset&#34;utf-8&#34; src######&#34;http://www.goodreads.com/review/custom_widget/5451893.Wouter&#39;s%20bookshelf:%20to-read?cover_positionleft&amp;amp;cover_size######small&amp;amp;num_books15&amp;amp;order######d&amp;amp;shelfto-read&amp;amp;show_author######1&amp;amp;show_cover1&amp;amp;show_rating######0&amp;amp;show_review1&amp;amp;show_tags######0&amp;amp;show_title1&amp;amp;sort######date_added&amp;amp;widget_bg_colorFFFFFF&amp;amp;widget_bg_transparent######&amp;amp;widget_border_width1&amp;amp;widget_id######1314639342&amp;amp;widget_text_color000000&amp;amp;widget_title_size######medium&amp;amp;widget_widthmedium&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

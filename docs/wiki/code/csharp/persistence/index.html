@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>persistence</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="persistence" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/csharp/persistence/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>persistence</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="persistence">Persistence</h1>
+
+<h2 id="nhibernate">NHibernate</h2>
+
+<h3 id="second-level-caching">Second level caching</h3>
+
+<p>Gebruik <a href="http://www.codeproject.com/Articles/529016/NHibernate-Second-Level-Caching-Implementation">SysCache2</a> voor Web projecten. Hoe enablen? DLL ref + in config:</p>
+
+<pre><code class="language-csharp">            Configuration.SessionFactory().Caching.Through&lt;SysCacheProvider&gt;().WithDefaultExpiration(60);
+            Configuration.SetProperty(Environment.UseSecondLevelCache, &quot;true&quot;);
+            Configuration.SetProperty(Environment.UseQueryCache, &quot;true&quot;);
+</code></pre>
+
+<p>In hbm mappings moet je entiteiten cache-baar markeren (read-only, read-write, &hellip; zie docs) met <code>&lt;cache usage=&quot;read-write&quot; /&gt;</code>. Vanaf dan kan je aan Criteria of LINQ queries dingen doen als:</p>
+
+<ol>
+<li><code>Session.Query&lt;Obj&gt;().Cachable().List()</code> of</li>
+<li><code>Session.CreateCriteria&lt;Obj&gt;().SetCachable(true)</code></li>
+</ol>
+
+<p>Groeperen in &ldquo;regions&rdquo; is ook mogelijk, mee te geven met criteria.</p>
+
+<h4 id="clearing-everything">Clearing everything</h4>
+
+<pre><code class="language-csharp">            SessionFactory.EvictQueries();
+            foreach (var collectionMetadata in SessionFactory.GetAllCollectionMetadata())
+                SessionFactory.EvictCollection(collectionMetadata.Key);
+            foreach (var classMetadata in SessionFactory.GetAllClassMetadata())
+                SessionFactory.EvictEntity(classMetadata.Key);
+</code></pre>
+
+<h4 id="using-regions">Using regions</h4>
+
+<p>Sectie toevoegen in <code>configSections</code>:</p>
+
+<pre><code>&lt;section name######&quot;syscache2&quot; type&quot;NHibernate.Caches.SysCache2.SysCacheSection, NHibernate.Caches.SysCache2&quot;/&gt;
+</code></pre>
+
+<p>En dan dit stuk bijvoorbeeld om syscache2 te configureren:</p>
+
+<pre><code>  &lt;syscache2&gt;
+    &lt;cacheRegion name######&quot;RegionName&quot; priority&quot;High&quot;&gt;
+      &lt;dependencies&gt;
+        &lt;commands&gt;
+          &lt;add name=&quot;test&quot;
+            command=&quot;Select col from dbo.[Table]&quot;
+            connectionName=&quot;default&quot;
+            connectionStringProviderType=&quot;Utilities.Connection.SysCache2ConnectionStringProvider, PFW.Utilities&quot;/&gt;
+        &lt;/commands&gt;
+      &lt;/dependencies&gt;
+    &lt;/cacheRegion&gt;
+  &lt;/syscache2&gt;
+</code></pre>
+
+<p>Queries en entiteiten laten cachen via die naam.</p>
+
+<p>Er is een standaard connectionStringProvider die uit het <code>connectionStrings</code> stuk uit de web/app.config uw string uitleest geïmplementeerd: <code>ConfigConnectionStringProvider</code>. Indien iets custom nodig zoals in bovenstaand voorbeeld, afleiden van <code>IConnectionStringProvider</code> en zelf de connectionstring voorzien (connectionName wordt als parameter meegegeven maar is in dit geval nutteloos).</p>
+
+<p>Op database niveau moet je ook nog een aantal dingen nagaan:</p>
+
+<ol>
+<li>Is de dbo user eigenaar van de database voor het region command uit te voeren? (<code>use [DbName] EXEC sp_changedbowner 'sa</code>&rsquo;)</li>
+<li>Is de broker service actief? Indien neen zet aan, zie <a href="/wiki/code/db/mssql/">code/db/mssql</a></li>
+</ol>
+
+<h3 id="linq-or-queries-schrijven">LINQ OR queries schrijven</h3>
+
+<p>AND queries zijn makkelijk te schrijven met <code>.Where()</code> chaining in LINQ. Hoe doe je dit met SQL ORs? Met de PredicateBuilder:</p>
+
+<pre><code class="language-csharp">    /// &lt;summary&gt;
+    */ http:*www.albahari.com/nutshell/predicatebuilder.aspx
+    /// &lt;/summary&gt;
+    public static class PredicateBuilder
+    {
+        public static Expression&lt;Func&lt;T, bool&gt;&gt; And&lt;T&gt;(this Expression&lt;Func&lt;T, bool&gt;&gt; expr1,
+            Expression&lt;Func&lt;T, bool&gt;&gt; expr2)
+        {
+            var invokedExpr = Expression.Invoke(expr2, expr1.Parameters);
+            return Expression.Lambda&lt;Func&lt;T, bool&gt;&gt;
+                (Expression.AndAlso(expr1.Body, invokedExpr), expr1.Parameters);
+        }
+
+        public static Expression&lt;Func&lt;T, bool&gt;&gt; False&lt;T&gt;()
+        {
+            return f =&gt; false;
+        }
+
+        public static Expression&lt;Func&lt;T, bool&gt;&gt; Or&lt;T&gt;(this Expression&lt;Func&lt;T, bool&gt;&gt; expr1,
+            Expression&lt;Func&lt;T, bool&gt;&gt; expr2)
+        {
+            var invokedExpr = Expression.Invoke(expr2, expr1.Parameters);
+            return Expression.Lambda&lt;Func&lt;T, bool&gt;&gt;
+                (Expression.OrElse(expr1.Body, invokedExpr), expr1.Parameters);
+        }
+
+        public static Expression&lt;Func&lt;T, bool&gt;&gt; True&lt;T&gt;()
+        {
+            return f =&gt; true;
+        }
+    }
+</code></pre>
+
+<p>Voorbeeld:</p>
+
+<pre><code class="language-csharp">            var pred = PredicateBuilder.False&lt;IOccupation&gt;();
+            pred ###### pred.Or(occ &gt; new List&lt;decimal&gt;() {1, 2}.Contains(occ.Id));
+            pred ###### pred.Or(occ &gt; new List&lt;decimal&gt;() {1, 2}.Contains(occ.Id));
+            Session.Query&lt;IOccupation&gt;()
+                .Where(pred)
+                .ToList();
+</code></pre>
+
+<h3 id="sessie-contexten">Sessie contexten</h3>
+
+<ul>
+<li><a href="http://www.nhforge.org/doc/nh/en/index.html#architecture-current-session">Current session architecture</a></li>
+</ul>
+
+<p>Te mappen in xml:</p>
+
+<pre><code class="language-xml">    &lt;property name=&quot;current_session_context_class&quot;&gt;thread_static&lt;/property&gt;
+</code></pre>
+
+<p>Zelf te (un-)binden via:</p>
+
+<pre><code class="language-csharp">            var session = sessionFactory.OpenSession();
+            if (!CurrentSessionContext.HasBind(sessionFactory))
+            {
+                CurrentSessionContext.Bind(session);
+            }
+</code></pre>
+
+<p>Dan kan je <code>SessionFactory.GetCurrentSession()</code> gebruiken.</p>
+
+<p>Een typische manier van werken is session-per-request, in begin van request een sessie openen &amp; binden, en op het einde sluiten. Dit zorgt voor problemen bij asynchrone calls omdat de sessie gebind wordt op <code>HttpContext</code> die dan uiteraard verdwenen is. Een tussenoplossing is werken met een hybride sessie context: gebruik de HTTP context indien mogelijk, werk anders met een <code>ThreadStatic</code> variabele. Bijvoorbeeld:</p>
+
+<pre><code class="language-csharp">    public class HybridWebSessionContext : WebSessionContext
+    {
+        private const string _SessionFactoryMapKey = &quot;NHibernate.Context.WebSessionContext.SessionFactoryMapKey&quot;;
+
+        [ThreadStatic]
+        private static IDictionary _ThreadSessionMap;
+
+        private ISession ThreadSession
+        {
+            set
+            {
+                if (_ThreadSessionMap ###### null)
+                {
+                    _ThreadSessionMap = new Dictionary&lt;ISessionFactoryImplementor, ISession&gt;();
+                }
+                if (value ###### null)
+                {
+                    _ThreadSessionMap.Remove(_Factory);
+                }
+                else
+                {
+                    _ThreadSessionMap[_Factory] = value;
+                }
+            }
+        }
+
+        private readonly ISessionFactoryImplementor _Factory;
+
+        // This constructor should be kept, otherwise NHibernate will fail to create an instance of this class.
+        public HybridWebSessionContext(ISessionFactoryImplementor factory) : base(factory)
+        {
+            _Factory = factory;
+        }
+
+        protected override IDictionary GetMap()
+        {
+            var currentContext = ReflectiveHttpContext.HttpContextCurrentGetter();
+            if (currentContext != null)
+            {
+                return ReflectiveHttpContext.HttpContextCurrentItems[_SessionFactoryMapKey] as IDictionary;
+            }
+
+            return _ThreadSessionMap;
+        }
+
+        protected override ISession Session
+        {
+            set
+            {
+                base.Session = value;
+                ThreadSession = value;
+            }
+        }
+
+        protected override void SetMap(IDictionary value)
+        {
+            var currentContext = ReflectiveHttpContext.HttpContextCurrentGetter();
+            
+            if (currentContext != null)
+            {
+                ReflectiveHttpContext.HttpContextCurrentItems[_SessionFactoryMapKey] = value;
+                return;
+            }
+            _ThreadSessionMap = value;
+        }
+    }
+</code></pre>
+
+<p>Die dan in de hibernate config injecteren:</p>
+
+<pre><code class="language-csharp">configuration.SetProperty(NHibernate.Cfg.Environment.CurrentSessionContextClass, typeof(HybridWebSessionContext).AssemblyQualifiedName);
+</code></pre>
+
+<p>Op die manier werkt <code>Bind()</code> altijd.</p>
+
+<p>❗ Geen sessie factory sluiten op het einde van de request maar enkel de <code>ISession</code> - uw pooling zit in de factory!</p>
+
+<p>############ Transacties ############</p>
+
+<ul>
+<li><a href="http://www.mattwrock.com/post/2010/12/26/Getting-TransactionScope-to-play-nice-with-NHibernate.aspx">Getting TransactionScope to play nice with NHibernate</a></li>
+<li><a href="http://thatextramile.be/blog/2008/10/batching-nhibernates-dm-statements/">Batching NHibernate&rsquo;s DML Statements</a></li>
+<li><a href="http://ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener">NHibernate IPreUpdateEventListener &amp; IPreInsertEventListener</a></li>
+</ul>
+
+<p>######= Multiple nested transactions ######=</p>
+
+<p>is <strong>niet</strong> mogelijk in NHibernate! Hier kan je rond werken door een dummy te retourneren (wel <code>ISession.BeginTransaction()</code> decoreren op de onderstaande manier)</p>
+
+<pre><code class="language-csharp">        public ITransaction BeginTransaction()
+        {
+            if (_Session.Transaction.IsActive)
+            {
+                // bad programmer's code, nice going. nested transactions are not supported in NHibernate! 
+                * see http:*rajputyh.blogspot.be/2011/02/nested-transaction-handling-with.html and http://stackoverflow.com/questions/1192111/how-do-i-do-nested-transactions-in-nhibernate
+                return new HibernateTransactionDummy();
+            }
+
+            var newTransaction = _Session.BeginTransaction();
+            return newTransaction;
+        }
+</code></pre>
+
+<p>######= Locking ######=</p>
+
+<p><a href="http://ayende.com/blog/3946/nhibernate-mapping-concurrency">NHibernate mapping &amp; concurrency</a> - pessimistic locking kan gedaan worden door in een query de <code>LockMode</code> mee te geven:</p>
+
+<pre><code class="language-csharp">var person = session.Get&lt;Person&gt;(1,LockMode.Upgrade);
+</code></pre>
+
+<p>Binnen een transactie uiteraard. Dit genereert <code>with(updlock, rowlock)</code> in de <code>SELECT</code> statements. De lock wordt gereleased wanneer de transactie gecommit wordt. Dit is <a href="http://stackoverflow.com/questions/19873880/understanding-effects-of-with-updlock-rowlock-on-a-query-in-sql-server">blijkbaar geen table lock</a>:</p>
+
+<blockquote>
+<p>The <code>updlock</code> will place update locks on every row being touched (selected) - so this means until the end of the transaction (explicit or implicit), the row(s) touched by the SELECT will have an update lock on them which allows for other transactions to read, but not update or delete the row. The <code>rowlock</code> just indicates that you want row-level locks instead of page or table locks. That lock makes sense if you need to select first, then update a row within the same explicit transaction.</p>
+</blockquote>
+
+<p>It doesn&rsquo;t make it run any faster, and can cause other transactions to be blocked</p>
+
+<p>############ Event listeners ############</p>
+
+<p>❗ in events als <code>IPreInsertEventListener</code> moet je zowel het object (via <code>@Event.Entity</code>) als de state (via <code>@Event.State</code>) wijzigen. Hoe werkt dit met <code>IPersistEventListener</code>?</p>
+
+<p>Custom event listener die de Java annotaties zoals <code>@PrePersist</code> ea mogelijk maakt in C# met attributes:</p>
+
+<pre><code class="language-csharp">    public class HibernateAttributeEventListener : IPreUpdateEventListener, IPreInsertEventListener, IPersistEventListener, IFlushEntityEventListener
+    {
+        public bool OnPreUpdate(PreUpdateEvent @event)
+        {
+            InvokeMethodsWithAttribute(@event.Entity, @event.Session, typeof(PreUpdate));
+            return false;
+        }
+
+        public bool OnPreInsert(PreInsertEvent @event)
+        {
+            InvokeMethodsWithAttribute(@event.Entity, @event.Session, typeof(PreInsert));
+            return false;
+        }
+
+        public void OnPersist(PersistEvent @event)
+        {
+            InvokeMethodsWithAttribute(@event.Entity, @event.Session, typeof(PrePersist));
+        }
+
+        public void OnPersist(PersistEvent @event, IDictionary createdAlready)
+        {
+        }
+
+        public void OnFlushEntity(FlushEntityEvent @event)
+        {
+        }
+
+        private static void InvokeMethodsWithAttribute(object entity, ISession session, Type attributeType)
+        {
+            entity.GetType()
+                .GetMethods()
+                .Where(method =&gt; method.GetCustomAttributes(attributeType, false).Length &gt; 0)
+                .ForEach(method =&gt; Invoke(entity, session, method));
+        }
+
+        private static void Invoke(object entity, ISession session, MethodInfo method)
+        {
+            var parameters = method.GetParameters();
+            if (parameters.Length ###### 0)
+            {
+                method.Invoke(entity, new object[] {});
+            } else if (parameters.Length ###### 1 &amp;&amp; parameters[0].ParameterType ###### typeof (ISession))
+            {
+                method.Invoke(entity, new object[] {session});
+            }
+            else
+            {
+                throw new ArgumentException(&quot;Error while invoking attribute event method, only 0 or 1 params (ISession) is supported!&quot;);
+            }
+        }
+</code></pre>
+
+<p>Dit kan je dan aan de config hangen met <code>_Configuration.EventListeners.PreInsertEventListeners = new IPreInsertEventListener[] {new HibernateAttributeEventListener()};</code> - moet per type listener dat je wenst te gebruiken. De attributes zijn zo gedefiniëerd (enkel op method):</p>
+
+<pre><code class="language-csharp">    [AttributeUsage(AttributeTargets.Method)]
+    public class PrePersist : Attribute
+    {
+    }
+</code></pre>
+
+<p>❗ Indien state wijzigt in <code>PrePersist</code> of <code>PreUpdate</code> moet je ook de @event.State wijzigen, naast de state van het object zelf.</p>
+
+<p>Voor details zie <a href="http:*ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener">http:*ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener</a></p>
+
+<p>Een manier is bvb om dirty field checks te doen met reflectie:</p>
+
+<pre><code class="language-csharp">        public static Dictionary&lt;string, object&gt; GetFieldValues(this Type type, object obj)
+        {
+            return type.GetProperties().ToDictionary(
+                property =&gt; property.Name,
+                property =&gt; property.GetValue(obj, null));
+        }
+
+        private static void Set(IEntityPersister persister, object[] state, string propertyName, object value)
+        {
+            var index = Array.IndexOf(persister.PropertyNames, propertyName);
+            if (index ###### -1)
+                return;
+            state[index] = value;
+        }
+
+// ...
+var initialFieldValues = @event.Entity.GetType().GetFieldValues(@event.Entity);
+// invoke [makes some fields dirty]
+UpdateDirtyFieldValuesInState(@event, state, initialFieldValues);
+
+        private static void UpdateDirtyFieldValuesInState(AbstractPreDatabaseOperationEvent @event, object[] state, Dictionary&lt;string, object&gt; initialFieldValues)
+        {
+            foreach (var actualValue in @event.Entity.GetType().GetFieldValues(@event.Entity))
+            {
+                if (!Equals(initialFieldValues[actualValue.Key], actualValue.Value))
+                {
+                    Set(@event.Persister, state, actualValue.Key, actualValue.Value);
+                }
+            }
+        }
+
+</code></pre>
+
+<p>############ Identity generators ############</p>
+
+<p>❗ <code>identity</code> gebruikt de native autoincrement aan de DB maar is helemaal niet performant, maakt <code>batch_size</code> redundant - veel roundtrips nodig. Een alternatief bijvoorbeeld:</p>
+
+<ul>
+<li><a href="http://daniel.wertheim.se/2011/03/08/nhibernate-custom-id-generator/">NHibernate – Custom Id-generator based on hilo</a></li>
+</ul>
+
+<p>Zie ook <a href="http://docs.jboss.org/hibernate/orm/3.3/reference/en/html/mapping.html">Hibernate doc: mappings</a> voor alle mogelijkheden.</p>
+
+<p>Een custom generator die een tabel gebruikt met een kolom die de entity weergeeft werkt zo:</p>
+
+<pre><code class="language-csharp">    public class NHibIdGenerator : TableHiLoGenerator
+    {
+        public override void Configure(IType type, IDictionary&lt;string, string&gt; parms, Dialect dialect)
+        {
+            if (!parms.ContainsKey(&quot;table&quot;))
+                parms.Add(&quot;table&quot;, &quot;NHibHiLoIdentities&quot;);
+
+            if (!parms.ContainsKey(&quot;column&quot;))
+                parms.Add(&quot;column&quot;, &quot;NextHiValue&quot;);
+
+            if (!parms.ContainsKey(&quot;max_lo&quot;))
+                parms.Add(&quot;max_lo&quot;, &quot;100&quot;);
+
+            if (!parms.ContainsKey(&quot;where&quot;))
+                parms.Add(&quot;where&quot;, string.Format(&quot;EntityName='{0}'&quot;, parms[&quot;target_table&quot;]));
+
+            base.Configure(type, parms, dialect);
+        }
+    }
+</code></pre>
+
+<p>En dan in de hibernate mapping:</p>
+
+<pre><code class="language-xml">    &lt;id name######&quot;Id&quot; column&quot;`id`&quot;&gt;
+      &lt;generator class=&quot;Utilities.Database.NHibIdGenerator, Utilities&quot; /&gt;
+    &lt;/id&gt;
+</code></pre>
+
+<p>Na de komma staat de full-qualified assembly.</p>
+
+<p>############ Probleemoplossing ############</p>
+
+<h6 id="can-only-generate-ids-as-part-of-bulk-insert-with-either-sequence-or-post-insert-style-generators">can only generate ids as part of bulk insert with either sequence or post-insert style generators</h6>
+
+<p>Identity generator voor die bepaalde tabel moet een custom post-insert generator zijn (zoals bovenstaande <code>hilo</code> generator). Waarom? Dit gaat:</p>
+
+<ol>
+<li>eerst in bluk inserts doen</li>
+<li>dan in bulk ids bepalen afhankelijk van custom generator (bvb tabel met next id)</li>
+<li>dan in bulk update uitvoeren om id te plaatsten in db</li>
+</ol>
+
+<p>Dit betekent ook dat de ID kolom nullable moet zijn en er geen native generator in de weg mag zitten.</p>
+
+<h6 id="there-is-already-an-open-datareader-associated-with-this-connection-which-must-be-closed-first">There is already an open DataReader associated with this Connection which must be closed first</h6>
+
+<pre><code>Exception: 
+Exception has been thrown by the target of an invocation.
+Inner Exception: 
+MySql.Data.MySqlClient.MySqlException (0x80004005): There is already an open DataReader associated with this Connection which must be closed first. at MySql.Data.MySqlClient.ExceptionInterceptor.Throw(Exception exception) at MySql.Data.MySqlClient.MySqlCommand.Throw(Exception ex) at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior) at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery() at MySql.Data.MySqlClient.MySqlTransaction.Rollback() at NHibernate.Transaction.AdoTransaction.Dispose(Boolean isDisposing) in d:&lt;br/&gt;BuildAgents&lt;br/&gt;BuildAgentTwo&lt;br/&gt;work&lt;br/&gt;9126a46c2421d993&lt;br/&gt;PFW.Base&lt;br/&gt;NHibernate&lt;br/&gt;Transaction&lt;br/&gt;AdoTransaction.cs:line 368 at NHibernate.Transaction.AdoTransaction.Dispose() in d:&lt;br/&gt;BuildAgents&lt;br/&gt;BuildAgentTwo&lt;br/&gt;work&lt;br/&gt;9126a46c2421d993&lt;br/&gt;PFW.Base&lt;br/&gt;NHibernate&lt;br/&gt;Transaction&lt;br/&gt;AdoTransaction.cs:line 340 at 
+...
+
+Exception:Exception has been thrown by the target of an invocation.Inner Exception:System.InvalidOperationException: There is already an open DataReader associated with this Command which must be closed first. at System.Data.SqlClient.SqlInternalConnectionTds.ValidateConnectionForExecute(SqlCommand command) at System.Data.SqlClient.SqlInternalTransaction.Rollback() at System.Data.SqlClient.SqlInternalTransaction.Dispose(Boolean disposing) at System.Data.SqlClient.SqlTransaction.Dispose(Boolean disposing) at NHibernate.Transaction.AdoTransaction.Dispose(Boolean isDisposing) at PFW.Utilities.Layers.ServiceLayer.TransactionalAttribute.OnExit(MethodExecutionArgs args) at ServiceLayer.Person.PersonBaseSL.Persist(IPersonBase person) at FacadeLayer.Person.PersonBaseRF.Persist(HttpRequest request)  Exception:Exception has been thrown by the target of an invocation.Inner Exception:System.InvalidOperationException: There is already an open DataReader associated with this Command which must be closed first. at System.Data.SqlClient.SqlInternalConnectionTds.ValidateConnectionForExecute(SqlCommand command) at System.Data.SqlClient.SqlInternalTransaction.Rollback() at System.Data.SqlClient.SqlInternalTransaction.Dispose(Boolean disposing) at System.Data.SqlClient.SqlTransaction.Dispose(Boolean disposing) at NHibernate.Transaction.AdoTransaction.Dispose(Boolean isDisposing) at
+...
+</code></pre>
+
+<p>Als we kijken in de code van <code>MySqlCommand</code> vinden we:</p>
+
+<pre><code class="language-csharp">    private void CheckState()
+    {
+      if (this.connection ###### null)
+        this.Throw((Exception) new InvalidOperationException(&quot;Connection must be valid and open.&quot;));
+      if (this.connection.State != ConnectionState.Open &amp;&amp; !this.connection.SoftClosed)
+        this.Throw((Exception) new InvalidOperationException(&quot;Connection must be valid and open.&quot;));
+      if (!this.connection.IsInUse || this.internallyCreated)
+        return;
+      this.Throw((Exception) new MySqlException(&quot;There is already an open DataReader associated with this Connection which must be closed first.&quot;));
+    }
+</code></pre>
+
+<p><code>IsInUse</code> wordt gezet in de setter van <code>Reader</code> in <code>MySqlConnection</code></p>
+
+<ul>
+<li>Zowel in <code>MySqlClient</code> als <code>SqlClient</code>, dus client onafhankelijk</li>
+<li>Volgens google betekent dit dat we <code>ISession</code> objecten delen over verschillende threads/requests</li>
+</ul>
+
+<p>❗ Probleem was dat wij <a href="http://www.postsharp.net/aspects/examples/transaction">PostSharp</a> gebruiken maar op de attribute class state bijhielden (de transactie zelf) om die bij onexit te kunnen committen. Andere users herbruiken diezelfde klasse blijkbaar, waarbij user1 transacties van user2 gaat committen etc. Correcte implementatie - zie link postsharp als voorbeeld; of:</p>
+
+<pre><code class="language-csharp">    [Serializable]
+    public class TransactionalAttribute : OnMethodBoundaryAspect
+    {
+        public override void OnEntry(MethodExecutionArgs args)
+        {
+            NHibernateFactory.CurrentSession.BeginTransaction();
+            base.OnEntry(args);
+        }
+
+        public override void OnExit(MethodExecutionArgs args)
+        {
+            NHibernateFactory.CurrentSession.Transaction.Dispose();
+            base.OnExit(args);
+        }
+
+        public override void OnSuccess(MethodExecutionArgs args)
+        {
+            NHibernateFactory.CurrentSession.Transaction.Commit();
+            base.OnSuccess(args);
+        }
+    }
+</code></pre>
+
+<p>Blijkbaar mag ook <code>MethodExecutionArgs</code> gebruikt worden om tijdelijk state in te storen die je bij <code>OnExit()</code> terug kan resolven - zie voorbeeld op de <a href="http://www.postsharp.net/aspects/examples/transaction">PostSharp website</a>.</p>
+
+<h6 id="detached-entity-passed-to-persist-in-een-test">Detached entity passed to persist (in een test)</h6>
+
+<p>Uw Id niet zelf meegeven, steekt een generator in uw mapping&hellip;</p>
+
+<h6 id="system-argumentoutofrangeexception-index-was-out-of-range-must-be-non-negative-and-less-than-the-size-of-the-collection">System.ArgumentOutOfRangeException : Index was out of range. Must be non-negative and less than the size of the collection.</h6>
+
+<p>Oplossing: in hibernate mapping file staan twee keer kolommen gedefiniëerd (eventueel onder een <code>composite-id</code>) - deze moet <code>update</code> en <code>insert</code> attributes op <code>false</code> hebben, of niet dubbel gemapped worden, hier kan Hibernate blijkbaar niet mee om gaan&hellip;</p>
+
+<h6 id="no-data-type-for-node-entityproperty">No data type for node [entityProperty]</h6>
+
+<p>Bij een <code>HQL</code> query, wanneer je meer dan 8 properties select, <strong>moet</strong> je een alias gebruiken:</p>
+
+<pre><code>select entity.one, entity.two, entity.three, ... from Entity entity where entity.Id in (10, 11)
+</code></pre>
+
+<p>en dus niet</p>
+
+<pre><code>select one, two, three from Entity where Id in (10, 11)
+</code></pre>
+
+<h6 id="the-multi-part-identifier-occupation0-functieid-could-not-be-bound">The multi-part identifier &ldquo;occupation0_.functieid&rdquo; could not be bound.</h6>
+
+<p>Impliciete en expliciete joins worden gemixed in uw select statement (al dan niet gewild door NHibernate). Probleem:</p>
+
+<pre><code class="language-sql">SELECT tbl1.col1, tbl2.col2, tbl3.col3
+FROM tbla tbl1, tblb tbl2
+   INNER JOIN tblc tbl3 on tbl1.joincol = tbl1.joincol
+WHERE tbl1.joincol2 = tbl2.joincol2
+AND tbl2.joincol3 = tbl3.joincol3
+</code></pre>
+
+<p>er wordt zowel met <code>INNER JOIN</code> als met <code>WHERE</code> een join gelegd naar andere tabellen. In MSSQL geeft dit problemen (sommige andere DBs niet?). Mogelijke oplossingen in NHibernate:</p>
+
+<ol>
+<li>Gebruik Criteria om alles expliciet te joinen (joepie&hellip;)</li>
+<li>Selecteer in een LINQ query geen entiteit maar de Id en map die achteraf</li>
+</ol>
+
+<h6 id="error-code-1054-unknown-column-personlite2-werknemerid-in-on-clause">Error Code: 1054. Unknown column &lsquo;personlite2_.WerknemerID&rsquo; in &lsquo;on clause&rsquo;</h6>
+
+<ul>
+<li>Multiple join in HQL die in de verkeerde volgorde staat? Draai <code>join x as y join y as z</code> eens om, zodat de joins andersom gelegd worden.</li>
+</ul>
+
+<p>Concreet voorbeeld:</p>
+
+<pre><code class="language-sql">SELECT col1, col2, col3 
+FROM bliebloe
+INNER JOIN tabel alias ON alias.x = bliebloe.y,
+col4,
+INNER JOIN tabel2 alias2 ON alias2.x = bliebloe.y
+</code></pre>
+
+<p>Zou moeten zijn:</p>
+
+<pre><code class="language-sql">SELECT col1, col2, col3 
+FROM bliebloe
+INNER JOIN tabel alias ON alias.x = bliebloe.y,
+INNER JOIN tabel2 alias2 ON alias2.x = bliebloe.y,
+col4
+</code></pre>
+
+<p>Maar hoe vertellen we <code>Hibernate</code> dit? <strong>zet expliciete joins in uw HQL</strong> in de gewenste volgorde:</p>
+
+<p>&ldquo;select a.x, b.y, c.z
+from a
+join a.h as b
+join a.i as c&rdquo;</p>
+
+<ul>
+<li>In MySQL: syntax join mixen ###### no go, zoals select * from table1, table2 where table1.id  table2.key join bla join blie - zowel met komma als met de join operator joinen. Doet Hibernate normaal niet.</li>
+</ul>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

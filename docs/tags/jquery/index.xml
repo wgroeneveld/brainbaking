@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jquery on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/jquery/index.xml</link>
+    <description>Recent content in Jquery on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>jquery</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/jquery/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/jquery/</guid>
+      <description>
+
+&lt;h1 id=&#34;jquery&#34;&gt;Jquery&lt;/h1&gt;
+
+&lt;h2 id=&#34;eigen-css-filters-maken&#34;&gt;Eigen CSS filters maken&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$.expr[&#39;:&#39;].external = function(elem,index,match) {
+    var url = elem.href || elem.src,
+        loc = window.location;
+    return !!url.match(new RegExp(&#39;^&#39; + loc.protocol + &#39;//&#39; + &#39;(?!&#39; + loc.hostname + &#39;)&#39; ));
+};
+ 
+// You can now use it within your selectors:
+ 
+// Find all external anchors:
+$(&#39;a:external&#39;);
+ 
+// Find all external script elements:
+$(&#39;script:external&#39;);
+ 
+// Determine if link is external:
+$(&#39;a#mylink&#39;).is(&#39;:external&#39;); // true/false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Via &lt;a href=&#34;http://james.padolsey.com/javascript/things-you-may-not-know-about-jquery/&#34;&gt;Things you may not know about jQuery&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;data-meegeven-aan-events&#34;&gt;Data meegeven aan events&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;for(myObj in myObjects) {
+  $(&#39;.tr&#39;).bind(&#39;click&#39;, myObj, function(e) {
+     e.data.doeIets(); // .data ##### myObj
+  });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Werkt ook voor &lt;code&gt;live()&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

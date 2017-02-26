@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>mfc</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="mfc" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/c/mfc/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>mfc</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="mfc">MFC</h1>
+
+<p>❗ MFC en AFX <a href="http://en.wikipedia.org/wiki/Microsoft_Foundation_Class_Library">is hetzelfde</a>:</p>
+
+<blockquote>
+<p>One interesting quirk of MFC is the use of &ldquo;Afx&rdquo; as the prefix for many functions, macros and the standard precompiled header name &ldquo;stdafx.h&rdquo;. During early development what became MFC was called &ldquo;Application Framework Extensions&rdquo; and abbreviated &ldquo;Afx&rdquo;. The name Microsoft Foundation Classes (MFC) was adopted too late in the release cycle to change these references</p>
+</blockquote>
+
+<h3 id="strings-in-mfc">Strings in MFC</h3>
+
+<p>Gebruik <code>CString</code> - werkt niet op non-win32 omgevingen.</p>
+
+<h5 id="formatting">Formatting</h5>
+
+<p>Formatten kan bijvoorbeeld met <code>string.Format(_T(&quot;%s in %d&quot;), otherString, otherDecimal);</code></p>
+
+<p>❗ Om een string te intialiseren en toe te kennen moet je wel de <code>_T</code> macro gebruiken</p>
+
+<h5 id="substringen">Substringen</h5>
+
+<p><code>Find</code> is hetzelfde als <code>indexOf</code> in andere talen.</p>
+
+<pre><code class="language-c++">CString HostServiceProxy::GetCouponFromResponseString(CString response)
+{
+	CString couponKey ###### _T(&quot;Coupon&quot;);
+	CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
+
+	return couponPart.Left(couponPart.Find(_T(&quot;;&quot;)));
+}
+</code></pre>
+
+<h3 id="resource-handling">Resource handling</h3>
+
+<p>Icons en images worden opgeslagen in .rc files die als resources in de code gekoppeld kunnen worden aan bijvoorbeeld een <code>CButton</code>. Hoe?</p>
+
+<pre><code class="language-c">	HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
+	if(hImage ###### NULL)
+		ASSERT(FALSE);	
+
+	HICON image = static_cast&lt;HICON&gt;(hImage);
+</code></pre>
+
+<p><code>HICON</code> is van <code>WinDef.h</code> en <code>::LoadImage</code> zit op <code>WinUser.h</code>. Zie <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648045(v=vs.85).aspx">MSDN doc</a> voor LoadImage.</p>
+
+<p>######= De juiste resource handle vastkrijgen ######=</p>
+
+<p>Als je een MFC DLL maakt, gaat <code>AfxGetResourceHandle()</code> verwijzen naar de resource handle van uw DLL zelf. Als je dus resources wil vastpakken van een andere DLL heb je pech. Als je geen MFC DLL maakt kan je dit aanpassen met <code>AFX_MANAGE_STATE(AfxGetStaticModuleState( ))</code>. <strong>Dit gooit echter linking errors</strong> ( error LNK2005: _DllMain@12 already defined) indien je dit vanuit een MFC DLL aanroept - dan is dit niet nodig.</p>
+
+<p>Meer uitleg hierover: zie <a href="http://support.microsoft.com/kb/161589">http://support.microsoft.com/kb/161589</a></p>
+
+<p>❗ de Afx resource handle kan <strong>altijd</strong> gewijzigd worden door leuke dingen te doen als:</p>
+
+<pre><code class="language-c">	HINSTANCE old = AfxGetResourceHandle();
+	AfxSetResourceHandle(GetModuleHandle(&quot;andereModule&quot;));
+</code></pre>
+
+<p>Gebruik daarom best <code>::GetModuleHandle(char*)</code> bij <code>::LoadImage</code>.</p>
+
+<p>######= Resources op het juiste moment terug vrijgeven ######=</p>
+
+<p>Resources worden meestal gewrapped in kleine objectjes die bij de constructor de resource alloceren en bij de destructor deze terug vrijgeven in plaats van in <code>try { ... }</code> zoiets te moeten doen in Java. Dit pattern is <a href="http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization">RAII</a> of &ldquo;Resource Acquisition Is Initialization&rdquo;. Voorbeeld:</p>
+
+<pre><code class="language-c">template&lt;class TObject&gt;
+class RAIIObject
+{
+public:
+	explicit RAIIObject(const TObject&amp; obj) : m_Object(obj) {}
+	RAIIObject() {}
+	~RAIIObject() {ReleaseObject();}
+	RAIIObject&lt;TObject&gt;&amp; operator######(const TObject&amp; obj) {if(&amp;obj ! &amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
+	RAIIObject&lt;TObject&gt;&amp; operator######(const RAIIObject&lt;TObject&gt;&amp; obj) {if(&amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
+	TObject&amp; GetObject() {return m_Object;}
+	const TObject&amp; GetObject() const {return m_Object;}
+	operator TObject&amp;() {return m_Object;}
+	operator const TObject&amp;() const {return m_Object;}
+private:
+	void ReleaseObject();
+	TObject m_Object;
+};
+
+template&lt;&gt; inline void RAIIObject&lt;HICON&gt;::ReleaseObject() {::DestroyIcon(m_Object); m_Object = NULL;}
+template&lt;&gt; inline void RAIIObject&lt;CBrush&gt;::ReleaseObject() {m_Object.DeleteObject();}
+template&lt;&gt; inline void RAIIObject&lt;CBitmap&gt;::ReleaseObject() {m_Object.DeleteObject();}
+template&lt;&gt; inline void RAIIObject&lt;CFont&gt;::ReleaseObject() {m_Object.DeleteObject();}
+template&lt;&gt; inline void RAIIObject&lt;CMenu&gt;::ReleaseObject() {m_Object.DestroyMenu();}
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

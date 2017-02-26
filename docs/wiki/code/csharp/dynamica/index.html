@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>dynamica</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="dynamica" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/csharp/dynamica/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>dynamica</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="dynamica">Dynamica</h1>
+
+<p>Zie ook <a href="/wiki/code/csharp/reflectie/">code/csharp/reflectie</a></p>
+
+<h3 id="expression-trees-opbouwen">Expression trees opbouwen</h3>
+
+<h5 id="van-een-methodinfo-instantie-naar-een-func">Van een MethodInfo instantie naar een Func&lt;&gt;</h5>
+
+<pre><code class="language-csharp">            var instanceToMemoize = Activator.CreateInstance&lt;TClassToMemoize&gt;();
+            foreach (var method in instanceToMemoize.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            {
+                var parameters ###### method.GetParameters().Select(p &gt; Expression.Constant(&quot;test&quot;));
+
+                var expr = Expression.Lambda(Expression.Call(Expression.Constant(instanceToMemoize), method, parameters)).Compile();
+                _Delegates.Add(method.ToString(), expr);
+            }
+
+</code></pre>
+
+<p>Argumenten stuk klopt nog niet. Refs:</p>
+
+<ol>
+<li><a href="http://stackoverflow.com/questions/2933221/can-you-get-a-funct-or-similar-from-a-methodinfo-object">http://stackoverflow.com/questions/2933221/can-you-get-a-funct-or-similar-from-a-methodinfo-object</a></li>
+<li><a href="http://stackoverflow.com/questions/11367830/how-to-find-full-name-of-calling-method-c-sharp">http://stackoverflow.com/questions/11367830/how-to-find-full-name-of-calling-method-c-sharp</a></li>
+</ol>
+
+<h5 id="memoization">Memoization</h5>
+
+<p>Ook mogelijk via <code>Func&lt;&gt;</code> wrappers; zie</p>
+
+<ol>
+<li><a href="http://www.jaylee.org/post/2013/04/18/Memoization-and-Immutable-data-in-CSharp-Part-1.aspx">http://www.jaylee.org/post/2013/04/18/Memoization-and-Immutable-data-in-CSharp-Part-1.aspx</a></li>
+<li><a href="http://www.jaylee.org/post/2013/04/22/Immutable-Data-and-Memoization-in-CSharp-Part-2.aspx">http://www.jaylee.org/post/2013/04/22/Immutable-Data-and-Memoization-in-CSharp-Part-2.aspx</a></li>
+</ol>
+
+<p>Dit is een extension die 2 type arguments aanvaard:</p>
+
+<pre><code class="language-csharp">        public static Func&lt;TArg1, TArg2, TResult&gt; AsMemoized&lt;TArg1, TArg2, TResult&gt;(this Func&lt;TArg1, TArg2, TResult&gt; func)
+        {
+            var values = new Dictionary&lt;MemoizedKey&lt;TArg1, TArg2&gt;, TResult&gt;();
+            return (arg1, arg2) =&gt; MemoizedValue(func, arg1, arg2, values);
+        }
+
+        public static Func&lt;TArg, TResult&gt; AsMemoized&lt;TArg, TResult&gt;(this Func&lt;TArg, TResult&gt; funcArg)
+        {
+            Func&lt;TArg, object, TResult&gt; func ###### (arg1, arg2) &gt; funcArg(arg1);
+            var values = new Dictionary&lt;MemoizedKey&lt;TArg, object&gt;, TResult&gt;();
+            return (arg) =&gt; MemoizedValue(func, arg, null, values);
+        }
+        private static TResult MemoizedValue&lt;TArg1, TArg2, TResult&gt;(Func&lt;TArg1, TArg2, TResult&gt; func, TArg1 arg1, TArg2 arg2, Dictionary&lt;MemoizedKey&lt;TArg1, TArg2&gt;, TResult&gt; values)
+        {
+            TResult value;
+
+            var memoizedKey = new MemoizedKey&lt;TArg1, TArg2&gt;(arg1, arg2);
+            if (!values.TryGetValue(memoizedKey, out value))
+            {
+                value ###### values[memoizedKey]  func(memoizedKey.Arg1, memoizedKey.Arg2);
+            }
+
+            return value;
+        }
+
+        private class MemoizedKey&lt;TArg1, TArg2&gt;
+        {
+            public MemoizedKey(TArg1 arg1, TArg2 arg2)
+            {
+                Arg1 = arg1;
+                Arg2 = arg2;
+            }
+
+            public TArg1 Arg1 { get; private set; }
+
+            public TArg2 Arg2 { get; private set; }
+
+            public override bool Equals(object obj)
+            {
+                if (ReferenceEquals(null, obj)) return false;
+                if (ReferenceEquals(this, obj)) return true;
+                if (obj.GetType() != this.GetType()) return false;
+                return Equals((MemoizedKey&lt;TArg1, TArg2&gt;)obj);
+            }
+
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    return (EqualityComparer&lt;TArg1&gt;.Default.GetHashCode(Arg1) * 397) ^ EqualityComparer&lt;TArg2&gt;.Default.GetHashCode(Arg2);
+                }
+            }
+
+            private bool Equals(MemoizedKey&lt;TArg1, TArg2&gt; other)
+            {
+                return EqualityComparer&lt;TArg1&gt;.Default.Equals(Arg1, other.Arg1) &amp;&amp; EqualityComparer&lt;TArg2&gt;.Default.Equals(Arg2, other.Arg2);
+            }
+        }
+
+</code></pre>
+
+<p>Equals is nodig voor de <code>Dictionary</code> (generated).</p>
+
+<h3 id="aspect-oriented-programming">Aspect Oriented Programming</h3>
+
+<p><strong>PostSharp</strong>: <a href="http:*www.postsharp.net">http:*www.postsharp.net</a></p>
+
+<h4 id="transacties-wiren">Transacties wiren</h4>
+
+<p>Zie <a href="/wiki/code/csharp/persistence/">code/csharp/persistence</a></p>
+
+<h4 id="aspects-applyen-op-assembly-level">Aspects applyen op assembly level</h4>
+
+<p>Q: Ik wil AOP toepassen voor alle klassen (&amp; [publieke] methods) in een bepaald project (DLL)<br/><br/>
+A: Gebruik <a href="http://www.postsharp.net/aspects/multicasting">Multicasting aspects</a>.</p>
+
+<p>Bijvoorbeeld, om exceptions overal op te vangen, en dan door te delegeren, evt screenshot van de app te nemen:</p>
+
+<pre><code class="language-csharp">[assembly: ScenarioTests.ScenarioExceptionHandler]
+
+namespace ScenarioTests
+{
+    [Serializable]
+    [ScenarioExceptionHandler(AttributeExclude = true)]
+    public class ScenarioExceptionHandler : OnMethodBoundaryAspect
+    {
+        public override void OnException(MethodExecutionArgs args)
+        {
+            WebDriverExceptionHandler.Handle(args.Exception);
+            base.OnException(args);
+        }
+    }
+}
+</code></pre>
+
+<p>De eerste regel, <code>[assembly:]</code> is van belang, zie documentatie. Je kan ook verder filteren by visibility etc, zoals in <a href="/wiki/code/java/dynamica/aspectj/">Spring AOP/AspectJ</a> de strings in XML gedfiniëerd zijn.</p>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scoping on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/scoping/index.xml</link>
+    <description>Recent content in Scoping on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/scoping/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>scoping</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/scoping/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/scoping/</guid>
+      <description>
+
+&lt;h1 id=&#34;javascript-scoping&#34;&gt;Javascript Scoping&lt;/h1&gt;
+
+&lt;h3 id=&#34;toplevel-scope&#34;&gt;Toplevel Scope&lt;/h3&gt;
+
+&lt;p&gt;Een stuk Javascript in een HTML pagina, zonder eender welke functie te definiëren, werkt altijd op &lt;strong&gt;top-level scope&lt;/strong&gt;. Dat stelt het &lt;code&gt;window&lt;/code&gt; object voor, waar we ook resolutie gegevens en dergelijke kunnen uithalen. Dus simpele variabelen declareren om in HTML te kunnen gebruiken werkt altijd op de globale scope:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var customerEmail = document.getElementById(&amp;quot;username&amp;quot;) + &amp;quot;@&amp;quot; + document.getElementById(&amp;quot;domain&amp;quot;) + &amp;quot;.com&amp;quot;;
+window.customerEmail // what did I do?? (null@null.com if unknown IDs)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Om te vermijden dat we alles op het &lt;code&gt;window&lt;/code&gt; object &amp;ldquo;dumpen&amp;rdquo;, schrijven we nette functies die zaken zoals tijdelijke variabelen en private stukken code &lt;em&gt;encapsuleren&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;variabele-declaratie&#34;&gt;Variabele declaratie&lt;/h4&gt;
+
+&lt;p&gt;Variabelen definiëren gaat met &lt;code&gt;var&lt;/code&gt; (zoals hierboven), máár &lt;em&gt;globale&lt;/em&gt; (window-scope) variabelen kunnen gedeclareerd worden zonder dit. Pas hiermee op:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;woot = &amp;quot;leet&amp;quot;;
+function yo() {
+  woot = &amp;quot;omg&amp;quot;; // whoops, I changed a global var
+  meerWoot = &amp;quot;leet&amp;quot;;
+  var wootwoot = &amp;quot;one!!1&amp;quot;;
+}
+
+yo();
+window.woot ##### &amp;quot;leet&amp;quot; // false
+window.meerWoot ##### &amp;quot;leet&amp;quot; // true
+window.wootwoot ##### undefined // true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dit verklaart de nood om &lt;code&gt;var&lt;/code&gt; te gebruiken om &lt;em&gt;lokale&lt;/em&gt; variabelen te definiëren.&lt;br/&gt;&lt;br/&gt;
+Merk op dat hier &lt;code&gt;wootwoot&lt;/code&gt; énkel binnen de functie &lt;code&gt;yo()&lt;/code&gt; leeft, dus via de Javascript &lt;em&gt;Garbage Collector&lt;/em&gt; weggesmeten wordt zodra die functie volledig geëvalueerd is.&lt;/p&gt;
+
+&lt;p&gt;#####= Nested en Block scope #####=&lt;/p&gt;
+
+&lt;p&gt;Functies in functies in functies zijn perfect mogelijk, en de binnenste functies hebben toegang tot de scope van alle anderen.&lt;/p&gt;
+
+&lt;p&gt;❗ In tegenstelling tot Java e.a. beschikt JS &lt;strong&gt;niet over block scope&lt;/strong&gt;. Dit wil zeggen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var f1 = 10;
+function f() {
+  console.log(f1); // 10? Nope, undefined!
+  var f1 = 1;
+  function z() {
+    var z1 = 2;
+    if(f1 ###### 1) {
+       var z2 = 2;
+    }
+    
+    return z1 + z2; // z2 nog steeds toegankelijk
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Waarom logt dit &lt;code&gt;undefined&lt;/code&gt;, terwijl op global scope aan f1 10 toegekend wordt? Omdat een tweede variabele genaamd f1 in de &lt;em&gt;body&lt;/em&gt; van de functie gedeclareerd wordt, wordt die versie gebruikt, &lt;strong&gt;ook al is deze nog niet toegekend!&lt;/strong&gt;. Wow.&lt;/p&gt;
+
+&lt;p&gt;JS Is dus buiten de &lt;em&gt;lexicale scoping&lt;/em&gt; ook nog eens &lt;em&gt;function-level scoped&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Een duidelijker voorbeeld via &lt;a href=&#34;http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting:&#34;&gt;http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting:&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;lt;stdio.h&amp;gt; 
+int main() { 
+    int x = 1; 
+    printf(&amp;quot;%d, &amp;quot;, x); // 1 
+    if (1) { 
+        int x = 2; 
+        printf(&amp;quot;%d, &amp;quot;, x); // 2 
+    } 
+    printf(&amp;quot;%d&amp;lt;br/&amp;gt;n&amp;quot;, x); // 1 
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Print logischerwijze 1, 2, 1, juist? Doe hetzelfde eens in javascript:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var x = 1; 
+console.log(x); // 1 
+if (true) { 
+    var x = 2; 
+    console.log(x); // 2 
+} 
+console.log(x); // 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;BOOM&lt;/em&gt;. &lt;br/&gt;&lt;br/&gt;
+Dit komt doordat &lt;code&gt;if&lt;/code&gt; statements geen nieuwe scope introduceren, enkel &lt;code&gt;function&lt;/code&gt; definities! Een oplossing is een anonieme functie gebruiken en die direct evalueren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function foo() { 
+    var x = 1; 
+    if (x) { 
+        (function () { 
+            var x = 2; 
+            // some other code 
+        }()); 
+    } 
+    // x is still 1. 
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;scope-chain&#34;&gt;Scope chain&lt;/h5&gt;
+
+&lt;p&gt;Elke JS Executie context heeft een &lt;strong&gt;scope chain&lt;/strong&gt; toegekend. Dit is een lijst van objecten waar de interpreter door gaat om een variabele x op te kunnen zoeken (Dit proces heet &lt;em&gt;variable name resolution&lt;/em&gt;). Men begint met de huidige context van de functie die opgeroepen wordt. Indien variabele x daar niet gedefiniëerd is, ga een scope hoger, en zo voort.&lt;/p&gt;
+
+&lt;p&gt;In &lt;em&gt;top-level&lt;/em&gt; JS (op window scope) bevat de scope chain slechts één object, het &amp;ldquo;globaal&amp;rdquo; object. (&lt;code&gt;window&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h5 id=&#34;event-handler-scope-chain&#34;&gt;Event handler scope chain&lt;/h5&gt;
+
+&lt;p&gt;Bij het uitvoeren van events in de DOM Tree zitten er buiten &lt;code&gt;window&lt;/code&gt; nog enkele andere objecten op de scope chain: het object dat het event zelf triggerde. Het is dus mogelijk om rechtstreeks vanuit een &lt;code&gt;onclick&lt;/code&gt; event van een &lt;code&gt;input&lt;/code&gt; tag, een ander &lt;code&gt;form&lt;/code&gt; element aan te spreken zonder dit eerst te resolven via de klassieke &lt;code&gt;getElementById()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;head&amp;gt;
+&amp;lt;script&amp;gt;
+function load() {
+  document.getElementById(&amp;quot;text&amp;quot;).onclick = function() {
+     alert(anders.value);
+  }
+}
+&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body onload=&amp;quot;load();&amp;quot;&amp;gt;
+&amp;lt;input type######&amp;quot;text&amp;quot; id&amp;quot;text&amp;quot; value=&amp;quot;blabla&amp;quot; /&amp;gt;
+&amp;lt;input type######&amp;quot;text&amp;quot; id&amp;quot;anders&amp;quot; value=&amp;quot;blieblie&amp;quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;merk op dat &lt;code&gt;anders.value&lt;/code&gt; mogelijk is doordat het DOM element text mee op de scope chain zit. &lt;br/&gt;&lt;br/&gt;
+Dit is vanzelfsprekend serieus verwarrend en &lt;strong&gt;bad practice&lt;/strong&gt;, Firebug waarschuwt hier ook voor:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Element referenced by ID/NAME in the global scope. Use W3C standard document.getElementById() instead.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Dit kan serieuze problemen met zich mee brengen, zeker wanneer mensen niet goed weten hoe javascript te gebruiken en bijvoorbeeld for loopjes schrijven door variabelen op toplevel scope te introduceren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;
+&amp;lt;head&amp;gt;
+&amp;lt;script&amp;gt;
+function Iets(e) {
+	return function() {
+		alert(j); // DOM Element: Div met id &amp;quot;j&amp;quot;, al hebben we nergens j gedefiniëerd!!! 
+		
+		// j = 0: BOOM in IE: Object doesn&#39;t support this property or method
+		// reden =&amp;gt; in IE is dit een readonly property, Gecko parsers zijn lakser hierin
+		for(j = 0; j &amp;lt; 10; j++) {
+		  // whatever
+		}
+		
+		alert(j); // 10
+	}
+}
+&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+&amp;lt;h2&amp;gt;Javascript event scopechain voorbeeld&amp;lt;/h2&amp;gt;
+
+&amp;lt;div id######&amp;quot;j&amp;quot; onclick&amp;quot;Iets()()&amp;quot;&amp;gt;
+ Klik hierop aub
+&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;scope-tijdelijk-aanpassen&#34;&gt;Scope tijdelijk aanpassen&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;with(window.screen) {
+  console.log(width);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Al is &lt;code&gt;var screen = window.screen; screen.width&lt;/code&gt; natuurlijk even makkelijk.&lt;/p&gt;
+
+&lt;p&gt;#####= Private Member variables #####=&lt;/p&gt;
+
+&lt;p&gt;❗ &amp;ldquo;Functies en variabelen in objecten zijn overal en altijd toegankelijk&amp;rdquo;. &lt;strong&gt;DIT IS FOUT&lt;/strong&gt;! Bekijk het volgende voorbeeld (zie &lt;a href=&#34;http://www.crockford.com/javascript/private.html&#34;&gt;private members&lt;/a&gt; docs):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function Func(param) {
+   this.publicMember = param;
+   var privateMember = 10;
+   var me = this;
+   
+   this.publicFunction = function() {
+      console.log(this.publicMember);
+   };
+   
+   // could be function privateFunction() {
+   var privateFunction = function() {
+      console.log(privateMember);
+      console.log(this.publicMember); // BOOM
+      console.log(me.publicMember);   // OK
+   };
+}
+
+new Func(10).privateFunction() // BOEM
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zodra we &lt;code&gt;this&lt;/code&gt; gebruiken om members in een constructor functie te steken wordt het publiek. Zodra we gewoon variabelen definiëren, ook al zijn het closures zoals &lt;code&gt;privateFunction&lt;/code&gt;, is dit &lt;em&gt;niet&lt;/em&gt; toegankelijk voor de buitenwereld! Dit wil zeggen dat het zelfs niet toegankelijk is voor &lt;code&gt;.prototype&lt;/code&gt;-toegevoegde functies.&lt;/p&gt;
+
+&lt;p&gt;Merk op dat we aan &lt;code&gt;privateMember&lt;/code&gt; kunnen zonder &lt;code&gt;this&lt;/code&gt; te gebruiken om naar iets te refereren. Dit komt omdat die members in de context van het object zitten.&lt;br/&gt;&lt;br/&gt;
+Een probleem dat zich voordoet is dat de &lt;code&gt;this&lt;/code&gt; pointer binnen private functions natuurlijk weer gereset wordt tot op &lt;code&gt;window&lt;/code&gt; scope. Om dit op te lossen kunnen we een private variabele voorzien die refereert naar &lt;code&gt;this&lt;/code&gt;, daarvoor dient &lt;code&gt;me&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h6 id=&#34;private-public-en-prototype-functies&#34;&gt;Private, Public en prototype functies&lt;/h6&gt;
+
+&lt;p&gt;Een &lt;strong&gt;private&lt;/strong&gt; functie is een functie die in de constructor functie gedefiniëerd is als &lt;em&gt;member variabele&lt;/em&gt;, en dus geldig is binnen de context van die functie. &lt;br/&gt;&lt;br/&gt;
+Een &lt;strong&gt;privileged&lt;/strong&gt; functie is een functie die in de constructor functie gedefiniëerd is met de &lt;em&gt;this accessor&lt;/em&gt;. Deze functies kunnen private functies aanroepen omdat ze binnen de context van de constructor functie leven, en zijn ook aanroepbaar van buitenaf.&lt;br/&gt;&lt;br/&gt;
+Een &lt;strong&gt;public&lt;/strong&gt; functie is een functie die in het &lt;em&gt;prototype&lt;/em&gt; leeft van een object((privileged en public zijn in feite gelijk, onderscheid wordt gemaakt om public variables te scheidden)). Private members zijn hier niet toegankelijk, privileged wel. Een voorbeeld (vervolg):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Func.prototype.publicThing = function() {
+   alert(this.publicMember);
+   return this.privateMember; // BOOM
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;#####= Object/Class Member variables #####=&lt;/p&gt;
+
+&lt;p&gt;In typische OO talen zoals Java en C++ kunnen ook &amp;ldquo;statics&amp;rdquo; gedefiniëerd worden die enkel op klasse niveau leven. Zoiets is heel simpel te realiseren met Javascript, door een property op de constructor functie zelf te steken:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function Const() {
+   this.c = &amp;quot;const&amp;quot;;
+   c = &amp;quot;globalConst&amp;quot;;
+}
+
+Const.C = &amp;quot;C&amp;quot;;
+
+
+c ###### &amp;quot;globalConst&amp;quot;; // remember, window scope
+new Const().c ###### &amp;quot;const&amp;quot;;
+new Const().C != undefined
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dit noemen we &amp;ldquo;class&amp;rdquo; properties, in plaats van &amp;ldquo;instance&amp;rdquo; properties.&lt;/p&gt;
+
+&lt;p&gt;#####= Anonieme functies gebruiken om members private te maken #####=&lt;/p&gt;
+
+&lt;p&gt;Probleem: publieke functies die aan een object hangen met &lt;code&gt;this.functie = function() { ... }&lt;/code&gt; zijn toegankelijk. Ik wil iets groeperen zonder &lt;code&gt;window&lt;/code&gt; scope te vervuilen. Hoe kan ik één functie opsplitsen zonder de andere te &lt;em&gt;exposen&lt;/em&gt;?&lt;br/&gt;&lt;br/&gt;
+Oplossing:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var Stuff = (function() {
+
+  function doeStap1() {
+    console.log(&amp;quot;private things in here&amp;quot;);
+    return 3;
+  }
+  
+  function doeStap2Met1(een) {
+    return een * 2;
+  }
+
+  return {
+    doeStuff: function() {
+      return doeStap2Met1(doeStap1());
+    }
+  }
+
+})()
+console.log(Stuff); // outputs Object met &amp;quot;doeStuff&amp;quot; key
+console.log(Stuff.doeStuff()); // 6
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;In JavaScript, as opposed to statically scoped languages, all variables are scoped to the function in which they&amp;rsquo;re defined (not the &amp;ldquo;block&amp;rdquo; as defined by curly braces). The above code snippet creates an anonymous function and immediately executes it. This has the effect of creating a scope in which variables can be defined, and anything in the containing scope is still accessible.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://trephine.org/t/index.php?title=Aspect_Oriented_JavaScript&#34;&gt;http://trephine.org/t/index.php?title=Aspect_Oriented_JavaScript&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Wat gebeurt er?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Wrap een lege functie in Stuff, waar x aantal functies in zitten die wat werk doen.&lt;/li&gt;
+&lt;li&gt;In plaats van dat toe te kennen aan Stuff, evalueer direct de nieuwe functie met &lt;code&gt;(function() { ... })()&lt;/code&gt;. Wat terugkomt is een closure functie die &lt;code&gt;doeStuff&lt;/code&gt; definieert, de rest is niet zichtbaar.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;#####= Expliciet objecten binden met call/apply #####=&lt;/p&gt;
+
+&lt;p&gt;Neem als voorbeeld terug de ezel. Die zal bij het balken &amp;ldquo;iaia met mijn 4 poten&amp;rdquo; op de console afdrukken. Zodra de balk functie aangeroepen wordt, &lt;em&gt;bind&lt;/em&gt; Javascript de ezel aan het &lt;code&gt;this&lt;/code&gt; keyword, zodat poten correct opgezocht kan worden. Stel nu dat ik een spin wil laten balken, zonder de spin de balk functie te laten refereren/mixen vanuit de ezel:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var Spin = function() {
+  this.poten = 8;
+};
+var tarantula = new Spin();
+new Ezel().balk.call(tarantula); // iaia met mijn 8 poten
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wat gebeurt hier?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Ik maak een nieuw object aan met ook een poten property&lt;/li&gt;
+&lt;li&gt;balk gebruikt de poten property maar ik wil mijn spin gebruiken in plaats van de 4 poten van de ezel!&lt;/li&gt;
+&lt;li&gt;gebruik &lt;code&gt;call&lt;/code&gt; om balk uit te voeren, en geef als argument mijn spin mee, zodat de balk functie gebind wordt op mijn spin in plaats van de nieuwe ezel instantie&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Het is ook mogelijk om zonder argument &lt;code&gt;call&lt;/code&gt; uit te voeren:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var poten = 100;
+new Ezel().balk.call(); // iaia met mijn 100 poten
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hoezo 100? &lt;code&gt;this&lt;/code&gt; wordt dan &lt;code&gt;window&lt;/code&gt;, de hoogst mogelijke scope, en daar is net toevallig ook een poten variabele op gedefiniëerd. Als dat niet zo was gaf dit als output &amp;ldquo;iaia met mijn undefined poten&amp;rdquo;.&lt;/p&gt;
+
+&lt;h5 id=&#34;impliciete-unbound-objecten&#34;&gt;Impliciete unbound objecten&lt;/h5&gt;
+
+&lt;p&gt;Het vorige voorbeeld toont aan hoe je expliciet &lt;code&gt;this&lt;/code&gt; kan &amp;ldquo;unbinden&amp;rdquo;. Dit gebeurt ook regelmatig intern impliciet, bijvoorbeeld met &lt;code&gt;setTimeout&lt;/code&gt; of met events zoals &lt;code&gt;blabla.onclick&lt;/code&gt;. &lt;br/&gt;&lt;br/&gt;
+De oplossing hiervoor is &lt;strong&gt;closures&lt;/strong&gt; gebruiken. Bekijk dit voorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function SomeClass() {
+  this.message = &amp;quot;hallo&amp;quot;;
+
+  this.startLooping = function() {
+    setInterval(this.doeBijInterval, 1000);
+  };
+  
+  this.doeBijInterval = function() {
+    console.log(this.message);  // BOOOEEMM
+  }
+}
+ 
+new SomeClass().startLooping();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wat loopt hier mis? ((Buiten het feit dat setInterval niet altijd mag uitgevoerd worden, er moet een guard clause rond, setInterval retourneert een id!))&lt;br/&gt;&lt;br/&gt;
+doeBijInterval wordt hier om de seconde uitgevoerd, en this.message wordt afgedrukt. &lt;code&gt;this&lt;/code&gt; verwijst op dat moment &lt;em&gt;niet&lt;/em&gt; meer naar de instantie van SomeClass!&lt;/p&gt;
+
+&lt;p&gt;De oplossing, een closure meegeven aan &lt;code&gt;setInterval&lt;/code&gt; die kan werken op de instance:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function SomeClass() {
+  this.message = &amp;quot;hallo&amp;quot;;
+
+  this.startLooping = function() {
+    var instance = this; // OK, SomeClass instance
+    setInterval(function() {
+      instance.doeBijInterval(); // this = window scope, gebruik de instance var.
+    }, 1000);
+  };
+  
+  this.doeBijInterval = function() {
+    console.log(this.message);  // Da werkt ofwa
+  }
+}
+ 
+new SomeClass().startLooping();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;loop-closures&#34;&gt;loop closures&lt;/h5&gt;
+
+&lt;p&gt;Een ander voorbeeld waar het mis kan gaan (ref. &lt;a href=&#34;http://trephine.org/t/index.php?title=JavaScript_loop_closures&#34;&gt;http://trephine.org/t/index.php?title=JavaScript_loop_closures&lt;/a&gt; !):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var list = [ &#39;a&#39;, &#39;b&#39;, &#39;c&#39; ];
+for (var i######0, llist.length; i&amp;lt;l; i++) {
+  var item = list[i];
+  setTimeout( function(){ alert(item); }, 1000 ); // print 3x &#39;c&#39;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hoe kan dit 3x &amp;lsquo;c&amp;rsquo; afdrukken en niet &amp;lsquo;a&amp;rsquo;, &amp;lsquo;b&amp;rsquo;, &amp;lsquo;c&amp;rsquo;?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In de lus ken ik aan item de huidige index van de array toe.&lt;/li&gt;
+&lt;li&gt;Voer een functie uit die een seconde in de toekomst uitegevoerd wordt. [NOG NIET]. Repeat lus tot klaar.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Zodra de events verwerkt worden, is item reeds de laatste in de rij. Oei. De oplossing, weeral closures:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var list = [ &#39;a&#39;, &#39;b&#39;, &#39;c&#39; ];
+for (var i######0, llist.length; i&amp;lt;l; i++) (function(item){
+  setTimeout( function(){ alert(item); }, 1000 );
+})(list[i]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hier wordt een anonieme functie aangemaakt die &lt;em&gt;direct&lt;/em&gt; geëvalueerd wordt met &lt;code&gt;list[i]&lt;/code&gt; als parameter, zodat elke closure uniek gebonden is aan de juiste parameter.&lt;br/&gt;&lt;br/&gt;
+Zie AOP hieronder voor meer uitleg over anonieme functies.&lt;/p&gt;
+
+&lt;p&gt;#####= Samenvatting: module pattern #####=&lt;/p&gt;
+
+&lt;p&gt;Wanneer we alle bovenstaande technieken toepassen, krijgen we typisch in Javascript iets zoals dit:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var MyGlobalNewModule = (function(module) {
+    var privateVar = 3;
+    function privateFn() {
+      privateVar += 3;
+    }
+    
+    // decorate or use module here if wanted.
+    return {
+      publicProperty: &amp;quot;hello&amp;quot;,
+      publicFn: function() {
+        return privateFn() - 2;
+      }
+    };
+})(GlobalModule);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wat zit hier in verwoven?&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;private variables en functions zitten in de anonieme functie scope&lt;/li&gt;
+&lt;li&gt;andere modules zijn toegankelijk via een argument, en &lt;em&gt;niet&lt;/em&gt; via de directe variabele&lt;/li&gt;
+&lt;li&gt;publieke functies worden &lt;em&gt;exposed&lt;/em&gt; via een object dat teruggegeven wordt.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Zo werken bijvoorbeeld de API en plugins van &lt;strong&gt;jQuery&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;❗ Anonieme functies declareren en uitvoeren kan op twee manieren in JS: via &lt;code&gt;(function() { ... })()&lt;/code&gt; en via &lt;code&gt;(function() { ... }())&lt;/code&gt;. Merk het verschil in &lt;strong&gt;haakjes&lt;/strong&gt; op. Het resultaat is exact hetzelfde, er is alleen een semantisch verschil, namelijk dat bij de eerste expressie de haakjes de &lt;em&gt;functie expressie&lt;/em&gt; vasthoudt, en bij de tweede expressie de &lt;em&gt;call expressie&lt;/em&gt; (het resultaat van de functie)&lt;/p&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://stackoverflow.com/questions/3783007/is-there-a-difference-between-function-and-function&#34;&gt;stackoverflow&lt;/a&gt; voor meer uitleg - schematisch:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+               CallExpression
+                |         |
+       FunctionExpression |
+                |         |
+                V         V
+    (function() {       }());
+    ^                      ^
+    |--PrimaryExpression --|
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;VS&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;          PrimaryExpression
+                |
+         FunctionExpression
+                |
+                V
+    (function() {       })();
+    ^                      ^
+    |--  CallExpression  --|
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

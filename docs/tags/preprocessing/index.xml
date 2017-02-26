@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Preprocessing on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/preprocessing/index.xml</link>
+    <description>Recent content in Preprocessing on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/preprocessing/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>preprocessing</title>
+      <link>http://www.brainbaking.com/wiki/code/c/preprocessing/</link>
+      <pubDate>Mon, 02 Dec 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/c/preprocessing/</guid>
+      <description>
+
+&lt;h1 id=&#34;preprocessing&#34;&gt;Preprocessing&lt;/h1&gt;
+
+&lt;h2 id=&#34;handige-macro-s&#34;&gt;Handige macro&amp;rsquo;s&lt;/h2&gt;
+
+&lt;h5 id=&#34;exception-debug-informatie-expanden&#34;&gt;Exception/Debug informatie expanden&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#define _ERROR_STR2(a) #a
+#define _ERROR_STR(a) _ERROR_STR2(a)
+#define ERROR_INFO(fn) _T(_ERROR_STR(__FILE__&amp;quot; line: &amp;quot;__LINE__&amp;quot; function: &amp;quot;fn))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Te gebruiken als &lt;code&gt;someFn(ERROR_INFO(&amp;quot;bla&amp;quot;))&lt;/code&gt;. Merk op dat &lt;code&gt;__FUNCTION__&lt;/code&gt; of &lt;code&gt;__FUNC__&lt;/code&gt; ook gebruikt kan worden, afhankelijk van de C++ compiler, maar dit is geen deel van de standaard (vanaf C++ v11).&lt;/p&gt;
+
+&lt;p&gt;De &lt;code&gt;#a&lt;/code&gt; notatie wordt gebruikt om iets te &lt;a href=&#34;http://gcc.gnu.org/onlinedocs/cpp/Stringification.html&#34;&gt;stringifyen&lt;/a&gt; in de preprocessor, vandaar de delegate:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Sometimes you may want to convert a macro argument into a string constant. Parameters are not replaced inside string constants, but you can use the ‘#’ preprocessing operator instead. When a macro parameter is used with a leading ‘#’, the preprocessor replaces it with the literal text of the actual argument, converted to a string constant. Unlike normal parameter replacement, the argument is not macro-expanded first. This is called stringification.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

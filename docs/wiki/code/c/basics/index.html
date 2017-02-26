@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>basics</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="basics" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/c/basics/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>basics</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="c-basics">C(++) Basics</h1>
+
+<h2 id="scope">Scope</h2>
+
+<p>C++ heeft block level scope, net als Java, alleen is het mogelijk om een variabele binnen een for loop dezelfde naam te geven als een die buiten die block gedefiniëerd is, terwijl dat in Java niet gaat:</p>
+
+<pre><code class="language-c">int j;
+for(int i = 0; i &lt; 10; i++) {
+  int j = i + 1; // compile fout in java
+}
+</code></pre>
+
+<h3 id="pointer-scope">Pointer scope</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/Auto_ptr">auto_ptr</a> kan gebruikt worden om een pointer automatisch te verwijderen met <code>delete</code> wanneer deze scope verliest - alle andere zaken moet je zelf opkuisen.
+❗ Dit is deprecated in C++ 11, gebruik <a href="https://en.wikipedia.org/wiki/Smart_pointer#unique_ptr">unique_ptr</a></p>
+
+<p>Voorbeeld van wikipedia:</p>
+
+<pre><code class="language-c">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
+ 
+int main(int argc, char **argv)
+{
+    int *i = new int;
+    auto_ptr&lt;int&gt; x(i);
+    auto_ptr&lt;int&gt; y;
+ 
+    y = x;
+ 
+    cout &lt;&lt; x.get() &lt;&lt; endl; // Print NULL
+    cout &lt;&lt; y.get() &lt;&lt; endl; // Print non-NULL address i
+ 
+    return 0;
+}
+</code></pre>
+
+<h2 id="overloading-virtual">overloading: &lsquo;virtual&rsquo;</h2>
+
+<p>In java wordt by default het diepste gedefiniëerde element opgeroepen, in C++ ben je verplicht <code>virtual</code> te gebruiken als &ldquo;optimalisatie&rdquo; wordt dit standaard niet gedaan&hellip; Voorbeeld:</p>
+
+<pre><code class="language-c">class Simple
+{
+public:
+	Simple() : someMember(3) {}
+	virtual int guessNumber();
+	int someMember;
+};
+</code></pre>
+
+<pre><code class="language-c">#include &quot;simplecpp.h&quot;
+
+int Simple::guessNumber()
+{
+	return 5;
+}
+</code></pre>
+
+<p>Als je nu <code>guessNumber()</code> wil overschrijven in een subklasse kan dit:</p>
+
+<pre><code class="language-c">#include &quot;simplecpp.h&quot;
+
+class Complexer : public Simple
+{
+public:
+	Complexer() {}
+	int guessNumber();
+};
+</code></pre>
+
+<p>Merk op, te overschrijven method heropsommen in header file&hellip; (??) - hier hoeft geen <code>virtual</code> meer bij dan.</p>
+
+<pre><code class="language-c">#include &quot;complexer.h&quot;
+
+int Complexer::guessNumber()
+{
+	return 10;
+}
+</code></pre>
+
+<p>Wat is hier de uitkomst van:</p>
+
+<pre><code class="language-c">
+#include &quot;complexer.h&quot;
+#include &lt;iostream&gt;
+
+int main()
+{
+	Simple* simple = new Complexer();
+	std::cout &lt;&lt; simple-&gt;guessNumber();
+	delete simple;
+}
+</code></pre>
+
+<ol>
+<li>Haal <code>virtual</code> weg. 5. <br/><br/>
+Definiëer <code>Complexer</code> zo:</li>
+</ol>
+
+<pre><code class="language-c">Complexer* complexer = new Complexer();
+</code></pre>
+
+<p>En het is altijd 10.</p>
+
+<h2 id="initialisatie">Initialisatie</h2>
+
+<p>(Voorbeelden van bovenstaande)</p>
+
+<pre><code class="language-c">#include &quot;complexer.h&quot;
+#include &lt;iostream&gt;
+
+int main()
+{
+	Simple simpleInitialized; // oops, I created something?
+	// Simple simpleInitialized = NULL; cannot convert from 'int' to 'Simple' (#define NULL 0)
+
+	Simple* simplePtr;
+
+	std::cout &lt;&lt; &quot;&lt;br/&gt;n initialiezd: &quot; &lt;&lt; simplePtr-&gt;someMember;
+	// Run-Time Check Failure #3 - The variable 'simplePtr' is being used without being initialized
+
+	delete simplePtr;
+}
+</code></pre>
+
+<p>Wat is hier speciaal aan?</p>
+
+<ol>
+<li>In C++ wordt altijd een object aangemaakt als je ze declareert. In Java niet!</li>
+<li>In C++ is <code>NULL</code> gedefiniëerd als <code>#define NULL 0</code> - je kan dus niet zomaar iets toekennen hieraan. In C++ 11 heb je <code>nullptr</code></li>
+<li>Je kan wel een pointer declareren zonder een waarde toe te kennen, en dit geeft dan een run-time fout (zou bvb een <code>NullPointerException</code> gooien in java)</li>
+</ol>
+
+<h2 id="typecasting">Typecasting</h2>
+
+<p>Uitgebreide uitleg: zie <a href="http://www.cplusplus.com/doc/tutorial/typecasting/">http://www.cplusplus.com/doc/tutorial/typecasting/</a></p>
+
+<p>In C++ is één impliciete conversie mogelijk door middel van de constructor, bijvoorbeeld:</p>
+
+<pre><code class="language-c">class Something
+{
+ public:
+   Something(int i) : myVar(i) {}
+ private:
+  int myVar;
+}
+
+int getal = 10;
+Something something = getal; // use constructor
+</code></pre>
+
+<p>Om dit tegen te gaan kan je altijd het <code>explicit</code> keyword gebruiken, zodat je dit moet doen:</p>
+
+<pre><code class="language-c">Something something = Something(getal); // expliciet oproepen constructor
+</code></pre>
+
+<p>Je kan <code>staic_cast&lt;Type&gt;(var)</code> gebruiken om explicit constructors aan te roepen, zo kunnen ze dan toch nog gecast worden.</p>
+
+<h2 id="c-11-goodies">C++ 11 goodies</h2>
+
+<p>Algemeen: <a href="http://www.informit.com/articles/article.aspx?p=1910142">How C++ 11 helps boost your productivity</a></p>
+
+<ol>
+<li><a href="http://www.codeproject.com/Articles/277612/Using-lambdas-Cplusplus-vs-Csharp-vs-Cplusplus-CX">Lambdas</a> zijn mogelijk</li>
+<li><code>nullptr</code></li>
+<li><code>auto</code> keyword, zoals <code>var</code> in C# - dit is typesafe en door de compiler zelf bepaald.</li>
+<li>100% multithreading support, zie <a href="/wiki/code/c/threading/">code/c/threading</a></li>
+</ol>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visualstudio on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/visualstudio/index.xml</link>
+    <description>Recent content in Visualstudio on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/visualstudio/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>visualstudio</title>
+      <link>http://www.brainbaking.com/wiki/code/tools/visualstudio/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/tools/visualstudio/</guid>
+      <description>
+
+&lt;h1 id=&#34;visual-studio&#34;&gt;Visual Studio&lt;/h1&gt;
+
+&lt;h3 id=&#34;handige-plugins&#34;&gt;Handige plugins&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.codemaid.net/&#34;&gt;http://www.codemaid.net/&lt;/a&gt; - auto-cleanup on save, integratie resharper&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/tools/resharper/&#34;&gt;code/tools/resharper&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;debugging&#34;&gt;Debugging&lt;/h3&gt;
+
+&lt;h4 id=&#34;pdb-files-auto-resolven-remote-symbolsource-enablen&#34;&gt;PDB files auto-resolven: remote SymbolSource enablen&lt;/h4&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.symbolsource.org/Public/Wiki/Using&#34;&gt;Using SymbolSource&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Go to Tools -&amp;gt; Options -&amp;gt; Debugger -&amp;gt; General.&lt;/li&gt;
+&lt;li&gt;Uncheck “Enable Just My Code (Managed only)”.&lt;/li&gt;
+&lt;li&gt;Uncheck “Enable .NET Framework source stepping”. Yes, it is misleading, but if you don&amp;rsquo;t, then Visual Studio will ignore your custom server order (see further on) and only use it&amp;rsquo;s own servers.&lt;/li&gt;
+&lt;li&gt;Check “Enable source server support”.&lt;/li&gt;
+&lt;li&gt;Uncheck “Require source files to exactly match the original version”&lt;/li&gt;
+&lt;li&gt;Go to Tools -&amp;gt; Options -&amp;gt; Debugger -&amp;gt; Symbols.&lt;/li&gt;
+&lt;li&gt;Select a folder for the local symbol/source cache. You may experience silent failures in getting symbols if it doesn&amp;rsquo;t exist or is read-only for some reason.&lt;/li&gt;
+&lt;li&gt;Add symbol servers under “Symbol file (.pdb) locations”. Pay attention to the correct order, because some servers may contain symbols for the same binaries: with or without sources. We recommend the following setup:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://referencesource.microsoft.com/symbols&#34;&gt;http://referencesource.microsoft.com/symbols&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://srv.symbolsource.org/pdb/Public&#34;&gt;http://srv.symbolsource.org/pdb/Public&lt;/a&gt; or the authenticated variant (see above)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://srv.symbolsource.org/pdb/MyGet&#34;&gt;http://srv.symbolsource.org/pdb/MyGet&lt;/a&gt; or the authenticated variant (see above)&lt;/li&gt;
+&lt;li&gt;(other symbol servers with sources)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://msdl.microsoft.com/download/symbols&#34;&gt;http://msdl.microsoft.com/download/symbols&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;(other symbol servers without sources)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

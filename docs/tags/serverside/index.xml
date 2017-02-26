@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Serverside on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/serverside/index.xml</link>
+    <description>Recent content in Serverside on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/serverside/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>serverside</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/serverside/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/serverside/</guid>
+      <description>
+
+&lt;h1 id=&#34;js-serverside-draaien&#34;&gt;JS Serverside draaien&lt;/h1&gt;
+
+&lt;h3 id=&#34;js-server-parsers&#34;&gt;JS Server Parsers&lt;/h3&gt;
+
+&lt;h4 id=&#34;java-rhino&#34;&gt;Java: Rhino&lt;/h4&gt;
+
+&lt;p&gt;Vooral gericht op serverside integratie met bijvoorbeeld Java EE.&lt;/p&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.mozilla.org/rhino/&#34;&gt;http://www.mozilla.org/rhino/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;c-google-v8&#34;&gt;C++: Google V8&lt;/h4&gt;
+
+&lt;p&gt;Wordt bijvoorbeeld gebruikt in &lt;strong&gt;Google Chrome&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;http://code.google.com/p/v8/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; Ook via CLI aan te spreken in .NET - zie &lt;a href=&#34;http://jint.codeplex.com/&#34;&gt;http://jint.codeplex.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;c-spidermonkey&#34;&gt;C: SpiderMonkey&lt;/h4&gt;
+
+&lt;p&gt;Wordt bijvoorbeeld gebruikt in &lt;strong&gt;Mozilla Firefox&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Zie &lt;a href=&#34;http://www.mozilla.org/js/spidermonkey/&#34;&gt;http://www.mozilla.org/js/spidermonkey/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;headless-dom-manipulatie&#34;&gt;Headless DOM Manipulatie&lt;/h3&gt;
+
+&lt;p&gt;Omdat serverside Javascript geen &lt;code&gt;window&lt;/code&gt; object als toplevel scope bestaat, kunnen we ook geen DOM manipulatie uitvoeren. Er is hier echter een oplossing voor, bovenop bijvoorbeeld Rhino: &lt;code&gt;env.js&lt;/code&gt;. Meer achtergrondinfo is hier te vinden: &lt;a href=&#34;http://ejohn.org/blog/bringing-the-browser-to-the-server/&#34;&gt;http://ejohn.org/blog/bringing-the-browser-to-the-server/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Envjs is een laag die het mogelijk maakt om aan de serverkant zelfs aan &lt;strong&gt;screen scraping&lt;/strong&gt; te doen, door bijvoorbeeld:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;window.location = &#39;http://www.google.com&#39;;
+var wowContentsAreAwasom = jQuery(&#39;#interesting&#39;).html();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dit zónder de browser effectief open te hebben! Dit is ook makkelijk voor &lt;strong&gt;test integratie&lt;/strong&gt;, bijvoorbeeld &lt;strong&gt;QUnit&lt;/strong&gt; testen met integratietesten die DOM manipulatie uitvoeren, te integreren in de build. Aangezien een Ant build Java is, kunnen we Rhino gebruiken samen met Envjs om de QUnit testen te runnen, en met een aangepaste report generator dit zelfs als JUnit test report te outputten.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

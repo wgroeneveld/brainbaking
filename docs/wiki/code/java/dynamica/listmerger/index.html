@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>listmerger</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.18.1" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="listmerger" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/wiki/code/java/dynamica/listmerger/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Blog" href="/">Blog</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="Wiki" href="/wiki/">Wiki</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About me" href="/about">About me</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="wiki-heading">
+          <h1>listmerger</h1>
+      
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        
+
+<h1 id="code-java-dynamica-listmerger">code:java:dynamica &gt;&gt; Listmerger</h1>
+
+<pre><code class="language-java">public final class ListMerger&lt;ItemType, ItemTypeAfterConversion&gt; {
+
+    private final Function&lt;ItemType, ItemTypeAfterConversion&gt; itemConverterFn;
+
+    public ListMerger() {
+        this.itemConverterFn = identityFn();
+    }
+
+    public ListMerger(Function&lt;ItemType, ItemTypeAfterConversion&gt; itemConverterFn) {
+        this.itemConverterFn = itemConverterFn;
+    }
+
+    private Function&lt;ItemType, ItemTypeAfterConversion&gt; identityFn() {
+        return new Function&lt;ItemType, ItemTypeAfterConversion&gt;() {
+
+            @SuppressWarnings(&quot;unchecked&quot;)
+            @Override
+            public ItemTypeAfterConversion apply(ItemType input) {
+                return (ItemTypeAfterConversion) input;
+            }
+        };
+    }
+
+    public final void mergeLists(List&lt;? extends ItemType&gt; oldList, List&lt;? extends ItemType&gt; newList, ListMergable&lt;ItemType&gt; mergable) {
+        List&lt;ItemTypeAfterConversion&gt; oldTransformed = new ArrayList&lt;ItemTypeAfterConversion&gt;(transform(oldList, itemConverterFn));
+        List&lt;ItemTypeAfterConversion&gt; newTransformed = new ArrayList&lt;ItemTypeAfterConversion&gt;(transform(newList, itemConverterFn));
+
+        for (ItemType item : new ArrayList&lt;ItemType&gt;(oldList)) {
+            if (!newTransformed.contains(itemConverterFn.apply(item))) {
+                mergable.itemHasBeenRemoved(item);
+            } else {
+                mergable.itemHasBeenChangedInOldList(item);
+            }
+        }
+        for (ItemType item : new ArrayList&lt;ItemType&gt;(newList)) {
+            if (!oldTransformed.contains(itemConverterFn.apply(item))) {
+                mergable.itemHasBeenAdded(item);
+            } else {
+                mergable.itemHasBeenChangedInNewList(item);
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>En de test:</p>
+
+<pre><code class="language-java">public class ListMergerTest {
+
+    private AtomicInteger integer = null;
+    private AtomicInteger amount = null;
+
+    @Before
+    public void setUp() {
+        this.integer = new AtomicInteger();
+        this.amount = new AtomicInteger(0);
+    }
+
+    @Test
+    public void noItemsChanged() {
+        new ListMerger&lt;Integer, Long&gt;(intToLongFn()).mergeLists(Lists.newArrayList(1, 3), Lists.newArrayList(1, 3), new ListMergable&lt;Integer&gt;() {
+
+            @Override
+            public void itemHasBeenRemoved(Integer item) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public void itemHasBeenChangedInOldList(Integer item) {
+                amount.set(amount.get() + 1);
+            }
+
+            @Override
+            public void itemHasBeenChangedInNewList(Integer item) {
+            }
+
+            @Override
+            public void itemHasBeenAdded(Integer item) {
+                throw new UnsupportedOperationException();
+            }
+        });
+
+        assertThat(amount.get()).isEqualTo(2);
+    }
+
+    @Test
+    public void itemHasBeenAddedUsingIdentity() {
+        new ListMerger&lt;Integer, Integer&gt;().mergeLists(Lists.newArrayList(1, 3), Lists.newArrayList(1, 2, 3), new ListMergable&lt;Integer&gt;() {
+
+            @Override
+            public void itemHasBeenRemoved(Integer item) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public void itemHasBeenChangedInOldList(Integer item) {
+            }
+
+            @Override
+            public void itemHasBeenChangedInNewList(Integer item) {
+            }
+
+            @Override
+            public void itemHasBeenAdded(Integer item) {
+                integer.set(item);
+                amount.set(amount.get() + 1);
+            }
+        });
+
+        assertThat(amount.get()).isEqualTo(1);
+        assertThat(integer.get()).isEqualTo(2);
+    }
+
+    @Test
+    public void itemHasBeenAdded() {
+        new ListMerger&lt;Integer, Long&gt;(intToLongFn()).mergeLists(Lists.newArrayList(1, 3), Lists.newArrayList(1, 2, 3), new ListMergable&lt;Integer&gt;() {
+
+            @Override
+            public void itemHasBeenRemoved(Integer item) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public void itemHasBeenChangedInOldList(Integer item) {
+            }
+
+            @Override
+            public void itemHasBeenChangedInNewList(Integer item) {
+            }
+
+            @Override
+            public void itemHasBeenAdded(Integer item) {
+                integer.set(item);
+                amount.set(amount.get() + 1);
+            }
+        });
+
+        assertThat(amount.get()).isEqualTo(1);
+        assertThat(integer.get()).isEqualTo(2);
+    }
+
+    @Test
+    public void itemHasBeenRemovedUsingIdentity() {
+        new ListMerger&lt;Integer, Integer&gt;().mergeLists(Lists.newArrayList(1, 3), Lists.newArrayList(1), new ListMergable&lt;Integer&gt;() {
+
+            @Override
+            public void itemHasBeenRemoved(Integer item) {
+                integer.set(item);
+                amount.set(amount.get() + 1);
+            }
+
+            @Override
+            public void itemHasBeenChangedInOldList(Integer item) {
+            }
+
+            @Override
+            public void itemHasBeenChangedInNewList(Integer item) {
+            }
+
+            @Override
+            public void itemHasBeenAdded(Integer item) {
+                throw new UnsupportedOperationException();
+            }
+        });
+
+        assertThat(amount.get()).isEqualTo(1);
+        assertThat(integer.get()).isEqualTo(3);
+    }
+
+    @Test
+    public void itemHasBeenRemoved() {
+        new ListMerger&lt;Integer, Long&gt;(intToLongFn()).mergeLists(Lists.newArrayList(1, 2, 3), Lists.newArrayList(1, 3), new ListMergable&lt;Integer&gt;() {
+
+            @Override
+            public void itemHasBeenRemoved(Integer item) {
+                integer.set(item);
+                amount.set(amount.get() + 1);
+            }
+
+            @Override
+            public void itemHasBeenChangedInOldList(Integer item) {
+            }
+
+            @Override
+            public void itemHasBeenChangedInNewList(Integer item) {
+            }
+
+            @Override
+            public void itemHasBeenAdded(Integer item) {
+                throw new UnsupportedOperationException();
+            }
+        });
+
+        assertThat(amount.get()).isEqualTo(1);
+        assertThat(integer.get()).isEqualTo(2);
+    }
+
+    private Function&lt;Integer, Long&gt; intToLongFn() {
+        return new Function&lt;Integer, Long&gt;() {
+
+            @Override
+            public Long apply(Integer input) {
+                return new Long(input);
+            }
+        };
+    }
+}
+</code></pre>
+
+<p>Voorbeeld van gebruik:</p>
+
+<pre><code class="language-java">        final List&lt;Location&gt; removedLocations = new ArrayList&lt;Location&gt;();
+        final List&lt;Location&gt; addedLocations = new ArrayList&lt;Location&gt;();
+        new ListMerger&lt;Location, Location&gt;().mergeLists(oldLocations, carpark.getLocations(), new ListMergable&lt;Location&gt;() {
+
+            @Override
+            public void itemHasBeenAdded(Location item) {
+                addedLocations.add(item);
+            }
+
+            @Override
+            public void itemHasBeenRemoved(Location item) {
+                removedLocations.add(item);
+            }
+
+            @Override
+            public void itemHasBeenChangedInOldList(Location item) {
+            }
+
+            @Override
+            public void itemHasBeenChangedInNewList(Location item) {
+            }
+
+        });
+        if (!removedLocations.isEmpty()) {
+            crmImportGatewayService.forDeletion().sendCarparkLocations(carpark, removedLocations);
+        }
+        if (!addedLocations.isEmpty()) {
+            crmImportGatewayService.forCreation().sendCarparkLocations(carpark, addedLocations);
+        }
+
+</code></pre>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  Wouter Groeneveld
+    	  &nbsp;&bull;&nbsp;
+    	  2016
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Strategie on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/strategie/index.xml</link>
+    <description>Recent content in Strategie on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/strategie/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>strategie</title>
+      <link>http://www.brainbaking.com/wiki/code/java/testing/strategie/</link>
+      <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/testing/strategie/</guid>
+      <description>
+
+&lt;h1 id=&#34;test-strategie&#34;&gt;Test strategie&lt;/h1&gt;
+
+&lt;p&gt;Er zijn verschillende soorten testen en deze komen (eventueel) in elke laag terug.&lt;/p&gt;
+
+&lt;h2 id=&#34;unit-testen&#34;&gt;Unit testen&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;* Wat? Testen of een kleine unit/component op zich werkt.
+* Welke gevallen? alle gevallen: elk successpad (alle boundary conditions), alle mogelijke failure paden
+* Eventueel vriendjes van deze component wegmocken (let op voor mockitis!)
+* Testen zonder databank of andere integratie (rest calls)
+* Extenden van BaseTestCase -&amp;gt; NOOIT meer `[MockitoAnnotations.initMocks(this)](http://mockito.googlecode.com/svn/branches/1.6/javadoc/org/mockito/MockitoAnnotations.html)` uitvoeren!! We gebruiken nu de PowerMockRunner.
+* Elke entity/aggregate root moet een xxxBuilder klasse hebben om test data te maken.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bijvoorbeeld bij web testen is het meestal beter om de stubs van ActionMapping, HttpServletRequest etc te gebruiken dan een mock aan te maken. -&amp;gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void BlaActionTest extends StrutsTestCase {
+  @Test
+  public void testDit() {
+	 action.doeIets(mappingStub, requestStub, ...) // ipv mock
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Opletten met PowerMock static mocks - zo weinig mogelijk gebruiken, de &lt;code&gt;PowerMock&lt;/code&gt; class loader is nogal een memory-hog.&lt;/p&gt;
+
+&lt;p&gt;We gebruiken nu in plaats van Hamcrest assertThat altijd FEST Assert.
+Manual/wiki hier: &lt;a href=&#34;http://docs.codehaus.org/display/FEST/FEST-Assert&#34;&gt;http://docs.codehaus.org/display/FEST/FEST-Assert&lt;/a&gt;
+Het komt erop neer dat je nooit meer dan 1x hoeft te static-importen door &lt;code&gt;assertThat(blabla).isX().hasY()&lt;/code&gt;&amp;hellip; en alles (indien gewenst) te chainen.&lt;/p&gt;
+
+&lt;h2 id=&#34;integratie-testen&#34;&gt;Integratie testen&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;* Testen dat de integratie van een aantal componenten met een extern infrastructure systeem correct werkt
+* Test persistentie van domain objecten + queries : d.i. integratie met databank
+* Extenden van IntegrationTestCase
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;postdeploy-testen&#34;&gt;Postdeploy testen&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;* Testen dat de applicatie als geheel werkt.
+* Testen vereisen een gedeployde applicatie 
+* [code/java/testing/selenium](/wiki/code/java/testing/selenium/). Voor specifieke commando&#39;s van selenium en pitfalls, zie de wiki link!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Argument Catching matchers&lt;/strong&gt; - Indien je denkt deze matcher nodig te hebben bij het unit testen is het misschien beter om na te denken over de implementatie die getest wordt. Zit deze OK in elkaar qua design? Meestal helpt een beetje refactoren beter dan die matcher te schrijven of je integratie-test een klein stukje.&lt;/p&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Falende Selenium Testen&lt;/strong&gt; - Best eens nakijken of er geen testen ontbreken in de code die dit zou moeten opvangen. Anders wordt er te veel berust op de selenium testen die alles zouden moeten afdekken.&lt;/p&gt;
+
+&lt;h1 id=&#34;testen-per-laag&#34;&gt;Testen per Laag&lt;/h1&gt;
+
+&lt;h2 id=&#34;domein&#34;&gt;Domein&lt;/h2&gt;
+
+&lt;p&gt;Alle domain code wordt geunit-tested.&lt;/p&gt;
+
+&lt;p&gt;Alle persistentie code (elk veld) wordt geïntegratietested
+    * elk field op een entity/aggregateroot
+    * elke relatie tussen entities/aggregateroots
+    * elke query + fields waar men op kan filteren&lt;/p&gt;
+
+&lt;h2 id=&#34;presentatie&#34;&gt;Presentatie&lt;/h2&gt;
+
+&lt;p&gt;Dit zijn selenium testen, waarbij men het volgende wil testen:
+    * Of het scherm in het algemeen &amp;ldquo;werkt&amp;rdquo; door de titel te asserten (ipv verify: direct falen dan)
+    * Of ik velden kan invullen en saven, en daarna terug kan opvragen
+    * Of ik wanneer het kan bepaalde velden &lt;em&gt;in bepaalde gevallen al dan niet kan zien&lt;/em&gt; (combobox hide/show)&lt;br/&gt;&lt;br/&gt;Dit is belangrijk!
+    * Belangrijke validaties (bijvoorbeeld datum van &amp;lt; datum tot, maar niet ingeldige datum)
+    * Of ik records kan verwijderen uit een lijst wanneer mogelijk
+    * Flow tussen verschillende schermen: bvb. van aanmaken vreemdeling naar aanvraag naar bepaalde tab
+    * Effecten van struts configuratie bvb: errorhandler &lt;code&gt;DomainValidationExceptionHandler&lt;/code&gt; correct geconfigureerd?&lt;/p&gt;
+
+&lt;p&gt;Het is belangrijk om voor Javascript-specifieke zaken ook testen te schrijven omdat bijvoorbeeld &lt;a href=&#34;http://www.brainbaking.com/wiki/code/jsp/jstl/&#34;&gt;code/jsp/jstl&lt;/a&gt; geen exception throwt indien er geen bean gevonden is met dollar.&lt;/p&gt;
+
+&lt;p&gt;Unit testen voor de weblaag:
+    * Op de form de init aggregate root en update aggregate root (create/update) (en eventueel andere methods)
+    * Eventueel: action methodes testen (indien eenvoudig te testen, anders via selenium integratie test)&lt;/p&gt;
+
+&lt;h2 id=&#34;application&#34;&gt;Application&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;* In principe zou deze laag heel dun moeten zijn, de logica bevindt zich in de domein laag. De applicatie laag zou enkel mogen delegeren, voor zo&#39;n zaken zijn we eerder pragmatisch en schrijven we geen testen. &amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;❗ &lt;strong&gt;Let Op&lt;/strong&gt; - Wanneer er toch logica in dreigt te komen (bvb &lt;code&gt;if()... {}&lt;/code&gt;) -&amp;gt; natuurlijk wél testen!&lt;/p&gt;
+
+&lt;h2 id=&#34;infrastructure&#34;&gt;Infrastructure&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;* Alle code unit testen
+* Hera gateway integratie testen: eventueel in HeraStub een &#39;speciaal geval&#39; zetten dat een fout genereert zodat je de correct de foutafhandeling test
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
