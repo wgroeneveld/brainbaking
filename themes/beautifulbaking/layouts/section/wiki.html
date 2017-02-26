@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {{ partial "head.html" . }}
+
+  <body>
+
+    {{ partial "nav.html" . }}
+
+    <header class="header-section ">
+      <div class="intro-header no-img">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="page-heading">
+                <h1>Wiki</h1>
+                  <hr class="small">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <div role="main" class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <article role="main" class="blog-post">
+            {{ partial "wiki-index.html" . }}
+          </article>
+
+
+          <div class="posts-list">
+
+
+<!-- https://discuss.gohugo.io/t/menu-structure-with-full-menu-tree-or-drop-downs/1953/6 -->
+<!-- Loop over sections first -->
+{{ range $name, $el := .Site.Sections }}
+{{ if eq "wiki" $name }}
+    <div class="card card-block">
+        <ul class="nav tree">
+          <!-- Set up levels that we use for indents -->
+          {{ $.Scratch.Set "level" 0 }}
+          {{ $.Scratch.Set "leaflevel" 0 }}
+          {{ $.Scratch.Set "name" $name }}
+
+          <!-- Loop over pages sorted by DIR -->
+          {{ range sort .Pages "Source.Dir" "asc"}}
+            <!-- split the DIR using "/" -->
+            {{ $arr := split .Source.Dir "/" }}
+            <!-- Now loop over our split array-->
+            {{ range $index, $name := $arr }}
+              <!-- Already have the root in the H4 above -->
+              {{if and (ne $name "") (gt $index 0) }}
+
+                {{if gt $index ($.Scratch.Get "level") }}
+                  {{ $.Scratch.Set "level" $index}}
+                  {{ $.Scratch.Set "name" $name }}
+                  <li class="nav-item dir indent{{$.Scratch.Get "level"}}">
+                  	<h{{ $.Scratch.Get "level" }}>&raquo;&nbsp;&nbsp;{{ replace $name "_" " "}}</h{{ $.Scratch.Get "level" }}>
+               	  </li>
+                {{end}}
+
+                {{if and (eq $index ($.Scratch.Get "level")) ( ne ($.Scratch.Get "name") $name) }}
+                  {{ $.Scratch.Set "level" $index}}
+                  {{ $.Scratch.Set "name" $name }}
+                  <li class="nav-item dir indent{{$.Scratch.Get "level"}}">
+                  	<h{{ $.Scratch.Get "level" }}>&raquo;&nbsp;&nbsp;{{ replace $name "_" " "}}</h{{ $.Scratch.Get "level" }}>
+                  </li>
+                {{end}}
+                
+              {{end}} <!-- if -->
+              {{ $.Scratch.Set "leaflevel" $index}}
+            {{ end }} <!-- range -->
+            <li class="nav-item indent{{$.Scratch.Get "leaflevel"}}">
+              <a class="nav-link" href="{{ .Permalink }}">{{.Title}}</a>
+            </li>
+          {{ end }} <!-- range -->
+        </ul>
+    </div>
+  
+{{ end }}
+{{ end }} <!-- range -->
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    {{ partial "footer.html" . }}
+
+  </body>
+</html>

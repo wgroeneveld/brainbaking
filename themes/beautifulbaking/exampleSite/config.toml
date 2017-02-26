@@ -1,0 +1,53 @@
+baseurl = "https://username.github.io"
+languageCode = "en-us"
+title = "Beautiful Hugo"
+theme = "beautifulhugo"
+pygmentsUseClasses = true
+pygmentCodeFences = true
+#disqusShortname = "XXX"
+#googleAnalytics = "XXX"
+
+[Params]
+  subtitle = "Build a beautiful and simple website in minutes"
+  logo = "img/avatar-icon.png"
+  favicon = "img/favicon.ico"
+  commit = false
+
+[Author]
+  name = "Some Person"
+  email = "youremail@domain.com"
+  facebook = "username"
+  github = "username"
+  twitter = "username"
+  linkedin = "username"
+  stackoverflow = "users/XXXXXXX/username"
+  soundcloud = "username"
+  instagram = "username"
+  youtube = "user/username" # or channel/channelname
+  spotify = "username"
+  itchio = "username"
+
+[[menu.main]]
+    name = "Blog"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "About"
+    url = "/page/about/"
+    weight = 3
+
+[[menu.main]]
+    identifier = "samples"
+    name = "Samples"
+    weight = 2
+
+[[menu.main]]
+    parent = "samples"
+    name = "Code Sample"
+    url = "/post/2016-03-08-code-sample"
+
+[[menu.main]]
+    parent = "samples"
+    name = "Test Markdown"
+    url = "/post/2015-02-20-test-markdown"

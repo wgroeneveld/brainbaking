@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {{ partial "head.html" . }}
+
+  <body>
+
+    {{ partial "nav.html" . }}
+
+    <header class="header-section ">
+      <div class="intro-header no-img">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="page-heading">
+                <h1>{{.Site.Title}}</h1>
+                {{if .Site.Params.subtitle}}
+                  <hr class="small">
+                  <span class="page-subheading">{{.Site.Params.subtitle}}</span>
+                {{end}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <div role="main" class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="posts-list">
+            {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+            {{ range $pag.Pages }}
+            <article class="post-preview">
+              <a href="{{ .Permalink }}">
+          	  <h2 class="post-title">{{ .Title }}</h2>
+          	
+          	  {{ if .Params.subtitle }}
+          	  <h3 class="post-subtitle">
+          	    {{ .Params.subtitle }}
+          	  </h3>
+          	  {{ end }}  
+              </a>
+
+              <p class="post-meta">
+                {{ .Date.Format "2 January 2006" }}
+              </p>
+            
+              <div class="post-entry">
+              {{ if .Truncated }}
+                {{ .Summary }}
+                <a href="{{ .Permalink }}" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
+              {{ else }}
+                {{ .Content }}
+              {{ end }}
+              </div>
+            
+             </article>
+            {{ end }}
+          </div>
+
+          {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+          <ul class="pager main-pager">
+            {{ if .Paginator.HasPrev }}
+            <li class="previous">
+              <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}">&larr; Newer Posts</a>
+            </li>
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+            <li class="next">
+              <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}">Older Posts &rarr;</a>
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+
+    {{ partial "footer.html" . }}
+
+  </body>
+</html>

@@ -1,0 +1,62 @@
+languageCode = "en-us"
+title = "Brain Baking"
+baseurl = "http://www.brainbaking.com/"
+enableEmoji = true
+theme = "beautifulbaking"
+pygmentsUseClasses = true
+pygmentCodeFences = true
+#disqusShortname = "XXX"
+#googleAnalytics = "XXX"
+
+[taxonomies]
+tag = "tags"
+
+[Params]
+  subtitle = "Freshly baked thoughts"
+  logo = "img/avatar-icon.png"
+  favicon = "img/favicon.ico"
+  commit = false
+
+[Author]
+  name = "Wouter Groeneveld"
+  email = "wouter.groeneveld@gmail.com"
+  #facebook = "username"
+  github = "wgroeneveld"
+  #twitter = "woutergroenev"
+  #linkedin = "username"
+  #stackoverflow = "users/XXXXXXX/username"
+  #soundcloud = "username"
+  #instagram = "username"
+  #youtube = "user/username" # or channel/channelname
+  #spotify = "username"
+  #itchio = "username"
+
+[[menu.main]]
+    name = "Blog"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Wiki"
+    url = "/wiki/"
+    weight = 2
+
+[[menu.main]]
+    name = "About me"
+    url = "/about"
+    weight = 3
+
+#[[menu.main]]
+#    identifier = "samples"
+#    name = "Samples"
+#    weight = 3
+
+#[[menu.main]]
+#    parent = "samples"
+#    name = "Code Sample"
+#    url = "/post/2016-03-08-code-sample"
+
+#[[menu.main]]
+#    parent = "samples"
+#    name = "Test Markdown"
+#    url = "/post/2015-02-20-test-markdown"

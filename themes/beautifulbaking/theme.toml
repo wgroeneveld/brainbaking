@@ -1,0 +1,17 @@
+name = "Beautiful Baking"
+license = "MIT"
+licenselink = "https://github.com/halogenica/Hugo-BeautifulHugo/blob/master/LICENSE"
+description = "A fork of the Beautiful Hugo theme for brainbaking.com"
+tags = ["blog", "company", "portfolio", "projects", "minimal", "responsive"]
+features = ["blog", "themes", "disqus", "minimal", "responsive"]
+min_version = 0.15
+
+[author]
+    name = "Wouter Groeneveld"
+    homepage = "http://www.brainbaking.com"
+
+# If Porting existing theme
+[original]
+    author =  "halogenica"
+    homepage = "http://halogenica.net"
+    repo = "https://github.com/daattali/beautiful-jekyll"
