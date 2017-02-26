@@ -1,5 +1,12 @@
 @import url("pygment_highlights.css");
 
+/* --- google search stuff --- */
+
+#___gcse_0 {
+  visibility: hidden;
+  display: none;
+}
+
 /* --- General --- */
 
 body {

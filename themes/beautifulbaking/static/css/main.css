@@ -1,5 +1,36 @@
 @import url("pygment_highlights.css");
 
+/* --- google search stuff --- */
+.gsc-search-box {
+  display: none;
+}
+
+.gsc-control-cse {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+#google-search-wrapper label {
+  position: absolute;
+  left: 10px;
+  color: grey;
+}
+
+#google-search-wrapper {
+  padding-top: 10px;
+}
+
+#google-search-wrapper input {
+  background-color: #EFEFEF;
+  width: 150px;
+  border-radius: 8px;
+  border: 1px solid #c3f070;
+  padding-left: 30px;
+  color: grey;
+  font-size: 14px;
+}
+
 /* --- General --- */
 
 body {
