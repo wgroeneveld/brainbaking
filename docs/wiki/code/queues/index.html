@@ -112,6 +112,15 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/queues">queues</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="queues">Queues</h1>
@@ -131,15 +140,15 @@
 
 <p>HornetQ werkt met <code>bridges</code> die je moet configureren in de <code>hornetq-configuration.xml</code>:</p>
 
-<pre><code class="language-xml">	&lt;bridges&gt;   
-		&lt;bridge name=&quot;system1-store-and-forward&quot;&gt;
-			&lt;queue-name&gt;jms.queue.fromQueue&lt;/queue-name&gt;
-			&lt;forwarding-address&gt;jms.queue.toQueue&lt;/forwarding-address&gt;
-			&lt;static-connectors&gt;
-				&lt;connector-ref&gt;forward-to-hornetq-connector&lt;/connector-ref&gt;
-			&lt;/static-connectors&gt;     
-		&lt;/bridge&gt;    
-  	&lt;/bridges&gt;
+<pre><code class="language-xml">    &lt;bridges&gt;   
+        &lt;bridge name=&quot;system1-store-and-forward&quot;&gt;
+            &lt;queue-name&gt;jms.queue.fromQueue&lt;/queue-name&gt;
+            &lt;forwarding-address&gt;jms.queue.toQueue&lt;/forwarding-address&gt;
+            &lt;static-connectors&gt;
+                &lt;connector-ref&gt;forward-to-hornetq-connector&lt;/connector-ref&gt;
+            &lt;/static-connectors&gt;     
+        &lt;/bridge&gt;    
+    &lt;/bridges&gt;
 
    &lt;connectors&gt;
       &lt;connector name=&quot;forward-to-hornetq-connector&quot;&gt;
@@ -203,7 +212,7 @@
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

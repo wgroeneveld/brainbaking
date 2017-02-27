@@ -112,6 +112,19 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/javascript">javascript</a> </li>
+      
+       <li><a href="/tags/frameworks">frameworks</a> </li>
+      
+       <li><a href="/tags/handlebars">handlebars</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="handlebars">Handlebars</h1>
@@ -137,31 +150,31 @@
     // Project configuration
     // ---------------------
 
-	handlebars: {
-		compile: {
-			files: {
-				&quot;app/scripts/templates.js&quot;: [
-					&quot;app/templates/*.hbs&quot;
-				]
-			}, 
-			options: {
-				amd: true,
-				processName: function(filename) {
-					return filename
-						.replace('app/templates/', '')
-						.replace(/&lt;br/&gt;.hbs$/, '');
-				}
-			}
-		}
-	},
+    handlebars: {
+        compile: {
+            files: {
+                &quot;app/scripts/templates.js&quot;: [
+                    &quot;app/templates/*.hbs&quot;
+                ]
+            }, 
+            options: {
+                amd: true,
+                processName: function(filename) {
+                    return filename
+                        .replace('app/templates/', '')
+                        .replace(/&lt;br/&gt;.hbs$/, '');
+                }
+            }
+        }
+    },
 // ...
 
     watch: {
       handlebars: {
-      	files: [
-      		'app/templates/*.hbs'
-      	],
-      	tasks: 'handlebars reload'
+        files: [
+            'app/templates/*.hbs'
+        ],
+        tasks: 'handlebars reload'
       },
 // ...
 
@@ -254,7 +267,7 @@ function ($, _, Backbone, HandleBars, UserAccount_Template, UserProfile_Template
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

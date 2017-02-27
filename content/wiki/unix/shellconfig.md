@@ -2,11 +2,6 @@
 title = "shellconfig"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "unix",
     "shellconfig"
 ]

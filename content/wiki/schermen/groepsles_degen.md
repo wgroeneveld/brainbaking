@@ -2,11 +2,6 @@
 title = "groepsles_degen"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "schermen",
     "groepsles_degen"
 ]

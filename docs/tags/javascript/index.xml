@@ -582,28 +582,28 @@ Los dit op met een utility functie:&lt;/p&gt;
 &lt;p&gt;❗ De laatste stap gaat &lt;strong&gt;altijd&lt;/strong&gt; een &lt;code&gt;runs()&lt;/code&gt; moeten bevatten voor de reporter om aan te duiden dat assertions uitgevoerd worden, aangezien de &lt;code&gt;exec()&lt;/code&gt; functie direct retourneert. Dus moeten we 1x wachten, totdat de hele &amp;ldquo;flow&amp;rdquo; gedaan is. We kunnen dit combineren met BDD en een mini-DSL hierrond schrijven. Resultaat:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function when() {
-	var flowDone = false;
-	var slice = Array.prototype.slice;
-	var argsArray = slice.call(arguments, 0);
-	var laatsteArgumenten;
-	
-	argsArray.push(function() {
-		laatsteArgumenten = slice.call(arguments, 0);
-		flowDone = true;
-	});
-	
-	flow.exec.apply(this, argsArray);
-	waitsFor(function() {
-		return flowDone ##### true;
-	});
-	
-	return {
-		then: function(assertionsFn) {
-			runs(function() {
-				assertionsFn.apply(this, laatsteArgumenten);
-			});
-		}
-	};
+    var flowDone = false;
+    var slice = Array.prototype.slice;
+    var argsArray = slice.call(arguments, 0);
+    var laatsteArgumenten;
+    
+    argsArray.push(function() {
+        laatsteArgumenten = slice.call(arguments, 0);
+        flowDone = true;
+    });
+    
+    flow.exec.apply(this, argsArray);
+    waitsFor(function() {
+        return flowDone ##### true;
+    });
+    
+    return {
+        then: function(assertionsFn) {
+            runs(function() {
+                assertionsFn.apply(this, laatsteArgumenten);
+            });
+        }
+    };
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -611,24 +611,24 @@ Los dit op met een utility functie:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
 describe(&amp;quot;plaatsen domein&amp;quot;, function() {
-	it(&amp;quot;wanneer ik alle plaatsen ophaal, kan ik hier domeinspecifieke functies aan opvragen&amp;quot;, function() {
-		var plaatsen;
-		when(
-			function() {
-				DOMEIN.plaatsRepository.bewaarPlaats(plaats, this.MULTI());
-				DOMEIN.plaatsRepository.bewaarPlaats(anderePlaats, this.MULTI());
-			},
-			function() {
-				DOMEIN.plaatsRepository.haalPlaatsenOp(this);
-			}
-		).then(
-			function(opgehaaldePlaatsen) {
-				opgehaaldePlaatsen.forEach(function(plaats) {
-					expect(plaats.geefMeting).toBeDefined();
-				});
-			}
-		);
-	});
+    it(&amp;quot;wanneer ik alle plaatsen ophaal, kan ik hier domeinspecifieke functies aan opvragen&amp;quot;, function() {
+        var plaatsen;
+        when(
+            function() {
+                DOMEIN.plaatsRepository.bewaarPlaats(plaats, this.MULTI());
+                DOMEIN.plaatsRepository.bewaarPlaats(anderePlaats, this.MULTI());
+            },
+            function() {
+                DOMEIN.plaatsRepository.haalPlaatsenOp(this);
+            }
+        ).then(
+            function(opgehaaldePlaatsen) {
+                opgehaaldePlaatsen.forEach(function(plaats) {
+                    expect(plaats.geefMeting).toBeDefined();
+                });
+            }
+        );
+    });
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -679,18 +679,18 @@ startStuff().done(function() {
 &lt;p&gt;Stel dat eerst element #1 animatie triggert, dan #2, en daarna nog logica dient te gebeuren. Dit kan ook met &lt;code&gt;$.Deferred&lt;/code&gt;, door &lt;code&gt;.pipe()&lt;/code&gt; te gebruiken om verder te breiden aan de queue.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;button&amp;quot;).bind( &amp;quot;click&amp;quot;, function() {
-	$(&amp;quot;p&amp;quot;).append( &amp;quot;Started...&amp;quot;);
-	var div1 ###### $(&amp;quot;#div1&amp;quot;), div2  $(&amp;quot;#div2&amp;quot;);
+    $(&amp;quot;p&amp;quot;).append( &amp;quot;Started...&amp;quot;);
+    var div1 ###### $(&amp;quot;#div1&amp;quot;), div2  $(&amp;quot;#div2&amp;quot;);
 
-	var df = $.Deferred();
-	df.pipe(function() {
-		return div1.fadeOut(&amp;quot;slow&amp;quot;)
-	}).pipe(function() {
-		return div2.fadeOut()
-	}).done(function() {
-		$(&amp;quot;p&amp;quot;).append( &amp;quot;  --  DONE&amp;quot;);
-	});
-	df.resolve(); 
+    var df = $.Deferred();
+    df.pipe(function() {
+        return div1.fadeOut(&amp;quot;slow&amp;quot;)
+    }).pipe(function() {
+        return div2.fadeOut()
+    }).done(function() {
+        $(&amp;quot;p&amp;quot;).append( &amp;quot;  --  DONE&amp;quot;);
+    });
+    df.resolve(); 
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -903,9 +903,9 @@ mailer.mail(function() {
 &lt;p&gt;Zie &lt;a href=&#34;http://docs.angularjs.org/api/angular.mock.module&#34;&gt;angular.mock.module&lt;/a&gt; - twee hoofdfuncties die belangrijk zijn: &lt;code&gt;module()&lt;/code&gt; en &lt;code&gt;inject()&lt;/code&gt;. Het eerste maakt de module aan en het tweede zorgt voor de mock dependency injectie. Bijvoorbeeld:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;angular
-	.module(&#39;bla.services&#39;, [])
-	
-	.factory(&#39;$bla&#39;, [&#39;$http&#39;, function($http) {
+    .module(&#39;bla.services&#39;, [])
+    
+    .factory(&#39;$bla&#39;, [&#39;$http&#39;, function($http) {
             // do stuff with $http, like a .get
             return { go: function() {} }
         }])
@@ -1041,30 +1041,30 @@ npm config set https-proxy http://proxy.be:8080
 
 &lt;h3 id=&#34;integratie-in-maven&#34;&gt;Integratie in maven&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;exec-maven-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;1.2.1&amp;lt;/version&amp;gt;
-				&amp;lt;executions&amp;gt;
-					&amp;lt;execution&amp;gt;
-						&amp;lt;id&amp;gt;jsunit&amp;lt;/id&amp;gt;
-						&amp;lt;phase&amp;gt;test&amp;lt;/phase&amp;gt;
-						&amp;lt;goals&amp;gt;
-							&amp;lt;goal&amp;gt;exec&amp;lt;/goal&amp;gt;
-						&amp;lt;/goals&amp;gt;
-					&amp;lt;/execution&amp;gt;
-				&amp;lt;/executions&amp;gt;
-				&amp;lt;configuration&amp;gt;
-					&amp;lt;skip&amp;gt;${skipTests}&amp;lt;/skip&amp;gt;
-					&amp;lt;successCodes&amp;gt;
-						&amp;lt;successCode&amp;gt;0&amp;lt;/successCode&amp;gt;
-						&amp;lt;successCode&amp;gt;1&amp;lt;/successCode&amp;gt;&amp;lt;!-- on failing test, don&#39;t get a build 
-							error --&amp;gt;
-					&amp;lt;/successCodes&amp;gt;
-					&amp;lt;executable&amp;gt;${basedir}/src/test/javascript/build.bat&amp;lt;/executable&amp;gt;
-					&amp;lt;workingDirectory&amp;gt;${basedir}/src/test/javascript&amp;lt;/workingDirectory&amp;gt;
-				&amp;lt;/configuration&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;exec-maven-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;1.2.1&amp;lt;/version&amp;gt;
+                &amp;lt;executions&amp;gt;
+                    &amp;lt;execution&amp;gt;
+                        &amp;lt;id&amp;gt;jsunit&amp;lt;/id&amp;gt;
+                        &amp;lt;phase&amp;gt;test&amp;lt;/phase&amp;gt;
+                        &amp;lt;goals&amp;gt;
+                            &amp;lt;goal&amp;gt;exec&amp;lt;/goal&amp;gt;
+                        &amp;lt;/goals&amp;gt;
+                    &amp;lt;/execution&amp;gt;
+                &amp;lt;/executions&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;skip&amp;gt;${skipTests}&amp;lt;/skip&amp;gt;
+                    &amp;lt;successCodes&amp;gt;
+                        &amp;lt;successCode&amp;gt;0&amp;lt;/successCode&amp;gt;
+                        &amp;lt;successCode&amp;gt;1&amp;lt;/successCode&amp;gt;&amp;lt;!-- on failing test, don&#39;t get a build 
+                            error --&amp;gt;
+                    &amp;lt;/successCodes&amp;gt;
+                    &amp;lt;executable&amp;gt;${basedir}/src/test/javascript/build.bat&amp;lt;/executable&amp;gt;
+                    &amp;lt;workingDirectory&amp;gt;${basedir}/src/test/javascript&amp;lt;/workingDirectory&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Bovenstaande &lt;code&gt;skip&lt;/code&gt; config houdt dus ook rekening met bvb &lt;code&gt;mvn clean install -DskipTests&lt;/code&gt; - de &lt;code&gt;test&lt;/code&gt; phase van maven wordt &lt;strong&gt;niet&lt;/strong&gt; geskipped maar de testen wel door de &lt;code&gt;maven-failsafe-plugin&lt;/code&gt; - bijgevolg worden goals die aan de test fase hangen ook nog uitgevoerd.&lt;/p&gt;
@@ -1148,13 +1148,13 @@ junitReporter = {
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Ext.define(&#39;Evita.store.masterdata.KeywordType&#39;, {
     extend: &#39;Ext.data.EvitaStore&#39;,
-	model: &#39;Evita.model.parkingfacility.MasterdataType&#39;,
+    model: &#39;Evita.model.parkingfacility.MasterdataType&#39;,
     proxy: {
-		type: &#39;evitaAjax&#39;,
-		api:{
-			read: &#39;getMasterdataKeywordByTypeName.json&#39;
-		}
-	}
+        type: &#39;evitaAjax&#39;,
+        api:{
+            read: &#39;getMasterdataKeywordByTypeName.json&#39;
+        }
+    }
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1165,22 +1165,22 @@ junitReporter = {
 &lt;p&gt;Oplossing: gebruik &lt;code&gt;Ext.create&lt;/code&gt; in plaats van te refereren naar de &lt;code&gt;xtype&lt;/code&gt;, die gaat door de &lt;code&gt;StoreManager&lt;/code&gt; opgezocht &amp;amp; hetbruikt worden anders (1 instantie).&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
-		    			xtype : &#39;combo&#39;,
-			    		store : Ext.create(&#39;Evita.store.masterdata.KeywordType&#39;),
-			    		storeMasterdataTypeName: &#39;MaturityOfParkingFacility&#39;,
-			    		valueField : &#39;code&#39;,
-			    		displayField : &#39;value&#39;,
-		    			name : &#39;maturity&#39;,
-		    			id: &#39;ParkingFacilityCreate_masterdata_maturity&#39;,
-		    		}
+                        xtype : &#39;combo&#39;,
+                        store : Ext.create(&#39;Evita.store.masterdata.KeywordType&#39;),
+                        storeMasterdataTypeName: &#39;MaturityOfParkingFacility&#39;,
+                        valueField : &#39;code&#39;,
+                        displayField : &#39;value&#39;,
+                        name : &#39;maturity&#39;,
+                        id: &#39;ParkingFacilityCreate_masterdata_maturity&#39;,
+                    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Loop in de controller over alle stores om dan bvb &lt;code&gt;extraParams&lt;/code&gt; in te stellen:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    	view.down(&#39;form&#39;).query(&#39;combo&#39;).forEach(function(combo) {
-			combo.getStore().proxy.extraParams[&#39;masterdataTypeName&#39;] = combo.storeMasterdataTypeName;
-			combo.getStore().proxy.extraParams[&#39;countryId&#39;] = wizardData.general.countryId;
-    	});
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;        view.down(&#39;form&#39;).query(&#39;combo&#39;).forEach(function(combo) {
+            combo.getStore().proxy.extraParams[&#39;masterdataTypeName&#39;] = combo.storeMasterdataTypeName;
+            combo.getStore().proxy.extraParams[&#39;countryId&#39;] = wizardData.general.countryId;
+        });
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
@@ -1229,8 +1229,8 @@ Klak.Feeds.read(new Klak.Feeds.WikiWouter().feed(), $j(&amp;quot;#wiki&amp;quot;
 &lt;p&gt;Indien geen custom parsing vereist is, kan je je beperken tot de url en title en de rest overerven via &lt;code&gt;prototype&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Klak.Feeds.BlogWouter = function() {
-	this.title = &#39;Jefklak&amp;lt;br/&amp;gt;&#39;s Codex Blog Latest Updates&#39;;
-	this.url ###### &#39;https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;amp;q=http:*www.jefklak.be/feed/&#39;;	
+    this.title = &#39;Jefklak&amp;lt;br/&amp;gt;&#39;s Codex Blog Latest Updates&#39;;
+    this.url ###### &#39;https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;amp;q=http:*www.jefklak.be/feed/&#39;; 
 }
 Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
 &lt;/code&gt;&lt;/pre&gt;
@@ -1510,31 +1510,31 @@ Ook this binnen een jQuery each loop wordt niet extended maar is het DOM Element
     // Project configuration
     // ---------------------
 
-	handlebars: {
-		compile: {
-			files: {
-				&amp;quot;app/scripts/templates.js&amp;quot;: [
-					&amp;quot;app/templates/*.hbs&amp;quot;
-				]
-			}, 
-			options: {
-				amd: true,
-				processName: function(filename) {
-					return filename
-						.replace(&#39;app/templates/&#39;, &#39;&#39;)
-						.replace(/&amp;lt;br/&amp;gt;.hbs$/, &#39;&#39;);
-				}
-			}
-		}
-	},
+    handlebars: {
+        compile: {
+            files: {
+                &amp;quot;app/scripts/templates.js&amp;quot;: [
+                    &amp;quot;app/templates/*.hbs&amp;quot;
+                ]
+            }, 
+            options: {
+                amd: true,
+                processName: function(filename) {
+                    return filename
+                        .replace(&#39;app/templates/&#39;, &#39;&#39;)
+                        .replace(/&amp;lt;br/&amp;gt;.hbs$/, &#39;&#39;);
+                }
+            }
+        }
+    },
 // ...
 
     watch: {
       handlebars: {
-      	files: [
-      		&#39;app/templates/*.hbs&#39;
-      	],
-      	tasks: &#39;handlebars reload&#39;
+        files: [
+            &#39;app/templates/*.hbs&#39;
+        ],
+        tasks: &#39;handlebars reload&#39;
       },
 // ...
 

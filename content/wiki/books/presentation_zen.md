@@ -2,11 +2,6 @@
 title = "presentation_zen"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "books",
     "presentation_zen"
 ]

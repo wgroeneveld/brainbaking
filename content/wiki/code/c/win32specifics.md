@@ -2,11 +2,6 @@
 title = "win32specifics"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "c",
     "win32specifics"

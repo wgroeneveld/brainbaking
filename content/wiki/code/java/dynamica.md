@@ -2,11 +2,6 @@
 title = "dynamica"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "java",
     "dynamica"

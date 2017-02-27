@@ -2,11 +2,6 @@
 title = "async"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "javascript",
     "async"

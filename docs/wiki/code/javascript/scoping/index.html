@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/javascript">javascript</a> </li>
+      
+       <li><a href="/tags/scoping">scoping</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="javascript-scoping">Javascript Scoping</h1>
@@ -249,17 +260,17 @@ Dit is vanzelfsprekend serieus verwarrend en <strong>bad practice</strong>, Fire
 &lt;head&gt;
 &lt;script&gt;
 function Iets(e) {
-	return function() {
-		alert(j); // DOM Element: Div met id &quot;j&quot;, al hebben we nergens j gedefiniëerd!!! 
-		
-		// j = 0: BOOM in IE: Object doesn't support this property or method
-		// reden =&gt; in IE is dit een readonly property, Gecko parsers zijn lakser hierin
-		for(j = 0; j &lt; 10; j++) {
-		  // whatever
-		}
-		
-		alert(j); // 10
-	}
+    return function() {
+        alert(j); // DOM Element: Div met id &quot;j&quot;, al hebben we nergens j gedefiniëerd!!! 
+        
+        // j = 0: BOOM in IE: Object doesn't support this property or method
+        // reden =&gt; in IE is dit een readonly property, Gecko parsers zijn lakser hierin
+        for(j = 0; j &lt; 10; j++) {
+          // whatever
+        }
+        
+        alert(j); // 10
+    }
 }
 &lt;/script&gt;
 &lt;/head&gt;
@@ -591,7 +602,7 @@ Zie AOP hieronder voor meer uitleg over anonieme functies.</p>
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

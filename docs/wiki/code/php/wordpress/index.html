@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/php">php</a> </li>
+      
+       <li><a href="/tags/wordpress">wordpress</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="wordpress-specifiek">Wordpress specifiek</h1>
@@ -138,9 +149,9 @@ wp();
 $posts = get_posts( $args );
 
 foreach($posts as $post) {
-	* data specific to wp_posts - http:*codex.wordpress.org/Database_Description#Table:_wp_posts
-	echo &quot;post id &quot; . $post-&gt;ID;
-	echo &quot;title: &quot; . $post-&gt;post_title;
+    * data specific to wp_posts - http:*codex.wordpress.org/Database_Description#Table:_wp_posts
+    echo &quot;post id &quot; . $post-&gt;ID;
+    echo &quot;title: &quot; . $post-&gt;post_title;
 }
 </code></pre>
 
@@ -208,7 +219,7 @@ foreach($posts as $post) {
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

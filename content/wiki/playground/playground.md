@@ -2,11 +2,6 @@
 title = "playground"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "playground",
     "playground"
 ]

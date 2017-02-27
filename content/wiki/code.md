@@ -2,12 +2,6 @@
 title = "code"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
-    "",
     "code"
 ]
 date = "2013-03-12"

@@ -2,11 +2,6 @@
 title = "mfc"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "c",
     "mfc"

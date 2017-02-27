@@ -38,61 +38,61 @@
 class AddinProcessService 
 {
     static AddinProcessService *singletonInstance;
-	AddinProcessService() : m_coupon(_T(&amp;quot;&amp;quot;)), m_hostServiceAddress(_T(&amp;quot;&amp;quot;)) {}
+    AddinProcessService() : m_coupon(_T(&amp;quot;&amp;quot;)), m_hostServiceAddress(_T(&amp;quot;&amp;quot;)) {}
 
   public:
 
-	inline const CString&amp;amp; GetHostServiceAddress() const
-	{
-		return m_hostServiceAddress;
-	}
-	inline const CString&amp;amp; GetCoupon() const
-	{
-		return m_coupon;
-	}
-	inline void SetCoupon(CString coupon)
-	{
-		m_coupon = coupon;
-	}
-	inline void SetHostServiceAddress(CString address) 
-	{
-		m_hostServiceAddress = address;
-	}
+    inline const CString&amp;amp; GetHostServiceAddress() const
+    {
+        return m_hostServiceAddress;
+    }
+    inline const CString&amp;amp; GetCoupon() const
+    {
+        return m_coupon;
+    }
+    inline void SetCoupon(CString coupon)
+    {
+        m_coupon = coupon;
+    }
+    inline void SetHostServiceAddress(CString address) 
+    {
+        m_hostServiceAddress = address;
+    }
 
     static AddinProcessService* getSingletonInstance()
     {
-		static volatile int initialized = 0;
-		static HANDLE mtx;
+        static volatile int initialized = 0;
+        static HANDLE mtx;
 
-		if (!initialized)
-		{
-    		if (!mtx)
-    		{
-    			HANDLE mymtx;
-    			mymtx = CreateMutex(NULL, 0, NULL);
-    			if (InterlockedCompareExchangePointer(&amp;amp;mtx, mymtx, NULL) != NULL)
-    				CloseHandle(mymtx);
-    		}
+        if (!initialized)
+        {
+            if (!mtx)
+            {
+                HANDLE mymtx;
+                mymtx = CreateMutex(NULL, 0, NULL);
+                if (InterlockedCompareExchangePointer(&amp;amp;mtx, mymtx, NULL) != NULL)
+                    CloseHandle(mymtx);
+            }
 
-    		WaitForSingleObject(mtx, 0);
-    		if (!initialized)
-    		{
-    			libInitInternal();
-    			initialized = 1;
-    		}
-    		ReleaseMutex(mtx);
-		}
-		return singletonInstance;
+            WaitForSingleObject(mtx, 0);
+            if (!initialized)
+            {
+                libInitInternal();
+                initialized = 1;
+            }
+            ReleaseMutex(mtx);
+        }
+        return singletonInstance;
     };
 
 private:
-	CString m_hostServiceAddress;
-	CString m_coupon;
+    CString m_hostServiceAddress;
+    CString m_coupon;
 
-	static void libInitInternal()
-	{
-		singletonInstance = new AddinProcessService();
-	}
+    static void libInitInternal()
+    {
+        singletonInstance = new AddinProcessService();
+    }
 };
 
 &lt;/code&gt;&lt;/pre&gt;

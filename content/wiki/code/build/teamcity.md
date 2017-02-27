@@ -2,11 +2,6 @@
 title = "teamcity"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "build",
     "teamcity"

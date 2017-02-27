@@ -2,11 +2,6 @@
 title = "windows"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "tech",
     "windows"
 ]

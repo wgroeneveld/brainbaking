@@ -2,11 +2,6 @@
 title = "intellij"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "tools",
     "intellij"

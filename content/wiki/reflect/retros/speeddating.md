@@ -2,11 +2,6 @@
 title = "speeddating"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "reflect",
     "retros",
     "speeddating"

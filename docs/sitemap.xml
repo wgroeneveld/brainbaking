@@ -1062,12 +1062,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/</loc>
-    <lastmod>2016-05-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/about/</loc>
   </url>
   
@@ -1282,12 +1276,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/dont_make_me_think/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/downloads/</loc>
-    <lastmod>2016-05-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1520,12 +1508,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/jefklak/</loc>
-    <lastmod>2016-05-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/jquery/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -1732,12 +1714,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/packages/</loc>
     <lastmod>2014-03-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/pages/</loc>
-    <lastmod>2016-05-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2199,12 +2175,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/unix/</loc>
     <lastmod>2013-10-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/users/</loc>
-    <lastmod>2016-05-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

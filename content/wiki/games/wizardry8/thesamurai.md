@@ -2,11 +2,6 @@
 title = "thesamurai"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "games",
     "wizardry8",
     "thesamurai"

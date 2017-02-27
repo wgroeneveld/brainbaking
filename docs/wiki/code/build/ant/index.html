@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/build">build</a> </li>
+      
+       <li><a href="/tags/ant">ant</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="ant-scripts-etc">Ant scripts etc</h1>
@@ -120,26 +131,26 @@
 
 <pre><code class="language-xml">&lt;project name######&quot;vac Precompilatie&quot; default&quot;precompile-all&quot; basedir=&quot;.&quot;&gt;
 
-	&lt;taskdef classname######&quot;org.apache.jasper.JspC&quot;  name&quot;jasper&quot;&gt;
-		&lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&gt;
-		&lt;classpath id=&quot;jasperpath&quot;&gt;
-			```et
-				 &lt;include name=&quot;*.jar&quot;/&gt;
-			&lt;/fileset&gt;
+    &lt;taskdef classname######&quot;org.apache.jasper.JspC&quot;  name&quot;jasper&quot;&gt;
+        &lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&gt;
+        &lt;classpath id=&quot;jasperpath&quot;&gt;
+            ```et
+                 &lt;include name=&quot;*.jar&quot;/&gt;
+            &lt;/fileset&gt;
 
-			```et
-				 &lt;include name=&quot;*.jar&quot;/&gt;
-			&lt;/fileset&gt;
-		&lt;/classpath&gt;
-	&lt;/taskdef&gt;
-	
-	&lt;target name=&quot;precompile-all&quot;&gt;
-		&lt;mkdir dir=&quot;target/jsp&quot; /&gt;
-		&lt;jasper 
-			validatexml=&quot;false&quot; 
-			uriroot=&quot;target/vac&quot;
-			outputdir=&quot;target/jsp&quot; /&gt;
-	&lt;/target&gt;
+            ```et
+                 &lt;include name=&quot;*.jar&quot;/&gt;
+            &lt;/fileset&gt;
+        &lt;/classpath&gt;
+    &lt;/taskdef&gt;
+    
+    &lt;target name=&quot;precompile-all&quot;&gt;
+        &lt;mkdir dir=&quot;target/jsp&quot; /&gt;
+        &lt;jasper 
+            validatexml=&quot;false&quot; 
+            uriroot=&quot;target/vac&quot;
+            outputdir=&quot;target/jsp&quot; /&gt;
+    &lt;/target&gt;
 
 &lt;/project&gt;
 </code></pre>
@@ -197,7 +208,7 @@
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

@@ -2,11 +2,6 @@
 title = "sql"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "db",
     "sql"

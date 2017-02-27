@@ -2,11 +2,6 @@
 title = "groepsles_floret"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "schermen",
     "groepsles_floret"
 ]

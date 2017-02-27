@@ -2,11 +2,6 @@
 title = "security"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "tech",
     "security"
 ]

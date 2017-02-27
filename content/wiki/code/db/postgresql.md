@@ -2,11 +2,6 @@
 title = "postgresql"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "db",
     "postgresql"

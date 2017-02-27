@@ -2,11 +2,6 @@
 title = "logica"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "theorie",
     "logica"
 ]

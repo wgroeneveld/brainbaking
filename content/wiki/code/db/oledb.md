@@ -2,11 +2,6 @@
 title = "oledb"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "db",
     "oledb"

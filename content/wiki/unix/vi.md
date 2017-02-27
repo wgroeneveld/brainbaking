@@ -2,11 +2,6 @@
 title = "vi"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "unix",
     "vi"
 ]

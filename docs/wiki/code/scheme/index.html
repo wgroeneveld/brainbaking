@@ -112,6 +112,15 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/scheme">scheme</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="code-scheme">code &gt;&gt; Scheme</h1>
@@ -155,8 +164,8 @@
  (define x 0)
  (define-test (case-fall-through-returns-undefined)
    (assert-equals unspecific
-		  (cond ((&lt; x 0) 1)
-			((&gt; x 0) 1)))
+          (cond ((&lt; x 0) 1)
+            ((&gt; x 0) 1)))
    ))
 
 (run-registered-tests)
@@ -185,12 +194,12 @@
 
   (in-test-group getallekes
     
-	 (define-test (add-simple-numbers)
-	   (assert-equals (my-add 1 2) 3)))
-	   
-	(in-test-group meer-getallekes
-	 (define-test (add-more-complex-numbers)
-	   (assert-equals (my-add 3 7) 10))))
+     (define-test (add-simple-numbers)
+       (assert-equals (my-add 1 2) 3)))
+       
+    (in-test-group meer-getallekes
+     (define-test (add-more-complex-numbers)
+       (assert-equals (my-add 3 7) 10))))
 
 (run-registered-tests)
 </code></pre>
@@ -248,7 +257,7 @@
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

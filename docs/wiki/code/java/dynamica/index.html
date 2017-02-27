@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/java">java</a> </li>
+      
+       <li><a href="/tags/dynamica">dynamica</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="dynamica">Dynamica</h1>
@@ -124,31 +135,31 @@
 
 <pre><code class="language-java">public class CollectionUtil {
 
-	public static interface EnkelvoudigeTeller&lt;TellerType&gt; {
-		boolean magMeegeteldWorden(TellerType object);
-	}
+    public static interface EnkelvoudigeTeller&lt;TellerType&gt; {
+        boolean magMeegeteldWorden(TellerType object);
+    }
 
-	public static interface MeervoudigeTeller&lt;TellerType&gt; {
-		int geefAantalMeegeteld(TellerType object);
-	}
+    public static interface MeervoudigeTeller&lt;TellerType&gt; {
+        int geefAantalMeegeteld(TellerType object);
+    }
 
-	public static &lt;TellerType&gt; int tel(Collection&lt;TellerType&gt; objecten, MeervoudigeTeller&lt;TellerType&gt; teller) {
-		int geteld = 0;
-		for (TellerType object : objecten) {
-			geteld += teller.geefAantalMeegeteld(object);
-		}
-		return geteld;
-	}
+    public static &lt;TellerType&gt; int tel(Collection&lt;TellerType&gt; objecten, MeervoudigeTeller&lt;TellerType&gt; teller) {
+        int geteld = 0;
+        for (TellerType object : objecten) {
+            geteld += teller.geefAantalMeegeteld(object);
+        }
+        return geteld;
+    }
 
-	public static &lt;TellerType&gt; int tel(Collection&lt;TellerType&gt; objecten, final EnkelvoudigeTeller&lt;TellerType&gt; teller) {
-		return tel(objecten, new MeervoudigeTeller&lt;TellerType&gt;() {
+    public static &lt;TellerType&gt; int tel(Collection&lt;TellerType&gt; objecten, final EnkelvoudigeTeller&lt;TellerType&gt; teller) {
+        return tel(objecten, new MeervoudigeTeller&lt;TellerType&gt;() {
 
-			@Override
-			public int geefAantalMeegeteld(TellerType object) {
-				return teller.magMeegeteldWorden(object) ? 1 : 0;
-			}
-		});
-	}
+            @Override
+            public int geefAantalMeegeteld(TellerType object) {
+                return teller.magMeegeteldWorden(object) ? 1 : 0;
+            }
+        });
+    }
 }
 </code></pre>
 
@@ -203,7 +214,7 @@
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

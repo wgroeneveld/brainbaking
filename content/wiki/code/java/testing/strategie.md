@@ -2,11 +2,6 @@
 title = "strategie"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "java",
     "testing",

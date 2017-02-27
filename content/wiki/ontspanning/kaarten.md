@@ -2,11 +2,6 @@
 title = "kaarten"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "ontspanning",
     "kaarten"
 ]

@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/csharp">csharp</a> </li>
+      
+       <li><a href="/tags/nativecalls">nativecalls</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="c-native-calls-uitvoeren">C++ Native calls uitvoeren</h1>
@@ -137,8 +148,8 @@
 
 struct MyStruct
 {
-	char* id;
-	char* description;
+    char* id;
+    char* description;
 };
 
 DllExImport MyStruct* __stdcall GetSignals();
@@ -149,13 +160,13 @@ DllExImport MyStruct* __stdcall GetSignals();
 
 DllExImport MyStruct* __stdcall GetSignals()
 {
-	static MyStruct a[] =
-	{
-		{ &quot;id1&quot;, &quot;desc1&quot; },
-		{ &quot;id2&quot;, &quot;desc2&quot; },
-		{ &quot;id3&quot;, &quot;desc3&quot; }
-	};
-	return a;
+    static MyStruct a[] =
+    {
+        { &quot;id1&quot;, &quot;desc1&quot; },
+        { &quot;id2&quot;, &quot;desc2&quot; },
+        { &quot;id3&quot;, &quot;desc3&quot; }
+    };
+    return a;
 }
 </code></pre>
 
@@ -329,7 +340,7 @@ File Type: DLL
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

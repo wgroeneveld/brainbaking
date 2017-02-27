@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/c">c</a> </li>
+      
+       <li><a href="/tags/threading">threading</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="threading">Threading</h1>
@@ -134,61 +145,61 @@
 class AddinProcessService 
 {
     static AddinProcessService *singletonInstance;
-	AddinProcessService() : m_coupon(_T(&quot;&quot;)), m_hostServiceAddress(_T(&quot;&quot;)) {}
+    AddinProcessService() : m_coupon(_T(&quot;&quot;)), m_hostServiceAddress(_T(&quot;&quot;)) {}
 
   public:
 
-	inline const CString&amp; GetHostServiceAddress() const
-	{
-		return m_hostServiceAddress;
-	}
-	inline const CString&amp; GetCoupon() const
-	{
-		return m_coupon;
-	}
-	inline void SetCoupon(CString coupon)
-	{
-		m_coupon = coupon;
-	}
-	inline void SetHostServiceAddress(CString address) 
-	{
-		m_hostServiceAddress = address;
-	}
+    inline const CString&amp; GetHostServiceAddress() const
+    {
+        return m_hostServiceAddress;
+    }
+    inline const CString&amp; GetCoupon() const
+    {
+        return m_coupon;
+    }
+    inline void SetCoupon(CString coupon)
+    {
+        m_coupon = coupon;
+    }
+    inline void SetHostServiceAddress(CString address) 
+    {
+        m_hostServiceAddress = address;
+    }
 
     static AddinProcessService* getSingletonInstance()
     {
-		static volatile int initialized = 0;
-		static HANDLE mtx;
+        static volatile int initialized = 0;
+        static HANDLE mtx;
 
-		if (!initialized)
-		{
-    		if (!mtx)
-    		{
-    			HANDLE mymtx;
-    			mymtx = CreateMutex(NULL, 0, NULL);
-    			if (InterlockedCompareExchangePointer(&amp;mtx, mymtx, NULL) != NULL)
-    				CloseHandle(mymtx);
-    		}
+        if (!initialized)
+        {
+            if (!mtx)
+            {
+                HANDLE mymtx;
+                mymtx = CreateMutex(NULL, 0, NULL);
+                if (InterlockedCompareExchangePointer(&amp;mtx, mymtx, NULL) != NULL)
+                    CloseHandle(mymtx);
+            }
 
-    		WaitForSingleObject(mtx, 0);
-    		if (!initialized)
-    		{
-    			libInitInternal();
-    			initialized = 1;
-    		}
-    		ReleaseMutex(mtx);
-		}
-		return singletonInstance;
+            WaitForSingleObject(mtx, 0);
+            if (!initialized)
+            {
+                libInitInternal();
+                initialized = 1;
+            }
+            ReleaseMutex(mtx);
+        }
+        return singletonInstance;
     };
 
 private:
-	CString m_hostServiceAddress;
-	CString m_coupon;
+    CString m_hostServiceAddress;
+    CString m_coupon;
 
-	static void libInitInternal()
-	{
-		singletonInstance = new AddinProcessService();
-	}
+    static void libInitInternal()
+    {
+        singletonInstance = new AddinProcessService();
+    }
 };
 
 </code></pre>
@@ -276,7 +287,7 @@ private:
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

@@ -2,11 +2,6 @@
 title = "visualstudio"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "tools",
     "visualstudio"

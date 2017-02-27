@@ -112,6 +112,19 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/javascript">javascript</a> </li>
+      
+       <li><a href="/tags/frameworks">frameworks</a> </li>
+      
+       <li><a href="/tags/yeoman">yeoman</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="build-tools-yeoman-grunt-requirejs-ea">Build tools: Yeoman, Grunt, RequireJS ea</h1>
@@ -201,7 +214,7 @@ jasmine: {
 });
  
 require(['app'], function(app) {
-	// main module which fires up everything
+    // main module which fires up everything
 });
 </code></pre>
 
@@ -233,9 +246,9 @@ require(['app'], function(app) {
 
 <pre><code class="language-javascript">require.config({
   shim: {
-  	'handlebars': {
-  		exports: 'Handlebars'
-  	}
+    'handlebars': {
+        exports: 'Handlebars'
+    }
   },
 
   paths: {
@@ -245,7 +258,7 @@ require(['app'], function(app) {
 });
  
 require(['handlebars'], function(Handlebars) {
-	// gogo!
+    // gogo!
 });
 </code></pre>
 
@@ -322,7 +335,7 @@ require(['handlebars'], function(Handlebars) {
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

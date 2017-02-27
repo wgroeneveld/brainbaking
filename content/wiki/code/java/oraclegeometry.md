@@ -2,11 +2,6 @@
 title = "oraclegeometry"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "java",
     "oraclegeometry"

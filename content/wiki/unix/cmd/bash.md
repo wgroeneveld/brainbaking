@@ -2,11 +2,6 @@
 title = "bash"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "unix",
     "cmd",
     "bash"

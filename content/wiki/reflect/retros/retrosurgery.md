@@ -2,11 +2,6 @@
 title = "retrosurgery"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "reflect",
     "retros",
     "retrosurgery"

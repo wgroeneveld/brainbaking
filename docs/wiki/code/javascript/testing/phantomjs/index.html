@@ -112,6 +112,19 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/javascript">javascript</a> </li>
+      
+       <li><a href="/tags/testing">testing</a> </li>
+      
+       <li><a href="/tags/phantomjs">phantomjs</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="test-automatisatie-phantomjs">Test automatisatie: PhantomJS</h1>
@@ -128,7 +141,7 @@ var page = new WebPage();
 
 // Is nodig omdat anders in uw testpagina console.log() niets doet. 
 page.onConsoleMessage = function(msg) {
-	console.log(&quot;debug from page: &quot; + msg);
+    console.log(&quot;debug from page: &quot; + msg);
 };
 
 /**
@@ -153,37 +166,37 @@ page.onConsoleMessage = function(msg) {
  **/
 page.open('D:&lt;br/&gt;&lt;br/&gt;Profiles&lt;br/&gt;&lt;br/&gt;BVERBEKE&lt;br/&gt;&lt;br/&gt;Desktop&lt;br/&gt;&lt;br/&gt;phantomjs-1.4.1-win32-dynamic&lt;br/&gt;&lt;br/&gt;test.html', function(status) {
 
-	console.log(&quot;should have printed 'yoo' AND 'sup?', include from test.js??&quot;);
-	console.log(&quot;&quot;);
-	
-	var testHTML = page.evaluate(function() {
-		return document.getElementById('test').innerHTML;
-	});
-	
-	var isKnopHidden = page.evaluate(function() {
-		return $(&quot;#hiddenKnop&quot;).is(&quot;:hidden&quot;);
-	});
-	
-	var whichIsFocussed = page.evaluate(function() {
-		return document.activeElement.id;
-	});
-	
-	var divHeightCSSGetterTest = page.evaluate(function() {
-		return $(&quot;#test&quot;).css(&quot;height&quot;);
-	});
-	
-	var jQueryCheckedSelectorTest = page.evaluate(function() {
-		$(&quot;#check&quot;).click();
-		return $(&quot;#check&quot;).is(&quot;:checked&quot;);
-	});	
-	
-	console.log(&quot;got testHTML &quot; + testHTML);
-	console.log(&quot;is knop hidden? (should be) --&gt; &quot; + isKnopHidden);
-	console.log(&quot;which is focussed? (should be textarea) --&gt; #&quot; + whichIsFocussed);
-	console.log(&quot;div height? (should be 100px) --&gt; &quot; + divHeightCSSGetterTest);
-	console.log(&quot;checkbox checked? (should be true) --&gt; &quot; + jQueryCheckedSelectorTest);
-	
-	phantom.exit();
+    console.log(&quot;should have printed 'yoo' AND 'sup?', include from test.js??&quot;);
+    console.log(&quot;&quot;);
+    
+    var testHTML = page.evaluate(function() {
+        return document.getElementById('test').innerHTML;
+    });
+    
+    var isKnopHidden = page.evaluate(function() {
+        return $(&quot;#hiddenKnop&quot;).is(&quot;:hidden&quot;);
+    });
+    
+    var whichIsFocussed = page.evaluate(function() {
+        return document.activeElement.id;
+    });
+    
+    var divHeightCSSGetterTest = page.evaluate(function() {
+        return $(&quot;#test&quot;).css(&quot;height&quot;);
+    });
+    
+    var jQueryCheckedSelectorTest = page.evaluate(function() {
+        $(&quot;#check&quot;).click();
+        return $(&quot;#check&quot;).is(&quot;:checked&quot;);
+    }); 
+    
+    console.log(&quot;got testHTML &quot; + testHTML);
+    console.log(&quot;is knop hidden? (should be) --&gt; &quot; + isKnopHidden);
+    console.log(&quot;which is focussed? (should be textarea) --&gt; #&quot; + whichIsFocussed);
+    console.log(&quot;div height? (should be 100px) --&gt; &quot; + divHeightCSSGetterTest);
+    console.log(&quot;checkbox checked? (should be true) --&gt; &quot; + jQueryCheckedSelectorTest);
+    
+    phantom.exit();
 });
 </code></pre>
 
@@ -197,31 +210,31 @@ page.open('D:&lt;br/&gt;&lt;br/&gt;Profiles&lt;br/&gt;&lt;br/&gt;BVERBEKE&lt;br/
 <pre><code class="language-html">&lt;!DOCTYPE HTML PUBLIC &quot;-*W3C*DTD HTML 4.01 Transitional//EN&quot;
 &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
 
-	&lt;head&gt;
-		&lt;script type######&quot;text/javascript&quot; src&quot;test.js&quot;&gt;&lt;/script&gt;
-		&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&quot;&gt;&lt;/script&gt;
-	&lt;/head&gt;
-	&lt;body&gt;
-	&lt;div id=&quot;test&quot;&gt;bla&lt;/div&gt;
-	&lt;form&gt;
-		&lt;input type######&quot;button&quot; id&quot;knop&quot;&gt;&lt;/input&gt;
-		&lt;textarea id=&quot;text&quot;&gt;eerste val&lt;/textarea&gt;
-		&lt;input type######&quot;button&quot; id&quot;hiddenKnop&quot; value=&quot;hidden&quot;&gt;&lt;/input&gt;
-		&lt;input type######&quot;checkbox&quot; id&quot;check&quot;&gt;&lt;/input&gt;
-	&lt;/form&gt;
-	
-		&lt;script type=&quot;text/javascript&quot;&gt;
-		console.log(&quot;yoo&quot;);
-		document.getElementById(&quot;test&quot;).innerHTML = &quot;nieuwe blabla&quot;;
-		
-		$(&quot;#test&quot;).html(&quot;jquery nieuwe blabla&quot;).css(&quot;height&quot;, &quot;100px&quot;);
-		$(&quot;#hiddenKnop&quot;).hide();
-		$(&quot;#text&quot;).focus();
-		
-		console.log(&quot;is knop hidden? (should be) --&gt; &quot; + $(&quot;#hiddenKnop&quot;).is(&quot;:hidden&quot;));
-		
-		&lt;/script&gt;
-	&lt;/body&gt;
+    &lt;head&gt;
+        &lt;script type######&quot;text/javascript&quot; src&quot;test.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;div id=&quot;test&quot;&gt;bla&lt;/div&gt;
+    &lt;form&gt;
+        &lt;input type######&quot;button&quot; id&quot;knop&quot;&gt;&lt;/input&gt;
+        &lt;textarea id=&quot;text&quot;&gt;eerste val&lt;/textarea&gt;
+        &lt;input type######&quot;button&quot; id&quot;hiddenKnop&quot; value=&quot;hidden&quot;&gt;&lt;/input&gt;
+        &lt;input type######&quot;checkbox&quot; id&quot;check&quot;&gt;&lt;/input&gt;
+    &lt;/form&gt;
+    
+        &lt;script type=&quot;text/javascript&quot;&gt;
+        console.log(&quot;yoo&quot;);
+        document.getElementById(&quot;test&quot;).innerHTML = &quot;nieuwe blabla&quot;;
+        
+        $(&quot;#test&quot;).html(&quot;jquery nieuwe blabla&quot;).css(&quot;height&quot;, &quot;100px&quot;);
+        $(&quot;#hiddenKnop&quot;).hide();
+        $(&quot;#text&quot;).focus();
+        
+        console.log(&quot;is knop hidden? (should be) --&gt; &quot; + $(&quot;#hiddenKnop&quot;).is(&quot;:hidden&quot;));
+        
+        &lt;/script&gt;
+    &lt;/body&gt;
 
 </code></pre>
 
@@ -299,7 +312,7 @@ checkbox checked? (should be true) --&gt; true
 var page = require('webpage').create();
 var func = function() {
     console.log('hello, ' + document.title + '&lt;br/&gt;n');
-	
+    
     for (var i ###### 0, l  arguments.length; i &lt; l; i++) {
         var arg = arguments[i];
         console.log(typeof arg + ':&lt;br/&gt;t' + arg);
@@ -307,8 +320,8 @@ var func = function() {
 };
 page.onLoadFinished = function() {
     evaluate(page, func, true, 0, function() {
-		return require('fs').read
-	});
+        return require('fs').read
+    });
     phantom.exit(0);
 };
 page.open('http://www.google.com/');
@@ -335,17 +348,17 @@ page.onLoadFinished = function() {
 <p>Werkt maar niet in <code>async: false</code> mode. Zie <a href="http://code.google.com/p/phantomjs/issues/detail?id######463&amp;thanks463&amp;ts=1332850556">http://code.google.com/p/phantomjs/issues/detail?id######463&amp;thanks463&amp;ts=1332850556</a></p>
 
 <pre><code class="language-javascript">page.evaluate(function() {
-	console.log(&quot;ajaxying&quot;);
+    console.log(&quot;ajaxying&quot;);
   jQuery.ajax({
-	async: false,
-	dataType: 'html',
-	url: 'test.html',
-	success: function(data) {
-		console.log(&quot;--success!!&quot;);
-		console.log(data);
-		console.log(&quot;--&quot;);
-	}
-  });		
+    async: false,
+    dataType: 'html',
+    url: 'test.html',
+    success: function(data) {
+        console.log(&quot;--success!!&quot;);
+        console.log(data);
+        console.log(&quot;--&quot;);
+    }
+  });       
 });
 </code></pre>
 
@@ -467,7 +480,7 @@ page.onLoadFinished = function() {
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

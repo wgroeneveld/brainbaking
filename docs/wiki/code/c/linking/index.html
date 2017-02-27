@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/c">c</a> </li>
+      
+       <li><a href="/tags/linking">linking</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="linking-obj-dlls">Linking obj/dlls</h1>
@@ -127,20 +138,20 @@
 #include &quot;Utility.h&quot;
 
 #ifdef _DLL
-	#define DllExImport __declspec(dllexport)
+    #define DllExImport __declspec(dllexport)
 #else
-	#define DllExImport __declspec(dllimport)
+    #define DllExImport __declspec(dllimport)
 #endif
 
 
 class DllExImport ResourceUtils
 {
 public:
-	static RAIIObject&lt;HICON&gt; getIcon(int resourceId);
-	static RAIIObject&lt;HICON&gt; getIcon(HINSTANCE resourceHandleInstance, int resourceId);
+    static RAIIObject&lt;HICON&gt; getIcon(int resourceId);
+    static RAIIObject&lt;HICON&gt; getIcon(HINSTANCE resourceHandleInstance, int resourceId);
 
 private:
-	ResourceUtils() {}
+    ResourceUtils() {}
 };
 
 #endif
@@ -242,7 +253,7 @@ private:
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

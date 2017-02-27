@@ -2,11 +2,6 @@
 title = "rework"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "books",
     "rework"
 ]
