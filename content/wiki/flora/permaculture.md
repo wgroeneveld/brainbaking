@@ -2,11 +2,6 @@
 title = "permaculture"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "flora",
     "permaculture"
 ]

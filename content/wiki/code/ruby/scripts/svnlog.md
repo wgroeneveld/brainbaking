@@ -2,11 +2,6 @@
 title = "svnlog"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "ruby",
     "scripts",

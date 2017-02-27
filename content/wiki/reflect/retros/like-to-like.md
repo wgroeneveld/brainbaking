@@ -2,11 +2,6 @@
 title = "like-to-like"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "reflect",
     "retros",
     "like-to-like"

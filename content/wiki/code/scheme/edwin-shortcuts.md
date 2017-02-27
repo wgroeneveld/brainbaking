@@ -2,11 +2,6 @@
 title = "edwin-shortcuts"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "scheme",
     "edwin-shortcuts"

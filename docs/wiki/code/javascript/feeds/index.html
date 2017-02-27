@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/javascript">javascript</a> </li>
+      
+       <li><a href="/tags/feeds">feeds</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="js-rss-feed-readers">JS RSS Feed Readers</h1>
@@ -150,8 +161,8 @@ Klak.Feeds.read(new Klak.Feeds.WikiWouter().feed(), $j(&quot;#wiki&quot;));
 <p>Indien geen custom parsing vereist is, kan je je beperken tot de url en title en de rest overerven via <code>prototype</code>:</p>
 
 <pre><code class="language-javascript">Klak.Feeds.BlogWouter = function() {
-	this.title = 'Jefklak&lt;br/&gt;'s Codex Blog Latest Updates';
-	this.url ###### 'https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;q=http:*www.jefklak.be/feed/';	
+    this.title = 'Jefklak&lt;br/&gt;'s Codex Blog Latest Updates';
+    this.url ###### 'https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;q=http:*www.jefklak.be/feed/'; 
 }
 Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
 </code></pre>
@@ -233,7 +244,7 @@ Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

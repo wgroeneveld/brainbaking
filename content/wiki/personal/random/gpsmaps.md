@@ -2,11 +2,6 @@
 title = "gpsmaps"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "personal",
     "random",
     "gpsmaps"

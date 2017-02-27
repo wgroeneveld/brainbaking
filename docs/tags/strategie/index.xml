@@ -37,7 +37,7 @@
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void BlaActionTest extends StrutsTestCase {
   @Test
   public void testDit() {
-	 action.doeIets(mappingStub, requestStub, ...) // ipv mock
+     action.doeIets(mappingStub, requestStub, ...) // ipv mock
   }
 }
 &lt;/code&gt;&lt;/pre&gt;

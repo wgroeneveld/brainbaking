@@ -2,11 +2,6 @@
 title = "linq"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "csharp",
     "linq"

@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/javascript">javascript</a> </li>
+      
+       <li><a href="/tags/async">async</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="async-coding-in-js">Async coding in JS</h1>
@@ -304,28 +315,28 @@ Los dit op met een utility functie:</p>
 <p>❗ De laatste stap gaat <strong>altijd</strong> een <code>runs()</code> moeten bevatten voor de reporter om aan te duiden dat assertions uitgevoerd worden, aangezien de <code>exec()</code> functie direct retourneert. Dus moeten we 1x wachten, totdat de hele &ldquo;flow&rdquo; gedaan is. We kunnen dit combineren met BDD en een mini-DSL hierrond schrijven. Resultaat:</p>
 
 <pre><code class="language-javascript">function when() {
-	var flowDone = false;
-	var slice = Array.prototype.slice;
-	var argsArray = slice.call(arguments, 0);
-	var laatsteArgumenten;
-	
-	argsArray.push(function() {
-		laatsteArgumenten = slice.call(arguments, 0);
-		flowDone = true;
-	});
-	
-	flow.exec.apply(this, argsArray);
-	waitsFor(function() {
-		return flowDone ##### true;
-	});
-	
-	return {
-		then: function(assertionsFn) {
-			runs(function() {
-				assertionsFn.apply(this, laatsteArgumenten);
-			});
-		}
-	};
+    var flowDone = false;
+    var slice = Array.prototype.slice;
+    var argsArray = slice.call(arguments, 0);
+    var laatsteArgumenten;
+    
+    argsArray.push(function() {
+        laatsteArgumenten = slice.call(arguments, 0);
+        flowDone = true;
+    });
+    
+    flow.exec.apply(this, argsArray);
+    waitsFor(function() {
+        return flowDone ##### true;
+    });
+    
+    return {
+        then: function(assertionsFn) {
+            runs(function() {
+                assertionsFn.apply(this, laatsteArgumenten);
+            });
+        }
+    };
 }
 </code></pre>
 
@@ -333,24 +344,24 @@ Los dit op met een utility functie:</p>
 
 <pre><code class="language-javascript">
 describe(&quot;plaatsen domein&quot;, function() {
-	it(&quot;wanneer ik alle plaatsen ophaal, kan ik hier domeinspecifieke functies aan opvragen&quot;, function() {
-		var plaatsen;
-		when(
-			function() {
-				DOMEIN.plaatsRepository.bewaarPlaats(plaats, this.MULTI());
-				DOMEIN.plaatsRepository.bewaarPlaats(anderePlaats, this.MULTI());
-			},
-			function() {
-				DOMEIN.plaatsRepository.haalPlaatsenOp(this);
-			}
-		).then(
-			function(opgehaaldePlaatsen) {
-				opgehaaldePlaatsen.forEach(function(plaats) {
-					expect(plaats.geefMeting).toBeDefined();
-				});
-			}
-		);
-	});
+    it(&quot;wanneer ik alle plaatsen ophaal, kan ik hier domeinspecifieke functies aan opvragen&quot;, function() {
+        var plaatsen;
+        when(
+            function() {
+                DOMEIN.plaatsRepository.bewaarPlaats(plaats, this.MULTI());
+                DOMEIN.plaatsRepository.bewaarPlaats(anderePlaats, this.MULTI());
+            },
+            function() {
+                DOMEIN.plaatsRepository.haalPlaatsenOp(this);
+            }
+        ).then(
+            function(opgehaaldePlaatsen) {
+                opgehaaldePlaatsen.forEach(function(plaats) {
+                    expect(plaats.geefMeting).toBeDefined();
+                });
+            }
+        );
+    });
 });
 </code></pre>
 
@@ -401,18 +412,18 @@ startStuff().done(function() {
 <p>Stel dat eerst element #1 animatie triggert, dan #2, en daarna nog logica dient te gebeuren. Dit kan ook met <code>$.Deferred</code>, door <code>.pipe()</code> te gebruiken om verder te breiden aan de queue.</p>
 
 <pre><code class="language-javascript">$(&quot;button&quot;).bind( &quot;click&quot;, function() {
-	$(&quot;p&quot;).append( &quot;Started...&quot;);
-	var div1 ###### $(&quot;#div1&quot;), div2  $(&quot;#div2&quot;);
+    $(&quot;p&quot;).append( &quot;Started...&quot;);
+    var div1 ###### $(&quot;#div1&quot;), div2  $(&quot;#div2&quot;);
 
-	var df = $.Deferred();
-	df.pipe(function() {
-		return div1.fadeOut(&quot;slow&quot;)
-	}).pipe(function() {
-		return div2.fadeOut()
-	}).done(function() {
-		$(&quot;p&quot;).append( &quot;  --  DONE&quot;);
-	});
-	df.resolve(); 
+    var df = $.Deferred();
+    df.pipe(function() {
+        return div1.fadeOut(&quot;slow&quot;)
+    }).pipe(function() {
+        return div2.fadeOut()
+    }).done(function() {
+        $(&quot;p&quot;).append( &quot;  --  DONE&quot;);
+    });
+    df.resolve(); 
 });
 </code></pre>
 
@@ -469,7 +480,7 @@ startStuff().done(function() {
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

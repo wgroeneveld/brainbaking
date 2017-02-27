@@ -2,11 +2,6 @@
 title = "dynamiclangs"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "dynamiclangs"
 ]

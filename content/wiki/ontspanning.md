@@ -2,12 +2,6 @@
 title = "ontspanning"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
-    "",
     "ontspanning"
 ]
 date = "2013-03-12"

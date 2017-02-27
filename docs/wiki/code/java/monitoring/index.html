@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/java">java</a> </li>
+      
+       <li><a href="/tags/monitoring">monitoring</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="monitoring">Monitoring</h1>
@@ -151,14 +162,14 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
 ##### Spring gebruiken om beans te exposen 
 
 ```java
-	&lt;bean class=&quot;org.springframework.jmx.export.MBeanExporter&quot;&gt;
-		&lt;property name=&quot;beans&quot;&gt;
-			&lt;map&gt;
-				&lt;entry key######&quot;bean:nameBeanName&quot; value-ref=&quot;someBean&quot; /&gt;
-			&lt;/map&gt;
-		&lt;/property&gt;
-		&lt;property name######&quot;registrationBehaviorName&quot; value&quot;REGISTRATION_IGNORE_EXISTING&quot; /&gt;
-	&lt;/bean&gt;
+    &lt;bean class=&quot;org.springframework.jmx.export.MBeanExporter&quot;&gt;
+        &lt;property name=&quot;beans&quot;&gt;
+            &lt;map&gt;
+                &lt;entry key######&quot;bean:nameBeanName&quot; value-ref=&quot;someBean&quot; /&gt;
+            &lt;/map&gt;
+        &lt;/property&gt;
+        &lt;property name######&quot;registrationBehaviorName&quot; value&quot;REGISTRATION_IGNORE_EXISTING&quot; /&gt;
+    &lt;/bean&gt;
 </code></pre>
 
 <h2 id="geheugen-monitoren">Geheugen monitoren</h2>
@@ -241,7 +252,7 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

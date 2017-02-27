@@ -53,9 +53,9 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;class MyClass {
 public:
-	MyClass() {};
+    MyClass() {};
 
-	int addUp(int one, int two);
+    int addUp(int one, int two);
 };
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -65,7 +65,7 @@ using namespace std;
 
 int MyClass::addUp(int one, int two)
 {
-	return one + two;
+    return one + two;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -79,22 +79,22 @@ int MyClass::addUp(int one, int two)
 using namespace System;
 using namespace System::Text;
 using namespace System::Collections::Generic;
-using namespace	Microsoft::VisualStudio::TestTools::UnitTesting;
+using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
 
 namespace unittests
 {
-	[TestClass]
-	public ref class MyClassTest
-	{
+    [TestClass]
+    public ref class MyClassTest
+    {
 
-	public: 
+    public: 
 
-		[TestMethod]
-		void AddOne()
-		{
-			Assert::AreEqual(3, MyClass().addUp(1, 2));
-		};
-	};
+        [TestMethod]
+        void AddOne()
+        {
+            Assert::AreEqual(3, MyClass().addUp(1, 2));
+        };
+    };
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -129,9 +129,9 @@ MyClassTest.obj : error LNK2019: unresolved external symbol &amp;quot;public: in
 
 class FRIENDCLASS MyClass {
 public:
-	MyClass();
+    MyClass();
 
-	int addUp(int one, int two);
+    int addUp(int one, int two);
 };
 &lt;/code&gt;&lt;/pre&gt;
 

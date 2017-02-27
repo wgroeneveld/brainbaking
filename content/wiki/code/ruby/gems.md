@@ -2,11 +2,6 @@
 title = "gems"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "ruby",
     "gems"

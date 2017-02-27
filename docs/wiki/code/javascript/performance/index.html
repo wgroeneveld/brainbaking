@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/javascript">javascript</a> </li>
+      
+       <li><a href="/tags/performance">performance</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="javascript-performance">Javascript Performance</h1>
@@ -167,14 +178,14 @@
 <p><img style='' src='/img//code/javascript/js_sequential.jpg|'></p>
 
 <pre><code class="language-javascript">function loadScript() {
-	for(var i = 0; i &lt; arguments.length; i++) {
-		var js = document.createElement(&quot;script&quot;);
-		var head = document.getElementsByTagName(&quot;head&quot;)[0];
+    for(var i = 0; i &lt; arguments.length; i++) {
+        var js = document.createElement(&quot;script&quot;);
+        var head = document.getElementsByTagName(&quot;head&quot;)[0];
 
-		js.src = arguments[i];
-		js.type = &quot;text/javascript&quot;;
-		head.appendChild(js);
-	}
+        js.src = arguments[i];
+        js.type = &quot;text/javascript&quot;;
+        head.appendChild(js);
+    }
 }
 </code></pre>
 
@@ -207,15 +218,15 @@ Daarom ook altijd best practices volgen en <em>separation of concerns</em> zo go
 <p>Een stap verder zou zijn de library zichzelf bootstrappen, door <code>loadScript()</code> lichtjes aan te passen:</p>
 
 <pre><code class="language-javascript">function loadScript() {
-	for(var i = 0; i &lt; arguments.length; i++) {
-		var js = document.createElement(&quot;script&quot;);
-		var head = document.getElementsByTagName(&quot;head&quot;)[0];
+    for(var i = 0; i &lt; arguments.length; i++) {
+        var js = document.createElement(&quot;script&quot;);
+        var head = document.getElementsByTagName(&quot;head&quot;)[0];
 
-		js.src = arguments[i].src;
-		js.type = &quot;text/javascript&quot;;
-		js.text = arguments[i].callback.toString();
-		head.appendChild(js);
-	}
+        js.src = arguments[i].src;
+        js.type = &quot;text/javascript&quot;;
+        js.text = arguments[i].callback.toString();
+        head.appendChild(js);
+    }
 }
 
 //usage:
@@ -334,7 +345,7 @@ head.js(&quot;/path/to/jquery.js&quot;);
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

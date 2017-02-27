@@ -2,11 +2,6 @@
 title = "linking"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "c",
     "linking"

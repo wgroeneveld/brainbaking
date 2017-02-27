@@ -145,7 +145,7 @@
         <div class="container">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+            <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
       <ul id="tags">
       
        <li><a href="/tags/unit-testing">unit testing</a> </li>
@@ -157,6 +157,7 @@
        <li><a href="/tags/scenario-testing">scenario testing</a> </li>
       
       </ul>
+
 
       <article role="main" class="blog-post">
           <p>As the previous post indicated, we&rsquo;re trying to stabilize our scenario tests created with WebDriver. One of the things we did was trying to capture as much data as possible if something goes wrong. Something like a typical <code>ElementNotFoundException</code>, or the less common <code>StaleElementException</code> (detached from DOM after evaluation) - these things can be hard to trace if you don&rsquo;t run the tests locally. We also stumbled upon the &ldquo;it works on my machine&rdquo; problem - tests succeeding on one development machine but not on the other - mostly related due to timing issues.</p>
@@ -328,7 +329,7 @@ public class ScenarioExceptionAspect : OnMethodBoundaryAspect
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

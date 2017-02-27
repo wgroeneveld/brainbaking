@@ -2,11 +2,6 @@
 title = "find"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "unix",
     "cmd",
     "find"

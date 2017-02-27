@@ -2,11 +2,6 @@
 title = "scoping"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "javascript",
     "scoping"

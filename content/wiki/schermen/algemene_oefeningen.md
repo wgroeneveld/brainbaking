@@ -2,11 +2,6 @@
 title = "algemene_oefeningen"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "schermen",
     "algemene_oefeningen"
 ]

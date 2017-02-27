@@ -2,11 +2,6 @@
 title = "magic_properties"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "javascript",
     "magic_properties"

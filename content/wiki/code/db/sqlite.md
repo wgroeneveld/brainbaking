@@ -2,11 +2,6 @@
 title = "sqlite"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "db",
     "sqlite"

@@ -112,6 +112,15 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/unix">unix</a> </li>
+      
+       <li><a href="/tags/cmd">cmd</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="unix-commandline-stuff">Unix Commandline Stuff</h1>
@@ -333,10 +342,10 @@ echo &quot;### Svn log Helena Trunk &quot; &gt; $logfile
 echo &quot;❗ periode **[$datefrom - $dateto]**&quot; &gt;&gt; $logfile
 echo &quot;#### Helena Jira's via svn log&quot; &gt;&gt; $logfile
 svn --username######cp8tsc --passwordq3Sp8Phu log -r{$datefrom}:{$dateto} |
-	grep -B 2 -A 1 -i 'HEL-&lt;br/&gt;|jira' |
-	grep -v 'gcl&lt;br/&gt;|lvm' |
-	sed -e 's/-*//' -e 's/r[0-9]* .*(&lt;br/&gt;(.*&lt;br/&gt;)).*/#####&lt;br/&gt;1/g' -e 's/^&lt;br/&gt;([^=]&lt;br/&gt;)/  *&lt;br/&gt;1/' |
-	sed -n 'G; s/&lt;br/&gt;n/&amp;&amp;/; /^&lt;br/&gt;([ -~]*&lt;br/&gt;n&lt;br/&gt;).*&lt;br/&gt;n&lt;br/&gt;1/d; s/&lt;br/&gt;n//; h; P' &gt;&gt; $logfile
+    grep -B 2 -A 1 -i 'HEL-&lt;br/&gt;|jira' |
+    grep -v 'gcl&lt;br/&gt;|lvm' |
+    sed -e 's/-*//' -e 's/r[0-9]* .*(&lt;br/&gt;(.*&lt;br/&gt;)).*/#####&lt;br/&gt;1/g' -e 's/^&lt;br/&gt;([^=]&lt;br/&gt;)/  *&lt;br/&gt;1/' |
+    sed -n 'G; s/&lt;br/&gt;n/&amp;&amp;/; /^&lt;br/&gt;([ -~]*&lt;br/&gt;n&lt;br/&gt;).*&lt;br/&gt;n&lt;br/&gt;1/d; s/&lt;br/&gt;n//; h; P' &gt;&gt; $logfile
 popd
 </code></pre>
 
@@ -401,7 +410,7 @@ popd
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

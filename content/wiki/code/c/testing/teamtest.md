@@ -2,11 +2,6 @@
 title = "teamtest"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "c",
     "testing",

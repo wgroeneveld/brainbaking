@@ -2,11 +2,6 @@
 title = "where_good_ideas_come_from"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "books",
     "where_good_ideas_come_from"
 ]

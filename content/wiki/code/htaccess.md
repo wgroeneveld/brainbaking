@@ -2,11 +2,6 @@
 title = "htaccess"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "htaccess"
 ]

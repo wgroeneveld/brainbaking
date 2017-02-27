@@ -2,11 +2,6 @@
 title = "logging"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "java",
     "logging"

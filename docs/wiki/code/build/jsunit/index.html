@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/build">build</a> </li>
+      
+       <li><a href="/tags/jsunit">jsunit</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="jsunit-testen">JsUnit Testen</h1>
@@ -162,51 +173,51 @@ Voor uitleg over de parameters, zie jsunit website.</p>
             &lt;test name=&quot;net.jsunit.StandaloneTest&quot;/&gt;
         &lt;/junit&gt;
     &lt;/target&gt;
-	
+    
     &lt;target name######&quot;-compile-jsunit&quot; depends&quot;-jsunit-check&quot; if=&quot;jsunit.tests.present&quot;&gt;
-    	&lt;antcall target=&quot;-jsunit-copy-lib&quot; /&gt;
-    	&lt;antcall target=&quot;-jsunit-copy-common-js&quot; /&gt;
-    	&lt;antcall target=&quot;-jsunit-copy-tests&quot; /&gt;
-    	&lt;antcall target=&quot;-jsunit-copy-js&quot; /&gt;
-    	&lt;antcall target=&quot;-jsunit-build-suite&quot; /&gt;
+        &lt;antcall target=&quot;-jsunit-copy-lib&quot; /&gt;
+        &lt;antcall target=&quot;-jsunit-copy-common-js&quot; /&gt;
+        &lt;antcall target=&quot;-jsunit-copy-tests&quot; /&gt;
+        &lt;antcall target=&quot;-jsunit-copy-js&quot; /&gt;
+        &lt;antcall target=&quot;-jsunit-build-suite&quot; /&gt;
     &lt;/target&gt;
-	
+    
     &lt;target name=&quot;-jsunit-check&quot;&gt;
-    	&lt;available file######&quot;${jsunit.src.tests}&quot; property&quot;jsunit.tests.present&quot;/&gt;
+        &lt;available file######&quot;${jsunit.src.tests}&quot; property&quot;jsunit.tests.present&quot;/&gt;
     &lt;/target&gt;
-	
+    
     &lt;target name=&quot;-jsunit-copy-lib&quot;&gt;
-    	&lt;copy todir=&quot;${jsunit.target}&quot;&gt;
-    		```et
-    	&lt;/copy&gt;
-	&lt;/target&gt;
-	
+        &lt;copy todir=&quot;${jsunit.target}&quot;&gt;
+            ```et
+        &lt;/copy&gt;
+    &lt;/target&gt;
+    
     &lt;target name=&quot;-jsunit-copy-common-js&quot;&gt;
-    	&lt;unjar src######&quot;${jsunit.common.jar}&quot; dest&quot;${jsunit.target.js}/common&quot;&gt;
-    		&lt;patternset&gt;
-		        &lt;include name=&quot;**/*.js&quot; /&gt;
-    			&lt;exclude name=&quot;**/resourcesmini/**&quot;/&gt;
-    		&lt;/patternset&gt;
-    		&lt;mapper type=&quot;flatten&quot;/&gt;
-		&lt;/unjar&gt;
-	&lt;/target&gt;
-	
+        &lt;unjar src######&quot;${jsunit.common.jar}&quot; dest&quot;${jsunit.target.js}/common&quot;&gt;
+            &lt;patternset&gt;
+                &lt;include name=&quot;**/*.js&quot; /&gt;
+                &lt;exclude name=&quot;**/resourcesmini/**&quot;/&gt;
+            &lt;/patternset&gt;
+            &lt;mapper type=&quot;flatten&quot;/&gt;
+        &lt;/unjar&gt;
+    &lt;/target&gt;
+    
     &lt;target name=&quot;-jsunit-copy-tests&quot;&gt;
-    	&lt;copy todir=&quot;${jsunit.target.tests}&quot;&gt;
-    		```et
-    	&lt;/copy&gt;
-	&lt;/target&gt;
-	
+        &lt;copy todir=&quot;${jsunit.target.tests}&quot;&gt;
+            ```et
+        &lt;/copy&gt;
+    &lt;/target&gt;
+    
     &lt;target name=&quot;-jsunit-copy-js&quot;&gt;
-    	&lt;copy todir=&quot;${jsunit.target.js}&quot;&gt;
-    		```et
-    	&lt;/copy&gt;
-	&lt;/target&gt;
-	
+        &lt;copy todir=&quot;${jsunit.target.js}&quot;&gt;
+            ```et
+        &lt;/copy&gt;
+    &lt;/target&gt;
+    
     &lt;target name=&quot;-jsunit-build-suite&quot;&gt;
-    	&lt;taskdef name######&quot;jsUnitSuiteBuilder&quot; classname&quot;be.cegeka.ant.JsUnitSuiteBuilder&quot; classpath=&quot;${jsunit.lib.dir}/java/ant/cegekant.jar&quot; /&gt;
-    	&lt;jsUnitSuiteBuilder testdir######&quot;${jsunit.target.tests}&quot; testsuitefilename&quot;${jsunit.target.tests}/${jsunit.suite}&quot;
-    		suitetemplatefilename=&quot;${jsunit.target.tests}/suite_template.html&quot;/&gt;
+        &lt;taskdef name######&quot;jsUnitSuiteBuilder&quot; classname&quot;be.cegeka.ant.JsUnitSuiteBuilder&quot; classpath=&quot;${jsunit.lib.dir}/java/ant/cegekant.jar&quot; /&gt;
+        &lt;jsUnitSuiteBuilder testdir######&quot;${jsunit.target.tests}&quot; testsuitefilename&quot;${jsunit.target.tests}/${jsunit.suite}&quot;
+            suitetemplatefilename=&quot;${jsunit.target.tests}/suite_template.html&quot;/&gt;
     &lt;/target&gt;
 </code></pre>
 
@@ -270,7 +281,7 @@ Voor uitleg over de parameters, zie jsunit website.</p>
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

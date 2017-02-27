@@ -2,11 +2,6 @@
 title = "git"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "tools",
     "git"

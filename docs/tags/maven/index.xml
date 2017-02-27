@@ -24,40 +24,40 @@
 
 &lt;h2 id=&#34;javascript-files-automatisch-minify-en&#34;&gt;javascript files automatisch minify-en&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;	&amp;lt;profiles&amp;gt;
-		&amp;lt;profile&amp;gt;
-			&amp;lt;id&amp;gt;minify&amp;lt;/id&amp;gt;
-			&amp;lt;build&amp;gt;
-				&amp;lt;plugins&amp;gt;
-					&amp;lt;plugin&amp;gt;
-						&amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
-						&amp;lt;artifactId&amp;gt;maven-war-plugin&amp;lt;/artifactId&amp;gt;
-						&amp;lt;version&amp;gt;2.1.1&amp;lt;/version&amp;gt;
-						&amp;lt;configuration&amp;gt;
-							&amp;lt;warSourceExcludes&amp;gt;**/js/**&amp;lt;/warSourceExcludes&amp;gt;
-						&amp;lt;/configuration&amp;gt;
-					&amp;lt;/plugin&amp;gt;
-					&amp;lt;plugin&amp;gt;
-						&amp;lt;groupId&amp;gt;net.tqh.plugins&amp;lt;/groupId&amp;gt;
-						&amp;lt;artifactId&amp;gt;uglifyjs-maven-plugin&amp;lt;/artifactId&amp;gt;
-						&amp;lt;version&amp;gt;1.0&amp;lt;/version&amp;gt;
-						&amp;lt;configuration&amp;gt;
-							&amp;lt;sourceDirectory&amp;gt;src/main/webapp/js&amp;lt;/sourceDirectory&amp;gt;
-							&amp;lt;outputDirectory&amp;gt;target/${project.name}-${version}/js&amp;lt;/outputDirectory&amp;gt;
-						&amp;lt;/configuration&amp;gt;
-						&amp;lt;executions&amp;gt;
-							&amp;lt;execution&amp;gt;
-								&amp;lt;phase&amp;gt;prepare-package&amp;lt;/phase&amp;gt;
-								&amp;lt;goals&amp;gt;
-									&amp;lt;goal&amp;gt;uglify&amp;lt;/goal&amp;gt;
-								&amp;lt;/goals&amp;gt;
-							&amp;lt;/execution&amp;gt;
-						&amp;lt;/executions&amp;gt;
-					&amp;lt;/plugin&amp;gt;
-				&amp;lt;/plugins&amp;gt;
-			&amp;lt;/build&amp;gt;
-		&amp;lt;/profile&amp;gt;
-	&amp;lt;/profiles&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;profiles&amp;gt;
+        &amp;lt;profile&amp;gt;
+            &amp;lt;id&amp;gt;minify&amp;lt;/id&amp;gt;
+            &amp;lt;build&amp;gt;
+                &amp;lt;plugins&amp;gt;
+                    &amp;lt;plugin&amp;gt;
+                        &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+                        &amp;lt;artifactId&amp;gt;maven-war-plugin&amp;lt;/artifactId&amp;gt;
+                        &amp;lt;version&amp;gt;2.1.1&amp;lt;/version&amp;gt;
+                        &amp;lt;configuration&amp;gt;
+                            &amp;lt;warSourceExcludes&amp;gt;**/js/**&amp;lt;/warSourceExcludes&amp;gt;
+                        &amp;lt;/configuration&amp;gt;
+                    &amp;lt;/plugin&amp;gt;
+                    &amp;lt;plugin&amp;gt;
+                        &amp;lt;groupId&amp;gt;net.tqh.plugins&amp;lt;/groupId&amp;gt;
+                        &amp;lt;artifactId&amp;gt;uglifyjs-maven-plugin&amp;lt;/artifactId&amp;gt;
+                        &amp;lt;version&amp;gt;1.0&amp;lt;/version&amp;gt;
+                        &amp;lt;configuration&amp;gt;
+                            &amp;lt;sourceDirectory&amp;gt;src/main/webapp/js&amp;lt;/sourceDirectory&amp;gt;
+                            &amp;lt;outputDirectory&amp;gt;target/${project.name}-${version}/js&amp;lt;/outputDirectory&amp;gt;
+                        &amp;lt;/configuration&amp;gt;
+                        &amp;lt;executions&amp;gt;
+                            &amp;lt;execution&amp;gt;
+                                &amp;lt;phase&amp;gt;prepare-package&amp;lt;/phase&amp;gt;
+                                &amp;lt;goals&amp;gt;
+                                    &amp;lt;goal&amp;gt;uglify&amp;lt;/goal&amp;gt;
+                                &amp;lt;/goals&amp;gt;
+                            &amp;lt;/execution&amp;gt;
+                        &amp;lt;/executions&amp;gt;
+                    &amp;lt;/plugin&amp;gt;
+                &amp;lt;/plugins&amp;gt;
+            &amp;lt;/build&amp;gt;
+        &amp;lt;/profile&amp;gt;
+    &amp;lt;/profiles&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Bron: https:*github.com/mishoo/UglifyJS - maven plugin gebruikt &lt;code&gt;Rhino&lt;/code&gt; om dit uit te voeren. Kan ook met &lt;code&gt;node&lt;/code&gt; uitgevoerd worden - gebruik bij voorkeur &lt;code&gt;r.js&lt;/code&gt; (zie http:*requirejs.org/docs/optimization.html)&lt;/p&gt;
@@ -101,26 +101,26 @@
 
 &lt;p&gt;Plugin:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;			&amp;lt;plugin&amp;gt;
-				&amp;lt;artifactId&amp;gt;maven-assembly-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;2.2-beta-2&amp;lt;/version&amp;gt;
-				&amp;lt;executions&amp;gt;
-					&amp;lt;execution&amp;gt;
-						&amp;lt;id&amp;gt;create-test-dependency&amp;lt;/id&amp;gt;
-						&amp;lt;phase&amp;gt;process-test-classes&amp;lt;/phase&amp;gt;
-						&amp;lt;goals&amp;gt;
-							&amp;lt;goal&amp;gt;single&amp;lt;/goal&amp;gt;
-						&amp;lt;/goals&amp;gt;
-						&amp;lt;configuration&amp;gt;
-							&amp;lt;finalName&amp;gt;gatecontrol&amp;lt;/finalName&amp;gt;
-							&amp;lt;attach&amp;gt;false&amp;lt;/attach&amp;gt;
-							&amp;lt;descriptors&amp;gt;
-								&amp;lt;descriptor&amp;gt;test-assembly.xml&amp;lt;/descriptor&amp;gt;
-							&amp;lt;/descriptors&amp;gt;
-						&amp;lt;/configuration&amp;gt;
-					&amp;lt;/execution&amp;gt;
-				&amp;lt;/executions&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-assembly-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;2.2-beta-2&amp;lt;/version&amp;gt;
+                &amp;lt;executions&amp;gt;
+                    &amp;lt;execution&amp;gt;
+                        &amp;lt;id&amp;gt;create-test-dependency&amp;lt;/id&amp;gt;
+                        &amp;lt;phase&amp;gt;process-test-classes&amp;lt;/phase&amp;gt;
+                        &amp;lt;goals&amp;gt;
+                            &amp;lt;goal&amp;gt;single&amp;lt;/goal&amp;gt;
+                        &amp;lt;/goals&amp;gt;
+                        &amp;lt;configuration&amp;gt;
+                            &amp;lt;finalName&amp;gt;gatecontrol&amp;lt;/finalName&amp;gt;
+                            &amp;lt;attach&amp;gt;false&amp;lt;/attach&amp;gt;
+                            &amp;lt;descriptors&amp;gt;
+                                &amp;lt;descriptor&amp;gt;test-assembly.xml&amp;lt;/descriptor&amp;gt;
+                            &amp;lt;/descriptors&amp;gt;
+                        &amp;lt;/configuration&amp;gt;
+                    &amp;lt;/execution&amp;gt;
+                &amp;lt;/executions&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;De externe assembly file:&lt;/p&gt;
@@ -181,30 +181,30 @@ Als je een test-jar (die dus op &lt;code&gt;scope test&lt;/code&gt; staat) wil i
 
 &lt;h4 id=&#34;genereer-endpoints-vanaf-wsdl&#34;&gt;Genereer endpoints vanaf WSDL&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;jaxws-maven-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;${org.codehaus.mojo.jaxws.maven.plugin.version}&amp;lt;/version&amp;gt;
-				&amp;lt;executions&amp;gt;
-					&amp;lt;execution&amp;gt;
-						&amp;lt;goals&amp;gt;
-							&amp;lt;goal&amp;gt;wsimport&amp;lt;/goal&amp;gt;
-						&amp;lt;/goals&amp;gt;
-					&amp;lt;/execution&amp;gt;
-				&amp;lt;/executions&amp;gt;
-				&amp;lt;configuration&amp;gt;
-					&amp;lt;wsdlDirectory&amp;gt;src/resources/wsdl&amp;lt;/wsdlDirectory&amp;gt;
-					&amp;lt;packageName&amp;gt;com.x.interfaces.ws&amp;lt;/packageName&amp;gt;
-					&amp;lt;sourceDestDir&amp;gt;${project.build.directory}/generated-sources/jaxws&amp;lt;/sourceDestDir&amp;gt;
-				&amp;lt;/configuration&amp;gt;
-				&amp;lt;dependencies&amp;gt;
-					&amp;lt;dependency&amp;gt;
-						&amp;lt;groupId&amp;gt;com.sun.xml.ws&amp;lt;/groupId&amp;gt;
-						&amp;lt;artifactId&amp;gt;jaxws-tools&amp;lt;/artifactId&amp;gt;
-						&amp;lt;version&amp;gt;${com.sun.xml.ws.jaxws.version}&amp;lt;/version&amp;gt;
-					&amp;lt;/dependency&amp;gt;
-				&amp;lt;/dependencies&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;jaxws-maven-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${org.codehaus.mojo.jaxws.maven.plugin.version}&amp;lt;/version&amp;gt;
+                &amp;lt;executions&amp;gt;
+                    &amp;lt;execution&amp;gt;
+                        &amp;lt;goals&amp;gt;
+                            &amp;lt;goal&amp;gt;wsimport&amp;lt;/goal&amp;gt;
+                        &amp;lt;/goals&amp;gt;
+                    &amp;lt;/execution&amp;gt;
+                &amp;lt;/executions&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;wsdlDirectory&amp;gt;src/resources/wsdl&amp;lt;/wsdlDirectory&amp;gt;
+                    &amp;lt;packageName&amp;gt;com.x.interfaces.ws&amp;lt;/packageName&amp;gt;
+                    &amp;lt;sourceDestDir&amp;gt;${project.build.directory}/generated-sources/jaxws&amp;lt;/sourceDestDir&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+                &amp;lt;dependencies&amp;gt;
+                    &amp;lt;dependency&amp;gt;
+                        &amp;lt;groupId&amp;gt;com.sun.xml.ws&amp;lt;/groupId&amp;gt;
+                        &amp;lt;artifactId&amp;gt;jaxws-tools&amp;lt;/artifactId&amp;gt;
+                        &amp;lt;version&amp;gt;${com.sun.xml.ws.jaxws.version}&amp;lt;/version&amp;gt;
+                    &amp;lt;/dependency&amp;gt;
+                &amp;lt;/dependencies&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Zie &lt;a href=&#34;http://rphgoossens.wordpress.com/2011/02/20/developing-a-contract-first-jax-ws-webservice/&#34;&gt;http://rphgoossens.wordpress.com/2011/02/20/developing-a-contract-first-jax-ws-webservice/&lt;/a&gt;&lt;/p&gt;
@@ -215,52 +215,52 @@ Als je een test-jar (die dus op &lt;code&gt;scope test&lt;/code&gt; staat) wil i
 
 &lt;p&gt;Zelfde pincipe, andere &lt;code&gt;goal&lt;/code&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.jvnet.jaxb2.maven2&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;maven-jaxb2-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;${org.jvnet.jaxb2.maven2.maven.jaxb2.plugin.version}&amp;lt;/version&amp;gt;
-				&amp;lt;executions&amp;gt;
-					&amp;lt;execution&amp;gt;
-						&amp;lt;id&amp;gt;crm_generation&amp;lt;/id&amp;gt;
-						&amp;lt;goals&amp;gt;
-							&amp;lt;goal&amp;gt;generate&amp;lt;/goal&amp;gt;
-						&amp;lt;/goals&amp;gt;
-						&amp;lt;configuration&amp;gt;
-							&amp;lt;schemaDirectory&amp;gt;src/main/schema&amp;lt;/schemaDirectory&amp;gt;
-							&amp;lt;schemaIncludes&amp;gt;
-								&amp;lt;include&amp;gt;y.wsdl&amp;lt;/include&amp;gt;
-							&amp;lt;/schemaIncludes&amp;gt;
-							&amp;lt;schemaLanguage&amp;gt;WSDL&amp;lt;/schemaLanguage&amp;gt;
-							&amp;lt;generatePackage&amp;gt;com.x.interfaces&amp;lt;/generatePackage&amp;gt;
-						&amp;lt;/configuration&amp;gt;
-					&amp;lt;/execution&amp;gt;
-				&amp;lt;/executions&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.jvnet.jaxb2.maven2&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-jaxb2-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${org.jvnet.jaxb2.maven2.maven.jaxb2.plugin.version}&amp;lt;/version&amp;gt;
+                &amp;lt;executions&amp;gt;
+                    &amp;lt;execution&amp;gt;
+                        &amp;lt;id&amp;gt;crm_generation&amp;lt;/id&amp;gt;
+                        &amp;lt;goals&amp;gt;
+                            &amp;lt;goal&amp;gt;generate&amp;lt;/goal&amp;gt;
+                        &amp;lt;/goals&amp;gt;
+                        &amp;lt;configuration&amp;gt;
+                            &amp;lt;schemaDirectory&amp;gt;src/main/schema&amp;lt;/schemaDirectory&amp;gt;
+                            &amp;lt;schemaIncludes&amp;gt;
+                                &amp;lt;include&amp;gt;y.wsdl&amp;lt;/include&amp;gt;
+                            &amp;lt;/schemaIncludes&amp;gt;
+                            &amp;lt;schemaLanguage&amp;gt;WSDL&amp;lt;/schemaLanguage&amp;gt;
+                            &amp;lt;generatePackage&amp;gt;com.x.interfaces&amp;lt;/generatePackage&amp;gt;
+                        &amp;lt;/configuration&amp;gt;
+                    &amp;lt;/execution&amp;gt;
+                &amp;lt;/executions&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;integratie-met-ant&#34;&gt;Integratie met Ant&lt;/h2&gt;
 
 &lt;p&gt;Maven kan ook ant tasks uitvoeren. Dit door ant code te embedden in de pom.xml op de volgende manier:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		   &amp;lt;plugin&amp;gt;
-		    &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
-		    &amp;lt;artifactId&amp;gt;maven-antrun-plugin&amp;lt;/artifactId&amp;gt;
-		     
-		    &amp;lt;configuration&amp;gt;
-		     &amp;lt;tasks&amp;gt;
-		      &amp;lt;property name######&amp;quot;target.war&amp;quot; value&amp;quot;bla.war&amp;quot; /&amp;gt;
-		      &amp;lt;property name######&amp;quot;zip.name&amp;quot; value&amp;quot;bla.zip&amp;quot; /&amp;gt;
-		      
-		      &amp;lt;ant antfile######&amp;quot;build.xml&amp;quot; inheritRefs&amp;quot;true&amp;quot; inheritAll=&amp;quot;true&amp;quot;&amp;gt;
-		      	&amp;lt;target name=&amp;quot;buildZip&amp;quot; /&amp;gt;
-		      &amp;lt;/ant&amp;gt;
-		     &amp;lt;/tasks&amp;gt;
-		    &amp;lt;/configuration&amp;gt;
-		    
-		    &amp;lt;goals&amp;gt;
-		     &amp;lt;goal&amp;gt;install&amp;lt;/goal&amp;gt;
-		    &amp;lt;/goals&amp;gt;
-		   &amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;           &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;maven-antrun-plugin&amp;lt;/artifactId&amp;gt;
+             
+            &amp;lt;configuration&amp;gt;
+             &amp;lt;tasks&amp;gt;
+              &amp;lt;property name######&amp;quot;target.war&amp;quot; value&amp;quot;bla.war&amp;quot; /&amp;gt;
+              &amp;lt;property name######&amp;quot;zip.name&amp;quot; value&amp;quot;bla.zip&amp;quot; /&amp;gt;
+              
+              &amp;lt;ant antfile######&amp;quot;build.xml&amp;quot; inheritRefs&amp;quot;true&amp;quot; inheritAll=&amp;quot;true&amp;quot;&amp;gt;
+                &amp;lt;target name=&amp;quot;buildZip&amp;quot; /&amp;gt;
+              &amp;lt;/ant&amp;gt;
+             &amp;lt;/tasks&amp;gt;
+            &amp;lt;/configuration&amp;gt;
+            
+            &amp;lt;goals&amp;gt;
+             &amp;lt;goal&amp;gt;install&amp;lt;/goal&amp;gt;
+            &amp;lt;/goals&amp;gt;
+           &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Binnen de configuration tag zit ant code, met de ant tag roep ik een externe build xml aan. Op die manier kan je dus een ant buildfile volledig naast een pom.xml maven2 file plaatsen, en properties doorgeven! Die ant task wordt uitgevoerd met het commando &lt;code&gt;mvn antrun:run&lt;/code&gt; of bij bepaalde geconfigureerde goals.&lt;/p&gt;
@@ -273,33 +273,33 @@ Als je een test-jar (die dus op &lt;code&gt;scope test&lt;/code&gt; staat) wil i
 
 &lt;p&gt;Om nog rap een property file te kopiëren, best aan &lt;code&gt;prapare-package&lt;/code&gt; phase hangen (maven 2.1+):&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;	 &amp;lt;profiles&amp;gt;
-	   &amp;lt;profile&amp;gt;
-	     &amp;lt;id&amp;gt;env&amp;lt;/id&amp;gt;
-	     &amp;lt;activation&amp;gt;
-	     	&amp;lt;property&amp;gt;
-	     		&amp;lt;name&amp;gt;env&amp;lt;/name&amp;gt;
-	     	&amp;lt;/property&amp;gt;
-	     &amp;lt;/activation&amp;gt;
-	     &amp;lt;build&amp;gt;
-	       &amp;lt;plugins&amp;gt;
-	         &amp;lt;plugin&amp;gt;
-	           &amp;lt;artifactId&amp;gt;maven-antrun-plugin&amp;lt;/artifactId&amp;gt;
-	           &amp;lt;executions&amp;gt;
-	             &amp;lt;execution&amp;gt;
-	               &amp;lt;phase&amp;gt;prepare-package&amp;lt;/phase&amp;gt;
-	               &amp;lt;goals&amp;gt;
-	                 &amp;lt;goal&amp;gt;run&amp;lt;/goal&amp;gt;
-	               &amp;lt;/goals&amp;gt;
-	               &amp;lt;configuration&amp;gt;
-	                 &amp;lt;tasks&amp;gt;
-						&amp;lt;echo message=&amp;quot;Env property detected, copying ${env} to output directory...&amp;quot; /&amp;gt;
-                   		&amp;lt;copy file######&amp;quot;src/main/resources/template/env.${env}.properties&amp;quot; tofile&amp;quot;${project.build.outputDirectory}/env.properties&amp;quot;/&amp;gt;
-	                 &amp;lt;/tasks&amp;gt;
-	               &amp;lt;/configuration&amp;gt;
-	             &amp;lt;/execution&amp;gt;
-	           &amp;lt;/executions&amp;gt;
-	         &amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;     &amp;lt;profiles&amp;gt;
+       &amp;lt;profile&amp;gt;
+         &amp;lt;id&amp;gt;env&amp;lt;/id&amp;gt;
+         &amp;lt;activation&amp;gt;
+            &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;env&amp;lt;/name&amp;gt;
+            &amp;lt;/property&amp;gt;
+         &amp;lt;/activation&amp;gt;
+         &amp;lt;build&amp;gt;
+           &amp;lt;plugins&amp;gt;
+             &amp;lt;plugin&amp;gt;
+               &amp;lt;artifactId&amp;gt;maven-antrun-plugin&amp;lt;/artifactId&amp;gt;
+               &amp;lt;executions&amp;gt;
+                 &amp;lt;execution&amp;gt;
+                   &amp;lt;phase&amp;gt;prepare-package&amp;lt;/phase&amp;gt;
+                   &amp;lt;goals&amp;gt;
+                     &amp;lt;goal&amp;gt;run&amp;lt;/goal&amp;gt;
+                   &amp;lt;/goals&amp;gt;
+                   &amp;lt;configuration&amp;gt;
+                     &amp;lt;tasks&amp;gt;
+                        &amp;lt;echo message=&amp;quot;Env property detected, copying ${env} to output directory...&amp;quot; /&amp;gt;
+                        &amp;lt;copy file######&amp;quot;src/main/resources/template/env.${env}.properties&amp;quot; tofile&amp;quot;${project.build.outputDirectory}/env.properties&amp;quot;/&amp;gt;
+                     &amp;lt;/tasks&amp;gt;
+                   &amp;lt;/configuration&amp;gt;
+                 &amp;lt;/execution&amp;gt;
+               &amp;lt;/executions&amp;gt;
+             &amp;lt;/plugin&amp;gt;
          &amp;lt;/plugins&amp;gt;
         &amp;lt;/build&amp;gt;
        &amp;lt;/profile&amp;gt;
@@ -310,17 +310,17 @@ Als je een test-jar (die dus op &lt;code&gt;scope test&lt;/code&gt; staat) wil i
 
 &lt;p&gt;Deze plugin nodig:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		    &amp;lt;plugin&amp;gt;
-		        &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
-		        &amp;lt;artifactId&amp;gt;maven-javadoc-plugin&amp;lt;/artifactId&amp;gt;
-		        &amp;lt;version&amp;gt;2.7&amp;lt;/version&amp;gt;
-		        &amp;lt;configuration&amp;gt;
-		          &amp;lt;reportOutputDirectory&amp;gt;release/doc&amp;lt;/reportOutputDirectory&amp;gt;
-		          &amp;lt;destDir&amp;gt;javadoc&amp;lt;/destDir&amp;gt;
-		          &amp;lt;doctitle&amp;gt;API for ${project.name} ${project.version}&amp;lt;/doctitle&amp;gt;
-		          &amp;lt;windowtitle&amp;gt;API for ${project.name} ${project.version}&amp;lt;/windowtitle&amp;gt;
-		        &amp;lt;/configuration&amp;gt;
-		   &amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-javadoc-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;2.7&amp;lt;/version&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                  &amp;lt;reportOutputDirectory&amp;gt;release/doc&amp;lt;/reportOutputDirectory&amp;gt;
+                  &amp;lt;destDir&amp;gt;javadoc&amp;lt;/destDir&amp;gt;
+                  &amp;lt;doctitle&amp;gt;API for ${project.name} ${project.version}&amp;lt;/doctitle&amp;gt;
+                  &amp;lt;windowtitle&amp;gt;API for ${project.name} ${project.version}&amp;lt;/windowtitle&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+           &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;❗ output dir = &lt;code&gt;${reportOutputDirectory}/${destDir}&lt;/code&gt;&lt;br/&gt;&lt;br/&gt;
@@ -335,21 +335,21 @@ Voorbeeld: &lt;a href=&#34;http://maven.apache.org/plugins/maven-javadoc-plugin/
 &lt;p&gt;Integratie met jetty en maven2: gebruik &lt;code&gt;mvn jetty:run&lt;/code&gt; om automatisch de jetty server op te starten.&lt;br/&gt;&lt;br/&gt;
 Het is ook mogelijk om die te laten scannen voor resource changes met &lt;code&gt;scanIntervalSeconds&lt;/code&gt; - server start automatisch (normaal gezien&amp;hellip;)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.mortbay.jetty&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;maven-jetty-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;6.1.26&amp;lt;/version&amp;gt;
-				&amp;lt;configuration&amp;gt;
-					&amp;lt;stopPort&amp;gt;9966&amp;lt;/stopPort&amp;gt;
-					&amp;lt;stopKey&amp;gt;comeet&amp;lt;/stopKey&amp;gt;
-					&amp;lt;scanIntervalSeconds&amp;gt;5&amp;lt;/scanIntervalSeconds&amp;gt;
-					&amp;lt;connectors&amp;gt;
-						&amp;lt;connector implementation=&amp;quot;org.mortbay.jetty.nio.SelectChannelConnector&amp;quot;&amp;gt;
-							&amp;lt;port&amp;gt;8089&amp;lt;/port&amp;gt;
-						&amp;lt;/connector&amp;gt;
-					&amp;lt;/connectors&amp;gt;
-				&amp;lt;/configuration&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.mortbay.jetty&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-jetty-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;6.1.26&amp;lt;/version&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;stopPort&amp;gt;9966&amp;lt;/stopPort&amp;gt;
+                    &amp;lt;stopKey&amp;gt;comeet&amp;lt;/stopKey&amp;gt;
+                    &amp;lt;scanIntervalSeconds&amp;gt;5&amp;lt;/scanIntervalSeconds&amp;gt;
+                    &amp;lt;connectors&amp;gt;
+                        &amp;lt;connector implementation=&amp;quot;org.mortbay.jetty.nio.SelectChannelConnector&amp;quot;&amp;gt;
+                            &amp;lt;port&amp;gt;8089&amp;lt;/port&amp;gt;
+                        &amp;lt;/connector&amp;gt;
+                    &amp;lt;/connectors&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;❗ Vanaf Jetty plugin 7 zijn packages hernoemd en zo, zie &lt;a href=&#34;http://wiki.eclipse.org/Jetty&#34;&gt;http://wiki.eclipse.org/Jetty&lt;/a&gt; en de migratie van 6-&amp;gt;7-&amp;gt;&amp;hellip;9&lt;/p&gt;
@@ -370,16 +370,16 @@ Het is ook mogelijk om die te laten scannen voor resource changes met &lt;code&g
 
 &amp;lt;Configure class=&amp;quot;org.mortbay.jetty.webapp.WebAppContext&amp;quot;&amp;gt;
 
-	&amp;lt;New id######&amp;quot;partnerwerkingDataSource&amp;quot; class&amp;quot;org.mortbay.jetty.plus.naming.Resource&amp;quot;&amp;gt;
-		&amp;lt;Arg&amp;gt;jdbc/partnerwerkingDataSource&amp;lt;/Arg&amp;gt;
-		&amp;lt;Arg&amp;gt;
-			&amp;lt;New class=&amp;quot;oracle.jdbc.pool.OracleDataSource&amp;quot;&amp;gt;
-				&amp;lt;Set name=&amp;quot;URL&amp;quot;&amp;gt;${database.url}&amp;lt;/Set&amp;gt;
-				&amp;lt;Set name=&amp;quot;user&amp;quot;&amp;gt;${database.user}&amp;lt;/Set&amp;gt;
-				&amp;lt;Set name=&amp;quot;password&amp;quot;&amp;gt;${database.password}&amp;lt;/Set&amp;gt;
-			&amp;lt;/New&amp;gt;
-		&amp;lt;/Arg&amp;gt;
-	&amp;lt;/New&amp;gt;
+    &amp;lt;New id######&amp;quot;partnerwerkingDataSource&amp;quot; class&amp;quot;org.mortbay.jetty.plus.naming.Resource&amp;quot;&amp;gt;
+        &amp;lt;Arg&amp;gt;jdbc/partnerwerkingDataSource&amp;lt;/Arg&amp;gt;
+        &amp;lt;Arg&amp;gt;
+            &amp;lt;New class=&amp;quot;oracle.jdbc.pool.OracleDataSource&amp;quot;&amp;gt;
+                &amp;lt;Set name=&amp;quot;URL&amp;quot;&amp;gt;${database.url}&amp;lt;/Set&amp;gt;
+                &amp;lt;Set name=&amp;quot;user&amp;quot;&amp;gt;${database.user}&amp;lt;/Set&amp;gt;
+                &amp;lt;Set name=&amp;quot;password&amp;quot;&amp;gt;${database.password}&amp;lt;/Set&amp;gt;
+            &amp;lt;/New&amp;gt;
+        &amp;lt;/Arg&amp;gt;
+    &amp;lt;/New&amp;gt;
 
 &amp;lt;/Configure&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -390,26 +390,26 @@ Het is ook mogelijk om die te laten scannen voor resource changes met &lt;code&g
 
 &lt;p&gt;Als we aan bovenstaande plugin ook nog &lt;code&gt;executions&lt;/code&gt; opgeven, start jetty automatisch bij &lt;code&gt;pre-integration-test&lt;/code&gt; en stopt hij automatisch bij &lt;code&gt;-post-integration-test&lt;/code&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;				&amp;lt;executions&amp;gt;
-					&amp;lt;execution&amp;gt;
-						&amp;lt;id&amp;gt;start-jetty&amp;lt;/id&amp;gt;
-						&amp;lt;phase&amp;gt;pre-integration-test&amp;lt;/phase&amp;gt;
-						&amp;lt;goals&amp;gt;
-							&amp;lt;goal&amp;gt;run&amp;lt;/goal&amp;gt;
-						&amp;lt;/goals&amp;gt;
-						&amp;lt;configuration&amp;gt;
-							&amp;lt;scanIntervalSeconds&amp;gt;0&amp;lt;/scanIntervalSeconds&amp;gt;
-							&amp;lt;daemon&amp;gt;true&amp;lt;/daemon&amp;gt;
-						&amp;lt;/configuration&amp;gt;
-					&amp;lt;/execution&amp;gt;
-					&amp;lt;execution&amp;gt;
-						&amp;lt;id&amp;gt;stop-jetty&amp;lt;/id&amp;gt;
-						&amp;lt;phase&amp;gt;post-integration-test&amp;lt;/phase&amp;gt;
-						&amp;lt;goals&amp;gt;
-							&amp;lt;goal&amp;gt;stop&amp;lt;/goal&amp;gt;
-						&amp;lt;/goals&amp;gt;
-					&amp;lt;/execution&amp;gt;
-				&amp;lt;/executions&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;                &amp;lt;executions&amp;gt;
+                    &amp;lt;execution&amp;gt;
+                        &amp;lt;id&amp;gt;start-jetty&amp;lt;/id&amp;gt;
+                        &amp;lt;phase&amp;gt;pre-integration-test&amp;lt;/phase&amp;gt;
+                        &amp;lt;goals&amp;gt;
+                            &amp;lt;goal&amp;gt;run&amp;lt;/goal&amp;gt;
+                        &amp;lt;/goals&amp;gt;
+                        &amp;lt;configuration&amp;gt;
+                            &amp;lt;scanIntervalSeconds&amp;gt;0&amp;lt;/scanIntervalSeconds&amp;gt;
+                            &amp;lt;daemon&amp;gt;true&amp;lt;/daemon&amp;gt;
+                        &amp;lt;/configuration&amp;gt;
+                    &amp;lt;/execution&amp;gt;
+                    &amp;lt;execution&amp;gt;
+                        &amp;lt;id&amp;gt;stop-jetty&amp;lt;/id&amp;gt;
+                        &amp;lt;phase&amp;gt;post-integration-test&amp;lt;/phase&amp;gt;
+                        &amp;lt;goals&amp;gt;
+                            &amp;lt;goal&amp;gt;stop&amp;lt;/goal&amp;gt;
+                        &amp;lt;/goals&amp;gt;
+                    &amp;lt;/execution&amp;gt;
+                &amp;lt;/executions&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;daemon&lt;/code&gt; moet op &lt;strong&gt;true&lt;/strong&gt; staan omdat de bovenstaande plugin (jetty6) geen fork doet en dan natuurlijk geen testen gedraaid worden&amp;hellip;&lt;/p&gt;
@@ -418,36 +418,36 @@ Het is ook mogelijk om die te laten scannen voor resource changes met &lt;code&g
 
 &lt;p&gt;Op verschillende omgevingen deployen kan door verschillende profielen aan te maken in de pom.xml file, en dan als env. parameter &lt;code&gt;-Denv=[gewenste env value]&lt;/code&gt; de te deployen mee te geven:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;	&amp;lt;profiles&amp;gt;
-		&amp;lt;profile&amp;gt;
-			&amp;lt;activation&amp;gt;
-				&amp;lt;property&amp;gt;
-					&amp;lt;name&amp;gt;env&amp;lt;/name&amp;gt;
-					&amp;lt;value&amp;gt;test&amp;lt;/value&amp;gt;
-				&amp;lt;/property&amp;gt;
-			&amp;lt;/activation&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;profiles&amp;gt;
+        &amp;lt;profile&amp;gt;
+            &amp;lt;activation&amp;gt;
+                &amp;lt;property&amp;gt;
+                    &amp;lt;name&amp;gt;env&amp;lt;/name&amp;gt;
+                    &amp;lt;value&amp;gt;test&amp;lt;/value&amp;gt;
+                &amp;lt;/property&amp;gt;
+            &amp;lt;/activation&amp;gt;
 
-			&amp;lt;properties&amp;gt;
-				&amp;lt;server.url&amp;gt;http://blatomcat:8888/manager&amp;lt;/server.url&amp;gt;
-				&amp;lt;server.username&amp;gt;user&amp;lt;/server.username&amp;gt;
-				&amp;lt;server.password&amp;gt;pass&amp;lt;/server.password&amp;gt;
-			&amp;lt;/properties&amp;gt;
-		&amp;lt;/profile&amp;gt;
-	&amp;lt;/profiles&amp;gt;
+            &amp;lt;properties&amp;gt;
+                &amp;lt;server.url&amp;gt;http://blatomcat:8888/manager&amp;lt;/server.url&amp;gt;
+                &amp;lt;server.username&amp;gt;user&amp;lt;/server.username&amp;gt;
+                &amp;lt;server.password&amp;gt;pass&amp;lt;/server.password&amp;gt;
+            &amp;lt;/properties&amp;gt;
+        &amp;lt;/profile&amp;gt;
+    &amp;lt;/profiles&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Die properties die hierboven staan worden dan in deze plugin ingevuld:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;tomcat-maven-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;1.0-beta-1&amp;lt;/version&amp;gt;
-				&amp;lt;configuration&amp;gt;
-					&amp;lt;url&amp;gt;${server.url}&amp;lt;/url&amp;gt;
-					&amp;lt;username&amp;gt;${server.username}&amp;lt;/username&amp;gt;
-					&amp;lt;password&amp;gt;${server.password}&amp;lt;/password&amp;gt;
-				&amp;lt;/configuration&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;tomcat-maven-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;1.0-beta-1&amp;lt;/version&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;url&amp;gt;${server.url}&amp;lt;/url&amp;gt;
+                    &amp;lt;username&amp;gt;${server.username}&amp;lt;/username&amp;gt;
+                    &amp;lt;password&amp;gt;${server.password}&amp;lt;/password&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Uitvoeren met &lt;code&gt;mvn tomcat:deploy [-Denv=x]&lt;/code&gt;&lt;br/&gt;&lt;br/&gt;
@@ -496,12 +496,12 @@ Zie &lt;a href=&#34;http://maven.apache.org/plugins/maven-war-plugin/war-mojo.ht
 &lt;p&gt;Je kan met die plugin ook extra configuratie meegeven die de &lt;code&gt;.java&lt;/code&gt; files qua encoding goed zet:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;additionalConfig&amp;gt;
-	```
-		&amp;lt;name&amp;gt;.settings/org.eclipse.core.resources.prefs&amp;lt;/name&amp;gt;
-			&amp;lt;content&amp;gt;
-           				&amp;lt;![CDATA[eclipse.preferences.version######1${line.separator}encoding/&amp;lt;project&amp;gt;${project.build.sourceEncoding}${line.separator}]]&amp;gt;
-			&amp;lt;/content&amp;gt;
-	```
+    ```
+        &amp;lt;name&amp;gt;.settings/org.eclipse.core.resources.prefs&amp;lt;/name&amp;gt;
+            &amp;lt;content&amp;gt;
+                        &amp;lt;![CDATA[eclipse.preferences.version######1${line.separator}encoding/&amp;lt;project&amp;gt;${project.build.sourceEncoding}${line.separator}]]&amp;gt;
+            &amp;lt;/content&amp;gt;
+    ```
 &amp;lt;/additionalConfig&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -541,33 +541,33 @@ Zie &lt;a href=&#34;http://maven.apache.org/plugins/maven-war-plugin/war-mojo.ht
 &lt;p&gt;Waarbij &lt;code&gt;profile&lt;/code&gt; het profiel is die de surefire plugin heeft - bijvoorbeeld:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;profile&amp;gt;
-	&amp;lt;id&amp;gt;endtoend&amp;lt;/id&amp;gt;
-	&amp;lt;activation&amp;gt;
-		&amp;lt;property&amp;gt;
-			&amp;lt;name&amp;gt;endtoend&amp;lt;/name&amp;gt;
-		&amp;lt;/property&amp;gt;
-	&amp;lt;/activation&amp;gt;
-	&amp;lt;build&amp;gt;
-		&amp;lt;plugins&amp;gt;
-			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;maven-surefire-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;executions&amp;gt;
-					&amp;lt;execution&amp;gt;
-						&amp;lt;phase&amp;gt;integration-test&amp;lt;/phase&amp;gt;
-						&amp;lt;goals&amp;gt;
-							&amp;lt;goal&amp;gt;test&amp;lt;/goal&amp;gt;
-						&amp;lt;/goals&amp;gt;
-						&amp;lt;configuration&amp;gt;
-							&amp;lt;testFailureIgnore&amp;gt;true&amp;lt;/testFailureIgnore&amp;gt;
-							&amp;lt;skip&amp;gt;false&amp;lt;/skip&amp;gt;
-							&amp;lt;argLine&amp;gt;-Xms128M -Xmx512M -XX:MaxPermSize=512M&amp;lt;/argLine&amp;gt;
-						&amp;lt;/configuration&amp;gt;
-					&amp;lt;/execution&amp;gt;
-				&amp;lt;/executions&amp;gt;
-			&amp;lt;/plugin&amp;gt;
-		&amp;lt;/plugins&amp;gt;
-	&amp;lt;/build&amp;gt;
+    &amp;lt;id&amp;gt;endtoend&amp;lt;/id&amp;gt;
+    &amp;lt;activation&amp;gt;
+        &amp;lt;property&amp;gt;
+            &amp;lt;name&amp;gt;endtoend&amp;lt;/name&amp;gt;
+        &amp;lt;/property&amp;gt;
+    &amp;lt;/activation&amp;gt;
+    &amp;lt;build&amp;gt;
+        &amp;lt;plugins&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-surefire-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;executions&amp;gt;
+                    &amp;lt;execution&amp;gt;
+                        &amp;lt;phase&amp;gt;integration-test&amp;lt;/phase&amp;gt;
+                        &amp;lt;goals&amp;gt;
+                            &amp;lt;goal&amp;gt;test&amp;lt;/goal&amp;gt;
+                        &amp;lt;/goals&amp;gt;
+                        &amp;lt;configuration&amp;gt;
+                            &amp;lt;testFailureIgnore&amp;gt;true&amp;lt;/testFailureIgnore&amp;gt;
+                            &amp;lt;skip&amp;gt;false&amp;lt;/skip&amp;gt;
+                            &amp;lt;argLine&amp;gt;-Xms128M -Xmx512M -XX:MaxPermSize=512M&amp;lt;/argLine&amp;gt;
+                        &amp;lt;/configuration&amp;gt;
+                    &amp;lt;/execution&amp;gt;
+                &amp;lt;/executions&amp;gt;
+            &amp;lt;/plugin&amp;gt;
+        &amp;lt;/plugins&amp;gt;
+    &amp;lt;/build&amp;gt;
 &amp;lt;/profile&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -588,18 +588,18 @@ Het kan &lt;em&gt;ook&lt;/em&gt; zijn dat nog zaken geïnstalleerd moeten worden
 
 &lt;p&gt;Gebeurt in een plugin in de &lt;code&gt;build&lt;/code&gt; fase:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;	&amp;lt;build&amp;gt;
-		&amp;lt;finalName&amp;gt;test&amp;lt;/finalName&amp;gt;
-		&amp;lt;plugins&amp;gt;
-			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;configuration&amp;gt;
-					&amp;lt;encoding&amp;gt;UTF-8&amp;lt;/encoding&amp;gt;
-					&amp;lt;source&amp;gt;1.6&amp;lt;/source&amp;gt;
-					&amp;lt;target&amp;gt;1.6&amp;lt;/target&amp;gt;
-				&amp;lt;/configuration&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;build&amp;gt;
+        &amp;lt;finalName&amp;gt;test&amp;lt;/finalName&amp;gt;
+        &amp;lt;plugins&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;encoding&amp;gt;UTF-8&amp;lt;/encoding&amp;gt;
+                    &amp;lt;source&amp;gt;1.6&amp;lt;/source&amp;gt;
+                    &amp;lt;target&amp;gt;1.6&amp;lt;/target&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
@@ -680,22 +680,22 @@ maven2&amp;gt; clean
 [INFO] Executing: org.apache.maven.plugins:maven-clean-plugin [clean]
 [ERROR] Unable to complete running command: clean
 java.lang.RuntimeException: org.apache.maven.plugin.MojoExecutionException: Unable to execute mojo
-	at org.twdata.maven.cli.commands.ExecuteGoalCommand.run(ExecuteGoalCommand.java:111)
-	at org.twdata.maven.cli.CliShell.interpretCommand(CliShell.java:48)
-	at org.twdata.maven.cli.CliShell.run(CliShell.java:29)
-	at org.twdata.maven.cli.AbstractCliMojo.displayShell(AbstractCliMojo.java:144)
-	at org.twdata.maven.cli.AbstractCliMojo.access$000(AbstractCliMojo.java:22)
-	at org.twdata.maven.cli.AbstractCliMojo$1.run(AbstractCliMojo.java:116)
+    at org.twdata.maven.cli.commands.ExecuteGoalCommand.run(ExecuteGoalCommand.java:111)
+    at org.twdata.maven.cli.CliShell.interpretCommand(CliShell.java:48)
+    at org.twdata.maven.cli.CliShell.run(CliShell.java:29)
+    at org.twdata.maven.cli.AbstractCliMojo.displayShell(AbstractCliMojo.java:144)
+    at org.twdata.maven.cli.AbstractCliMojo.access$000(AbstractCliMojo.java:22)
+    at org.twdata.maven.cli.AbstractCliMojo$1.run(AbstractCliMojo.java:116)
 Caused by: org.apache.maven.plugin.MojoExecutionException: Unable to execute mojo
-	at org.shaded.mojoexecutor.MojoExecutor.executeMojo(MojoExecutor.java:106)
-	at org.twdata.maven.cli.MojoCall.run(MojoCall.java:31)
-	at org.twdata.maven.cli.commands.ExecuteGoalCommand.runMojo(ExecuteGoalCommand.java:125)
-	at org.twdata.maven.cli.commands.ExecuteGoalCommand.run(ExecuteGoalCommand.java:104)
-	... 5 more
+    at org.shaded.mojoexecutor.MojoExecutor.executeMojo(MojoExecutor.java:106)
+    at org.twdata.maven.cli.MojoCall.run(MojoCall.java:31)
+    at org.twdata.maven.cli.commands.ExecuteGoalCommand.runMojo(ExecuteGoalCommand.java:125)
+    at org.twdata.maven.cli.commands.ExecuteGoalCommand.run(ExecuteGoalCommand.java:104)
+    ... 5 more
 Caused by: java.lang.UnsupportedOperationException
-	at org.apache.maven.plugin.internal.DefaultPluginManager.executeMojo(DefaultPluginManager.java:90)
-	at org.shaded.mojoexecutor.MojoExecutor.executeMojo(MojoExecutor.java:104)
-	... 8 more
+    at org.apache.maven.plugin.internal.DefaultPluginManager.executeMojo(DefaultPluginManager.java:90)
+    at org.shaded.mojoexecutor.MojoExecutor.executeMojo(MojoExecutor.java:104)
+    ... 8 more
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tof&amp;hellip;&lt;/p&gt;
@@ -706,30 +706,30 @@ Caused by: java.lang.UnsupportedOperationException
 
 &lt;p&gt;Hiervoor moet je de volgende repository gebruiken (zit niet in de central repo):&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;	&amp;lt;repositories&amp;gt;
-		&amp;lt;repository&amp;gt;
-			&amp;lt;id&amp;gt;cbreleases&amp;lt;/id&amp;gt;
-			&amp;lt;url&amp;gt;https://repository-michael.forge.cloudbees.com/release&amp;lt;/url&amp;gt;
-			&amp;lt;releases&amp;gt;
-				&amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
-			&amp;lt;/releases&amp;gt;
-			&amp;lt;snapshots&amp;gt;
-				&amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
-			&amp;lt;/snapshots&amp;gt;
-		&amp;lt;/repository&amp;gt;
-	&amp;lt;/repositories&amp;gt;
-	&amp;lt;pluginRepositories&amp;gt;
-		&amp;lt;pluginRepository&amp;gt;
-			&amp;lt;id&amp;gt;cbreleases&amp;lt;/id&amp;gt;
-			&amp;lt;url&amp;gt;https://repository-michael.forge.cloudbees.com/release&amp;lt;/url&amp;gt;
-			&amp;lt;releases&amp;gt;
-				&amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
-			&amp;lt;/releases&amp;gt;
-			&amp;lt;snapshots&amp;gt;
-				&amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
-			&amp;lt;/snapshots&amp;gt;
-		&amp;lt;/pluginRepository&amp;gt;
-	&amp;lt;/pluginRepositories&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;repositories&amp;gt;
+        &amp;lt;repository&amp;gt;
+            &amp;lt;id&amp;gt;cbreleases&amp;lt;/id&amp;gt;
+            &amp;lt;url&amp;gt;https://repository-michael.forge.cloudbees.com/release&amp;lt;/url&amp;gt;
+            &amp;lt;releases&amp;gt;
+                &amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
+            &amp;lt;/releases&amp;gt;
+            &amp;lt;snapshots&amp;gt;
+                &amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
+            &amp;lt;/snapshots&amp;gt;
+        &amp;lt;/repository&amp;gt;
+    &amp;lt;/repositories&amp;gt;
+    &amp;lt;pluginRepositories&amp;gt;
+        &amp;lt;pluginRepository&amp;gt;
+            &amp;lt;id&amp;gt;cbreleases&amp;lt;/id&amp;gt;
+            &amp;lt;url&amp;gt;https://repository-michael.forge.cloudbees.com/release&amp;lt;/url&amp;gt;
+            &amp;lt;releases&amp;gt;
+                &amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
+            &amp;lt;/releases&amp;gt;
+            &amp;lt;snapshots&amp;gt;
+                &amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
+            &amp;lt;/snapshots&amp;gt;
+        &amp;lt;/pluginRepository&amp;gt;
+    &amp;lt;/pluginRepositories&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;maven-gae-plugin&#34;&gt;maven-gae-plugin&lt;/h4&gt;
@@ -750,7 +750,7 @@ Caused by: java.lang.UnsupportedOperationException
 
   &amp;lt;name&amp;gt;lkjm&amp;lt;/name&amp;gt;
 
-	&amp;lt;dependencies&amp;gt;
+    &amp;lt;dependencies&amp;gt;
 
     &amp;lt;!-- Google App Engine meta-package --&amp;gt;
     &amp;lt;dependency&amp;gt;
@@ -760,86 +760,86 @@ Caused by: java.lang.UnsupportedOperationException
       &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;
     &amp;lt;/dependency&amp;gt;
 
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;org.datanucleus&amp;lt;/groupId&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.datanucleus&amp;lt;/groupId&amp;gt;
             &amp;lt;artifactId&amp;gt;datanucleus-core&amp;lt;/artifactId&amp;gt;
             &amp;lt;version&amp;gt;${datanucleus.version}&amp;lt;/version&amp;gt;
             &amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt;
         &amp;lt;/dependency&amp;gt;
 
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;javax.transaction&amp;lt;/groupId&amp;gt;
-			&amp;lt;artifactId&amp;gt;jta&amp;lt;/artifactId&amp;gt;
-			&amp;lt;version&amp;gt;1.1&amp;lt;/version&amp;gt;
-		&amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;javax.transaction&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;jta&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;1.1&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
 
-		&amp;lt;!--
-			J2EE Servlet API. We need it to compile IndexServlet class. You can
-			probably remove it, if you don&#39;t explicitly use Servlets
-		--&amp;gt;
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;org.apache.geronimo.specs&amp;lt;/groupId&amp;gt;
-			&amp;lt;artifactId&amp;gt;geronimo-servlet_2.5_spec&amp;lt;/artifactId&amp;gt;
-			&amp;lt;version&amp;gt;1.2&amp;lt;/version&amp;gt;
-			&amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
-		&amp;lt;/dependency&amp;gt;
+        &amp;lt;!--
+            J2EE Servlet API. We need it to compile IndexServlet class. You can
+            probably remove it, if you don&#39;t explicitly use Servlets
+        --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.geronimo.specs&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;geronimo-servlet_2.5_spec&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;1.2&amp;lt;/version&amp;gt;
+            &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
 
-		&amp;lt;!--
-			Make use of JSP tags. Remove, if you don&#39;t use JSPs
-		--&amp;gt;
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;artifactId&amp;gt;standard&amp;lt;/artifactId&amp;gt;
-			&amp;lt;groupId&amp;gt;taglibs&amp;lt;/groupId&amp;gt;
-			&amp;lt;version&amp;gt;1.1.2&amp;lt;/version&amp;gt;
-			&amp;lt;type&amp;gt;jar&amp;lt;/type&amp;gt;
-			&amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt;
-		&amp;lt;/dependency&amp;gt;
+        &amp;lt;!--
+            Make use of JSP tags. Remove, if you don&#39;t use JSPs
+        --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;artifactId&amp;gt;standard&amp;lt;/artifactId&amp;gt;
+            &amp;lt;groupId&amp;gt;taglibs&amp;lt;/groupId&amp;gt;
+            &amp;lt;version&amp;gt;1.1.2&amp;lt;/version&amp;gt;
+            &amp;lt;type&amp;gt;jar&amp;lt;/type&amp;gt;
+            &amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
 
-		&amp;lt;!-- These dependencies are here just for enabling logging --&amp;gt;
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;org.slf4j&amp;lt;/groupId&amp;gt;
-			&amp;lt;artifactId&amp;gt;slf4j-api&amp;lt;/artifactId&amp;gt;
-			&amp;lt;version&amp;gt;1.6.1&amp;lt;/version&amp;gt;
-		&amp;lt;/dependency&amp;gt;
+        &amp;lt;!-- These dependencies are here just for enabling logging --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.slf4j&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;slf4j-api&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;1.6.1&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
 
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;ch.qos.logback&amp;lt;/groupId&amp;gt;
-			&amp;lt;artifactId&amp;gt;logback-classic&amp;lt;/artifactId&amp;gt;
-			&amp;lt;version&amp;gt;0.9.24&amp;lt;/version&amp;gt;
-		&amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;ch.qos.logback&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;logback-classic&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;0.9.24&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
 
-		&amp;lt;!-- Test scope --&amp;gt;
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;
-			&amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;
-			&amp;lt;version&amp;gt;4.5&amp;lt;/version&amp;gt;
-			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-		&amp;lt;/dependency&amp;gt;
+        &amp;lt;!-- Test scope --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;4.5&amp;lt;/version&amp;gt;
+            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
 
-		&amp;lt;!--
-			GAE libraries for local testing as described here:
-			http://code.google.com/appengine/docs/java/howto/unittesting.html
-		--&amp;gt;
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;com.google.appengine&amp;lt;/groupId&amp;gt;
-			&amp;lt;artifactId&amp;gt;appengine-api-labs&amp;lt;/artifactId&amp;gt;
-			&amp;lt;version&amp;gt;${gae.version}&amp;lt;/version&amp;gt;
-			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-		&amp;lt;/dependency&amp;gt;
+        &amp;lt;!--
+            GAE libraries for local testing as described here:
+            http://code.google.com/appengine/docs/java/howto/unittesting.html
+        --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.google.appengine&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;appengine-api-labs&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${gae.version}&amp;lt;/version&amp;gt;
+            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
 
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;com.google.appengine&amp;lt;/groupId&amp;gt;
-			&amp;lt;artifactId&amp;gt;appengine-api-stubs&amp;lt;/artifactId&amp;gt;
-			&amp;lt;version&amp;gt;${gae.version}&amp;lt;/version&amp;gt;
-			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-		&amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.google.appengine&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;appengine-api-stubs&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${gae.version}&amp;lt;/version&amp;gt;
+            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
 
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;com.google.appengine&amp;lt;/groupId&amp;gt;
-			&amp;lt;artifactId&amp;gt;appengine-testing&amp;lt;/artifactId&amp;gt;
-			&amp;lt;version&amp;gt;${gae.version}&amp;lt;/version&amp;gt;
-			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-		&amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.google.appengine&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;appengine-testing&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${gae.version}&amp;lt;/version&amp;gt;
+            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
 
         &amp;lt;dependency&amp;gt;
             &amp;lt;groupId&amp;gt;javax.jdo&amp;lt;/groupId&amp;gt;
@@ -852,181 +852,181 @@ Caused by: java.lang.UnsupportedOperationException
                 &amp;lt;/exclusion&amp;gt;
             &amp;lt;/exclusions&amp;gt;
         &amp;lt;/dependency&amp;gt;
-	&amp;lt;/dependencies&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
 
-	&amp;lt;build&amp;gt;
-		&amp;lt;plugins&amp;gt;
-			&amp;lt;!--
-				This plug-in &amp;quot;enhances&amp;quot; your domain model objects (i.e. makes them
-				persistent for datanucleus)
-			--&amp;gt;
-			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.datanucleus&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;maven-datanucleus-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;1.1.4&amp;lt;/version&amp;gt;
-				&amp;lt;configuration&amp;gt;
-					&amp;lt;!--
-						Make sure this path contains your persistent classes!
-					--&amp;gt;
-					&amp;lt;mappingIncludes&amp;gt;**/model/*.class&amp;lt;/mappingIncludes&amp;gt;
-					&amp;lt;verbose&amp;gt;true&amp;lt;/verbose&amp;gt;
-					&amp;lt;enhancerName&amp;gt;ASM&amp;lt;/enhancerName&amp;gt;
-					&amp;lt;api&amp;gt;JDO&amp;lt;/api&amp;gt;
-				&amp;lt;/configuration&amp;gt;
-				&amp;lt;executions&amp;gt;
-					&amp;lt;execution&amp;gt;
-						&amp;lt;phase&amp;gt;compile&amp;lt;/phase&amp;gt;
-						&amp;lt;goals&amp;gt;
-							&amp;lt;goal&amp;gt;enhance&amp;lt;/goal&amp;gt;
-						&amp;lt;/goals&amp;gt;
-					&amp;lt;/execution&amp;gt;
-				&amp;lt;/executions&amp;gt;
-				&amp;lt;dependencies&amp;gt;
-					&amp;lt;dependency&amp;gt;
-						&amp;lt;groupId&amp;gt;org.datanucleus&amp;lt;/groupId&amp;gt;
-						&amp;lt;artifactId&amp;gt;datanucleus-core&amp;lt;/artifactId&amp;gt;
-						&amp;lt;version&amp;gt;${datanucleus.version}&amp;lt;/version&amp;gt;
-						&amp;lt;exclusions&amp;gt;
-							&amp;lt;exclusion&amp;gt;
-								&amp;lt;groupId&amp;gt;javax.transaction&amp;lt;/groupId&amp;gt;
-								&amp;lt;artifactId&amp;gt;transaction-api&amp;lt;/artifactId&amp;gt;
-							&amp;lt;/exclusion&amp;gt;
-						&amp;lt;/exclusions&amp;gt;
-					&amp;lt;/dependency&amp;gt;
-					&amp;lt;dependency&amp;gt;
-						&amp;lt;groupId&amp;gt;org.datanucleus&amp;lt;/groupId&amp;gt;
-						&amp;lt;artifactId&amp;gt;datanucleus-rdbms&amp;lt;/artifactId&amp;gt;
-						&amp;lt;version&amp;gt;${datanucleus.version}&amp;lt;/version&amp;gt;
-					&amp;lt;/dependency&amp;gt;
-					&amp;lt;dependency&amp;gt;
-						&amp;lt;groupId&amp;gt;org.datanucleus&amp;lt;/groupId&amp;gt;
-						&amp;lt;artifactId&amp;gt;datanucleus-enhancer&amp;lt;/artifactId&amp;gt;
-						&amp;lt;version&amp;gt;1.1.4&amp;lt;/version&amp;gt;
-					&amp;lt;/dependency&amp;gt;
-					&amp;lt;dependency&amp;gt;
-						&amp;lt;groupId&amp;gt;javax.jdo&amp;lt;/groupId&amp;gt;
-						&amp;lt;artifactId&amp;gt;jdo2-api&amp;lt;/artifactId&amp;gt;
-						&amp;lt;version&amp;gt;2.3-ec&amp;lt;/version&amp;gt;
-						&amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt;
-					&amp;lt;/dependency&amp;gt;
-				&amp;lt;/dependencies&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+    &amp;lt;build&amp;gt;
+        &amp;lt;plugins&amp;gt;
+            &amp;lt;!--
+                This plug-in &amp;quot;enhances&amp;quot; your domain model objects (i.e. makes them
+                persistent for datanucleus)
+            --&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.datanucleus&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-datanucleus-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;1.1.4&amp;lt;/version&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;!--
+                        Make sure this path contains your persistent classes!
+                    --&amp;gt;
+                    &amp;lt;mappingIncludes&amp;gt;**/model/*.class&amp;lt;/mappingIncludes&amp;gt;
+                    &amp;lt;verbose&amp;gt;true&amp;lt;/verbose&amp;gt;
+                    &amp;lt;enhancerName&amp;gt;ASM&amp;lt;/enhancerName&amp;gt;
+                    &amp;lt;api&amp;gt;JDO&amp;lt;/api&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+                &amp;lt;executions&amp;gt;
+                    &amp;lt;execution&amp;gt;
+                        &amp;lt;phase&amp;gt;compile&amp;lt;/phase&amp;gt;
+                        &amp;lt;goals&amp;gt;
+                            &amp;lt;goal&amp;gt;enhance&amp;lt;/goal&amp;gt;
+                        &amp;lt;/goals&amp;gt;
+                    &amp;lt;/execution&amp;gt;
+                &amp;lt;/executions&amp;gt;
+                &amp;lt;dependencies&amp;gt;
+                    &amp;lt;dependency&amp;gt;
+                        &amp;lt;groupId&amp;gt;org.datanucleus&amp;lt;/groupId&amp;gt;
+                        &amp;lt;artifactId&amp;gt;datanucleus-core&amp;lt;/artifactId&amp;gt;
+                        &amp;lt;version&amp;gt;${datanucleus.version}&amp;lt;/version&amp;gt;
+                        &amp;lt;exclusions&amp;gt;
+                            &amp;lt;exclusion&amp;gt;
+                                &amp;lt;groupId&amp;gt;javax.transaction&amp;lt;/groupId&amp;gt;
+                                &amp;lt;artifactId&amp;gt;transaction-api&amp;lt;/artifactId&amp;gt;
+                            &amp;lt;/exclusion&amp;gt;
+                        &amp;lt;/exclusions&amp;gt;
+                    &amp;lt;/dependency&amp;gt;
+                    &amp;lt;dependency&amp;gt;
+                        &amp;lt;groupId&amp;gt;org.datanucleus&amp;lt;/groupId&amp;gt;
+                        &amp;lt;artifactId&amp;gt;datanucleus-rdbms&amp;lt;/artifactId&amp;gt;
+                        &amp;lt;version&amp;gt;${datanucleus.version}&amp;lt;/version&amp;gt;
+                    &amp;lt;/dependency&amp;gt;
+                    &amp;lt;dependency&amp;gt;
+                        &amp;lt;groupId&amp;gt;org.datanucleus&amp;lt;/groupId&amp;gt;
+                        &amp;lt;artifactId&amp;gt;datanucleus-enhancer&amp;lt;/artifactId&amp;gt;
+                        &amp;lt;version&amp;gt;1.1.4&amp;lt;/version&amp;gt;
+                    &amp;lt;/dependency&amp;gt;
+                    &amp;lt;dependency&amp;gt;
+                        &amp;lt;groupId&amp;gt;javax.jdo&amp;lt;/groupId&amp;gt;
+                        &amp;lt;artifactId&amp;gt;jdo2-api&amp;lt;/artifactId&amp;gt;
+                        &amp;lt;version&amp;gt;2.3-ec&amp;lt;/version&amp;gt;
+                        &amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt;
+                    &amp;lt;/dependency&amp;gt;
+                &amp;lt;/dependencies&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 
-			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;maven-war-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;2.1-beta-1&amp;lt;/version&amp;gt;
-				&amp;lt;configuration&amp;gt;
-					&amp;lt;webResources&amp;gt;
-						&amp;lt;resource&amp;gt;
-							&amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
-							&amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
-							&amp;lt;includes&amp;gt;
-								&amp;lt;include&amp;gt;**/appengine-web.xml&amp;lt;/include&amp;gt;
-							&amp;lt;/includes&amp;gt;
-						&amp;lt;/resource&amp;gt;
-					&amp;lt;/webResources&amp;gt;
-				&amp;lt;/configuration&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-war-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;2.1-beta-1&amp;lt;/version&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;webResources&amp;gt;
+                        &amp;lt;resource&amp;gt;
+                            &amp;lt;directory&amp;gt;src/main/webapp&amp;lt;/directory&amp;gt;
+                            &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+                            &amp;lt;includes&amp;gt;
+                                &amp;lt;include&amp;gt;**/appengine-web.xml&amp;lt;/include&amp;gt;
+                            &amp;lt;/includes&amp;gt;
+                        &amp;lt;/resource&amp;gt;
+                    &amp;lt;/webResources&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 
-			&amp;lt;!--
-				The actual maven-gae-plugin. Type &amp;quot;mvn gae:run&amp;quot; to run project, &amp;quot;mvn
-				gae:deploy&amp;quot; to upload to GAE.
-			--&amp;gt;
-			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;net.kindleit&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;maven-gae-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;0.9.5&amp;lt;/version&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+            &amp;lt;!--
+                The actual maven-gae-plugin. Type &amp;quot;mvn gae:run&amp;quot; to run project, &amp;quot;mvn
+                gae:deploy&amp;quot; to upload to GAE.
+            --&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;net.kindleit&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-gae-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;0.9.5&amp;lt;/version&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 
-			&amp;lt;!--
-				Upload application to the appspot automatically, during
-				release:perform
-			--&amp;gt;
-			&amp;lt;plugin&amp;gt;
-				&amp;lt;artifactId&amp;gt;maven-release-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;configuration&amp;gt;
-					&amp;lt;goals&amp;gt;gae:deploy&amp;lt;/goals&amp;gt;
-				&amp;lt;/configuration&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+            &amp;lt;!--
+                Upload application to the appspot automatically, during
+                release:perform
+            --&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-release-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;goals&amp;gt;gae:deploy&amp;lt;/goals&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 
-			&amp;lt;!-- Java compiler version --&amp;gt;
-			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;2.0&amp;lt;/version&amp;gt;
-				&amp;lt;configuration&amp;gt;
-					&amp;lt;source&amp;gt;1.6&amp;lt;/source&amp;gt;
-					&amp;lt;target&amp;gt;1.6&amp;lt;/target&amp;gt;
-				&amp;lt;/configuration&amp;gt;
-			&amp;lt;/plugin&amp;gt;
-		&amp;lt;/plugins&amp;gt;
-	&amp;lt;/build&amp;gt;
+            &amp;lt;!-- Java compiler version --&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;2.0&amp;lt;/version&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;source&amp;gt;1.6&amp;lt;/source&amp;gt;
+                    &amp;lt;target&amp;gt;1.6&amp;lt;/target&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+            &amp;lt;/plugin&amp;gt;
+        &amp;lt;/plugins&amp;gt;
+    &amp;lt;/build&amp;gt;
 
-	&amp;lt;!-- Specify hard-coded project properties here --&amp;gt;
-	&amp;lt;properties&amp;gt;
+    &amp;lt;!-- Specify hard-coded project properties here --&amp;gt;
+    &amp;lt;properties&amp;gt;
 
-	  &amp;lt;!-- Sets the project&#39;s default encoding.
+      &amp;lt;!-- Sets the project&#39;s default encoding.
          http://docs.codehaus.org/display/MAVENUSER/POM+Element+for+Source+File+Encoding --&amp;gt;
     &amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt;
 
-		&amp;lt;!--
-			This is just for &amp;quot;eclipse:eclipse&amp;quot; goal to always attempt downloading
-			sources
-		--&amp;gt;
-		&amp;lt;downloadSources&amp;gt;true&amp;lt;/downloadSources&amp;gt;
+        &amp;lt;!--
+            This is just for &amp;quot;eclipse:eclipse&amp;quot; goal to always attempt downloading
+            sources
+        --&amp;gt;
+        &amp;lt;downloadSources&amp;gt;true&amp;lt;/downloadSources&amp;gt;
 
-		&amp;lt;!--
-			Specify AppEngine version for your project. It should match SDK
-			version pointed to by ${gae.home} property (Typically, one used by
-			your Eclipse plug-in)
-		--&amp;gt;
-		&amp;lt;gae.version&amp;gt;1.6.5&amp;lt;/gae.version&amp;gt;
+        &amp;lt;!--
+            Specify AppEngine version for your project. It should match SDK
+            version pointed to by ${gae.home} property (Typically, one used by
+            your Eclipse plug-in)
+        --&amp;gt;
+        &amp;lt;gae.version&amp;gt;1.6.5&amp;lt;/gae.version&amp;gt;
 
-		&amp;lt;!--
-			Upload to http://test.latest.&amp;lt;applicationName&amp;gt;.appspot.com by default
-		--&amp;gt;
-		&amp;lt;gae.application.version&amp;gt;test&amp;lt;/gae.application.version&amp;gt;
+        &amp;lt;!--
+            Upload to http://test.latest.&amp;lt;applicationName&amp;gt;.appspot.com by default
+        --&amp;gt;
+        &amp;lt;gae.application.version&amp;gt;test&amp;lt;/gae.application.version&amp;gt;
 
         &amp;lt;datanucleus.version&amp;gt;1.1.5&amp;lt;/datanucleus.version&amp;gt;
-	&amp;lt;/properties&amp;gt;
+    &amp;lt;/properties&amp;gt;
 
-	&amp;lt;profiles&amp;gt;
-		&amp;lt;!--
-			We can configure our integration server to activate this profile and
-			perform gae:deploy, thus uploading latest snapshot to the
-			http://1.latest.&amp;lt;applicationName&amp;gt;.appspot.com automatically
-		--&amp;gt;
-		&amp;lt;profile&amp;gt;
-			&amp;lt;id&amp;gt;integration-build&amp;lt;/id&amp;gt;
-			&amp;lt;properties&amp;gt;
-				&amp;lt;gae.application.version&amp;gt;stage&amp;lt;/gae.application.version&amp;gt;
-			&amp;lt;/properties&amp;gt;
-		&amp;lt;/profile&amp;gt;
+    &amp;lt;profiles&amp;gt;
+        &amp;lt;!--
+            We can configure our integration server to activate this profile and
+            perform gae:deploy, thus uploading latest snapshot to the
+            http://1.latest.&amp;lt;applicationName&amp;gt;.appspot.com automatically
+        --&amp;gt;
+        &amp;lt;profile&amp;gt;
+            &amp;lt;id&amp;gt;integration-build&amp;lt;/id&amp;gt;
+            &amp;lt;properties&amp;gt;
+                &amp;lt;gae.application.version&amp;gt;stage&amp;lt;/gae.application.version&amp;gt;
+            &amp;lt;/properties&amp;gt;
+        &amp;lt;/profile&amp;gt;
 
-		&amp;lt;!--
-			This profile will activate automatically during release and upload
-			application to the http://2.latest.&amp;lt;applicationName&amp;gt;.appspot.com (We
-			might want to set the 2nd version as our applications Default version
-			to be accessible at http://&amp;lt;applicationName&amp;gt;.appspot.com)
-		--&amp;gt;
-		&amp;lt;profile&amp;gt;
-			&amp;lt;id&amp;gt;release-build&amp;lt;/id&amp;gt;
-			&amp;lt;activation&amp;gt;
-				&amp;lt;property&amp;gt;
-					&amp;lt;name&amp;gt;performRelease&amp;lt;/name&amp;gt;
-					&amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt;
-				&amp;lt;/property&amp;gt;
-			&amp;lt;/activation&amp;gt;
+        &amp;lt;!--
+            This profile will activate automatically during release and upload
+            application to the http://2.latest.&amp;lt;applicationName&amp;gt;.appspot.com (We
+            might want to set the 2nd version as our applications Default version
+            to be accessible at http://&amp;lt;applicationName&amp;gt;.appspot.com)
+        --&amp;gt;
+        &amp;lt;profile&amp;gt;
+            &amp;lt;id&amp;gt;release-build&amp;lt;/id&amp;gt;
+            &amp;lt;activation&amp;gt;
+                &amp;lt;property&amp;gt;
+                    &amp;lt;name&amp;gt;performRelease&amp;lt;/name&amp;gt;
+                    &amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt;
+                &amp;lt;/property&amp;gt;
+            &amp;lt;/activation&amp;gt;
 
-			&amp;lt;properties&amp;gt;
-				&amp;lt;!--
-					During release, set application version in appengine-web.xml to 2
-				--&amp;gt;
-				&amp;lt;gae.application.version&amp;gt;release&amp;lt;/gae.application.version&amp;gt;
-			&amp;lt;/properties&amp;gt;
-		&amp;lt;/profile&amp;gt;
-	&amp;lt;/profiles&amp;gt;
+            &amp;lt;properties&amp;gt;
+                &amp;lt;!--
+                    During release, set application version in appengine-web.xml to 2
+                --&amp;gt;
+                &amp;lt;gae.application.version&amp;gt;release&amp;lt;/gae.application.version&amp;gt;
+            &amp;lt;/properties&amp;gt;
+        &amp;lt;/profile&amp;gt;
+    &amp;lt;/profiles&amp;gt;
 
 &amp;lt;/project&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -1042,11 +1042,11 @@ Caused by: java.lang.UnsupportedOperationException
 
 &lt;p&gt;Een oudere versie (??) is deze:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;com.google.appengine&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;appengine-maven-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;${appengine.target.version}&amp;lt;/version&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;com.google.appengine&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;appengine-maven-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${appengine.target.version}&amp;lt;/version&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Hiermee kan je:&lt;/p&gt;

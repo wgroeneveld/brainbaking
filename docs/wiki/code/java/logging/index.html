@@ -112,6 +112,17 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/java">java</a> </li>
+      
+       <li><a href="/tags/logging">logging</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="code-java-logging">code:java &gt;&gt; Logging</h1>
@@ -124,28 +135,28 @@
 
 <p>Voorbeeld:</p>
 
-<pre><code class="language-java">	protected static final Logger jmsLogger = Logger.getLogger(&quot;jmsLogger&quot;);
+<pre><code class="language-java">    protected static final Logger jmsLogger = Logger.getLogger(&quot;jmsLogger&quot;);
 
-	private void log(String message) {
-		jmsLogger.info(&quot;Incoming JMS Message (&quot; + getClass().getSimpleName() + &quot;): &quot; + message);
-	}
+    private void log(String message) {
+        jmsLogger.info(&quot;Incoming JMS Message (&quot; + getClass().getSimpleName() + &quot;): &quot; + message);
+    }
 
-	@Override
-	public void doHandle(String textMessage) {
-		try {
-			String usernameFromTextMessage = getUsernameFromTextMessage(textMessage);
-			NDC.push(currentThread().getName() + &quot;#&quot; + currentThread().getId() + &quot;@&quot; + usernameFromTextMessage);
-			log(&quot;Started handling: &quot; + textMessage);
+    @Override
+    public void doHandle(String textMessage) {
+        try {
+            String usernameFromTextMessage = getUsernameFromTextMessage(textMessage);
+            NDC.push(currentThread().getName() + &quot;#&quot; + currentThread().getId() + &quot;@&quot; + usernameFromTextMessage);
+            log(&quot;Started handling: &quot; + textMessage);
 
-			VacatureSecurityInitializer.initConsulentUserInContext(usernameFromTextMessage);
-			handleTextMessage(textMessage);
+            VacatureSecurityInitializer.initConsulentUserInContext(usernameFromTextMessage);
+            handleTextMessage(textMessage);
 
-			log(&quot;Completed handling&quot;);
-		} finally {
-			resetSecurityContext();
-			NDC.pop();
-		}
-	}
+            log(&quot;Completed handling&quot;);
+        } finally {
+            resetSecurityContext();
+            NDC.pop();
+        }
+    }
 </code></pre>
 
 <p><code>NDC.push()</code> zou een unieke parameter moeten binnen pakken, dit wordt geprepend aan de log ouput:</p>
@@ -204,7 +215,7 @@
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

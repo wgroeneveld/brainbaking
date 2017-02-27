@@ -2,11 +2,6 @@
 title = "snippets"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "javascript",
     "snippets"

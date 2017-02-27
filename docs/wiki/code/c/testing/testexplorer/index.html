@@ -112,6 +112,19 @@
 
     <div class="container" role="main">	  
       
+              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+      <ul id="tags">
+      
+       <li><a href="/tags/code">code</a> </li>
+      
+       <li><a href="/tags/c">c</a> </li>
+      
+       <li><a href="/tags/testing">testing</a> </li>
+      
+       <li><a href="/tags/testexplorer">testexplorer</a> </li>
+      
+      </ul>
+
         
 
 <h1 id="visual-studio-2012-test-explorer-framework">Visual Studio 2012 Test Explorer framework</h1>
@@ -149,59 +162,59 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace calc
 {
-	TEST_CLASS(CalculatorTest)
-	{
-	private:
-		int nStartValue;
-		Calculator* calc;
+    TEST_CLASS(CalculatorTest)
+    {
+    private:
+        int nStartValue;
+        Calculator* calc;
 
-		void CreateCalcSUT()
-		{
-			calc = new Calculator(nStartValue);
-		}
+        void CreateCalcSUT()
+        {
+            calc = new Calculator(nStartValue);
+        }
 
-	public:
-		/*testcase template:
-		TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
-		{
-		param specialParam = specialvalue;
-		...
-		param expectation = whatYouExpect;
-		...
-		(SUT creation)
-		(call methods)
-		...
-		assert(s)
-		}*/
+    public:
+        /*testcase template:
+        TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
+        {
+        param specialParam = specialvalue;
+        ...
+        param expectation = whatYouExpect;
+        ...
+        (SUT creation)
+        (call methods)
+        ...
+        assert(s)
+        }*/
 
 
-		TEST_METHOD_INITIALIZE(InitialiseDefaults)
-		{
-			calc = NULL;
-			nStartValue = 5;
-		}
+        TEST_METHOD_INITIALIZE(InitialiseDefaults)
+        {
+            calc = NULL;
+            nStartValue = 5;
+        }
 
-		TEST_METHOD_CLEANUP(CleanupObjects)
-		{
-			delete calc;
-		}
+        TEST_METHOD_CLEANUP(CleanupObjects)
+        {
+            delete calc;
+        }
 
-		TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
-		{
-			int nExpectedValue = 0;
-			calc = new Calculator();
-			Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
-		}
+        TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
+        {
+            int nExpectedValue = 0;
+            calc = new Calculator();
+            Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
+        }
 
-		TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
-		{
-			nStartValue = 5;
-			int nExpectedValue = 5;
-			CreateCalcSUT();
-			Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
-		}
+        TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
+        {
+            nStartValue = 5;
+            int nExpectedValue = 5;
+            CreateCalcSUT();
+            Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
+        }
 
-	};
+    };
 }
 </code></pre>
 
@@ -265,7 +278,7 @@ namespace calc
         <p class="credits copyright text-muted">
     	  Wouter Groeneveld
     	  &nbsp;&bull;&nbsp;
-    	  2016
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;

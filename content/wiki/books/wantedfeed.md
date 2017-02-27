@@ -2,11 +2,6 @@
 title = "wantedfeed"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "books",
     "wantedfeed"
 ]

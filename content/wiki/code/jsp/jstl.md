@@ -2,11 +2,6 @@
 title = "jstl"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "jsp",
     "jstl"

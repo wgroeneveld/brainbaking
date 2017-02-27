@@ -2,11 +2,6 @@
 title = "resharper"
 draft = false
 tags = [
-    "",
-    "Users",
-    "jefklak",
-    "Downloads",
-    "pages",
     "code",
     "tools",
     "resharper"
