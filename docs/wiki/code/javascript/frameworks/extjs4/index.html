@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -159,13 +195,13 @@
 
 <pre><code class="language-javascript">Ext.define('Evita.store.masterdata.KeywordType', {
     extend: 'Ext.data.EvitaStore',
-    model: 'Evita.model.parkingfacility.MasterdataType',
+	model: 'Evita.model.parkingfacility.MasterdataType',
     proxy: {
-        type: 'evitaAjax',
-        api:{
-            read: 'getMasterdataKeywordByTypeName.json'
-        }
-    }
+		type: 'evitaAjax',
+		api:{
+			read: 'getMasterdataKeywordByTypeName.json'
+		}
+	}
 });
 </code></pre>
 
@@ -176,22 +212,22 @@
 <p>Oplossing: gebruik <code>Ext.create</code> in plaats van te refereren naar de <code>xtype</code>, die gaat door de <code>StoreManager</code> opgezocht &amp; hetbruikt worden anders (1 instantie).</p>
 
 <pre><code class="language-javascript">{
-                        xtype : 'combo',
-                        store : Ext.create('Evita.store.masterdata.KeywordType'),
-                        storeMasterdataTypeName: 'MaturityOfParkingFacility',
-                        valueField : 'code',
-                        displayField : 'value',
-                        name : 'maturity',
-                        id: 'ParkingFacilityCreate_masterdata_maturity',
-                    }
+		    			xtype : 'combo',
+			    		store : Ext.create('Evita.store.masterdata.KeywordType'),
+			    		storeMasterdataTypeName: 'MaturityOfParkingFacility',
+			    		valueField : 'code',
+			    		displayField : 'value',
+		    			name : 'maturity',
+		    			id: 'ParkingFacilityCreate_masterdata_maturity',
+		    		}
 </code></pre>
 
 <p>Loop in de controller over alle stores om dan bvb <code>extraParams</code> in te stellen:</p>
 
-<pre><code class="language-javascript">        view.down('form').query('combo').forEach(function(combo) {
-            combo.getStore().proxy.extraParams['masterdataTypeName'] = combo.storeMasterdataTypeName;
-            combo.getStore().proxy.extraParams['countryId'] = wizardData.general.countryId;
-        });
+<pre><code class="language-javascript">    	view.down('form').query('combo').forEach(function(combo) {
+			combo.getStore().proxy.extraParams['masterdataTypeName'] = combo.storeMasterdataTypeName;
+			combo.getStore().proxy.extraParams['countryId'] = wizardData.general.countryId;
+    	});
 </code></pre>
 
       

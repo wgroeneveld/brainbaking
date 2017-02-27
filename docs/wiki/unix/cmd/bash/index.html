@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -203,11 +239,11 @@ SEARCH=&quot;&quot;
 
 for FILE_EXCLUDE in ${FILE_EXCLUDES[@]}
 do
-    SEARCH=&quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&quot;
+	SEARCH=&quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&quot;
 done
 for DIR_EXCLUDE in ${DIR_EXCLUDES[@]}
 do
-    SEARCH=&quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&quot;
+	SEARCH=&quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&quot;
 done
 </code></pre>
 

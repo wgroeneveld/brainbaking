@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -227,25 +263,25 @@ end
 <p>Een voorbeeld van een custom http handler:</p>
 
 <pre><code class="language-python">class HttpHandler(SimpleHTTPRequestHandler):
-    def readStatus(self):
-        return {
-            &quot;Status&quot;: &quot;blabla&quot;,
-            &quot;StartTime&quot;: &quot;&quot;
-        }
+	def readStatus(self):
+		return {
+			&quot;Status&quot;: &quot;blabla&quot;,
+			&quot;StartTime&quot;: &quot;&quot;
+		}
 
-    def do_GET(self):
-        try:
-            print('serving %s now' % self.path)
-            if &quot;status.json&quot; in self.path:
-                self.send_response(200)
-                self.send_header('Content-type', 'text/json')
-                self.end_headers()
-                self.wfile.write(json.dumps(self.readStatus()).encode())
-            else:
-                SimpleHTTPRequestHandler.do_GET(self)
+	def do_GET(self):
+		try:
+			print('serving %s now' % self.path)
+			if &quot;status.json&quot; in self.path:
+				self.send_response(200)
+				self.send_header('Content-type', 'text/json')
+				self.end_headers()
+				self.wfile.write(json.dumps(self.readStatus()).encode())
+			else:
+				SimpleHTTPRequestHandler.do_GET(self)
 
-        except IOError:
-            self.send_error(500, 'internal server error in server python source: %s' % self.path)
+		except IOError:
+			self.send_error(500, 'internal server error in server python source: %s' % self.path)
 
 </code></pre>
 
@@ -266,14 +302,14 @@ end
 
 <p>functies in functies aanmaken werkt perfect, &ldquo;closed over&rdquo; die lexicale scope, net zoals je zou verwachten zoals bijvoorbeeld in javascript:</p>
 
-<pre><code class="language-python">    def readBuildStatus(self):
-        html = urllib.request.urlopen(&quot;http://bla/lastbuildstatus.htm&quot;).read().decode()
-        def extractVersion():
-            versionString = &quot;Version: &quot;
-            versionIndex = html.find(&quot;Version: &quot;)
-            return html[versionIndex + len(versionString) : versionIndex + len(versionString) + len(&quot;YYYY.MM&quot;)]
-        def extractStatus():
-            return &quot;Succeeded&quot; if html.find(&quot;SUCCESS&quot;) != -1 else &quot;Failed&quot;
+<pre><code class="language-python">	def readBuildStatus(self):
+		html = urllib.request.urlopen(&quot;http://bla/lastbuildstatus.htm&quot;).read().decode()
+		def extractVersion():
+			versionString = &quot;Version: &quot;
+			versionIndex = html.find(&quot;Version: &quot;)
+			return html[versionIndex + len(versionString) : versionIndex + len(versionString) + len(&quot;YYYY.MM&quot;)]
+		def extractStatus():
+			return &quot;Succeeded&quot; if html.find(&quot;SUCCESS&quot;) != -1 else &quot;Failed&quot;
 </code></pre>
 
 <p>de twee andere methods lezen de <code>html</code> variabele uit. Hier hoef je geen <code>self.</code> prefix te gebruiken, binnen de <code>readBuildStatus()</code> functie zelf - hierbuiten zijn de closures verdwenen natuurlijk (out of scope).</p>

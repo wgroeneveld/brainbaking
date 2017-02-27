@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -140,15 +176,15 @@
 
 <p>HornetQ werkt met <code>bridges</code> die je moet configureren in de <code>hornetq-configuration.xml</code>:</p>
 
-<pre><code class="language-xml">    &lt;bridges&gt;   
-        &lt;bridge name=&quot;system1-store-and-forward&quot;&gt;
-            &lt;queue-name&gt;jms.queue.fromQueue&lt;/queue-name&gt;
-            &lt;forwarding-address&gt;jms.queue.toQueue&lt;/forwarding-address&gt;
-            &lt;static-connectors&gt;
-                &lt;connector-ref&gt;forward-to-hornetq-connector&lt;/connector-ref&gt;
-            &lt;/static-connectors&gt;     
-        &lt;/bridge&gt;    
-    &lt;/bridges&gt;
+<pre><code class="language-xml">	&lt;bridges&gt;   
+		&lt;bridge name=&quot;system1-store-and-forward&quot;&gt;
+			&lt;queue-name&gt;jms.queue.fromQueue&lt;/queue-name&gt;
+			&lt;forwarding-address&gt;jms.queue.toQueue&lt;/forwarding-address&gt;
+			&lt;static-connectors&gt;
+				&lt;connector-ref&gt;forward-to-hornetq-connector&lt;/connector-ref&gt;
+			&lt;/static-connectors&gt;     
+		&lt;/bridge&gt;    
+  	&lt;/bridges&gt;
 
    &lt;connectors&gt;
       &lt;connector name=&quot;forward-to-hornetq-connector&quot;&gt;

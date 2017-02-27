@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -164,12 +200,12 @@
 
 <pre><code>Variable_name          value
 ----------------------------
-Delayed_insert_threads  0
-Slow_launch_threads 0
-Threads_cached  8
-Threads_connected   56
-Threads_created 138
-Threads_running 2
+Delayed_insert_threads	0
+Slow_launch_threads	0
+Threads_cached	8
+Threads_connected	56
+Threads_created	138
+Threads_running	2
 </code></pre>
 
 <h5 id="huidige-connecties-killen">Huidige connecties killen</h5>

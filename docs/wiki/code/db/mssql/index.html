@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -139,7 +175,7 @@ DECLARE FKCURSOR CURSOR FOR
 select distinct name,object_name(parent_object_id) from sys.objects where object_id in 
 (   select fk.constraint_object_id from sys.foreign_key_columns as fk
     where fk.referenced_object_id = 
-        (select object_id from sys.tables where name = 'Reference')
+    	(select object_id from sys.tables where name = 'Reference')
 )
 
 OPEN FKCURSOR
@@ -150,8 +186,8 @@ INTO @constraint, @table
 WHILE @@FETCH_STATUS = 0
 BEGIN
 
-    SET @cmd = N'ALTER TABLE [dbo].['+@table+'] DROP CONSTRAINT ' +  @constraint
-    EXEC sp_executeSQL @cmd;
+	SET @cmd = N'ALTER TABLE [dbo].['+@table+'] DROP CONSTRAINT ' +  @constraint
+	EXEC sp_executeSQL @cmd;
 
    FETCH NEXT FROM FKCURSOR 
     INTO @constraint, @table
@@ -192,15 +228,15 @@ WHERE
     AND tables.name = 'tblhtmltemplate'
     AND all_columns.name = 'isdefault')
 
-    set @query = 'alter table tblhtmltemplate drop constraint ' + @cname 
+	set @query = 'alter table tblhtmltemplate drop constraint ' + @cname 
 
 if @cname is not null begin
-    exec sp_executesql @query
+	exec sp_executesql @query
 end
 
 IF  EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name######'tblHtmlTemplate' AND column_name 'isDefault')
 BEGIN
-    alter table tblhtmltemplate drop column isdefault;
+	alter table tblhtmltemplate drop column isdefault;
 END;
 
 </code></pre>
@@ -214,13 +250,13 @@ GO
 
 CREATE FUNCTION ifnull 
 (
-    -- Add the parameters for the function here
-    @value1 datetime, @returnvalue int
+	-- Add the parameters for the function here
+	@value1 datetime, @returnvalue int
 )
 RETURNS datetime
 AS
 BEGIN
-    return isnull(@value1, @returnvalue)
+	return isnull(@value1, @returnvalue)
 
 END
 GO

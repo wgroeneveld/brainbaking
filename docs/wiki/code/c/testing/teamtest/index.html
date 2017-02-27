@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -162,9 +198,9 @@
 
 <pre><code class="language-c">class MyClass {
 public:
-    MyClass() {};
+	MyClass() {};
 
-    int addUp(int one, int two);
+	int addUp(int one, int two);
 };
 </code></pre>
 
@@ -174,7 +210,7 @@ using namespace std;
 
 int MyClass::addUp(int one, int two)
 {
-    return one + two;
+	return one + two;
 }
 </code></pre>
 
@@ -188,22 +224,22 @@ int MyClass::addUp(int one, int two)
 using namespace System;
 using namespace System::Text;
 using namespace System::Collections::Generic;
-using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
+using namespace	Microsoft::VisualStudio::TestTools::UnitTesting;
 
 namespace unittests
 {
-    [TestClass]
-    public ref class MyClassTest
-    {
+	[TestClass]
+	public ref class MyClassTest
+	{
 
-    public: 
+	public: 
 
-        [TestMethod]
-        void AddOne()
-        {
-            Assert::AreEqual(3, MyClass().addUp(1, 2));
-        };
-    };
+		[TestMethod]
+		void AddOne()
+		{
+			Assert::AreEqual(3, MyClass().addUp(1, 2));
+		};
+	};
 }
 </code></pre>
 
@@ -238,9 +274,9 @@ MyClassTest.obj : error LNK2019: unresolved external symbol &quot;public: int __
 
 class FRIENDCLASS MyClass {
 public:
-    MyClass();
+	MyClass();
 
-    int addUp(int one, int two);
+	int addUp(int one, int two);
 };
 </code></pre>
 

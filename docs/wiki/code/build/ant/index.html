@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -131,26 +167,26 @@
 
 <pre><code class="language-xml">&lt;project name######&quot;vac Precompilatie&quot; default&quot;precompile-all&quot; basedir=&quot;.&quot;&gt;
 
-    &lt;taskdef classname######&quot;org.apache.jasper.JspC&quot;  name&quot;jasper&quot;&gt;
-        &lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&gt;
-        &lt;classpath id=&quot;jasperpath&quot;&gt;
-            ```et
-                 &lt;include name=&quot;*.jar&quot;/&gt;
-            &lt;/fileset&gt;
+	&lt;taskdef classname######&quot;org.apache.jasper.JspC&quot;  name&quot;jasper&quot;&gt;
+		&lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&gt;
+		&lt;classpath id=&quot;jasperpath&quot;&gt;
+			```et
+				 &lt;include name=&quot;*.jar&quot;/&gt;
+			&lt;/fileset&gt;
 
-            ```et
-                 &lt;include name=&quot;*.jar&quot;/&gt;
-            &lt;/fileset&gt;
-        &lt;/classpath&gt;
-    &lt;/taskdef&gt;
-    
-    &lt;target name=&quot;precompile-all&quot;&gt;
-        &lt;mkdir dir=&quot;target/jsp&quot; /&gt;
-        &lt;jasper 
-            validatexml=&quot;false&quot; 
-            uriroot=&quot;target/vac&quot;
-            outputdir=&quot;target/jsp&quot; /&gt;
-    &lt;/target&gt;
+			```et
+				 &lt;include name=&quot;*.jar&quot;/&gt;
+			&lt;/fileset&gt;
+		&lt;/classpath&gt;
+	&lt;/taskdef&gt;
+	
+	&lt;target name=&quot;precompile-all&quot;&gt;
+		&lt;mkdir dir=&quot;target/jsp&quot; /&gt;
+		&lt;jasper 
+			validatexml=&quot;false&quot; 
+			uriroot=&quot;target/vac&quot;
+			outputdir=&quot;target/jsp&quot; /&gt;
+	&lt;/target&gt;
 
 &lt;/project&gt;
 </code></pre>

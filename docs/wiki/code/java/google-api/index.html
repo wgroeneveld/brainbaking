@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -158,36 +194,36 @@ echo &quot;--- DONE!&quot;```
 ##### maven deps voor de client 
 
 ```xml
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.google.oauth-client&lt;/groupId&gt;
-            &lt;artifactId&gt;google-oauth-client&lt;/artifactId&gt;
-            &lt;version&gt;1.13.1-beta&lt;/version&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.google.api-client&lt;/groupId&gt;
-            &lt;artifactId&gt;google-api-client&lt;/artifactId&gt;
-            &lt;version&gt;1.13.2-beta&lt;/version&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.google.http-client&lt;/groupId&gt;
-            &lt;artifactId&gt;google-http-client-jackson2&lt;/artifactId&gt;
-            &lt;version&gt;1.13.1-beta&lt;/version&gt;
-        &lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.google.oauth-client&lt;/groupId&gt;
+			&lt;artifactId&gt;google-oauth-client&lt;/artifactId&gt;
+			&lt;version&gt;1.13.1-beta&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.google.api-client&lt;/groupId&gt;
+			&lt;artifactId&gt;google-api-client&lt;/artifactId&gt;
+			&lt;version&gt;1.13.2-beta&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.google.http-client&lt;/groupId&gt;
+			&lt;artifactId&gt;google-http-client-jackson2&lt;/artifactId&gt;
+			&lt;version&gt;1.13.1-beta&lt;/version&gt;
+		&lt;/dependency&gt;
 
 </code></pre>
 
 <p>oauth is de enige compile dependency die aangeduid staat, maar api-client is nodig voor de algemene http transport - zie <a href="http://code.google.com/p/google-api-java-client/">http://code.google.com/p/google-api-java-client/</a>
 Een client call maken kan je dan zo doen:</p>
 
-<pre><code class="language-java">        NetHttpTransport transport = new NetHttpTransport();
+<pre><code class="language-java">		NetHttpTransport transport = new NetHttpTransport();
 
-        // laatste param is voor credentials mee te geven
-        Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
-        try {
-            devices.houses().all().execute().getItems();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+		// laatste param is voor credentials mee te geven
+		Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
+		try {
+			devices.houses().all().execute().getItems();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 </code></pre>
 

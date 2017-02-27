@@ -25,18 +25,18 @@
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@JavaScript({ &amp;quot;https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js&amp;quot;, &amp;quot;js_label.js&amp;quot; })
 public class JsLabel extends AbstractJavaScriptComponent {
 
-    public JsLabel(String xhtml) {
-        getState().xhtml = xhtml;
-    }
+	public JsLabel(String xhtml) {
+		getState().xhtml = xhtml;
+	}
 
-    @Override
-    protected JsLabelState getState() {
-        return (JsLabelState) super.getState();
-    }
+	@Override
+	protected JsLabelState getState() {
+		return (JsLabelState) super.getState();
+	}
 
-    public static class JsLabelState extends JavaScriptComponentState {
-        public String xhtml;
-    }
+	public static class JsLabelState extends JavaScriptComponentState {
+		public String xhtml;
+	}
 
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -45,7 +45,7 @@ public class JsLabel extends AbstractJavaScriptComponent {
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;be_vdab_nonstop_presentation_form_JsLabel = function() {
   var e = this.getElement();
-    
+	
   this.onStateChange = function() {
     jQuery(e).html(this.getState().xhtml); 
   }
@@ -57,22 +57,22 @@ public class JsLabel extends AbstractJavaScriptComponent {
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@PreserveOnRefresh
 @Theme(&amp;quot;yourTheme&amp;quot;)
 public class MainUI extends UI {
-    @Override
-    protected final void init(VaadinRequest request) {
-        setNavigator(new MyNavigator(this));
-        initDefaultScreen();
-        getNavigator().navigate();
-    }
+	@Override
+	protected final void init(VaadinRequest request) {
+		setNavigator(new MyNavigator(this));
+		initDefaultScreen();
+		getNavigator().navigate();
+	}
 
-    private void initDefaultScreen() {
-        getNavigator().addView(&amp;quot;&amp;quot;, BlahScherm.class);
-    }
+	private void initDefaultScreen() {
+		getNavigator().addView(&amp;quot;&amp;quot;, BlahScherm.class);
+	}
 
-    public void refresh() {
-        Component content = getContent();
-        setContent(new VerticalLayout());
-        setContent(content);
-    }
+	public void refresh() {
+		Component content = getContent();
+		setContent(new VerticalLayout());
+		setContent(content);
+	}
 
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -85,84 +85,84 @@ public class MainUI extends UI {
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class VaadinUtilties {
 
-    public static &amp;lt;T extends AbstractComponent&amp;gt; T findComponentWithin(HasComponents otherComponent, Class&amp;lt;T&amp;gt; componentClass, String id) {
-        return findOnly(otherComponent, componentClass, metId(id));
-    }
+	public static &amp;lt;T extends AbstractComponent&amp;gt; T findComponentWithin(HasComponents otherComponent, Class&amp;lt;T&amp;gt; componentClass, String id) {
+		return findOnly(otherComponent, componentClass, metId(id));
+	}
 
-    public static &amp;lt;E extends Component&amp;gt; E findOnly(HasComponents container, final Class&amp;lt;E&amp;gt; componentClass, Predicate&amp;lt;? super E&amp;gt; predicate) {
-        return getOnlyElement(filter(findAll(container, componentClass), predicate));
-    }
+	public static &amp;lt;E extends Component&amp;gt; E findOnly(HasComponents container, final Class&amp;lt;E&amp;gt; componentClass, Predicate&amp;lt;? super E&amp;gt; predicate) {
+		return getOnlyElement(filter(findAll(container, componentClass), predicate));
+	}
 
-    public static &amp;lt;E extends Component&amp;gt; E findOnly(HasComponents container, final Class&amp;lt;E&amp;gt; componentClass) {
-        return findOnly(container, componentClass, alwaysTrue());
-    }
+	public static &amp;lt;E extends Component&amp;gt; E findOnly(HasComponents container, final Class&amp;lt;E&amp;gt; componentClass) {
+		return findOnly(container, componentClass, alwaysTrue());
+	}
 
-    public static &amp;lt;E extends Component&amp;gt; Set&amp;lt;E&amp;gt; findAll(HasComponents container, Class&amp;lt;E&amp;gt; componentClass) {
-        if (container instanceof CustomField) {
-            initCustomField((CustomField&amp;lt;?&amp;gt;) container);
-        }
-        Set&amp;lt;E&amp;gt; result = newHashSet(filter(container, componentClass));
-        for (HasComponents subContainer : filter(container, HasComponents.class)) {
-            result.addAll(findAll(subContainer, componentClass));
-        }
-        return result;
-    }
+	public static &amp;lt;E extends Component&amp;gt; Set&amp;lt;E&amp;gt; findAll(HasComponents container, Class&amp;lt;E&amp;gt; componentClass) {
+		if (container instanceof CustomField) {
+			initCustomField((CustomField&amp;lt;?&amp;gt;) container);
+		}
+		Set&amp;lt;E&amp;gt; result = newHashSet(filter(container, componentClass));
+		for (HasComponents subContainer : filter(container, HasComponents.class)) {
+			result.addAll(findAll(subContainer, componentClass));
+		}
+		return result;
+	}
 
-    public static void initCustomField(CustomField&amp;lt;?&amp;gt; customField) {
-        customField.iterator().next();
-    }
+	public static void initCustomField(CustomField&amp;lt;?&amp;gt; customField) {
+		customField.iterator().next();
+	}
 
-    public static boolean isVisibleOnScreen(Component component) {
-        return component.isVisible() &amp;amp;&amp;amp; parentIsVisible(component);
-    }
+	public static boolean isVisibleOnScreen(Component component) {
+		return component.isVisible() &amp;amp;&amp;amp; parentIsVisible(component);
+	}
 
-    private static boolean parentIsVisible(Component component) {
-        if (component.getParent() ###### null) {
-            return true;
-        } else {
-            return isVisibleOnScreen(component.getParent());
-        }
-    }
+	private static boolean parentIsVisible(Component component) {
+		if (component.getParent() ###### null) {
+			return true;
+		} else {
+			return isVisibleOnScreen(component.getParent());
+		}
+	}
 
-    public static Predicate&amp;lt;Component&amp;gt; metCaption(final String caption) {
-        return new Predicate&amp;lt;Component&amp;gt;() {
-            public boolean apply(Component component) {
-                return StringUtils.equals(component.getCaption(), caption);
-            }
-        };
-    }
+	public static Predicate&amp;lt;Component&amp;gt; metCaption(final String caption) {
+		return new Predicate&amp;lt;Component&amp;gt;() {
+			public boolean apply(Component component) {
+				return StringUtils.equals(component.getCaption(), caption);
+			}
+		};
+	}
 
-    public static Predicate&amp;lt;Component&amp;gt; captionContains(final String caption) {
-        return new Predicate&amp;lt;Component&amp;gt;() {
-            public boolean apply(Component component) {
-                return StringUtils.contains(component.getCaption(), caption);
-            }
-        };
-    }
+	public static Predicate&amp;lt;Component&amp;gt; captionContains(final String caption) {
+		return new Predicate&amp;lt;Component&amp;gt;() {
+			public boolean apply(Component component) {
+				return StringUtils.contains(component.getCaption(), caption);
+			}
+		};
+	}
 
-    public static Predicate&amp;lt;Label&amp;gt; value(final String value) {
-        return new Predicate&amp;lt;Label&amp;gt;() {
-            public boolean apply(Label label) {
-                return StringUtils.equals(label.getValue(), value);
-            }
-        };
-    }
+	public static Predicate&amp;lt;Label&amp;gt; value(final String value) {
+		return new Predicate&amp;lt;Label&amp;gt;() {
+			public boolean apply(Label label) {
+				return StringUtils.equals(label.getValue(), value);
+			}
+		};
+	}
 
-    public static Predicate&amp;lt;Label&amp;gt; valueContains(final String value) {
-        return new Predicate&amp;lt;Label&amp;gt;() {
-            public boolean apply(Label label) {
-                return StringUtils.contains(label.getValue(), value);
-            }
-        };
-    }
+	public static Predicate&amp;lt;Label&amp;gt; valueContains(final String value) {
+		return new Predicate&amp;lt;Label&amp;gt;() {
+			public boolean apply(Label label) {
+				return StringUtils.contains(label.getValue(), value);
+			}
+		};
+	}
 
-    public static Predicate&amp;lt;Component&amp;gt; metId(final String id) {
-        return new Predicate&amp;lt;Component&amp;gt;() {
-            public boolean apply(Component component) {
-                return StringUtils.equals(component.getId(), id);
-            }
-        };
-    }
+	public static Predicate&amp;lt;Component&amp;gt; metId(final String id) {
+		return new Predicate&amp;lt;Component&amp;gt;() {
+			public boolean apply(Component component) {
+				return StringUtils.equals(component.getId(), id);
+			}
+		};
+	}
 
 }
 

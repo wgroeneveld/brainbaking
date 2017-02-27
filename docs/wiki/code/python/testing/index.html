@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -136,17 +172,17 @@ from calculator import Calculator
 
 class TestCalculator(unittest.TestCase):
 
-    def setUp(self):
-        self.calc = Calculator().calculate;
+	def setUp(self):
+		self.calc = Calculator().calculate;
 
-    def test_calculateBasicNumberReturnsNumber(self):
-        self.assertEqual(3, self.calc('3'))
+	def test_calculateBasicNumberReturnsNumber(self):
+ 		self.assertEqual(3, self.calc('3'))
 
-    def test_calculateSimpleMultiplicationReturnsResult(self):
-        self.assertEqual(10, self.calc('5*2'))
+	def test_calculateSimpleMultiplicationReturnsResult(self):
+		self.assertEqual(10, self.calc('5*2'))
 
-    def test_calculateInvalidStringShouldThrowException(self):
-        self.assertRaises(ValueError, self.calc, ('blabl'))
+	def test_calculateInvalidStringShouldThrowException(self):
+		self.assertRaises(ValueError, self.calc, ('blabl'))
 </code></pre>
 
 <p>Zie <a href="http://docs.python.org/3/library/unittest.html">http://docs.python.org/3/library/unittest.html</a></p>
@@ -161,7 +197,7 @@ class TestCalculator(unittest.TestCase):
 <p>Dit stuk onder uw py file plakken:</p>
 
 <pre><code class="language-python">if __name__ ###### '__main__':
-    unittest.main()
+	unittest.main()
 </code></pre>
 
 <p>En dan <code>python -m unittest -v calculatorTest</code>. de v flag geeft wat extra output, anders staat er gewoon OK. De test op zich builden in bijvoorbeeld sublime met de main method erin zorgt er ook voor dat deze automatisch uitgevoerd wordt.</p>

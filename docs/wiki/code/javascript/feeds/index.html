@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -161,8 +197,8 @@ Klak.Feeds.read(new Klak.Feeds.WikiWouter().feed(), $j(&quot;#wiki&quot;));
 <p>Indien geen custom parsing vereist is, kan je je beperken tot de url en title en de rest overerven via <code>prototype</code>:</p>
 
 <pre><code class="language-javascript">Klak.Feeds.BlogWouter = function() {
-    this.title = 'Jefklak&lt;br/&gt;'s Codex Blog Latest Updates';
-    this.url ###### 'https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;q=http:*www.jefklak.be/feed/'; 
+	this.title = 'Jefklak&lt;br/&gt;'s Codex Blog Latest Updates';
+	this.url ###### 'https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;q=http:*www.jefklak.be/feed/';	
 }
 Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
 </code></pre>

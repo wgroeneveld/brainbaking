@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -149,10 +185,10 @@
 
 <pre><code class="language-c++">CString HostServiceProxy::GetCouponFromResponseString(CString response)
 {
-    CString couponKey ###### _T(&quot;Coupon&quot;);
-    CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
+	CString couponKey ###### _T(&quot;Coupon&quot;);
+	CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
 
-    return couponPart.Left(couponPart.Find(_T(&quot;;&quot;)));
+	return couponPart.Left(couponPart.Find(_T(&quot;;&quot;)));
 }
 </code></pre>
 
@@ -160,11 +196,11 @@
 
 <p>Icons en images worden opgeslagen in .rc files die als resources in de code gekoppeld kunnen worden aan bijvoorbeeld een <code>CButton</code>. Hoe?</p>
 
-<pre><code class="language-c">    HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
-    if(hImage ###### NULL)
-        ASSERT(FALSE);  
+<pre><code class="language-c">	HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
+	if(hImage ###### NULL)
+		ASSERT(FALSE);	
 
-    HICON image = static_cast&lt;HICON&gt;(hImage);
+	HICON image = static_cast&lt;HICON&gt;(hImage);
 </code></pre>
 
 <p><code>HICON</code> is van <code>WinDef.h</code> en <code>::LoadImage</code> zit op <code>WinUser.h</code>. Zie <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648045(v=vs.85).aspx">MSDN doc</a> voor LoadImage.</p>
@@ -177,8 +213,8 @@
 
 <p>❗ de Afx resource handle kan <strong>altijd</strong> gewijzigd worden door leuke dingen te doen als:</p>
 
-<pre><code class="language-c">    HINSTANCE old = AfxGetResourceHandle();
-    AfxSetResourceHandle(GetModuleHandle(&quot;andereModule&quot;));
+<pre><code class="language-c">	HINSTANCE old = AfxGetResourceHandle();
+	AfxSetResourceHandle(GetModuleHandle(&quot;andereModule&quot;));
 </code></pre>
 
 <p>Gebruik daarom best <code>::GetModuleHandle(char*)</code> bij <code>::LoadImage</code>.</p>
@@ -191,18 +227,18 @@
 class RAIIObject
 {
 public:
-    explicit RAIIObject(const TObject&amp; obj) : m_Object(obj) {}
-    RAIIObject() {}
-    ~RAIIObject() {ReleaseObject();}
-    RAIIObject&lt;TObject&gt;&amp; operator######(const TObject&amp; obj) {if(&amp;obj ! &amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
-    RAIIObject&lt;TObject&gt;&amp; operator######(const RAIIObject&lt;TObject&gt;&amp; obj) {if(&amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
-    TObject&amp; GetObject() {return m_Object;}
-    const TObject&amp; GetObject() const {return m_Object;}
-    operator TObject&amp;() {return m_Object;}
-    operator const TObject&amp;() const {return m_Object;}
+	explicit RAIIObject(const TObject&amp; obj) : m_Object(obj) {}
+	RAIIObject() {}
+	~RAIIObject() {ReleaseObject();}
+	RAIIObject&lt;TObject&gt;&amp; operator######(const TObject&amp; obj) {if(&amp;obj ! &amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
+	RAIIObject&lt;TObject&gt;&amp; operator######(const RAIIObject&lt;TObject&gt;&amp; obj) {if(&amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
+	TObject&amp; GetObject() {return m_Object;}
+	const TObject&amp; GetObject() const {return m_Object;}
+	operator TObject&amp;() {return m_Object;}
+	operator const TObject&amp;() const {return m_Object;}
 private:
-    void ReleaseObject();
-    TObject m_Object;
+	void ReleaseObject();
+	TObject m_Object;
 };
 
 template&lt;&gt; inline void RAIIObject&lt;HICON&gt;::ReleaseObject() {::DestroyIcon(m_Object); m_Object = NULL;}

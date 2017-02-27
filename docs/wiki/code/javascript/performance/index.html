@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -178,14 +214,14 @@
 <p><img style='' src='/img//code/javascript/js_sequential.jpg|'></p>
 
 <pre><code class="language-javascript">function loadScript() {
-    for(var i = 0; i &lt; arguments.length; i++) {
-        var js = document.createElement(&quot;script&quot;);
-        var head = document.getElementsByTagName(&quot;head&quot;)[0];
+	for(var i = 0; i &lt; arguments.length; i++) {
+		var js = document.createElement(&quot;script&quot;);
+		var head = document.getElementsByTagName(&quot;head&quot;)[0];
 
-        js.src = arguments[i];
-        js.type = &quot;text/javascript&quot;;
-        head.appendChild(js);
-    }
+		js.src = arguments[i];
+		js.type = &quot;text/javascript&quot;;
+		head.appendChild(js);
+	}
 }
 </code></pre>
 
@@ -218,15 +254,15 @@ Daarom ook altijd best practices volgen en <em>separation of concerns</em> zo go
 <p>Een stap verder zou zijn de library zichzelf bootstrappen, door <code>loadScript()</code> lichtjes aan te passen:</p>
 
 <pre><code class="language-javascript">function loadScript() {
-    for(var i = 0; i &lt; arguments.length; i++) {
-        var js = document.createElement(&quot;script&quot;);
-        var head = document.getElementsByTagName(&quot;head&quot;)[0];
+	for(var i = 0; i &lt; arguments.length; i++) {
+		var js = document.createElement(&quot;script&quot;);
+		var head = document.getElementsByTagName(&quot;head&quot;)[0];
 
-        js.src = arguments[i].src;
-        js.type = &quot;text/javascript&quot;;
-        js.text = arguments[i].callback.toString();
-        head.appendChild(js);
-    }
+		js.src = arguments[i].src;
+		js.type = &quot;text/javascript&quot;;
+		js.text = arguments[i].callback.toString();
+		head.appendChild(js);
+	}
 }
 
 //usage:

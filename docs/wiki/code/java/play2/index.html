@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -135,22 +171,22 @@
 
 <p><strong>controller</strong></p>
 
-<pre><code class="language-java">    public static Result buyHorse() {
-        Form&lt;Horse&gt; horseForm = form(Horse.class);
-        Horse horse = horseForm.bindFromRequest().get();
+<pre><code class="language-java">	public static Result buyHorse() {
+		Form&lt;Horse&gt; horseForm = form(Horse.class);
+		Horse horse = horseForm.bindFromRequest().get();
                 System.out.println(horse.id);
         }
 </code></pre>
 
 <p><strong>unit test</strong></p>
 
-<pre><code class="language-java">    @Test
-    public void buyHorse() {
-        HashMap&lt;String, String&gt; map = new HashMap&lt;&gt;();
-        map.put(&quot;id&quot;, &quot;12&quot;);
+<pre><code class="language-java">	@Test
+	public void buyHorse() {
+		HashMap&lt;String, String&gt; map = new HashMap&lt;&gt;();
+		map.put(&quot;id&quot;, &quot;12&quot;);
 
-        callAction(HorseMarket.buyHorse(), new FakeRequest().withFormUrlEncodedBody(map));
-    }
+		callAction(HorseMarket.buyHorse(), new FakeRequest().withFormUrlEncodedBody(map));
+	}
 </code></pre>
 
 <p>Waarbij hierboven <code>HorseMarket</code> de routes ref is en niet de <code>HorseMarket</code> controller klasse zelf - deze:</p>
@@ -241,13 +277,13 @@ object ApplicationBuild extends Build {
     val appVersion      = &quot;1.0&quot;
 
     val appDependencies = Seq(
-        &quot;org.easytesting&quot; % &quot;fest-assert&quot; % &quot;1.4&quot; % &quot;test&quot;
+    	&quot;org.easytesting&quot; % &quot;fest-assert&quot; % &quot;1.4&quot; % &quot;test&quot;
       // Add your project dependencies here,
     )
 
-    val main = PlayProject(appName, appVersion, appDependencies).settings(defaultJavaSettings:_*).settings(     
+    val main = PlayProject(appName, appVersion, appDependencies).settings(defaultJavaSettings:_*).settings(		
                 // The following line is NOT NEEDED by default! 
-        resolvers += &quot;Maven2 Repository&quot; at &quot;http://repo1.maven.org/maven2&quot;
+		resolvers += &quot;Maven2 Repository&quot; at &quot;http://repo1.maven.org/maven2&quot;
     )
 }
 </code></pre>

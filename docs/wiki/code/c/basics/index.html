@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -170,9 +206,9 @@ int main(int argc, char **argv)
 <pre><code class="language-c">class Simple
 {
 public:
-    Simple() : someMember(3) {}
-    virtual int guessNumber();
-    int someMember;
+	Simple() : someMember(3) {}
+	virtual int guessNumber();
+	int someMember;
 };
 </code></pre>
 
@@ -180,7 +216,7 @@ public:
 
 int Simple::guessNumber()
 {
-    return 5;
+	return 5;
 }
 </code></pre>
 
@@ -191,8 +227,8 @@ int Simple::guessNumber()
 class Complexer : public Simple
 {
 public:
-    Complexer() {}
-    int guessNumber();
+	Complexer() {}
+	int guessNumber();
 };
 </code></pre>
 
@@ -202,7 +238,7 @@ public:
 
 int Complexer::guessNumber()
 {
-    return 10;
+	return 10;
 }
 </code></pre>
 
@@ -214,9 +250,9 @@ int Complexer::guessNumber()
 
 int main()
 {
-    Simple* simple = new Complexer();
-    std::cout &lt;&lt; simple-&gt;guessNumber();
-    delete simple;
+	Simple* simple = new Complexer();
+	std::cout &lt;&lt; simple-&gt;guessNumber();
+	delete simple;
 }
 </code></pre>
 
@@ -239,15 +275,15 @@ Definiëer <code>Complexer</code> zo:</li>
 
 int main()
 {
-    Simple simpleInitialized; // oops, I created something?
-    // Simple simpleInitialized = NULL; cannot convert from 'int' to 'Simple' (#define NULL 0)
+	Simple simpleInitialized; // oops, I created something?
+	// Simple simpleInitialized = NULL; cannot convert from 'int' to 'Simple' (#define NULL 0)
 
-    Simple* simplePtr;
+	Simple* simplePtr;
 
-    std::cout &lt;&lt; &quot;&lt;br/&gt;n initialiezd: &quot; &lt;&lt; simplePtr-&gt;someMember;
-    // Run-Time Check Failure #3 - The variable 'simplePtr' is being used without being initialized
+	std::cout &lt;&lt; &quot;&lt;br/&gt;n initialiezd: &quot; &lt;&lt; simplePtr-&gt;someMember;
+	// Run-Time Check Failure #3 - The variable 'simplePtr' is being used without being initialized
 
-    delete simplePtr;
+	delete simplePtr;
 }
 </code></pre>
 

@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -184,8 +220,8 @@ General-&gt;Editors-&gt;Text Editors-&gt;Annotations-&gt;Search Results-&gt;Incl
 
 <p>Wanneer een JUnit test in het <em>fail</em> bericht een stracktrace regel emuleert, kan je door dubbelklikken ook daadwerkelijk naar eender welke java file op een bepaalde lijn springen, zoals het dubbelklikken op de failure trace van een bepaalde lijn zich gedraagd. Voorbeeld:</p>
 
-<pre><code class="language-java">        fail(&quot;Found duplicate entries in MESSAGES.PROPERTIES:&lt;br/&gt;r&lt;br/&gt;n&lt;br/&gt;r&lt;br/&gt;n&quot;
-                + &quot; at be..i18n.DuplicateValuesInMessagesPropertiesTest.findDuplicateValuesInMessagesProperties(DuplicateValuesInMessagesPropertiesTest.java:30)&quot;);
+<pre><code class="language-java">		fail(&quot;Found duplicate entries in MESSAGES.PROPERTIES:&lt;br/&gt;r&lt;br/&gt;n&lt;br/&gt;r&lt;br/&gt;n&quot;
+				+ &quot;	at be..i18n.DuplicateValuesInMessagesPropertiesTest.findDuplicateValuesInMessagesProperties(DuplicateValuesInMessagesPropertiesTest.java:30)&quot;);
 </code></pre>
 
 <p>Uw eigen regel gaat eerste staan, en eclipse &ldquo;denkt&rdquo; dat het een deel van de stacktrace is. <br/><br/>

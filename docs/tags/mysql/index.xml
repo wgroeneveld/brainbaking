@@ -57,12 +57,12 @@
 
 &lt;pre&gt;&lt;code&gt;Variable_name          value
 ----------------------------
-Delayed_insert_threads  0
-Slow_launch_threads 0
-Threads_cached  8
-Threads_connected   56
-Threads_created 138
-Threads_running 2
+Delayed_insert_threads	0
+Slow_launch_threads	0
+Threads_cached	8
+Threads_connected	56
+Threads_created	138
+Threads_running	2
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h5 id=&#34;huidige-connecties-killen&#34;&gt;Huidige connecties killen&lt;/h5&gt;

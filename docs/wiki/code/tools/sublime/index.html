@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -155,10 +191,10 @@
 <p>In <code>JSON</code> formaat, zie <code>ctrl+shift+P</code>: <code>Preferences: Settings - User</code>. Proxy definiëren:</p>
 
 <pre><code class="language-javascript">{
-    &quot;debug&quot;: true,
+	&quot;debug&quot;: true,
 
-    &quot;http_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;,
-    &quot;https_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;
+	&quot;http_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;,
+	&quot;https_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;
 }
 </code></pre>
 
@@ -172,9 +208,9 @@ Plugin manueel in plugin dir slepen.</p>
 <p>CTRL+B (menu build) werkt door een <code>.sublime-build</code> file met configuratie voor de batch die in (onder windows <code>C:&lt;br/&gt;Users&lt;br/&gt;bkwog&lt;br/&gt;AppData&lt;br/&gt;Roaming&lt;br/&gt;Sublime Text 2&lt;br/&gt;Packages&lt;br/&gt;[lang]</code>) uw package dir leven. Een voorbeeld van zo&rsquo;n file voor ruby, by default:</p>
 
 <pre><code>{
-    &quot;cmd&quot;: [&quot;ruby&quot;, &quot;$file&quot;],
-    &quot;file_regex&quot;: &quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
-    &quot;selector&quot;: &quot;source.ruby&quot;
+	&quot;cmd&quot;: [&quot;ruby&quot;, &quot;$file&quot;],
+	&quot;file_regex&quot;: &quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
+	&quot;selector&quot;: &quot;source.ruby&quot;
 }
 </code></pre>
 
@@ -199,12 +235,12 @@ Plugin manueel in plugin dir slepen.</p>
 <p>Voor Jedi moet je uw project file aanmaken (&amp; Project -&gt; Add Folder to Project &hellip; base dir kiezen): ziet er bijvoorbeeld zo uit</p>
 
 <pre><code class="language-javascript">{
-    &quot;folders&quot;:
-    [
-        {
-            &quot;path&quot;: &quot;/D/Github/polyglata/01_calculatestring/python&quot;
-        }
-    ]
+	&quot;folders&quot;:
+	[
+		{
+			&quot;path&quot;: &quot;/D/Github/polyglata/01_calculatestring/python&quot;
+		}
+	]
 }
 </code></pre>
 

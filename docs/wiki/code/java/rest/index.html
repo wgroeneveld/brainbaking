@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -135,21 +171,21 @@
 
 <h5 id="maven">maven</h5>
 
-<pre><code class="language-xml">        &lt;dependency&gt;
-            &lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
-            &lt;artifactId&gt;jersey-server&lt;/artifactId&gt;
-            &lt;version&gt;1.17&lt;/version&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
-            &lt;artifactId&gt;jersey-json&lt;/artifactId&gt;
-            &lt;version&gt;1.17&lt;/version&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
-            &lt;artifactId&gt;jersey-servlet&lt;/artifactId&gt;
-            &lt;version&gt;1.17&lt;/version&gt;
-        &lt;/dependency&gt;
+<pre><code class="language-xml">		&lt;dependency&gt;
+			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+			&lt;artifactId&gt;jersey-server&lt;/artifactId&gt;
+			&lt;version&gt;1.17&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+			&lt;artifactId&gt;jersey-json&lt;/artifactId&gt;
+			&lt;version&gt;1.17&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+			&lt;artifactId&gt;jersey-servlet&lt;/artifactId&gt;
+			&lt;version&gt;1.17&lt;/version&gt;
+		&lt;/dependency&gt;
 </code></pre>
 
 <p><code>jersey-json</code> is niet nodig als je geen <code>JSON</code> wil gebruiken. <code>jersey-servlet</code> ook niet als je geen Servlet 2.x gebruikt.</p>
@@ -158,32 +194,32 @@
 
 <p>Dit moet in <code>web.xml</code>:</p>
 
-<pre><code class="language-xml">    &lt;servlet&gt;
-        &lt;servlet-name&gt;jersey-serlvet&lt;/servlet-name&gt;
-        &lt;servlet-class&gt;com.sun.jersey.spi.container.servlet.ServletContainer&lt;/servlet-class&gt;
-        &lt;init-param&gt;
-            &lt;param-name&gt;com.sun.jersey.config.property.packages&lt;/param-name&gt;
-            &lt;param-value&gt;be.klak.package&lt;/param-value&gt;
-        &lt;/init-param&gt;
-        &lt;init-param&gt;
-            &lt;param-name&gt;com.sun.jersey.api.json.POJOMappingFeature&lt;/param-name&gt;
-            &lt;param-value&gt;true&lt;/param-value&gt;
-        &lt;/init-param&gt;       
-        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-    &lt;/servlet&gt;
-    &lt;servlet-mapping&gt;
-        &lt;servlet-name&gt;jersey-serlvet&lt;/servlet-name&gt;
-        &lt;url-pattern&gt;/rest/*&lt;/url-pattern&gt;
-    &lt;/servlet-mapping&gt;
+<pre><code class="language-xml">	&lt;servlet&gt;
+		&lt;servlet-name&gt;jersey-serlvet&lt;/servlet-name&gt;
+		&lt;servlet-class&gt;com.sun.jersey.spi.container.servlet.ServletContainer&lt;/servlet-class&gt;
+		&lt;init-param&gt;
+			&lt;param-name&gt;com.sun.jersey.config.property.packages&lt;/param-name&gt;
+			&lt;param-value&gt;be.klak.package&lt;/param-value&gt;
+		&lt;/init-param&gt;
+		&lt;init-param&gt;
+			&lt;param-name&gt;com.sun.jersey.api.json.POJOMappingFeature&lt;/param-name&gt;
+			&lt;param-value&gt;true&lt;/param-value&gt;
+		&lt;/init-param&gt;		
+		&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+	&lt;/servlet&gt;
+	&lt;servlet-mapping&gt;
+		&lt;servlet-name&gt;jersey-serlvet&lt;/servlet-name&gt;
+		&lt;url-pattern&gt;/rest/*&lt;/url-pattern&gt;
+	&lt;/servlet-mapping&gt;
 </code></pre>
 
 <p>❗ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:</p>
 
-<pre><code class="language-xml">        &lt;!-- prevents classes that use reflection which is not allowed in GAE --&gt;
-        &lt;init-param&gt;
-            &lt;param-name&gt;com.sun.jersey.config.feature.DisableWADL&lt;/param-name&gt;
-            &lt;param-value&gt;true&lt;/param-value&gt;
-        &lt;/init-param&gt;
+<pre><code class="language-xml">		&lt;!-- prevents classes that use reflection which is not allowed in GAE --&gt;
+		&lt;init-param&gt;
+			&lt;param-name&gt;com.sun.jersey.config.feature.DisableWADL&lt;/param-name&gt;
+			&lt;param-value&gt;true&lt;/param-value&gt;
+		&lt;/init-param&gt;
 </code></pre>
 
 <p>Zie <a href="http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine">http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine</a></p>
@@ -193,19 +229,19 @@
 <pre><code class="language-java">@Path(&quot;/gc&quot;)
 public class Controller {
 
-    @GET
-    @Path(&quot;/path&quot;)
-    @Produces(APPLICATION_JSON)
-    public List&lt;Pojo&gt; getStuff() {
-        return stuffRepo().getAll();
-    }
+	@GET
+	@Path(&quot;/path&quot;)
+	@Produces(APPLICATION_JSON)
+	public List&lt;Pojo&gt; getStuff() {
+		return stuffRepo().getAll();
+	}
 
-    @POST
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Path(&quot;/bla/receive&quot;)
-    public Response received(String data) {
-        return ok().build();
-    }
+	@POST
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Path(&quot;/bla/receive&quot;)
+	public Response received(String data) {
+		return ok().build();
+	}
 </code></pre>
 
 <p>waarbij <code>ok()</code> op <code>javax.ws.rs.Response</code> zit.</p>
@@ -214,67 +250,67 @@ public class Controller {
 
 <h5 id="maven-1">maven</h5>
 
-<pre><code class="language-xml">        &lt;dependency&gt;
-            &lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
-            &lt;artifactId&gt;jersey-client&lt;/artifactId&gt;
-            &lt;version&gt;1.17&lt;/version&gt;
-        &lt;/dependency&gt;
+<pre><code class="language-xml">		&lt;dependency&gt;
+			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+			&lt;artifactId&gt;jersey-client&lt;/artifactId&gt;
+			&lt;version&gt;1.17&lt;/version&gt;
+		&lt;/dependency&gt;
 </code></pre>
 
 <h5 id="voorbeeld-1">voorbeeld</h5>
 
 <p><code>com.sun.jersey.api.client.Client</code> client:</p>
 
-<pre><code class="language-java">        Client.create()
-                .resource(getGatecontrolServer() + &quot;/rest/gc/houses/receive&quot;)
-                .type(TEXT_PLAIN)
-                .post(&quot;request body data&quot;);
+<pre><code class="language-java">		Client.create()
+				.resource(getGatecontrolServer() + &quot;/rest/gc/houses/receive&quot;)
+				.type(TEXT_PLAIN)
+				.post(&quot;request body data&quot;);
 </code></pre>
 
 <h3 id="header-control-bvb-caching">Header control (bvb caching)</h3>
 
 <p>Kan via een filter factory die je meegeeft aan de init params van de servlet in web.xml:</p>
 
-<pre><code class="language-xml">        &lt;init-param&gt;
-            &lt;param-name&gt;com.sun.jersey.spi.container.ResourceFilters&lt;/param-name&gt;
-            &lt;param-value&gt;be.klak.rest.CacheFilterFactory&lt;/param-value&gt;
-        &lt;/init-param&gt;
+<pre><code class="language-xml">		&lt;init-param&gt;
+			&lt;param-name&gt;com.sun.jersey.spi.container.ResourceFilters&lt;/param-name&gt;
+			&lt;param-value&gt;be.klak.rest.CacheFilterFactory&lt;/param-value&gt;
+		&lt;/init-param&gt;
 &lt;/xml&gt;
 
 ```java
 public class CacheFilterFactory implements ResourceFilterFactory {
 
-    @Override
-    public List&lt;ResourceFilter&gt; create(AbstractMethod am) {
-        if (hasNoCacheAnnotationOnClass(am) != null) {
-            return Collections.&lt;ResourceFilter&gt; singletonList(new CacheResponseFilter());
-        }
+	@Override
+	public List&lt;ResourceFilter&gt; create(AbstractMethod am) {
+		if (hasNoCacheAnnotationOnClass(am) != null) {
+			return Collections.&lt;ResourceFilter&gt; singletonList(new CacheResponseFilter());
+		}
 
-        return new ArrayList&lt;&gt;();
-    }
+		return new ArrayList&lt;&gt;();
+	}
 
-    private CacheControlHeaderNoCache hasNoCacheAnnotationOnClass(AbstractMethod am) {
-        return am.getResource().getResourceClass().getAnnotation(CacheControlHeaderNoCache.class);
-    }
+	private CacheControlHeaderNoCache hasNoCacheAnnotationOnClass(AbstractMethod am) {
+		return am.getResource().getResourceClass().getAnnotation(CacheControlHeaderNoCache.class);
+	}
 
-    private static class CacheResponseFilter implements ResourceFilter, ContainerResponseFilter {
+	private static class CacheResponseFilter implements ResourceFilter, ContainerResponseFilter {
 
-        @Override
-        public ContainerRequestFilter getRequestFilter() {
-            return null;
-        }
+		@Override
+		public ContainerRequestFilter getRequestFilter() {
+			return null;
+		}
 
-        @Override
-        public ContainerResponseFilter getResponseFilter() {
-            return this;
-        }
+		@Override
+		public ContainerResponseFilter getResponseFilter() {
+			return this;
+		}
 
-        @Override
-        public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
-            response.getHttpHeaders().putSingle(HttpHeaders.CACHE_CONTROL, &quot;no-cache&quot;);
-            return response;
-        }
-    }
+		@Override
+		public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
+			response.getHttpHeaders().putSingle(HttpHeaders.CACHE_CONTROL, &quot;no-cache&quot;);
+			return response;
+		}
+	}
 }
 </code></pre>
 

@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -156,34 +192,34 @@ storyFile = File.open('svnlog_stories.txt', 'w')
 csv = CSV.open('svnlog.csv', 'wb')
 
 [ '.', 'PFW.Base' ].map { |dir|
-    puts &quot; -- processing dir '#{dir}' ...&quot;
-    rawxml = `cd #{dir} &amp;&amp; svn log --xml --revision #{revFrom}:#{revTo}`
+	puts &quot; -- processing dir '#{dir}' ...&quot;
+	rawxml = `cd #{dir} &amp;&amp; svn log --xml --revision #{revFrom}:#{revTo}`
 
-    xml = Nokogiri::XML(rawxml)
-    xml.xpath(&quot;//logentry&quot;).map { |entry|
-        hash = Hash.new
-        hash['rev'] = entry.attr(&quot;revision&quot;)
-        hash['author'] = entry.css(&quot;author&quot;).text
-        hash['date'] = DateTime.strptime(entry.css(&quot;date&quot;).text, '%Y-%m-%dT%H:%M:%S')
-        hash['msg'] = entry.css(&quot;msg&quot;).text.strip.tr(&quot;&lt;br/&gt;n&quot;, &quot;&quot;)
-        hash['btIssues'] = hash['msg'].scan(/bt#([0-9]+)/i).flatten.uniq
-        hash['rmIssues'] = hash['msg'].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &quot;http://server.cloudapp.net/redmine/issues/#{rm}&quot; }
-        hash['stories'] = hash['msg'].scan(/story#(&lt;br/&gt;S+)&lt;br/&gt;s/i).flatten.uniq
+	xml = Nokogiri::XML(rawxml)
+	xml.xpath(&quot;//logentry&quot;).map { |entry|
+		hash = Hash.new
+		hash['rev'] = entry.attr(&quot;revision&quot;)
+		hash['author'] = entry.css(&quot;author&quot;).text
+		hash['date'] = DateTime.strptime(entry.css(&quot;date&quot;).text, '%Y-%m-%dT%H:%M:%S')
+		hash['msg'] = entry.css(&quot;msg&quot;).text.strip.tr(&quot;&lt;br/&gt;n&quot;, &quot;&quot;)
+		hash['btIssues'] = hash['msg'].scan(/bt#([0-9]+)/i).flatten.uniq
+		hash['rmIssues'] = hash['msg'].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &quot;http://server.cloudapp.net/redmine/issues/#{rm}&quot; }
+		hash['stories'] = hash['msg'].scan(/story#(&lt;br/&gt;S+)&lt;br/&gt;s/i).flatten.uniq
 
-        hash
-    }
+		hash
+	}
 }.flatten.sort_by { |hash| hash['date'] }.each do |entry|
-    rm = entry['rmIssues'].join(', ')
-    csv &lt;&lt; [ 'r' + entry['rev'], entry['date'], entry['author'], entry['msg'], rm ]
-    entry['btIssues'].each do |issue|
-        btFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
-    end
-    entry['rmIssues'].each do |issue|
-        rmFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
-    end
-    entry['stories'].each do |issue|
-        storyFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
-    end
+	rm = entry['rmIssues'].join(', ')
+	csv &lt;&lt; [ 'r' + entry['rev'], entry['date'], entry['author'], entry['msg'], rm ]
+	entry['btIssues'].each do |issue|
+		btFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
+	end
+	entry['rmIssues'].each do |issue|
+		rmFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
+	end
+	entry['stories'].each do |issue|
+		storyFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
+	end
 end
 
 

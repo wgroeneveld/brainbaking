@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -188,53 +224,53 @@
 
 <p>Met een transaction manager:</p>
 
-<pre><code class="language-xml">    &lt;bean id######&quot;entityManagerFactory&quot; abstract&quot;true&quot;&gt;
-        &lt;property name=&quot;jpaVendorAdapter&quot;&gt;
-            &lt;bean class=&quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&quot;&gt;
-                &lt;property name######&quot;databasePlatform&quot; value&quot;${hibernate.dialect}&quot;/&gt;
-                &lt;property name######&quot;showSql&quot; value&quot;${database.showSql}&quot; /&gt;
-            &lt;/bean&gt;
-        &lt;/property&gt;
-    &lt;/bean&gt;
-    
-    &lt;bean id######&quot;myEntityManagerFactory&quot; class&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot; parent=&quot;entityManagerFactory&quot;&gt;
-        &lt;property name######&quot;packagesToScan&quot; value&quot;be.klak.domain&quot; /&gt;
-        &lt;property name######&quot;dataSource&quot; ref&quot;myDataSource&quot; /&gt;
-        &lt;property name######&quot;persistenceUnitName&quot; value&quot;my_pu&quot; /&gt;
-        &lt;property name=&quot;persistenceUnitManager&quot;&gt;
-            &lt;bean class=&quot;org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager&quot;&gt;
-                &lt;property name######&quot;defaultDataSource&quot; ref&quot;partnerwerkingDataSource&quot; /&gt;
+<pre><code class="language-xml">	&lt;bean id######&quot;entityManagerFactory&quot; abstract&quot;true&quot;&gt;
+		&lt;property name=&quot;jpaVendorAdapter&quot;&gt;
+			&lt;bean class=&quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&quot;&gt;
+				&lt;property name######&quot;databasePlatform&quot; value&quot;${hibernate.dialect}&quot;/&gt;
+				&lt;property name######&quot;showSql&quot; value&quot;${database.showSql}&quot; /&gt;
+			&lt;/bean&gt;
+		&lt;/property&gt;
+	&lt;/bean&gt;
+	
+	&lt;bean id######&quot;myEntityManagerFactory&quot; class&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot; parent=&quot;entityManagerFactory&quot;&gt;
+		&lt;property name######&quot;packagesToScan&quot; value&quot;be.klak.domain&quot; /&gt;
+		&lt;property name######&quot;dataSource&quot; ref&quot;myDataSource&quot; /&gt;
+		&lt;property name######&quot;persistenceUnitName&quot; value&quot;my_pu&quot; /&gt;
+		&lt;property name=&quot;persistenceUnitManager&quot;&gt;
+			&lt;bean class=&quot;org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager&quot;&gt;
+				&lt;property name######&quot;defaultDataSource&quot; ref&quot;partnerwerkingDataSource&quot; /&gt;
                 &lt;property name######&quot;persistenceXmlLocation&quot; value&quot;classpath:persistence.xml&quot;/&gt;
-            &lt;/bean&gt;
-        &lt;/property&gt;
-    &lt;/bean&gt;
+			&lt;/bean&gt;
+		&lt;/property&gt;
+	&lt;/bean&gt;
 </code></pre>
 
 <p>De datasource kan via JNDI gedefiniëerd worden dan:</p>
 
-<pre><code class="language-xml">    &lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;
-    &lt;bean id######&quot;myEntityManager&quot; factory-bean&quot;myEntityManagerFactory&quot; factory-method=&quot;createEntityManager&quot; /&gt;
-    &lt;bean id######&quot;transactionManager&quot; class&quot;org.springframework.orm.jpa.JpaTransactionManager&quot;&gt;
-        &lt;property name######&quot;entityManagerFactory&quot; ref&quot;myEntityManagerFactory&quot; /&gt;
-    &lt;/bean&gt;
-    
-    &lt;jee:jndi-lookup id######&quot;myDataSource&quot; jndi-name&quot;jdbc/myDataSource&quot; resource-ref=&quot;true&quot; /&gt;
+<pre><code class="language-xml">	&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;
+	&lt;bean id######&quot;myEntityManager&quot; factory-bean&quot;myEntityManagerFactory&quot; factory-method=&quot;createEntityManager&quot; /&gt;
+	&lt;bean id######&quot;transactionManager&quot; class&quot;org.springframework.orm.jpa.JpaTransactionManager&quot;&gt;
+		&lt;property name######&quot;entityManagerFactory&quot; ref&quot;myEntityManagerFactory&quot; /&gt;
+	&lt;/bean&gt;
+	
+	&lt;jee:jndi-lookup id######&quot;myDataSource&quot; jndi-name&quot;jdbc/myDataSource&quot; resource-ref=&quot;true&quot; /&gt;
 </code></pre>
 
 <p>Daarna kan je de <code>entityManager</code> injecteren in Java:</p>
 
-<pre><code class="language-java">    @PersistenceContext(unitName = &quot;vdab_partnerwerking_pu&quot;)
-    protected EntityManager entityManager;
+<pre><code class="language-java">	@PersistenceContext(unitName = &quot;vdab_partnerwerking_pu&quot;)
+	protected EntityManager entityManager;
 </code></pre>
 
 <p>######= Werken zonder een persistence.xml ######=</p>
 
 <p>Vanaf <strong>Spring 3.1</strong> en JPA kan je via de factory <code>packagesToScan</code> property aangeven ipv via een <code>persistenceUnitManager</code> te werken - meer info en context: zie <a href="http://www.baeldung.com/2011/12/13/the-persistence-layer-with-spring-3-1-and-jpa/">http://www.baeldung.com/2011/12/13/the-persistence-layer-with-spring-3-1-and-jpa/</a></p>
 
-<pre><code class="language-xml">    &lt;bean id######&quot;myEntityManagerFactory&quot; class&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot; parent=&quot;entityManagerFactory&quot;&gt;
-        &lt;property name######&quot;packagesToScan&quot; value&quot;be.klak.domain&quot; /&gt;
-        &lt;property name######&quot;dataSource&quot; ref&quot;myDataSource&quot; /&gt;
-    &lt;/bean&gt;
+<pre><code class="language-xml">	&lt;bean id######&quot;myEntityManagerFactory&quot; class&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot; parent=&quot;entityManagerFactory&quot;&gt;
+		&lt;property name######&quot;packagesToScan&quot; value&quot;be.klak.domain&quot; /&gt;
+		&lt;property name######&quot;dataSource&quot; ref&quot;myDataSource&quot; /&gt;
+	&lt;/bean&gt;
 </code></pre>
 
 <p>Vergeet niet de <code>unitName</code> van de <code>PersistenceContext</code> annotatie af te halen dan.</p>

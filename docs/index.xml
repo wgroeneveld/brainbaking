@@ -74,7 +74,7 @@ DECLARE FKCURSOR CURSOR FOR
 select distinct name,object_name(parent_object_id) from sys.objects where object_id in 
 (   select fk.constraint_object_id from sys.foreign_key_columns as fk
     where fk.referenced_object_id = 
-        (select object_id from sys.tables where name = &#39;Reference&#39;)
+    	(select object_id from sys.tables where name = &#39;Reference&#39;)
 )
 
 OPEN FKCURSOR
@@ -85,8 +85,8 @@ INTO @constraint, @table
 WHILE @@FETCH_STATUS = 0
 BEGIN
 
-    SET @cmd = N&#39;ALTER TABLE [dbo].[&#39;+@table+&#39;] DROP CONSTRAINT &#39; +  @constraint
-    EXEC sp_executeSQL @cmd;
+	SET @cmd = N&#39;ALTER TABLE [dbo].[&#39;+@table+&#39;] DROP CONSTRAINT &#39; +  @constraint
+	EXEC sp_executeSQL @cmd;
 
    FETCH NEXT FROM FKCURSOR 
     INTO @constraint, @table
@@ -127,15 +127,15 @@ WHERE
     AND tables.name = &#39;tblhtmltemplate&#39;
     AND all_columns.name = &#39;isdefault&#39;)
 
-    set @query = &#39;alter table tblhtmltemplate drop constraint &#39; + @cname 
+	set @query = &#39;alter table tblhtmltemplate drop constraint &#39; + @cname 
 
 if @cname is not null begin
-    exec sp_executesql @query
+	exec sp_executesql @query
 end
 
 IF  EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name######&#39;tblHtmlTemplate&#39; AND column_name &#39;isDefault&#39;)
 BEGIN
-    alter table tblhtmltemplate drop column isdefault;
+	alter table tblhtmltemplate drop column isdefault;
 END;
 
 &lt;/code&gt;&lt;/pre&gt;
@@ -149,13 +149,13 @@ GO
 
 CREATE FUNCTION ifnull 
 (
-    -- Add the parameters for the function here
-    @value1 datetime, @returnvalue int
+	-- Add the parameters for the function here
+	@value1 datetime, @returnvalue int
 )
 RETURNS datetime
 AS
 BEGIN
-    return isnull(@value1, @returnvalue)
+	return isnull(@value1, @returnvalue)
 
 END
 GO
@@ -1183,66 +1183,66 @@ Om dit niet de helel tidj zelf te moeten beheren, complexiteit opbergen in een b
 
 &lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;nokogiri&#39; # gem install nokogiri first! 
 require &#39;net/http&#39;
-require &#39;zip&#39;   # gem install rubyzip first!
+require &#39;zip&#39;	# gem install rubyzip first!
 require &#39;optparse&#39;
 require &#39;time&#39;
 
 def deploy_artifact(artifact, server, repo)
-    if repo.nil? then
-        repo = &amp;quot;http://server:8888/nexus/service/local/repositories/nuget-prereleases/&amp;quot;
-    else
-        repo = repo.sub(&amp;quot;/local/nuget/&amp;quot;, &amp;quot;/local/repositories/&amp;quot;)
-    end
-    nexus_url = &amp;quot;#{repo}content/#{artifact}/&amp;quot;
-    print &amp;quot;-- Deploy artifact #{artifact} to #{server} from #{repo}&amp;lt;br/&amp;gt;n&amp;quot;
+	if repo.nil? then
+		repo = &amp;quot;http://server:8888/nexus/service/local/repositories/nuget-prereleases/&amp;quot;
+	else
+		repo = repo.sub(&amp;quot;/local/nuget/&amp;quot;, &amp;quot;/local/repositories/&amp;quot;)
+	end
+	nexus_url = &amp;quot;#{repo}content/#{artifact}/&amp;quot;
+	print &amp;quot;-- Deploy artifact #{artifact} to #{server} from #{repo}&amp;lt;br/&amp;gt;n&amp;quot;
 
-    print &amp;quot;fetching artifacts from nexus... &amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;t#{nexus_url}&amp;lt;br/&amp;gt;n&amp;quot;
-    response = Net::HTTP.get_response(URI.parse(nexus_url))
-    xml = Nokogiri::XML(response.body).xpath(&amp;quot;//content-item&amp;quot;).map { |entry|
-        hash = Hash.new
-        hash[&#39;url&#39;] = entry.css(&amp;quot;resourceURI&amp;quot;).text
-        hash[&#39;buildnr&#39;] = entry.css(&amp;quot;text&amp;quot;).text
-        hash[&#39;date&#39;] = Time.parse(entry.css(&amp;quot;lastModified&amp;quot;).text)
+	print &amp;quot;fetching artifacts from nexus... &amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;t#{nexus_url}&amp;lt;br/&amp;gt;n&amp;quot;
+	response = Net::HTTP.get_response(URI.parse(nexus_url))
+	xml = Nokogiri::XML(response.body).xpath(&amp;quot;//content-item&amp;quot;).map { |entry|
+		hash = Hash.new
+		hash[&#39;url&#39;] = entry.css(&amp;quot;resourceURI&amp;quot;).text
+		hash[&#39;buildnr&#39;] = entry.css(&amp;quot;text&amp;quot;).text
+		hash[&#39;date&#39;] = Time.parse(entry.css(&amp;quot;lastModified&amp;quot;).text)
 
-        hash
-    }.sort { |one,two| two[&#39;date&#39;] &amp;lt;=&amp;gt; one[&#39;date&#39;] }.first
+		hash
+	}.sort { |one,two| two[&#39;date&#39;] &amp;lt;=&amp;gt; one[&#39;date&#39;] }.first
 
-    if xml.nil? then
-        throw &amp;quot;Geen XML kunnen parsen uit URL, ligt nexus plat?&amp;quot;
-    end
+	if xml.nil? then
+		throw &amp;quot;Geen XML kunnen parsen uit URL, ligt nexus plat?&amp;quot;
+	end
 
-    artifactContentUri = xml[&#39;url&#39;]
-    artifactBuildNr = xml[&#39;buildnr&#39;]
-    artifactDate = xml[&#39;date&#39;]
+	artifactContentUri = xml[&#39;url&#39;]
+	artifactBuildNr = xml[&#39;buildnr&#39;]
+	artifactDate = xml[&#39;date&#39;]
 
-    print &amp;quot;fetching last artifact (modified date #{artifactDate}) package file from nexus... &amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;t#{artifactContentUri}&amp;lt;br/&amp;gt;n&amp;quot;
-    artifact_uri = Nokogiri::XML(Net::HTTP.get_response(URI.parse(artifactContentUri)).body).css(&amp;quot;resourceURI&amp;quot;).text
+	print &amp;quot;fetching last artifact (modified date #{artifactDate}) package file from nexus... &amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;t#{artifactContentUri}&amp;lt;br/&amp;gt;n&amp;quot;
+	artifact_uri = Nokogiri::XML(Net::HTTP.get_response(URI.parse(artifactContentUri)).body).css(&amp;quot;resourceURI&amp;quot;).text
 
-    print &amp;quot;fetching artifact (buildnr. #{artifactBuildNr}) itself from nexus... &amp;lt;br/&amp;gt;n&amp;quot;
-    nupkg_file = &amp;quot;#{artifact}-#{artifactBuildNr}.nupkg&amp;quot;
-    open(nupkg_file, &amp;quot;wb&amp;quot;) do |file|
-        file.write(Net::HTTP.get_response(URI.parse(artifact_uri)).body)
-    end
+	print &amp;quot;fetching artifact (buildnr. #{artifactBuildNr}) itself from nexus... &amp;lt;br/&amp;gt;n&amp;quot;
+	nupkg_file = &amp;quot;#{artifact}-#{artifactBuildNr}.nupkg&amp;quot;
+	open(nupkg_file, &amp;quot;wb&amp;quot;) do |file|
+	    file.write(Net::HTTP.get_response(URI.parse(artifact_uri)).body)
+	end
 
-    def unzip_and_copy(zip_file, pattern, server)
-        zippedfile = zip_file.glob(pattern).first
-        unless zippedfile.nil?
-            fname = zippedfile.name.split(&#39;/&#39;).last
-            print &amp;quot;&amp;lt;br/&amp;gt;tFound file to copy: #{fname}&amp;lt;br/&amp;gt;n&amp;quot;
-            toname = &amp;quot;#{server}&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;#{fname}&amp;quot;
-            File.delete(toname) if File.exist?(toname)
-            zippedfile.extract(toname)
-        end
-    end
+	def unzip_and_copy(zip_file, pattern, server)
+		zippedfile = zip_file.glob(pattern).first
+		unless zippedfile.nil?
+			fname = zippedfile.name.split(&#39;/&#39;).last
+			print &amp;quot;&amp;lt;br/&amp;gt;tFound file to copy: #{fname}&amp;lt;br/&amp;gt;n&amp;quot;
+			toname = &amp;quot;#{server}&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;#{fname}&amp;quot;
+			File.delete(toname) if File.exist?(toname)
+			zippedfile.extract(toname)
+		end
+	end
 
-    print &amp;quot;unzipping nuget package...&amp;lt;br/&amp;gt;n&amp;quot;
-    Zip::File.open(nupkg_file) do |zip_file|
-        unzip_and_copy zip_file, &#39;lib/net35/*.dll&#39;, server
-        unzip_and_copy zip_file, &#39;lib/net40/*.dll&#39;, server
-        unzip_and_copy zip_file, &#39;lib/net45/*.dll&#39;, server
-    end
-    File.delete(nupkg_file)
-    print &amp;quot;-- done, extracted to #{server}.&amp;lt;br/&amp;gt;n&amp;quot;
+	print &amp;quot;unzipping nuget package...&amp;lt;br/&amp;gt;n&amp;quot;
+	Zip::File.open(nupkg_file) do |zip_file|
+		unzip_and_copy zip_file, &#39;lib/net35/*.dll&#39;, server
+		unzip_and_copy zip_file, &#39;lib/net40/*.dll&#39;, server
+		unzip_and_copy zip_file, &#39;lib/net45/*.dll&#39;, server
+	end
+	File.delete(nupkg_file)
+	print &amp;quot;-- done, extracted to #{server}.&amp;lt;br/&amp;gt;n&amp;quot;
 end
 
 # ex. usage: 
@@ -1250,18 +1250,18 @@ end
 options = {}
 ARGV &amp;lt;&amp;lt; &#39;-h&#39; if ARGV.empty?
 OptionParser.new do |opts|
-    opts.banner = &amp;quot;Usage: deploy_artifact.rb [options]&amp;quot;
-    opts.on(&#39;-r&#39;, &#39;--repo REPOSITORY_URL&#39;, &#39;nexus repository url (bvb http://server:8888/nexus/service/local/repositories/nuget-prereleases/ - with trailing slash)&#39;) { |v| options[:repo] = v }
-    opts.on(&#39;-m&#39;, &#39;--modules NAME&#39;, &#39;module name (comma separated)&#39;) { |v| options[:modules] = v }
-    opts.on(&#39;-s&#39;, &#39;--server NAME&#39;, &#39;server target bin directory&#39;) { |v| options[:server] = v }
-    opts.on(&#39;-h&#39;, &#39;--help&#39;, &#39;prints this help&#39;) { |v|
-        puts opts
-        exit
-    }
+	opts.banner = &amp;quot;Usage: deploy_artifact.rb [options]&amp;quot;
+	opts.on(&#39;-r&#39;, &#39;--repo REPOSITORY_URL&#39;, &#39;nexus repository url (bvb http://server:8888/nexus/service/local/repositories/nuget-prereleases/ - with trailing slash)&#39;) { |v| options[:repo] = v }
+	opts.on(&#39;-m&#39;, &#39;--modules NAME&#39;, &#39;module name (comma separated)&#39;) { |v| options[:modules] = v }
+	opts.on(&#39;-s&#39;, &#39;--server NAME&#39;, &#39;server target bin directory&#39;) { |v| options[:server] = v }
+	opts.on(&#39;-h&#39;, &#39;--help&#39;, &#39;prints this help&#39;) { |v|
+		puts opts
+		exit
+	}
 end.parse!
 
 options[:modules].split(&amp;quot;,&amp;quot;).each do |mod|
-    deploy_artifact mod, options[:server], options[:repo]
+	deploy_artifact mod, options[:server], options[:repo]
 end
 
 &lt;/code&gt;&lt;/pre&gt;
@@ -1863,34 +1863,34 @@ storyFile = File.open(&#39;svnlog_stories.txt&#39;, &#39;w&#39;)
 csv = CSV.open(&#39;svnlog.csv&#39;, &#39;wb&#39;)
 
 [ &#39;.&#39;, &#39;PFW.Base&#39; ].map { |dir|
-    puts &amp;quot; -- processing dir &#39;#{dir}&#39; ...&amp;quot;
-    rawxml = `cd #{dir} &amp;amp;&amp;amp; svn log --xml --revision #{revFrom}:#{revTo}`
+	puts &amp;quot; -- processing dir &#39;#{dir}&#39; ...&amp;quot;
+	rawxml = `cd #{dir} &amp;amp;&amp;amp; svn log --xml --revision #{revFrom}:#{revTo}`
 
-    xml = Nokogiri::XML(rawxml)
-    xml.xpath(&amp;quot;//logentry&amp;quot;).map { |entry|
-        hash = Hash.new
-        hash[&#39;rev&#39;] = entry.attr(&amp;quot;revision&amp;quot;)
-        hash[&#39;author&#39;] = entry.css(&amp;quot;author&amp;quot;).text
-        hash[&#39;date&#39;] = DateTime.strptime(entry.css(&amp;quot;date&amp;quot;).text, &#39;%Y-%m-%dT%H:%M:%S&#39;)
-        hash[&#39;msg&#39;] = entry.css(&amp;quot;msg&amp;quot;).text.strip.tr(&amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;, &amp;quot;&amp;quot;)
-        hash[&#39;btIssues&#39;] = hash[&#39;msg&#39;].scan(/bt#([0-9]+)/i).flatten.uniq
-        hash[&#39;rmIssues&#39;] = hash[&#39;msg&#39;].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &amp;quot;http://server.cloudapp.net/redmine/issues/#{rm}&amp;quot; }
-        hash[&#39;stories&#39;] = hash[&#39;msg&#39;].scan(/story#(&amp;lt;br/&amp;gt;S+)&amp;lt;br/&amp;gt;s/i).flatten.uniq
+	xml = Nokogiri::XML(rawxml)
+	xml.xpath(&amp;quot;//logentry&amp;quot;).map { |entry|
+		hash = Hash.new
+		hash[&#39;rev&#39;] = entry.attr(&amp;quot;revision&amp;quot;)
+		hash[&#39;author&#39;] = entry.css(&amp;quot;author&amp;quot;).text
+		hash[&#39;date&#39;] = DateTime.strptime(entry.css(&amp;quot;date&amp;quot;).text, &#39;%Y-%m-%dT%H:%M:%S&#39;)
+		hash[&#39;msg&#39;] = entry.css(&amp;quot;msg&amp;quot;).text.strip.tr(&amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;, &amp;quot;&amp;quot;)
+		hash[&#39;btIssues&#39;] = hash[&#39;msg&#39;].scan(/bt#([0-9]+)/i).flatten.uniq
+		hash[&#39;rmIssues&#39;] = hash[&#39;msg&#39;].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &amp;quot;http://server.cloudapp.net/redmine/issues/#{rm}&amp;quot; }
+		hash[&#39;stories&#39;] = hash[&#39;msg&#39;].scan(/story#(&amp;lt;br/&amp;gt;S+)&amp;lt;br/&amp;gt;s/i).flatten.uniq
 
-        hash
-    }
+		hash
+	}
 }.flatten.sort_by { |hash| hash[&#39;date&#39;] }.each do |entry|
-    rm = entry[&#39;rmIssues&#39;].join(&#39;, &#39;)
-    csv &amp;lt;&amp;lt; [ &#39;r&#39; + entry[&#39;rev&#39;], entry[&#39;date&#39;], entry[&#39;author&#39;], entry[&#39;msg&#39;], rm ]
-    entry[&#39;btIssues&#39;].each do |issue|
-        btFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-    end
-    entry[&#39;rmIssues&#39;].each do |issue|
-        rmFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-    end
-    entry[&#39;stories&#39;].each do |issue|
-        storyFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-    end
+	rm = entry[&#39;rmIssues&#39;].join(&#39;, &#39;)
+	csv &amp;lt;&amp;lt; [ &#39;r&#39; + entry[&#39;rev&#39;], entry[&#39;date&#39;], entry[&#39;author&#39;], entry[&#39;msg&#39;], rm ]
+	entry[&#39;btIssues&#39;].each do |issue|
+		btFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
+	entry[&#39;rmIssues&#39;].each do |issue|
+		rmFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
+	entry[&#39;stories&#39;].each do |issue|
+		storyFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
 end
 
 
@@ -2257,9 +2257,9 @@ wp();
 $posts = get_posts( $args );
 
 foreach($posts as $post) {
-    * data specific to wp_posts - http:*codex.wordpress.org/Database_Description#Table:_wp_posts
-    echo &amp;quot;post id &amp;quot; . $post-&amp;gt;ID;
-    echo &amp;quot;title: &amp;quot; . $post-&amp;gt;post_title;
+	* data specific to wp_posts - http:*codex.wordpress.org/Database_Description#Table:_wp_posts
+	echo &amp;quot;post id &amp;quot; . $post-&amp;gt;ID;
+	echo &amp;quot;title: &amp;quot; . $post-&amp;gt;post_title;
 }
 &lt;/code&gt;&lt;/pre&gt;
 

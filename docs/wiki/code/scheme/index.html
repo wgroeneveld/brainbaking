@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -164,8 +200,8 @@
  (define x 0)
  (define-test (case-fall-through-returns-undefined)
    (assert-equals unspecific
-          (cond ((&lt; x 0) 1)
-            ((&gt; x 0) 1)))
+		  (cond ((&lt; x 0) 1)
+			((&gt; x 0) 1)))
    ))
 
 (run-registered-tests)
@@ -194,12 +230,12 @@
 
   (in-test-group getallekes
     
-     (define-test (add-simple-numbers)
-       (assert-equals (my-add 1 2) 3)))
-       
-    (in-test-group meer-getallekes
-     (define-test (add-more-complex-numbers)
-       (assert-equals (my-add 3 7) 10))))
+	 (define-test (add-simple-numbers)
+	   (assert-equals (my-add 1 2) 3)))
+	   
+	(in-test-group meer-getallekes
+	 (define-test (add-more-complex-numbers)
+	   (assert-equals (my-add 3 7) 10))))
 
 (run-registered-tests)
 </code></pre>

@@ -137,20 +137,20 @@ Return(&#39;gtest&#39;)
 #include &amp;quot;Utility.h&amp;quot;
 
 #ifdef _DLL
-    #define DllExImport __declspec(dllexport)
+	#define DllExImport __declspec(dllexport)
 #else
-    #define DllExImport __declspec(dllimport)
+	#define DllExImport __declspec(dllimport)
 #endif
 
 
 class DllExImport ResourceUtils
 {
 public:
-    static RAIIObject&amp;lt;HICON&amp;gt; getIcon(int resourceId);
-    static RAIIObject&amp;lt;HICON&amp;gt; getIcon(HINSTANCE resourceHandleInstance, int resourceId);
+	static RAIIObject&amp;lt;HICON&amp;gt; getIcon(int resourceId);
+	static RAIIObject&amp;lt;HICON&amp;gt; getIcon(HINSTANCE resourceHandleInstance, int resourceId);
 
 private:
-    ResourceUtils() {}
+	ResourceUtils() {}
 };
 
 #endif
@@ -235,10 +235,10 @@ private:
 
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;CString HostServiceProxy::GetCouponFromResponseString(CString response)
 {
-    CString couponKey ###### _T(&amp;quot;Coupon&amp;quot;);
-    CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
+	CString couponKey ###### _T(&amp;quot;Coupon&amp;quot;);
+	CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
 
-    return couponPart.Left(couponPart.Find(_T(&amp;quot;;&amp;quot;)));
+	return couponPart.Left(couponPart.Find(_T(&amp;quot;;&amp;quot;)));
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -246,11 +246,11 @@ private:
 
 &lt;p&gt;Icons en images worden opgeslagen in .rc files die als resources in de code gekoppeld kunnen worden aan bijvoorbeeld een &lt;code&gt;CButton&lt;/code&gt;. Hoe?&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;    HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
-    if(hImage ###### NULL)
-        ASSERT(FALSE);  
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;	HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
+	if(hImage ###### NULL)
+		ASSERT(FALSE);	
 
-    HICON image = static_cast&amp;lt;HICON&amp;gt;(hImage);
+	HICON image = static_cast&amp;lt;HICON&amp;gt;(hImage);
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;HICON&lt;/code&gt; is van &lt;code&gt;WinDef.h&lt;/code&gt; en &lt;code&gt;::LoadImage&lt;/code&gt; zit op &lt;code&gt;WinUser.h&lt;/code&gt;. Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/windows/desktop/ms648045(v=vs.85).aspx&#34;&gt;MSDN doc&lt;/a&gt; voor LoadImage.&lt;/p&gt;
@@ -263,8 +263,8 @@ private:
 
 &lt;p&gt;❗ de Afx resource handle kan &lt;strong&gt;altijd&lt;/strong&gt; gewijzigd worden door leuke dingen te doen als:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;    HINSTANCE old = AfxGetResourceHandle();
-    AfxSetResourceHandle(GetModuleHandle(&amp;quot;andereModule&amp;quot;));
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;	HINSTANCE old = AfxGetResourceHandle();
+	AfxSetResourceHandle(GetModuleHandle(&amp;quot;andereModule&amp;quot;));
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Gebruik daarom best &lt;code&gt;::GetModuleHandle(char*)&lt;/code&gt; bij &lt;code&gt;::LoadImage&lt;/code&gt;.&lt;/p&gt;
@@ -277,18 +277,18 @@ private:
 class RAIIObject
 {
 public:
-    explicit RAIIObject(const TObject&amp;amp; obj) : m_Object(obj) {}
-    RAIIObject() {}
-    ~RAIIObject() {ReleaseObject();}
-    RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const TObject&amp;amp; obj) {if(&amp;amp;obj ! &amp;amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
-    RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; obj) {if(&amp;amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
-    TObject&amp;amp; GetObject() {return m_Object;}
-    const TObject&amp;amp; GetObject() const {return m_Object;}
-    operator TObject&amp;amp;() {return m_Object;}
-    operator const TObject&amp;amp;() const {return m_Object;}
+	explicit RAIIObject(const TObject&amp;amp; obj) : m_Object(obj) {}
+	RAIIObject() {}
+	~RAIIObject() {ReleaseObject();}
+	RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const TObject&amp;amp; obj) {if(&amp;amp;obj ! &amp;amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
+	RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; obj) {if(&amp;amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
+	TObject&amp;amp; GetObject() {return m_Object;}
+	const TObject&amp;amp; GetObject() const {return m_Object;}
+	operator TObject&amp;amp;() {return m_Object;}
+	operator const TObject&amp;amp;() const {return m_Object;}
 private:
-    void ReleaseObject();
-    TObject m_Object;
+	void ReleaseObject();
+	TObject m_Object;
 };
 
 template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;HICON&amp;gt;::ReleaseObject() {::DestroyIcon(m_Object); m_Object = NULL;}
@@ -316,33 +316,33 @@ template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;CMenu&amp;gt;::ReleaseObj
 
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;CString ExceptionHandler::GetLoadedDllInfo() const
 {
-    CString dlls = _T(&amp;quot;&amp;quot;);
-    HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
-    if(process ###### NULL)
-    {
-        return dlls;
-    }
+	CString dlls = _T(&amp;quot;&amp;quot;);
+	HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
+	if(process ###### NULL)
+	{
+		return dlls;
+	}
 
-     HMODULE hMods[1024];
-     DWORD cbNeeded;
-     BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;amp;cbNeeded);
-     if(!modules)
-     {
-         return dlls;
-     }
+	 HMODULE hMods[1024];
+	 DWORD cbNeeded;
+	 BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;amp;cbNeeded);
+	 if(!modules)
+	 {
+		 return dlls;
+	 }
 
-    for (int i = 0; i &amp;lt; (cbNeeded / sizeof(HMODULE)); i++)
-    {
-        TCHAR szModName[MAX_PATH];
+	for (int i = 0; i &amp;lt; (cbNeeded / sizeof(HMODULE)); i++)
+	{
+		TCHAR szModName[MAX_PATH];
 
-        if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
-        {
-            dlls.Format(_T(&amp;quot;%s, %s&amp;quot;), dlls, szModName);
-        }
-    }
+		if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
+		{
+			dlls.Format(_T(&amp;quot;%s, %s&amp;quot;), dlls, szModName);
+		}
+	}
 
-    CloseHandle(process);
-    return dlls;
+	CloseHandle(process);
+	return dlls;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -403,9 +403,9 @@ int main(int argc, char **argv)
 &lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;class Simple
 {
 public:
-    Simple() : someMember(3) {}
-    virtual int guessNumber();
-    int someMember;
+	Simple() : someMember(3) {}
+	virtual int guessNumber();
+	int someMember;
 };
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -413,7 +413,7 @@ public:
 
 int Simple::guessNumber()
 {
-    return 5;
+	return 5;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -424,8 +424,8 @@ int Simple::guessNumber()
 class Complexer : public Simple
 {
 public:
-    Complexer() {}
-    int guessNumber();
+	Complexer() {}
+	int guessNumber();
 };
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -435,7 +435,7 @@ public:
 
 int Complexer::guessNumber()
 {
-    return 10;
+	return 10;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -447,9 +447,9 @@ int Complexer::guessNumber()
 
 int main()
 {
-    Simple* simple = new Complexer();
-    std::cout &amp;lt;&amp;lt; simple-&amp;gt;guessNumber();
-    delete simple;
+	Simple* simple = new Complexer();
+	std::cout &amp;lt;&amp;lt; simple-&amp;gt;guessNumber();
+	delete simple;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -472,15 +472,15 @@ Definiëer &lt;code&gt;Complexer&lt;/code&gt; zo:&lt;/li&gt;
 
 int main()
 {
-    Simple simpleInitialized; // oops, I created something?
-    // Simple simpleInitialized = NULL; cannot convert from &#39;int&#39; to &#39;Simple&#39; (#define NULL 0)
+	Simple simpleInitialized; // oops, I created something?
+	// Simple simpleInitialized = NULL; cannot convert from &#39;int&#39; to &#39;Simple&#39; (#define NULL 0)
 
-    Simple* simplePtr;
+	Simple* simplePtr;
 
-    std::cout &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n initialiezd: &amp;quot; &amp;lt;&amp;lt; simplePtr-&amp;gt;someMember;
-    // Run-Time Check Failure #3 - The variable &#39;simplePtr&#39; is being used without being initialized
+	std::cout &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n initialiezd: &amp;quot; &amp;lt;&amp;lt; simplePtr-&amp;gt;someMember;
+	// Run-Time Check Failure #3 - The variable &#39;simplePtr&#39; is being used without being initialized
 
-    delete simplePtr;
+	delete simplePtr;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -587,61 +587,61 @@ Something something = getal; // use constructor
 class AddinProcessService 
 {
     static AddinProcessService *singletonInstance;
-    AddinProcessService() : m_coupon(_T(&amp;quot;&amp;quot;)), m_hostServiceAddress(_T(&amp;quot;&amp;quot;)) {}
+	AddinProcessService() : m_coupon(_T(&amp;quot;&amp;quot;)), m_hostServiceAddress(_T(&amp;quot;&amp;quot;)) {}
 
   public:
 
-    inline const CString&amp;amp; GetHostServiceAddress() const
-    {
-        return m_hostServiceAddress;
-    }
-    inline const CString&amp;amp; GetCoupon() const
-    {
-        return m_coupon;
-    }
-    inline void SetCoupon(CString coupon)
-    {
-        m_coupon = coupon;
-    }
-    inline void SetHostServiceAddress(CString address) 
-    {
-        m_hostServiceAddress = address;
-    }
+	inline const CString&amp;amp; GetHostServiceAddress() const
+	{
+		return m_hostServiceAddress;
+	}
+	inline const CString&amp;amp; GetCoupon() const
+	{
+		return m_coupon;
+	}
+	inline void SetCoupon(CString coupon)
+	{
+		m_coupon = coupon;
+	}
+	inline void SetHostServiceAddress(CString address) 
+	{
+		m_hostServiceAddress = address;
+	}
 
     static AddinProcessService* getSingletonInstance()
     {
-        static volatile int initialized = 0;
-        static HANDLE mtx;
+		static volatile int initialized = 0;
+		static HANDLE mtx;
 
-        if (!initialized)
-        {
-            if (!mtx)
-            {
-                HANDLE mymtx;
-                mymtx = CreateMutex(NULL, 0, NULL);
-                if (InterlockedCompareExchangePointer(&amp;amp;mtx, mymtx, NULL) != NULL)
-                    CloseHandle(mymtx);
-            }
+		if (!initialized)
+		{
+    		if (!mtx)
+    		{
+    			HANDLE mymtx;
+    			mymtx = CreateMutex(NULL, 0, NULL);
+    			if (InterlockedCompareExchangePointer(&amp;amp;mtx, mymtx, NULL) != NULL)
+    				CloseHandle(mymtx);
+    		}
 
-            WaitForSingleObject(mtx, 0);
-            if (!initialized)
-            {
-                libInitInternal();
-                initialized = 1;
-            }
-            ReleaseMutex(mtx);
-        }
-        return singletonInstance;
+    		WaitForSingleObject(mtx, 0);
+    		if (!initialized)
+    		{
+    			libInitInternal();
+    			initialized = 1;
+    		}
+    		ReleaseMutex(mtx);
+		}
+		return singletonInstance;
     };
 
 private:
-    CString m_hostServiceAddress;
-    CString m_coupon;
+	CString m_hostServiceAddress;
+	CString m_coupon;
 
-    static void libInitInternal()
-    {
-        singletonInstance = new AddinProcessService();
-    }
+	static void libInitInternal()
+	{
+		singletonInstance = new AddinProcessService();
+	}
 };
 
 &lt;/code&gt;&lt;/pre&gt;
@@ -723,59 +723,59 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace calc
 {
-    TEST_CLASS(CalculatorTest)
-    {
-    private:
-        int nStartValue;
-        Calculator* calc;
+	TEST_CLASS(CalculatorTest)
+	{
+	private:
+		int nStartValue;
+		Calculator* calc;
 
-        void CreateCalcSUT()
-        {
-            calc = new Calculator(nStartValue);
-        }
+		void CreateCalcSUT()
+		{
+			calc = new Calculator(nStartValue);
+		}
 
-    public:
-        /*testcase template:
-        TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
-        {
-        param specialParam = specialvalue;
-        ...
-        param expectation = whatYouExpect;
-        ...
-        (SUT creation)
-        (call methods)
-        ...
-        assert(s)
-        }*/
+	public:
+		/*testcase template:
+		TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
+		{
+		param specialParam = specialvalue;
+		...
+		param expectation = whatYouExpect;
+		...
+		(SUT creation)
+		(call methods)
+		...
+		assert(s)
+		}*/
 
 
-        TEST_METHOD_INITIALIZE(InitialiseDefaults)
-        {
-            calc = NULL;
-            nStartValue = 5;
-        }
+		TEST_METHOD_INITIALIZE(InitialiseDefaults)
+		{
+			calc = NULL;
+			nStartValue = 5;
+		}
 
-        TEST_METHOD_CLEANUP(CleanupObjects)
-        {
-            delete calc;
-        }
+		TEST_METHOD_CLEANUP(CleanupObjects)
+		{
+			delete calc;
+		}
 
-        TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
-        {
-            int nExpectedValue = 0;
-            calc = new Calculator();
-            Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
-        }
+		TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
+		{
+			int nExpectedValue = 0;
+			calc = new Calculator();
+			Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
+		}
 
-        TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
-        {
-            nStartValue = 5;
-            int nExpectedValue = 5;
-            CreateCalcSUT();
-            Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
-        }
+		TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
+		{
+			nStartValue = 5;
+			int nExpectedValue = 5;
+			CreateCalcSUT();
+			Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
+		}
 
-    };
+	};
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -872,9 +872,9 @@ namespace calc
 
 &lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;class MyClass {
 public:
-    MyClass() {};
+	MyClass() {};
 
-    int addUp(int one, int two);
+	int addUp(int one, int two);
 };
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -884,7 +884,7 @@ using namespace std;
 
 int MyClass::addUp(int one, int two)
 {
-    return one + two;
+	return one + two;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -898,22 +898,22 @@ int MyClass::addUp(int one, int two)
 using namespace System;
 using namespace System::Text;
 using namespace System::Collections::Generic;
-using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
+using namespace	Microsoft::VisualStudio::TestTools::UnitTesting;
 
 namespace unittests
 {
-    [TestClass]
-    public ref class MyClassTest
-    {
+	[TestClass]
+	public ref class MyClassTest
+	{
 
-    public: 
+	public: 
 
-        [TestMethod]
-        void AddOne()
-        {
-            Assert::AreEqual(3, MyClass().addUp(1, 2));
-        };
-    };
+		[TestMethod]
+		void AddOne()
+		{
+			Assert::AreEqual(3, MyClass().addUp(1, 2));
+		};
+	};
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -948,9 +948,9 @@ MyClassTest.obj : error LNK2019: unresolved external symbol &amp;quot;public: in
 
 class FRIENDCLASS MyClass {
 public:
-    MyClass();
+	MyClass();
 
-    int addUp(int one, int two);
+	int addUp(int one, int two);
 };
 &lt;/code&gt;&lt;/pre&gt;
 

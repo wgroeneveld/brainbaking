@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -136,9 +172,9 @@
 <p>Zie <a href="http://docs.angularjs.org/api/angular.mock.module">angular.mock.module</a> - twee hoofdfuncties die belangrijk zijn: <code>module()</code> en <code>inject()</code>. Het eerste maakt de module aan en het tweede zorgt voor de mock dependency injectie. Bijvoorbeeld:</p>
 
 <pre><code class="language-javascript">angular
-    .module('bla.services', [])
-    
-    .factory('$bla', ['$http', function($http) {
+	.module('bla.services', [])
+	
+	.factory('$bla', ['$http', function($http) {
             // do stuff with $http, like a .get
             return { go: function() {} }
         }])

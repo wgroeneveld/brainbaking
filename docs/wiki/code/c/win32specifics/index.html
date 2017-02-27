@@ -50,6 +50,42 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
       
         
           <li>
@@ -133,33 +169,33 @@
 
 <pre><code class="language-c++">CString ExceptionHandler::GetLoadedDllInfo() const
 {
-    CString dlls = _T(&quot;&quot;);
-    HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
-    if(process ###### NULL)
-    {
-        return dlls;
-    }
+	CString dlls = _T(&quot;&quot;);
+	HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
+	if(process ###### NULL)
+	{
+		return dlls;
+	}
 
-     HMODULE hMods[1024];
-     DWORD cbNeeded;
-     BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;cbNeeded);
-     if(!modules)
-     {
-         return dlls;
-     }
+	 HMODULE hMods[1024];
+	 DWORD cbNeeded;
+	 BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;cbNeeded);
+	 if(!modules)
+	 {
+		 return dlls;
+	 }
 
-    for (int i = 0; i &lt; (cbNeeded / sizeof(HMODULE)); i++)
-    {
-        TCHAR szModName[MAX_PATH];
+	for (int i = 0; i &lt; (cbNeeded / sizeof(HMODULE)); i++)
+	{
+		TCHAR szModName[MAX_PATH];
 
-        if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
-        {
-            dlls.Format(_T(&quot;%s, %s&quot;), dlls, szModName);
-        }
-    }
+		if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
+		{
+			dlls.Format(_T(&quot;%s, %s&quot;), dlls, szModName);
+		}
+	}
 
-    CloseHandle(process);
-    return dlls;
+	CloseHandle(process);
+	return dlls;
 }
 </code></pre>
 
