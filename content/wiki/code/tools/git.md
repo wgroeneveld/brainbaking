@@ -10,6 +10,8 @@ date = "2013-03-12"
 +++
 # Git 
 
+**[Handige commando's](https://orga.cat/posts/most-useful-git-commands)**
+
 ### Van een remote branch changes binnen halen 
 
 Stel: ik heb een fork gemaakt maar wil van de "upstream" de veranderingen binnen halen:
