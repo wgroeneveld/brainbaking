@@ -32,6 +32,8 @@ tag = "tags"
   #youtube = "user/username" # or channel/channelname
   #spotify = "username"
   #itchio = "username"
+  pinterest = "woutergroenev"
+  goodreads = "5451893-wouter"
 
 [[menu.main]]
     name = "Blog"

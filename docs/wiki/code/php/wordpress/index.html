@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/php">php</a> </li>
-      
-       <li><a href="/tags/wordpress">wordpress</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/php">php</a> </li>
+  
+   <li><a href="/tags/wordpress">wordpress</a> </li>
+  
+  </ul>
+
 
         
 
@@ -185,9 +187,9 @@ wp();
 $posts = get_posts( $args );
 
 foreach($posts as $post) {
-	* data specific to wp_posts - http:*codex.wordpress.org/Database_Description#Table:_wp_posts
-	echo &quot;post id &quot; . $post-&gt;ID;
-	echo &quot;title: &quot; . $post-&gt;post_title;
+    * data specific to wp_posts - http:*codex.wordpress.org/Database_Description#Table:_wp_posts
+    echo &quot;post id &quot; . $post-&gt;ID;
+    echo &quot;title: &quot; . $post-&gt;post_title;
 }
 </code></pre>
 
@@ -215,7 +217,7 @@ foreach($posts as $post) {
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -240,6 +242,26 @@ foreach($posts as $post) {
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -278,6 +300,7 @@ foreach($posts as $post) {
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

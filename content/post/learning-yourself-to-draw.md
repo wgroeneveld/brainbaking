@@ -4,7 +4,7 @@ date: '2017-03-06'
 subtitle: A year of spilling lots of ink
 tags:
 - Learning yourself to draw
-published: false
+published: true
 ---
 
 Inspired by Noah Bradley's [Don't go to art school](https://medium.com/i-m-h-o/dont-go-to-art-school-138c5efd45e9#.aul09q3wr) blog at Medium.com. 
@@ -23,7 +23,12 @@ Another is to get some color into my journals. I've been journaling for about 7 
 
 It should be that simple. I intent to learn to draw within a year, without enrolling in a traditional school. To be successful, I will turn to books, online courses, experts in art by visiting expo's/museums, experts in art by going to short term workshops, and above all: by lot's of practicing. Noah states that $10k could be spent wisely within one year. I have no idea how much it will cost me but my intention is to keep it as low as possible. 
 
-Each learning 'session' will be another blog post. I have a general idea on what I like (ink, watercolor, anything physical, journals) and what I don't like (acrylic paint, anything digital) but since there is so much I don't know, this might change during the course of the coming year. Are you familiar with the frustrated feeling you get while visting an art supply store and staring at all the equipment but having no idea what does what? That's me. So, I figured...
+Each learning 'session' will be another blog post. I have a general idea on what I like (ink, watercolor, anything physical, journals) and what I don't like (acrylic paint, anything digital) but since there is so much I don't know, this might change during the course of the coming year. Since Pinterest is so inspiring I'd like to upload as much of the artwork as possible. Sharing via pins makes it easier for people to try it themselves.
+
+Take a look at my Pinterest profile by clicking on the icon on the bottom of the page.
+If you're looking for all blog posts about learning to draw, check out the **'[learning yourself to draw](/tags/learning-yourself-to-draw/)' tag**.
+
+Are you familiar with the frustrated feeling you get while visting an art supply store and staring at all the equipment but having no idea what does what? That's me. So, I figured...
 
 ### Start with the beginning. 
 
@@ -40,4 +45,18 @@ Each learning 'session' will be another blog post. I have a general idea on what
 9. collage/scrapbooking
 10. mixed media
 
-Price is 390 EUR. As it's only once a week, it creates the perfect opportunity for me to practice drawing "stuff" between the lessons and to experiment a bith with the different mediums. 
+Price is 390 EUR. As it's only once a week, it creates the perfect opportunity for me to practice drawing "stuff" between the lessons and to experiment a bit with the different mediums. 
+
+These are some christmas-themed cards I made with cheap pastels during the third lesson:
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749442493529/"></a>
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749442493506/"></a>
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749442493510/"></a>
+
+It starts out very simple, as you can see. I'm still having difficulties buying the right equipment. The pastels used above are very hard and grainy, and don't contain a lot of pigment. That is clearly visible in the gameboy one on the far left: the brown paper shouldn't be that visible. Small steps, small steps... 
+
+### But I suck at drawing!
+
+So do I.
+
+Each week (this sounds like a promise I'll have to make to myself) I'll post a new blog post summarizing what I've learned about drawing, art ant painting. Hopefully, after 52 posts, others who are thinking about making the step won't be that intimidated as I am right now. I've already felt that looking too much at work of others (in Pinterest for example) completely demotivates me. You'll always find someone who completely outperforms you. It's not about their work, it's about your own, and **the progress you make**, however small that might be. If it's going forward, it's going forward. There is no hardwired limit on where to go to. Let's just keep on trying, failing, getting up and trying again! It looks like 2017 is going to be an interesting year for me. 

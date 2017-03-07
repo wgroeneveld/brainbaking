@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/java">java</a> </li>
-      
-       <li><a href="/tags/spring">spring</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/java">java</a> </li>
+  
+   <li><a href="/tags/spring">spring</a> </li>
+  
+  </ul>
+
 
         
 
@@ -224,53 +226,53 @@
 
 <p>Met een transaction manager:</p>
 
-<pre><code class="language-xml">	&lt;bean id######&quot;entityManagerFactory&quot; abstract&quot;true&quot;&gt;
-		&lt;property name=&quot;jpaVendorAdapter&quot;&gt;
-			&lt;bean class=&quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&quot;&gt;
-				&lt;property name######&quot;databasePlatform&quot; value&quot;${hibernate.dialect}&quot;/&gt;
-				&lt;property name######&quot;showSql&quot; value&quot;${database.showSql}&quot; /&gt;
-			&lt;/bean&gt;
-		&lt;/property&gt;
-	&lt;/bean&gt;
-	
-	&lt;bean id######&quot;myEntityManagerFactory&quot; class&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot; parent=&quot;entityManagerFactory&quot;&gt;
-		&lt;property name######&quot;packagesToScan&quot; value&quot;be.klak.domain&quot; /&gt;
-		&lt;property name######&quot;dataSource&quot; ref&quot;myDataSource&quot; /&gt;
-		&lt;property name######&quot;persistenceUnitName&quot; value&quot;my_pu&quot; /&gt;
-		&lt;property name=&quot;persistenceUnitManager&quot;&gt;
-			&lt;bean class=&quot;org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager&quot;&gt;
-				&lt;property name######&quot;defaultDataSource&quot; ref&quot;partnerwerkingDataSource&quot; /&gt;
+<pre><code class="language-xml">    &lt;bean id######&quot;entityManagerFactory&quot; abstract&quot;true&quot;&gt;
+        &lt;property name=&quot;jpaVendorAdapter&quot;&gt;
+            &lt;bean class=&quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&quot;&gt;
+                &lt;property name######&quot;databasePlatform&quot; value&quot;${hibernate.dialect}&quot;/&gt;
+                &lt;property name######&quot;showSql&quot; value&quot;${database.showSql}&quot; /&gt;
+            &lt;/bean&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    
+    &lt;bean id######&quot;myEntityManagerFactory&quot; class&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot; parent=&quot;entityManagerFactory&quot;&gt;
+        &lt;property name######&quot;packagesToScan&quot; value&quot;be.klak.domain&quot; /&gt;
+        &lt;property name######&quot;dataSource&quot; ref&quot;myDataSource&quot; /&gt;
+        &lt;property name######&quot;persistenceUnitName&quot; value&quot;my_pu&quot; /&gt;
+        &lt;property name=&quot;persistenceUnitManager&quot;&gt;
+            &lt;bean class=&quot;org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager&quot;&gt;
+                &lt;property name######&quot;defaultDataSource&quot; ref&quot;partnerwerkingDataSource&quot; /&gt;
                 &lt;property name######&quot;persistenceXmlLocation&quot; value&quot;classpath:persistence.xml&quot;/&gt;
-			&lt;/bean&gt;
-		&lt;/property&gt;
-	&lt;/bean&gt;
+            &lt;/bean&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 </code></pre>
 
 <p>De datasource kan via JNDI gedefiniëerd worden dan:</p>
 
-<pre><code class="language-xml">	&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;
-	&lt;bean id######&quot;myEntityManager&quot; factory-bean&quot;myEntityManagerFactory&quot; factory-method=&quot;createEntityManager&quot; /&gt;
-	&lt;bean id######&quot;transactionManager&quot; class&quot;org.springframework.orm.jpa.JpaTransactionManager&quot;&gt;
-		&lt;property name######&quot;entityManagerFactory&quot; ref&quot;myEntityManagerFactory&quot; /&gt;
-	&lt;/bean&gt;
-	
-	&lt;jee:jndi-lookup id######&quot;myDataSource&quot; jndi-name&quot;jdbc/myDataSource&quot; resource-ref=&quot;true&quot; /&gt;
+<pre><code class="language-xml">    &lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;
+    &lt;bean id######&quot;myEntityManager&quot; factory-bean&quot;myEntityManagerFactory&quot; factory-method=&quot;createEntityManager&quot; /&gt;
+    &lt;bean id######&quot;transactionManager&quot; class&quot;org.springframework.orm.jpa.JpaTransactionManager&quot;&gt;
+        &lt;property name######&quot;entityManagerFactory&quot; ref&quot;myEntityManagerFactory&quot; /&gt;
+    &lt;/bean&gt;
+    
+    &lt;jee:jndi-lookup id######&quot;myDataSource&quot; jndi-name&quot;jdbc/myDataSource&quot; resource-ref=&quot;true&quot; /&gt;
 </code></pre>
 
 <p>Daarna kan je de <code>entityManager</code> injecteren in Java:</p>
 
-<pre><code class="language-java">	@PersistenceContext(unitName = &quot;vdab_partnerwerking_pu&quot;)
-	protected EntityManager entityManager;
+<pre><code class="language-java">    @PersistenceContext(unitName = &quot;vdab_partnerwerking_pu&quot;)
+    protected EntityManager entityManager;
 </code></pre>
 
 <p>######= Werken zonder een persistence.xml ######=</p>
 
 <p>Vanaf <strong>Spring 3.1</strong> en JPA kan je via de factory <code>packagesToScan</code> property aangeven ipv via een <code>persistenceUnitManager</code> te werken - meer info en context: zie <a href="http://www.baeldung.com/2011/12/13/the-persistence-layer-with-spring-3-1-and-jpa/">http://www.baeldung.com/2011/12/13/the-persistence-layer-with-spring-3-1-and-jpa/</a></p>
 
-<pre><code class="language-xml">	&lt;bean id######&quot;myEntityManagerFactory&quot; class&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot; parent=&quot;entityManagerFactory&quot;&gt;
-		&lt;property name######&quot;packagesToScan&quot; value&quot;be.klak.domain&quot; /&gt;
-		&lt;property name######&quot;dataSource&quot; ref&quot;myDataSource&quot; /&gt;
-	&lt;/bean&gt;
+<pre><code class="language-xml">    &lt;bean id######&quot;myEntityManagerFactory&quot; class&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot; parent=&quot;entityManagerFactory&quot;&gt;
+        &lt;property name######&quot;packagesToScan&quot; value&quot;be.klak.domain&quot; /&gt;
+        &lt;property name######&quot;dataSource&quot; ref&quot;myDataSource&quot; /&gt;
+    &lt;/bean&gt;
 </code></pre>
 
 <p>Vergeet niet de <code>unitName</code> van de <code>PersistenceContext</code> annotatie af te halen dan.</p>
@@ -319,7 +321,7 @@
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -344,6 +346,26 @@
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -382,6 +404,7 @@
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

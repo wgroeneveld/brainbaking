@@ -148,18 +148,20 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/javascript">javascript</a> </li>
-      
-       <li><a href="/tags/frameworks">frameworks</a> </li>
-      
-       <li><a href="/tags/extjs4">extjs4</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/javascript">javascript</a> </li>
+  
+   <li><a href="/tags/frameworks">frameworks</a> </li>
+  
+   <li><a href="/tags/extjs4">extjs4</a> </li>
+  
+  </ul>
+
 
         
 
@@ -195,13 +197,13 @@
 
 <pre><code class="language-javascript">Ext.define('Evita.store.masterdata.KeywordType', {
     extend: 'Ext.data.EvitaStore',
-	model: 'Evita.model.parkingfacility.MasterdataType',
+    model: 'Evita.model.parkingfacility.MasterdataType',
     proxy: {
-		type: 'evitaAjax',
-		api:{
-			read: 'getMasterdataKeywordByTypeName.json'
-		}
-	}
+        type: 'evitaAjax',
+        api:{
+            read: 'getMasterdataKeywordByTypeName.json'
+        }
+    }
 });
 </code></pre>
 
@@ -212,22 +214,22 @@
 <p>Oplossing: gebruik <code>Ext.create</code> in plaats van te refereren naar de <code>xtype</code>, die gaat door de <code>StoreManager</code> opgezocht &amp; hetbruikt worden anders (1 instantie).</p>
 
 <pre><code class="language-javascript">{
-		    			xtype : 'combo',
-			    		store : Ext.create('Evita.store.masterdata.KeywordType'),
-			    		storeMasterdataTypeName: 'MaturityOfParkingFacility',
-			    		valueField : 'code',
-			    		displayField : 'value',
-		    			name : 'maturity',
-		    			id: 'ParkingFacilityCreate_masterdata_maturity',
-		    		}
+                        xtype : 'combo',
+                        store : Ext.create('Evita.store.masterdata.KeywordType'),
+                        storeMasterdataTypeName: 'MaturityOfParkingFacility',
+                        valueField : 'code',
+                        displayField : 'value',
+                        name : 'maturity',
+                        id: 'ParkingFacilityCreate_masterdata_maturity',
+                    }
 </code></pre>
 
 <p>Loop in de controller over alle stores om dan bvb <code>extraParams</code> in te stellen:</p>
 
-<pre><code class="language-javascript">    	view.down('form').query('combo').forEach(function(combo) {
-			combo.getStore().proxy.extraParams['masterdataTypeName'] = combo.storeMasterdataTypeName;
-			combo.getStore().proxy.extraParams['countryId'] = wizardData.general.countryId;
-    	});
+<pre><code class="language-javascript">        view.down('form').query('combo').forEach(function(combo) {
+            combo.getStore().proxy.extraParams['masterdataTypeName'] = combo.storeMasterdataTypeName;
+            combo.getStore().proxy.extraParams['countryId'] = wizardData.general.countryId;
+        });
 </code></pre>
 
       
@@ -241,7 +243,7 @@
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -266,6 +268,26 @@
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -304,6 +326,7 @@
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

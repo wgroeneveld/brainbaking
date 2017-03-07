@@ -41,31 +41,31 @@
     // Project configuration
     // ---------------------
 
-	handlebars: {
-		compile: {
-			files: {
-				&amp;quot;app/scripts/templates.js&amp;quot;: [
-					&amp;quot;app/templates/*.hbs&amp;quot;
-				]
-			}, 
-			options: {
-				amd: true,
-				processName: function(filename) {
-					return filename
-						.replace(&#39;app/templates/&#39;, &#39;&#39;)
-						.replace(/&amp;lt;br/&amp;gt;.hbs$/, &#39;&#39;);
-				}
-			}
-		}
-	},
+    handlebars: {
+        compile: {
+            files: {
+                &amp;quot;app/scripts/templates.js&amp;quot;: [
+                    &amp;quot;app/templates/*.hbs&amp;quot;
+                ]
+            }, 
+            options: {
+                amd: true,
+                processName: function(filename) {
+                    return filename
+                        .replace(&#39;app/templates/&#39;, &#39;&#39;)
+                        .replace(/&amp;lt;br/&amp;gt;.hbs$/, &#39;&#39;);
+                }
+            }
+        }
+    },
 // ...
 
     watch: {
       handlebars: {
-      	files: [
-      		&#39;app/templates/*.hbs&#39;
-      	],
-      	tasks: &#39;handlebars reload&#39;
+        files: [
+            &#39;app/templates/*.hbs&#39;
+        ],
+        tasks: &#39;handlebars reload&#39;
       },
 // ...
 

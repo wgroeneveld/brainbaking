@@ -148,18 +148,20 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/c">c</a> </li>
-      
-       <li><a href="/tags/testing">testing</a> </li>
-      
-       <li><a href="/tags/testexplorer">testexplorer</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/c">c</a> </li>
+  
+   <li><a href="/tags/testing">testing</a> </li>
+  
+   <li><a href="/tags/testexplorer">testexplorer</a> </li>
+  
+  </ul>
+
 
         
 
@@ -198,59 +200,59 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace calc
 {
-	TEST_CLASS(CalculatorTest)
-	{
-	private:
-		int nStartValue;
-		Calculator* calc;
+    TEST_CLASS(CalculatorTest)
+    {
+    private:
+        int nStartValue;
+        Calculator* calc;
 
-		void CreateCalcSUT()
-		{
-			calc = new Calculator(nStartValue);
-		}
+        void CreateCalcSUT()
+        {
+            calc = new Calculator(nStartValue);
+        }
 
-	public:
-		/*testcase template:
-		TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
-		{
-		param specialParam = specialvalue;
-		...
-		param expectation = whatYouExpect;
-		...
-		(SUT creation)
-		(call methods)
-		...
-		assert(s)
-		}*/
+    public:
+        /*testcase template:
+        TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
+        {
+        param specialParam = specialvalue;
+        ...
+        param expectation = whatYouExpect;
+        ...
+        (SUT creation)
+        (call methods)
+        ...
+        assert(s)
+        }*/
 
 
-		TEST_METHOD_INITIALIZE(InitialiseDefaults)
-		{
-			calc = NULL;
-			nStartValue = 5;
-		}
+        TEST_METHOD_INITIALIZE(InitialiseDefaults)
+        {
+            calc = NULL;
+            nStartValue = 5;
+        }
 
-		TEST_METHOD_CLEANUP(CleanupObjects)
-		{
-			delete calc;
-		}
+        TEST_METHOD_CLEANUP(CleanupObjects)
+        {
+            delete calc;
+        }
 
-		TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
-		{
-			int nExpectedValue = 0;
-			calc = new Calculator();
-			Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
-		}
+        TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
+        {
+            int nExpectedValue = 0;
+            calc = new Calculator();
+            Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
+        }
 
-		TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
-		{
-			nStartValue = 5;
-			int nExpectedValue = 5;
-			CreateCalcSUT();
-			Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
-		}
+        TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
+        {
+            nStartValue = 5;
+            int nExpectedValue = 5;
+            CreateCalcSUT();
+            Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
+        }
 
-	};
+    };
 }
 </code></pre>
 
@@ -274,7 +276,7 @@ namespace calc
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -299,6 +301,26 @@ namespace calc
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -337,6 +359,7 @@ namespace calc
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/javascript">javascript</a> </li>
-      
-       <li><a href="/tags/feeds">feeds</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/javascript">javascript</a> </li>
+  
+   <li><a href="/tags/feeds">feeds</a> </li>
+  
+  </ul>
+
 
         
 
@@ -197,8 +199,8 @@ Klak.Feeds.read(new Klak.Feeds.WikiWouter().feed(), $j(&quot;#wiki&quot;));
 <p>Indien geen custom parsing vereist is, kan je je beperken tot de url en title en de rest overerven via <code>prototype</code>:</p>
 
 <pre><code class="language-javascript">Klak.Feeds.BlogWouter = function() {
-	this.title = 'Jefklak&lt;br/&gt;'s Codex Blog Latest Updates';
-	this.url ###### 'https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;q=http:*www.jefklak.be/feed/';	
+    this.title = 'Jefklak&lt;br/&gt;'s Codex Blog Latest Updates';
+    this.url ###### 'https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;q=http:*www.jefklak.be/feed/'; 
 }
 Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
 </code></pre>
@@ -240,7 +242,7 @@ Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -265,6 +267,26 @@ Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -303,6 +325,7 @@ Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

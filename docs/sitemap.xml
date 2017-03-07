@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.brainbaking.com/post/learning-yourself-to-draw/</loc>
+    <lastmod>2017-03-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/post/vb6-unit-testing/</loc>
     <lastmod>2016-12-27T00:00:00+00:00</lastmod>
   </url>
@@ -1155,7 +1160,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/</loc>
-    <lastmod>2016-12-27T00:00:00+00:00</lastmod>
+    <lastmod>2017-03-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1558,6 +1563,12 @@
   <url>
     <loc>http://www.brainbaking.com/tags/labs/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/learning-yourself-to-draw/</loc>
+    <lastmod>2017-03-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

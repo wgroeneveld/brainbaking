@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/db">db</a> </li>
-      
-       <li><a href="/tags/mssql">mssql</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/db">db</a> </li>
+  
+   <li><a href="/tags/mssql">mssql</a> </li>
+  
+  </ul>
+
 
         
 
@@ -175,7 +177,7 @@ DECLARE FKCURSOR CURSOR FOR
 select distinct name,object_name(parent_object_id) from sys.objects where object_id in 
 (   select fk.constraint_object_id from sys.foreign_key_columns as fk
     where fk.referenced_object_id = 
-    	(select object_id from sys.tables where name = 'Reference')
+        (select object_id from sys.tables where name = 'Reference')
 )
 
 OPEN FKCURSOR
@@ -186,8 +188,8 @@ INTO @constraint, @table
 WHILE @@FETCH_STATUS = 0
 BEGIN
 
-	SET @cmd = N'ALTER TABLE [dbo].['+@table+'] DROP CONSTRAINT ' +  @constraint
-	EXEC sp_executeSQL @cmd;
+    SET @cmd = N'ALTER TABLE [dbo].['+@table+'] DROP CONSTRAINT ' +  @constraint
+    EXEC sp_executeSQL @cmd;
 
    FETCH NEXT FROM FKCURSOR 
     INTO @constraint, @table
@@ -228,15 +230,15 @@ WHERE
     AND tables.name = 'tblhtmltemplate'
     AND all_columns.name = 'isdefault')
 
-	set @query = 'alter table tblhtmltemplate drop constraint ' + @cname 
+    set @query = 'alter table tblhtmltemplate drop constraint ' + @cname 
 
 if @cname is not null begin
-	exec sp_executesql @query
+    exec sp_executesql @query
 end
 
 IF  EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name######'tblHtmlTemplate' AND column_name 'isDefault')
 BEGIN
-	alter table tblhtmltemplate drop column isdefault;
+    alter table tblhtmltemplate drop column isdefault;
 END;
 
 </code></pre>
@@ -250,13 +252,13 @@ GO
 
 CREATE FUNCTION ifnull 
 (
-	-- Add the parameters for the function here
-	@value1 datetime, @returnvalue int
+    -- Add the parameters for the function here
+    @value1 datetime, @returnvalue int
 )
 RETURNS datetime
 AS
 BEGIN
-	return isnull(@value1, @returnvalue)
+    return isnull(@value1, @returnvalue)
 
 END
 GO
@@ -408,7 +410,7 @@ GROUP BY
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -433,6 +435,26 @@ GROUP BY
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -471,6 +493,7 @@ GROUP BY
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

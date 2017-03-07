@@ -96,11 +96,11 @@ SEARCH=&amp;quot;&amp;quot;
 
 for FILE_EXCLUDE in ${FILE_EXCLUDES[@]}
 do
-	SEARCH=&amp;quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&amp;quot;
+    SEARCH=&amp;quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&amp;quot;
 done
 for DIR_EXCLUDE in ${DIR_EXCLUDES[@]}
 do
-	SEARCH=&amp;quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&amp;quot;
+    SEARCH=&amp;quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&amp;quot;
 done
 &lt;/code&gt;&lt;/pre&gt;
 

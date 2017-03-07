@@ -148,18 +148,20 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/javascript">javascript</a> </li>
-      
-       <li><a href="/tags/frameworks">frameworks</a> </li>
-      
-       <li><a href="/tags/handlebars">handlebars</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/javascript">javascript</a> </li>
+  
+   <li><a href="/tags/frameworks">frameworks</a> </li>
+  
+   <li><a href="/tags/handlebars">handlebars</a> </li>
+  
+  </ul>
+
 
         
 
@@ -186,31 +188,31 @@
     // Project configuration
     // ---------------------
 
-	handlebars: {
-		compile: {
-			files: {
-				&quot;app/scripts/templates.js&quot;: [
-					&quot;app/templates/*.hbs&quot;
-				]
-			}, 
-			options: {
-				amd: true,
-				processName: function(filename) {
-					return filename
-						.replace('app/templates/', '')
-						.replace(/&lt;br/&gt;.hbs$/, '');
-				}
-			}
-		}
-	},
+    handlebars: {
+        compile: {
+            files: {
+                &quot;app/scripts/templates.js&quot;: [
+                    &quot;app/templates/*.hbs&quot;
+                ]
+            }, 
+            options: {
+                amd: true,
+                processName: function(filename) {
+                    return filename
+                        .replace('app/templates/', '')
+                        .replace(/&lt;br/&gt;.hbs$/, '');
+                }
+            }
+        }
+    },
 // ...
 
     watch: {
       handlebars: {
-      	files: [
-      		'app/templates/*.hbs'
-      	],
-      	tasks: 'handlebars reload'
+        files: [
+            'app/templates/*.hbs'
+        ],
+        tasks: 'handlebars reload'
       },
 // ...
 
@@ -263,7 +265,7 @@ function ($, _, Backbone, HandleBars, UserAccount_Template, UserProfile_Template
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -288,6 +290,26 @@ function ($, _, Backbone, HandleBars, UserAccount_Template, UserProfile_Template
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -326,6 +348,7 @@ function ($, _, Backbone, HandleBars, UserAccount_Template, UserProfile_Template
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

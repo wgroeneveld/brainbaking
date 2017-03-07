@@ -148,14 +148,16 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/unix">unix</a> </li>
-      
-       <li><a href="/tags/cmd">cmd</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/unix">unix</a> </li>
+  
+   <li><a href="/tags/cmd">cmd</a> </li>
+  
+  </ul>
+
 
         
 
@@ -378,10 +380,10 @@ echo &quot;### Svn log Helena Trunk &quot; &gt; $logfile
 echo &quot;❗ periode **[$datefrom - $dateto]**&quot; &gt;&gt; $logfile
 echo &quot;#### Helena Jira's via svn log&quot; &gt;&gt; $logfile
 svn --username######cp8tsc --passwordq3Sp8Phu log -r{$datefrom}:{$dateto} |
-	grep -B 2 -A 1 -i 'HEL-&lt;br/&gt;|jira' |
-	grep -v 'gcl&lt;br/&gt;|lvm' |
-	sed -e 's/-*//' -e 's/r[0-9]* .*(&lt;br/&gt;(.*&lt;br/&gt;)).*/#####&lt;br/&gt;1/g' -e 's/^&lt;br/&gt;([^=]&lt;br/&gt;)/  *&lt;br/&gt;1/' |
-	sed -n 'G; s/&lt;br/&gt;n/&amp;&amp;/; /^&lt;br/&gt;([ -~]*&lt;br/&gt;n&lt;br/&gt;).*&lt;br/&gt;n&lt;br/&gt;1/d; s/&lt;br/&gt;n//; h; P' &gt;&gt; $logfile
+    grep -B 2 -A 1 -i 'HEL-&lt;br/&gt;|jira' |
+    grep -v 'gcl&lt;br/&gt;|lvm' |
+    sed -e 's/-*//' -e 's/r[0-9]* .*(&lt;br/&gt;(.*&lt;br/&gt;)).*/#####&lt;br/&gt;1/g' -e 's/^&lt;br/&gt;([^=]&lt;br/&gt;)/  *&lt;br/&gt;1/' |
+    sed -n 'G; s/&lt;br/&gt;n/&amp;&amp;/; /^&lt;br/&gt;([ -~]*&lt;br/&gt;n&lt;br/&gt;).*&lt;br/&gt;n&lt;br/&gt;1/d; s/&lt;br/&gt;n//; h; P' &gt;&gt; $logfile
 popd
 </code></pre>
 
@@ -406,7 +408,7 @@ popd
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -431,6 +433,26 @@ popd
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -469,6 +491,7 @@ popd
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

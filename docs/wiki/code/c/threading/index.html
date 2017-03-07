@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/c">c</a> </li>
-      
-       <li><a href="/tags/threading">threading</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/c">c</a> </li>
+  
+   <li><a href="/tags/threading">threading</a> </li>
+  
+  </ul>
+
 
         
 
@@ -181,61 +183,61 @@
 class AddinProcessService 
 {
     static AddinProcessService *singletonInstance;
-	AddinProcessService() : m_coupon(_T(&quot;&quot;)), m_hostServiceAddress(_T(&quot;&quot;)) {}
+    AddinProcessService() : m_coupon(_T(&quot;&quot;)), m_hostServiceAddress(_T(&quot;&quot;)) {}
 
   public:
 
-	inline const CString&amp; GetHostServiceAddress() const
-	{
-		return m_hostServiceAddress;
-	}
-	inline const CString&amp; GetCoupon() const
-	{
-		return m_coupon;
-	}
-	inline void SetCoupon(CString coupon)
-	{
-		m_coupon = coupon;
-	}
-	inline void SetHostServiceAddress(CString address) 
-	{
-		m_hostServiceAddress = address;
-	}
+    inline const CString&amp; GetHostServiceAddress() const
+    {
+        return m_hostServiceAddress;
+    }
+    inline const CString&amp; GetCoupon() const
+    {
+        return m_coupon;
+    }
+    inline void SetCoupon(CString coupon)
+    {
+        m_coupon = coupon;
+    }
+    inline void SetHostServiceAddress(CString address) 
+    {
+        m_hostServiceAddress = address;
+    }
 
     static AddinProcessService* getSingletonInstance()
     {
-		static volatile int initialized = 0;
-		static HANDLE mtx;
+        static volatile int initialized = 0;
+        static HANDLE mtx;
 
-		if (!initialized)
-		{
-    		if (!mtx)
-    		{
-    			HANDLE mymtx;
-    			mymtx = CreateMutex(NULL, 0, NULL);
-    			if (InterlockedCompareExchangePointer(&amp;mtx, mymtx, NULL) != NULL)
-    				CloseHandle(mymtx);
-    		}
+        if (!initialized)
+        {
+            if (!mtx)
+            {
+                HANDLE mymtx;
+                mymtx = CreateMutex(NULL, 0, NULL);
+                if (InterlockedCompareExchangePointer(&amp;mtx, mymtx, NULL) != NULL)
+                    CloseHandle(mymtx);
+            }
 
-    		WaitForSingleObject(mtx, 0);
-    		if (!initialized)
-    		{
-    			libInitInternal();
-    			initialized = 1;
-    		}
-    		ReleaseMutex(mtx);
-		}
-		return singletonInstance;
+            WaitForSingleObject(mtx, 0);
+            if (!initialized)
+            {
+                libInitInternal();
+                initialized = 1;
+            }
+            ReleaseMutex(mtx);
+        }
+        return singletonInstance;
     };
 
 private:
-	CString m_hostServiceAddress;
-	CString m_coupon;
+    CString m_hostServiceAddress;
+    CString m_coupon;
 
-	static void libInitInternal()
-	{
-		singletonInstance = new AddinProcessService();
-	}
+    static void libInitInternal()
+    {
+        singletonInstance = new AddinProcessService();
+    }
 };
 
 </code></pre>
@@ -283,7 +285,7 @@ private:
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -308,6 +310,26 @@ private:
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -346,6 +368,7 @@ private:
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

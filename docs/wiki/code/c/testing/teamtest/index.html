@@ -148,18 +148,20 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/c">c</a> </li>
-      
-       <li><a href="/tags/testing">testing</a> </li>
-      
-       <li><a href="/tags/teamtest">teamtest</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/c">c</a> </li>
+  
+   <li><a href="/tags/testing">testing</a> </li>
+  
+   <li><a href="/tags/teamtest">teamtest</a> </li>
+  
+  </ul>
+
 
         
 
@@ -198,9 +200,9 @@
 
 <pre><code class="language-c">class MyClass {
 public:
-	MyClass() {};
+    MyClass() {};
 
-	int addUp(int one, int two);
+    int addUp(int one, int two);
 };
 </code></pre>
 
@@ -210,7 +212,7 @@ using namespace std;
 
 int MyClass::addUp(int one, int two)
 {
-	return one + two;
+    return one + two;
 }
 </code></pre>
 
@@ -224,22 +226,22 @@ int MyClass::addUp(int one, int two)
 using namespace System;
 using namespace System::Text;
 using namespace System::Collections::Generic;
-using namespace	Microsoft::VisualStudio::TestTools::UnitTesting;
+using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
 
 namespace unittests
 {
-	[TestClass]
-	public ref class MyClassTest
-	{
+    [TestClass]
+    public ref class MyClassTest
+    {
 
-	public: 
+    public: 
 
-		[TestMethod]
-		void AddOne()
-		{
-			Assert::AreEqual(3, MyClass().addUp(1, 2));
-		};
-	};
+        [TestMethod]
+        void AddOne()
+        {
+            Assert::AreEqual(3, MyClass().addUp(1, 2));
+        };
+    };
 }
 </code></pre>
 
@@ -274,9 +276,9 @@ MyClassTest.obj : error LNK2019: unresolved external symbol &quot;public: int __
 
 class FRIENDCLASS MyClass {
 public:
-	MyClass();
+    MyClass();
 
-	int addUp(int one, int two);
+    int addUp(int one, int two);
 };
 </code></pre>
 
@@ -297,7 +299,7 @@ public:
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -322,6 +324,26 @@ public:
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -360,6 +382,7 @@ public:
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

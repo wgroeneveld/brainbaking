@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/java">java</a> </li>
-      
-       <li><a href="/tags/google-api">google-api</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/java">java</a> </li>
+  
+   <li><a href="/tags/google-api">google-api</a> </li>
+  
+  </ul>
+
 
         
 
@@ -194,36 +196,36 @@ echo &quot;--- DONE!&quot;```
 ##### maven deps voor de client 
 
 ```xml
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.google.oauth-client&lt;/groupId&gt;
-			&lt;artifactId&gt;google-oauth-client&lt;/artifactId&gt;
-			&lt;version&gt;1.13.1-beta&lt;/version&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.google.api-client&lt;/groupId&gt;
-			&lt;artifactId&gt;google-api-client&lt;/artifactId&gt;
-			&lt;version&gt;1.13.2-beta&lt;/version&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.google.http-client&lt;/groupId&gt;
-			&lt;artifactId&gt;google-http-client-jackson2&lt;/artifactId&gt;
-			&lt;version&gt;1.13.1-beta&lt;/version&gt;
-		&lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.google.oauth-client&lt;/groupId&gt;
+            &lt;artifactId&gt;google-oauth-client&lt;/artifactId&gt;
+            &lt;version&gt;1.13.1-beta&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.google.api-client&lt;/groupId&gt;
+            &lt;artifactId&gt;google-api-client&lt;/artifactId&gt;
+            &lt;version&gt;1.13.2-beta&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.google.http-client&lt;/groupId&gt;
+            &lt;artifactId&gt;google-http-client-jackson2&lt;/artifactId&gt;
+            &lt;version&gt;1.13.1-beta&lt;/version&gt;
+        &lt;/dependency&gt;
 
 </code></pre>
 
 <p>oauth is de enige compile dependency die aangeduid staat, maar api-client is nodig voor de algemene http transport - zie <a href="http://code.google.com/p/google-api-java-client/">http://code.google.com/p/google-api-java-client/</a>
 Een client call maken kan je dan zo doen:</p>
 
-<pre><code class="language-java">		NetHttpTransport transport = new NetHttpTransport();
+<pre><code class="language-java">        NetHttpTransport transport = new NetHttpTransport();
 
-		// laatste param is voor credentials mee te geven
-		Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
-		try {
-			devices.houses().all().execute().getItems();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        // laatste param is voor credentials mee te geven
+        Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
+        try {
+            devices.houses().all().execute().getItems();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 </code></pre>
 
@@ -242,7 +244,7 @@ Een client call maken kan je dan zo doen:</p>
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -267,6 +269,26 @@ Een client call maken kan je dan zo doen:</p>
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -305,6 +327,7 @@ Een client call maken kan je dan zo doen:</p>
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

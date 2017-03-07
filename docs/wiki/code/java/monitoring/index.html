@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/java">java</a> </li>
-      
-       <li><a href="/tags/monitoring">monitoring</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/java">java</a> </li>
+  
+   <li><a href="/tags/monitoring">monitoring</a> </li>
+  
+  </ul>
+
 
         
 
@@ -198,14 +200,14 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
 ##### Spring gebruiken om beans te exposen 
 
 ```java
-	&lt;bean class=&quot;org.springframework.jmx.export.MBeanExporter&quot;&gt;
-		&lt;property name=&quot;beans&quot;&gt;
-			&lt;map&gt;
-				&lt;entry key######&quot;bean:nameBeanName&quot; value-ref=&quot;someBean&quot; /&gt;
-			&lt;/map&gt;
-		&lt;/property&gt;
-		&lt;property name######&quot;registrationBehaviorName&quot; value&quot;REGISTRATION_IGNORE_EXISTING&quot; /&gt;
-	&lt;/bean&gt;
+    &lt;bean class=&quot;org.springframework.jmx.export.MBeanExporter&quot;&gt;
+        &lt;property name=&quot;beans&quot;&gt;
+            &lt;map&gt;
+                &lt;entry key######&quot;bean:nameBeanName&quot; value-ref=&quot;someBean&quot; /&gt;
+            &lt;/map&gt;
+        &lt;/property&gt;
+        &lt;property name######&quot;registrationBehaviorName&quot; value&quot;REGISTRATION_IGNORE_EXISTING&quot; /&gt;
+    &lt;/bean&gt;
 </code></pre>
 
 <h2 id="geheugen-monitoren">Geheugen monitoren</h2>
@@ -248,7 +250,7 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -273,6 +275,26 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -311,6 +333,7 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

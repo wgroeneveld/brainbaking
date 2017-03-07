@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/javascript">javascript</a> </li>
-      
-       <li><a href="/tags/performance">performance</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/javascript">javascript</a> </li>
+  
+   <li><a href="/tags/performance">performance</a> </li>
+  
+  </ul>
+
 
         
 
@@ -214,14 +216,14 @@
 <p><img style='' src='/img//code/javascript/js_sequential.jpg|'></p>
 
 <pre><code class="language-javascript">function loadScript() {
-	for(var i = 0; i &lt; arguments.length; i++) {
-		var js = document.createElement(&quot;script&quot;);
-		var head = document.getElementsByTagName(&quot;head&quot;)[0];
+    for(var i = 0; i &lt; arguments.length; i++) {
+        var js = document.createElement(&quot;script&quot;);
+        var head = document.getElementsByTagName(&quot;head&quot;)[0];
 
-		js.src = arguments[i];
-		js.type = &quot;text/javascript&quot;;
-		head.appendChild(js);
-	}
+        js.src = arguments[i];
+        js.type = &quot;text/javascript&quot;;
+        head.appendChild(js);
+    }
 }
 </code></pre>
 
@@ -254,15 +256,15 @@ Daarom ook altijd best practices volgen en <em>separation of concerns</em> zo go
 <p>Een stap verder zou zijn de library zichzelf bootstrappen, door <code>loadScript()</code> lichtjes aan te passen:</p>
 
 <pre><code class="language-javascript">function loadScript() {
-	for(var i = 0; i &lt; arguments.length; i++) {
-		var js = document.createElement(&quot;script&quot;);
-		var head = document.getElementsByTagName(&quot;head&quot;)[0];
+    for(var i = 0; i &lt; arguments.length; i++) {
+        var js = document.createElement(&quot;script&quot;);
+        var head = document.getElementsByTagName(&quot;head&quot;)[0];
 
-		js.src = arguments[i].src;
-		js.type = &quot;text/javascript&quot;;
-		js.text = arguments[i].callback.toString();
-		head.appendChild(js);
-	}
+        js.src = arguments[i].src;
+        js.type = &quot;text/javascript&quot;;
+        js.text = arguments[i].callback.toString();
+        head.appendChild(js);
+    }
 }
 
 //usage:
@@ -341,7 +343,7 @@ head.js(&quot;/path/to/jquery.js&quot;);
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -366,6 +368,26 @@ head.js(&quot;/path/to/jquery.js&quot;);
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -404,6 +426,7 @@ head.js(&quot;/path/to/jquery.js&quot;);
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

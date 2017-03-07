@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/tools">tools</a> </li>
-      
-       <li><a href="/tags/sublime">sublime</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/tools">tools</a> </li>
+  
+   <li><a href="/tags/sublime">sublime</a> </li>
+  
+  </ul>
+
 
         
 
@@ -191,10 +193,10 @@
 <p>In <code>JSON</code> formaat, zie <code>ctrl+shift+P</code>: <code>Preferences: Settings - User</code>. Proxy definiëren:</p>
 
 <pre><code class="language-javascript">{
-	&quot;debug&quot;: true,
+    &quot;debug&quot;: true,
 
-	&quot;http_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;,
-	&quot;https_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;
+    &quot;http_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;,
+    &quot;https_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;
 }
 </code></pre>
 
@@ -208,9 +210,9 @@ Plugin manueel in plugin dir slepen.</p>
 <p>CTRL+B (menu build) werkt door een <code>.sublime-build</code> file met configuratie voor de batch die in (onder windows <code>C:&lt;br/&gt;Users&lt;br/&gt;bkwog&lt;br/&gt;AppData&lt;br/&gt;Roaming&lt;br/&gt;Sublime Text 2&lt;br/&gt;Packages&lt;br/&gt;[lang]</code>) uw package dir leven. Een voorbeeld van zo&rsquo;n file voor ruby, by default:</p>
 
 <pre><code>{
-	&quot;cmd&quot;: [&quot;ruby&quot;, &quot;$file&quot;],
-	&quot;file_regex&quot;: &quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
-	&quot;selector&quot;: &quot;source.ruby&quot;
+    &quot;cmd&quot;: [&quot;ruby&quot;, &quot;$file&quot;],
+    &quot;file_regex&quot;: &quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
+    &quot;selector&quot;: &quot;source.ruby&quot;
 }
 </code></pre>
 
@@ -235,12 +237,12 @@ Plugin manueel in plugin dir slepen.</p>
 <p>Voor Jedi moet je uw project file aanmaken (&amp; Project -&gt; Add Folder to Project &hellip; base dir kiezen): ziet er bijvoorbeeld zo uit</p>
 
 <pre><code class="language-javascript">{
-	&quot;folders&quot;:
-	[
-		{
-			&quot;path&quot;: &quot;/D/Github/polyglata/01_calculatestring/python&quot;
-		}
-	]
+    &quot;folders&quot;:
+    [
+        {
+            &quot;path&quot;: &quot;/D/Github/polyglata/01_calculatestring/python&quot;
+        }
+    ]
 }
 </code></pre>
 
@@ -261,7 +263,7 @@ Plugin manueel in plugin dir slepen.</p>
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -286,6 +288,26 @@ Plugin manueel in plugin dir slepen.</p>
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -324,6 +346,7 @@ Plugin manueel in plugin dir slepen.</p>
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

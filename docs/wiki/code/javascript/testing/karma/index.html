@@ -148,18 +148,20 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/javascript">javascript</a> </li>
-      
-       <li><a href="/tags/testing">testing</a> </li>
-      
-       <li><a href="/tags/karma">karma</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/javascript">javascript</a> </li>
+  
+   <li><a href="/tags/testing">testing</a> </li>
+  
+   <li><a href="/tags/karma">karma</a> </li>
+  
+  </ul>
+
 
         
 
@@ -209,30 +211,30 @@ npm config set https-proxy http://proxy.be:8080
 
 <h3 id="integratie-in-maven">Integratie in maven</h3>
 
-<pre><code class="language-xml">			&lt;plugin&gt;
-				&lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
-				&lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
-				&lt;version&gt;1.2.1&lt;/version&gt;
-				&lt;executions&gt;
-					&lt;execution&gt;
-						&lt;id&gt;jsunit&lt;/id&gt;
-						&lt;phase&gt;test&lt;/phase&gt;
-						&lt;goals&gt;
-							&lt;goal&gt;exec&lt;/goal&gt;
-						&lt;/goals&gt;
-					&lt;/execution&gt;
-				&lt;/executions&gt;
-				&lt;configuration&gt;
-					&lt;skip&gt;${skipTests}&lt;/skip&gt;
-					&lt;successCodes&gt;
-						&lt;successCode&gt;0&lt;/successCode&gt;
-						&lt;successCode&gt;1&lt;/successCode&gt;&lt;!-- on failing test, don't get a build 
-							error --&gt;
-					&lt;/successCodes&gt;
-					&lt;executable&gt;${basedir}/src/test/javascript/build.bat&lt;/executable&gt;
-					&lt;workingDirectory&gt;${basedir}/src/test/javascript&lt;/workingDirectory&gt;
-				&lt;/configuration&gt;
-			&lt;/plugin&gt;
+<pre><code class="language-xml">            &lt;plugin&gt;
+                &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+                &lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;1.2.1&lt;/version&gt;
+                &lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;id&gt;jsunit&lt;/id&gt;
+                        &lt;phase&gt;test&lt;/phase&gt;
+                        &lt;goals&gt;
+                            &lt;goal&gt;exec&lt;/goal&gt;
+                        &lt;/goals&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+                &lt;configuration&gt;
+                    &lt;skip&gt;${skipTests}&lt;/skip&gt;
+                    &lt;successCodes&gt;
+                        &lt;successCode&gt;0&lt;/successCode&gt;
+                        &lt;successCode&gt;1&lt;/successCode&gt;&lt;!-- on failing test, don't get a build 
+                            error --&gt;
+                    &lt;/successCodes&gt;
+                    &lt;executable&gt;${basedir}/src/test/javascript/build.bat&lt;/executable&gt;
+                    &lt;workingDirectory&gt;${basedir}/src/test/javascript&lt;/workingDirectory&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
 </code></pre>
 
 <p>Bovenstaande <code>skip</code> config houdt dus ook rekening met bvb <code>mvn clean install -DskipTests</code> - de <code>test</code> phase van maven wordt <strong>niet</strong> geskipped maar de testen wel door de <code>maven-failsafe-plugin</code> - bijgevolg worden goals die aan de test fase hangen ook nog uitgevoerd.</p>
@@ -285,7 +287,7 @@ junitReporter = {
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -310,6 +312,26 @@ junitReporter = {
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -348,6 +370,7 @@ junitReporter = {
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

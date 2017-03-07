@@ -55,14 +55,14 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
 ##### Spring gebruiken om beans te exposen 
 
 ```java
-	&amp;lt;bean class=&amp;quot;org.springframework.jmx.export.MBeanExporter&amp;quot;&amp;gt;
-		&amp;lt;property name=&amp;quot;beans&amp;quot;&amp;gt;
-			&amp;lt;map&amp;gt;
-				&amp;lt;entry key######&amp;quot;bean:nameBeanName&amp;quot; value-ref=&amp;quot;someBean&amp;quot; /&amp;gt;
-			&amp;lt;/map&amp;gt;
-		&amp;lt;/property&amp;gt;
-		&amp;lt;property name######&amp;quot;registrationBehaviorName&amp;quot; value&amp;quot;REGISTRATION_IGNORE_EXISTING&amp;quot; /&amp;gt;
-	&amp;lt;/bean&amp;gt;
+    &amp;lt;bean class=&amp;quot;org.springframework.jmx.export.MBeanExporter&amp;quot;&amp;gt;
+        &amp;lt;property name=&amp;quot;beans&amp;quot;&amp;gt;
+            &amp;lt;map&amp;gt;
+                &amp;lt;entry key######&amp;quot;bean:nameBeanName&amp;quot; value-ref=&amp;quot;someBean&amp;quot; /&amp;gt;
+            &amp;lt;/map&amp;gt;
+        &amp;lt;/property&amp;gt;
+        &amp;lt;property name######&amp;quot;registrationBehaviorName&amp;quot; value&amp;quot;REGISTRATION_IGNORE_EXISTING&amp;quot; /&amp;gt;
+    &amp;lt;/bean&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;geheugen-monitoren&#34;&gt;Geheugen monitoren&lt;/h2&gt;

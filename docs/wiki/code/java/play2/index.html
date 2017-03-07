@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/java">java</a> </li>
-      
-       <li><a href="/tags/play2">play2</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/java">java</a> </li>
+  
+   <li><a href="/tags/play2">play2</a> </li>
+  
+  </ul>
+
 
         
 
@@ -171,22 +173,22 @@
 
 <p><strong>controller</strong></p>
 
-<pre><code class="language-java">	public static Result buyHorse() {
-		Form&lt;Horse&gt; horseForm = form(Horse.class);
-		Horse horse = horseForm.bindFromRequest().get();
+<pre><code class="language-java">    public static Result buyHorse() {
+        Form&lt;Horse&gt; horseForm = form(Horse.class);
+        Horse horse = horseForm.bindFromRequest().get();
                 System.out.println(horse.id);
         }
 </code></pre>
 
 <p><strong>unit test</strong></p>
 
-<pre><code class="language-java">	@Test
-	public void buyHorse() {
-		HashMap&lt;String, String&gt; map = new HashMap&lt;&gt;();
-		map.put(&quot;id&quot;, &quot;12&quot;);
+<pre><code class="language-java">    @Test
+    public void buyHorse() {
+        HashMap&lt;String, String&gt; map = new HashMap&lt;&gt;();
+        map.put(&quot;id&quot;, &quot;12&quot;);
 
-		callAction(HorseMarket.buyHorse(), new FakeRequest().withFormUrlEncodedBody(map));
-	}
+        callAction(HorseMarket.buyHorse(), new FakeRequest().withFormUrlEncodedBody(map));
+    }
 </code></pre>
 
 <p>Waarbij hierboven <code>HorseMarket</code> de routes ref is en niet de <code>HorseMarket</code> controller klasse zelf - deze:</p>
@@ -277,13 +279,13 @@ object ApplicationBuild extends Build {
     val appVersion      = &quot;1.0&quot;
 
     val appDependencies = Seq(
-    	&quot;org.easytesting&quot; % &quot;fest-assert&quot; % &quot;1.4&quot; % &quot;test&quot;
+        &quot;org.easytesting&quot; % &quot;fest-assert&quot; % &quot;1.4&quot; % &quot;test&quot;
       // Add your project dependencies here,
     )
 
-    val main = PlayProject(appName, appVersion, appDependencies).settings(defaultJavaSettings:_*).settings(		
+    val main = PlayProject(appName, appVersion, appDependencies).settings(defaultJavaSettings:_*).settings(     
                 // The following line is NOT NEEDED by default! 
-		resolvers += &quot;Maven2 Repository&quot; at &quot;http://repo1.maven.org/maven2&quot;
+        resolvers += &quot;Maven2 Repository&quot; at &quot;http://repo1.maven.org/maven2&quot;
     )
 }
 </code></pre>
@@ -330,7 +332,7 @@ public class Auto {
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -355,6 +357,26 @@ public class Auto {
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -393,6 +415,7 @@ public class Auto {
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

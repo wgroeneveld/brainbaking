@@ -26,33 +26,33 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;CString ExceptionHandler::GetLoadedDllInfo() const
 {
-	CString dlls = _T(&amp;quot;&amp;quot;);
-	HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
-	if(process ###### NULL)
-	{
-		return dlls;
-	}
+    CString dlls = _T(&amp;quot;&amp;quot;);
+    HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
+    if(process ###### NULL)
+    {
+        return dlls;
+    }
 
-	 HMODULE hMods[1024];
-	 DWORD cbNeeded;
-	 BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;amp;cbNeeded);
-	 if(!modules)
-	 {
-		 return dlls;
-	 }
+     HMODULE hMods[1024];
+     DWORD cbNeeded;
+     BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;amp;cbNeeded);
+     if(!modules)
+     {
+         return dlls;
+     }
 
-	for (int i = 0; i &amp;lt; (cbNeeded / sizeof(HMODULE)); i++)
-	{
-		TCHAR szModName[MAX_PATH];
+    for (int i = 0; i &amp;lt; (cbNeeded / sizeof(HMODULE)); i++)
+    {
+        TCHAR szModName[MAX_PATH];
 
-		if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
-		{
-			dlls.Format(_T(&amp;quot;%s, %s&amp;quot;), dlls, szModName);
-		}
-	}
+        if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
+        {
+            dlls.Format(_T(&amp;quot;%s, %s&amp;quot;), dlls, szModName);
+        }
+    }
 
-	CloseHandle(process);
-	return dlls;
+    CloseHandle(process);
+    return dlls;
 }
 &lt;/code&gt;&lt;/pre&gt;
 

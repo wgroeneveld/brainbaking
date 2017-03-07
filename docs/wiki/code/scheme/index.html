@@ -148,14 +148,16 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/scheme">scheme</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/scheme">scheme</a> </li>
+  
+  </ul>
+
 
         
 
@@ -200,8 +202,8 @@
  (define x 0)
  (define-test (case-fall-through-returns-undefined)
    (assert-equals unspecific
-		  (cond ((&lt; x 0) 1)
-			((&gt; x 0) 1)))
+          (cond ((&lt; x 0) 1)
+            ((&gt; x 0) 1)))
    ))
 
 (run-registered-tests)
@@ -230,12 +232,12 @@
 
   (in-test-group getallekes
     
-	 (define-test (add-simple-numbers)
-	   (assert-equals (my-add 1 2) 3)))
-	   
-	(in-test-group meer-getallekes
-	 (define-test (add-more-complex-numbers)
-	   (assert-equals (my-add 3 7) 10))))
+     (define-test (add-simple-numbers)
+       (assert-equals (my-add 1 2) 3)))
+       
+    (in-test-group meer-getallekes
+     (define-test (add-more-complex-numbers)
+       (assert-equals (my-add 3 7) 10))))
 
 (run-registered-tests)
 </code></pre>
@@ -253,7 +255,7 @@
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -278,6 +280,26 @@
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -316,6 +338,7 @@
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/build">build</a> </li>
-      
-       <li><a href="/tags/ant">ant</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/build">build</a> </li>
+  
+   <li><a href="/tags/ant">ant</a> </li>
+  
+  </ul>
+
 
         
 
@@ -167,26 +169,26 @@
 
 <pre><code class="language-xml">&lt;project name######&quot;vac Precompilatie&quot; default&quot;precompile-all&quot; basedir=&quot;.&quot;&gt;
 
-	&lt;taskdef classname######&quot;org.apache.jasper.JspC&quot;  name&quot;jasper&quot;&gt;
-		&lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&gt;
-		&lt;classpath id=&quot;jasperpath&quot;&gt;
-			```et
-				 &lt;include name=&quot;*.jar&quot;/&gt;
-			&lt;/fileset&gt;
+    &lt;taskdef classname######&quot;org.apache.jasper.JspC&quot;  name&quot;jasper&quot;&gt;
+        &lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&gt;
+        &lt;classpath id=&quot;jasperpath&quot;&gt;
+            ```et
+                 &lt;include name=&quot;*.jar&quot;/&gt;
+            &lt;/fileset&gt;
 
-			```et
-				 &lt;include name=&quot;*.jar&quot;/&gt;
-			&lt;/fileset&gt;
-		&lt;/classpath&gt;
-	&lt;/taskdef&gt;
-	
-	&lt;target name=&quot;precompile-all&quot;&gt;
-		&lt;mkdir dir=&quot;target/jsp&quot; /&gt;
-		&lt;jasper 
-			validatexml=&quot;false&quot; 
-			uriroot=&quot;target/vac&quot;
-			outputdir=&quot;target/jsp&quot; /&gt;
-	&lt;/target&gt;
+            ```et
+                 &lt;include name=&quot;*.jar&quot;/&gt;
+            &lt;/fileset&gt;
+        &lt;/classpath&gt;
+    &lt;/taskdef&gt;
+    
+    &lt;target name=&quot;precompile-all&quot;&gt;
+        &lt;mkdir dir=&quot;target/jsp&quot; /&gt;
+        &lt;jasper 
+            validatexml=&quot;false&quot; 
+            uriroot=&quot;target/vac&quot;
+            outputdir=&quot;target/jsp&quot; /&gt;
+    &lt;/target&gt;
 
 &lt;/project&gt;
 </code></pre>
@@ -204,7 +206,7 @@
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -229,6 +231,26 @@
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -267,6 +289,7 @@
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

@@ -148,16 +148,18 @@
 
     <div class="container" role="main">	  
       
-              <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-      <ul id="tags">
-      
-       <li><a href="/tags/code">code</a> </li>
-      
-       <li><a href="/tags/c">c</a> </li>
-      
-       <li><a href="/tags/win32specifics">win32specifics</a> </li>
-      
-      </ul>
+        
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/code">code</a> </li>
+  
+   <li><a href="/tags/c">c</a> </li>
+  
+   <li><a href="/tags/win32specifics">win32specifics</a> </li>
+  
+  </ul>
+
 
         
 
@@ -169,33 +171,33 @@
 
 <pre><code class="language-c++">CString ExceptionHandler::GetLoadedDllInfo() const
 {
-	CString dlls = _T(&quot;&quot;);
-	HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
-	if(process ###### NULL)
-	{
-		return dlls;
-	}
+    CString dlls = _T(&quot;&quot;);
+    HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
+    if(process ###### NULL)
+    {
+        return dlls;
+    }
 
-	 HMODULE hMods[1024];
-	 DWORD cbNeeded;
-	 BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;cbNeeded);
-	 if(!modules)
-	 {
-		 return dlls;
-	 }
+     HMODULE hMods[1024];
+     DWORD cbNeeded;
+     BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;cbNeeded);
+     if(!modules)
+     {
+         return dlls;
+     }
 
-	for (int i = 0; i &lt; (cbNeeded / sizeof(HMODULE)); i++)
-	{
-		TCHAR szModName[MAX_PATH];
+    for (int i = 0; i &lt; (cbNeeded / sizeof(HMODULE)); i++)
+    {
+        TCHAR szModName[MAX_PATH];
 
-		if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
-		{
-			dlls.Format(_T(&quot;%s, %s&quot;), dlls, szModName);
-		}
-	}
+        if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
+        {
+            dlls.Format(_T(&quot;%s, %s&quot;), dlls, szModName);
+        }
+    }
 
-	CloseHandle(process);
-	return dlls;
+    CloseHandle(process);
+    return dlls;
 }
 </code></pre>
 
@@ -212,7 +214,7 @@
           
           
           <li>
-            <a href="https://github.com/wgroeneveld" title="GitHub">
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -237,6 +239,26 @@
            
           
           
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
           
 
     		  <li>
@@ -275,6 +297,7 @@
 <script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
 <script src="http://www.brainbaking.com//js/main.js"></script>
 <script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
 </script>

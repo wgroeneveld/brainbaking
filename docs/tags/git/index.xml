@@ -20,6 +20,8 @@
 
 &lt;h1 id=&#34;git&#34;&gt;Git&lt;/h1&gt;
 
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://orga.cat/posts/most-useful-git-commands&#34;&gt;Handige commando&amp;rsquo;s&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
 &lt;h3 id=&#34;van-een-remote-branch-changes-binnen-halen&#34;&gt;Van een remote branch changes binnen halen&lt;/h3&gt;
 
 &lt;p&gt;Stel: ik heb een fork gemaakt maar wil van de &amp;ldquo;upstream&amp;rdquo; de veranderingen binnen halen:&lt;/p&gt;
