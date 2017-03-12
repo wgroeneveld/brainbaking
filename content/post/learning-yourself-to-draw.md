@@ -1,6 +1,6 @@
 ---
 title: Learning yourself to draw
-date: '2017-03-06'
+date: '2017-02-01'
 subtitle: A year of spilling lots of ink
 tags:
 - Learning yourself to draw
@@ -49,9 +49,9 @@ Price is 390 EUR. As it's only once a week, it creates the perfect opportunity f
 
 These are some christmas-themed cards I made with cheap pastels during the third lesson:
 
-<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749442493529/"></a>
-<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749442493506/"></a>
-<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749442493510/"></a>
+{{< pin "308707749442493529" >}}
+{{< pin "308707749442493506" >}}
+{{< pin "308707749442493510" >}}
 
 It starts out very simple, as you can see. I'm still having difficulties buying the right equipment. The pastels used above are very hard and grainy, and don't contain a lot of pigment. That is clearly visible in the gameboy one on the far left: the brown paper shouldn't be that visible. Small steps, small steps... 
 
