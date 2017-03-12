@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>testing</title>
+  <title>Drawing week 03 - Fineliners and texture</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.18.1" />
@@ -23,9 +23,9 @@
   <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
   
   
-  <meta property="og:title" content="testing" />
+  <meta property="og:title" content="Drawing week 03 - Fineliners and texture" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/wiki/code/python/testing/" />
+  <meta property="og:url" content="/post/drawing-week-03/" />
   <meta property="og:image" content="/img/avatar-icon.png" />
   
 </head>
@@ -133,10 +133,16 @@
       <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="wiki-heading">
-          <h1>testing</h1>
+        <div class="post-heading">
+          <h1>Drawing week 03 - Fineliners and texture</h1>
+      
+        
+      <h2 class="post-subheading">The fine discovery of Skillshare</h2>
       
       
+      
+      
+      <span class="post-meta">12 March 2017</span>
       
         </div>
       </div>
@@ -148,75 +154,69 @@
 
     <div class="container" role="main">	  
       
-        
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
   <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
   <ul id="tags">
   
-   <li><a href="/tags/code">code</a> </li>
-  
-   <li><a href="/tags/python">python</a> </li>
-  
-   <li><a href="/tags/testing">testing</a> </li>
+   <li><a href="/tags/learning-yourself-to-draw">Learning yourself to draw</a> </li>
   
   </ul>
 
 
-        
 
-<h1 id="python-unit-testing">Python Unit Testing</h1>
+      <article role="main" class="blog-post">
+          <p>Also read <a href="/post/learning-yourself-to-draw/">Learning yourself to draw</a>.</p>
 
-<h2 id="unittest-module">unittest module</h2>
+<p>I wanted to continue my quest of finding my own style within ink and watercolor boundaries. After the amazing discovery of <a href="https://www.skillshare.com">Skillshare.com</a>, I switched to using Artline fineliners. I also have some Steadlers but hardly notice any difference between different felt tip pens if they have the same thickness. I found a short course by Shirish Deshpande on drawing with ink and creating some contrast and texture. The drawings in the videos are amazing and I tried to copy them to my best abilities:</p>
 
-<p>Spreekt voor zich:</p>
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443973054/" target="_blank" title="Pinterest pin"></a>
 
-<pre><code class="language-python">import unittest
-from calculator import Calculator
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443973073/" target="_blank" title="Pinterest pin"></a>
 
-class TestCalculator(unittest.TestCase):
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443973094/" target="_blank" title="Pinterest pin"></a>
+</p>
 
-	def setUp(self):
-		self.calc = Calculator().calculate;
+<p>The ink flowing from a technical pen is much more intense than a standard ballpoint pen as seen in <a href="/post/drawing-week-02">week 2</a>. I like that a lot. It also enables me to be much more precise and that is something that I tend to do a lot. I usually draw (too) small and try to cram in as much details as possible. The thinner the felt tip pen, the better for me. (Although I borked a 005 one, those guys are very sensitive!).</p>
 
-	def test_calculateBasicNumberReturnsNumber(self):
- 		self.assertEqual(3, self.calc('3'))
+<p>During the snow &amp; rose course, the lesson with the fineliners suited me the most, and now I have that same feeling. I finally give (cross-)hatching a shot and it really looks a lot better. Thanks Shirish, for building up my confidence in drawing with ink!</p>
 
-	def test_calculateSimpleMultiplicationReturnsResult(self):
-		self.assertEqual(10, self.calc('5*2'))
-
-	def test_calculateInvalidStringShouldThrowException(self):
-		self.assertRaises(ValueError, self.calc, ('blabl'))
-</code></pre>
-
-<p>Zie <a href="http://docs.python.org/3/library/unittest.html">http://docs.python.org/3/library/unittest.html</a></p>
-
-<ul>
-<li><code>setUp</code> wordt automatisch aangeroepen. Beforeclass, aftereach etc etc bestaat ook.</li>
-<li>alle methods met <code>test_</code> worden automatisch herkend.</li>
-</ul>
-
-<h4 id="hoe-voer-ik-dit-nu-uit">Hoe voer ik dit nu uit?</h4>
-
-<p>Dit stuk onder uw py file plakken:</p>
-
-<pre><code class="language-python">if __name__ ###### '__main__':
-	unittest.main()
-</code></pre>
-
-<p>En dan <code>python -m unittest -v calculatorTest</code>. de v flag geeft wat extra output, anders staat er gewoon OK. De test op zich builden in bijvoorbeeld sublime met de main method erin zorgt er ook voor dat deze automatisch uitgevoerd wordt.</p>
-
-<p>######= automatic test case discovery ######=</p>
-
-<p><code>python -m unittest discover</code> gaat alle unit testen vanaf huidig dir scannen en uitvoeren (instelbaar met params). Moet voldoen aan:</p>
+<p>So, what did I learn this week:</p>
 
 <ol>
-<li>extenden van <code>unittest.TestCase</code></li>
-<li>voldoen aan python module structuur. Testen in files met prefix &ldquo;test_x.py&rdquo;.</li>
-<li>Indien in subfolder &ldquo;test&rdquo;: vergeet geen &ldquo;<strong>init</strong>.py&rdquo; file.</li>
+<li>Intensity of ink matters.</li>
+<li>Contrast is extermely important and gives your drawing an &ldquo;oomph&rdquo;</li>
+<li>I learned the &ldquo;hatching&rdquo;, &ldquo;stipling&rdquo;, and &ldquo;random&rdquo; technique.</li>
+<li>Fineliners &gt; ballpoint pens &gt; pencils (sensing a trend here, fountain pen coming up)</li>
 </ol>
 
-<p>############= autotest ############=</p>
+<p>Let&rsquo;s take a look at what Shirish does with his pens (and added colored ink):</p>
 
-<p>Mogelijk met onder andere <code>autonose</code> (nose is een alternatief voor unittest) en <code>sniffer</code>. Om die te installeren moet je via de <a href="/wiki/code/python/packages/">pip package manager</a> gaan, en dan gewoon sniffer uitvoeren in uw base directory.</p>
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/394698354817739793/" target="_blank" title="Pinterest pin"></a>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/364299057333088725/" target="_blank" title="Pinterest pin"></a>
+</p>
+
+<p>He usually doesn&rsquo;t color with watercolor but with (diluted) colored ink. I have yet to try that.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="http://www.brainbaking.com/post/drawing-week-02/" data-toggle="tooltip" data-placement="top" title="Drawing week 02 - Art before breakfast">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
 
       
     </div>

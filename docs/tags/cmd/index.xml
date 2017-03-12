@@ -136,11 +136,11 @@ SEARCH=&amp;quot;&amp;quot;
 
 for FILE_EXCLUDE in ${FILE_EXCLUDES[@]}
 do
-    SEARCH=&amp;quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&amp;quot;
+	SEARCH=&amp;quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&amp;quot;
 done
 for DIR_EXCLUDE in ${DIR_EXCLUDES[@]}
 do
-    SEARCH=&amp;quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&amp;quot;
+	SEARCH=&amp;quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&amp;quot;
 done
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -412,10 +412,10 @@ echo &amp;quot;### Svn log Helena Trunk &amp;quot; &amp;gt; $logfile
 echo &amp;quot;❗ periode **[$datefrom - $dateto]**&amp;quot; &amp;gt;&amp;gt; $logfile
 echo &amp;quot;#### Helena Jira&#39;s via svn log&amp;quot; &amp;gt;&amp;gt; $logfile
 svn --username######cp8tsc --passwordq3Sp8Phu log -r{$datefrom}:{$dateto} |
-    grep -B 2 -A 1 -i &#39;HEL-&amp;lt;br/&amp;gt;|jira&#39; |
-    grep -v &#39;gcl&amp;lt;br/&amp;gt;|lvm&#39; |
-    sed -e &#39;s/-*//&#39; -e &#39;s/r[0-9]* .*(&amp;lt;br/&amp;gt;(.*&amp;lt;br/&amp;gt;)).*/#####&amp;lt;br/&amp;gt;1/g&#39; -e &#39;s/^&amp;lt;br/&amp;gt;([^=]&amp;lt;br/&amp;gt;)/  *&amp;lt;br/&amp;gt;1/&#39; |
-    sed -n &#39;G; s/&amp;lt;br/&amp;gt;n/&amp;amp;&amp;amp;/; /^&amp;lt;br/&amp;gt;([ -~]*&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;).*&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;1/d; s/&amp;lt;br/&amp;gt;n//; h; P&#39; &amp;gt;&amp;gt; $logfile
+	grep -B 2 -A 1 -i &#39;HEL-&amp;lt;br/&amp;gt;|jira&#39; |
+	grep -v &#39;gcl&amp;lt;br/&amp;gt;|lvm&#39; |
+	sed -e &#39;s/-*//&#39; -e &#39;s/r[0-9]* .*(&amp;lt;br/&amp;gt;(.*&amp;lt;br/&amp;gt;)).*/#####&amp;lt;br/&amp;gt;1/g&#39; -e &#39;s/^&amp;lt;br/&amp;gt;([^=]&amp;lt;br/&amp;gt;)/  *&amp;lt;br/&amp;gt;1/&#39; |
+	sed -n &#39;G; s/&amp;lt;br/&amp;gt;n/&amp;amp;&amp;amp;/; /^&amp;lt;br/&amp;gt;([ -~]*&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;).*&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;1/d; s/&amp;lt;br/&amp;gt;n//; h; P&#39; &amp;gt;&amp;gt; $logfile
 popd
 &lt;/code&gt;&lt;/pre&gt;
 

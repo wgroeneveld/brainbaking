@@ -169,26 +169,26 @@
 
 <pre><code class="language-xml">&lt;project name######&quot;vac Precompilatie&quot; default&quot;precompile-all&quot; basedir=&quot;.&quot;&gt;
 
-    &lt;taskdef classname######&quot;org.apache.jasper.JspC&quot;  name&quot;jasper&quot;&gt;
-        &lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&gt;
-        &lt;classpath id=&quot;jasperpath&quot;&gt;
-            ```et
-                 &lt;include name=&quot;*.jar&quot;/&gt;
-            &lt;/fileset&gt;
+	&lt;taskdef classname######&quot;org.apache.jasper.JspC&quot;  name&quot;jasper&quot;&gt;
+		&lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&gt;
+		&lt;classpath id=&quot;jasperpath&quot;&gt;
+			```et
+				 &lt;include name=&quot;*.jar&quot;/&gt;
+			&lt;/fileset&gt;
 
-            ```et
-                 &lt;include name=&quot;*.jar&quot;/&gt;
-            &lt;/fileset&gt;
-        &lt;/classpath&gt;
-    &lt;/taskdef&gt;
-    
-    &lt;target name=&quot;precompile-all&quot;&gt;
-        &lt;mkdir dir=&quot;target/jsp&quot; /&gt;
-        &lt;jasper 
-            validatexml=&quot;false&quot; 
-            uriroot=&quot;target/vac&quot;
-            outputdir=&quot;target/jsp&quot; /&gt;
-    &lt;/target&gt;
+			```et
+				 &lt;include name=&quot;*.jar&quot;/&gt;
+			&lt;/fileset&gt;
+		&lt;/classpath&gt;
+	&lt;/taskdef&gt;
+	
+	&lt;target name=&quot;precompile-all&quot;&gt;
+		&lt;mkdir dir=&quot;target/jsp&quot; /&gt;
+		&lt;jasper 
+			validatexml=&quot;false&quot; 
+			uriroot=&quot;target/vac&quot;
+			outputdir=&quot;target/jsp&quot; /&gt;
+	&lt;/target&gt;
 
 &lt;/project&gt;
 </code></pre>

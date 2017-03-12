@@ -153,17 +153,17 @@ Dit is vanzelfsprekend serieus verwarrend en &lt;strong&gt;bad practice&lt;/stro
 &amp;lt;head&amp;gt;
 &amp;lt;script&amp;gt;
 function Iets(e) {
-    return function() {
-        alert(j); // DOM Element: Div met id &amp;quot;j&amp;quot;, al hebben we nergens j gedefiniëerd!!! 
-        
-        // j = 0: BOOM in IE: Object doesn&#39;t support this property or method
-        // reden =&amp;gt; in IE is dit een readonly property, Gecko parsers zijn lakser hierin
-        for(j = 0; j &amp;lt; 10; j++) {
-          // whatever
-        }
-        
-        alert(j); // 10
-    }
+	return function() {
+		alert(j); // DOM Element: Div met id &amp;quot;j&amp;quot;, al hebben we nergens j gedefiniëerd!!! 
+		
+		// j = 0: BOOM in IE: Object doesn&#39;t support this property or method
+		// reden =&amp;gt; in IE is dit een readonly property, Gecko parsers zijn lakser hierin
+		for(j = 0; j &amp;lt; 10; j++) {
+		  // whatever
+		}
+		
+		alert(j); // 10
+	}
 }
 &amp;lt;/script&amp;gt;
 &amp;lt;/head&amp;gt;

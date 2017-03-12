@@ -105,7 +105,7 @@ jasmine: {
 });
  
 require([&#39;app&#39;], function(app) {
-    // main module which fires up everything
+	// main module which fires up everything
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -137,9 +137,9 @@ require([&#39;app&#39;], function(app) {
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;require.config({
   shim: {
-    &#39;handlebars&#39;: {
-        exports: &#39;Handlebars&#39;
-    }
+  	&#39;handlebars&#39;: {
+  		exports: &#39;Handlebars&#39;
+  	}
   },
 
   paths: {
@@ -149,7 +149,7 @@ require([&#39;app&#39;], function(app) {
 });
  
 require([&#39;handlebars&#39;], function(Handlebars) {
-    // gogo!
+	// gogo!
 });
 &lt;/code&gt;&lt;/pre&gt;
 

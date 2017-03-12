@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>testing</title>
+  <title>Drawing week 02 - Art before breakfast</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.18.1" />
@@ -23,9 +23,9 @@
   <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
   
   
-  <meta property="og:title" content="testing" />
+  <meta property="og:title" content="Drawing week 02 - Art before breakfast" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/wiki/code/python/testing/" />
+  <meta property="og:url" content="/post/drawing-week-02/" />
   <meta property="og:image" content="/img/avatar-icon.png" />
   
 </head>
@@ -133,10 +133,16 @@
       <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="wiki-heading">
-          <h1>testing</h1>
+        <div class="post-heading">
+          <h1>Drawing week 02 - Art before breakfast</h1>
+      
+        
+      <h2 class="post-subheading">So ballpoint pens are useful after all</h2>
       
       
+      
+      
+      <span class="post-meta">7 March 2017</span>
       
         </div>
       </div>
@@ -148,75 +154,79 @@
 
     <div class="container" role="main">	  
       
-        
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
   <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
   <ul id="tags">
   
-   <li><a href="/tags/code">code</a> </li>
-  
-   <li><a href="/tags/python">python</a> </li>
-  
-   <li><a href="/tags/testing">testing</a> </li>
+   <li><a href="/tags/learning-yourself-to-draw">Learning yourself to draw</a> </li>
   
   </ul>
 
 
-        
 
-<h1 id="python-unit-testing">Python Unit Testing</h1>
+      <article role="main" class="blog-post">
+          <p>Also read <a href="/post/learning-yourself-to-draw/">Learning yourself to draw</a>.</p>
 
-<h2 id="unittest-module">unittest module</h2>
+<p>After the illustration course, I&rsquo;m not ashamed to admit I completely dropped the pencil out of the game. It creates lines easy to remove and that means I&rsquo;m working on a drawing forever. I need something to commit myself to. That something is called ink.</p>
 
-<p>Spreekt voor zich:</p>
+<p>It also seems that I already have stuff to get ink on a paper: pens. Ballpoint pens. Black, blue, whatever. Just simple pens you use to write with - the cheaper, the better. I came across <strong>Danny Gregory</strong>&rsquo;s work <a href="https://dannygregorysblog.com/books/art-before-breakfast/">Art before breakfast</a> and <a href="http://www.dannygregory.com/author">The Creative Licence</a> (buy the latter one if you can). These are very inspirational books that get you kickstarted drawing from zero by learning how to see, explaning negative space and other simple techniques. It doesn&rsquo;t go into detail, it simply helps you get drawing.</p>
 
-<pre><code class="language-python">import unittest
-from calculator import Calculator
+<p>And Danny is a fan of ink + watercolor. I immediately fell in love and knew that was what I wanted. So yes, put that pencil back where it belongs. I started trying to draw what I see:</p>
 
-class TestCalculator(unittest.TestCase):
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443972993/" target="_blank" title="Pinterest pin"></a>
 
-	def setUp(self):
-		self.calc = Calculator().calculate;
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443973015/" target="_blank" title="Pinterest pin"></a>
 
-	def test_calculateBasicNumberReturnsNumber(self):
- 		self.assertEqual(3, self.calc('3'))
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443973029/" target="_blank" title="Pinterest pin"></a>
+</p>
 
-	def test_calculateSimpleMultiplicationReturnsResult(self):
-		self.assertEqual(10, self.calc('5*2'))
+<p>It looks a lot brighter than <a href="/post/drawing-week-01">week 1</a>. After drawing with a pen a few times, it felt better and better. I tried to copy Danny&rsquo;s style a bit by giving it some (water)color but that might be too much new stuff within a few weeks.</p>
 
-	def test_calculateInvalidStringShouldThrowException(self):
-		self.assertRaises(ValueError, self.calc, ('blabl'))
-</code></pre>
+<p>I&rsquo;m particulary fond of the yellow post-it note: an impression of my left foot while waiting for my wife to finish shopping. I keep pen &amp; paper with me at all times: that&rsquo;s a healthy habit I developed 7 years ago when starting journaling.
+The first foot trace was a complete disaster by the way.</p>
 
-<p>Zie <a href="http://docs.python.org/3/library/unittest.html">http://docs.python.org/3/library/unittest.html</a></p>
-
-<ul>
-<li><code>setUp</code> wordt automatisch aangeroepen. Beforeclass, aftereach etc etc bestaat ook.</li>
-<li>alle methods met <code>test_</code> worden automatisch herkend.</li>
-</ul>
-
-<h4 id="hoe-voer-ik-dit-nu-uit">Hoe voer ik dit nu uit?</h4>
-
-<p>Dit stuk onder uw py file plakken:</p>
-
-<pre><code class="language-python">if __name__ ###### '__main__':
-	unittest.main()
-</code></pre>
-
-<p>En dan <code>python -m unittest -v calculatorTest</code>. de v flag geeft wat extra output, anders staat er gewoon OK. De test op zich builden in bijvoorbeeld sublime met de main method erin zorgt er ook voor dat deze automatisch uitgevoerd wordt.</p>
-
-<p>######= automatic test case discovery ######=</p>
-
-<p><code>python -m unittest discover</code> gaat alle unit testen vanaf huidig dir scannen en uitvoeren (instelbaar met params). Moet voldoen aan:</p>
+<p>So, what did I learn this week:</p>
 
 <ol>
-<li>extenden van <code>unittest.TestCase</code></li>
-<li>voldoen aan python module structuur. Testen in files met prefix &ldquo;test_x.py&rdquo;.</li>
-<li>Indien in subfolder &ldquo;test&rdquo;: vergeet geen &ldquo;<strong>init</strong>.py&rdquo; file.</li>
+<li>Pen &gt; pencil.</li>
+<li>Danny Gregory rocks. He has tons of books and is co-founder of the <a href="http://sketchbookskool.com/">Sketchbook Skool</a>. Once I knew that, I enrolled in the &ldquo;beginning&rdquo; kourse.</li>
+<li>I like sketching more than doodling.</li>
+<li>&ldquo;Seeing&rdquo; is incredibly hard: I constantly mess up proportions.</li>
+<li>Adding watercolor seems to add a lot of dimension.</li>
 </ol>
 
-<p>############= autotest ############=</p>
+<p>Let&rsquo;s take a look at what Danny does:</p>
 
-<p>Mogelijk met onder andere <code>autonose</code> (nose is een alternatief voor unittest) en <code>sniffer</code>. Om die te installeren moet je via de <a href="/wiki/code/python/packages/">pip package manager</a> gaan, en dan gewoon sniffer uitvoeren in uw base directory.</p>
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/381609768399365667/" target="_blank" title="Pinterest pin"></a>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/233976143118067754/" target="_blank" title="Pinterest pin"></a>
+</p>
+
+<p>Awesome.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="http://www.brainbaking.com/post/drawing-week-01/" data-toggle="tooltip" data-placement="top" title="Drawing week 01 - pencil illustrations">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="http://www.brainbaking.com/post/drawing-week-03/" data-toggle="tooltip" data-placement="top" title="Drawing week 03 - Fineliners and texture">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
 
       
     </div>

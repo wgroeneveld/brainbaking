@@ -208,28 +208,28 @@ Los dit op met een utility functie:&lt;/p&gt;
 &lt;p&gt;❗ De laatste stap gaat &lt;strong&gt;altijd&lt;/strong&gt; een &lt;code&gt;runs()&lt;/code&gt; moeten bevatten voor de reporter om aan te duiden dat assertions uitgevoerd worden, aangezien de &lt;code&gt;exec()&lt;/code&gt; functie direct retourneert. Dus moeten we 1x wachten, totdat de hele &amp;ldquo;flow&amp;rdquo; gedaan is. We kunnen dit combineren met BDD en een mini-DSL hierrond schrijven. Resultaat:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function when() {
-    var flowDone = false;
-    var slice = Array.prototype.slice;
-    var argsArray = slice.call(arguments, 0);
-    var laatsteArgumenten;
-    
-    argsArray.push(function() {
-        laatsteArgumenten = slice.call(arguments, 0);
-        flowDone = true;
-    });
-    
-    flow.exec.apply(this, argsArray);
-    waitsFor(function() {
-        return flowDone ##### true;
-    });
-    
-    return {
-        then: function(assertionsFn) {
-            runs(function() {
-                assertionsFn.apply(this, laatsteArgumenten);
-            });
-        }
-    };
+	var flowDone = false;
+	var slice = Array.prototype.slice;
+	var argsArray = slice.call(arguments, 0);
+	var laatsteArgumenten;
+	
+	argsArray.push(function() {
+		laatsteArgumenten = slice.call(arguments, 0);
+		flowDone = true;
+	});
+	
+	flow.exec.apply(this, argsArray);
+	waitsFor(function() {
+		return flowDone ##### true;
+	});
+	
+	return {
+		then: function(assertionsFn) {
+			runs(function() {
+				assertionsFn.apply(this, laatsteArgumenten);
+			});
+		}
+	};
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -237,24 +237,24 @@ Los dit op met een utility functie:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
 describe(&amp;quot;plaatsen domein&amp;quot;, function() {
-    it(&amp;quot;wanneer ik alle plaatsen ophaal, kan ik hier domeinspecifieke functies aan opvragen&amp;quot;, function() {
-        var plaatsen;
-        when(
-            function() {
-                DOMEIN.plaatsRepository.bewaarPlaats(plaats, this.MULTI());
-                DOMEIN.plaatsRepository.bewaarPlaats(anderePlaats, this.MULTI());
-            },
-            function() {
-                DOMEIN.plaatsRepository.haalPlaatsenOp(this);
-            }
-        ).then(
-            function(opgehaaldePlaatsen) {
-                opgehaaldePlaatsen.forEach(function(plaats) {
-                    expect(plaats.geefMeting).toBeDefined();
-                });
-            }
-        );
-    });
+	it(&amp;quot;wanneer ik alle plaatsen ophaal, kan ik hier domeinspecifieke functies aan opvragen&amp;quot;, function() {
+		var plaatsen;
+		when(
+			function() {
+				DOMEIN.plaatsRepository.bewaarPlaats(plaats, this.MULTI());
+				DOMEIN.plaatsRepository.bewaarPlaats(anderePlaats, this.MULTI());
+			},
+			function() {
+				DOMEIN.plaatsRepository.haalPlaatsenOp(this);
+			}
+		).then(
+			function(opgehaaldePlaatsen) {
+				opgehaaldePlaatsen.forEach(function(plaats) {
+					expect(plaats.geefMeting).toBeDefined();
+				});
+			}
+		);
+	});
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -305,18 +305,18 @@ startStuff().done(function() {
 &lt;p&gt;Stel dat eerst element #1 animatie triggert, dan #2, en daarna nog logica dient te gebeuren. Dit kan ook met &lt;code&gt;$.Deferred&lt;/code&gt;, door &lt;code&gt;.pipe()&lt;/code&gt; te gebruiken om verder te breiden aan de queue.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;button&amp;quot;).bind( &amp;quot;click&amp;quot;, function() {
-    $(&amp;quot;p&amp;quot;).append( &amp;quot;Started...&amp;quot;);
-    var div1 ###### $(&amp;quot;#div1&amp;quot;), div2  $(&amp;quot;#div2&amp;quot;);
+	$(&amp;quot;p&amp;quot;).append( &amp;quot;Started...&amp;quot;);
+	var div1 ###### $(&amp;quot;#div1&amp;quot;), div2  $(&amp;quot;#div2&amp;quot;);
 
-    var df = $.Deferred();
-    df.pipe(function() {
-        return div1.fadeOut(&amp;quot;slow&amp;quot;)
-    }).pipe(function() {
-        return div2.fadeOut()
-    }).done(function() {
-        $(&amp;quot;p&amp;quot;).append( &amp;quot;  --  DONE&amp;quot;);
-    });
-    df.resolve(); 
+	var df = $.Deferred();
+	df.pipe(function() {
+		return div1.fadeOut(&amp;quot;slow&amp;quot;)
+	}).pipe(function() {
+		return div2.fadeOut()
+	}).done(function() {
+		$(&amp;quot;p&amp;quot;).append( &amp;quot;  --  DONE&amp;quot;);
+	});
+	df.resolve(); 
 });
 &lt;/code&gt;&lt;/pre&gt;
 

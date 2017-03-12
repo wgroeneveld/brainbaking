@@ -88,13 +88,13 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Ext.define(&#39;Evita.store.masterdata.KeywordType&#39;, {
     extend: &#39;Ext.data.EvitaStore&#39;,
-    model: &#39;Evita.model.parkingfacility.MasterdataType&#39;,
+	model: &#39;Evita.model.parkingfacility.MasterdataType&#39;,
     proxy: {
-        type: &#39;evitaAjax&#39;,
-        api:{
-            read: &#39;getMasterdataKeywordByTypeName.json&#39;
-        }
-    }
+		type: &#39;evitaAjax&#39;,
+		api:{
+			read: &#39;getMasterdataKeywordByTypeName.json&#39;
+		}
+	}
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -105,22 +105,22 @@
 &lt;p&gt;Oplossing: gebruik &lt;code&gt;Ext.create&lt;/code&gt; in plaats van te refereren naar de &lt;code&gt;xtype&lt;/code&gt;, die gaat door de &lt;code&gt;StoreManager&lt;/code&gt; opgezocht &amp;amp; hetbruikt worden anders (1 instantie).&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
-                        xtype : &#39;combo&#39;,
-                        store : Ext.create(&#39;Evita.store.masterdata.KeywordType&#39;),
-                        storeMasterdataTypeName: &#39;MaturityOfParkingFacility&#39;,
-                        valueField : &#39;code&#39;,
-                        displayField : &#39;value&#39;,
-                        name : &#39;maturity&#39;,
-                        id: &#39;ParkingFacilityCreate_masterdata_maturity&#39;,
-                    }
+		    			xtype : &#39;combo&#39;,
+			    		store : Ext.create(&#39;Evita.store.masterdata.KeywordType&#39;),
+			    		storeMasterdataTypeName: &#39;MaturityOfParkingFacility&#39;,
+			    		valueField : &#39;code&#39;,
+			    		displayField : &#39;value&#39;,
+		    			name : &#39;maturity&#39;,
+		    			id: &#39;ParkingFacilityCreate_masterdata_maturity&#39;,
+		    		}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Loop in de controller over alle stores om dan bvb &lt;code&gt;extraParams&lt;/code&gt; in te stellen:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;        view.down(&#39;form&#39;).query(&#39;combo&#39;).forEach(function(combo) {
-            combo.getStore().proxy.extraParams[&#39;masterdataTypeName&#39;] = combo.storeMasterdataTypeName;
-            combo.getStore().proxy.extraParams[&#39;countryId&#39;] = wizardData.general.countryId;
-        });
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    	view.down(&#39;form&#39;).query(&#39;combo&#39;).forEach(function(combo) {
+			combo.getStore().proxy.extraParams[&#39;masterdataTypeName&#39;] = combo.storeMasterdataTypeName;
+			combo.getStore().proxy.extraParams[&#39;countryId&#39;] = wizardData.general.countryId;
+    	});
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
@@ -372,31 +372,31 @@ Ook this binnen een jQuery each loop wordt niet extended maar is het DOM Element
     // Project configuration
     // ---------------------
 
-    handlebars: {
-        compile: {
-            files: {
-                &amp;quot;app/scripts/templates.js&amp;quot;: [
-                    &amp;quot;app/templates/*.hbs&amp;quot;
-                ]
-            }, 
-            options: {
-                amd: true,
-                processName: function(filename) {
-                    return filename
-                        .replace(&#39;app/templates/&#39;, &#39;&#39;)
-                        .replace(/&amp;lt;br/&amp;gt;.hbs$/, &#39;&#39;);
-                }
-            }
-        }
-    },
+	handlebars: {
+		compile: {
+			files: {
+				&amp;quot;app/scripts/templates.js&amp;quot;: [
+					&amp;quot;app/templates/*.hbs&amp;quot;
+				]
+			}, 
+			options: {
+				amd: true,
+				processName: function(filename) {
+					return filename
+						.replace(&#39;app/templates/&#39;, &#39;&#39;)
+						.replace(/&amp;lt;br/&amp;gt;.hbs$/, &#39;&#39;);
+				}
+			}
+		}
+	},
 // ...
 
     watch: {
       handlebars: {
-        files: [
-            &#39;app/templates/*.hbs&#39;
-        ],
-        tasks: &#39;handlebars reload&#39;
+      	files: [
+      		&#39;app/templates/*.hbs&#39;
+      	],
+      	tasks: &#39;handlebars reload&#39;
       },
 // ...
 
@@ -678,14 +678,14 @@ $.mobile.changePage( newPage );
 
 &lt;p&gt;&lt;img style=&#39;float: left; width: nolink&amp;|px;&#39; src=&#39;http://www.brainbaking.com/img//code/javascript/frameworks/floempie.jpg&#39;&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    function render() {
-        var activePage = $.mobile.activePage; // this also works: $(&amp;quot;.ui-page-active&amp;quot;)
-        activePage.find(&#39;ul[data-role]&#39;).listview();
-        activePage.find(&#39;div[data-role=&amp;quot;fieldcontain&amp;quot;]&#39;).fieldcontain();
-        activePage.find(&#39;button[data-role=&amp;quot;button&amp;quot;]&#39;).button();
-        activePage.find(&#39;input,textarea&#39;).textinput();
-        activePage.page();
-    }
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;	function render() {
+		var activePage = $.mobile.activePage; // this also works: $(&amp;quot;.ui-page-active&amp;quot;)
+		activePage.find(&#39;ul[data-role]&#39;).listview();
+		activePage.find(&#39;div[data-role=&amp;quot;fieldcontain&amp;quot;]&#39;).fieldcontain();
+		activePage.find(&#39;button[data-role=&amp;quot;button&amp;quot;]&#39;).button();
+		activePage.find(&#39;input,textarea&#39;).textinput();
+		activePage.page();
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Dit ziet er wel resource intensitief uit en zou op een mobiel device nogal kunnen &amp;ldquo;floepen&amp;rdquo;. ((De bijhorende tekening is Copyright Kabouter Wesley enzo))&lt;/p&gt;
@@ -732,24 +732,24 @@ $.mobile.changePage( newPage );
 &lt;p&gt;Het tweede kan door bijvoorbeeld een &lt;code&gt;onclick&lt;/code&gt; event te registreren en HTML5 &lt;code&gt;data&lt;/code&gt; attributes te gebruiken om IDs bij te houden:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;.vacatureLink&amp;quot;).click(function() {
-    application.setVacatureId($(this).data(&amp;quot;id&amp;quot;));
+	application.setVacatureId($(this).data(&amp;quot;id&amp;quot;));
 });
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Met bijvoorbeeld een KnockoutJS template:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/each vacatures&#39;&amp;gt;
-    &amp;lt;li&amp;gt;
-        &amp;lt;a href######&amp;quot;detail.html&amp;quot; data-id&amp;quot;${id}&amp;quot; class=&amp;quot;vacatureLink&amp;quot;&amp;gt;${vacatureGegevens.aantalJobs} ${gezochtProfiel.functieNaam} ( ${kandidaten.length} kandidaten )&amp;lt;/a&amp;gt;
-    &amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		&amp;lt;a href######&amp;quot;detail.html&amp;quot; data-id&amp;quot;${id}&amp;quot; class=&amp;quot;vacatureLink&amp;quot;&amp;gt;${vacatureGegevens.aantalJobs} ${gezochtProfiel.functieNaam} ( ${kandidaten.length} kandidaten )&amp;lt;/a&amp;gt;
+	&amp;lt;/li&amp;gt;
 &amp;lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//each&#39;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;De transitie naar detail.html gebeurt ná onze &lt;code&gt;click&lt;/code&gt; event handler. Bij het laden van de page op detail.html doen we &amp;ldquo;iets&amp;rdquo; met onze id:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;#detailsVacature&amp;quot;).live(&#39;pagebeforeshow&#39;, function() {
-    var id = application.getVacatureId();
-    // doe iets?
+	var id = application.getVacatureId();
+	// doe iets?
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -866,7 +866,7 @@ jasmine: {
 });
  
 require([&#39;app&#39;], function(app) {
-    // main module which fires up everything
+	// main module which fires up everything
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -898,9 +898,9 @@ require([&#39;app&#39;], function(app) {
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;require.config({
   shim: {
-    &#39;handlebars&#39;: {
-        exports: &#39;Handlebars&#39;
-    }
+  	&#39;handlebars&#39;: {
+  		exports: &#39;Handlebars&#39;
+  	}
   },
 
   paths: {
@@ -910,7 +910,7 @@ require([&#39;app&#39;], function(app) {
 });
  
 require([&#39;handlebars&#39;], function(Handlebars) {
-    // gogo!
+	// gogo!
 });
 &lt;/code&gt;&lt;/pre&gt;
 

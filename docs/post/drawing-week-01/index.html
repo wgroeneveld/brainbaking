@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>testing</title>
+  <title>Drawing week 01 - pencil illustrations</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.18.1" />
@@ -23,9 +23,9 @@
   <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
   
   
-  <meta property="og:title" content="testing" />
+  <meta property="og:title" content="Drawing week 01 - pencil illustrations" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/wiki/code/python/testing/" />
+  <meta property="og:url" content="/post/drawing-week-01/" />
   <meta property="og:image" content="/img/avatar-icon.png" />
   
 </head>
@@ -133,10 +133,16 @@
       <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="wiki-heading">
-          <h1>testing</h1>
+        <div class="post-heading">
+          <h1>Drawing week 01 - pencil illustrations</h1>
+      
+        
+      <h2 class="post-subheading">Gotta start somewhere...</h2>
       
       
+      
+      
+      <span class="post-meta">1 March 2017</span>
       
         </div>
       </div>
@@ -148,75 +154,72 @@
 
     <div class="container" role="main">	  
       
-        
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
   <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
   <ul id="tags">
   
-   <li><a href="/tags/code">code</a> </li>
-  
-   <li><a href="/tags/python">python</a> </li>
-  
-   <li><a href="/tags/testing">testing</a> </li>
+   <li><a href="/tags/learning-yourself-to-draw">Learning yourself to draw</a> </li>
   
   </ul>
 
 
-        
 
-<h1 id="python-unit-testing">Python Unit Testing</h1>
+      <article role="main" class="blog-post">
+          <p>Also read <a href="/post/learning-yourself-to-draw/">Learning yourself to draw</a>.</p>
 
-<h2 id="unittest-module">unittest module</h2>
+<p>As you might already have read, I started the drawing adventure with a 10-week &lsquo;illustrative techniques&rsquo; course. It sounds complicated but it wasn&rsquo;t really: it&rsquo;s more of a gentle introduction in different mediums (pencil, ink, acrylic paint, &hellip;) than a crash course in drawing techniques. I didn&rsquo;t know then that to draw illustrations, you still have to be able to draw. (I&rsquo;m reading &ldquo;drawing at the right side of the brain&rdquo; and I know better now). But still, thse drawings might be fun to look at or to compare to the other weeks.</p>
 
-<p>Spreekt voor zich:</p>
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443972926/" target="_blank" title="Pinterest pin"></a>
 
-<pre><code class="language-python">import unittest
-from calculator import Calculator
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443972958/" target="_blank" title="Pinterest pin"></a>
 
-class TestCalculator(unittest.TestCase):
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443972977/" target="_blank" title="Pinterest pin"></a>
+</p>
 
-	def setUp(self):
-		self.calc = Calculator().calculate;
+<p>These are all random drawings I did between the lessons to get myself familiar with a pencil. That sounds awful, doesn&rsquo;t it? Who uses pencils anyway. The left scan contains some color: that&rsquo;s an experiment. The brown is <strong>bistre</strong>, something we had to work with in the second class. The other colors are very cheap <strong>pastels</strong>.</p>
 
-	def test_calculateBasicNumberReturnsNumber(self):
- 		self.assertEqual(3, self.calc('3'))
-
-	def test_calculateSimpleMultiplicationReturnsResult(self):
-		self.assertEqual(10, self.calc('5*2'))
-
-	def test_calculateInvalidStringShouldThrowException(self):
-		self.assertRaises(ValueError, self.calc, ('blabl'))
-</code></pre>
-
-<p>Zie <a href="http://docs.python.org/3/library/unittest.html">http://docs.python.org/3/library/unittest.html</a></p>
-
-<ul>
-<li><code>setUp</code> wordt automatisch aangeroepen. Beforeclass, aftereach etc etc bestaat ook.</li>
-<li>alle methods met <code>test_</code> worden automatisch herkend.</li>
-</ul>
-
-<h4 id="hoe-voer-ik-dit-nu-uit">Hoe voer ik dit nu uit?</h4>
-
-<p>Dit stuk onder uw py file plakken:</p>
-
-<pre><code class="language-python">if __name__ ###### '__main__':
-	unittest.main()
-</code></pre>
-
-<p>En dan <code>python -m unittest -v calculatorTest</code>. de v flag geeft wat extra output, anders staat er gewoon OK. De test op zich builden in bijvoorbeeld sublime met de main method erin zorgt er ook voor dat deze automatisch uitgevoerd wordt.</p>
-
-<p>######= automatic test case discovery ######=</p>
-
-<p><code>python -m unittest discover</code> gaat alle unit testen vanaf huidig dir scannen en uitvoeren (instelbaar met params). Moet voldoen aan:</p>
+<p>So, what did I learn this week:</p>
 
 <ol>
-<li>extenden van <code>unittest.TestCase</code></li>
-<li>voldoen aan python module structuur. Testen in files met prefix &ldquo;test_x.py&rdquo;.</li>
-<li>Indien in subfolder &ldquo;test&rdquo;: vergeet geen &ldquo;<strong>init</strong>.py&rdquo; file.</li>
+<li>Bistre can be a bit of a mess. You absolutely cannot wait, edges will form and it&rsquo;ll be worse than watercolor.</li>
+<li>Expensive tools <strong>are</strong> better than cheap ones. Pastels are softer and contain a lot more pigment than the ones you can find in sale bins.</li>
+<li>I know the difference between a <strong>HB</strong> and a <strong>B4</strong> pencil. I know how to sharpen one. Yay.</li>
+<li>These drawings look like doodles because they are a lot like doodles. I like drawing that but I have the feeling I&rsquo;m missing a lot background info (will be continued&hellip;)</li>
+<li>Patience looks like an important skill to aid me in learning how to draw.</li>
+<li><strong>Do not look at the work of others!</strong></li>
 </ol>
 
-<p>############= autotest ############=</p>
+<p>I warned you:</p>
 
-<p>Mogelijk met onder andere <code>autonose</code> (nose is een alternatief voor unittest) en <code>sniffer</code>. Om die te installeren moet je via de <a href="/wiki/code/python/packages/">pip package manager</a> gaan, en dan gewoon sniffer uitvoeren in uw base directory.</p>
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/568720259163636687/" target="_blank" title="Pinterest pin"></a>
+
+
+<p>This also is bistre.
+Ouch.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="http://www.brainbaking.com/post/learning-yourself-to-draw/" data-toggle="tooltip" data-placement="top" title="Learning yourself to draw">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="http://www.brainbaking.com/post/drawing-week-02/" data-toggle="tooltip" data-placement="top" title="Drawing week 02 - Art before breakfast">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
 
       
     </div>

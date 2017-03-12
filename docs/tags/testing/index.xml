@@ -28,18 +28,18 @@
 
 &lt;p&gt;Headless webdriver testen draaien gaat met &lt;code&gt;HTMLUnit&lt;/code&gt; - vanaf 2.x zit &lt;code&gt;org.openqa.selenium.htmlunit.HtmlUnitDriver&lt;/code&gt; ook in de jar. De JS die daar evaluated wordt is echter &lt;code&gt;Rhino&lt;/code&gt; JS en niet native browser stuff. We kunnen in de plaats &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/&#34;&gt;code/javascript/testing/phantomjs&lt;/a&gt; gebruiken - deze driver zit in een andere jar. In de centrale maven repo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt;
-            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.github.detro.ghostdriver&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;phantomjsdriver&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.0.3&amp;lt;/version&amp;gt;
-            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-        &amp;lt;/dependency&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt;
+			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.github.detro.ghostdriver&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;phantomjsdriver&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.0.3&amp;lt;/version&amp;gt;
+			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+		&amp;lt;/dependency&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/detro/ghostdriver&#34;&gt;ghostdriver&lt;/a&gt; is de ingebouwde koppeling tussen phantomjs en webdriver (selenium server). Dit zit ingebouwd in phantomjs als je deze uitvoert met &lt;code&gt;--webdriver=[port]&lt;/code&gt; - wat de service voor u doet.&lt;/p&gt;
@@ -50,70 +50,70 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public abstract class WebdriverTest extends IntegrationTest {
 
-    private static ChromeDriverService service;
-    private static WebDriver driver;
+	private static ChromeDriverService service;
+	private static WebDriver driver;
 
-    static {
-        Runtime.getRuntime().addShutdownHook(new Thread() {
+	static {
+		Runtime.getRuntime().addShutdownHook(new Thread() {
 
-            @Override
-            public void run() {
-                driver.quit();
-                if (service != null) {
-                    service.stop();
-                }
-            }
-        });
-    }
+			@Override
+			public void run() {
+				driver.quit();
+				if (service != null) {
+					service.stop();
+				}
+			}
+		});
+	}
 
-    private static void startService() {
-        try {
-            service = new ChromeDriverService.Builder()
-                    .usingDriverExecutable(new File(properties().getChromeDriverExecutable()))
-                    .usingAnyFreePort().build();
-            service.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+	private static void startService() {
+		try {
+			service = new ChromeDriverService.Builder()
+					.usingDriverExecutable(new File(properties().getChromeDriverExecutable()))
+					.usingAnyFreePort().build();
+			service.start();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
-    @Before
-    public void gaNaarStartpagina() {
-        getDriver().get(vitrineUrl());
-    }
+	@Before
+	public void gaNaarStartpagina() {
+		getDriver().get(vitrineUrl());
+	}
 
-    protected static WebDriver getDriver() {
-        if (driver ###### null) {
-            driver = startDriver();
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        }
-        return driver;
-    }
+	protected static WebDriver getDriver() {
+		if (driver ###### null) {
+			driver = startDriver();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		}
+		return driver;
+	}
 
-    private static RemoteWebDriver startDriver() {
-        if (properties().isChromeWebdriverNodig()) {
-            startService();
-            return new ChromeDriver(service);
-        }
-        return new PhantomJSDriver(phantomJSCapabilities());
-    }
+	private static RemoteWebDriver startDriver() {
+		if (properties().isChromeWebdriverNodig()) {
+			startService();
+			return new ChromeDriver(service);
+		}
+		return new PhantomJSDriver(phantomJSCapabilities());
+	}
 
-    private static DesiredCapabilities phantomJSCapabilities() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setJavascriptEnabled(true);
-        capabilities.setCapability(&amp;quot;takesScreenshot&amp;quot;, false);
-        capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, properties().getPhantomJSExecutable());
-        capabilities.setCapability(PHANTOMJS_CLI_ARGS, new String[] { &amp;quot;--webdriver-loglevel=DEBUG&amp;quot; });
-        return capabilities;
-    }
+	private static DesiredCapabilities phantomJSCapabilities() {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setJavascriptEnabled(true);
+		capabilities.setCapability(&amp;quot;takesScreenshot&amp;quot;, false);
+		capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, properties().getPhantomJSExecutable());
+		capabilities.setCapability(PHANTOMJS_CLI_ARGS, new String[] { &amp;quot;--webdriver-loglevel=DEBUG&amp;quot; });
+		return capabilities;
+	}
 
-    protected String toString(DateMidnight date) {
-        return date.toString(&amp;quot;dd/MM/yyyy&amp;quot;);
-    }
+	protected String toString(DateMidnight date) {
+		return date.toString(&amp;quot;dd/MM/yyyy&amp;quot;);
+	}
 
-    protected ZoekPage startPagina() {
-        return new ZoekPage(driver);
-    }
+	protected ZoekPage startPagina() {
+		return new ZoekPage(driver);
+	}
 
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -126,26 +126,26 @@
 
 &lt;p&gt;Bij fouten als &amp;ldquo;Protected Mode must be set to the same value&amp;rdquo; (zie &lt;a href=&#34;https://code.google.com/p/selenium/issues/detail?id=1795&#34;&gt;hier&lt;/a&gt; heb je een specifieke switch nodig:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    private static DesiredCapabilities ieCapabilities() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-        return capabilities;
-    }
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	private static DesiredCapabilities ieCapabilities() {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+		return capabilities;
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Voor de rest is de setup gelijkaardig aan die van chrome - het maken van de service&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    private static void startIEService() {
-        ieService = new InternetExplorerDriverService.Builder()
-                .usingDriverExecutable(new File(properties().getIEDriverExecutable()))
-                .usingAnyFreePort()
-                .build();
-        try {
-            ieService.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	private static void startIEService() {
+		ieService = new InternetExplorerDriverService.Builder()
+				.usingDriverExecutable(new File(properties().getIEDriverExecutable()))
+				.usingAnyFreePort()
+				.build();
+		try {
+			ieService.start();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;En het maken van de driver via &lt;code&gt;return new InternetExplorerDriver(ieService, ieCapabilities());&lt;/code&gt;&lt;/p&gt;
@@ -505,17 +505,17 @@ from calculator import Calculator
 
 class TestCalculator(unittest.TestCase):
 
-    def setUp(self):
-        self.calc = Calculator().calculate;
+	def setUp(self):
+		self.calc = Calculator().calculate;
 
-    def test_calculateBasicNumberReturnsNumber(self):
-        self.assertEqual(3, self.calc(&#39;3&#39;))
+	def test_calculateBasicNumberReturnsNumber(self):
+ 		self.assertEqual(3, self.calc(&#39;3&#39;))
 
-    def test_calculateSimpleMultiplicationReturnsResult(self):
-        self.assertEqual(10, self.calc(&#39;5*2&#39;))
+	def test_calculateSimpleMultiplicationReturnsResult(self):
+		self.assertEqual(10, self.calc(&#39;5*2&#39;))
 
-    def test_calculateInvalidStringShouldThrowException(self):
-        self.assertRaises(ValueError, self.calc, (&#39;blabl&#39;))
+	def test_calculateInvalidStringShouldThrowException(self):
+		self.assertRaises(ValueError, self.calc, (&#39;blabl&#39;))
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Zie &lt;a href=&#34;http://docs.python.org/3/library/unittest.html&#34;&gt;http://docs.python.org/3/library/unittest.html&lt;/a&gt;&lt;/p&gt;
@@ -530,7 +530,7 @@ class TestCalculator(unittest.TestCase):
 &lt;p&gt;Dit stuk onder uw py file plakken:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;if __name__ ###### &#39;__main__&#39;:
-    unittest.main()
+	unittest.main()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;En dan &lt;code&gt;python -m unittest -v calculatorTest&lt;/code&gt;. de v flag geeft wat extra output, anders staat er gewoon OK. De test op zich builden in bijvoorbeeld sublime met de main method erin zorgt er ook voor dat deze automatisch uitgevoerd wordt.&lt;/p&gt;
@@ -594,59 +594,59 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace calc
 {
-    TEST_CLASS(CalculatorTest)
-    {
-    private:
-        int nStartValue;
-        Calculator* calc;
+	TEST_CLASS(CalculatorTest)
+	{
+	private:
+		int nStartValue;
+		Calculator* calc;
 
-        void CreateCalcSUT()
-        {
-            calc = new Calculator(nStartValue);
-        }
+		void CreateCalcSUT()
+		{
+			calc = new Calculator(nStartValue);
+		}
 
-    public:
-        /*testcase template:
-        TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
-        {
-        param specialParam = specialvalue;
-        ...
-        param expectation = whatYouExpect;
-        ...
-        (SUT creation)
-        (call methods)
-        ...
-        assert(s)
-        }*/
+	public:
+		/*testcase template:
+		TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
+		{
+		param specialParam = specialvalue;
+		...
+		param expectation = whatYouExpect;
+		...
+		(SUT creation)
+		(call methods)
+		...
+		assert(s)
+		}*/
 
 
-        TEST_METHOD_INITIALIZE(InitialiseDefaults)
-        {
-            calc = NULL;
-            nStartValue = 5;
-        }
+		TEST_METHOD_INITIALIZE(InitialiseDefaults)
+		{
+			calc = NULL;
+			nStartValue = 5;
+		}
 
-        TEST_METHOD_CLEANUP(CleanupObjects)
-        {
-            delete calc;
-        }
+		TEST_METHOD_CLEANUP(CleanupObjects)
+		{
+			delete calc;
+		}
 
-        TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
-        {
-            int nExpectedValue = 0;
-            calc = new Calculator();
-            Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
-        }
+		TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
+		{
+			int nExpectedValue = 0;
+			calc = new Calculator();
+			Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
+		}
 
-        TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
-        {
-            nStartValue = 5;
-            int nExpectedValue = 5;
-            CreateCalcSUT();
-            Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
-        }
+		TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
+		{
+			nStartValue = 5;
+			int nExpectedValue = 5;
+			CreateCalcSUT();
+			Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
+		}
 
-    };
+	};
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -720,9 +720,9 @@ namespace calc
 
 &lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;class MyClass {
 public:
-    MyClass() {};
+	MyClass() {};
 
-    int addUp(int one, int two);
+	int addUp(int one, int two);
 };
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -732,7 +732,7 @@ using namespace std;
 
 int MyClass::addUp(int one, int two)
 {
-    return one + two;
+	return one + two;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -746,22 +746,22 @@ int MyClass::addUp(int one, int two)
 using namespace System;
 using namespace System::Text;
 using namespace System::Collections::Generic;
-using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
+using namespace	Microsoft::VisualStudio::TestTools::UnitTesting;
 
 namespace unittests
 {
-    [TestClass]
-    public ref class MyClassTest
-    {
+	[TestClass]
+	public ref class MyClassTest
+	{
 
-    public: 
+	public: 
 
-        [TestMethod]
-        void AddOne()
-        {
-            Assert::AreEqual(3, MyClass().addUp(1, 2));
-        };
-    };
+		[TestMethod]
+		void AddOne()
+		{
+			Assert::AreEqual(3, MyClass().addUp(1, 2));
+		};
+	};
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -796,9 +796,9 @@ MyClassTest.obj : error LNK2019: unresolved external symbol &amp;quot;public: in
 
 class FRIENDCLASS MyClass {
 public:
-    MyClass();
+	MyClass();
 
-    int addUp(int one, int two);
+	int addUp(int one, int two);
 };
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -827,9 +827,9 @@ public:
 &lt;p&gt;Zie &lt;a href=&#34;http://docs.angularjs.org/api/angular.mock.module&#34;&gt;angular.mock.module&lt;/a&gt; - twee hoofdfuncties die belangrijk zijn: &lt;code&gt;module()&lt;/code&gt; en &lt;code&gt;inject()&lt;/code&gt;. Het eerste maakt de module aan en het tweede zorgt voor de mock dependency injectie. Bijvoorbeeld:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;angular
-    .module(&#39;bla.services&#39;, [])
-    
-    .factory(&#39;$bla&#39;, [&#39;$http&#39;, function($http) {
+	.module(&#39;bla.services&#39;, [])
+	
+	.factory(&#39;$bla&#39;, [&#39;$http&#39;, function($http) {
             // do stuff with $http, like a .get
             return { go: function() {} }
         }])
@@ -927,30 +927,30 @@ npm config set https-proxy http://proxy.be:8080
 
 &lt;h3 id=&#34;integratie-in-maven&#34;&gt;Integratie in maven&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
-                &amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;exec-maven-plugin&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;1.2.1&amp;lt;/version&amp;gt;
-                &amp;lt;executions&amp;gt;
-                    &amp;lt;execution&amp;gt;
-                        &amp;lt;id&amp;gt;jsunit&amp;lt;/id&amp;gt;
-                        &amp;lt;phase&amp;gt;test&amp;lt;/phase&amp;gt;
-                        &amp;lt;goals&amp;gt;
-                            &amp;lt;goal&amp;gt;exec&amp;lt;/goal&amp;gt;
-                        &amp;lt;/goals&amp;gt;
-                    &amp;lt;/execution&amp;gt;
-                &amp;lt;/executions&amp;gt;
-                &amp;lt;configuration&amp;gt;
-                    &amp;lt;skip&amp;gt;${skipTests}&amp;lt;/skip&amp;gt;
-                    &amp;lt;successCodes&amp;gt;
-                        &amp;lt;successCode&amp;gt;0&amp;lt;/successCode&amp;gt;
-                        &amp;lt;successCode&amp;gt;1&amp;lt;/successCode&amp;gt;&amp;lt;!-- on failing test, don&#39;t get a build 
-                            error --&amp;gt;
-                    &amp;lt;/successCodes&amp;gt;
-                    &amp;lt;executable&amp;gt;${basedir}/src/test/javascript/build.bat&amp;lt;/executable&amp;gt;
-                    &amp;lt;workingDirectory&amp;gt;${basedir}/src/test/javascript&amp;lt;/workingDirectory&amp;gt;
-                &amp;lt;/configuration&amp;gt;
-            &amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;			&amp;lt;plugin&amp;gt;
+				&amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
+				&amp;lt;artifactId&amp;gt;exec-maven-plugin&amp;lt;/artifactId&amp;gt;
+				&amp;lt;version&amp;gt;1.2.1&amp;lt;/version&amp;gt;
+				&amp;lt;executions&amp;gt;
+					&amp;lt;execution&amp;gt;
+						&amp;lt;id&amp;gt;jsunit&amp;lt;/id&amp;gt;
+						&amp;lt;phase&amp;gt;test&amp;lt;/phase&amp;gt;
+						&amp;lt;goals&amp;gt;
+							&amp;lt;goal&amp;gt;exec&amp;lt;/goal&amp;gt;
+						&amp;lt;/goals&amp;gt;
+					&amp;lt;/execution&amp;gt;
+				&amp;lt;/executions&amp;gt;
+				&amp;lt;configuration&amp;gt;
+					&amp;lt;skip&amp;gt;${skipTests}&amp;lt;/skip&amp;gt;
+					&amp;lt;successCodes&amp;gt;
+						&amp;lt;successCode&amp;gt;0&amp;lt;/successCode&amp;gt;
+						&amp;lt;successCode&amp;gt;1&amp;lt;/successCode&amp;gt;&amp;lt;!-- on failing test, don&#39;t get a build 
+							error --&amp;gt;
+					&amp;lt;/successCodes&amp;gt;
+					&amp;lt;executable&amp;gt;${basedir}/src/test/javascript/build.bat&amp;lt;/executable&amp;gt;
+					&amp;lt;workingDirectory&amp;gt;${basedir}/src/test/javascript&amp;lt;/workingDirectory&amp;gt;
+				&amp;lt;/configuration&amp;gt;
+			&amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Bovenstaande &lt;code&gt;skip&lt;/code&gt; config houdt dus ook rekening met bvb &lt;code&gt;mvn clean install -DskipTests&lt;/code&gt; - de &lt;code&gt;test&lt;/code&gt; phase van maven wordt &lt;strong&gt;niet&lt;/strong&gt; geskipped maar de testen wel door de &lt;code&gt;maven-failsafe-plugin&lt;/code&gt; - bijgevolg worden goals die aan de test fase hangen ook nog uitgevoerd.&lt;/p&gt;
@@ -1021,7 +1021,7 @@ junitReporter = {
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void BlaActionTest extends StrutsTestCase {
   @Test
   public void testDit() {
-     action.doeIets(mappingStub, requestStub, ...) // ipv mock
+	 action.doeIets(mappingStub, requestStub, ...) // ipv mock
   }
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -1115,7 +1115,7 @@ var page = new WebPage();
 
 // Is nodig omdat anders in uw testpagina console.log() niets doet. 
 page.onConsoleMessage = function(msg) {
-    console.log(&amp;quot;debug from page: &amp;quot; + msg);
+	console.log(&amp;quot;debug from page: &amp;quot; + msg);
 };
 
 /**
@@ -1140,37 +1140,37 @@ page.onConsoleMessage = function(msg) {
  **/
 page.open(&#39;D:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Profiles&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;BVERBEKE&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Desktop&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;phantomjs-1.4.1-win32-dynamic&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;test.html&#39;, function(status) {
 
-    console.log(&amp;quot;should have printed &#39;yoo&#39; AND &#39;sup?&#39;, include from test.js??&amp;quot;);
-    console.log(&amp;quot;&amp;quot;);
-    
-    var testHTML = page.evaluate(function() {
-        return document.getElementById(&#39;test&#39;).innerHTML;
-    });
-    
-    var isKnopHidden = page.evaluate(function() {
-        return $(&amp;quot;#hiddenKnop&amp;quot;).is(&amp;quot;:hidden&amp;quot;);
-    });
-    
-    var whichIsFocussed = page.evaluate(function() {
-        return document.activeElement.id;
-    });
-    
-    var divHeightCSSGetterTest = page.evaluate(function() {
-        return $(&amp;quot;#test&amp;quot;).css(&amp;quot;height&amp;quot;);
-    });
-    
-    var jQueryCheckedSelectorTest = page.evaluate(function() {
-        $(&amp;quot;#check&amp;quot;).click();
-        return $(&amp;quot;#check&amp;quot;).is(&amp;quot;:checked&amp;quot;);
-    }); 
-    
-    console.log(&amp;quot;got testHTML &amp;quot; + testHTML);
-    console.log(&amp;quot;is knop hidden? (should be) --&amp;gt; &amp;quot; + isKnopHidden);
-    console.log(&amp;quot;which is focussed? (should be textarea) --&amp;gt; #&amp;quot; + whichIsFocussed);
-    console.log(&amp;quot;div height? (should be 100px) --&amp;gt; &amp;quot; + divHeightCSSGetterTest);
-    console.log(&amp;quot;checkbox checked? (should be true) --&amp;gt; &amp;quot; + jQueryCheckedSelectorTest);
-    
-    phantom.exit();
+	console.log(&amp;quot;should have printed &#39;yoo&#39; AND &#39;sup?&#39;, include from test.js??&amp;quot;);
+	console.log(&amp;quot;&amp;quot;);
+	
+	var testHTML = page.evaluate(function() {
+		return document.getElementById(&#39;test&#39;).innerHTML;
+	});
+	
+	var isKnopHidden = page.evaluate(function() {
+		return $(&amp;quot;#hiddenKnop&amp;quot;).is(&amp;quot;:hidden&amp;quot;);
+	});
+	
+	var whichIsFocussed = page.evaluate(function() {
+		return document.activeElement.id;
+	});
+	
+	var divHeightCSSGetterTest = page.evaluate(function() {
+		return $(&amp;quot;#test&amp;quot;).css(&amp;quot;height&amp;quot;);
+	});
+	
+	var jQueryCheckedSelectorTest = page.evaluate(function() {
+		$(&amp;quot;#check&amp;quot;).click();
+		return $(&amp;quot;#check&amp;quot;).is(&amp;quot;:checked&amp;quot;);
+	});	
+	
+	console.log(&amp;quot;got testHTML &amp;quot; + testHTML);
+	console.log(&amp;quot;is knop hidden? (should be) --&amp;gt; &amp;quot; + isKnopHidden);
+	console.log(&amp;quot;which is focussed? (should be textarea) --&amp;gt; #&amp;quot; + whichIsFocussed);
+	console.log(&amp;quot;div height? (should be 100px) --&amp;gt; &amp;quot; + divHeightCSSGetterTest);
+	console.log(&amp;quot;checkbox checked? (should be true) --&amp;gt; &amp;quot; + jQueryCheckedSelectorTest);
+	
+	phantom.exit();
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1184,31 +1184,31 @@ page.open(&#39;D:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Profiles&amp;lt;br/&amp;g
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE HTML PUBLIC &amp;quot;-*W3C*DTD HTML 4.01 Transitional//EN&amp;quot;
 &amp;quot;http://www.w3.org/TR/html4/loose.dtd&amp;quot;&amp;gt;
 
-    &amp;lt;head&amp;gt;
-        &amp;lt;script type######&amp;quot;text/javascript&amp;quot; src&amp;quot;test.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-        &amp;lt;script src=&amp;quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-    &amp;lt;/head&amp;gt;
-    &amp;lt;body&amp;gt;
-    &amp;lt;div id=&amp;quot;test&amp;quot;&amp;gt;bla&amp;lt;/div&amp;gt;
-    &amp;lt;form&amp;gt;
-        &amp;lt;input type######&amp;quot;button&amp;quot; id&amp;quot;knop&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;
-        &amp;lt;textarea id=&amp;quot;text&amp;quot;&amp;gt;eerste val&amp;lt;/textarea&amp;gt;
-        &amp;lt;input type######&amp;quot;button&amp;quot; id&amp;quot;hiddenKnop&amp;quot; value=&amp;quot;hidden&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;
-        &amp;lt;input type######&amp;quot;checkbox&amp;quot; id&amp;quot;check&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;
-    &amp;lt;/form&amp;gt;
-    
-        &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
-        console.log(&amp;quot;yoo&amp;quot;);
-        document.getElementById(&amp;quot;test&amp;quot;).innerHTML = &amp;quot;nieuwe blabla&amp;quot;;
-        
-        $(&amp;quot;#test&amp;quot;).html(&amp;quot;jquery nieuwe blabla&amp;quot;).css(&amp;quot;height&amp;quot;, &amp;quot;100px&amp;quot;);
-        $(&amp;quot;#hiddenKnop&amp;quot;).hide();
-        $(&amp;quot;#text&amp;quot;).focus();
-        
-        console.log(&amp;quot;is knop hidden? (should be) --&amp;gt; &amp;quot; + $(&amp;quot;#hiddenKnop&amp;quot;).is(&amp;quot;:hidden&amp;quot;));
-        
-        &amp;lt;/script&amp;gt;
-    &amp;lt;/body&amp;gt;
+	&amp;lt;head&amp;gt;
+		&amp;lt;script type######&amp;quot;text/javascript&amp;quot; src&amp;quot;test.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+		&amp;lt;script src=&amp;quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+	&amp;lt;/head&amp;gt;
+	&amp;lt;body&amp;gt;
+	&amp;lt;div id=&amp;quot;test&amp;quot;&amp;gt;bla&amp;lt;/div&amp;gt;
+	&amp;lt;form&amp;gt;
+		&amp;lt;input type######&amp;quot;button&amp;quot; id&amp;quot;knop&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;
+		&amp;lt;textarea id=&amp;quot;text&amp;quot;&amp;gt;eerste val&amp;lt;/textarea&amp;gt;
+		&amp;lt;input type######&amp;quot;button&amp;quot; id&amp;quot;hiddenKnop&amp;quot; value=&amp;quot;hidden&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;
+		&amp;lt;input type######&amp;quot;checkbox&amp;quot; id&amp;quot;check&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;
+	&amp;lt;/form&amp;gt;
+	
+		&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+		console.log(&amp;quot;yoo&amp;quot;);
+		document.getElementById(&amp;quot;test&amp;quot;).innerHTML = &amp;quot;nieuwe blabla&amp;quot;;
+		
+		$(&amp;quot;#test&amp;quot;).html(&amp;quot;jquery nieuwe blabla&amp;quot;).css(&amp;quot;height&amp;quot;, &amp;quot;100px&amp;quot;);
+		$(&amp;quot;#hiddenKnop&amp;quot;).hide();
+		$(&amp;quot;#text&amp;quot;).focus();
+		
+		console.log(&amp;quot;is knop hidden? (should be) --&amp;gt; &amp;quot; + $(&amp;quot;#hiddenKnop&amp;quot;).is(&amp;quot;:hidden&amp;quot;));
+		
+		&amp;lt;/script&amp;gt;
+	&amp;lt;/body&amp;gt;
 
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1286,7 +1286,7 @@ checkbox checked? (should be true) --&amp;gt; true
 var page = require(&#39;webpage&#39;).create();
 var func = function() {
     console.log(&#39;hello, &#39; + document.title + &#39;&amp;lt;br/&amp;gt;n&#39;);
-    
+	
     for (var i ###### 0, l  arguments.length; i &amp;lt; l; i++) {
         var arg = arguments[i];
         console.log(typeof arg + &#39;:&amp;lt;br/&amp;gt;t&#39; + arg);
@@ -1294,8 +1294,8 @@ var func = function() {
 };
 page.onLoadFinished = function() {
     evaluate(page, func, true, 0, function() {
-        return require(&#39;fs&#39;).read
-    });
+		return require(&#39;fs&#39;).read
+	});
     phantom.exit(0);
 };
 page.open(&#39;http://www.google.com/&#39;);
@@ -1322,17 +1322,17 @@ page.onLoadFinished = function() {
 &lt;p&gt;Werkt maar niet in &lt;code&gt;async: false&lt;/code&gt; mode. Zie &lt;a href=&#34;http://code.google.com/p/phantomjs/issues/detail?id######463&amp;amp;thanks463&amp;amp;ts=1332850556&#34;&gt;http://code.google.com/p/phantomjs/issues/detail?id######463&amp;amp;thanks463&amp;amp;ts=1332850556&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;page.evaluate(function() {
-    console.log(&amp;quot;ajaxying&amp;quot;);
+	console.log(&amp;quot;ajaxying&amp;quot;);
   jQuery.ajax({
-    async: false,
-    dataType: &#39;html&#39;,
-    url: &#39;test.html&#39;,
-    success: function(data) {
-        console.log(&amp;quot;--success!!&amp;quot;);
-        console.log(data);
-        console.log(&amp;quot;--&amp;quot;);
-    }
-  });       
+	async: false,
+	dataType: &#39;html&#39;,
+	url: &#39;test.html&#39;,
+	success: function(data) {
+		console.log(&amp;quot;--success!!&amp;quot;);
+		console.log(data);
+		console.log(&amp;quot;--&amp;quot;);
+	}
+  });		
 });
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1423,91 +1423,91 @@ page.onLoadFinished = function() {
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class StubHttpServer implements StubServer {
 
-    private RequestRecordingFilter filter = new RequestRecordingFilter();
+	private RequestRecordingFilter filter = new RequestRecordingFilter();
 
-    private int port;
+	private int port;
 
-    private Server httpServer;
+	private Server httpServer;
 
-    private Map&amp;lt;String, ResettableHttpServlet&amp;gt; servlets = new HashMap&amp;lt;String, ResettableHttpServlet&amp;gt;();
+	private Map&amp;lt;String, ResettableHttpServlet&amp;gt; servlets = new HashMap&amp;lt;String, ResettableHttpServlet&amp;gt;();
 
-    public StubHttpServer(int port) {
-        this.port = port;
-    }
+	public StubHttpServer(int port) {
+		this.port = port;
+	}
 
-    public void addHttpServlet(String uri, final HttpServlet servlet) {
-        addHttpServlet(uri, new ResettableHttpServlet() {
+	public void addHttpServlet(String uri, final HttpServlet servlet) {
+		addHttpServlet(uri, new ResettableHttpServlet() {
 
-            @Override
-            public void reset() {
-            }
+			@Override
+			public void reset() {
+			}
 
-            @Override
-            public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-                servlet.service(req, res);
-            }
+			@Override
+			public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+				servlet.service(req, res);
+			}
 
-        });
-    }
+		});
+	}
 
-    public void addHttpServlet(String uri, ResettableHttpServlet servlet) {
-        this.servlets.put(uri, servlet);
-    }
+	public void addHttpServlet(String uri, ResettableHttpServlet servlet) {
+		this.servlets.put(uri, servlet);
+	}
 
-    public boolean hasReceivedRequest(String method, String uri) {
-        return filter.hasReceivedRequest(method, uri);
-    }
+	public boolean hasReceivedRequest(String method, String uri) {
+		return filter.hasReceivedRequest(method, uri);
+	}
 
-    public boolean hasMatchingRequest(String method, String uriRegex) {
-        return filter.hasMatchingRequest(method, uriRegex);
-    }
+	public boolean hasMatchingRequest(String method, String uriRegex) {
+		return filter.hasMatchingRequest(method, uriRegex);
+	}
 
-    public void reset() {
-        filter.reset();
-        for (ResettableHttpServlet servlet : servlets.values()) {
-            servlet.reset();
-        }
-    }
+	public void reset() {
+		filter.reset();
+		for (ResettableHttpServlet servlet : servlets.values()) {
+			servlet.reset();
+		}
+	}
 
-    public void start() throws Exception {
-        if (httpServer ###### null) {
-            httpServer = new Server();
-            SocketConnector connector = new SocketConnector();
-            connector.setPort(port);
-            httpServer.setConnectors(new Connector[] { connector });
-            Context root = new Context(httpServer, &amp;quot;/&amp;quot;, Context.SESSIONS);
-            root.addFilter(new FilterHolder(filter), &amp;quot;/*&amp;quot;, 0);
-            for (String servletMapping : servlets.keySet()) {
-                root.addServlet(new ServletHolder(servlets.get(servletMapping)), servletMapping);
-            }
-            httpServer.start();
+	public void start() throws Exception {
+		if (httpServer ###### null) {
+			httpServer = new Server();
+			SocketConnector connector = new SocketConnector();
+			connector.setPort(port);
+			httpServer.setConnectors(new Connector[] { connector });
+			Context root = new Context(httpServer, &amp;quot;/&amp;quot;, Context.SESSIONS);
+			root.addFilter(new FilterHolder(filter), &amp;quot;/*&amp;quot;, 0);
+			for (String servletMapping : servlets.keySet()) {
+				root.addServlet(new ServletHolder(servlets.get(servletMapping)), servletMapping);
+			}
+			httpServer.start();
 
-            Runtime.getRuntime().addShutdownHook(new Thread() {
+			Runtime.getRuntime().addShutdownHook(new Thread() {
 
-                @Override
-                public void run() {
-                    StubHttpServer.this.stop();
-                }
-            });
-        }
-    }
+				@Override
+				public void run() {
+					StubHttpServer.this.stop();
+				}
+			});
+		}
+	}
 
-    public void stop() {
-        if (httpServer != null) {
-            try {
-                httpServer.stop();
-            } catch (Exception e) {
-                // ignore
-            } finally {
-                httpServer = null;
-            }
-        }
-    }
+	public void stop() {
+		if (httpServer != null) {
+			try {
+				httpServer.stop();
+			} catch (Exception e) {
+				// ignore
+			} finally {
+				httpServer = null;
+			}
+		}
+	}
 
-    @Override
-    public void startGooiExceptionIndienPoortNogNietVrij() throws Exception {
-        start();
-    }
+	@Override
+	public void startGooiExceptionIndienPoortNogNietVrij() throws Exception {
+		start();
+	}
 
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -1517,23 +1517,23 @@ page.onLoadFinished = function() {
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@StubServer(port = OEStubServer.PORT)
 public class OEStubServer extends be.test.stubserver.StubHttpServer {
 
-    public static final int PORT = 9106;
+	public static final int PORT = 9106;
 
-    private static OEStubServer INSTANCE;
+	private static OEStubServer INSTANCE;
 
-    public synchronized static OEStubServer getInstance() {
-        if (INSTANCE ###### null) {
-            INSTANCE = new OEStubServer();
-        }
-        return INSTANCE;
-    }
+	public synchronized static OEStubServer getInstance() {
+		if (INSTANCE ###### null) {
+			INSTANCE = new OEStubServer();
+		}
+		return INSTANCE;
+	}
 
-    private OeClientAwareServlet oeClientAwareServlet = new OeClientAwareServlet();
+	private OeClientAwareServlet oeClientAwareServlet = new OeClientAwareServlet();
 
-    private OEStubServer() {
-        super(PORT);
-        addHttpServlet(&amp;quot;/*&amp;quot;, oeClientAwareServlet);
-    }
+	private OEStubServer() {
+		super(PORT);
+		addHttpServlet(&amp;quot;/*&amp;quot;, oeClientAwareServlet);
+	}
 
 }
 &lt;/code&gt;&lt;/pre&gt;

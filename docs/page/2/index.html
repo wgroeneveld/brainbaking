@@ -148,6 +148,82 @@
             
             
             <article class="post-preview">
+              <a href="http://www.brainbaking.com/post/custom-webdriver-page-factories/">
+          	  <h2 class="post-title">Custom Webdriver Page Factories</h2>
+          	
+          	  
+          	  <h3 class="post-subtitle">
+          	    Wrapping WebElements to reduce boilerplate clutter
+          	  </h3>
+          	    
+              </a>
+
+              <p class="post-meta">
+                22 September 2014
+              </p>
+            
+              <div class="post-entry">
+              
+                The problem: Webdriver elements returned by driver.FindElement() are too generic. There&rsquo;re the Text, SendKeys() and Click() methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like ShouldContainValue or Type (okay, that&rsquo;s a one-to-one mapping with SendKeys(), but it&rsquo;s a lot less technical!). Instead of
+ [FindsBy(How = How.CssSelector, Using = &quot;.ux-desktop-taskbar-startbutton&quot;)] private IWebElement startButton; [FindsBy(How = How.CssSelector, Using = &quot;.
+                <a href="http://www.brainbaking.com/post/custom-webdriver-page-factories/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
+              
+              </div>
+            
+             </article>
+            
+            <article class="post-preview">
+              <a href="http://www.brainbaking.com/post/scons-building/">
+          	  <h2 class="post-title">Bye autotools hello Scons</h2>
+          	
+          	  
+          	  <h3 class="post-subtitle">
+          	    Building C&#43;&#43; projects with Scons
+          	  </h3>
+          	    
+              </a>
+
+              <p class="post-meta">
+                26 March 2014
+              </p>
+            
+              <div class="post-entry">
+              
+                Remember this?
+ ./configure make make install  That&rsquo;s not so bad, as long as you have the right compiler and linker flags configured, depending on the target OS. The real problem, however, is trying to figure out how to alter something if you didn&rsquo;t write the Makefile yourself. Or if you in fact did write it, but it was some time ago. Two days. No, four hours.
+The problem Try to study the autoconf and automake flow diagram, explained on Wikipedia: the GNU build system.
+                <a href="http://www.brainbaking.com/post/scons-building/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
+              
+              </div>
+            
+             </article>
+            
+            <article class="post-preview">
+              <a href="http://www.brainbaking.com/post/metaprogramming-convention-dry/">
+          	  <h2 class="post-title">Metaprogramming instead of duplication</h2>
+          	
+          	  
+          	  <h3 class="post-subtitle">
+          	    convention over duplication, good or bad?
+          	  </h3>
+          	    
+              </a>
+
+              <p class="post-meta">
+                14 March 2014
+              </p>
+            
+              <div class="post-entry">
+              
+                So&hellip; What&rsquo;s up with all that duplication in your unit tests? Let&rsquo;s take a look at a very recognizable pattern when for instance using RhinoMock in C#:
+ [TestInitialize] public void SetUp() { dbConfigurationMock = MockRepository.GenerateMock&lt;IDbConfiguration&gt;(); mountPointLoaderMock = MockRepository.GenerateMock&lt;IMountPointLoader&gt;(); userEnvironmentFactoryMock = MockRepository.GenerateMock&lt;IUserEnvironmentFactory&gt;(); userEnvironmentLoaderMock = MockRepository.GenerateMock&lt;IUserEnvironmentLoader&gt;(); // ...  We agreed to suffix each instance variable with &lsquo;Mock&rsquo; if it&rsquo;s a mock. That way, when you scroll down to an actual test case, it&rsquo;s clear to everyone what&rsquo;s what: mocks, stubs, actual implementations, and so forth.
+                <a href="http://www.brainbaking.com/post/metaprogramming-convention-dry/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
+              
+              </div>
+            
+             </article>
+            
+            <article class="post-preview">
               <a href="http://www.brainbaking.com/post/builders-dsl/">
           	  <h2 class="post-title">Enhancing the builder pattern with closures</h2>
           	

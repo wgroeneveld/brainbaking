@@ -189,22 +189,22 @@ maven2&gt; clean
 [INFO] Executing: org.apache.maven.plugins:maven-clean-plugin [clean]
 [ERROR] Unable to complete running command: clean
 java.lang.RuntimeException: org.apache.maven.plugin.MojoExecutionException: Unable to execute mojo
-    at org.twdata.maven.cli.commands.ExecuteGoalCommand.run(ExecuteGoalCommand.java:111)
-    at org.twdata.maven.cli.CliShell.interpretCommand(CliShell.java:48)
-    at org.twdata.maven.cli.CliShell.run(CliShell.java:29)
-    at org.twdata.maven.cli.AbstractCliMojo.displayShell(AbstractCliMojo.java:144)
-    at org.twdata.maven.cli.AbstractCliMojo.access$000(AbstractCliMojo.java:22)
-    at org.twdata.maven.cli.AbstractCliMojo$1.run(AbstractCliMojo.java:116)
+	at org.twdata.maven.cli.commands.ExecuteGoalCommand.run(ExecuteGoalCommand.java:111)
+	at org.twdata.maven.cli.CliShell.interpretCommand(CliShell.java:48)
+	at org.twdata.maven.cli.CliShell.run(CliShell.java:29)
+	at org.twdata.maven.cli.AbstractCliMojo.displayShell(AbstractCliMojo.java:144)
+	at org.twdata.maven.cli.AbstractCliMojo.access$000(AbstractCliMojo.java:22)
+	at org.twdata.maven.cli.AbstractCliMojo$1.run(AbstractCliMojo.java:116)
 Caused by: org.apache.maven.plugin.MojoExecutionException: Unable to execute mojo
-    at org.shaded.mojoexecutor.MojoExecutor.executeMojo(MojoExecutor.java:106)
-    at org.twdata.maven.cli.MojoCall.run(MojoCall.java:31)
-    at org.twdata.maven.cli.commands.ExecuteGoalCommand.runMojo(ExecuteGoalCommand.java:125)
-    at org.twdata.maven.cli.commands.ExecuteGoalCommand.run(ExecuteGoalCommand.java:104)
-    ... 5 more
+	at org.shaded.mojoexecutor.MojoExecutor.executeMojo(MojoExecutor.java:106)
+	at org.twdata.maven.cli.MojoCall.run(MojoCall.java:31)
+	at org.twdata.maven.cli.commands.ExecuteGoalCommand.runMojo(ExecuteGoalCommand.java:125)
+	at org.twdata.maven.cli.commands.ExecuteGoalCommand.run(ExecuteGoalCommand.java:104)
+	... 5 more
 Caused by: java.lang.UnsupportedOperationException
-    at org.apache.maven.plugin.internal.DefaultPluginManager.executeMojo(DefaultPluginManager.java:90)
-    at org.shaded.mojoexecutor.MojoExecutor.executeMojo(MojoExecutor.java:104)
-    ... 8 more
+	at org.apache.maven.plugin.internal.DefaultPluginManager.executeMojo(DefaultPluginManager.java:90)
+	at org.shaded.mojoexecutor.MojoExecutor.executeMojo(MojoExecutor.java:104)
+	... 8 more
 </code></pre>
 
 <p>Tof&hellip;</p>
@@ -215,30 +215,30 @@ Caused by: java.lang.UnsupportedOperationException
 
 <p>Hiervoor moet je de volgende repository gebruiken (zit niet in de central repo):</p>
 
-<pre><code class="language-xml">    &lt;repositories&gt;
-        &lt;repository&gt;
-            &lt;id&gt;cbreleases&lt;/id&gt;
-            &lt;url&gt;https://repository-michael.forge.cloudbees.com/release&lt;/url&gt;
-            &lt;releases&gt;
-                &lt;enabled&gt;true&lt;/enabled&gt;
-            &lt;/releases&gt;
-            &lt;snapshots&gt;
-                &lt;enabled&gt;true&lt;/enabled&gt;
-            &lt;/snapshots&gt;
-        &lt;/repository&gt;
-    &lt;/repositories&gt;
-    &lt;pluginRepositories&gt;
-        &lt;pluginRepository&gt;
-            &lt;id&gt;cbreleases&lt;/id&gt;
-            &lt;url&gt;https://repository-michael.forge.cloudbees.com/release&lt;/url&gt;
-            &lt;releases&gt;
-                &lt;enabled&gt;true&lt;/enabled&gt;
-            &lt;/releases&gt;
-            &lt;snapshots&gt;
-                &lt;enabled&gt;true&lt;/enabled&gt;
-            &lt;/snapshots&gt;
-        &lt;/pluginRepository&gt;
-    &lt;/pluginRepositories&gt;
+<pre><code class="language-xml">	&lt;repositories&gt;
+		&lt;repository&gt;
+			&lt;id&gt;cbreleases&lt;/id&gt;
+			&lt;url&gt;https://repository-michael.forge.cloudbees.com/release&lt;/url&gt;
+			&lt;releases&gt;
+				&lt;enabled&gt;true&lt;/enabled&gt;
+			&lt;/releases&gt;
+			&lt;snapshots&gt;
+				&lt;enabled&gt;true&lt;/enabled&gt;
+			&lt;/snapshots&gt;
+		&lt;/repository&gt;
+	&lt;/repositories&gt;
+	&lt;pluginRepositories&gt;
+		&lt;pluginRepository&gt;
+			&lt;id&gt;cbreleases&lt;/id&gt;
+			&lt;url&gt;https://repository-michael.forge.cloudbees.com/release&lt;/url&gt;
+			&lt;releases&gt;
+				&lt;enabled&gt;true&lt;/enabled&gt;
+			&lt;/releases&gt;
+			&lt;snapshots&gt;
+				&lt;enabled&gt;true&lt;/enabled&gt;
+			&lt;/snapshots&gt;
+		&lt;/pluginRepository&gt;
+	&lt;/pluginRepositories&gt;
 </code></pre>
 
 <h4 id="maven-gae-plugin">maven-gae-plugin</h4>
@@ -259,7 +259,7 @@ Caused by: java.lang.UnsupportedOperationException
 
   &lt;name&gt;lkjm&lt;/name&gt;
 
-    &lt;dependencies&gt;
+	&lt;dependencies&gt;
 
     &lt;!-- Google App Engine meta-package --&gt;
     &lt;dependency&gt;
@@ -269,86 +269,86 @@ Caused by: java.lang.UnsupportedOperationException
       &lt;type&gt;pom&lt;/type&gt;
     &lt;/dependency&gt;
 
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
             &lt;artifactId&gt;datanucleus-core&lt;/artifactId&gt;
             &lt;version&gt;${datanucleus.version}&lt;/version&gt;
             &lt;scope&gt;runtime&lt;/scope&gt;
         &lt;/dependency&gt;
 
-        &lt;dependency&gt;
-            &lt;groupId&gt;javax.transaction&lt;/groupId&gt;
-            &lt;artifactId&gt;jta&lt;/artifactId&gt;
-            &lt;version&gt;1.1&lt;/version&gt;
-        &lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;javax.transaction&lt;/groupId&gt;
+			&lt;artifactId&gt;jta&lt;/artifactId&gt;
+			&lt;version&gt;1.1&lt;/version&gt;
+		&lt;/dependency&gt;
 
-        &lt;!--
-            J2EE Servlet API. We need it to compile IndexServlet class. You can
-            probably remove it, if you don't explicitly use Servlets
-        --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
-            &lt;artifactId&gt;geronimo-servlet_2.5_spec&lt;/artifactId&gt;
-            &lt;version&gt;1.2&lt;/version&gt;
-            &lt;scope&gt;provided&lt;/scope&gt;
-        &lt;/dependency&gt;
+		&lt;!--
+			J2EE Servlet API. We need it to compile IndexServlet class. You can
+			probably remove it, if you don't explicitly use Servlets
+		--&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
+			&lt;artifactId&gt;geronimo-servlet_2.5_spec&lt;/artifactId&gt;
+			&lt;version&gt;1.2&lt;/version&gt;
+			&lt;scope&gt;provided&lt;/scope&gt;
+		&lt;/dependency&gt;
 
-        &lt;!--
-            Make use of JSP tags. Remove, if you don't use JSPs
-        --&gt;
-        &lt;dependency&gt;
-            &lt;artifactId&gt;standard&lt;/artifactId&gt;
-            &lt;groupId&gt;taglibs&lt;/groupId&gt;
-            &lt;version&gt;1.1.2&lt;/version&gt;
-            &lt;type&gt;jar&lt;/type&gt;
-            &lt;scope&gt;runtime&lt;/scope&gt;
-        &lt;/dependency&gt;
+		&lt;!--
+			Make use of JSP tags. Remove, if you don't use JSPs
+		--&gt;
+		&lt;dependency&gt;
+			&lt;artifactId&gt;standard&lt;/artifactId&gt;
+			&lt;groupId&gt;taglibs&lt;/groupId&gt;
+			&lt;version&gt;1.1.2&lt;/version&gt;
+			&lt;type&gt;jar&lt;/type&gt;
+			&lt;scope&gt;runtime&lt;/scope&gt;
+		&lt;/dependency&gt;
 
-        &lt;!-- These dependencies are here just for enabling logging --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-            &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
-            &lt;version&gt;1.6.1&lt;/version&gt;
-        &lt;/dependency&gt;
+		&lt;!-- These dependencies are here just for enabling logging --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+			&lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+			&lt;version&gt;1.6.1&lt;/version&gt;
+		&lt;/dependency&gt;
 
-        &lt;dependency&gt;
-            &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
-            &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
-            &lt;version&gt;0.9.24&lt;/version&gt;
-        &lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+			&lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+			&lt;version&gt;0.9.24&lt;/version&gt;
+		&lt;/dependency&gt;
 
-        &lt;!-- Test scope --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;junit&lt;/groupId&gt;
-            &lt;artifactId&gt;junit&lt;/artifactId&gt;
-            &lt;version&gt;4.5&lt;/version&gt;
-            &lt;scope&gt;test&lt;/scope&gt;
-        &lt;/dependency&gt;
+		&lt;!-- Test scope --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;junit&lt;/groupId&gt;
+			&lt;artifactId&gt;junit&lt;/artifactId&gt;
+			&lt;version&gt;4.5&lt;/version&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
 
-        &lt;!--
-            GAE libraries for local testing as described here:
-            http://code.google.com/appengine/docs/java/howto/unittesting.html
-        --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.google.appengine&lt;/groupId&gt;
-            &lt;artifactId&gt;appengine-api-labs&lt;/artifactId&gt;
-            &lt;version&gt;${gae.version}&lt;/version&gt;
-            &lt;scope&gt;test&lt;/scope&gt;
-        &lt;/dependency&gt;
+		&lt;!--
+			GAE libraries for local testing as described here:
+			http://code.google.com/appengine/docs/java/howto/unittesting.html
+		--&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.google.appengine&lt;/groupId&gt;
+			&lt;artifactId&gt;appengine-api-labs&lt;/artifactId&gt;
+			&lt;version&gt;${gae.version}&lt;/version&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
 
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.google.appengine&lt;/groupId&gt;
-            &lt;artifactId&gt;appengine-api-stubs&lt;/artifactId&gt;
-            &lt;version&gt;${gae.version}&lt;/version&gt;
-            &lt;scope&gt;test&lt;/scope&gt;
-        &lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.google.appengine&lt;/groupId&gt;
+			&lt;artifactId&gt;appengine-api-stubs&lt;/artifactId&gt;
+			&lt;version&gt;${gae.version}&lt;/version&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
 
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.google.appengine&lt;/groupId&gt;
-            &lt;artifactId&gt;appengine-testing&lt;/artifactId&gt;
-            &lt;version&gt;${gae.version}&lt;/version&gt;
-            &lt;scope&gt;test&lt;/scope&gt;
-        &lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.google.appengine&lt;/groupId&gt;
+			&lt;artifactId&gt;appengine-testing&lt;/artifactId&gt;
+			&lt;version&gt;${gae.version}&lt;/version&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
 
         &lt;dependency&gt;
             &lt;groupId&gt;javax.jdo&lt;/groupId&gt;
@@ -361,181 +361,181 @@ Caused by: java.lang.UnsupportedOperationException
                 &lt;/exclusion&gt;
             &lt;/exclusions&gt;
         &lt;/dependency&gt;
-    &lt;/dependencies&gt;
+	&lt;/dependencies&gt;
 
-    &lt;build&gt;
-        &lt;plugins&gt;
-            &lt;!--
-                This plug-in &quot;enhances&quot; your domain model objects (i.e. makes them
-                persistent for datanucleus)
-            --&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-datanucleus-plugin&lt;/artifactId&gt;
-                &lt;version&gt;1.1.4&lt;/version&gt;
-                &lt;configuration&gt;
-                    &lt;!--
-                        Make sure this path contains your persistent classes!
-                    --&gt;
-                    &lt;mappingIncludes&gt;**/model/*.class&lt;/mappingIncludes&gt;
-                    &lt;verbose&gt;true&lt;/verbose&gt;
-                    &lt;enhancerName&gt;ASM&lt;/enhancerName&gt;
-                    &lt;api&gt;JDO&lt;/api&gt;
-                &lt;/configuration&gt;
-                &lt;executions&gt;
-                    &lt;execution&gt;
-                        &lt;phase&gt;compile&lt;/phase&gt;
-                        &lt;goals&gt;
-                            &lt;goal&gt;enhance&lt;/goal&gt;
-                        &lt;/goals&gt;
-                    &lt;/execution&gt;
-                &lt;/executions&gt;
-                &lt;dependencies&gt;
-                    &lt;dependency&gt;
-                        &lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
-                        &lt;artifactId&gt;datanucleus-core&lt;/artifactId&gt;
-                        &lt;version&gt;${datanucleus.version}&lt;/version&gt;
-                        &lt;exclusions&gt;
-                            &lt;exclusion&gt;
-                                &lt;groupId&gt;javax.transaction&lt;/groupId&gt;
-                                &lt;artifactId&gt;transaction-api&lt;/artifactId&gt;
-                            &lt;/exclusion&gt;
-                        &lt;/exclusions&gt;
-                    &lt;/dependency&gt;
-                    &lt;dependency&gt;
-                        &lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
-                        &lt;artifactId&gt;datanucleus-rdbms&lt;/artifactId&gt;
-                        &lt;version&gt;${datanucleus.version}&lt;/version&gt;
-                    &lt;/dependency&gt;
-                    &lt;dependency&gt;
-                        &lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
-                        &lt;artifactId&gt;datanucleus-enhancer&lt;/artifactId&gt;
-                        &lt;version&gt;1.1.4&lt;/version&gt;
-                    &lt;/dependency&gt;
-                    &lt;dependency&gt;
-                        &lt;groupId&gt;javax.jdo&lt;/groupId&gt;
-                        &lt;artifactId&gt;jdo2-api&lt;/artifactId&gt;
-                        &lt;version&gt;2.3-ec&lt;/version&gt;
-                        &lt;scope&gt;runtime&lt;/scope&gt;
-                    &lt;/dependency&gt;
-                &lt;/dependencies&gt;
-            &lt;/plugin&gt;
+	&lt;build&gt;
+		&lt;plugins&gt;
+			&lt;!--
+				This plug-in &quot;enhances&quot; your domain model objects (i.e. makes them
+				persistent for datanucleus)
+			--&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
+				&lt;artifactId&gt;maven-datanucleus-plugin&lt;/artifactId&gt;
+				&lt;version&gt;1.1.4&lt;/version&gt;
+				&lt;configuration&gt;
+					&lt;!--
+						Make sure this path contains your persistent classes!
+					--&gt;
+					&lt;mappingIncludes&gt;**/model/*.class&lt;/mappingIncludes&gt;
+					&lt;verbose&gt;true&lt;/verbose&gt;
+					&lt;enhancerName&gt;ASM&lt;/enhancerName&gt;
+					&lt;api&gt;JDO&lt;/api&gt;
+				&lt;/configuration&gt;
+				&lt;executions&gt;
+					&lt;execution&gt;
+						&lt;phase&gt;compile&lt;/phase&gt;
+						&lt;goals&gt;
+							&lt;goal&gt;enhance&lt;/goal&gt;
+						&lt;/goals&gt;
+					&lt;/execution&gt;
+				&lt;/executions&gt;
+				&lt;dependencies&gt;
+					&lt;dependency&gt;
+						&lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
+						&lt;artifactId&gt;datanucleus-core&lt;/artifactId&gt;
+						&lt;version&gt;${datanucleus.version}&lt;/version&gt;
+						&lt;exclusions&gt;
+							&lt;exclusion&gt;
+								&lt;groupId&gt;javax.transaction&lt;/groupId&gt;
+								&lt;artifactId&gt;transaction-api&lt;/artifactId&gt;
+							&lt;/exclusion&gt;
+						&lt;/exclusions&gt;
+					&lt;/dependency&gt;
+					&lt;dependency&gt;
+						&lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
+						&lt;artifactId&gt;datanucleus-rdbms&lt;/artifactId&gt;
+						&lt;version&gt;${datanucleus.version}&lt;/version&gt;
+					&lt;/dependency&gt;
+					&lt;dependency&gt;
+						&lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
+						&lt;artifactId&gt;datanucleus-enhancer&lt;/artifactId&gt;
+						&lt;version&gt;1.1.4&lt;/version&gt;
+					&lt;/dependency&gt;
+					&lt;dependency&gt;
+						&lt;groupId&gt;javax.jdo&lt;/groupId&gt;
+						&lt;artifactId&gt;jdo2-api&lt;/artifactId&gt;
+						&lt;version&gt;2.3-ec&lt;/version&gt;
+						&lt;scope&gt;runtime&lt;/scope&gt;
+					&lt;/dependency&gt;
+				&lt;/dependencies&gt;
+			&lt;/plugin&gt;
 
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
-                &lt;version&gt;2.1-beta-1&lt;/version&gt;
-                &lt;configuration&gt;
-                    &lt;webResources&gt;
-                        &lt;resource&gt;
-                            &lt;directory&gt;src/main/webapp&lt;/directory&gt;
-                            &lt;filtering&gt;true&lt;/filtering&gt;
-                            &lt;includes&gt;
-                                &lt;include&gt;**/appengine-web.xml&lt;/include&gt;
-                            &lt;/includes&gt;
-                        &lt;/resource&gt;
-                    &lt;/webResources&gt;
-                &lt;/configuration&gt;
-            &lt;/plugin&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+				&lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+				&lt;version&gt;2.1-beta-1&lt;/version&gt;
+				&lt;configuration&gt;
+					&lt;webResources&gt;
+						&lt;resource&gt;
+							&lt;directory&gt;src/main/webapp&lt;/directory&gt;
+							&lt;filtering&gt;true&lt;/filtering&gt;
+							&lt;includes&gt;
+								&lt;include&gt;**/appengine-web.xml&lt;/include&gt;
+							&lt;/includes&gt;
+						&lt;/resource&gt;
+					&lt;/webResources&gt;
+				&lt;/configuration&gt;
+			&lt;/plugin&gt;
 
-            &lt;!--
-                The actual maven-gae-plugin. Type &quot;mvn gae:run&quot; to run project, &quot;mvn
-                gae:deploy&quot; to upload to GAE.
-            --&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;net.kindleit&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-gae-plugin&lt;/artifactId&gt;
-                &lt;version&gt;0.9.5&lt;/version&gt;
-            &lt;/plugin&gt;
+			&lt;!--
+				The actual maven-gae-plugin. Type &quot;mvn gae:run&quot; to run project, &quot;mvn
+				gae:deploy&quot; to upload to GAE.
+			--&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;net.kindleit&lt;/groupId&gt;
+				&lt;artifactId&gt;maven-gae-plugin&lt;/artifactId&gt;
+				&lt;version&gt;0.9.5&lt;/version&gt;
+			&lt;/plugin&gt;
 
-            &lt;!--
-                Upload application to the appspot automatically, during
-                release:perform
-            --&gt;
-            &lt;plugin&gt;
-                &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt;
-                &lt;configuration&gt;
-                    &lt;goals&gt;gae:deploy&lt;/goals&gt;
-                &lt;/configuration&gt;
-            &lt;/plugin&gt;
+			&lt;!--
+				Upload application to the appspot automatically, during
+				release:perform
+			--&gt;
+			&lt;plugin&gt;
+				&lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt;
+				&lt;configuration&gt;
+					&lt;goals&gt;gae:deploy&lt;/goals&gt;
+				&lt;/configuration&gt;
+			&lt;/plugin&gt;
 
-            &lt;!-- Java compiler version --&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
-                &lt;version&gt;2.0&lt;/version&gt;
-                &lt;configuration&gt;
-                    &lt;source&gt;1.6&lt;/source&gt;
-                    &lt;target&gt;1.6&lt;/target&gt;
-                &lt;/configuration&gt;
-            &lt;/plugin&gt;
-        &lt;/plugins&gt;
-    &lt;/build&gt;
+			&lt;!-- Java compiler version --&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+				&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+				&lt;version&gt;2.0&lt;/version&gt;
+				&lt;configuration&gt;
+					&lt;source&gt;1.6&lt;/source&gt;
+					&lt;target&gt;1.6&lt;/target&gt;
+				&lt;/configuration&gt;
+			&lt;/plugin&gt;
+		&lt;/plugins&gt;
+	&lt;/build&gt;
 
-    &lt;!-- Specify hard-coded project properties here --&gt;
-    &lt;properties&gt;
+	&lt;!-- Specify hard-coded project properties here --&gt;
+	&lt;properties&gt;
 
-      &lt;!-- Sets the project's default encoding.
+	  &lt;!-- Sets the project's default encoding.
          http://docs.codehaus.org/display/MAVENUSER/POM+Element+for+Source+File+Encoding --&gt;
     &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
 
-        &lt;!--
-            This is just for &quot;eclipse:eclipse&quot; goal to always attempt downloading
-            sources
-        --&gt;
-        &lt;downloadSources&gt;true&lt;/downloadSources&gt;
+		&lt;!--
+			This is just for &quot;eclipse:eclipse&quot; goal to always attempt downloading
+			sources
+		--&gt;
+		&lt;downloadSources&gt;true&lt;/downloadSources&gt;
 
-        &lt;!--
-            Specify AppEngine version for your project. It should match SDK
-            version pointed to by ${gae.home} property (Typically, one used by
-            your Eclipse plug-in)
-        --&gt;
-        &lt;gae.version&gt;1.6.5&lt;/gae.version&gt;
+		&lt;!--
+			Specify AppEngine version for your project. It should match SDK
+			version pointed to by ${gae.home} property (Typically, one used by
+			your Eclipse plug-in)
+		--&gt;
+		&lt;gae.version&gt;1.6.5&lt;/gae.version&gt;
 
-        &lt;!--
-            Upload to http://test.latest.&lt;applicationName&gt;.appspot.com by default
-        --&gt;
-        &lt;gae.application.version&gt;test&lt;/gae.application.version&gt;
+		&lt;!--
+			Upload to http://test.latest.&lt;applicationName&gt;.appspot.com by default
+		--&gt;
+		&lt;gae.application.version&gt;test&lt;/gae.application.version&gt;
 
         &lt;datanucleus.version&gt;1.1.5&lt;/datanucleus.version&gt;
-    &lt;/properties&gt;
+	&lt;/properties&gt;
 
-    &lt;profiles&gt;
-        &lt;!--
-            We can configure our integration server to activate this profile and
-            perform gae:deploy, thus uploading latest snapshot to the
-            http://1.latest.&lt;applicationName&gt;.appspot.com automatically
-        --&gt;
-        &lt;profile&gt;
-            &lt;id&gt;integration-build&lt;/id&gt;
-            &lt;properties&gt;
-                &lt;gae.application.version&gt;stage&lt;/gae.application.version&gt;
-            &lt;/properties&gt;
-        &lt;/profile&gt;
+	&lt;profiles&gt;
+		&lt;!--
+			We can configure our integration server to activate this profile and
+			perform gae:deploy, thus uploading latest snapshot to the
+			http://1.latest.&lt;applicationName&gt;.appspot.com automatically
+		--&gt;
+		&lt;profile&gt;
+			&lt;id&gt;integration-build&lt;/id&gt;
+			&lt;properties&gt;
+				&lt;gae.application.version&gt;stage&lt;/gae.application.version&gt;
+			&lt;/properties&gt;
+		&lt;/profile&gt;
 
-        &lt;!--
-            This profile will activate automatically during release and upload
-            application to the http://2.latest.&lt;applicationName&gt;.appspot.com (We
-            might want to set the 2nd version as our applications Default version
-            to be accessible at http://&lt;applicationName&gt;.appspot.com)
-        --&gt;
-        &lt;profile&gt;
-            &lt;id&gt;release-build&lt;/id&gt;
-            &lt;activation&gt;
-                &lt;property&gt;
-                    &lt;name&gt;performRelease&lt;/name&gt;
-                    &lt;value&gt;true&lt;/value&gt;
-                &lt;/property&gt;
-            &lt;/activation&gt;
+		&lt;!--
+			This profile will activate automatically during release and upload
+			application to the http://2.latest.&lt;applicationName&gt;.appspot.com (We
+			might want to set the 2nd version as our applications Default version
+			to be accessible at http://&lt;applicationName&gt;.appspot.com)
+		--&gt;
+		&lt;profile&gt;
+			&lt;id&gt;release-build&lt;/id&gt;
+			&lt;activation&gt;
+				&lt;property&gt;
+					&lt;name&gt;performRelease&lt;/name&gt;
+					&lt;value&gt;true&lt;/value&gt;
+				&lt;/property&gt;
+			&lt;/activation&gt;
 
-            &lt;properties&gt;
-                &lt;!--
-                    During release, set application version in appengine-web.xml to 2
-                --&gt;
-                &lt;gae.application.version&gt;release&lt;/gae.application.version&gt;
-            &lt;/properties&gt;
-        &lt;/profile&gt;
-    &lt;/profiles&gt;
+			&lt;properties&gt;
+				&lt;!--
+					During release, set application version in appengine-web.xml to 2
+				--&gt;
+				&lt;gae.application.version&gt;release&lt;/gae.application.version&gt;
+			&lt;/properties&gt;
+		&lt;/profile&gt;
+	&lt;/profiles&gt;
 
 &lt;/project&gt;
 </code></pre>
@@ -551,11 +551,11 @@ Caused by: java.lang.UnsupportedOperationException
 
 <p>Een oudere versie (??) is deze:</p>
 
-<pre><code class="language-xml">            &lt;plugin&gt;
-                &lt;groupId&gt;com.google.appengine&lt;/groupId&gt;
-                &lt;artifactId&gt;appengine-maven-plugin&lt;/artifactId&gt;
-                &lt;version&gt;${appengine.target.version}&lt;/version&gt;
-            &lt;/plugin&gt;
+<pre><code class="language-xml">			&lt;plugin&gt;
+				&lt;groupId&gt;com.google.appengine&lt;/groupId&gt;
+				&lt;artifactId&gt;appengine-maven-plugin&lt;/artifactId&gt;
+				&lt;version&gt;${appengine.target.version}&lt;/version&gt;
+			&lt;/plugin&gt;
 </code></pre>
 
 <p>Hiermee kan je:</p>

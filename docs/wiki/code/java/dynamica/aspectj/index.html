@@ -215,17 +215,17 @@
 <pre><code class="language-java">@Component
 public class SomeBean {
 
-    private final SomeBeanToInject someBeanToInject;
+	private final SomeBeanToInject someBeanToInject;
 
-    @Autowired
-    public SomeBean(SomeBeanToInject someBeanToInject) {
-        System.out.println(&quot;creating some bean, got injected: &quot; + someBeanToInject);
-        this.someBeanToInject = someBeanToInject;
-    }
+	@Autowired
+	public SomeBean(SomeBeanToInject someBeanToInject) {
+		System.out.println(&quot;creating some bean, got injected: &quot; + someBeanToInject);
+		this.someBeanToInject = someBeanToInject;
+	}
 
-    public OtherBean createOtherBean() {
-        return new OtherBean();
-    }
+	public OtherBean createOtherBean() {
+		return new OtherBean();
+	}
 }
 </code></pre>
 
@@ -234,13 +234,13 @@ public class SomeBean {
 <pre><code class="language-java">@Configurable
 public class OtherBean {
 
-    private SomeBeanToDynamicallyInject someBeanToDynamicallyInject;
+	private SomeBeanToDynamicallyInject someBeanToDynamicallyInject;
 
-    @Autowired
-    public void setSomeBeanToDynamicallyInject(SomeBeanToDynamicallyInject someBeanToDynamicallyInject) {
-        System.out.println(&quot;Setting some dynamically injected bean! : &quot; + someBeanToDynamicallyInject);
-        this.someBeanToDynamicallyInject = someBeanToDynamicallyInject;
-    }
+	@Autowired
+	public void setSomeBeanToDynamicallyInject(SomeBeanToDynamicallyInject someBeanToDynamicallyInject) {
+		System.out.println(&quot;Setting some dynamically injected bean! : &quot; + someBeanToDynamicallyInject);
+		this.someBeanToDynamicallyInject = someBeanToDynamicallyInject;
+	}
 }
 </code></pre>
 
@@ -248,7 +248,7 @@ public class OtherBean {
 
 <pre><code class="language-java">@Component
 public class SomeBeanToDynamicallyInject {
-    public String message = &quot;dynamically injected&quot;;
+	public String message = &quot;dynamically injected&quot;;
 }
 </code></pre>
 
@@ -260,13 +260,13 @@ public class SomeBeanToDynamicallyInject {
 @RunWith(SpringJUnit4ClassRunner.class)
 public class SomeBeanTest {
 
-    @Autowired
-    private SomeBean someBean;
+	@Autowired
+	private SomeBean someBean;
 
-    @Test
-    public void someBeanIsDynamicallyInjected() {
-        Assert.assertTrue(someBean.createOtherBean().isDynamicallyInjected());
-    }
+	@Test
+	public void someBeanIsDynamicallyInjected() {
+		Assert.assertTrue(someBean.createOtherBean().isDynamicallyInjected());
+	}
 }
 </code></pre>
 
