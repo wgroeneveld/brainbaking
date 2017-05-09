@@ -8,8 +8,52 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Sun, 12 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 10 May 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://www.brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Drawing week 04 - Using the brain</title>
+      <link>http://www.brainbaking.com/post/drawing-week-04/</link>
+      <pubDate>Wed, 10 May 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/drawing-week-04/</guid>
+      <description>&lt;p&gt;Also read &lt;a href=&#34;http://www.brainbaking.com/post/learning-yourself-to-draw/&#34;&gt;Learning yourself to draw&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As I&amp;rsquo;m slowly getting a tiny bit better at drawing things I see, I still don&amp;rsquo;t have a fundamental basis to rely on. Until I&amp;rsquo;ve read &amp;ldquo;&lt;a href=&#34;http://drawright.com/&#34;&gt;Drawing at the right side of the brian&lt;/a&gt;&amp;rdquo; from Betty Edwards. Everything I&amp;rsquo;ve read in there came as a complete revelation to me. She explains how you should &amp;ldquo;look&amp;rdquo; at things, what is important to look out for when realisticly drawing and how values/tones work. It&amp;rsquo;s an amazing book and I&amp;rsquo;m very glad I&amp;rsquo;ve added it to my toread list (a few years ago, I finally got around to actually reading it.)&lt;/p&gt;
+
+&lt;p&gt;Can you spot the difference between the portraits below?&lt;/p&gt;
+
+&lt;p&gt;&lt;a data-pin-do=&#34;embedPin&#34; href=&#34;https://www.pinterest.com/pin/308707749447642788/&#34; target=&#34;_blank&#34; title=&#34;Pinterest pin&#34;&gt;&lt;/a&gt;
+
+&lt;a data-pin-do=&#34;embedPin&#34; href=&#34;https://www.pinterest.com/pin/308707749447642793/&#34; target=&#34;_blank&#34; title=&#34;Pinterest pin&#34;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Yes, I am well aware that the second portrait still looks like crap but come on, at least it shows highlights, it has a decent contour and my skull isn&amp;rsquo;t &amp;ldquo;chopped off&amp;rdquo;. Both drawings took me 45 minutes. I&amp;rsquo;d say that&amp;rsquo;s a definitive improvement here.&lt;/p&gt;
+
+&lt;p&gt;Other exercises in the books concentrate on hands, interiour, chairs, &amp;hellip;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a data-pin-do=&#34;embedPin&#34; href=&#34;https://www.pinterest.com/pin/308707749447642796/&#34; target=&#34;_blank&#34; title=&#34;Pinterest pin&#34;&gt;&lt;/a&gt;
+
+&lt;a data-pin-do=&#34;embedPin&#34; href=&#34;https://www.pinterest.com/pin/308707749447642801/&#34; target=&#34;_blank&#34; title=&#34;Pinterest pin&#34;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Everything is done with a pencil. My preference is starting to lean towards 2B and 4B instead of HB.&lt;/p&gt;
+
+&lt;p&gt;So, what did I learn this week: (these are some quick oneliners that summarize each important chapter in the book)&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Draw (shared) edges of stuff: call them contours.&lt;/li&gt;
+&lt;li&gt;Draw spaces between stuff: call it negative space.&lt;/li&gt;
+&lt;li&gt;Draw relationships between stuff: call them angles and proportions.&lt;/li&gt;
+&lt;li&gt;Draw lights and shadows on stuff: call them tonal differences.&lt;/li&gt;
+&lt;li&gt;Do not draw the appearance of stuff: call it &amp;ldquo;the gestalt&amp;rdquo;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The last point is an interesting one. It&amp;rsquo;s also called &amp;ldquo;making it come together&amp;rdquo; and is usually achieved by simply focusing on the other 4 points.&lt;/p&gt;
+
+&lt;p&gt;Doing these exercises gave me a real boost in confidence and motivated me to draw even more. I even started enjoying the use of a pencil - soft shading is nice and not doable with a pen!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Drawing week 03 - Fineliners and texture</title>
@@ -2022,80 +2066,6 @@ join a.i as c&amp;rdquo;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;In MySQL: syntax join mixen ###### no go, zoals select * from table1, table2 where table1.id  table2.key join bla join blie - zowel met komma als met de join operator joinen. Doet Hibernate normaal niet.&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>svnlog</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</link>
-      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</guid>
-      <description>
-
-&lt;h1 id=&#34;svnlog&#34;&gt;Svnlog&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;nokogiri&#39; # gem install nokogiri first! 
-require &#39;csv&#39;
-require &#39;date&#39;
-
-# Ex. XML: &amp;lt;log&amp;gt; ... &amp;lt;/log&amp;gt;
-# &amp;lt;logentry revision=&amp;quot;x&amp;quot;&amp;gt;
-# =&amp;gt; &amp;lt;author&amp;gt;name&amp;lt;/author&amp;gt;
-# =&amp;gt; &amp;lt;date&amp;gt;yyyy-mm-ddThh:mm:ssss&amp;lt;/date&amp;gt;
-# =&amp;gt; &amp;lt;msg&amp;gt;message&amp;lt;/msg&amp;gt;
-# &amp;lt;/logentry&amp;gt;
-
-puts &amp;quot;SVN Release notes creator&amp;quot;
-puts &amp;quot;---------&amp;quot;
-
-puts &amp;quot;Revision from? (ex revision &#39;8722&#39; or date {YYYY-MM-DD} or &#39;HEAD&#39;) &amp;gt; &amp;quot;
-revFrom = gets.chomp
-puts &amp;quot;Revision to? &amp;gt; &amp;quot;
-revTo = gets.chomp
-
-puts &amp;quot;Getting log from SVN, hang in there... &amp;quot;
-
-rmFile = File.open(&#39;svnlog_redmine.txt&#39;, &#39;w&#39;)
-btFile = File.open(&#39;svnlog_bridgetrak.txt&#39;, &#39;w&#39;)
-storyFile = File.open(&#39;svnlog_stories.txt&#39;, &#39;w&#39;)
-csv = CSV.open(&#39;svnlog.csv&#39;, &#39;wb&#39;)
-
-[ &#39;.&#39;, &#39;PFW.Base&#39; ].map { |dir|
-	puts &amp;quot; -- processing dir &#39;#{dir}&#39; ...&amp;quot;
-	rawxml = `cd #{dir} &amp;amp;&amp;amp; svn log --xml --revision #{revFrom}:#{revTo}`
-
-	xml = Nokogiri::XML(rawxml)
-	xml.xpath(&amp;quot;//logentry&amp;quot;).map { |entry|
-		hash = Hash.new
-		hash[&#39;rev&#39;] = entry.attr(&amp;quot;revision&amp;quot;)
-		hash[&#39;author&#39;] = entry.css(&amp;quot;author&amp;quot;).text
-		hash[&#39;date&#39;] = DateTime.strptime(entry.css(&amp;quot;date&amp;quot;).text, &#39;%Y-%m-%dT%H:%M:%S&#39;)
-		hash[&#39;msg&#39;] = entry.css(&amp;quot;msg&amp;quot;).text.strip.tr(&amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;, &amp;quot;&amp;quot;)
-		hash[&#39;btIssues&#39;] = hash[&#39;msg&#39;].scan(/bt#([0-9]+)/i).flatten.uniq
-		hash[&#39;rmIssues&#39;] = hash[&#39;msg&#39;].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &amp;quot;http://server.cloudapp.net/redmine/issues/#{rm}&amp;quot; }
-		hash[&#39;stories&#39;] = hash[&#39;msg&#39;].scan(/story#(&amp;lt;br/&amp;gt;S+)&amp;lt;br/&amp;gt;s/i).flatten.uniq
-
-		hash
-	}
-}.flatten.sort_by { |hash| hash[&#39;date&#39;] }.each do |entry|
-	rm = entry[&#39;rmIssues&#39;].join(&#39;, &#39;)
-	csv &amp;lt;&amp;lt; [ &#39;r&#39; + entry[&#39;rev&#39;], entry[&#39;date&#39;], entry[&#39;author&#39;], entry[&#39;msg&#39;], rm ]
-	entry[&#39;btIssues&#39;].each do |issue|
-		btFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-	end
-	entry[&#39;rmIssues&#39;].each do |issue|
-		rmFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-	end
-	entry[&#39;stories&#39;].each do |issue|
-		storyFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-	end
-end
-
-
-puts &amp;quot;----&amp;quot;
-puts &amp;quot;DONE: see svnlog.csv &amp;amp; svnlog_X.txt files&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
