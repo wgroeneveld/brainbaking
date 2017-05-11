@@ -24,26 +24,26 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;project name######&amp;quot;vac Precompilatie&amp;quot; default&amp;quot;precompile-all&amp;quot; basedir=&amp;quot;.&amp;quot;&amp;gt;
 
-	&amp;lt;taskdef classname######&amp;quot;org.apache.jasper.JspC&amp;quot;  name&amp;quot;jasper&amp;quot;&amp;gt;
-		&amp;lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&amp;gt;
-		&amp;lt;classpath id=&amp;quot;jasperpath&amp;quot;&amp;gt;
-			```et
-				 &amp;lt;include name=&amp;quot;*.jar&amp;quot;/&amp;gt;
-			&amp;lt;/fileset&amp;gt;
+    &amp;lt;taskdef classname######&amp;quot;org.apache.jasper.JspC&amp;quot;  name&amp;quot;jasper&amp;quot;&amp;gt;
+        &amp;lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&amp;gt;
+        &amp;lt;classpath id=&amp;quot;jasperpath&amp;quot;&amp;gt;
+            ```et
+                 &amp;lt;include name=&amp;quot;*.jar&amp;quot;/&amp;gt;
+            &amp;lt;/fileset&amp;gt;
 
-			```et
-				 &amp;lt;include name=&amp;quot;*.jar&amp;quot;/&amp;gt;
-			&amp;lt;/fileset&amp;gt;
-		&amp;lt;/classpath&amp;gt;
-	&amp;lt;/taskdef&amp;gt;
-	
-	&amp;lt;target name=&amp;quot;precompile-all&amp;quot;&amp;gt;
-		&amp;lt;mkdir dir=&amp;quot;target/jsp&amp;quot; /&amp;gt;
-		&amp;lt;jasper 
-			validatexml=&amp;quot;false&amp;quot; 
-			uriroot=&amp;quot;target/vac&amp;quot;
-			outputdir=&amp;quot;target/jsp&amp;quot; /&amp;gt;
-	&amp;lt;/target&amp;gt;
+            ```et
+                 &amp;lt;include name=&amp;quot;*.jar&amp;quot;/&amp;gt;
+            &amp;lt;/fileset&amp;gt;
+        &amp;lt;/classpath&amp;gt;
+    &amp;lt;/taskdef&amp;gt;
+    
+    &amp;lt;target name=&amp;quot;precompile-all&amp;quot;&amp;gt;
+        &amp;lt;mkdir dir=&amp;quot;target/jsp&amp;quot; /&amp;gt;
+        &amp;lt;jasper 
+            validatexml=&amp;quot;false&amp;quot; 
+            uriroot=&amp;quot;target/vac&amp;quot;
+            outputdir=&amp;quot;target/jsp&amp;quot; /&amp;gt;
+    &amp;lt;/target&amp;gt;
 
 &amp;lt;/project&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;

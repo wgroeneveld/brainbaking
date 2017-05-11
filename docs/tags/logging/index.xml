@@ -28,28 +28,28 @@
 
 &lt;p&gt;Voorbeeld:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	protected static final Logger jmsLogger = Logger.getLogger(&amp;quot;jmsLogger&amp;quot;);
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    protected static final Logger jmsLogger = Logger.getLogger(&amp;quot;jmsLogger&amp;quot;);
 
-	private void log(String message) {
-		jmsLogger.info(&amp;quot;Incoming JMS Message (&amp;quot; + getClass().getSimpleName() + &amp;quot;): &amp;quot; + message);
-	}
+    private void log(String message) {
+        jmsLogger.info(&amp;quot;Incoming JMS Message (&amp;quot; + getClass().getSimpleName() + &amp;quot;): &amp;quot; + message);
+    }
 
-	@Override
-	public void doHandle(String textMessage) {
-		try {
-			String usernameFromTextMessage = getUsernameFromTextMessage(textMessage);
-			NDC.push(currentThread().getName() + &amp;quot;#&amp;quot; + currentThread().getId() + &amp;quot;@&amp;quot; + usernameFromTextMessage);
-			log(&amp;quot;Started handling: &amp;quot; + textMessage);
+    @Override
+    public void doHandle(String textMessage) {
+        try {
+            String usernameFromTextMessage = getUsernameFromTextMessage(textMessage);
+            NDC.push(currentThread().getName() + &amp;quot;#&amp;quot; + currentThread().getId() + &amp;quot;@&amp;quot; + usernameFromTextMessage);
+            log(&amp;quot;Started handling: &amp;quot; + textMessage);
 
-			VacatureSecurityInitializer.initConsulentUserInContext(usernameFromTextMessage);
-			handleTextMessage(textMessage);
+            VacatureSecurityInitializer.initConsulentUserInContext(usernameFromTextMessage);
+            handleTextMessage(textMessage);
 
-			log(&amp;quot;Completed handling&amp;quot;);
-		} finally {
-			resetSecurityContext();
-			NDC.pop();
-		}
-	}
+            log(&amp;quot;Completed handling&amp;quot;);
+        } finally {
+            resetSecurityContext();
+            NDC.pop();
+        }
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;NDC.push()&lt;/code&gt; zou een unieke parameter moeten binnen pakken, dit wordt geprepend aan de log ouput:&lt;/p&gt;

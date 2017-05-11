@@ -273,21 +273,21 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SetUtil {
 
-	public static &amp;lt;T&amp;gt; Set&amp;lt;T&amp;gt; asSet(T... elements) {
-		return new HashSet&amp;lt;T&amp;gt;(Arrays.asList(elements));
-	}
+    public static &amp;lt;T&amp;gt; Set&amp;lt;T&amp;gt; asSet(T... elements) {
+        return new HashSet&amp;lt;T&amp;gt;(Arrays.asList(elements));
+    }
 
-	public static &amp;lt;T&amp;gt; boolean bevat(Set&amp;lt;T&amp;gt; someSet, Predicate&amp;lt;T&amp;gt; predicate) {
-		return !Sets.filter(someSet, predicate).isEmpty();
-	}
+    public static &amp;lt;T&amp;gt; boolean bevat(Set&amp;lt;T&amp;gt; someSet, Predicate&amp;lt;T&amp;gt; predicate) {
+        return !Sets.filter(someSet, predicate).isEmpty();
+    }
 
-	public static &amp;lt;E&amp;gt; Set&amp;lt;E&amp;gt; cast(Set&amp;lt;?&amp;gt; someSet, Class&amp;lt;E&amp;gt; classToCastTo) {
-		Set&amp;lt;E&amp;gt; newSet = new LinkedHashSet&amp;lt;E&amp;gt;();
-		for (Object object : someSet) {
-			newSet.add(classToCastTo.cast(object));
-		}
-		return newSet;
-	}
+    public static &amp;lt;E&amp;gt; Set&amp;lt;E&amp;gt; cast(Set&amp;lt;?&amp;gt; someSet, Class&amp;lt;E&amp;gt; classToCastTo) {
+        Set&amp;lt;E&amp;gt; newSet = new LinkedHashSet&amp;lt;E&amp;gt;();
+        for (Object object : someSet) {
+            newSet.add(classToCastTo.cast(object));
+        }
+        return newSet;
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -295,23 +295,23 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ListUtil {
 
-	public static &amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; sort(Collection&amp;lt;T&amp;gt; collection, Comparator&amp;lt;? super T&amp;gt; comparator) {
-		List&amp;lt;T&amp;gt; toSort = new ArrayList&amp;lt;T&amp;gt;(collection);
-		Collections.sort(toSort, comparator);
-		return toSort;
-	}
+    public static &amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; sort(Collection&amp;lt;T&amp;gt; collection, Comparator&amp;lt;? super T&amp;gt; comparator) {
+        List&amp;lt;T&amp;gt; toSort = new ArrayList&amp;lt;T&amp;gt;(collection);
+        Collections.sort(toSort, comparator);
+        return toSort;
+    }
 
-	public static boolean bevatDubbels(List&amp;lt;?&amp;gt; aList) {
-		return Sets.newHashSet(aList).size() != aList.size();
-	}
+    public static boolean bevatDubbels(List&amp;lt;?&amp;gt; aList) {
+        return Sets.newHashSet(aList).size() != aList.size();
+    }
 
-	public static &amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; cast(List&amp;lt;?&amp;gt; aList, Class&amp;lt;T&amp;gt; clazz) {
-		List&amp;lt;T&amp;gt; result = new ArrayList&amp;lt;T&amp;gt;();
-		for (Object obj : aList) {
-			result.add(clazz.cast(obj));
-		}
-		return result;
-	}
+    public static &amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; cast(List&amp;lt;?&amp;gt; aList, Class&amp;lt;T&amp;gt; clazz) {
+        List&amp;lt;T&amp;gt; result = new ArrayList&amp;lt;T&amp;gt;();
+        for (Object obj : aList) {
+            result.add(clazz.cast(obj));
+        }
+        return result;
+    }
 
 }
 

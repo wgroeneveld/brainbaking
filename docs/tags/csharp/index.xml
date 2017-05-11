@@ -2130,14 +2130,14 @@ Edit: Here&amp;rsquo;s some links for Expressions.&lt;/p&gt;
 &lt;p&gt;############ Modules as anonymous inner classes, JavaScript pattern ############&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var Mod = (function(consoleDep) {
-	
-	function yo() {
-		consoleDep.log(&amp;quot;yo&amp;quot;);
-	}
+    
+    function yo() {
+        consoleDep.log(&amp;quot;yo&amp;quot;);
+    }
 
-	return {
-		hi: yo
-	};
+    return {
+        hi: yo
+    };
 
 })(console);
 
@@ -2324,8 +2324,8 @@ foreach(var f in funcs)
 
 struct MyStruct
 {
-	char* id;
-	char* description;
+    char* id;
+    char* description;
 };
 
 DllExImport MyStruct* __stdcall GetSignals();
@@ -2336,13 +2336,13 @@ DllExImport MyStruct* __stdcall GetSignals();
 
 DllExImport MyStruct* __stdcall GetSignals()
 {
-	static MyStruct a[] =
-	{
-		{ &amp;quot;id1&amp;quot;, &amp;quot;desc1&amp;quot; },
-		{ &amp;quot;id2&amp;quot;, &amp;quot;desc2&amp;quot; },
-		{ &amp;quot;id3&amp;quot;, &amp;quot;desc3&amp;quot; }
-	};
-	return a;
+    static MyStruct a[] =
+    {
+        { &amp;quot;id1&amp;quot;, &amp;quot;desc1&amp;quot; },
+        { &amp;quot;id2&amp;quot;, &amp;quot;desc2&amp;quot; },
+        { &amp;quot;id3&amp;quot;, &amp;quot;desc3&amp;quot; }
+    };
+    return a;
 }
 &lt;/code&gt;&lt;/pre&gt;
 

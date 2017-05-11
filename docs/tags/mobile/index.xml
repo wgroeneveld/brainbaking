@@ -67,14 +67,14 @@ $.mobile.changePage( newPage );
 
 &lt;p&gt;&lt;img style=&#39;float: left; width: nolink&amp;|px;&#39; src=&#39;http://www.brainbaking.com/img//code/javascript/frameworks/floempie.jpg&#39;&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;	function render() {
-		var activePage = $.mobile.activePage; // this also works: $(&amp;quot;.ui-page-active&amp;quot;)
-		activePage.find(&#39;ul[data-role]&#39;).listview();
-		activePage.find(&#39;div[data-role=&amp;quot;fieldcontain&amp;quot;]&#39;).fieldcontain();
-		activePage.find(&#39;button[data-role=&amp;quot;button&amp;quot;]&#39;).button();
-		activePage.find(&#39;input,textarea&#39;).textinput();
-		activePage.page();
-	}
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    function render() {
+        var activePage = $.mobile.activePage; // this also works: $(&amp;quot;.ui-page-active&amp;quot;)
+        activePage.find(&#39;ul[data-role]&#39;).listview();
+        activePage.find(&#39;div[data-role=&amp;quot;fieldcontain&amp;quot;]&#39;).fieldcontain();
+        activePage.find(&#39;button[data-role=&amp;quot;button&amp;quot;]&#39;).button();
+        activePage.find(&#39;input,textarea&#39;).textinput();
+        activePage.page();
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Dit ziet er wel resource intensitief uit en zou op een mobiel device nogal kunnen &amp;ldquo;floepen&amp;rdquo;. ((De bijhorende tekening is Copyright Kabouter Wesley enzo))&lt;/p&gt;
@@ -121,24 +121,24 @@ $.mobile.changePage( newPage );
 &lt;p&gt;Het tweede kan door bijvoorbeeld een &lt;code&gt;onclick&lt;/code&gt; event te registreren en HTML5 &lt;code&gt;data&lt;/code&gt; attributes te gebruiken om IDs bij te houden:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;.vacatureLink&amp;quot;).click(function() {
-	application.setVacatureId($(this).data(&amp;quot;id&amp;quot;));
+    application.setVacatureId($(this).data(&amp;quot;id&amp;quot;));
 });
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Met bijvoorbeeld een KnockoutJS template:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/each vacatures&#39;&amp;gt;
-	&amp;lt;li&amp;gt;
-		&amp;lt;a href######&amp;quot;detail.html&amp;quot; data-id&amp;quot;${id}&amp;quot; class=&amp;quot;vacatureLink&amp;quot;&amp;gt;${vacatureGegevens.aantalJobs} ${gezochtProfiel.functieNaam} ( ${kandidaten.length} kandidaten )&amp;lt;/a&amp;gt;
-	&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;
+        &amp;lt;a href######&amp;quot;detail.html&amp;quot; data-id&amp;quot;${id}&amp;quot; class=&amp;quot;vacatureLink&amp;quot;&amp;gt;${vacatureGegevens.aantalJobs} ${gezochtProfiel.functieNaam} ( ${kandidaten.length} kandidaten )&amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
 &amp;lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//each&#39;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;De transitie naar detail.html gebeurt ná onze &lt;code&gt;click&lt;/code&gt; event handler. Bij het laden van de page op detail.html doen we &amp;ldquo;iets&amp;rdquo; met onze id:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;#detailsVacature&amp;quot;).live(&#39;pagebeforeshow&#39;, function() {
-	var id = application.getVacatureId();
-	// doe iets?
+    var id = application.getVacatureId();
+    // doe iets?
 });
 &lt;/code&gt;&lt;/pre&gt;
 

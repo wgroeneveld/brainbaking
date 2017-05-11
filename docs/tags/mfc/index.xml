@@ -42,10 +42,10 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;CString HostServiceProxy::GetCouponFromResponseString(CString response)
 {
-	CString couponKey ###### _T(&amp;quot;Coupon&amp;quot;);
-	CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
+    CString couponKey ###### _T(&amp;quot;Coupon&amp;quot;);
+    CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
 
-	return couponPart.Left(couponPart.Find(_T(&amp;quot;;&amp;quot;)));
+    return couponPart.Left(couponPart.Find(_T(&amp;quot;;&amp;quot;)));
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -53,11 +53,11 @@
 
 &lt;p&gt;Icons en images worden opgeslagen in .rc files die als resources in de code gekoppeld kunnen worden aan bijvoorbeeld een &lt;code&gt;CButton&lt;/code&gt;. Hoe?&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;	HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
-	if(hImage ###### NULL)
-		ASSERT(FALSE);	
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;    HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
+    if(hImage ###### NULL)
+        ASSERT(FALSE);  
 
-	HICON image = static_cast&amp;lt;HICON&amp;gt;(hImage);
+    HICON image = static_cast&amp;lt;HICON&amp;gt;(hImage);
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;HICON&lt;/code&gt; is van &lt;code&gt;WinDef.h&lt;/code&gt; en &lt;code&gt;::LoadImage&lt;/code&gt; zit op &lt;code&gt;WinUser.h&lt;/code&gt;. Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/windows/desktop/ms648045(v=vs.85).aspx&#34;&gt;MSDN doc&lt;/a&gt; voor LoadImage.&lt;/p&gt;
@@ -70,8 +70,8 @@
 
 &lt;p&gt;❗ de Afx resource handle kan &lt;strong&gt;altijd&lt;/strong&gt; gewijzigd worden door leuke dingen te doen als:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;	HINSTANCE old = AfxGetResourceHandle();
-	AfxSetResourceHandle(GetModuleHandle(&amp;quot;andereModule&amp;quot;));
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;    HINSTANCE old = AfxGetResourceHandle();
+    AfxSetResourceHandle(GetModuleHandle(&amp;quot;andereModule&amp;quot;));
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Gebruik daarom best &lt;code&gt;::GetModuleHandle(char*)&lt;/code&gt; bij &lt;code&gt;::LoadImage&lt;/code&gt;.&lt;/p&gt;
@@ -84,18 +84,18 @@
 class RAIIObject
 {
 public:
-	explicit RAIIObject(const TObject&amp;amp; obj) : m_Object(obj) {}
-	RAIIObject() {}
-	~RAIIObject() {ReleaseObject();}
-	RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const TObject&amp;amp; obj) {if(&amp;amp;obj ! &amp;amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
-	RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; obj) {if(&amp;amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
-	TObject&amp;amp; GetObject() {return m_Object;}
-	const TObject&amp;amp; GetObject() const {return m_Object;}
-	operator TObject&amp;amp;() {return m_Object;}
-	operator const TObject&amp;amp;() const {return m_Object;}
+    explicit RAIIObject(const TObject&amp;amp; obj) : m_Object(obj) {}
+    RAIIObject() {}
+    ~RAIIObject() {ReleaseObject();}
+    RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const TObject&amp;amp; obj) {if(&amp;amp;obj ! &amp;amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
+    RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; obj) {if(&amp;amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
+    TObject&amp;amp; GetObject() {return m_Object;}
+    const TObject&amp;amp; GetObject() const {return m_Object;}
+    operator TObject&amp;amp;() {return m_Object;}
+    operator const TObject&amp;amp;() const {return m_Object;}
 private:
-	void ReleaseObject();
-	TObject m_Object;
+    void ReleaseObject();
+    TObject m_Object;
 };
 
 template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;HICON&amp;gt;::ReleaseObject() {::DestroyIcon(m_Object); m_Object = NULL;}

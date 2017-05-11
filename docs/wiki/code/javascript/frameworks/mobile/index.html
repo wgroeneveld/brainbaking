@@ -214,14 +214,14 @@ $.mobile.changePage( newPage );
 
 <p><img style='float: left; width: nolink&|px;' src='/img//code/javascript/frameworks/floempie.jpg'></p>
 
-<pre><code class="language-javascript">	function render() {
-		var activePage = $.mobile.activePage; // this also works: $(&quot;.ui-page-active&quot;)
-		activePage.find('ul[data-role]').listview();
-		activePage.find('div[data-role=&quot;fieldcontain&quot;]').fieldcontain();
-		activePage.find('button[data-role=&quot;button&quot;]').button();
-		activePage.find('input,textarea').textinput();
-		activePage.page();
-	}
+<pre><code class="language-javascript">    function render() {
+        var activePage = $.mobile.activePage; // this also works: $(&quot;.ui-page-active&quot;)
+        activePage.find('ul[data-role]').listview();
+        activePage.find('div[data-role=&quot;fieldcontain&quot;]').fieldcontain();
+        activePage.find('button[data-role=&quot;button&quot;]').button();
+        activePage.find('input,textarea').textinput();
+        activePage.page();
+    }
 </code></pre>
 
 <p>Dit ziet er wel resource intensitief uit en zou op een mobiel device nogal kunnen &ldquo;floepen&rdquo;. ((De bijhorende tekening is Copyright Kabouter Wesley enzo))</p>
@@ -268,24 +268,24 @@ $.mobile.changePage( newPage );
 <p>Het tweede kan door bijvoorbeeld een <code>onclick</code> event te registreren en HTML5 <code>data</code> attributes te gebruiken om IDs bij te houden:</p>
 
 <pre><code class="language-javascript">$(&quot;.vacatureLink&quot;).click(function() {
-	application.setVacatureId($(this).data(&quot;id&quot;));
+    application.setVacatureId($(this).data(&quot;id&quot;));
 });
 </code></pre>
 
 <p>Met bijvoorbeeld een KnockoutJS template:</p>
 
 <pre><code class="language-html">&lt;img style='' src='/img/each vacatures'&gt;
-	&lt;li&gt;
-		&lt;a href######&quot;detail.html&quot; data-id&quot;${id}&quot; class=&quot;vacatureLink&quot;&gt;${vacatureGegevens.aantalJobs} ${gezochtProfiel.functieNaam} ( ${kandidaten.length} kandidaten )&lt;/a&gt;
-	&lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href######&quot;detail.html&quot; data-id&quot;${id}&quot; class=&quot;vacatureLink&quot;&gt;${vacatureGegevens.aantalJobs} ${gezochtProfiel.functieNaam} ( ${kandidaten.length} kandidaten )&lt;/a&gt;
+    &lt;/li&gt;
 &lt;img style='' src='/img//each'&gt;
 </code></pre>
 
 <p>De transitie naar detail.html gebeurt ná onze <code>click</code> event handler. Bij het laden van de page op detail.html doen we &ldquo;iets&rdquo; met onze id:</p>
 
 <pre><code class="language-javascript">$(&quot;#detailsVacature&quot;).live('pagebeforeshow', function() {
-	var id = application.getVacatureId();
-	// doe iets?
+    var id = application.getVacatureId();
+    // doe iets?
 });
 </code></pre>
 

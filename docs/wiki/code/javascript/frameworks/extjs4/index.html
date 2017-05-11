@@ -197,13 +197,13 @@
 
 <pre><code class="language-javascript">Ext.define('Evita.store.masterdata.KeywordType', {
     extend: 'Ext.data.EvitaStore',
-	model: 'Evita.model.parkingfacility.MasterdataType',
+    model: 'Evita.model.parkingfacility.MasterdataType',
     proxy: {
-		type: 'evitaAjax',
-		api:{
-			read: 'getMasterdataKeywordByTypeName.json'
-		}
-	}
+        type: 'evitaAjax',
+        api:{
+            read: 'getMasterdataKeywordByTypeName.json'
+        }
+    }
 });
 </code></pre>
 
@@ -214,22 +214,22 @@
 <p>Oplossing: gebruik <code>Ext.create</code> in plaats van te refereren naar de <code>xtype</code>, die gaat door de <code>StoreManager</code> opgezocht &amp; hetbruikt worden anders (1 instantie).</p>
 
 <pre><code class="language-javascript">{
-		    			xtype : 'combo',
-			    		store : Ext.create('Evita.store.masterdata.KeywordType'),
-			    		storeMasterdataTypeName: 'MaturityOfParkingFacility',
-			    		valueField : 'code',
-			    		displayField : 'value',
-		    			name : 'maturity',
-		    			id: 'ParkingFacilityCreate_masterdata_maturity',
-		    		}
+                        xtype : 'combo',
+                        store : Ext.create('Evita.store.masterdata.KeywordType'),
+                        storeMasterdataTypeName: 'MaturityOfParkingFacility',
+                        valueField : 'code',
+                        displayField : 'value',
+                        name : 'maturity',
+                        id: 'ParkingFacilityCreate_masterdata_maturity',
+                    }
 </code></pre>
 
 <p>Loop in de controller over alle stores om dan bvb <code>extraParams</code> in te stellen:</p>
 
-<pre><code class="language-javascript">    	view.down('form').query('combo').forEach(function(combo) {
-			combo.getStore().proxy.extraParams['masterdataTypeName'] = combo.storeMasterdataTypeName;
-			combo.getStore().proxy.extraParams['countryId'] = wizardData.general.countryId;
-    	});
+<pre><code class="language-javascript">        view.down('form').query('combo').forEach(function(combo) {
+            combo.getStore().proxy.extraParams['masterdataTypeName'] = combo.storeMasterdataTypeName;
+            combo.getStore().proxy.extraParams['countryId'] = wizardData.general.countryId;
+        });
 </code></pre>
 
       

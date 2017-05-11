@@ -28,22 +28,22 @@
 
 &lt;p&gt;&lt;strong&gt;controller&lt;/strong&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	public static Result buyHorse() {
-		Form&amp;lt;Horse&amp;gt; horseForm = form(Horse.class);
-		Horse horse = horseForm.bindFromRequest().get();
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    public static Result buyHorse() {
+        Form&amp;lt;Horse&amp;gt; horseForm = form(Horse.class);
+        Horse horse = horseForm.bindFromRequest().get();
                 System.out.println(horse.id);
         }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;unit test&lt;/strong&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	@Test
-	public void buyHorse() {
-		HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
-		map.put(&amp;quot;id&amp;quot;, &amp;quot;12&amp;quot;);
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    @Test
+    public void buyHorse() {
+        HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        map.put(&amp;quot;id&amp;quot;, &amp;quot;12&amp;quot;);
 
-		callAction(HorseMarket.buyHorse(), new FakeRequest().withFormUrlEncodedBody(map));
-	}
+        callAction(HorseMarket.buyHorse(), new FakeRequest().withFormUrlEncodedBody(map));
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Waarbij hierboven &lt;code&gt;HorseMarket&lt;/code&gt; de routes ref is en niet de &lt;code&gt;HorseMarket&lt;/code&gt; controller klasse zelf - deze:&lt;/p&gt;
@@ -134,13 +134,13 @@ object ApplicationBuild extends Build {
     val appVersion      = &amp;quot;1.0&amp;quot;
 
     val appDependencies = Seq(
-    	&amp;quot;org.easytesting&amp;quot; % &amp;quot;fest-assert&amp;quot; % &amp;quot;1.4&amp;quot; % &amp;quot;test&amp;quot;
+        &amp;quot;org.easytesting&amp;quot; % &amp;quot;fest-assert&amp;quot; % &amp;quot;1.4&amp;quot; % &amp;quot;test&amp;quot;
       // Add your project dependencies here,
     )
 
-    val main = PlayProject(appName, appVersion, appDependencies).settings(defaultJavaSettings:_*).settings(		
+    val main = PlayProject(appName, appVersion, appDependencies).settings(defaultJavaSettings:_*).settings(     
                 // The following line is NOT NEEDED by default! 
-		resolvers += &amp;quot;Maven2 Repository&amp;quot; at &amp;quot;http://repo1.maven.org/maven2&amp;quot;
+        resolvers += &amp;quot;Maven2 Repository&amp;quot; at &amp;quot;http://repo1.maven.org/maven2&amp;quot;
     )
 }
 &lt;/code&gt;&lt;/pre&gt;

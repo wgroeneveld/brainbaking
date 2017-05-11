@@ -1,6 +1,6 @@
 ---
 title: 'Drawing week 04 - Using the brain'
-date: '2017-05-10'
+date: '2017-05-09'
 subtitle: Drawing at the right side of the brain
 tags:
 - Learning yourself to draw

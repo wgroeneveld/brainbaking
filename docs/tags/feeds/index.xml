@@ -54,8 +54,8 @@ Klak.Feeds.read(new Klak.Feeds.WikiWouter().feed(), $j(&amp;quot;#wiki&amp;quot;
 &lt;p&gt;Indien geen custom parsing vereist is, kan je je beperken tot de url en title en de rest overerven via &lt;code&gt;prototype&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Klak.Feeds.BlogWouter = function() {
-	this.title = &#39;Jefklak&amp;lt;br/&amp;gt;&#39;s Codex Blog Latest Updates&#39;;
-	this.url ###### &#39;https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;amp;q=http:*www.jefklak.be/feed/&#39;;	
+    this.title = &#39;Jefklak&amp;lt;br/&amp;gt;&#39;s Codex Blog Latest Updates&#39;;
+    this.url ###### &#39;https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;amp;q=http:*www.jefklak.be/feed/&#39;; 
 }
 Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
 &lt;/code&gt;&lt;/pre&gt;

@@ -194,34 +194,34 @@ storyFile = File.open('svnlog_stories.txt', 'w')
 csv = CSV.open('svnlog.csv', 'wb')
 
 [ '.', 'PFW.Base' ].map { |dir|
-	puts &quot; -- processing dir '#{dir}' ...&quot;
-	rawxml = `cd #{dir} &amp;&amp; svn log --xml --revision #{revFrom}:#{revTo}`
+    puts &quot; -- processing dir '#{dir}' ...&quot;
+    rawxml = `cd #{dir} &amp;&amp; svn log --xml --revision #{revFrom}:#{revTo}`
 
-	xml = Nokogiri::XML(rawxml)
-	xml.xpath(&quot;//logentry&quot;).map { |entry|
-		hash = Hash.new
-		hash['rev'] = entry.attr(&quot;revision&quot;)
-		hash['author'] = entry.css(&quot;author&quot;).text
-		hash['date'] = DateTime.strptime(entry.css(&quot;date&quot;).text, '%Y-%m-%dT%H:%M:%S')
-		hash['msg'] = entry.css(&quot;msg&quot;).text.strip.tr(&quot;&lt;br/&gt;n&quot;, &quot;&quot;)
-		hash['btIssues'] = hash['msg'].scan(/bt#([0-9]+)/i).flatten.uniq
-		hash['rmIssues'] = hash['msg'].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &quot;http://server.cloudapp.net/redmine/issues/#{rm}&quot; }
-		hash['stories'] = hash['msg'].scan(/story#(&lt;br/&gt;S+)&lt;br/&gt;s/i).flatten.uniq
+    xml = Nokogiri::XML(rawxml)
+    xml.xpath(&quot;//logentry&quot;).map { |entry|
+        hash = Hash.new
+        hash['rev'] = entry.attr(&quot;revision&quot;)
+        hash['author'] = entry.css(&quot;author&quot;).text
+        hash['date'] = DateTime.strptime(entry.css(&quot;date&quot;).text, '%Y-%m-%dT%H:%M:%S')
+        hash['msg'] = entry.css(&quot;msg&quot;).text.strip.tr(&quot;&lt;br/&gt;n&quot;, &quot;&quot;)
+        hash['btIssues'] = hash['msg'].scan(/bt#([0-9]+)/i).flatten.uniq
+        hash['rmIssues'] = hash['msg'].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &quot;http://server.cloudapp.net/redmine/issues/#{rm}&quot; }
+        hash['stories'] = hash['msg'].scan(/story#(&lt;br/&gt;S+)&lt;br/&gt;s/i).flatten.uniq
 
-		hash
-	}
+        hash
+    }
 }.flatten.sort_by { |hash| hash['date'] }.each do |entry|
-	rm = entry['rmIssues'].join(', ')
-	csv &lt;&lt; [ 'r' + entry['rev'], entry['date'], entry['author'], entry['msg'], rm ]
-	entry['btIssues'].each do |issue|
-		btFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
-	end
-	entry['rmIssues'].each do |issue|
-		rmFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
-	end
-	entry['stories'].each do |issue|
-		storyFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
-	end
+    rm = entry['rmIssues'].join(', ')
+    csv &lt;&lt; [ 'r' + entry['rev'], entry['date'], entry['author'], entry['msg'], rm ]
+    entry['btIssues'].each do |issue|
+        btFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
+    end
+    entry['rmIssues'].each do |issue|
+        rmFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
+    end
+    entry['stories'].each do |issue|
+        storyFile &lt;&lt; issue &lt;&lt; &quot;&lt;br/&gt;n&quot;
+    end
 end
 
 

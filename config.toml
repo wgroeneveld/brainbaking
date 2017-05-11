@@ -5,7 +5,7 @@ enableEmoji = true
 theme = "beautifulbaking"
 pygmentsUseClasses = true
 pygmentCodeFences = true
-#disqusShortname = "XXX"
+disqusShortname = "brainbaking"
 #googleAnalytics = "XXX"
 
 publishDir = "docs"
