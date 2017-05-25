@@ -174,9 +174,9 @@
 <p>Zie <a href="http://docs.angularjs.org/api/angular.mock.module">angular.mock.module</a> - twee hoofdfuncties die belangrijk zijn: <code>module()</code> en <code>inject()</code>. Het eerste maakt de module aan en het tweede zorgt voor de mock dependency injectie. Bijvoorbeeld:</p>
 
 <pre><code class="language-javascript">angular
-    .module('bla.services', [])
-    
-    .factory('$bla', ['$http', function($http) {
+	.module('bla.services', [])
+	
+	.factory('$bla', ['$http', function($http) {
             // do stuff with $http, like a .get
             return { go: function() {} }
         }])

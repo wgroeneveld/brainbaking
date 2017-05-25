@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Techorama on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/techorama/index.xml</link>
+    <description>Recent content in Techorama on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/techorama/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to teach kids to program</title>
+      <link>http://www.brainbaking.com/post/teaching-kids-how-to-program/</link>
+      <pubDate>Thu, 25 May 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/teaching-kids-how-to-program/</guid>
+      <description>
+
+&lt;p&gt;Jessica Ellis gave a lot of great tips on how to teach kids to program at &lt;a href=&#34;https://techorama2017.sched.com/event/9M8g/the-skills-gap-how-to-inspire-our-kids-to-study-computer-science?iframe=no&amp;amp;w=100%&amp;amp;sidebar=yes&amp;amp;bg=no&#34;&gt;Techorama 2017&lt;/a&gt; in Antwerp. She has ben an active teacher in the &lt;a href=&#34;http://tkplabs.org&#34;&gt;tkplabs.org&lt;/a&gt; society and introduced something clever called &amp;ldquo;barbecoding&amp;rdquo;. In an attempt to create an appealing programming camp for boys and girls, she successfully combined food and science. She shared her story in an hour and I did my best to extract the most important principles as I thought it might be a great idea to apply that to our team in my daily work as a software developer.&lt;/p&gt;
+
+&lt;p&gt;Why would those principles only apply to kids?&lt;/p&gt;
+
+&lt;h3 id=&#34;1-do-hard-things-and-have-food&#34;&gt;1. Do Hard Things (and have food)&lt;/h3&gt;
+
+&lt;p&gt;Don&amp;rsquo;t treat people as you categorize them. Do hard things, even if you think they are not capable of doing something like that. Don&amp;rsquo;t label them as &amp;ldquo;smart&amp;rdquo; - the brain will become wired for failure and they&amp;rsquo;ll be scared to make mistakes.
+The food part is especially interesting as I&amp;rsquo;ve read in some management book years ago one concept called &lt;strong&gt;&amp;ldquo;do food&amp;rdquo;&lt;/strong&gt;. Bring (home made) food to a meeting - it immediately breaks all ice, effectively. Since then, I constantly rely on homemade cakecups to ease other&amp;rsquo;s minds. It really does work and it&amp;rsquo;s a lot of fun to make.&lt;/p&gt;
+
+&lt;h3 id=&#34;2-work-in-a-group-failing-in-a-group-failing-alone&#34;&gt;2 Work in a group (failing in a group &amp;gt; failing alone)&lt;/h3&gt;
+
+&lt;p&gt;Pairing and mob programming can be done with kids and enables them to learn faster (from each other instead of only from the teacher or themselves). It&amp;rsquo;s also less bad to try and fail: at least you&amp;rsquo;ve failed together then.
+I successfully used mob programming as a teaching instrument at work. It makes the problem less daunting for someone who isn&amp;rsquo;t eager to speak for a group.&lt;/p&gt;
+
+&lt;h3 id=&#34;3-be-surprised-laugh-a-lot&#34;&gt;3 Be Surprised (laugh a lot)&lt;/h3&gt;
+
+&lt;p&gt;Life is full of surprises. Be genuine.
+Stop taking everythig seriously. Something I love to do: inspire others to laugh more - at themselves, at me, at the situation we&amp;rsquo;re in. And then get to work.&lt;/p&gt;
+
+&lt;h3 id=&#34;4-feel-powerful-never-say-you-can-t-do-anything&#34;&gt;4. Feel Powerful (never say you can&amp;rsquo;t do anything)&lt;/h3&gt;
+
+&lt;p&gt;This is extremely difficult for grownups and I still can&amp;rsquo;t wrap my head around the why. &amp;ldquo;Oh but I can&amp;rsquo;t do it as good as you&amp;rdquo; or &amp;ldquo;you are the expert, I wouldn&amp;rsquo;t be able to do such a thing&amp;rdquo; or &amp;ldquo;no, I can&amp;rsquo;t do that, I&amp;rsquo;m not smart enough&amp;rdquo; are sentences I hear on the workfloor every single day. And that&amp;rsquo;s very very saddening because I&amp;rsquo;m not smarter than anyone else - in fact, I&amp;rsquo;m convinced I know less than they do - I just manage to get away with it.&lt;/p&gt;
+
+&lt;p&gt;Recognizing talent and mentoring them to become teachers themselves is something I have to do more often - that means less work for me.&lt;/p&gt;
+
+&lt;h3 id=&#34;5-show-your-work&#34;&gt;5. Show Your Work&lt;/h3&gt;
+
+&lt;p&gt;Reminded me of Austin Kleon&amp;rsquo;s &lt;a href=&#34;http://austinkleon.com/show-your-work/&#34;&gt;show your work&lt;/a&gt; - a lovely book that inspires to put stuff out there, like this very blog or my &amp;ldquo;bad&amp;rdquo; drawings. I love to show my work, but grownups tend to think someone shows their work because he or she wants everyone to know how great they are.
+Maybe. But foremost, they might want feedback. And get better. And that means, they need your help. So stop that train of negative thinking and start helping. Stop saying &amp;ldquo;my work is redundant, it&amp;rsquo;s nothing, it&amp;rsquo;s not showable, nobody would like it&amp;rdquo; and start putting stuff out there.&lt;/p&gt;
+
+&lt;h3 id=&#34;6-unplug-learn-without-a-computer&#34;&gt;6. Unplug &amp;amp; learn without a computer&lt;/h3&gt;
+
+&lt;p&gt;Computational thinking can also be learned with the help of post-its, some yarn, a thread and some markers. Your cognitive process picks up things a lot faster if your body is &lt;strong&gt;doing stuff&lt;/strong&gt; instead of yawning at a computer screen. Get up and move. Pair more strictly: set a timer and require everyone to physically move.&lt;/p&gt;
+
+&lt;p&gt;It was very inspiring to see what Jessica and her team of teachers (15 year olds by the way!) managed to do. I know I&amp;rsquo;ll be trying to incorporate the rules stated above in my daily work, even if I&amp;rsquo;m not directly working with kids.&lt;/p&gt;
+
+&lt;p&gt;Or maybe I am&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
