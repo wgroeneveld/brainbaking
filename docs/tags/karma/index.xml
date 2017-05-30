@@ -64,30 +64,30 @@ npm config set https-proxy http://proxy.be:8080
 
 &lt;h3 id=&#34;integratie-in-maven&#34;&gt;Integratie in maven&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;			&amp;lt;plugin&amp;gt;
-				&amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
-				&amp;lt;artifactId&amp;gt;exec-maven-plugin&amp;lt;/artifactId&amp;gt;
-				&amp;lt;version&amp;gt;1.2.1&amp;lt;/version&amp;gt;
-				&amp;lt;executions&amp;gt;
-					&amp;lt;execution&amp;gt;
-						&amp;lt;id&amp;gt;jsunit&amp;lt;/id&amp;gt;
-						&amp;lt;phase&amp;gt;test&amp;lt;/phase&amp;gt;
-						&amp;lt;goals&amp;gt;
-							&amp;lt;goal&amp;gt;exec&amp;lt;/goal&amp;gt;
-						&amp;lt;/goals&amp;gt;
-					&amp;lt;/execution&amp;gt;
-				&amp;lt;/executions&amp;gt;
-				&amp;lt;configuration&amp;gt;
-					&amp;lt;skip&amp;gt;${skipTests}&amp;lt;/skip&amp;gt;
-					&amp;lt;successCodes&amp;gt;
-						&amp;lt;successCode&amp;gt;0&amp;lt;/successCode&amp;gt;
-						&amp;lt;successCode&amp;gt;1&amp;lt;/successCode&amp;gt;&amp;lt;!-- on failing test, don&#39;t get a build 
-							error --&amp;gt;
-					&amp;lt;/successCodes&amp;gt;
-					&amp;lt;executable&amp;gt;${basedir}/src/test/javascript/build.bat&amp;lt;/executable&amp;gt;
-					&amp;lt;workingDirectory&amp;gt;${basedir}/src/test/javascript&amp;lt;/workingDirectory&amp;gt;
-				&amp;lt;/configuration&amp;gt;
-			&amp;lt;/plugin&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;exec-maven-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;1.2.1&amp;lt;/version&amp;gt;
+                &amp;lt;executions&amp;gt;
+                    &amp;lt;execution&amp;gt;
+                        &amp;lt;id&amp;gt;jsunit&amp;lt;/id&amp;gt;
+                        &amp;lt;phase&amp;gt;test&amp;lt;/phase&amp;gt;
+                        &amp;lt;goals&amp;gt;
+                            &amp;lt;goal&amp;gt;exec&amp;lt;/goal&amp;gt;
+                        &amp;lt;/goals&amp;gt;
+                    &amp;lt;/execution&amp;gt;
+                &amp;lt;/executions&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;skip&amp;gt;${skipTests}&amp;lt;/skip&amp;gt;
+                    &amp;lt;successCodes&amp;gt;
+                        &amp;lt;successCode&amp;gt;0&amp;lt;/successCode&amp;gt;
+                        &amp;lt;successCode&amp;gt;1&amp;lt;/successCode&amp;gt;&amp;lt;!-- on failing test, don&#39;t get a build 
+                            error --&amp;gt;
+                    &amp;lt;/successCodes&amp;gt;
+                    &amp;lt;executable&amp;gt;${basedir}/src/test/javascript/build.bat&amp;lt;/executable&amp;gt;
+                    &amp;lt;workingDirectory&amp;gt;${basedir}/src/test/javascript&amp;lt;/workingDirectory&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+            &amp;lt;/plugin&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Bovenstaande &lt;code&gt;skip&lt;/code&gt; config houdt dus ook rekening met bvb &lt;code&gt;mvn clean install -DskipTests&lt;/code&gt; - de &lt;code&gt;test&lt;/code&gt; phase van maven wordt &lt;strong&gt;niet&lt;/strong&gt; geskipped maar de testen wel door de &lt;code&gt;maven-failsafe-plugin&lt;/code&gt; - bijgevolg worden goals die aan de test fase hangen ook nog uitgevoerd.&lt;/p&gt;

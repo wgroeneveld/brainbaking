@@ -216,14 +216,14 @@
 <p><img style='' src='/img//code/javascript/js_sequential.jpg|'></p>
 
 <pre><code class="language-javascript">function loadScript() {
-	for(var i = 0; i &lt; arguments.length; i++) {
-		var js = document.createElement(&quot;script&quot;);
-		var head = document.getElementsByTagName(&quot;head&quot;)[0];
+    for(var i = 0; i &lt; arguments.length; i++) {
+        var js = document.createElement(&quot;script&quot;);
+        var head = document.getElementsByTagName(&quot;head&quot;)[0];
 
-		js.src = arguments[i];
-		js.type = &quot;text/javascript&quot;;
-		head.appendChild(js);
-	}
+        js.src = arguments[i];
+        js.type = &quot;text/javascript&quot;;
+        head.appendChild(js);
+    }
 }
 </code></pre>
 
@@ -256,15 +256,15 @@ Daarom ook altijd best practices volgen en <em>separation of concerns</em> zo go
 <p>Een stap verder zou zijn de library zichzelf bootstrappen, door <code>loadScript()</code> lichtjes aan te passen:</p>
 
 <pre><code class="language-javascript">function loadScript() {
-	for(var i = 0; i &lt; arguments.length; i++) {
-		var js = document.createElement(&quot;script&quot;);
-		var head = document.getElementsByTagName(&quot;head&quot;)[0];
+    for(var i = 0; i &lt; arguments.length; i++) {
+        var js = document.createElement(&quot;script&quot;);
+        var head = document.getElementsByTagName(&quot;head&quot;)[0];
 
-		js.src = arguments[i].src;
-		js.type = &quot;text/javascript&quot;;
-		js.text = arguments[i].callback.toString();
-		head.appendChild(js);
-	}
+        js.src = arguments[i].src;
+        js.type = &quot;text/javascript&quot;;
+        js.text = arguments[i].callback.toString();
+        head.appendChild(js);
+    }
 }
 
 //usage:
@@ -431,6 +431,16 @@ head.js(&quot;/path/to/jquery.js&quot;);
   hljs.initHighlightingOnLoad();
 </script>
 
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
 
 
 

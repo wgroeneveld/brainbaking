@@ -39,14 +39,14 @@
 &lt;p&gt;Zie &lt;a href=&#34;http://www.andybudd.com/archives/2004/02/css_crib_sheet_3_centering_a_div/&#34;&gt;http://www.andybudd.com/archives/2004/02/css_crib_sheet_3_centering_a_div/&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;body {
-	text-align: center;
-	min-width: 600px;
+    text-align: center;
+    min-width: 600px;
 }
 
 #wrapper {
-	margin:0 auto;
-	width:600px;
-	text-align: left;
+    margin:0 auto;
+    width:600px;
+    text-align: left;
 }
 &lt;/code&gt;&lt;/pre&gt;
 

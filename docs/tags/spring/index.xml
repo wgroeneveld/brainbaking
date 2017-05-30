@@ -81,53 +81,53 @@
 
 &lt;p&gt;Met een transaction manager:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;	&amp;lt;bean id######&amp;quot;entityManagerFactory&amp;quot; abstract&amp;quot;true&amp;quot;&amp;gt;
-		&amp;lt;property name=&amp;quot;jpaVendorAdapter&amp;quot;&amp;gt;
-			&amp;lt;bean class=&amp;quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&amp;quot;&amp;gt;
-				&amp;lt;property name######&amp;quot;databasePlatform&amp;quot; value&amp;quot;${hibernate.dialect}&amp;quot;/&amp;gt;
-				&amp;lt;property name######&amp;quot;showSql&amp;quot; value&amp;quot;${database.showSql}&amp;quot; /&amp;gt;
-			&amp;lt;/bean&amp;gt;
-		&amp;lt;/property&amp;gt;
-	&amp;lt;/bean&amp;gt;
-	
-	&amp;lt;bean id######&amp;quot;myEntityManagerFactory&amp;quot; class&amp;quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&amp;quot; parent=&amp;quot;entityManagerFactory&amp;quot;&amp;gt;
-		&amp;lt;property name######&amp;quot;packagesToScan&amp;quot; value&amp;quot;be.klak.domain&amp;quot; /&amp;gt;
-		&amp;lt;property name######&amp;quot;dataSource&amp;quot; ref&amp;quot;myDataSource&amp;quot; /&amp;gt;
-		&amp;lt;property name######&amp;quot;persistenceUnitName&amp;quot; value&amp;quot;my_pu&amp;quot; /&amp;gt;
-		&amp;lt;property name=&amp;quot;persistenceUnitManager&amp;quot;&amp;gt;
-			&amp;lt;bean class=&amp;quot;org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager&amp;quot;&amp;gt;
-				&amp;lt;property name######&amp;quot;defaultDataSource&amp;quot; ref&amp;quot;partnerwerkingDataSource&amp;quot; /&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;bean id######&amp;quot;entityManagerFactory&amp;quot; abstract&amp;quot;true&amp;quot;&amp;gt;
+        &amp;lt;property name=&amp;quot;jpaVendorAdapter&amp;quot;&amp;gt;
+            &amp;lt;bean class=&amp;quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&amp;quot;&amp;gt;
+                &amp;lt;property name######&amp;quot;databasePlatform&amp;quot; value&amp;quot;${hibernate.dialect}&amp;quot;/&amp;gt;
+                &amp;lt;property name######&amp;quot;showSql&amp;quot; value&amp;quot;${database.showSql}&amp;quot; /&amp;gt;
+            &amp;lt;/bean&amp;gt;
+        &amp;lt;/property&amp;gt;
+    &amp;lt;/bean&amp;gt;
+    
+    &amp;lt;bean id######&amp;quot;myEntityManagerFactory&amp;quot; class&amp;quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&amp;quot; parent=&amp;quot;entityManagerFactory&amp;quot;&amp;gt;
+        &amp;lt;property name######&amp;quot;packagesToScan&amp;quot; value&amp;quot;be.klak.domain&amp;quot; /&amp;gt;
+        &amp;lt;property name######&amp;quot;dataSource&amp;quot; ref&amp;quot;myDataSource&amp;quot; /&amp;gt;
+        &amp;lt;property name######&amp;quot;persistenceUnitName&amp;quot; value&amp;quot;my_pu&amp;quot; /&amp;gt;
+        &amp;lt;property name=&amp;quot;persistenceUnitManager&amp;quot;&amp;gt;
+            &amp;lt;bean class=&amp;quot;org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager&amp;quot;&amp;gt;
+                &amp;lt;property name######&amp;quot;defaultDataSource&amp;quot; ref&amp;quot;partnerwerkingDataSource&amp;quot; /&amp;gt;
                 &amp;lt;property name######&amp;quot;persistenceXmlLocation&amp;quot; value&amp;quot;classpath:persistence.xml&amp;quot;/&amp;gt;
-			&amp;lt;/bean&amp;gt;
-		&amp;lt;/property&amp;gt;
-	&amp;lt;/bean&amp;gt;
+            &amp;lt;/bean&amp;gt;
+        &amp;lt;/property&amp;gt;
+    &amp;lt;/bean&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;De datasource kan via JNDI gedefiniëerd worden dan:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;	&amp;lt;tx:annotation-driven transaction-manager=&amp;quot;transactionManager&amp;quot;/&amp;gt;
-	&amp;lt;bean id######&amp;quot;myEntityManager&amp;quot; factory-bean&amp;quot;myEntityManagerFactory&amp;quot; factory-method=&amp;quot;createEntityManager&amp;quot; /&amp;gt;
-	&amp;lt;bean id######&amp;quot;transactionManager&amp;quot; class&amp;quot;org.springframework.orm.jpa.JpaTransactionManager&amp;quot;&amp;gt;
-		&amp;lt;property name######&amp;quot;entityManagerFactory&amp;quot; ref&amp;quot;myEntityManagerFactory&amp;quot; /&amp;gt;
-	&amp;lt;/bean&amp;gt;
-	
-	&amp;lt;jee:jndi-lookup id######&amp;quot;myDataSource&amp;quot; jndi-name&amp;quot;jdbc/myDataSource&amp;quot; resource-ref=&amp;quot;true&amp;quot; /&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;tx:annotation-driven transaction-manager=&amp;quot;transactionManager&amp;quot;/&amp;gt;
+    &amp;lt;bean id######&amp;quot;myEntityManager&amp;quot; factory-bean&amp;quot;myEntityManagerFactory&amp;quot; factory-method=&amp;quot;createEntityManager&amp;quot; /&amp;gt;
+    &amp;lt;bean id######&amp;quot;transactionManager&amp;quot; class&amp;quot;org.springframework.orm.jpa.JpaTransactionManager&amp;quot;&amp;gt;
+        &amp;lt;property name######&amp;quot;entityManagerFactory&amp;quot; ref&amp;quot;myEntityManagerFactory&amp;quot; /&amp;gt;
+    &amp;lt;/bean&amp;gt;
+    
+    &amp;lt;jee:jndi-lookup id######&amp;quot;myDataSource&amp;quot; jndi-name&amp;quot;jdbc/myDataSource&amp;quot; resource-ref=&amp;quot;true&amp;quot; /&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Daarna kan je de &lt;code&gt;entityManager&lt;/code&gt; injecteren in Java:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	@PersistenceContext(unitName = &amp;quot;vdab_partnerwerking_pu&amp;quot;)
-	protected EntityManager entityManager;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    @PersistenceContext(unitName = &amp;quot;vdab_partnerwerking_pu&amp;quot;)
+    protected EntityManager entityManager;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;######= Werken zonder een persistence.xml ######=&lt;/p&gt;
 
 &lt;p&gt;Vanaf &lt;strong&gt;Spring 3.1&lt;/strong&gt; en JPA kan je via de factory &lt;code&gt;packagesToScan&lt;/code&gt; property aangeven ipv via een &lt;code&gt;persistenceUnitManager&lt;/code&gt; te werken - meer info en context: zie &lt;a href=&#34;http://www.baeldung.com/2011/12/13/the-persistence-layer-with-spring-3-1-and-jpa/&#34;&gt;http://www.baeldung.com/2011/12/13/the-persistence-layer-with-spring-3-1-and-jpa/&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;	&amp;lt;bean id######&amp;quot;myEntityManagerFactory&amp;quot; class&amp;quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&amp;quot; parent=&amp;quot;entityManagerFactory&amp;quot;&amp;gt;
-		&amp;lt;property name######&amp;quot;packagesToScan&amp;quot; value&amp;quot;be.klak.domain&amp;quot; /&amp;gt;
-		&amp;lt;property name######&amp;quot;dataSource&amp;quot; ref&amp;quot;myDataSource&amp;quot; /&amp;gt;
-	&amp;lt;/bean&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;bean id######&amp;quot;myEntityManagerFactory&amp;quot; class&amp;quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&amp;quot; parent=&amp;quot;entityManagerFactory&amp;quot;&amp;gt;
+        &amp;lt;property name######&amp;quot;packagesToScan&amp;quot; value&amp;quot;be.klak.domain&amp;quot; /&amp;gt;
+        &amp;lt;property name######&amp;quot;dataSource&amp;quot; ref&amp;quot;myDataSource&amp;quot; /&amp;gt;
+    &amp;lt;/bean&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Vergeet niet de &lt;code&gt;unitName&lt;/code&gt; van de &lt;code&gt;PersistenceContext&lt;/code&gt; annotatie af te halen dan.&lt;/p&gt;

@@ -200,59 +200,59 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace calc
 {
-	TEST_CLASS(CalculatorTest)
-	{
-	private:
-		int nStartValue;
-		Calculator* calc;
+    TEST_CLASS(CalculatorTest)
+    {
+    private:
+        int nStartValue;
+        Calculator* calc;
 
-		void CreateCalcSUT()
-		{
-			calc = new Calculator(nStartValue);
-		}
+        void CreateCalcSUT()
+        {
+            calc = new Calculator(nStartValue);
+        }
 
-	public:
-		/*testcase template:
-		TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
-		{
-		param specialParam = specialvalue;
-		...
-		param expectation = whatYouExpect;
-		...
-		(SUT creation)
-		(call methods)
-		...
-		assert(s)
-		}*/
+    public:
+        /*testcase template:
+        TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
+        {
+        param specialParam = specialvalue;
+        ...
+        param expectation = whatYouExpect;
+        ...
+        (SUT creation)
+        (call methods)
+        ...
+        assert(s)
+        }*/
 
 
-		TEST_METHOD_INITIALIZE(InitialiseDefaults)
-		{
-			calc = NULL;
-			nStartValue = 5;
-		}
+        TEST_METHOD_INITIALIZE(InitialiseDefaults)
+        {
+            calc = NULL;
+            nStartValue = 5;
+        }
 
-		TEST_METHOD_CLEANUP(CleanupObjects)
-		{
-			delete calc;
-		}
+        TEST_METHOD_CLEANUP(CleanupObjects)
+        {
+            delete calc;
+        }
 
-		TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
-		{
-			int nExpectedValue = 0;
-			calc = new Calculator();
-			Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
-		}
+        TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
+        {
+            int nExpectedValue = 0;
+            calc = new Calculator();
+            Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
+        }
 
-		TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
-		{
-			nStartValue = 5;
-			int nExpectedValue = 5;
-			CreateCalcSUT();
-			Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
-		}
+        TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
+        {
+            nStartValue = 5;
+            int nExpectedValue = 5;
+            CreateCalcSUT();
+            Assert::AreEqual(nExpectedValue, calc-&gt;GetValue());
+        }
 
-	};
+    };
 }
 </code></pre>
 
@@ -364,6 +364,16 @@ namespace calc
   hljs.initHighlightingOnLoad();
 </script>
 
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
 
 
 

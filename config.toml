@@ -6,7 +6,7 @@ theme = "beautifulbaking"
 pygmentsUseClasses = true
 pygmentCodeFences = true
 disqusShortname = "brainbaking"
-#googleAnalytics = "XXX"
+googleAnalytics = "UA-45748221-1"
 
 publishDir = "docs"
 

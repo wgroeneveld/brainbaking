@@ -196,36 +196,36 @@ echo &quot;--- DONE!&quot;```
 ##### maven deps voor de client 
 
 ```xml
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.google.oauth-client&lt;/groupId&gt;
-			&lt;artifactId&gt;google-oauth-client&lt;/artifactId&gt;
-			&lt;version&gt;1.13.1-beta&lt;/version&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.google.api-client&lt;/groupId&gt;
-			&lt;artifactId&gt;google-api-client&lt;/artifactId&gt;
-			&lt;version&gt;1.13.2-beta&lt;/version&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.google.http-client&lt;/groupId&gt;
-			&lt;artifactId&gt;google-http-client-jackson2&lt;/artifactId&gt;
-			&lt;version&gt;1.13.1-beta&lt;/version&gt;
-		&lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.google.oauth-client&lt;/groupId&gt;
+            &lt;artifactId&gt;google-oauth-client&lt;/artifactId&gt;
+            &lt;version&gt;1.13.1-beta&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.google.api-client&lt;/groupId&gt;
+            &lt;artifactId&gt;google-api-client&lt;/artifactId&gt;
+            &lt;version&gt;1.13.2-beta&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.google.http-client&lt;/groupId&gt;
+            &lt;artifactId&gt;google-http-client-jackson2&lt;/artifactId&gt;
+            &lt;version&gt;1.13.1-beta&lt;/version&gt;
+        &lt;/dependency&gt;
 
 </code></pre>
 
 <p>oauth is de enige compile dependency die aangeduid staat, maar api-client is nodig voor de algemene http transport - zie <a href="http://code.google.com/p/google-api-java-client/">http://code.google.com/p/google-api-java-client/</a>
 Een client call maken kan je dan zo doen:</p>
 
-<pre><code class="language-java">		NetHttpTransport transport = new NetHttpTransport();
+<pre><code class="language-java">        NetHttpTransport transport = new NetHttpTransport();
 
-		// laatste param is voor credentials mee te geven
-		Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
-		try {
-			devices.houses().all().execute().getItems();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        // laatste param is voor credentials mee te geven
+        Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
+        try {
+            devices.houses().all().execute().getItems();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 </code></pre>
 
@@ -332,6 +332,16 @@ Een client call maken kan je dan zo doen:</p>
   hljs.initHighlightingOnLoad();
 </script>
 
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
 
 
 

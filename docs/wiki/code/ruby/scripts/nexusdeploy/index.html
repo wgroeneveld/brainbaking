@@ -179,66 +179,66 @@
 
 <pre><code class="language-ruby">require 'nokogiri' # gem install nokogiri first! 
 require 'net/http'
-require 'zip'	# gem install rubyzip first!
+require 'zip'   # gem install rubyzip first!
 require 'optparse'
 require 'time'
 
 def deploy_artifact(artifact, server, repo)
-	if repo.nil? then
-		repo = &quot;http://server:8888/nexus/service/local/repositories/nuget-prereleases/&quot;
-	else
-		repo = repo.sub(&quot;/local/nuget/&quot;, &quot;/local/repositories/&quot;)
-	end
-	nexus_url = &quot;#{repo}content/#{artifact}/&quot;
-	print &quot;-- Deploy artifact #{artifact} to #{server} from #{repo}&lt;br/&gt;n&quot;
+    if repo.nil? then
+        repo = &quot;http://server:8888/nexus/service/local/repositories/nuget-prereleases/&quot;
+    else
+        repo = repo.sub(&quot;/local/nuget/&quot;, &quot;/local/repositories/&quot;)
+    end
+    nexus_url = &quot;#{repo}content/#{artifact}/&quot;
+    print &quot;-- Deploy artifact #{artifact} to #{server} from #{repo}&lt;br/&gt;n&quot;
 
-	print &quot;fetching artifacts from nexus... &lt;br/&gt;n&lt;br/&gt;t#{nexus_url}&lt;br/&gt;n&quot;
-	response = Net::HTTP.get_response(URI.parse(nexus_url))
-	xml = Nokogiri::XML(response.body).xpath(&quot;//content-item&quot;).map { |entry|
-		hash = Hash.new
-		hash['url'] = entry.css(&quot;resourceURI&quot;).text
-		hash['buildnr'] = entry.css(&quot;text&quot;).text
-		hash['date'] = Time.parse(entry.css(&quot;lastModified&quot;).text)
+    print &quot;fetching artifacts from nexus... &lt;br/&gt;n&lt;br/&gt;t#{nexus_url}&lt;br/&gt;n&quot;
+    response = Net::HTTP.get_response(URI.parse(nexus_url))
+    xml = Nokogiri::XML(response.body).xpath(&quot;//content-item&quot;).map { |entry|
+        hash = Hash.new
+        hash['url'] = entry.css(&quot;resourceURI&quot;).text
+        hash['buildnr'] = entry.css(&quot;text&quot;).text
+        hash['date'] = Time.parse(entry.css(&quot;lastModified&quot;).text)
 
-		hash
-	}.sort { |one,two| two['date'] &lt;=&gt; one['date'] }.first
+        hash
+    }.sort { |one,two| two['date'] &lt;=&gt; one['date'] }.first
 
-	if xml.nil? then
-		throw &quot;Geen XML kunnen parsen uit URL, ligt nexus plat?&quot;
-	end
+    if xml.nil? then
+        throw &quot;Geen XML kunnen parsen uit URL, ligt nexus plat?&quot;
+    end
 
-	artifactContentUri = xml['url']
-	artifactBuildNr = xml['buildnr']
-	artifactDate = xml['date']
+    artifactContentUri = xml['url']
+    artifactBuildNr = xml['buildnr']
+    artifactDate = xml['date']
 
-	print &quot;fetching last artifact (modified date #{artifactDate}) package file from nexus... &lt;br/&gt;n&lt;br/&gt;t#{artifactContentUri}&lt;br/&gt;n&quot;
-	artifact_uri = Nokogiri::XML(Net::HTTP.get_response(URI.parse(artifactContentUri)).body).css(&quot;resourceURI&quot;).text
+    print &quot;fetching last artifact (modified date #{artifactDate}) package file from nexus... &lt;br/&gt;n&lt;br/&gt;t#{artifactContentUri}&lt;br/&gt;n&quot;
+    artifact_uri = Nokogiri::XML(Net::HTTP.get_response(URI.parse(artifactContentUri)).body).css(&quot;resourceURI&quot;).text
 
-	print &quot;fetching artifact (buildnr. #{artifactBuildNr}) itself from nexus... &lt;br/&gt;n&quot;
-	nupkg_file = &quot;#{artifact}-#{artifactBuildNr}.nupkg&quot;
-	open(nupkg_file, &quot;wb&quot;) do |file|
-	    file.write(Net::HTTP.get_response(URI.parse(artifact_uri)).body)
-	end
+    print &quot;fetching artifact (buildnr. #{artifactBuildNr}) itself from nexus... &lt;br/&gt;n&quot;
+    nupkg_file = &quot;#{artifact}-#{artifactBuildNr}.nupkg&quot;
+    open(nupkg_file, &quot;wb&quot;) do |file|
+        file.write(Net::HTTP.get_response(URI.parse(artifact_uri)).body)
+    end
 
-	def unzip_and_copy(zip_file, pattern, server)
-		zippedfile = zip_file.glob(pattern).first
-		unless zippedfile.nil?
-			fname = zippedfile.name.split('/').last
-			print &quot;&lt;br/&gt;tFound file to copy: #{fname}&lt;br/&gt;n&quot;
-			toname = &quot;#{server}&lt;br/&gt;&lt;br/&gt;#{fname}&quot;
-			File.delete(toname) if File.exist?(toname)
-			zippedfile.extract(toname)
-		end
-	end
+    def unzip_and_copy(zip_file, pattern, server)
+        zippedfile = zip_file.glob(pattern).first
+        unless zippedfile.nil?
+            fname = zippedfile.name.split('/').last
+            print &quot;&lt;br/&gt;tFound file to copy: #{fname}&lt;br/&gt;n&quot;
+            toname = &quot;#{server}&lt;br/&gt;&lt;br/&gt;#{fname}&quot;
+            File.delete(toname) if File.exist?(toname)
+            zippedfile.extract(toname)
+        end
+    end
 
-	print &quot;unzipping nuget package...&lt;br/&gt;n&quot;
-	Zip::File.open(nupkg_file) do |zip_file|
-		unzip_and_copy zip_file, 'lib/net35/*.dll', server
-		unzip_and_copy zip_file, 'lib/net40/*.dll', server
-		unzip_and_copy zip_file, 'lib/net45/*.dll', server
-	end
-	File.delete(nupkg_file)
-	print &quot;-- done, extracted to #{server}.&lt;br/&gt;n&quot;
+    print &quot;unzipping nuget package...&lt;br/&gt;n&quot;
+    Zip::File.open(nupkg_file) do |zip_file|
+        unzip_and_copy zip_file, 'lib/net35/*.dll', server
+        unzip_and_copy zip_file, 'lib/net40/*.dll', server
+        unzip_and_copy zip_file, 'lib/net45/*.dll', server
+    end
+    File.delete(nupkg_file)
+    print &quot;-- done, extracted to #{server}.&lt;br/&gt;n&quot;
 end
 
 # ex. usage: 
@@ -246,18 +246,18 @@ end
 options = {}
 ARGV &lt;&lt; '-h' if ARGV.empty?
 OptionParser.new do |opts|
-	opts.banner = &quot;Usage: deploy_artifact.rb [options]&quot;
-	opts.on('-r', '--repo REPOSITORY_URL', 'nexus repository url (bvb http://server:8888/nexus/service/local/repositories/nuget-prereleases/ - with trailing slash)') { |v| options[:repo] = v }
-	opts.on('-m', '--modules NAME', 'module name (comma separated)') { |v| options[:modules] = v }
-	opts.on('-s', '--server NAME', 'server target bin directory') { |v| options[:server] = v }
-	opts.on('-h', '--help', 'prints this help') { |v|
-		puts opts
-		exit
-	}
+    opts.banner = &quot;Usage: deploy_artifact.rb [options]&quot;
+    opts.on('-r', '--repo REPOSITORY_URL', 'nexus repository url (bvb http://server:8888/nexus/service/local/repositories/nuget-prereleases/ - with trailing slash)') { |v| options[:repo] = v }
+    opts.on('-m', '--modules NAME', 'module name (comma separated)') { |v| options[:modules] = v }
+    opts.on('-s', '--server NAME', 'server target bin directory') { |v| options[:server] = v }
+    opts.on('-h', '--help', 'prints this help') { |v|
+        puts opts
+        exit
+    }
 end.parse!
 
 options[:modules].split(&quot;,&quot;).each do |mod|
-	deploy_artifact mod, options[:server], options[:repo]
+    deploy_artifact mod, options[:server], options[:repo]
 end
 
 </code></pre>
@@ -361,6 +361,16 @@ end
   hljs.initHighlightingOnLoad();
 </script>
 
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
 
 
 

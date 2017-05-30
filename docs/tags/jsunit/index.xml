@@ -66,51 +66,51 @@ Voor uitleg over de parameters, zie jsunit website.&lt;/p&gt;
             &amp;lt;test name=&amp;quot;net.jsunit.StandaloneTest&amp;quot;/&amp;gt;
         &amp;lt;/junit&amp;gt;
     &amp;lt;/target&amp;gt;
-	
+    
     &amp;lt;target name######&amp;quot;-compile-jsunit&amp;quot; depends&amp;quot;-jsunit-check&amp;quot; if=&amp;quot;jsunit.tests.present&amp;quot;&amp;gt;
-    	&amp;lt;antcall target=&amp;quot;-jsunit-copy-lib&amp;quot; /&amp;gt;
-    	&amp;lt;antcall target=&amp;quot;-jsunit-copy-common-js&amp;quot; /&amp;gt;
-    	&amp;lt;antcall target=&amp;quot;-jsunit-copy-tests&amp;quot; /&amp;gt;
-    	&amp;lt;antcall target=&amp;quot;-jsunit-copy-js&amp;quot; /&amp;gt;
-    	&amp;lt;antcall target=&amp;quot;-jsunit-build-suite&amp;quot; /&amp;gt;
+        &amp;lt;antcall target=&amp;quot;-jsunit-copy-lib&amp;quot; /&amp;gt;
+        &amp;lt;antcall target=&amp;quot;-jsunit-copy-common-js&amp;quot; /&amp;gt;
+        &amp;lt;antcall target=&amp;quot;-jsunit-copy-tests&amp;quot; /&amp;gt;
+        &amp;lt;antcall target=&amp;quot;-jsunit-copy-js&amp;quot; /&amp;gt;
+        &amp;lt;antcall target=&amp;quot;-jsunit-build-suite&amp;quot; /&amp;gt;
     &amp;lt;/target&amp;gt;
-	
+    
     &amp;lt;target name=&amp;quot;-jsunit-check&amp;quot;&amp;gt;
-    	&amp;lt;available file######&amp;quot;${jsunit.src.tests}&amp;quot; property&amp;quot;jsunit.tests.present&amp;quot;/&amp;gt;
+        &amp;lt;available file######&amp;quot;${jsunit.src.tests}&amp;quot; property&amp;quot;jsunit.tests.present&amp;quot;/&amp;gt;
     &amp;lt;/target&amp;gt;
-	
+    
     &amp;lt;target name=&amp;quot;-jsunit-copy-lib&amp;quot;&amp;gt;
-    	&amp;lt;copy todir=&amp;quot;${jsunit.target}&amp;quot;&amp;gt;
-    		```et
-    	&amp;lt;/copy&amp;gt;
-	&amp;lt;/target&amp;gt;
-	
+        &amp;lt;copy todir=&amp;quot;${jsunit.target}&amp;quot;&amp;gt;
+            ```et
+        &amp;lt;/copy&amp;gt;
+    &amp;lt;/target&amp;gt;
+    
     &amp;lt;target name=&amp;quot;-jsunit-copy-common-js&amp;quot;&amp;gt;
-    	&amp;lt;unjar src######&amp;quot;${jsunit.common.jar}&amp;quot; dest&amp;quot;${jsunit.target.js}/common&amp;quot;&amp;gt;
-    		&amp;lt;patternset&amp;gt;
-		        &amp;lt;include name=&amp;quot;**/*.js&amp;quot; /&amp;gt;
-    			&amp;lt;exclude name=&amp;quot;**/resourcesmini/**&amp;quot;/&amp;gt;
-    		&amp;lt;/patternset&amp;gt;
-    		&amp;lt;mapper type=&amp;quot;flatten&amp;quot;/&amp;gt;
-		&amp;lt;/unjar&amp;gt;
-	&amp;lt;/target&amp;gt;
-	
+        &amp;lt;unjar src######&amp;quot;${jsunit.common.jar}&amp;quot; dest&amp;quot;${jsunit.target.js}/common&amp;quot;&amp;gt;
+            &amp;lt;patternset&amp;gt;
+                &amp;lt;include name=&amp;quot;**/*.js&amp;quot; /&amp;gt;
+                &amp;lt;exclude name=&amp;quot;**/resourcesmini/**&amp;quot;/&amp;gt;
+            &amp;lt;/patternset&amp;gt;
+            &amp;lt;mapper type=&amp;quot;flatten&amp;quot;/&amp;gt;
+        &amp;lt;/unjar&amp;gt;
+    &amp;lt;/target&amp;gt;
+    
     &amp;lt;target name=&amp;quot;-jsunit-copy-tests&amp;quot;&amp;gt;
-    	&amp;lt;copy todir=&amp;quot;${jsunit.target.tests}&amp;quot;&amp;gt;
-    		```et
-    	&amp;lt;/copy&amp;gt;
-	&amp;lt;/target&amp;gt;
-	
+        &amp;lt;copy todir=&amp;quot;${jsunit.target.tests}&amp;quot;&amp;gt;
+            ```et
+        &amp;lt;/copy&amp;gt;
+    &amp;lt;/target&amp;gt;
+    
     &amp;lt;target name=&amp;quot;-jsunit-copy-js&amp;quot;&amp;gt;
-    	&amp;lt;copy todir=&amp;quot;${jsunit.target.js}&amp;quot;&amp;gt;
-    		```et
-    	&amp;lt;/copy&amp;gt;
-	&amp;lt;/target&amp;gt;
-	
+        &amp;lt;copy todir=&amp;quot;${jsunit.target.js}&amp;quot;&amp;gt;
+            ```et
+        &amp;lt;/copy&amp;gt;
+    &amp;lt;/target&amp;gt;
+    
     &amp;lt;target name=&amp;quot;-jsunit-build-suite&amp;quot;&amp;gt;
-    	&amp;lt;taskdef name######&amp;quot;jsUnitSuiteBuilder&amp;quot; classname&amp;quot;be.cegeka.ant.JsUnitSuiteBuilder&amp;quot; classpath=&amp;quot;${jsunit.lib.dir}/java/ant/cegekant.jar&amp;quot; /&amp;gt;
-    	&amp;lt;jsUnitSuiteBuilder testdir######&amp;quot;${jsunit.target.tests}&amp;quot; testsuitefilename&amp;quot;${jsunit.target.tests}/${jsunit.suite}&amp;quot;
-    		suitetemplatefilename=&amp;quot;${jsunit.target.tests}/suite_template.html&amp;quot;/&amp;gt;
+        &amp;lt;taskdef name######&amp;quot;jsUnitSuiteBuilder&amp;quot; classname&amp;quot;be.cegeka.ant.JsUnitSuiteBuilder&amp;quot; classpath=&amp;quot;${jsunit.lib.dir}/java/ant/cegekant.jar&amp;quot; /&amp;gt;
+        &amp;lt;jsUnitSuiteBuilder testdir######&amp;quot;${jsunit.target.tests}&amp;quot; testsuitefilename&amp;quot;${jsunit.target.tests}/${jsunit.suite}&amp;quot;
+            suitetemplatefilename=&amp;quot;${jsunit.target.tests}/suite_template.html&amp;quot;/&amp;gt;
     &amp;lt;/target&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
