@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.brainbaking.com/post/handing-over-enough-when-inspiring/</loc>
+    <lastmod>2017-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/post/teaching-kids-how-to-program/</loc>
     <lastmod>2017-05-25T00:00:00+00:00</lastmod>
   </url>
@@ -1185,7 +1190,13 @@
   
   <url>
     <loc>http://www.brainbaking.com/</loc>
-    <lastmod>2017-05-25T00:00:00+00:00</lastmod>
+    <lastmod>2017-05-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/brain-dump/</loc>
+    <lastmod>2017-05-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1418,6 +1429,12 @@
   </url>
   
   <url>
+    <loc>http://www.brainbaking.com/tags/giving/</loc>
+    <lastmod>2017-05-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/tags/google-api/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -1510,6 +1527,12 @@
   <url>
     <loc>http://www.brainbaking.com/tags/inspiraties/</loc>
     <lastmod>2014-03-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/inspiring/</loc>
+    <lastmod>2017-05-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2114,7 +2137,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/teaching/</loc>
-    <lastmod>2017-05-25T00:00:00+00:00</lastmod>
+    <lastmod>2017-05-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

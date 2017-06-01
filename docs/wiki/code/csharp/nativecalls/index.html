@@ -101,6 +101,12 @@
       
         
           <li>
+          <a title="Tags" href="/tags">Tags</a>
+  	      </li>
+  	    
+      
+        
+          <li>
           <a title="About me" href="/about">About me</a>
   	      </li>
   	    
@@ -186,8 +192,8 @@
 
 struct MyStruct
 {
-    char* id;
-    char* description;
+	char* id;
+	char* description;
 };
 
 DllExImport MyStruct* __stdcall GetSignals();
@@ -198,13 +204,13 @@ DllExImport MyStruct* __stdcall GetSignals();
 
 DllExImport MyStruct* __stdcall GetSignals()
 {
-    static MyStruct a[] =
-    {
-        { &quot;id1&quot;, &quot;desc1&quot; },
-        { &quot;id2&quot;, &quot;desc2&quot; },
-        { &quot;id3&quot;, &quot;desc3&quot; }
-    };
-    return a;
+	static MyStruct a[] =
+	{
+		{ &quot;id1&quot;, &quot;desc1&quot; },
+		{ &quot;id2&quot;, &quot;desc2&quot; },
+		{ &quot;id3&quot;, &quot;desc3&quot; }
+	};
+	return a;
 }
 </code></pre>
 

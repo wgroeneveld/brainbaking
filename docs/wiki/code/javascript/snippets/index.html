@@ -101,6 +101,12 @@
       
         
           <li>
+          <a title="Tags" href="/tags">Tags</a>
+  	      </li>
+  	    
+      
+        
+          <li>
           <a title="About me" href="/about">About me</a>
   	      </li>
   	    
@@ -213,23 +219,23 @@ return (/^true$/i).test(this);
 
 <pre><code class="language-javascript">(function() {
 
-    var slice = Array.prototype.slice;
-    
-    Function.prototype.curry = function() {
-        if(!arguments.length) return this;
-        
-        var curryArgs = slice.call(arguments, 0);
-        var myFunction = this;
-        
-        return function() {
-            var functionArgs = slice.call(arguments, 0);
-            myFunction.apply(this, curryArgs.concat(functionArgs));
-        }
-    };
-    
-    Function.prototype.applyArgs = function(thisObj, args) {
-        return this.apply(thisObj, slice.call(args, 0));
-    };
+	var slice = Array.prototype.slice;
+	
+	Function.prototype.curry = function() {
+		if(!arguments.length) return this;
+		
+		var curryArgs = slice.call(arguments, 0);
+		var myFunction = this;
+		
+		return function() {
+			var functionArgs = slice.call(arguments, 0);
+			myFunction.apply(this, curryArgs.concat(functionArgs));
+		}
+	};
+	
+	Function.prototype.applyArgs = function(thisObj, args) {
+		return this.apply(thisObj, slice.call(args, 0));
+	};
 
 })();
 </code></pre>

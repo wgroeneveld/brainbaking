@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Giving on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/giving/index.xml</link>
+    <description>Recent content in Giving on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <atom:link href="http://www.brainbaking.com/tags/giving/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Are you handing over enough when inspiring someone?</title>
+      <link>http://www.brainbaking.com/post/handing-over-enough-when-inspiring/</link>
+      <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/handing-over-enough-when-inspiring/</guid>
+      <description>&lt;p&gt;The other day, I was having a discussion with a friend and colleague about reaching out to others. He had an idea on combining patterns learned from the enterprise software development world (clean code, TDD, domain driven design, you name it) with patterns learned from the gaming development world (rapid prototyping, getting stuff done, intensive usage of frameworks like Unity). An excellent idea if you ask me. But he was hesitant - others might not be that interested in taking time to write unit tests in their game.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s called an assumption. So I proposed to write small blog posts in &lt;a href=&#34;https://gohugo.io/&#34;&gt;hugo&lt;/a&gt; using Markdown and GitHub pages. Very lightweight, only one command away from generating concise entries. This might take 10 minutes of your time per week.
+So he nodded. &amp;ldquo;Hm-hmm&amp;rdquo;. And we started talking about something else.&lt;/p&gt;
+
+&lt;p&gt;At that point I had two choices:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Interrupt the conversation and push further.&lt;/li&gt;
+&lt;li&gt;Ignore it for now and take a mental note do do something with it later.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Often enough I&amp;rsquo;ve hit a brick wall with option one. It&amp;rsquo;s annoying for the other person to constantly be interrupted and I wouldn&amp;rsquo;t make myself very popular. I do have that nasty habit and I&amp;rsquo;m working on that.
+But let&amp;rsquo;s return to option two for now.&lt;/p&gt;
+
+&lt;p&gt;I forgot about the discussion and moved on.
+But taking mental notes is like async AJAX calls: they do return, but you don&amp;rsquo;t know when. That&amp;rsquo;s when it hit me: why don&amp;rsquo;t I email him some details on how to quickly start a blog? Would that be appropriate or not? In any case he&amp;rsquo;s free to delete the email - no harm done. But if he decides to do something with it, all the better. The step from no blog and no experience in Hugo is smaller when a friendly push in the right direction has been given.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.brainbaking.com/img/sharing.png&#34; alt=&#34;giving&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;One could say &amp;ldquo;what have you to gain? Why do you care?&amp;rdquo; And I don&amp;rsquo;t - I&amp;rsquo;m not a game developer, but I do care - a bit - about the subject. I do care - a lot - about my friend and his personal growth. &lt;a href=&#34;http://www.brainbaking.com/post/teaching-kids-how-to-program/&#34;&gt;Show your work&lt;/a&gt;, remember?
+I love to inspire others on things that I&amp;rsquo;m passionate about myself. And sharing is caring. I would love to receive an email with loose ends like this from someone I talked to.&lt;/p&gt;
+
+&lt;p&gt;So my decision to throw some info over the wall has been made. I&amp;rsquo;m eager to find out if the seed has been planted and nurtured. We&amp;rsquo;ll have to see. I will not be disappointed if it has not - giving and expecting something in return is not giving. I love giving. Altruism must have originated from the egocentric self, some believe. I would not count myself to be part of that group.
+The Japanese encounter a lot of stress if they are given a gift: it has to be matched in value to give something back which has the same value: not less (shame) or more. It&amp;rsquo;s like trying to buy presents for your family at Christmas: a sometimes horrifying experience. You do not know the value of the gift you&amp;rsquo;ll be given and you&amp;rsquo;ll have to guess how much to spend to give.&lt;/p&gt;
+
+&lt;p&gt;Of course, handing out information - which should be free in the first place - is not the same as handing out something physical.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.rd.com/true-stories/inspiring/5-stories-that-celebrate-the-spirit-of-giving/&#34;&gt;True giving&lt;/a&gt; is expecting nothing in return.
+&lt;a href=&#34;https://www.themindfulword.org/2014/joy-of-giving/&#34;&gt;True giving&lt;/a&gt; is wanting nothing in return!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

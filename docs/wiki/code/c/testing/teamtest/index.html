@@ -101,6 +101,12 @@
       
         
           <li>
+          <a title="Tags" href="/tags">Tags</a>
+  	      </li>
+  	    
+      
+        
+          <li>
           <a title="About me" href="/about">About me</a>
   	      </li>
   	    
@@ -200,9 +206,9 @@
 
 <pre><code class="language-c">class MyClass {
 public:
-    MyClass() {};
+	MyClass() {};
 
-    int addUp(int one, int two);
+	int addUp(int one, int two);
 };
 </code></pre>
 
@@ -212,7 +218,7 @@ using namespace std;
 
 int MyClass::addUp(int one, int two)
 {
-    return one + two;
+	return one + two;
 }
 </code></pre>
 
@@ -226,22 +232,22 @@ int MyClass::addUp(int one, int two)
 using namespace System;
 using namespace System::Text;
 using namespace System::Collections::Generic;
-using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
+using namespace	Microsoft::VisualStudio::TestTools::UnitTesting;
 
 namespace unittests
 {
-    [TestClass]
-    public ref class MyClassTest
-    {
+	[TestClass]
+	public ref class MyClassTest
+	{
 
-    public: 
+	public: 
 
-        [TestMethod]
-        void AddOne()
-        {
-            Assert::AreEqual(3, MyClass().addUp(1, 2));
-        };
-    };
+		[TestMethod]
+		void AddOne()
+		{
+			Assert::AreEqual(3, MyClass().addUp(1, 2));
+		};
+	};
 }
 </code></pre>
 
@@ -276,9 +282,9 @@ MyClassTest.obj : error LNK2019: unresolved external symbol &quot;public: int __
 
 class FRIENDCLASS MyClass {
 public:
-    MyClass();
+	MyClass();
 
-    int addUp(int one, int two);
+	int addUp(int one, int two);
 };
 </code></pre>
 

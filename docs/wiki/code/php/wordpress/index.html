@@ -101,6 +101,12 @@
       
         
           <li>
+          <a title="Tags" href="/tags">Tags</a>
+  	      </li>
+  	    
+      
+        
+          <li>
           <a title="About me" href="/about">About me</a>
   	      </li>
   	    
@@ -187,9 +193,9 @@ wp();
 $posts = get_posts( $args );
 
 foreach($posts as $post) {
-    * data specific to wp_posts - http:*codex.wordpress.org/Database_Description#Table:_wp_posts
-    echo &quot;post id &quot; . $post-&gt;ID;
-    echo &quot;title: &quot; . $post-&gt;post_title;
+	* data specific to wp_posts - http:*codex.wordpress.org/Database_Description#Table:_wp_posts
+	echo &quot;post id &quot; . $post-&gt;ID;
+	echo &quot;title: &quot; . $post-&gt;post_title;
 }
 </code></pre>
 

@@ -71,14 +71,14 @@
 &lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/javascript/js_sequential.jpg|&#39;&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function loadScript() {
-    for(var i = 0; i &amp;lt; arguments.length; i++) {
-        var js = document.createElement(&amp;quot;script&amp;quot;);
-        var head = document.getElementsByTagName(&amp;quot;head&amp;quot;)[0];
+	for(var i = 0; i &amp;lt; arguments.length; i++) {
+		var js = document.createElement(&amp;quot;script&amp;quot;);
+		var head = document.getElementsByTagName(&amp;quot;head&amp;quot;)[0];
 
-        js.src = arguments[i];
-        js.type = &amp;quot;text/javascript&amp;quot;;
-        head.appendChild(js);
-    }
+		js.src = arguments[i];
+		js.type = &amp;quot;text/javascript&amp;quot;;
+		head.appendChild(js);
+	}
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -111,15 +111,15 @@ Daarom ook altijd best practices volgen en &lt;em&gt;separation of concerns&lt;/
 &lt;p&gt;Een stap verder zou zijn de library zichzelf bootstrappen, door &lt;code&gt;loadScript()&lt;/code&gt; lichtjes aan te passen:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function loadScript() {
-    for(var i = 0; i &amp;lt; arguments.length; i++) {
-        var js = document.createElement(&amp;quot;script&amp;quot;);
-        var head = document.getElementsByTagName(&amp;quot;head&amp;quot;)[0];
+	for(var i = 0; i &amp;lt; arguments.length; i++) {
+		var js = document.createElement(&amp;quot;script&amp;quot;);
+		var head = document.getElementsByTagName(&amp;quot;head&amp;quot;)[0];
 
-        js.src = arguments[i].src;
-        js.type = &amp;quot;text/javascript&amp;quot;;
-        js.text = arguments[i].callback.toString();
-        head.appendChild(js);
-    }
+		js.src = arguments[i].src;
+		js.type = &amp;quot;text/javascript&amp;quot;;
+		js.text = arguments[i].callback.toString();
+		head.appendChild(js);
+	}
 }
 
 //usage:

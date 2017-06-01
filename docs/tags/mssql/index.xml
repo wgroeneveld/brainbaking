@@ -32,7 +32,7 @@ DECLARE FKCURSOR CURSOR FOR
 select distinct name,object_name(parent_object_id) from sys.objects where object_id in 
 (   select fk.constraint_object_id from sys.foreign_key_columns as fk
     where fk.referenced_object_id = 
-        (select object_id from sys.tables where name = &#39;Reference&#39;)
+    	(select object_id from sys.tables where name = &#39;Reference&#39;)
 )
 
 OPEN FKCURSOR
@@ -43,8 +43,8 @@ INTO @constraint, @table
 WHILE @@FETCH_STATUS = 0
 BEGIN
 
-    SET @cmd = N&#39;ALTER TABLE [dbo].[&#39;+@table+&#39;] DROP CONSTRAINT &#39; +  @constraint
-    EXEC sp_executeSQL @cmd;
+	SET @cmd = N&#39;ALTER TABLE [dbo].[&#39;+@table+&#39;] DROP CONSTRAINT &#39; +  @constraint
+	EXEC sp_executeSQL @cmd;
 
    FETCH NEXT FROM FKCURSOR 
     INTO @constraint, @table
@@ -85,15 +85,15 @@ WHERE
     AND tables.name = &#39;tblhtmltemplate&#39;
     AND all_columns.name = &#39;isdefault&#39;)
 
-    set @query = &#39;alter table tblhtmltemplate drop constraint &#39; + @cname 
+	set @query = &#39;alter table tblhtmltemplate drop constraint &#39; + @cname 
 
 if @cname is not null begin
-    exec sp_executesql @query
+	exec sp_executesql @query
 end
 
 IF  EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name######&#39;tblHtmlTemplate&#39; AND column_name &#39;isDefault&#39;)
 BEGIN
-    alter table tblhtmltemplate drop column isdefault;
+	alter table tblhtmltemplate drop column isdefault;
 END;
 
 &lt;/code&gt;&lt;/pre&gt;
@@ -107,13 +107,13 @@ GO
 
 CREATE FUNCTION ifnull 
 (
-    -- Add the parameters for the function here
-    @value1 datetime, @returnvalue int
+	-- Add the parameters for the function here
+	@value1 datetime, @returnvalue int
 )
 RETURNS datetime
 AS
 BEGIN
-    return isnull(@value1, @returnvalue)
+	return isnull(@value1, @returnvalue)
 
 END
 GO

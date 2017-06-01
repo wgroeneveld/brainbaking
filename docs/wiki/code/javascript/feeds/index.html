@@ -101,6 +101,12 @@
       
         
           <li>
+          <a title="Tags" href="/tags">Tags</a>
+  	      </li>
+  	    
+      
+        
+          <li>
           <a title="About me" href="/about">About me</a>
   	      </li>
   	    
@@ -199,8 +205,8 @@ Klak.Feeds.read(new Klak.Feeds.WikiWouter().feed(), $j(&quot;#wiki&quot;));
 <p>Indien geen custom parsing vereist is, kan je je beperken tot de url en title en de rest overerven via <code>prototype</code>:</p>
 
 <pre><code class="language-javascript">Klak.Feeds.BlogWouter = function() {
-    this.title = 'Jefklak&lt;br/&gt;'s Codex Blog Latest Updates';
-    this.url ###### 'https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;q=http:*www.jefklak.be/feed/'; 
+	this.title = 'Jefklak&lt;br/&gt;'s Codex Blog Latest Updates';
+	this.url ###### 'https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;q=http:*www.jefklak.be/feed/';	
 }
 Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
 </code></pre>

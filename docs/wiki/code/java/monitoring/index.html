@@ -101,6 +101,12 @@
       
         
           <li>
+          <a title="Tags" href="/tags">Tags</a>
+  	      </li>
+  	    
+      
+        
+          <li>
           <a title="About me" href="/about">About me</a>
   	      </li>
   	    
@@ -200,14 +206,14 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
 ##### Spring gebruiken om beans te exposen 
 
 ```java
-    &lt;bean class=&quot;org.springframework.jmx.export.MBeanExporter&quot;&gt;
-        &lt;property name=&quot;beans&quot;&gt;
-            &lt;map&gt;
-                &lt;entry key######&quot;bean:nameBeanName&quot; value-ref=&quot;someBean&quot; /&gt;
-            &lt;/map&gt;
-        &lt;/property&gt;
-        &lt;property name######&quot;registrationBehaviorName&quot; value&quot;REGISTRATION_IGNORE_EXISTING&quot; /&gt;
-    &lt;/bean&gt;
+	&lt;bean class=&quot;org.springframework.jmx.export.MBeanExporter&quot;&gt;
+		&lt;property name=&quot;beans&quot;&gt;
+			&lt;map&gt;
+				&lt;entry key######&quot;bean:nameBeanName&quot; value-ref=&quot;someBean&quot; /&gt;
+			&lt;/map&gt;
+		&lt;/property&gt;
+		&lt;property name######&quot;registrationBehaviorName&quot; value&quot;REGISTRATION_IGNORE_EXISTING&quot; /&gt;
+	&lt;/bean&gt;
 </code></pre>
 
 <h2 id="geheugen-monitoren">Geheugen monitoren</h2>

@@ -31,20 +31,20 @@
 #include &amp;quot;Utility.h&amp;quot;
 
 #ifdef _DLL
-    #define DllExImport __declspec(dllexport)
+	#define DllExImport __declspec(dllexport)
 #else
-    #define DllExImport __declspec(dllimport)
+	#define DllExImport __declspec(dllimport)
 #endif
 
 
 class DllExImport ResourceUtils
 {
 public:
-    static RAIIObject&amp;lt;HICON&amp;gt; getIcon(int resourceId);
-    static RAIIObject&amp;lt;HICON&amp;gt; getIcon(HINSTANCE resourceHandleInstance, int resourceId);
+	static RAIIObject&amp;lt;HICON&amp;gt; getIcon(int resourceId);
+	static RAIIObject&amp;lt;HICON&amp;gt; getIcon(HINSTANCE resourceHandleInstance, int resourceId);
 
 private:
-    ResourceUtils() {}
+	ResourceUtils() {}
 };
 
 #endif

@@ -47,34 +47,34 @@ storyFile = File.open(&#39;svnlog_stories.txt&#39;, &#39;w&#39;)
 csv = CSV.open(&#39;svnlog.csv&#39;, &#39;wb&#39;)
 
 [ &#39;.&#39;, &#39;PFW.Base&#39; ].map { |dir|
-    puts &amp;quot; -- processing dir &#39;#{dir}&#39; ...&amp;quot;
-    rawxml = `cd #{dir} &amp;amp;&amp;amp; svn log --xml --revision #{revFrom}:#{revTo}`
+	puts &amp;quot; -- processing dir &#39;#{dir}&#39; ...&amp;quot;
+	rawxml = `cd #{dir} &amp;amp;&amp;amp; svn log --xml --revision #{revFrom}:#{revTo}`
 
-    xml = Nokogiri::XML(rawxml)
-    xml.xpath(&amp;quot;//logentry&amp;quot;).map { |entry|
-        hash = Hash.new
-        hash[&#39;rev&#39;] = entry.attr(&amp;quot;revision&amp;quot;)
-        hash[&#39;author&#39;] = entry.css(&amp;quot;author&amp;quot;).text
-        hash[&#39;date&#39;] = DateTime.strptime(entry.css(&amp;quot;date&amp;quot;).text, &#39;%Y-%m-%dT%H:%M:%S&#39;)
-        hash[&#39;msg&#39;] = entry.css(&amp;quot;msg&amp;quot;).text.strip.tr(&amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;, &amp;quot;&amp;quot;)
-        hash[&#39;btIssues&#39;] = hash[&#39;msg&#39;].scan(/bt#([0-9]+)/i).flatten.uniq
-        hash[&#39;rmIssues&#39;] = hash[&#39;msg&#39;].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &amp;quot;http://server.cloudapp.net/redmine/issues/#{rm}&amp;quot; }
-        hash[&#39;stories&#39;] = hash[&#39;msg&#39;].scan(/story#(&amp;lt;br/&amp;gt;S+)&amp;lt;br/&amp;gt;s/i).flatten.uniq
+	xml = Nokogiri::XML(rawxml)
+	xml.xpath(&amp;quot;//logentry&amp;quot;).map { |entry|
+		hash = Hash.new
+		hash[&#39;rev&#39;] = entry.attr(&amp;quot;revision&amp;quot;)
+		hash[&#39;author&#39;] = entry.css(&amp;quot;author&amp;quot;).text
+		hash[&#39;date&#39;] = DateTime.strptime(entry.css(&amp;quot;date&amp;quot;).text, &#39;%Y-%m-%dT%H:%M:%S&#39;)
+		hash[&#39;msg&#39;] = entry.css(&amp;quot;msg&amp;quot;).text.strip.tr(&amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;, &amp;quot;&amp;quot;)
+		hash[&#39;btIssues&#39;] = hash[&#39;msg&#39;].scan(/bt#([0-9]+)/i).flatten.uniq
+		hash[&#39;rmIssues&#39;] = hash[&#39;msg&#39;].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &amp;quot;http://server.cloudapp.net/redmine/issues/#{rm}&amp;quot; }
+		hash[&#39;stories&#39;] = hash[&#39;msg&#39;].scan(/story#(&amp;lt;br/&amp;gt;S+)&amp;lt;br/&amp;gt;s/i).flatten.uniq
 
-        hash
-    }
+		hash
+	}
 }.flatten.sort_by { |hash| hash[&#39;date&#39;] }.each do |entry|
-    rm = entry[&#39;rmIssues&#39;].join(&#39;, &#39;)
-    csv &amp;lt;&amp;lt; [ &#39;r&#39; + entry[&#39;rev&#39;], entry[&#39;date&#39;], entry[&#39;author&#39;], entry[&#39;msg&#39;], rm ]
-    entry[&#39;btIssues&#39;].each do |issue|
-        btFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-    end
-    entry[&#39;rmIssues&#39;].each do |issue|
-        rmFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-    end
-    entry[&#39;stories&#39;].each do |issue|
-        storyFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-    end
+	rm = entry[&#39;rmIssues&#39;].join(&#39;, &#39;)
+	csv &amp;lt;&amp;lt; [ &#39;r&#39; + entry[&#39;rev&#39;], entry[&#39;date&#39;], entry[&#39;author&#39;], entry[&#39;msg&#39;], rm ]
+	entry[&#39;btIssues&#39;].each do |issue|
+		btFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
+	entry[&#39;rmIssues&#39;].each do |issue|
+		rmFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
+	entry[&#39;stories&#39;].each do |issue|
+		storyFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
+	end
 end
 
 
