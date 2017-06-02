@@ -3,11 +3,11 @@ title: 'Drawing week 04 - Using the brain'
 date: '2017-05-09'
 subtitle: Drawing at the right side of the brain
 tags:
-- Learning yourself to draw
+- Teaching yourself to draw
 published: true
 ---
 
-Also read [Learning yourself to draw](/post/learning-yourself-to-draw/).
+Also read [Teaching yourself to draw](/post/teaching-yourself-to-draw/).
 
 As I'm slowly getting a tiny bit better at drawing things I see, I still don't have a fundamental basis to rely on. Until I've read "[Drawing at the right side of the brian](http://drawright.com/)" from Betty Edwards. Everything I've read in there came as a complete revelation to me. She explains how you should "look" at things, what is important to look out for when realisticly drawing and how values/tones work. It's an amazing book and I'm very glad I've added it to my toread list (a few years ago, I finally got around to actually reading it.)
 

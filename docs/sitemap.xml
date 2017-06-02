@@ -27,7 +27,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/post/learning-yourself-to-draw/</loc>
+    <loc>http://www.brainbaking.com/post/teaching-yourself-to-draw/</loc>
     <lastmod>2017-02-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -1592,12 +1592,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/learning-yourself-to-draw/</loc>
-    <lastmod>2017-05-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/like-to-like/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -2115,6 +2109,12 @@
   <url>
     <loc>http://www.brainbaking.com/tags/teaching/</loc>
     <lastmod>2017-05-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/teaching-yourself-to-draw/</loc>
+    <lastmod>2017-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

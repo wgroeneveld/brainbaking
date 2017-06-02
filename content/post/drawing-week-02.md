@@ -3,11 +3,11 @@ title: 'Drawing week 02 - Art before breakfast'
 date: '2017-03-07'
 subtitle: So ballpoint pens are useful after all
 tags:
-- Learning yourself to draw
+- Teaching yourself to draw
 published: true
 ---
 
-Also read [Learning yourself to draw](/post/learning-yourself-to-draw/).
+Also read [Teaching yourself to draw](/post/teaching-yourself-to-draw/).
 
 After the illustration course, I'm not ashamed to admit I completely dropped the pencil out of the game. It creates lines easy to remove and that means I'm working on a drawing forever. I need something to commit myself to. That something is called ink. 
 

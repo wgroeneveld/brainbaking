@@ -480,10 +480,20 @@
 	"buffers":
 	[
 		{
+			"file": "themes/beautifulbaking/layouts/partials/footer.html",
 			"settings":
 			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
+				"buffer_size": 7267,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Development/github/productivity-course/talk.md",
+			"settings":
+			{
+				"buffer_size": 8438,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -494,7 +504,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 87.0,
+		"height": 173.0,
 		"last_filter": "",
 		"selected_items":
 		[
@@ -531,7 +541,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 557.0
+		"width": 440.0
 	},
 	"console":
 	{
@@ -551,10 +561,20 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/jefklak/development/brainbaking"
+		"/C/Development/github/brainbaking",
+		"/C/Development/github/brainbaking/static",
+		"/C/Development/github/brainbaking/themes",
+		"/C/Development/github/brainbaking/themes/beautifulbaking",
+		"/C/Development/github/brainbaking/themes/beautifulbaking/layouts",
+		"/C/Development/github/brainbaking/themes/beautifulbaking/layouts/_default"
 	],
 	"file_history":
 	[
+		"/C/Development/github/brainbaking/themes/beautifulbaking/layouts/index.html",
+		"/C/Development/github/brainbaking/config.toml",
+		"/C/Sources/PerformanceInput/ModPerformanceInput.Domain/Occupation/OccupationRepository.cs",
+		"/C/Development/github/productivity-course/talk.md",
+		"/C/Sources/WorkB_Trunk/PFW.WorkB_Base/PFW.WorkB.Database.Console/updateintegrationdev.bat",
 		"/Users/jefklak/development/PratoGame/package.json",
 		"/Users/jefklak/development/PratoGame/index.html",
 		"/Users/jefklak/development/PratoGame/index.js",
@@ -677,16 +697,11 @@
 		"/Users/jefklak/development/hugotest/content/pages/code/csharp/testing.md",
 		"/Users/jefklak/development/hugotest/content/pages/test2.md",
 		"/Users/jefklak/development/hugotest/content/pages/code/csharp/resources.md",
-		"/Users/jefklak/Downloads/pages/code/javascript/inleiding.txt",
-		"/Users/jefklak/development/hugotest/content/pages/test1.md",
-		"/Users/jefklak/development/dokuwiki-to-hugo/README.md",
-		"/Users/jefklak/Downloads/pages/unix/shellconfig.txt",
-		"/Users/jefklak/Downloads/index.html",
-		"/Users/jefklak/Downloads/pages/code.txt"
+		"/Users/jefklak/Downloads/pages/code/javascript/inleiding.txt"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -705,6 +720,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"CreateOccupationQueryOver",
+			"googleAnalytics",
 			"console",
 			"console.log",
 			"cmdlin",
@@ -830,9 +847,7 @@
 			"password_",
 			"mail",
 			"verzend",
-			"retour",
-			"wij",
-			"hoeveelh"
+			"retour"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -855,31 +870,62 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "themes/beautifulbaking/layouts/partials/footer.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 7267,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								6909,
+								6909
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Development/github/productivity-course/talk.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8438,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2800,
+								2800
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3017.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -941,6 +987,10 @@
 		"selected_items":
 		[
 			[
+				"foot",
+				"themes\\beautifulbaking\\layouts\\partials\\footer.html"
+			],
+			[
 				"index.js",
 				"index.js"
 			],
@@ -959,10 +1009,6 @@
 			[
 				"conf",
 				"beautifulbaking/exampleSite/config.toml"
-			],
-			[
-				"foot",
-				"beautifulbaking/layouts/partials/footer.html"
 			],
 			[
 				"main.",

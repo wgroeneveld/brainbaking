@@ -1,9 +1,9 @@
 ---
-title: Learning yourself to draw
+title: Teaching yourself to draw
 date: '2017-02-01'
 subtitle: A year of spilling lots of ink
 tags:
-- Learning yourself to draw
+- Teaching yourself to draw
 published: true
 ---
 
@@ -26,7 +26,7 @@ It should be that simple. I intent to learn to draw within a year, without enrol
 Each learning 'session' will be another blog post. I have a general idea on what I like (ink, watercolor, anything physical, journals) and what I don't like (acrylic paint, anything digital) but since there is so much I don't know, this might change during the course of the coming year. Since Pinterest is so inspiring I'd like to upload as much of the artwork as possible. Sharing via pins makes it easier for people to try it themselves.
 
 Take a look at my Pinterest profile by clicking on the icon on the bottom of the page.
-If you're looking for all blog posts about learning to draw, check out the **'[learning yourself to draw](/tags/learning-yourself-to-draw/)' tag**.
+If you're looking for all blog posts about learning to draw, check out the **'[Teaching yourself to draw](/tags/teaching-yourself-to-draw/)' tag**.
 
 Are you familiar with the frustrated feeling you get while visting an art supply store and staring at all the equipment but having no idea what does what? That's me. So, I figured...
 

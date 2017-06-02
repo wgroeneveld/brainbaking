@@ -3,11 +3,11 @@ title: 'Drawing week 03 - Fineliners and texture'
 date: '2017-03-12'
 subtitle: The fine discovery of Skillshare
 tags:
-- Learning yourself to draw
+- Teaching yourself to draw
 published: true
 ---
 
-Also read [Learning yourself to draw](/post/learning-yourself-to-draw/).
+Also read [Teaching yourself to draw](/post/teaching-yourself-to-draw/).
 
 I wanted to continue my quest of finding my own style within ink and watercolor boundaries. After the amazing discovery of [Skillshare.com](https://www.skillshare.com), I switched to using Artline fineliners. I also have some Steadlers but hardly notice any difference between different felt tip pens if they have the same thickness. I found a short course by Shirish Deshpande on drawing with ink and creating some contrast and texture. The drawings in the videos are amazing and I tried to copy them to my best abilities:
 
