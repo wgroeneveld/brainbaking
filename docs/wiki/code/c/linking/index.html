@@ -101,6 +101,12 @@
       
         
           <li>
+          <a title="Tags" href="/tags">Tags</a>
+  	      </li>
+  	    
+      
+        
+          <li>
           <a title="About me" href="/about">About me</a>
   	      </li>
   	    
@@ -176,20 +182,20 @@
 #include &quot;Utility.h&quot;
 
 #ifdef _DLL
-    #define DllExImport __declspec(dllexport)
+	#define DllExImport __declspec(dllexport)
 #else
-    #define DllExImport __declspec(dllimport)
+	#define DllExImport __declspec(dllimport)
 #endif
 
 
 class DllExImport ResourceUtils
 {
 public:
-    static RAIIObject&lt;HICON&gt; getIcon(int resourceId);
-    static RAIIObject&lt;HICON&gt; getIcon(HINSTANCE resourceHandleInstance, int resourceId);
+	static RAIIObject&lt;HICON&gt; getIcon(int resourceId);
+	static RAIIObject&lt;HICON&gt; getIcon(HINSTANCE resourceHandleInstance, int resourceId);
 
 private:
-    ResourceUtils() {}
+	ResourceUtils() {}
 };
 
 #endif

@@ -314,25 +314,25 @@ end
 &lt;p&gt;Een voorbeeld van een custom http handler:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class HttpHandler(SimpleHTTPRequestHandler):
-    def readStatus(self):
-        return {
-            &amp;quot;Status&amp;quot;: &amp;quot;blabla&amp;quot;,
-            &amp;quot;StartTime&amp;quot;: &amp;quot;&amp;quot;
-        }
+	def readStatus(self):
+		return {
+			&amp;quot;Status&amp;quot;: &amp;quot;blabla&amp;quot;,
+			&amp;quot;StartTime&amp;quot;: &amp;quot;&amp;quot;
+		}
 
-    def do_GET(self):
-        try:
-            print(&#39;serving %s now&#39; % self.path)
-            if &amp;quot;status.json&amp;quot; in self.path:
-                self.send_response(200)
-                self.send_header(&#39;Content-type&#39;, &#39;text/json&#39;)
-                self.end_headers()
-                self.wfile.write(json.dumps(self.readStatus()).encode())
-            else:
-                SimpleHTTPRequestHandler.do_GET(self)
+	def do_GET(self):
+		try:
+			print(&#39;serving %s now&#39; % self.path)
+			if &amp;quot;status.json&amp;quot; in self.path:
+				self.send_response(200)
+				self.send_header(&#39;Content-type&#39;, &#39;text/json&#39;)
+				self.end_headers()
+				self.wfile.write(json.dumps(self.readStatus()).encode())
+			else:
+				SimpleHTTPRequestHandler.do_GET(self)
 
-        except IOError:
-            self.send_error(500, &#39;internal server error in server python source: %s&#39; % self.path)
+		except IOError:
+			self.send_error(500, &#39;internal server error in server python source: %s&#39; % self.path)
 
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -353,14 +353,14 @@ end
 
 &lt;p&gt;functies in functies aanmaken werkt perfect, &amp;ldquo;closed over&amp;rdquo; die lexicale scope, net zoals je zou verwachten zoals bijvoorbeeld in javascript:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;    def readBuildStatus(self):
-        html = urllib.request.urlopen(&amp;quot;http://bla/lastbuildstatus.htm&amp;quot;).read().decode()
-        def extractVersion():
-            versionString = &amp;quot;Version: &amp;quot;
-            versionIndex = html.find(&amp;quot;Version: &amp;quot;)
-            return html[versionIndex + len(versionString) : versionIndex + len(versionString) + len(&amp;quot;YYYY.MM&amp;quot;)]
-        def extractStatus():
-            return &amp;quot;Succeeded&amp;quot; if html.find(&amp;quot;SUCCESS&amp;quot;) != -1 else &amp;quot;Failed&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;	def readBuildStatus(self):
+		html = urllib.request.urlopen(&amp;quot;http://bla/lastbuildstatus.htm&amp;quot;).read().decode()
+		def extractVersion():
+			versionString = &amp;quot;Version: &amp;quot;
+			versionIndex = html.find(&amp;quot;Version: &amp;quot;)
+			return html[versionIndex + len(versionString) : versionIndex + len(versionString) + len(&amp;quot;YYYY.MM&amp;quot;)]
+		def extractStatus():
+			return &amp;quot;Succeeded&amp;quot; if html.find(&amp;quot;SUCCESS&amp;quot;) != -1 else &amp;quot;Failed&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;de twee andere methods lezen de &lt;code&gt;html&lt;/code&gt; variabele uit. Hier hoef je geen &lt;code&gt;self.&lt;/code&gt; prefix te gebruiken, binnen de &lt;code&gt;readBuildStatus()&lt;/code&gt; functie zelf - hierbuiten zijn de closures verdwenen natuurlijk (out of scope).&lt;/p&gt;
@@ -558,17 +558,17 @@ from calculator import Calculator
 
 class TestCalculator(unittest.TestCase):
 
-    def setUp(self):
-        self.calc = Calculator().calculate;
+	def setUp(self):
+		self.calc = Calculator().calculate;
 
-    def test_calculateBasicNumberReturnsNumber(self):
-        self.assertEqual(3, self.calc(&#39;3&#39;))
+	def test_calculateBasicNumberReturnsNumber(self):
+ 		self.assertEqual(3, self.calc(&#39;3&#39;))
 
-    def test_calculateSimpleMultiplicationReturnsResult(self):
-        self.assertEqual(10, self.calc(&#39;5*2&#39;))
+	def test_calculateSimpleMultiplicationReturnsResult(self):
+		self.assertEqual(10, self.calc(&#39;5*2&#39;))
 
-    def test_calculateInvalidStringShouldThrowException(self):
-        self.assertRaises(ValueError, self.calc, (&#39;blabl&#39;))
+	def test_calculateInvalidStringShouldThrowException(self):
+		self.assertRaises(ValueError, self.calc, (&#39;blabl&#39;))
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Zie &lt;a href=&#34;http://docs.python.org/3/library/unittest.html&#34;&gt;http://docs.python.org/3/library/unittest.html&lt;/a&gt;&lt;/p&gt;
@@ -583,7 +583,7 @@ class TestCalculator(unittest.TestCase):
 &lt;p&gt;Dit stuk onder uw py file plakken:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;if __name__ ###### &#39;__main__&#39;:
-    unittest.main()
+	unittest.main()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;En dan &lt;code&gt;python -m unittest -v calculatorTest&lt;/code&gt;. de v flag geeft wat extra output, anders staat er gewoon OK. De test op zich builden in bijvoorbeeld sublime met de main method erin zorgt er ook voor dat deze automatisch uitgevoerd wordt.&lt;/p&gt;

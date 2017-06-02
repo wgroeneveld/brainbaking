@@ -71,14 +71,14 @@ public class Thing extends Model {
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class HorseIntegrationTest extends UnitTest {
 
-    @Test
-    public void canBePersisted() {
-        new Horse(&amp;quot;joske&amp;quot;).save();
-        List&amp;lt;JPABase&amp;gt; horses = Horse.findAll();
-        
-        assertEquals(1, horses.size());
-        assertEquals(&amp;quot;joske&amp;quot;, ((Horse) horses.iterator().next()).name);
-    }
+	@Test
+	public void canBePersisted() {
+		new Horse(&amp;quot;joske&amp;quot;).save();
+		List&amp;lt;JPABase&amp;gt; horses = Horse.findAll();
+		
+		assertEquals(1, horses.size());
+		assertEquals(&amp;quot;joske&amp;quot;, ((Horse) horses.iterator().next()).name);
+	}
 }
 
 &lt;/code&gt;&lt;/pre&gt;

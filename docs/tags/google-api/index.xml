@@ -51,36 +51,36 @@ echo &amp;quot;--- DONE!&amp;quot;```
 ##### maven deps voor de client 
 
 ```xml
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.oauth-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-oauth-client&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.api-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-api-client&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.2-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.http-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-http-client-jackson2&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.google.oauth-client&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;google-oauth-client&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.google.api-client&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;google-api-client&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.13.2-beta&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.google.http-client&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;google-http-client-jackson2&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;oauth is de enige compile dependency die aangeduid staat, maar api-client is nodig voor de algemene http transport - zie &lt;a href=&#34;http://code.google.com/p/google-api-java-client/&#34;&gt;http://code.google.com/p/google-api-java-client/&lt;/a&gt;
 Een client call maken kan je dan zo doen:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;        NetHttpTransport transport = new NetHttpTransport();
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;		NetHttpTransport transport = new NetHttpTransport();
 
-        // laatste param is voor credentials mee te geven
-        Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
-        try {
-            devices.houses().all().execute().getItems();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+		// laatste param is voor credentials mee te geven
+		Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
+		try {
+			devices.houses().all().execute().getItems();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 &lt;/code&gt;&lt;/pre&gt;
 

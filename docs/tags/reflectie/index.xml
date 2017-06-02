@@ -317,52 +317,52 @@ Fixnum.static_method(:+).bind(1).call 2 # output: 3
 
 &lt;h3 id=&#34;oplijsten-van-fields-die-enkel-boolean-en-true-zijn&#34;&gt;Oplijsten van fields die enkel boolean en true zijn&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    public static String listTrueBooleanFields(Object object) {
-        List&amp;lt;String&amp;gt; parts = Lists.newArrayList();
-        try {
-            for (Field field : object.getClass().getDeclaredFields()) {
-                boolean accessibleFlag = field.isAccessible();
-                field.setAccessible(true);
-                if (isTrueBooleanField(object, field)) {
-                    parts.add(makeCamelCaseNatural(field.getName()));
-                }
-                field.setAccessible(accessibleFlag);
-            }
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	public static String listTrueBooleanFields(Object object) {
+		List&amp;lt;String&amp;gt; parts = Lists.newArrayList();
+		try {
+			for (Field field : object.getClass().getDeclaredFields()) {
+				boolean accessibleFlag = field.isAccessible();
+				field.setAccessible(true);
+				if (isTrueBooleanField(object, field)) {
+					parts.add(makeCamelCaseNatural(field.getName()));
+				}
+				field.setAccessible(accessibleFlag);
+			}
+		} catch (Exception ex) {
+			throw new RuntimeException(ex);
+		}
 
-        return StringUtils.join(parts, &amp;quot;, &amp;quot;);
-    }
+		return StringUtils.join(parts, &amp;quot;, &amp;quot;);
+	}
 
-    private static boolean isTrueBooleanField(Object object, Field field) throws IllegalAccessException {
-        return isBoolean(field) &amp;amp;&amp;amp; (Boolean) field.get(object);
-    }
+	private static boolean isTrueBooleanField(Object object, Field field) throws IllegalAccessException {
+		return isBoolean(field) &amp;amp;&amp;amp; (Boolean) field.get(object);
+	}
 
-    private static boolean isBoolean(Field field) {
-        return Boolean.class.isAssignableFrom(field.getType()) || boolean.class.isAssignableFrom(field.getType());
-    }
+	private static boolean isBoolean(Field field) {
+		return Boolean.class.isAssignableFrom(field.getType()) || boolean.class.isAssignableFrom(field.getType());
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;nieuwe-instantie-van-een-klasse-met-default-constructor&#34;&gt;Nieuwe instantie van een klasse met default constructor&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ReflectionUtils {
 
-    public static &amp;lt;T&amp;gt; T createNewInstanceOf(Class&amp;lt;T&amp;gt; classToCreate) {
-        try {
-            Constructor&amp;lt;T&amp;gt; noArgConstructor = classToCreate.getDeclaredConstructor();
+	public static &amp;lt;T&amp;gt; T createNewInstanceOf(Class&amp;lt;T&amp;gt; classToCreate) {
+		try {
+			Constructor&amp;lt;T&amp;gt; noArgConstructor = classToCreate.getDeclaredConstructor();
 
-            boolean accessibleFlag = noArgConstructor.isAccessible();
-            noArgConstructor.setAccessible(true);
+			boolean accessibleFlag = noArgConstructor.isAccessible();
+			noArgConstructor.setAccessible(true);
 
-            T newInstance = noArgConstructor.newInstance();
+			T newInstance = noArgConstructor.newInstance();
 
-            noArgConstructor.setAccessible(accessibleFlag);
-            return newInstance;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+			noArgConstructor.setAccessible(accessibleFlag);
+			return newInstance;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -372,34 +372,34 @@ Fixnum.static_method(:+).bind(1).call 2 # output: 3
 
 &lt;p&gt;Met hulp van spring classes zoals &lt;code&gt;org.springframework.core.io.support.ResourcePatternResolver&lt;/code&gt; en &lt;code&gt;org.springframework.core.type.classreading.MetadataReaderFactory&lt;/code&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;            String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
-                    ClassUtils.convertClassNameToResourcePath(basePackage) + &amp;quot;/&amp;quot; + this.resourcePattern;
-            Resource[] resources = this.resourcePatternResolver.getResources(packageSearchPath);
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;			String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
+					ClassUtils.convertClassNameToResourcePath(basePackage) + &amp;quot;/&amp;quot; + this.resourcePattern;
+			Resource[] resources = this.resourcePatternResolver.getResources(packageSearchPath);
 
-            for (int i = 0; i &amp;lt; resources.length; i++) {
-                Resource resource = resources[i];
-                MetadataReader metadataReader = this.metadataReaderFactory.getMetadataReader(resource);
-                if (isCandidateComponent(metadataReader)) {
-                    Class&amp;lt;?&amp;gt; clazz = null;
-                    try {
-                        clazz = Class.forName(metadataReader.getClassMetadata().getClassName());
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    candidates.add(clazz);
-                }
-            }
+			for (int i = 0; i &amp;lt; resources.length; i++) {
+				Resource resource = resources[i];
+				MetadataReader metadataReader = this.metadataReaderFactory.getMetadataReader(resource);
+				if (isCandidateComponent(metadataReader)) {
+					Class&amp;lt;?&amp;gt; clazz = null;
+					try {
+						clazz = Class.forName(metadataReader.getClassMetadata().getClassName());
+					} catch (ClassNotFoundException e) {
+						e.printStackTrace();
+					}
+					candidates.add(clazz);
+				}
+			}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;CLASSPATH_ALL_URL_PREFIX&lt;/code&gt; is &lt;strong&gt;&lt;code&gt;&amp;quot;classpath*:&amp;quot;&lt;/code&gt;&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;De &lt;code&gt;isCandidateComponent&lt;/code&gt; method accepteert of verwerpt een item afhankelijk van de metadata met hulp van de spring interface &lt;code&gt;org.springframework.core.type.filter.TypeFilter&lt;/code&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;        for (TypeFilter tf : this.includeFilters) {
-            if (tf.match(metadataReader, this.metadataReaderFactory)) {
-                return true;
-            }
-        }
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;		for (TypeFilter tf : this.includeFilters) {
+			if (tf.match(metadataReader, this.metadataReaderFactory)) {
+				return true;
+			}
+		}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Het is ook mogelijk om een &amp;ldquo;default&amp;rdquo; filter te voorzien die alles include: &lt;code&gt;new RegexPatternTypeFilter(Pattern.compile(&amp;quot;.*&amp;quot;));&lt;/code&gt;.&lt;/p&gt;
@@ -408,32 +408,32 @@ Fixnum.static_method(:+).bind(1).call 2 # output: 3
 
 &lt;p&gt;Kan ook met de bovenstaande code (de &lt;code&gt;ClassPathScanningCandidateComponentProvider&lt;/code&gt; dus):&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    public &amp;lt;T&amp;gt; Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getSubTypesOf(Class&amp;lt;T&amp;gt; type) {
-        ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
-        provider.addIncludeFilter(new AssignableTypeFilter(type));
-        Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; candidateSubtypes = provider.findCandidateComponents(getPackageToScan());
-        candidateSubtypes.remove(type);
-        return candidateSubtypes;
-    }
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	public &amp;lt;T&amp;gt; Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getSubTypesOf(Class&amp;lt;T&amp;gt; type) {
+		ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
+		provider.addIncludeFilter(new AssignableTypeFilter(type));
+		Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; candidateSubtypes = provider.findCandidateComponents(getPackageToScan());
+		candidateSubtypes.remove(type);
+		return candidateSubtypes;
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h5 id=&#34;get-only-concrete-subclasses&#34;&gt;get only concrete subclasses&lt;/h5&gt;
 
 &lt;p&gt;In combinatie met bovenstaande method:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    public &amp;lt;T&amp;gt; Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getConcreteSubTypesOf(Class&amp;lt;T&amp;gt; type) {
-        Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; result = new HashSet&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
-        for (Class&amp;lt;?&amp;gt; aClass : getSubTypesOf(type)) {
-            if (isConcrete(aClass)) {
-                result.add(aClass);
-            }
-        }
-        return result;
-    }
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	public &amp;lt;T&amp;gt; Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; getConcreteSubTypesOf(Class&amp;lt;T&amp;gt; type) {
+		Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; result = new HashSet&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
+		for (Class&amp;lt;?&amp;gt; aClass : getSubTypesOf(type)) {
+			if (isConcrete(aClass)) {
+				result.add(aClass);
+			}
+		}
+		return result;
+	}
 
-    private boolean isConcrete(Class&amp;lt;?&amp;gt; aClass) {
-        return !Modifier.isAbstract(aClass.getModifiers());
-    }
+	private boolean isConcrete(Class&amp;lt;?&amp;gt; aClass) {
+		return !Modifier.isAbstract(aClass.getModifiers());
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;zonder-spring&#34;&gt;Zonder Spring&lt;/h4&gt;

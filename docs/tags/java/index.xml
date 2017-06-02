@@ -129,18 +129,18 @@
 
 &lt;p&gt;Headless webdriver testen draaien gaat met &lt;code&gt;HTMLUnit&lt;/code&gt; - vanaf 2.x zit &lt;code&gt;org.openqa.selenium.htmlunit.HtmlUnitDriver&lt;/code&gt; ook in de jar. De JS die daar evaluated wordt is echter &lt;code&gt;Rhino&lt;/code&gt; JS en niet native browser stuff. We kunnen in de plaats &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/&#34;&gt;code/javascript/testing/phantomjs&lt;/a&gt; gebruiken - deze driver zit in een andere jar. In de centrale maven repo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt;
-            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.github.detro.ghostdriver&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;phantomjsdriver&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.0.3&amp;lt;/version&amp;gt;
-            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-        &amp;lt;/dependency&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt;
+			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.github.detro.ghostdriver&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;phantomjsdriver&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.0.3&amp;lt;/version&amp;gt;
+			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+		&amp;lt;/dependency&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/detro/ghostdriver&#34;&gt;ghostdriver&lt;/a&gt; is de ingebouwde koppeling tussen phantomjs en webdriver (selenium server). Dit zit ingebouwd in phantomjs als je deze uitvoert met &lt;code&gt;--webdriver=[port]&lt;/code&gt; - wat de service voor u doet.&lt;/p&gt;
@@ -151,70 +151,70 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public abstract class WebdriverTest extends IntegrationTest {
 
-    private static ChromeDriverService service;
-    private static WebDriver driver;
+	private static ChromeDriverService service;
+	private static WebDriver driver;
 
-    static {
-        Runtime.getRuntime().addShutdownHook(new Thread() {
+	static {
+		Runtime.getRuntime().addShutdownHook(new Thread() {
 
-            @Override
-            public void run() {
-                driver.quit();
-                if (service != null) {
-                    service.stop();
-                }
-            }
-        });
-    }
+			@Override
+			public void run() {
+				driver.quit();
+				if (service != null) {
+					service.stop();
+				}
+			}
+		});
+	}
 
-    private static void startService() {
-        try {
-            service = new ChromeDriverService.Builder()
-                    .usingDriverExecutable(new File(properties().getChromeDriverExecutable()))
-                    .usingAnyFreePort().build();
-            service.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+	private static void startService() {
+		try {
+			service = new ChromeDriverService.Builder()
+					.usingDriverExecutable(new File(properties().getChromeDriverExecutable()))
+					.usingAnyFreePort().build();
+			service.start();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
-    @Before
-    public void gaNaarStartpagina() {
-        getDriver().get(vitrineUrl());
-    }
+	@Before
+	public void gaNaarStartpagina() {
+		getDriver().get(vitrineUrl());
+	}
 
-    protected static WebDriver getDriver() {
-        if (driver ###### null) {
-            driver = startDriver();
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        }
-        return driver;
-    }
+	protected static WebDriver getDriver() {
+		if (driver ###### null) {
+			driver = startDriver();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		}
+		return driver;
+	}
 
-    private static RemoteWebDriver startDriver() {
-        if (properties().isChromeWebdriverNodig()) {
-            startService();
-            return new ChromeDriver(service);
-        }
-        return new PhantomJSDriver(phantomJSCapabilities());
-    }
+	private static RemoteWebDriver startDriver() {
+		if (properties().isChromeWebdriverNodig()) {
+			startService();
+			return new ChromeDriver(service);
+		}
+		return new PhantomJSDriver(phantomJSCapabilities());
+	}
 
-    private static DesiredCapabilities phantomJSCapabilities() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setJavascriptEnabled(true);
-        capabilities.setCapability(&amp;quot;takesScreenshot&amp;quot;, false);
-        capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, properties().getPhantomJSExecutable());
-        capabilities.setCapability(PHANTOMJS_CLI_ARGS, new String[] { &amp;quot;--webdriver-loglevel=DEBUG&amp;quot; });
-        return capabilities;
-    }
+	private static DesiredCapabilities phantomJSCapabilities() {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setJavascriptEnabled(true);
+		capabilities.setCapability(&amp;quot;takesScreenshot&amp;quot;, false);
+		capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, properties().getPhantomJSExecutable());
+		capabilities.setCapability(PHANTOMJS_CLI_ARGS, new String[] { &amp;quot;--webdriver-loglevel=DEBUG&amp;quot; });
+		return capabilities;
+	}
 
-    protected String toString(DateMidnight date) {
-        return date.toString(&amp;quot;dd/MM/yyyy&amp;quot;);
-    }
+	protected String toString(DateMidnight date) {
+		return date.toString(&amp;quot;dd/MM/yyyy&amp;quot;);
+	}
 
-    protected ZoekPage startPagina() {
-        return new ZoekPage(driver);
-    }
+	protected ZoekPage startPagina() {
+		return new ZoekPage(driver);
+	}
 
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -227,26 +227,26 @@
 
 &lt;p&gt;Bij fouten als &amp;ldquo;Protected Mode must be set to the same value&amp;rdquo; (zie &lt;a href=&#34;https://code.google.com/p/selenium/issues/detail?id=1795&#34;&gt;hier&lt;/a&gt; heb je een specifieke switch nodig:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    private static DesiredCapabilities ieCapabilities() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-        return capabilities;
-    }
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	private static DesiredCapabilities ieCapabilities() {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+		return capabilities;
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Voor de rest is de setup gelijkaardig aan die van chrome - het maken van de service&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    private static void startIEService() {
-        ieService = new InternetExplorerDriverService.Builder()
-                .usingDriverExecutable(new File(properties().getIEDriverExecutable()))
-                .usingAnyFreePort()
-                .build();
-        try {
-            ieService.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	private static void startIEService() {
+		ieService = new InternetExplorerDriverService.Builder()
+				.usingDriverExecutable(new File(properties().getIEDriverExecutable()))
+				.usingAnyFreePort()
+				.build();
+		try {
+			ieService.start();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;En het maken van de driver via &lt;code&gt;return new InternetExplorerDriver(ieService, ieCapabilities());&lt;/code&gt;&lt;/p&gt;
@@ -373,14 +373,14 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
 ##### Spring gebruiken om beans te exposen 
 
 ```java
-    &amp;lt;bean class=&amp;quot;org.springframework.jmx.export.MBeanExporter&amp;quot;&amp;gt;
-        &amp;lt;property name=&amp;quot;beans&amp;quot;&amp;gt;
-            &amp;lt;map&amp;gt;
-                &amp;lt;entry key######&amp;quot;bean:nameBeanName&amp;quot; value-ref=&amp;quot;someBean&amp;quot; /&amp;gt;
-            &amp;lt;/map&amp;gt;
-        &amp;lt;/property&amp;gt;
-        &amp;lt;property name######&amp;quot;registrationBehaviorName&amp;quot; value&amp;quot;REGISTRATION_IGNORE_EXISTING&amp;quot; /&amp;gt;
-    &amp;lt;/bean&amp;gt;
+	&amp;lt;bean class=&amp;quot;org.springframework.jmx.export.MBeanExporter&amp;quot;&amp;gt;
+		&amp;lt;property name=&amp;quot;beans&amp;quot;&amp;gt;
+			&amp;lt;map&amp;gt;
+				&amp;lt;entry key######&amp;quot;bean:nameBeanName&amp;quot; value-ref=&amp;quot;someBean&amp;quot; /&amp;gt;
+			&amp;lt;/map&amp;gt;
+		&amp;lt;/property&amp;gt;
+		&amp;lt;property name######&amp;quot;registrationBehaviorName&amp;quot; value&amp;quot;REGISTRATION_IGNORE_EXISTING&amp;quot; /&amp;gt;
+	&amp;lt;/bean&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;geheugen-monitoren&#34;&gt;Geheugen monitoren&lt;/h2&gt;
@@ -745,21 +745,21 @@ mailer.mail(function() {
 
 &lt;h5 id=&#34;maven&#34;&gt;maven&lt;/h5&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;jersey-server&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;jersey-json&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;jersey-servlet&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;jersey-server&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;jersey-json&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;jersey-servlet&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;jersey-json&lt;/code&gt; is niet nodig als je geen &lt;code&gt;JSON&lt;/code&gt; wil gebruiken. &lt;code&gt;jersey-servlet&lt;/code&gt; ook niet als je geen Servlet 2.x gebruikt.&lt;/p&gt;
@@ -768,32 +768,32 @@ mailer.mail(function() {
 
 &lt;p&gt;Dit moet in &lt;code&gt;web.xml&lt;/code&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;servlet&amp;gt;
-        &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt;
-        &amp;lt;servlet-class&amp;gt;com.sun.jersey.spi.container.servlet.ServletContainer&amp;lt;/servlet-class&amp;gt;
-        &amp;lt;init-param&amp;gt;
-            &amp;lt;param-name&amp;gt;com.sun.jersey.config.property.packages&amp;lt;/param-name&amp;gt;
-            &amp;lt;param-value&amp;gt;be.klak.package&amp;lt;/param-value&amp;gt;
-        &amp;lt;/init-param&amp;gt;
-        &amp;lt;init-param&amp;gt;
-            &amp;lt;param-name&amp;gt;com.sun.jersey.api.json.POJOMappingFeature&amp;lt;/param-name&amp;gt;
-            &amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt;
-        &amp;lt;/init-param&amp;gt;       
-        &amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt;
-    &amp;lt;/servlet&amp;gt;
-    &amp;lt;servlet-mapping&amp;gt;
-        &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt;
-        &amp;lt;url-pattern&amp;gt;/rest/*&amp;lt;/url-pattern&amp;gt;
-    &amp;lt;/servlet-mapping&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;	&amp;lt;servlet&amp;gt;
+		&amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt;
+		&amp;lt;servlet-class&amp;gt;com.sun.jersey.spi.container.servlet.ServletContainer&amp;lt;/servlet-class&amp;gt;
+		&amp;lt;init-param&amp;gt;
+			&amp;lt;param-name&amp;gt;com.sun.jersey.config.property.packages&amp;lt;/param-name&amp;gt;
+			&amp;lt;param-value&amp;gt;be.klak.package&amp;lt;/param-value&amp;gt;
+		&amp;lt;/init-param&amp;gt;
+		&amp;lt;init-param&amp;gt;
+			&amp;lt;param-name&amp;gt;com.sun.jersey.api.json.POJOMappingFeature&amp;lt;/param-name&amp;gt;
+			&amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt;
+		&amp;lt;/init-param&amp;gt;		
+		&amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt;
+	&amp;lt;/servlet&amp;gt;
+	&amp;lt;servlet-mapping&amp;gt;
+		&amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt;
+		&amp;lt;url-pattern&amp;gt;/rest/*&amp;lt;/url-pattern&amp;gt;
+	&amp;lt;/servlet-mapping&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;❗ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;!-- prevents classes that use reflection which is not allowed in GAE --&amp;gt;
-        &amp;lt;init-param&amp;gt;
-            &amp;lt;param-name&amp;gt;com.sun.jersey.config.feature.DisableWADL&amp;lt;/param-name&amp;gt;
-            &amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt;
-        &amp;lt;/init-param&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;!-- prevents classes that use reflection which is not allowed in GAE --&amp;gt;
+		&amp;lt;init-param&amp;gt;
+			&amp;lt;param-name&amp;gt;com.sun.jersey.config.feature.DisableWADL&amp;lt;/param-name&amp;gt;
+			&amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt;
+		&amp;lt;/init-param&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Zie &lt;a href=&#34;http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine&#34;&gt;http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine&lt;/a&gt;&lt;/p&gt;
@@ -803,19 +803,19 @@ mailer.mail(function() {
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Path(&amp;quot;/gc&amp;quot;)
 public class Controller {
 
-    @GET
-    @Path(&amp;quot;/path&amp;quot;)
-    @Produces(APPLICATION_JSON)
-    public List&amp;lt;Pojo&amp;gt; getStuff() {
-        return stuffRepo().getAll();
-    }
+	@GET
+	@Path(&amp;quot;/path&amp;quot;)
+	@Produces(APPLICATION_JSON)
+	public List&amp;lt;Pojo&amp;gt; getStuff() {
+		return stuffRepo().getAll();
+	}
 
-    @POST
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Path(&amp;quot;/bla/receive&amp;quot;)
-    public Response received(String data) {
-        return ok().build();
-    }
+	@POST
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Path(&amp;quot;/bla/receive&amp;quot;)
+	public Response received(String data) {
+		return ok().build();
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;waarbij &lt;code&gt;ok()&lt;/code&gt; op &lt;code&gt;javax.ws.rs.Response&lt;/code&gt; zit.&lt;/p&gt;
@@ -824,67 +824,67 @@ public class Controller {
 
 &lt;h5 id=&#34;maven-1&#34;&gt;maven&lt;/h5&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;jersey-client&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;jersey-client&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h5 id=&#34;voorbeeld-1&#34;&gt;voorbeeld&lt;/h5&gt;
 
 &lt;p&gt;&lt;code&gt;com.sun.jersey.api.client.Client&lt;/code&gt; client:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;        Client.create()
-                .resource(getGatecontrolServer() + &amp;quot;/rest/gc/houses/receive&amp;quot;)
-                .type(TEXT_PLAIN)
-                .post(&amp;quot;request body data&amp;quot;);
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;		Client.create()
+				.resource(getGatecontrolServer() + &amp;quot;/rest/gc/houses/receive&amp;quot;)
+				.type(TEXT_PLAIN)
+				.post(&amp;quot;request body data&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;header-control-bvb-caching&#34;&gt;Header control (bvb caching)&lt;/h3&gt;
 
 &lt;p&gt;Kan via een filter factory die je meegeeft aan de init params van de servlet in web.xml:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;init-param&amp;gt;
-            &amp;lt;param-name&amp;gt;com.sun.jersey.spi.container.ResourceFilters&amp;lt;/param-name&amp;gt;
-            &amp;lt;param-value&amp;gt;be.klak.rest.CacheFilterFactory&amp;lt;/param-value&amp;gt;
-        &amp;lt;/init-param&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;init-param&amp;gt;
+			&amp;lt;param-name&amp;gt;com.sun.jersey.spi.container.ResourceFilters&amp;lt;/param-name&amp;gt;
+			&amp;lt;param-value&amp;gt;be.klak.rest.CacheFilterFactory&amp;lt;/param-value&amp;gt;
+		&amp;lt;/init-param&amp;gt;
 &amp;lt;/xml&amp;gt;
 
 ```java
 public class CacheFilterFactory implements ResourceFilterFactory {
 
-    @Override
-    public List&amp;lt;ResourceFilter&amp;gt; create(AbstractMethod am) {
-        if (hasNoCacheAnnotationOnClass(am) != null) {
-            return Collections.&amp;lt;ResourceFilter&amp;gt; singletonList(new CacheResponseFilter());
-        }
+	@Override
+	public List&amp;lt;ResourceFilter&amp;gt; create(AbstractMethod am) {
+		if (hasNoCacheAnnotationOnClass(am) != null) {
+			return Collections.&amp;lt;ResourceFilter&amp;gt; singletonList(new CacheResponseFilter());
+		}
 
-        return new ArrayList&amp;lt;&amp;gt;();
-    }
+		return new ArrayList&amp;lt;&amp;gt;();
+	}
 
-    private CacheControlHeaderNoCache hasNoCacheAnnotationOnClass(AbstractMethod am) {
-        return am.getResource().getResourceClass().getAnnotation(CacheControlHeaderNoCache.class);
-    }
+	private CacheControlHeaderNoCache hasNoCacheAnnotationOnClass(AbstractMethod am) {
+		return am.getResource().getResourceClass().getAnnotation(CacheControlHeaderNoCache.class);
+	}
 
-    private static class CacheResponseFilter implements ResourceFilter, ContainerResponseFilter {
+	private static class CacheResponseFilter implements ResourceFilter, ContainerResponseFilter {
 
-        @Override
-        public ContainerRequestFilter getRequestFilter() {
-            return null;
-        }
+		@Override
+		public ContainerRequestFilter getRequestFilter() {
+			return null;
+		}
 
-        @Override
-        public ContainerResponseFilter getResponseFilter() {
-            return this;
-        }
+		@Override
+		public ContainerResponseFilter getResponseFilter() {
+			return this;
+		}
 
-        @Override
-        public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
-            response.getHttpHeaders().putSingle(HttpHeaders.CACHE_CONTROL, &amp;quot;no-cache&amp;quot;);
-            return response;
-        }
-    }
+		@Override
+		public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
+			response.getHttpHeaders().putSingle(HttpHeaders.CACHE_CONTROL, &amp;quot;no-cache&amp;quot;);
+			return response;
+		}
+	}
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1048,7 +1048,7 @@ Op die manier hebben we geen diamond inheritance nodig! Check it out:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void BlaActionTest extends StrutsTestCase {
   @Test
   public void testDit() {
-     action.doeIets(mappingStub, requestStub, ...) // ipv mock
+	 action.doeIets(mappingStub, requestStub, ...) // ipv mock
   }
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -1178,17 +1178,17 @@ Het komt erop neer dat je nooit meer dan 1x hoeft te static-importen door &lt;co
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component
 public class SomeBean {
 
-    private final SomeBeanToInject someBeanToInject;
+	private final SomeBeanToInject someBeanToInject;
 
-    @Autowired
-    public SomeBean(SomeBeanToInject someBeanToInject) {
-        System.out.println(&amp;quot;creating some bean, got injected: &amp;quot; + someBeanToInject);
-        this.someBeanToInject = someBeanToInject;
-    }
+	@Autowired
+	public SomeBean(SomeBeanToInject someBeanToInject) {
+		System.out.println(&amp;quot;creating some bean, got injected: &amp;quot; + someBeanToInject);
+		this.someBeanToInject = someBeanToInject;
+	}
 
-    public OtherBean createOtherBean() {
-        return new OtherBean();
-    }
+	public OtherBean createOtherBean() {
+		return new OtherBean();
+	}
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1197,13 +1197,13 @@ public class SomeBean {
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Configurable
 public class OtherBean {
 
-    private SomeBeanToDynamicallyInject someBeanToDynamicallyInject;
+	private SomeBeanToDynamicallyInject someBeanToDynamicallyInject;
 
-    @Autowired
-    public void setSomeBeanToDynamicallyInject(SomeBeanToDynamicallyInject someBeanToDynamicallyInject) {
-        System.out.println(&amp;quot;Setting some dynamically injected bean! : &amp;quot; + someBeanToDynamicallyInject);
-        this.someBeanToDynamicallyInject = someBeanToDynamicallyInject;
-    }
+	@Autowired
+	public void setSomeBeanToDynamicallyInject(SomeBeanToDynamicallyInject someBeanToDynamicallyInject) {
+		System.out.println(&amp;quot;Setting some dynamically injected bean! : &amp;quot; + someBeanToDynamicallyInject);
+		this.someBeanToDynamicallyInject = someBeanToDynamicallyInject;
+	}
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1211,7 +1211,7 @@ public class OtherBean {
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component
 public class SomeBeanToDynamicallyInject {
-    public String message = &amp;quot;dynamically injected&amp;quot;;
+	public String message = &amp;quot;dynamically injected&amp;quot;;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1223,13 +1223,13 @@ public class SomeBeanToDynamicallyInject {
 @RunWith(SpringJUnit4ClassRunner.class)
 public class SomeBeanTest {
 
-    @Autowired
-    private SomeBean someBean;
+	@Autowired
+	private SomeBean someBean;
 
-    @Test
-    public void someBeanIsDynamicallyInjected() {
-        Assert.assertTrue(someBean.createOtherBean().isDynamicallyInjected());
-    }
+	@Test
+	public void someBeanIsDynamicallyInjected() {
+		Assert.assertTrue(someBean.createOtherBean().isDynamicallyInjected());
+	}
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1292,31 +1292,31 @@ Omdat, ééns als een class file ingeladen is door de JVM, deze in het geheugen 
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class CollectionUtil {
 
-    public static interface EnkelvoudigeTeller&amp;lt;TellerType&amp;gt; {
-        boolean magMeegeteldWorden(TellerType object);
-    }
+	public static interface EnkelvoudigeTeller&amp;lt;TellerType&amp;gt; {
+		boolean magMeegeteldWorden(TellerType object);
+	}
 
-    public static interface MeervoudigeTeller&amp;lt;TellerType&amp;gt; {
-        int geefAantalMeegeteld(TellerType object);
-    }
+	public static interface MeervoudigeTeller&amp;lt;TellerType&amp;gt; {
+		int geefAantalMeegeteld(TellerType object);
+	}
 
-    public static &amp;lt;TellerType&amp;gt; int tel(Collection&amp;lt;TellerType&amp;gt; objecten, MeervoudigeTeller&amp;lt;TellerType&amp;gt; teller) {
-        int geteld = 0;
-        for (TellerType object : objecten) {
-            geteld += teller.geefAantalMeegeteld(object);
-        }
-        return geteld;
-    }
+	public static &amp;lt;TellerType&amp;gt; int tel(Collection&amp;lt;TellerType&amp;gt; objecten, MeervoudigeTeller&amp;lt;TellerType&amp;gt; teller) {
+		int geteld = 0;
+		for (TellerType object : objecten) {
+			geteld += teller.geefAantalMeegeteld(object);
+		}
+		return geteld;
+	}
 
-    public static &amp;lt;TellerType&amp;gt; int tel(Collection&amp;lt;TellerType&amp;gt; objecten, final EnkelvoudigeTeller&amp;lt;TellerType&amp;gt; teller) {
-        return tel(objecten, new MeervoudigeTeller&amp;lt;TellerType&amp;gt;() {
+	public static &amp;lt;TellerType&amp;gt; int tel(Collection&amp;lt;TellerType&amp;gt; objecten, final EnkelvoudigeTeller&amp;lt;TellerType&amp;gt; teller) {
+		return tel(objecten, new MeervoudigeTeller&amp;lt;TellerType&amp;gt;() {
 
-            @Override
-            public int geefAantalMeegeteld(TellerType object) {
-                return teller.magMeegeteldWorden(object) ? 1 : 0;
-            }
-        });
-    }
+			@Override
+			public int geefAantalMeegeteld(TellerType object) {
+				return teller.magMeegeteldWorden(object) ? 1 : 0;
+			}
+		});
+	}
 }
 &lt;/code&gt;&lt;/pre&gt;
 </description>
@@ -1436,36 +1436,36 @@ echo &amp;quot;--- DONE!&amp;quot;```
 ##### maven deps voor de client 
 
 ```xml
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.oauth-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-oauth-client&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.api-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-api-client&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.2-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.http-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-http-client-jackson2&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.google.oauth-client&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;google-oauth-client&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.google.api-client&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;google-api-client&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.13.2-beta&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.google.http-client&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;google-http-client-jackson2&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;oauth is de enige compile dependency die aangeduid staat, maar api-client is nodig voor de algemene http transport - zie &lt;a href=&#34;http://code.google.com/p/google-api-java-client/&#34;&gt;http://code.google.com/p/google-api-java-client/&lt;/a&gt;
 Een client call maken kan je dan zo doen:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;        NetHttpTransport transport = new NetHttpTransport();
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;		NetHttpTransport transport = new NetHttpTransport();
 
-        // laatste param is voor credentials mee te geven
-        Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
-        try {
-            devices.houses().all().execute().getItems();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+		// laatste param is voor credentials mee te geven
+		Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
+		try {
+			devices.houses().all().execute().getItems();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 &lt;/code&gt;&lt;/pre&gt;
 

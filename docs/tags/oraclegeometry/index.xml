@@ -60,147 +60,147 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Geometry implements Cloneable, Serializable {
 
-    private static final String MDSYS_POINT_TYPE = &amp;quot;MDSYS.SDO_POINT_TYPE&amp;quot;;
-    private static final String MDSYS_ORDINATE_ARR = &amp;quot;MDSYS.SDO_ORDINATE_ARRAY&amp;quot;;
-    private static final String MDSYS_ELEMENT_ARR = &amp;quot;MDSYS.SDO_ELEM_INFO_ARRAY&amp;quot;;
-    private static final String MDSYS_GEOM = &amp;quot;MDSYS.SDO_GEOMETRY&amp;quot;;
+	private static final String MDSYS_POINT_TYPE = &amp;quot;MDSYS.SDO_POINT_TYPE&amp;quot;;
+	private static final String MDSYS_ORDINATE_ARR = &amp;quot;MDSYS.SDO_ORDINATE_ARRAY&amp;quot;;
+	private static final String MDSYS_ELEMENT_ARR = &amp;quot;MDSYS.SDO_ELEM_INFO_ARRAY&amp;quot;;
+	private static final String MDSYS_GEOM = &amp;quot;MDSYS.SDO_GEOMETRY&amp;quot;;
 
-    final static int SRID = 327680;
+	final static int SRID = 327680;
 
-    private final JGeometry geometry;
+	private final JGeometry geometry;
 
-    public Geometry() {
-        this.geometry = null;
-    }
+	public Geometry() {
+		this.geometry = null;
+	}
 
-    public Geometry(String sdoGeometry) throws GeometryConversionException {
-        try {
-            this.geometry = disassembleSdoGeometry(sdoGeometry);
-        } catch (Exception disassemblingEx) {
-            throw new GeometryConversionException(disassemblingEx);
-        }
-    }
+	public Geometry(String sdoGeometry) throws GeometryConversionException {
+		try {
+			this.geometry = disassembleSdoGeometry(sdoGeometry);
+		} catch (Exception disassemblingEx) {
+			throw new GeometryConversionException(disassemblingEx);
+		}
+	}
 
-    public Geometry(JGeometry jGeometry) {
-        this.geometry = jGeometry;
-    }
+	public Geometry(JGeometry jGeometry) {
+		this.geometry = jGeometry;
+	}
 
-    public JGeometry getInnerGeometry() {
-        return geometry;
-    }
+	public JGeometry getInnerGeometry() {
+		return geometry;
+	}
 
-    @Override
-    public String toString() {
-        return toSDOGeometryString();
-    }
+	@Override
+	public String toString() {
+		return toSDOGeometryString();
+	}
 
-    private JGeometry disassembleSdoGeometry(String sdoGeometry) {
-        return new JGeometry(retrieveGeometryType(sdoGeometry), //
-                retrieveSRID(sdoGeometry), //
-                retrievePointTypeX(sdoGeometry), //
-                retrievePointTypeY(sdoGeometry), //
-                retrievePointTypeZ(sdoGeometry), //
-                retrieveElemInfo(sdoGeometry), //
-                retrieveOrdinatesArray(sdoGeometry) //
-        );
-    }
+	private JGeometry disassembleSdoGeometry(String sdoGeometry) {
+		return new JGeometry(retrieveGeometryType(sdoGeometry), //
+				retrieveSRID(sdoGeometry), //
+				retrievePointTypeX(sdoGeometry), //
+				retrievePointTypeY(sdoGeometry), //
+				retrievePointTypeZ(sdoGeometry), //
+				retrieveElemInfo(sdoGeometry), //
+				retrieveOrdinatesArray(sdoGeometry) //
+		);
+	}
 
-    private int retrieveGeometryType(String sdoGeometry) {
-        String geometryType = StringUtils.substringBetween(sdoGeometry, &amp;quot;(&amp;quot;, &amp;quot;,&amp;quot;);
-        return Integer.parseInt(geometryType.trim());
-    }
+	private int retrieveGeometryType(String sdoGeometry) {
+		String geometryType = StringUtils.substringBetween(sdoGeometry, &amp;quot;(&amp;quot;, &amp;quot;,&amp;quot;);
+		return Integer.parseInt(geometryType.trim());
+	}
 
-    private int retrieveSRID(String sdoGeometry) {
-        String sridString = StringUtils.substringBetween(sdoGeometry, &amp;quot;,&amp;quot;, &amp;quot;,&amp;quot;);
-        return Integer.parseInt(sridString.trim());
-    }
+	private int retrieveSRID(String sdoGeometry) {
+		String sridString = StringUtils.substringBetween(sdoGeometry, &amp;quot;,&amp;quot;, &amp;quot;,&amp;quot;);
+		return Integer.parseInt(sridString.trim());
+	}
 
-    private double retrievePointTypeX(String sdoGeometry) {
-        return retrievePointTypes(sdoGeometry)[0];
-    }
+	private double retrievePointTypeX(String sdoGeometry) {
+		return retrievePointTypes(sdoGeometry)[0];
+	}
 
-    private double retrievePointTypeY(String sdoGeometry) {
-        return retrievePointTypes(sdoGeometry)[1];
-    }
+	private double retrievePointTypeY(String sdoGeometry) {
+		return retrievePointTypes(sdoGeometry)[1];
+	}
 
-    private double retrievePointTypeZ(String sdoGeometry) {
-        return retrievePointTypes(sdoGeometry)[2];
-    }
+	private double retrievePointTypeZ(String sdoGeometry) {
+		return retrievePointTypes(sdoGeometry)[2];
+	}
 
-    private double[] retrievePointTypes(String sdoGeometry) {
-        double[] result = new double[3];
-        String pointTypesAsString = StringUtils.substringBetween(sdoGeometry, MDSYS_POINT_TYPE + &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;);
-        if (pointTypesAsString != null) {
-            result = toDoubleArray(pointTypesAsString);
-        }
-        return result;
-    }
+	private double[] retrievePointTypes(String sdoGeometry) {
+		double[] result = new double[3];
+		String pointTypesAsString = StringUtils.substringBetween(sdoGeometry, MDSYS_POINT_TYPE + &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;);
+		if (pointTypesAsString != null) {
+			result = toDoubleArray(pointTypesAsString);
+		}
+		return result;
+	}
 
-    private int[] retrieveElemInfo(String sdoGeometry) {
-        String elemInfoArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ELEMENT_ARR + &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;);
-        return toIntArray(elemInfoArray);
-    }
+	private int[] retrieveElemInfo(String sdoGeometry) {
+		String elemInfoArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ELEMENT_ARR + &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;);
+		return toIntArray(elemInfoArray);
+	}
 
-    private double[] retrieveOrdinatesArray(String sdoGeometry) {
-        String ordinatesArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ORDINATE_ARR + &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;);
-        return toDoubleArray(ordinatesArray);
-    }
+	private double[] retrieveOrdinatesArray(String sdoGeometry) {
+		String ordinatesArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ORDINATE_ARR + &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;);
+		return toDoubleArray(ordinatesArray);
+	}
 
-    public String toSDOGeometryString() {
-        if (geometry ###### null)
-            return null;
+	public String toSDOGeometryString() {
+		if (geometry ###### null)
+			return null;
 
-        StringBuilder string = new StringBuilder(MDSYS_GEOM + &amp;quot;(&amp;quot;);
-        string.append(getGeometryType() + &amp;quot;,&amp;quot;);
-        string.append(geometry.getSRID() + &amp;quot;,&amp;quot;);
+		StringBuilder string = new StringBuilder(MDSYS_GEOM + &amp;quot;(&amp;quot;);
+		string.append(getGeometryType() + &amp;quot;,&amp;quot;);
+		string.append(geometry.getSRID() + &amp;quot;,&amp;quot;);
 
-        if (geometry.getPoint() ###### null) {
-            string.append(&amp;quot;null,&amp;quot;);
-        } else {
-            string.append(MDSYS_POINT_TYPE);
-            string.append(toStringDoubleArray(geometry.getPoint()));
-            string.append(&amp;quot;,&amp;quot;);
-        }
+		if (geometry.getPoint() ###### null) {
+			string.append(&amp;quot;null,&amp;quot;);
+		} else {
+			string.append(MDSYS_POINT_TYPE);
+			string.append(toStringDoubleArray(geometry.getPoint()));
+			string.append(&amp;quot;,&amp;quot;);
+		}
 
-        if (geometry.getElemInfo() ###### null) {
-            string.append(&amp;quot;null,&amp;quot;);
-        } else {
-            string.append(MDSYS_ELEMENT_ARR);
-            string.append(toStringIntArray(geometry.getElemInfo()));
-            string.append(&amp;quot;,&amp;quot;);
-        }
+		if (geometry.getElemInfo() ###### null) {
+			string.append(&amp;quot;null,&amp;quot;);
+		} else {
+			string.append(MDSYS_ELEMENT_ARR);
+			string.append(toStringIntArray(geometry.getElemInfo()));
+			string.append(&amp;quot;,&amp;quot;);
+		}
 
-        if (geometry.getOrdinatesArray() ###### null) {
-            string.append(&amp;quot;null&amp;quot;);
-        } else {
-            string.append(MDSYS_ORDINATE_ARR);
-            string.append(toStringDoubleArray(geometry.getOrdinatesArray()));
-        }
-        return string.append(&amp;quot;)&amp;quot;).toString();
-    }
+		if (geometry.getOrdinatesArray() ###### null) {
+			string.append(&amp;quot;null&amp;quot;);
+		} else {
+			string.append(MDSYS_ORDINATE_ARR);
+			string.append(toStringDoubleArray(geometry.getOrdinatesArray()));
+		}
+		return string.append(&amp;quot;)&amp;quot;).toString();
+	}
 
-    private int getGeometryType() {
-        return (geometry.getDimensions() * 1000 + geometry.getType());
-    }
+	private int getGeometryType() {
+		return (geometry.getDimensions() * 1000 + geometry.getType());
+	}
 
-    @Override
-    public Object clone() {
-        return (geometry ###### null ? new Geometry() : new Geometry((JGeometry) geometry.clone()));
-    }
+	@Override
+	public Object clone() {
+		return (geometry ###### null ? new Geometry() : new Geometry((JGeometry) geometry.clone()));
+	}
 
-    @Override
-    public int hashCode() {
-        return (geometry ###### null ? 0 : geometry.hashCode());
-    }
+	@Override
+	public int hashCode() {
+		return (geometry ###### null ? 0 : geometry.hashCode());
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Geometry))
-            return false;
-        JGeometry other = ((Geometry) obj).geometry;
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Geometry))
+			return false;
+		JGeometry other = ((Geometry) obj).geometry;
 
-        return new EqualsBuilder().append(geometry, other).isEquals();
-    }
+		return new EqualsBuilder().append(geometry, other).isEquals();
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;############= Joins uitvoeren ############=&lt;/p&gt;

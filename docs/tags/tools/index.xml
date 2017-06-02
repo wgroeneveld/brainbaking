@@ -93,10 +93,10 @@
 &lt;p&gt;In &lt;code&gt;JSON&lt;/code&gt; formaat, zie &lt;code&gt;ctrl+shift+P&lt;/code&gt;: &lt;code&gt;Preferences: Settings - User&lt;/code&gt;. Proxy definiëren:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
-    &amp;quot;debug&amp;quot;: true,
+	&amp;quot;debug&amp;quot;: true,
 
-    &amp;quot;http_proxy&amp;quot;: &amp;quot;vdabproxy.vdab.be:8080&amp;quot;,
-    &amp;quot;https_proxy&amp;quot;: &amp;quot;vdabproxy.vdab.be:8080&amp;quot;
+	&amp;quot;http_proxy&amp;quot;: &amp;quot;vdabproxy.vdab.be:8080&amp;quot;,
+	&amp;quot;https_proxy&amp;quot;: &amp;quot;vdabproxy.vdab.be:8080&amp;quot;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -110,9 +110,9 @@ Plugin manueel in plugin dir slepen.&lt;/p&gt;
 &lt;p&gt;CTRL+B (menu build) werkt door een &lt;code&gt;.sublime-build&lt;/code&gt; file met configuratie voor de batch die in (onder windows &lt;code&gt;C:&amp;lt;br/&amp;gt;Users&amp;lt;br/&amp;gt;bkwog&amp;lt;br/&amp;gt;AppData&amp;lt;br/&amp;gt;Roaming&amp;lt;br/&amp;gt;Sublime Text 2&amp;lt;br/&amp;gt;Packages&amp;lt;br/&amp;gt;[lang]&lt;/code&gt;) uw package dir leven. Een voorbeeld van zo&amp;rsquo;n file voor ruby, by default:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;{
-    &amp;quot;cmd&amp;quot;: [&amp;quot;ruby&amp;quot;, &amp;quot;$file&amp;quot;],
-    &amp;quot;file_regex&amp;quot;: &amp;quot;^(...*?):([0-9]*):?([0-9]*)&amp;quot;,
-    &amp;quot;selector&amp;quot;: &amp;quot;source.ruby&amp;quot;
+	&amp;quot;cmd&amp;quot;: [&amp;quot;ruby&amp;quot;, &amp;quot;$file&amp;quot;],
+	&amp;quot;file_regex&amp;quot;: &amp;quot;^(...*?):([0-9]*):?([0-9]*)&amp;quot;,
+	&amp;quot;selector&amp;quot;: &amp;quot;source.ruby&amp;quot;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -137,12 +137,12 @@ Plugin manueel in plugin dir slepen.&lt;/p&gt;
 &lt;p&gt;Voor Jedi moet je uw project file aanmaken (&amp;amp; Project -&amp;gt; Add Folder to Project &amp;hellip; base dir kiezen): ziet er bijvoorbeeld zo uit&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
-    &amp;quot;folders&amp;quot;:
-    [
-        {
-            &amp;quot;path&amp;quot;: &amp;quot;/D/Github/polyglata/01_calculatestring/python&amp;quot;
-        }
-    ]
+	&amp;quot;folders&amp;quot;:
+	[
+		{
+			&amp;quot;path&amp;quot;: &amp;quot;/D/Github/polyglata/01_calculatestring/python&amp;quot;
+		}
+	]
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -294,8 +294,8 @@ General-&amp;gt;Editors-&amp;gt;Text Editors-&amp;gt;Annotations-&amp;gt;Search 
 
 &lt;p&gt;Wanneer een JUnit test in het &lt;em&gt;fail&lt;/em&gt; bericht een stracktrace regel emuleert, kan je door dubbelklikken ook daadwerkelijk naar eender welke java file op een bepaalde lijn springen, zoals het dubbelklikken op de failure trace van een bepaalde lijn zich gedraagd. Voorbeeld:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;        fail(&amp;quot;Found duplicate entries in MESSAGES.PROPERTIES:&amp;lt;br/&amp;gt;r&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;r&amp;lt;br/&amp;gt;n&amp;quot;
-                + &amp;quot; at be..i18n.DuplicateValuesInMessagesPropertiesTest.findDuplicateValuesInMessagesProperties(DuplicateValuesInMessagesPropertiesTest.java:30)&amp;quot;);
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;		fail(&amp;quot;Found duplicate entries in MESSAGES.PROPERTIES:&amp;lt;br/&amp;gt;r&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;r&amp;lt;br/&amp;gt;n&amp;quot;
+				+ &amp;quot;	at be..i18n.DuplicateValuesInMessagesPropertiesTest.findDuplicateValuesInMessagesProperties(DuplicateValuesInMessagesPropertiesTest.java:30)&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Uw eigen regel gaat eerste staan, en eclipse &amp;ldquo;denkt&amp;rdquo; dat het een deel van de stacktrace is. &lt;br/&gt;&lt;br/&gt;
