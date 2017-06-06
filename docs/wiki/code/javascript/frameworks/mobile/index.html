@@ -14,7 +14,7 @@
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -88,28 +88,23 @@
 
       
         
-          <li>
-          <a title="Blog" href="/">Blog</a>
-  	      </li>
-  	    
-      
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
         
-          <li>
-          <a title="Wiki" href="/wiki/">Wiki</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="Tags" href="/tags">Tags</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="About me" href="/about">About me</a>
-  	      </li>
-  	    
       
       </ul>
     </div>
@@ -220,14 +215,14 @@ $.mobile.changePage( newPage );
 
 <p><img style='float: left; width: nolink&|px;' src='/img//code/javascript/frameworks/floempie.jpg'></p>
 
-<pre><code class="language-javascript">	function render() {
-		var activePage = $.mobile.activePage; // this also works: $(&quot;.ui-page-active&quot;)
-		activePage.find('ul[data-role]').listview();
-		activePage.find('div[data-role=&quot;fieldcontain&quot;]').fieldcontain();
-		activePage.find('button[data-role=&quot;button&quot;]').button();
-		activePage.find('input,textarea').textinput();
-		activePage.page();
-	}
+<pre><code class="language-javascript">    function render() {
+        var activePage = $.mobile.activePage; // this also works: $(&quot;.ui-page-active&quot;)
+        activePage.find('ul[data-role]').listview();
+        activePage.find('div[data-role=&quot;fieldcontain&quot;]').fieldcontain();
+        activePage.find('button[data-role=&quot;button&quot;]').button();
+        activePage.find('input,textarea').textinput();
+        activePage.page();
+    }
 </code></pre>
 
 <p>Dit ziet er wel resource intensitief uit en zou op een mobiel device nogal kunnen &ldquo;floepen&rdquo;. ((De bijhorende tekening is Copyright Kabouter Wesley enzo))</p>
@@ -274,24 +269,24 @@ $.mobile.changePage( newPage );
 <p>Het tweede kan door bijvoorbeeld een <code>onclick</code> event te registreren en HTML5 <code>data</code> attributes te gebruiken om IDs bij te houden:</p>
 
 <pre><code class="language-javascript">$(&quot;.vacatureLink&quot;).click(function() {
-	application.setVacatureId($(this).data(&quot;id&quot;));
+    application.setVacatureId($(this).data(&quot;id&quot;));
 });
 </code></pre>
 
 <p>Met bijvoorbeeld een KnockoutJS template:</p>
 
 <pre><code class="language-html">&lt;img style='' src='/img/each vacatures'&gt;
-	&lt;li&gt;
-		&lt;a href######&quot;detail.html&quot; data-id&quot;${id}&quot; class=&quot;vacatureLink&quot;&gt;${vacatureGegevens.aantalJobs} ${gezochtProfiel.functieNaam} ( ${kandidaten.length} kandidaten )&lt;/a&gt;
-	&lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href######&quot;detail.html&quot; data-id&quot;${id}&quot; class=&quot;vacatureLink&quot;&gt;${vacatureGegevens.aantalJobs} ${gezochtProfiel.functieNaam} ( ${kandidaten.length} kandidaten )&lt;/a&gt;
+    &lt;/li&gt;
 &lt;img style='' src='/img//each'&gt;
 </code></pre>
 
 <p>De transitie naar detail.html gebeurt ná onze <code>click</code> event handler. Bij het laden van de page op detail.html doen we &ldquo;iets&rdquo; met onze id:</p>
 
 <pre><code class="language-javascript">$(&quot;#detailsVacature&quot;).live('pagebeforeshow', function() {
-	var id = application.getVacatureId();
-	// doe iets?
+    var id = application.getVacatureId();
+    // doe iets?
 });
 </code></pre>
 
@@ -380,7 +375,7 @@ $.mobile.changePage( newPage );
 
         </ul>
         <p class="credits copyright text-muted">
-    	  Wouter Groeneveld
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  

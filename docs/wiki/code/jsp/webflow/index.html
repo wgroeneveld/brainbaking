@@ -14,7 +14,7 @@
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -88,28 +88,23 @@
 
       
         
-          <li>
-          <a title="Blog" href="/">Blog</a>
-  	      </li>
-  	    
-      
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
         
-          <li>
-          <a title="Wiki" href="/wiki/">Wiki</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="Tags" href="/tags">Tags</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="About me" href="/about">About me</a>
-  	      </li>
-  	    
       
       </ul>
     </div>
@@ -205,107 +200,107 @@ import org.springframework.webflow.execution.View;
 
 public abstract class AbstractWebFlowAjaxAction extends FormAction {
 
-	protected static final String COMMAND_NAME = &quot;commandName&quot;;
-	protected static final String ERRORS_PREFIX = BindingResult.MODEL_KEY_PREFIX;
+    protected static final String COMMAND_NAME = &quot;commandName&quot;;
+    protected static final String ERRORS_PREFIX = BindingResult.MODEL_KEY_PREFIX;
 
-	@Override
-	protected final Object getFormObject(RequestContext context) throws Exception {
-		String formObjectName = getFormObjectName();
-		ScopeType formObjectScope = getFormObjectScope();
-		Object result = null;
-		if (formObjectName != null) {
-			result = formObjectScope.getScope(context).get(formObjectName);
-		}
-		if (result ###### null) {
-			result = ((MutableAttributeMap) context.getFlowScope().get(&quot;viewScope&quot;)).get(&quot;currentFormObject&quot;);
-		}
-		if (result ###### null) {
-			result = context.getFlowScope().get(&quot;currentFormObject&quot;);
-		}
-		if (result ###### null) {
-			result = super.getFormObject(context);
-		}
-		return result;
-	}
+    @Override
+    protected final Object getFormObject(RequestContext context) throws Exception {
+        String formObjectName = getFormObjectName();
+        ScopeType formObjectScope = getFormObjectScope();
+        Object result = null;
+        if (formObjectName != null) {
+            result = formObjectScope.getScope(context).get(formObjectName);
+        }
+        if (result ###### null) {
+            result = ((MutableAttributeMap) context.getFlowScope().get(&quot;viewScope&quot;)).get(&quot;currentFormObject&quot;);
+        }
+        if (result ###### null) {
+            result = context.getFlowScope().get(&quot;currentFormObject&quot;);
+        }
+        if (result ###### null) {
+            result = super.getFormObject(context);
+        }
+        return result;
+    }
 
-	protected final String commandNameFromRequest(RequestContext context) {
-		return context.getRequestParameters().get(COMMAND_NAME);
-	}
+    protected final String commandNameFromRequest(RequestContext context) {
+        return context.getRequestParameters().get(COMMAND_NAME);
+    }
 
-	@Override
-	public Event bindAndValidate(RequestContext context) throws Exception {
-		Event result = super.bindAndValidate(context);
-		initFragmentToRender(context);
-		return result;
-	}
+    @Override
+    public Event bindAndValidate(RequestContext context) throws Exception {
+        Event result = super.bindAndValidate(context);
+        initFragmentToRender(context);
+        return result;
+    }
 
-	@Override
-	public Event bind(RequestContext context) throws Exception {
-		Event result = super.bind(context);
-		this.initFragmentToRender(context);
-		return result;
-	}
+    @Override
+    public Event bind(RequestContext context) throws Exception {
+        Event result = super.bind(context);
+        this.initFragmentToRender(context);
+        return result;
+    }
 
-	@Override
-	protected DataBinder createBinder(RequestContext context, Object formObject) throws Exception {
-		DataBinder binder = new WebDataBinder(formObject, commandNameFromRequest(context));
-		if (getMessageCodesResolver() != null) {
-			binder.setMessageCodesResolver(getMessageCodesResolver());
-		}
-		initBinder(context, binder);
-		registerPropertyEditors(context, binder);
-		return binder;
-	}
+    @Override
+    protected DataBinder createBinder(RequestContext context, Object formObject) throws Exception {
+        DataBinder binder = new WebDataBinder(formObject, commandNameFromRequest(context));
+        if (getMessageCodesResolver() != null) {
+            binder.setMessageCodesResolver(getMessageCodesResolver());
+        }
+        initBinder(context, binder);
+        registerPropertyEditors(context, binder);
+        return binder;
+    }
 
-	@Override
-	protected FormObjectAccessor getFormObjectAccessor(final RequestContext context) {
-		final String commandNameFromRequest = commandNameFromRequest(context);
-		return new FormObjectAccessor(context) {
-			@Override
-			public Errors getFormErrors(String formObjectName, ScopeType scopeType) {
-				return super.getFormErrors(commandNameFromRequest, scopeType);
-			}
+    @Override
+    protected FormObjectAccessor getFormObjectAccessor(final RequestContext context) {
+        final String commandNameFromRequest = commandNameFromRequest(context);
+        return new FormObjectAccessor(context) {
+            @Override
+            public Errors getFormErrors(String formObjectName, ScopeType scopeType) {
+                return super.getFormErrors(commandNameFromRequest, scopeType);
+            }
 
-			@Override
-			public Object getFormObject(String formObjectName, @SuppressWarnings(&quot;rawtypes&quot;) Class formObjectClass, ScopeType scopeType) {
-				return super.getFormObject(commandNameFromRequest, formObjectClass, scopeType);
-			}
+            @Override
+            public Object getFormObject(String formObjectName, @SuppressWarnings(&quot;rawtypes&quot;) Class formObjectClass, ScopeType scopeType) {
+                return super.getFormObject(commandNameFromRequest, formObjectClass, scopeType);
+            }
 
-			@Override
-			public Object getFormObject(String formObjectName, ScopeType scopeType) {
-				return super.getFormObject(commandNameFromRequest, scopeType);
-			}
+            @Override
+            public Object getFormObject(String formObjectName, ScopeType scopeType) {
+                return super.getFormObject(commandNameFromRequest, scopeType);
+            }
 
-			@Override
-			public Object getCurrentFormObject(ScopeType scopeType) {
-				return super.getFormObject(getCurrentFormObjectName(), scopeType);
-			}
+            @Override
+            public Object getCurrentFormObject(ScopeType scopeType) {
+                return super.getFormObject(getCurrentFormObjectName(), scopeType);
+            }
 
-			@Override
-			public Errors getCurrentFormErrors(ScopeType scopeType) {
-				return super.getFormErrors(getCurrentFormObjectName(), scopeType);
-			}
+            @Override
+            public Errors getCurrentFormErrors(ScopeType scopeType) {
+                return super.getFormErrors(getCurrentFormObjectName(), scopeType);
+            }
 
-			@Override
-			public void putFormObject(Object formObject, String formObjectName, ScopeType scopeType) {
-				super.putFormObject(formObject, commandNameFromRequest, scopeType);
-			}
+            @Override
+            public void putFormObject(Object formObject, String formObjectName, ScopeType scopeType) {
+                super.putFormObject(formObject, commandNameFromRequest, scopeType);
+            }
 
-			@Override
-			public void putFormErrors(Errors errors, ScopeType scopeType) {
-				scopeType.getScope(context).put(ERRORS_PREFIX + commandNameFromRequest, errors);
-				setCurrentFormErrors(errors, scopeType);
-			}
+            @Override
+            public void putFormErrors(Errors errors, ScopeType scopeType) {
+                scopeType.getScope(context).put(ERRORS_PREFIX + commandNameFromRequest, errors);
+                setCurrentFormErrors(errors, scopeType);
+            }
 
-		};
-	}
+        };
+    }
 
-	protected void initFragmentToRender(RequestContext context) {
-		context.getFlashScope().put(View.RENDER_FRAGMENTS_ATTRIBUTE, new String[] { fragmentToRender() });
-		context.getFlashScope().put(COMMAND_NAME, commandNameFromRequest(context));
-	}
+    protected void initFragmentToRender(RequestContext context) {
+        context.getFlashScope().put(View.RENDER_FRAGMENTS_ATTRIBUTE, new String[] { fragmentToRender() });
+        context.getFlashScope().put(COMMAND_NAME, commandNameFromRequest(context));
+    }
 
-	protected abstract String fragmentToRender();
+    protected abstract String fragmentToRender();
 
 }
 </code></pre>
@@ -379,7 +374,7 @@ public abstract class AbstractWebFlowAjaxAction extends FormAction {
 
         </ul>
         <p class="credits copyright text-muted">
-    	  Wouter Groeneveld
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  

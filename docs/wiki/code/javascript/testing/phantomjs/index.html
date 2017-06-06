@@ -14,7 +14,7 @@
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -88,28 +88,23 @@
 
       
         
-          <li>
-          <a title="Blog" href="/">Blog</a>
-  	      </li>
-  	    
-      
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
         
-          <li>
-          <a title="Wiki" href="/wiki/">Wiki</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="Tags" href="/tags">Tags</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="About me" href="/about">About me</a>
-  	      </li>
-  	    
       
       </ul>
     </div>
@@ -185,7 +180,7 @@ var page = new WebPage();
 
 // Is nodig omdat anders in uw testpagina console.log() niets doet. 
 page.onConsoleMessage = function(msg) {
-	console.log(&quot;debug from page: &quot; + msg);
+    console.log(&quot;debug from page: &quot; + msg);
 };
 
 /**
@@ -210,37 +205,37 @@ page.onConsoleMessage = function(msg) {
  **/
 page.open('D:&lt;br/&gt;&lt;br/&gt;Profiles&lt;br/&gt;&lt;br/&gt;BVERBEKE&lt;br/&gt;&lt;br/&gt;Desktop&lt;br/&gt;&lt;br/&gt;phantomjs-1.4.1-win32-dynamic&lt;br/&gt;&lt;br/&gt;test.html', function(status) {
 
-	console.log(&quot;should have printed 'yoo' AND 'sup?', include from test.js??&quot;);
-	console.log(&quot;&quot;);
-	
-	var testHTML = page.evaluate(function() {
-		return document.getElementById('test').innerHTML;
-	});
-	
-	var isKnopHidden = page.evaluate(function() {
-		return $(&quot;#hiddenKnop&quot;).is(&quot;:hidden&quot;);
-	});
-	
-	var whichIsFocussed = page.evaluate(function() {
-		return document.activeElement.id;
-	});
-	
-	var divHeightCSSGetterTest = page.evaluate(function() {
-		return $(&quot;#test&quot;).css(&quot;height&quot;);
-	});
-	
-	var jQueryCheckedSelectorTest = page.evaluate(function() {
-		$(&quot;#check&quot;).click();
-		return $(&quot;#check&quot;).is(&quot;:checked&quot;);
-	});	
-	
-	console.log(&quot;got testHTML &quot; + testHTML);
-	console.log(&quot;is knop hidden? (should be) --&gt; &quot; + isKnopHidden);
-	console.log(&quot;which is focussed? (should be textarea) --&gt; #&quot; + whichIsFocussed);
-	console.log(&quot;div height? (should be 100px) --&gt; &quot; + divHeightCSSGetterTest);
-	console.log(&quot;checkbox checked? (should be true) --&gt; &quot; + jQueryCheckedSelectorTest);
-	
-	phantom.exit();
+    console.log(&quot;should have printed 'yoo' AND 'sup?', include from test.js??&quot;);
+    console.log(&quot;&quot;);
+    
+    var testHTML = page.evaluate(function() {
+        return document.getElementById('test').innerHTML;
+    });
+    
+    var isKnopHidden = page.evaluate(function() {
+        return $(&quot;#hiddenKnop&quot;).is(&quot;:hidden&quot;);
+    });
+    
+    var whichIsFocussed = page.evaluate(function() {
+        return document.activeElement.id;
+    });
+    
+    var divHeightCSSGetterTest = page.evaluate(function() {
+        return $(&quot;#test&quot;).css(&quot;height&quot;);
+    });
+    
+    var jQueryCheckedSelectorTest = page.evaluate(function() {
+        $(&quot;#check&quot;).click();
+        return $(&quot;#check&quot;).is(&quot;:checked&quot;);
+    }); 
+    
+    console.log(&quot;got testHTML &quot; + testHTML);
+    console.log(&quot;is knop hidden? (should be) --&gt; &quot; + isKnopHidden);
+    console.log(&quot;which is focussed? (should be textarea) --&gt; #&quot; + whichIsFocussed);
+    console.log(&quot;div height? (should be 100px) --&gt; &quot; + divHeightCSSGetterTest);
+    console.log(&quot;checkbox checked? (should be true) --&gt; &quot; + jQueryCheckedSelectorTest);
+    
+    phantom.exit();
 });
 </code></pre>
 
@@ -254,31 +249,31 @@ page.open('D:&lt;br/&gt;&lt;br/&gt;Profiles&lt;br/&gt;&lt;br/&gt;BVERBEKE&lt;br/
 <pre><code class="language-html">&lt;!DOCTYPE HTML PUBLIC &quot;-*W3C*DTD HTML 4.01 Transitional//EN&quot;
 &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
 
-	&lt;head&gt;
-		&lt;script type######&quot;text/javascript&quot; src&quot;test.js&quot;&gt;&lt;/script&gt;
-		&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&quot;&gt;&lt;/script&gt;
-	&lt;/head&gt;
-	&lt;body&gt;
-	&lt;div id=&quot;test&quot;&gt;bla&lt;/div&gt;
-	&lt;form&gt;
-		&lt;input type######&quot;button&quot; id&quot;knop&quot;&gt;&lt;/input&gt;
-		&lt;textarea id=&quot;text&quot;&gt;eerste val&lt;/textarea&gt;
-		&lt;input type######&quot;button&quot; id&quot;hiddenKnop&quot; value=&quot;hidden&quot;&gt;&lt;/input&gt;
-		&lt;input type######&quot;checkbox&quot; id&quot;check&quot;&gt;&lt;/input&gt;
-	&lt;/form&gt;
-	
-		&lt;script type=&quot;text/javascript&quot;&gt;
-		console.log(&quot;yoo&quot;);
-		document.getElementById(&quot;test&quot;).innerHTML = &quot;nieuwe blabla&quot;;
-		
-		$(&quot;#test&quot;).html(&quot;jquery nieuwe blabla&quot;).css(&quot;height&quot;, &quot;100px&quot;);
-		$(&quot;#hiddenKnop&quot;).hide();
-		$(&quot;#text&quot;).focus();
-		
-		console.log(&quot;is knop hidden? (should be) --&gt; &quot; + $(&quot;#hiddenKnop&quot;).is(&quot;:hidden&quot;));
-		
-		&lt;/script&gt;
-	&lt;/body&gt;
+    &lt;head&gt;
+        &lt;script type######&quot;text/javascript&quot; src&quot;test.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;div id=&quot;test&quot;&gt;bla&lt;/div&gt;
+    &lt;form&gt;
+        &lt;input type######&quot;button&quot; id&quot;knop&quot;&gt;&lt;/input&gt;
+        &lt;textarea id=&quot;text&quot;&gt;eerste val&lt;/textarea&gt;
+        &lt;input type######&quot;button&quot; id&quot;hiddenKnop&quot; value=&quot;hidden&quot;&gt;&lt;/input&gt;
+        &lt;input type######&quot;checkbox&quot; id&quot;check&quot;&gt;&lt;/input&gt;
+    &lt;/form&gt;
+    
+        &lt;script type=&quot;text/javascript&quot;&gt;
+        console.log(&quot;yoo&quot;);
+        document.getElementById(&quot;test&quot;).innerHTML = &quot;nieuwe blabla&quot;;
+        
+        $(&quot;#test&quot;).html(&quot;jquery nieuwe blabla&quot;).css(&quot;height&quot;, &quot;100px&quot;);
+        $(&quot;#hiddenKnop&quot;).hide();
+        $(&quot;#text&quot;).focus();
+        
+        console.log(&quot;is knop hidden? (should be) --&gt; &quot; + $(&quot;#hiddenKnop&quot;).is(&quot;:hidden&quot;));
+        
+        &lt;/script&gt;
+    &lt;/body&gt;
 
 </code></pre>
 
@@ -356,7 +351,7 @@ checkbox checked? (should be true) --&gt; true
 var page = require('webpage').create();
 var func = function() {
     console.log('hello, ' + document.title + '&lt;br/&gt;n');
-	
+    
     for (var i ###### 0, l  arguments.length; i &lt; l; i++) {
         var arg = arguments[i];
         console.log(typeof arg + ':&lt;br/&gt;t' + arg);
@@ -364,8 +359,8 @@ var func = function() {
 };
 page.onLoadFinished = function() {
     evaluate(page, func, true, 0, function() {
-		return require('fs').read
-	});
+        return require('fs').read
+    });
     phantom.exit(0);
 };
 page.open('http://www.google.com/');
@@ -392,17 +387,17 @@ page.onLoadFinished = function() {
 <p>Werkt maar niet in <code>async: false</code> mode. Zie <a href="http://code.google.com/p/phantomjs/issues/detail?id######463&amp;thanks463&amp;ts=1332850556">http://code.google.com/p/phantomjs/issues/detail?id######463&amp;thanks463&amp;ts=1332850556</a></p>
 
 <pre><code class="language-javascript">page.evaluate(function() {
-	console.log(&quot;ajaxying&quot;);
+    console.log(&quot;ajaxying&quot;);
   jQuery.ajax({
-	async: false,
-	dataType: 'html',
-	url: 'test.html',
-	success: function(data) {
-		console.log(&quot;--success!!&quot;);
-		console.log(data);
-		console.log(&quot;--&quot;);
-	}
-  });		
+    async: false,
+    dataType: 'html',
+    url: 'test.html',
+    success: function(data) {
+        console.log(&quot;--success!!&quot;);
+        console.log(data);
+        console.log(&quot;--&quot;);
+    }
+  });       
 });
 </code></pre>
 
@@ -542,7 +537,7 @@ page.onLoadFinished = function() {
 
         </ul>
         <p class="credits copyright text-muted">
-    	  Wouter Groeneveld
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  

@@ -14,7 +14,7 @@
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -88,28 +88,23 @@
 
       
         
-          <li>
-          <a title="Blog" href="/">Blog</a>
-  	      </li>
-  	    
-      
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
         
-          <li>
-          <a title="Wiki" href="/wiki/">Wiki</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="Tags" href="/tags">Tags</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="About me" href="/about">About me</a>
-  	      </li>
-  	    
       
       </ul>
     </div>
@@ -199,10 +194,10 @@
 <p>In <code>JSON</code> formaat, zie <code>ctrl+shift+P</code>: <code>Preferences: Settings - User</code>. Proxy definiëren:</p>
 
 <pre><code class="language-javascript">{
-	&quot;debug&quot;: true,
+    &quot;debug&quot;: true,
 
-	&quot;http_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;,
-	&quot;https_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;
+    &quot;http_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;,
+    &quot;https_proxy&quot;: &quot;vdabproxy.vdab.be:8080&quot;
 }
 </code></pre>
 
@@ -216,9 +211,9 @@ Plugin manueel in plugin dir slepen.</p>
 <p>CTRL+B (menu build) werkt door een <code>.sublime-build</code> file met configuratie voor de batch die in (onder windows <code>C:&lt;br/&gt;Users&lt;br/&gt;bkwog&lt;br/&gt;AppData&lt;br/&gt;Roaming&lt;br/&gt;Sublime Text 2&lt;br/&gt;Packages&lt;br/&gt;[lang]</code>) uw package dir leven. Een voorbeeld van zo&rsquo;n file voor ruby, by default:</p>
 
 <pre><code>{
-	&quot;cmd&quot;: [&quot;ruby&quot;, &quot;$file&quot;],
-	&quot;file_regex&quot;: &quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
-	&quot;selector&quot;: &quot;source.ruby&quot;
+    &quot;cmd&quot;: [&quot;ruby&quot;, &quot;$file&quot;],
+    &quot;file_regex&quot;: &quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
+    &quot;selector&quot;: &quot;source.ruby&quot;
 }
 </code></pre>
 
@@ -243,12 +238,12 @@ Plugin manueel in plugin dir slepen.</p>
 <p>Voor Jedi moet je uw project file aanmaken (&amp; Project -&gt; Add Folder to Project &hellip; base dir kiezen): ziet er bijvoorbeeld zo uit</p>
 
 <pre><code class="language-javascript">{
-	&quot;folders&quot;:
-	[
-		{
-			&quot;path&quot;: &quot;/D/Github/polyglata/01_calculatestring/python&quot;
-		}
-	]
+    &quot;folders&quot;:
+    [
+        {
+            &quot;path&quot;: &quot;/D/Github/polyglata/01_calculatestring/python&quot;
+        }
+    ]
 }
 </code></pre>
 
@@ -327,7 +322,7 @@ Plugin manueel in plugin dir slepen.</p>
 
         </ul>
         <p class="credits copyright text-muted">
-    	  Wouter Groeneveld
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  

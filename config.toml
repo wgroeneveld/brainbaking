@@ -68,3 +68,10 @@ tag = "tags"
     parent = "Menu"
     url = "/talks"
     weight = 4
+
+[[menu.main]]
+    name = "Books"
+    pre = "<i class='fa fa-book' aria-hidden='true'></i>"
+    parent = "Menu"
+    url = "/books"
+    weight = 5

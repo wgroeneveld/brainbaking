@@ -277,11 +277,11 @@ img {
 .navbar-custom .nav .navlinks-container .navlinks-children a {
   display: block;
   padding: 10px;
+  font-weight: bold;
   padding-left: 30px;
   background: #e6fac2;
   text-decoration: none !important;
   border-width: 0 1px 1px 1px;
-  font-weight: normal;
 }
 @media only screen and (max-width: 767px) {
   .navbar-custom .nav .navlinks-container.show-children {
@@ -292,10 +292,9 @@ img {
   }
 }
 @media only screen and (min-width: 768px) {
-
   .navbar-custom .nav .navlinks-container {
     text-align: center;
-    min-width: 120px !important;
+    min-width: 150px !important;
   }  
   .navbar-custom .nav .navlinks-container:hover {
     background: #c3f070;
@@ -307,7 +306,8 @@ img {
     position: absolute;
   }
   .navbar-custom .nav .navlinks-container .navlinks-children a {
-    padding-left: 10px;
+    padding-left: 20px;
+    text-align: left;
     border: 1px solid #c3f070;
     border-width: 0 1px 1px;
   }
@@ -645,42 +645,22 @@ footer .theme-by {
 
 /* --- Pager --- */
 
-.pager li a {
+.blog-pagination li {
+  list-style: none;
+}
+
+.blog-pagination .blog-pagination-date {
+  font-size: 10px;
+  color: grey;
+}
+
+.blog-pagination {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
   font-size: 14px;
-  font-weight: 800;
   letter-spacing: 1px;
-  padding: 10px 5px;
-  background: #f7fdec;
-  border-radius: 0;
-  color: #404040;
-}
-@media only screen and (min-width: 768px) {
-  .pager li a {
-    padding: 15px 25px;
-  }
-}
-.pager li a:hover,
-.pager li a:focus {
-  color: #FFF;
-  background-color: #f7fdec;
-  border: 1px solid #ae8b0f;
+  font-weight: bold;
 }
 
-.pager {
-  margin: 10px 0 0;
-}
-
-.pager.blog-pager {
-  margin-top: 0;
-}
-
-@media only screen and (min-width: 768px) {
-  .pager.blog-pager  {
-    margin-top: 10px;
-  }
-}
 
 /* --- Tables --- */
 
@@ -759,3 +739,19 @@ td.gutter {
 #social-share-section {
   margin-bottom: 30px;
 }
+
+/* --- goodreads widget styles --- */
+.gr_grid_container {
+}
+
+.gr_grid_book_container {
+  /* customize book cover container div here */
+  float: left;
+  width: 98px;
+  height: 160px;
+  padding: 0px 0px;
+  border: 1px solid black;
+  margin: 5px;
+  overflow: hidden;
+}
+

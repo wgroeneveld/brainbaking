@@ -14,7 +14,7 @@
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -88,28 +88,23 @@
 
       
         
-          <li>
-          <a title="Blog" href="/">Blog</a>
-  	      </li>
-  	    
-      
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
         
-          <li>
-          <a title="Wiki" href="/wiki/">Wiki</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="Tags" href="/tags">Tags</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="About me" href="/about">About me</a>
-  	      </li>
-  	    
       
       </ul>
     </div>
@@ -271,25 +266,25 @@ end
 <p>Een voorbeeld van een custom http handler:</p>
 
 <pre><code class="language-python">class HttpHandler(SimpleHTTPRequestHandler):
-	def readStatus(self):
-		return {
-			&quot;Status&quot;: &quot;blabla&quot;,
-			&quot;StartTime&quot;: &quot;&quot;
-		}
+    def readStatus(self):
+        return {
+            &quot;Status&quot;: &quot;blabla&quot;,
+            &quot;StartTime&quot;: &quot;&quot;
+        }
 
-	def do_GET(self):
-		try:
-			print('serving %s now' % self.path)
-			if &quot;status.json&quot; in self.path:
-				self.send_response(200)
-				self.send_header('Content-type', 'text/json')
-				self.end_headers()
-				self.wfile.write(json.dumps(self.readStatus()).encode())
-			else:
-				SimpleHTTPRequestHandler.do_GET(self)
+    def do_GET(self):
+        try:
+            print('serving %s now' % self.path)
+            if &quot;status.json&quot; in self.path:
+                self.send_response(200)
+                self.send_header('Content-type', 'text/json')
+                self.end_headers()
+                self.wfile.write(json.dumps(self.readStatus()).encode())
+            else:
+                SimpleHTTPRequestHandler.do_GET(self)
 
-		except IOError:
-			self.send_error(500, 'internal server error in server python source: %s' % self.path)
+        except IOError:
+            self.send_error(500, 'internal server error in server python source: %s' % self.path)
 
 </code></pre>
 
@@ -310,14 +305,14 @@ end
 
 <p>functies in functies aanmaken werkt perfect, &ldquo;closed over&rdquo; die lexicale scope, net zoals je zou verwachten zoals bijvoorbeeld in javascript:</p>
 
-<pre><code class="language-python">	def readBuildStatus(self):
-		html = urllib.request.urlopen(&quot;http://bla/lastbuildstatus.htm&quot;).read().decode()
-		def extractVersion():
-			versionString = &quot;Version: &quot;
-			versionIndex = html.find(&quot;Version: &quot;)
-			return html[versionIndex + len(versionString) : versionIndex + len(versionString) + len(&quot;YYYY.MM&quot;)]
-		def extractStatus():
-			return &quot;Succeeded&quot; if html.find(&quot;SUCCESS&quot;) != -1 else &quot;Failed&quot;
+<pre><code class="language-python">    def readBuildStatus(self):
+        html = urllib.request.urlopen(&quot;http://bla/lastbuildstatus.htm&quot;).read().decode()
+        def extractVersion():
+            versionString = &quot;Version: &quot;
+            versionIndex = html.find(&quot;Version: &quot;)
+            return html[versionIndex + len(versionString) : versionIndex + len(versionString) + len(&quot;YYYY.MM&quot;)]
+        def extractStatus():
+            return &quot;Succeeded&quot; if html.find(&quot;SUCCESS&quot;) != -1 else &quot;Failed&quot;
 </code></pre>
 
 <p>de twee andere methods lezen de <code>html</code> variabele uit. Hier hoef je geen <code>self.</code> prefix te gebruiken, binnen de <code>readBuildStatus()</code> functie zelf - hierbuiten zijn de closures verdwenen natuurlijk (out of scope).</p>
@@ -391,7 +386,7 @@ end
 
         </ul>
         <p class="credits copyright text-muted">
-    	  Wouter Groeneveld
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  

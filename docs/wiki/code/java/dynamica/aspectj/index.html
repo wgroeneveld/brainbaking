@@ -14,7 +14,7 @@
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -88,28 +88,23 @@
 
       
         
-          <li>
-          <a title="Blog" href="/">Blog</a>
-  	      </li>
-  	    
-      
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
         
-          <li>
-          <a title="Wiki" href="/wiki/">Wiki</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="Tags" href="/tags">Tags</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="About me" href="/about">About me</a>
-  	      </li>
-  	    
       
       </ul>
     </div>
@@ -221,17 +216,17 @@
 <pre><code class="language-java">@Component
 public class SomeBean {
 
-	private final SomeBeanToInject someBeanToInject;
+    private final SomeBeanToInject someBeanToInject;
 
-	@Autowired
-	public SomeBean(SomeBeanToInject someBeanToInject) {
-		System.out.println(&quot;creating some bean, got injected: &quot; + someBeanToInject);
-		this.someBeanToInject = someBeanToInject;
-	}
+    @Autowired
+    public SomeBean(SomeBeanToInject someBeanToInject) {
+        System.out.println(&quot;creating some bean, got injected: &quot; + someBeanToInject);
+        this.someBeanToInject = someBeanToInject;
+    }
 
-	public OtherBean createOtherBean() {
-		return new OtherBean();
-	}
+    public OtherBean createOtherBean() {
+        return new OtherBean();
+    }
 }
 </code></pre>
 
@@ -240,13 +235,13 @@ public class SomeBean {
 <pre><code class="language-java">@Configurable
 public class OtherBean {
 
-	private SomeBeanToDynamicallyInject someBeanToDynamicallyInject;
+    private SomeBeanToDynamicallyInject someBeanToDynamicallyInject;
 
-	@Autowired
-	public void setSomeBeanToDynamicallyInject(SomeBeanToDynamicallyInject someBeanToDynamicallyInject) {
-		System.out.println(&quot;Setting some dynamically injected bean! : &quot; + someBeanToDynamicallyInject);
-		this.someBeanToDynamicallyInject = someBeanToDynamicallyInject;
-	}
+    @Autowired
+    public void setSomeBeanToDynamicallyInject(SomeBeanToDynamicallyInject someBeanToDynamicallyInject) {
+        System.out.println(&quot;Setting some dynamically injected bean! : &quot; + someBeanToDynamicallyInject);
+        this.someBeanToDynamicallyInject = someBeanToDynamicallyInject;
+    }
 }
 </code></pre>
 
@@ -254,7 +249,7 @@ public class OtherBean {
 
 <pre><code class="language-java">@Component
 public class SomeBeanToDynamicallyInject {
-	public String message = &quot;dynamically injected&quot;;
+    public String message = &quot;dynamically injected&quot;;
 }
 </code></pre>
 
@@ -266,13 +261,13 @@ public class SomeBeanToDynamicallyInject {
 @RunWith(SpringJUnit4ClassRunner.class)
 public class SomeBeanTest {
 
-	@Autowired
-	private SomeBean someBean;
+    @Autowired
+    private SomeBean someBean;
 
-	@Test
-	public void someBeanIsDynamicallyInjected() {
-		Assert.assertTrue(someBean.createOtherBean().isDynamicallyInjected());
-	}
+    @Test
+    public void someBeanIsDynamicallyInjected() {
+        Assert.assertTrue(someBean.createOtherBean().isDynamicallyInjected());
+    }
 }
 </code></pre>
 
@@ -384,7 +379,7 @@ Omdat, ééns als een class file ingeladen is door de JVM, deze in het geheugen 
 
         </ul>
         <p class="credits copyright text-muted">
-    	  Wouter Groeneveld
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  

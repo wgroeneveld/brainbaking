@@ -41,8 +41,8 @@
 
 struct MyStruct
 {
-	char* id;
-	char* description;
+    char* id;
+    char* description;
 };
 
 DllExImport MyStruct* __stdcall GetSignals();
@@ -53,13 +53,13 @@ DllExImport MyStruct* __stdcall GetSignals();
 
 DllExImport MyStruct* __stdcall GetSignals()
 {
-	static MyStruct a[] =
-	{
-		{ &amp;quot;id1&amp;quot;, &amp;quot;desc1&amp;quot; },
-		{ &amp;quot;id2&amp;quot;, &amp;quot;desc2&amp;quot; },
-		{ &amp;quot;id3&amp;quot;, &amp;quot;desc3&amp;quot; }
-	};
-	return a;
+    static MyStruct a[] =
+    {
+        { &amp;quot;id1&amp;quot;, &amp;quot;desc1&amp;quot; },
+        { &amp;quot;id2&amp;quot;, &amp;quot;desc2&amp;quot; },
+        { &amp;quot;id3&amp;quot;, &amp;quot;desc3&amp;quot; }
+    };
+    return a;
 }
 &lt;/code&gt;&lt;/pre&gt;
 

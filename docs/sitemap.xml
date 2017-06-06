@@ -1052,16 +1052,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/books/wanted/</loc>
-    <lastmod>2013-03-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/wiki/books/wantedfeed/</loc>
-    <lastmod>2013-03-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/wiki/code/web/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
@@ -1101,7 +1091,11 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/page/about/</loc>
+    <loc>http://www.brainbaking.com/books/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/talks/</loc>
   </url>
   
   <url>
@@ -2288,18 +2282,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/visualstudio/</loc>
     <lastmod>2014-06-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/wanted/</loc>
-    <lastmod>2013-03-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/wantedfeed/</loc>
-    <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -14,7 +14,7 @@
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -88,28 +88,23 @@
 
       
         
-          <li>
-          <a title="Blog" href="/">Blog</a>
-  	      </li>
-  	    
-      
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
         
-          <li>
-          <a title="Wiki" href="/wiki/">Wiki</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="Tags" href="/tags">Tags</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="About me" href="/about">About me</a>
-  	      </li>
-  	    
       
       </ul>
     </div>
@@ -193,10 +188,10 @@
 
 <pre><code class="language-c++">CString HostServiceProxy::GetCouponFromResponseString(CString response)
 {
-	CString couponKey ###### _T(&quot;Coupon&quot;);
-	CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
+    CString couponKey ###### _T(&quot;Coupon&quot;);
+    CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
 
-	return couponPart.Left(couponPart.Find(_T(&quot;;&quot;)));
+    return couponPart.Left(couponPart.Find(_T(&quot;;&quot;)));
 }
 </code></pre>
 
@@ -204,11 +199,11 @@
 
 <p>Icons en images worden opgeslagen in .rc files die als resources in de code gekoppeld kunnen worden aan bijvoorbeeld een <code>CButton</code>. Hoe?</p>
 
-<pre><code class="language-c">	HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
-	if(hImage ###### NULL)
-		ASSERT(FALSE);	
+<pre><code class="language-c">    HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
+    if(hImage ###### NULL)
+        ASSERT(FALSE);  
 
-	HICON image = static_cast&lt;HICON&gt;(hImage);
+    HICON image = static_cast&lt;HICON&gt;(hImage);
 </code></pre>
 
 <p><code>HICON</code> is van <code>WinDef.h</code> en <code>::LoadImage</code> zit op <code>WinUser.h</code>. Zie <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648045(v=vs.85).aspx">MSDN doc</a> voor LoadImage.</p>
@@ -221,8 +216,8 @@
 
 <p>❗ de Afx resource handle kan <strong>altijd</strong> gewijzigd worden door leuke dingen te doen als:</p>
 
-<pre><code class="language-c">	HINSTANCE old = AfxGetResourceHandle();
-	AfxSetResourceHandle(GetModuleHandle(&quot;andereModule&quot;));
+<pre><code class="language-c">    HINSTANCE old = AfxGetResourceHandle();
+    AfxSetResourceHandle(GetModuleHandle(&quot;andereModule&quot;));
 </code></pre>
 
 <p>Gebruik daarom best <code>::GetModuleHandle(char*)</code> bij <code>::LoadImage</code>.</p>
@@ -235,18 +230,18 @@
 class RAIIObject
 {
 public:
-	explicit RAIIObject(const TObject&amp; obj) : m_Object(obj) {}
-	RAIIObject() {}
-	~RAIIObject() {ReleaseObject();}
-	RAIIObject&lt;TObject&gt;&amp; operator######(const TObject&amp; obj) {if(&amp;obj ! &amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
-	RAIIObject&lt;TObject&gt;&amp; operator######(const RAIIObject&lt;TObject&gt;&amp; obj) {if(&amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
-	TObject&amp; GetObject() {return m_Object;}
-	const TObject&amp; GetObject() const {return m_Object;}
-	operator TObject&amp;() {return m_Object;}
-	operator const TObject&amp;() const {return m_Object;}
+    explicit RAIIObject(const TObject&amp; obj) : m_Object(obj) {}
+    RAIIObject() {}
+    ~RAIIObject() {ReleaseObject();}
+    RAIIObject&lt;TObject&gt;&amp; operator######(const TObject&amp; obj) {if(&amp;obj ! &amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
+    RAIIObject&lt;TObject&gt;&amp; operator######(const RAIIObject&lt;TObject&gt;&amp; obj) {if(&amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
+    TObject&amp; GetObject() {return m_Object;}
+    const TObject&amp; GetObject() const {return m_Object;}
+    operator TObject&amp;() {return m_Object;}
+    operator const TObject&amp;() const {return m_Object;}
 private:
-	void ReleaseObject();
-	TObject m_Object;
+    void ReleaseObject();
+    TObject m_Object;
 };
 
 template&lt;&gt; inline void RAIIObject&lt;HICON&gt;::ReleaseObject() {::DestroyIcon(m_Object); m_Object = NULL;}
@@ -325,7 +320,7 @@ template&lt;&gt; inline void RAIIObject&lt;CMenu&gt;::ReleaseObject() {m_Object.
 
         </ul>
         <p class="credits copyright text-muted">
-    	  Wouter Groeneveld
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  

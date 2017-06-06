@@ -28,18 +28,18 @@
 
 &lt;p&gt;Headless webdriver testen draaien gaat met &lt;code&gt;HTMLUnit&lt;/code&gt; - vanaf 2.x zit &lt;code&gt;org.openqa.selenium.htmlunit.HtmlUnitDriver&lt;/code&gt; ook in de jar. De JS die daar evaluated wordt is echter &lt;code&gt;Rhino&lt;/code&gt; JS en niet native browser stuff. We kunnen in de plaats &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/&#34;&gt;code/javascript/testing/phantomjs&lt;/a&gt; gebruiken - deze driver zit in een andere jar. In de centrale maven repo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt;
-			&amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt;
-			&amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt;
-			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-		&amp;lt;/dependency&amp;gt;
-		&amp;lt;dependency&amp;gt;
-			&amp;lt;groupId&amp;gt;com.github.detro.ghostdriver&amp;lt;/groupId&amp;gt;
-			&amp;lt;artifactId&amp;gt;phantomjsdriver&amp;lt;/artifactId&amp;gt;
-			&amp;lt;version&amp;gt;1.0.3&amp;lt;/version&amp;gt;
-			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-		&amp;lt;/dependency&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt;
+            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.github.detro.ghostdriver&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;phantomjsdriver&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;1.0.3&amp;lt;/version&amp;gt;
+            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/detro/ghostdriver&#34;&gt;ghostdriver&lt;/a&gt; is de ingebouwde koppeling tussen phantomjs en webdriver (selenium server). Dit zit ingebouwd in phantomjs als je deze uitvoert met &lt;code&gt;--webdriver=[port]&lt;/code&gt; - wat de service voor u doet.&lt;/p&gt;
@@ -50,70 +50,70 @@
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public abstract class WebdriverTest extends IntegrationTest {
 
-	private static ChromeDriverService service;
-	private static WebDriver driver;
+    private static ChromeDriverService service;
+    private static WebDriver driver;
 
-	static {
-		Runtime.getRuntime().addShutdownHook(new Thread() {
+    static {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
 
-			@Override
-			public void run() {
-				driver.quit();
-				if (service != null) {
-					service.stop();
-				}
-			}
-		});
-	}
+            @Override
+            public void run() {
+                driver.quit();
+                if (service != null) {
+                    service.stop();
+                }
+            }
+        });
+    }
 
-	private static void startService() {
-		try {
-			service = new ChromeDriverService.Builder()
-					.usingDriverExecutable(new File(properties().getChromeDriverExecutable()))
-					.usingAnyFreePort().build();
-			service.start();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
+    private static void startService() {
+        try {
+            service = new ChromeDriverService.Builder()
+                    .usingDriverExecutable(new File(properties().getChromeDriverExecutable()))
+                    .usingAnyFreePort().build();
+            service.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-	@Before
-	public void gaNaarStartpagina() {
-		getDriver().get(vitrineUrl());
-	}
+    @Before
+    public void gaNaarStartpagina() {
+        getDriver().get(vitrineUrl());
+    }
 
-	protected static WebDriver getDriver() {
-		if (driver ###### null) {
-			driver = startDriver();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		}
-		return driver;
-	}
+    protected static WebDriver getDriver() {
+        if (driver ###### null) {
+            driver = startDriver();
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        }
+        return driver;
+    }
 
-	private static RemoteWebDriver startDriver() {
-		if (properties().isChromeWebdriverNodig()) {
-			startService();
-			return new ChromeDriver(service);
-		}
-		return new PhantomJSDriver(phantomJSCapabilities());
-	}
+    private static RemoteWebDriver startDriver() {
+        if (properties().isChromeWebdriverNodig()) {
+            startService();
+            return new ChromeDriver(service);
+        }
+        return new PhantomJSDriver(phantomJSCapabilities());
+    }
 
-	private static DesiredCapabilities phantomJSCapabilities() {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setJavascriptEnabled(true);
-		capabilities.setCapability(&amp;quot;takesScreenshot&amp;quot;, false);
-		capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, properties().getPhantomJSExecutable());
-		capabilities.setCapability(PHANTOMJS_CLI_ARGS, new String[] { &amp;quot;--webdriver-loglevel=DEBUG&amp;quot; });
-		return capabilities;
-	}
+    private static DesiredCapabilities phantomJSCapabilities() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setJavascriptEnabled(true);
+        capabilities.setCapability(&amp;quot;takesScreenshot&amp;quot;, false);
+        capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, properties().getPhantomJSExecutable());
+        capabilities.setCapability(PHANTOMJS_CLI_ARGS, new String[] { &amp;quot;--webdriver-loglevel=DEBUG&amp;quot; });
+        return capabilities;
+    }
 
-	protected String toString(DateMidnight date) {
-		return date.toString(&amp;quot;dd/MM/yyyy&amp;quot;);
-	}
+    protected String toString(DateMidnight date) {
+        return date.toString(&amp;quot;dd/MM/yyyy&amp;quot;);
+    }
 
-	protected ZoekPage startPagina() {
-		return new ZoekPage(driver);
-	}
+    protected ZoekPage startPagina() {
+        return new ZoekPage(driver);
+    }
 
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -126,26 +126,26 @@
 
 &lt;p&gt;Bij fouten als &amp;ldquo;Protected Mode must be set to the same value&amp;rdquo; (zie &lt;a href=&#34;https://code.google.com/p/selenium/issues/detail?id=1795&#34;&gt;hier&lt;/a&gt; heb je een specifieke switch nodig:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	private static DesiredCapabilities ieCapabilities() {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-		return capabilities;
-	}
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    private static DesiredCapabilities ieCapabilities() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+        return capabilities;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Voor de rest is de setup gelijkaardig aan die van chrome - het maken van de service&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	private static void startIEService() {
-		ieService = new InternetExplorerDriverService.Builder()
-				.usingDriverExecutable(new File(properties().getIEDriverExecutable()))
-				.usingAnyFreePort()
-				.build();
-		try {
-			ieService.start();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    private static void startIEService() {
+        ieService = new InternetExplorerDriverService.Builder()
+                .usingDriverExecutable(new File(properties().getIEDriverExecutable()))
+                .usingAnyFreePort()
+                .build();
+        try {
+            ieService.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;En het maken van de driver via &lt;code&gt;return new InternetExplorerDriver(ieService, ieCapabilities());&lt;/code&gt;&lt;/p&gt;

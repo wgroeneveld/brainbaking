@@ -14,7 +14,7 @@
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -88,28 +88,23 @@
 
       
         
-          <li>
-          <a title="Blog" href="/">Blog</a>
-  	      </li>
-  	    
-      
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
         
-          <li>
-          <a title="Wiki" href="/wiki/">Wiki</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="Tags" href="/tags">Tags</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="About me" href="/about">About me</a>
-  	      </li>
-  	    
       
       </ul>
     </div>
@@ -189,61 +184,61 @@
 class AddinProcessService 
 {
     static AddinProcessService *singletonInstance;
-	AddinProcessService() : m_coupon(_T(&quot;&quot;)), m_hostServiceAddress(_T(&quot;&quot;)) {}
+    AddinProcessService() : m_coupon(_T(&quot;&quot;)), m_hostServiceAddress(_T(&quot;&quot;)) {}
 
   public:
 
-	inline const CString&amp; GetHostServiceAddress() const
-	{
-		return m_hostServiceAddress;
-	}
-	inline const CString&amp; GetCoupon() const
-	{
-		return m_coupon;
-	}
-	inline void SetCoupon(CString coupon)
-	{
-		m_coupon = coupon;
-	}
-	inline void SetHostServiceAddress(CString address) 
-	{
-		m_hostServiceAddress = address;
-	}
+    inline const CString&amp; GetHostServiceAddress() const
+    {
+        return m_hostServiceAddress;
+    }
+    inline const CString&amp; GetCoupon() const
+    {
+        return m_coupon;
+    }
+    inline void SetCoupon(CString coupon)
+    {
+        m_coupon = coupon;
+    }
+    inline void SetHostServiceAddress(CString address) 
+    {
+        m_hostServiceAddress = address;
+    }
 
     static AddinProcessService* getSingletonInstance()
     {
-		static volatile int initialized = 0;
-		static HANDLE mtx;
+        static volatile int initialized = 0;
+        static HANDLE mtx;
 
-		if (!initialized)
-		{
-    		if (!mtx)
-    		{
-    			HANDLE mymtx;
-    			mymtx = CreateMutex(NULL, 0, NULL);
-    			if (InterlockedCompareExchangePointer(&amp;mtx, mymtx, NULL) != NULL)
-    				CloseHandle(mymtx);
-    		}
+        if (!initialized)
+        {
+            if (!mtx)
+            {
+                HANDLE mymtx;
+                mymtx = CreateMutex(NULL, 0, NULL);
+                if (InterlockedCompareExchangePointer(&amp;mtx, mymtx, NULL) != NULL)
+                    CloseHandle(mymtx);
+            }
 
-    		WaitForSingleObject(mtx, 0);
-    		if (!initialized)
-    		{
-    			libInitInternal();
-    			initialized = 1;
-    		}
-    		ReleaseMutex(mtx);
-		}
-		return singletonInstance;
+            WaitForSingleObject(mtx, 0);
+            if (!initialized)
+            {
+                libInitInternal();
+                initialized = 1;
+            }
+            ReleaseMutex(mtx);
+        }
+        return singletonInstance;
     };
 
 private:
-	CString m_hostServiceAddress;
-	CString m_coupon;
+    CString m_hostServiceAddress;
+    CString m_coupon;
 
-	static void libInitInternal()
-	{
-		singletonInstance = new AddinProcessService();
-	}
+    static void libInitInternal()
+    {
+        singletonInstance = new AddinProcessService();
+    }
 };
 
 </code></pre>
@@ -349,7 +344,7 @@ private:
 
         </ul>
         <p class="credits copyright text-muted">
-    	  Wouter Groeneveld
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  

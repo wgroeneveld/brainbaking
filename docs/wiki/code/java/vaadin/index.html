@@ -14,7 +14,7 @@
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
   <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -88,28 +88,23 @@
 
       
         
-          <li>
-          <a title="Blog" href="/">Blog</a>
-  	      </li>
-  	    
-      
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
         
-          <li>
-          <a title="Wiki" href="/wiki/">Wiki</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="Tags" href="/tags">Tags</a>
-  	      </li>
-  	    
-      
-        
-          <li>
-          <a title="About me" href="/about">About me</a>
-  	      </li>
-  	    
       
       </ul>
     </div>
@@ -176,18 +171,18 @@
 <pre><code class="language-java">@JavaScript({ &quot;https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js&quot;, &quot;js_label.js&quot; })
 public class JsLabel extends AbstractJavaScriptComponent {
 
-	public JsLabel(String xhtml) {
-		getState().xhtml = xhtml;
-	}
+    public JsLabel(String xhtml) {
+        getState().xhtml = xhtml;
+    }
 
-	@Override
-	protected JsLabelState getState() {
-		return (JsLabelState) super.getState();
-	}
+    @Override
+    protected JsLabelState getState() {
+        return (JsLabelState) super.getState();
+    }
 
-	public static class JsLabelState extends JavaScriptComponentState {
-		public String xhtml;
-	}
+    public static class JsLabelState extends JavaScriptComponentState {
+        public String xhtml;
+    }
 
 }
 </code></pre>
@@ -196,7 +191,7 @@ public class JsLabel extends AbstractJavaScriptComponent {
 
 <pre><code class="language-javascript">be_vdab_nonstop_presentation_form_JsLabel = function() {
   var e = this.getElement();
-	
+    
   this.onStateChange = function() {
     jQuery(e).html(this.getState().xhtml); 
   }
@@ -208,22 +203,22 @@ public class JsLabel extends AbstractJavaScriptComponent {
 <pre><code class="language-java">@PreserveOnRefresh
 @Theme(&quot;yourTheme&quot;)
 public class MainUI extends UI {
-	@Override
-	protected final void init(VaadinRequest request) {
-		setNavigator(new MyNavigator(this));
-		initDefaultScreen();
-		getNavigator().navigate();
-	}
+    @Override
+    protected final void init(VaadinRequest request) {
+        setNavigator(new MyNavigator(this));
+        initDefaultScreen();
+        getNavigator().navigate();
+    }
 
-	private void initDefaultScreen() {
-		getNavigator().addView(&quot;&quot;, BlahScherm.class);
-	}
+    private void initDefaultScreen() {
+        getNavigator().addView(&quot;&quot;, BlahScherm.class);
+    }
 
-	public void refresh() {
-		Component content = getContent();
-		setContent(new VerticalLayout());
-		setContent(content);
-	}
+    public void refresh() {
+        Component content = getContent();
+        setContent(new VerticalLayout());
+        setContent(content);
+    }
 
 }
 </code></pre>
@@ -236,84 +231,84 @@ public class MainUI extends UI {
 
 <pre><code class="language-java">public class VaadinUtilties {
 
-	public static &lt;T extends AbstractComponent&gt; T findComponentWithin(HasComponents otherComponent, Class&lt;T&gt; componentClass, String id) {
-		return findOnly(otherComponent, componentClass, metId(id));
-	}
+    public static &lt;T extends AbstractComponent&gt; T findComponentWithin(HasComponents otherComponent, Class&lt;T&gt; componentClass, String id) {
+        return findOnly(otherComponent, componentClass, metId(id));
+    }
 
-	public static &lt;E extends Component&gt; E findOnly(HasComponents container, final Class&lt;E&gt; componentClass, Predicate&lt;? super E&gt; predicate) {
-		return getOnlyElement(filter(findAll(container, componentClass), predicate));
-	}
+    public static &lt;E extends Component&gt; E findOnly(HasComponents container, final Class&lt;E&gt; componentClass, Predicate&lt;? super E&gt; predicate) {
+        return getOnlyElement(filter(findAll(container, componentClass), predicate));
+    }
 
-	public static &lt;E extends Component&gt; E findOnly(HasComponents container, final Class&lt;E&gt; componentClass) {
-		return findOnly(container, componentClass, alwaysTrue());
-	}
+    public static &lt;E extends Component&gt; E findOnly(HasComponents container, final Class&lt;E&gt; componentClass) {
+        return findOnly(container, componentClass, alwaysTrue());
+    }
 
-	public static &lt;E extends Component&gt; Set&lt;E&gt; findAll(HasComponents container, Class&lt;E&gt; componentClass) {
-		if (container instanceof CustomField) {
-			initCustomField((CustomField&lt;?&gt;) container);
-		}
-		Set&lt;E&gt; result = newHashSet(filter(container, componentClass));
-		for (HasComponents subContainer : filter(container, HasComponents.class)) {
-			result.addAll(findAll(subContainer, componentClass));
-		}
-		return result;
-	}
+    public static &lt;E extends Component&gt; Set&lt;E&gt; findAll(HasComponents container, Class&lt;E&gt; componentClass) {
+        if (container instanceof CustomField) {
+            initCustomField((CustomField&lt;?&gt;) container);
+        }
+        Set&lt;E&gt; result = newHashSet(filter(container, componentClass));
+        for (HasComponents subContainer : filter(container, HasComponents.class)) {
+            result.addAll(findAll(subContainer, componentClass));
+        }
+        return result;
+    }
 
-	public static void initCustomField(CustomField&lt;?&gt; customField) {
-		customField.iterator().next();
-	}
+    public static void initCustomField(CustomField&lt;?&gt; customField) {
+        customField.iterator().next();
+    }
 
-	public static boolean isVisibleOnScreen(Component component) {
-		return component.isVisible() &amp;&amp; parentIsVisible(component);
-	}
+    public static boolean isVisibleOnScreen(Component component) {
+        return component.isVisible() &amp;&amp; parentIsVisible(component);
+    }
 
-	private static boolean parentIsVisible(Component component) {
-		if (component.getParent() ###### null) {
-			return true;
-		} else {
-			return isVisibleOnScreen(component.getParent());
-		}
-	}
+    private static boolean parentIsVisible(Component component) {
+        if (component.getParent() ###### null) {
+            return true;
+        } else {
+            return isVisibleOnScreen(component.getParent());
+        }
+    }
 
-	public static Predicate&lt;Component&gt; metCaption(final String caption) {
-		return new Predicate&lt;Component&gt;() {
-			public boolean apply(Component component) {
-				return StringUtils.equals(component.getCaption(), caption);
-			}
-		};
-	}
+    public static Predicate&lt;Component&gt; metCaption(final String caption) {
+        return new Predicate&lt;Component&gt;() {
+            public boolean apply(Component component) {
+                return StringUtils.equals(component.getCaption(), caption);
+            }
+        };
+    }
 
-	public static Predicate&lt;Component&gt; captionContains(final String caption) {
-		return new Predicate&lt;Component&gt;() {
-			public boolean apply(Component component) {
-				return StringUtils.contains(component.getCaption(), caption);
-			}
-		};
-	}
+    public static Predicate&lt;Component&gt; captionContains(final String caption) {
+        return new Predicate&lt;Component&gt;() {
+            public boolean apply(Component component) {
+                return StringUtils.contains(component.getCaption(), caption);
+            }
+        };
+    }
 
-	public static Predicate&lt;Label&gt; value(final String value) {
-		return new Predicate&lt;Label&gt;() {
-			public boolean apply(Label label) {
-				return StringUtils.equals(label.getValue(), value);
-			}
-		};
-	}
+    public static Predicate&lt;Label&gt; value(final String value) {
+        return new Predicate&lt;Label&gt;() {
+            public boolean apply(Label label) {
+                return StringUtils.equals(label.getValue(), value);
+            }
+        };
+    }
 
-	public static Predicate&lt;Label&gt; valueContains(final String value) {
-		return new Predicate&lt;Label&gt;() {
-			public boolean apply(Label label) {
-				return StringUtils.contains(label.getValue(), value);
-			}
-		};
-	}
+    public static Predicate&lt;Label&gt; valueContains(final String value) {
+        return new Predicate&lt;Label&gt;() {
+            public boolean apply(Label label) {
+                return StringUtils.contains(label.getValue(), value);
+            }
+        };
+    }
 
-	public static Predicate&lt;Component&gt; metId(final String id) {
-		return new Predicate&lt;Component&gt;() {
-			public boolean apply(Component component) {
-				return StringUtils.equals(component.getId(), id);
-			}
-		};
-	}
+    public static Predicate&lt;Component&gt; metId(final String id) {
+        return new Predicate&lt;Component&gt;() {
+            public boolean apply(Component component) {
+                return StringUtils.equals(component.getId(), id);
+            }
+        };
+    }
 
 }
 
@@ -388,7 +383,7 @@ public class MainUI extends UI {
 
         </ul>
         <p class="credits copyright text-muted">
-    	  Wouter Groeneveld
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
