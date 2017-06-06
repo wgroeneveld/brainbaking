@@ -36,36 +36,35 @@ tag = "tags"
   goodreads = "5451893-wouter"
 
 [[menu.main]]
-    name = "Blog"
+    name = "Menu"
     url = "/"
     weight = 1
+    pre = "<i class='fa fa-home'></i>"
 
 [[menu.main]]
     name = "Wiki"
+    parent = "Menu"
     url = "/wiki/"
-    weight = 2
+    pre = "<i class='fa fa-wikipedia-w'></i>"
+    weight = 1
 
 [[menu.main]]
     name = "Tags"
+    parent = "Menu"
     url = "/tags"
-    weight = 3
+    pre = "<i class='fa fa-tags'></i>"
+    weight = 2
 
 [[menu.main]]
     name = "About me"
+    parent = "Menu"
     url = "/about"
+    pre = "<i class='fa fa-address-card-o'></i>"
+    weight = 3
+
+[[menu.main]]
+    name = "Talks"
+    pre = "<i class='fa fa-graduation-cap'></i>"
+    parent = "Menu"
+    url = "/talks"
     weight = 4
-
-#[[menu.main]]
-#    identifier = "samples"
-#    name = "Samples"
-#    weight = 3
-
-#[[menu.main]]
-#    parent = "samples"
-#    name = "Code Sample"
-#    url = "/post/2016-03-08-code-sample"
-
-#[[menu.main]]
-#    parent = "samples"
-#    name = "Test Markdown"
-#    url = "/post/2015-02-20-test-markdown"

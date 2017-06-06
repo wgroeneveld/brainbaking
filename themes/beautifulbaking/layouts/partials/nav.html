@@ -23,7 +23,7 @@
             <a class="navlinks-parent" href="javascript:void(0)">{{ .Name }}</a>
             <div class="navlinks-children">
             {{ range .Children }}
-              <a href="{{ .URL }}">{{ .Name }}</a>
+              <a href="{{ .URL }}">{{ .Pre }}&nbsp;&nbsp;{{ .Name }}</a>
             {{ end }}
             </div>
           </li>

@@ -292,8 +292,10 @@ img {
   }
 }
 @media only screen and (min-width: 768px) {
+
   .navbar-custom .nav .navlinks-container {
     text-align: center;
+    min-width: 120px !important;
   }  
   .navbar-custom .nav .navlinks-container:hover {
     background: #c3f070;

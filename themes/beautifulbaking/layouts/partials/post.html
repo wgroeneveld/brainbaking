@@ -7,24 +7,22 @@
           {{ .Content }}
       </article>
 
-      <ul class="pager blog-pager">
+      <ul class="blog-pagination blog-pager">
         {{ if .PrevInSection }}
-        <li class="previous">
-          <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; Previous Post</a>
+        <li>
+          &larr; Previous Post: <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">{{ .PrevInSection.Title }}</a>
+          <span class="blog-pagination-date"> <i class="fa fa-calendar-o" aria-hidden="true"></i> {{ .PrevInSection.Date.Format "01/02/20016" }}</span>
         </li>
         {{ end }}
         {{ if .NextInSection }}
-        <li class="next">
-          <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">Next Post &rarr;</a>
+        <li>
+          &rarr; Next Post: <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">{{ .NextInSection.Title }}</a>
+          <span class="blog-pagination-date"> <i class="fa fa-calendar-o" aria-hidden="true"></i> {{ .NextInSection.Date.Format "01/02/20016" }}</span>
         </li>
         {{ end }}
       </ul>
 
-      {{ if .Site.DisqusShortname }}
-      <div class="disqus-comments">
-        {{ template "_internal/disqus.html" . }}
-      </div>
-      {{ end }}
+      {{ partial "disqus.html" }}
 
     </div>
   </div>
