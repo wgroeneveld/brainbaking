@@ -61,7 +61,7 @@ esac
 ####	the prompt style	####
 # check for colors
 autoload colors zsh/terminfo
-if [ "$terminfo[colors]" -ge 8 ]({{< relref " "$terminfo[colors]" -ge 8 .md" >}}); then colors; fi
+if [ "$terminfo[colors]" -ge 8 ]("$terminfo[colors]" -ge 8 .md"); then colors; fi
 for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE
 do
 	eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
