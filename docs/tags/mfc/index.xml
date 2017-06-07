@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mfc on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/mfc/index.xml</link>
+    <link>http://www.brainbaking.com/tags/mfc/</link>
     <description>Recent content in Mfc on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/mfc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Dec 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/mfc/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>mfc</title>
@@ -16,95 +19,9 @@
       <pubDate>Thu, 12 Dec 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/c/mfc/</guid>
-      <description>
-
-&lt;h1 id=&#34;mfc&#34;&gt;MFC&lt;/h1&gt;
-
-&lt;p&gt;❗ MFC en AFX &lt;a href=&#34;http://en.wikipedia.org/wiki/Microsoft_Foundation_Class_Library&#34;&gt;is hetzelfde&lt;/a&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;One interesting quirk of MFC is the use of &amp;ldquo;Afx&amp;rdquo; as the prefix for many functions, macros and the standard precompiled header name &amp;ldquo;stdafx.h&amp;rdquo;. During early development what became MFC was called &amp;ldquo;Application Framework Extensions&amp;rdquo; and abbreviated &amp;ldquo;Afx&amp;rdquo;. The name Microsoft Foundation Classes (MFC) was adopted too late in the release cycle to change these references&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;strings-in-mfc&#34;&gt;Strings in MFC&lt;/h3&gt;
-
-&lt;p&gt;Gebruik &lt;code&gt;CString&lt;/code&gt; - werkt niet op non-win32 omgevingen.&lt;/p&gt;
-
-&lt;h5 id=&#34;formatting&#34;&gt;Formatting&lt;/h5&gt;
-
-&lt;p&gt;Formatten kan bijvoorbeeld met &lt;code&gt;string.Format(_T(&amp;quot;%s in %d&amp;quot;), otherString, otherDecimal);&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;❗ Om een string te intialiseren en toe te kennen moet je wel de &lt;code&gt;_T&lt;/code&gt; macro gebruiken&lt;/p&gt;
-
-&lt;h5 id=&#34;substringen&#34;&gt;Substringen&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;Find&lt;/code&gt; is hetzelfde als &lt;code&gt;indexOf&lt;/code&gt; in andere talen.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;CString HostServiceProxy::GetCouponFromResponseString(CString response)
-{
-    CString couponKey ###### _T(&amp;quot;Coupon&amp;quot;);
-    CString couponPart = response.Mid(response.Find(couponKey) + couponKey.GetLength());
-
-    return couponPart.Left(couponPart.Find(_T(&amp;quot;;&amp;quot;)));
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;resource-handling&#34;&gt;Resource handling&lt;/h3&gt;
-
-&lt;p&gt;Icons en images worden opgeslagen in .rc files die als resources in de code gekoppeld kunnen worden aan bijvoorbeeld een &lt;code&gt;CButton&lt;/code&gt;. Hoe?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;    HANDLE hImage = ::LoadImage(AfxGetResourceHandle(), MAKEINTRESOURCE(resourceId), IMAGE_ICON, 16, 15, LR_DEFAULTCOLOR);
-    if(hImage ###### NULL)
-        ASSERT(FALSE);  
-
-    HICON image = static_cast&amp;lt;HICON&amp;gt;(hImage);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;HICON&lt;/code&gt; is van &lt;code&gt;WinDef.h&lt;/code&gt; en &lt;code&gt;::LoadImage&lt;/code&gt; zit op &lt;code&gt;WinUser.h&lt;/code&gt;. Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/windows/desktop/ms648045(v=vs.85).aspx&#34;&gt;MSDN doc&lt;/a&gt; voor LoadImage.&lt;/p&gt;
-
-&lt;p&gt;######= De juiste resource handle vastkrijgen ######=&lt;/p&gt;
-
-&lt;p&gt;Als je een MFC DLL maakt, gaat &lt;code&gt;AfxGetResourceHandle()&lt;/code&gt; verwijzen naar de resource handle van uw DLL zelf. Als je dus resources wil vastpakken van een andere DLL heb je pech. Als je geen MFC DLL maakt kan je dit aanpassen met &lt;code&gt;AFX_MANAGE_STATE(AfxGetStaticModuleState( ))&lt;/code&gt;. &lt;strong&gt;Dit gooit echter linking errors&lt;/strong&gt; ( error LNK2005: _DllMain@12 already defined) indien je dit vanuit een MFC DLL aanroept - dan is dit niet nodig.&lt;/p&gt;
-
-&lt;p&gt;Meer uitleg hierover: zie &lt;a href=&#34;http://support.microsoft.com/kb/161589&#34;&gt;http://support.microsoft.com/kb/161589&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;❗ de Afx resource handle kan &lt;strong&gt;altijd&lt;/strong&gt; gewijzigd worden door leuke dingen te doen als:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;    HINSTANCE old = AfxGetResourceHandle();
-    AfxSetResourceHandle(GetModuleHandle(&amp;quot;andereModule&amp;quot;));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Gebruik daarom best &lt;code&gt;::GetModuleHandle(char*)&lt;/code&gt; bij &lt;code&gt;::LoadImage&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;######= Resources op het juiste moment terug vrijgeven ######=&lt;/p&gt;
-
-&lt;p&gt;Resources worden meestal gewrapped in kleine objectjes die bij de constructor de resource alloceren en bij de destructor deze terug vrijgeven in plaats van in &lt;code&gt;try { ... }&lt;/code&gt; zoiets te moeten doen in Java. Dit pattern is &lt;a href=&#34;http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization&#34;&gt;RAII&lt;/a&gt; of &amp;ldquo;Resource Acquisition Is Initialization&amp;rdquo;. Voorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;template&amp;lt;class TObject&amp;gt;
-class RAIIObject
-{
-public:
-    explicit RAIIObject(const TObject&amp;amp; obj) : m_Object(obj) {}
-    RAIIObject() {}
-    ~RAIIObject() {ReleaseObject();}
-    RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const TObject&amp;amp; obj) {if(&amp;amp;obj ! &amp;amp;m_Object) {ReleaseObject(); m_Object = obj;} return *this;}
-    RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; operator######(const RAIIObject&amp;lt;TObject&amp;gt;&amp;amp; obj) {if(&amp;amp;obj ! this) {ReleaseObject(); m_Object = obj;} return *this;}
-    TObject&amp;amp; GetObject() {return m_Object;}
-    const TObject&amp;amp; GetObject() const {return m_Object;}
-    operator TObject&amp;amp;() {return m_Object;}
-    operator const TObject&amp;amp;() const {return m_Object;}
-private:
-    void ReleaseObject();
-    TObject m_Object;
-};
-
-template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;HICON&amp;gt;::ReleaseObject() {::DestroyIcon(m_Object); m_Object = NULL;}
-template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;CBrush&amp;gt;::ReleaseObject() {m_Object.DeleteObject();}
-template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;CBitmap&amp;gt;::ReleaseObject() {m_Object.DeleteObject();}
-template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;CFont&amp;gt;::ReleaseObject() {m_Object.DeleteObject();}
-template&amp;lt;&amp;gt; inline void RAIIObject&amp;lt;CMenu&amp;gt;::ReleaseObject() {m_Object.DestroyMenu();}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>MFC ❗️ MFC en AFX is hetzelfde:
+ One interesting quirk of MFC is the use of &amp;ldquo;Afx&amp;rdquo; as the prefix for many functions, macros and the standard precompiled header name &amp;ldquo;stdafx.h&amp;rdquo;. During early development what became MFC was called &amp;ldquo;Application Framework Extensions&amp;rdquo; and abbreviated &amp;ldquo;Afx&amp;rdquo;. The name Microsoft Foundation Classes (MFC) was adopted too late in the release cycle to change these references
+ Strings in MFC Gebruik CString - werkt niet op non-win32 omgevingen.</description>
     </item>
     
   </channel>

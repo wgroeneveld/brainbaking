@@ -2,36 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Retros on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/retros/index.xml</link>
+    <link>http://www.brainbaking.com/tags/retros/</link>
     <description>Recent content in Retros on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/retros/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jul 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/retros/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/</link>
+      <link>http://www.brainbaking.com/wiki/reflect/retros/</link>
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/</guid>
-      <description>
-
-&lt;h1 id=&#34;reflect-retros&#34;&gt;reflect &amp;gt;&amp;gt; Retros&lt;/h1&gt;
-
-&lt;h5 id=&#34;inhoud&#34;&gt;Inhoud&lt;/h5&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;reflect/retros|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;referenties&#34;&gt;Referenties&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;The &lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Agile%20Retrospectives&#34; target=&#34;_blank&#34;&gt;Agile Retrospectives&lt;/a&gt;
- boek&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://agileretrospectivewiki.org/index.php?title=Main_Page&#34;&gt;http://agileretrospectivewiki.org/index.php?title=Main_Page&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <guid>http://www.brainbaking.com/wiki/reflect/retros/</guid>
+      <description> reflect &amp;gt;&amp;gt; Retros Inhoud reflect/retros|js navbar nocookie&amp;rsquo;&amp;gt;
+Referenties  The Agile Retrospectivesboek http://agileretrospectivewiki.org/index.php?title=Main_Page  </description>
     </item>
     
     <item>
@@ -40,30 +29,9 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/reflect/retros/like-to-like/</guid>
-      <description>
-
-&lt;h1 id=&#34;like-to-like&#34;&gt;Like-to-like&lt;/h1&gt;
-
-&lt;h3 id=&#34;about&#34;&gt;About&lt;/h3&gt;
-
-&lt;p&gt;This Like-To-Like game is a fun and interactive way to do a retro. You can find the full explanation on &lt;strong&gt;page 74&lt;/strong&gt; of the &lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Agile%20Retrospectives&#34; target=&#34;_blank&#34;&gt;Agile Retrospectives&lt;/a&gt;
- book (Pragmatic Bookshelf).&lt;/p&gt;
-
-&lt;h3 id=&#34;contents&#34;&gt;Contents&lt;/h3&gt;
-
-&lt;p&gt;One team member (lets call him Ben) prepares a stack of &amp;lsquo;quality cards&amp;rsquo;, each containing a &amp;lsquo;quality word&amp;rsquo;. Examples are: Fun, Cool, Late, Frustrating, Desireable, Stupid, Wasteful, Confusing, &amp;hellip; .&lt;br /&gt;
-The quality cards are stacked and not visible to the team.&lt;/p&gt;
-
-&lt;p&gt;The retro starts with each member writing down important items concerning the last sprint on a post-it (one post-it per item). You could for example ask them to write down things the team should start/keep/stop doing. The more post-its a member has written, the easier it&amp;rsquo;ll be for him to play the game.&lt;/p&gt;
-
-&lt;p&gt;After 5-10 minutes a random team member is chosen to be the first judge (let&amp;rsquo;s call him Darek). Every turn, another team member will be the judge. The judge first draws a quality card from stack and reads it out loud.&lt;/p&gt;
-
-&lt;p&gt;Every team member now associates one of his post-its to this quality word, and puts this post-it as fast as possible in the middle of the table. The last member to put a post-it in the middle of the table is disqualified for this round (this is to keep up the pace). The judge (Darek) decides which team member best fitted the keyword. This winning team member gets one point and becomes the judge in the next round.&lt;/p&gt;
-
-&lt;p&gt;The process gets repeated until the stack is empty or time&amp;rsquo;s up.&lt;/p&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-</description>
+      <description>Like-to-like About This Like-To-Like game is a fun and interactive way to do a retro. You can find the full explanation on page 74 of the Agile Retrospectivesbook (Pragmatic Bookshelf).
+Contents One team member (lets call him Ben) prepares a stack of &amp;lsquo;quality cards&amp;rsquo;, each containing a &amp;lsquo;quality word&amp;rsquo;. Examples are: Fun, Cool, Late, Frustrating, Desireable, Stupid, Wasteful, Confusing, &amp;hellip; .
+The quality cards are stacked and not visible to the team.</description>
     </item>
     
     <item>
@@ -72,81 +40,10 @@ The quality cards are stacked and not visible to the team.&lt;/p&gt;
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/reflect/retros/retrosurgery/</guid>
-      <description>
-
-&lt;h1 id=&#34;retrospective-surgery&#34;&gt;Retrospective surgery&lt;/h1&gt;
-
-&lt;p&gt;See &lt;a href=&#34;http://retrospectivewiki.org/index.php?title=Retrospective_Surgery&#34;&gt;http://retrospectivewiki.org/index.php?title=Retrospective_Surgery&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;about&#34;&gt;About&lt;/h3&gt;
-
-&lt;p&gt;This type of retro really focusses on the &lt;strong&gt;retro of the retro&lt;/strong&gt;. It&amp;rsquo;s obviously something you shouldn&amp;rsquo;t do every retrospective but it can result into a lot of interesting topics on how your retrospectives are actually doing.&lt;/p&gt;
-
-&lt;p&gt;The retro should take about &lt;strong&gt;60 min&lt;/strong&gt; and people should work in pairs or ideally groups of 3.&lt;/p&gt;
-
-&lt;h3 id=&#34;contents&#34;&gt;Contents&lt;/h3&gt;
-
-&lt;h4 id=&#34;first-part-discovering-the-bad-parts-about-your-retrospectives&#34;&gt;First part: discovering the bad parts about your retrospectives&lt;/h4&gt;
-
-&lt;p&gt;Divide everyone into groups of 3 (or 2 if you must). Give them a block of post-its and a pen, and ask them to write down everything they think could be better in your team&amp;rsquo;s retrospectives. This can range from too long retro&amp;rsquo;s to not enough or too fuzzy SMART actions, &amp;hellip; (timeboxed 10-15 minutes)&lt;/p&gt;
-
-&lt;h4 id=&#34;second-part-making-the-bad-parts-go-away&#34;&gt;Second part: making the bad parts go away&lt;/h4&gt;
-
-&lt;p&gt;Break down each group of post-its for every group into 3 and divide them - make sure everyone has something different right now.&lt;br/&gt;&lt;br/&gt;
-After that, again give everyone 10-15 minutes to come up with solutions to the problem noted on the sticky note. Let them write on the backside.&lt;/p&gt;
-
-&lt;h4 id=&#34;third-part-summing-it-up&#34;&gt;Third part: summing it up&lt;/h4&gt;
-
-&lt;p&gt;Group post-its together by theme on a board. Everyone was a bit surprised that a lot of people actually had encountered the same problems. We came up with these groups:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;time related: retro duration/when in the sprint to plan the retro?&lt;/li&gt;
-&lt;li&gt;people related: who should be invited? (Business? OPS?) How to mention a problem without making someone angry?&lt;/li&gt;
-&lt;li&gt;SMART Actions related: too much planned, too little done? Who&amp;rsquo;s responsible for them?&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;There will typically be some lonely outliers like someone who complains about the usefulness of the waste snake, someone who thinks developers have too much &amp;ldquo;power&amp;rdquo; in the retro because the ratio dev/proxy isn&amp;rsquo;t even, &amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;Make sure to &lt;strong&gt;discuss the biggest groups&lt;/strong&gt; if you run into time trouble! &lt;br/&gt;&lt;br/&gt;
-Every possible solution on the back of the sticky note can be translated into a SMART action or a reminder for the next retro - place them somewhere visible so the team can see them daily.&lt;/p&gt;
-
-&lt;h5 id=&#34;examples-of-concrete-reminders&#34;&gt;Examples of concrete reminders&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;No retro with business yet -&amp;gt; Plan an extra, specific retrospective, for the business + PO &amp;amp; after a production release with operations&lt;/li&gt;
-&lt;li&gt;Too much actions as result -&amp;gt; maximize SMART action points to note (5?) &amp;amp; put them into the swim lanes! They&amp;rsquo;re impediments after all.&lt;/li&gt;
-&lt;li&gt;Are people still to shy to say something? -&amp;gt; keep the &amp;ldquo;beginning-of-retro-relic&amp;rdquo; - 1 sentence/speaker max.&lt;/li&gt;
-&lt;li&gt;Waste snake is waste and not really useful -&amp;gt; discuss the waste snake during retros and regulary mail results to program management&lt;/li&gt;
-&lt;li&gt;no-one picks up SMART actions? -&amp;gt; put them into a lane for visiblity instead of board and assign someone DURING the retro&lt;/li&gt;
-&lt;li&gt;sometimes too much useless discussion -&amp;gt; put up your hand if you think the discussion should stop to keep up the pace (signal)&lt;/li&gt;
-&lt;li&gt;some retros are too focussed or not focussed at all -&amp;gt; cycle normal iteration feedback retros &amp;amp; broader retros + introduce &amp;ldquo;lessons learned&amp;rdquo; retro after a project&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;last-part-discussing-previously-held-retrospective-themes&#34;&gt;Last part: discussing previously held retrospective themes&lt;/h4&gt;
-
-&lt;p&gt;Write down every kind of retro you&amp;rsquo;ve had in the past. Discuss with the whole group:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;What worked, what didn&amp;rsquo;t work out so well?&lt;/li&gt;
-&lt;li&gt;What took too long? What contains a lot of &amp;ldquo;bad&amp;rdquo; things you discovered before?&lt;/li&gt;
-&lt;li&gt;How can you modify some themes to apply the positive bits?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ask everyone their top3 retro type. We discovered the following ranking:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Mad/glad/sad: 6&lt;/li&gt;
-&lt;li&gt;Molesststoco: 4&lt;/li&gt;
-&lt;li&gt;Like to like: 4&lt;/li&gt;
-&lt;li&gt;Speed dating: 3&lt;/li&gt;
-&lt;li&gt;Retro surgery: 3&lt;/li&gt;
-&lt;li&gt;Discussion about one specific topic: 1&lt;/li&gt;
-&lt;li&gt;Fishbone: 0&lt;/li&gt;
-&lt;li&gt;Agile radar: 0&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;A lot of people really liked the classic formula&amp;rsquo;s of using post-its to discover &amp;ldquo;bad&amp;rdquo; things, and discussing them. Like to like also has some elements like this, as does speed dating. Everyone really liked the retro surgery but it did not get a lot of votes because it&amp;rsquo;s not something for every two weeks.&lt;/p&gt;
-</description>
+      <description>Retrospective surgery See http://retrospectivewiki.org/index.php?title=Retrospective_Surgery
+About This type of retro really focusses on the retro of the retro. It&amp;rsquo;s obviously something you shouldn&amp;rsquo;t do every retrospective but it can result into a lot of interesting topics on how your retrospectives are actually doing.
+The retro should take about 60 min and people should work in pairs or ideally groups of 3.
+Contents First part: discovering the bad parts about your retrospectives Divide everyone into groups of 3 (or 2 if you must).</description>
     </item>
     
     <item>
@@ -155,35 +52,9 @@ Every possible solution on the back of the sticky note can be translated into a 
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/reflect/retros/speeddating/</guid>
-      <description>
-
-&lt;h1 id=&#34;speeddating&#34;&gt;Speeddating&lt;/h1&gt;
-
-&lt;h3 id=&#34;contents&#34;&gt;Contents&lt;/h3&gt;
-
-&lt;p&gt;After the intro everybody is asked to reflect on possible ammeliorations for the working of the team and to choose 1 of them.&lt;/p&gt;
-
-&lt;p&gt;Afterwards the speed dating starts. Team members work in pairs in 5 minutes:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;they are asked first to express their appreciation for one another&lt;/li&gt;
-&lt;li&gt;each proposes his/her ammelioration and they have a discussion&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Each 5 minutes the team members switch pairs.
-To conclude all ameliorations are proposed to the group, the most important are chosen and SMART actions for those are fixed.&lt;/p&gt;
-
-&lt;h3 id=&#34;shuffling&#34;&gt;Shuffling&lt;/h3&gt;
-
-&lt;p&gt;Shuffling system for 8 members in the group:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Round1      Round2          Round3          Round4          Round5          Round6          Round7   
-1   8       8   7       7   6       6   5       1   3       1   7       1   5
-2   7       1   5       8   5       7   4       2   4       2   8       2   6
-3   6       2   4       1   4       8   3       5   7       3   5       3   7
-4   5       3   1       2   3       1   2       6   8       4   6       4   8
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Speeddating Contents After the intro everybody is asked to reflect on possible ammeliorations for the working of the team and to choose 1 of them.
+Afterwards the speed dating starts. Team members work in pairs in 5 minutes:
+ they are asked first to express their appreciation for one another each proposes his/her ammelioration and they have a discussion  Each 5 minutes the team members switch pairs. To conclude all ameliorations are proposed to the group, the most important are chosen and SMART actions for those are fixed.</description>
     </item>
     
   </channel>

@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tfs on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/tfs/index.xml</link>
+    <link>http://www.brainbaking.com/tags/tfs/</link>
     <description>Recent content in Tfs on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/tfs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 31 Jan 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/tfs/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>tfs</title>
@@ -16,26 +19,9 @@
       <pubDate>Fri, 31 Jan 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/tools/tfs/</guid>
-      <description>
-
-&lt;h1 id=&#34;team-foundation-server&#34;&gt;Team Foundation Server&lt;/h1&gt;
-
-&lt;h2 id=&#34;changing-the-default-check-in-action&#34;&gt;Changing the default check-in action&lt;/h2&gt;
-
-&lt;p&gt;By default worden work items op &amp;ldquo;resolved&amp;rdquo; gezet. Dit is meestal geen gewenst gedrag. &lt;strong&gt;Niet automatisch oplosbaar&lt;/strong&gt;: zie &lt;a href=&#34;http://www.codesmartnothard.com/2013/02/09/ChangingTheDefaultCheckInOptionToAssociateInTFS2012.aspx&#34;&gt;http://www.codesmartnothard.com/2013/02/09/ChangingTheDefaultCheckInOptionToAssociateInTFS2012.aspx&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Voor items op state &amp;ldquo;new&amp;rdquo; kan je deze key wijzigen in registry: &lt;code&gt;HKEY_CURRENT_USER&amp;lt;br/&amp;gt;Software&amp;lt;br/&amp;gt;Microsoft&amp;lt;br/&amp;gt;VisualStudio&amp;lt;br/&amp;gt;**11.0**&amp;lt;br/&amp;gt;TeamFoundation&amp;lt;br/&amp;gt;SourceControl&amp;lt;br/&amp;gt;Behavior @ResolveAsDefaultCheckinAction = &amp;quot;False&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;find-latest-work-items&#34;&gt;Find latest work items&lt;/h2&gt;
-
-&lt;p&gt;Hoe kan ik mijn laatste &amp;ldquo;Related work item&amp;rdquo; terug ophalen om aan de in te checken changeset dezelfde items te koppelen? &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;p&gt;Custom query toevoegen: zie &lt;a href=&#34;http://robertgreiner.com/2011/04/how-to-get-your-entire-work-item-history-in-tfs/&#34;&gt;http://robertgreiner.com/2011/04/how-to-get-your-entire-work-item-history-in-tfs/&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Changed By Contains @Me
-And Revised Date &amp;gt;= @Today - 30
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Team Foundation Server Changing the default check-in action By default worden work items op &amp;ldquo;resolved&amp;rdquo; gezet. Dit is meestal geen gewenst gedrag. Niet automatisch oplosbaar: zie http://www.codesmartnothard.com/2013/02/09/ChangingTheDefaultCheckInOptionToAssociateInTFS2012.aspx
+Voor items op state &amp;ldquo;new&amp;rdquo; kan je deze key wijzigen in registry: HKEY_CURRENT_USER&amp;lt;br/&amp;gt;Software&amp;lt;br/&amp;gt;Microsoft&amp;lt;br/&amp;gt;VisualStudio&amp;lt;br/&amp;gt;**11.0**&amp;lt;br/&amp;gt;TeamFoundation&amp;lt;br/&amp;gt;SourceControl&amp;lt;br/&amp;gt;Behavior @ResolveAsDefaultCheckinAction = &amp;quot;False&amp;quot;
+Find latest work items Hoe kan ik mijn laatste &amp;ldquo;Related work item&amp;rdquo; terug ophalen om aan de in te checken changeset dezelfde items te koppelen?</description>
     </item>
     
     <item>
@@ -44,164 +30,9 @@ And Revised Date &amp;gt;= @Today - 30
       <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/csharp/tfs/</guid>
-      <description>
-
-&lt;h1 id=&#34;tfs-communicator&#34;&gt;Tfs communicator&lt;/h1&gt;
-
-&lt;h4 id=&#34;tfs-informatie-vanuit-net-uitlezen&#34;&gt;TFS informatie vanuit .NET uitlezen&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blogs.msdn.com/b/briankel/archive/2013/01/07/odata-service-for-team-foundation-server-v2.aspx&#34;&gt;OData TFS v2&lt;/a&gt; is een tussenlaag &lt;code&gt;REST API&lt;/code&gt; die je zelf nog op &lt;code&gt;IIS&lt;/code&gt; kan deployen&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;Onderstaande code doet hetzelfde (veel eenvoudiger) in een console appke&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Microsoft.TeamFoundation.Build.Client;
-using Microsoft.TeamFoundation.Client;
-
-namespace TfsCommunicator
-{
-    [ExcludeFromCodeCoverage]
-    public class BuildCommunicator : IBuildCommunicator
-    {
-        private string tfsServerAddress;
-
-        public BuildCommunicator(string tfsServerAddress)
-        {
-            this.tfsServerAddress = tfsServerAddress;
-        }
-
-        public BuildStatus GetBuildInformation(int maxDays ###### 5, int maxRuns  10, string teamProject ###### &amp;quot;*&amp;quot;, string buildDefinition  &amp;quot;&amp;quot;)
-        {
-            var buildStatus = new BuildStatus();
-
-            var builds = GetBuildsFromTfs(maxDays, teamProject, buildDefinition);
-
-            var currentDefinition = string.Empty;
-
-            foreach (var build in builds)
-            {
-                string definitionName = build.BuildDefinition.Name;
-                var project = MapBuildToProject(build, definitionName);
-
-                if (definitionName ###### currentDefinition)
-                {
-                    AddBuiltToParentProject(buildStatus, definitionName, project, maxRuns);
-                }
-                else
-                {
-                    currentDefinition = definitionName;
-                    buildStatus.Projects.Add(project);
-                }
-            }
-            return buildStatus;
-        }
-
-        private IOrderedEnumerable&amp;lt;IBuildDetail&amp;gt; GetBuildsFromTfs(int maxDays, string teamProject, string buildDefinition)
-        {
-            var tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(new Uri(tfsServerAddress));
-            IBuildServer buildServer = tfs.GetService&amp;lt;IBuildServer&amp;gt;();
-
-            IBuildDetailSpec spec = string.IsNullOrEmpty(buildDefinition) ? 
-                buildServer.CreateBuildDetailSpec(teamProject) : 
-                buildServer.CreateBuildDetailSpec(teamProject, buildDefinition);
-
-            spec.MinFinishTime = DateTime.Now.Subtract(TimeSpan.FromDays(maxDays));
-            spec.MaxFinishTime = DateTime.Now;
-            spec.QueryDeletedOption = QueryDeletedOption.IncludeDeleted;
-
-            var builds ###### buildServer.QueryBuilds(spec).Builds.OrderBy(b &amp;gt; b.BuildDefinition.Name).ThenByDescending(b =&amp;gt; b.FinishTime);
-            return builds;
-        }
-
-
-        private static Project MapBuildToProject(IBuildDetail build, string definitionName)
-        {
-            var project = new Project
-            {
-                DefinitionName = definitionName,
-                Name = build.TeamProject,
-                Status = build.Status.ToString(),
-                StartTime = build.StartTime,
-                FinishTime = build.FinishTime
-            };
-            return project;
-        }
-
-        private void AddBuiltToParentProject(BuildStatus buildStatus, string definitionName, Project project, int maxRuns)
-        {
-            var parent ###### buildStatus.Projects.First(p &amp;gt; p.DefinitionName ###### definitionName);
-            if (parent.Runs.Count &amp;lt; maxRuns)
-            {
-                parent.Runs.Add(project);
-            }
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;using System;
-using System.Collections.Generic;
-
-namespace TfsCommunicator
-{
-    public class Project
-    {
-        public Project()
-        {
-            Runs = new List&amp;lt;Project&amp;gt;();
-        }
-
-        public string DefinitionName { get; set; }
-        public string Name { get; set; }
-        public string Status { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime FinishTime { get; set; }
-        public List&amp;lt;Project&amp;gt; Runs { get; set; }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Deze informatie dan bijvoorbeeld wegschrijven naar een JSON file&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        private static void Main(string[] args)
-        {
-            Console.WriteLine(&amp;quot;TFS Build status; connecting...&amp;quot;);
-            BuildCommunicator communicator = new BuildCommunicator(ConfigurationManager.AppSettings[&amp;quot;tfsServer&amp;quot;]);
-
-            while (true)
-            {
-                Console.WriteLine(&amp;quot;Getting TFS Build info for all projects...&amp;quot;);
-                BuildStatus info = communicator.GetBuildInformation();
-
-                CleanBuildStatusFile();
-                WriteBuildStatusToFile(info);
-
-                Console.WriteLine(&amp;quot;Written build info to buildstatus.json. [waiting...] &amp;quot;);
-                Thread.Sleep(20000);
-            }
-        }
-
-        private static void WriteBuildStatusToFile(BuildStatus info)
-        {
-            StreamWriter streamWriter = File.CreateText(&amp;quot;buildstatus.json&amp;quot;);
-            new JsonSerializer().Serialize(streamWriter, info);
-            streamWriter.Close();
-        }
-
-        private static void CleanBuildStatusFile()
-        {
-            try
-            {
-                File.Delete(&amp;quot;buildstatus.json&amp;quot;);
-            }
-            catch
-            {
-            }
-        }
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Tfs communicator TFS informatie vanuit .NET uitlezen OData TFS v2 is een tussenlaag REST API die je zelf nog op IIS kan deployen&amp;hellip;
+Onderstaande code doet hetzelfde (veel eenvoudiger) in een console appke
+using System; using System.Diagnostics.CodeAnalysis; using System.Linq; using Microsoft.TeamFoundation.Build.Client; using Microsoft.TeamFoundation.Client; namespace TfsCommunicator { [ExcludeFromCodeCoverage] public class BuildCommunicator : IBuildCommunicator { private string tfsServerAddress; public BuildCommunicator(string tfsServerAddress) { this.tfsServerAddress = tfsServerAddress; } public BuildStatus GetBuildInformation(int maxDays ###### 5, int maxRuns 10, string teamProject ###### &amp;quot;*&amp;quot;, string buildDefinition &amp;quot;&amp;quot;) { var buildStatus = new BuildStatus(); var builds = GetBuildsFromTfs(maxDays, teamProject, buildDefinition); var currentDefinition = string.</description>
     </item>
     
   </channel>

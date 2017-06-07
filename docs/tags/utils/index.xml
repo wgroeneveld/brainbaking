@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Utils on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/utils/index.xml</link>
+    <link>http://www.brainbaking.com/tags/utils/</link>
     <description>Recent content in Utils on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/utils/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Mar 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/utils/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>utils</title>
@@ -16,247 +19,9 @@
       <pubDate>Mon, 17 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/csharp/utils/</guid>
-      <description>
-
-&lt;h1 id=&#34;utils-partials&#34;&gt;Utils Partials&lt;/h1&gt;
-
-&lt;h3 id=&#34;objectextensions&#34;&gt;ObjectExtensions&lt;/h3&gt;
-
-&lt;p&gt;Waarom? Deep clone van een object maken zonder de boel te (de)-serialiseren.&lt;/p&gt;
-
-&lt;p&gt;Bron: &lt;a href=&#34;https://raw.github.com/Burtsev-Alexey/net-object-deep-copy/master/ObjectExtensions.cs&#34;&gt;https://raw.github.com/Burtsev-Alexey/net-object-deep-copy/master/ObjectExtensions.cs&lt;/a&gt; - thank you Alexey&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    public static class ObjectExtensions
-    {
-        private static readonly MethodInfo CloneMethod = typeof (Object).GetMethod(&amp;quot;MemberwiseClone&amp;quot;,
-            BindingFlags.NonPublic | BindingFlags.Instance);
-
-        public static bool IsPrimitive(this Type type)
-        {
-            if (type ###### typeof (String)) return true;
-            return (type.IsValueType &amp;amp; type.IsPrimitive);
-        }
-
-        public static Object Copy(this Object originalObject)
-        {
-            return InternalCopy(originalObject, new Dictionary&amp;lt;Object, Object&amp;gt;(new ReferenceEqualityComparer()));
-        }
-
-        private static Object InternalCopy(Object originalObject, IDictionary&amp;lt;Object, Object&amp;gt; visited)
-        {
-            if (originalObject ###### null) return null;
-            var typeToReflect = originalObject.GetType();
-            if (IsPrimitive(typeToReflect)) return originalObject;
-            if (typeof (XElement).IsAssignableFrom(typeToReflect)) return new XElement(originalObject as XElement);
-
-            if (visited.ContainsKey(originalObject)) return visited[originalObject];
-            if (typeof (Delegate).IsAssignableFrom(typeToReflect)) return null;
-            var cloneObject = CloneMethod.Invoke(originalObject, null);
-            if (typeToReflect.IsArray)
-            {
-                var arrayType = typeToReflect.GetElementType();
-                if (IsPrimitive(arrayType) ###### false)
-                {
-                    Array clonedArray = (Array) cloneObject;
-                    clonedArray.ForEach(
-                        (array, indices) =&amp;gt;
-                            array.SetValue(InternalCopy(clonedArray.GetValue(indices), visited), indices));
-                }
-            }
-            visited.Add(originalObject, cloneObject);
-            CopyFields(originalObject, visited, cloneObject, typeToReflect);
-            RecursiveCopyBaseTypePrivateFields(originalObject, visited, cloneObject, typeToReflect);
-            return cloneObject;
-        }
-
-        private static void RecursiveCopyBaseTypePrivateFields(object originalObject,
-            IDictionary&amp;lt;object, object&amp;gt; visited, object cloneObject, Type typeToReflect)
-        {
-            if (typeToReflect.BaseType != null)
-            {
-                RecursiveCopyBaseTypePrivateFields(originalObject, visited, cloneObject, typeToReflect.BaseType);
-                CopyFields(originalObject, visited, cloneObject, typeToReflect.BaseType,
-                    BindingFlags.Instance | BindingFlags.NonPublic, info =&amp;gt; info.IsPrivate);
-            }
-        }
-
-        private static void CopyFields(object originalObject, IDictionary&amp;lt;object, object&amp;gt; visited, object cloneObject,
-            Type typeToReflect,
-            BindingFlags bindingFlags =
-                BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.FlattenHierarchy,
-            Func&amp;lt;FieldInfo, bool&amp;gt; filter = null)
-        {
-            foreach (FieldInfo fieldInfo in typeToReflect.GetFields(bindingFlags))
-            {
-                if (filter != null &amp;amp;&amp;amp; filter(fieldInfo) ###### false) continue;
-                if (IsPrimitive(fieldInfo.FieldType)) continue;
-                var originalFieldValue = fieldInfo.GetValue(originalObject);
-                var clonedFieldValue = InternalCopy(originalFieldValue, visited);
-                fieldInfo.SetValue(cloneObject, clonedFieldValue);
-            }
-        }
-
-        public static T Copy&amp;lt;T&amp;gt;(this T original)
-        {
-            return (T) Copy((Object) original);
-        }
-    }
-
-    public class ReferenceEqualityComparer : EqualityComparer&amp;lt;Object&amp;gt;
-    {
-        public override bool Equals(object x, object y)
-        {
-            return ReferenceEquals(x, y);
-        }
-
-        public override int GetHashCode(object obj)
-        {
-            if (obj ###### null) return 0;
-            return obj.GetHashCode();
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Let op met XElement&lt;/strong&gt;; sommige API classes voorzien copy constructors die je beter gebruikt ipv via reflectie alle fields over te kopiëren. Bijgevolg if type blabla&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;############ EqualsBuilder ############&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    public class EqualsBuilder&amp;lt;T&amp;gt;
-    {
-        private readonly T left;
-        private readonly object right;
-        private bool areEqual = true;
-
-        public EqualsBuilder(T left, object right)
-        {
-            this.left = left;
-            this.right = right;
-
-            if (ReferenceEquals(left, right))
-            {
-                areEqual = true;
-                return;
-            }
-
-            if (ReferenceEquals(left, null))
-            {
-                areEqual = false;
-                return;
-            }
-
-            if (ReferenceEquals(right, null))
-            {
-                areEqual = false;
-                return;
-            }
-
-            if (left.GetType() != right.GetType())
-            {
-                areEqual = false;
-                return;
-            }
-        }
-
-        public EqualsBuilder&amp;lt;T&amp;gt; With&amp;lt;TProperty&amp;gt;(Expression&amp;lt;Func&amp;lt;T, TProperty&amp;gt;&amp;gt; propertyOrField)
-        {
-            if (!areEqual)
-            {
-                return this;
-            }
-
-            if (left ###### null || right ###### null)
-            {
-                return this;
-            }
-
-            var expression = propertyOrField.Body as MemberExpression;
-            if (expression ###### null)
-            {
-                throw new ArgumentException(&amp;quot;Expecting Property or Field Expression of an object&amp;quot;);
-            }
-
-            Func&amp;lt;T, TProperty&amp;gt; func = propertyOrField.Compile();
-            TProperty leftValue = func(left);
-            TProperty rightValue = func((T) right);
-
-            if (leftValue ###### null &amp;amp;&amp;amp; rightValue ###### null)
-            {
-                areEqual &amp;amp;= true;
-                return this;
-            }
-
-            if (leftValue != null &amp;amp;&amp;amp; rightValue ###### null)
-            {
-                areEqual &amp;amp;= false;
-                return this;
-            }
-
-            if (leftValue ###### null &amp;amp;&amp;amp; rightValue != null)
-            {
-                areEqual &amp;amp;= false;
-                return this;
-            }
-
-            areEqual &amp;amp;= leftValue.Equals(rightValue);
-            return this;
-        }
-
-        public bool Equals()
-        {
-            return areEqual;
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Gebruik:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        public override bool Equals(object obj)
-        {
-            return new EqualsBuilder&amp;lt;FlexMedischGegeven&amp;gt;(this, obj)
-                .With(x =&amp;gt; x.Rownr)
-                .With(x =&amp;gt; x.ColumnName)
-                .With(x =&amp;gt; x.Value)
-                .With(x =&amp;gt; x.Creator)
-                .Equals();
-        }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;############ Mocking DateTime.Now ############&lt;/p&gt;
-
-&lt;p&gt;Schrijf een wrapper rond &lt;code&gt;Now&lt;/code&gt; met behulp van lambda&amp;rsquo;s:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;    using System;
-
-    public static class SystemTime
-    {
-        private static Func&amp;lt;DateTime&amp;gt; _now;
-        public static Func&amp;lt;DateTime&amp;gt; Now
-        {
-            get
-            {
-                if (_now ###### null)
-                {
-                    Reset();
-                }
-                return _now;
-            }
-            set { _now = value; }
-        }
-
-        public static void Reset()
-        {
-            Now ###### () &amp;gt; DateTime.Now;
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Gebruik:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;in &lt;code&gt;[TestCleanup]&lt;/code&gt; de &lt;code&gt;Reset()&lt;/code&gt; method aanroepen.&lt;/li&gt;
-&lt;li&gt;in uw test body indien gewenst &lt;code&gt;SystemTime.Now ###### () &amp;gt; new DateTime(2001, 1, 1);&lt;/code&gt; steken.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Utils Partials ObjectExtensions Waarom? Deep clone van een object maken zonder de boel te (de)-serialiseren.
+Bron: https://raw.github.com/Burtsev-Alexey/net-object-deep-copy/master/ObjectExtensions.cs - thank you Alexey
+public static class ObjectExtensions { private static readonly MethodInfo CloneMethod = typeof (Object).GetMethod(&amp;quot;MemberwiseClone&amp;quot;, BindingFlags.NonPublic | BindingFlags.Instance); public static bool IsPrimitive(this Type type) { if (type ###### typeof (String)) return true; return (type.IsValueType &amp;amp; type.IsPrimitive); } public static Object Copy(this Object originalObject) { return InternalCopy(originalObject, new Dictionary&amp;lt;Object, Object&amp;gt;(new ReferenceEqualityComparer())); } private static Object InternalCopy(Object originalObject, IDictionary&amp;lt;Object, Object&amp;gt; visited) { if (originalObject ###### null) return null; var typeToReflect = originalObject.</description>
     </item>
     
     <item>
@@ -265,58 +30,7 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/utils/</guid>
-      <description>
-
-&lt;h1 id=&#34;utility-methods&#34;&gt;Utility methods&lt;/h1&gt;
-
-&lt;h2 id=&#34;setutils&#34;&gt;SetUtils&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SetUtil {
-
-    public static &amp;lt;T&amp;gt; Set&amp;lt;T&amp;gt; asSet(T... elements) {
-        return new HashSet&amp;lt;T&amp;gt;(Arrays.asList(elements));
-    }
-
-    public static &amp;lt;T&amp;gt; boolean bevat(Set&amp;lt;T&amp;gt; someSet, Predicate&amp;lt;T&amp;gt; predicate) {
-        return !Sets.filter(someSet, predicate).isEmpty();
-    }
-
-    public static &amp;lt;E&amp;gt; Set&amp;lt;E&amp;gt; cast(Set&amp;lt;?&amp;gt; someSet, Class&amp;lt;E&amp;gt; classToCastTo) {
-        Set&amp;lt;E&amp;gt; newSet = new LinkedHashSet&amp;lt;E&amp;gt;();
-        for (Object object : someSet) {
-            newSet.add(classToCastTo.cast(object));
-        }
-        return newSet;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;listutils&#34;&gt;ListUtils&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ListUtil {
-
-    public static &amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; sort(Collection&amp;lt;T&amp;gt; collection, Comparator&amp;lt;? super T&amp;gt; comparator) {
-        List&amp;lt;T&amp;gt; toSort = new ArrayList&amp;lt;T&amp;gt;(collection);
-        Collections.sort(toSort, comparator);
-        return toSort;
-    }
-
-    public static boolean bevatDubbels(List&amp;lt;?&amp;gt; aList) {
-        return Sets.newHashSet(aList).size() != aList.size();
-    }
-
-    public static &amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; cast(List&amp;lt;?&amp;gt; aList, Class&amp;lt;T&amp;gt; clazz) {
-        List&amp;lt;T&amp;gt; result = new ArrayList&amp;lt;T&amp;gt;();
-        for (Object obj : aList) {
-            result.add(clazz.cast(obj));
-        }
-        return result;
-    }
-
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Utility methods SetUtils public class SetUtil { public static &amp;lt;T&amp;gt; Set&amp;lt;T&amp;gt; asSet(T... elements) { return new HashSet&amp;lt;T&amp;gt;(Arrays.asList(elements)); } public static &amp;lt;T&amp;gt; boolean bevat(Set&amp;lt;T&amp;gt; someSet, Predicate&amp;lt;T&amp;gt; predicate) { return !Sets.filter(someSet, predicate).isEmpty(); } public static &amp;lt;E&amp;gt; Set&amp;lt;E&amp;gt; cast(Set&amp;lt;?&amp;gt; someSet, Class&amp;lt;E&amp;gt; classToCastTo) { Set&amp;lt;E&amp;gt; newSet = new LinkedHashSet&amp;lt;E&amp;gt;(); for (Object object : someSet) { newSet.add(classToCastTo.cast(object)); } return newSet; } }  ListUtils public class ListUtil { public static &amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; sort(Collection&amp;lt;T&amp;gt; collection, Comparator&amp;lt;?</description>
     </item>
     
   </channel>

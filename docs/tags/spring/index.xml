@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/spring/index.xml</link>
+    <link>http://www.brainbaking.com/tags/spring/</link>
     <description>Recent content in Spring on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>spring</title>
@@ -16,155 +19,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/spring/</guid>
-      <description>
-
-&lt;h1 id=&#34;spring-wiring&#34;&gt;Spring Wiring&lt;/h1&gt;
-
-&lt;h2 id=&#34;how-to-access-target-object-behind-proxy-bean&#34;&gt;How to access target object behind proxy bean&lt;/h2&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.techper.net/2009/06/05/how-to-acess-target-object-behind-a-spring-proxy/&#34;&gt;http://www.techper.net/2009/06/05/how-to-acess-target-object-behind-a-spring-proxy/&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    @SuppressWarnings(&amp;quot;unchecked&amp;quot;)
-    protected &amp;lt;Type&amp;gt; Type getTargetObject(Object proxy, Class&amp;lt;Type&amp;gt; targetClass) {
-        try {
-            if ((AopUtils.isJdkDynamicProxy(proxy))) {
-                return (Type) getTargetObject(((Advised) proxy).getTargetSource().getTarget(), targetClass);
-            }
-            return (Type) proxy; // expected to be cglib proxy then, which is simply a specialized class
-        } catch (Exception ex) {
-            throw new IllegalStateException(ex);
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;geen-loadtime-weaving-geen-probleem&#34;&gt;Geen loadtime weaving? Geen probleem.&lt;/h2&gt;
-
-&lt;p&gt;Gebruik de &lt;strong&gt;static springContext accessor&lt;/strong&gt; (maar met mate(n) natuurlijk:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ApplicationContextHolder implements ApplicationContextAware {
-
-    private static AtomicReference&amp;lt;ApplicationContext&amp;gt; appContext;
-
-    private static void setContext(ApplicationContext context) {
-        appContext = new AtomicReference&amp;lt;ApplicationContext&amp;gt;(context);
-    }
-
-    public static final EntityUidGenerator getUidGenerator() {
-        if (appContext ###### null) {
-            throw new IllegalStateException(&amp;quot;no context loaded yet!&amp;quot;);
-        }
-
-        synchronized (appContext) {
-            return appContext.get().getBean(EntityUidGenerator.class);
-        }
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        ApplicationContextHolder.setContext(applicationContext);
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Als bean in de &lt;code&gt;spring-config.xml&lt;/code&gt; zetten en klaar. Expose niet de hele context aub! Dan kan je dit op een entiteit toch nog doen, en overriden voor testen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    @VisibleForTesting
-    EntityUidGenerator getEntityUidGenerator() {
-        return ApplicationContextHolder.getUidGenerator();
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;############= JPA/Hibernate ############=&lt;/p&gt;
-
-&lt;p&gt;############ PersistenceUnit definiëren ############&lt;/p&gt;
-
-&lt;p&gt;Met een transaction manager:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;bean id######&amp;quot;entityManagerFactory&amp;quot; abstract&amp;quot;true&amp;quot;&amp;gt;
-        &amp;lt;property name=&amp;quot;jpaVendorAdapter&amp;quot;&amp;gt;
-            &amp;lt;bean class=&amp;quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&amp;quot;&amp;gt;
-                &amp;lt;property name######&amp;quot;databasePlatform&amp;quot; value&amp;quot;${hibernate.dialect}&amp;quot;/&amp;gt;
-                &amp;lt;property name######&amp;quot;showSql&amp;quot; value&amp;quot;${database.showSql}&amp;quot; /&amp;gt;
-            &amp;lt;/bean&amp;gt;
-        &amp;lt;/property&amp;gt;
-    &amp;lt;/bean&amp;gt;
-    
-    &amp;lt;bean id######&amp;quot;myEntityManagerFactory&amp;quot; class&amp;quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&amp;quot; parent=&amp;quot;entityManagerFactory&amp;quot;&amp;gt;
-        &amp;lt;property name######&amp;quot;packagesToScan&amp;quot; value&amp;quot;be.klak.domain&amp;quot; /&amp;gt;
-        &amp;lt;property name######&amp;quot;dataSource&amp;quot; ref&amp;quot;myDataSource&amp;quot; /&amp;gt;
-        &amp;lt;property name######&amp;quot;persistenceUnitName&amp;quot; value&amp;quot;my_pu&amp;quot; /&amp;gt;
-        &amp;lt;property name=&amp;quot;persistenceUnitManager&amp;quot;&amp;gt;
-            &amp;lt;bean class=&amp;quot;org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager&amp;quot;&amp;gt;
-                &amp;lt;property name######&amp;quot;defaultDataSource&amp;quot; ref&amp;quot;partnerwerkingDataSource&amp;quot; /&amp;gt;
-                &amp;lt;property name######&amp;quot;persistenceXmlLocation&amp;quot; value&amp;quot;classpath:persistence.xml&amp;quot;/&amp;gt;
-            &amp;lt;/bean&amp;gt;
-        &amp;lt;/property&amp;gt;
-    &amp;lt;/bean&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;De datasource kan via JNDI gedefiniëerd worden dan:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;tx:annotation-driven transaction-manager=&amp;quot;transactionManager&amp;quot;/&amp;gt;
-    &amp;lt;bean id######&amp;quot;myEntityManager&amp;quot; factory-bean&amp;quot;myEntityManagerFactory&amp;quot; factory-method=&amp;quot;createEntityManager&amp;quot; /&amp;gt;
-    &amp;lt;bean id######&amp;quot;transactionManager&amp;quot; class&amp;quot;org.springframework.orm.jpa.JpaTransactionManager&amp;quot;&amp;gt;
-        &amp;lt;property name######&amp;quot;entityManagerFactory&amp;quot; ref&amp;quot;myEntityManagerFactory&amp;quot; /&amp;gt;
-    &amp;lt;/bean&amp;gt;
-    
-    &amp;lt;jee:jndi-lookup id######&amp;quot;myDataSource&amp;quot; jndi-name&amp;quot;jdbc/myDataSource&amp;quot; resource-ref=&amp;quot;true&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Daarna kan je de &lt;code&gt;entityManager&lt;/code&gt; injecteren in Java:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    @PersistenceContext(unitName = &amp;quot;vdab_partnerwerking_pu&amp;quot;)
-    protected EntityManager entityManager;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;######= Werken zonder een persistence.xml ######=&lt;/p&gt;
-
-&lt;p&gt;Vanaf &lt;strong&gt;Spring 3.1&lt;/strong&gt; en JPA kan je via de factory &lt;code&gt;packagesToScan&lt;/code&gt; property aangeven ipv via een &lt;code&gt;persistenceUnitManager&lt;/code&gt; te werken - meer info en context: zie &lt;a href=&#34;http://www.baeldung.com/2011/12/13/the-persistence-layer-with-spring-3-1-and-jpa/&#34;&gt;http://www.baeldung.com/2011/12/13/the-persistence-layer-with-spring-3-1-and-jpa/&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;bean id######&amp;quot;myEntityManagerFactory&amp;quot; class&amp;quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&amp;quot; parent=&amp;quot;entityManagerFactory&amp;quot;&amp;gt;
-        &amp;lt;property name######&amp;quot;packagesToScan&amp;quot; value&amp;quot;be.klak.domain&amp;quot; /&amp;gt;
-        &amp;lt;property name######&amp;quot;dataSource&amp;quot; ref&amp;quot;myDataSource&amp;quot; /&amp;gt;
-    &amp;lt;/bean&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Vergeet niet de &lt;code&gt;unitName&lt;/code&gt; van de &lt;code&gt;PersistenceContext&lt;/code&gt; annotatie af te halen dan.&lt;/p&gt;
-
-&lt;p&gt;############ JPA Annotaties en Hibernate HBMs samen gebruiken ############&lt;/p&gt;
-
-&lt;p&gt;Een manier om de Hibernate session factory uit de JPA entity manager te prullen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;((org.hibernate.ejb.HibernateEntityManager) entityManagerFactory.createEntityManager()).getSession().getSessionFactory();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In Spring config:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;bean id######&amp;quot;entityManagerFactory&amp;quot; class&amp;quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&amp;quot;&amp;gt;
-        &amp;lt;property name######&amp;quot;dataSource&amp;quot; ref&amp;quot;hospesDS&amp;quot; /&amp;gt;
-        &amp;lt;property name######&amp;quot;persistenceUnitName&amp;quot; value&amp;quot;hospesPersistenceUnit&amp;quot; /&amp;gt;
-        &amp;lt;property name=&amp;quot;jpaVendorAdapter&amp;quot;&amp;gt;
-            &amp;lt;bean class=&amp;quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&amp;quot; /&amp;gt;
-        &amp;lt;/property&amp;gt;
-        &amp;lt;property name=&amp;quot;jpaPropertyMap&amp;quot;&amp;gt;
-            &amp;lt;map&amp;gt;
-                &amp;lt;entry key######&amp;quot;hibernate.dialect&amp;quot; value&amp;quot;org.hibernate.dialect.Oracle9iDialect&amp;quot; /&amp;gt;
-            &amp;lt;/map&amp;gt;
-        &amp;lt;/property&amp;gt;
-    &amp;lt;/bean&amp;gt;
-
-    &amp;lt;bean id######&amp;quot;hibernateEntityManager&amp;quot; factory-bean&amp;quot;entityManagerFactory&amp;quot; factory-method######&amp;quot;createEntityManager&amp;quot; class&amp;quot;org.hibernate.ejb.HibernateEntityManager&amp;quot; /&amp;gt;
-    &amp;lt;bean id######&amp;quot;hibernateSession&amp;quot; factory-bean&amp;quot;hibernateEntityManager&amp;quot; factory-method=&amp;quot;getSession&amp;quot; /&amp;gt;
-    &amp;lt;bean id######&amp;quot;mySessionFactory&amp;quot; factory-bean&amp;quot;hibernateSession&amp;quot; factory-method=&amp;quot;getSessionFactory&amp;quot;&amp;gt;
-        &amp;lt;property name=&amp;quot;mappingJarLocations&amp;quot;&amp;gt;
-            &amp;lt;list&amp;gt;
-                &amp;lt;value&amp;gt;classpath:/be/y/persistence/mapping/x.hbm&amp;lt;/value&amp;gt;               
-            &amp;lt;/list&amp;gt;
-        &amp;lt;/property&amp;gt;     
-    &amp;lt;/bean&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Spring Wiring How to access target object behind proxy bean Zie http://www.techper.net/2009/06/05/how-to-acess-target-object-behind-a-spring-proxy/
+@SuppressWarnings(&amp;quot;unchecked&amp;quot;) protected &amp;lt;Type&amp;gt; Type getTargetObject(Object proxy, Class&amp;lt;Type&amp;gt; targetClass) { try { if ((AopUtils.isJdkDynamicProxy(proxy))) { return (Type) getTargetObject(((Advised) proxy).getTargetSource().getTarget(), targetClass); } return (Type) proxy; // expected to be cglib proxy then, which is simply a specialized class } catch (Exception ex) { throw new IllegalStateException(ex); } }  Geen loadtime weaving? Geen probleem. Gebruik de static springContext accessor (maar met mate(n) natuurlijk:</description>
     </item>
     
   </channel>

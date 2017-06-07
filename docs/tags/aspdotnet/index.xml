@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Aspdotnet on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/aspdotnet/index.xml</link>
+    <link>http://www.brainbaking.com/tags/aspdotnet/</link>
     <description>Recent content in Aspdotnet on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/aspdotnet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Jun 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/aspdotnet/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>aspdotnet</title>
@@ -16,78 +19,9 @@
       <pubDate>Mon, 30 Jun 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/csharp/aspdotnet/</guid>
-      <description>
-
-&lt;h1 id=&#34;asp-net&#34;&gt;ASP.NET&lt;/h1&gt;
-
-&lt;h3 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h3&gt;
-
-&lt;h4 id=&#34;webform-dopostbackwithoptions-is-undefined-in-ie1&#34;&gt;&amp;lsquo;WebForm_DoPostBackWithOptions&amp;rsquo; is undefined in IE1&lt;/h4&gt;
-
-&lt;p&gt;Probleem: &lt;a href=&#34;http://blogs.telerik.com/aspnet-ajax/posts/13-12-19/how-to-get-your-asp.net-application-working-in-ie11&#34;&gt;How to get your ASP.NET application working in IE11&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Fix: &lt;a href=&#34;http://www.shubho.net/2011/01/what-is-appbrowsers-folder-in-aspnet.html&#34;&gt;App_Browsers&lt;/a&gt; folder aanmaken in uw webapp en een &lt;code&gt;.browser&lt;/code&gt; file toevoegen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;browsers&amp;gt;
-  &amp;lt;browser id######&amp;quot;IE11&amp;quot; parentID&amp;quot;Mozilla&amp;quot;&amp;gt;
-    &amp;lt;identification&amp;gt;
-      &amp;lt;userAgent match=&amp;quot;Trident/(?&#39;layoutVersion&#39;[7-9]|0*[1-9]&amp;lt;br/&amp;gt;d+)(&amp;lt;br/&amp;gt;.&amp;lt;br/&amp;gt;d+)?;(.*;)?&amp;lt;br/&amp;gt;s*rv:(?&#39;version&#39;(?&#39;major&#39;&amp;lt;br/&amp;gt;d+)(&amp;lt;br/&amp;gt;.(?&#39;minor&#39;&amp;lt;br/&amp;gt;d+)))&amp;quot; /&amp;gt;
-      &amp;lt;userAgent nonMatch=&amp;quot;IEMobile&amp;quot; /&amp;gt;
-    &amp;lt;/identification&amp;gt;
-    &amp;lt;capture&amp;gt;
-      &amp;lt;userAgent match=&amp;quot;Trident/(?&#39;layoutVersion&#39;&amp;lt;br/&amp;gt;d+)&amp;quot; /&amp;gt;
-    &amp;lt;/capture&amp;gt;
-    &amp;lt;capabilities&amp;gt;
-      &amp;lt;capability name######&amp;quot;browser&amp;quot;              value&amp;quot;IE&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;layoutEngine&amp;quot;         value&amp;quot;Trident&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;layoutEngineVersion&amp;quot;  value&amp;quot;${layoutVersion}&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;extra&amp;quot;                value&amp;quot;${extra}&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;isColor&amp;quot;              value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;letters&amp;quot;              value&amp;quot;${letters}&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;majorversion&amp;quot;         value&amp;quot;${major}&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;minorversion&amp;quot;         value&amp;quot;${minor}&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;screenBitDepth&amp;quot;       value&amp;quot;8&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;type&amp;quot;                 value&amp;quot;IE${major}&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;version&amp;quot;              value&amp;quot;${version}&amp;quot; /&amp;gt;
-    &amp;lt;/capabilities&amp;gt;
-  &amp;lt;/browser&amp;gt;
-  
-  &amp;lt;!-- Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11,0) like Gecko --&amp;gt;
-  &amp;lt;browser id######&amp;quot;IE110&amp;quot; parentID&amp;quot;IE11&amp;quot;&amp;gt;
-    &amp;lt;identification&amp;gt;
-      &amp;lt;capability name######&amp;quot;majorversion&amp;quot; match&amp;quot;11&amp;quot; /&amp;gt;
-    &amp;lt;/identification&amp;gt;
-  
-    &amp;lt;capabilities&amp;gt;
-      &amp;lt;capability name######&amp;quot;ecmascriptversion&amp;quot;    value&amp;quot;3.0&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;jscriptversion&amp;quot;       value&amp;quot;5.6&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;javascript&amp;quot;           value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;javascriptversion&amp;quot;    value&amp;quot;1.5&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;msdomversion&amp;quot;         value&amp;quot;${majorversion}.${minorversion}&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;w3cdomversion&amp;quot;        value&amp;quot;1.0&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;ExchangeOmaSupported&amp;quot; value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;activexcontrols&amp;quot;      value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;backgroundsounds&amp;quot;     value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;cookies&amp;quot;              value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;frames&amp;quot;               value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;javaapplets&amp;quot;          value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;supportsCallback&amp;quot;     value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;supportsFileUpload&amp;quot;   value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;supportsMultilineTextBoxDisplay&amp;quot; value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;supportsMaintainScrollPositionOnPostback&amp;quot; value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;supportsVCard&amp;quot;        value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;supportsXmlHttp&amp;quot;      value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;tables&amp;quot;               value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;supportsAccessKeyAttribute&amp;quot;    value&amp;quot;true&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;tagwriter&amp;quot;            value&amp;quot;System.Web.UI.HtmlTextWriter&amp;quot; /&amp;gt;
-      &amp;lt;capability name######&amp;quot;vbscript&amp;quot;             value&amp;quot;true&amp;quot; /&amp;gt;
-    &amp;lt;/capabilities&amp;gt;
-  &amp;lt;/browser&amp;gt;
-&amp;lt;/browsers&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;ofwel&lt;/strong&gt; .NET 4.5 op server installeren (ook al gebruik je 4.0!)&lt;/p&gt;
-</description>
+      <description>ASP.NET Troubleshooting &amp;lsquo;WebForm_DoPostBackWithOptions&amp;rsquo; is undefined in IE1 Probleem: How to get your ASP.NET application working in IE11
+Fix: App_Browsers folder aanmaken in uw webapp en een .browser file toevoegen:
+&amp;lt;browsers&amp;gt; &amp;lt;browser id######&amp;quot;IE11&amp;quot; parentID&amp;quot;Mozilla&amp;quot;&amp;gt; &amp;lt;identification&amp;gt; &amp;lt;userAgent match=&amp;quot;Trident/(?&#39;layoutVersion&#39;[7-9]|0*[1-9]&amp;lt;br/&amp;gt;d+)(&amp;lt;br/&amp;gt;.&amp;lt;br/&amp;gt;d+)?;(.*;)?&amp;lt;br/&amp;gt;s*rv:(?&#39;version&#39;(?&#39;major&#39;&amp;lt;br/&amp;gt;d+)(&amp;lt;br/&amp;gt;.(?&#39;minor&#39;&amp;lt;br/&amp;gt;d+)))&amp;quot; /&amp;gt; &amp;lt;userAgent nonMatch=&amp;quot;IEMobile&amp;quot; /&amp;gt; &amp;lt;/identification&amp;gt; &amp;lt;capture&amp;gt; &amp;lt;userAgent match=&amp;quot;Trident/(?&#39;layoutVersion&#39;&amp;lt;br/&amp;gt;d+)&amp;quot; /&amp;gt; &amp;lt;/capture&amp;gt; &amp;lt;capabilities&amp;gt; &amp;lt;capability name######&amp;quot;browser&amp;quot; value&amp;quot;IE&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;layoutEngine&amp;quot; value&amp;quot;Trident&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;layoutEngineVersion&amp;quot; value&amp;quot;${layoutVersion}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;extra&amp;quot; value&amp;quot;${extra}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;isColor&amp;quot; value&amp;quot;true&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;letters&amp;quot; value&amp;quot;${letters}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;majorversion&amp;quot; value&amp;quot;${major}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;minorversion&amp;quot; value&amp;quot;${minor}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;screenBitDepth&amp;quot; value&amp;quot;8&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;type&amp;quot; value&amp;quot;IE${major}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;version&amp;quot; value&amp;quot;${version}&amp;quot; /&amp;gt; &amp;lt;/capabilities&amp;gt; &amp;lt;/browser&amp;gt; &amp;lt;!</description>
     </item>
     
   </channel>

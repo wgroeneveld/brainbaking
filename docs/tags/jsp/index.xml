@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jsp on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/jsp/index.xml</link>
+    <link>http://www.brainbaking.com/tags/jsp/</link>
     <description>Recent content in Jsp on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/jsp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/jsp/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>jsp</title>
@@ -16,66 +19,12 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/jsp/</guid>
-      <description>
-
-&lt;h1 id=&#34;jsp-snippets&#34;&gt;JSP snippets&lt;/h1&gt;
-
-&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;code/jsp|js context navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;algemeen&#34;&gt;Algemeen&lt;/h2&gt;
-
-&lt;h3 id=&#34;variables-in-jsp-pages-with-included-pages&#34;&gt;Variables in jsp pages with “included” pages&lt;/h3&gt;
-
-&lt;p&gt;Probleem: &lt;code&gt;&amp;lt;c:set/&amp;gt;&lt;/code&gt; gebruikt om een variabele in een pagina te maken, daarna een subpagina geïnclude. Die heeft geen toegang tot die variabele??&lt;/p&gt;
-
-&lt;p&gt;Oplossing:&lt;/p&gt;
-
-&lt;p&gt;n JSP there are two ways of including other jsp pages.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;&amp;lt;%@include file=&amp;quot;/include.jsp&amp;quot;%&amp;gt;&lt;/code&gt;
-and&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;&amp;lt;jsp:include page=&amp;quot;include.jsp&amp;quot; /&amp;gt;&lt;/code&gt;
-If you use the former, then any variable declared on the parent JSP will be in scope in the include.jsp (of course Eclipse will not see this as you surmised) as it is effectively copied in by the compiler.&lt;/p&gt;
-
-&lt;h2 id=&#34;spring-tags&#34;&gt;Spring Tags&lt;/h2&gt;
-
-&lt;h4 id=&#34;bind-errors-aanwezig&#34;&gt;Bind errors aanwezig?&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://static.springsource.org/spring/docs/1.2.x/taglib/tag/BindErrorsTag.html&#34;&gt;http://static.springsource.org/spring/docs/1.2.x/taglib/tag/BindErrorsTag.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;
-&amp;lt;form:form commandName=&amp;quot;model&amp;quot;&amp;gt;
-  &amp;lt;c:set var######&amp;quot;errorsOccured&amp;quot; value&amp;quot;false&amp;quot;/&amp;gt;
-  &amp;lt;spring:hasBindErrors name=&amp;quot;model&amp;quot;&amp;gt;
-     &amp;lt;c:set var######&amp;quot;errorsOccured&amp;quot; value&amp;quot;true&amp;quot;/&amp;gt;
-  &amp;lt;/spring:hasBindErrors&amp;gt;
-  
-  foutjes? ${errorsOccured}
-&amp;lt;/form&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Werkt in combinatie met default Spring &lt;code&gt;Validator&lt;/code&gt; interface. Bij Webflow is het nodig om het volgende toe te voegen in de xml:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;evaluate expression=&amp;quot;action.bindAndValidate&amp;quot; /&amp;gt;&amp;lt;!-- this --&amp;gt;
-&amp;lt;evaluate expression=&amp;quot;action.doStuff(x, y)&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;struts&#34;&gt;Struts&lt;/h2&gt;
-
-&lt;h3 id=&#34;properties-quotes&#34;&gt;Properties quotes&lt;/h3&gt;
-
-&lt;p&gt;Enkele properties gebruiken als value werkt &lt;strong&gt;niet&lt;/strong&gt;, men moet ze escapen door dubbele (enkele) quotes te gebruiken:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dit is een `vette test` voor {0}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Output: &lt;code&gt;dit is een &#39;vette test&#39; voor x&lt;/code&gt; indien x als parameter wordt meegegeven. &lt;br/&gt;&lt;br/&gt;
-Met enkele quote werkt parameter parsing ook niet.&lt;br/&gt;&lt;br/&gt;
-Zelfde probleem met Spring MVC/WebFlow. Heeft te maken met de manier waarop Struts &lt;code&gt;Properties.load()&lt;/code&gt; gebruikt om de properties files te parsen.&lt;/p&gt;
-</description>
+      <description>JSP snippets Inhoudsopgave code/jsp|js context navbar nocookie&amp;rsquo;&amp;gt;
+Algemeen Variables in jsp pages with “included” pages Probleem: &amp;lt;c:set/&amp;gt; gebruikt om een variabele in een pagina te maken, daarna een subpagina geïnclude. Die heeft geen toegang tot die variabele??
+Oplossing:
+n JSP there are two ways of including other jsp pages.
+&amp;lt;%@include file=&amp;quot;/include.jsp&amp;quot;%&amp;gt; and
+&amp;lt;jsp:include page=&amp;quot;include.jsp&amp;quot; /&amp;gt; If you use the former, then any variable declared on the parent JSP will be in scope in the include.</description>
     </item>
     
     <item>
@@ -84,58 +33,10 @@ Zelfde probleem met Spring MVC/WebFlow. Heeft te maken met de manier waarop Stru
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/jsp/jstl/</guid>
-      <description>
-
-&lt;h1 id=&#34;jstl-snippets&#34;&gt;JSTL Snippets&lt;/h1&gt;
-
-&lt;h2 id=&#34;installatie-1-2&#34;&gt;Installatie 1.2&lt;/h2&gt;
-
-&lt;p&gt;Requirements: Web container 2.5 &lt;code&gt;http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&lt;/code&gt; (dit is stricter dan de voorgaande!)&lt;/p&gt;
-
-&lt;p&gt;Jars kopiëren naar WEB-INF lib.&lt;br/&gt;&lt;br/&gt;
-standard-x.jar mag verwijderd worden dit is een oude versie. jstl-api en jstl-impl moeten aanwezig zijn.&lt;/p&gt;
-
-&lt;p&gt;Hierna is het mogelijk om met &lt;em&gt;&lt;code&gt;$&lt;/code&gt;&lt;/em&gt; expressies te gebruiken in jsps.&lt;/p&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Opgelet&lt;/strong&gt; - dollar wordt aan de server kant geëvalueerd, dat wil zeggen dat dit een conflict geeft met &lt;a href=&#34;http://code.google.com/p/trimpath/wiki/JavaScriptTemplates&#34;&gt;TrimPath Javascript Templates&lt;/a&gt; die aan de client kan geëvalueerd worden.&lt;/p&gt;
-
-&lt;h2 id=&#34;datums-formatteren&#34;&gt;Datums formatteren&lt;/h2&gt;
-
-&lt;p&gt;Doen met:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt; &amp;lt;fmt:formatDate pattern######&amp;quot;dd/MM/yyyy&amp;quot; value&amp;quot;${entity.date}&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Opgelet&lt;/strong&gt; - Voor JSTL 1.2 kan value wel een EL expressie zijn, daarvoor niet.&lt;br/&gt;&lt;br/&gt;
-Hiervoor dien je deze taglib te gebruiken: &lt;code&gt;*http:*java.sun.com/**jsp**/jstl/fmt//&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Het standaard pattern is brol, en dat altijd meegeven is vervelend. Uw eigen tag maken en &lt;code&gt;setPattern()&lt;/code&gt; aanroepen werkt, maar gebruik de juiste klasse om af te leiden!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class DisplayDateTag extends org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag { 
-  @Override
-  public void setValue(Date value) {
-     super.setValue(value); // &#39;cause JSP uses reflection...
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In plaats van &lt;code&gt;org.apache.taglibs.standard.tag.el.fmt.FormatDateTag&lt;/code&gt;. Waarom?&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Actually, there are two taglib directives that correspond to the JSTL core  library because in JSTL 1.0 the EL is optional. All four of the JSTL 1.0 custom tag libraries have alternate versions that use JSP expressions rather than the EL for specifying dynamic attribute values. Because these alternate libraries rely on JSP&amp;rsquo;s more traditional request-time attribute values, they are referred to as the RT libraries, whereas those using the expression language are referred to as the EL libraries. Developers distinguish between the two versions of each library using alternate taglib  directives. The directive for using the RT version of the core library is shown in Listing 8. Given our current focus on the EL, however, it is the first of these directives that is needed.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.ibm.com/developerworks/java/library/j-jstl0211.html&#34;&gt;http://www.ibm.com/developerworks/java/library/j-jstl0211.html&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Opgelet&lt;/strong&gt; - Om EL expressies goed te kunnen doorgeven Ipv. te evalueren op de JSP moet dit in de TLD staan:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;attribute&amp;gt;
-            &amp;lt;name&amp;gt;value&amp;lt;/name&amp;gt;
-            &amp;lt;required&amp;gt;true&amp;lt;/required&amp;gt;
-            &amp;lt;rtexprvalue&amp;gt;true&amp;lt;/rtexprvalue&amp;gt; &amp;lt;!-- belangrijk --&amp;gt;
-        &amp;lt;/attribute&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>JSTL Snippets Installatie 1.2 Requirements: Web container 2.5 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd (dit is stricter dan de voorgaande!)
+Jars kopiëren naar WEB-INF lib. standard-x.jar mag verwijderd worden dit is een oude versie. jstl-api en jstl-impl moeten aanwezig zijn.
+Hierna is het mogelijk om met $ expressies te gebruiken in jsps.
+❗️ Opgelet - dollar wordt aan de server kant geëvalueerd, dat wil zeggen dat dit een conflict geeft met TrimPath Javascript Templates die aan de client kan geëvalueerd worden.</description>
     </item>
     
     <item>
@@ -144,149 +45,8 @@ Hiervoor dien je deze taglib te gebruiken: &lt;code&gt;*http:*java.sun.com/**jsp
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/jsp/webflow/</guid>
-      <description>
-
-&lt;h1 id=&#34;spring-webflow&#34;&gt;Spring Webflow&lt;/h1&gt;
-
-&lt;h2 id=&#34;pitfalls-rond-flow-xml-declaraties&#34;&gt;Pitfalls rond flow xml declaraties&lt;/h2&gt;
-
-&lt;p&gt;Gelieve in het geval van &amp;ldquo;problemen&amp;rdquo; de volgende checklist te raadplegen:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;bind = false&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;setupForm&lt;/code&gt; gedaan? Anders worden &lt;code&gt;PropertyEditors&lt;/code&gt; niet correct gebruikt&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;resetForm&lt;/code&gt; leegmaken gui model&lt;/li&gt;
-&lt;li&gt;scope opgeven in model attribute&lt;/li&gt;
-&lt;li&gt;in action: &lt;code&gt;setFormObjectName&lt;/code&gt;/&lt;code&gt;setFormObjectScope&lt;/code&gt; en indien &lt;code&gt;resetForm&lt;/code&gt; ook &lt;code&gt;setFormObjectClass&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Ajax requets: &lt;code&gt;vac_ajax_request&lt;/code&gt; op true zetten -&amp;gt; anders geen fragments&lt;/li&gt;
-&lt;li&gt;Ajax: extend van &lt;code&gt;AbstractWebflowAjaxAction&lt;/code&gt; Te combineren met &lt;code&gt;setFormObjectName&lt;/code&gt; stap&lt;/li&gt;
-&lt;li&gt;nestedPartialPage tag -&amp;gt; &lt;code&gt;commandName&lt;/code&gt; ofwel hardcoded ofwel als var vanuit tiles meegegeven&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;abstractwebflowajaxaction&#34;&gt;AbstractWebflowAjaxAction&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
-package be.oei.webmvc;
-
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.DataBinder;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.webflow.action.FormAction;
-import org.springframework.webflow.action.FormObjectAccessor;
-import org.springframework.webflow.core.collection.MutableAttributeMap;
-import org.springframework.webflow.execution.Event;
-import org.springframework.webflow.execution.RequestContext;
-import org.springframework.webflow.execution.ScopeType;
-import org.springframework.webflow.execution.View;
-
-public abstract class AbstractWebFlowAjaxAction extends FormAction {
-
-    protected static final String COMMAND_NAME = &amp;quot;commandName&amp;quot;;
-    protected static final String ERRORS_PREFIX = BindingResult.MODEL_KEY_PREFIX;
-
-    @Override
-    protected final Object getFormObject(RequestContext context) throws Exception {
-        String formObjectName = getFormObjectName();
-        ScopeType formObjectScope = getFormObjectScope();
-        Object result = null;
-        if (formObjectName != null) {
-            result = formObjectScope.getScope(context).get(formObjectName);
-        }
-        if (result ###### null) {
-            result = ((MutableAttributeMap) context.getFlowScope().get(&amp;quot;viewScope&amp;quot;)).get(&amp;quot;currentFormObject&amp;quot;);
-        }
-        if (result ###### null) {
-            result = context.getFlowScope().get(&amp;quot;currentFormObject&amp;quot;);
-        }
-        if (result ###### null) {
-            result = super.getFormObject(context);
-        }
-        return result;
-    }
-
-    protected final String commandNameFromRequest(RequestContext context) {
-        return context.getRequestParameters().get(COMMAND_NAME);
-    }
-
-    @Override
-    public Event bindAndValidate(RequestContext context) throws Exception {
-        Event result = super.bindAndValidate(context);
-        initFragmentToRender(context);
-        return result;
-    }
-
-    @Override
-    public Event bind(RequestContext context) throws Exception {
-        Event result = super.bind(context);
-        this.initFragmentToRender(context);
-        return result;
-    }
-
-    @Override
-    protected DataBinder createBinder(RequestContext context, Object formObject) throws Exception {
-        DataBinder binder = new WebDataBinder(formObject, commandNameFromRequest(context));
-        if (getMessageCodesResolver() != null) {
-            binder.setMessageCodesResolver(getMessageCodesResolver());
-        }
-        initBinder(context, binder);
-        registerPropertyEditors(context, binder);
-        return binder;
-    }
-
-    @Override
-    protected FormObjectAccessor getFormObjectAccessor(final RequestContext context) {
-        final String commandNameFromRequest = commandNameFromRequest(context);
-        return new FormObjectAccessor(context) {
-            @Override
-            public Errors getFormErrors(String formObjectName, ScopeType scopeType) {
-                return super.getFormErrors(commandNameFromRequest, scopeType);
-            }
-
-            @Override
-            public Object getFormObject(String formObjectName, @SuppressWarnings(&amp;quot;rawtypes&amp;quot;) Class formObjectClass, ScopeType scopeType) {
-                return super.getFormObject(commandNameFromRequest, formObjectClass, scopeType);
-            }
-
-            @Override
-            public Object getFormObject(String formObjectName, ScopeType scopeType) {
-                return super.getFormObject(commandNameFromRequest, scopeType);
-            }
-
-            @Override
-            public Object getCurrentFormObject(ScopeType scopeType) {
-                return super.getFormObject(getCurrentFormObjectName(), scopeType);
-            }
-
-            @Override
-            public Errors getCurrentFormErrors(ScopeType scopeType) {
-                return super.getFormErrors(getCurrentFormObjectName(), scopeType);
-            }
-
-            @Override
-            public void putFormObject(Object formObject, String formObjectName, ScopeType scopeType) {
-                super.putFormObject(formObject, commandNameFromRequest, scopeType);
-            }
-
-            @Override
-            public void putFormErrors(Errors errors, ScopeType scopeType) {
-                scopeType.getScope(context).put(ERRORS_PREFIX + commandNameFromRequest, errors);
-                setCurrentFormErrors(errors, scopeType);
-            }
-
-        };
-    }
-
-    protected void initFragmentToRender(RequestContext context) {
-        context.getFlashScope().put(View.RENDER_FRAGMENTS_ATTRIBUTE, new String[] { fragmentToRender() });
-        context.getFlashScope().put(COMMAND_NAME, commandNameFromRequest(context));
-    }
-
-    protected abstract String fragmentToRender();
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Spring Webflow Pitfalls rond flow xml declaraties Gelieve in het geval van &amp;ldquo;problemen&amp;rdquo; de volgende checklist te raadplegen:
+ bind = false setupForm gedaan? Anders worden PropertyEditors niet correct gebruikt resetForm leegmaken gui model scope opgeven in model attribute in action: setFormObjectName/setFormObjectScope en indien resetForm ook setFormObjectClass Ajax requets: vac_ajax_request op true zetten -&amp;gt; anders geen fragments Ajax: extend van AbstractWebflowAjaxAction Te combineren met setFormObjectName stap nestedPartialPage tag -&amp;gt; commandName ofwel hardcoded ofwel als var vanuit tiles meegegeven  AbstractWebflowAjaxAction package be.</description>
     </item>
     
   </channel>

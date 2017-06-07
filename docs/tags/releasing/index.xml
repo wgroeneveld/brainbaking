@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Releasing on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/releasing/index.xml</link>
+    <link>http://www.brainbaking.com/tags/releasing/</link>
     <description>Recent content in Releasing on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/releasing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/releasing/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>releasing</title>
@@ -16,42 +19,8 @@
       <pubDate>Thu, 28 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/build/maven/releasing/</guid>
-      <description>
-
-&lt;h1 id=&#34;maven-releasing&#34;&gt;Maven Releasing&lt;/h1&gt;
-
-&lt;p&gt;Opmerking: de te releasen code zetten onder een folder C:/xxx en niet te diep nesten (CVS kan te lange folder structuur niet uitchecken)&lt;/p&gt;
-
-&lt;h4 id=&#34;hoe-een-maven-release-uitvoeren&#34;&gt;Hoe een maven release uitvoeren ?&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;(&lt;strong&gt;eenmalig uit te voeren&lt;/strong&gt; ❗) voor elke nieuwe release maken we op een gepast moment een CVS &amp;lsquo;maintenance release branch&amp;rsquo; waarop we de laatste bugfixen uitvoeren :
-
-&lt;ol&gt;
-&lt;li&gt;deze zal steeds de vorm &amp;lsquo;versiez_y_x&amp;rsquo; hebben waarbij we z_y vervangen door een TOP release nummer b.v. &amp;lsquo;versie2_7_x&amp;rsquo;&lt;/li&gt;
-&lt;li&gt;deze branch wordt later ook gebruikt om maintenance releases op uit te voeren (emergency / extra TOP&amp;rsquo;s om bugfixes door te voeren)&lt;/li&gt;
-&lt;li&gt;gebruik volgend maven commando om de branch aan te maken (gebruik wel de juiste branchname en username/password voor cvs !) :
-
-&lt;ol&gt;
-&lt;li&gt;CVS &amp;ndash;&amp;gt;   mvn release:branch -DupdateBranchVersions######true -DupdateWorkingCopyVersionstrue -DbranchName######versiez_y_x -DautoVersionSubmodulestrue -Dusername######xxxx -Dpasswordyyyyy&lt;/li&gt;
-&lt;li&gt;SVN &amp;ndash;&amp;gt;   zelfde als CVS, maar zonder username en password&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;bij het uitvoeren van het commando komt maven vragen achter het versienummer in de branch en de nieuwe versie in de hoofdbranch.&lt;/li&gt;
-&lt;li&gt;De branch versie nummer zal &amp;lsquo;z.y.0-SNAPSHOT&amp;rsquo; zijn (in dit voorbeeld &amp;lsquo;2.7.0-SNAPSHOT&amp;rsquo;)&lt;/li&gt;
-&lt;li&gt;De hoofdbranch versie zal &amp;lsquo;z.y+1-SNAPSHOT&amp;rsquo; zijn (in dit voorbeeld &amp;lsquo;2.8-SNAPSHOT&amp;rsquo;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;update het project via wincvs naar de correcte branch &amp;lsquo;versiez_y_x&amp;rsquo; (in het voorbeeld versie2_7_x).&lt;/li&gt;
-&lt;li&gt;bereidt de nieuwe release voor door het commando mvn release:prepare -Dresume######false  -DpreparationGoals&amp;rdquo;clean install&amp;rdquo;  -DautoVersionSubmodules=true -Dusername######xxxx -Dpasswordyyyyy uit te voeren.&lt;/li&gt;
-&lt;li&gt;Als dit niet lukt met de fout &amp;lsquo;address in use&amp;rsquo;, dan moet je de maven opts aanpassen (remote debugging weghalen). Maven zal je vragen achter de release versie nummer (in het voorbeeld wordt dit 2.7.0) en achter de volgende development versie (in het voorbeeld 2.7.1-SNAPSHOT).&lt;/li&gt;
-&lt;li&gt;finaliseer de release via het commando mvn release:perform  -Dusername######xxxx -Dpasswordyyyyy&lt;/li&gt;
-&lt;li&gt;pas de pom.xml van relevant projecten aan&lt;/li&gt;
-&lt;li&gt;pas eventueel de prj/pom.xml &amp;amp; vdabbuild.xml aan om je EAR / WAR automatisch in de deployment TAR te stoppen.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;hoe-skip-ik-mijn-testen-bij-een-release&#34;&gt;Hoe skip ik mijn testen bij een release?&lt;/h4&gt;
-
-&lt;p&gt;&lt;code&gt;-Darguments=&amp;quot;-DskipTests&amp;quot;&lt;/code&gt; meegeven&lt;/p&gt;
-</description>
+      <description>Maven Releasing Opmerking: de te releasen code zetten onder een folder C:/xxx en niet te diep nesten (CVS kan te lange folder structuur niet uitchecken)
+Hoe een maven release uitvoeren ?  (eenmalig uit te voeren ❗️) voor elke nieuwe release maken we op een gepast moment een CVS &amp;lsquo;maintenance release branch&amp;rsquo; waarop we de laatste bugfixen uitvoeren :  deze zal steeds de vorm &amp;lsquo;versiez_y_x&amp;rsquo; hebben waarbij we z_y vervangen door een TOP release nummer b.</description>
     </item>
     
   </channel>

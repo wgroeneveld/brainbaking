@@ -9,7 +9,7 @@
   <title>jstl</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.21" />
   <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
@@ -175,7 +175,7 @@ standard-x.jar mag verwijderd worden dit is een oude versie. jstl-api en jstl-im
 
 <p>Hierna is het mogelijk om met <em><code>$</code></em> expressies te gebruiken in jsps.</p>
 
-<p>❗ <strong>Opgelet</strong> - dollar wordt aan de server kant geëvalueerd, dat wil zeggen dat dit een conflict geeft met <a href="http://code.google.com/p/trimpath/wiki/JavaScriptTemplates">TrimPath Javascript Templates</a> die aan de client kan geëvalueerd worden.</p>
+<p>❗️ <strong>Opgelet</strong> - dollar wordt aan de server kant geëvalueerd, dat wil zeggen dat dit een conflict geeft met <a href="http://code.google.com/p/trimpath/wiki/JavaScriptTemplates">TrimPath Javascript Templates</a> die aan de client kan geëvalueerd worden.</p>
 
 <h2 id="datums-formatteren">Datums formatteren</h2>
 
@@ -184,7 +184,7 @@ standard-x.jar mag verwijderd worden dit is een oude versie. jstl-api en jstl-im
 <pre><code class="language-xml"> &lt;fmt:formatDate pattern######&quot;dd/MM/yyyy&quot; value&quot;${entity.date}&quot; /&gt;
 </code></pre>
 
-<p>❗ <strong>Opgelet</strong> - Voor JSTL 1.2 kan value wel een EL expressie zijn, daarvoor niet.<br/><br/>
+<p>❗️ <strong>Opgelet</strong> - Voor JSTL 1.2 kan value wel een EL expressie zijn, daarvoor niet.<br/><br/>
 Hiervoor dien je deze taglib te gebruiken: <code>*http:*java.sun.com/**jsp**/jstl/fmt//</code></p>
 
 <p>Het standaard pattern is brol, en dat altijd meegeven is vervelend. Uw eigen tag maken en <code>setPattern()</code> aanroepen werkt, maar gebruik de juiste klasse om af te leiden!</p>
@@ -205,7 +205,7 @@ Hiervoor dien je deze taglib te gebruiken: <code>*http:*java.sun.com/**jsp**/jst
 
 <p>Zie <a href="http://www.ibm.com/developerworks/java/library/j-jstl0211.html">http://www.ibm.com/developerworks/java/library/j-jstl0211.html</a>.</p>
 
-<p>❗ <strong>Opgelet</strong> - Om EL expressies goed te kunnen doorgeven Ipv. te evalueren op de JSP moet dit in de TLD staan:</p>
+<p>❗️ <strong>Opgelet</strong> - Om EL expressies goed te kunnen doorgeven Ipv. te evalueren op de JSP moet dit in de TLD staan:</p>
 
 <pre><code class="language-xml">        &lt;attribute&gt;
             &lt;name&gt;value&lt;/name&gt;
@@ -296,7 +296,7 @@ Hiervoor dien je deze taglib te gebruiken: <code>*http:*java.sun.com/**jsp**/jst
   	    </p>
   	    
     	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
           
     	</p>
       </div>
@@ -318,7 +318,7 @@ Hiervoor dien je deze taglib te gebruiken: <code>*http:*java.sun.com/**jsp**/jst
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-45748221-1', 'auto');
 ga('send', 'pageview');

@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Profiling on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/profiling/index.xml</link>
+    <link>http://www.brainbaking.com/tags/profiling/</link>
     <description>Recent content in Profiling on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/profiling/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 May 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/profiling/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>profiling</title>
@@ -16,52 +19,10 @@
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/profiling/</guid>
-      <description>
-
-&lt;h1 id=&#34;profiling&#34;&gt;Profiling&lt;/h1&gt;
-
-&lt;p&gt;Voor JMX, monitoring en andere: zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/java/monitoring/&#34;&gt;code/java/monitoring&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;verschillende-profilers&#34;&gt;Verschillende profilers&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;jconsole&lt;/code&gt;: provided in JDK&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;visualvm&lt;/code&gt;: provided in JDK&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Eclipse Memory Analyzer&lt;/code&gt;: &lt;a href=&#34;http://www.eclipse.org/mat/&#34;&gt;http://www.eclipse.org/mat/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;YourKit&lt;/code&gt;: &lt;a href=&#34;http://www.yourkit.com/&#34;&gt;http://www.yourkit.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Remote connecten gaat meestal via JMX, behalve your YourKit:&lt;/p&gt;
-
-&lt;h4 id=&#34;remote-connecten-met-yourkit&#34;&gt;Remote connecten met YourKit&lt;/h4&gt;
-
-&lt;p&gt;Zie http:*www.yourkit.com/docs/12/help/profiling_j2ee_remote.jsp en http:*www.yourkit.com/docs/95/help/agent.jsp - Je moet een &lt;code&gt;agentpath&lt;/code&gt; JVM param meegeven om dit te kunnen doen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-agentpath:/usr/yourkit/libyjpagent.so######delay10000,sessionname=Tomcat
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zet niet te veel opties in agentpath om dingen te optimaliseren of het proben van de PermGen stack werkt niet. Je kan dit bekijken in YourKit door hier op te klikken:&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/java/yourkit.png|&#39;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;wanneer-wat-gebruiken&#34;&gt;Wanneer wat gebruiken?&lt;/h4&gt;
-
-&lt;h5 id=&#34;ik-wil-mijn-geheugengebruik-in-het-oog-houden&#34;&gt;Ik wil mijn geheugengebruik in het oog houden&lt;/h5&gt;
-
-&lt;p&gt;Kan met eender welke profiler, VisualVM is het leukste qua GUI.&lt;/p&gt;
-
-&lt;h5 id=&#34;ik-wil-de-stack-van-een-outofmem-uit-een-heapdump-halen&#34;&gt;Ik wil de stack van een OutOfMem uit een heapdump halen&lt;/h5&gt;
-
-&lt;p&gt;Kan met VisualVM of de Eclipse tool&lt;/p&gt;
-
-&lt;h5 id=&#34;ik-wil-de-veel-voorkomende-problemen-automatisch-uit-een-heapdump-halen&#34;&gt;Ik wil de veel voorkomende problemen automatisch uit een heapdump halen&lt;/h5&gt;
-
-&lt;p&gt;Er worden rapporten gegenereerd door de eclipse tool&lt;/p&gt;
-
-&lt;h5 id=&#34;ik-wil-live-de-permgen-space-analyseren&#34;&gt;Ik wil live de PermGen space analyseren&lt;/h5&gt;
-
-&lt;p&gt;Kan enkel met YourKit door middel van probes.&lt;/p&gt;
-</description>
+      <description>Profiling Voor JMX, monitoring en andere: zie code/java/monitoring
+Verschillende profilers  jconsole: provided in JDK visualvm: provided in JDK Eclipse Memory Analyzer: http://www.eclipse.org/mat/ YourKit: http://www.yourkit.com/  Remote connecten gaat meestal via JMX, behalve your YourKit:
+Remote connecten met YourKit Zie http:*www.yourkit.com/docs/12/help/profiling_j2ee_remote.jsp en http:*www.yourkit.com/docs/95/help/agent.jsp - Je moet een agentpath JVM param meegeven om dit te kunnen doen:
+-agentpath:/usr/yourkit/libyjpagent.so######delay10000,sessionname=Tomcat  Zet niet te veel opties in agentpath om dingen te optimaliseren of het proben van de PermGen stack werkt niet.</description>
     </item>
     
   </channel>

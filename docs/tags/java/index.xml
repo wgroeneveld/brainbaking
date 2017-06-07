@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/java/index.xml</link>
+    <link>http://www.brainbaking.com/tags/java/</link>
     <description>Recent content in Java on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Sep 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Custom Webdriver Page Factories</title>
@@ -16,99 +19,8 @@
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/custom-webdriver-page-factories/</guid>
-      <description>&lt;p&gt;The problem: Webdriver elements returned by &lt;code&gt;driver.FindElement()&lt;/code&gt; are too generic. There&amp;rsquo;re the &lt;code&gt;Text&lt;/code&gt;, &lt;code&gt;SendKeys()&lt;/code&gt; and &lt;code&gt;Click()&lt;/code&gt; methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like &lt;code&gt;ShouldContainValue&lt;/code&gt; or &lt;code&gt;Type&lt;/code&gt; (okay, that&amp;rsquo;s a one-to-one mapping with &lt;code&gt;SendKeys()&lt;/code&gt;, but it&amp;rsquo;s a lot less technical!). Instead of&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)]
-    private IWebElement startButton;
-
-    [FindsBy(How = How.CssSelector, Using = &amp;quot;.other&amp;quot;)]
-    private IWebElement whatever;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You&amp;rsquo;d find code like&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)]
-    private HTMLSubmitButton startButton;
-
-    [FindsBy(How = How.CssSelector, Using = &amp;quot;.other&amp;quot;)]
-    private HTMLInputBox whatever;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In java, this is not that difficult. Normally all fields annotated with FindsBy are filled in via reflection with &lt;code&gt;PageFactory.InitElements()&lt;/code&gt;. (warning: this creates proxies and does not yet actually do the lookup in the DOM tree. This is a good thing, as filling the fields usually happens inside the constructor of a page object.). &lt;code&gt;initElements&lt;/code&gt; returns the filled page, you can do a few things from there:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;postprocess the page and decorate your fields&lt;/li&gt;
-&lt;li&gt;create your own page factory and create your own fields, wrapped around the webdriver proxies&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In C#, you&amp;rsquo;re in trouble - the class is sealed, and the proxy classes are internal. Creating your own factory is possible, but produces fuzzy code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;internal class PageFactory
-{
-    private PageFactory()
-    {
-    }
-
-    private static By FindsByAttributeToBy(FindsByAttribute attribute)
-    {
-        return (By) typeof (FindsByAttribute).GetProperty(&amp;quot;Finder&amp;quot;, BindingFlags.NonPublic | BindingFlags.Instance).GetValue(attribute);
-    }
-
-    public static void InitElements(IWebDriver driver, object page)
-    {
-        foreach (FieldInfo field in FindAllFieldsAndProperties(page.GetType()))
-        {
-            Attribute[] findsByAttribs = Attribute.GetCustomAttributes(field, typeof (FindsByAttribute), true);
-            if (findsByAttribs.Length &amp;gt; 0)
-            {
-                var findsByAttribute = (findsByAttribs[0] as FindsByAttribute);
-                if (field.FieldType == typeof (IWebElement))
-                {
-                    field.SetValue(page, FindElement(driver, FindsByAttributeToBy(findsByAttribute)));
-                }
-                else if (typeof (IEnumerable).IsAssignableFrom(field.FieldType))
-                {
-                    field.SetValue(page, FindElements(driver, FindsByAttributeToBy(findsByAttribute)));
-                }
-            }
-        }
-    }
-
-    private static IWebElement FindElement(IWebDriver driver, By by)
-    {
-        // warning: create WebProxyElement instead of directly doing a lookup
-        return driver.FindElement(by);
-    }
-
-    private static IReadOnlyCollection&amp;lt;IWebElement&amp;gt; FindElements(IWebDriver driver, By by)
-    {
-        // warning: create WebListProxyElement instead of directly doing a lookup
-        return driver.FindElements(by);
-    }
-
-    private static IEnumerable&amp;lt;FieldInfo&amp;gt; FindAllFieldsAndProperties(Type type)
-    {
-        var list = new List&amp;lt;FieldInfo&amp;gt;();
-        list.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.Public));
-        for (; type != (Type) null; type = type.BaseType)
-        {
-            list.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic));
-        }
-        return list;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you have a keen eye, you notice a few things:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;caching of the attribute wouldn&amp;rsquo;t work anymore. The default C# WebDriver implementation is fuzzy and I didn&amp;rsquo;t want to copypaste code I won&amp;rsquo;t use.&lt;/li&gt;
-&lt;li&gt;proxying won&amp;rsquo;t work anymore, you&amp;rsquo;d have to use reflection to instantiate internal classes.&lt;/li&gt;
-&lt;li&gt;reflection has been used to fetch the &lt;code&gt;By&lt;/code&gt; instance of the &lt;code&gt;FindsByAttribute&lt;/code&gt;. Yay.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The above solution is too complex to solve a simple thing. Instead of a custom page factory, in C# we now use extension methods on &lt;code&gt;IWebElement&lt;/code&gt;. Another possibility would to create wrapper objects on-the-fly but you&amp;rsquo;d still have to map the &amp;ldquo;raw&amp;rdquo; web elements on page objects.&lt;/p&gt;
-</description>
+      <description>The problem: Webdriver elements returned by driver.FindElement() are too generic. There&amp;rsquo;re the Text, SendKeys() and Click() methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like ShouldContainValue or Type (okay, that&amp;rsquo;s a one-to-one mapping with SendKeys(), but it&amp;rsquo;s a lot less technical!). Instead of
+ [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)] private IWebElement startButton; [FindsBy(How = How.CssSelector, Using = &amp;quot;.</description>
     </item>
     
     <item>
@@ -117,215 +29,9 @@
       <pubDate>Wed, 23 Jul 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/testing/selenium/</guid>
-      <description>
-
-&lt;h1 id=&#34;selenium-scenario-testing&#34;&gt;Selenium Scenario Testing&lt;/h1&gt;
-
-&lt;p&gt;Ter info: Webdriver = selenium 2.x.&lt;/p&gt;
-
-&lt;h2 id=&#34;webdriver-samen-met-phantomjs&#34;&gt;Webdriver samen met PhantomJS&lt;/h2&gt;
-
-&lt;h4 id=&#34;opzet&#34;&gt;opzet&lt;/h4&gt;
-
-&lt;p&gt;Headless webdriver testen draaien gaat met &lt;code&gt;HTMLUnit&lt;/code&gt; - vanaf 2.x zit &lt;code&gt;org.openqa.selenium.htmlunit.HtmlUnitDriver&lt;/code&gt; ook in de jar. De JS die daar evaluated wordt is echter &lt;code&gt;Rhino&lt;/code&gt; JS en niet native browser stuff. We kunnen in de plaats &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/&#34;&gt;code/javascript/testing/phantomjs&lt;/a&gt; gebruiken - deze driver zit in een andere jar. In de centrale maven repo:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt;
-            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.github.detro.ghostdriver&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;phantomjsdriver&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.0.3&amp;lt;/version&amp;gt;
-            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/detro/ghostdriver&#34;&gt;ghostdriver&lt;/a&gt; is de ingebouwde koppeling tussen phantomjs en webdriver (selenium server). Dit zit ingebouwd in phantomjs als je deze uitvoert met &lt;code&gt;--webdriver=[port]&lt;/code&gt; - wat de service voor u doet.&lt;/p&gt;
-
-&lt;h4 id=&#34;in-de-java-code&#34;&gt;In de java code&lt;/h4&gt;
-
-&lt;p&gt;Onderstaande voorbeeldcode maakt het mogelijk om zowel met &lt;code&gt;chrome&lt;/code&gt; als met &lt;code&gt;phantomjs&lt;/code&gt; te werken:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public abstract class WebdriverTest extends IntegrationTest {
-
-    private static ChromeDriverService service;
-    private static WebDriver driver;
-
-    static {
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-
-            @Override
-            public void run() {
-                driver.quit();
-                if (service != null) {
-                    service.stop();
-                }
-            }
-        });
-    }
-
-    private static void startService() {
-        try {
-            service = new ChromeDriverService.Builder()
-                    .usingDriverExecutable(new File(properties().getChromeDriverExecutable()))
-                    .usingAnyFreePort().build();
-            service.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Before
-    public void gaNaarStartpagina() {
-        getDriver().get(vitrineUrl());
-    }
-
-    protected static WebDriver getDriver() {
-        if (driver ###### null) {
-            driver = startDriver();
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        }
-        return driver;
-    }
-
-    private static RemoteWebDriver startDriver() {
-        if (properties().isChromeWebdriverNodig()) {
-            startService();
-            return new ChromeDriver(service);
-        }
-        return new PhantomJSDriver(phantomJSCapabilities());
-    }
-
-    private static DesiredCapabilities phantomJSCapabilities() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setJavascriptEnabled(true);
-        capabilities.setCapability(&amp;quot;takesScreenshot&amp;quot;, false);
-        capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, properties().getPhantomJSExecutable());
-        capabilities.setCapability(PHANTOMJS_CLI_ARGS, new String[] { &amp;quot;--webdriver-loglevel=DEBUG&amp;quot; });
-        return capabilities;
-    }
-
-    protected String toString(DateMidnight date) {
-        return date.toString(&amp;quot;dd/MM/yyyy&amp;quot;);
-    }
-
-    protected ZoekPage startPagina() {
-        return new ZoekPage(driver);
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;essentiëel is het gewoon &lt;code&gt;new PhantomJSDriver(new DesiredCapabilities())&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;############= Webdriver samen met IE ############=&lt;/p&gt;
-
-&lt;p&gt;######= Opzet ######=&lt;/p&gt;
-
-&lt;p&gt;Bij fouten als &amp;ldquo;Protected Mode must be set to the same value&amp;rdquo; (zie &lt;a href=&#34;https://code.google.com/p/selenium/issues/detail?id=1795&#34;&gt;hier&lt;/a&gt; heb je een specifieke switch nodig:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    private static DesiredCapabilities ieCapabilities() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-        return capabilities;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Voor de rest is de setup gelijkaardig aan die van chrome - het maken van de service&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    private static void startIEService() {
-        ieService = new InternetExplorerDriverService.Builder()
-                .usingDriverExecutable(new File(properties().getIEDriverExecutable()))
-                .usingAnyFreePort()
-                .build();
-        try {
-            ieService.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;En het maken van de driver via &lt;code&gt;return new InternetExplorerDriver(ieService, ieCapabilities());&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;############= Selenium IDE scenarios opnemen ############=&lt;/p&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://seleniumhq.org/projects/ide/&#34;&gt;Selenium IDE Plugin voor Firefox&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;######= identificatie van elementen ######=
-Bij voorkeur dien je elke knop, link, invoerveld, enz&amp;hellip; een &amp;lsquo;id&amp;rsquo; te geven zodat Selenium dit object op id kan terugvinden.&lt;/p&gt;
-
-&lt;p&gt;In een aantal gevallen is het niet mogelijk om het object op object id terug te vinden. Dit is bijvoorbeeld gegenereerde code van het metis framework. Hieronder een overzicht en welke oplossing best te nemen&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;bvb op Login scherm: klikken op de knop &amp;lsquo;inloggen&amp;rsquo; genereert als target: img[contains(@src,&amp;lsquo;http:*localhost:8080/Hospes/static/images/form/buttons/key.png&amp;rsquo;)] =&amp;gt; hieruit de http:*localhost:8080 weghalen&lt;/li&gt;
-&lt;li&gt;klikken op een menu item registreert vaak enkel het openen van het menu en niet het menu item zelf. Hiervoor kan je firebug nemen om het desbetreffende menu item te inspecten en manueel in de target de juiste target invullen (bvb menuItemText2)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;######=click(AndWait)######=&lt;/p&gt;
-
-&lt;p&gt;Bij het opnemen van scenario&amp;rsquo;s gaat Selenium bij elke klik op een link, button een &amp;lsquo;click&amp;rsquo; als command registreren. Indien deze click een pagina refresh genereert, moet je manueel het commando vervangen door clickAndWait. Indien je een dubbelklik deed, gaat Selenium IDE ook een click registreren. Deze moet je vervangen door een doubleClickAndWait.&lt;/p&gt;
-
-&lt;p&gt;######=Assert / Verify ######=&lt;/p&gt;
-
-&lt;p&gt;Wat is het verschil tussen assertX en verifyX?
-assert stopt de test, verify gaat door.
-Zie DOC: &lt;a href=&#34;http://seleniumhq.org/docs/04_selenese_commands.html#assertion-or-verification&#34;&gt;http://seleniumhq.org/docs/04_selenese_commands.html#assertion-or-verification&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Selenium gaat niet automatisch asserts toevoegen. Je kan als het scenario opgenomen is, manueel asserts toevoegen. assertValue, assertTextPresent, assertEnabled, assertDisabled &amp;hellip; .
-Een heel aantal asserts kan je door een snelle muisklik toevoegen.
-* Tekst xxx selecteren in de pagina, rechtermuisknop verifyTextPresent xxx aanklikken voegt een commando toe om deze tekst te asserten.
-* Een input field: aanklikken, en rechtermuisknop: verifyElementPresent.
-* Rechtermuisknop eender waar: Show all available commands: toont alle mogelijke commando&amp;rsquo;s op huidige pagina&lt;/p&gt;
-
-&lt;p&gt;######=assertEnabled vs assertEditable######=&lt;/p&gt;
-
-&lt;p&gt;assertEnabled bestaat niet, je moet assertEditable gebruiken.&lt;/p&gt;
-
-&lt;p&gt;######= goto(label) en looping ######=&lt;/p&gt;
-
-&lt;p&gt;Kan met de &lt;a href=&#34;https://github.com/darrenderidder/sideflow&#34;&gt;sideflow&lt;/a&gt; Selenium IDE plugin voor firefox (custom js file, zie instructies daar)&lt;/p&gt;
-
-&lt;p&gt;############= Troubleshooting ############=&lt;/p&gt;
-
-&lt;h6 id=&#34;element-is-not-currently-visible-and-so-may-not-be-interacted-with&#34;&gt;element is not currently visible and so may not be interacted with&lt;/h6&gt;
-
-&lt;p&gt;Enkele mogelijke problemen:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Scherm resolutie door element dat vanonder op de pagina zit maar nu van de pagina af valt&lt;/li&gt;
-&lt;li&gt;Z-index: ander element hangt boven het huidig element en er kan niet mee geïnterageerd worden&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;############= Known Issues ############=&lt;/p&gt;
-
-&lt;p&gt;######= Popup in IE verliest sessie ######=
-zie ook: &lt;a href=&#34;http://jira.openqa.org/browse/SRC-501&#34;&gt;http://jira.openqa.org/browse/SRC-501&lt;/a&gt;
-In onze seleniumtesten omzeild door elke test waarin waitForPopUp voor IE niet uit te voeren &amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;######= IE en onchange javascript problemen ######=
-Elementen waar javascript achter hangt bij een onchange van een element, worden NIET gefired vanuit IE - wanneer men bij selenium een select commando uitvoert. Om de onclick en onchange eventen te laten triggeren moet men ervoor en erna een gewone click uitvoeren. Dus zo:&lt;/p&gt;
-
-&lt;p&gt;click(element)
-select(element, value)
-click(element)&lt;/p&gt;
-
-&lt;p&gt;######= IE en hidden elementen problemen ######=
-Het is niet mogelijk om verifyTextNotPresent te gebruiken voor een hidden div met wat tekst. Daarvoor moet assertVisible en assertNotVisible gebruikt worden - let op dat de value nu geen tekst waarde maar een selector is zoals alle anderen.&lt;/p&gt;
-
-&lt;p&gt;######= IE en verifyValue problemen die af en toe opduiken######=
-Soms faalt een verifyValue, omdat de verwachte waarde ook écht niet in het verwachte inputveldje staat. Vermoedelijk heeft het iets te maken met de rendertijd van IE, en wanneer Selenium beslist van te verifyen.
-Op te lossen door waitForTextPresent te gebruiken. Het &amp;ldquo;waitForValue&amp;rdquo;, noch &amp;ldquo;waitForElement&amp;rdquo; + &amp;ldquo;verifyValue&amp;rdquo; commands werken eveneens niet.&lt;/p&gt;
-
-&lt;p&gt;######= click op een link werkt niet (link optesplitst in 2 lijnen) ######=&lt;/p&gt;
-
-&lt;p&gt;Known issue, zie &lt;a href=&#34;http://code.google.com/p/selenium/issues/detail?id=1020&#34;&gt;http://code.google.com/p/selenium/issues/detail?id=1020&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Het probleem is dat selenium &lt;code&gt;boundingRect&lt;/code&gt; gebruikt en op het midden daarvan klikt, als een link opgesplitst is kan het zijn dat selenium nét niet op de link zelf maar bvb de cell klikt en er niets gebeurt.&lt;/p&gt;
-</description>
+      <description>Selenium Scenario Testing Ter info: Webdriver = selenium 2.x.
+Webdriver samen met PhantomJS opzet Headless webdriver testen draaien gaat met HTMLUnit - vanaf 2.x zit org.openqa.selenium.htmlunit.HtmlUnitDriver ook in de jar. De JS die daar evaluated wordt is echter Rhino JS en niet native browser stuff. We kunnen in de plaats code/javascript/testing/phantomjs gebruiken - deze driver zit in een andere jar. In de centrale maven repo:
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
     </item>
     
     <item>
@@ -334,84 +40,11 @@ Op te lossen door waitForTextPresent te gebruiken. Het &amp;ldquo;waitForValue&a
       <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/monitoring/</guid>
-      <description>
-
-&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
-
-&lt;h2 id=&#34;jboss-as-a-windows-service-monitoring-params&#34;&gt;JBOSS As a Windows service &amp;amp; monitoring params&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://community.jboss.org/wiki/JBossNativeWindows&#34;&gt;https://community.jboss.org/wiki/JBossNativeWindows&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Als JBoss via &lt;code&gt;jbossvc.exe&lt;/code&gt; als een windows service geconfigureerd is, lijkt het moeilijk om &lt;code&gt;JAVA_OPTS&lt;/code&gt; mee te geven om JMX poorten in te stellen e.a. (debugging misschien) - zie onder. Die executable callt basically &lt;code&gt;run.bat&lt;/code&gt;, dus alle customizaties gewoon daar doen.&lt;/p&gt;
-
-&lt;p&gt;Staat standaard dit in:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;set JAVA_OPTS######-Dprogram.name%PROGNAME% %JAVA_OPTS%
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;java-jmx-monitoring&#34;&gt;Java JMX Monitoring&lt;/h2&gt;
-
-&lt;p&gt;Op de JVM: gebeurt met &lt;strong&gt;JMX&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h5 id=&#34;enablen&#34;&gt;Enablen&lt;/h5&gt;
-
-&lt;p&gt;Params voor JMX te enablen op de queue:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port######3000 -Dcom.sun.management.jmxremote.sslfalse -Dcom.sun.management.jmxremote.authenticate=false&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;jmx-urls-opbouwen&#34;&gt;JMX URLs opbouwen&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-service:jmx:rmi:*/jndi/rmi:*server.com:3000/jmxrmi```&#34;&gt;
-indien de remote server op server.com draait op poort 3000 (zie boven). Drie slashen na 1ste rmi, twee na de 2de en 1 tussen jndi en rmi in.
-
-##### Java Monitoring console 
-
-Opstarten van **jconsole.exe** in JVM bin folder, gebruik bovenstaande URL. &amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;
-Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te voeren, plus de draaiende JVM te monitoren qua geheugen etc. 
-
-##### Spring gebruiken om beans te exposen 
-
-```java
-    &amp;lt;bean class=&amp;quot;org.springframework.jmx.export.MBeanExporter&amp;quot;&amp;gt;
-        &amp;lt;property name=&amp;quot;beans&amp;quot;&amp;gt;
-            &amp;lt;map&amp;gt;
-                &amp;lt;entry key######&amp;quot;bean:nameBeanName&amp;quot; value-ref=&amp;quot;someBean&amp;quot; /&amp;gt;
-            &amp;lt;/map&amp;gt;
-        &amp;lt;/property&amp;gt;
-        &amp;lt;property name######&amp;quot;registrationBehaviorName&amp;quot; value&amp;quot;REGISTRATION_IGNORE_EXISTING&amp;quot; /&amp;gt;
-    &amp;lt;/bean&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;geheugen-monitoren&#34;&gt;Geheugen monitoren&lt;/h2&gt;
-
-&lt;p&gt;Kan bijvoorbeeld met &lt;strong&gt;VisualVM&lt;/strong&gt; - je kan met JMX connecten en dan een dump nemen op de remote locatie waar de JVM op draait. Als er een &lt;code&gt;PermGen space&lt;/code&gt; out of memory zich voor doet kunnen we de dump file analyseren en er hopelijk iets nuttig uit halen.&lt;/p&gt;
-
-&lt;h5 id=&#34;automatisch-een-dump-nemen-na-out-of-memory&#34;&gt;Automatisch een dump nemen na out of memory&lt;/h5&gt;
-
-&lt;p&gt;Doen met volgende JVM params:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-XX:+HeapDumpOnOutOfMemoryError
--XX:HeapDumpPath=/var/log/tomcat/dumps
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zorg ervoor dat het heap dump path schrijfbaar is&amp;hellip;&lt;/p&gt;
-
-&lt;h5 id=&#34;permgen-en-reflectie&#34;&gt;PermGen en reflectie&lt;/h5&gt;
-
-&lt;p&gt;Als er een hele hoop klassen tegelijk aangemaakt worden (inner classes = PermGen space, objecten zitten gewoon op de heap, beginnend met eden), komt de PermGen space misschien in het gedrang. Aan te passen met:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-XX:MaxPermSize=400M
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ Deze worden blijkbaar door de JVM standaard niet garbage-collected. Zie &lt;a href=&#34;http://stackoverflow.com/questions/3334911/what-does-jvm-flag-cmsclassunloadingenabled-actually-do&#34;&gt;http://stackoverflow.com/questions/3334911/what-does-jvm-flag-cmsclassunloadingenabled-actually-do&lt;/a&gt; - je kan dit wel forceren met de volgende parameters:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-XX:+CMSPermGenSweepingEnabled
--XX:+CMSClassUnloadingEnabled 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Er wordt daar een voorbeeld aangehaald ivm JAXB die een hoop proxy objecten tegelijk aanmaakt via &lt;code&gt;java.lang.reflect.Proxy&lt;/code&gt;. Een entity root kopiëren door middel van relfectie cloning zou bijvoorbeeld ook een potentiëel probleem kunnen zijn.&lt;/p&gt;
-</description>
+      <description>Monitoring JBOSS As a Windows service &amp;amp; monitoring params https://community.jboss.org/wiki/JBossNativeWindows
+Als JBoss via jbossvc.exe als een windows service geconfigureerd is, lijkt het moeilijk om JAVA_OPTS mee te geven om JMX poorten in te stellen e.a. (debugging misschien) - zie onder. Die executable callt basically run.bat, dus alle customizaties gewoon daar doen.
+Staat standaard dit in:
+set JAVA_OPTS######-Dprogram.name%PROGNAME% %JAVA_OPTS%  Java JMX Monitoring Op de JVM: gebeurt met JMX.
+Enablen Params voor JMX te enablen op de queue:</description>
     </item>
     
     <item>
@@ -420,76 +53,17 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
       <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/metaprogramming-convention-dry/</guid>
-      <description>&lt;p&gt;So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using &lt;code&gt;RhinoMock&lt;/code&gt; in &lt;code&gt;C#&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    [TestInitialize]
-    public void SetUp()
-    {
-        dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;();
-        mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;();
-        userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;();
-        userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;();
-        // ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth. So why should I repeat myself again and again but initializing a bunch of mocks using &lt;code&gt;GenerateMock&lt;/code&gt;?&lt;/p&gt;
-
-&lt;p&gt;In Java using Mockito, the &lt;code&gt;@Mock&lt;/code&gt; annotation automagically instantiates a mock for you, provided you annotated your test class with &lt;code&gt;@RunWith(MockitoJUnitRunner.class)&lt;/code&gt;. I would like to apply this pattern to MSTest but there&amp;rsquo;s not a single hook to be found where I can plug in my initialization code. Thanks a bunch.&lt;/p&gt;
-
-&lt;p&gt;Example taken from &lt;a href=&#34;http://docs.mockito.googlecode.com/&#34;&gt;Mockito docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class ArticleManagerTest {
-
-    @Mock private ArticleCalculator calculator;
-    @Mock private ArticleDatabase database;
-    @Mock private UserProvider userProvider;
-
-    private ArticleManager manager;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, this &amp;ldquo;problem&amp;rdquo; is easily solved with a bit of metaprogramming and an abstract class:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Loop over (private) fields&lt;/li&gt;
-&lt;li&gt;Filter out suffixed with &amp;lsquo;Mock&amp;rsquo;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Initialize.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public abstract class AbstractTestCase
-{
-    [TestInitialize]
-    public void CreateMocksBasedOnNamingConvention()
-    {
-        this.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(x =&amp;gt; x.Name.EndsWith(&amp;quot;Mock&amp;quot;)).All(InitMock);
-    }
-
-    private bool InitMock(FieldInfo field)
-    {
-        field.SetValue(this, MockRepository.GenerateMock(field.FieldType, new Type[]{}));
-        return true;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Very easy with &lt;code&gt;LINQ&lt;/code&gt;. The question is - is metaprogramming or reflection in this case &amp;ldquo;allowed&amp;rdquo;? Do you think this is &amp;ldquo;bad&amp;rdquo; (because it&amp;rsquo;s implicit), or is the convention of suffixing your fields with &amp;lsquo;Mock&amp;rsquo; good enough? The base test case could also be named something like &lt;code&gt;MockInitializingTestCase&lt;/code&gt; if that makes you feel better.&lt;/p&gt;
-</description>
+      <description>So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using RhinoMock in C#:
+ [TestInitialize] public void SetUp() { dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;(); mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;(); userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;(); userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;(); // ...  We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth.</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/</link>
+      <link>http://www.brainbaking.com/wiki/code/java/</link>
       <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/</guid>
-      <description>
-
-&lt;h1 id=&#34;code-java-home&#34;&gt;code:java &amp;gt;&amp;gt; Home&lt;/h1&gt;
-
-&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-</description>
+      <guid>http://www.brainbaking.com/wiki/code/java/</guid>
+      <description>code:java &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
@@ -498,45 +72,8 @@ Dan is het mogelijk om jmx-exposed beans te inspecten en remote methods uit te v
       <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/resources/</guid>
-      <description>
-
-&lt;h1 id=&#34;resource-handling&#34;&gt;Resource handling&lt;/h1&gt;
-
-&lt;h2 id=&#34;opkuisen-in-try-finally-block&#34;&gt;Opkuisen in try/finally block&lt;/h2&gt;
-
-&lt;p&gt;Vanaf &lt;strong&gt;Java 7&lt;/strong&gt; zit er ook ARM (automatic resource block management) in met een aanpassing op de &lt;code&gt;try&lt;/code&gt; blocks:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;try (
-FileInputStream stockQuoteReader = new FileInputStream(&amp;quot;StockQuotes.txt&amp;quot;);
-FileOutputStream stockQuoteWriter = new FileOutputStream(&amp;quot;StockQuotes.txt&amp;quot;)
-) {
-      int var;
-      while((var###### stockQuoteReader.read()) ! -1 )
-            stockQuoteWriter.write();
-  }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The new construct extends try blocks to declare resources much like is the case with for loops. Any resource declared within a try block opening will be closed. Hence, the new construct shields you from having to pair try blocks with corresponding finally blocks that are dedicated to proper resource management. A semicolon separates each resource&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Zie ook: http:*javarevisited.blogspot.com/2011/09/arm-automatic-resource-management-in.html#ixzz2rnNBbT9G en http:*www.oracle.com/technetwork/articles/java/trywithresources-401775.html&lt;/p&gt;
-
-&lt;p&gt;Opgelet:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Whatever resource we are using should be subtypes of &lt;strong&gt;AutoCloseable&lt;/strong&gt; other wise will get compile time error.&lt;/li&gt;
-&lt;li&gt;The resources which we are using are closed in reverse order means stockQuoteWriter.close() will be called first then stockQuoteReader.close().&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Read more: &lt;a href=&#34;http://javarevisited.blogspot.com/2011/09/arm-automatic-resource-management-in.html#ixzz2rnNnTi8b&#34;&gt;http://javarevisited.blogspot.com/2011/09/arm-automatic-resource-management-in.html#ixzz2rnNnTi8b&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;java-vs-c&#34;&gt;Java VS C#&lt;/h4&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/csharp/resources/&#34;&gt;csharp resources wiki pagina&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;AutoClosable&lt;/code&gt; is een interface die te vergelijken is met &lt;code&gt;IDisposable&lt;/code&gt; in C#.&lt;/p&gt;
-</description>
+      <description>Resource handling Opkuisen in try/finally block Vanaf Java 7 zit er ook ARM (automatic resource block management) in met een aanpassing op de try blocks:
+try ( FileInputStream stockQuoteReader = new FileInputStream(&amp;quot;StockQuotes.txt&amp;quot;); FileOutputStream stockQuoteWriter = new FileOutputStream(&amp;quot;StockQuotes.txt&amp;quot;) ) { int var; while((var###### stockQuoteReader.read()) ! -1 ) stockQuoteWriter.write(); }   The new construct extends try blocks to declare resources much like is the case with for loops. Any resource declared within a try block opening will be closed.</description>
     </item>
     
     <item>
@@ -545,186 +82,8 @@ FileOutputStream stockQuoteWriter = new FileOutputStream(&amp;quot;StockQuotes.t
       <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/builders-dsl/</guid>
-      <description>
-
-&lt;p&gt;This post is inspired by Venkat Subramaniam&amp;rsquo;s &lt;a href=&#34;http://www.devoxx.be/dv13-venkat-subramaniam.html&#34;&gt;Devoxx 2013 talk Thinking Functional Style&lt;/a&gt;. See downloads at &lt;a href=&#34;http://www.agiledeveloper.com/downloads.html&#34;&gt;agiledeveloper.com&lt;/a&gt; which has a rather cool Groovy example.&lt;/p&gt;
-
-&lt;h3 id=&#34;classic-builders&#34;&gt;Classic builders&lt;/h3&gt;
-
-&lt;p&gt;For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters. That quickly became very cumbersome to work with. Most of the time, the code will  look like this, whether it&amp;rsquo;s C# or Java doesn&amp;rsquo;t really matter:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class UserBuilder
-{
-    private UserType_V1_0 type = UserType_V1_0.Administrator;
-    private string code = &amp;quot;code&amp;quot;;
-
-    public User_V1_0 Build()
-    {
-        User_V1_0 user = new User_V1_0(code, &amp;quot;name&amp;quot;, type, &amp;quot;id&amp;quot;, &amp;quot;campusId&amp;quot;, true);
-        return user;
-    }
-
-    public UserBuilder WithCode(string code)
-    {
-        this.code = code;
-        return this;
-    }
-
-    public UserBuilder WithType(UserType_V1_0 type)
-    {
-        this.type = type;
-        return this;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Used this way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  var user = new UserBuilder()
-    .withCode(&amp;quot;AB&amp;quot;)
-    .Build();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Okay, what&amp;rsquo;s happening here?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Builder objects have &lt;code&gt;withX()&lt;/code&gt; methods, returning &lt;code&gt;this&lt;/code&gt; to be able to chain, to fill up every required variable&lt;/li&gt;
-&lt;li&gt;default values are provided, so we&amp;rsquo;re not obliged to call every method if we&amp;rsquo;re only interested in one field.&lt;/li&gt;
-&lt;li&gt;At the end of the chain, we call &lt;code&gt;Build()&lt;/code&gt;, which returns our object.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;enhanced-builders&#34;&gt;Enhanced builders&lt;/h3&gt;
-
-&lt;p&gt;I&amp;rsquo;ve never given it much thought, but yes, there are some problems with this implementation (as with everything). The most important one being, can you reuse your instantiated builder? No? Yes? We never assign it, but we &lt;strong&gt;could&lt;/strong&gt; if we really wanted to. Since we&amp;rsquo;re &lt;strong&gt;mutating the builder&lt;/strong&gt;, you are definatly getting into trouble.&lt;/p&gt;
-
-&lt;p&gt;Using a lambda to pass in the work on our builder might solve this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class UserBuilder
-{
-    private UserType_V1_0 type = UserType_V1_0.Administrator;
-    private string code = &amp;quot;code&amp;quot;;
-
-    private UserBuilder()
-    {
-    }
-
-    private User_V1_0 Build()
-    {
-        return new User_V1_0(code, &amp;quot;name&amp;quot;, type, &amp;quot;id&amp;quot;, &amp;quot;campusId&amp;quot;, true);
-    }
-
-    public static User_V1_0 Build(Func&amp;lt;UserBuilder, UserBuilder&amp;gt; block)
-    {
-        var builder = new UserBuilder();
-        block(builder);
-        return builder.Build();
-    }
-
-    public UserBuilder WithCode(string code)
-    {
-        this.code = code;
-        return this;
-    }
-
-    public UserBuilder WithType(UserType_V1_0 type)
-    {
-        this.type = type;
-        return this;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Used this way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  var user = UserBuilder.Build(_ =&amp;gt;
-    _.WithCode(&amp;quot;AB&amp;quot;)
-           .withType(UserType_V1_0.NursingStaff));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice that using the character &lt;code&gt;_&lt;/code&gt; is a convention if there&amp;rsquo;s only one parameter for the lambda, it could also be called &amp;ldquo;builder&amp;rdquo; but we still need to use this, as &lt;code&gt;block(builder)&lt;/code&gt; passes in the temp created builder. What did we solve?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The actual builder instance is bound within the &lt;code&gt;Build()&lt;/code&gt; scope. You&amp;rsquo;ll never be able to assign it when using the static method.&lt;/li&gt;
-&lt;li&gt;One might say, we reduced some redundancy in the implementation by eliminating the need to call the final &lt;code&gt;Build()&lt;/code&gt; method, but it&amp;rsquo;s simply being moved.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;supercharged-builders&#34;&gt;Supercharged builders&lt;/h3&gt;
-
-&lt;p&gt;In Groovy (the devoxx example), we can cleverly use the &lt;code&gt;.delegate&lt;/code&gt; mechanism to eliminate the need to chain at all. Groovy also reduces the syntax noise a bit (brackets, semicolons). We could create a &lt;code&gt;Build&lt;/code&gt; method like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  public static User_V1_0 Build(block) {
-    new UserBuilder().with block;
-    // does the same as cloning the block, assigning it with .delegate and executing it. 
-  }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Used this way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  UserBuilder.Build {
-     Code &amp;quot;AB&amp;quot; // Same as Code(&amp;quot;AB&amp;quot;);
-     Type UserType_V1_0.NursingStaff
-  }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;How does this work?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The &lt;code&gt;Code()&lt;/code&gt; method does not exist in our block closure, but we assign a delegate to it: our temp lexically scoped &lt;code&gt;UserBuilder&lt;/code&gt; instance - that&amp;rsquo;s where the method lives. When the code is executed, Groovy first looks for a method within the block, and then tries to fetch it via the delegate.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For more information on groovy delegates, see the &lt;a href=&#34;http://groovy.codehaus.org/Delegation+Pattern&#34;&gt;Groovy documentation: Delegation Pattern&lt;/a&gt;. This works thanks to the late binding of the language and won&amp;rsquo;t statically typed languages such as C#. You might be able to come close using &lt;code&gt;LINQ&lt;/code&gt; expression trees, but that requires a lot of effort to write a simple DSL.&lt;/p&gt;
-
-&lt;h3 id=&#34;leveraging-this-principle-to-dsls&#34;&gt;Leveraging this principle to DSLs&lt;/h3&gt;
-
-&lt;p&gt;In Javascript, you can also manage to do something like that using &lt;code&gt;.prototype&lt;/code&gt; and &lt;a href=&#34;http://brainbaking.com/wiki/code/javascript/inheritance&#34;&gt;prototypal inheritance&lt;/a&gt; and &lt;code&gt;apply()&lt;/code&gt; to dynamically bind the &lt;code&gt;this&lt;/code&gt; context (see &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply&#34;&gt;Function.prototype.apply MDN&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Of course, builders are completely redundant in JS. Just create a &lt;code&gt;JSON&lt;/code&gt; object using &lt;code&gt;{ key: value }&lt;/code&gt;. Done. But this principle might be interesting for things like creating a &amp;ldquo;mailer&amp;rdquo; - as in the devoxx 2013 example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var mailerPrototype = {
-    from: function() { console.log(&amp;quot;from&amp;quot;); },
-    to: function() { console.log(&amp;quot;to&amp;quot;); },
-    sub: function() { console.log(&amp;quot;sub&amp;quot;); },
-    body: function() { console.log(&amp;quot;body&amp;quot;); },
-    send: function() { console.log(&amp;quot;sending...&amp;quot;); }
-};
-
-var mailer = function() {};
-mailer.mail = function(block) {
-    // .prototype magic happens inside Object.create()
-    block.apply(Object.create(mailerPrototype));
-}
-
-// this still sucks, I don&#39;t want to use &#39;this.&#39;, can use chaining... 
-mailer.mail(function() {
-    this.from(&amp;quot;me@gmail.com&amp;quot;);
-    this.to(&amp;quot;you@gmail.com&amp;quot;);
-    this.sub(&amp;quot;this is my subject&amp;quot;);
-    this.body(&amp;quot;hello&amp;quot;);
-    this.send();
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You&amp;rsquo;ll still need &lt;code&gt;this.&lt;/code&gt;, sadly. This is not needed in Groovy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mailer.mail {
-    from &amp;quot;me@gmail.com&amp;quot;
-    to &amp;quot;you@gmail.com&amp;quot;
-    sub &amp;quot;this is my subject&amp;quot;
-    body &amp;quot;hello&amp;quot;
-    send()
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now &lt;strong&gt;that&lt;/strong&gt; looks readable. To be able to create something like that, a language has to:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;have functions as first-class citizens.&lt;/li&gt;
-&lt;li&gt;have a clean syntax, to be able to reduce a lot of noise (CoffeeScript can get this done for JS for instance)&lt;/li&gt;
-&lt;li&gt;have late binding or duck typing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That said, going back to Java 7 is going to be a major pain in the ass. No, I do not want to create usesless interfaces! (Tip: use &lt;code&gt;Function&lt;/code&gt; and &lt;code&gt;Predicate&lt;/code&gt; from &lt;a href=&#34;https://code.google.com/p/guava-libraries/&#34;&gt;Google Guava&lt;/a&gt;).&lt;/p&gt;
-</description>
+      <description>This post is inspired by Venkat Subramaniam&amp;rsquo;s Devoxx 2013 talk Thinking Functional Style. See downloads at agiledeveloper.com which has a rather cool Groovy example.
+Classic builders For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters.</description>
     </item>
     
     <item>
@@ -733,171 +92,10 @@ mailer.mail(function() {
       <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/rest/</guid>
-      <description>
-
-&lt;h1 id=&#34;rest-calls-plegen-met-java&#34;&gt;Rest Calls plegen met Java&lt;/h1&gt;
-
-&lt;h2 id=&#34;jersey&#34;&gt;Jersey&lt;/h2&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;User Guide&lt;/strong&gt;: &lt;a href=&#34;http://jersey.java.net/nonav/documentation/latest/user-guide.html&#34;&gt;http://jersey.java.net/nonav/documentation/latest/user-guide.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;server&#34;&gt;Server&lt;/h3&gt;
-
-&lt;h5 id=&#34;maven&#34;&gt;maven&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;jersey-server&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;jersey-json&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;jersey-servlet&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;jersey-json&lt;/code&gt; is niet nodig als je geen &lt;code&gt;JSON&lt;/code&gt; wil gebruiken. &lt;code&gt;jersey-servlet&lt;/code&gt; ook niet als je geen Servlet 2.x gebruikt.&lt;/p&gt;
-
-&lt;h5 id=&#34;servlet-2-x-config&#34;&gt;servlet 2.x config&lt;/h5&gt;
-
-&lt;p&gt;Dit moet in &lt;code&gt;web.xml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;servlet&amp;gt;
-        &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt;
-        &amp;lt;servlet-class&amp;gt;com.sun.jersey.spi.container.servlet.ServletContainer&amp;lt;/servlet-class&amp;gt;
-        &amp;lt;init-param&amp;gt;
-            &amp;lt;param-name&amp;gt;com.sun.jersey.config.property.packages&amp;lt;/param-name&amp;gt;
-            &amp;lt;param-value&amp;gt;be.klak.package&amp;lt;/param-value&amp;gt;
-        &amp;lt;/init-param&amp;gt;
-        &amp;lt;init-param&amp;gt;
-            &amp;lt;param-name&amp;gt;com.sun.jersey.api.json.POJOMappingFeature&amp;lt;/param-name&amp;gt;
-            &amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt;
-        &amp;lt;/init-param&amp;gt;       
-        &amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt;
-    &amp;lt;/servlet&amp;gt;
-    &amp;lt;servlet-mapping&amp;gt;
-        &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt;
-        &amp;lt;url-pattern&amp;gt;/rest/*&amp;lt;/url-pattern&amp;gt;
-    &amp;lt;/servlet-mapping&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;!-- prevents classes that use reflection which is not allowed in GAE --&amp;gt;
-        &amp;lt;init-param&amp;gt;
-            &amp;lt;param-name&amp;gt;com.sun.jersey.config.feature.DisableWADL&amp;lt;/param-name&amp;gt;
-            &amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt;
-        &amp;lt;/init-param&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine&#34;&gt;http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;voorbeeld&#34;&gt;voorbeeld&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Path(&amp;quot;/gc&amp;quot;)
-public class Controller {
-
-    @GET
-    @Path(&amp;quot;/path&amp;quot;)
-    @Produces(APPLICATION_JSON)
-    public List&amp;lt;Pojo&amp;gt; getStuff() {
-        return stuffRepo().getAll();
-    }
-
-    @POST
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Path(&amp;quot;/bla/receive&amp;quot;)
-    public Response received(String data) {
-        return ok().build();
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;waarbij &lt;code&gt;ok()&lt;/code&gt; op &lt;code&gt;javax.ws.rs.Response&lt;/code&gt; zit.&lt;/p&gt;
-
-&lt;h3 id=&#34;client&#34;&gt;Client&lt;/h3&gt;
-
-&lt;h5 id=&#34;maven-1&#34;&gt;maven&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;jersey-client&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;voorbeeld-1&#34;&gt;voorbeeld&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;com.sun.jersey.api.client.Client&lt;/code&gt; client:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;        Client.create()
-                .resource(getGatecontrolServer() + &amp;quot;/rest/gc/houses/receive&amp;quot;)
-                .type(TEXT_PLAIN)
-                .post(&amp;quot;request body data&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;header-control-bvb-caching&#34;&gt;Header control (bvb caching)&lt;/h3&gt;
-
-&lt;p&gt;Kan via een filter factory die je meegeeft aan de init params van de servlet in web.xml:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;init-param&amp;gt;
-            &amp;lt;param-name&amp;gt;com.sun.jersey.spi.container.ResourceFilters&amp;lt;/param-name&amp;gt;
-            &amp;lt;param-value&amp;gt;be.klak.rest.CacheFilterFactory&amp;lt;/param-value&amp;gt;
-        &amp;lt;/init-param&amp;gt;
-&amp;lt;/xml&amp;gt;
-
-```java
-public class CacheFilterFactory implements ResourceFilterFactory {
-
-    @Override
-    public List&amp;lt;ResourceFilter&amp;gt; create(AbstractMethod am) {
-        if (hasNoCacheAnnotationOnClass(am) != null) {
-            return Collections.&amp;lt;ResourceFilter&amp;gt; singletonList(new CacheResponseFilter());
-        }
-
-        return new ArrayList&amp;lt;&amp;gt;();
-    }
-
-    private CacheControlHeaderNoCache hasNoCacheAnnotationOnClass(AbstractMethod am) {
-        return am.getResource().getResourceClass().getAnnotation(CacheControlHeaderNoCache.class);
-    }
-
-    private static class CacheResponseFilter implements ResourceFilter, ContainerResponseFilter {
-
-        @Override
-        public ContainerRequestFilter getRequestFilter() {
-            return null;
-        }
-
-        @Override
-        public ContainerResponseFilter getResponseFilter() {
-            return this;
-        }
-
-        @Override
-        public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
-            response.getHttpHeaders().putSingle(HttpHeaders.CACHE_CONTROL, &amp;quot;no-cache&amp;quot;);
-            return response;
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Annotatie ziet er zo uit:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
-public @interface CacheControlHeaderNoCache {
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Vanaf dan kan je die gewoon op een resource klasse plakken, zoals &lt;code&gt;@Produces&lt;/code&gt; en &lt;code&gt;@Consumes&lt;/code&gt;.&lt;/p&gt;
-</description>
+      <description>Rest Calls plegen met Java Jersey ❗️ User Guide: http://jersey.java.net/nonav/documentation/latest/user-guide.html
+Server maven &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jersey-server&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jersey-json&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jersey-servlet&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  jersey-json is niet nodig als je geen JSON wil gebruiken. jersey-servlet ook niet als je geen Servlet 2.x gebruikt.
+servlet 2.x config Dit moet in web.xml:
+&amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.sun.jersey.spi.container.servlet.ServletContainer&amp;lt;/servlet-class&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;com.sun.jersey.config.property.packages&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;be.klak.package&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;com.sun.jersey.api.json.POJOMappingFeature&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattern&amp;gt;/rest/*&amp;lt;/url-pattern&amp;gt; &amp;lt;/servlet-mapping&amp;gt;  ❗️ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:</description>
     </item>
     
     <item>
@@ -906,65 +104,9 @@ public @interface CacheControlHeaderNoCache {
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/</guid>
-      <description>
-
-&lt;h1 id=&#34;java-stuff&#34;&gt;Java Stuff&lt;/h1&gt;
-
-&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;java|js context navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;snippets&#34;&gt;Snippets&lt;/h2&gt;
-
-&lt;h4 id=&#34;upcasting-hacks-tricks&#34;&gt;Upcasting hacks &amp;amp; tricks&lt;/h4&gt;
-
-&lt;p&gt;Vies van &lt;code&gt;instanceof&lt;/code&gt;? Gebruik &lt;code&gt;isAssignableFrom&lt;/code&gt; om op een abstracte logica te implementeren die een interface nodig heeft enkele niveaus verder.&lt;br/&gt;&lt;br/&gt;
-Op die manier hebben we geen diamond inheritance nodig! Check it out:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    @SuppressWarnings(&amp;quot;unchecked&amp;quot;)
-    final void generateUidIfNotYetFilledIn() {
-        if (HasUid.class.isAssignableFrom(this.getClass())) {
-            HasUid hasUid = (HasUid) this;
-            if (isEmpty(hasUid.getUid())) {
-                hasUid.setUid(getEntityUidGenerator().generateFor((Class&amp;lt;? extends HasUid&amp;gt;) this.getClass()));
-            }
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;replaceall-case-insensitive&#34;&gt;ReplaceAll case Insensitive&lt;/h4&gt;
-
-&lt;p&gt;Geen &lt;code&gt;StringUtils&lt;/code&gt; van apache commons method beschikbaar als &lt;code&gt;replaceIgnoreCase&lt;/code&gt;&amp;hellip; Stom!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Main {
-  public static void main(String[] argv) throws Exception {
-    String str = &amp;quot;Abc abc&amp;quot;;
-
-    String result = str.replaceAll(&amp;quot;(?i)abc&amp;quot;, &amp;quot;DEF&amp;quot;);
-
-    System.out.println(&amp;quot;After replacement:&amp;lt;br/&amp;gt;n&amp;quot; + &amp;quot;   &amp;quot; + result);
-
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Vergeet niet speciale regex karakters te escapen zoals &lt;code&gt;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;[&lt;/code&gt; de &lt;em&gt;brackets&lt;/em&gt; etc.&lt;/p&gt;
-
-&lt;h2 id=&#34;pitfalls&#34;&gt;Pitfalls&lt;/h2&gt;
-
-&lt;h4 id=&#34;java-versies&#34;&gt;Java versies&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Java 7 &amp;amp; java 6 mixen: gebruik &lt;code&gt;-XX:-UseSplitVerifier&lt;/code&gt; als VM argument wanneer exceptions zoals &amp;ldquo;expecting invalid stackmap frame&amp;hellip;&amp;rdquo; zich voordoen. - Wat doet dit arumgent eigenlijk? &lt;a href=&#34;http://chrononsystems.com/blog/java-7-design-flaw-leads-to-huge-backward-step-for-the-jvm.&#34;&gt;Java 7 Bytecode verification&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;apis&#34;&gt;APIs&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;Arrays.asList()&lt;/code&gt; retourneert een &lt;em&gt;read-only&lt;/em&gt; lijst! &lt;code&gt;add()&lt;/code&gt; throwt een &lt;code&gt;UnsupportedOperationException&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;guava&amp;rsquo;s &lt;code&gt;transform()&lt;/code&gt; ea zijn &lt;strong&gt;lazy-loaded&lt;/strong&gt;, let op met transacties en inner class state!&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description>Java Stuff Inhoudsopgave java|js context navbar nocookie&amp;rsquo;&amp;gt;
+Snippets Upcasting hacks &amp;amp; tricks Vies van instanceof? Gebruik isAssignableFrom om op een abstracte logica te implementeren die een interface nodig heeft enkele niveaus verder. Op die manier hebben we geen diamond inheritance nodig! Check it out:
+@SuppressWarnings(&amp;quot;unchecked&amp;quot;) final void generateUidIfNotYetFilledIn() { if (HasUid.class.isAssignableFrom(this.getClass())) { HasUid hasUid = (HasUid) this; if (isEmpty(hasUid.getUid())) { hasUid.setUid(getEntityUidGenerator().generateFor((Class&amp;lt;? extends HasUid&amp;gt;) this.getClass())); } } }  ReplaceAll case Insensitive Geen StringUtils van apache commons method beschikbaar als replaceIgnoreCase&amp;hellip; Stom!</description>
     </item>
     
     <item>
@@ -973,52 +115,10 @@ Op die manier hebben we geen diamond inheritance nodig! Check it out:&lt;/p&gt;
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/profiling/</guid>
-      <description>
-
-&lt;h1 id=&#34;profiling&#34;&gt;Profiling&lt;/h1&gt;
-
-&lt;p&gt;Voor JMX, monitoring en andere: zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/java/monitoring/&#34;&gt;code/java/monitoring&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;verschillende-profilers&#34;&gt;Verschillende profilers&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;jconsole&lt;/code&gt;: provided in JDK&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;visualvm&lt;/code&gt;: provided in JDK&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Eclipse Memory Analyzer&lt;/code&gt;: &lt;a href=&#34;http://www.eclipse.org/mat/&#34;&gt;http://www.eclipse.org/mat/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;YourKit&lt;/code&gt;: &lt;a href=&#34;http://www.yourkit.com/&#34;&gt;http://www.yourkit.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Remote connecten gaat meestal via JMX, behalve your YourKit:&lt;/p&gt;
-
-&lt;h4 id=&#34;remote-connecten-met-yourkit&#34;&gt;Remote connecten met YourKit&lt;/h4&gt;
-
-&lt;p&gt;Zie http:*www.yourkit.com/docs/12/help/profiling_j2ee_remote.jsp en http:*www.yourkit.com/docs/95/help/agent.jsp - Je moet een &lt;code&gt;agentpath&lt;/code&gt; JVM param meegeven om dit te kunnen doen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-agentpath:/usr/yourkit/libyjpagent.so######delay10000,sessionname=Tomcat
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zet niet te veel opties in agentpath om dingen te optimaliseren of het proben van de PermGen stack werkt niet. Je kan dit bekijken in YourKit door hier op te klikken:&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/java/yourkit.png|&#39;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;wanneer-wat-gebruiken&#34;&gt;Wanneer wat gebruiken?&lt;/h4&gt;
-
-&lt;h5 id=&#34;ik-wil-mijn-geheugengebruik-in-het-oog-houden&#34;&gt;Ik wil mijn geheugengebruik in het oog houden&lt;/h5&gt;
-
-&lt;p&gt;Kan met eender welke profiler, VisualVM is het leukste qua GUI.&lt;/p&gt;
-
-&lt;h5 id=&#34;ik-wil-de-stack-van-een-outofmem-uit-een-heapdump-halen&#34;&gt;Ik wil de stack van een OutOfMem uit een heapdump halen&lt;/h5&gt;
-
-&lt;p&gt;Kan met VisualVM of de Eclipse tool&lt;/p&gt;
-
-&lt;h5 id=&#34;ik-wil-de-veel-voorkomende-problemen-automatisch-uit-een-heapdump-halen&#34;&gt;Ik wil de veel voorkomende problemen automatisch uit een heapdump halen&lt;/h5&gt;
-
-&lt;p&gt;Er worden rapporten gegenereerd door de eclipse tool&lt;/p&gt;
-
-&lt;h5 id=&#34;ik-wil-live-de-permgen-space-analyseren&#34;&gt;Ik wil live de PermGen space analyseren&lt;/h5&gt;
-
-&lt;p&gt;Kan enkel met YourKit door middel van probes.&lt;/p&gt;
-</description>
+      <description>Profiling Voor JMX, monitoring en andere: zie code/java/monitoring
+Verschillende profilers  jconsole: provided in JDK visualvm: provided in JDK Eclipse Memory Analyzer: http://www.eclipse.org/mat/ YourKit: http://www.yourkit.com/  Remote connecten gaat meestal via JMX, behalve your YourKit:
+Remote connecten met YourKit Zie http:*www.yourkit.com/docs/12/help/profiling_j2ee_remote.jsp en http:*www.yourkit.com/docs/95/help/agent.jsp - Je moet een agentpath JVM param meegeven om dit te kunnen doen:
+-agentpath:/usr/yourkit/libyjpagent.so######delay10000,sessionname=Tomcat  Zet niet te veel opties in agentpath om dingen te optimaliseren of het proben van de PermGen stack werkt niet.</description>
     </item>
     
     <item>
@@ -1027,97 +127,8 @@ Op die manier hebben we geen diamond inheritance nodig! Check it out:&lt;/p&gt;
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/testing/strategie/</guid>
-      <description>
-
-&lt;h1 id=&#34;test-strategie&#34;&gt;Test strategie&lt;/h1&gt;
-
-&lt;p&gt;Er zijn verschillende soorten testen en deze komen (eventueel) in elke laag terug.&lt;/p&gt;
-
-&lt;h2 id=&#34;unit-testen&#34;&gt;Unit testen&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;* Wat? Testen of een kleine unit/component op zich werkt.
-* Welke gevallen? alle gevallen: elk successpad (alle boundary conditions), alle mogelijke failure paden
-* Eventueel vriendjes van deze component wegmocken (let op voor mockitis!)
-* Testen zonder databank of andere integratie (rest calls)
-* Extenden van BaseTestCase -&amp;gt; NOOIT meer `[MockitoAnnotations.initMocks(this)](http://mockito.googlecode.com/svn/branches/1.6/javadoc/org/mockito/MockitoAnnotations.html)` uitvoeren!! We gebruiken nu de PowerMockRunner.
-* Elke entity/aggregate root moet een xxxBuilder klasse hebben om test data te maken.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Bijvoorbeeld bij web testen is het meestal beter om de stubs van ActionMapping, HttpServletRequest etc te gebruiken dan een mock aan te maken. -&amp;gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void BlaActionTest extends StrutsTestCase {
-  @Test
-  public void testDit() {
-     action.doeIets(mappingStub, requestStub, ...) // ipv mock
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Opletten met PowerMock static mocks - zo weinig mogelijk gebruiken, de &lt;code&gt;PowerMock&lt;/code&gt; class loader is nogal een memory-hog.&lt;/p&gt;
-
-&lt;p&gt;We gebruiken nu in plaats van Hamcrest assertThat altijd FEST Assert.
-Manual/wiki hier: &lt;a href=&#34;http://docs.codehaus.org/display/FEST/FEST-Assert&#34;&gt;http://docs.codehaus.org/display/FEST/FEST-Assert&lt;/a&gt;
-Het komt erop neer dat je nooit meer dan 1x hoeft te static-importen door &lt;code&gt;assertThat(blabla).isX().hasY()&lt;/code&gt;&amp;hellip; en alles (indien gewenst) te chainen.&lt;/p&gt;
-
-&lt;h2 id=&#34;integratie-testen&#34;&gt;Integratie testen&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;* Testen dat de integratie van een aantal componenten met een extern infrastructure systeem correct werkt
-* Test persistentie van domain objecten + queries : d.i. integratie met databank
-* Extenden van IntegrationTestCase
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;postdeploy-testen&#34;&gt;Postdeploy testen&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;* Testen dat de applicatie als geheel werkt.
-* Testen vereisen een gedeployde applicatie 
-* [code/java/testing/selenium](/wiki/code/java/testing/selenium/). Voor specifieke commando&#39;s van selenium en pitfalls, zie de wiki link!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Argument Catching matchers&lt;/strong&gt; - Indien je denkt deze matcher nodig te hebben bij het unit testen is het misschien beter om na te denken over de implementatie die getest wordt. Zit deze OK in elkaar qua design? Meestal helpt een beetje refactoren beter dan die matcher te schrijven of je integratie-test een klein stukje.&lt;/p&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Falende Selenium Testen&lt;/strong&gt; - Best eens nakijken of er geen testen ontbreken in de code die dit zou moeten opvangen. Anders wordt er te veel berust op de selenium testen die alles zouden moeten afdekken.&lt;/p&gt;
-
-&lt;h1 id=&#34;testen-per-laag&#34;&gt;Testen per Laag&lt;/h1&gt;
-
-&lt;h2 id=&#34;domein&#34;&gt;Domein&lt;/h2&gt;
-
-&lt;p&gt;Alle domain code wordt geunit-tested.&lt;/p&gt;
-
-&lt;p&gt;Alle persistentie code (elk veld) wordt geïntegratietested
-    * elk field op een entity/aggregateroot
-    * elke relatie tussen entities/aggregateroots
-    * elke query + fields waar men op kan filteren&lt;/p&gt;
-
-&lt;h2 id=&#34;presentatie&#34;&gt;Presentatie&lt;/h2&gt;
-
-&lt;p&gt;Dit zijn selenium testen, waarbij men het volgende wil testen:
-    * Of het scherm in het algemeen &amp;ldquo;werkt&amp;rdquo; door de titel te asserten (ipv verify: direct falen dan)
-    * Of ik velden kan invullen en saven, en daarna terug kan opvragen
-    * Of ik wanneer het kan bepaalde velden &lt;em&gt;in bepaalde gevallen al dan niet kan zien&lt;/em&gt; (combobox hide/show)&lt;br/&gt;&lt;br/&gt;Dit is belangrijk!
-    * Belangrijke validaties (bijvoorbeeld datum van &amp;lt; datum tot, maar niet ingeldige datum)
-    * Of ik records kan verwijderen uit een lijst wanneer mogelijk
-    * Flow tussen verschillende schermen: bvb. van aanmaken vreemdeling naar aanvraag naar bepaalde tab
-    * Effecten van struts configuratie bvb: errorhandler &lt;code&gt;DomainValidationExceptionHandler&lt;/code&gt; correct geconfigureerd?&lt;/p&gt;
-
-&lt;p&gt;Het is belangrijk om voor Javascript-specifieke zaken ook testen te schrijven omdat bijvoorbeeld &lt;a href=&#34;http://www.brainbaking.com/wiki/code/jsp/jstl/&#34;&gt;code/jsp/jstl&lt;/a&gt; geen exception throwt indien er geen bean gevonden is met dollar.&lt;/p&gt;
-
-&lt;p&gt;Unit testen voor de weblaag:
-    * Op de form de init aggregate root en update aggregate root (create/update) (en eventueel andere methods)
-    * Eventueel: action methodes testen (indien eenvoudig te testen, anders via selenium integratie test)&lt;/p&gt;
-
-&lt;h2 id=&#34;application&#34;&gt;Application&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;* In principe zou deze laag heel dun moeten zijn, de logica bevindt zich in de domein laag. De applicatie laag zou enkel mogen delegeren, voor zo&#39;n zaken zijn we eerder pragmatisch en schrijven we geen testen. &amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Let Op&lt;/strong&gt; - Wanneer er toch logica in dreigt te komen (bvb &lt;code&gt;if()... {}&lt;/code&gt;) -&amp;gt; natuurlijk wél testen!&lt;/p&gt;
-
-&lt;h2 id=&#34;infrastructure&#34;&gt;Infrastructure&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;* Alle code unit testen
-* Hera gateway integratie testen: eventueel in HeraStub een &#39;speciaal geval&#39; zetten dat een fout genereert zodat je de correct de foutafhandeling test
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Test strategie Er zijn verschillende soorten testen en deze komen (eventueel) in elke laag terug.
+Unit testen * Wat? Testen of een kleine unit/component op zich werkt. * Welke gevallen? alle gevallen: elk successpad (alle boundary conditions), alle mogelijke failure paden * Eventueel vriendjes van deze component wegmocken (let op voor mockitis!) * Testen zonder databank of andere integratie (rest calls) * Extenden van BaseTestCase -&amp;gt; NOOIT meer `[MockitoAnnotations.initMocks(this)](http://mockito.googlecode.com/svn/branches/1.6/javadoc/org/mockito/MockitoAnnotations.html)` uitvoeren!</description>
     </item>
     
     <item>
@@ -1126,152 +137,10 @@ Het komt erop neer dat je nooit meer dan 1x hoeft te static-importen door &lt;co
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/dynamica/aspectj/</guid>
-      <description>
-
-&lt;h1 id=&#34;loadtime-weaving-met-aspectj&#34;&gt;Loadtime weaving met aspectJ&lt;/h1&gt;
-
-&lt;h2 id=&#34;spring-weaving&#34;&gt;Spring weaving&lt;/h2&gt;
-
-&lt;p&gt;Zie &lt;strong&gt;demo projectje&lt;/strong&gt;: &lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/java/dynamica/weaving-test.zip|&#39;&gt;&lt;/p&gt;
-
-&lt;p&gt;❗ Vanaf versie 3.0 moet &lt;code&gt;spring-instrument&lt;/code&gt; in plaats van &lt;code&gt;spring-agent&lt;/code&gt; gebruikt worden! (bestaat niet meer)&lt;/p&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://static.springsource.org/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#aop&#34;&gt;http://static.springsource.org/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#aop&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Weavers:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;aspectj jar&lt;/strong&gt; &lt;code&gt;-javaagent:C:&amp;lt;br/&amp;gt;dvl.home&amp;lt;br/&amp;gt;env&amp;lt;br/&amp;gt;aspectj&amp;lt;br/&amp;gt;aspectjweaver-1.6.11.jar&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;spring-instrument jar&lt;/strong&gt; &lt;code&gt;-javaagent:C:/dvl.home/prj/comeet/tools/spring-instrument-3.1.0.RELEASE.jar&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;wat-heb-je-nodig-om-loadtime-weaving-te-laten-werken&#34;&gt;Wat heb je nodig om loadtime weaving te laten werken&lt;/h4&gt;
-
-&lt;h5 id=&#34;applicationcontext-xml&#34;&gt;applicationContext.xml&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;met spring-configured (zelfde als &lt;code&gt;org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect&lt;/code&gt; bean, zie &lt;a href=&#34;http://static.springsource.org/spring/docs/3.0.0.RC2/reference/html/ch07s08.html&#34;&gt;spring docs&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;met &lt;code&gt;load-time-weaver&lt;/code&gt; op&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version######&amp;quot;1.0&amp;quot; encoding&amp;quot;UTF-8&amp;quot;?&amp;gt;
-&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
-       xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
-       xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot;
-       xsi:schemaLocation=&amp;quot;http:*www.springframework.org/schema/beans http:*www.springframework.org/schema/beans/spring-beans-3.0.xsd
-                           http:*www.springframework.org/schema/context http:*www.springframework.org/schema/context/spring-context-3.0.xsd&amp;quot;&amp;gt;
-
-    &amp;lt;context:spring-configured/&amp;gt;
-    &amp;lt;context:component-scan base-package=&amp;quot;be.test&amp;quot;/&amp;gt;    
-    &amp;lt;context:load-time-weaver/&amp;gt;    
-&amp;lt;/beans&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;juiste-manier-van-opzetten-beans&#34;&gt;juiste manier van opzetten beans&lt;/h5&gt;
-
-&lt;p&gt;-&amp;gt; Een bean die &lt;code&gt;@Component&lt;/code&gt; annotated is waar een andere bean die &lt;code&gt;@Configurable&lt;/code&gt; ge-&lt;code&gt;new&lt;/code&gt;t wordt, die via &lt;code&gt;@Autowired&lt;/code&gt; injecties bevat&lt;/p&gt;
-
-&lt;p&gt;bijvroobeeld:&lt;/p&gt;
-
-&lt;p&gt;-&amp;gt; &lt;code&gt;SomeBean&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component
-public class SomeBean {
-
-    private final SomeBeanToInject someBeanToInject;
-
-    @Autowired
-    public SomeBean(SomeBeanToInject someBeanToInject) {
-        System.out.println(&amp;quot;creating some bean, got injected: &amp;quot; + someBeanToInject);
-        this.someBeanToInject = someBeanToInject;
-    }
-
-    public OtherBean createOtherBean() {
-        return new OtherBean();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;-&amp;gt; &lt;code&gt;OtherBean&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Configurable
-public class OtherBean {
-
-    private SomeBeanToDynamicallyInject someBeanToDynamicallyInject;
-
-    @Autowired
-    public void setSomeBeanToDynamicallyInject(SomeBeanToDynamicallyInject someBeanToDynamicallyInject) {
-        System.out.println(&amp;quot;Setting some dynamically injected bean! : &amp;quot; + someBeanToDynamicallyInject);
-        this.someBeanToDynamicallyInject = someBeanToDynamicallyInject;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;-&amp;gt; &lt;code&gt;SomeBeanToDynamicallyInject&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component
-public class SomeBeanToDynamicallyInject {
-    public String message = &amp;quot;dynamically injected&amp;quot;;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;aspectj-en-junit-testing&#34;&gt;AspectJ en Junit testing&lt;/h4&gt;
-
-&lt;p&gt;De annotatie &lt;code&gt;@EnableLoadTimeWeaving&lt;/code&gt; heb je &lt;strong&gt;NIET&lt;/strong&gt; nodig. Het is ook niet nodig om java config klasse te verwijzen, de context xml pikt dit met component scanning op!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@ContextConfiguration(locations = { &amp;quot;../../applicationContext.xml&amp;quot; })
-@RunWith(SpringJUnit4ClassRunner.class)
-public class SomeBeanTest {
-
-    @Autowired
-    private SomeBean someBean;
-
-    @Test
-    public void someBeanIsDynamicallyInjected() {
-        Assert.assertTrue(someBean.createOtherBean().isDynamicallyInjected());
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Unit- en Integratietesten opsplitsen in andere source folders&lt;/strong&gt;! Waarom?&lt;br/&gt;&lt;br/&gt;
-Omdat, ééns als een class file ingeladen is door de JVM, deze in het geheugen blijft zitten, en de volgende keer dat een andere test binnen dezelfde suite deze wilt gebruiken en verwacht dat die enhanched is (dus &lt;code&gt;@Autowired&lt;/code&gt; geïnjecteerd), dit niet zo is, omdat een vorige gewone unit test hier een &lt;code&gt;new&lt;/code&gt; van gedaan heeft en dit reeds in het geheugen steekt.&lt;/p&gt;
-
-&lt;p&gt;Is hier een oplossing voor? &lt;code&gt;ClassLoader&lt;/code&gt; cache clearen op een of andere manier? Zie &lt;a href=&#34;http://members.iinet.net.au/~macneall/Java/ClassReloading.html&#34;&gt;http://members.iinet.net.au/~macneall/Java/ClassReloading.html&lt;/a&gt; -&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Java classes themselves are dumped from memory when the classloader that loaded them is garbage collected. So the way to dynamically reload a class is to make sure that you control the classloader for that class. So when, all the references to instances of that class are gone, and you null the classloader itself, the runtime should collect the class itself. Then, next time an object of that class is used, it needs to be loaded again.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Probleem doet zich voor met &lt;code&gt;mvn clean install&lt;/code&gt; maar soms niet in eclipse??&lt;/p&gt;
-
-&lt;h2 id=&#34;aop-xml-configuratie&#34;&gt;aop.xml configuratie&lt;/h2&gt;
-
-&lt;p&gt;Deze wordt blijkbaar gebruikt om te bepalen wat er precies gewoven moet worden - als die er NIET is gaat hij by default alles weaven en een warning tonen in de console log:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[AppClassLoader@17943a4] warning javax.* types are not being woven because the weaver option &#39;-Xset:weaveJavaxPackages=true&#39; has not been specified
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;File moet in &lt;strong&gt;src/main/resources/META-INF/aop.xml&lt;/strong&gt; staan (op classpath). Content bvb:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;
-
-&amp;lt;aspectj&amp;gt;
-    &amp;lt;aspects&amp;gt;
-        &amp;lt;weaver options=&amp;quot;-Xlint:ignore -nowarn&amp;quot;&amp;gt;
-            &amp;lt;include within=&amp;quot;@org.springframework.beans.factory.annotation.Configurable be.bla.blie..*&amp;quot; /&amp;gt;
-        &amp;lt;/weaver&amp;gt;
-    &amp;lt;/aspects&amp;gt;
-&amp;lt;/aspectj&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;options&#34;&gt;options&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;-Xlint:ignore -nowarn&lt;/code&gt; negeert alle warnings dat bepaalde zaken niet gewoven kunnen worden&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-verbose&lt;/code&gt; print meer debuginfo&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-showWeaveInfo&lt;/code&gt; print wat wanneer gewoven wordt.&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description>Loadtime weaving met aspectJ Spring weaving Zie demo projectje: ❗️ Vanaf versie 3.0 moet spring-instrument in plaats van spring-agent gebruikt worden! (bestaat niet meer)
+Zie http://static.springsource.org/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#aop
+Weavers:
+ aspectj jar -javaagent:C:&amp;lt;br/&amp;gt;dvl.home&amp;lt;br/&amp;gt;env&amp;lt;br/&amp;gt;aspectj&amp;lt;br/&amp;gt;aspectjweaver-1.6.11.jar spring-instrument jar -javaagent:C:/dvl.home/prj/comeet/tools/spring-instrument-3.1.0.RELEASE.jar  Wat heb je nodig om loadtime weaving te laten werken applicationContext.xml  met spring-configured (zelfde als org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect bean, zie spring docs) met load-time-weaver op  &amp;lt;?xml version######&amp;quot;1.0&amp;quot; encoding&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot; xsi:schemaLocation=&amp;quot;http:*www.springframework.org/schema/beans http:*www.springframework.org/schema/beans/spring-beans-3.0.xsd http:*www.</description>
     </item>
     
     <item>
@@ -1280,46 +149,9 @@ Omdat, ééns als een class file ingeladen is door de JVM, deze in het geheugen 
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/dynamica/</guid>
-      <description>
-
-&lt;h1 id=&#34;dynamica&#34;&gt;Dynamica&lt;/h1&gt;
-
-&lt;p&gt;Hier zitten stukjes code om java meer dynamiek te geven (voorzover dat mogelijk is&amp;hellip;)&lt;/p&gt;
-
-&lt;p&gt;Veel collectie gerelateerde dingen (&lt;code&gt;filter&lt;/code&gt;, &lt;code&gt;map&lt;/code&gt; etc) is reeds geïmplementeerd: &lt;a href=&#34;http://code.google.com/p/guava-libraries/&#34;&gt;http://code.google.com/p/guava-libraries/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;reduce-met-optellen&#34;&gt;Reduce met optellen&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class CollectionUtil {
-
-    public static interface EnkelvoudigeTeller&amp;lt;TellerType&amp;gt; {
-        boolean magMeegeteldWorden(TellerType object);
-    }
-
-    public static interface MeervoudigeTeller&amp;lt;TellerType&amp;gt; {
-        int geefAantalMeegeteld(TellerType object);
-    }
-
-    public static &amp;lt;TellerType&amp;gt; int tel(Collection&amp;lt;TellerType&amp;gt; objecten, MeervoudigeTeller&amp;lt;TellerType&amp;gt; teller) {
-        int geteld = 0;
-        for (TellerType object : objecten) {
-            geteld += teller.geefAantalMeegeteld(object);
-        }
-        return geteld;
-    }
-
-    public static &amp;lt;TellerType&amp;gt; int tel(Collection&amp;lt;TellerType&amp;gt; objecten, final EnkelvoudigeTeller&amp;lt;TellerType&amp;gt; teller) {
-        return tel(objecten, new MeervoudigeTeller&amp;lt;TellerType&amp;gt;() {
-
-            @Override
-            public int geefAantalMeegeteld(TellerType object) {
-                return teller.magMeegeteldWorden(object) ? 1 : 0;
-            }
-        });
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Dynamica Hier zitten stukjes code om java meer dynamiek te geven (voorzover dat mogelijk is&amp;hellip;)
+Veel collectie gerelateerde dingen (filter, map etc) is reeds geïmplementeerd: http://code.google.com/p/guava-libraries/
+Reduce met optellen public class CollectionUtil { public static interface EnkelvoudigeTeller&amp;lt;TellerType&amp;gt; { boolean magMeegeteldWorden(TellerType object); } public static interface MeervoudigeTeller&amp;lt;TellerType&amp;gt; { int geefAantalMeegeteld(TellerType object); } public static &amp;lt;TellerType&amp;gt; int tel(Collection&amp;lt;TellerType&amp;gt; objecten, MeervoudigeTeller&amp;lt;TellerType&amp;gt; teller) { int geteld = 0; for (TellerType object : objecten) { geteld += teller.</description>
     </item>
     
     <item>
@@ -1328,71 +160,8 @@ Omdat, ééns als een class file ingeladen is door de JVM, deze in het geheugen 
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/encoding/</guid>
-      <description>
-
-&lt;h1 id=&#34;page-encoding&#34;&gt;Page Encoding&lt;/h1&gt;
-
-&lt;p&gt;Alles zou in UTF-8 mode moeten staan. Daarvoor moeten verschillende dingen aangepast worden.
-Een goede manier om te proberen of dit werkt is in een inputfield ALT+456 te typen
-Dat zou &lt;em&gt;╚&lt;/em&gt; moeten genereren, een 90° gedraaide dubbelgelijnde hoek.&lt;/p&gt;
-
-&lt;p&gt;Inspect via debug in een action geeft op de form dan normaal ǈ als het niet correct geëncode is.
-De waarde naar de DB kopiëren en dan terugkomen terwijl de DB niet correct geëncode is geeft &lt;em&gt;+&lt;/em&gt; weer dan.
-De waarde op inspect geeft vreemde vierkante tekens als uw struts filter niet correct gemapt is (zie onder).
-Dit is nodig om POST gegevens te kunnen decoderen vanuit UTF-8!&lt;/p&gt;
-
-&lt;h2 id=&#34;eclipse-console-output-naar-utf-8&#34;&gt;Eclipse console output naar UTF-8&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://paranoid-engineering.blogspot.com/2008/05/getting-unicode-output-in-eclipse.html&#34;&gt;http://paranoid-engineering.blogspot.com/2008/05/getting-unicode-output-in-eclipse.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;add -Dfile.encoding=UTF-8 to your eclipse.ini&lt;/li&gt;
-&lt;li&gt;make sure your Eclipse Console font supports Unicode. You can try it out by typing unicode characters directly to console with keyboard. Console Font is set in Window -&amp;gt; Preferences -&amp;gt; General -&amp;gt; Appearance -&amp;gt; Colors and Fonts -&amp;gt; Debug -&amp;gt; Console Font&lt;/li&gt;
-&lt;li&gt;if you are NOT using Windows, set your system encoding to UTF-8. You should now see Unicode characters in Console after restarting Eclipse.&lt;/li&gt;
-&lt;li&gt;if you are using Windows or do not want to change your OS encoding, you will have to avoid using System.out stream directly. Instead, wrap it up with java.io.printstream:&lt;code&gt;java
-PrintStream sysout = new PrintStream(System.out, true, &amp;quot;UTF-8&amp;quot;);
-sysout.println(&amp;quot;&amp;lt;br/&amp;gt;u2297&amp;lt;br/&amp;gt;u0035&amp;lt;br/&amp;gt;u039e&amp;lt;br/&amp;gt;u322F&amp;lt;br/&amp;gt;u5193&amp;quot;);
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;if you are using Log4J with Console Appender, make sure to set the encoding property to UTF-8. Example:&lt;code&gt;java
-#TRACE appender
-log4j.appender.stdout.trace=org.apache.log4j.ConsoleAppender
-log4j.appender.stdout.trace.layout=org.apache.log4j.PatternLayout
-log4j.appender.stdout.trace.encoding=UTF-8
-log4j.appender.stdout.trace.layout.ConversionPattern=%p [%c] - %m%n
-log4j.appender.stdout.trace.Threshold=TRACE
-&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;##Tomcat server in UTF-8 zetten&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://wiki.apache.org/tomcat/FAQ/CharacterEncoding#Q3&#34;&gt;http://wiki.apache.org/tomcat/FAQ/CharacterEncoding#Q3&lt;/a&gt;
-Vooral:
-Set URIEncoding=&amp;ldquo;UTF-8&amp;rdquo; on your &lt;Connector&gt; in server.xml&lt;/p&gt;
-
-&lt;p&gt;##Zet uw webpagina rendering in UTF-8&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Overal in jsps charencoding=UTF-8 ipv ISO plaatsen (in de header en in de jsp directive)&lt;/li&gt;
-&lt;li&gt;Voor struts: een filter maken die op de request de encoding manueel naar UTF-8 plaatst (zie apache link bovenaan)&lt;br/&gt;&lt;br/&gt; Die doet het volgende in de filter:&lt;code&gt;java
- public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
-            ServletException {
-      request.setCharacterEncoding(&amp;quot;UTF-8&amp;quot;);
-      chain.doFilter(request, response);
- }
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;In struts-config de controller in UTF-8 encoden&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;##Oracle database server in UTF-8 zetten&lt;/p&gt;
-
-&lt;p&gt;Voor DBAs, niet te vergeten natuurlijk, anders worden speciale chars die niet in ISO liggen incorrect opgeslaan.
-Men kan zelf controleren welke encoding momenteel gebruikt wordt met&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT * FROM NLS_DATABASE_PARAMETERS WHERE PARAMETER = &#39;NLS_CHARACTERSET&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Kan bvb. &lt;em&gt;WE8MSWIN1252&lt;/em&gt; uitkomen.&lt;/p&gt;
-</description>
+      <description>Page Encoding Alles zou in UTF-8 mode moeten staan. Daarvoor moeten verschillende dingen aangepast worden. Een goede manier om te proberen of dit werkt is in een inputfield ALT+456 te typen Dat zou ╚ moeten genereren, een 90° gedraaide dubbelgelijnde hoek.
+Inspect via debug in een action geeft op de form dan normaal ǈ als het niet correct geëncode is. De waarde naar de DB kopiëren en dan terugkomen terwijl de DB niet correct geëncode is geeft + weer dan.</description>
     </item>
     
     <item>
@@ -1401,78 +170,164 @@ Men kan zelf controleren welke encoding momenteel gebruikt wordt met&lt;/p&gt;
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/google-api/</guid>
-      <description>
-
-&lt;h1 id=&#34;google-api&#34;&gt;Google-api&lt;/h1&gt;
-
-&lt;h2 id=&#34;google-endpoints-client-lib&#34;&gt;Google Endpoints Client lib&lt;/h2&gt;
-
-&lt;h5 id=&#34;genereren-van-java-files&#34;&gt;Genereren van java files&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Timestamp: Tue Dec 11 12:41:31 CET 2012
-#!/bin/sh
-
-echo &amp;quot;--- COMPILING...&amp;quot;
-mvn clean compile
-
-echo &amp;quot;--- REMOVING OLD FILES &amp;amp; COPYING TO WEB-INF...&amp;quot;
-rm -rf ./war/WEB-INF/devices-*
-rm -rf ./war/WEB-INF/classes
-cp -rf ./target/classes ./war/WEB-INF/
-
-echo &amp;quot;--- GENERATING ENDPOINTS...&amp;quot;
-/Users/jefklak/development/appengine/bin/endpoints.sh get-java-client-lib be.klak.gatecontrolweb.DevicesController
-
-echo &amp;quot;--- EXTRACTING SOURCE JAR...&amp;quot;
-cd ./war/WEB-INF
-rm -rf devices
-unzip devices-v1-java.zip
-cd devices
-unzip `ls | grep sources.jar`
-cp -rf com ~/development/gatecontrol/receiver/src/main/java
-
-echo &amp;quot;--- DONE!&amp;quot;```
-
-##### maven deps voor de client 
-
-```xml
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.oauth-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-oauth-client&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.api-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-api-client&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.2-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.http-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-http-client-jackson2&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;oauth is de enige compile dependency die aangeduid staat, maar api-client is nodig voor de algemene http transport - zie &lt;a href=&#34;http://code.google.com/p/google-api-java-client/&#34;&gt;http://code.google.com/p/google-api-java-client/&lt;/a&gt;
-Een client call maken kan je dan zo doen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;        NetHttpTransport transport = new NetHttpTransport();
-
-        // laatste param is voor credentials mee te geven
-        Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
-        try {
-            devices.houses().all().execute().getItems();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;JacksonFactory&lt;/code&gt; zit blijkbaar nergens in buiten in de &lt;code&gt;google-http-client-jackson2&lt;/code&gt; lib.&lt;/p&gt;
-
-&lt;p&gt;Authenticatie etc: &lt;strong&gt;zie &lt;a href=&#34;http://code.google.com/p/google-api-java-client/wiki/OAuth2&#34;&gt;google-api-java-client OAuth2 wiki&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-</description>
+      <description>Google-api Google Endpoints Client lib Genereren van java files Timestamp: Tue Dec 11 12:41:31 CET 2012 #!/bin/sh echo &amp;quot;--- COMPILING...&amp;quot; mvn clean compile echo &amp;quot;--- REMOVING OLD FILES &amp;amp; COPYING TO WEB-INF...&amp;quot; rm -rf ./war/WEB-INF/devices-* rm -rf ./war/WEB-INF/classes cp -rf ./target/classes ./war/WEB-INF/ echo &amp;quot;--- GENERATING ENDPOINTS...&amp;quot; /Users/jefklak/development/appengine/bin/endpoints.sh get-java-client-lib be.klak.gatecontrolweb.DevicesController echo &amp;quot;--- EXTRACTING SOURCE JAR...&amp;quot; cd ./war/WEB-INF rm -rf devices unzip devices-v1-java.zip cd devices unzip `ls | grep sources.jar` cp -rf com ~/development/gatecontrol/receiver/src/main/java echo &amp;quot;--- DONE!</description>
+    </item>
+    
+    <item>
+      <title>innerclasses</title>
+      <link>http://www.brainbaking.com/wiki/code/java/dynamica/innerclasses/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/dynamica/innerclasses/</guid>
+      <description>code:java:dynamica &amp;gt;&amp;gt; Innerclasses Java is geen dynamische taal maar je kan wel gebruik maken van een aantal handige trucjes om duplicatie te vermijden. Bijvoorbeeld om state bij te houden en de implementatie zelf in een inner klasse te voorzien:
+private interface CrmEndpointWorker { void call(Holder&amp;lt;Status&amp;gt; status, Holder&amp;lt;String&amp;gt; result); } public CrmImportGatewayAction forCreation() { return new CrmImportGatewayAction(Action.CREATE); } public CrmImportGatewayAction forUpdating() { return new CrmImportGatewayAction(Action.UPDATE); } public CrmImportGatewayAction forDeletion() { return new CrmImportGatewayAction(Action.</description>
+    </item>
+    
+    <item>
+      <title>listmerger</title>
+      <link>http://www.brainbaking.com/wiki/code/java/dynamica/listmerger/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/dynamica/listmerger/</guid>
+      <description>code:java:dynamica &amp;gt;&amp;gt; Listmerger public final class ListMerger&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; { private final Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; itemConverterFn; public ListMerger() { this.itemConverterFn = identityFn(); } public ListMerger(Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; itemConverterFn) { this.itemConverterFn = itemConverterFn; } private Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; identityFn() { return new Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt;() { @SuppressWarnings(&amp;quot;unchecked&amp;quot;) @Override public ItemTypeAfterConversion apply(ItemType input) { return (ItemTypeAfterConversion) input; } }; } public final void mergeLists(List&amp;lt;? extends ItemType&amp;gt; oldList, List&amp;lt;? extends ItemType&amp;gt; newList, ListMergable&amp;lt;ItemType&amp;gt; mergable) { List&amp;lt;ItemTypeAfterConversion&amp;gt; oldTransformed = new ArrayList&amp;lt;ItemTypeAfterConversion&amp;gt;(transform(oldList, itemConverterFn)); List&amp;lt;ItemTypeAfterConversion&amp;gt; newTransformed = new ArrayList&amp;lt;ItemTypeAfterConversion&amp;gt;(transform(newList, itemConverterFn)); for (ItemType item : new ArrayList&amp;lt;ItemType&amp;gt;(oldList)) { if (!</description>
+    </item>
+    
+    <item>
+      <title>logging</title>
+      <link>http://www.brainbaking.com/wiki/code/java/logging/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/logging/</guid>
+      <description>code:java &amp;gt;&amp;gt; Logging Log4j Gebruiken over verschillende threads heen Probleem: JMS handlers die bijvoorbeeld tegelijk starten en loggen naar éénzelfde file met Logger.getLogger(x). Als een thread crasht en de andere afwerkt, maar we de volgorde van wegschrijven niet kunnen garanderen, hoe kunnen we dan dit onerscheid maken?
+Oplossing: met NDC (Nested Diagnostic Context) - zie http://logging.apache.org/log4j/1.2/manual.html
+Voorbeeld:
+protected static final Logger jmsLogger = Logger.getLogger(&amp;quot;jmsLogger&amp;quot;); private void log(String message) { jmsLogger.</description>
+    </item>
+    
+    <item>
+      <title>oraclegeometry</title>
+      <link>http://www.brainbaking.com/wiki/code/java/oraclegeometry/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/oraclegeometry/</guid>
+      <description>Oracle Geometries SDO_GEOMETRY Mappen in de DB Via Hibernate: met een UserType implementatie
+public Object nullSafeGet(ResultSet resultSet, String[] strings, Object o) throws HibernateException, SQLException { STRUCT geometry = (STRUCT) resultSet.getObject(strings[0]); if (resultSet.wasNull() || geometry ###### null) { return null; } return new Geometry(JGeometry.load(geometry)); } /** * setNull(i, Types.OTHER or Types.STRUCT) results in &amp;quot;unknown column type&amp;quot; exceptions! */ public void nullSafeSet(PreparedStatement preparedStatement, Object o, int i) throws HibernateException, SQLException { if (o ###### null) { preparedStatement.</description>
+    </item>
+    
+    <item>
+      <title>persistence</title>
+      <link>http://www.brainbaking.com/wiki/code/java/persistence/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/persistence/</guid>
+      <description>Persistence JPA Collections mapping Hoe map ik een koppeltabel zonder die als entiteit zelf in ons domein te hebben? Zo:
+@OneToMany(fetch ###### LAZY, cascade { MERGE, PERSIST }) @JoinTable(name = &amp;quot;physicalzonezonealias&amp;quot;, joinColumns ###### @JoinColumn(name &amp;quot;physicalzone&amp;quot;, referencedColumnName = &amp;quot;id&amp;quot;), inverseJoinColumns ###### @JoinColumn(name &amp;quot;zonealias&amp;quot;, referencedColumnName = &amp;quot;id&amp;quot;)) @SequenceGenerator(name ###### &amp;quot;physicalzonezonealias_id&amp;quot;, sequenceName &amp;quot;physicalzonezonealias_id&amp;quot;, allocationSize = 1) @CollectionId(columns ###### @Column(name &amp;quot;id&amp;quot;), type ###### @Type(type &amp;quot;int&amp;quot;), generator = &amp;quot;physicalzonezonealias_id&amp;quot;) private List&amp;lt;Zonealias&amp;gt; zoneAliases = new ArrayList&amp;lt;Zonealias&amp;gt;();  Wat is hier leuk aan?</description>
+    </item>
+    
+    <item>
+      <title>play</title>
+      <link>http://www.brainbaking.com/wiki/code/java/play/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/play/</guid>
+      <description>Play! Framework 1.2 ❗️ Heel interessante .gitignore default configuratie voor Play terug te vinden op https://github.com/github/gitignore
+Dependencies Toevoegen Toevoegen in dependencies.yml - default maven2 repo is niet nodig:
+require: 1. play -&amp;gt; crud 2. org.easytesting -&amp;gt; fest-assert 1.4  Daarna altijd play dependencies --sync of eventueel play eclipsify en F5 op eclipse project.
+Lokale repository als directory repositories: 1. Local_repo: type: iBiblio root: &amp;quot;file:///C:/Documents%20and%20Settings/Jefklak/.m2/repository/&amp;quot; contains: 1. be.klak -&amp;gt; * 2.</description>
+    </item>
+    
+    <item>
+      <title>play2</title>
+      <link>http://www.brainbaking.com/wiki/code/java/play2/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/play2/</guid>
+      <description>Play 2.0 Testing in Play 2.0 Controller testen een controller &amp;ldquo;action&amp;rdquo; (= method vanuit route) testen doen we op een &amp;ldquo;functionele&amp;rdquo; manier in plaats van de method direct aan te roepen:
+controller
+public static Result buyHorse() { Form&amp;lt;Horse&amp;gt; horseForm = form(Horse.class); Horse horse = horseForm.bindFromRequest().get(); System.out.println(horse.id); }  unit test
+@Test public void buyHorse() { HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;&amp;gt;(); map.put(&amp;quot;id&amp;quot;, &amp;quot;12&amp;quot;); callAction(HorseMarket.buyHorse(), new FakeRequest().withFormUrlEncodedBody(map)); }  Waarbij hierboven HorseMarket de routes ref is en niet de HorseMarket controller klasse zelf - deze:</description>
+    </item>
+    
+    <item>
+      <title>queues</title>
+      <link>http://www.brainbaking.com/wiki/code/java/queues/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/queues/</guid>
+      <description>code:java &amp;gt;&amp;gt; Queues Zie ook code/java/monitoring om JMX te enablen.
+Via JMX (HornetQ) queues leegmaken Dit is een TestExecutionListener die je met @TestExecutionListeneres kan gebruiken om na elke test de queues leeg te maken:
+public class QueueCleanerContextListener extends AbstractTestExecutionListener { public void cleanQueues() throws Exception { InitialContext initialContext = null; JMXConnector connector = null; try { connector = connectToQueue(); for (String queue : getJMSServerControl(connector).getQueueNames()) { getJMSQueueControl(connector, queue).removeMessages(null); } } finally { connector.</description>
+    </item>
+    
+    <item>
+      <title>reflectie</title>
+      <link>http://www.brainbaking.com/wiki/code/java/reflectie/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/reflectie/</guid>
+      <description>Reflectie, Classpath scanning etc Oplijsten van fields die enkel boolean en true zijn public static String listTrueBooleanFields(Object object) { List&amp;lt;String&amp;gt; parts = Lists.newArrayList(); try { for (Field field : object.getClass().getDeclaredFields()) { boolean accessibleFlag = field.isAccessible(); field.setAccessible(true); if (isTrueBooleanField(object, field)) { parts.add(makeCamelCaseNatural(field.getName())); } field.setAccessible(accessibleFlag); } } catch (Exception ex) { throw new RuntimeException(ex); } return StringUtils.join(parts, &amp;quot;, &amp;quot;); } private static boolean isTrueBooleanField(Object object, Field field) throws IllegalAccessException { return isBoolean(field) &amp;amp;&amp;amp; (Boolean) field.</description>
+    </item>
+    
+    <item>
+      <title>soap</title>
+      <link>http://www.brainbaking.com/wiki/code/java/soap/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/soap/</guid>
+      <description>code:java &amp;gt;&amp;gt; Soap Een simpele SOAP Client maken als Unit Test @Test public void processManageCustomers() throws Exception { URL url = new URL(&amp;quot;http://localhost:8888/bla&amp;quot;); HttpURLConnection conn = (HttpURLConnection) url.openConnection(); setSOAPPostHeaders(conn); IOUtils.copy(new FileInputStream(new File(&amp;quot;src/test/resources/example.xml&amp;quot;)), conn.getOutputStream()); String result = IOUtils.toString(conn.getInputStream()); assertThat(result).contains(&amp;quot;&amp;lt;return&amp;gt;something&amp;lt;/return&amp;gt;&amp;quot;); } private void setSOAPPostHeaders(HttpURLConnection conn) throws ProtocolException { conn.setRequestProperty(&amp;quot;Content-Type&amp;quot;, &amp;quot;text/xml; charset=utf-8&amp;quot;); conn.setRequestProperty(&amp;quot;SOAPAction&amp;quot;, &amp;quot;&amp;quot;); conn.setRequestMethod(&amp;quot;POST&amp;quot;); conn.setDoOutput(true); conn.setDoInput(true); }  Gebruik makende van apache commons
+Endpoint URL met JAX-WS goed zetten Twee mogelijkheden:</description>
+    </item>
+    
+    <item>
+      <title>spring</title>
+      <link>http://www.brainbaking.com/wiki/code/java/spring/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/spring/</guid>
+      <description>Spring Wiring How to access target object behind proxy bean Zie http://www.techper.net/2009/06/05/how-to-acess-target-object-behind-a-spring-proxy/
+@SuppressWarnings(&amp;quot;unchecked&amp;quot;) protected &amp;lt;Type&amp;gt; Type getTargetObject(Object proxy, Class&amp;lt;Type&amp;gt; targetClass) { try { if ((AopUtils.isJdkDynamicProxy(proxy))) { return (Type) getTargetObject(((Advised) proxy).getTargetSource().getTarget(), targetClass); } return (Type) proxy; // expected to be cglib proxy then, which is simply a specialized class } catch (Exception ex) { throw new IllegalStateException(ex); } }  Geen loadtime weaving? Geen probleem. Gebruik de static springContext accessor (maar met mate(n) natuurlijk:</description>
+    </item>
+    
+    <item>
+      <title>stubs</title>
+      <link>http://www.brainbaking.com/wiki/code/java/testing/stubs/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/testing/stubs/</guid>
+      <description>Stubs Embedded Jetty Zie http://docs.codehaus.org/display/JETTY/Embedding+Jetty
+Stub Http server:
+public class StubHttpServer implements StubServer { private RequestRecordingFilter filter = new RequestRecordingFilter(); private int port; private Server httpServer; private Map&amp;lt;String, ResettableHttpServlet&amp;gt; servlets = new HashMap&amp;lt;String, ResettableHttpServlet&amp;gt;(); public StubHttpServer(int port) { this.port = port; } public void addHttpServlet(String uri, final HttpServlet servlet) { addHttpServlet(uri, new ResettableHttpServlet() { @Override public void reset() { } @Override public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException { servlet.</description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>http://www.brainbaking.com/wiki/code/java/testing/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/testing/</guid>
+      <description>Testing in Java code/java/testing|js&amp;rsquo;&amp;gt;
+Acceptatietesten Zie &amp;gt;&amp;gt; code/java/testing/selenium
+Mocking Static mocking met PowerMock PowerMock gebruikt een eigen Classloader om klassen in te laden. Als er veel testen powermock gebruiken gaat de build alsmaar trager worden. Om te vermijden dat de boel dicht slibt een speciale annotatie gebruiken:
+@RunWith(PowerMockRunner.class) @PrepareForTest({WebApplicationContextUtils.class, SecurityManager.class }) @PowerMockIgnore({&amp;quot;org.apache.log4j&amp;quot;, &amp;quot;org.apache.commons.logging&amp;quot;, &amp;quot;org.apache.struts.util&amp;quot; }) public class Test { public void setUp() { PowerMockito.mockStatic(SecurityManager.class); } ... }  Het is niet meer nodig om in combinatie met mockito ook nog eens de @Mock initializatie te doen (met MockitoAnnotations.</description>
+    </item>
+    
+    <item>
+      <title>utils</title>
+      <link>http://www.brainbaking.com/wiki/code/java/utils/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/utils/</guid>
+      <description>Utility methods SetUtils public class SetUtil { public static &amp;lt;T&amp;gt; Set&amp;lt;T&amp;gt; asSet(T... elements) { return new HashSet&amp;lt;T&amp;gt;(Arrays.asList(elements)); } public static &amp;lt;T&amp;gt; boolean bevat(Set&amp;lt;T&amp;gt; someSet, Predicate&amp;lt;T&amp;gt; predicate) { return !Sets.filter(someSet, predicate).isEmpty(); } public static &amp;lt;E&amp;gt; Set&amp;lt;E&amp;gt; cast(Set&amp;lt;?&amp;gt; someSet, Class&amp;lt;E&amp;gt; classToCastTo) { Set&amp;lt;E&amp;gt; newSet = new LinkedHashSet&amp;lt;E&amp;gt;(); for (Object object : someSet) { newSet.add(classToCastTo.cast(object)); } return newSet; } }  ListUtils public class ListUtil { public static &amp;lt;T&amp;gt; List&amp;lt;T&amp;gt; sort(Collection&amp;lt;T&amp;gt; collection, Comparator&amp;lt;?</description>
+    </item>
+    
+    <item>
+      <title>vaadin</title>
+      <link>http://www.brainbaking.com/wiki/code/java/vaadin/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/java/vaadin/</guid>
+      <description>Vaadin 7 Javascript uitvoeren in de frontent @JavaScript({ &amp;quot;https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js&amp;quot;, &amp;quot;js_label.js&amp;quot; }) public class JsLabel extends AbstractJavaScriptComponent { public JsLabel(String xhtml) { getState().xhtml = xhtml; } @Override protected JsLabelState getState() { return (JsLabelState) super.getState(); } public static class JsLabelState extends JavaScriptComponentState { public String xhtml; } }  en bijbehorende js_label.js file - plaats in src/main/resources onder zelfde subdir als package van java file&amp;hellip;
+be_vdab_nonstop_presentation_form_JsLabel = function() { var e = this.</description>
     </item>
     
   </channel>

@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Groepsles_floret on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/groepsles_floret/index.xml</link>
+    <link>http://www.brainbaking.com/tags/groepsles_floret/</link>
     <description>Recent content in Groepsles_floret on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/groepsles_floret/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/groepsles_floret/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>groepsles_floret</title>
@@ -16,38 +19,7 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/schermen/groepsles_floret/</guid>
-      <description>
-
-&lt;h1 id=&#34;floret-groepsles&#34;&gt;Floret: groepsles&lt;/h1&gt;
-
-&lt;h2 id=&#34;afstand&#34;&gt;Afstand&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Op- en neer de strip door ijzer te nemen, om beurten te leiden, en de afstand te bewaren! Varieer in snelheid.&lt;/li&gt;
-&lt;li&gt;Zelfde oefening, variatie: indien tegenstander niet kan volgen of te kortbij komt mag een treffer geplaatst worden.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img style=&#39;float: left;&#39; src=&#39;http://www.brainbaking.com/img//schermen/foil.jpg|&#39;&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;basisbewegingen&#34;&gt;Basisbewegingen&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Slag + steek:
-
-&lt;ol&gt;
-&lt;li&gt;links tegen links: slag in lijn 4 + steek&lt;/li&gt;
-&lt;li&gt;links tegen rechts: ronde 6 + slag, daarna steek.&lt;/li&gt;
-&lt;li&gt;Het is de bedoeling dat bij een slag &lt;em&gt;/géén&lt;/em&gt; pols- of handbewegingen gemaakt worden, enkel een kleine &amp;ldquo;flick&amp;rdquo;! Pols = wering in de andere lijn.&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;dreigen + werking + steek
-
-&lt;ol&gt;
-&lt;li&gt;Varieren met dubbele wering en &lt;strong&gt;riposte&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Varieren door te dreigen in verschillende lijnen! (6,4 en daarna 7,8)&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Dégagement&lt;/strong&gt; (niet wapen laten raken zoals bij wering of slag, dan verlies je bij Floret de voorrang!) in verschillende lijnen&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description>Floret: groepsles Afstand  Op- en neer de strip door ijzer te nemen, om beurten te leiden, en de afstand te bewaren! Varieer in snelheid. Zelfde oefening, variatie: indien tegenstander niet kan volgen of te kortbij komt mag een treffer geplaatst worden.  Basisbewegingen  Slag + steek:  links tegen links: slag in lijn 4 + steek links tegen rechts: ronde 6 + slag, daarna steek. Het is de bedoeling dat bij een slag /géén pols- of handbewegingen gemaakt worden, enkel een kleine &amp;ldquo;flick&amp;rdquo;!</description>
     </item>
     
   </channel>

@@ -9,7 +9,7 @@
   <title>persistence</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.21" />
   <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
@@ -375,7 +375,7 @@
 
 <p>Op die manier werkt <code>Bind()</code> altijd.</p>
 
-<p>❗ Geen sessie factory sluiten op het einde van de request maar enkel de <code>ISession</code> - uw pooling zit in de factory!</p>
+<p>❗️ Geen sessie factory sluiten op het einde van de request maar enkel de <code>ISession</code> - uw pooling zit in de factory!</p>
 
 <p>############ Transacties ############</p>
 
@@ -420,7 +420,7 @@
 
 <p>############ Event listeners ############</p>
 
-<p>❗ in events als <code>IPreInsertEventListener</code> moet je zowel het object (via <code>@Event.Entity</code>) als de state (via <code>@Event.State</code>) wijzigen. Hoe werkt dit met <code>IPersistEventListener</code>?</p>
+<p>❗️ in events als <code>IPreInsertEventListener</code> moet je zowel het object (via <code>@Event.Entity</code>) als de state (via <code>@Event.State</code>) wijzigen. Hoe werkt dit met <code>IPersistEventListener</code>?</p>
 
 <p>Custom event listener die de Java annotaties zoals <code>@PrePersist</code> ea mogelijk maakt in C# met attributes:</p>
 
@@ -484,7 +484,7 @@
     }
 </code></pre>
 
-<p>❗ Indien state wijzigt in <code>PrePersist</code> of <code>PreUpdate</code> moet je ook de @event.State wijzigen, naast de state van het object zelf.</p>
+<p>❗️ Indien state wijzigt in <code>PrePersist</code> of <code>PreUpdate</code> moet je ook de @event.State wijzigen, naast de state van het object zelf.</p>
 
 <p>Voor details zie <a href="http:*ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener">http:*ayende.com/blog/3987/nhibernate-ipreupdateeventlistener-ipreinserteventlistener</a></p>
 
@@ -525,7 +525,7 @@ UpdateDirtyFieldValuesInState(@event, state, initialFieldValues);
 
 <p>############ Identity generators ############</p>
 
-<p>❗ <code>identity</code> gebruikt de native autoincrement aan de DB maar is helemaal niet performant, maakt <code>batch_size</code> redundant - veel roundtrips nodig. Een alternatief bijvoorbeeld:</p>
+<p>❗️ <code>identity</code> gebruikt de native autoincrement aan de DB maar is helemaal niet performant, maakt <code>batch_size</code> redundant - veel roundtrips nodig. Een alternatief bijvoorbeeld:</p>
 
 <ul>
 <li><a href="http://daniel.wertheim.se/2011/03/08/nhibernate-custom-id-generator/">NHibernate – Custom Id-generator based on hilo</a></li>
@@ -612,7 +612,7 @@ Exception:Exception has been thrown by the target of an invocation.Inner Excepti
 <li>Volgens google betekent dit dat we <code>ISession</code> objecten delen over verschillende threads/requests</li>
 </ul>
 
-<p>❗ Probleem was dat wij <a href="http://www.postsharp.net/aspects/examples/transaction">PostSharp</a> gebruiken maar op de attribute class state bijhielden (de transactie zelf) om die bij onexit te kunnen committen. Andere users herbruiken diezelfde klasse blijkbaar, waarbij user1 transacties van user2 gaat committen etc. Correcte implementatie - zie link postsharp als voorbeeld; of:</p>
+<p>❗️ Probleem was dat wij <a href="http://www.postsharp.net/aspects/examples/transaction">PostSharp</a> gebruiken maar op de attribute class state bijhielden (de transactie zelf) om die bij onexit te kunnen committen. Andere users herbruiken diezelfde klasse blijkbaar, waarbij user1 transacties van user2 gaat committen etc. Correcte implementatie - zie link postsharp als voorbeeld; of:</p>
 
 <pre><code class="language-csharp">    [Serializable]
     public class TransactionalAttribute : OnMethodBoundaryAspect
@@ -794,7 +794,7 @@ join a.i as c&rdquo;</p>
   	    </p>
   	    
     	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
           
     	</p>
       </div>
@@ -816,7 +816,7 @@ join a.i as c&rdquo;</p>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-45748221-1', 'auto');
 ga('send', 'pageview');

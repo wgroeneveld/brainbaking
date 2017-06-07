@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jsunit on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/jsunit/index.xml</link>
+    <link>http://www.brainbaking.com/tags/jsunit/</link>
     <description>Recent content in Jsunit on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/jsunit/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 May 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/jsunit/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>jsunit</title>
@@ -16,113 +19,9 @@
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/build/jsunit/</guid>
-      <description>
-
-&lt;h1 id=&#34;jsunit-testen&#34;&gt;JsUnit Testen&lt;/h1&gt;
-
-&lt;h2 id=&#34;integratie-met-een-ant-build&#34;&gt;Integratie met een Ant build&lt;/h2&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.jsunit.net/&#34;&gt;http://www.jsunit.net/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Hoofd JUnit klasse die gestart moet worden als junit tag vanuit ant: &lt;strong&gt;&lt;code&gt;net.jsunit.StandaloneTest&lt;/code&gt;&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;
-Voor uitleg over de parameters, zie jsunit website.&lt;/p&gt;
-
-&lt;p&gt;❗ Belangrijk: JsUnit draait binnen een aparte context op een embedded Jetty server. Dit wil zeggen dat javascript test suites (html pagina&amp;rsquo;s) die javascript files includen wel binnen de context staan, maar javascript files in een web project binnen eclipse bijvoorbeeld niet. Oplossing: kopiëer alle JS files voordat de test gedraaid wordt binnen de context.&lt;/p&gt;
-
-&lt;p&gt;Voor JS files te testen binnen een jar moeten die ook unjarred worden.&lt;/p&gt;
-
-&lt;h3 id=&#34;ant-build-snippet&#34;&gt;Ant build snippet&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!-- JsUnit properties --&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.lib.dir&amp;quot; value&amp;quot;${basedir}/../buildscripts/${lib.dir}/jsunit&amp;quot; /&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.browserFileNames&amp;quot; value&amp;quot;c:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;program files&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;internet explorer&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;iexplore.exe,c:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;program files&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Mozilla Firefox&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;firefox.exe&amp;quot; /&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.port&amp;quot; value&amp;quot;9001&amp;quot; /&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.suite&amp;quot; value&amp;quot;suite.html&amp;quot; /&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.url&amp;quot; value&amp;quot;http:*localhost:9001/jsunit/testRunner.html?testPage######http:*localhost:9001/jsunit/tests/${jsunit.suite}&amp;amp;amp;autoRuntrue&amp;quot; /&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.common.jar&amp;quot; value&amp;quot;${web.lib.dir}/commonResources.jar&amp;quot; /&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.src.js&amp;quot; value&amp;quot;${web.dir}/resources/scripts&amp;quot; /&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.src.tests&amp;quot; value&amp;quot;test/jsunit&amp;quot; /&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.target&amp;quot; value&amp;quot;${target.dir}/jsunit&amp;quot; /&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.target.js&amp;quot; value&amp;quot;${jsunit.target}/tests/js&amp;quot; /&amp;gt;
-&amp;lt;property name######&amp;quot;jsunit.target.tests&amp;quot; value&amp;quot;${jsunit.target}/tests&amp;quot; /&amp;gt;
-
-&amp;lt;path id=&amp;quot;jsunit.classpath&amp;quot;&amp;gt;
-    ```et
-&amp;lt;/path&amp;gt;
-
-&amp;lt;target name######&amp;quot;jsunit-tests&amp;quot; depends&amp;quot;-clean-reports, -compile-test, -jsunit, -junit-report&amp;quot;/&amp;gt;
-
-    &amp;lt;target name######&amp;quot;-jsunit&amp;quot; if&amp;quot;jsunit.tests.present&amp;quot;&amp;gt;
-        &amp;lt;junit failureproperty######&amp;quot;junit.failed&amp;quot; errorproperty&amp;quot;junit.error&amp;quot;&amp;gt;
-            &amp;lt;formatter type######&amp;quot;plain&amp;quot; usefile&amp;quot;false&amp;quot;/&amp;gt;
-            &amp;lt;classpath refid=&amp;quot;jsunit.classpath&amp;quot;/&amp;gt;
-            &amp;lt;sysproperty key######&amp;quot;java.util.logging.config.file&amp;quot; value&amp;quot;${jsunit.target.tests}/logging.properties&amp;quot;/&amp;gt;
-            &amp;lt;sysproperty key######&amp;quot;browserFileNames&amp;quot; value&amp;quot;${jsunit.browserFileNames}&amp;quot;/&amp;gt;
-            &amp;lt;sysproperty key######&amp;quot;description&amp;quot; value&amp;quot;JsUnit server&amp;quot;/&amp;gt;
-            &amp;lt;sysproperty key######&amp;quot;logsDirectory&amp;quot; value&amp;quot;${report.dir}&amp;quot;/&amp;gt;
-            &amp;lt;sysproperty key######&amp;quot;port&amp;quot; value&amp;quot;${jsunit.port}&amp;quot;/&amp;gt;
-            &amp;lt;sysproperty key######&amp;quot;resourceBase&amp;quot; value&amp;quot;${jsunit.target}&amp;quot;/&amp;gt;
-            &amp;lt;sysproperty key######&amp;quot;url&amp;quot; value&amp;quot;${jsunit.url}&amp;quot;/&amp;gt;
-            &amp;lt;test name=&amp;quot;net.jsunit.StandaloneTest&amp;quot;/&amp;gt;
-        &amp;lt;/junit&amp;gt;
-    &amp;lt;/target&amp;gt;
-    
-    &amp;lt;target name######&amp;quot;-compile-jsunit&amp;quot; depends&amp;quot;-jsunit-check&amp;quot; if=&amp;quot;jsunit.tests.present&amp;quot;&amp;gt;
-        &amp;lt;antcall target=&amp;quot;-jsunit-copy-lib&amp;quot; /&amp;gt;
-        &amp;lt;antcall target=&amp;quot;-jsunit-copy-common-js&amp;quot; /&amp;gt;
-        &amp;lt;antcall target=&amp;quot;-jsunit-copy-tests&amp;quot; /&amp;gt;
-        &amp;lt;antcall target=&amp;quot;-jsunit-copy-js&amp;quot; /&amp;gt;
-        &amp;lt;antcall target=&amp;quot;-jsunit-build-suite&amp;quot; /&amp;gt;
-    &amp;lt;/target&amp;gt;
-    
-    &amp;lt;target name=&amp;quot;-jsunit-check&amp;quot;&amp;gt;
-        &amp;lt;available file######&amp;quot;${jsunit.src.tests}&amp;quot; property&amp;quot;jsunit.tests.present&amp;quot;/&amp;gt;
-    &amp;lt;/target&amp;gt;
-    
-    &amp;lt;target name=&amp;quot;-jsunit-copy-lib&amp;quot;&amp;gt;
-        &amp;lt;copy todir=&amp;quot;${jsunit.target}&amp;quot;&amp;gt;
-            ```et
-        &amp;lt;/copy&amp;gt;
-    &amp;lt;/target&amp;gt;
-    
-    &amp;lt;target name=&amp;quot;-jsunit-copy-common-js&amp;quot;&amp;gt;
-        &amp;lt;unjar src######&amp;quot;${jsunit.common.jar}&amp;quot; dest&amp;quot;${jsunit.target.js}/common&amp;quot;&amp;gt;
-            &amp;lt;patternset&amp;gt;
-                &amp;lt;include name=&amp;quot;**/*.js&amp;quot; /&amp;gt;
-                &amp;lt;exclude name=&amp;quot;**/resourcesmini/**&amp;quot;/&amp;gt;
-            &amp;lt;/patternset&amp;gt;
-            &amp;lt;mapper type=&amp;quot;flatten&amp;quot;/&amp;gt;
-        &amp;lt;/unjar&amp;gt;
-    &amp;lt;/target&amp;gt;
-    
-    &amp;lt;target name=&amp;quot;-jsunit-copy-tests&amp;quot;&amp;gt;
-        &amp;lt;copy todir=&amp;quot;${jsunit.target.tests}&amp;quot;&amp;gt;
-            ```et
-        &amp;lt;/copy&amp;gt;
-    &amp;lt;/target&amp;gt;
-    
-    &amp;lt;target name=&amp;quot;-jsunit-copy-js&amp;quot;&amp;gt;
-        &amp;lt;copy todir=&amp;quot;${jsunit.target.js}&amp;quot;&amp;gt;
-            ```et
-        &amp;lt;/copy&amp;gt;
-    &amp;lt;/target&amp;gt;
-    
-    &amp;lt;target name=&amp;quot;-jsunit-build-suite&amp;quot;&amp;gt;
-        &amp;lt;taskdef name######&amp;quot;jsUnitSuiteBuilder&amp;quot; classname&amp;quot;be.cegeka.ant.JsUnitSuiteBuilder&amp;quot; classpath=&amp;quot;${jsunit.lib.dir}/java/ant/cegekant.jar&amp;quot; /&amp;gt;
-        &amp;lt;jsUnitSuiteBuilder testdir######&amp;quot;${jsunit.target.tests}&amp;quot; testsuitefilename&amp;quot;${jsunit.target.tests}/${jsunit.suite}&amp;quot;
-            suitetemplatefilename=&amp;quot;${jsunit.target.tests}/suite_template.html&amp;quot;/&amp;gt;
-    &amp;lt;/target&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;suite-html-automatisch-genereren&#34;&gt;Suite.html automatisch genereren&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;testRunner.html&lt;/code&gt; draait standaard een html pagina als test suite waar alle anderen geïnclude in worden. Een JS test methode moet beginnen met &lt;code&gt;test&lt;/code&gt;X(). Standaard assertions kunnen gebruikt worden die deel van JsUnit zelf zijn, zie die documentatie.&lt;/p&gt;
-
-&lt;p&gt;Om niet altijd de hoofd suite aan te moeten passen, kan een ant plugin gemaakt worden die een bepaald pad scant op html files en deze recursief toevoegt aan de suite zelf. Die wordt bij elke build dus in principe overschreven.&lt;/p&gt;
-
-&lt;p&gt;Hiervoor is een plugin geschreven op: &lt;a href=&#34;http://code.google.com/p/cegekant/&#34;&gt;http://code.google.com/p/cegekant/&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;
-&lt;a href=&#34;http://code.google.com/p/cegekant/source/browse/trunk/src/be/cegeka/ant/JsUnitSuiteBuilder.java&#34;&gt;Volledige source suite builder&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>JsUnit Testen Integratie met een Ant build Zie http://www.jsunit.net/
+Hoofd JUnit klasse die gestart moet worden als junit tag vanuit ant: net.jsunit.StandaloneTest Voor uitleg over de parameters, zie jsunit website.
+❗️ Belangrijk: JsUnit draait binnen een aparte context op een embedded Jetty server. Dit wil zeggen dat javascript test suites (html pagina&amp;rsquo;s) die javascript files includen wel binnen de context staan, maar javascript files in een web project binnen eclipse bijvoorbeeld niet.</description>
     </item>
     
   </channel>

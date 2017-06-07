@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Aspectj on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/aspectj/index.xml</link>
+    <link>http://www.brainbaking.com/tags/aspectj/</link>
     <description>Recent content in Aspectj on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/aspectj/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/aspectj/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>aspectj</title>
@@ -16,152 +19,10 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/dynamica/aspectj/</guid>
-      <description>
-
-&lt;h1 id=&#34;loadtime-weaving-met-aspectj&#34;&gt;Loadtime weaving met aspectJ&lt;/h1&gt;
-
-&lt;h2 id=&#34;spring-weaving&#34;&gt;Spring weaving&lt;/h2&gt;
-
-&lt;p&gt;Zie &lt;strong&gt;demo projectje&lt;/strong&gt;: &lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/java/dynamica/weaving-test.zip|&#39;&gt;&lt;/p&gt;
-
-&lt;p&gt;❗ Vanaf versie 3.0 moet &lt;code&gt;spring-instrument&lt;/code&gt; in plaats van &lt;code&gt;spring-agent&lt;/code&gt; gebruikt worden! (bestaat niet meer)&lt;/p&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://static.springsource.org/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#aop&#34;&gt;http://static.springsource.org/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#aop&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Weavers:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;aspectj jar&lt;/strong&gt; &lt;code&gt;-javaagent:C:&amp;lt;br/&amp;gt;dvl.home&amp;lt;br/&amp;gt;env&amp;lt;br/&amp;gt;aspectj&amp;lt;br/&amp;gt;aspectjweaver-1.6.11.jar&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;spring-instrument jar&lt;/strong&gt; &lt;code&gt;-javaagent:C:/dvl.home/prj/comeet/tools/spring-instrument-3.1.0.RELEASE.jar&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;wat-heb-je-nodig-om-loadtime-weaving-te-laten-werken&#34;&gt;Wat heb je nodig om loadtime weaving te laten werken&lt;/h4&gt;
-
-&lt;h5 id=&#34;applicationcontext-xml&#34;&gt;applicationContext.xml&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;met spring-configured (zelfde als &lt;code&gt;org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect&lt;/code&gt; bean, zie &lt;a href=&#34;http://static.springsource.org/spring/docs/3.0.0.RC2/reference/html/ch07s08.html&#34;&gt;spring docs&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;met &lt;code&gt;load-time-weaver&lt;/code&gt; op&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version######&amp;quot;1.0&amp;quot; encoding&amp;quot;UTF-8&amp;quot;?&amp;gt;
-&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
-       xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
-       xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot;
-       xsi:schemaLocation=&amp;quot;http:*www.springframework.org/schema/beans http:*www.springframework.org/schema/beans/spring-beans-3.0.xsd
-                           http:*www.springframework.org/schema/context http:*www.springframework.org/schema/context/spring-context-3.0.xsd&amp;quot;&amp;gt;
-
-    &amp;lt;context:spring-configured/&amp;gt;
-    &amp;lt;context:component-scan base-package=&amp;quot;be.test&amp;quot;/&amp;gt;    
-    &amp;lt;context:load-time-weaver/&amp;gt;    
-&amp;lt;/beans&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;juiste-manier-van-opzetten-beans&#34;&gt;juiste manier van opzetten beans&lt;/h5&gt;
-
-&lt;p&gt;-&amp;gt; Een bean die &lt;code&gt;@Component&lt;/code&gt; annotated is waar een andere bean die &lt;code&gt;@Configurable&lt;/code&gt; ge-&lt;code&gt;new&lt;/code&gt;t wordt, die via &lt;code&gt;@Autowired&lt;/code&gt; injecties bevat&lt;/p&gt;
-
-&lt;p&gt;bijvroobeeld:&lt;/p&gt;
-
-&lt;p&gt;-&amp;gt; &lt;code&gt;SomeBean&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component
-public class SomeBean {
-
-    private final SomeBeanToInject someBeanToInject;
-
-    @Autowired
-    public SomeBean(SomeBeanToInject someBeanToInject) {
-        System.out.println(&amp;quot;creating some bean, got injected: &amp;quot; + someBeanToInject);
-        this.someBeanToInject = someBeanToInject;
-    }
-
-    public OtherBean createOtherBean() {
-        return new OtherBean();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;-&amp;gt; &lt;code&gt;OtherBean&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Configurable
-public class OtherBean {
-
-    private SomeBeanToDynamicallyInject someBeanToDynamicallyInject;
-
-    @Autowired
-    public void setSomeBeanToDynamicallyInject(SomeBeanToDynamicallyInject someBeanToDynamicallyInject) {
-        System.out.println(&amp;quot;Setting some dynamically injected bean! : &amp;quot; + someBeanToDynamicallyInject);
-        this.someBeanToDynamicallyInject = someBeanToDynamicallyInject;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;-&amp;gt; &lt;code&gt;SomeBeanToDynamicallyInject&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component
-public class SomeBeanToDynamicallyInject {
-    public String message = &amp;quot;dynamically injected&amp;quot;;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;aspectj-en-junit-testing&#34;&gt;AspectJ en Junit testing&lt;/h4&gt;
-
-&lt;p&gt;De annotatie &lt;code&gt;@EnableLoadTimeWeaving&lt;/code&gt; heb je &lt;strong&gt;NIET&lt;/strong&gt; nodig. Het is ook niet nodig om java config klasse te verwijzen, de context xml pikt dit met component scanning op!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@ContextConfiguration(locations = { &amp;quot;../../applicationContext.xml&amp;quot; })
-@RunWith(SpringJUnit4ClassRunner.class)
-public class SomeBeanTest {
-
-    @Autowired
-    private SomeBean someBean;
-
-    @Test
-    public void someBeanIsDynamicallyInjected() {
-        Assert.assertTrue(someBean.createOtherBean().isDynamicallyInjected());
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Unit- en Integratietesten opsplitsen in andere source folders&lt;/strong&gt;! Waarom?&lt;br/&gt;&lt;br/&gt;
-Omdat, ééns als een class file ingeladen is door de JVM, deze in het geheugen blijft zitten, en de volgende keer dat een andere test binnen dezelfde suite deze wilt gebruiken en verwacht dat die enhanched is (dus &lt;code&gt;@Autowired&lt;/code&gt; geïnjecteerd), dit niet zo is, omdat een vorige gewone unit test hier een &lt;code&gt;new&lt;/code&gt; van gedaan heeft en dit reeds in het geheugen steekt.&lt;/p&gt;
-
-&lt;p&gt;Is hier een oplossing voor? &lt;code&gt;ClassLoader&lt;/code&gt; cache clearen op een of andere manier? Zie &lt;a href=&#34;http://members.iinet.net.au/~macneall/Java/ClassReloading.html&#34;&gt;http://members.iinet.net.au/~macneall/Java/ClassReloading.html&lt;/a&gt; -&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Java classes themselves are dumped from memory when the classloader that loaded them is garbage collected. So the way to dynamically reload a class is to make sure that you control the classloader for that class. So when, all the references to instances of that class are gone, and you null the classloader itself, the runtime should collect the class itself. Then, next time an object of that class is used, it needs to be loaded again.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Probleem doet zich voor met &lt;code&gt;mvn clean install&lt;/code&gt; maar soms niet in eclipse??&lt;/p&gt;
-
-&lt;h2 id=&#34;aop-xml-configuratie&#34;&gt;aop.xml configuratie&lt;/h2&gt;
-
-&lt;p&gt;Deze wordt blijkbaar gebruikt om te bepalen wat er precies gewoven moet worden - als die er NIET is gaat hij by default alles weaven en een warning tonen in de console log:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[AppClassLoader@17943a4] warning javax.* types are not being woven because the weaver option &#39;-Xset:weaveJavaxPackages=true&#39; has not been specified
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;File moet in &lt;strong&gt;src/main/resources/META-INF/aop.xml&lt;/strong&gt; staan (op classpath). Content bvb:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;
-
-&amp;lt;aspectj&amp;gt;
-    &amp;lt;aspects&amp;gt;
-        &amp;lt;weaver options=&amp;quot;-Xlint:ignore -nowarn&amp;quot;&amp;gt;
-            &amp;lt;include within=&amp;quot;@org.springframework.beans.factory.annotation.Configurable be.bla.blie..*&amp;quot; /&amp;gt;
-        &amp;lt;/weaver&amp;gt;
-    &amp;lt;/aspects&amp;gt;
-&amp;lt;/aspectj&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;options&#34;&gt;options&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;-Xlint:ignore -nowarn&lt;/code&gt; negeert alle warnings dat bepaalde zaken niet gewoven kunnen worden&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-verbose&lt;/code&gt; print meer debuginfo&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-showWeaveInfo&lt;/code&gt; print wat wanneer gewoven wordt.&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description>Loadtime weaving met aspectJ Spring weaving Zie demo projectje: ❗️ Vanaf versie 3.0 moet spring-instrument in plaats van spring-agent gebruikt worden! (bestaat niet meer)
+Zie http://static.springsource.org/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#aop
+Weavers:
+ aspectj jar -javaagent:C:&amp;lt;br/&amp;gt;dvl.home&amp;lt;br/&amp;gt;env&amp;lt;br/&amp;gt;aspectj&amp;lt;br/&amp;gt;aspectjweaver-1.6.11.jar spring-instrument jar -javaagent:C:/dvl.home/prj/comeet/tools/spring-instrument-3.1.0.RELEASE.jar  Wat heb je nodig om loadtime weaving te laten werken applicationContext.xml  met spring-configured (zelfde als org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect bean, zie spring docs) met load-time-weaver op  &amp;lt;?xml version######&amp;quot;1.0&amp;quot; encoding&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot; xsi:schemaLocation=&amp;quot;http:*www.springframework.org/schema/beans http:*www.springframework.org/schema/beans/spring-beans-3.0.xsd http:*www.</description>
     </item>
     
   </channel>

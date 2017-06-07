@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wordpress on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/wordpress/index.xml</link>
+    <link>http://www.brainbaking.com/tags/wordpress/</link>
     <description>Recent content in Wordpress on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Jan 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>wordpress</title>
@@ -16,51 +19,10 @@
       <pubDate>Thu, 29 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/php/wordpress/</guid>
-      <description>
-
-&lt;h1 id=&#34;wordpress-specifiek&#34;&gt;Wordpress specifiek&lt;/h1&gt;
-
-&lt;h4 id=&#34;wordpress-bootstrapping-buiten-wp-omgeving-om&#34;&gt;Wordpress bootstrapping buiten WP omgeving om&lt;/h4&gt;
-
-&lt;p&gt;Om eender wat te kunnen doen (WP functies in php uitvoeren bvb, zoals &lt;code&gt;get_posts&lt;/code&gt;) moet je de wp omgeving bootstrappen (laden db, config, &amp;hellip;).&lt;/p&gt;
-
-&lt;p&gt;Dit kan je uit wp-blog-header.php halen, die in index.php geinclude wordt:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;require_once(&#39;wp-load.php&#39; );
-wp();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Vanaf dan is alles beschikbaar. Dus &lt;strong&gt;niet manueel wp-include php files includen&lt;/strong&gt;, anders wordt stuff ge-herdefinieerd!&lt;/p&gt;
-
-&lt;h4 id=&#34;specifieke-post-includen&#34;&gt;Specifieke post includen&lt;/h4&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://codex.wordpress.org/Template_Tags/get_posts&#34;&gt;get_posts&lt;/a&gt; documentatie.&lt;/p&gt;
-
-&lt;p&gt;Voorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$args ###### array( &#39;posts_per_page&#39; &amp;gt; 5, &#39;orderby&#39; =&amp;gt; &#39;rand&#39; );
-$posts = get_posts( $args );
-
-foreach($posts as $post) {
-    * data specific to wp_posts - http:*codex.wordpress.org/Database_Description#Table:_wp_posts
-    echo &amp;quot;post id &amp;quot; . $post-&amp;gt;ID;
-    echo &amp;quot;title: &amp;quot; . $post-&amp;gt;post_title;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;comment-form-voor-specifieke-post&#34;&gt;Comment form voor specifieke post&lt;/h5&gt;
-
-&lt;p&gt;Ook mogelijk, zie &lt;a href=&#34;http://codex.wordpress.org/Function_Reference/comment_form&#34;&gt;comment_form documentatie&lt;/a&gt; - zoiets: &lt;code&gt;comment_form(null, $id);&lt;/code&gt; - stijl ea in te stellen met eerste param.&lt;/p&gt;
-
-&lt;h4 id=&#34;oud-domein-nieuw-domein&#34;&gt;Oud domein -&amp;gt; nieuw domein&lt;/h4&gt;
-
-&lt;p&gt;Instelbaar in &lt;code&gt;wp-admin&lt;/code&gt; van Wordpress zelf, maar je moet manueel de tabel &lt;code&gt;wp_posts&lt;/code&gt; updaten want er staan overal hardcoded links:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;UPDATE wp_posts SET post_content = REPLACE(post_content, &#39;savesourdough.com&#39;, &#39;redzuurdesem.be&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zie ook &lt;a href=&#34;http:*dev.mysql.com/doc/refman/5.0/en/replace.html&#34;&gt;http:*dev.mysql.com/doc/refman/5.0/en/replace.html&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Wordpress specifiek Wordpress bootstrapping buiten WP omgeving om Om eender wat te kunnen doen (WP functies in php uitvoeren bvb, zoals get_posts) moet je de wp omgeving bootstrappen (laden db, config, &amp;hellip;).
+Dit kan je uit wp-blog-header.php halen, die in index.php geinclude wordt:
+require_once(&#39;wp-load.php&#39; ); wp();  Vanaf dan is alles beschikbaar. Dus niet manueel wp-include php files includen, anders wordt stuff ge-herdefinieerd!
+Specifieke post includen Zie get_posts documentatie.</description>
     </item>
     
   </channel>

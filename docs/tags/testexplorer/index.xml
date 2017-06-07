@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Testexplorer on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/testexplorer/index.xml</link>
+    <link>http://www.brainbaking.com/tags/testexplorer/</link>
     <description>Recent content in Testexplorer on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/testexplorer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Sep 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/testexplorer/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>testexplorer</title>
@@ -16,108 +19,9 @@
       <pubDate>Thu, 05 Sep 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/c/testing/testexplorer/</guid>
-      <description>
-
-&lt;h1 id=&#34;visual-studio-2012-test-explorer-framework&#34;&gt;Visual Studio 2012 Test Explorer framework&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;Waarom&lt;/strong&gt;?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Integratie VStudio, zelfde manier om te &amp;ldquo;runnen&amp;rdquo; als C# testen&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;unmanaged&lt;/strong&gt; (native) C++ code testen zonder vettige &lt;code&gt;/cli&lt;/code&gt; mode die nodig is.&lt;/li&gt;
-&lt;li&gt;Voor mixed team C#/C++ misschien beter/makkelijker?&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Waarom niet&lt;/strong&gt;?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Weeral iets anders, Team Test buiten? Wat gaat het zijn voor VS3013?&lt;/li&gt;
-&lt;li&gt;Niet 100% dezelfde syntax als C# (toch al closer, maar bvb geen attributes etc)&lt;/li&gt;
-&lt;li&gt;VS2012 only momentel, dus 2008 = kinkloppen&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Voorbeeld project in VS2012: &lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/c/testing/math_testexplorer_vs2012.zip|&#39;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;assertions-schrijven&#34;&gt;Assertions schrijven&lt;/h4&gt;
-
-&lt;p&gt;Gebruik namespace &lt;code&gt;CppUnitTestFramework&lt;/code&gt; - voorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#pragma once
-#include &amp;quot;stdafx.h&amp;quot;
-#include &amp;quot;CppUnitTest.h&amp;quot;
-#include &amp;quot;PlusStub.cpp&amp;quot;
-#include &amp;quot;../Math/Plus.h&amp;quot;
-#include &amp;quot;../Math/Calculator.h&amp;quot;
-
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
-
-namespace calc
-{
-    TEST_CLASS(CalculatorTest)
-    {
-    private:
-        int nStartValue;
-        Calculator* calc;
-
-        void CreateCalcSUT()
-        {
-            calc = new Calculator(nStartValue);
-        }
-
-    public:
-        /*testcase template:
-        TEST_METHOD(Classname_Functionname_SpecialParams_ExpectedResult)
-        {
-        param specialParam = specialvalue;
-        ...
-        param expectation = whatYouExpect;
-        ...
-        (SUT creation)
-        (call methods)
-        ...
-        assert(s)
-        }*/
-
-
-        TEST_METHOD_INITIALIZE(InitialiseDefaults)
-        {
-            calc = NULL;
-            nStartValue = 5;
-        }
-
-        TEST_METHOD_CLEANUP(CleanupObjects)
-        {
-            delete calc;
-        }
-
-        TEST_METHOD(Calculator_Constructor_NoArgument_GetValueZero)
-        {
-            int nExpectedValue = 0;
-            calc = new Calculator();
-            Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
-        }
-
-        TEST_METHOD(Calculator_Constructor_Five_GetValueFive)
-        {
-            nStartValue = 5;
-            int nExpectedValue = 5;
-            CreateCalcSUT();
-            Assert::AreEqual(nExpectedValue, calc-&amp;gt;GetValue());
-        }
-
-    };
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//code/c/testing/cppunittesting.png|&#39;&gt;&lt;/p&gt;
-
-&lt;p&gt;Zelfde manier om assertions te schrijven.
-❗ dit test project heeft GEEN &lt;code&gt;/clr&lt;/code&gt; flag, dus is ook &lt;strong&gt;unmanaged&lt;/strong&gt;, dat is het voordeel.&lt;/p&gt;
-
-&lt;p&gt;Zoals gezien op screencap is dit volledig geïntegreerd met VStudio 2012.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://msdn.microsoft.com/en-us/library/hh270864.aspx&#34;&gt;Meer informatie over het nieuwe cpp testing framework &amp;lsquo;Test Explorer&amp;rsquo;&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Visual Studio 2012 Test Explorer framework Waarom?
+ Integratie VStudio, zelfde manier om te &amp;ldquo;runnen&amp;rdquo; als C# testen unmanaged (native) C++ code testen zonder vettige /cli mode die nodig is. Voor mixed team C#/C++ misschien beter/makkelijker?  Waarom niet?
+ Weeral iets anders, Team Test buiten? Wat gaat het zijn voor VS3013? Niet 100% dezelfde syntax als C# (toch al closer, maar bvb geen attributes etc) VS2012 only momentel, dus 2008 = kinkloppen  Voorbeeld project in VS2012: Assertions schrijven Gebruik namespace CppUnitTestFramework - voorbeeld:</description>
     </item>
     
   </channel>

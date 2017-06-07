@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mobile on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/mobile/index.xml</link>
+    <link>http://www.brainbaking.com/tags/mobile/</link>
     <description>Recent content in Mobile on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/mobile/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/mobile/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>mobile</title>
@@ -16,148 +19,9 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/mobile/</guid>
-      <description>
-
-&lt;h1 id=&#34;js-clientside-mobile-frameworks&#34;&gt;JS Clientside Mobile frameworks&lt;/h1&gt;
-
-&lt;h2 id=&#34;native-applicaties-deployen&#34;&gt;Native applicaties deployen&lt;/h2&gt;
-
-&lt;p&gt;Gebruik &lt;a href=&#34;http://www.phonegap.com/&#34;&gt;http://www.phonegap.com/&lt;/a&gt; om met CSS3+HTML5+JS een native applicatie te builden - ondersteuning voor iOS, Android, Blackberry etc.&lt;br/&gt;&lt;br/&gt;
-Ondersteunt ook &lt;strong&gt;native hardware&lt;/strong&gt; zoals camera, accelerometer, GPS etc - zie &lt;a href=&#34;http://docs.phonegap.com/phonegap_media_capture_capture.md.html#Capture&#34;&gt;Documentatie&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;websockets-in-phonegap&#34;&gt;WebSockets in Phonegap&lt;/h5&gt;
-
-&lt;p&gt;Zit in de milestone 1.0 planning - nog niet officiëel ondersteund.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Voor &lt;strong&gt;Android&lt;/strong&gt;: Zie http:*anismiles.wordpress.com/2011/02/03/websocket-support-in-android%E2%80%99s-phonegap-apps/ en &lt;a href=&#34;https:*github.com/anismiles/websocket-android-phonegap&#34;&gt;source&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Voor &lt;strong&gt;iPhone&lt;/strong&gt;: Zie http:*remysharp.com/2010/10/04/websockets-in-phonegap-projects/ en &lt;a href=&#34;https:*github.com/remy/PhoneGap-Plugin-WebSocket&#34;&gt;source&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;mobile-apps-viewports&#34;&gt;Mobile apps &amp;amp; Viewports&lt;/h2&gt;
-
-&lt;p&gt;In de &lt;code&gt;&amp;lt;head/&amp;gt;&lt;/code&gt; tag is het belangrijk om viewport meta-informatie aan te geven zoals:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;meta name######&amp;quot;viewport&amp;quot; content&amp;quot;width######device-width, initial-scale1.0&amp;quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Waarom? &lt;a href=&#34;https:*docs.google.com/present/view?id######dkx3qtm_22dxsrgcf4&amp;amp;pli1&#34;&gt;daarom&lt;/a&gt; - zie &lt;a href=&#34;http:*html5boilerplate.com/mobile/&#34;&gt;HTML5 mobile boilerplate&lt;/a&gt; en &lt;a href=&#34;http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html&#34;&gt;A pixel is not a pixel is not a pixel&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;jquery-mobile&#34;&gt;jQuery Mobile&lt;/h2&gt;
-
-&lt;p&gt;-&amp;gt; Zie ook &lt;a href=&#34;http://www.slideshare.net/todd_anderson/jquery-mobile-progressive-enhancement-with-html5-8302294&#34;&gt;jQuery Mobile: Progressive Enhancement with HTML5&lt;/a&gt; slideshare&lt;/p&gt;
-
-&lt;h3 id=&#34;zelf-een-pagina-ophalen-en-tonen&#34;&gt;Zelf een pagina ophalen en tonen&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;//create markup
-var newPage ###### $(&amp;quot;&amp;lt;div data-rolepage data-url######yay&amp;gt;&amp;lt;div data-roleheader&amp;gt;&amp;lt;h1&amp;gt;YAY!!!!&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div data-role######content&amp;gt;&amp;lt;img srchttp://bukk.it/yay.gif /&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;quot;);
-
-//append it to the page container
-newPage.appendTo( $.mobile.pageContainer );
-
-//go to it
-$.mobile.changePage( newPage );
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://jquerymobile.com/test/docs/api/events.html&#34;&gt;http://jquerymobile.com/test/docs/api/events.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;problemen-met-rerenderen-mobile-widgets-doe-het-zelf&#34;&gt;Problemen met rerenderen Mobile widgets? doe het zelf!&lt;/h3&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;https:*github.com/bnolan/Backbone-Mobile/blob/master/application.coffee&#34;&gt;Coffeescript+Backbone+Mobile&lt;/a&gt; oplossing en &lt;a href=&#34;http:*bennolan.com/2010/11/23/backbone-and-jquery-mobile.html&#34;&gt;Corresponderende blogpost&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;float: left; width: nolink&amp;|px;&#39; src=&#39;http://www.brainbaking.com/img//code/javascript/frameworks/floempie.jpg&#39;&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    function render() {
-        var activePage = $.mobile.activePage; // this also works: $(&amp;quot;.ui-page-active&amp;quot;)
-        activePage.find(&#39;ul[data-role]&#39;).listview();
-        activePage.find(&#39;div[data-role=&amp;quot;fieldcontain&amp;quot;]&#39;).fieldcontain();
-        activePage.find(&#39;button[data-role=&amp;quot;button&amp;quot;]&#39;).button();
-        activePage.find(&#39;input,textarea&#39;).textinput();
-        activePage.page();
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dit ziet er wel resource intensitief uit en zou op een mobiel device nogal kunnen &amp;ldquo;floepen&amp;rdquo;. ((De bijhorende tekening is Copyright Kabouter Wesley enzo))&lt;/p&gt;
-
-&lt;p&gt;Wanneer je enkele &lt;code&gt;&amp;lt;li/&amp;gt;&lt;/code&gt; elementen aan bijvoorbeeld een &lt;code&gt;listview&lt;/code&gt; toevoegt, zou een &lt;code&gt;.listview(&amp;quot;refresh&amp;quot;)&lt;/code&gt; call genoeg moeten zijn. Dit restylet enkel de nodige LI elementen, terwijl zonder argumenten de hele lijst &lt;em&gt;from scratch&lt;/em&gt; re-rendert. Dit kost veel meer tijd&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;❗ JS Frameworks die content dynamisch re-renderen zoals &lt;strong&gt;KnockoutJS&lt;/strong&gt; of &lt;strong&gt;Backbone&lt;/strong&gt; vervangen de hele lijst in de DOM tree. Dit wil zeggen dat &lt;code&gt;refresh&lt;/code&gt; niet genoeg zal zijn&amp;hellip;&lt;/p&gt;
-
-&lt;h3 id=&#34;custom-jquery-events&#34;&gt;Custom jQuery events&lt;/h3&gt;
-
-&lt;p&gt;jQuery Mobile laadt pagina transities allemaal in één single page HTML. Het DOM Loaded event wordt dus maar één keer afgevuurd. Hoe moet je custom JS uitvoeren bij het &amp;ldquo;laden&amp;rdquo; van één pagina?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;#myPage&amp;quot;).live(&#39;pageshow&#39;, function() {
- // in here!
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Waarbij &lt;code&gt;myPage&lt;/code&gt; een &lt;code&gt;&amp;lt;div id######&amp;quot;myPage&amp;quot; data-role&amp;quot;page&amp;quot;&amp;gt;&lt;/code&gt; element is.&lt;/p&gt;
-
-&lt;p&gt;❗ Gebruik &lt;code&gt;live&lt;/code&gt; omdat op het moment dat die code geëvalueerd wordt, die pagina waarschijnlijk nog niet aan de DOM hangt! (jQuery mobile intern)&lt;/p&gt;
-
-&lt;p&gt;Meer custom events:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;pageshow&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pagehide&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pagecreate&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pagebeforecreate&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pagebeforeshow&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pagebeforehide&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://jquerymobile.com/test/docs/api/events.html&#34;&gt;http://jquerymobile.com/test/docs/api/events.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;pagina-transities-passing-data&#34;&gt;Pagina transities: passing data&lt;/h3&gt;
-
-&lt;p&gt;jQuery Mobile is niet designed om 100% Client-side only Javascript applicaties te ondersteunen. &lt;code&gt;form&lt;/code&gt; elementen worden gesubmit met een &lt;code&gt;POST&lt;/code&gt; naar een server, nieuwe pagina&amp;rsquo;s kunnen vanuit een server (PHP, JSP, &amp;hellip;) dynamisch opgebouwd worden. Hoe geven we tussen page transities, puur in Javascript, gegevens door?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;GET&lt;/code&gt; parameters manueel toevoegen en parsen vanuit de URL: &lt;em&gt;geen goed idee&lt;/em&gt; omdat jQuery Mobile hashing etc toevoegt aan de URL voor navigatie!&lt;/li&gt;
-&lt;li&gt;Zelf de transitie state bijhouden in een view objectje.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Het tweede kan door bijvoorbeeld een &lt;code&gt;onclick&lt;/code&gt; event te registreren en HTML5 &lt;code&gt;data&lt;/code&gt; attributes te gebruiken om IDs bij te houden:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;.vacatureLink&amp;quot;).click(function() {
-    application.setVacatureId($(this).data(&amp;quot;id&amp;quot;));
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Met bijvoorbeeld een KnockoutJS template:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/each vacatures&#39;&amp;gt;
-    &amp;lt;li&amp;gt;
-        &amp;lt;a href######&amp;quot;detail.html&amp;quot; data-id&amp;quot;${id}&amp;quot; class=&amp;quot;vacatureLink&amp;quot;&amp;gt;${vacatureGegevens.aantalJobs} ${gezochtProfiel.functieNaam} ( ${kandidaten.length} kandidaten )&amp;lt;/a&amp;gt;
-    &amp;lt;/li&amp;gt;
-&amp;lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img//each&#39;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;De transitie naar detail.html gebeurt ná onze &lt;code&gt;click&lt;/code&gt; event handler. Bij het laden van de page op detail.html doen we &amp;ldquo;iets&amp;rdquo; met onze id:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;#detailsVacature&amp;quot;).live(&#39;pagebeforeshow&#39;, function() {
-    var id = application.getVacatureId();
-    // doe iets?
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Het is natuurlijk nog beter als die logica gewoon in de &lt;code&gt;setVacatureId&lt;/code&gt; functie steekt die reeds is aangeroepen.&lt;/p&gt;
-
-&lt;h2 id=&#34;andere-js-mobile-frameworks&#34;&gt;Andere JS Mobile frameworks&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://joapp.com/&#34;&gt;http://joapp.com/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.sencha.com/products/touch/&#34;&gt;http://www.sencha.com/products/touch/&lt;/a&gt; (ExtJS based)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.jqtouch.com/&#34;&gt;http://www.jqtouch.com/&lt;/a&gt; (jQuery based - ouder, dev. overgeschakeld naar Sencha Touch)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.winktoolkit.org/&#34;&gt;http://www.winktoolkit.org/&lt;/a&gt; (Dojo based)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://xuijs.com/&#34;&gt;http://xuijs.com/&lt;/a&gt; (micro DOM manipulation framework)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.ipfaces.org/content/java&#34;&gt;http://www.ipfaces.org/content/java&lt;/a&gt; (jsp-style bwerk)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://dhtmlx.com/touch/samples/&#34;&gt;http://dhtmlx.com/touch/samples/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.nimblekit.com/index.php&#34;&gt;http://www.nimblekit.com/index.php&lt;/a&gt; (native iOS only!)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.the-m-project.org/&#34;&gt;http://www.the-m-project.org/&lt;/a&gt; (jQuery Mobile + Expresso, NodeJS build tool)&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description>JS Clientside Mobile frameworks Native applicaties deployen Gebruik http://www.phonegap.com/ om met CSS3+HTML5+JS een native applicatie te builden - ondersteuning voor iOS, Android, Blackberry etc. Ondersteunt ook native hardware zoals camera, accelerometer, GPS etc - zie Documentatie
+WebSockets in Phonegap Zit in de milestone 1.0 planning - nog niet officiëel ondersteund.
+ Voor Android: Zie http:*anismiles.wordpress.com/2011/02/03/websocket-support-in-android%E2%80%99s-phonegap-apps/ en source Voor iPhone: Zie http:*remysharp.com/2010/10/04/websockets-in-phonegap-projects/ en source  Mobile apps &amp;amp; Viewports In de &amp;lt;head/&amp;gt; tag is het belangrijk om viewport meta-informatie aan te geven zoals:</description>
     </item>
     
   </channel>

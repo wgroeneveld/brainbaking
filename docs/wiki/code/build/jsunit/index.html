@@ -9,7 +9,7 @@
   <title>jsunit</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.21" />
   <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
@@ -173,7 +173,7 @@
 <p>Hoofd JUnit klasse die gestart moet worden als junit tag vanuit ant: <strong><code>net.jsunit.StandaloneTest</code></strong><br/><br/>
 Voor uitleg over de parameters, zie jsunit website.</p>
 
-<p>❗ Belangrijk: JsUnit draait binnen een aparte context op een embedded Jetty server. Dit wil zeggen dat javascript test suites (html pagina&rsquo;s) die javascript files includen wel binnen de context staan, maar javascript files in een web project binnen eclipse bijvoorbeeld niet. Oplossing: kopiëer alle JS files voordat de test gedraaid wordt binnen de context.</p>
+<p>❗️ Belangrijk: JsUnit draait binnen een aparte context op een embedded Jetty server. Dit wil zeggen dat javascript test suites (html pagina&rsquo;s) die javascript files includen wel binnen de context staan, maar javascript files in een web project binnen eclipse bijvoorbeeld niet. Oplossing: kopiëer alle JS files voordat de test gedraaid wordt binnen de context.</p>
 
 <p>Voor JS files te testen binnen een jar moeten die ook unjarred worden.</p>
 
@@ -351,7 +351,7 @@ Voor uitleg over de parameters, zie jsunit website.</p>
   	    </p>
   	    
     	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
           
     	</p>
       </div>
@@ -373,7 +373,7 @@ Voor uitleg over de parameters, zie jsunit website.</p>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-45748221-1', 'auto');
 ga('send', 'pageview');

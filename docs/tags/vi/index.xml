@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vi on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/vi/index.xml</link>
+    <link>http://www.brainbaking.com/tags/vi/</link>
     <description>Recent content in Vi on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/vi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/vi/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>vi</title>
@@ -16,178 +19,11 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/vi/</guid>
-      <description>
-
-&lt;h1 id=&#34;vi-m-tips-tricks&#34;&gt;Vi(m) tips &amp;amp; tricks&lt;/h1&gt;
-
-&lt;h3 id=&#34;externe-tutorials-en-manuals&#34;&gt;Externe tutorials en manuals&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.aip.de/~weber/doc/gs/node137.html&#34;&gt;http://www.aip.de/~weber/doc/gs/node137.html&lt;/a&gt; - short basic editing intro&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.cs.fsu.edu/general/vimanual.html&#34;&gt;http://www.cs.fsu.edu/general/vimanual.html&lt;/a&gt; - full vi manual&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://hea-www.harvard.edu/~fine/Tech/vi.html&#34;&gt;http://hea-www.harvard.edu/~fine/Tech/vi.html&lt;/a&gt; - complete key binding guide&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://vim.wikia.com/wiki/Word_wrap_without_line_breaks&#34;&gt;http://vim.wikia.com/wiki/Word_wrap_without_line_breaks&lt;/a&gt; -&amp;gt; Zeer goede Vi wiki&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.oualline.com/vim-cook.html&#34;&gt;http://www.oualline.com/vim-cook.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Dé Vi Man page: &lt;a href=&#34;http://vimdoc.sourceforge.net/htmldoc/help.html&#34;&gt;http://vimdoc.sourceforge.net/htmldoc/help.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;basic-editing&#34;&gt;Basic editing&lt;/h3&gt;
-
-&lt;p&gt;^ Command      ^ Function ^
-| e | start editing mode @ cursor position |
-| a | start editing mode @ AFTER cursor position |
-| R | start replace mode @ cursor position |
-| ! | override command by forcing |
-| u | undo |
-| U | undo everything without changing line |
-| redo | redo last change |
-| ~ | change case upper/lower |
-| w | move cursor to beginning of next word |
-| b | move cursor to beginning of previous word |
-| [x]w/b | move cursor to beginning/end of xth word |
-| % | move cursor to matching bracket (waar cursor op staat, bvb {} in java) |
-| 0 | move cursor to beginning of current line |
-| $ | move cursor to end of current line |
-| G | move cursor to end of current file |
-| [x]G | move cursor to xth line of current file |
-| CTRL+F | move cursor page forward |
-| CTRL+B | move cursor page backward |
-| d$ | delete everything from cursor to end of line |
-| dG | delete everything from cursor to end of file |
-| :q | quit window (CTRL+C) |
-| :q! | force quit without save |
-| :w | save file |
-| :x | quit with save |&lt;/p&gt;
-
-&lt;p&gt;❗ Restarten van editing mode force-override (&lt;code&gt;:e!&lt;/code&gt;) alle changes aan de huidige file, handig als &amp;ldquo;undo all&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;Undo werkt als een toggle tussen undo en redo in Vi compatible, maar in Vim &lt;em&gt;stackt&lt;/em&gt; dit. &lt;br/&gt;&lt;br/&gt;
-&lt;code&gt;uu&lt;/code&gt; maakt dus in Vim 2 wijzigingen ongedaan, maar in Vi &amp;ldquo;undo&amp;rdquo; de &amp;ldquo;undo&amp;rdquo; (dus nul-operatie).&lt;/p&gt;
-
-&lt;h3 id=&#34;faster-bash-editing-testing-in-vi&#34;&gt;Faster bash editing &amp;amp; testing in Vi&lt;/h3&gt;
-
-&lt;p&gt;Makkelijker om tijdens het editeren van een scriptje het direct te kunnen testen zonder de vi editor te verlaten, juist? &lt;br/&gt;&lt;br/&gt;
-Dit is mogelijk met:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;:! [command]&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Om de output te pasten in de editor ergens, gebruik &lt;code&gt;:r! [command]&lt;/code&gt; ((&lt;code&gt;:r&lt;/code&gt; paste de inhoud van een bestand in de editor zonder !)) .&lt;br/&gt;&lt;br/&gt;
-Om tijdelijk de editor te verlaten en terug te keren naar een shell, gebruik &lt;code&gt;:shell&lt;/code&gt;. Terug switchen kan door uit te loggen met &lt;code&gt;exit&lt;/code&gt;, zodat je terug in de editor terecht komt zoals je ze verlaten hebt.&lt;/p&gt;
-
-&lt;h3 id=&#34;visual-mode-and-formatting&#34;&gt;Visual mode and formatting&lt;/h3&gt;
-
-&lt;p&gt;Vi kan automatisch geselecteerde lijnen formatteren (indent) met &amp;ldquo;&lt;code&gt;######&lt;/code&gt;&amp;rdquo;. Hiervoor moeten in visual mode (&lt;code&gt;SHIFT+V&lt;/code&gt;) x aantal lijnen geselecteerd worden (pijltjes naar boven/beneden in visual mode auto-select die lijnen). Om uit visual mode te gaan, &lt;code&gt;SHIFT+G&lt;/code&gt;. Druk daarna op ``.&lt;/p&gt;
-
-&lt;p&gt;Combinatie om alles te selecteren en formatteren: &lt;code&gt;ggVG=&lt;/code&gt;:
-  1. &lt;code&gt;gg&lt;/code&gt; ga naar begin van file
-  2. &lt;code&gt;V&lt;/code&gt;: (hoofdletter) enter visual mode
-  3. &lt;code&gt;G&lt;/code&gt;: (hoofdletter) exit visual mode, op zelfde lijn = selecteer alles
-  4. &lt;code&gt;=&lt;/code&gt;: formatteer heel de boel.&lt;/p&gt;
-
-&lt;h3 id=&#34;multi-file-editing&#34;&gt;Multi-file editing&lt;/h3&gt;
-
-&lt;p&gt;Laat vi meerdere files editeren door &lt;code&gt;vi [file1] [file2] ...&lt;/code&gt; uit te voeren. Edit alle files in current path door &lt;code&gt;vi *&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;finding-stuff&#34;&gt;Finding stuff&lt;/h3&gt;
-
-&lt;p&gt;^ Command      ^ Function ^
-| / | type a query and press enter to find something |
-| ? | type a query and press enter to find something |
-| n | zoek volgende gevonden item |
-| N | zoek vorige gevondenn item |&lt;/p&gt;
-
-&lt;p&gt;Find &amp;amp; replacing:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;:%s/[search pattern]/[replace pattern]&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Vervangt in alle files.&lt;/p&gt;
-
-&lt;h4 id=&#34;switchen-tussen-files&#34;&gt;Switchen tussen files&lt;/h4&gt;
-
-&lt;p&gt;Open files list = &amp;ldquo;&lt;em&gt;buffer&lt;/em&gt;&amp;rdquo; in Vi.&lt;/p&gt;
-
-&lt;p&gt;^ Command      ^ Function ^
-| :ls of :buffers | show open buffers (zie onder) |
-| :reg | show open buffers én verwijderde/vroeger aangemaakte (0-9) |
-| :e [file] | add file to buffer list |
-| :n | goto next file in list |
-| :b [file] | switch to next file ((with TAB autocompletion: zet &lt;code&gt;set wildmenu&lt;/code&gt; in &lt;code&gt;.vimrc&lt;/code&gt;)) |
-| :b | switch to last visited file |
-| :[x]b | switch to xth file |
-| :bp | switch to previous buffer |
-| :bn | switch to next buffer |
-| CTRL+SHIFT+6| switch to next buffer in row |&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;:ls&lt;/code&gt; ziet er zo uit:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  1 %a   &amp;quot;./checkin.pl&amp;quot;            line 1
-  2 #    &amp;quot;./grabakamailogs.pl&amp;quot;     line 1
-  3      &amp;quot;./grabwmlogs.pl&amp;quot;         line 0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;%&lt;/code&gt; toont huidige actieve file, &lt;code&gt;#&lt;/code&gt; toont alternatieve.&lt;/p&gt;
-
-&lt;h4 id=&#34;tegelijkertijd-bekijken-van-files&#34;&gt;Tegelijkertijd bekijken van files&lt;/h4&gt;
-
-&lt;p&gt;^ Command      ^ Function ^
-| CTRL+W v  | split into tabs vertically |
-| CTRL+W s | split into tabs horizontally |
-| CTRL+W c | close current window |
-| CTRL+W o | close all windows but active |
-| CTRL+W up | focus upper window |
-| CTRL+W down | focus lower window |
-| CTRL+W _ | maximize current window |
-| :[x]sb | switch to xth file in buffer using split windows |&lt;/p&gt;
-
-&lt;h4 id=&#34;open-file-sessies-bewaren-in-vi&#34;&gt;Open file sessies bewaren in Vi&lt;/h4&gt;
-
-&lt;p&gt;Bewaar een huidige sessie met x open buffers:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;:mksession! ~/today.ses&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Terug openen van die sessie:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;vim -S ~/today.ses&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;command-history-window&#34;&gt;Command History window&lt;/h3&gt;
-
-&lt;p&gt;Het beu om constant hetzelfde commando in te typen? Voer een eerder uitgevoerd commando uit, zoals &lt;code&gt;history&lt;/code&gt; in bash! Hoe? &lt;a href=&#34;http://vim.wikia.com/wiki/Using_command-line_history&#34;&gt;http://vim.wikia.com/wiki/Using_command-line_history&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Search history&lt;/strong&gt;: &lt;code&gt;/ [CTRL+F]&lt;/code&gt; of &lt;code&gt;q/&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Command history&lt;/strong&gt;: &lt;code&gt;: [CTRL+F]&lt;/code&gt; of &lt;code&gt;:q&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Begin met slash of dubbelpunt en gebruik pijltjes om te scrollen in history&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;:his&lt;/code&gt; geeft een kort overzicht zonder een apart window te openen&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Hierin kan je ook weer commando&amp;rsquo;s zoals zoeken binnen het history window gebruiken! om dit te sluiten, zelfde als sluitshortcut window (&lt;code&gt;:q&lt;/code&gt;).&lt;/p&gt;
-
-&lt;h3 id=&#34;vimrc-preferences&#34;&gt;.vimrc preferences&lt;/h3&gt;
-
-&lt;h4 id=&#34;command-history-vergroten&#34;&gt;Command history vergroten&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;:set history=1000
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;shortcut-keys-mappen&#34;&gt;Shortcut keys mappen&lt;/h4&gt;
-
-&lt;p&gt;voorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;map &amp;lt;C-J&amp;gt; &amp;lt;C-W&amp;gt;j&amp;lt;C-W&amp;gt;_
-map &amp;lt;C-K&amp;gt; &amp;lt;C-W&amp;gt;k&amp;lt;C-W&amp;gt;_
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;boeiende-plugins&#34;&gt;Boeiende plugins&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Jasmine JS Vim: &lt;a href=&#34;https://github.com/claco/jasmine.vim&#34;&gt;https://github.com/claco/jasmine.vim&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Vim Coffeescript hilighting: &lt;a href=&#34;https://github.com/kchmck/vim-coffee-script&#34;&gt;https://github.com/kchmck/vim-coffee-script&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Vi(m) tips &amp;amp; tricks Externe tutorials en manuals  http://www.aip.de/~weber/doc/gs/node137.html - short basic editing intro http://www.cs.fsu.edu/general/vimanual.html - full vi manual http://hea-www.harvard.edu/~fine/Tech/vi.html - complete key binding guide
+ http://vim.wikia.com/wiki/Word_wrap_without_line_breaks -&amp;gt; Zeer goede Vi wiki
+ http://www.oualline.com/vim-cook.html
+  Dé Vi Man page: http://vimdoc.sourceforge.net/htmldoc/help.html
+Basic editing ^ Command ^ Function ^ | e | start editing mode @ cursor position | | a | start editing mode @ AFTER cursor position | | R | start replace mode @ cursor position | | !</description>
     </item>
     
   </channel>

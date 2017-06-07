@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Clr on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/clr/index.xml</link>
+    <link>http://www.brainbaking.com/tags/clr/</link>
     <description>Recent content in Clr on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/clr/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Oct 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/clr/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>.NET Memory management VS JVM Memory management</title>
@@ -16,19 +19,7 @@
       <pubDate>Fri, 24 Oct 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/memory-management-vs-java/</guid>
-      <description>&lt;p&gt;Memory management is something to keep in mind when deploying and running applications on top of the JVM. Parameters like &lt;code&gt;Xmx&lt;/code&gt; and &lt;code&gt;Xms&lt;/code&gt; are things to juggle with when it comes to finding the perfect balance between too much memory hogging (at app startup) and too little, especially if you&amp;rsquo;re working with heavy duty entity mapping frameworks like Hibernate (and you&amp;rsquo;re not so good at writing fast HQL).
-When we bumped into an &lt;code&gt;OutOfMemoryException&lt;/code&gt; in .NET, I got an Xmx flashback and started searching on how to do the same with the CLR.&lt;/p&gt;
-
-&lt;p&gt;Turns out you can&amp;rsquo;t.&lt;/p&gt;
-
-&lt;p&gt;You can&amp;rsquo;t set max heap size in .Net unless you host the CLR yourself in a process. (&lt;a href=&#34;http://stackoverflow.com/questions/301393/can-i-and-do-i-ever-want-to-set-the-maximum-heap-size-in-net&#34;&gt;source&lt;/a&gt;)
-To control the memory allocations of CLR including the max heap size, you need to use the hosting api to host the clr and specifically use the &amp;ldquo;Memory manager interfaces&amp;rdquo;, some starter info can be found here &lt;a href=&#34;http://msdn.microsoft.com/en-us/magazine/cc163567.aspx&#34;&gt;MSDN Magazine, column CLR Inside Out : CLR Hosting APIs&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The heap does indeed keep growing until it can&amp;rsquo;t grow any more. (Obviously this is &amp;ldquo;after attempting to recover memory through GC, grow the heap&amp;rdquo;.) Basically there isn&amp;rsquo;t nearly as much tuning available in the .NET GC as in Java. You can choose the server GC or the client one, and I think there&amp;rsquo;s an option for turning on/off the concurrent GC (I&amp;rsquo;ll find links in a minute) but that&amp;rsquo;s basically it.&lt;/p&gt;
-
-&lt;p&gt;See also:
-  - &lt;a href=&#34;http://www.atalasoft.com/cs/blogs/rickm/archive/2008/05/14/choosing-the-right-garbage-collector-settings-for-your-application-net-memory-management-part-4.aspx&#34;&gt;Choosing the right garbage collector for your .NET Application&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Memory management is something to keep in mind when deploying and running applications on top of the JVM. Parameters like Xmx and Xms are things to juggle with when it comes to finding the perfect balance between too much memory hogging (at app startup) and too little, especially if you&amp;rsquo;re working with heavy duty entity mapping frameworks like Hibernate (and you&amp;rsquo;re not so good at writing fast HQL). When we bumped into an OutOfMemoryException in .</description>
     </item>
     
   </channel>

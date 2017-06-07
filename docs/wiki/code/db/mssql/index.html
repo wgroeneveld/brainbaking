@@ -9,7 +9,7 @@
   <title>mssql</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.21" />
   <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
@@ -288,7 +288,7 @@ FROM sys.master_files
 
 <p>Hoe checken of reeds enabled is? <code>select name, database_id, service_broker_guid from sys.databases where is_broker_enabled = 1;</code></p>
 
-<p>❗ service broker GUIDs zijn dezelfde indien DB gekopiëerd is, bijgevolg krijg je deze fout indien je <code>ENABLE_BROKER</code> tracht uit te voeren op zo&rsquo;n kopie:</p>
+<p>❗️ service broker GUIDs zijn dezelfde indien DB gekopiëerd is, bijgevolg krijg je deze fout indien je <code>ENABLE_BROKER</code> tracht uit te voeren op zo&rsquo;n kopie:</p>
 
 <pre><code>cannot be enabled because there is already an enabled Service Broker with the same ID
 </code></pre>
@@ -327,7 +327,7 @@ FROM sys.master_files
 
 <p><code>SqlDependency.Start(conString)</code> aanroepen vóór de setup van bvb de NHibernate session factory. Dit moet je zelf doen, ook al gebruik je SysCache2 met regions.</p>
 
-<p>❗ altijd eerst Stop aanroepen!</p>
+<p>❗️ altijd eerst Stop aanroepen!</p>
 
 <h5 id="cannot-execute-as-the-database-principal-because-the-principal-dbo-does-not-exist">Cannot execute as the database principal because the principal &ldquo;dbo&rdquo; does not exist</h5>
 
@@ -347,7 +347,7 @@ FROM sys.master_files
 
 <p>Zie ook <a href="http:*msdn.microsoft.com/en-us/library/ms188037.aspx">http:*msdn.microsoft.com/en-us/library/ms188037.aspx</a>.</p>
 
-<p>❗ Dit is blijkbaar ook wijzigbaar naar een karakterset naar keuze in Management studio options:</p>
+<p>❗️ Dit is blijkbaar ook wijzigbaar naar een karakterset naar keuze in Management studio options:</p>
 
 <p><img style='float: left; width: nolink |px;' src='/img//code/db/go_option_mssql.png'></p>
 
@@ -482,7 +482,7 @@ GROUP BY
   	    </p>
   	    
     	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
           
     	</p>
       </div>
@@ -504,7 +504,7 @@ GROUP BY
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-45748221-1', 'auto');
 ga('send', 'pageview');

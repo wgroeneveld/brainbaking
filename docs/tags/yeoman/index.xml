@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Yeoman on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/yeoman/index.xml</link>
+    <link>http://www.brainbaking.com/tags/yeoman/</link>
     <description>Recent content in Yeoman on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/yeoman/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/yeoman/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>yeoman</title>
@@ -16,165 +19,11 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/yeoman/</guid>
-      <description>
-
-&lt;h1 id=&#34;build-tools-yeoman-grunt-requirejs-ea&#34;&gt;Build tools: Yeoman, Grunt, RequireJS ea&lt;/h1&gt;
-
-&lt;p&gt;Zie ook integratie met &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/frameworks/handlebars/&#34;&gt;code/javascript/frameworks/handlebars&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Help nodig? Vast? &amp;gt;&amp;gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://gruntjs.com/installing-grunt&#34;&gt;http://gruntjs.com/installing-grunt&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://yeoman.io/commandline.html&#34;&gt;http://yeoman.io/commandline.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://requirejs.org/docs/api.html&#34;&gt;http://requirejs.org/docs/api.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/twitter/bower&#34;&gt;https://github.com/twitter/bower&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://npmjs.org/doc/&#34;&gt;https://npmjs.org/doc/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Meer info over Yeoman, tooling support, scaffolding, etc:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://plus.google.com/115133653231679625609/posts/h8shHWJtcKd&#34;&gt;https://plus.google.com/115133653231679625609/posts/h8shHWJtcKd&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;deploying&#34;&gt;Deploying&lt;/h2&gt;
-
-&lt;h4 id=&#34;naar-een-ftp-server&#34;&gt;Naar een FTP server&lt;/h4&gt;
-
-&lt;p&gt;Gebruik &lt;code&gt;grunt-ftp-deploy&lt;/code&gt; node plugin: &lt;a href=&#34;https://github.com/zonak/grunt-ftp-deploy&#34;&gt;https://github.com/zonak/grunt-ftp-deploy&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&#39;ftp-deploy&#39;: {
-  build: {
-    auth: {
-      host: &#39;server.com&#39;,
-      port: 21,
-      authKey: &#39;key1&#39;
-    },
-    src: &#39;/path/to/source/folder&#39;,
-    dest: &#39;/path/to/destination/folder&#39;,
-    exclusions: [&#39;/path/to/source/folder/**/.DS_Store&#39;, &#39;/path/to/source/folder/**/Thumbs.db&#39;, &#39;dist/tmp&#39;]
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ auth key ref verwijst naar &lt;code&gt;.ftppass&lt;/code&gt; in working dir&lt;/p&gt;
-
-&lt;h2 id=&#34;testing&#34;&gt;Testing&lt;/h2&gt;
-
-&lt;h4 id=&#34;mocha&#34;&gt;Mocha&lt;/h4&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://visionmedia.github.com/mocha/&#34;&gt;http://visionmedia.github.com/mocha/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Built-in support voor yeoman. Verschil met jasmine:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;mocha heeft geen assertions. Yeoman gebruikt by default [&lt;a href=&#34;http://chaijs.com/|chaiJS&#34;&gt;http://chaijs.com/|chaiJS&lt;/a&gt;] assertions.&lt;/li&gt;
-&lt;li&gt;mocha heeft geen spies.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;jasmine&#34;&gt;Jasmine&lt;/h4&gt;
-
-&lt;p&gt;Integratie met Grunt mogelijk met &lt;a href=&#34;https://github.com/creynders/grunt-jasmine-task&#34;&gt;https://github.com/creynders/grunt-jasmine-task&lt;/a&gt; en dan in &lt;code&gt;Gruntfile.js&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;grunt.loadNpmTasks(&#39;grunt-jasmine-task&#39;);
-jasmine: {
-  all: [&#39;specs/specrunner.html&#39;]
-},
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;package-managing&#34;&gt;Package managing&lt;/h2&gt;
-
-&lt;p&gt;Modules worden via de node package manager, &lt;code&gt;npm&lt;/code&gt; geïnstalleerd, al dan niet globaal met de &lt;code&gt;-g&lt;/code&gt; flag:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo npm install grunt-contrib-handlebars --save-dev
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;-g&lt;/code&gt; betekent &lt;strong&gt;niet&lt;/strong&gt; lokaal installeren maar in een bin folder op het systeem. Waarom/wanneer het ene of het andere kiezen? &lt;a href=&#34;http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation/&#34;&gt;http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;requirejs&#34;&gt;RequireJS&lt;/h2&gt;
-
-&lt;p&gt;Zie requirejs.org/docs/api.html&lt;/p&gt;
-
-&lt;h4 id=&#34;amd-structuur&#34;&gt;AMD Structuur&lt;/h4&gt;
-
-&lt;p&gt;Main file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;require.config({
-
-});
- 
-require([&#39;app&#39;], function(app) {
-    // main module which fires up everything
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Na includen van Rjs in html:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;    &amp;lt;script data-main######&amp;quot;scripts/main&amp;quot; src&amp;quot;scripts/vendor/require.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Gaat rjs afhankelijk van &lt;code&gt;data-main&lt;/code&gt; de hoofd JS file inladen (bovenstaande). That&amp;rsquo;s it!&lt;/p&gt;
-
-&lt;p&gt;Module files:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;define([&#39;dep1&#39;, &#39;dep2&#39;], function(dep1, dep2) {
-
-  // dep1, dep2 accessible &amp;amp; loaded
-
-  return {
-    api: function() { ... }
-  };
-
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Rjs gaat eerst dep1 en dep2 laden en dan de bovenstaande code pas. Hiervoor moeten natuurlijk beide andere APIs ook &lt;code&gt;AMD&lt;/code&gt; wrapped zijn. &lt;a href=&#34;https://github.com/amdjs/amdjs-api/wiki/AMD&#34;&gt;AMD&lt;/a&gt; staat voor &lt;strong&gt;&amp;ldquo;Async Module Definition&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;wat-doe-ik-als-een-api-geen-amd-gebruikt&#34;&gt;Wat doe ik als een API geen AMD gebruikt&lt;/h4&gt;
-
-&lt;p&gt;Gebruik &lt;code&gt;shim&lt;/code&gt; config van Rjs: requirejs.org/docs/api.html#config-shim&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;require.config({
-  shim: {
-    &#39;handlebars&#39;: {
-        exports: &#39;Handlebars&#39;
-    }
-  },
-
-  paths: {
-    jquery: &#39;vendor/jquery.min&#39;,
-    handlebars: &#39;./../components/handlebars/handlebars.runtime&#39;
-  }
-});
- 
-require([&#39;handlebars&#39;], function(Handlebars) {
-    // gogo!
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Wat is hier gebeurd:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;jquery&lt;/code&gt; en &lt;code&gt;handlebars&lt;/code&gt; includen wordt via een bepaald pad ingeladen in plaats van het standaard pad&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;handlebars&lt;/code&gt; gaat gewrapped worden in een AMD module, die &lt;code&gt;Handlebars&lt;/code&gt; als variabele exporteert.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;hoe-verander-ik-mijn-relatieve-include-paden&#34;&gt;Hoe verander ik mijn (relatieve) include paden&lt;/h4&gt;
-
-&lt;p&gt;Als je &lt;code&gt;grunt&lt;/code&gt; gebruikt, in &lt;code&gt;Gruntfile.js&lt;/code&gt; de hoofd Rjs config file alteren:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    rjs: {
-      // no minification, is done by the min task
-      optimize: &#39;none&#39;,
-      baseUrl: &#39;./scripts&#39;,
-      wrap: true,
-      name: &#39;main&#39;
-    },
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Bovenstaande gaat altijd vanaf mapje scripts beginnen lezen.&lt;/p&gt;
-</description>
+      <description>Build tools: Yeoman, Grunt, RequireJS ea Zie ook integratie met code/javascript/frameworks/handlebars.
+Help nodig? Vast? &amp;gt;&amp;gt;
+ http://gruntjs.com/installing-grunt http://yeoman.io/commandline.html http://requirejs.org/docs/api.html https://github.com/twitter/bower https://npmjs.org/doc/  Meer info over Yeoman, tooling support, scaffolding, etc:
+ https://plus.google.com/115133653231679625609/posts/h8shHWJtcKd  Deploying Naar een FTP server Gebruik grunt-ftp-deploy node plugin: https://github.com/zonak/grunt-ftp-deploy
+&#39;ftp-deploy&#39;: { build: { auth: { host: &#39;server.com&#39;, port: 21, authKey: &#39;key1&#39; }, src: &#39;/path/to/source/folder&#39;, dest: &#39;/path/to/destination/folder&#39;, exclusions: [&#39;/path/to/source/folder/**/.DS_Store&#39;, &#39;/path/to/source/folder/**/Thumbs.db&#39;, &#39;dist/tmp&#39;] } }  ❗️ auth key ref verwijst naar .</description>
     </item>
     
   </channel>

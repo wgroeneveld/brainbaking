@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vb6 on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/vb6/index.xml</link>
+    <link>http://www.brainbaking.com/tags/vb6/</link>
     <description>Recent content in Vb6 on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/vb6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Dec 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/vb6/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Unit testing in Legacy Projects: VB6</title>
@@ -16,39 +19,7 @@
       <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/vb6-unit-testing/</guid>
-      <description>&lt;p&gt;Thanks to the &lt;a href=&#34;https://ihadthisideaonce.com/2015/05/13/postmodern-vb6-a-quick-start-with-simplyvbunit/&#34;&gt;Postmodern VB6&lt;/a&gt; article I&amp;rsquo;ve found on the internetz, I decided to give &lt;a href=&#34;simplyvbunit.sourceforge.net&#34;&gt;SimplyVBUnit&lt;/a&gt; a try. My job requires sporadic visual basic 6 code changes in the big legacy project we&amp;rsquo;re converting to C#. It&amp;rsquo;s an administrative system bound to Belgium laws so as you can imagine they change every few months and the old software still has to be complaint to those crazy new rules. As a result, we sometimes dabble in VB6 code. It feels more like drowning, really.&lt;/p&gt;
-
-&lt;p&gt;Unit testing is what keeps me from rage-quitting on every project. The SimplyVBUnit syntax is quite nice if you&amp;rsquo;re used to writing NUnit tests: they also work with &lt;code&gt;Assert.That&lt;/code&gt; for instance:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-vb&#34;&gt;Public Sub MyTestMethod_WithSomeArg_ShouldReturn45
-  Dim isType As Boolean
-  isType = MyTestMethod(arg1)
-
-  Assert.That isType, Iz.EqualTo(45)
-End Sub
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.brainbaking.com/img/simplyvbunit.png&#34; alt=&#34;simply vb unit screenshot&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The test code is very readable thanks to the &lt;a href=&#34;https://nunit.org/index.php?p=documentation&#34;&gt;NUnit&lt;/a&gt; influence on SimplyVBUnit. The package is very easy to install, but there are a few gotcha&amp;rsquo;s.
-You need to create a separate VBP file (Visual Basic Project) which acts as your UnitTest project with a reference to the SimplyVBUnit package. That&amp;rsquo;s easy enough, but it&amp;rsquo;s a project. That means it can&amp;rsquo;t reference other projects! Our software is basically one large project with heaps of muddy code. Compiling the EXE and referencing that one is not an option for us. That leaves us with a few alternatives:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Package the test runner and the dependency in your production code. (Hmmm&amp;hellip;)&lt;/li&gt;
-&lt;li&gt;Create a DLL project and move the test code to the DLL. This requires another build step in our already-too-long-manual-deployment procedure. Nope.&lt;/li&gt;
-&lt;li&gt;Create a group (vbg), include both projects, and include modules/forms/class modules to be tested in the unit test project as an existing file. This means both projects will include the same source files. SourceSafe actually notices this if you have a file checked out and will ask you to update the &amp;ldquo;other&amp;rdquo; file in the second project.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The group makes it possible to open everything at once. Unit tests live in a subfolder. This is our vbg file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;VBGROUP 5.0
-Project=program.vbp
-StartupProject=UnitTests\UnitTests.vbp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Utilizing two projects in one group means switching between both as a startup project. One could use the group to develop and start tests but the vbps for debugging or so. It&amp;rsquo;s all still fairly new for us so we&amp;rsquo;ll see where this will end.
-Unit tests are useless if they aren&amp;rsquo;t run (automatically). At this moment we try to avoid coding anything in VB6 at all. If we do, we run the tests manually. At least some parts of the code are tested without bootstrapping the whole application and plowing through various forms to get to the part where you actually changed something&amp;hellip;&lt;/p&gt;
-</description>
+      <description>Thanks to the Postmodern VB6 article I&amp;rsquo;ve found on the internetz, I decided to give SimplyVBUnit a try. My job requires sporadic visual basic 6 code changes in the big legacy project we&amp;rsquo;re converting to C#. It&amp;rsquo;s an administrative system bound to Belgium laws so as you can imagine they change every few months and the old software still has to be complaint to those crazy new rules. As a result, we sometimes dabble in VB6 code.</description>
     </item>
     
   </channel>

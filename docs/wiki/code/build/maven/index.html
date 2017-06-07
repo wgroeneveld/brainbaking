@@ -9,7 +9,7 @@
   <title>maven</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.21" />
   <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
@@ -166,7 +166,7 @@
 
 <h1 id="maven2-build-stuff">Maven2 Build stuff</h1>
 
-<p>❗ <strong>properties</strong> guide: <a href="http://docs.codehaus.org/display/MAVENUSER/MavenPropertiesGuide">http://docs.codehaus.org/display/MAVENUSER/MavenPropertiesGuide</a></p>
+<p>❗️ <strong>properties</strong> guide: <a href="http://docs.codehaus.org/display/MAVENUSER/MavenPropertiesGuide">http://docs.codehaus.org/display/MAVENUSER/MavenPropertiesGuide</a></p>
 
 <h2 id="javascript-files-automatisch-minify-en">javascript files automatisch minify-en</h2>
 
@@ -289,7 +289,7 @@
 &lt;/assembly&gt;
 </code></pre>
 
-<p>❗ test jars zijn precies niet <strong>transitief</strong> qua dependencies? <br/><br/>
+<p>❗️ test jars zijn precies niet <strong>transitief</strong> qua dependencies? <br/><br/>
 Als je een test-jar (die dus op <code>scope test</code> staat) wil includen in je eigen <code>assembly:single</code> jar, kan je <code>classifier tests</code> gebruiken:</p>
 
 <pre><code class="language-xml">&lt;dependency&gt;
@@ -469,7 +469,7 @@ Als je een test-jar (die dus op <code>scope test</code> staat) wil includen in j
            &lt;/plugin&gt;
 </code></pre>
 
-<p>❗ output dir = <code>${reportOutputDirectory}/${destDir}</code><br/><br/>
+<p>❗️ output dir = <code>${reportOutputDirectory}/${destDir}</code><br/><br/>
 Voorbeeld: <a href="http://maven.apache.org/plugins/maven-javadoc-plugin/examples/output-configuration.html">http://maven.apache.org/plugins/maven-javadoc-plugin/examples/output-configuration.html</a></p>
 
 <h2 id="deployen-met-maven">Deployen met maven</h2>
@@ -498,7 +498,7 @@ Het is ook mogelijk om die te laten scannen voor resource changes met <code>scan
             &lt;/plugin&gt;
 </code></pre>
 
-<p>❗ Vanaf Jetty plugin 7 zijn packages hernoemd en zo, zie <a href="http://wiki.eclipse.org/Jetty">http://wiki.eclipse.org/Jetty</a> en de migratie van 6-&gt;7-&gt;&hellip;9</p>
+<p>❗️ Vanaf Jetty plugin 7 zijn packages hernoemd en zo, zie <a href="http://wiki.eclipse.org/Jetty">http://wiki.eclipse.org/Jetty</a> en de migratie van 6-&gt;7-&gt;&hellip;9</p>
 
 <h5 id="debug-poort-instellingen">Debug poort instellingen</h5>
 
@@ -717,7 +717,7 @@ Zie <a href="http://maven.apache.org/plugins/maven-war-plugin/war-mojo.html#warN
 &lt;/profile&gt;
 </code></pre>
 
-<p>❗ Als een bepaalde jar nog deployed moet worden (naar Jetty bvb) voor het runnen van de test (scenario testen zoals selenium en webdriver), moet de <code>install</code> in plaats van <code>test</code> goal uitgevoerd worden. <br/><br/>
+<p>❗️ Als een bepaalde jar nog deployed moet worden (naar Jetty bvb) voor het runnen van de test (scenario testen zoals selenium en webdriver), moet de <code>install</code> in plaats van <code>test</code> goal uitgevoerd worden. <br/><br/>
 Het kan <em>ook</em> zijn dat nog zaken geïnstalleerd moeten worden in de lokale Maven repository (het root project) -&gt; eerst <code>mvn clean install</code> op het root project doen (voor <em>vac</em> is dit zo). Dit is omdat het endtoend project daarop afhangt, en de compile dan faalt.</p>
 
 <h2 id="een-jar-manueel-in-de-repository-installeren">Een jar manueel in de repository installeren</h2>
@@ -830,7 +830,7 @@ Het kan <em>ook</em> zijn dat nog zaken geïnstalleerd moeten worden in de lokal
   	    </p>
   	    
     	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
           
     	</p>
       </div>
@@ -852,7 +852,7 @@ Het kan <em>ook</em> zijn dat nog zaken geïnstalleerd moeten worden in de lokal
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-45748221-1', 'auto');
 ga('send', 'pageview');

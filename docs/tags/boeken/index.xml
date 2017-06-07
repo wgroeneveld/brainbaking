@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Boeken on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/boeken/index.xml</link>
+    <link>http://www.brainbaking.com/tags/boeken/</link>
     <description>Recent content in Boeken on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/boeken/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/boeken/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>boeken</title>
@@ -16,28 +19,7 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/schermen/boeken/</guid>
-      <description>
-
-&lt;h1 id=&#34;fencing-books&#34;&gt;Fencing books&lt;/h1&gt;
-
-&lt;h2 id=&#34;technieken&#34;&gt;Technieken&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Foil fencing: techniques &amp;amp; tactics of modern foil fencing (2003)&lt;/li&gt;
-&lt;li&gt;Fencing: techniques of foil, épee and sabre (1988)&lt;/li&gt;
-&lt;li&gt;The art &amp;amp; science of fencing (1996)&lt;/li&gt;
-&lt;li&gt;The inner game of fencing: exellence in form, technique, strategy and spirit (2000)&lt;/li&gt;
-&lt;li&gt;Epee fencing: a complete system (Vass, 1975)&lt;/li&gt;
-&lt;li&gt;Epee combat manual (2001)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;geschiedenis&#34;&gt;Geschiedenis&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;By the Sword: a history of gladiators, musketeers  and olympic champions (2003)&lt;/li&gt;
-&lt;li&gt;The history of fencing: foundations of modern european swordplay (1997)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> Fencing books Technieken  Foil fencing: techniques &amp;amp; tactics of modern foil fencing (2003) Fencing: techniques of foil, épee and sabre (1988) The art &amp;amp; science of fencing (1996) The inner game of fencing: exellence in form, technique, strategy and spirit (2000) Epee fencing: a complete system (Vass, 1975) Epee combat manual (2001)  Geschiedenis  By the Sword: a history of gladiators, musketeers and olympic champions (2003) The history of fencing: foundations of modern european swordplay (1997)  </description>
     </item>
     
   </channel>

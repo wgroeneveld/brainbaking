@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Threads on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/threads/index.xml</link>
+    <link>http://www.brainbaking.com/tags/threads/</link>
     <description>Recent content in Threads on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/threads/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Dec 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/threads/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>threads</title>
@@ -16,51 +19,9 @@
       <pubDate>Fri, 06 Dec 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/csharp/threads/</guid>
-      <description>
-
-&lt;h1 id=&#34;threads&#34;&gt;Threads&lt;/h1&gt;
-
-&lt;h3 id=&#34;locking-en-singletons&#34;&gt;Locking en singletons&lt;/h3&gt;
-
-&lt;p&gt;See &lt;a href=&#34;http://csharpindepth.com/Articles/General/Singleton.aspx&#34;&gt;C#In Depth: Implementing the Singleton pattern in C#&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;een &lt;code&gt;lock()&lt;/code&gt; is heel duur om uit te voeren, daarom wordt er een null check hierrond nog eens geschreven, dat heet &lt;strong&gt;double-check locking&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;        internal static ContextViewPresenter instance;
-        private static readonly Object syncRoot = new Object();
-        public static ContextViewPresenter Instance
-        {
-            get
-            {
-                if (instance ###### null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (instance ###### null)
-                        {
-                            instance = new ContextViewPresenter(UserEnvironmentDataProviderSingleton.Instance);                            
-                        }
-                    } 
-                }
-                return instance;
-            }
-        }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;############ Thread-local static variables ############&lt;/p&gt;
-
-&lt;p&gt;In java kan men &lt;code&gt;ThreadLocal&amp;lt;&amp;gt;&lt;/code&gt; gebruiken om iets per thread te storen (zoals de gebruiker van een webpagina die per request van de &lt;code&gt;WebServlet&lt;/code&gt; één nieuwe Thread aanmaakt). &lt;br/&gt;&lt;br/&gt;
-In C# kan dit ook met de attribute &lt;code&gt;[ThreadStatic]&lt;/code&gt; voor een field te plaatsen.&lt;/p&gt;
-
-&lt;p&gt;❗ Opgelet met ASP.NET - IIS heeft dan een shared threadpool geconfigureerd waar jij geen controle over hebt. Dit wil zeggen dat x threads herbruikt worden, en dus ook uw threadlocal storage.&lt;/p&gt;
-
-&lt;p&gt;Oplossing(en): (zie ook &lt;a href=&#34;http://piers7.blogspot.be/2005/11/threadstatic-callcontext-and_02.html&#34;&gt;hier&lt;/a&gt;)&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Clear waarde op einde van elke request&lt;/li&gt;
-&lt;li&gt;Gebruik &lt;code&gt;HttpContext&lt;/code&gt; van ASP.NET zelf in plaats van &lt;code&gt;[ThreadStatic]&lt;/code&gt;. (Zou probleem kunnen zijn in uw domein laag&amp;hellip;)&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description>Threads Locking en singletons See C#In Depth: Implementing the Singleton pattern in C#
+een lock() is heel duur om uit te voeren, daarom wordt er een null check hierrond nog eens geschreven, dat heet double-check locking:
+internal static ContextViewPresenter instance; private static readonly Object syncRoot = new Object(); public static ContextViewPresenter Instance { get { if (instance ###### null) { lock (syncRoot) { if (instance ###### null) { instance = new ContextViewPresenter(UserEnvironmentDataProviderSingleton.</description>
     </item>
     
   </channel>

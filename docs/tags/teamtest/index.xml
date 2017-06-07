@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Teamtest on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/teamtest/index.xml</link>
+    <link>http://www.brainbaking.com/tags/teamtest/</link>
     <description>Recent content in Teamtest on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/teamtest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Jul 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/teamtest/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>teamtest</title>
@@ -16,131 +19,10 @@
       <pubDate>Wed, 17 Jul 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/c/testing/teamtest/</guid>
-      <description>
-
-&lt;h1 id=&#34;visual-studio-2005-teamtest-framework&#34;&gt;Visual Studio 2005 TeamTest Framework&lt;/h1&gt;
-
-&lt;p&gt;Hoofdartikel (2005, C# voorbeelden): &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/ms379625(v=vs.80).aspx&#34;&gt;http://msdn.microsoft.com/en-us/library/ms379625(v=vs.80).aspx&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Waarom&lt;/strong&gt;?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Zelfde syntax als built-in C# unit tests voor Visual Studio&lt;/li&gt;
-&lt;li&gt;Makkelijker te lezen dan bvb &lt;a href=&#34;http://www.brainbaking.com/wiki/code/c/testing/gtest/&#34;&gt;code/c/testing/gtest&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Garbage collector van Managed C++, joepie (?)&lt;/li&gt;
-&lt;li&gt;Toch mogelijk om unmanaged native C++ te testen (zie onder), integratie VStudio.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Waarom niet&lt;/strong&gt;?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Dropped support voor VS2012? zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/c/testing/testexplorer/&#34;&gt;code/c/testing/testexplorer&lt;/a&gt; in de plaats (native C++)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/cli&lt;/code&gt; flag miserie (zie onder)&lt;/li&gt;
-&lt;li&gt;Onduidelijke syntax voor hardcore C++ users die niet aan C# gewend zijn&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;visual-studio-2008&#34;&gt;Visual Studio 2008&lt;/h2&gt;
-
-&lt;p&gt;Hiervoor moeten we een apart test project aanmaken dat met &lt;strong&gt;/CLR&lt;/strong&gt; flag compileert om de .NET test suites te gebruiken (&lt;code&gt;using namespace   Microsoft::VisualStudio::TestTools::UnitTesting;&lt;/code&gt;):&lt;/p&gt;
-
-&lt;p&gt;Project &amp;gt; configuration properties &amp;gt; General &amp;gt; Common Language Runtime support&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;float: left;&#39; src=&#39;http://www.brainbaking.com/img//code/c/testing/clr_unittests.png |&#39;&gt;&lt;/p&gt;
-
-&lt;p&gt;Dit staat op &lt;code&gt;/clr:safe&lt;/code&gt; indien je met VStudio 2008 een nieuwe test aan maakt via menu Test &amp;gt; New Test &amp;gt; Unit Test&lt;/p&gt;
-
-&lt;p&gt;Een voorbeeld header file om te testen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;class MyClass {
-public:
-    MyClass() {};
-
-    int addUp(int one, int two);
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;myclass.h&amp;quot;
-#include &amp;lt;iostream&amp;gt;
-using namespace std;
-
-int MyClass::addUp(int one, int two)
-{
-    return one + two;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;managed-test-code-schrijven&#34;&gt;Managed test code schrijven&lt;/h4&gt;
-
-&lt;p&gt;Gebruik dezelfde manier als .NET Unit Testing framework met attributes - dit vereist dus de CLR flag. Voorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;stdafx.h&amp;quot;
-#include &amp;quot;../libtest/myclass.h&amp;quot;
-
-using namespace System;
-using namespace System::Text;
-using namespace System::Collections::Generic;
-using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
-
-namespace unittests
-{
-    [TestClass]
-    public ref class MyClassTest
-    {
-
-    public: 
-
-        [TestMethod]
-        void AddOne()
-        {
-            Assert::AreEqual(3, MyClass().addUp(1, 2));
-        };
-    };
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Assert&lt;/strong&gt; heeft een hoop static methods&lt;/p&gt;
-
-&lt;h4 id=&#34;een-externe-klasse-testen-die-van-een-lib-komt&#34;&gt;een externe klasse testen die van een lib komt&lt;/h4&gt;
-
-&lt;p&gt;Als je vanuit je test project wil refereren naar productie code/projecten, kan dit een probleem zijn:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;MyClassTest.obj : error LNK2028: unresolved token (0A00000A) &amp;quot;public: __thiscall MyClass::MyClass(void)&amp;quot; (??0MyClass@@$$FQAE@XZ) referenced in function &amp;quot;public: void __clrcall unittests::MyClassTest::AddOne(void)&amp;quot; (?AddOne@MyClassTest@unittests@@$$FQ$AAMXXZ)
-MyClassTest.obj : error LNK2028: unresolved token (0A00000B) &amp;quot;public: int __thiscall MyClass::addUp(int,int)&amp;quot; (?addUp@MyClass@@$$FQAEHHH@Z) referenced in function &amp;quot;public: void __clrcall unittests::MyClassTest::AddOne(void)&amp;quot; (?AddOne@MyClassTest@unittests@@$$FQ$AAMXXZ)
-MyClassTest.obj : error LNK2019: unresolved external symbol &amp;quot;public: int __thiscall MyClass::addUp(int,int)&amp;quot; (?addUp@MyClass@@$$FQAEHHH@Z) referenced in function &amp;quot;public: void __clrcall unittests::MyClassTest::AddOne(void)&amp;quot; (?AddOne@MyClassTest@unittests@@$$FQ$AAMXXZ)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dat wil zeggen, het compileert, maat het linkt niet. Oplossing: Voeg dit toe aan uw &lt;code&gt;stdafx.cpp&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#pragma comment(lib, &amp;quot;../Debug/libtest.lib&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;gegeven dat &amp;ldquo;libtest&amp;rdquo; uw project under test is. Vanaf dan kan je normaal header files includen in uw test cpp file, zie boven.&lt;/p&gt;
-
-&lt;h4 id=&#34;een-externe-klasse-testen-die-van-een-dll-komt&#34;&gt;een externe klasse testen die van een DLL komt&lt;/h4&gt;
-
-&lt;p&gt;Er wordt pas een &lt;code&gt;.lib&lt;/code&gt; file gegenereerd wanneer je &lt;code&gt;declspec(dllexport)&lt;/code&gt; definiëert - wanneer niets exported is, kan er ook niets imported worden&amp;hellip; Dus &lt;code&gt;myClass&lt;/code&gt; aanpassen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;
-#ifdef FRIENDCLASS_EXPORT
-    #define FRIENDCLASS __declspec(dllexport)
-#else
-    #define FRIENDCLASS __declspec(dllimport)
-#endif
-
-class FRIENDCLASS MyClass {
-public:
-    MyClass();
-
-    int addUp(int one, int two);
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;En dan het libtest project compileren met de extra preprocessor definitie &lt;code&gt;FRIENDCLASS_EXPORT&lt;/code&gt; zodat in commandline &lt;code&gt;/D &amp;quot;FRIENDCLASS_EXPORT&amp;quot;&lt;/code&gt; erbij komt. Zie ook &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/hhzbb5c8(v=vs.80).aspx&#34;&gt;MSDN Preprocessor definitions&lt;/a&gt;, nu kunnen we hierop checken in de code met &lt;code&gt;#ifdef&lt;/code&gt;. Bovenstaande code doet een export wanneer gedefiniëerd, en een import anders - dit gebeurt wanneer we de header file includen vanuit onze test cpp file.&lt;/p&gt;
-
-&lt;h4 id=&#34;debugging&#34;&gt;Debugging&lt;/h4&gt;
-
-&lt;p&gt;❗ &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/958x11bc(v=vs.80).aspx&#34;&gt;Debug information format flags&lt;/a&gt;: &lt;code&gt;/ZI&lt;/code&gt; (&amp;ldquo;Edit and Continue feature&amp;rdquo;, retry drukken bij assertion failure) is &lt;strong&gt;niet&lt;/strong&gt; ondersteund in combinatie met &lt;code&gt;/cli&lt;/code&gt;. Debuggen gaat wel op &lt;code&gt;/Zi&lt;/code&gt; niveau.&lt;/p&gt;
-</description>
+      <description>Visual Studio 2005 TeamTest Framework Hoofdartikel (2005, C# voorbeelden): http://msdn.microsoft.com/en-us/library/ms379625(v=vs.80).aspx
+Waarom?
+ Zelfde syntax als built-in C# unit tests voor Visual Studio Makkelijker te lezen dan bvb code/c/testing/gtest Garbage collector van Managed C++, joepie (?) Toch mogelijk om unmanaged native C++ te testen (zie onder), integratie VStudio.  Waarom niet?
+ Dropped support voor VS2012? zie code/c/testing/testexplorer in de plaats (native C++) /cli flag miserie (zie onder) Onduidelijke syntax voor hardcore C++ users die niet aan C# gewend zijn  Visual Studio 2008 Hiervoor moeten we een apart test project aanmaken dat met /CLR flag compileert om de .</description>
     </item>
     
   </channel>

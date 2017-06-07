@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tech on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/tech/index.xml</link>
+    <link>http://www.brainbaking.com/tags/tech/</link>
     <description>Recent content in Tech on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Jul 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>security</title>
@@ -16,53 +19,19 @@
       <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/tech/security/</guid>
-      <description>
-
-&lt;h1 id=&#34;tech-security&#34;&gt;tech &amp;gt;&amp;gt; Security&lt;/h1&gt;
-
-&lt;h2 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h2&gt;
-
-&lt;h5 id=&#34;conversie-certificaten&#34;&gt;Conversie certificaten&lt;/h5&gt;
-
-&lt;p&gt;PFX naar PEM: &lt;code&gt;openssl pkcs12 -in [.pfx] -out [.pem]&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;pkcs7-signing-van-bestanden&#34;&gt;PKCS7 signing van bestanden&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;openssl smime -sign -in [tosignfile] -signer [privatekeyfile] -passin [passw] -outform PEM -out [outfile]&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Paar dingen om op te letten:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;infile moet in UTF-8 encoded zonder UTF-8 identifier weggeschreven zijn. In C# bvb zo &lt;code&gt;File.WriteAllText(inFile, data, new UTF8Encoding(false));&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;privatekeyfile moet een PEM bestand zijn&lt;/li&gt;
-&lt;li&gt;output door openssl bevat begin en eind PKCS7 notaties, plus newlines op het laatste. Als die wegmoeten, replacen!&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Voorbeeld om enkel signed data uit te halen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;                return signed
-                    .Replace(&amp;quot;-----BEGIN PKCS7-----&amp;quot;, &amp;quot;&amp;quot;)
-                    .Replace(&amp;quot;-----END PKCS7-----&amp;quot;, &amp;quot;&amp;quot;)
-                    .TrimStart(&#39;&amp;lt;br/&amp;gt;r&#39;, &#39;&amp;lt;br/&amp;gt;n&#39;)
-                    .TrimEnd(&#39;&amp;lt;br/&amp;gt;r&#39;, &#39;&amp;lt;br/&amp;gt;n&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>tech &amp;gt;&amp;gt; Security OpenSSL Conversie certificaten PFX naar PEM: openssl pkcs12 -in [.pfx] -out [.pem]
+PKCS7 signing van bestanden openssl smime -sign -in [tosignfile] -signer [privatekeyfile] -passin [passw] -outform PEM -out [outfile]
+Paar dingen om op te letten:
+ infile moet in UTF-8 encoded zonder UTF-8 identifier weggeschreven zijn. In C# bvb zo File.WriteAllText(inFile, data, new UTF8Encoding(false)); privatekeyfile moet een PEM bestand zijn output door openssl bevat begin en eind PKCS7 notaties, plus newlines op het laatste.</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/</link>
+      <link>http://www.brainbaking.com/wiki/tech/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/</guid>
-      <description>
-
-&lt;h1 id=&#34;tech-home&#34;&gt;tech &amp;gt;&amp;gt; Home&lt;/h1&gt;
-
-&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-</description>
+      <guid>http://www.brainbaking.com/wiki/tech/</guid>
+      <description>tech &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
@@ -71,20 +40,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/tech/windows/</guid>
-      <description>
-
-&lt;h1 id=&#34;windows-utility-apps&#34;&gt;Windows Utility apps&lt;/h1&gt;
-
-&lt;h3 id=&#34;productivity&#34;&gt;Productivity&lt;/h3&gt;
-
-&lt;h5 id=&#34;clipboard-caching&#34;&gt;Clipboard caching&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;CLCL&lt;/strong&gt; &lt;a href=&#34;http://www.nakka.com/soft/clcl/index_eng.html&#34;&gt;http://www.nakka.com/soft/clcl/index_eng.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;process-monitoring&#34;&gt;Process monitoring&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;Procmon&lt;/strong&gt;: &lt;a href=&#34;http://technet.microsoft.com/en-us/sysinternals/bb896645&#34;&gt;http://technet.microsoft.com/en-us/sysinternals/bb896645&lt;/a&gt; - handig voor bvb te zijn waar programma&amp;rsquo;s naar schrijven en regedit calls&lt;/p&gt;
-</description>
+      <description>Windows Utility apps Productivity Clipboard caching CLCL http://www.nakka.com/soft/clcl/index_eng.html
+Process monitoring Procmon: http://technet.microsoft.com/en-us/sysinternals/bb896645 - handig voor bvb te zijn waar programma&amp;rsquo;s naar schrijven en regedit calls</description>
     </item>
     
   </channel>

@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Like To Like on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/like-to-like/index.xml</link>
+    <link>http://www.brainbaking.com/tags/like-to-like/</link>
     <description>Recent content in Like To Like on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/like-to-like/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/like-to-like/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>like-to-like</title>
@@ -16,30 +19,9 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/reflect/retros/like-to-like/</guid>
-      <description>
-
-&lt;h1 id=&#34;like-to-like&#34;&gt;Like-to-like&lt;/h1&gt;
-
-&lt;h3 id=&#34;about&#34;&gt;About&lt;/h3&gt;
-
-&lt;p&gt;This Like-To-Like game is a fun and interactive way to do a retro. You can find the full explanation on &lt;strong&gt;page 74&lt;/strong&gt; of the &lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Agile%20Retrospectives&#34; target=&#34;_blank&#34;&gt;Agile Retrospectives&lt;/a&gt;
- book (Pragmatic Bookshelf).&lt;/p&gt;
-
-&lt;h3 id=&#34;contents&#34;&gt;Contents&lt;/h3&gt;
-
-&lt;p&gt;One team member (lets call him Ben) prepares a stack of &amp;lsquo;quality cards&amp;rsquo;, each containing a &amp;lsquo;quality word&amp;rsquo;. Examples are: Fun, Cool, Late, Frustrating, Desireable, Stupid, Wasteful, Confusing, &amp;hellip; .&lt;br /&gt;
-The quality cards are stacked and not visible to the team.&lt;/p&gt;
-
-&lt;p&gt;The retro starts with each member writing down important items concerning the last sprint on a post-it (one post-it per item). You could for example ask them to write down things the team should start/keep/stop doing. The more post-its a member has written, the easier it&amp;rsquo;ll be for him to play the game.&lt;/p&gt;
-
-&lt;p&gt;After 5-10 minutes a random team member is chosen to be the first judge (let&amp;rsquo;s call him Darek). Every turn, another team member will be the judge. The judge first draws a quality card from stack and reads it out loud.&lt;/p&gt;
-
-&lt;p&gt;Every team member now associates one of his post-its to this quality word, and puts this post-it as fast as possible in the middle of the table. The last member to put a post-it in the middle of the table is disqualified for this round (this is to keep up the pace). The judge (Darek) decides which team member best fitted the keyword. This winning team member gets one point and becomes the judge in the next round.&lt;/p&gt;
-
-&lt;p&gt;The process gets repeated until the stack is empty or time&amp;rsquo;s up.&lt;/p&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-</description>
+      <description>Like-to-like About This Like-To-Like game is a fun and interactive way to do a retro. You can find the full explanation on page 74 of the Agile Retrospectivesbook (Pragmatic Bookshelf).
+Contents One team member (lets call him Ben) prepares a stack of &amp;lsquo;quality cards&amp;rsquo;, each containing a &amp;lsquo;quality word&amp;rsquo;. Examples are: Fun, Cool, Late, Frustrating, Desireable, Stupid, Wasteful, Confusing, &amp;hellip; .
+The quality cards are stacked and not visible to the team.</description>
     </item>
     
   </channel>

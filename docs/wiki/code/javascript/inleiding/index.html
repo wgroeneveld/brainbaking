@@ -9,7 +9,7 @@
   <title>inleiding</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.21" />
   <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
@@ -306,7 +306,7 @@ Ezel.balk = function() {
 <li>De functie bevat gewone statements met <code>=</code> en niet met <code>:</code>. Dit is geen object maar een functie!</li>
 </ul>
 
-<p>❗ De functie die net aangemaakt is kan nu als constructor dienen. Die werd intern ook aan de Ezel <code>prototype</code> property gekoppeld:</p>
+<p>❗️ De functie die net aangemaakt is kan nu als constructor dienen. Die werd intern ook aan de Ezel <code>prototype</code> property gekoppeld:</p>
 
 <pre><code class="language-javascript">Ezel.prototype.constructor
 </code></pre>
@@ -376,7 +376,7 @@ function xParsed() {
 
 <p>Dat wil zeggen dat wanneer je twee keer x probeert toe te kennen aan een getal én een functie, heeft de functie voorrang.</p>
 
-<p>❗ Uitzondering: een formeel argument met naam <code>arguments</code> heeft voorrang op lang-defined <code>arguments</code>. Bad practice&hellip;</p>
+<p>❗️ Uitzondering: een formeel argument met naam <code>arguments</code> heeft voorrang op lang-defined <code>arguments</code>. Bad practice&hellip;</p>
 
 <h5 id="itereren-over-properties-van-objecten">Itereren over properties van objecten</h5>
 
@@ -428,7 +428,7 @@ f(1, 2) // ###### 3
 
 <p><code>arguuments</code> heeft nog een speciale property: <code>arguments.callee(...)</code> dat de huidige functie voorstelt, hiermee kan je jezelf aanroepen!</p>
 
-<p>❗ Dit gaat een syntax error geven bij ECMA Script standaard 5 in <em>strict</em> mode</p>
+<p>❗️ Dit gaat een syntax error geven bij ECMA Script standaard 5 in <em>strict</em> mode</p>
 
 <h6 id="verplicht-alle-argumenten-invullen">verplicht alle argumenten invullen</h6>
 
@@ -506,7 +506,7 @@ if(x.two ###### null) {
 }
 </code></pre>
 
-<p>❗ <code>undefined</code> is een window-scope variabele die initiëel de value <code>undefined</code> heeft, dit is dus géén keyword, pas op!</p>
+<p>❗️ <code>undefined</code> is een window-scope variabele die initiëel de value <code>undefined</code> heeft, dit is dus géén keyword, pas op!</p>
 
 <p>#####= By Value versus By Reference #####=</p>
 
@@ -598,7 +598,7 @@ if(x.two ###### null) {
   	    </p>
   	    
     	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
           
     	</p>
       </div>
@@ -620,7 +620,7 @@ if(x.two ###### null) {
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-45748221-1', 'auto');
 ga('send', 'pageview');

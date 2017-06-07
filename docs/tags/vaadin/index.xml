@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vaadin on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/vaadin/index.xml</link>
+    <link>http://www.brainbaking.com/tags/vaadin/</link>
     <description>Recent content in Vaadin on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/vaadin/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/vaadin/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>vaadin</title>
@@ -16,158 +19,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/vaadin/</guid>
-      <description>
-
-&lt;h1 id=&#34;vaadin-7&#34;&gt;Vaadin 7&lt;/h1&gt;
-
-&lt;h2 id=&#34;javascript-uitvoeren-in-de-frontent&#34;&gt;Javascript uitvoeren in de frontent&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@JavaScript({ &amp;quot;https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js&amp;quot;, &amp;quot;js_label.js&amp;quot; })
-public class JsLabel extends AbstractJavaScriptComponent {
-
-    public JsLabel(String xhtml) {
-        getState().xhtml = xhtml;
-    }
-
-    @Override
-    protected JsLabelState getState() {
-        return (JsLabelState) super.getState();
-    }
-
-    public static class JsLabelState extends JavaScriptComponentState {
-        public String xhtml;
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;en bijbehorende js_label.js file - plaats in &lt;code&gt;src/main/resources&lt;/code&gt; onder zelfde subdir als package van java file&amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;be_vdab_nonstop_presentation_form_JsLabel = function() {
-  var e = this.getElement();
-    
-  this.onStateChange = function() {
-    jQuery(e).html(this.getState().xhtml); 
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;mainui&#34;&gt;MainUI&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@PreserveOnRefresh
-@Theme(&amp;quot;yourTheme&amp;quot;)
-public class MainUI extends UI {
-    @Override
-    protected final void init(VaadinRequest request) {
-        setNavigator(new MyNavigator(this));
-        initDefaultScreen();
-        getNavigator().navigate();
-    }
-
-    private void initDefaultScreen() {
-        getNavigator().addView(&amp;quot;&amp;quot;, BlahScherm.class);
-    }
-
-    public void refresh() {
-        Component content = getContent();
-        setContent(new VerticalLayout());
-        setContent(content);
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Waarbij &lt;code&gt;BlahScherm&lt;/code&gt; &lt;code&gt;View&lt;/code&gt; implementeert (extends &lt;code&gt;CustomComponent&lt;/code&gt;)&lt;/p&gt;
-
-&lt;p&gt;Parameters van de URL afhalen en afhankelijk daarvan ergens naar navigeren kan gebeuren in &lt;code&gt;MyNavigator&lt;/code&gt; die extends &lt;code&gt;Navigator&lt;/code&gt;. In de constructor &lt;code&gt;addView()&lt;/code&gt; aanroepen (keyvalue pair)&lt;/p&gt;
-
-&lt;h2 id=&#34;utilities-om-in-componenten-te-zoeken&#34;&gt;Utilities om in componenten te zoeken&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class VaadinUtilties {
-
-    public static &amp;lt;T extends AbstractComponent&amp;gt; T findComponentWithin(HasComponents otherComponent, Class&amp;lt;T&amp;gt; componentClass, String id) {
-        return findOnly(otherComponent, componentClass, metId(id));
-    }
-
-    public static &amp;lt;E extends Component&amp;gt; E findOnly(HasComponents container, final Class&amp;lt;E&amp;gt; componentClass, Predicate&amp;lt;? super E&amp;gt; predicate) {
-        return getOnlyElement(filter(findAll(container, componentClass), predicate));
-    }
-
-    public static &amp;lt;E extends Component&amp;gt; E findOnly(HasComponents container, final Class&amp;lt;E&amp;gt; componentClass) {
-        return findOnly(container, componentClass, alwaysTrue());
-    }
-
-    public static &amp;lt;E extends Component&amp;gt; Set&amp;lt;E&amp;gt; findAll(HasComponents container, Class&amp;lt;E&amp;gt; componentClass) {
-        if (container instanceof CustomField) {
-            initCustomField((CustomField&amp;lt;?&amp;gt;) container);
-        }
-        Set&amp;lt;E&amp;gt; result = newHashSet(filter(container, componentClass));
-        for (HasComponents subContainer : filter(container, HasComponents.class)) {
-            result.addAll(findAll(subContainer, componentClass));
-        }
-        return result;
-    }
-
-    public static void initCustomField(CustomField&amp;lt;?&amp;gt; customField) {
-        customField.iterator().next();
-    }
-
-    public static boolean isVisibleOnScreen(Component component) {
-        return component.isVisible() &amp;amp;&amp;amp; parentIsVisible(component);
-    }
-
-    private static boolean parentIsVisible(Component component) {
-        if (component.getParent() ###### null) {
-            return true;
-        } else {
-            return isVisibleOnScreen(component.getParent());
-        }
-    }
-
-    public static Predicate&amp;lt;Component&amp;gt; metCaption(final String caption) {
-        return new Predicate&amp;lt;Component&amp;gt;() {
-            public boolean apply(Component component) {
-                return StringUtils.equals(component.getCaption(), caption);
-            }
-        };
-    }
-
-    public static Predicate&amp;lt;Component&amp;gt; captionContains(final String caption) {
-        return new Predicate&amp;lt;Component&amp;gt;() {
-            public boolean apply(Component component) {
-                return StringUtils.contains(component.getCaption(), caption);
-            }
-        };
-    }
-
-    public static Predicate&amp;lt;Label&amp;gt; value(final String value) {
-        return new Predicate&amp;lt;Label&amp;gt;() {
-            public boolean apply(Label label) {
-                return StringUtils.equals(label.getValue(), value);
-            }
-        };
-    }
-
-    public static Predicate&amp;lt;Label&amp;gt; valueContains(final String value) {
-        return new Predicate&amp;lt;Label&amp;gt;() {
-            public boolean apply(Label label) {
-                return StringUtils.contains(label.getValue(), value);
-            }
-        };
-    }
-
-    public static Predicate&amp;lt;Component&amp;gt; metId(final String id) {
-        return new Predicate&amp;lt;Component&amp;gt;() {
-            public boolean apply(Component component) {
-                return StringUtils.equals(component.getId(), id);
-            }
-        };
-    }
-
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Vaadin 7 Javascript uitvoeren in de frontent @JavaScript({ &amp;quot;https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js&amp;quot;, &amp;quot;js_label.js&amp;quot; }) public class JsLabel extends AbstractJavaScriptComponent { public JsLabel(String xhtml) { getState().xhtml = xhtml; } @Override protected JsLabelState getState() { return (JsLabelState) super.getState(); } public static class JsLabelState extends JavaScriptComponentState { public String xhtml; } }  en bijbehorende js_label.js file - plaats in src/main/resources onder zelfde subdir als package van java file&amp;hellip;
+be_vdab_nonstop_presentation_form_JsLabel = function() { var e = this.</description>
     </item>
     
   </channel>

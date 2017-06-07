@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Logging on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/logging/index.xml</link>
+    <link>http://www.brainbaking.com/tags/logging/</link>
     <description>Recent content in Logging on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/logging/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/logging/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>logging</title>
@@ -16,47 +19,10 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/logging/</guid>
-      <description>
-
-&lt;h1 id=&#34;code-java-logging&#34;&gt;code:java &amp;gt;&amp;gt; Logging&lt;/h1&gt;
-
-&lt;h2 id=&#34;log4j-gebruiken-over-verschillende-threads-heen&#34;&gt;Log4j Gebruiken over verschillende threads heen&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Probleem&lt;/strong&gt;: JMS handlers die bijvoorbeeld tegelijk starten en loggen naar éénzelfde file met &lt;code&gt;Logger.getLogger(x)&lt;/code&gt;. Als een thread crasht en de andere afwerkt, maar we de volgorde van wegschrijven niet kunnen garanderen, hoe kunnen we dan dit onerscheid maken?&lt;/p&gt;
-
-&lt;p&gt;Oplossing: met &lt;code&gt;NDC&lt;/code&gt; (Nested Diagnostic Context) - zie &lt;a href=&#34;http://logging.apache.org/log4j/1.2/manual.html&#34;&gt;http://logging.apache.org/log4j/1.2/manual.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Voorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    protected static final Logger jmsLogger = Logger.getLogger(&amp;quot;jmsLogger&amp;quot;);
-
-    private void log(String message) {
-        jmsLogger.info(&amp;quot;Incoming JMS Message (&amp;quot; + getClass().getSimpleName() + &amp;quot;): &amp;quot; + message);
-    }
-
-    @Override
-    public void doHandle(String textMessage) {
-        try {
-            String usernameFromTextMessage = getUsernameFromTextMessage(textMessage);
-            NDC.push(currentThread().getName() + &amp;quot;#&amp;quot; + currentThread().getId() + &amp;quot;@&amp;quot; + usernameFromTextMessage);
-            log(&amp;quot;Started handling: &amp;quot; + textMessage);
-
-            VacatureSecurityInitializer.initConsulentUserInContext(usernameFromTextMessage);
-            handleTextMessage(textMessage);
-
-            log(&amp;quot;Completed handling&amp;quot;);
-        } finally {
-            resetSecurityContext();
-            NDC.pop();
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;NDC.push()&lt;/code&gt; zou een unieke parameter moeten binnen pakken, dit wordt geprepend aan de log ouput:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[INFO ] 23/03/2012 15:19:07 jmsLogger        - JZAMAN - Incoming JMS Message (VerwijzingVersieVerhoogdHandler): Completed handling
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>code:java &amp;gt;&amp;gt; Logging Log4j Gebruiken over verschillende threads heen Probleem: JMS handlers die bijvoorbeeld tegelijk starten en loggen naar éénzelfde file met Logger.getLogger(x). Als een thread crasht en de andere afwerkt, maar we de volgorde van wegschrijven niet kunnen garanderen, hoe kunnen we dan dit onerscheid maken?
+Oplossing: met NDC (Nested Diagnostic Context) - zie http://logging.apache.org/log4j/1.2/manual.html
+Voorbeeld:
+protected static final Logger jmsLogger = Logger.getLogger(&amp;quot;jmsLogger&amp;quot;); private void log(String message) { jmsLogger.</description>
     </item>
     
   </channel>

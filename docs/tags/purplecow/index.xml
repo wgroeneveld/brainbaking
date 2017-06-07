@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Purplecow on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/purplecow/index.xml</link>
+    <link>http://www.brainbaking.com/tags/purplecow/</link>
     <description>Recent content in Purplecow on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/purplecow/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/purplecow/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>purplecow</title>
@@ -16,27 +19,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/books/purplecow/</guid>
-      <description>
-
-&lt;h1 id=&#34;purple-cow-transform-your-business-by-being-remarkable&#34;&gt;Purple Cow: Transform Your Business by Being Remarkable&lt;/h1&gt;
-
-&lt;h3 id=&#34;crossing-the-chasm&#34;&gt;Crossing the Chasm&lt;/h3&gt;
-
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Crossing%20the%20Chasm&#34; target=&#34;_blank&#34;&gt;Crossing the Chasm&lt;/a&gt;
-
-
-&lt;p&gt;&lt;img style=&#39;float: left; width: direct&amp;800 |px;&#39; src=&#39;http://www.brainbaking.com/img//books/crossing-the-chasm.png&#39;&gt;&lt;/p&gt;
-
-&lt;p&gt;Focus op &lt;strong&gt;Early Adopters&lt;/strong&gt; in plaats van &amp;ldquo;majority&amp;rdquo;! Waarom?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Die mensen geven vroeg feedback&lt;/li&gt;
-&lt;li&gt;Zijn de &amp;ldquo;niezers&amp;rdquo; die andere mensen besmetten via mond-op-mond reclame &amp;ldquo;kijk wat voor iets nieuws ik heb en hoe goed het werkt&amp;rdquo;. Binnen de majority groep is zo niets dat zijn allemaal slechts volgers, en tegen dan is het product &amp;ldquo;uitgebold&amp;rdquo;.&lt;/li&gt;
-&lt;li&gt;Op dat moment heeft het product nog de meeste waarde.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;em&gt;Late majority&lt;/em&gt; = Gebaseerd op ervaring van anderen.&lt;/p&gt;
-</description>
+      <description>Purple Cow: Transform Your Business by Being Remarkable Crossing the Chasm Crossing the ChasmFocus op Early Adopters in plaats van &amp;ldquo;majority&amp;rdquo;! Waarom?
+ Die mensen geven vroeg feedback Zijn de &amp;ldquo;niezers&amp;rdquo; die andere mensen besmetten via mond-op-mond reclame &amp;ldquo;kijk wat voor iets nieuws ik heb en hoe goed het werkt&amp;rdquo;. Binnen de majority groep is zo niets dat zijn allemaal slechts volgers, en tegen dan is het product &amp;ldquo;uitgebold&amp;rdquo;.</description>
     </item>
     
   </channel>

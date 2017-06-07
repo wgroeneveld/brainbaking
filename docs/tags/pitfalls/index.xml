@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pitfalls on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/pitfalls/index.xml</link>
+    <link>http://www.brainbaking.com/tags/pitfalls/</link>
     <description>Recent content in Pitfalls on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/pitfalls/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/pitfalls/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>pitfalls</title>
@@ -16,180 +19,11 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/pitfalls/</guid>
-      <description>
-
-&lt;h1 id=&#34;pitfalls&#34;&gt;Pitfalls&lt;/h1&gt;
-
-&lt;p&gt;❗ Gebruik aub &lt;strong&gt;&lt;a href=&#34;http://www.jslint.com&#34;&gt;JSLint&lt;/a&gt;&lt;/strong&gt; om onderstaande &amp;ldquo;probleempjes&amp;rdquo; makkelijker te kunnen tracen en aanpassen.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/en/JavaScript/Strict_mode&#34;&gt;Strict mode&lt;/a&gt; in ECMA5 is ook iets héél handig.&lt;/p&gt;
-
-&lt;p&gt;-&amp;gt; Meer (al dan niet grappige) pitfalls/weetjes: &lt;a href=&#34;http://www.wtfjs.com/&#34;&gt;http://www.wtfjs.com/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;objecten&#34;&gt;Objecten&lt;/h3&gt;
-
-&lt;p&gt;Javascript gebruikt intern de &lt;code&gt;toString()&lt;/code&gt; functie wanneer objecten als keys worden toegekend. Dit wil zeggen dat eigenlijk de string representatie als key gebruikt wordt. Bijvoorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var obj = {};
-var key1 = new Object();
-var key2 = new Object();
-
-obj[key1] = &amp;quot;hi&amp;quot;;
-obj[key2] = &amp;quot;yo&amp;quot;;
-
-console.log(obj[key1]);  // ##### yo???
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;#####= arguments #####=&lt;/p&gt;
-
-&lt;h5 id=&#34;arguments-on-the-fly-veranderen&#34;&gt;arguments on-the-fly veranderen&lt;/h5&gt;
-
-&lt;p&gt;Zonder &lt;code&gt;use strict&lt;/code&gt; (ES5) kan je een binnenkomend argument ook toekennen aan een andere waarde. Hierdoor verandert de waarde van &lt;code&gt;arguments[0]&lt;/code&gt;! De &lt;code&gt;arguments&lt;/code&gt; lijst houdt dus een pointer bij naar de variabele die de value van het argument vasthoudt, en niet naar de value zelf. In strict mode wel. Voorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function bla(a) {
-  a = 5;
-  console.log(arguments[0]);
-}
-bla(1); // 5, in strict mode 1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;arguments-is-geen-array&#34;&gt;arguments is geen array&lt;/h5&gt;
-
-&lt;p&gt;Snel &amp;ldquo;effe&amp;rdquo; lopen over alle argumentjes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function aha() {
-  arguments.forEach(function(itm) { // syntax error ???
-    console.log(itm);
-  });
-}
-aha(1, 2, 3);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Inderdaad: &lt;code&gt;Array.isPrototypeOf(arguments) ##### false&lt;/code&gt;. Dus de &lt;code&gt;.length&lt;/code&gt; property werkt op een andere manier, en van die hidden &lt;code&gt;.callee&lt;/code&gt; dingen (die niet werken in strict mode) zitten er ook op&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;Oplossing:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function aha() {
-  var args = Array.prototype.slice.call(arguments);
-  args.forEach(function(itm) {
-    console.log(itm);
-  });
-}
-aha(1, 2, 3);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;#####= Falsey values #####=&lt;/p&gt;
-
-&lt;p&gt;De volgende values evalueren allemaal naar &lt;code&gt;false&lt;/code&gt; in bvb een &lt;code&gt;if()&lt;/code&gt; block:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;null&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;0&lt;/code&gt; als &lt;code&gt;number&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt; als &lt;code&gt;string&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;false&lt;/code&gt; als &lt;code&gt;boolean&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;undefined&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;NaN&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Deze dingen lukken ook niet:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;if(new Boolean(false)) {
-   alert(&amp;quot;ik ben false jong!&amp;quot;); // oei tis nie waar hé?
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Mogelijke Oplossingen:
-  1. gebruik altijd &lt;code&gt;.valueOf()&lt;/code&gt; van de object counterparts van alle primitives!
-  2. gebruik &lt;code&gt;Boolean(false)&lt;/code&gt; (zonder new), zie &lt;a href=&#34;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean&#34;&gt;Mozilla Boolean Dev docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Lees hier meer over in &lt;a href=&#34;http:*javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/&#34;&gt;The secret life of Javascript Primitives&lt;/a&gt; en &lt;a href=&#34;http:*javascriptweblog.wordpress.com/2010/05/03/the-value-of-valueof/&#34;&gt;the value of valueOf&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;#####= Typecasting #####=&lt;/p&gt;
-
-&lt;p&gt;^ code ^ resultaat ^
-| [] + 23 | de string &amp;ldquo;23&amp;rdquo; |
-| [1, 2] + 23 | de string &amp;ldquo;1, 223&amp;rdquo; |
-| false + 23 | het getal 23 |
-| true + 23 | het getal 24 |
-| &amp;ldquo;kadootje&amp;rdquo; + 23 | de string &amp;ldquo;kadootje23&amp;rdquo; |
-| undefined + 23 | NaN |
-| null + 23 | het getal 23 |&lt;/p&gt;
-
-&lt;p&gt;#####= Parsing #####=&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;parseInt(&amp;quot;08&amp;quot;)&lt;/code&gt; neemt automatisch aan dat de waarde naar octal values omgezet moet worden. Dit evalueert naar het getal &lt;code&gt;0&lt;/code&gt;.&lt;br/&gt;&lt;br/&gt;
-Oplossing: &lt;code&gt;parseInt(&amp;quot;08&amp;quot;, 10)&lt;/code&gt; - het tweede argument geeft de eenheid aan (10 = decimaal).&lt;/p&gt;
-
-&lt;p&gt;#####= de wereld breken (undefined) #####=&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;undefined&lt;/code&gt; is een toplevel variabele die als value de primitive value &lt;code&gt;undefined&lt;/code&gt; heeft. &lt;br/&gt;&lt;br/&gt;
-Zodra je &lt;code&gt;undefined&lt;/code&gt; (de variabele) toekent aan iets anders, is die primitive value weg en is alles naar de zak. Voorbeeld:&lt;/p&gt;
-
-&lt;p&gt;Dit is opgelost in ECMA5 door sommige properties al dan niet writable te maken. &lt;code&gt;undefined&lt;/code&gt; is daar dus readonly. Check dit in Firefox 4:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var undefinedProps = Object.getOwnPropertyDescriptor(window, &amp;quot;undefined&amp;quot;)
-undefinedProps.writable ##### false; // locked down!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;#####= Javascript en puntkomma&amp;rsquo;s #####=&lt;/p&gt;
-
-&lt;p&gt;Geen enkele lijn hoeft een &lt;code&gt;;&lt;/code&gt; te bevatten, javascript voegt deze automatisch toe bij het evalueren. Dit kan ook miserie veroorzaken:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function geefIets() {
-  return 
-  {
-     iets: &amp;quot;wow&amp;quot;
-  };
-}
-
-geefIets(); // undefined: unreachable code!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Los dit op door de accolade na de return te plaatsen in plaats van de newline.&lt;/p&gt;
-
-&lt;p&gt;#####= ECMA5: map, forEach, filter: de 3 parameters #####=&lt;/p&gt;
-
-&lt;p&gt;Sinds ECMA5 is het héél handig om bijvoorbeeld voor een array van strings elk element individueel te manipuleren en een nieuwe array terug te geven.&lt;br/&gt;&lt;br/&gt;
-Stel, ik wil &lt;code&gt;string&lt;/code&gt;s naar &lt;code&gt;number&lt;/code&gt;s omvormen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;[&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;].map(parseInt); // returns [1, NaN, NaN ] ???
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Whoops? &lt;code&gt;parseInt&lt;/code&gt; heeft als tweede variabele de eenheid (decimaal, hexa, &amp;hellip;) en alle array manipulatie functies geven altijd 3 argumenten mee: het element, de index en de array zelf. Conflict!&lt;/p&gt;
-
-&lt;p&gt;Oplossing: closures!&lt;/p&gt;
-
-&lt;p&gt;#####= Arrays zijn &amp;ldquo;speciale&amp;rdquo; associatieve objecten #####=&lt;/p&gt;
-
-&lt;p&gt;Dit zegt de &lt;a href=&#34;http:*bclary.com/2004/11/07/#a-15.4ECMAScript specificatie&#34;&gt;http:*bclary.com/2004/11/07/#a-15.4ECMAScript specificatie&lt;/a&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Array objects give special treatment to a certain class of property names. A property name P (in the form of a string value) is an array index if and only if &lt;strong&gt;ToString(ToUint32(P)) is equal to P and ToUint32(P) is not equal to 2^32 - 1&lt;/strong&gt;. Every Array object has a length property whose value is always a nonnegative integer less than 2^32. The value of the length property is numerically greater than the name of every property whose name is an array index; whenever a property of an Array object is created or changed, other properties are adjusted as necessary to maintain this invariant. Specifically, whenever a property is added whose name is an array index, the length property is changed, if necessary, to be one more than the numeric value of that array index; and whenever the length property is changed, every property whose name is an array index whose value is not smaller than the new length is automatically deleted. This constraint applies only to properties of the Array object itself and is unaffected by length or array index properties that may be inherited from its prototype.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Dat wil zeggen dat:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;zodra de &lt;code&gt;.length&lt;/code&gt; property gewijzigd wordt, er verschillende dingen gebeuren:
-
-&lt;ol&gt;
-&lt;li&gt;Indien kleiner wordt: alle properties kleiner dan de lengte worden automatisch verwijderd&lt;/li&gt;
-&lt;li&gt;Indien groter wordt: allemaal nieuwe elementen met &lt;code&gt;undefined&lt;/code&gt; als value (&lt;em&gt;impliciet&lt;/em&gt;!)&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;Alle &amp;ldquo;integer&amp;rdquo; values (zie geweldige formule) zijn &amp;ldquo;speciale&amp;rdquo; properties die de &lt;code&gt;length&lt;/code&gt; property ook aanpassen.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Wat gebeurt er als ik de &lt;code&gt;length&lt;/code&gt; property boven het maximum zet?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var arr = [1];
-arr.length = Math.pow(2, 32) - 1; // max allowed
-arr.length++; // RangeError: invalid array length (na lang denken van de parser)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ de &lt;code&gt;length&lt;/code&gt; property wordt gebruikt door utility functies zoals &lt;code&gt;push&lt;/code&gt;, &lt;code&gt;concat&lt;/code&gt; etc, dus als deze niet correct werkt zoals hierboven beschreven gebeuren en vreemde dingen!&lt;/p&gt;
-
-&lt;p&gt;Meer info: zie &lt;a href=&#34;http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/&#34;&gt;How to subclass an Array&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Pitfalls ❗️ Gebruik aub JSLint om onderstaande &amp;ldquo;probleempjes&amp;rdquo; makkelijker te kunnen tracen en aanpassen.
+Strict mode in ECMA5 is ook iets héél handig.
+-&amp;gt; Meer (al dan niet grappige) pitfalls/weetjes: http://www.wtfjs.com/
+Objecten Javascript gebruikt intern de toString() functie wanneer objecten als keys worden toegekend. Dit wil zeggen dat eigenlijk de string representatie als key gebruikt wordt. Bijvoorbeeld:
+var obj = {}; var key1 = new Object(); var key2 = new Object(); obj[key1] = &amp;quot;hi&amp;quot;; obj[key2] = &amp;quot;yo&amp;quot;; console.</description>
     </item>
     
   </channel>

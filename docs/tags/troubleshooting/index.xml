@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Troubleshooting on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/troubleshooting/index.xml</link>
+    <link>http://www.brainbaking.com/tags/troubleshooting/</link>
     <description>Recent content in Troubleshooting on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>troubleshooting</title>
@@ -16,26 +19,9 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/troubleshooting/</guid>
-      <description>
-
-&lt;h1 id=&#34;js-troubleshooting&#34;&gt;JS Troubleshooting&lt;/h1&gt;
-
-&lt;h2 id=&#34;debugging&#34;&gt;Debugging&lt;/h2&gt;
-
-&lt;h3 id=&#34;gecko&#34;&gt;Gecko&lt;/h3&gt;
-
-&lt;p&gt;Slechts één adres nodig: &lt;a href=&#34;http://getfirebug.com/&#34;&gt;http://getfirebug.com/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;internet-explorer&#34;&gt;Internet Explorer&lt;/h3&gt;
-
-&lt;h4 id=&#34;ie-6&#34;&gt;&amp;lt; IE 6&lt;/h4&gt;
-
-&lt;p&gt;De &amp;ldquo;officiële&amp;rdquo; web developer toolbar in IE6 kan totaal niets met javascript debugging aanvangen. Hiervoor gebruik je best &amp;ldquo;web development helper&amp;rdquo;: &lt;a href=&#34;http://projects.nikhilk.net/WebDevHelper&#34;&gt;http://projects.nikhilk.net/WebDevHelper&lt;/a&gt; - Die maakt het mogelijk om JS statements uit te voeren en normaal gezien fatsoenlijke error logging uit te voeren. HTTP calls (zoals ajax) loggen gaat hier ook mee.&lt;/p&gt;
-
-&lt;p&gt;❗ Een voorwaarde om het bovenstaande te laten werken is &amp;ldquo;&lt;strong&gt;disable external script debugging&lt;/strong&gt;&amp;rdquo; uitzetten in IE via: Extra &amp;gt; Options &amp;gt; Advanced &amp;gt; Surfing &amp;gt; &amp;ldquo;foutopsporing in scripts uitschakelen&amp;rdquo; uitvinken.&lt;/p&gt;
-
-&lt;p&gt;Via de Microsoft Script Debugger (zonder een toolbar te installeren maar toch script debugging te enablen) kan je ook bekijken op welke lijn de fout zich voordoet: wanneer er een fout in IE tevoorschijn komt, druk op &amp;ldquo;start debugging&amp;rdquo; en klik op &amp;ldquo;OK&amp;rdquo; om een nieuw profiel te starten. De regel waar de cursor op staat is het &amp;ldquo;probleemgeval&amp;rdquo;.&lt;/p&gt;
-</description>
+      <description>JS Troubleshooting Debugging Gecko Slechts één adres nodig: http://getfirebug.com/
+Internet Explorer &amp;lt; IE 6 De &amp;ldquo;officiële&amp;rdquo; web developer toolbar in IE6 kan totaal niets met javascript debugging aanvangen. Hiervoor gebruik je best &amp;ldquo;web development helper&amp;rdquo;: http://projects.nikhilk.net/WebDevHelper - Die maakt het mogelijk om JS statements uit te voeren en normaal gezien fatsoenlijke error logging uit te voeren. HTTP calls (zoals ajax) loggen gaat hier ook mee.
+❗️ Een voorwaarde om het bovenstaande te laten werken is &amp;ldquo;disable external script debugging&amp;rdquo; uitzetten in IE via: Extra &amp;gt; Options &amp;gt; Advanced &amp;gt; Surfing &amp;gt; &amp;ldquo;foutopsporing in scripts uitschakelen&amp;rdquo; uitvinken.</description>
     </item>
     
     <item>
@@ -44,62 +30,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/games/troubleshooting/</guid>
-      <description>
-
-&lt;h1 id=&#34;troubleshooting-with-booting&#34;&gt;Troubleshooting with Booting&lt;/h1&gt;
-
-&lt;h2 id=&#34;raven-shield&#34;&gt;Raven Shield&lt;/h2&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.agr-s.com/forums/index.php?showtopic######383&amp;amp;modethreaded&amp;amp;pid=2624&#34;&gt;http://www.agr-s.com/forums/index.php?showtopic######383&amp;amp;modethreaded&amp;amp;pid=2624&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;your-cd-key-is-already-being-used&#34;&gt;Your CD Key is already being used.&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;This error message indicates one of two things:
-1. If you are on a LAN and another machine on your network is currently playing RVS, you will need to manually change the port that RVS uses to connect to the cd-authorization server. To do this, under the &amp;ldquo;[R6GameService.R6GSServers]&amp;rdquo; heading, locate the entry for &amp;ldquo;m_iCDKeyClientPort=5777&amp;rdquo; Each computer on the LAN will need to have a unique port number after the &amp;lsquo;equals&amp;rsquo; sign. For example, if you had three computers on the network, you could leave one computer using the port 5777, one using 5776, and the third using 5775.
-2. You cd key is actually being used by another player. Please contact the support office listed in your manual.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;plants-vs-zombies-steam&#34;&gt;Plants VS Zombies (Steam)&lt;/h2&gt;
-
-&lt;p&gt;Steam community forum: &lt;a href=&#34;http://forums.steampowered.com/forums/forumdisplay.php?f=574&#34;&gt;http://forums.steampowered.com/forums/forumdisplay.php?f=574&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;steam-cloud-is-unable-to-sync-zever&#34;&gt;Steam cloud is unable to sync zever&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;Savegame retrieval tip&lt;/strong&gt;: zie &lt;a href=&#34;http://forums.steampowered.com/forums/showthread.php?t=1397905&#34;&gt;http://forums.steampowered.com/forums/showthread.php?t=1397905&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;emperor-rise-of-the-middle-kingdom&#34;&gt;Emperor: rise of the Middle Kingdom&lt;/h2&gt;
-
-&lt;h4 id=&#34;unable-to-save-local-multiplayer&#34;&gt;Unable to save (local multiplayer)&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Patch v1.0.0.1 installeren&lt;/li&gt;
-&lt;li&gt;Nadat deze geïnstalleerd is, in game directories alle .cfg files opendoen en overal versie &amp;ldquo;1.0.0.0&amp;rdquo; veranderen naar &amp;ldquo;1.0.0.1&amp;rdquo;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;commandos-3&#34;&gt;Commandos 3&lt;/h2&gt;
-
-&lt;h4 id=&#34;wuh-no-hotkeys&#34;&gt;Wuh? No hotkeys?&lt;/h4&gt;
-
-&lt;p&gt;ES! Commandos 3 has hot keys just like Commandos 2 now!&lt;/p&gt;
-
-&lt;p&gt;For all if u who complained about the interface, here is your relief!&lt;br/&gt;&lt;br/&gt;
-link: &lt;a href=&#34;http://www3.sympatico.ca/hchen001/MAPEADOINPUT.MSB&#34;&gt;http://www3.sympatico.ca/hchen001/MAPEADOINPUT.MSB&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Simply put the file in the output folder EX: &lt;code&gt;C:&amp;lt;br/&amp;gt;Program Files&amp;lt;br/&amp;gt;Commandos 3&amp;lt;br/&amp;gt;Output&amp;lt;br/&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;This was made by the comandos fans in China.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;V - for the new rifle
-Ctrl+S-Quick Save
-Ctrl+L-Quick Load
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;hellip;. exactly like commandos 2&lt;br/&gt;&lt;br/&gt;
-For the hot keys, simply move your mouse on the icons in game to reveal.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://forums.eidosgames.com/showthread.php?t=43196&#34;&gt;SOURCE&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Troubleshooting with Booting Raven Shield Zie http://www.agr-s.com/forums/index.php?showtopic######383&amp;amp;modethreaded&amp;amp;pid=2624
+Your CD Key is already being used.  This error message indicates one of two things: 1. If you are on a LAN and another machine on your network is currently playing RVS, you will need to manually change the port that RVS uses to connect to the cd-authorization server. To do this, under the &amp;ldquo;[R6GameService.R6GSServers]&amp;rdquo; heading, locate the entry for &amp;ldquo;m_iCDKeyClientPort=5777&amp;rdquo; Each computer on the LAN will need to have a unique port number after the &amp;lsquo;equals&amp;rsquo; sign.</description>
     </item>
     
   </channel>

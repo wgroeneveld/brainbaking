@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mysql on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/mysql/index.xml</link>
+    <link>http://www.brainbaking.com/tags/mysql/</link>
     <description>Recent content in Mysql on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Sep 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>mysql</title>
@@ -16,69 +19,11 @@
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/db/mysql/</guid>
-      <description>
-
-&lt;h1 id=&#34;mysql&#34;&gt;MySQL&lt;/h1&gt;
-
-&lt;h3 id=&#34;db-syncing&#34;&gt;DB Syncing&lt;/h3&gt;
-
-&lt;p&gt;Mogelijk met verschillende tools, over verschillende DB types heen. Bvb om schema&amp;rsquo;s te syncen tussen MSSQL DBs en MySQL DBs, etc etc. Enkele voorbeeldtools:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;MSSQL: AdeptSQL Diff &lt;a href=&#34;http:*www.adeptsql.com/&#34;&gt;http:*www.adeptsql.com/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;MYSQL: SQLyog &lt;a href=&#34;https:*www.webyog.com/&#34;&gt;https:*www.webyog.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Maakt een SQL DDL aan met het verschil tussen database schema&amp;rsquo;s naar keuze.&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/db/powertools.png&#39;&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;ado-net-connection&#34;&gt;ADO.NET connection&lt;/h3&gt;
-
-&lt;h5 id=&#34;pooling&#34;&gt;Pooling&lt;/h5&gt;
-
-&lt;p&gt;Enabled by default, zie &lt;a href=&#34;http://dev.mysql.com/doc/connector-net/en/connector-net-connection-options.html&#34;&gt;Connector .NET Connection options&lt;/a&gt;; voorbeeld:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Server######server; Port3306; Database######db; Uidroot; Pwd######root; Poolingtrue;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Dingen als maximum pool size, initial size etc ook instelbaar (zie link)&lt;/p&gt;
-
-&lt;h3 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h3&gt;
-
-&lt;h5 id=&#34;configuratie-properties-via-sql-uitlezen&#34;&gt;configuratie properties via SQL uitlezen&lt;/h5&gt;
-
-&lt;p&gt;Bijvoorbeeld &lt;strong&gt;max connections&lt;/strong&gt;: &lt;code&gt;show variables like &amp;quot;max_connections&amp;quot;;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Allemaal aanpasbaar via &lt;code&gt;set global max_connections = 200;&lt;/code&gt; (root rechten required)&lt;/p&gt;
-
-&lt;h5 id=&#34;aantal-momenteel-actieve-threads-bezien&#34;&gt;Aantal momenteel actieve threads bezien&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;SHOW GLOBAL STATUS where variable_name like &#39;%Threads%&#39;;&lt;/code&gt; geeft:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Variable_name          value
-----------------------------
-Delayed_insert_threads  0
-Slow_launch_threads 0
-Threads_cached  8
-Threads_connected   56
-Threads_created 138
-Threads_running 2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;huidige-connecties-killen&#34;&gt;Huidige connecties killen&lt;/h5&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.mysqlperformanceblog.com/2009/05/21/mass-killing-of-mysql-connections/&#34;&gt;Mass killing of MySQL connections&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Gaat &lt;strong&gt;niet rechtstreeks&lt;/strong&gt;; eerst een file maken met &lt;code&gt;kill&lt;/code&gt; commands en die dan sourcen in een mysql command line:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;select concat(&#39;KILL &#39;, id, &#39;;&#39;) from information_schema.processlist where host like &#39;%myhost%&#39; into outfile &#39;c:&amp;lt;br/&amp;gt;a.txt&#39;;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;❗ Forward slashen in Windows gebruiken, of dubbele backslash.&lt;/p&gt;
-
-&lt;p&gt;Stap 2: &lt;code&gt;source c:/a.txt&lt;/code&gt; - géén single quotes hierrond (anders error code 22) en geen single baskslash (anders error code 2, = file not found)&lt;/p&gt;
-
-&lt;p&gt;MySQL command line opstarten: ga naar bin dir van installed server, en execute &lt;code&gt;mysql --user###### --pass&lt;/code&gt;.&lt;/p&gt;
-</description>
+      <description>MySQL DB Syncing Mogelijk met verschillende tools, over verschillende DB types heen. Bvb om schema&amp;rsquo;s te syncen tussen MSSQL DBs en MySQL DBs, etc etc. Enkele voorbeeldtools:
+ MSSQL: AdeptSQL Diff http:*www.adeptsql.com/ MYSQL: SQLyog https:*www.webyog.com/  Maakt een SQL DDL aan met het verschil tussen database schema&amp;rsquo;s naar keuze.
+ADO.NET connection Pooling Enabled by default, zie Connector .NET Connection options; voorbeeld:
+Server######server; Port3306; Database######db; Uidroot; Pwd######root; Poolingtrue;
+Dingen als maximum pool size, initial size etc ook instelbaar (zie link)</description>
     </item>
     
   </channel>

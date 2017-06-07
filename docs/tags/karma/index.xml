@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Karma on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/karma/index.xml</link>
+    <link>http://www.brainbaking.com/tags/karma/</link>
     <description>Recent content in Karma on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/karma/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 May 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/karma/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>karma</title>
@@ -16,119 +19,11 @@
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/testing/karma/</guid>
-      <description>
-
-&lt;h1 id=&#34;karma-testacular&#34;&gt;Karma (Testacular)&lt;/h1&gt;
-
-&lt;p&gt;Ook integratie met &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/&#34;&gt;code/javascript/testing/phantomjs&lt;/a&gt; mogelijk.&lt;/p&gt;
-
-&lt;h3 id=&#34;installatie&#34;&gt;Installatie&lt;/h3&gt;
-
-&lt;p&gt;Om de Karma testen gedraaid te krijgen moet Node geïnstalleerd zijn samen met karma (&lt;code&gt;npm install karma -g&lt;/code&gt;)&lt;/p&gt;
-
-&lt;p&gt;Voor de &lt;strong&gt;ANSI console&lt;/strong&gt; in eclipse: &lt;a href=&#34;http://www.mihai-nita.net/eclipse/&#34;&gt;http://www.mihai-nita.net/eclipse/&lt;/a&gt; installeren&lt;/p&gt;
-
-&lt;p&gt;Voor de Karma Phantom launcher in eclipse: dit importeren (launch file)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version######&amp;quot;1.0&amp;quot; encoding&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;
-&amp;lt;launchConfiguration type=&amp;quot;org.eclipse.ui.externaltools.ProgramLaunchConfigurationType&amp;quot;&amp;gt;
-&amp;lt;listAttribute key=&amp;quot;org.eclipse.debug.ui.favoriteGroups&amp;quot;&amp;gt;
-&amp;lt;listEntry value=&amp;quot;org.eclipse.ui.externaltools.launchGroup&amp;quot;/&amp;gt;
-&amp;lt;/listAttribute&amp;gt;
-&amp;lt;stringAttribute key######&amp;quot;org.eclipse.ui.externaltools.ATTR_LOCATION&amp;quot; value&amp;quot;${workspace_loc:/vitrine/src/test/javascript/test.bat}&amp;quot;/&amp;gt;
-&amp;lt;stringAttribute key######&amp;quot;org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY&amp;quot; value&amp;quot;${workspace_loc:/vitrine/src/test/javascript}&amp;quot;/&amp;gt;
-&amp;lt;/launchConfiguration&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Debuggen met eclipse gaat blijkbaar niet, daarvoor moet je best &lt;a href=&#34;http://www.jetbrains.com/webstorm/&#34;&gt;http://www.jetbrains.com/webstorm/&lt;/a&gt; gebruiken. Wat ik nog heb bijgeleerd van jasmine: een individuele test tijdelijk draaien die je door &lt;code&gt;iit()&lt;/code&gt; te gebruiken ipv &lt;code&gt;it()&lt;/code&gt; (twee i&amp;rsquo;s).&lt;/p&gt;
-
-&lt;p&gt;Referentiemateriaal:&lt;/p&gt;
-
-&lt;p&gt;Angular &amp;amp; service mocking:
-  1. &lt;a href=&#34;http://docs.angularjs.org/guide/dev_guide.services.testing_services&#34;&gt;http://docs.angularjs.org/guide/dev_guide.services.testing_services&lt;/a&gt;
-  2. &lt;a href=&#34;http://docs.angularjs.org/api/ngMock.$httpBackend&#34;&gt;http://docs.angularjs.org/api/ngMock.$httpBackend&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Jasmine
-  1. &lt;a href=&#34;https://github.com/pivotal/jasmine/wiki/Spies&#34;&gt;https://github.com/pivotal/jasmine/wiki/Spies&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Karma
-  1. &lt;a href=&#34;https://github.com/angular/angular-seed/&#34;&gt;https://github.com/angular/angular-seed/&lt;/a&gt;
-  2. &lt;a href=&#34;http://karma-runner.github.io/0.8/intro/configuration.html&#34;&gt;http://karma-runner.github.io/0.8/intro/configuration.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Node - config
-  1. &lt;a href=&#34;https://npmjs.org/doc/config.html#proxy&#34;&gt;https://npmjs.org/doc/config.html#proxy&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;npm config set proxy http://proxy.be:8080
-npm config set https-proxy http://proxy.be:8080
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;integratie-in-maven&#34;&gt;Integratie in maven&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
-                &amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;exec-maven-plugin&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;1.2.1&amp;lt;/version&amp;gt;
-                &amp;lt;executions&amp;gt;
-                    &amp;lt;execution&amp;gt;
-                        &amp;lt;id&amp;gt;jsunit&amp;lt;/id&amp;gt;
-                        &amp;lt;phase&amp;gt;test&amp;lt;/phase&amp;gt;
-                        &amp;lt;goals&amp;gt;
-                            &amp;lt;goal&amp;gt;exec&amp;lt;/goal&amp;gt;
-                        &amp;lt;/goals&amp;gt;
-                    &amp;lt;/execution&amp;gt;
-                &amp;lt;/executions&amp;gt;
-                &amp;lt;configuration&amp;gt;
-                    &amp;lt;skip&amp;gt;${skipTests}&amp;lt;/skip&amp;gt;
-                    &amp;lt;successCodes&amp;gt;
-                        &amp;lt;successCode&amp;gt;0&amp;lt;/successCode&amp;gt;
-                        &amp;lt;successCode&amp;gt;1&amp;lt;/successCode&amp;gt;&amp;lt;!-- on failing test, don&#39;t get a build 
-                            error --&amp;gt;
-                    &amp;lt;/successCodes&amp;gt;
-                    &amp;lt;executable&amp;gt;${basedir}/src/test/javascript/build.bat&amp;lt;/executable&amp;gt;
-                    &amp;lt;workingDirectory&amp;gt;${basedir}/src/test/javascript&amp;lt;/workingDirectory&amp;gt;
-                &amp;lt;/configuration&amp;gt;
-            &amp;lt;/plugin&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Bovenstaande &lt;code&gt;skip&lt;/code&gt; config houdt dus ook rekening met bvb &lt;code&gt;mvn clean install -DskipTests&lt;/code&gt; - de &lt;code&gt;test&lt;/code&gt; phase van maven wordt &lt;strong&gt;niet&lt;/strong&gt; geskipped maar de testen wel door de &lt;code&gt;maven-failsafe-plugin&lt;/code&gt; - bijgevolg worden goals die aan de test fase hangen ook nog uitgevoerd.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;@echo off
-
-set PHANTOMJS_BIN=C:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;dvl.home&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;prj&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;vitrine&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;tools&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;phantomjs&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;phantomjs.exe
-karma start --log-level=debug --single-run
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ Opgelet in &lt;strong&gt;windows&lt;/strong&gt; met de paden, geen quotes gebruiken en dubbele backslashes wél gebruiken, anders werkt het niet en blijft karma hangen.&lt;/p&gt;
-
-&lt;h3 id=&#34;een-voorbeeld-conf-file-voor-een-angular-app&#34;&gt;Een voorbeeld conf file voor een Angular app&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;basePath = &#39;.&#39;;
-
-files = [
-  JASMINE,
-  JASMINE_ADAPTER,
-  &#39;../../main/webapp/js/lib/jquery*.js&#39;,
-  &#39;../../main/webapp/js/lib/angular.min.js&#39;,
-  &#39;../../main/webapp/js/lib/angular-*.js&#39;,
-  &#39;../../main/webapp/js/**/*.js&#39;,
-  &#39;lib/*.js&#39;,
-  &#39;specs/*.js&#39;
-];
-
-// Nodig voor Jenkins en in de build te integreren: singleRun ipv autoWatch
-autoWatch = true;
-//singleRun = true;
-
-browsers = [&#39;PhantomJS&#39;];
-reporters = [&#39;dots&#39;, &#39;junit&#39;];
-
-junitReporter = {
-  outputFile: &#39;../../../target/surefire-reports/be.vdab.vitrine.javascripts.xml&#39;,
-  suite: &#39;unit&#39;
-};
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Karma (Testacular) Ook integratie met code/javascript/testing/phantomjs mogelijk.
+Installatie Om de Karma testen gedraaid te krijgen moet Node geïnstalleerd zijn samen met karma (npm install karma -g)
+Voor de ANSI console in eclipse: http://www.mihai-nita.net/eclipse/ installeren
+Voor de Karma Phantom launcher in eclipse: dit importeren (launch file)
+&amp;lt;?xml version######&amp;quot;1.0&amp;quot; encoding&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt; &amp;lt;launchConfiguration type=&amp;quot;org.eclipse.ui.externaltools.ProgramLaunchConfigurationType&amp;quot;&amp;gt; &amp;lt;listAttribute key=&amp;quot;org.eclipse.debug.ui.favoriteGroups&amp;quot;&amp;gt; &amp;lt;listEntry value=&amp;quot;org.eclipse.ui.externaltools.launchGroup&amp;quot;/&amp;gt; &amp;lt;/listAttribute&amp;gt; &amp;lt;stringAttribute key######&amp;quot;org.eclipse.ui.externaltools.ATTR_LOCATION&amp;quot; value&amp;quot;${workspace_loc:/vitrine/src/test/javascript/test.bat}&amp;quot;/&amp;gt; &amp;lt;stringAttribute key######&amp;quot;org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY&amp;quot; value&amp;quot;${workspace_loc:/vitrine/src/test/javascript}&amp;quot;/&amp;gt; &amp;lt;/launchConfiguration&amp;gt;  Debuggen met eclipse gaat blijkbaar niet, daarvoor moet je best http://www.</description>
     </item>
     
   </channel>

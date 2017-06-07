@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Extjs on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/extjs/index.xml</link>
+    <link>http://www.brainbaking.com/tags/extjs/</link>
     <description>Recent content in Extjs on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/extjs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Jan 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/extjs/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Migrating from Extjs to React gradually</title>
@@ -16,117 +19,8 @@
       <pubDate>Tue, 26 Jan 2016 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/react-in-extjs/</guid>
-      <description>&lt;p&gt;We were looking for a few alternatives to our big ExtJS 4 application. Since it&amp;rsquo;s not that easy to completely migrate from one front-end framework to the next, a possible solution would be to start developing new parts in another framework. There&amp;rsquo;s a lot of domain logic spread in Ext views and controllers - which shouldn&amp;rsquo;t be there, we are well aware of that. Let&amp;rsquo;s call it &amp;ldquo;legacy&amp;rdquo; :-)&lt;/p&gt;
-
-&lt;p&gt;The application right now uses Extjs as UI and C# as backend, and lets ext do the loading of the views/controllers (living in app.js like most ext applications). There&amp;rsquo;s no ecosystem set up like modern javascript applications - build systems like Grunt, Gulp, node package managers, Browserify, &amp;hellip; are all not used. We do use sencha command to minify stuff. To be able to develop new modules without having to worry about extjs, one of the possibilities would be to use iframes. That enables us to (scenario) test the module using it&amp;rsquo;s own routing. It&amp;rsquo;s wrapped inside an Extjs view with an iframe:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    Ext.define(&#39;App.view.utilities.desktop.ReactWindow&#39;, {
-        extend: &#39;Ext.form.Panel&#39;,
-        alias: &#39;widget.App_view_utilities_desktop_ReactWindow&#39;,
-
-        bodyPadding: 5,
-        width: 600,
-
-        layout: {
-            type: &#39;vbox&#39;,
-            align: &#39;stretch&#39;
-        },
-
-        initComponent: function() {
-            var me = this;
-
-            var dynamicPanel = new Ext.Component({
-                autoEl: {
-                    tag: &#39;iframe&#39;,
-                    style: &#39;border: none&#39;,
-                    src: me.url
-                },
-                flex: 1
-            });
-
-            Ext.apply(me, {
-                title: &#39;React&#39;,
-                defaults: {
-                    labelWidth: 120
-                },
-                items: [dynamicPanel]
-            });
-            me.callParent();
-        }
-    });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;When the module is triggered in the main app, we simply add the panel to the desktop:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    this.addPanel(Ext.create(&#39;App.view.utilities.desktop.ReactWindow&#39;, {
-        url: &#39;react/mod/someurl/&#39;
-    }));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Our app structure in the GUI folder would be something like this:&lt;/p&gt;
-
-&lt;p&gt;[GUI]&lt;br/&gt;
-* global.asax&lt;br/&gt;
-* default.aspx&lt;br/&gt;
-**** [app] -&amp;gt; extjs&lt;br/&gt;
-**** [react] -&amp;gt; reactjs&lt;br/&gt;&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s simple enough. But how would one be able to open new Ext panels from within the React sub-application? That would be done via custom events thrown to the parent window. Catching these is just a matter of adding this to some controller in Extjs:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    window.addEventListener(&#39;react&#39;, function(e) {
-        me.onReactEvent(e.detail, e);
-    });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The &lt;code&gt;detail&lt;/code&gt; property is part of a custom event, thrown in a react component. This below might be some cell component, taken from the &lt;a href=&#34;https://facebook.github.io/fixed-data-table/&#34;&gt;fixed-data-table&lt;/a&gt; example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class MyLinkCell extends React.Component {
-    clicked(e) {
-        const el = e.target;
-        const eventObj = {
-            &#39;detail&#39;: {
-                &#39;type&#39;: &#39;downloadlink&#39;,
-                &#39;url&#39;: &#39;react/some/detail/url&#39; 
-            }
-        };
-
-        console.log(&#39;clicked - &amp;quot;react&amp;quot; event thrown:&#39;);
-        console.dir(eventObj);
-        if(window.parent) {
-            window.parent.dispatchEvent(new CustomEvent(&#39;react&#39;, eventObj));
-        }
-    }
-
-  render() {
-    const {rowIndex, field, data} = this.props;
-    const link = data[rowIndex][field];
-    return (
-      &amp;lt;Cell&amp;gt;
-        &amp;lt;a onClick={this.clicked} href=&#39;#&#39;&amp;gt;{link}&amp;lt;/a&amp;gt;
-      &amp;lt;/Cell&amp;gt;
-    );
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Of course this is more or less the same when for instance using Angular2 instead of React, the custom event is part of the JS standard, see &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events&#34;&gt;Creating and triggering events&lt;/a&gt; from MDN.&lt;/p&gt;
-
-&lt;p&gt;To be able to use source maps in conjunction with Browserify/Watchify, I had to tweak some parameters in package.json:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;`watchify index.js --verbose -d -t babelify --sourceMapRelative . --outfile=bundle.js`
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Things we still need to research:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;How well does React compare to Angular2 in terms of components? For instance react doesn&amp;rsquo;t include &lt;a href=&#34;http://www.kriasoft.com/react-routing/&#34;&gt;routing&lt;/a&gt; by default. We&amp;rsquo;ll need to rewrite some already-extjs-custom components in the target framework.&lt;/li&gt;
-&lt;li&gt;How should we include the build ecosystem (npm, gulp/grunt/browserify, &amp;hellip;) into our C# build solution and Teamcity build? Will &lt;a href=&#34;http://reactjs.net/&#34;&gt;http://reactjs.net/&lt;/a&gt; help for instance?&lt;/li&gt;
-&lt;li&gt;Can we use &lt;a href=&#34;http://reactjs.net/&#34;&gt;http://reactjs.net/&lt;/a&gt; to render serverside components?&lt;/li&gt;
-&lt;li&gt;Which build tool should we use? We&amp;rsquo;re being overwhelmed by choice: bower/npm as package manager, I&amp;rsquo;ve seen stuff like &lt;a href=&#34;http://www.christianalfoni.com/articles/2015_10_01_Taking-the-next-step-with-react-and-webpack&#34;&gt;Webpack in conjunction with React&lt;/a&gt;, &amp;hellip; The list is huge if you&amp;rsquo;ve not kept up with the JS technology news.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;One of the things we liked a lot was typescript or ES6 and the ability to use &lt;code&gt;=&amp;gt; ()&lt;/code&gt; and promises. Enabling this requires a transpiler or a polyfill like &lt;a href=&#34;https://babeljs.io/&#34;&gt;Babel JS&lt;/a&gt;, but maybe this as a build step in sencha command will also ease some pain we&amp;rsquo;re having with the current Ext code.&lt;/p&gt;
-</description>
+      <description>We were looking for a few alternatives to our big ExtJS 4 application. Since it&amp;rsquo;s not that easy to completely migrate from one front-end framework to the next, a possible solution would be to start developing new parts in another framework. There&amp;rsquo;s a lot of domain logic spread in Ext views and controllers - which shouldn&amp;rsquo;t be there, we are well aware of that. Let&amp;rsquo;s call it &amp;ldquo;legacy&amp;rdquo; :-)
+The application right now uses Extjs as UI and C# as backend, and lets ext do the loading of the views/controllers (living in app.</description>
     </item>
     
     <item>
@@ -135,113 +29,7 @@
       <pubDate>Tue, 23 Dec 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/unit-testing-extjs-ui/</guid>
-      <description>
-
-&lt;h3 id=&#34;webdriver-js-heavy-frameworks&#34;&gt;WebDriver &amp;amp; js-heavy frameworks&lt;/h3&gt;
-
-&lt;p&gt;Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&amp;rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &amp;hellip; like you&amp;rsquo;re used to when using client/server desktop applications. You define components on a view, behavior on a controller, and data and the way it&amp;rsquo;s loaded on the model.&lt;/p&gt;
-
-&lt;p&gt;The problem with Javascript-heavy frameworks like this is that if your team does not have a lot of experience using JS in general, it can get extremely messy and cluttered. Which it did, coupled with a lot of regression (a misplaced &amp;ldquo;;&amp;rdquo; could break an entire part of the application), we needed an automated way to catch up with those bugs.
-Since I have a lot of experience with WebDriver, we started using it to write scenario tests when the application is deployed. A test should emulate customer behavior: click on a menu, expect a window to be opened, fill in a form and expect something else to happen. It&amp;rsquo;s not isolated but tests everything together.&lt;/p&gt;
-
-&lt;p&gt;WebDriver is great, but since a lot of javascript events are happening in the background it&amp;rsquo;s very difficult to write a easily usable DSL to manipulate the UI. One has to wait for ajax calls to finish, for DOM elements to appear or disappear, and so on. Tests became instable and failed sometimes, even sometimes on the CI build but never on your development environment. It takes more and more time to find &amp;amp; fix those things.&lt;/p&gt;
-
-&lt;h3 id=&#34;a-possible-solution-siesta&#34;&gt;A possible solution: Siesta&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.bryntum.com/products/siesta/&#34;&gt;Siesta&lt;/a&gt; is a product from Bryntum especially written to unit test Extjs applications, focussing on the UI. Sounds nice, so we decided to check it out as a possible alternative to WebDriver. As the website states:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Siesta is a JavaScript unit testing tool that can help you test any JavaScript code and also perform testing of the DOM and simulate user interactions. The tool can be used together with any type of JavaScript codebase – jQuery, Ext JS, NodeJS, Dojo, YUI etc. Using the API, you can choose from many types of assertions ranging from simple logical JS object&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Sounds good, right?&lt;/p&gt;
-
-&lt;p&gt;The setup isn&amp;rsquo;t too difficult, after a few hours of fiddling I managed to bootstrap our Extjs application using this index.js file:&lt;/p&gt;
-
-&lt;p&gt;var Harness = Siesta.Harness.Browser.ExtJS;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    Harness.configure({
-        title       : &#39;Test Suite&#39;,
-        loaderPath  : { 
-            &#39;Ext&#39;: &#39;../extjs&#39;,
-            &#39;Ext.ux&#39;: &#39;../extjs/ux&#39;,
-            &#39;MyApp&#39;: &#39;../app&#39;
-        },
-        preload     : [
-            // version of ExtJS used by your application
-            &#39;../extjs/resources/css/ext-all.css&#39;,
-            &#39;../resources/css/workb.css&#39;,
-
-            // version of ExtJS used by your application
-            &#39;../extjs/ext-all-debug.js&#39;,
-            &#39;./app-vars.js&#39;,
-            {
-                text: &amp;quot;Ext.Loader.setConfig({ &#39;Ext&#39;: &#39;../extjs&#39;, &#39;Ext.ux&#39;: &#39;../extjs/ux&#39;, &#39;MyApp&#39;: &#39;../app&#39; })&amp;quot;
-            },
-            &#39;../extjs/overrides/javascript-overrides.js&#39;,
-            &#39;../extjs/overrides/PFW-overrides.js&#39;,
-            &#39;../app/app.js&#39;
-        ]
-    });
-
-    Harness.start(
-        &#39;tests/001_sanity.t.js&#39;,
-        &#39;tests/002_window.t.js&#39;
-    );
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Some pitfalls: &lt;code&gt;loaderPath&lt;/code&gt; isn&amp;rsquo;t evaluated in the preload so you have to reset it with &lt;code&gt;Ext.Loader.setConfig()&lt;/code&gt; and I had to alter our app.js file. Our directory structure looks like this:&lt;/p&gt;
-
-&lt;p&gt;root
-&amp;ndash; app
-&amp;ndash; extjs
-&amp;mdash;- ux
-&amp;ndash; siesta
-&amp;mdash;- tests&lt;/p&gt;
-
-&lt;p&gt;So you have to watch out for relative paths like &lt;code&gt;appFolder&lt;/code&gt; in app.js:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Ext.application({
-    name: &#39;MyApp&#39;,
-    appFolder: (_siesta ? &#39;../&#39; : &#39;&#39;) + &#39;app&#39;,
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After that, you can start writing tests. Looking at the examples, the test flow looks a lot like our current WebDriver tests (wait for rows present, wait x seconds, click on this, do that). Here&amp;rsquo;s a simple test to create a view and check if the grid has some rows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;StartTest(function(t) {
-    t.diag(&amp;quot;Creating some window&amp;quot;);
-
-    var view = Ext.create(&#39;MyApp.view.SomeOverview&#39;, {
-        renderTo: Ext.getBody() // required
-    });
-    var grid = view.down(&amp;quot;grid&amp;quot;);
-
-    t.chain(
-        { waitFor : &#39;rowsVisible&#39;, args : grid }
-    );
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;{{urls.media}}/siesta.png&#34; alt=&#34;siesta view test in action&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Siesta also comes with it&amp;rsquo;s downsides though.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;JS Test code is really messy. Chaining, async calls, ugly data setup for stores, &amp;hellip; A simple test can get complicated fast and requires advanced JS knowledge not everybody in our team has.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;waitFor&lt;/code&gt; exposes the same problems we have with our current WebDriver tests, so it&amp;rsquo;s not that much of an improvement&lt;/li&gt;
-&lt;li&gt;Test data setup cannot be reused from our backend integration tests (we use the builder pattern there to create data in the DB)&lt;/li&gt;
-&lt;li&gt;Creating a view to test doesn&amp;rsquo;t test the controller and vice versa. Still too low level for us.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The biggest problem is that it&amp;rsquo;s still more an integration/unit test than a scenario test and quite tightly coupled to your implementation. Since our implementation is far from perfect, Siesta is not the optimal solution for us. For example, we create stores inside our views and load them in &lt;code&gt;initComponent()&lt;/code&gt;. No way to provide a stub store with some dummy data. We&amp;rsquo;d have to refactor 200+ views to create tests. Of course tests should be written before the implementation&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;If you would like to know more about Siesta or JS BDD testing, take a look at&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://pivotallabs.com/sencha-touch-bdd-part-5-controller-testing/&#34;&gt;Pivotallabs blog post&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.bryntum.com/docs/siesta/#!/guide/siesta_getting_started&#34;&gt;Siesta API doc: Getting started&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>WebDriver &amp;amp; js-heavy frameworks Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&amp;rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &amp;hellip; like you&amp;rsquo;re used to when using client/server desktop applications.</description>
     </item>
     
   </channel>

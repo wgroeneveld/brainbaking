@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gathering on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/gathering/index.xml</link>
+    <link>http://www.brainbaking.com/tags/gathering/</link>
     <description>Recent content in Gathering on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/gathering/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/gathering/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>gathering</title>
@@ -16,78 +19,12 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/reflect/gathering/</guid>
-      <description>
-
-&lt;h1 id=&#34;gathering-knowledge&#34;&gt;Gathering Knowledge&lt;/h1&gt;
-
-&lt;p&gt;Ookwel bekend als &amp;ldquo;&lt;strong&gt;Knowledge Harvesting&lt;/strong&gt;&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;width: nolink&amp;|px;&#39; src=&#39;http://www.brainbaking.com/img//reflect/harvest.jpg&#39;&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;methodes&#34;&gt;Methodes&lt;/h2&gt;
-
-&lt;h4 id=&#34;gebruik-een-persoonlijke-wiki&#34;&gt;Gebruik een persoonlijke wiki&lt;/h4&gt;
-
-&lt;p&gt;Bijvoorbeeld http:*www.pmwiki.org/ of http:*www.dokuwiki.org/dokuwiki (PHP based)&lt;/p&gt;
-
-&lt;p&gt;Persoonlijke wiki&amp;rsquo;s bestaande uit één pagina kan ook, voor variaties zie &lt;a href=&#34;https://en.wikipedia.org/wiki/Personal%20wiki&#34; target=&#34;_blank&#34;&gt;Personal wiki&lt;/a&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Doe het &lt;strong&gt;nodige onderhoud&lt;/strong&gt; op de wiki, vernieuw op tijd informatie&lt;/p&gt;
-
-&lt;h4 id=&#34;gebruik-mindmaps&#34;&gt;Gebruik mindmaps&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/mindmaps&#34; target=&#34;_blank&#34;&gt;mindmaps&lt;/a&gt;
- dus!&lt;/p&gt;
-
-&lt;p&gt;Waarom?
-  1. chaos over orde in schema: makkelijk te veranderen, &amp;ldquo;organisch&amp;rdquo; gestructureerd
-  2. connect the dots
-  3. collaboratie
-  4. &amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Herwerk oude mindmaps&lt;/strong&gt;, schrijf ze opnieuw, gebruik &amp;ldquo;thought walks&amp;rdquo; om iets nieuw te introduceren, verwerk ze in uw wiki.&lt;/p&gt;
-
-&lt;h4 id=&#34;gebruik-een-notebook&#34;&gt;Gebruik een notebook&lt;/h4&gt;
-
-&lt;p&gt;Of beter gezegd, een &lt;strong&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Commonplace%20book&#34; target=&#34;_blank&#34;&gt;Commonplace book&lt;/a&gt;
-&lt;/strong&gt; - iets dat zijn oorsprong kende begin de jaren 1600 in Europa, en nu nog altijd: &lt;a href=&#34;https://en.wikipedia.org/wiki/Getting%20things%20done&#34; target=&#34;_blank&#34;&gt;Getting things done&lt;/a&gt;
-&lt;br/&gt;&lt;br/&gt;
-Meer uitgebreide uitleg over commonplace books en de geschiedenis hiervan: &lt;a href=&#34;http://www.diyplanner.com/docs/commonplace2&#34;&gt;http://www.diyplanner.com/docs/commonplace2&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Werd en wordt gebruikt om eender welke informatie op te slaan en opnieuw te raadplegen, gaande van recepten tot gedichten tot gedachten tot ideetjes. In de 17de eeuw werd dit zelfs aangeleerd in bijvoorbeeld Oxford, waar &lt;a href=&#34;https://en.wikipedia.org/wiki/John%20Locke&#34; target=&#34;_blank&#34;&gt;John Locke&lt;/a&gt;
- toevallig genoeg studeerde. Dit ging uiteindelijk over naar 2 dingen:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Locke&amp;rsquo;s werk, &amp;ldquo;Essay concerning Human Understanding&amp;rdquo; (Volledig &lt;a href=&#34;http://www.earlymoderntexts.com/loess.html&#34;&gt;Hier te downloaden&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Locke&amp;rsquo;s uitgevonden &lt;strong&gt;&lt;a href=&#34;http:*oll.libertyfund.org/index.php?option######com_staticxt&amp;amp;staticfileshow.php&amp;amp;title######762&amp;amp;search%22+A+New+Method+of+a+Common-Place-Book%22&amp;amp;chapter######80886&amp;amp;layouthtml#a_1925077&#34;&gt;indexatiemethode&lt;/a&gt;&lt;/strong&gt; ((zie ook http:*ilyal.posterous.com/john-lockes-indexing-method-for-journals-comm)) om sneller zaken terug te vinden.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Waarom random overal dingen schrijven? Hou een &lt;strong&gt;Liquid network&lt;/strong&gt; ((zie &lt;em&gt;Where good ideas come From&lt;/em&gt;)) aan informatie bij: maak het te gestructureerd en er is te weinig plaats voor gedachten om te &lt;em&gt;colliden&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Waarom zaken opschrijven? Om ze daarna &lt;strong&gt;te herevalueren&lt;/strong&gt; en zo nieuwe connecties te kunnen maken! (Facilitate the &lt;em&gt;Slow Hunch&lt;/em&gt;)&lt;/p&gt;
-
-&lt;p&gt;Waarom overal en altijd bij u hebben? Een idee in de moderne drukke wereld leeft zoals koolstof in gasform: heel agressief bindend maar snel verloren. Zorg voor iets &lt;em&gt;liquid&lt;/em&gt;!&lt;/p&gt;
-
-&lt;h5 id=&#34;populaire-commonplace-books&#34;&gt;Populaire commonplace books&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;John Locke&amp;rsquo;s werk (boven)&lt;/li&gt;
-&lt;li&gt;Charles Darwin&amp;rsquo;s grootvader&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Enquire%20Within%20Upon%20Everything&#34; target=&#34;_blank&#34;&gt;Enquire Within Upon Everything&lt;/a&gt;
-, een meer encyclopedisch naslagwerk over alles &amp;ldquo;huiselijk&amp;rdquo; in 1856. Bekijk dit online:
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://books.google.com/books?id######MzcCAAAAQAAJ&amp;amp;printsectitlepage&amp;amp;source######gbs_summary_r&amp;amp;cad0#v######onepage&amp;amp;q&amp;amp;ffalse&#34;&gt;Originele 1856 editie&lt;/a&gt; via Google Books&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.colourcountry.net/enquire/index.html&#34;&gt;1884 editie&lt;/a&gt; online met index&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.gutenberg.org/ebooks/10766&#34;&gt;epub downloadbare editie&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;de-evolutie-van-commonplace-naar-think-tank&#34;&gt;De evolutie van commonplace naar &amp;ldquo;think tank&amp;rdquo;&lt;/h5&gt;
-
-&lt;p&gt;Commonplace boeken van vroeger bevatten grotendeels passages uit boeken die mensen boeiend, inspirerend, &amp;hellip; vonden - overgekopiëerd. Scraps van krantenartikels, foto&amp;rsquo;s, recepten, &amp;hellip; Maar slechts weinigen schreven wat ze dachten, &amp;ldquo;refactoren&amp;rdquo; vaak (mulling over thoughts) of houden nota&amp;rsquo;s over emoties ea (geen echte mindfulness).&lt;/p&gt;
-</description>
+      <description>Gathering Knowledge Ookwel bekend als &amp;ldquo;Knowledge Harvesting&amp;rdquo;.
+Methodes Gebruik een persoonlijke wiki Bijvoorbeeld http:*www.pmwiki.org/ of http:*www.dokuwiki.org/dokuwiki (PHP based)
+Persoonlijke wiki&amp;rsquo;s bestaande uit één pagina kan ook, voor variaties zie Personal wikiDoe het nodige onderhoud op de wiki, vernieuw op tijd informatie
+Gebruik mindmaps mindmapsdus!
+Waarom? 1. chaos over orde in schema: makkelijk te veranderen, &amp;ldquo;organisch&amp;rdquo; gestructureerd 2. connect the dots 3. collaboratie 4. &amp;hellip;
+Herwerk oude mindmaps, schrijf ze opnieuw, gebruik &amp;ldquo;thought walks&amp;rdquo; om iets nieuw te introduceren, verwerk ze in uw wiki.</description>
     </item>
     
   </channel>

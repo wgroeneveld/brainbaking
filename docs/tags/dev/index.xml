@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dev on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/dev/index.xml</link>
+    <link>http://www.brainbaking.com/tags/dev/</link>
     <description>Recent content in Dev on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>dev</title>
@@ -16,53 +19,9 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/dev/</guid>
-      <description>
-
-&lt;h1 id=&#34;code-dev&#34;&gt;code &amp;gt;&amp;gt; Dev&lt;/h1&gt;
-
-&lt;h2 id=&#34;tools-etc&#34;&gt;Tools etc&lt;/h2&gt;
-
-&lt;p&gt;Notepad++ &lt;strong&gt;JSON Formatter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;JSONViewer&lt;/code&gt; voor notepad++: &lt;a href=&#34;http://sourceforge.net/projects/nppjsonviewer/&#34;&gt;http://sourceforge.net/projects/nppjsonviewer/&lt;/a&gt; - doet:
-  1. json viewer treeview geselecteerde json
-  2. format json (heel handig voor &lt;code&gt;POST&lt;/code&gt; body gepaste hierin)&lt;/p&gt;
-
-&lt;h2 id=&#34;links&#34;&gt;Links&lt;/h2&gt;
-
-&lt;h4 id=&#34;mocking-tools&#34;&gt;Mocking tools&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://gomockingbird.com/&#34;&gt;https://gomockingbird.com/&lt;/a&gt; (niet gratis, van Jan zijn werkgroepje)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://balsamiq.com/products/mockups&#34;&gt;http://balsamiq.com/products/mockups&lt;/a&gt; (gratis maar om de 5 minuten een dialog wegklikken)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.mockflow.com/&#34;&gt;http://www.mockflow.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;algemene-development-tools&#34;&gt;Algemene development tools&lt;/h4&gt;
-
-&lt;h5 id=&#34;tracking&#34;&gt;Tracking&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.pivotaltracker.com/&#34;&gt;https://www.pivotaltracker.com/&lt;/a&gt; - simple, collaborative, single-view project tracking/management&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://leankitkanban.com/&#34;&gt;http://leankitkanban.com/&lt;/a&gt; - online Kanban tracking (betalend)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;tech-blogs&#34;&gt;Tech blogs&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.dzone.com/links/index.html&#34;&gt;http://www.dzone.com/links/index.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Voor &lt;strong&gt;javascript&lt;/strong&gt;: zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/&#34;&gt;Javascript home page&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;designer-blogs&#34;&gt;Designer blogs&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.smashingmagazine.com/&#34;&gt;http://www.smashingmagazine.com/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.alistapart.com/&#34;&gt;http://www.alistapart.com/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://css-tricks.com/&#34;&gt;http://css-tricks.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>code &amp;gt;&amp;gt; Dev Tools etc Notepad++ JSON Formatter:
+JSONViewer voor notepad++: http://sourceforge.net/projects/nppjsonviewer/ - doet: 1. json viewer treeview geselecteerde json 2. format json (heel handig voor POST body gepaste hierin)
+Links Mocking tools  https://gomockingbird.com/ (niet gratis, van Jan zijn werkgroepje) http://balsamiq.com/products/mockups (gratis maar om de 5 minuten een dialog wegklikken) http://www.mockflow.com/  Algemene development tools Tracking  https://www.pivotaltracker.com/ - simple, collaborative, single-view project tracking/management http://leankitkanban.com/ - online Kanban tracking (betalend)  Tech blogs  http://www.</description>
     </item>
     
   </channel>

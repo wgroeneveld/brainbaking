@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Webflow on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/webflow/index.xml</link>
+    <link>http://www.brainbaking.com/tags/webflow/</link>
     <description>Recent content in Webflow on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/webflow/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/webflow/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>webflow</title>
@@ -16,149 +19,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/jsp/webflow/</guid>
-      <description>
-
-&lt;h1 id=&#34;spring-webflow&#34;&gt;Spring Webflow&lt;/h1&gt;
-
-&lt;h2 id=&#34;pitfalls-rond-flow-xml-declaraties&#34;&gt;Pitfalls rond flow xml declaraties&lt;/h2&gt;
-
-&lt;p&gt;Gelieve in het geval van &amp;ldquo;problemen&amp;rdquo; de volgende checklist te raadplegen:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;bind = false&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;setupForm&lt;/code&gt; gedaan? Anders worden &lt;code&gt;PropertyEditors&lt;/code&gt; niet correct gebruikt&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;resetForm&lt;/code&gt; leegmaken gui model&lt;/li&gt;
-&lt;li&gt;scope opgeven in model attribute&lt;/li&gt;
-&lt;li&gt;in action: &lt;code&gt;setFormObjectName&lt;/code&gt;/&lt;code&gt;setFormObjectScope&lt;/code&gt; en indien &lt;code&gt;resetForm&lt;/code&gt; ook &lt;code&gt;setFormObjectClass&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Ajax requets: &lt;code&gt;vac_ajax_request&lt;/code&gt; op true zetten -&amp;gt; anders geen fragments&lt;/li&gt;
-&lt;li&gt;Ajax: extend van &lt;code&gt;AbstractWebflowAjaxAction&lt;/code&gt; Te combineren met &lt;code&gt;setFormObjectName&lt;/code&gt; stap&lt;/li&gt;
-&lt;li&gt;nestedPartialPage tag -&amp;gt; &lt;code&gt;commandName&lt;/code&gt; ofwel hardcoded ofwel als var vanuit tiles meegegeven&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;abstractwebflowajaxaction&#34;&gt;AbstractWebflowAjaxAction&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
-package be.oei.webmvc;
-
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.DataBinder;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.webflow.action.FormAction;
-import org.springframework.webflow.action.FormObjectAccessor;
-import org.springframework.webflow.core.collection.MutableAttributeMap;
-import org.springframework.webflow.execution.Event;
-import org.springframework.webflow.execution.RequestContext;
-import org.springframework.webflow.execution.ScopeType;
-import org.springframework.webflow.execution.View;
-
-public abstract class AbstractWebFlowAjaxAction extends FormAction {
-
-    protected static final String COMMAND_NAME = &amp;quot;commandName&amp;quot;;
-    protected static final String ERRORS_PREFIX = BindingResult.MODEL_KEY_PREFIX;
-
-    @Override
-    protected final Object getFormObject(RequestContext context) throws Exception {
-        String formObjectName = getFormObjectName();
-        ScopeType formObjectScope = getFormObjectScope();
-        Object result = null;
-        if (formObjectName != null) {
-            result = formObjectScope.getScope(context).get(formObjectName);
-        }
-        if (result ###### null) {
-            result = ((MutableAttributeMap) context.getFlowScope().get(&amp;quot;viewScope&amp;quot;)).get(&amp;quot;currentFormObject&amp;quot;);
-        }
-        if (result ###### null) {
-            result = context.getFlowScope().get(&amp;quot;currentFormObject&amp;quot;);
-        }
-        if (result ###### null) {
-            result = super.getFormObject(context);
-        }
-        return result;
-    }
-
-    protected final String commandNameFromRequest(RequestContext context) {
-        return context.getRequestParameters().get(COMMAND_NAME);
-    }
-
-    @Override
-    public Event bindAndValidate(RequestContext context) throws Exception {
-        Event result = super.bindAndValidate(context);
-        initFragmentToRender(context);
-        return result;
-    }
-
-    @Override
-    public Event bind(RequestContext context) throws Exception {
-        Event result = super.bind(context);
-        this.initFragmentToRender(context);
-        return result;
-    }
-
-    @Override
-    protected DataBinder createBinder(RequestContext context, Object formObject) throws Exception {
-        DataBinder binder = new WebDataBinder(formObject, commandNameFromRequest(context));
-        if (getMessageCodesResolver() != null) {
-            binder.setMessageCodesResolver(getMessageCodesResolver());
-        }
-        initBinder(context, binder);
-        registerPropertyEditors(context, binder);
-        return binder;
-    }
-
-    @Override
-    protected FormObjectAccessor getFormObjectAccessor(final RequestContext context) {
-        final String commandNameFromRequest = commandNameFromRequest(context);
-        return new FormObjectAccessor(context) {
-            @Override
-            public Errors getFormErrors(String formObjectName, ScopeType scopeType) {
-                return super.getFormErrors(commandNameFromRequest, scopeType);
-            }
-
-            @Override
-            public Object getFormObject(String formObjectName, @SuppressWarnings(&amp;quot;rawtypes&amp;quot;) Class formObjectClass, ScopeType scopeType) {
-                return super.getFormObject(commandNameFromRequest, formObjectClass, scopeType);
-            }
-
-            @Override
-            public Object getFormObject(String formObjectName, ScopeType scopeType) {
-                return super.getFormObject(commandNameFromRequest, scopeType);
-            }
-
-            @Override
-            public Object getCurrentFormObject(ScopeType scopeType) {
-                return super.getFormObject(getCurrentFormObjectName(), scopeType);
-            }
-
-            @Override
-            public Errors getCurrentFormErrors(ScopeType scopeType) {
-                return super.getFormErrors(getCurrentFormObjectName(), scopeType);
-            }
-
-            @Override
-            public void putFormObject(Object formObject, String formObjectName, ScopeType scopeType) {
-                super.putFormObject(formObject, commandNameFromRequest, scopeType);
-            }
-
-            @Override
-            public void putFormErrors(Errors errors, ScopeType scopeType) {
-                scopeType.getScope(context).put(ERRORS_PREFIX + commandNameFromRequest, errors);
-                setCurrentFormErrors(errors, scopeType);
-            }
-
-        };
-    }
-
-    protected void initFragmentToRender(RequestContext context) {
-        context.getFlashScope().put(View.RENDER_FRAGMENTS_ATTRIBUTE, new String[] { fragmentToRender() });
-        context.getFlashScope().put(COMMAND_NAME, commandNameFromRequest(context));
-    }
-
-    protected abstract String fragmentToRender();
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Spring Webflow Pitfalls rond flow xml declaraties Gelieve in het geval van &amp;ldquo;problemen&amp;rdquo; de volgende checklist te raadplegen:
+ bind = false setupForm gedaan? Anders worden PropertyEditors niet correct gebruikt resetForm leegmaken gui model scope opgeven in model attribute in action: setFormObjectName/setFormObjectScope en indien resetForm ook setFormObjectClass Ajax requets: vac_ajax_request op true zetten -&amp;gt; anders geen fragments Ajax: extend van AbstractWebflowAjaxAction Te combineren met setFormObjectName stap nestedPartialPage tag -&amp;gt; commandName ofwel hardcoded ofwel als var vanuit tiles meegegeven  AbstractWebflowAjaxAction package be.</description>
     </item>
     
   </channel>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>http://www.brainbaking.com/post/handing-over-enough-when-inspiring/</loc>
@@ -77,7 +78,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/reflect/retros/</loc>
     <lastmod>2015-07-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -122,7 +123,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/code/ruby/</loc>
     <lastmod>2015-01-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -132,7 +133,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/code/php/</loc>
     <lastmod>2015-01-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -292,7 +293,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/code/python/</loc>
     <lastmod>2014-03-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -332,7 +333,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/code/java/</loc>
     <lastmod>2014-01-29T00:00:00+00:00</lastmod>
   </url>
   
@@ -442,7 +443,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/code/c/</loc>
     <lastmod>2013-08-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -452,12 +453,12 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/code/csharp/</loc>
     <lastmod>2013-07-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/code/c/testing/</loc>
     <lastmod>2013-07-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -702,17 +703,17 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/books/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/code/build/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/code/db/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -722,42 +723,42 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/code/tools/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/flora/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/games/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/games/wizardry8/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/reflect/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/schermen/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/tech/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/wiki/</loc>
+    <loc>http://www.brainbaking.com/wiki/unix/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -1099,7 +1100,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/index.net/</loc>
+    <loc>http://www.brainbaking.com/tags/.net/</loc>
     <lastmod>2014-10-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1213,7 +1214,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/c/</loc>
+    <loc>http://www.brainbaking.com/tags/c#/</loc>
     <lastmod>2015-01-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -2120,6 +2121,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/</loc>
+    <lastmod>2014-10-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

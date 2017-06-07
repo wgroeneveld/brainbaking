@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Queues on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/queues/index.xml</link>
+    <link>http://www.brainbaking.com/tags/queues/</link>
     <description>Recent content in Queues on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/queues/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/queues/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>queues</title>
@@ -16,72 +19,9 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/queues/</guid>
-      <description>
-
-&lt;h1 id=&#34;code-java-queues&#34;&gt;code:java &amp;gt;&amp;gt; Queues&lt;/h1&gt;
-
-&lt;p&gt;Zie ook &lt;a href=&#34;http://www.brainbaking.com/wiki/code/java/monitoring/&#34;&gt;code/java/monitoring&lt;/a&gt; om JMX te enablen.&lt;/p&gt;
-
-&lt;h2 id=&#34;via-jmx-hornetq-queues-leegmaken&#34;&gt;Via JMX (HornetQ) queues leegmaken&lt;/h2&gt;
-
-&lt;p&gt;Dit is een &lt;code&gt;TestExecutionListener&lt;/code&gt; die je met &lt;code&gt;@TestExecutionListeneres&lt;/code&gt; kan gebruiken om na elke test de queues leeg te maken:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class QueueCleanerContextListener extends AbstractTestExecutionListener {
-
-    public void cleanQueues() throws Exception {
-        InitialContext initialContext = null;
-        JMXConnector connector = null;
-        try {
-            connector = connectToQueue();
-            for (String queue : getJMSServerControl(connector).getQueueNames()) {
-                getJMSQueueControl(connector, queue).removeMessages(null);
-            }
-        } finally {
-            connector.close();
-            if (initialContext != null) {
-                initialContext.close();
-            }
-        }
-    }
-
-    private JMXConnector connectToQueue() throws IOException, MalformedURLException {
-        return JMXConnectorFactory.connect(new JMXServiceURL(buildJMXUrl()), new HashMap&amp;lt;String, Object&amp;gt;());
-    }
-
-    private String buildJMXUrl() {
-        return &amp;quot;service:jmx:rmi:*/jndi/rmi:*localhost:3000/jmxrmi&amp;quot;;
-    }
-
-    private JMSQueueControl getJMSQueueControl(JMXConnector connector, String queueNaam) throws IOException, Exception {
-        MBeanServerConnection mbsc = connector.getMBeanServerConnection();
-
-        return (JMSQueueControl) MBeanServerInvocationHandler.newProxyInstance(mbsc,
-                ObjectNameBuilder.DEFAULT.getJMSQueueObjectName(queueNaam), JMSQueueControl.class, false);
-    }
-
-    private JMSServerControl getJMSServerControl(JMXConnector connector) throws IOException, Exception {
-        MBeanServerConnection mbsc = connector.getMBeanServerConnection();
-
-        return (JMSServerControl) MBeanServerInvocationHandler.newProxyInstance(mbsc,
-                ObjectNameBuilder.DEFAULT.getJMSServerObjectName(), JMSServerControl.class, false);
-    }
-
-    @Override
-    public void afterTestMethod(TestContext testContext) throws Exception {
-        cleanQueues();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;hoeveel-berichten-zitten-er-nog-op-mijn-queue&#34;&gt;Hoeveel berichten zitten er nog op mijn queue?&lt;/h2&gt;
-
-&lt;p&gt;Zie boven, gebruik &lt;code&gt;JMSQueueControl&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;String filter = &amp;quot;&amp;quot;; // if subset counting is required
-JMSQueueControl control = fetchQueue(); // see above
-control.countMessages(filter); // is a long
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>code:java &amp;gt;&amp;gt; Queues Zie ook code/java/monitoring om JMX te enablen.
+Via JMX (HornetQ) queues leegmaken Dit is een TestExecutionListener die je met @TestExecutionListeneres kan gebruiken om na elke test de queues leeg te maken:
+public class QueueCleanerContextListener extends AbstractTestExecutionListener { public void cleanQueues() throws Exception { InitialContext initialContext = null; JMXConnector connector = null; try { connector = connectToQueue(); for (String queue : getJMSServerControl(connector).getQueueNames()) { getJMSQueueControl(connector, queue).removeMessages(null); } } finally { connector.</description>
     </item>
     
     <item>
@@ -90,46 +30,9 @@ control.countMessages(filter); // is a long
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/queues/</guid>
-      <description>
-
-&lt;h1 id=&#34;queues&#34;&gt;Queues&lt;/h1&gt;
-
-&lt;h2 id=&#34;hornetq&#34;&gt;HornetQ&lt;/h2&gt;
-
-&lt;h5 id=&#34;queues-definiëren&#34;&gt;queues definiëren&lt;/h5&gt;
-
-&lt;p&gt;in &lt;code&gt;hornetq-jms.xml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt; &amp;lt;queue name=&amp;quot;blaQuezue&amp;quot;&amp;gt;
-      &amp;lt;entry name=&amp;quot;/queue/app/queueName&amp;quot;/&amp;gt;
-   &amp;lt;/queue&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;store-and-forward-systeem-opzetten&#34;&gt;store-and-forward systeem opzetten&lt;/h3&gt;
-
-&lt;p&gt;HornetQ werkt met &lt;code&gt;bridges&lt;/code&gt; die je moet configureren in de &lt;code&gt;hornetq-configuration.xml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;bridges&amp;gt;   
-        &amp;lt;bridge name=&amp;quot;system1-store-and-forward&amp;quot;&amp;gt;
-            &amp;lt;queue-name&amp;gt;jms.queue.fromQueue&amp;lt;/queue-name&amp;gt;
-            &amp;lt;forwarding-address&amp;gt;jms.queue.toQueue&amp;lt;/forwarding-address&amp;gt;
-            &amp;lt;static-connectors&amp;gt;
-                &amp;lt;connector-ref&amp;gt;forward-to-hornetq-connector&amp;lt;/connector-ref&amp;gt;
-            &amp;lt;/static-connectors&amp;gt;     
-        &amp;lt;/bridge&amp;gt;    
-    &amp;lt;/bridges&amp;gt;
-
-   &amp;lt;connectors&amp;gt;
-      &amp;lt;connector name=&amp;quot;forward-to-hornetq-connector&amp;quot;&amp;gt;
-         &amp;lt;factory-class&amp;gt;org.hornetq.core.remoting.impl.netty.NettyConnectorFactory&amp;lt;/factory-class&amp;gt;
-         &amp;lt;param key######&amp;quot;host&amp;quot;  value&amp;quot;forwardToAddress&amp;quot;/&amp;gt;
-         &amp;lt;param key######&amp;quot;port&amp;quot;  value&amp;quot;5445&amp;quot;/&amp;gt;
-      &amp;lt;/connector&amp;gt;
-  &amp;lt;/connectors&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Waarbij de bridge die gebouwd wordt verwijst naar een connector, hier dus &lt;code&gt;connector-ref&lt;/code&gt; &lt;strong&gt;forward-to-hornetq-connector&lt;/strong&gt; die op een andere server kan draaien (&lt;code&gt;forwardToAddress&lt;/code&gt;) - maar dat kan evengoed localhost zijn.&lt;/p&gt;
-</description>
+      <description>Queues HornetQ queues definiëren in hornetq-jms.xml:
+&amp;lt;queue name=&amp;quot;blaQuezue&amp;quot;&amp;gt; &amp;lt;entry name=&amp;quot;/queue/app/queueName&amp;quot;/&amp;gt; &amp;lt;/queue&amp;gt;  store-and-forward systeem opzetten HornetQ werkt met bridges die je moet configureren in de hornetq-configuration.xml:
+&amp;lt;bridges&amp;gt; &amp;lt;bridge name=&amp;quot;system1-store-and-forward&amp;quot;&amp;gt; &amp;lt;queue-name&amp;gt;jms.queue.fromQueue&amp;lt;/queue-name&amp;gt; &amp;lt;forwarding-address&amp;gt;jms.queue.toQueue&amp;lt;/forwarding-address&amp;gt; &amp;lt;static-connectors&amp;gt; &amp;lt;connector-ref&amp;gt;forward-to-hornetq-connector&amp;lt;/connector-ref&amp;gt; &amp;lt;/static-connectors&amp;gt; &amp;lt;/bridge&amp;gt; &amp;lt;/bridges&amp;gt; &amp;lt;connectors&amp;gt; &amp;lt;connector name=&amp;quot;forward-to-hornetq-connector&amp;quot;&amp;gt; &amp;lt;factory-class&amp;gt;org.hornetq.core.remoting.impl.netty.NettyConnectorFactory&amp;lt;/factory-class&amp;gt; &amp;lt;param key######&amp;quot;host&amp;quot; value&amp;quot;forwardToAddress&amp;quot;/&amp;gt; &amp;lt;param key######&amp;quot;port&amp;quot; value&amp;quot;5445&amp;quot;/&amp;gt; &amp;lt;/connector&amp;gt; &amp;lt;/connectors&amp;gt;  Waarbij de bridge die gebouwd wordt verwijst naar een connector, hier dus connector-ref forward-to-hornetq-connector die op een andere server kan draaien (forwardToAddress) - maar dat kan evengoed localhost zijn.</description>
     </item>
     
   </channel>

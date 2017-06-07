@@ -9,7 +9,7 @@
   <title>cmd</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.21" />
   <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
@@ -378,7 +378,7 @@ logfile=/cygdrive/c/opt/wamp/www/wiki/data/wiki/helena/svnlog.txt
 
 pushd /cygdrive/c/opt/hudson/jobs/Helena_build/workspace/burgerlijkestand
 echo &quot;### Svn log Helena Trunk &quot; &gt; $logfile
-echo &quot;❗ periode **[$datefrom - $dateto]**&quot; &gt;&gt; $logfile
+echo &quot;❗️ periode **[$datefrom - $dateto]**&quot; &gt;&gt; $logfile
 echo &quot;#### Helena Jira's via svn log&quot; &gt;&gt; $logfile
 svn --username######cp8tsc --passwordq3Sp8Phu log -r{$datefrom}:{$dateto} |
     grep -B 2 -A 1 -i 'HEL-&lt;br/&gt;|jira' |
@@ -480,7 +480,7 @@ popd
   	    </p>
   	    
     	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
           
     	</p>
       </div>
@@ -502,7 +502,7 @@ popd
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-45748221-1', 'auto');
 ga('send', 'pageview');

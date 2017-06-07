@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unit Testing on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/unit-testing/index.xml</link>
+    <link>http://www.brainbaking.com/tags/unit-testing/</link>
     <description>Recent content in Unit Testing on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/unit-testing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Dec 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/unit-testing/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Unit testing in Legacy Projects: VB6</title>
@@ -16,39 +19,7 @@
       <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/vb6-unit-testing/</guid>
-      <description>&lt;p&gt;Thanks to the &lt;a href=&#34;https://ihadthisideaonce.com/2015/05/13/postmodern-vb6-a-quick-start-with-simplyvbunit/&#34;&gt;Postmodern VB6&lt;/a&gt; article I&amp;rsquo;ve found on the internetz, I decided to give &lt;a href=&#34;simplyvbunit.sourceforge.net&#34;&gt;SimplyVBUnit&lt;/a&gt; a try. My job requires sporadic visual basic 6 code changes in the big legacy project we&amp;rsquo;re converting to C#. It&amp;rsquo;s an administrative system bound to Belgium laws so as you can imagine they change every few months and the old software still has to be complaint to those crazy new rules. As a result, we sometimes dabble in VB6 code. It feels more like drowning, really.&lt;/p&gt;
-
-&lt;p&gt;Unit testing is what keeps me from rage-quitting on every project. The SimplyVBUnit syntax is quite nice if you&amp;rsquo;re used to writing NUnit tests: they also work with &lt;code&gt;Assert.That&lt;/code&gt; for instance:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-vb&#34;&gt;Public Sub MyTestMethod_WithSomeArg_ShouldReturn45
-  Dim isType As Boolean
-  isType = MyTestMethod(arg1)
-
-  Assert.That isType, Iz.EqualTo(45)
-End Sub
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.brainbaking.com/img/simplyvbunit.png&#34; alt=&#34;simply vb unit screenshot&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The test code is very readable thanks to the &lt;a href=&#34;https://nunit.org/index.php?p=documentation&#34;&gt;NUnit&lt;/a&gt; influence on SimplyVBUnit. The package is very easy to install, but there are a few gotcha&amp;rsquo;s.
-You need to create a separate VBP file (Visual Basic Project) which acts as your UnitTest project with a reference to the SimplyVBUnit package. That&amp;rsquo;s easy enough, but it&amp;rsquo;s a project. That means it can&amp;rsquo;t reference other projects! Our software is basically one large project with heaps of muddy code. Compiling the EXE and referencing that one is not an option for us. That leaves us with a few alternatives:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Package the test runner and the dependency in your production code. (Hmmm&amp;hellip;)&lt;/li&gt;
-&lt;li&gt;Create a DLL project and move the test code to the DLL. This requires another build step in our already-too-long-manual-deployment procedure. Nope.&lt;/li&gt;
-&lt;li&gt;Create a group (vbg), include both projects, and include modules/forms/class modules to be tested in the unit test project as an existing file. This means both projects will include the same source files. SourceSafe actually notices this if you have a file checked out and will ask you to update the &amp;ldquo;other&amp;rdquo; file in the second project.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The group makes it possible to open everything at once. Unit tests live in a subfolder. This is our vbg file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;VBGROUP 5.0
-Project=program.vbp
-StartupProject=UnitTests\UnitTests.vbp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Utilizing two projects in one group means switching between both as a startup project. One could use the group to develop and start tests but the vbps for debugging or so. It&amp;rsquo;s all still fairly new for us so we&amp;rsquo;ll see where this will end.
-Unit tests are useless if they aren&amp;rsquo;t run (automatically). At this moment we try to avoid coding anything in VB6 at all. If we do, we run the tests manually. At least some parts of the code are tested without bootstrapping the whole application and plowing through various forms to get to the part where you actually changed something&amp;hellip;&lt;/p&gt;
-</description>
+      <description>Thanks to the Postmodern VB6 article I&amp;rsquo;ve found on the internetz, I decided to give SimplyVBUnit a try. My job requires sporadic visual basic 6 code changes in the big legacy project we&amp;rsquo;re converting to C#. It&amp;rsquo;s an administrative system bound to Belgium laws so as you can imagine they change every few months and the old software still has to be complaint to those crazy new rules. As a result, we sometimes dabble in VB6 code.</description>
     </item>
     
     <item>
@@ -57,103 +28,7 @@ Unit tests are useless if they aren&amp;rsquo;t run (automatically). At this mom
       <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/webdriver-exception-handling/</guid>
-      <description>&lt;p&gt;As the previous post indicated, we&amp;rsquo;re trying to stabilize our scenario tests created with WebDriver. One of the things we did was trying to capture as much data as possible if something goes wrong. Something like a typical &lt;code&gt;ElementNotFoundException&lt;/code&gt;, or the less common &lt;code&gt;StaleElementException&lt;/code&gt; (detached from DOM after evaluation) - these things can be hard to trace if you don&amp;rsquo;t run the tests locally. We also stumbled upon the &amp;ldquo;it works on my machine&amp;rdquo; problem - tests succeeding on one development machine but not on the other - mostly related due to timing issues.&lt;/p&gt;
-
-&lt;p&gt;So, what should you do when something goes wrong?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;capture what happened! (screenshot)&lt;/li&gt;
-&lt;li&gt;capture what happened! (exception stacktrace logging)&lt;/li&gt;
-&lt;li&gt;capture what happened! (serverside logging)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;WebDriver has a &lt;code&gt;GetScreenshot()&lt;/code&gt; method you can use to dump an image to a file on exception. We used a bit of pointcut magic using PostSharp to automagically handle every exception without manually having to write each &lt;code&gt;try { }&lt;/code&gt; clause.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    WebDriver().GetScreenshot().SaveAsFile(fileName + &amp;quot;.png&amp;quot;, ImageFormat.Png);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After saving the image, we also capture the exception and some extra serverside logging:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;        File.WriteAllText(fileName + &amp;quot;.txt&amp;quot;,
-            &amp;quot;-- Resolved URL: &amp;quot; + ScenarioFixture.Instance.ResolveHostAndPort() + Environment.NewLine +
-            &amp;quot;-- Actual URL: &amp;quot; + ScenarioFixture.Instance.Driver.Url + Environment.NewLine +
-            &amp;quot;-- Exception Message: &amp;quot; + ex.Message + Environment.NewLine +
-            &amp;quot;-- Stacktrace: &amp;quot; + Environment.NewLine + ex.StackTrace + Environment.NewLine + Environment.NewLine +
-            &amp;quot;-- Service log: &amp;quot; + Environment.NewLine + ReadServiceLogFromDeployedApp());
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Because the webservice is deployed somewhere else (scenario tests run againsst the nightly build IIS webserver), we need to access the logfiles using a ´GET´ call, done with RestSharp:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    private static string ReadServiceLogFromDeployedApp()
-    {
-        var restClient = new RestClient(ScenarioFixture.Instance.ResolveHostAndPort());
-        var restRequest = new RestRequest(&amp;quot;log/servicelog.txt&amp;quot;);
-        restRequest.AddHeader(&amp;quot;Content-Type&amp;quot;, &amp;quot;text/plain&amp;quot;);
-        restRequest.AddHeader(&amp;quot;Accept&amp;quot;, &amp;quot;text/plain&amp;quot;);
-        var response = restClient.Execute(restRequest);
-        return response.Content;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, to easily access those files (the screenshot and the written log for each failing test), we wrap the exception in another exception containing a direct link to both files. That enables every developer to simply browse to the failing test on our CI env (teamcity) and simply click on the link!&lt;/p&gt;
-
-&lt;p&gt;To be able to do that, combined with the pointcut, implement the &lt;code&gt;OnException()&lt;/code&gt; hook and call the above code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[Serializable]
-[ScenarioExceptionAspect(AttributeExclude = true)]
-public class ScenarioExceptionAspect : OnMethodBoundaryAspect
-{
-    public override void OnException(MethodExecutionArgs args)
-    {
-        var exceptionFileName = Directory.GetCurrentDirectory() + @&amp;quot;/&amp;quot; + WebDriverExceptionHandler.Handle(args.Exception);
-
-        exceptionFileName = exceptionFileName.Replace(@&amp;quot;C:&amp;quot;, @&amp;quot;file://teamcity/c$&amp;quot;);
-        exceptionFileName = exceptionFileName.Replace(@&amp;quot;\&amp;quot;, @&amp;quot;/&amp;quot;);
-
-        throw new Exception(&amp;quot;Scenario test failed&amp;quot;
-            + Environment.NewLine
-            + &amp;quot; -- Screenshot: &amp;quot; + exceptionFileName + &amp;quot;.png&amp;quot;
-            + Environment.NewLine
-            + &amp;quot; -- Log: &amp;quot; + exceptionFileName + &amp;quot;.txt&amp;quot;, args.Exception);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This introduces one more problem: what if you want to trigger an exception, something like &lt;code&gt;ExpectedException(typeof(InvalidArgumentException))&lt;/code&gt;? We&amp;rsquo;ll still end up in our aspect and we&amp;rsquo;ll take a screenshot and dump everything. We fixed this by taking a peek at the live stacktrace. I know it&amp;rsquo;s far from ideal, but it serves it&amp;rsquo;s purpose and works pretty well for the moment.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    private static bool ExpectedSomeException(StackTrace trace)
-    {
-        const int arbitraryMaxDepthToLookForAttribs = 5;
-        for (var stackElements = 1; stackElements &amp;lt;= arbitraryMaxDepthToLookForAttribs; stackElements++)
-        {
-            if (AnyExpectedExceptionInAttribute(trace, stackElements))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    private static bool AnyExpectedExceptionInAttribute(StackTrace trace, int stackElements)
-    {
-        var callingMethod = trace.GetFrame(stackElements).GetMethod();
-        var anyExpectedExceptionAttrib = callingMethod.GetCustomAttributes(typeof(ExpectedExceptionAttribute), true).Any();
-        return anyExpectedExceptionAttrib;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Every instance of a new &lt;code&gt;StackTrace&lt;/code&gt; element will contain all stack data from that point on, so create one in the onException method, otherwise remember to look &amp;ldquo;deeper&amp;rdquo; or further into the stack itself. Yes we could solve that using recursion instead of with an arbitrary number of elements inside a for loop, but we were trying to solve something else and this stood in the way so naturally the reaction was to not invest too much time.&lt;/p&gt;
-
-&lt;p&gt;What&amp;rsquo;s the outcome? This:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Test(s) failed. System.Exception : Scenario test failed
-&amp;ndash; Screenshot: file://teamcity/c$/buildagents/buildAgentOne/work/10dbfc9caad025f8/Proj/ScenarioTests/bin/Debug/ex-15-01-14-15-56-02.png
-&amp;ndash; Log: file://teamcity/c$/buildagents/buildAgentOne/work/10dbfc9caad025f8/Proj/ScenarioTests/bin/Debug/ex-15-01-14-15-56-02.txt
- &amp;mdash;-&amp;gt; System.Exception : Root menu could not be opened after 10 tries?
-  at Proj.ScenarioTests.ScenarioExceptionAspect.OnException(MethodExecutionArgs args) in c:\buildagents\buildAgentOne\work\10dbfc9caad025f8\Proj\Proj.ScenarioTests\ScenarioExceptionAttributeHandler.cs:line 36
-&amp;hellip;&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
+      <description>As the previous post indicated, we&amp;rsquo;re trying to stabilize our scenario tests created with WebDriver. One of the things we did was trying to capture as much data as possible if something goes wrong. Something like a typical ElementNotFoundException, or the less common StaleElementException (detached from DOM after evaluation) - these things can be hard to trace if you don&amp;rsquo;t run the tests locally. We also stumbled upon the &amp;ldquo;it works on my machine&amp;rdquo; problem - tests succeeding on one development machine but not on the other - mostly related due to timing issues.</description>
     </item>
     
     <item>
@@ -162,113 +37,7 @@ public class ScenarioExceptionAspect : OnMethodBoundaryAspect
       <pubDate>Tue, 23 Dec 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/unit-testing-extjs-ui/</guid>
-      <description>
-
-&lt;h3 id=&#34;webdriver-js-heavy-frameworks&#34;&gt;WebDriver &amp;amp; js-heavy frameworks&lt;/h3&gt;
-
-&lt;p&gt;Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&amp;rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &amp;hellip; like you&amp;rsquo;re used to when using client/server desktop applications. You define components on a view, behavior on a controller, and data and the way it&amp;rsquo;s loaded on the model.&lt;/p&gt;
-
-&lt;p&gt;The problem with Javascript-heavy frameworks like this is that if your team does not have a lot of experience using JS in general, it can get extremely messy and cluttered. Which it did, coupled with a lot of regression (a misplaced &amp;ldquo;;&amp;rdquo; could break an entire part of the application), we needed an automated way to catch up with those bugs.
-Since I have a lot of experience with WebDriver, we started using it to write scenario tests when the application is deployed. A test should emulate customer behavior: click on a menu, expect a window to be opened, fill in a form and expect something else to happen. It&amp;rsquo;s not isolated but tests everything together.&lt;/p&gt;
-
-&lt;p&gt;WebDriver is great, but since a lot of javascript events are happening in the background it&amp;rsquo;s very difficult to write a easily usable DSL to manipulate the UI. One has to wait for ajax calls to finish, for DOM elements to appear or disappear, and so on. Tests became instable and failed sometimes, even sometimes on the CI build but never on your development environment. It takes more and more time to find &amp;amp; fix those things.&lt;/p&gt;
-
-&lt;h3 id=&#34;a-possible-solution-siesta&#34;&gt;A possible solution: Siesta&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.bryntum.com/products/siesta/&#34;&gt;Siesta&lt;/a&gt; is a product from Bryntum especially written to unit test Extjs applications, focussing on the UI. Sounds nice, so we decided to check it out as a possible alternative to WebDriver. As the website states:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Siesta is a JavaScript unit testing tool that can help you test any JavaScript code and also perform testing of the DOM and simulate user interactions. The tool can be used together with any type of JavaScript codebase – jQuery, Ext JS, NodeJS, Dojo, YUI etc. Using the API, you can choose from many types of assertions ranging from simple logical JS object&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Sounds good, right?&lt;/p&gt;
-
-&lt;p&gt;The setup isn&amp;rsquo;t too difficult, after a few hours of fiddling I managed to bootstrap our Extjs application using this index.js file:&lt;/p&gt;
-
-&lt;p&gt;var Harness = Siesta.Harness.Browser.ExtJS;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    Harness.configure({
-        title       : &#39;Test Suite&#39;,
-        loaderPath  : { 
-            &#39;Ext&#39;: &#39;../extjs&#39;,
-            &#39;Ext.ux&#39;: &#39;../extjs/ux&#39;,
-            &#39;MyApp&#39;: &#39;../app&#39;
-        },
-        preload     : [
-            // version of ExtJS used by your application
-            &#39;../extjs/resources/css/ext-all.css&#39;,
-            &#39;../resources/css/workb.css&#39;,
-
-            // version of ExtJS used by your application
-            &#39;../extjs/ext-all-debug.js&#39;,
-            &#39;./app-vars.js&#39;,
-            {
-                text: &amp;quot;Ext.Loader.setConfig({ &#39;Ext&#39;: &#39;../extjs&#39;, &#39;Ext.ux&#39;: &#39;../extjs/ux&#39;, &#39;MyApp&#39;: &#39;../app&#39; })&amp;quot;
-            },
-            &#39;../extjs/overrides/javascript-overrides.js&#39;,
-            &#39;../extjs/overrides/PFW-overrides.js&#39;,
-            &#39;../app/app.js&#39;
-        ]
-    });
-
-    Harness.start(
-        &#39;tests/001_sanity.t.js&#39;,
-        &#39;tests/002_window.t.js&#39;
-    );
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Some pitfalls: &lt;code&gt;loaderPath&lt;/code&gt; isn&amp;rsquo;t evaluated in the preload so you have to reset it with &lt;code&gt;Ext.Loader.setConfig()&lt;/code&gt; and I had to alter our app.js file. Our directory structure looks like this:&lt;/p&gt;
-
-&lt;p&gt;root
-&amp;ndash; app
-&amp;ndash; extjs
-&amp;mdash;- ux
-&amp;ndash; siesta
-&amp;mdash;- tests&lt;/p&gt;
-
-&lt;p&gt;So you have to watch out for relative paths like &lt;code&gt;appFolder&lt;/code&gt; in app.js:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Ext.application({
-    name: &#39;MyApp&#39;,
-    appFolder: (_siesta ? &#39;../&#39; : &#39;&#39;) + &#39;app&#39;,
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After that, you can start writing tests. Looking at the examples, the test flow looks a lot like our current WebDriver tests (wait for rows present, wait x seconds, click on this, do that). Here&amp;rsquo;s a simple test to create a view and check if the grid has some rows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;StartTest(function(t) {
-    t.diag(&amp;quot;Creating some window&amp;quot;);
-
-    var view = Ext.create(&#39;MyApp.view.SomeOverview&#39;, {
-        renderTo: Ext.getBody() // required
-    });
-    var grid = view.down(&amp;quot;grid&amp;quot;);
-
-    t.chain(
-        { waitFor : &#39;rowsVisible&#39;, args : grid }
-    );
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;{{urls.media}}/siesta.png&#34; alt=&#34;siesta view test in action&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Siesta also comes with it&amp;rsquo;s downsides though.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;JS Test code is really messy. Chaining, async calls, ugly data setup for stores, &amp;hellip; A simple test can get complicated fast and requires advanced JS knowledge not everybody in our team has.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;waitFor&lt;/code&gt; exposes the same problems we have with our current WebDriver tests, so it&amp;rsquo;s not that much of an improvement&lt;/li&gt;
-&lt;li&gt;Test data setup cannot be reused from our backend integration tests (we use the builder pattern there to create data in the DB)&lt;/li&gt;
-&lt;li&gt;Creating a view to test doesn&amp;rsquo;t test the controller and vice versa. Still too low level for us.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The biggest problem is that it&amp;rsquo;s still more an integration/unit test than a scenario test and quite tightly coupled to your implementation. Since our implementation is far from perfect, Siesta is not the optimal solution for us. For example, we create stores inside our views and load them in &lt;code&gt;initComponent()&lt;/code&gt;. No way to provide a stub store with some dummy data. We&amp;rsquo;d have to refactor 200+ views to create tests. Of course tests should be written before the implementation&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;If you would like to know more about Siesta or JS BDD testing, take a look at&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://pivotallabs.com/sencha-touch-bdd-part-5-controller-testing/&#34;&gt;Pivotallabs blog post&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.bryntum.com/docs/siesta/#!/guide/siesta_getting_started&#34;&gt;Siesta API doc: Getting started&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>WebDriver &amp;amp; js-heavy frameworks Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&amp;rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &amp;hellip; like you&amp;rsquo;re used to when using client/server desktop applications.</description>
     </item>
     
     <item>
@@ -277,99 +46,8 @@ Since I have a lot of experience with WebDriver, we started using it to write sc
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/custom-webdriver-page-factories/</guid>
-      <description>&lt;p&gt;The problem: Webdriver elements returned by &lt;code&gt;driver.FindElement()&lt;/code&gt; are too generic. There&amp;rsquo;re the &lt;code&gt;Text&lt;/code&gt;, &lt;code&gt;SendKeys()&lt;/code&gt; and &lt;code&gt;Click()&lt;/code&gt; methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like &lt;code&gt;ShouldContainValue&lt;/code&gt; or &lt;code&gt;Type&lt;/code&gt; (okay, that&amp;rsquo;s a one-to-one mapping with &lt;code&gt;SendKeys()&lt;/code&gt;, but it&amp;rsquo;s a lot less technical!). Instead of&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)]
-    private IWebElement startButton;
-
-    [FindsBy(How = How.CssSelector, Using = &amp;quot;.other&amp;quot;)]
-    private IWebElement whatever;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You&amp;rsquo;d find code like&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)]
-    private HTMLSubmitButton startButton;
-
-    [FindsBy(How = How.CssSelector, Using = &amp;quot;.other&amp;quot;)]
-    private HTMLInputBox whatever;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In java, this is not that difficult. Normally all fields annotated with FindsBy are filled in via reflection with &lt;code&gt;PageFactory.InitElements()&lt;/code&gt;. (warning: this creates proxies and does not yet actually do the lookup in the DOM tree. This is a good thing, as filling the fields usually happens inside the constructor of a page object.). &lt;code&gt;initElements&lt;/code&gt; returns the filled page, you can do a few things from there:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;postprocess the page and decorate your fields&lt;/li&gt;
-&lt;li&gt;create your own page factory and create your own fields, wrapped around the webdriver proxies&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In C#, you&amp;rsquo;re in trouble - the class is sealed, and the proxy classes are internal. Creating your own factory is possible, but produces fuzzy code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;internal class PageFactory
-{
-    private PageFactory()
-    {
-    }
-
-    private static By FindsByAttributeToBy(FindsByAttribute attribute)
-    {
-        return (By) typeof (FindsByAttribute).GetProperty(&amp;quot;Finder&amp;quot;, BindingFlags.NonPublic | BindingFlags.Instance).GetValue(attribute);
-    }
-
-    public static void InitElements(IWebDriver driver, object page)
-    {
-        foreach (FieldInfo field in FindAllFieldsAndProperties(page.GetType()))
-        {
-            Attribute[] findsByAttribs = Attribute.GetCustomAttributes(field, typeof (FindsByAttribute), true);
-            if (findsByAttribs.Length &amp;gt; 0)
-            {
-                var findsByAttribute = (findsByAttribs[0] as FindsByAttribute);
-                if (field.FieldType == typeof (IWebElement))
-                {
-                    field.SetValue(page, FindElement(driver, FindsByAttributeToBy(findsByAttribute)));
-                }
-                else if (typeof (IEnumerable).IsAssignableFrom(field.FieldType))
-                {
-                    field.SetValue(page, FindElements(driver, FindsByAttributeToBy(findsByAttribute)));
-                }
-            }
-        }
-    }
-
-    private static IWebElement FindElement(IWebDriver driver, By by)
-    {
-        // warning: create WebProxyElement instead of directly doing a lookup
-        return driver.FindElement(by);
-    }
-
-    private static IReadOnlyCollection&amp;lt;IWebElement&amp;gt; FindElements(IWebDriver driver, By by)
-    {
-        // warning: create WebListProxyElement instead of directly doing a lookup
-        return driver.FindElements(by);
-    }
-
-    private static IEnumerable&amp;lt;FieldInfo&amp;gt; FindAllFieldsAndProperties(Type type)
-    {
-        var list = new List&amp;lt;FieldInfo&amp;gt;();
-        list.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.Public));
-        for (; type != (Type) null; type = type.BaseType)
-        {
-            list.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic));
-        }
-        return list;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you have a keen eye, you notice a few things:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;caching of the attribute wouldn&amp;rsquo;t work anymore. The default C# WebDriver implementation is fuzzy and I didn&amp;rsquo;t want to copypaste code I won&amp;rsquo;t use.&lt;/li&gt;
-&lt;li&gt;proxying won&amp;rsquo;t work anymore, you&amp;rsquo;d have to use reflection to instantiate internal classes.&lt;/li&gt;
-&lt;li&gt;reflection has been used to fetch the &lt;code&gt;By&lt;/code&gt; instance of the &lt;code&gt;FindsByAttribute&lt;/code&gt;. Yay.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The above solution is too complex to solve a simple thing. Instead of a custom page factory, in C# we now use extension methods on &lt;code&gt;IWebElement&lt;/code&gt;. Another possibility would to create wrapper objects on-the-fly but you&amp;rsquo;d still have to map the &amp;ldquo;raw&amp;rdquo; web elements on page objects.&lt;/p&gt;
-</description>
+      <description>The problem: Webdriver elements returned by driver.FindElement() are too generic. There&amp;rsquo;re the Text, SendKeys() and Click() methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like ShouldContainValue or Type (okay, that&amp;rsquo;s a one-to-one mapping with SendKeys(), but it&amp;rsquo;s a lot less technical!). Instead of
+ [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)] private IWebElement startButton; [FindsBy(How = How.CssSelector, Using = &amp;quot;.</description>
     </item>
     
     <item>
@@ -378,60 +56,8 @@ Since I have a lot of experience with WebDriver, we started using it to write sc
       <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/metaprogramming-convention-dry/</guid>
-      <description>&lt;p&gt;So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using &lt;code&gt;RhinoMock&lt;/code&gt; in &lt;code&gt;C#&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    [TestInitialize]
-    public void SetUp()
-    {
-        dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;();
-        mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;();
-        userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;();
-        userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;();
-        // ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth. So why should I repeat myself again and again but initializing a bunch of mocks using &lt;code&gt;GenerateMock&lt;/code&gt;?&lt;/p&gt;
-
-&lt;p&gt;In Java using Mockito, the &lt;code&gt;@Mock&lt;/code&gt; annotation automagically instantiates a mock for you, provided you annotated your test class with &lt;code&gt;@RunWith(MockitoJUnitRunner.class)&lt;/code&gt;. I would like to apply this pattern to MSTest but there&amp;rsquo;s not a single hook to be found where I can plug in my initialization code. Thanks a bunch.&lt;/p&gt;
-
-&lt;p&gt;Example taken from &lt;a href=&#34;http://docs.mockito.googlecode.com/&#34;&gt;Mockito docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class ArticleManagerTest {
-
-    @Mock private ArticleCalculator calculator;
-    @Mock private ArticleDatabase database;
-    @Mock private UserProvider userProvider;
-
-    private ArticleManager manager;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, this &amp;ldquo;problem&amp;rdquo; is easily solved with a bit of metaprogramming and an abstract class:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Loop over (private) fields&lt;/li&gt;
-&lt;li&gt;Filter out suffixed with &amp;lsquo;Mock&amp;rsquo;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Initialize.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public abstract class AbstractTestCase
-{
-    [TestInitialize]
-    public void CreateMocksBasedOnNamingConvention()
-    {
-        this.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(x =&amp;gt; x.Name.EndsWith(&amp;quot;Mock&amp;quot;)).All(InitMock);
-    }
-
-    private bool InitMock(FieldInfo field)
-    {
-        field.SetValue(this, MockRepository.GenerateMock(field.FieldType, new Type[]{}));
-        return true;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Very easy with &lt;code&gt;LINQ&lt;/code&gt;. The question is - is metaprogramming or reflection in this case &amp;ldquo;allowed&amp;rdquo;? Do you think this is &amp;ldquo;bad&amp;rdquo; (because it&amp;rsquo;s implicit), or is the convention of suffixing your fields with &amp;lsquo;Mock&amp;rsquo; good enough? The base test case could also be named something like &lt;code&gt;MockInitializingTestCase&lt;/code&gt; if that makes you feel better.&lt;/p&gt;
-</description>
+      <description>So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using RhinoMock in C#:
+ [TestInitialize] public void SetUp() { dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;(); mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;(); userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;(); userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;(); // ...  We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth.</description>
     </item>
     
     <item>
@@ -440,131 +66,8 @@ Since I have a lot of experience with WebDriver, we started using it to write sc
       <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/integration-testing-sqlite/</guid>
-      <description>
-
-&lt;p&gt;This article is based on the notes I&amp;rsquo;ve collected on &lt;a href=&#34;http://brainbaking.com/wiki/code/db/sqlite&#34;&gt;My Wiki&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;On previous projects I&amp;rsquo;ve worked on, development PCs came with a local version of the database scheme. Each DB change also got rolled out to those computers, which enabled us developers to fool around without breaking anything on the development (or test) environment. This is another step closer to happiness, at least for our proxy customers who didn&amp;rsquo;t have to reinsert their test data every time we flushed something from a table. Sometimes though, there&amp;rsquo;s some lame excuse for not having a local database installed:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;We have a lot of stored procedures and it&amp;rsquo;s too hard to duplicate them locally&lt;/li&gt;
-&lt;li&gt;We worked like this for years, why would I want a local DB?&lt;/li&gt;
-&lt;li&gt;But then my data is out of sync!&lt;/li&gt;
-&lt;li&gt;I tried doing that but my manager says I should focus on delivering content&lt;/li&gt;
-&lt;li&gt;Blah blah blah&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Installing an Oracle XE runtime on your machine might include working around some issues which can take up some time but it&amp;rsquo;s time well invested, compared to multiple developers connecting to one shared database. In any case, there&amp;rsquo;s another possibility: an &lt;strong&gt;in-memory database&lt;/strong&gt;, such as &lt;a href=&#34;http://www.sqlite.org/&#34;&gt;SQLite&lt;/a&gt;. This does still require you to keep the upgrade scripts synced, but also enables you to get rid of a lot of annoying things like &lt;em&gt;foreign key constraints&lt;/em&gt; for testing purposes.&lt;/p&gt;
-
-&lt;h3 id=&#34;integrating-sqlite-with-net&#34;&gt;Integrating SQLite with .NET&lt;/h3&gt;
-
-&lt;p&gt;Simply use &lt;a href=&#34;http://system.data.sqlite.org/index.html/doc/trunk/www/index.wiki&#34;&gt;System.data.SQLite&lt;/a&gt;. For each OleDb object, there&amp;rsquo;s an equivalent SQLite one in the correct namespace. The only problem is, some of them don&amp;rsquo;t share an abstract object so you&amp;rsquo;ll have to come up with an anti-corruption layer yourself. Create a connection using this connection string:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    private SQLiteConnection SqLiteDbConnection()
-    {
-        return new SQLiteConnection()
-            {
-                ConnectionString = &amp;quot;Data Source=:memory:;Version=3;New=True;DateTimeFormat=Ticks&amp;quot;,
-                Flags = SQLiteConnectionFlags.LogAll
-            };
-    }
-
-    public void SetupDb()
-    {
-        using (var connection = SqLiteDbConnection())
-        {
-            connection.Open();
-            var transaction = connection.BeginTransaction();
-            var sqLiteCommand = new SQLiteCommand()
-                {
-                    Connection = (SQLiteConnection) connection,
-                    CommandType = CommandType.Text,
-                    CommandText = GetSchemaCreateSql()
-                };
-            sqLiteCommand.ExecuteNonQuery();
-            transaction.Commit();
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You need to pay attention to the &lt;code&gt;DateTimeFormat&lt;/code&gt; substring in the connection string as SQLite is &amp;ldquo;dynamically typed&amp;rdquo;, compared to Oracle. This means it stores dates exactly the same as chars, otherwise you might encounter an error like &lt;code&gt;&amp;quot;string was not recognized as a valid DateTime&amp;quot;&lt;/code&gt; when executing a select statement.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Watch out with closing the DB Connection&lt;/strong&gt; using an in-memory DB; as this completely resets everything. As soon as you open a connection, you can execute create table commands (read your stored DDL file and do it in bulk).
-Your anti-corruption layer between the abstract DB Connection and SQLite/OleDB should expose a few methods. It should be able to query (with or without parameters or providing a &lt;code&gt;DbCommand&lt;/code&gt;) and possibly stored procedures. This is what I&amp;rsquo;ve come up with:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public interface IdbConnection
-{
-    object QueryProcedure(string procedure, IDictionary&amp;lt;string, object&amp;gt; parameters, string outputParameter);
-
-    DbParameter CreateParameter(string field, object value);
-
-    DbCommand CreateCommand(string query);
-
-    DataSet Query(DbCommand command);
-
-    DataSet Query(string query);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Depending on the implementation, it&amp;rsquo;ll return an &lt;code&gt;SQLiteCommand&lt;/code&gt; or an &lt;code&gt;OleDbCommand&lt;/code&gt; instance.&lt;/p&gt;
-
-&lt;h3 id=&#34;creating-integration-tests-using-record-objects&#34;&gt;Creating integration tests, using Record objects&lt;/h3&gt;
-
-&lt;p&gt;To be able to quickly insert junk in an in-memory table, I came up with a simple object-table mapping which uses reflection to scan for each property of an object, and map that property to a column in a table. Normally you would simply use your domain objects and issue a &lt;code&gt;save()&lt;/code&gt; or &lt;code&gt;persist()&lt;/code&gt; call using for instance &lt;code&gt;NHibernate&lt;/code&gt; but we didn&amp;rsquo;t have anything like that and this was easy to setup.&lt;/p&gt;
-
-&lt;p&gt;Create an object for each table in your unit test project, extending &lt;code&gt;DatabaseInsertable&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public abstract class DatabaseInsertable
-{
-    protected abstract string GetTable();
-
-    public override string ToString()
-    {
-        var fieldDict = FieldDictionary();
-        var fields = &amp;quot;(&amp;quot; + string.Join(&amp;quot;,&amp;quot;, fieldDict.Keys) + &amp;quot;)&amp;quot;;
-        var values = &amp;quot;(&amp;quot; + string.Join(&amp;quot;,&amp;quot;, fieldDict.Values) + &amp;quot;)&amp;quot;;
-
-        return &amp;quot;insert into &amp;quot; + GetTable() + fields + &amp;quot; values &amp;quot; + values;
-    }
-
-    public void Save()
-    {
-        DbConnection.Instance.CreateCommand(ToString()).ExecuteNonQuery();
-    }
-
-    private Dictionary&amp;lt;string, string&amp;gt; FieldDictionary()
-    {
-        var dictionary = new Dictionary&amp;lt;string, string&amp;gt;();
-
-        foreach (var info in this.GetType().GetFields())
-        {
-            if (info.GetValue(this) != null)
-            {
-                dictionary.Add(info.Name, &amp;quot;&#39;&amp;quot; + info.GetValue(this).ToString() + &amp;quot;&#39;&amp;quot;);
-            }
-        }
-
-        return dictionary;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For instance:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;internal class UnitRecord : DatabaseInsertable
-{
-    public string creator;
-    public string guid;
-
-    protected override string GetTable()
-    {
-        return &amp;quot;UNIT&amp;quot;;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now you can simply issue &lt;code&gt;new UnitRecord() { creator = &amp;quot;bla&amp;quot;; guid = &amp;quot;lala&amp;quot;; }.Save();&lt;/code&gt; and it&amp;rsquo;s saved into the unit table, yay!&lt;/p&gt;
-</description>
+      <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
+On previous projects I&amp;rsquo;ve worked on, development PCs came with a local version of the database scheme. Each DB change also got rolled out to those computers, which enabled us developers to fool around without breaking anything on the development (or test) environment. This is another step closer to happiness, at least for our proxy customers who didn&amp;rsquo;t have to reinsert their test data every time we flushed something from a table.</description>
     </item>
     
     <item>
@@ -573,157 +76,8 @@ Your anti-corruption layer between the abstract DB Connection and SQLite/OleDB s
       <pubDate>Thu, 10 Oct 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/unit-testing-stored-procedures/</guid>
-      <description>
-
-&lt;p&gt;This article is based on the notes I&amp;rsquo;ve collected on &lt;a href=&#34;http://brainbaking.com/wiki/code/db/sql&#34;&gt;My Wiki&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Test Driven Development (or TDD), it&amp;rsquo;s one of those buzz words which usuallly appear in the same sentence with &amp;ldquo;scrum&amp;rdquo; or &amp;ldquo;XP&amp;rdquo;. But in practice, I&amp;rsquo;ve seen few people actually applying it all the way through. What do I mean by that? You&amp;rsquo;re probably very familiar with, say Java or .NET, and you know how to write unit tests in that language using your beloved IDE. That&amp;rsquo;s a good start, right. Maybe you might even do it the test-first way: writing a failing test (letting it fail for the right reason), writing the implementation and maybe some refactoring. Red, Green, Refactor.&lt;/p&gt;
-
-&lt;p&gt;But what do you do when you need to step out of your language comfort zone to write some Javascript on the client side? Do you copypaste stuff or try to apply the same techniques as you&amp;rsquo;re used to? You might have heard from test frameworks like &lt;a href=&#34;http://pivotal.github.io/jasmine/&#34;&gt;Jasmine&lt;/a&gt; and use these. Also good for you! Client side development is very popular, but what about SQL? Do you write tests for stored procedures? I thought so. There are plenty of frameworks available to help you in doing this, for instance &lt;a href=&#34;http://docs.oracle.com/cd/E15846_01/doc.21/e15222/unit_testing.htm&#34;&gt;SQL Developer&lt;/a&gt; which I used because it&amp;rsquo;s already installed on every developer&amp;rsquo;s PC and has a &amp;ldquo;friendly&amp;rdquo; interface.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://brainbaking.com/wiki/_media/code/db/unittest_sqldev.png&#34; alt=&#34;sql dev unit test&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Once you create a &amp;ldquo;test repository&amp;rdquo;, SQL Developer will create test tables to store it&amp;rsquo;s unit test descriptions and results, prefixed by &amp;ldquo;UT_&amp;ldquo;. You can specify whether you&amp;rsquo;d like to create a new scheme for it or not. When creating a new test, the tool asks you a couple of questions:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;What do you want to insert or execute before the test? (Setup phase)&lt;/li&gt;
-&lt;li&gt;What stored procedure do you want to execute? (Execute system under test phase)&lt;/li&gt;
-&lt;li&gt;What should the result of the procedure be, or execute a query and check it&amp;rsquo;s results? (Verify phase)&lt;/li&gt;
-&lt;li&gt;What do you want to insert or execute after the test? (Teardown phase)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;You can reuse the parts to be executed in the different phases for another unit test, yay! This data will also be stored in the predefined tables.&lt;/p&gt;
-
-&lt;h3 id=&#34;but-what-about-existing-data-when-inserting-new-stuff&#34;&gt;But what about existing data when inserting new stuff?&lt;/h3&gt;
-
-&lt;p&gt;use this as teardown:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ROLLBACK;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;but-how-do-you-execute-a-stored-procedure-with-in-out-ref-cursor-arguments&#34;&gt;But how do you execute a stored procedure with IN/OUT REF CURSOR arguments?&lt;/h3&gt;
-
-&lt;p&gt;SQL Developer has some trouble executing that, indeed. In this case, we use a little trick:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Create a dummy stored procedure:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;create or replace 
-PROCEDURE UT_DUMMY AS 
-BEGIN
-  NULL;
-END UT_DUMMY;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Execute the dummy procedure in the SUT phase.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Use the verify phase to call the actual to test procedure yourself, and do your verification stuff yourself:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DECLARE     
-  P_USERID NUMBER;     
-  MY_P_CURSOR SCHEMA.PACKAGE.Cursor;     
-  cursor_element MY_P_CURSOR.SCHEMA.CursorType;     
-  found boolean;     
-BEGIN     
-  P_USERID := 11;     
-  found := false;     
-
-  PACKAGE.MYPROCEDURE(     
-    P_USERID =&amp;gt; P_USERID,     
-    P_CURSOR =&amp;gt; MY_P_CURSOR     
-  );     
-
- WHILE TRUE LOOP     
-    FETCH MY_P_CURSOR INTO cursor_element;     
-    EXIT WHEN MY_P_CURSOR%NOTFOUND;     
-    IF cursor_element.columntocheck = &#39;My value&#39; THEN     
-      found  := true;     
-    END IF;     
-  END LOOP;     
-
- IF found = false THEN     
-   raise_application_error(-20000, &#39;Your error message in here!&#39;);     
- END IF;     
-
-END; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;okay-but-what-about-integrating-the-exeuction-of-these-tests-in-my-build-system&#34;&gt;Okay but what about integrating the exeuction of these tests in my build system?&lt;/h3&gt;
-
-&lt;p&gt;You can use the commandline utility provided by SQL Developer to execute a test or a suite:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ututil -run -suite -name [name] -repo [repo] -db [db] -log 3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;It&amp;rsquo;s very interesting to dynamically import and export tests using &amp;ldquo;-imp&amp;rdquo; and &amp;ldquo;-exp&amp;rdquo;, and creating one suite using this PL/SQL:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;SET serveroutput ON;
-
-delete from ut_suite_items;
-delete from ut_suite;
-
-DROP SEQUENCE ut_suite_items_seq;
-CREATE SEQUENCE ut_suite_items_seq
-  MINVALUE 0
-  MAXVALUE 999999999999999999999999999
-  START WITH 0
-  INCREMENT BY 1;
-
-DECLARE
-    suiteid VARCHAR2(900) := &#39;ALL&#39;;
-    utid VARCHAR2(900);
-    cursor tableCursor is SELECT UT_ID FROM UT_TEST;
-BEGIN
-
-dbms_output.enable(10000);
-DBMS_OUTPUT.PUT_LINE(&#39;Creating one test suite to rule them ALL...&#39;);
-
-insert into ut_suite(ut_sid, coverage, name, created_on, created_by, updated_on, updated_by)
-  values(suiteid, 0, suiteid, null, null, null, null);
-
-open tableCursor;
-fetch tableCursor into utid;
-WHILE (tableCursor%FOUND) LOOP
-
-  insert into ut_suite_items(ut_sid, ut_id, ut_nsid, run_start, run_tear, sequence, created_on, created_by, updated_on, updated_by)
-    values (suiteid, utid, null, &#39;Y&#39;, &#39;Y&#39;, ut_suite_items_seq.nextval, null, null, null, null);
-
-  fetch tableCursor into utid;
-END LOOP;
-close tableCursor;
-
-commit;
-DBMS_OUTPUT.PUT_LINE(&#39;SUCCESS - test suite created!&#39;);
-
-END;
-/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;It creates only one suite called &amp;lsquo;ALL&amp;rsquo; which can then be executed. The commandline utility will output &amp;ldquo;UT_SUCCESS&amp;rdquo; or throw some kind of exception if one of the tests failed.&lt;/p&gt;
-
-&lt;h3 id=&#34;i-still-get-errors-using-ututil-some-connectexception&#34;&gt;I still get errors using ututil, some ConnectException?&lt;/h3&gt;
-
-&lt;p&gt;the utility cannot handle any TNS connections you&amp;rsquo;ve entered in SQL Developer. Change these to regular connection strings and all will be well. Yes it&amp;rsquo;s a huge disadvantage, and yes the connection settings are stored in your locally installed SQL Developer instance, which also kind of sucks. We needed to install SQL developer on the Build integration PC and configure the same connections within it.&lt;/p&gt;
-
-&lt;h3 id=&#34;what-about-versioning-the-tests-are-stored-in-my-db-but-it-doesn-t-evolve-as-quickly-as-the-code-does&#34;&gt;What about versioning? The tests are stored in my DB, but it doesn&amp;rsquo;t evolve as quickly as the code does!&lt;/h3&gt;
-
-&lt;p&gt;Right, that&amp;rsquo;s where the import/export thing comes in. We store the actual unit tests in XML format inside our regular source control system, next to the &amp;ldquo;other&amp;rdquo; unit tests (in this case in .NET). Every time someone writes a unit test using SQL developer, it extracts that test using:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ututil -exp -test [name] -file [file] ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;which creates an XML file. Executing the tests happen within a wrapper .NET test class, which goes through some steps to setup the DB system correctly:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Cleanup all UT_TEST* and UT_SUITE* tables which would contain the acutal tests.&lt;/li&gt;
-&lt;li&gt;Loop through all XML files, and impor them one by one (they get inserted into the cleaned tables)&lt;/li&gt;
-&lt;li&gt;Generate the &amp;lsquo;ALL&amp;rsquo; unit test suite - see PL/SQL above.&lt;/li&gt;
-&lt;li&gt;Execute the test suite using ututil and parse the results from the command line.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;That&amp;rsquo;s as far as our imagination and budget goes. We have a stable system which is able to version the XML files - inserting the test data is still dependant on the actual state of the database. One could explore the dynamic creating of tables the stored procedures use, but as our codebase is legacy (read: really really old stuff), we decided not to invest too much time in that.&lt;/p&gt;
-</description>
+      <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
+Test Driven Development (or TDD), it&amp;rsquo;s one of those buzz words which usuallly appear in the same sentence with &amp;ldquo;scrum&amp;rdquo; or &amp;ldquo;XP&amp;rdquo;. But in practice, I&amp;rsquo;ve seen few people actually applying it all the way through. What do I mean by that? You&amp;rsquo;re probably very familiar with, say Java or .NET, and you know how to write unit tests in that language using your beloved IDE.</description>
     </item>
     
   </channel>

@@ -9,7 +9,7 @@
   <title>dynamiclangs</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.21" />
   <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
@@ -168,7 +168,7 @@
 
 <h2 id="het-verschil-tussen-mops-en-prototypal-inheritance">Het verschil tussen MOPs en Prototypal inheritance</h2>
 
-<p>❗ Javascript heeft géén <strong>Meta Object Protocol</strong> (MOP) dat de taal dynamisch maakt, maar bouwt verder op prototypes. Dat wil zeggen dat het klassieke inheritance systeem niet bestaat in Javascript, maar wel nagebootst kan worden door objecten te laten afleiden van objecten. De vergelijkingstabellen hieronder tonen hoe Javascript zich kan <em>gedragen</em> als een klassieke OO taal, dat wil niet automatisch zeggen dat dit de beste manier is om JS te gebruiken!</p>
+<p>❗️ Javascript heeft géén <strong>Meta Object Protocol</strong> (MOP) dat de taal dynamisch maakt, maar bouwt verder op prototypes. Dat wil zeggen dat het klassieke inheritance systeem niet bestaat in Javascript, maar wel nagebootst kan worden door objecten te laten afleiden van objecten. De vergelijkingstabellen hieronder tonen hoe Javascript zich kan <em>gedragen</em> als een klassieke OO taal, dat wil niet automatisch zeggen dat dit de beste manier is om JS te gebruiken!</p>
 
 <p>De volgende dynamische talen beschikken wel over een MOP:</p>
 
@@ -257,7 +257,7 @@ class SomeClass {
 
 En ja, dat werkt [Ook met static methods in Groovy](http://groovy.codehaus.org/ExpandoMetaClass+-+Overriding+static+invokeMethod)!
 
-❗ Rhino en SpiderMonkey implementaties van JavaScript (Firefox' JS parser bijvoorbeeld) ondersteunen wel een magic missing method, genaamd `__noSuchMethod__` en een hele hoop andere nifty dingen zoals `__defineGetter__` en `__lookupSetter__`. Meer informatie in [deze blogpost](http://offthelip.org/?p=101) te vinden. Voorbeeld in Firefox+Firebug:
+❗️ Rhino en SpiderMonkey implementaties van JavaScript (Firefox' JS parser bijvoorbeeld) ondersteunen wel een magic missing method, genaamd `__noSuchMethod__` en een hele hoop andere nifty dingen zoals `__defineGetter__` en `__lookupSetter__`. Meer informatie in [deze blogpost](http://offthelip.org/?p=101) te vinden. Voorbeeld in Firefox+Firebug:
 
 ```javascript
 SomeClass.prototype.__noSuchMethod__ = function(name, arguments) {
@@ -286,7 +286,7 @@ gapingHoleInTheGalaxy.explode = {
   println &quot;Explosion!&quot;
 }</code> |</p>
 
-<p>❗ Groovy heeft een speciale klasse <code>Expando</code> die dynamisch toelaat om eender wat toe te voegen, zowel <em>closures</em> als <em>properties</em> op dezelfde manier. Enige nadeel: deze code kan niet gemengd worden met Java als byte code. Bij gewone klassen kan dit niet en moet dit via de <code>metaClass</code> gaan. Bij Javascript werkt dit omdat op eender welk moment het prototype van een object veranderd kan worden en er geen onderscheid is tussen closures en functions.</p>
+<p>❗️ Groovy heeft een speciale klasse <code>Expando</code> die dynamisch toelaat om eender wat toe te voegen, zowel <em>closures</em> als <em>properties</em> op dezelfde manier. Enige nadeel: deze code kan niet gemengd worden met Java als byte code. Bij gewone klassen kan dit niet en moet dit via de <code>metaClass</code> gaan. Bij Javascript werkt dit omdat op eender welk moment het prototype van een object veranderd kan worden en er geen onderscheid is tussen closures en functions.</p>
 
 <p>Merk op dat hier de quotes nodig zijn om via de <code>[]</code> operator closures aan iets te hangen.</p>
 
@@ -542,7 +542,7 @@ use(ClassWithEachDirMethod.class) {
   	    </p>
   	    
     	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
           
     	</p>
       </div>
@@ -564,7 +564,7 @@ use(ClassWithEachDirMethod.class) {
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-45748221-1', 'auto');
 ga('send', 'pageview');

@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/personal/index.xml</link>
+    <link>http://www.brainbaking.com/tags/personal/</link>
     <description>Recent content in Personal on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/personal/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/personal/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>gpsmaps</title>
@@ -16,70 +19,11 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/personal/random/gpsmaps/</guid>
-      <description>
-
-&lt;h1 id=&#34;unlocking-garmin-gps-maps&#34;&gt;Unlocking Garmin GPS Maps&lt;/h1&gt;
-
-&lt;p&gt;❗ Niet de keygen 1.5 ofzo gebruiken - werkt niet!! Ook niet MapSource upgraden hoger dan v. 6.15.7&lt;/p&gt;
-
-&lt;h2 id=&#34;topo-kaarten-met-img-files&#34;&gt;Topo kaarten met IMG files&lt;/h2&gt;
-
-&lt;p&gt;Gebruik &lt;em&gt;Garmin Unlocker&lt;/em&gt; exe (44kb), die gaat by default kijken in uw register wat geïnstalleerd is.&lt;/p&gt;
-
-&lt;p&gt;Ook mogelijk om één specifieke &lt;code&gt;img&lt;/code&gt; file te unlocken met &lt;code&gt;GarminUnlocker.exe imgset c:&amp;lt;br/&amp;gt;garmin&lt;/code&gt; (dir imgs)&lt;/p&gt;
-
-&lt;p&gt;❗ Dat programma crasht regelmatig voor samengestelde mappen?&lt;/p&gt;
-
-&lt;h2 id=&#34;topo-kaarten-met-dem-files&#34;&gt;Topo kaarten met DEM files&lt;/h2&gt;
-
-&lt;p&gt;Moeilijker, proces bestaat uit verschillende delen:&lt;/p&gt;
-
-&lt;h5 id=&#34;installeer-via-de-installer&#34;&gt;Installeer via de installer&lt;/h5&gt;
-
-&lt;p&gt;komt in &lt;code&gt;C:&amp;lt;br/&amp;gt;Documents and Settings&amp;lt;br/&amp;gt;All Users&amp;lt;br/&amp;gt;Application Data&amp;lt;br/&amp;gt;GARMIN&amp;lt;br/&amp;gt;Maps&lt;/code&gt; in WinXP (niet wijzigbaar)&lt;/p&gt;
-
-&lt;h5 id=&#34;unlock-installed-tdb-map&#34;&gt;Unlock installed tdb map&lt;/h5&gt;
-
-&lt;p&gt;Die maps zijn dan &amp;ldquo;locked&amp;rdquo; volgens MapSource. Normaal zit er in de geïnstalleerde subdir &lt;strong&gt;Product1&lt;/strong&gt; een &lt;strong&gt;.tdb&lt;/strong&gt; file die unlocked moet worden&lt;br/&gt;&lt;br/&gt;
-tdb unlocken door vorige tool te laten wijsmaken dat dit via registry geïnstalleerd is - regedit &amp;amp; veranderen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE&amp;lt;br/&amp;gt;SOFTWARE&amp;lt;br/&amp;gt;Garmin&amp;lt;br/&amp;gt;Mapsource&amp;lt;br/&amp;gt;Families&amp;lt;br/&amp;gt;FAMILY_467]
-&amp;quot;ID&amp;quot;=hex:d3,01
-&amp;quot;IDX&amp;quot;=&amp;quot;C:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Documents and Settings&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;All Users&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Application Data&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;GARMIN&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Maps&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TOPO Osterreich v2.gmap&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TPAUT2.mdx&amp;quot;
-&amp;quot;MDR&amp;quot;=&amp;quot;C:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Documents and Settings&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;All Users&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Application Data&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;GARMIN&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Maps&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TOPO Osterreich v2.gmap&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;.TOPO_OES.MDR&amp;quot;
-&amp;quot;TYP&amp;quot;=&amp;quot;C:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Documents and Settings&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;All Users&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Application Data&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;GARMIN&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Maps&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TOPO Osterreich v2.gmap&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;I00001D3.typ&amp;quot;
-&amp;quot;UnlockURL&amp;quot;=&amp;quot;http://map.garmin.be&amp;quot;
-
-[HKEY_LOCAL_MACHINE&amp;lt;br/&amp;gt;SOFTWARE&amp;lt;br/&amp;gt;Garmin&amp;lt;br/&amp;gt;Mapsource&amp;lt;br/&amp;gt;Families&amp;lt;br/&amp;gt;FAMILY_467&amp;lt;br/&amp;gt;1]
-&amp;quot;Bmap&amp;quot;=&amp;quot;C:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Documents and Settings&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;All Users&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Application Data&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;GARMIN&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Maps&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TOPO Osterreich v2.gmap&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Product1&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;basemap_.dem&amp;quot;
-&amp;quot;Loc&amp;quot;=&amp;quot;C:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Documents and Settings&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;All Users&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Application Data&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;GARMIN&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Maps&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TOPO Osterreich v2.gmap&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Product1&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&amp;quot;
-&amp;quot;Tdb&amp;quot;=&amp;quot;C:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Documents and Settings&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;All Users&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Application Data&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;GARMIN&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Maps&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TOPO Osterreich v2.gmap&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Product1&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TPAUT2.tdb&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Daarna terug die keymap verwijderen anders flipt MapSource.
-Die hex ID((is hex versie van int MapID versie)) moet niet juist zijn, hij gaat toch enkel zoeken naar de Tdb key in subkey &lt;code&gt;1&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;MapIds zijn &lt;a href=&#34;http:*masmap.org/forum/viewtopic.php?f######9&amp;amp;t137&#34;&gt;hier&lt;/a&gt; of &lt;a href=&#34;http:*forum.mobilism.org/viewtopic.php?t=36929&#34;&gt;hier&lt;/a&gt; op te zoeken.&lt;/p&gt;
-
-&lt;h5 id=&#34;fix-mapsource&#34;&gt;Fix MapSource&lt;/h5&gt;
-
-&lt;p&gt;MapSource export standaard enkel naar GPS, kan ook naar HDD (C, D, &amp;hellip;) subdir Garmin dan. Voor v. 6.15.5 is er een &lt;strong&gt;Special exe&lt;/strong&gt; die dat toelaat. Er zijn voor nieuwere versies blijkbaar ook zo speciale versies, zie thepiratebay om eentje vast te krijgen. Best gewoon niet updaten.&lt;/p&gt;
-
-&lt;h5 id=&#34;stel-mappen-samen-en-exporteer-naar-hdd&#34;&gt;Stel mappen samen en exporteer naar HDD&lt;/h5&gt;
-
-&lt;p&gt;Via MapSource, resultaat moet een file genaamd &lt;strong&gt;GMAPSUPP.IMG&lt;/strong&gt; zijn.&lt;/p&gt;
-
-&lt;h5 id=&#34;unlock-die-img-via-een-andere-tool&#34;&gt;Unlock die IMG via een andere tool&lt;/h5&gt;
-
-&lt;p&gt;Aangezien die Garmin Unlocker regelmatig crasht en soms niet werkt (op GPS machine zelf dan &amp;ldquo;Unable to unlock map&amp;rdquo; boodschap): gebruik &amp;lsquo;GarminUnlockerAlternative&amp;rsquo; - UNLOCK MAP DIRECTORY.exe&lt;br/&gt;&lt;br/&gt;
-Smijt .img in locked dir en pas headers aan.&lt;/p&gt;
-
-&lt;h5 id=&#34;kopieer-unlocked-img-naar-gps-in-garmin-map&#34;&gt;Kopieer unlocked img naar GPS in Garmin map&lt;/h5&gt;
-
-&lt;p&gt;And done! Pf&amp;hellip;&lt;/p&gt;
-</description>
+      <description>Unlocking Garmin GPS Maps ❗️ Niet de keygen 1.5 ofzo gebruiken - werkt niet!! Ook niet MapSource upgraden hoger dan v. 6.15.7
+Topo kaarten met IMG files Gebruik Garmin Unlocker exe (44kb), die gaat by default kijken in uw register wat geïnstalleerd is.
+Ook mogelijk om één specifieke img file te unlocken met GarminUnlocker.exe imgset c:&amp;lt;br/&amp;gt;garmin (dir imgs)
+❗️ Dat programma crasht regelmatig voor samengestelde mappen?
+Topo kaarten met DEM files Moeilijker, proces bestaat uit verschillende delen:</description>
     </item>
     
   </channel>

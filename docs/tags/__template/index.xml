@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>__template on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/__template/index.xml</link>
+    <link>http://www.brainbaking.com/tags/__template/</link>
     <description>Recent content in __template on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/__template/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/__template/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>__template</title>
@@ -16,14 +19,7 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/__template/</guid>
-      <description>
-
-&lt;h1 id=&#34;ns-page&#34;&gt;@NS@ &amp;gt;&amp;gt; @!PAGE@&lt;/h1&gt;
-
-&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-</description>
+      <description>@NS@ &amp;gt;&amp;gt; @!PAGE@ Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
   </channel>

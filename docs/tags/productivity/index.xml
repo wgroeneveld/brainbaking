@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Productivity on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/productivity/index.xml</link>
+    <link>http://www.brainbaking.com/tags/productivity/</link>
     <description>Recent content in Productivity on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>productivity</title>
@@ -16,89 +19,10 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/reflect/productivity/</guid>
-      <description>
-
-&lt;h1 id=&#34;productivity&#34;&gt;Productivity&lt;/h1&gt;
-
-&lt;p&gt;Productiviteit verhogen doe je zelf. Bezig zijn met jezelf, is &lt;strong&gt;self-improvement&lt;/strong&gt;.&lt;br/&gt;&lt;br/&gt;
-De volgende secties handelen kort over enkele topics rond dit idee.&lt;/p&gt;
-
-&lt;h2 id=&#34;psychologie&#34;&gt;Psychologie&lt;/h2&gt;
-
-&lt;p&gt;Keyword: &lt;strong&gt;Cognitive Science&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Learn%20to%20Power%20Think&#34; target=&#34;_blank&#34;&gt;Learn to Power Think&lt;/a&gt;
- handelt over zelf-inzicht, gaat uit om doelen te bereiken&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;focus&#34;&gt;Focus&lt;/h3&gt;
-
-&lt;p&gt;Belangrijkste: &lt;strong&gt;how to keep it &lt;em&gt;in&lt;/em&gt; the zone&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://zenhabits.net/16-ways-to-keep-a-razor-sharp-focus-at-work/&#34;&gt;http://zenhabits.net/16-ways-to-keep-a-razor-sharp-focus-at-work/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.wikihow.com/Stay-Focused&#34;&gt;http://www.wikihow.com/Stay-Focused&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;email verplicht u om te context switchen, 20min kwijt -&amp;gt; kijk enkel smorgens, smiddags en savonds&lt;/li&gt;
-&lt;li&gt;smijt IM tools buiten&lt;/li&gt;
-&lt;li&gt;introduceer no-talk thursday&lt;/li&gt;
-&lt;li&gt;gebruik een Single point of Contact om trash talk voor uw team op te vangen&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;ideeën-opdoen-opbouwen-en-beheren&#34;&gt;Ideeën opdoen, opbouwen en beheren&lt;/h3&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/reflect/gathering/&#34;&gt;gathering&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;in-programmeeromgevingen&#34;&gt;In programmeeromgevingen&lt;/h2&gt;
-
-&lt;h3 id=&#34;thoughtworks-boeken&#34;&gt;ThoughtWorks boeken&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Pragmatic%20thinking%20%26%20learning&#34; target=&#34;_blank&#34;&gt;Pragmatic thinking &amp;amp; learning&lt;/a&gt;
- by Andy Hunt - zie samenvatting Kristof&amp;rsquo;s wiki&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=The%20pragmatic%20programmer&#34; target=&#34;_blank&#34;&gt;The pragmatic programmer&lt;/a&gt;
- by Andy Hunt&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=The%20productive%20programmer&#34; target=&#34;_blank&#34;&gt;The productive programmer&lt;/a&gt;
- by Neal Ford - &lt;a href=&#34;http://www.youtube.com/watch?v=Y8bY0jxk3LE&#34;&gt;Presentatie hier&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;tools&#34;&gt;Tools&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Polyglot%20programming&#34; target=&#34;_blank&#34;&gt;Polyglot programming&lt;/a&gt;
- bovenop de JVM bijvoorbeeld&lt;/li&gt;
-&lt;li&gt;Dynamic languages &amp;amp; closures! gecombineerd met bovenstaande natuurlijk&lt;/li&gt;
-&lt;li&gt;Regexp!&lt;/li&gt;
-&lt;li&gt;Keyboard &amp;gt; Mouse
-
-&lt;ul&gt;
-&lt;li&gt;gebruik bvb &lt;a href=&#34;http://blog.mousefeed.com/&#34;&gt;mousefeed&lt;/a&gt; in eclipse om keyboard shortcuts te enforcen!&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Search &amp;gt; Navigation (gecombineerd met bovenstaande)
-
-&lt;ul&gt;
-&lt;li&gt;gebruik bvb Google desktop search, pas indexatie instellingen aan naar inhoud van uw files (.cfg, .java, etc)&lt;/li&gt;
-&lt;li&gt;Windows Vista en hoger: start menu search programma&amp;rsquo;s, search bij geïnstalleerde programma&amp;rsquo;s&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;dieper-inzicht-vergaren&#34;&gt;Dieper inzicht vergaren&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Kennis delen en mensen iets leren zet uzelf aan om beter na te denken over dat ene stukje code (API)&lt;/li&gt;
-&lt;li&gt;Schrijf tutorials die gebaseerd zijn op unit testen&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://arrenbrecht.ch/testing/index.htm&#34;&gt;Literate testing&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Teaching&lt;/strong&gt; is iets zeer krachtig om zelf ook bij te leren! (verschillende referenties)&lt;/p&gt;
-
-&lt;h2 id=&#34;andere&#34;&gt;Andere&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Rework&#34; target=&#34;_blank&#34;&gt;Rework&lt;/a&gt;
-. Context: pragmatic company management. zie samenvatting hier: &lt;a href=&#34;http://www.brainbaking.com/wiki/books/rework/&#34;&gt;books/rework&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Productivity Productiviteit verhogen doe je zelf. Bezig zijn met jezelf, is self-improvement. De volgende secties handelen kort over enkele topics rond dit idee.
+Psychologie Keyword: Cognitive Science
+ Learn to Power Thinkhandelt over zelf-inzicht, gaat uit om doelen te bereiken  Focus Belangrijkste: how to keep it in the zone:
+ http://zenhabits.net/16-ways-to-keep-a-razor-sharp-focus-at-work/ http://www.wikihow.com/Stay-Focused email verplicht u om te context switchen, 20min kwijt -&amp;gt; kijk enkel smorgens, smiddags en savonds smijt IM tools buiten introduceer no-talk thursday gebruik een Single point of Contact om trash talk voor uw team op te vangen  Ideeën opdoen, opbouwen en beheren Zie gathering</description>
     </item>
     
   </channel>

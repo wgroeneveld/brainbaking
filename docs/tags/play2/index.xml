@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Play2 on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/play2/index.xml</link>
+    <link>http://www.brainbaking.com/tags/play2/</link>
     <description>Recent content in Play2 on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/play2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/play2/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>play2</title>
@@ -16,166 +19,10 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/play2/</guid>
-      <description>
-
-&lt;h1 id=&#34;play-2-0&#34;&gt;Play 2.0&lt;/h1&gt;
-
-&lt;h2 id=&#34;testing-in-play-2-0&#34;&gt;Testing in Play 2.0&lt;/h2&gt;
-
-&lt;h3 id=&#34;controller-testen&#34;&gt;Controller testen&lt;/h3&gt;
-
-&lt;p&gt;een controller &amp;ldquo;action&amp;rdquo; (= method vanuit route) testen doen we op een &amp;ldquo;functionele&amp;rdquo; manier in plaats van de method direct aan te roepen:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;controller&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    public static Result buyHorse() {
-        Form&amp;lt;Horse&amp;gt; horseForm = form(Horse.class);
-        Horse horse = horseForm.bindFromRequest().get();
-                System.out.println(horse.id);
-        }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;unit test&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    @Test
-    public void buyHorse() {
-        HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
-        map.put(&amp;quot;id&amp;quot;, &amp;quot;12&amp;quot;);
-
-        callAction(HorseMarket.buyHorse(), new FakeRequest().withFormUrlEncodedBody(map));
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Waarbij hierboven &lt;code&gt;HorseMarket&lt;/code&gt; de routes ref is en niet de &lt;code&gt;HorseMarket&lt;/code&gt; controller klasse zelf - deze:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import static controllers.routes.ref.HorseMarket;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ De bovenstaande test zal &amp;ldquo;12&amp;rdquo; afdrukken, gegeven dat &lt;code&gt;setId()&lt;/code&gt; gegenereerd is. &lt;br/&gt;&lt;br/&gt;
-Play2 genereert blijkbaar getters &amp;amp; setters voor EBean Modellen volgens &lt;a href=&#34;https://github.com/playframework/Play20/wiki/JavaEbean:&#34;&gt;https://github.com/playframework/Play20/wiki/JavaEbean:&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Play has been designed to generate getter/setter automatically, to ensure compatibility with libraries that expect them to be available at runtime (ORM, Databinder, JSON Binder, etc). If Play detects any user-written getter/setter in the Model, it will not generate getter/setter in order to avoid any conflict.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Wordt voor testing blijkbaar niet gegenereerd?&lt;/p&gt;
-
-&lt;h3 id=&#34;integratie-testen-en-ebean&#34;&gt;Integratie testen en EBean&lt;/h3&gt;
-
-&lt;p&gt;Zie ook &lt;a href=&#34;http://blog.matthieuguillermin.fr/2012/03/unit-testing-tricks-for-play-2-0-and-ebean/&#34;&gt;http://blog.matthieuguillermin.fr/2012/03/unit-testing-tricks-for-play-2-0-and-ebean/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;De database moet gesetup worden door alles met &lt;code&gt;runningFakeApplication()&lt;/code&gt; te draaien (static onder &lt;code&gt;play.test.Helper&lt;/code&gt;):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
-public void save() {
-  running(fakeApplication(), new Runnable() {
-    public void run() {
-      // Here is your real test code
-      Company company = new Company(&amp;quot;My Company&amp;quot;);
-      company.save();
-      assertThat(company.id).isNotNull();
-    }
-  });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dit is heel omslachtig en moet overal in een test gedaan worden. Oplossing: voorzie een static &lt;code&gt;@BeforeClass&lt;/code&gt; dit éénmalig de setup doet:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class BaseModelTest {
-  public static FakeApplication app;
- 
-  @BeforeClass
-  public static void startApp() {
-    app = Helpers.fakeApplication(Helpers.inMemoryDatabase());
-    Helpers.start(app);
-  }
- 
-  @AfterClass
-  public static void stopApp() {
-    Helpers.stop(app);
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dan heb je de &lt;code&gt;Runnable&lt;/code&gt; van de eerste code niet meer nodig.&lt;/p&gt;
-
-&lt;h5 id=&#34;ebean-enhancer-als-javaagent-gebruiken&#34;&gt;EBean enhancer als javaagent gebruiken&lt;/h5&gt;
-
-&lt;p&gt;Testen draaien in Eclipse in plaats van in de play2 console kan je doen door &lt;code&gt;-javaagent:/path/to/ebean/ebean-x.y.z-agent.jar&lt;/code&gt; mee te geven met JRE env. &lt;br/&gt;&lt;br/&gt;
-Hiervoor moet je eerst EBean zelf nog downloaden want de agent zit &lt;strong&gt;niet&lt;/strong&gt; in de play2 local repo: &lt;a href=&#34;http://www.avaje.org/download.html&#34;&gt;http://www.avaje.org/download.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Voor IntelliJ: &lt;a href=&#34;http://jetbrains.dzone.com/articles/configuring-intellij-idea&#34;&gt;http://jetbrains.dzone.com/articles/configuring-intellij-idea&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Voor Eclipse: &lt;a href=&#34;https://groups.google.com/forum/#!topic/play-framework/U44m-kOG3bk&#34;&gt;https://groups.google.com/forum/#!topic/play-framework/U44m-kOG3bk&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;dependencies&#34;&gt;Dependencies&lt;/h2&gt;
-
-&lt;p&gt;Play 1.2 Dependency management werkt via &lt;code&gt;dependencies.yml&lt;/code&gt;: &lt;a href=&#34;http://www.playframework.org/documentation/1.2.1/dependency&#34;&gt;http://www.playframework.org/documentation/1.2.1/dependency&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Play 2.0 werkt met Scala en &lt;strong&gt;SBT&lt;/strong&gt; als dep management: &lt;a href=&#34;https://github.com/playframework/Play20/wiki/SBTDependencies&#34;&gt;https://github.com/playframework/Play20/wiki/SBTDependencies&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;
-SBT staat voor &lt;a href=&#34;http://brizzled.clapper.org/id/92/&#34;&gt;Simple Build Tool&lt;/a&gt; &amp;lt;- meer info &amp;amp; vergelijkingen met Gradle, Ivy ea.&lt;/p&gt;
-
-&lt;p&gt;Volg de volgende stappen:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Pas Build.scala aan - zie onder&lt;/li&gt;
-&lt;li&gt;Draai in de &lt;code&gt;play&lt;/code&gt; console &lt;code&gt;eclipse&lt;/code&gt; (zoals classpath updating: &lt;code&gt;mvn eclipse:eclipse&lt;/code&gt;)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;import sbt._
-import Keys._
-import PlayProject._
-
-object ApplicationBuild extends Build {
-    val appName         = &amp;quot;main&amp;quot;
-    val appVersion      = &amp;quot;1.0&amp;quot;
-
-    val appDependencies = Seq(
-        &amp;quot;org.easytesting&amp;quot; % &amp;quot;fest-assert&amp;quot; % &amp;quot;1.4&amp;quot; % &amp;quot;test&amp;quot;
-      // Add your project dependencies here,
-    )
-
-    val main = PlayProject(appName, appVersion, appDependencies).settings(defaultJavaSettings:_*).settings(     
-                // The following line is NOT NEEDED by default! 
-        resolvers += &amp;quot;Maven2 Repository&amp;quot; at &amp;quot;http://repo1.maven.org/maven2&amp;quot;
-    )
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Play dependency tree printen gaat ook - voor meer commando&amp;rsquo;s, zie &lt;code&gt;help&lt;/code&gt; in de &lt;code&gt;play&lt;/code&gt; console.&lt;/p&gt;
-
-&lt;h2 id=&#34;querying&#34;&gt;Querying&lt;/h2&gt;
-
-&lt;p&gt;Gegeven de entiteit:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Entity
-public class Auto {
-  @Id
-  public Long id;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;en de volgende test:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class AutoIntegrationTest {
-  @Test
-  public void canBePersisted() {
-     new Auto().save();
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;in-play-2-0&#34;&gt;In Play 2.0&lt;/h4&gt;
-
-&lt;p&gt;&lt;code&gt;List&amp;lt;Auto&amp;gt; autos = Ebean.find(Auto.class).findList();&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;in-play-1-2&#34;&gt;In Play 1.2&lt;/h4&gt;
-
-&lt;p&gt;&lt;code&gt;List&amp;lt;Auto&amp;gt; autos = Auto.list();&lt;/code&gt;&lt;/p&gt;
-</description>
+      <description>Play 2.0 Testing in Play 2.0 Controller testen een controller &amp;ldquo;action&amp;rdquo; (= method vanuit route) testen doen we op een &amp;ldquo;functionele&amp;rdquo; manier in plaats van de method direct aan te roepen:
+controller
+public static Result buyHorse() { Form&amp;lt;Horse&amp;gt; horseForm = form(Horse.class); Horse horse = horseForm.bindFromRequest().get(); System.out.println(horse.id); }  unit test
+@Test public void buyHorse() { HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;&amp;gt;(); map.put(&amp;quot;id&amp;quot;, &amp;quot;12&amp;quot;); callAction(HorseMarket.buyHorse(), new FakeRequest().withFormUrlEncodedBody(map)); }  Waarbij hierboven HorseMarket de routes ref is en niet de HorseMarket controller klasse zelf - deze:</description>
     </item>
     
   </channel>

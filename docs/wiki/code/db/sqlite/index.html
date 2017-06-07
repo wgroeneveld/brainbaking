@@ -9,7 +9,7 @@
   <title>sqlite</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.21" />
   <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
@@ -206,7 +206,7 @@
 
 <p>Versie en New hoeft blijkbaar niet (?)</p>
 
-<p>❗ Elke keer als je een connectie opendoet gaat SQLite de inmemory DB state restoren naar default (dus leeg). Als je dus bvb;</p>
+<p>❗️ Elke keer als je een connectie opendoet gaat SQLite de inmemory DB state restoren naar default (dus leeg). Als je dus bvb;</p>
 
 <ol>
 <li>connectie open</li>
@@ -221,7 +221,7 @@
 
 <p>Zie ook <a href="http://stackoverflow.com/questions/17477246/sqlite-in-memory-database-create-table-does-not-work">SQLite in memory create table does not work</a>.</p>
 
-<p>❗ Hou dus 1x een connectie open voor unit testen bij een <code>[SetUp]</code> en geef referenties door.</p>
+<p>❗️ Hou dus 1x een connectie open voor unit testen bij een <code>[SetUp]</code> en geef referenties door.</p>
 
 <h5 id="extra-opties-meegeven-via-de-connection-string">Extra opties meegeven via de connection string</h5>
 
@@ -480,7 +480,7 @@
   	    </p>
   	    
     	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
           
     	</p>
       </div>
@@ -502,7 +502,7 @@
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-45748221-1', 'auto');
 ga('send', 'pageview');

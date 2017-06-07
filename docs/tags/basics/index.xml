@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Basics on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/basics/index.xml</link>
+    <link>http://www.brainbaking.com/tags/basics/</link>
     <description>Recent content in Basics on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/basics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Dec 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/basics/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>basics</title>
@@ -16,178 +19,8 @@
       <pubDate>Mon, 02 Dec 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/c/basics/</guid>
-      <description>
-
-&lt;h1 id=&#34;c-basics&#34;&gt;C(++) Basics&lt;/h1&gt;
-
-&lt;h2 id=&#34;scope&#34;&gt;Scope&lt;/h2&gt;
-
-&lt;p&gt;C++ heeft block level scope, net als Java, alleen is het mogelijk om een variabele binnen een for loop dezelfde naam te geven als een die buiten die block gedefiniëerd is, terwijl dat in Java niet gaat:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int j;
-for(int i = 0; i &amp;lt; 10; i++) {
-  int j = i + 1; // compile fout in java
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;pointer-scope&#34;&gt;Pointer scope&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Auto_ptr&#34;&gt;auto_ptr&lt;/a&gt; kan gebruikt worden om een pointer automatisch te verwijderen met &lt;code&gt;delete&lt;/code&gt; wanneer deze scope verliest - alle andere zaken moet je zelf opkuisen.
-❗ Dit is deprecated in C++ 11, gebruik &lt;a href=&#34;https://en.wikipedia.org/wiki/Smart_pointer#unique_ptr&#34;&gt;unique_ptr&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Voorbeeld van wikipedia:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;memory&amp;gt;
-using namespace std;
- 
-int main(int argc, char **argv)
-{
-    int *i = new int;
-    auto_ptr&amp;lt;int&amp;gt; x(i);
-    auto_ptr&amp;lt;int&amp;gt; y;
- 
-    y = x;
- 
-    cout &amp;lt;&amp;lt; x.get() &amp;lt;&amp;lt; endl; // Print NULL
-    cout &amp;lt;&amp;lt; y.get() &amp;lt;&amp;lt; endl; // Print non-NULL address i
- 
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;overloading-virtual&#34;&gt;overloading: &amp;lsquo;virtual&amp;rsquo;&lt;/h2&gt;
-
-&lt;p&gt;In java wordt by default het diepste gedefiniëerde element opgeroepen, in C++ ben je verplicht &lt;code&gt;virtual&lt;/code&gt; te gebruiken als &amp;ldquo;optimalisatie&amp;rdquo; wordt dit standaard niet gedaan&amp;hellip; Voorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;class Simple
-{
-public:
-    Simple() : someMember(3) {}
-    virtual int guessNumber();
-    int someMember;
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;simplecpp.h&amp;quot;
-
-int Simple::guessNumber()
-{
-    return 5;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Als je nu &lt;code&gt;guessNumber()&lt;/code&gt; wil overschrijven in een subklasse kan dit:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;simplecpp.h&amp;quot;
-
-class Complexer : public Simple
-{
-public:
-    Complexer() {}
-    int guessNumber();
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Merk op, te overschrijven method heropsommen in header file&amp;hellip; (??) - hier hoeft geen &lt;code&gt;virtual&lt;/code&gt; meer bij dan.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;complexer.h&amp;quot;
-
-int Complexer::guessNumber()
-{
-    return 10;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Wat is hier de uitkomst van:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;
-#include &amp;quot;complexer.h&amp;quot;
-#include &amp;lt;iostream&amp;gt;
-
-int main()
-{
-    Simple* simple = new Complexer();
-    std::cout &amp;lt;&amp;lt; simple-&amp;gt;guessNumber();
-    delete simple;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Haal &lt;code&gt;virtual&lt;/code&gt; weg. 5. &lt;br/&gt;&lt;br/&gt;
-Definiëer &lt;code&gt;Complexer&lt;/code&gt; zo:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;Complexer* complexer = new Complexer();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;En het is altijd 10.&lt;/p&gt;
-
-&lt;h2 id=&#34;initialisatie&#34;&gt;Initialisatie&lt;/h2&gt;
-
-&lt;p&gt;(Voorbeelden van bovenstaande)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;complexer.h&amp;quot;
-#include &amp;lt;iostream&amp;gt;
-
-int main()
-{
-    Simple simpleInitialized; // oops, I created something?
-    // Simple simpleInitialized = NULL; cannot convert from &#39;int&#39; to &#39;Simple&#39; (#define NULL 0)
-
-    Simple* simplePtr;
-
-    std::cout &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n initialiezd: &amp;quot; &amp;lt;&amp;lt; simplePtr-&amp;gt;someMember;
-    // Run-Time Check Failure #3 - The variable &#39;simplePtr&#39; is being used without being initialized
-
-    delete simplePtr;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Wat is hier speciaal aan?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;In C++ wordt altijd een object aangemaakt als je ze declareert. In Java niet!&lt;/li&gt;
-&lt;li&gt;In C++ is &lt;code&gt;NULL&lt;/code&gt; gedefiniëerd als &lt;code&gt;#define NULL 0&lt;/code&gt; - je kan dus niet zomaar iets toekennen hieraan. In C++ 11 heb je &lt;code&gt;nullptr&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Je kan wel een pointer declareren zonder een waarde toe te kennen, en dit geeft dan een run-time fout (zou bvb een &lt;code&gt;NullPointerException&lt;/code&gt; gooien in java)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;typecasting&#34;&gt;Typecasting&lt;/h2&gt;
-
-&lt;p&gt;Uitgebreide uitleg: zie &lt;a href=&#34;http://www.cplusplus.com/doc/tutorial/typecasting/&#34;&gt;http://www.cplusplus.com/doc/tutorial/typecasting/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;In C++ is één impliciete conversie mogelijk door middel van de constructor, bijvoorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;class Something
-{
- public:
-   Something(int i) : myVar(i) {}
- private:
-  int myVar;
-}
-
-int getal = 10;
-Something something = getal; // use constructor
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Om dit tegen te gaan kan je altijd het &lt;code&gt;explicit&lt;/code&gt; keyword gebruiken, zodat je dit moet doen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;Something something = Something(getal); // expliciet oproepen constructor
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Je kan &lt;code&gt;staic_cast&amp;lt;Type&amp;gt;(var)&lt;/code&gt; gebruiken om explicit constructors aan te roepen, zo kunnen ze dan toch nog gecast worden.&lt;/p&gt;
-
-&lt;h2 id=&#34;c-11-goodies&#34;&gt;C++ 11 goodies&lt;/h2&gt;
-
-&lt;p&gt;Algemeen: &lt;a href=&#34;http://www.informit.com/articles/article.aspx?p=1910142&#34;&gt;How C++ 11 helps boost your productivity&lt;/a&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.codeproject.com/Articles/277612/Using-lambdas-Cplusplus-vs-Csharp-vs-Cplusplus-CX&#34;&gt;Lambdas&lt;/a&gt; zijn mogelijk&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;nullptr&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;auto&lt;/code&gt; keyword, zoals &lt;code&gt;var&lt;/code&gt; in C# - dit is typesafe en door de compiler zelf bepaald.&lt;/li&gt;
-&lt;li&gt;100% multithreading support, zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/c/threading/&#34;&gt;code/c/threading&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description>C(++) Basics Scope C++ heeft block level scope, net als Java, alleen is het mogelijk om een variabele binnen een for loop dezelfde naam te geven als een die buiten die block gedefiniëerd is, terwijl dat in Java niet gaat:
+int j; for(int i = 0; i &amp;lt; 10; i++) { int j = i + 1; // compile fout in java }  Pointer scope auto_ptr kan gebruikt worden om een pointer automatisch te verwijderen met delete wanneer deze scope verliest - alle andere zaken moet je zelf opkuisen.</description>
     </item>
     
   </channel>

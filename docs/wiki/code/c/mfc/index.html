@@ -9,7 +9,7 @@
   <title>mfc</title>
   
   <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.18.1" />
+  <meta name="generator" content="Hugo 0.21" />
   <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
   <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
@@ -166,7 +166,7 @@
 
 <h1 id="mfc">MFC</h1>
 
-<p>❗ MFC en AFX <a href="http://en.wikipedia.org/wiki/Microsoft_Foundation_Class_Library">is hetzelfde</a>:</p>
+<p>❗️ MFC en AFX <a href="http://en.wikipedia.org/wiki/Microsoft_Foundation_Class_Library">is hetzelfde</a>:</p>
 
 <blockquote>
 <p>One interesting quirk of MFC is the use of &ldquo;Afx&rdquo; as the prefix for many functions, macros and the standard precompiled header name &ldquo;stdafx.h&rdquo;. During early development what became MFC was called &ldquo;Application Framework Extensions&rdquo; and abbreviated &ldquo;Afx&rdquo;. The name Microsoft Foundation Classes (MFC) was adopted too late in the release cycle to change these references</p>
@@ -180,7 +180,7 @@
 
 <p>Formatten kan bijvoorbeeld met <code>string.Format(_T(&quot;%s in %d&quot;), otherString, otherDecimal);</code></p>
 
-<p>❗ Om een string te intialiseren en toe te kennen moet je wel de <code>_T</code> macro gebruiken</p>
+<p>❗️ Om een string te intialiseren en toe te kennen moet je wel de <code>_T</code> macro gebruiken</p>
 
 <h5 id="substringen">Substringen</h5>
 
@@ -214,7 +214,7 @@
 
 <p>Meer uitleg hierover: zie <a href="http://support.microsoft.com/kb/161589">http://support.microsoft.com/kb/161589</a></p>
 
-<p>❗ de Afx resource handle kan <strong>altijd</strong> gewijzigd worden door leuke dingen te doen als:</p>
+<p>❗️ de Afx resource handle kan <strong>altijd</strong> gewijzigd worden door leuke dingen te doen als:</p>
 
 <pre><code class="language-c">    HINSTANCE old = AfxGetResourceHandle();
     AfxSetResourceHandle(GetModuleHandle(&quot;andereModule&quot;));
@@ -333,7 +333,7 @@ template&lt;&gt; inline void RAIIObject&lt;CMenu&gt;::ReleaseObject() {m_Object.
   	    </p>
   	    
     	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.18.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
           
     	</p>
       </div>
@@ -355,7 +355,7 @@ template&lt;&gt; inline void RAIIObject&lt;CMenu&gt;::ReleaseObject() {m_Object.
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-45748221-1', 'auto');
 ga('send', 'pageview');

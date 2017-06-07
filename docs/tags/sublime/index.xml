@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sublime on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/sublime/index.xml</link>
+    <link>http://www.brainbaking.com/tags/sublime/</link>
     <description>Recent content in Sublime on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/sublime/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Jun 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/sublime/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>sublime</title>
@@ -16,97 +19,8 @@
       <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/tools/sublime/</guid>
-      <description>
-
-&lt;h1 id=&#34;sublime-text-protips&#34;&gt;Sublime Text protips&lt;/h1&gt;
-
-&lt;p&gt;&lt;img style=&#39;width: |px;&#39; src=&#39;http://www.brainbaking.com/img//code/tools/subl_plugins.png&#39;&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;handige-links&#34;&gt;Handige links&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Keyb shortcuts&lt;/strong&gt; voor &lt;strong&gt;mac&lt;/strong&gt;: &lt;a href=&#34;http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_osx.html&#34;&gt;http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_osx.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Tips voor &lt;strong&gt;python devs&lt;/strong&gt; ea: &lt;a href=&#34;http://opensourcehacker.com/2012/05/11/sublime-text-2-tips-for-python-and-web-developers/&#34;&gt;http://opensourcehacker.com/2012/05/11/sublime-text-2-tips-for-python-and-web-developers/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;must-have-plugins&#34;&gt;Must-have plugins&lt;/h2&gt;
-
-&lt;p&gt;Installeren via &lt;a href=&#34;http://wbond.net/sublime_packages/package_control&#34;&gt;Sublime Package Control&lt;/a&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/SublimeLinter/SublimeLinter&#34;&gt;SublimeLinter&lt;/a&gt; - linting in verschillende talen (ook CoffeeScript)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/Kronuz/SublimeCodeIntel&#34;&gt;SublimeCodeIntel&lt;/a&gt; - autocompletion in verschillende talen. Werkt zoals in eclipse, gebruik &lt;code&gt;ctrl+shift+space&lt;/code&gt; voor box te triggeren.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/kemayo/sublime-text-2-git/wiki&#34;&gt;git&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/jdc0589/JsFormat&#34;&gt;jsFormat&lt;/a&gt; (mapt by default op &lt;code&gt;cmd+alt+F&lt;/code&gt;, heb het remapped naar eclipse equiv. &lt;code&gt;cmd+shift+F&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/davidpeckham/FilterLines&#34;&gt;FilterLines&lt;/a&gt; om door logging te ploegen - greplike in subl.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;user-configuratie&#34;&gt;(user) configuratie&lt;/h2&gt;
-
-&lt;p&gt;Hoofddocumentatie: &lt;a href=&#34;http://docs.sublimetext.info/en/latest/reference/settings.html&#34;&gt;http://docs.sublimetext.info/en/latest/reference/settings.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;In &lt;code&gt;JSON&lt;/code&gt; formaat, zie &lt;code&gt;ctrl+shift+P&lt;/code&gt;: &lt;code&gt;Preferences: Settings - User&lt;/code&gt;. Proxy definiëren:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
-    &amp;quot;debug&amp;quot;: true,
-
-    &amp;quot;http_proxy&amp;quot;: &amp;quot;vdabproxy.vdab.be:8080&amp;quot;,
-    &amp;quot;https_proxy&amp;quot;: &amp;quot;vdabproxy.vdab.be:8080&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dit werkt niet als je &lt;code&gt;Package Control&lt;/code&gt; nog moet installeren aangezien de settings specifiek hiervoor zijn.&lt;br/&gt;&lt;br/&gt;
-Plugin manueel in plugin dir slepen.&lt;/p&gt;
-
-&lt;h2 id=&#34;development-in-sublime&#34;&gt;Development in Sublime&lt;/h2&gt;
-
-&lt;h3 id=&#34;build-systems&#34;&gt;Build Systems&lt;/h3&gt;
-
-&lt;p&gt;CTRL+B (menu build) werkt door een &lt;code&gt;.sublime-build&lt;/code&gt; file met configuratie voor de batch die in (onder windows &lt;code&gt;C:&amp;lt;br/&amp;gt;Users&amp;lt;br/&amp;gt;bkwog&amp;lt;br/&amp;gt;AppData&amp;lt;br/&amp;gt;Roaming&amp;lt;br/&amp;gt;Sublime Text 2&amp;lt;br/&amp;gt;Packages&amp;lt;br/&amp;gt;[lang]&lt;/code&gt;) uw package dir leven. Een voorbeeld van zo&amp;rsquo;n file voor ruby, by default:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;cmd&amp;quot;: [&amp;quot;ruby&amp;quot;, &amp;quot;$file&amp;quot;],
-    &amp;quot;file_regex&amp;quot;: &amp;quot;^(...*?):([0-9]*):?([0-9]*)&amp;quot;,
-    &amp;quot;selector&amp;quot;: &amp;quot;source.ruby&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Syntax: &lt;a href=&#34;http://docs.sublimetext.info/en/latest/file_processing/build_systems.html&#34;&gt;http://docs.sublimetext.info/en/latest/file_processing/build_systems.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Zie ook &lt;a href=&#34;http://addyosmani.com/blog/custom-sublime-text-build-systems-for-popular-tools-and-languages/&#34;&gt;Adding custom build systems for popular tools and languages&lt;/a&gt; - bijvoorbeeld grunt etc.&lt;/p&gt;
-
-&lt;h3 id=&#34;ruby-development&#34;&gt;Ruby development&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://thunderboltlabs.com/blog/2013/11/19/efficiency-with-sublime-text-and-ruby/&#34;&gt;Efficiency with Sublime text and Ruby&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;python-development&#34;&gt;Python development&lt;/h3&gt;
-
-&lt;h4 id=&#34;must-have-plugins-1&#34;&gt;Must have plugins&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PyLint voor code checking&lt;/li&gt;
-&lt;li&gt;autocompletion: &lt;a href=&#34;http:*screamingatmyscreen.com/2013/9/sublime-text-as-python-ide-jedi/&#34;&gt;jedi&lt;/a&gt; of &lt;a href=&#34;https:*sublime.wbond.net/packages/Anaconda&#34;&gt;Anaconda&lt;/a&gt; zijn de beste specifiek voor Python.&lt;/li&gt;
-&lt;li&gt;Voor checkins: Git &amp;amp; GitGutter&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Voor Jedi moet je uw project file aanmaken (&amp;amp; Project -&amp;gt; Add Folder to Project &amp;hellip; base dir kiezen): ziet er bijvoorbeeld zo uit&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
-    &amp;quot;folders&amp;quot;:
-    [
-        {
-            &amp;quot;path&amp;quot;: &amp;quot;/D/Github/polyglata/01_calculatestring/python&amp;quot;
-        }
-    ]
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dan kan de autocompleter alles terug vinden. Handige shortcuts: &lt;code&gt;CTRL+SHIFT+G&lt;/code&gt; goto/find definition. &lt;code&gt;ALT+SHIFT+F&lt;/code&gt;: find all references.&lt;/p&gt;
-
-&lt;h4 id=&#34;building-etc&#34;&gt;Building etc&lt;/h4&gt;
-
-&lt;p&gt;Kan ook de &lt;code&gt;SublimeREPL&lt;/code&gt; gebruiken, en dan deze in een window langs uw code plaatsen. Keyboard shortcuts zoals &lt;code&gt;CTRL+SHIFT+, F&lt;/code&gt; kopiëren heel de file naar de REPL om te evalueren. De huidige file builden met &lt;strong&gt;CTRL+B&lt;/strong&gt; (Tools -&amp;gt; Build System -&amp;gt; Python).&lt;/p&gt;
-</description>
+      <description>Sublime Text protips Handige links  Keyb shortcuts voor mac: http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_osx.html Tips voor python devs ea: http://opensourcehacker.com/2012/05/11/sublime-text-2-tips-for-python-and-web-developers/  Must-have plugins Installeren via Sublime Package Control
+ SublimeLinter - linting in verschillende talen (ook CoffeeScript) SublimeCodeIntel - autocompletion in verschillende talen. Werkt zoals in eclipse, gebruik ctrl+shift+space voor box te triggeren. git jsFormat (mapt by default op cmd+alt+F, heb het remapped naar eclipse equiv. cmd+shift+F) FilterLines om door logging te ploegen - greplike in subl.</description>
     </item>
     
   </channel>

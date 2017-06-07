@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Google Api on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/google-api/index.xml</link>
+    <link>http://www.brainbaking.com/tags/google-api/</link>
     <description>Recent content in Google Api on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/google-api/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/google-api/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>google-api</title>
@@ -16,78 +19,7 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/google-api/</guid>
-      <description>
-
-&lt;h1 id=&#34;google-api&#34;&gt;Google-api&lt;/h1&gt;
-
-&lt;h2 id=&#34;google-endpoints-client-lib&#34;&gt;Google Endpoints Client lib&lt;/h2&gt;
-
-&lt;h5 id=&#34;genereren-van-java-files&#34;&gt;Genereren van java files&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Timestamp: Tue Dec 11 12:41:31 CET 2012
-#!/bin/sh
-
-echo &amp;quot;--- COMPILING...&amp;quot;
-mvn clean compile
-
-echo &amp;quot;--- REMOVING OLD FILES &amp;amp; COPYING TO WEB-INF...&amp;quot;
-rm -rf ./war/WEB-INF/devices-*
-rm -rf ./war/WEB-INF/classes
-cp -rf ./target/classes ./war/WEB-INF/
-
-echo &amp;quot;--- GENERATING ENDPOINTS...&amp;quot;
-/Users/jefklak/development/appengine/bin/endpoints.sh get-java-client-lib be.klak.gatecontrolweb.DevicesController
-
-echo &amp;quot;--- EXTRACTING SOURCE JAR...&amp;quot;
-cd ./war/WEB-INF
-rm -rf devices
-unzip devices-v1-java.zip
-cd devices
-unzip `ls | grep sources.jar`
-cp -rf com ~/development/gatecontrol/receiver/src/main/java
-
-echo &amp;quot;--- DONE!&amp;quot;```
-
-##### maven deps voor de client 
-
-```xml
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.oauth-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-oauth-client&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.api-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-api-client&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.2-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-        &amp;lt;dependency&amp;gt;
-            &amp;lt;groupId&amp;gt;com.google.http-client&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;google-http-client-jackson2&amp;lt;/artifactId&amp;gt;
-            &amp;lt;version&amp;gt;1.13.1-beta&amp;lt;/version&amp;gt;
-        &amp;lt;/dependency&amp;gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;oauth is de enige compile dependency die aangeduid staat, maar api-client is nodig voor de algemene http transport - zie &lt;a href=&#34;http://code.google.com/p/google-api-java-client/&#34;&gt;http://code.google.com/p/google-api-java-client/&lt;/a&gt;
-Een client call maken kan je dan zo doen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;        NetHttpTransport transport = new NetHttpTransport();
-
-        // laatste param is voor credentials mee te geven
-        Devices devices = new Devices.Builder(transport, new JacksonFactory(), null).build();
-        try {
-            devices.houses().all().execute().getItems();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;JacksonFactory&lt;/code&gt; zit blijkbaar nergens in buiten in de &lt;code&gt;google-http-client-jackson2&lt;/code&gt; lib.&lt;/p&gt;
-
-&lt;p&gt;Authenticatie etc: &lt;strong&gt;zie &lt;a href=&#34;http://code.google.com/p/google-api-java-client/wiki/OAuth2&#34;&gt;google-api-java-client OAuth2 wiki&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-</description>
+      <description>Google-api Google Endpoints Client lib Genereren van java files Timestamp: Tue Dec 11 12:41:31 CET 2012 #!/bin/sh echo &amp;quot;--- COMPILING...&amp;quot; mvn clean compile echo &amp;quot;--- REMOVING OLD FILES &amp;amp; COPYING TO WEB-INF...&amp;quot; rm -rf ./war/WEB-INF/devices-* rm -rf ./war/WEB-INF/classes cp -rf ./target/classes ./war/WEB-INF/ echo &amp;quot;--- GENERATING ENDPOINTS...&amp;quot; /Users/jefklak/development/appengine/bin/endpoints.sh get-java-client-lib be.klak.gatecontrolweb.DevicesController echo &amp;quot;--- EXTRACTING SOURCE JAR...&amp;quot; cd ./war/WEB-INF rm -rf devices unzip devices-v1-java.zip cd devices unzip `ls | grep sources.jar` cp -rf com ~/development/gatecontrol/receiver/src/main/java echo &amp;quot;--- DONE!</description>
     </item>
     
   </channel>

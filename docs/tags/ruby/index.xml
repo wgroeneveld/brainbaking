@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/ruby/index.xml</link>
+    <link>http://www.brainbaking.com/tags/ruby/</link>
     <description>Recent content in Ruby on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jul 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>nexusdeploy</title>
@@ -16,105 +19,9 @@
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</guid>
-      <description>
-
-&lt;h1 id=&#34;nexus-deploy-artifacts-script&#34;&gt;Nexus deploy artifacts script&lt;/h1&gt;
-
-&lt;p&gt;Wat doet dit?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;haalt laatste versie van package op uit nuget nexus repository&lt;/li&gt;
-&lt;li&gt;download nuget package &amp;amp; unzipt &amp;amp; haalt DLL file hier uit (kan 4.5 4.0 of 3.5 versie zijn)&lt;/li&gt;
-&lt;li&gt;kopiëert dit naar doelserver&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Integraal deel van &amp;ldquo;deployen&amp;rdquo; in verband met modules, wordt bvb gebruikt in &lt;a href=&#34;http://www.brainbaking.com/wiki/code/build/teamcity/&#34;&gt;Teamcity&lt;/a&gt; configuration&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;nokogiri&#39; # gem install nokogiri first! 
-require &#39;net/http&#39;
-require &#39;zip&#39;   # gem install rubyzip first!
-require &#39;optparse&#39;
-require &#39;time&#39;
-
-def deploy_artifact(artifact, server, repo)
-    if repo.nil? then
-        repo = &amp;quot;http://server:8888/nexus/service/local/repositories/nuget-prereleases/&amp;quot;
-    else
-        repo = repo.sub(&amp;quot;/local/nuget/&amp;quot;, &amp;quot;/local/repositories/&amp;quot;)
-    end
-    nexus_url = &amp;quot;#{repo}content/#{artifact}/&amp;quot;
-    print &amp;quot;-- Deploy artifact #{artifact} to #{server} from #{repo}&amp;lt;br/&amp;gt;n&amp;quot;
-
-    print &amp;quot;fetching artifacts from nexus... &amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;t#{nexus_url}&amp;lt;br/&amp;gt;n&amp;quot;
-    response = Net::HTTP.get_response(URI.parse(nexus_url))
-    xml = Nokogiri::XML(response.body).xpath(&amp;quot;//content-item&amp;quot;).map { |entry|
-        hash = Hash.new
-        hash[&#39;url&#39;] = entry.css(&amp;quot;resourceURI&amp;quot;).text
-        hash[&#39;buildnr&#39;] = entry.css(&amp;quot;text&amp;quot;).text
-        hash[&#39;date&#39;] = Time.parse(entry.css(&amp;quot;lastModified&amp;quot;).text)
-
-        hash
-    }.sort { |one,two| two[&#39;date&#39;] &amp;lt;=&amp;gt; one[&#39;date&#39;] }.first
-
-    if xml.nil? then
-        throw &amp;quot;Geen XML kunnen parsen uit URL, ligt nexus plat?&amp;quot;
-    end
-
-    artifactContentUri = xml[&#39;url&#39;]
-    artifactBuildNr = xml[&#39;buildnr&#39;]
-    artifactDate = xml[&#39;date&#39;]
-
-    print &amp;quot;fetching last artifact (modified date #{artifactDate}) package file from nexus... &amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;t#{artifactContentUri}&amp;lt;br/&amp;gt;n&amp;quot;
-    artifact_uri = Nokogiri::XML(Net::HTTP.get_response(URI.parse(artifactContentUri)).body).css(&amp;quot;resourceURI&amp;quot;).text
-
-    print &amp;quot;fetching artifact (buildnr. #{artifactBuildNr}) itself from nexus... &amp;lt;br/&amp;gt;n&amp;quot;
-    nupkg_file = &amp;quot;#{artifact}-#{artifactBuildNr}.nupkg&amp;quot;
-    open(nupkg_file, &amp;quot;wb&amp;quot;) do |file|
-        file.write(Net::HTTP.get_response(URI.parse(artifact_uri)).body)
-    end
-
-    def unzip_and_copy(zip_file, pattern, server)
-        zippedfile = zip_file.glob(pattern).first
-        unless zippedfile.nil?
-            fname = zippedfile.name.split(&#39;/&#39;).last
-            print &amp;quot;&amp;lt;br/&amp;gt;tFound file to copy: #{fname}&amp;lt;br/&amp;gt;n&amp;quot;
-            toname = &amp;quot;#{server}&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;#{fname}&amp;quot;
-            File.delete(toname) if File.exist?(toname)
-            zippedfile.extract(toname)
-        end
-    end
-
-    print &amp;quot;unzipping nuget package...&amp;lt;br/&amp;gt;n&amp;quot;
-    Zip::File.open(nupkg_file) do |zip_file|
-        unzip_and_copy zip_file, &#39;lib/net35/*.dll&#39;, server
-        unzip_and_copy zip_file, &#39;lib/net40/*.dll&#39;, server
-        unzip_and_copy zip_file, &#39;lib/net45/*.dll&#39;, server
-    end
-    File.delete(nupkg_file)
-    print &amp;quot;-- done, extracted to #{server}.&amp;lt;br/&amp;gt;n&amp;quot;
-end
-
-# ex. usage: 
-# deploy_artifact &#39;ModASR&#39;, &amp;quot;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;server&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;c$&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;websites&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;TestDemo3&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;bin&amp;quot;
-options = {}
-ARGV &amp;lt;&amp;lt; &#39;-h&#39; if ARGV.empty?
-OptionParser.new do |opts|
-    opts.banner = &amp;quot;Usage: deploy_artifact.rb [options]&amp;quot;
-    opts.on(&#39;-r&#39;, &#39;--repo REPOSITORY_URL&#39;, &#39;nexus repository url (bvb http://server:8888/nexus/service/local/repositories/nuget-prereleases/ - with trailing slash)&#39;) { |v| options[:repo] = v }
-    opts.on(&#39;-m&#39;, &#39;--modules NAME&#39;, &#39;module name (comma separated)&#39;) { |v| options[:modules] = v }
-    opts.on(&#39;-s&#39;, &#39;--server NAME&#39;, &#39;server target bin directory&#39;) { |v| options[:server] = v }
-    opts.on(&#39;-h&#39;, &#39;--help&#39;, &#39;prints this help&#39;) { |v|
-        puts opts
-        exit
-    }
-end.parse!
-
-options[:modules].split(&amp;quot;,&amp;quot;).each do |mod|
-    deploy_artifact mod, options[:server], options[:repo]
-end
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Nexus deploy artifacts script Wat doet dit?
+ haalt laatste versie van package op uit nuget nexus repository download nuget package &amp;amp; unzipt &amp;amp; haalt DLL file hier uit (kan 4.5 4.0 of 3.5 versie zijn) kopiëert dit naar doelserver  Integraal deel van &amp;ldquo;deployen&amp;rdquo; in verband met modules, wordt bvb gebruikt in Teamcity configuration
+require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;net/http&#39; require &#39;zip&#39; # gem install rubyzip first!</description>
     </item>
     
     <item>
@@ -123,72 +30,7 @@ end
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</guid>
-      <description>
-
-&lt;h1 id=&#34;svnlog&#34;&gt;Svnlog&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;nokogiri&#39; # gem install nokogiri first! 
-require &#39;csv&#39;
-require &#39;date&#39;
-
-# Ex. XML: &amp;lt;log&amp;gt; ... &amp;lt;/log&amp;gt;
-# &amp;lt;logentry revision=&amp;quot;x&amp;quot;&amp;gt;
-# =&amp;gt; &amp;lt;author&amp;gt;name&amp;lt;/author&amp;gt;
-# =&amp;gt; &amp;lt;date&amp;gt;yyyy-mm-ddThh:mm:ssss&amp;lt;/date&amp;gt;
-# =&amp;gt; &amp;lt;msg&amp;gt;message&amp;lt;/msg&amp;gt;
-# &amp;lt;/logentry&amp;gt;
-
-puts &amp;quot;SVN Release notes creator&amp;quot;
-puts &amp;quot;---------&amp;quot;
-
-puts &amp;quot;Revision from? (ex revision &#39;8722&#39; or date {YYYY-MM-DD} or &#39;HEAD&#39;) &amp;gt; &amp;quot;
-revFrom = gets.chomp
-puts &amp;quot;Revision to? &amp;gt; &amp;quot;
-revTo = gets.chomp
-
-puts &amp;quot;Getting log from SVN, hang in there... &amp;quot;
-
-rmFile = File.open(&#39;svnlog_redmine.txt&#39;, &#39;w&#39;)
-btFile = File.open(&#39;svnlog_bridgetrak.txt&#39;, &#39;w&#39;)
-storyFile = File.open(&#39;svnlog_stories.txt&#39;, &#39;w&#39;)
-csv = CSV.open(&#39;svnlog.csv&#39;, &#39;wb&#39;)
-
-[ &#39;.&#39;, &#39;PFW.Base&#39; ].map { |dir|
-    puts &amp;quot; -- processing dir &#39;#{dir}&#39; ...&amp;quot;
-    rawxml = `cd #{dir} &amp;amp;&amp;amp; svn log --xml --revision #{revFrom}:#{revTo}`
-
-    xml = Nokogiri::XML(rawxml)
-    xml.xpath(&amp;quot;//logentry&amp;quot;).map { |entry|
-        hash = Hash.new
-        hash[&#39;rev&#39;] = entry.attr(&amp;quot;revision&amp;quot;)
-        hash[&#39;author&#39;] = entry.css(&amp;quot;author&amp;quot;).text
-        hash[&#39;date&#39;] = DateTime.strptime(entry.css(&amp;quot;date&amp;quot;).text, &#39;%Y-%m-%dT%H:%M:%S&#39;)
-        hash[&#39;msg&#39;] = entry.css(&amp;quot;msg&amp;quot;).text.strip.tr(&amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;, &amp;quot;&amp;quot;)
-        hash[&#39;btIssues&#39;] = hash[&#39;msg&#39;].scan(/bt#([0-9]+)/i).flatten.uniq
-        hash[&#39;rmIssues&#39;] = hash[&#39;msg&#39;].scan(/rm#([0-9]+)/i).flatten.uniq.map { |rm| &amp;quot;http://server.cloudapp.net/redmine/issues/#{rm}&amp;quot; }
-        hash[&#39;stories&#39;] = hash[&#39;msg&#39;].scan(/story#(&amp;lt;br/&amp;gt;S+)&amp;lt;br/&amp;gt;s/i).flatten.uniq
-
-        hash
-    }
-}.flatten.sort_by { |hash| hash[&#39;date&#39;] }.each do |entry|
-    rm = entry[&#39;rmIssues&#39;].join(&#39;, &#39;)
-    csv &amp;lt;&amp;lt; [ &#39;r&#39; + entry[&#39;rev&#39;], entry[&#39;date&#39;], entry[&#39;author&#39;], entry[&#39;msg&#39;], rm ]
-    entry[&#39;btIssues&#39;].each do |issue|
-        btFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-    end
-    entry[&#39;rmIssues&#39;].each do |issue|
-        rmFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-    end
-    entry[&#39;stories&#39;].each do |issue|
-        storyFile &amp;lt;&amp;lt; issue &amp;lt;&amp;lt; &amp;quot;&amp;lt;br/&amp;gt;n&amp;quot;
-    end
-end
-
-
-puts &amp;quot;----&amp;quot;
-puts &amp;quot;DONE: see svnlog.csv &amp;amp; svnlog_X.txt files&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Svnlog require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;csv&#39; require &#39;date&#39; # Ex. XML: &amp;lt;log&amp;gt; ... &amp;lt;/log&amp;gt; # &amp;lt;logentry revision=&amp;quot;x&amp;quot;&amp;gt; # =&amp;gt; &amp;lt;author&amp;gt;name&amp;lt;/author&amp;gt; # =&amp;gt; &amp;lt;date&amp;gt;yyyy-mm-ddThh:mm:ssss&amp;lt;/date&amp;gt; # =&amp;gt; &amp;lt;msg&amp;gt;message&amp;lt;/msg&amp;gt; # &amp;lt;/logentry&amp;gt; puts &amp;quot;SVN Release notes creator&amp;quot; puts &amp;quot;---------&amp;quot; puts &amp;quot;Revision from? (ex revision &#39;8722&#39; or date {YYYY-MM-DD} or &#39;HEAD&#39;) &amp;gt; &amp;quot; revFrom = gets.chomp puts &amp;quot;Revision to? &amp;gt; &amp;quot; revTo = gets.chomp puts &amp;quot;Getting log from SVN, hang in there.</description>
     </item>
     
     <item>
@@ -197,14 +39,7 @@ puts &amp;quot;DONE: see svnlog.csv &amp;amp; svnlog_X.txt files&amp;quot;
       <pubDate>Wed, 29 Apr 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/</guid>
-      <description>
-
-&lt;h1 id=&#34;code-ruby-scripts&#34;&gt;code:ruby &amp;gt;&amp;gt; Scripts&lt;/h1&gt;
-
-&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-</description>
+      <description>code:ruby &amp;gt;&amp;gt; Scripts Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
@@ -213,67 +48,19 @@ puts &amp;quot;DONE: see svnlog.csv &amp;amp; svnlog_X.txt files&amp;quot;
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/ruby/gems/</guid>
-      <description>
-
-&lt;h1 id=&#34;ruby-gems&#34;&gt;Ruby Gems&lt;/h1&gt;
-
-&lt;h3 id=&#34;gemfile-dependencies-installeren&#34;&gt;Gemfile dependencies installeren&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Heb je ruby geïnstalleerd? Dan is &lt;code&gt;gem&lt;/code&gt; beschikbaar.&lt;/li&gt;
-&lt;li&gt;Heb je &lt;code&gt;bundler&lt;/code&gt; geïnstalleerd? Dan is &lt;code&gt;bundler&lt;/code&gt; beschikbaar. Indien neen: &lt;code&gt;gem install bundler&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Is er een &lt;code&gt;Gemfile&lt;/code&gt; beschikbaar? Gebruik dan bundler met &lt;code&gt;bundle install&lt;/code&gt; om alles lokaal te installeren.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;problemen-met-installeren-van-packagse&#34;&gt;Problemen met installeren van packagse&lt;/h4&gt;
-
-&lt;h5 id=&#34;building-native-extension-makefile-target-pattern-contains-no-stop&#34;&gt;Building native extension: Makefile target pattern contains no %. Stop.&lt;/h5&gt;
-
-&lt;p&gt;Probleem met Gemfile &amp;gt; 2.3.0 en Ruby 1.9.3 samen met Ruby devkit. Zie &lt;a href=&#34;https:*github.com/rubygems/rubygems/issues/977&#34;&gt;Native gem installation doesn&amp;rsquo;t work on Windows with &amp;gt;= 2.4.0 #977&lt;/a&gt; en &lt;a href=&#34;https:*groups.google.com/forum/#!topic/rubyinstaller/k19SeJijpKU/discussion&#34;&gt;Google discussion group&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Oplossing: revert gems naar een oudere versie met &lt;code&gt;gem update --system 2.3.0&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h5 id=&#34;fetcherror-ssl-connect-returned1&#34;&gt;FetchError: SSL_Connect returned1&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;Gem::RemoteFetcher::FetchError: SSL_connect returned######1 errno0 state=SSLv3 read server certificate B: certificate verify failed (h
-ttps://rubygems.org/gems/kramdown-1.2.0.gem)
-An error occurred while installing kramdown (1.2.0), and Bundler cannot
-continue.
-Make sure that `gem install kramdown -v &#39;1.2.0&#39;` succeeds before bundling.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Op te lossen door &lt;code&gt;gem update --system&lt;/code&gt; uit te voeren.
-Lees &lt;a href=&#34;http:*stackoverflow.com/questions/10246023/bundle-install-fails-with-ssl-certificate-verification-error&#34;&gt;hier&lt;/a&gt; meer over, of &lt;a href=&#34;http:*ga.be/blog/2013/10/02/fixing-rubygems-ssl-issues-certificate-verify-failed/&#34;&gt;hier&lt;/a&gt; voor de Mac oplossing.&lt;/p&gt;
-</description>
+      <description>Ruby Gems Gemfile dependencies installeren  Heb je ruby geïnstalleerd? Dan is gem beschikbaar. Heb je bundler geïnstalleerd? Dan is bundler beschikbaar. Indien neen: gem install bundler. Is er een Gemfile beschikbaar? Gebruik dan bundler met bundle install om alles lokaal te installeren.  Problemen met installeren van packagse Building native extension: Makefile target pattern contains no %. Stop. Probleem met Gemfile &amp;gt; 2.3.0 en Ruby 1.9.3 samen met Ruby devkit.</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/</link>
+      <link>http://www.brainbaking.com/wiki/code/ruby/</link>
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/</guid>
-      <description>
-
-&lt;h1 id=&#34;code-ruby-home&#34;&gt;code:ruby &amp;gt;&amp;gt; Home&lt;/h1&gt;
-
-&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;code-ruby&#34;&gt;code &amp;gt;&amp;gt; Ruby&lt;/h1&gt;
-
-&lt;h3 id=&#34;certifications&#34;&gt;Certifications&lt;/h3&gt;
-
-&lt;p&gt;See &lt;a href=&#34;http://railsapps.github.io/openssl-certificate-verify-failed.html&#34;&gt;http://railsapps.github.io/openssl-certificate-verify-failed.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Voor OSX:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;rvm -v
-rvm osx-ssl-certs status all
-rvm osx-ssl-certs update all
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://www.brainbaking.com/wiki/code/ruby/</guid>
+      <description> code:ruby &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;
+code &amp;gt;&amp;gt; Ruby Certifications See http://railsapps.github.io/openssl-certificate-verify-failed.html
+Voor OSX:
+rvm -v rvm osx-ssl-certs status all rvm osx-ssl-certs update all  </description>
     </item>
     
     <item>
@@ -282,18 +69,8 @@ rvm osx-ssl-certs update all
       <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/ruby/testing/</guid>
-      <description>
-
-&lt;h1 id=&#34;testing&#34;&gt;Testing&lt;/h1&gt;
-
-&lt;p&gt;gebruik &lt;code&gt;autotest&lt;/code&gt;!&lt;/p&gt;
-
-&lt;h3 id=&#34;quick-references&#34;&gt;Quick references&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://mattsears.com/articles/2011/12/10/minitest-quick-reference&#34;&gt;MiniTest quick reference&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> Testing gebruik autotest!
+Quick references  MiniTest quick reference  </description>
     </item>
     
     <item>
@@ -302,20 +79,8 @@ rvm osx-ssl-certs update all
       <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/ruby/meta/</guid>
-      <description>
-
-&lt;h1 id=&#34;metaprogramming-in-ruby&#34;&gt;Metaprogramming in Ruby&lt;/h1&gt;
-
-&lt;p&gt;Zie ook &lt;a href=&#34;http://www.brainbaking.com/wiki/code/ruby/classes/&#34;&gt;code/ruby/classes&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://madebydna.com/all/code/2011/06/24/eigenclasses-demystified.html&#34;&gt;Eigenclasses demystified&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://hopsoft.github.io/blog/ruby-metaprogramming-idioms/&#34;&gt;Ruby metaprogramming idioms&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.jimmycuadra.com/posts/metaprogramming-ruby-class-eval-and-instance-eval&#34;&gt;class_eval and instance_eval&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> Metaprogramming in Ruby Zie ook code/ruby/classes
+Resources  Eigenclasses demystified Ruby metaprogramming idioms class_eval and instance_eval  </description>
     </item>
     
     <item>
@@ -324,83 +89,10 @@ rvm osx-ssl-certs update all
       <pubDate>Tue, 11 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/ruby/classes/</guid>
-      <description>
-
-&lt;h1 id=&#34;ruby-classes&#34;&gt;Ruby Classes&lt;/h1&gt;
-
-&lt;h3 id=&#34;closures-and-lambda-s&#34;&gt;Closures and lambda&amp;rsquo;s&lt;/h3&gt;
-
-&lt;p&gt;Weer 4 verschillende mogelijkheden in Ruby, zie &lt;a href=&#34;http://techspry.com/ruby_and_rails/proc-and-lambda-in-ruby/&#34;&gt;Proc and Lambda in Ruby&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;native-blocks-aanmaken&#34;&gt;Native &amp;ldquo;blocks&amp;rdquo; aanmaken&lt;/h5&gt;
-
-&lt;p&gt;Is niet mogelijk. &lt;code&gt;a = { puts &amp;quot;hello&amp;quot; }&lt;/code&gt; geeft een Syntax error; dit moet effectief met &lt;code&gt;Proc.new&lt;/code&gt; gebeuren.&lt;/p&gt;
-
-&lt;h5 id=&#34;lambdas-aanmaken&#34;&gt;Lambdas aanmaken&lt;/h5&gt;
-
-&lt;p&gt;Kan ook weer op twee manieren:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;a = lambda { puts &amp;quot;hello&amp;quot; }
-b = -&amp;gt; { puts &amp;quot;hello&amp;quot; }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;blocks-als-argumenten-doorgeven&#34;&gt;Blocks als argumenten doorgeven&lt;/h5&gt;
-
-&lt;p&gt;Wordt slechts één aanvaard, &lt;code&gt;Proc&lt;/code&gt;s zijn objecten en kan dus op eender welke manier. Een block is eerder deel van de taal als syntax. (zoals bij &lt;code&gt;do&lt;/code&gt;)&lt;/p&gt;
-
-&lt;h5 id=&#34;een-lambda-is-een-proc&#34;&gt;Een lambda is een Proc&lt;/h5&gt;
-
-&lt;p&gt;Met twee grote verschillen (zie &lt;a href=&#34;http://awaxman11.github.io/blog/2013/08/05/what-is-the-difference-between-a-block/&#34;&gt;What is the difference between a block, a proc and a lambda in ruby?&lt;/a&gt;):&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;een &lt;code&gt;lambda&lt;/code&gt; controleert argumenten, een &lt;code&gt;Proc&lt;/code&gt; kan het niet schelen.&lt;/li&gt;
-&lt;li&gt;een &lt;code&gt;return&lt;/code&gt; statement in een &lt;code&gt;lambda&lt;/code&gt; stopt slechts de closure. In een &lt;code&gt;Proc&lt;/code&gt; stopt het de hele enclosing method ❗&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def proc_test
-  proc = Proc.new { return }
-  proc.call
-  puts &amp;quot;Hello world&amp;quot;
-end
-
-proc_test                 # calling proc_test prints nothing
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;class-methods&#34;&gt;Class methods&lt;/h3&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.railstips.org/blog/archives/2009/05/11/class-and-instance-methods-in-ruby/&#34;&gt;Class and instance methods in Ruby&lt;/a&gt;. Er zijn verschillende manieren om een class method te maken in ruby:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Way 1
-class Foo
-  def self.bar
-    puts &#39;class method&#39;
-  end
-end
-
-Foo.bar # &amp;quot;class method&amp;quot;
-
-# Way 2
-class Foo
-  class &amp;lt;&amp;lt; self
-    def bar
-      puts &#39;class method&#39;
-    end
-  end
-end
-
-Foo.bar # &amp;quot;class method&amp;quot;
-
-# Way 3
-class Foo; end
-def Foo.bar
-  puts &#39;class method&#39;
-end
-
-Foo.bar # &amp;quot;class method&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Instance methods worden met &lt;code&gt;def name&lt;/code&gt; gedefiniëerd, zoals men intuïtief zou aannemen (wow).&lt;/p&gt;
-</description>
+      <description>Ruby Classes Closures and lambda&amp;rsquo;s Weer 4 verschillende mogelijkheden in Ruby, zie Proc and Lambda in Ruby
+Native &amp;ldquo;blocks&amp;rdquo; aanmaken Is niet mogelijk. a = { puts &amp;quot;hello&amp;quot; } geeft een Syntax error; dit moet effectief met Proc.new gebeuren.
+Lambdas aanmaken Kan ook weer op twee manieren:
+a = lambda { puts &amp;quot;hello&amp;quot; } b = -&amp;gt; { puts &amp;quot;hello&amp;quot; }  Blocks als argumenten doorgeven Wordt slechts één aanvaard, Procs zijn objecten en kan dus op eender welke manier.</description>
     </item>
     
     <item>
@@ -409,27 +101,8 @@ Foo.bar # &amp;quot;class method&amp;quot;
       <pubDate>Tue, 11 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/ruby/reflectie/</guid>
-      <description>
-
-&lt;h1 id=&#34;metaprogrammeren-ruby-reflectie&#34;&gt;Metaprogrammeren: Ruby Reflectie&lt;/h1&gt;
-
-&lt;h3 id=&#34;methods-accessen&#34;&gt;Methods accessen&lt;/h3&gt;
-
-&lt;p&gt;Dit kan op twee manieren: op een object &lt;strong&gt;instance&lt;/strong&gt; of op een &lt;strong&gt;class&lt;/strong&gt;, met &lt;code&gt;.method&lt;/code&gt; of &lt;code&gt;.static_method&lt;/code&gt;, zie &lt;a href=&#34;http://www.ruby-doc.org/core-2.1.1/Method.html&#34;&gt;Ruby Method doc&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;1.method(:+).call 2 # output: 3
-Fixnum.static_method(:+).bind(1).call 2 # output: 3
-1.method(&amp;quot;+&amp;quot;).unbind().bind(1).call(2) # output: 3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Object Methods zijn al gebind en kan je dus losmaken van hun reference indien gewenst - zelfde effect als de &lt;code&gt;static_method&lt;/code&gt; call. Je kan blijkbaar zowel een string als een ref meegeven om de naam van de method te resolven.&lt;/p&gt;
-
-&lt;h5 id=&#34;ik-wil-meer&#34;&gt;Ik wil meer&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;1.methods.each{|x| puts x}&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;of &lt;code&gt;.static_methods&lt;/code&gt; natuurlijk. Enkel public of protected, ook van subklassen.&lt;/p&gt;
-</description>
+      <description>Metaprogrammeren: Ruby Reflectie Methods accessen Dit kan op twee manieren: op een object instance of op een class, met .method of .static_method, zie Ruby Method doc.
+1.method(:+).call 2 # output: 3 Fixnum.static_method(:+).bind(1).call 2 # output: 3 1.method(&amp;quot;+&amp;quot;).unbind().bind(1).call(2) # output: 3  Object Methods zijn al gebind en kan je dus losmaken van hun reference indien gewenst - zelfde effect als de static_method call. Je kan blijkbaar zowel een string als een ref meegeven om de naam van de method te resolven.</description>
     </item>
     
   </channel>

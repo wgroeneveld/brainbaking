@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Threading on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/threading/index.xml</link>
+    <link>http://www.brainbaking.com/tags/threading/</link>
     <description>Recent content in Threading on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/threading/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Dec 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/threading/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>threading</title>
@@ -16,119 +19,10 @@
       <pubDate>Mon, 02 Dec 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/c/threading/</guid>
-      <description>
-
-&lt;h1 id=&#34;threading&#34;&gt;Threading&lt;/h1&gt;
-
-&lt;p&gt;Handige links:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.codeproject.com/Articles/7953/Thread-Synchronization-for-Beginners&#34;&gt;Thread synchronization for beginners&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;thread-safe-singleton-pattern&#34;&gt;Thread-safe Singleton pattern&lt;/h2&gt;
-
-&lt;p&gt;Bijna onmogelijk in C++ &amp;lt; v11 blijkbaar?&lt;/p&gt;
-
-&lt;p&gt;Onderstaand voorbeeld gebruikt Win32 code (&lt;code&gt;WaitForSingleObject&lt;/code&gt;) en een mutex om te wachten:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#pragma once
-#include &amp;lt;WinBase.h&amp;gt;
-
-class AddinProcessService 
-{
-    static AddinProcessService *singletonInstance;
-    AddinProcessService() : m_coupon(_T(&amp;quot;&amp;quot;)), m_hostServiceAddress(_T(&amp;quot;&amp;quot;)) {}
-
-  public:
-
-    inline const CString&amp;amp; GetHostServiceAddress() const
-    {
-        return m_hostServiceAddress;
-    }
-    inline const CString&amp;amp; GetCoupon() const
-    {
-        return m_coupon;
-    }
-    inline void SetCoupon(CString coupon)
-    {
-        m_coupon = coupon;
-    }
-    inline void SetHostServiceAddress(CString address) 
-    {
-        m_hostServiceAddress = address;
-    }
-
-    static AddinProcessService* getSingletonInstance()
-    {
-        static volatile int initialized = 0;
-        static HANDLE mtx;
-
-        if (!initialized)
-        {
-            if (!mtx)
-            {
-                HANDLE mymtx;
-                mymtx = CreateMutex(NULL, 0, NULL);
-                if (InterlockedCompareExchangePointer(&amp;amp;mtx, mymtx, NULL) != NULL)
-                    CloseHandle(mymtx);
-            }
-
-            WaitForSingleObject(mtx, 0);
-            if (!initialized)
-            {
-                libInitInternal();
-                initialized = 1;
-            }
-            ReleaseMutex(mtx);
-        }
-        return singletonInstance;
-    };
-
-private:
-    CString m_hostServiceAddress;
-    CString m_coupon;
-
-    static void libInitInternal()
-    {
-        singletonInstance = new AddinProcessService();
-    }
-};
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ Vergeet niet in de cpp file uw singletonInstance pointer te declareren, anders krijg je linker errors: &lt;code&gt;AddinProcessService* AddinProcessService::singletonInstance;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;In UNIX kan men &lt;a href=&#34;https://computing.llnl.gov/tutorials/pthreads/&#34;&gt;pthreads&lt;/a&gt; gebruiken, ongeveer op deze manier:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;static Foo &amp;amp;getInst()
-{
-  static Foo *inst = NULL;
-  if(inst ###### NULL)
-  {
-    pthread_mutex_lock(&amp;amp;mutex);
-    if(inst ###### NULL)
-      inst = new Foo(...);
-    pthread_mutex_unlock(&amp;amp;mutex);
-  }
-  return *inst;    
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dan kan je &lt;code&gt;#ifdef WIN32&lt;/code&gt; gebruiken om te switchen tussen beide implementaties.&lt;/p&gt;
-
-&lt;p&gt;############ C++ 11 multithreading ############&lt;/p&gt;
-
-&lt;p&gt;Vanaf C++ 11 zijn multithreads 100% native supported, dit wil zeggen dat manueel locken met een &lt;code&gt;mutex&lt;/code&gt; overbodig wordt. Bovenstaande singleton kan gereduceerd worden tot (merk het &lt;strong&gt;static&lt;/strong&gt; keyword op, dat is het belangrijkste voor de autolock):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;static Singleton&amp;amp; get(){
-  static Singleton instance;
-  return instance;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Voor meer info, zie &lt;a href=&#34;http://stackoverflow.com/questions/11711920/how-to-implement-multithread-safe-singleton-in-c11-without-using-mutex&#34;&gt;http://stackoverflow.com/questions/11711920/how-to-implement-multithread-safe-singleton-in-c11-without-using-mutex&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Threading Handige links:
+ Thread synchronization for beginners  Thread-safe Singleton pattern Bijna onmogelijk in C++ &amp;lt; v11 blijkbaar?
+Onderstaand voorbeeld gebruikt Win32 code (WaitForSingleObject) en een mutex om te wachten:
+#pragma once #include &amp;lt;WinBase.h&amp;gt; class AddinProcessService { static AddinProcessService *singletonInstance; AddinProcessService() : m_coupon(_T(&amp;quot;&amp;quot;)), m_hostServiceAddress(_T(&amp;quot;&amp;quot;)) {} public: inline const CString&amp;amp; GetHostServiceAddress() const { return m_hostServiceAddress; } inline const CString&amp;amp; GetCoupon() const { return m_coupon; } inline void SetCoupon(CString coupon) { m_coupon = coupon; } inline void SetHostServiceAddress(CString address) { m_hostServiceAddress = address; } static AddinProcessService* getSingletonInstance() { static volatile int initialized = 0; static HANDLE mtx; if (!</description>
     </item>
     
   </channel>

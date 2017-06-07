@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shellconfig on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/shellconfig/index.xml</link>
+    <link>http://www.brainbaking.com/tags/shellconfig/</link>
     <description>Recent content in Shellconfig on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/shellconfig/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/shellconfig/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>shellconfig</title>
@@ -16,73 +19,7 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/shellconfig/</guid>
-      <description>
-
-&lt;h1 id=&#34;shell-configuration&#34;&gt;Shell Configuration&lt;/h1&gt;
-
-&lt;h2 id=&#34;zshell&#34;&gt;ZShell&lt;/h2&gt;
-
-&lt;p&gt;```bash&lt;/p&gt;
-
-&lt;p&gt;############################################&lt;/p&gt;
-
-&lt;h4 id=&#34;jefklak-s-zsh-config-file&#34;&gt;Jefklak&amp;rsquo;s ZSH Config file&lt;/h4&gt;
-
-&lt;h4 id=&#34;last-edited-18-10-2005&#34;&gt;Last Edited: 18/10/2005&lt;/h4&gt;
-
-&lt;h4 id=&#34;thank-you-gentoo-forum&#34;&gt;Thank you Gentoo Forum!&lt;/h4&gt;
-
-&lt;p&gt;############################################&lt;/p&gt;
-
-&lt;h4 id=&#34;freebsd-specific-stuff-here&#34;&gt;FreeBSD Specific stuff here&lt;/h4&gt;
-
-&lt;h1 id=&#34;export-clicolor-yes-for-the-bsd-ls-thing-flag-g&#34;&gt;export CLICOLOR=yes for the BSD ls thing (flag -G)&lt;/h1&gt;
-
-&lt;h1 id=&#34;lscolors-fxgxcxdxbxegedabagacad-export-lscolors&#34;&gt;LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS&lt;/h1&gt;
-
-&lt;h4 id=&#34;envoirnment-variables&#34;&gt;Envoirnment Variables&lt;/h4&gt;
-
-&lt;p&gt;export HOSTTYPE=&amp;ldquo;$(uname -m)&amp;rdquo;
-export COLORTERM=yes
-export LINKS_XTERM=screen&lt;/p&gt;
-
-&lt;h1 id=&#34;fixes-savage-mouse-problems&#34;&gt;Fixes Savage mouse problems.&lt;/h1&gt;
-
-&lt;p&gt;export SDL_VIDEO_X11_DGAMOUSE=0&lt;/p&gt;
-
-&lt;h4 id=&#34;aliases&#34;&gt;Aliases&lt;/h4&gt;
-
-&lt;p&gt;alias vi=&amp;ldquo;vim&amp;rdquo;
-alias ..=&amp;ldquo;cd .. &amp;amp;&amp;amp; ls&amp;rdquo;
-alias del=&amp;ldquo;nocorrect rm -rf&amp;rdquo;
-alias mv=&amp;ldquo;nocorrect mv -f&amp;rdquo;
-alias cp=&amp;ldquo;cp -rf&amp;rdquo;
-alias cls=&amp;lsquo;clear&amp;rsquo;
-alias l=&amp;ldquo;ls -la&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;alias showstuff=&amp;ldquo;figlet unix rocks | cowsay -n -d;uname -a&amp;rdquo;&lt;/p&gt;
-
-&lt;h4 id=&#34;set-the-console-title&#34;&gt;set the console title&lt;/h4&gt;
-
-&lt;p&gt;case $TERM in
-xterm&lt;em&gt;)
-    PR_TITLEBAR######$&amp;lsquo;%{&lt;br/&gt;e]0;%(!.-&lt;/em&gt;[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y&lt;br/&gt;a%}&amp;rsquo;
-    ;;
-&lt;em&gt;rxvt&lt;/em&gt;)
-    PR_TITLEBAR######$&amp;lsquo;%{&lt;br/&gt;e]0;%(!.-&lt;em&gt;[ROOT]&lt;/em&gt;=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y&lt;br/&gt;a%}&amp;rsquo;
-    ;;
-*)
-    PR_TITLEBAR=&amp;rdquo;
-    ;;
-esac&lt;/p&gt;
-
-&lt;h4 id=&#34;the-prompt-style&#34;&gt;the prompt style&lt;/h4&gt;
-
-&lt;h1 id=&#34;check-for-colors&#34;&gt;check for colors&lt;/h1&gt;
-
-&lt;p&gt;autoload colors zsh/terminfo
-if [ &amp;ldquo;$terminfo[colors]&amp;rdquo; -ge 8 ](&lt;/p&gt;
-</description>
+      <description>Shell Configuration ZShell ############################################ #### Jefklak&#39;s ZSH Config file #### #### Last Edited: 18/10/2005 #### #### Thank you Gentoo Forum! #### ############################################ #### FreeBSD Specific stuff here #### # export CLICOLOR=yes for the BSD ls thing (flag -G) # LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS #### Envoirnment Variables #### export HOSTTYPE=&amp;quot;$(uname -m)&amp;quot; export COLORTERM=yes export LINKS_XTERM=screen # Fixes Savage mouse problems. export SDL_VIDEO_X11_DGAMOUSE=0 #### Aliases #### alias vi=&amp;quot;vim&amp;quot; alias ..=&amp;quot;cd .. &amp;amp;&amp;amp; ls&amp;quot; alias del=&amp;quot;nocorrect rm -rf&amp;quot; alias mv=&amp;quot;nocorrect mv -f&amp;quot; alias cp=&amp;quot;cp -rf&amp;quot; alias cls=&#39;clear&#39; alias l=&amp;quot;ls -la&amp;quot; alias showstuff=&amp;quot;figlet unix rocks | cowsay -n -d;uname -a&amp;quot; #### set the console title #### case $TERM in xterm*) PR_TITLEBAR######$&#39;%{&amp;lt;br/&amp;gt;e]0;%(!</description>
     </item>
     
   </channel>

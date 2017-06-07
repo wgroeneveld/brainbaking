@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/javascript/index.xml</link>
+    <link>http://www.brainbaking.com/tags/javascript/</link>
     <description>Recent content in Javascript on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Jan 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Migrating from Extjs to React gradually</title>
@@ -16,117 +19,8 @@
       <pubDate>Tue, 26 Jan 2016 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/react-in-extjs/</guid>
-      <description>&lt;p&gt;We were looking for a few alternatives to our big ExtJS 4 application. Since it&amp;rsquo;s not that easy to completely migrate from one front-end framework to the next, a possible solution would be to start developing new parts in another framework. There&amp;rsquo;s a lot of domain logic spread in Ext views and controllers - which shouldn&amp;rsquo;t be there, we are well aware of that. Let&amp;rsquo;s call it &amp;ldquo;legacy&amp;rdquo; :-)&lt;/p&gt;
-
-&lt;p&gt;The application right now uses Extjs as UI and C# as backend, and lets ext do the loading of the views/controllers (living in app.js like most ext applications). There&amp;rsquo;s no ecosystem set up like modern javascript applications - build systems like Grunt, Gulp, node package managers, Browserify, &amp;hellip; are all not used. We do use sencha command to minify stuff. To be able to develop new modules without having to worry about extjs, one of the possibilities would be to use iframes. That enables us to (scenario) test the module using it&amp;rsquo;s own routing. It&amp;rsquo;s wrapped inside an Extjs view with an iframe:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    Ext.define(&#39;App.view.utilities.desktop.ReactWindow&#39;, {
-        extend: &#39;Ext.form.Panel&#39;,
-        alias: &#39;widget.App_view_utilities_desktop_ReactWindow&#39;,
-
-        bodyPadding: 5,
-        width: 600,
-
-        layout: {
-            type: &#39;vbox&#39;,
-            align: &#39;stretch&#39;
-        },
-
-        initComponent: function() {
-            var me = this;
-
-            var dynamicPanel = new Ext.Component({
-                autoEl: {
-                    tag: &#39;iframe&#39;,
-                    style: &#39;border: none&#39;,
-                    src: me.url
-                },
-                flex: 1
-            });
-
-            Ext.apply(me, {
-                title: &#39;React&#39;,
-                defaults: {
-                    labelWidth: 120
-                },
-                items: [dynamicPanel]
-            });
-            me.callParent();
-        }
-    });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;When the module is triggered in the main app, we simply add the panel to the desktop:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    this.addPanel(Ext.create(&#39;App.view.utilities.desktop.ReactWindow&#39;, {
-        url: &#39;react/mod/someurl/&#39;
-    }));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Our app structure in the GUI folder would be something like this:&lt;/p&gt;
-
-&lt;p&gt;[GUI]&lt;br/&gt;
-* global.asax&lt;br/&gt;
-* default.aspx&lt;br/&gt;
-**** [app] -&amp;gt; extjs&lt;br/&gt;
-**** [react] -&amp;gt; reactjs&lt;br/&gt;&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s simple enough. But how would one be able to open new Ext panels from within the React sub-application? That would be done via custom events thrown to the parent window. Catching these is just a matter of adding this to some controller in Extjs:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    window.addEventListener(&#39;react&#39;, function(e) {
-        me.onReactEvent(e.detail, e);
-    });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The &lt;code&gt;detail&lt;/code&gt; property is part of a custom event, thrown in a react component. This below might be some cell component, taken from the &lt;a href=&#34;https://facebook.github.io/fixed-data-table/&#34;&gt;fixed-data-table&lt;/a&gt; example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class MyLinkCell extends React.Component {
-    clicked(e) {
-        const el = e.target;
-        const eventObj = {
-            &#39;detail&#39;: {
-                &#39;type&#39;: &#39;downloadlink&#39;,
-                &#39;url&#39;: &#39;react/some/detail/url&#39; 
-            }
-        };
-
-        console.log(&#39;clicked - &amp;quot;react&amp;quot; event thrown:&#39;);
-        console.dir(eventObj);
-        if(window.parent) {
-            window.parent.dispatchEvent(new CustomEvent(&#39;react&#39;, eventObj));
-        }
-    }
-
-  render() {
-    const {rowIndex, field, data} = this.props;
-    const link = data[rowIndex][field];
-    return (
-      &amp;lt;Cell&amp;gt;
-        &amp;lt;a onClick={this.clicked} href=&#39;#&#39;&amp;gt;{link}&amp;lt;/a&amp;gt;
-      &amp;lt;/Cell&amp;gt;
-    );
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Of course this is more or less the same when for instance using Angular2 instead of React, the custom event is part of the JS standard, see &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events&#34;&gt;Creating and triggering events&lt;/a&gt; from MDN.&lt;/p&gt;
-
-&lt;p&gt;To be able to use source maps in conjunction with Browserify/Watchify, I had to tweak some parameters in package.json:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;`watchify index.js --verbose -d -t babelify --sourceMapRelative . --outfile=bundle.js`
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Things we still need to research:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;How well does React compare to Angular2 in terms of components? For instance react doesn&amp;rsquo;t include &lt;a href=&#34;http://www.kriasoft.com/react-routing/&#34;&gt;routing&lt;/a&gt; by default. We&amp;rsquo;ll need to rewrite some already-extjs-custom components in the target framework.&lt;/li&gt;
-&lt;li&gt;How should we include the build ecosystem (npm, gulp/grunt/browserify, &amp;hellip;) into our C# build solution and Teamcity build? Will &lt;a href=&#34;http://reactjs.net/&#34;&gt;http://reactjs.net/&lt;/a&gt; help for instance?&lt;/li&gt;
-&lt;li&gt;Can we use &lt;a href=&#34;http://reactjs.net/&#34;&gt;http://reactjs.net/&lt;/a&gt; to render serverside components?&lt;/li&gt;
-&lt;li&gt;Which build tool should we use? We&amp;rsquo;re being overwhelmed by choice: bower/npm as package manager, I&amp;rsquo;ve seen stuff like &lt;a href=&#34;http://www.christianalfoni.com/articles/2015_10_01_Taking-the-next-step-with-react-and-webpack&#34;&gt;Webpack in conjunction with React&lt;/a&gt;, &amp;hellip; The list is huge if you&amp;rsquo;ve not kept up with the JS technology news.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;One of the things we liked a lot was typescript or ES6 and the ability to use &lt;code&gt;=&amp;gt; ()&lt;/code&gt; and promises. Enabling this requires a transpiler or a polyfill like &lt;a href=&#34;https://babeljs.io/&#34;&gt;Babel JS&lt;/a&gt;, but maybe this as a build step in sencha command will also ease some pain we&amp;rsquo;re having with the current Ext code.&lt;/p&gt;
-</description>
+      <description>We were looking for a few alternatives to our big ExtJS 4 application. Since it&amp;rsquo;s not that easy to completely migrate from one front-end framework to the next, a possible solution would be to start developing new parts in another framework. There&amp;rsquo;s a lot of domain logic spread in Ext views and controllers - which shouldn&amp;rsquo;t be there, we are well aware of that. Let&amp;rsquo;s call it &amp;ldquo;legacy&amp;rdquo; :-)
+The application right now uses Extjs as UI and C# as backend, and lets ext do the loading of the views/controllers (living in app.</description>
     </item>
     
     <item>
@@ -135,113 +29,7 @@
       <pubDate>Tue, 23 Dec 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/unit-testing-extjs-ui/</guid>
-      <description>
-
-&lt;h3 id=&#34;webdriver-js-heavy-frameworks&#34;&gt;WebDriver &amp;amp; js-heavy frameworks&lt;/h3&gt;
-
-&lt;p&gt;Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&amp;rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &amp;hellip; like you&amp;rsquo;re used to when using client/server desktop applications. You define components on a view, behavior on a controller, and data and the way it&amp;rsquo;s loaded on the model.&lt;/p&gt;
-
-&lt;p&gt;The problem with Javascript-heavy frameworks like this is that if your team does not have a lot of experience using JS in general, it can get extremely messy and cluttered. Which it did, coupled with a lot of regression (a misplaced &amp;ldquo;;&amp;rdquo; could break an entire part of the application), we needed an automated way to catch up with those bugs.
-Since I have a lot of experience with WebDriver, we started using it to write scenario tests when the application is deployed. A test should emulate customer behavior: click on a menu, expect a window to be opened, fill in a form and expect something else to happen. It&amp;rsquo;s not isolated but tests everything together.&lt;/p&gt;
-
-&lt;p&gt;WebDriver is great, but since a lot of javascript events are happening in the background it&amp;rsquo;s very difficult to write a easily usable DSL to manipulate the UI. One has to wait for ajax calls to finish, for DOM elements to appear or disappear, and so on. Tests became instable and failed sometimes, even sometimes on the CI build but never on your development environment. It takes more and more time to find &amp;amp; fix those things.&lt;/p&gt;
-
-&lt;h3 id=&#34;a-possible-solution-siesta&#34;&gt;A possible solution: Siesta&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.bryntum.com/products/siesta/&#34;&gt;Siesta&lt;/a&gt; is a product from Bryntum especially written to unit test Extjs applications, focussing on the UI. Sounds nice, so we decided to check it out as a possible alternative to WebDriver. As the website states:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Siesta is a JavaScript unit testing tool that can help you test any JavaScript code and also perform testing of the DOM and simulate user interactions. The tool can be used together with any type of JavaScript codebase – jQuery, Ext JS, NodeJS, Dojo, YUI etc. Using the API, you can choose from many types of assertions ranging from simple logical JS object&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Sounds good, right?&lt;/p&gt;
-
-&lt;p&gt;The setup isn&amp;rsquo;t too difficult, after a few hours of fiddling I managed to bootstrap our Extjs application using this index.js file:&lt;/p&gt;
-
-&lt;p&gt;var Harness = Siesta.Harness.Browser.ExtJS;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    Harness.configure({
-        title       : &#39;Test Suite&#39;,
-        loaderPath  : { 
-            &#39;Ext&#39;: &#39;../extjs&#39;,
-            &#39;Ext.ux&#39;: &#39;../extjs/ux&#39;,
-            &#39;MyApp&#39;: &#39;../app&#39;
-        },
-        preload     : [
-            // version of ExtJS used by your application
-            &#39;../extjs/resources/css/ext-all.css&#39;,
-            &#39;../resources/css/workb.css&#39;,
-
-            // version of ExtJS used by your application
-            &#39;../extjs/ext-all-debug.js&#39;,
-            &#39;./app-vars.js&#39;,
-            {
-                text: &amp;quot;Ext.Loader.setConfig({ &#39;Ext&#39;: &#39;../extjs&#39;, &#39;Ext.ux&#39;: &#39;../extjs/ux&#39;, &#39;MyApp&#39;: &#39;../app&#39; })&amp;quot;
-            },
-            &#39;../extjs/overrides/javascript-overrides.js&#39;,
-            &#39;../extjs/overrides/PFW-overrides.js&#39;,
-            &#39;../app/app.js&#39;
-        ]
-    });
-
-    Harness.start(
-        &#39;tests/001_sanity.t.js&#39;,
-        &#39;tests/002_window.t.js&#39;
-    );
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Some pitfalls: &lt;code&gt;loaderPath&lt;/code&gt; isn&amp;rsquo;t evaluated in the preload so you have to reset it with &lt;code&gt;Ext.Loader.setConfig()&lt;/code&gt; and I had to alter our app.js file. Our directory structure looks like this:&lt;/p&gt;
-
-&lt;p&gt;root
-&amp;ndash; app
-&amp;ndash; extjs
-&amp;mdash;- ux
-&amp;ndash; siesta
-&amp;mdash;- tests&lt;/p&gt;
-
-&lt;p&gt;So you have to watch out for relative paths like &lt;code&gt;appFolder&lt;/code&gt; in app.js:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Ext.application({
-    name: &#39;MyApp&#39;,
-    appFolder: (_siesta ? &#39;../&#39; : &#39;&#39;) + &#39;app&#39;,
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After that, you can start writing tests. Looking at the examples, the test flow looks a lot like our current WebDriver tests (wait for rows present, wait x seconds, click on this, do that). Here&amp;rsquo;s a simple test to create a view and check if the grid has some rows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;StartTest(function(t) {
-    t.diag(&amp;quot;Creating some window&amp;quot;);
-
-    var view = Ext.create(&#39;MyApp.view.SomeOverview&#39;, {
-        renderTo: Ext.getBody() // required
-    });
-    var grid = view.down(&amp;quot;grid&amp;quot;);
-
-    t.chain(
-        { waitFor : &#39;rowsVisible&#39;, args : grid }
-    );
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;{{urls.media}}/siesta.png&#34; alt=&#34;siesta view test in action&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Siesta also comes with it&amp;rsquo;s downsides though.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;JS Test code is really messy. Chaining, async calls, ugly data setup for stores, &amp;hellip; A simple test can get complicated fast and requires advanced JS knowledge not everybody in our team has.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;waitFor&lt;/code&gt; exposes the same problems we have with our current WebDriver tests, so it&amp;rsquo;s not that much of an improvement&lt;/li&gt;
-&lt;li&gt;Test data setup cannot be reused from our backend integration tests (we use the builder pattern there to create data in the DB)&lt;/li&gt;
-&lt;li&gt;Creating a view to test doesn&amp;rsquo;t test the controller and vice versa. Still too low level for us.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The biggest problem is that it&amp;rsquo;s still more an integration/unit test than a scenario test and quite tightly coupled to your implementation. Since our implementation is far from perfect, Siesta is not the optimal solution for us. For example, we create stores inside our views and load them in &lt;code&gt;initComponent()&lt;/code&gt;. No way to provide a stub store with some dummy data. We&amp;rsquo;d have to refactor 200+ views to create tests. Of course tests should be written before the implementation&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;If you would like to know more about Siesta or JS BDD testing, take a look at&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://pivotallabs.com/sencha-touch-bdd-part-5-controller-testing/&#34;&gt;Pivotallabs blog post&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.bryntum.com/docs/siesta/#!/guide/siesta_getting_started&#34;&gt;Siesta API doc: Getting started&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>WebDriver &amp;amp; js-heavy frameworks Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&amp;rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &amp;hellip; like you&amp;rsquo;re used to when using client/server desktop applications.</description>
     </item>
     
     <item>
@@ -250,138 +38,14 @@ Since I have a lot of experience with WebDriver, we started using it to write sc
       <pubDate>Tue, 29 Jul 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/</guid>
-      <description>
-
-&lt;h1 id=&#34;javascript&#34;&gt;Javascript&lt;/h1&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Use functions to guard your scope and optimize encapsulation, gentlemen!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;JS in één-twéé-drié:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://docs.google.com/present/edit?id######0AXaRvIf-WHu3ZGRjNnFnN2pfMmM3ajVmdjN0&amp;amp;hlen&amp;amp;authkey=COqTqcsL&#34;&gt;https://docs.google.com/present/edit?id######0AXaRvIf-WHu3ZGRjNnFnN2pfMmM3ajVmdjN0&amp;amp;hlen&amp;amp;authkey=COqTqcsL&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;❗ JS &lt;strong&gt;fiddles&lt;/strong&gt;: &lt;a href=&#34;http://jsfiddle.net/user/jefklak/fiddles/&#34;&gt;http://jsfiddle.net/user/jefklak/fiddles/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;JS Must watch videos&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https:*github.com/vjdhama/js-must-watch&#34;&gt;https:*github.com/vjdhama/js-must-watch&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h4&gt;
-
-&lt;p&gt;Om &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/inheritance/&#34;&gt;Prototypal Inheritance&lt;/a&gt; te kunnen begrijpen, moeten eerst een aantal andere zaken duidelijk worden.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;De basislegging van Javascript versus klassieke class-based OO systemen:
-
-&lt;ol&gt;
-&lt;li&gt;Hoe werken &lt;code&gt;function&lt;/code&gt; referenties en declaraties&lt;/li&gt;
-&lt;li&gt;Functies en objecten in functies steken om klassen te emuleren:
-
-&lt;ol&gt;
-&lt;li&gt;Er is geen verschil tussen functies en variabelen, het zijn allemaal key/value pairs (&amp;rdquo;&lt;em&gt;first-class citizens&lt;/em&gt;&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;De &lt;code&gt;delete&lt;/code&gt; operator gebruiken om een key te verwijderen uit een object&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;Closures als functies definiëren&lt;/li&gt;
-&lt;li&gt;Constructors als functies definiëren&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;Het aanroepen van functies:
-
-&lt;ol&gt;
-&lt;li&gt;De werking van de &lt;code&gt;this&lt;/code&gt; operator, functies zijn pas &lt;em&gt;gebonden&lt;/em&gt; als ze aangeroepen worden! (&amp;ldquo;methods&amp;rdquo; ((een method is altijd gebonden aan een instance, een functie niet)) bestaan niet)&lt;/li&gt;
-&lt;li&gt;Aanroeping door middel van &lt;code&gt;call&lt;/code&gt; (vararg) en &lt;code&gt;apply&lt;/code&gt; (array arg) en de verandering van &lt;code&gt;this&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Via string evaluatie met &lt;code&gt;eval&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;de interne werking van de &lt;code&gt;new&lt;/code&gt; operator&lt;/li&gt;
-&lt;li&gt;Inheritance opbouwen afhankelijk van de &lt;code&gt;prototype&lt;/code&gt; property&lt;/li&gt;
-&lt;li&gt;Inheritance afchecken met &lt;code&gt;instanceof&lt;/code&gt;, het verschil tussen dat en &lt;code&gt;typeof&lt;/code&gt; kennen&lt;/li&gt;
-&lt;li&gt;Mixins kunnen gebruiken in JS met:
-
-&lt;ol&gt;
-&lt;li&gt;Doen alsof de constructor van een parent object wordt aangeroepen&lt;/li&gt;
-&lt;li&gt;Direct bepaalde functie referenties overkopiëren met &lt;code&gt;prototype&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;De limitaties hiervan kennen (échte multiple inheritance bestaat niet)&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;referenties&#34;&gt;Referenties&lt;/h3&gt;
-
-&lt;h5 id=&#34;nog-te-bekijken-boeken&#34;&gt;Nog te bekijken boeken&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Test%20Driven%20Javascript%20Development&#34; target=&#34;_blank&#34;&gt;Test Driven Javascript Development&lt;/a&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=High%20Performance%20Javascript&#34; target=&#34;_blank&#34;&gt;High Performance Javascript&lt;/a&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/search?utf8=%E2%9C%93&amp;query=Javascript%20Patterns&#34; target=&#34;_blank&#34;&gt;Javascript Patterns&lt;/a&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;intern&#34;&gt;Intern&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/inleiding/&#34;&gt;inleiding&lt;/a&gt; bevat: constructor functies, &lt;code&gt;this&lt;/code&gt; en &lt;code&gt;delete&lt;/code&gt; keywords, closures en AOP in JS&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/inheritance/&#34;&gt;inheritance&lt;/a&gt; bevat: &lt;code&gt;new&lt;/code&gt;, &lt;code&gt;typeof&lt;/code&gt; en &lt;code&gt;instanceof&lt;/code&gt; keyword, inheritance via &lt;code&gt;prototype&lt;/code&gt;, mixins gebruiken en multiple inheritance faken&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/frameworks/&#34;&gt;frameworks&lt;/a&gt; bevat: uitleg hoe interne werking van Prototype JS &lt;code&gt;Object.Extend&lt;/code&gt; werkt, verschillen tussen jQuery en Prototype JS&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/snippets/&#34;&gt;snippets&lt;/a&gt; bevat: herbruikbare stukken JS code&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/scoping/&#34;&gt;scoping&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/magic_properties/&#34;&gt;magic properties&lt;/a&gt; beschikbaar in de console, in Firefox, of in Javascript 1.8.5 (ECMA impl. V5)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/troubleshooting/&#34;&gt;troubleshooting&lt;/a&gt; in verschillende browsers&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/performance/&#34;&gt;performance&lt;/a&gt; (dynamic script loading etc)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/csharp/testing/&#34;&gt;testing&lt;/a&gt; en automatisatie in CI omgevingen&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/serverside/&#34;&gt;serverside&lt;/a&gt; Javascript parsing en implementaties&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/pitfalls/&#34;&gt;pitfalls&lt;/a&gt; bevat het leukste deel van eender welke taal bijleren!!&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/async/&#34;&gt;async&lt;/a&gt; blocks schrijven, integratie testen met async blocks etc&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Volledige inhoudsopgave:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;code/javascript|js context navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;extern&#34;&gt;Extern&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;Blogs, algemene howtos en nieuws items&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http:*dailyjs.com/&#34;&gt;http:*dailyjs.com/&lt;/a&gt;: A Javascript blog (ook meer NodeJS-oriented)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://perfectionkills.com/&#34;&gt;Perfection kills: exploring Javascript by Example&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://ejohn.org/category/blog/&#34;&gt;John Resig blog&lt;/a&gt; - de bedenker van jQuery en experimenteur met ECMA5&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Documentatie en in-depth manuals&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en/JavaScript/Reference&#34;&gt;Mozilla Developer Javascript Reference&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://yuiblog.com/crockford/&#34;&gt;Crockford on Javascript&lt;/a&gt; - YUIBlog talks&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.crockford.com/&#34;&gt;Dougles Crockford&amp;rsquo;s Wrrrld Wide Web&lt;/a&gt; met hoop interessante javascript-gerelateerde pagina&amp;rsquo;s!&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Specifieke frameworks/APIs&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http:*knockoutjs.com/&#34;&gt;http:*knockoutjs.com/&lt;/a&gt;: GUI logica loskoppelen van domein logica met knockout &lt;em&gt;&amp;ldquo;observables&amp;rdquo;&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http:*www.commonjs.org/&#34;&gt;CommonsJS&lt;/a&gt; - Javascript ecosystem for building webservers, desktop apps and more (voorbeeldimplementatie: &lt;a href=&#34;http:*nodejs.org/&#34;&gt;node.js&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http:*jqapi.com/&#34;&gt;http:*jqapi.com/&lt;/a&gt; jQuery API buiten officiële website&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http:*howtonode.org/&#34;&gt;http:*howtonode.org/&lt;/a&gt; Tutorials on NodeJS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;nog-uit-te-pluizen&#34;&gt;Nog uit te pluizen&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;- [ ] JavascriptMVC een kans geven&lt;/li&gt;
-&lt;li&gt;- [ ] Live.js eens in detail bekijken &amp;ldquo;ooit&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;- [ ] Coffeescript uitgebreider toepassen&lt;/li&gt;
-&lt;li&gt;- [x] Jasmine en een JsTestDriver gebruiken met Maven build&lt;/li&gt;
-&lt;li&gt;- [ ] Node.js uitproberen&lt;/li&gt;
-&lt;li&gt;- [x] Envjs uitproberen&lt;/li&gt;
-&lt;li&gt;- [x] Zien hoe DDD in JS toegepast kan worden: ontkoppeling GUI/Domein logica: Sproutcore/Knockout?&lt;/li&gt;
-&lt;li&gt;- [ ] Interne werking Shizzle Selector&lt;/li&gt;
-&lt;li&gt;- [x] Volgorde van inladen scripts, gedrag bij dynamische script tags in DOM tree&lt;/li&gt;
-&lt;li&gt;- [ ] Garbarge collection details&lt;/li&gt;
-&lt;li&gt;- [ ] &lt;code&gt;:checked&lt;/code&gt; van jQuery werkt precies niet 100% in envJS - &lt;code&gt;.click()&lt;/code&gt; wel. Hoe komt dat??&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Javascript  Use functions to guard your scope and optimize encapsulation, gentlemen!
+ JS in één-twéé-drié:
+https://docs.google.com/present/edit?id######0AXaRvIf-WHu3ZGRjNnFnN2pfMmM3ajVmdjN0&amp;amp;hlen&amp;amp;authkey=COqTqcsL
+❗️ JS fiddles: http://jsfiddle.net/user/jefklak/fiddles/
+JS Must watch videos
+https:*github.com/vjdhama/js-must-watch
+Inhoudsopgave Om Prototypal Inheritance te kunnen begrijpen, moeten eerst een aantal andere zaken duidelijk worden.
+ De basislegging van Javascript versus klassieke class-based OO systemen:  Hoe werken function referenties en declaraties Functies en objecten in functies steken om klassen te emuleren:  Er is geen verschil tussen functies en variabelen, het zijn allemaal key/value pairs (&amp;rdquo;first-class citizens&amp;rdquo;) De delete operator gebruiken om een key te verwijderen uit een object  Closures als functies definiëren Constructors als functies definiëren  Het aanroepen van functies:  De werking van de this operator, functies zijn pas gebonden als ze aangeroepen worden!</description>
     </item>
     
     <item>
@@ -390,312 +54,9 @@ Since I have a lot of experience with WebDriver, we started using it to write sc
       <pubDate>Wed, 23 Jul 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/async/</guid>
-      <description>
-
-&lt;h1 id=&#34;async-coding-in-js&#34;&gt;Async coding in JS&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.infoq.com/articles/surviving-asynchronous-programming-in-javascript&#34;&gt;Asynchronous programming in JS: APIs interview&lt;/a&gt; (infoQ)&lt;/p&gt;
-
-&lt;h2 id=&#34;het-probleem&#34;&gt;Het probleem&lt;/h2&gt;
-
-&lt;p&gt;Alle events in javascript zijn asynchroon. Dat wil zeggen dat we geen idee hebben wanneer de eigenlijke code uitgevoerd is, en we een &lt;strong&gt;callback closure&lt;/strong&gt; moeten meegeven, die verder werkt als de asynchrone code uitgevoerd is.&lt;/p&gt;
-
-&lt;p&gt;Dit is oké voor 1-2 asynchrone calls. Maar stel u voor dat we 4+ async calls moeten maken om werk gedaan te krijgen. Typisch dingen zoals:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;setTimeouts&lt;/li&gt;
-&lt;li&gt;animaties (jQuery ea)&lt;/li&gt;
-&lt;li&gt;AJAX calls (REST, naar domein logica, bewaren, opvragen, veranderen, &amp;hellip;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;een-integratietest-schrijven-in-js&#34;&gt;Een integratietest schrijven in JS&lt;/h3&gt;
-
-&lt;p&gt;In &lt;em&gt;Java&lt;/em&gt; kunnen we gewoon wat methods oproepen die data persisteert, daarna de eigenlijke &lt;em&gt;asserts&lt;/em&gt; schrijven en eventueel in de &lt;code&gt;@After&lt;/code&gt; met JUnit data cleanup uitvoeren:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;DomainObj obj = new DomainObjPersister()
-   .withA()
-   .withLala(&amp;quot;lala&amp;quot;)
-   .persist();
-
-ChildObj child = new ChildObjPersister()
-   .withParent(obj)
-   .persist();
-
-assertThat(child.getStuff()).isNotEmpty();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Om &lt;code&gt;child&lt;/code&gt; te kunnen persisteren moeten we &lt;code&gt;obj&lt;/code&gt; als parent meegeven, dus die call moet eerst uitgevoerd zijn. Alle persisters gaan naar de database. Dit zou in javascript zoiets zijn=
-&lt;img style=&#39;float: left; width: nolink&amp;|px;&#39; src=&#39;http://www.brainbaking.com/img//code/javascript/kill-it-with-fire.gif&#39;&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$.ajax(&#39;/domain/obj/store&#39;, {
-  success: function(obj) {
-    $.ajax(&#39;/domain/child/store&#39;, {
-      success: function(child) {
-        assertThat(child.getStuff()).isNotEmpty();
-      }, ...
-    });
-  },
-  type: &#39;PUT&#39;,
-  dataType: &#39;json&#39;,
-  data: JSON.stringify({ key: &#39;value&#39;, key2: &#39;value2&#39; })
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dus een callback wrappen in een callback wrappen in een callback.&lt;/p&gt;
-
-&lt;h4 id=&#34;async-event-loop-hulpjes&#34;&gt;Async event loop hulpjes&lt;/h4&gt;
-
-&lt;p&gt;Zie ook &lt;a href=&#34;http://vimeo.com/96425312&#34;&gt;Philip Roberts: Help, I&amp;rsquo;m stuck in an event-loop&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;float: left; width: nolink |px;&#39; src=&#39;http://www.brainbaking.com/img//code/javascript/476470428_960.jpg&#39;&gt;&lt;/p&gt;
-
-&lt;p&gt;Tooltje om event loop te visualiseren zodat je ziet wat er gebeurt. Breaken in chrome helpt natuurlijk ook, gewoon naar de call stack kijken&amp;hellip;&lt;/p&gt;
-
-&lt;h4 id=&#34;asynchroon-testen-in-jasmine&#34;&gt;Asynchroon testen in Jasmine&lt;/h4&gt;
-
-&lt;p&gt;Met &lt;strong&gt;Jasmine&lt;/strong&gt; is het (beperkt) mogelijk om te wachten tot dat een stukje werk uitgevoerd is voordat de assertions afgegaan worden. &lt;br/&gt;&lt;br/&gt;
-Dit kan op de volgende manier:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
-it(&amp;quot;should be green, right??&amp;quot;, function() {
-  var asyncCallFinished = false;
-  function callback(someObj) {
-    asyncCallFinished = true;
-  }
-  doAsyncCall(callback);
-
-  waitsFor(function() {
-    return asyncCallFinished ##### true;
-  });
-
-  runs(function() {
-     expect(stuff).toBeLotsBetter();
-  });
-
-});
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Pitfalls:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Ge moet closure scope gebruiken om een variabele bij te houden om te controleren of de async call klaar is in een callback&lt;/li&gt;
-&lt;li&gt;Ge moet &lt;code&gt;waitsFor()&lt;/code&gt; gebruiken, intern pollt Jasmine waarschijnlijk gewoon&amp;hellip;&lt;/li&gt;
-&lt;li&gt;Ge moet eigenlijke assertions wrappen in &lt;code&gt;runs()&lt;/code&gt; omdat &lt;code&gt;waitsFor()&lt;/code&gt; direct retourneert en opzich async is.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;De assertion functiepointers die meegegeven worden met &lt;code&gt;runs()&lt;/code&gt; worden intern opgeslaan en bijgehouden totdat de closure van &lt;code&gt;waitsFor()&lt;/code&gt; &lt;code&gt;true&lt;/code&gt; retourneert. Daarna wordt ook alles pas meegegeven met de Jasmine reporter (logging, output etc). Redelijk omslachtig, aangezien 3+ async calls dan &lt;code&gt;waitsFor()&lt;/code&gt; moeten wrappen. Geen oplossing.&lt;/p&gt;
-
-&lt;h5 id=&#34;asynchroon-testen-met-qunit&#34;&gt;Asynchroon testen met QUnit&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;asyncTest(&amp;quot;should be green, right??&amp;quot;, function() {  
-  var stuff = gogo();
-  function callback(obj) {
-    equal(obj.stuff, 2);
-    start();
-  }
-  
-  doAsyncCall(callback);
-
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Pitfalls:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;In de callback van uw async stuk code moeten zoals verwacht uw assertions zitten&lt;/li&gt;
-&lt;li&gt;Ge moet een speciale test method gebruiken, &lt;code&gt;asyncTest()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Ge moet na uw assertions &lt;code&gt;start()&lt;/code&gt; aanroepen (??)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;#####== De oplossing #####==&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/willconant/flow-js&#34;&gt;https://github.com/willconant/flow-js&lt;/a&gt; e.a. (of iets zelfgemaakt in die aard).&lt;/p&gt;
-
-&lt;p&gt;Herneem bovenstaande integratietest code in javascript, maar dan met flow.js geschreven:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;flow.exec(
-  function() {
-    $.ajax(&#39;/domain/obj/store&#39;, {
-      success: this,
-      type: &#39;PUT&#39;,
-      dataType: &#39;json&#39;,
-      data: JSON.stringify({ key: &#39;value&#39;, key2: &#39;value2&#39; })
-    });  
-  },
-  function(obj) {
-    $.ajax(&#39;/domain/child/store&#39;, {
-      success: this, ...
-    }); 
-  },
-  function(child) {
-    assertThat(child.getStuff()).isNotEmpty();
-  }
-);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Pitfalls:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Error handling wordt opgefreten - gebruik Firebug&amp;rsquo;s &lt;strong&gt;debug on all errors&lt;/strong&gt; knop in de console. (anders mechanisme maken dat ze doorgooit van closure1 naar 2 ea)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;curry()&lt;/code&gt; gaat niet lukken aangezien de &lt;code&gt;this&lt;/code&gt; pas in de closure zelf de juiste waarde krijgt.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;this&lt;/code&gt; moet meegegeven worden als callback, dus te intensief gebruik makend van &lt;code&gt;this&lt;/code&gt; pointer in eigen code kan BOEM geven.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;flow.js geeft het resultaat van closure1 mee als argument aan closure2 (via &lt;code&gt;arguments&lt;/code&gt;) en zo maar door, dat is mega handig.&lt;/p&gt;
-
-&lt;h5 id=&#34;synchrone-code-code-combineren-met-asynchrone-in-flow-js&#34;&gt;Synchrone code code combineren met asynchrone in flow.js&lt;/h5&gt;
-
-&lt;p&gt;Enige minpunt is dat de callback &lt;code&gt;this()&lt;/code&gt; moet expliciet aangeroepen worden om van closureX naar closureY over te stappen! &lt;br/&gt;&lt;br/&gt;
-Los dit op met een utility functie:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;flow.sync = function(work) {
-  return function() {
-    this(work.apply(this, Array.prototype.slice.call(arguments, 0)));
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zodat we dit kunnen doen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;flow.exec(
-  function() {
-    asyncStuff(this);
-  },
-  flow.sync(function(resultfromPrev) {
-    console.log(&amp;quot;lol&amp;quot;); // no this() required afterwards
-  }),
-  function(resultFromSyncStuff) {
-    doMoreAsyncStuff(this);
-  }
-);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;in-een-asynchrone-closure-parallel-werken&#34;&gt;In een asynchrone closure parallel werken&lt;/h5&gt;
-
-&lt;p&gt;Gebruik &lt;code&gt;this.MULTI()&lt;/code&gt; als callback ipv &lt;code&gt;this&lt;/code&gt; (zie voorbeeld hieronder)&lt;/p&gt;
-
-&lt;h5 id=&#34;flow-js-combineren-met-jasmine&#34;&gt;flow.js combineren met Jasmine&lt;/h5&gt;
-
-&lt;p&gt;Om de smeerlapperij van &lt;code&gt;waitsFor()&lt;/code&gt; weg te werken kunnen we ook &lt;code&gt;flow.exec&lt;/code&gt; gebruiken.&lt;/p&gt;
-
-&lt;p&gt;❗ De laatste stap gaat &lt;strong&gt;altijd&lt;/strong&gt; een &lt;code&gt;runs()&lt;/code&gt; moeten bevatten voor de reporter om aan te duiden dat assertions uitgevoerd worden, aangezien de &lt;code&gt;exec()&lt;/code&gt; functie direct retourneert. Dus moeten we 1x wachten, totdat de hele &amp;ldquo;flow&amp;rdquo; gedaan is. We kunnen dit combineren met BDD en een mini-DSL hierrond schrijven. Resultaat:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function when() {
-    var flowDone = false;
-    var slice = Array.prototype.slice;
-    var argsArray = slice.call(arguments, 0);
-    var laatsteArgumenten;
-    
-    argsArray.push(function() {
-        laatsteArgumenten = slice.call(arguments, 0);
-        flowDone = true;
-    });
-    
-    flow.exec.apply(this, argsArray);
-    waitsFor(function() {
-        return flowDone ##### true;
-    });
-    
-    return {
-        then: function(assertionsFn) {
-            runs(function() {
-                assertionsFn.apply(this, laatsteArgumenten);
-            });
-        }
-    };
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Voorbeeldcode:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
-describe(&amp;quot;plaatsen domein&amp;quot;, function() {
-    it(&amp;quot;wanneer ik alle plaatsen ophaal, kan ik hier domeinspecifieke functies aan opvragen&amp;quot;, function() {
-        var plaatsen;
-        when(
-            function() {
-                DOMEIN.plaatsRepository.bewaarPlaats(plaats, this.MULTI());
-                DOMEIN.plaatsRepository.bewaarPlaats(anderePlaats, this.MULTI());
-            },
-            function() {
-                DOMEIN.plaatsRepository.haalPlaatsenOp(this);
-            }
-        ).then(
-            function(opgehaaldePlaatsen) {
-                opgehaaldePlaatsen.forEach(function(plaats) {
-                    expect(plaats.geefMeting).toBeDefined();
-                });
-            }
-        );
-    });
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Merk op dat de closure meegeven in &lt;code&gt;then()&lt;/code&gt; (slechts 1 mogelijk voor assertions) als &lt;strong&gt;argument&lt;/strong&gt; het resultaat van de laatste closure in &lt;code&gt;when()&lt;/code&gt; meekrijgt!&lt;/p&gt;
-
-&lt;p&gt;#####== jQuery 1.6: Deferred en piping #####==&lt;/p&gt;
-
-&lt;p&gt;Vanaf &lt;strong&gt;jQuery 1.6&lt;/strong&gt; is het mogelijk om met &lt;code&gt;$.Deferred&lt;/code&gt; te werken, dat het mogelijk maakt om een closure uit te voeren op het moment dat &amp;ldquo;werk&amp;rdquo; gedaan is. Met werk bedoelen we:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;fx: &lt;code&gt;.animate&lt;/code&gt; ea&lt;/li&gt;
-&lt;li&gt;http: &lt;code&gt;.ajax&lt;/code&gt; ea&lt;/li&gt;
-&lt;li&gt;custom code die zelf een &lt;code&gt;$.Deferred&lt;/code&gt; object retourneren&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5 id=&#34;promising-stuff&#34;&gt;Promising stuff&lt;/h5&gt;
-
-&lt;p&gt;Alle async operaties worden aan een &lt;em&gt;queue&lt;/em&gt; toegevoegd van het jQuery element zelf. Je kan op eender welk moment vragen aan dat queue object, dat wanneer alle items zijn verwerkt er iets speciaals uigevoerd wordt:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&#39;#blink&#39;).fadeOut().promise().done(function() {
-  console.log(&#39;done blinking!&#39;);
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dit kan dus ook met &lt;code&gt;$.ajax&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h5 id=&#34;zelf-deferred-code-schrijven&#34;&gt;Zelf Deferred code schrijven&lt;/h5&gt;
-
-&lt;p&gt;Maak een deferred object aan door &lt;code&gt;$.Deferred()&lt;/code&gt; aan te roepen. Op dat moment kan je &lt;code&gt;done()&lt;/code&gt; hierop zoals in het vorige voorbeeld aanroepen. Bijvoorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
-function startStuff() {
-  var df = $.Deferred();
-  setTimeout(1000, function() {
-    console.log(&#39;done async call&#39;);
-    df.resolve();
-  });
-  return df.promise();
-}
-
-startStuff().done(function() {
-  console.log(&#39;really really done with &amp;quot;start stuff&amp;quot;!&#39;);
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;multiple-elements-in-queue-piping&#34;&gt;Multiple elements in queue: piping&lt;/h5&gt;
-
-&lt;p&gt;Stel dat eerst element #1 animatie triggert, dan #2, en daarna nog logica dient te gebeuren. Dit kan ook met &lt;code&gt;$.Deferred&lt;/code&gt;, door &lt;code&gt;.pipe()&lt;/code&gt; te gebruiken om verder te breiden aan de queue.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;button&amp;quot;).bind( &amp;quot;click&amp;quot;, function() {
-    $(&amp;quot;p&amp;quot;).append( &amp;quot;Started...&amp;quot;);
-    var div1 ###### $(&amp;quot;#div1&amp;quot;), div2  $(&amp;quot;#div2&amp;quot;);
-
-    var df = $.Deferred();
-    df.pipe(function() {
-        return div1.fadeOut(&amp;quot;slow&amp;quot;)
-    }).pipe(function() {
-        return div2.fadeOut()
-    }).done(function() {
-        $(&amp;quot;p&amp;quot;).append( &amp;quot;  --  DONE&amp;quot;);
-    });
-    df.resolve(); 
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ Pas op, in de &lt;code&gt;.pipe()&lt;/code&gt; functie moet een nieuw &lt;strong&gt;promised object&lt;/strong&gt; geretourneerd worden! Dat nieuw object wordt als return value van de vorige pipe gebruikt. Op die manier wordt er dus &lt;em&gt;chaining&lt;/em&gt; toegepast.&lt;/p&gt;
-</description>
+      <description>Async coding in JS Asynchronous programming in JS: APIs interview (infoQ)
+Het probleem Alle events in javascript zijn asynchroon. Dat wil zeggen dat we geen idee hebben wanneer de eigenlijke code uitgevoerd is, en we een callback closure moeten meegeven, die verder werkt als de asynchrone code uitgevoerd is.
+Dit is oké voor 1-2 asynchrone calls. Maar stel u voor dat we 4+ async calls moeten maken om werk gedaan te krijgen.</description>
     </item>
     
     <item>
@@ -704,186 +65,8 @@ startStuff().done(function() {
       <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/builders-dsl/</guid>
-      <description>
-
-&lt;p&gt;This post is inspired by Venkat Subramaniam&amp;rsquo;s &lt;a href=&#34;http://www.devoxx.be/dv13-venkat-subramaniam.html&#34;&gt;Devoxx 2013 talk Thinking Functional Style&lt;/a&gt;. See downloads at &lt;a href=&#34;http://www.agiledeveloper.com/downloads.html&#34;&gt;agiledeveloper.com&lt;/a&gt; which has a rather cool Groovy example.&lt;/p&gt;
-
-&lt;h3 id=&#34;classic-builders&#34;&gt;Classic builders&lt;/h3&gt;
-
-&lt;p&gt;For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters. That quickly became very cumbersome to work with. Most of the time, the code will  look like this, whether it&amp;rsquo;s C# or Java doesn&amp;rsquo;t really matter:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class UserBuilder
-{
-    private UserType_V1_0 type = UserType_V1_0.Administrator;
-    private string code = &amp;quot;code&amp;quot;;
-
-    public User_V1_0 Build()
-    {
-        User_V1_0 user = new User_V1_0(code, &amp;quot;name&amp;quot;, type, &amp;quot;id&amp;quot;, &amp;quot;campusId&amp;quot;, true);
-        return user;
-    }
-
-    public UserBuilder WithCode(string code)
-    {
-        this.code = code;
-        return this;
-    }
-
-    public UserBuilder WithType(UserType_V1_0 type)
-    {
-        this.type = type;
-        return this;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Used this way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  var user = new UserBuilder()
-    .withCode(&amp;quot;AB&amp;quot;)
-    .Build();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Okay, what&amp;rsquo;s happening here?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Builder objects have &lt;code&gt;withX()&lt;/code&gt; methods, returning &lt;code&gt;this&lt;/code&gt; to be able to chain, to fill up every required variable&lt;/li&gt;
-&lt;li&gt;default values are provided, so we&amp;rsquo;re not obliged to call every method if we&amp;rsquo;re only interested in one field.&lt;/li&gt;
-&lt;li&gt;At the end of the chain, we call &lt;code&gt;Build()&lt;/code&gt;, which returns our object.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;enhanced-builders&#34;&gt;Enhanced builders&lt;/h3&gt;
-
-&lt;p&gt;I&amp;rsquo;ve never given it much thought, but yes, there are some problems with this implementation (as with everything). The most important one being, can you reuse your instantiated builder? No? Yes? We never assign it, but we &lt;strong&gt;could&lt;/strong&gt; if we really wanted to. Since we&amp;rsquo;re &lt;strong&gt;mutating the builder&lt;/strong&gt;, you are definatly getting into trouble.&lt;/p&gt;
-
-&lt;p&gt;Using a lambda to pass in the work on our builder might solve this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class UserBuilder
-{
-    private UserType_V1_0 type = UserType_V1_0.Administrator;
-    private string code = &amp;quot;code&amp;quot;;
-
-    private UserBuilder()
-    {
-    }
-
-    private User_V1_0 Build()
-    {
-        return new User_V1_0(code, &amp;quot;name&amp;quot;, type, &amp;quot;id&amp;quot;, &amp;quot;campusId&amp;quot;, true);
-    }
-
-    public static User_V1_0 Build(Func&amp;lt;UserBuilder, UserBuilder&amp;gt; block)
-    {
-        var builder = new UserBuilder();
-        block(builder);
-        return builder.Build();
-    }
-
-    public UserBuilder WithCode(string code)
-    {
-        this.code = code;
-        return this;
-    }
-
-    public UserBuilder WithType(UserType_V1_0 type)
-    {
-        this.type = type;
-        return this;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Used this way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  var user = UserBuilder.Build(_ =&amp;gt;
-    _.WithCode(&amp;quot;AB&amp;quot;)
-           .withType(UserType_V1_0.NursingStaff));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice that using the character &lt;code&gt;_&lt;/code&gt; is a convention if there&amp;rsquo;s only one parameter for the lambda, it could also be called &amp;ldquo;builder&amp;rdquo; but we still need to use this, as &lt;code&gt;block(builder)&lt;/code&gt; passes in the temp created builder. What did we solve?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The actual builder instance is bound within the &lt;code&gt;Build()&lt;/code&gt; scope. You&amp;rsquo;ll never be able to assign it when using the static method.&lt;/li&gt;
-&lt;li&gt;One might say, we reduced some redundancy in the implementation by eliminating the need to call the final &lt;code&gt;Build()&lt;/code&gt; method, but it&amp;rsquo;s simply being moved.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;supercharged-builders&#34;&gt;Supercharged builders&lt;/h3&gt;
-
-&lt;p&gt;In Groovy (the devoxx example), we can cleverly use the &lt;code&gt;.delegate&lt;/code&gt; mechanism to eliminate the need to chain at all. Groovy also reduces the syntax noise a bit (brackets, semicolons). We could create a &lt;code&gt;Build&lt;/code&gt; method like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  public static User_V1_0 Build(block) {
-    new UserBuilder().with block;
-    // does the same as cloning the block, assigning it with .delegate and executing it. 
-  }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Used this way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  UserBuilder.Build {
-     Code &amp;quot;AB&amp;quot; // Same as Code(&amp;quot;AB&amp;quot;);
-     Type UserType_V1_0.NursingStaff
-  }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;How does this work?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The &lt;code&gt;Code()&lt;/code&gt; method does not exist in our block closure, but we assign a delegate to it: our temp lexically scoped &lt;code&gt;UserBuilder&lt;/code&gt; instance - that&amp;rsquo;s where the method lives. When the code is executed, Groovy first looks for a method within the block, and then tries to fetch it via the delegate.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For more information on groovy delegates, see the &lt;a href=&#34;http://groovy.codehaus.org/Delegation+Pattern&#34;&gt;Groovy documentation: Delegation Pattern&lt;/a&gt;. This works thanks to the late binding of the language and won&amp;rsquo;t statically typed languages such as C#. You might be able to come close using &lt;code&gt;LINQ&lt;/code&gt; expression trees, but that requires a lot of effort to write a simple DSL.&lt;/p&gt;
-
-&lt;h3 id=&#34;leveraging-this-principle-to-dsls&#34;&gt;Leveraging this principle to DSLs&lt;/h3&gt;
-
-&lt;p&gt;In Javascript, you can also manage to do something like that using &lt;code&gt;.prototype&lt;/code&gt; and &lt;a href=&#34;http://brainbaking.com/wiki/code/javascript/inheritance&#34;&gt;prototypal inheritance&lt;/a&gt; and &lt;code&gt;apply()&lt;/code&gt; to dynamically bind the &lt;code&gt;this&lt;/code&gt; context (see &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply&#34;&gt;Function.prototype.apply MDN&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Of course, builders are completely redundant in JS. Just create a &lt;code&gt;JSON&lt;/code&gt; object using &lt;code&gt;{ key: value }&lt;/code&gt;. Done. But this principle might be interesting for things like creating a &amp;ldquo;mailer&amp;rdquo; - as in the devoxx 2013 example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var mailerPrototype = {
-    from: function() { console.log(&amp;quot;from&amp;quot;); },
-    to: function() { console.log(&amp;quot;to&amp;quot;); },
-    sub: function() { console.log(&amp;quot;sub&amp;quot;); },
-    body: function() { console.log(&amp;quot;body&amp;quot;); },
-    send: function() { console.log(&amp;quot;sending...&amp;quot;); }
-};
-
-var mailer = function() {};
-mailer.mail = function(block) {
-    // .prototype magic happens inside Object.create()
-    block.apply(Object.create(mailerPrototype));
-}
-
-// this still sucks, I don&#39;t want to use &#39;this.&#39;, can use chaining... 
-mailer.mail(function() {
-    this.from(&amp;quot;me@gmail.com&amp;quot;);
-    this.to(&amp;quot;you@gmail.com&amp;quot;);
-    this.sub(&amp;quot;this is my subject&amp;quot;);
-    this.body(&amp;quot;hello&amp;quot;);
-    this.send();
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You&amp;rsquo;ll still need &lt;code&gt;this.&lt;/code&gt;, sadly. This is not needed in Groovy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mailer.mail {
-    from &amp;quot;me@gmail.com&amp;quot;
-    to &amp;quot;you@gmail.com&amp;quot;
-    sub &amp;quot;this is my subject&amp;quot;
-    body &amp;quot;hello&amp;quot;
-    send()
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now &lt;strong&gt;that&lt;/strong&gt; looks readable. To be able to create something like that, a language has to:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;have functions as first-class citizens.&lt;/li&gt;
-&lt;li&gt;have a clean syntax, to be able to reduce a lot of noise (CoffeeScript can get this done for JS for instance)&lt;/li&gt;
-&lt;li&gt;have late binding or duck typing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That said, going back to Java 7 is going to be a major pain in the ass. No, I do not want to create usesless interfaces! (Tip: use &lt;code&gt;Function&lt;/code&gt; and &lt;code&gt;Predicate&lt;/code&gt; from &lt;a href=&#34;https://code.google.com/p/guava-libraries/&#34;&gt;Google Guava&lt;/a&gt;).&lt;/p&gt;
-</description>
+      <description>This post is inspired by Venkat Subramaniam&amp;rsquo;s Devoxx 2013 talk Thinking Functional Style. See downloads at agiledeveloper.com which has a rather cool Groovy example.
+Classic builders For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters.</description>
     </item>
     
     <item>
@@ -892,61 +75,9 @@ mailer.mail(function() {
       <pubDate>Wed, 05 Jun 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/testing/angular/</guid>
-      <description>
-
-&lt;h1 id=&#34;angularjs-testing&#34;&gt;AngularJS testing&lt;/h1&gt;
-
-&lt;p&gt;Voorbeeld voor angular app met mocks en testing en al: &lt;a href=&#34;https://github.com/angular/angular-seed&#34;&gt;angular-seed&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;mocking-en-zo&#34;&gt;Mocking en zo&lt;/h3&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://docs.angularjs.org/api/angular.mock.module&#34;&gt;angular.mock.module&lt;/a&gt; - twee hoofdfuncties die belangrijk zijn: &lt;code&gt;module()&lt;/code&gt; en &lt;code&gt;inject()&lt;/code&gt;. Het eerste maakt de module aan en het tweede zorgt voor de mock dependency injectie. Bijvoorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;angular
-    .module(&#39;bla.services&#39;, [])
-    
-    .factory(&#39;$bla&#39;, [&#39;$http&#39;, function($http) {
-            // do stuff with $http, like a .get
-            return { go: function() {} }
-        }])
-;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Je kan dus met &lt;code&gt;$bla.go()&lt;/code&gt; een http call uitvoeren waarbij &lt;code&gt;$bla&lt;/code&gt; een geïnjecteerde variabele kan zijn in een Angular controller. Je kan met &lt;a href=&#34;http://docs.angularjs.org/api/ngMock.$httpBackend&#34;&gt;$httpBackend&lt;/a&gt; een &lt;code&gt;$http&lt;/code&gt; mock injecteren:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;describe(&amp;quot;bla service test&amp;quot;, function() {
-  var $http, $inject;
-  beforeEach(module(&#39;bla.services&#39;));
-  beforeEach(inject(function($injector) {
-    $inject = $injector;
-    $http = $injector.get(&#39;$httpBackend&#39;);
-    $http.when(&#39;GET&#39;, &#39;rest/bla&#39;).respond({ &#39;obj&#39;: 1 });
-  });
-  
-  it(&amp;quot;should test stuff&amp;quot;, function() {
-    var $bla = $inject.get(&#39;$bla&#39;); // at this moment, service function evaluates
-    expect($bla.go().obj).toEqual(1);
-  });
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;eigen-mocks-in-het-dependency-systeem-van-angularjs-steken&#34;&gt;eigen mocks in het dependency systeem van angularjs steken&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var myMock;
-beforeEach(function() {
-  myMock = function() { return { toMock: function() {} } };
-  module(&#39;app.services&#39;, function($provide) {
-    $provide.value(&#39;myMock&#39;, myMock);
-  });
-  
-  // if you want, you can now use inject() to for instance mock $http
-  it(&amp;quot;should bla&amp;quot;, inject(function($injector) {
-    var App = $inject.get(&#39;App&#39;);
-    // expect(); in here
-  }));
-});
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>AngularJS testing Voorbeeld voor angular app met mocks en testing en al: angular-seed
+Mocking en zo Zie angular.mock.module - twee hoofdfuncties die belangrijk zijn: module() en inject(). Het eerste maakt de module aan en het tweede zorgt voor de mock dependency injectie. Bijvoorbeeld:
+angular .module(&#39;bla.services&#39;, []) .factory(&#39;$bla&#39;, [&#39;$http&#39;, function($http) { // do stuff with $http, like a .get return { go: function() {} } }]) ;  Je kan dus met $bla.</description>
     </item>
     
     <item>
@@ -955,36 +86,11 @@ beforeEach(function() {
       <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/angular/</guid>
-      <description>
-
-&lt;h1 id=&#34;angular&#34;&gt;Angular&lt;/h1&gt;
-
-&lt;p&gt;Testing: zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/testing/angular/&#34;&gt;code/javascript/testing/angular&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;caching-in-http&#34;&gt;Caching in HTTP&lt;/h4&gt;
-
-&lt;p&gt;&lt;code&gt;IE8&lt;/code&gt; cachet by default alle XHR requests en daar kan je niet zomaar iets aan veranderen. Een unieke URL elke keer callen is een oplossing (met &lt;code&gt;new Date().getTime()&lt;/code&gt; bijvoorbeeld), maar je kan ook aan de server kant de &lt;code&gt;Cache-Control&lt;/code&gt; header parameter op &lt;code&gt;no-cache&lt;/code&gt; zetten.&lt;/p&gt;
-
-&lt;p&gt;Zie issue &lt;a href=&#34;https://github.com/angular/angular.js/issues/1418&#34;&gt;https://github.com/angular/angular.js/issues/1418&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;hoe-werkt-under-the-hood&#34;&gt;Hoe werkt &amp;hellip; under the hood?&lt;/h3&gt;
-
-&lt;h4 id=&#34;dependency-injection&#34;&gt;dependency injection&lt;/h4&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.alexrothenberg.com/2013/02/11/the-magic-behind-angularjs-dependency-injection.html&#34;&gt;http://www.alexrothenberg.com/2013/02/11/the-magic-behind-angularjs-dependency-injection.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;TLDR: ze gebruiken &lt;code&gt;toString()&lt;/code&gt; om argument namen te parsen, zodat de volgorde niet uitmaakt wat het normaal wel doet in de magische array &lt;code&gt;arguments&lt;/code&gt;!&lt;/p&gt;
-
-&lt;h4 id=&#34;het-watchen-van-variabelen-en-objecten&#34;&gt;Het watchen van variabelen en objecten&lt;/h4&gt;
-
-&lt;p&gt;In de &lt;code&gt;$digest()&lt;/code&gt; loop, die constant draait (een achterwaardse loop, zie de &lt;a href=&#34;http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js&#34;&gt;source code&lt;/a&gt;, zoek voor bijvoorbeeld &lt;code&gt;$$watchers&lt;/code&gt;, dat is de array van te watchen objecten), wordt er constant gekeken naar het object en gekeken of dat niet hetzelfde is als de &amp;ldquo;laatste&amp;rdquo;. Met &amp;ldquo;laatste&amp;rdquo; bedoelen we een kopie van het object, zodat we altijd een pointer naar de actuele referentie hebben.&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;float: left; width: nolink|px;&#39; src=&#39;http://www.brainbaking.com/img//code/javascript/frameworks/concepts-runtime.png&#39;&gt;&lt;/p&gt;
-
-&lt;p&gt;Het werkt eigenlijk ongeveer zoals &lt;code&gt;ObjectObserver&lt;/code&gt; van https:*github.com/rafaelw/ChangeSummary - in nieuwe browsers zoals Chrome Canary kan er &amp;ldquo;native&amp;rdquo; gekeken worden naar object veranderingen door &lt;code&gt;Object.observe()&lt;/code&gt; te gebruiken - zie het &lt;a href=&#34;http:*updates.html5rocks.com/2012/11/Respond-to-change-with-Object-observe&#34;&gt;html5rocks artikel&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Een belangrijke link: &lt;a href=&#34;http://docs.angularjs.org/guide/concepts&#34;&gt;http://docs.angularjs.org/guide/concepts&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Angular Testing: zie code/javascript/testing/angular
+Caching in HTTP IE8 cachet by default alle XHR requests en daar kan je niet zomaar iets aan veranderen. Een unieke URL elke keer callen is een oplossing (met new Date().getTime() bijvoorbeeld), maar je kan ook aan de server kant de Cache-Control header parameter op no-cache zetten.
+Zie issue https://github.com/angular/angular.js/issues/1418
+Hoe werkt &amp;hellip; under the hood? dependency injection Zie http://www.alexrothenberg.com/2013/02/11/the-magic-behind-angularjs-dependency-injection.html
+TLDR: ze gebruiken toString() om argument namen te parsen, zodat de volgorde niet uitmaakt wat het normaal wel doet in de magische array arguments!</description>
     </item>
     
     <item>
@@ -993,119 +99,11 @@ beforeEach(function() {
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/testing/karma/</guid>
-      <description>
-
-&lt;h1 id=&#34;karma-testacular&#34;&gt;Karma (Testacular)&lt;/h1&gt;
-
-&lt;p&gt;Ook integratie met &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/&#34;&gt;code/javascript/testing/phantomjs&lt;/a&gt; mogelijk.&lt;/p&gt;
-
-&lt;h3 id=&#34;installatie&#34;&gt;Installatie&lt;/h3&gt;
-
-&lt;p&gt;Om de Karma testen gedraaid te krijgen moet Node geïnstalleerd zijn samen met karma (&lt;code&gt;npm install karma -g&lt;/code&gt;)&lt;/p&gt;
-
-&lt;p&gt;Voor de &lt;strong&gt;ANSI console&lt;/strong&gt; in eclipse: &lt;a href=&#34;http://www.mihai-nita.net/eclipse/&#34;&gt;http://www.mihai-nita.net/eclipse/&lt;/a&gt; installeren&lt;/p&gt;
-
-&lt;p&gt;Voor de Karma Phantom launcher in eclipse: dit importeren (launch file)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version######&amp;quot;1.0&amp;quot; encoding&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;
-&amp;lt;launchConfiguration type=&amp;quot;org.eclipse.ui.externaltools.ProgramLaunchConfigurationType&amp;quot;&amp;gt;
-&amp;lt;listAttribute key=&amp;quot;org.eclipse.debug.ui.favoriteGroups&amp;quot;&amp;gt;
-&amp;lt;listEntry value=&amp;quot;org.eclipse.ui.externaltools.launchGroup&amp;quot;/&amp;gt;
-&amp;lt;/listAttribute&amp;gt;
-&amp;lt;stringAttribute key######&amp;quot;org.eclipse.ui.externaltools.ATTR_LOCATION&amp;quot; value&amp;quot;${workspace_loc:/vitrine/src/test/javascript/test.bat}&amp;quot;/&amp;gt;
-&amp;lt;stringAttribute key######&amp;quot;org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY&amp;quot; value&amp;quot;${workspace_loc:/vitrine/src/test/javascript}&amp;quot;/&amp;gt;
-&amp;lt;/launchConfiguration&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Debuggen met eclipse gaat blijkbaar niet, daarvoor moet je best &lt;a href=&#34;http://www.jetbrains.com/webstorm/&#34;&gt;http://www.jetbrains.com/webstorm/&lt;/a&gt; gebruiken. Wat ik nog heb bijgeleerd van jasmine: een individuele test tijdelijk draaien die je door &lt;code&gt;iit()&lt;/code&gt; te gebruiken ipv &lt;code&gt;it()&lt;/code&gt; (twee i&amp;rsquo;s).&lt;/p&gt;
-
-&lt;p&gt;Referentiemateriaal:&lt;/p&gt;
-
-&lt;p&gt;Angular &amp;amp; service mocking:
-  1. &lt;a href=&#34;http://docs.angularjs.org/guide/dev_guide.services.testing_services&#34;&gt;http://docs.angularjs.org/guide/dev_guide.services.testing_services&lt;/a&gt;
-  2. &lt;a href=&#34;http://docs.angularjs.org/api/ngMock.$httpBackend&#34;&gt;http://docs.angularjs.org/api/ngMock.$httpBackend&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Jasmine
-  1. &lt;a href=&#34;https://github.com/pivotal/jasmine/wiki/Spies&#34;&gt;https://github.com/pivotal/jasmine/wiki/Spies&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Karma
-  1. &lt;a href=&#34;https://github.com/angular/angular-seed/&#34;&gt;https://github.com/angular/angular-seed/&lt;/a&gt;
-  2. &lt;a href=&#34;http://karma-runner.github.io/0.8/intro/configuration.html&#34;&gt;http://karma-runner.github.io/0.8/intro/configuration.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Node - config
-  1. &lt;a href=&#34;https://npmjs.org/doc/config.html#proxy&#34;&gt;https://npmjs.org/doc/config.html#proxy&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;npm config set proxy http://proxy.be:8080
-npm config set https-proxy http://proxy.be:8080
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;integratie-in-maven&#34;&gt;Integratie in maven&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;            &amp;lt;plugin&amp;gt;
-                &amp;lt;groupId&amp;gt;org.codehaus.mojo&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;exec-maven-plugin&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;1.2.1&amp;lt;/version&amp;gt;
-                &amp;lt;executions&amp;gt;
-                    &amp;lt;execution&amp;gt;
-                        &amp;lt;id&amp;gt;jsunit&amp;lt;/id&amp;gt;
-                        &amp;lt;phase&amp;gt;test&amp;lt;/phase&amp;gt;
-                        &amp;lt;goals&amp;gt;
-                            &amp;lt;goal&amp;gt;exec&amp;lt;/goal&amp;gt;
-                        &amp;lt;/goals&amp;gt;
-                    &amp;lt;/execution&amp;gt;
-                &amp;lt;/executions&amp;gt;
-                &amp;lt;configuration&amp;gt;
-                    &amp;lt;skip&amp;gt;${skipTests}&amp;lt;/skip&amp;gt;
-                    &amp;lt;successCodes&amp;gt;
-                        &amp;lt;successCode&amp;gt;0&amp;lt;/successCode&amp;gt;
-                        &amp;lt;successCode&amp;gt;1&amp;lt;/successCode&amp;gt;&amp;lt;!-- on failing test, don&#39;t get a build 
-                            error --&amp;gt;
-                    &amp;lt;/successCodes&amp;gt;
-                    &amp;lt;executable&amp;gt;${basedir}/src/test/javascript/build.bat&amp;lt;/executable&amp;gt;
-                    &amp;lt;workingDirectory&amp;gt;${basedir}/src/test/javascript&amp;lt;/workingDirectory&amp;gt;
-                &amp;lt;/configuration&amp;gt;
-            &amp;lt;/plugin&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Bovenstaande &lt;code&gt;skip&lt;/code&gt; config houdt dus ook rekening met bvb &lt;code&gt;mvn clean install -DskipTests&lt;/code&gt; - de &lt;code&gt;test&lt;/code&gt; phase van maven wordt &lt;strong&gt;niet&lt;/strong&gt; geskipped maar de testen wel door de &lt;code&gt;maven-failsafe-plugin&lt;/code&gt; - bijgevolg worden goals die aan de test fase hangen ook nog uitgevoerd.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;@echo off
-
-set PHANTOMJS_BIN=C:&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;dvl.home&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;prj&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;vitrine&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;tools&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;phantomjs&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;phantomjs.exe
-karma start --log-level=debug --single-run
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ Opgelet in &lt;strong&gt;windows&lt;/strong&gt; met de paden, geen quotes gebruiken en dubbele backslashes wél gebruiken, anders werkt het niet en blijft karma hangen.&lt;/p&gt;
-
-&lt;h3 id=&#34;een-voorbeeld-conf-file-voor-een-angular-app&#34;&gt;Een voorbeeld conf file voor een Angular app&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;basePath = &#39;.&#39;;
-
-files = [
-  JASMINE,
-  JASMINE_ADAPTER,
-  &#39;../../main/webapp/js/lib/jquery*.js&#39;,
-  &#39;../../main/webapp/js/lib/angular.min.js&#39;,
-  &#39;../../main/webapp/js/lib/angular-*.js&#39;,
-  &#39;../../main/webapp/js/**/*.js&#39;,
-  &#39;lib/*.js&#39;,
-  &#39;specs/*.js&#39;
-];
-
-// Nodig voor Jenkins en in de build te integreren: singleRun ipv autoWatch
-autoWatch = true;
-//singleRun = true;
-
-browsers = [&#39;PhantomJS&#39;];
-reporters = [&#39;dots&#39;, &#39;junit&#39;];
-
-junitReporter = {
-  outputFile: &#39;../../../target/surefire-reports/be.vdab.vitrine.javascripts.xml&#39;,
-  suite: &#39;unit&#39;
-};
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Karma (Testacular) Ook integratie met code/javascript/testing/phantomjs mogelijk.
+Installatie Om de Karma testen gedraaid te krijgen moet Node geïnstalleerd zijn samen met karma (npm install karma -g)
+Voor de ANSI console in eclipse: http://www.mihai-nita.net/eclipse/ installeren
+Voor de Karma Phantom launcher in eclipse: dit importeren (launch file)
+&amp;lt;?xml version######&amp;quot;1.0&amp;quot; encoding&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt; &amp;lt;launchConfiguration type=&amp;quot;org.eclipse.ui.externaltools.ProgramLaunchConfigurationType&amp;quot;&amp;gt; &amp;lt;listAttribute key=&amp;quot;org.eclipse.debug.ui.favoriteGroups&amp;quot;&amp;gt; &amp;lt;listEntry value=&amp;quot;org.eclipse.ui.externaltools.launchGroup&amp;quot;/&amp;gt; &amp;lt;/listAttribute&amp;gt; &amp;lt;stringAttribute key######&amp;quot;org.eclipse.ui.externaltools.ATTR_LOCATION&amp;quot; value&amp;quot;${workspace_loc:/vitrine/src/test/javascript/test.bat}&amp;quot;/&amp;gt; &amp;lt;stringAttribute key######&amp;quot;org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY&amp;quot; value&amp;quot;${workspace_loc:/vitrine/src/test/javascript}&amp;quot;/&amp;gt; &amp;lt;/launchConfiguration&amp;gt;  Debuggen met eclipse gaat blijkbaar niet, daarvoor moet je best http://www.</description>
     </item>
     
     <item>
@@ -1114,75 +112,11 @@ junitReporter = {
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/extjs4/</guid>
-      <description>
-
-&lt;h1 id=&#34;extjs4&#34;&gt;Extjs4&lt;/h1&gt;
-
-&lt;p&gt;Documentatie: &lt;a href=&#34;http://docs.sencha.com/ext-js/4-0/#!/api/&#34;&gt;http://docs.sencha.com/ext-js/4-0/#!/api/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;aanmaken-van-klassen-en-managers-die-loaden&#34;&gt;Aanmaken van klassen en managers die loaden&lt;/h2&gt;
-
-&lt;p&gt;Met &lt;code&gt;Ext.define&lt;/code&gt; maak je een klasse aan, met &lt;code&gt;Ext.create&lt;/code&gt; maak je een instantie van die klasse.&lt;/p&gt;
-
-&lt;p&gt;Een klasse heeft:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;configs&lt;/li&gt;
-&lt;li&gt;methods&lt;/li&gt;
-&lt;li&gt;properties&lt;/li&gt;
-&lt;li&gt;events&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Waarbij de &lt;code&gt;configs&lt;/code&gt; de gegevens zijn doorgegeven met accolades:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Ext.define(&#39;test&#39;, {
-  // config stuff
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Die configs worden &lt;strong&gt;herbruikt&lt;/strong&gt; voor alle instanties die aangemaakt worden met &lt;code&gt;Ext.create&lt;/code&gt;!! Dat staat op &amp;ldquo;klasse&amp;rdquo; niveau (ook al bestaat dat niet in JS&amp;hellip;)&lt;/p&gt;
-
-&lt;h2 id=&#34;stores-herbruiken&#34;&gt;Stores herbruiken&lt;/h2&gt;
-
-&lt;p&gt;Gegeven een store:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Ext.define(&#39;Evita.store.masterdata.KeywordType&#39;, {
-    extend: &#39;Ext.data.EvitaStore&#39;,
-    model: &#39;Evita.model.parkingfacility.MasterdataType&#39;,
-    proxy: {
-        type: &#39;evitaAjax&#39;,
-        api:{
-            read: &#39;getMasterdataKeywordByTypeName.json&#39;
-        }
-    }
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Gevraagd: hoe herbruik ik die store definitie, terwijl telkens &lt;strong&gt;nieuwe instanties&lt;/strong&gt; op de view gebruikt worden, om dan &lt;code&gt;extraParams&lt;/code&gt; die telkens anders zijn mee te geven met ajax?&lt;/p&gt;
-
-&lt;p&gt;❗ reeds &lt;code&gt;extraParams&lt;/code&gt; opgeven in de store definitie zorgt ervoor dat die proxy herbruikt wordt, wat je hier niet wilt.&lt;/p&gt;
-
-&lt;p&gt;Oplossing: gebruik &lt;code&gt;Ext.create&lt;/code&gt; in plaats van te refereren naar de &lt;code&gt;xtype&lt;/code&gt;, die gaat door de &lt;code&gt;StoreManager&lt;/code&gt; opgezocht &amp;amp; hetbruikt worden anders (1 instantie).&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
-                        xtype : &#39;combo&#39;,
-                        store : Ext.create(&#39;Evita.store.masterdata.KeywordType&#39;),
-                        storeMasterdataTypeName: &#39;MaturityOfParkingFacility&#39;,
-                        valueField : &#39;code&#39;,
-                        displayField : &#39;value&#39;,
-                        name : &#39;maturity&#39;,
-                        id: &#39;ParkingFacilityCreate_masterdata_maturity&#39;,
-                    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Loop in de controller over alle stores om dan bvb &lt;code&gt;extraParams&lt;/code&gt; in te stellen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;        view.down(&#39;form&#39;).query(&#39;combo&#39;).forEach(function(combo) {
-            combo.getStore().proxy.extraParams[&#39;masterdataTypeName&#39;] = combo.storeMasterdataTypeName;
-            combo.getStore().proxy.extraParams[&#39;countryId&#39;] = wizardData.general.countryId;
-        });
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Extjs4 Documentatie: http://docs.sencha.com/ext-js/4-0/#!/api/
+Aanmaken van klassen en managers die loaden Met Ext.define maak je een klasse aan, met Ext.create maak je een instantie van die klasse.
+Een klasse heeft:
+ configs methods properties events  Waarbij de configs de gegevens zijn doorgegeven met accolades:
+Ext.define(&#39;test&#39;, { // config stuff });  Die configs worden herbruikt voor alle instanties die aangemaakt worden met Ext.create!! Dat staat op &amp;ldquo;klasse&amp;rdquo; niveau (ook al bestaat dat niet in JS&amp;hellip;)</description>
     </item>
     
     <item>
@@ -1191,76 +125,9 @@ junitReporter = {
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/feeds/</guid>
-      <description>
-
-&lt;h1 id=&#34;js-rss-feed-readers&#34;&gt;JS RSS Feed Readers&lt;/h1&gt;
-
-&lt;p&gt;Doel: Client-side RSS feeds lezen en via jQuery toevoegen aan de DOM tree in de vorm van &lt;code&gt;&amp;lt;li/&amp;gt;&lt;/code&gt; elementen.&lt;/p&gt;
-
-&lt;h3 id=&#34;feed-gebruiken&#34;&gt;Feed gebruiken&lt;/h3&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Prerequirements&lt;/strong&gt;: Eerst jQuery includen, Klak code is afhankelijk hiervan&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Include javascript: 2 files nodig, core klak en feeds klak:&lt;code&gt;html&amp;lt;script type######&amp;quot;text/javascript&amp;quot; src&amp;quot;http://www.jefklak.be/dev/js/klakCore.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script type######&amp;quot;text/javascript&amp;quot; src&amp;quot;http://www.jefklak.be/dev/js/klakFeeds.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Maak ergens een &lt;code&gt;&amp;lt;div/&amp;gt;&lt;/code&gt; element met een unieke ID waar de inhoud van de feed in komt.&lt;/li&gt;
-&lt;li&gt;Roep de feed code aan (Na DOM Load, we wijzigen de DOM tree!): &lt;code&gt;javascript
-jQuery(document).ready(function() {
-Klak.Feeds.read(new Klak.Feeds.WikiWouter().feed(), $j(&amp;quot;#wiki&amp;quot;));
-});
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Klaar!&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;custom-feeds-aanmaken&#34;&gt;Custom Feeds aanmaken&lt;/h3&gt;
-
-&lt;p&gt;De feed reader verwacht een object binnen te krijgen dat de volgende properties heeft:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;title&lt;/code&gt; (string) toegevoegd als header aan de container&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;url&lt;/code&gt; (string)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;params&lt;/code&gt; (object) wordt meegestuurd met JSON Request (optioneel)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;container&lt;/code&gt; (function) retourneert een DOM element waar alles in gestoken wordt&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;fetchData&lt;/code&gt; (function, &lt;code&gt;data&lt;/code&gt; arg) haalt uit het JSON response object (data) de lijst om over te loopen&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;parse&lt;/code&gt; (function, &lt;code&gt;item&lt;/code&gt; arg) retourneert een opgebouwd DOM element dat aan de container toegevoegd wordt, voor elk item&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Indien geen custom parsing vereist is, kan je je beperken tot de url en title en de rest overerven via &lt;code&gt;prototype&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Klak.Feeds.BlogWouter = function() {
-    this.title = &#39;Jefklak&amp;lt;br/&amp;gt;&#39;s Codex Blog Latest Updates&#39;;
-    this.url ###### &#39;https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;amp;q=http:*www.jefklak.be/feed/&#39;; 
-}
-Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Aangezien er ook al een predefined Twitter reader in zit, kan je makkelijk een nieuwe aanmaken en enkel &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt; en &lt;code&gt;user&lt;/code&gt; definiëren.&lt;/p&gt;
-
-&lt;h3 id=&#34;klak-api&#34;&gt;Klak API&lt;/h3&gt;
-
-&lt;h4 id=&#34;core&#34;&gt;Core&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;loading(jQueryEl)&lt;/code&gt; voegt een (hardcoded) loading image toe aan element&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;doneLoading(jQueryEl)&lt;/code&gt; verwijdert loading images die reeds toegevoegd zijn van dat element&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;loadScript()&lt;/code&gt; (vararg) laadt eender welk javascript bestand parallel - zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/performance/&#34;&gt;code/javascript/performance&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;feeds&#34;&gt;Feeds&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;read(feed, jQueryEl)&lt;/code&gt;: lees de feed en voeg de gerenderde elementen toe aan het meegegeven element. Mogelijke &lt;strong&gt;predefined&lt;/strong&gt; feeds:
-
-&lt;ul&gt;
-&lt;li&gt;BlogWouter&lt;/li&gt;
-&lt;li&gt;TwitterWouter&lt;/li&gt;
-&lt;li&gt;WikiWouter&lt;/li&gt;
-&lt;li&gt;WikiKristof&lt;/li&gt;
-&lt;li&gt;LibraryThing&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>JS RSS Feed Readers Doel: Client-side RSS feeds lezen en via jQuery toevoegen aan de DOM tree in de vorm van &amp;lt;li/&amp;gt; elementen.
+Feed gebruiken ❗️ Prerequirements: Eerst jQuery includen, Klak code is afhankelijk hiervan
+ Include javascript: 2 files nodig, core klak en feeds klak:html&amp;lt;script type######&amp;quot;text/javascript&amp;quot; src&amp;quot;http://www.jefklak.be/dev/js/klakCore.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type######&amp;quot;text/javascript&amp;quot; src&amp;quot;http://www.jefklak.be/dev/js/klakFeeds.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; Maak ergens een &amp;lt;div/&amp;gt; element met een unieke ID waar de inhoud van de feed in komt. Roep de feed code aan (Na DOM Load, we wijzigen de DOM tree!</description>
     </item>
     
     <item>
@@ -1269,214 +136,9 @@ Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/</guid>
-      <description>
-
-&lt;h1 id=&#34;hoe-objecten-extenden&#34;&gt;Hoe objecten extenden&lt;/h1&gt;
-
-&lt;p&gt;❗ Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/inheritance/&#34;&gt;Uitleg over Javascript werking met inheritance&lt;/a&gt; en &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/inleiding/&#34;&gt;code/javascript/inleiding&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;prototype-s-extend&#34;&gt;Prototype&amp;rsquo;s Extend&lt;/h2&gt;
-
-&lt;p&gt;Op de vorige wijze werkt bijvoorbeeld Prototype&amp;rsquo;s &lt;code&gt;Element.Extend&lt;/code&gt; of &lt;code&gt;$&lt;/code&gt; (naast de CSS Selector natuurlijk).&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// ignoring Prototype&#39;s initialize() constructor method
-var Poes = Class.create({
-  miauw: function() { return &amp;quot;prr&amp;quot;; }
-});
-
-var Hond = Class.create({
-  blaf: function() { return &amp;quot;WOOF&amp;quot;; }
-});
-
-var kat = new Poes();
-Element.extend(kat, Hond);
-
-assertEquals(kat.blaf(), new Hond().blaf()); // hoo lee sjit
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;De bovenstaande code wordt intern gebruikt om &lt;strong&gt;inheritance&lt;/strong&gt; te faken. &lt;br/&gt;&lt;br/&gt;
-Dat wil zeggen, een &lt;code&gt;Hond&lt;/code&gt; die van een &lt;code&gt;Poes&lt;/code&gt; afleidt, kan zo:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var Hond = Class.create(Poes, {...});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Van de eerste parameter worden gewoon alle functie pointers gekopiëerd. Boem.&lt;/p&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Constructor overloading&lt;/strong&gt; - bestaat natuurlijk niet, dus een manier om dat te omzeilen is de pointer &lt;code&gt;$super&lt;/code&gt; gebruiken die de superklasse zijn constructor aanroept. Dit gebeurt ook niet automatisch. Initialize wordt dus nooit overschreven.&lt;/p&gt;
-
-&lt;h3 id=&#34;hoe-werkt-dit&#34;&gt;Hoe werkt dit?&lt;/h3&gt;
-
-&lt;p&gt;Simpel: gebruik &lt;code&gt;for(key in map.prototype)&lt;/code&gt; om te loopen over alle functie pointers. Copypasta. Done.&lt;br/&gt;&lt;br/&gt;
-Dit kan ook gebruikt worden om bestaande functies uit te breiden! (zoals String, Array, &amp;hellip;)&lt;/p&gt;
-
-&lt;h2 id=&#34;prototype-s-pointer-binding&#34;&gt;Prototype&amp;rsquo;s Pointer binding&lt;/h2&gt;
-
-&lt;p&gt;Probleem: stel dat een klasse wordt opgemaakt met de bovenstaande methode. De &lt;code&gt;this&lt;/code&gt; pointer verwijst standaard naar de array die binnen de scope valt van uw code, dus vanuit een functie kan men een andere in dezelfde map oproepen. &lt;strong&gt;MAAR&lt;/strong&gt; this wordt overschreven wanneer de functie als &lt;em&gt;closure&lt;/em&gt; wordt meegegeven. Common examples zijn bvb. bij onload, bij each, bij ajax calls als onsuccess/failure/&amp;hellip; events, &amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Event.observe(window, &amp;quot;load&amp;quot;, function() {
-  klasse.doeIets(); // this binnenin doeIets() is nu window! BOOM
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Om dit te omzeilen kan men eender welke functie pointer binnen eender welke method vervangen met &lt;code&gt;bind&lt;/code&gt;. Vorige voorbeeld aangepast:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Event.observe(window, &amp;quot;load&amp;quot;, function() {
-  klasse.doeIets(); // this binnenin doeIets() is nu zoals verwacht klasse zelf.
-}.bind(klasse));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;hoe-werkt-dit-1&#34;&gt;Hoe werkt dit?&lt;/h3&gt;
-
-&lt;p&gt;bind is een extentie van Object (zie extend boven), dus oproepbaar op eender welke extended method. &lt;br/&gt;&lt;br/&gt;
-De rest van de magie is eigenlijk helemaal geen Prototype maar JS 1.3 methods &lt;code&gt;apply()&lt;/code&gt; of &lt;code&gt;call()&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Bezie ze als reflection methods die als eerste argument de this pointer binnen pakken, en voor de rest bij call een lijst van argumenten (alles), en bij apply een array als 2de argument met alle argumenten (bvb &lt;code&gt;arguments&lt;/code&gt; zelf). Dus:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function wow(one, two) {
-  console.log(this); // default output: window
-  return one + two; 
-}
-
-var arr = {
-  c = &amp;quot;cc&amp;quot;
-};
-
-wow.apply(arr.c, [10, 2]); // prints &amp;quot;cc&amp;quot;, output = 12
-wow.call(arr.c, 10, 2); // same
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;apply(**this pointer**, **array argument**)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Echt &amp;ldquo;reflectie&amp;rdquo; is het niet, de functiepointer is nodig om apply op te roepen. Het echte werk laten we aan &lt;code&gt;eval()&lt;/code&gt; over.&lt;/p&gt;
-
-&lt;p&gt;❓ Interessant om te weten: &lt;code&gt;curry&lt;/code&gt; werkt ook met &lt;code&gt;apply&lt;/code&gt; om automatisch parameters in te vullen.&lt;/p&gt;
-
-&lt;h3 id=&#34;binding-en-jquery&#34;&gt;Binding en jQuery&lt;/h3&gt;
-
-&lt;p&gt;jQuery&amp;rsquo;s context verandert automatisch. Dit wil zeggen dat &amp;ldquo;this&amp;rdquo; binnen een bepaalde closure automatisch het object wordt waar bijvoorbeeld over geloopt wordt.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Binnen de meeste callback methods (&amp;lsquo;success&amp;rsquo; van &lt;code&gt;$.ajax&lt;/code&gt; bvb) is this het callback object&lt;/li&gt;
-&lt;li&gt;Binnen each is this het ide element in de array waar over geloopt wordt&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;jQuery biedt niet by default ondersteuning om dit te veranderen met binding, &lt;strong&gt;behalve&lt;/strong&gt; in sommige uitzonderlijke gevallen zoals &lt;code&gt;$.ajax&lt;/code&gt;. Hier kan je een &lt;code&gt;context&lt;/code&gt; aan meegeven, waardoor this in de context verandert. Bijvoobeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function SomeClass() {
-  this.doeIets = function() {
-    $.ajax({
-      url: &amp;quot;bla.json&amp;quot;,
-      dataType: &amp;quot;json&amp;quot;,
-      context: this,
-      callback: function(data) {
-        // this is nu de instantie van SomeClass dankzij context
-        // anders zou this data zijn.
-      }
-  }
-}
-
-var someInstance = new SomeClass();
-someInstance.doeIets();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;js-error-handling&#34;&gt;JS Error Handling&lt;/h1&gt;
-
-&lt;p&gt;Javascript heeft een globale event error handler, &lt;code&gt;window.onerror&lt;/code&gt;. Die manueel overschrijven is natuurlijk niet de bedoeling.&lt;/p&gt;
-
-&lt;h3 id=&#34;in-jquery&#34;&gt;in jQuery&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(window).error(function(){
-  // do stuff!
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Om broken images te hiden, bijvoorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;img&amp;quot;).error(function(){
-  $(this).hide();
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;js-framework-conflicten&#34;&gt;JS Framework Conflicten&lt;/h1&gt;
-
-&lt;h2 id=&#34;jquery-vs-prototype&#34;&gt;jQuery vs Prototype&lt;/h2&gt;
-
-&lt;h3 id=&#34;each-looping&#34;&gt;each looping&lt;/h3&gt;
-
-&lt;p&gt;De &lt;code&gt;this&lt;/code&gt; pointer binnen de each loop van jQuery wordt gebruikt om naar het huidig element te refereren. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Prototype&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;[&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;].each(function(item, index) {
-  console.log(&amp;quot;looping at #&amp;quot; + index + &amp;quot; with item &amp;quot; + item);
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;this&lt;/code&gt; is hier de &lt;code&gt;window&lt;/code&gt; context.
-zie &lt;a href=&#34;http://www.prototypejs.org/api/enumerable/each&#34;&gt;http://www.prototypejs.org/api/enumerable/each&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;jQuery&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$([&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]).each(function() {
-  console.log(&amp;quot;looping with item &amp;quot; + this);
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Exact dezelfde each kan ook gebruikt worden zoals bij Prototype met extra argumenten.&lt;br/&gt;&lt;br/&gt;
-Let wel op dat jQuery niet zelf aangemaakte Arrays wrapt/Extent, dat ge zelf doen met &lt;code&gt;$(j)&lt;/code&gt;&lt;br/&gt;&lt;br/&gt;
-Ook this binnen een jQuery each loop wordt niet extended maar is het DOM Element zelf.&lt;/p&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://api.jquery.com/jQuery.each/&#34;&gt;http://api.jquery.com/jQuery.each/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Mixed use&lt;/strong&gt; - let op bij loops waarbij this overschreven wordt met Prototype&amp;rsquo;s &lt;code&gt;bind()&lt;/code&gt; method! Zie boven.&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;data-binding&#34;&gt;Data binding&lt;/h1&gt;
-
-&lt;p&gt;Interessant artikel over Knockout JS vs Backbone:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.ifandelse.com/?p=70&#34;&gt;http://www.ifandelse.com/?p=70&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://news.ycombinator.com/item?id=1810665&#34;&gt;http://news.ycombinator.com/item?id=1810665&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;javascriptmvc&#34;&gt;JavascriptMVC&lt;/h2&gt;
-
-&lt;p&gt;Zie&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.ajaxvoices.com/aggregator/sources/39&#34;&gt;http://www.ajaxvoices.com/aggregator/sources/39&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://javascriptmvc.com/&#34;&gt;http://javascriptmvc.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;knockout-js&#34;&gt;Knockout JS&lt;/h2&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://knockoutjs.com/&#34;&gt;http://knockoutjs.com/&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Simplify dynamic javascript UI by applying the Model-View-viewModel pattern.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Nadeel: templates moeten geïnclude worden binnen dezelfde &lt;code&gt;HTML&lt;/code&gt; pagina. Gelukkig genoeg zijn er andere template engines die verder bouwen op &lt;code&gt;jQuery.tmpl&lt;/code&gt;: &lt;br/&gt;&lt;br/&gt;
-&lt;a href=&#34;https://github.com/ashbylane/Knockout.js-External-Template-Engine&#34;&gt;https://github.com/ashbylane/Knockout.js-External-Template-Engine&lt;/a&gt; auto-include als de template naam naam.html is en in dezelfde dir leeft als uw main page.&lt;/p&gt;
-
-&lt;h2 id=&#34;backbone-js&#34;&gt;Backbone JS&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://documentcloud.github.com/backbone/&#34;&gt;http://documentcloud.github.com/backbone/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Stricter MVC, zien dat uw view opnieuw gerenderd wordt bij een update van het model:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;model.bind(&amp;quot;change&amp;quot;, this.render);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dit is meestal genoeg. Het grootste verschil tussen backbone en knockout is dat knockout &lt;code&gt;data-&lt;/code&gt; attributen (HTML5) gebruikt, en alles in de view steekt, terwijl dit bij backbone meer apart steekt. (Backbone is explicieter en vereist ook wat meer boilerplating maar is meer gescheiden)&lt;/p&gt;
-
-&lt;h1 id=&#34;andere-handige-js-frameworks&#34;&gt;Andere handige JS frameworks&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;http:*documentcloud.github.com/underscore/ - *underscore JS// utility functies zoals &lt;code&gt;Array.flatten&lt;/code&gt; ea.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.sproutcore.com/&#34;&gt;http://www.sproutcore.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Hoe objecten extenden ❗️ Zie Uitleg over Javascript werking met inheritance en code/javascript/inleiding.
+Prototype&amp;rsquo;s Extend Op de vorige wijze werkt bijvoorbeeld Prototype&amp;rsquo;s Element.Extend of $ (naast de CSS Selector natuurlijk).
+// ignoring Prototype&#39;s initialize() constructor method var Poes = Class.create({ miauw: function() { return &amp;quot;prr&amp;quot;; } }); var Hond = Class.create({ blaf: function() { return &amp;quot;WOOF&amp;quot;; } }); var kat = new Poes(); Element.extend(kat, Hond); assertEquals(kat.blaf(), new Hond().blaf()); // hoo lee sjit  De bovenstaande code wordt intern gebruikt om inheritance te faken.</description>
     </item>
     
     <item>
@@ -1485,97 +147,11 @@ Ook this binnen een jQuery each loop wordt niet extended maar is het DOM Element
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/handlebars/</guid>
-      <description>
-
-&lt;h1 id=&#34;handlebars&#34;&gt;Handlebars&lt;/h1&gt;
-
-&lt;p&gt;Algemene uitleg ea:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/#more-621&#34;&gt;http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/#more-621&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://handlebarsjs.com/&#34;&gt;http://handlebarsjs.com/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tryhandlebarsjs.com/&#34;&gt;http://tryhandlebarsjs.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;yeoman-integratie&#34;&gt;Yeoman integratie&lt;/h3&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;https://github.com/yeoman/yeoman/wiki/Handlebars-integration&#34;&gt;https://github.com/yeoman/yeoman/wiki/Handlebars-integration&lt;/a&gt; en &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/frameworks/yeoman/&#34;&gt;code/javascript/frameworks/yeoman&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Maakt gebruik van &lt;code&gt;grunt&lt;/code&gt; - Zie &lt;a href=&#34;https://github.com/gruntjs/grunt-contrib-handlebars/&#34;&gt;https://github.com/gruntjs/grunt-contrib-handlebars/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aanpassingen in &lt;code&gt;Gruntfile.js&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;  grunt.initConfig({
-
-    // Project configuration
-    // ---------------------
-
-    handlebars: {
-        compile: {
-            files: {
-                &amp;quot;app/scripts/templates.js&amp;quot;: [
-                    &amp;quot;app/templates/*.hbs&amp;quot;
-                ]
-            }, 
-            options: {
-                amd: true,
-                processName: function(filename) {
-                    return filename
-                        .replace(&#39;app/templates/&#39;, &#39;&#39;)
-                        .replace(/&amp;lt;br/&amp;gt;.hbs$/, &#39;&#39;);
-                }
-            }
-        }
-    },
-// ...
-
-    watch: {
-      handlebars: {
-        files: [
-            &#39;app/templates/*.hbs&#39;
-        ],
-        tasks: &#39;handlebars reload&#39;
-      },
-// ...
-
-  grunt.loadNpmTasks(&#39;grunt-contrib-handlebars&#39;);
-};
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;grunt handlebars&lt;/code&gt; compileert dan alles in &amp;ldquo;app/templates&amp;rdquo; (.hbs files) naar &amp;ldquo;app/scripts/templates.js&amp;rdquo;. Als je &lt;code&gt;amd: true&lt;/code&gt; meegeeft in &lt;code&gt;options&lt;/code&gt; wrapt de grunt task dit in &lt;code&gt;define([&#39;handlebars&#39;], function(Handlebars) { ... });&lt;/code&gt;. Handlebars heeft geen AMD module, meer hierover, zie requirejs.&lt;/p&gt;
-
-&lt;h3 id=&#34;templates-async-laden&#34;&gt;Templates (async) laden&lt;/h3&gt;
-
-&lt;p&gt;Standaard worden templates included in de &lt;code&gt;HTML&lt;/code&gt; met een &lt;code&gt;&amp;lt;script/&amp;gt;&lt;/code&gt; tag op deze manier:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;script id######&amp;quot;header&amp;quot; type&amp;quot;text/x-handlebars-template&amp;quot;&amp;gt;
- &amp;lt;div&amp;gt; Name: &amp;lt;img style=&#39;margin-left: auto; margin-right: auto;&#39; src=&#39;http://www.brainbaking.com/img/headerTitle&#39;&amp;gt; &amp;lt;/div&amp;gt;
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dit wordt snel een dikke knoeiboel als er heel veel files zijn in één HTML file. Oplossingen:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Gebruik RequireJS&lt;/li&gt;
-&lt;li&gt;Laadt ze via &lt;code&gt;jQuery.ajax&lt;/code&gt; in op moment dat het nodig is: &lt;a href=&#34;http://stackoverflow.com/questions/8366733/external-template-in-underscore&#34;&gt;http://stackoverflow.com/questions/8366733/external-template-in-underscore&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Blijkbaar is er een plugin in AMD/RequireJS dat het mogelijk maakt om text in te laden, zo:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// The define function is part of the AMD mechanism for loading 
-define([
-    &#39;jquery&#39;,
-    &#39;underscore&#39;,
-    &#39;handlebars&#39;,
-// Require.js text plugin loads the HTML template pages
-    &#39;text!templates/user_account.html&#39;,
-    &#39;text!templates/user_profile.html&#39;], 
-function ($, _, Backbone, HandleBars, UserAccount_Template, UserProfile_Template) {
- ...
-});
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Handlebars Algemene uitleg ea:
+ http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/#more-621 http://handlebarsjs.com/ http://tryhandlebarsjs.com/  Yeoman integratie Zie https://github.com/yeoman/yeoman/wiki/Handlebars-integration en code/javascript/frameworks/yeoman
+Maakt gebruik van grunt - Zie https://github.com/gruntjs/grunt-contrib-handlebars/
+Aanpassingen in Gruntfile.js:
+grunt.initConfig({ // Project configuration // --------------------- handlebars: { compile: { files: { &amp;quot;app/scripts/templates.js&amp;quot;: [ &amp;quot;app/templates/*.hbs&amp;quot; ] }, options: { amd: true, processName: function(filename) { return filename .replace(&#39;app/templates/&#39;, &#39;&#39;) .replace(/&amp;lt;br/&amp;gt;.hbs$/, &#39;&#39;); } } } }, // ... watch: { handlebars: { files: [ &#39;app/templates/*.hbs&#39; ], tasks: &#39;handlebars reload&#39; }, // .</description>
     </item>
     
     <item>
@@ -1584,364 +160,10 @@ function ($, _, Backbone, HandleBars, UserAccount_Template, UserProfile_Template
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/inheritance/</guid>
-      <description>
-
-&lt;h1 id=&#34;javascript-inheritance&#34;&gt;Javascript Inheritance&lt;/h1&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;JavaScript uses prototypal inheritance. This means that Javascript does not distinguish between classes/prototypes and instances and, therefore, we can add our desired behavior directly to the instance.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;new-operator&#34;&gt;&amp;ldquo;new&amp;rdquo; operator&lt;/h2&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://unitstep.net/blog/2008/01/24/javascript-and-inheritance/&#34;&gt;http://unitstep.net/blog/2008/01/24/javascript-and-inheritance/&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;
-Gegeven de volgende functie:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function X(bla) {
-  this.x = bla;
-  console.log(&amp;quot;doeiets&amp;quot;);
-  this.ding = function() { return this.x; };
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Wat gebeurt er bij de klassieke manier van een &amp;ldquo;klasse&amp;rdquo; initialiseren? Zo:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;new X(&amp;quot;argument&amp;quot;).ding()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Omdat geen klassen bestaan, wordt er eigenlijk een &amp;ldquo;leeg&amp;rdquo; object aangemaakt en het prototype van het bestaand object aangepast door &lt;code&gt;call&lt;/code&gt; te gebruiken:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var johnDoe = function(){};
-X.call(johnDoe, &amp;quot;dinges&amp;quot;)
-johnDoe.ding()
-johnDoe.x ###### &amp;quot;dinges&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Wat gebeurt hier?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;function(){}&lt;/code&gt; is een &lt;em&gt;closure&lt;/em&gt;, dus een &lt;em&gt;function&lt;/em&gt;, zonder inhoud.&lt;/li&gt;
-&lt;li&gt;de &lt;code&gt;call&lt;/code&gt; functie roept een functie aan en vervangt de &lt;code&gt;this&lt;/code&gt; referentie (&lt;strong&gt;context&lt;/strong&gt;) door het meegegeven argument&lt;/li&gt;
-&lt;li&gt;Bijgevolg wordt in &lt;code&gt;X()&lt;/code&gt;, &lt;code&gt;this.x = bla&lt;/code&gt; gedaan, dat wil zeggen dat vanaf nu onze anonieme closure de property &lt;code&gt;x&lt;/code&gt; &lt;strong&gt;bevat&lt;/strong&gt;, samen met alle functies die binnen &lt;code&gt;X&lt;/code&gt; gedefinieerd zijn.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Merk op dat &amp;ldquo;bevat&amp;rdquo; impliceert dat het object johnDoe natuurlijk nu ook geheugen toegekend krijgt om de variabele &amp;ldquo;x&amp;rdquo; op te slaan. Dit in contrast met &lt;em&gt;prototypal inheritance&lt;/em&gt;, zie volgend stuk.&lt;/p&gt;
-
-&lt;p&gt;Eender welke functie heeft een &lt;code&gt;prototype&lt;/code&gt;. Een &amp;ldquo;lege&amp;rdquo; functie bevat een dynamische &amp;ldquo;constructor&amp;rdquo; (de functie zelf) met lege body:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;(function(){}).prototype
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;######= Gewenst gedrag - wat waar plaatsen ######=&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Indien ik een functie of een variabele heb die anders kan zijn naargelang de implementatie (definiëer de &amp;ldquo;naamgeving&amp;rdquo;), plaats deze dan in de &lt;strong&gt;constructor&lt;/strong&gt; functie.&lt;/li&gt;
-&lt;li&gt;Indien ik een functie of een variabele heb die specifiek voor die functie is en niet gaat veranderen, plaats deze dan &lt;strong&gt;in het concreet object&lt;/strong&gt; via &lt;code&gt;this.&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Indien ik een functie of een variabele heb die ik tijdelijk wens te gebruiken, plaats deze dan &lt;strong&gt;in het concreet object&lt;/strong&gt; via &lt;code&gt;var&lt;/code&gt; ((Maak slim gebruik van scope chaining om zaken te encapsuleren!)).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Typisch bevatten constructor functies ook &lt;em&gt;geen&lt;/em&gt; return waarden ((dit retourneert dus impliciet &lt;code&gt;undefined&lt;/code&gt;)) - we gebruiken deze functies toch altijd in combinatie met de &lt;code&gt;new&lt;/code&gt; operator, dus kennen de nieuwe instantie van het object direct toe aan een variabele.&lt;/p&gt;
-
-&lt;p&gt;############= prototype gebruiken als inheritance ############=&lt;/p&gt;
-
-&lt;p&gt;-&amp;gt; Meer informatie inclusief grafen met uitgebreide uitleg hoe prototype en constructors werken: zie &lt;a href=&#34;http://joost.zeekat.nl/constructors-considered-mildly-confusing.html&#34;&gt;http://joost.zeekat.nl/constructors-considered-mildly-confusing.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aangezien we aan objecten hun functions kunnen via &lt;code&gt;.prototype&lt;/code&gt;, is het niet moeilijk om een object zich te laten gedragen als zijn &amp;ldquo;ouder&amp;rdquo;. Neem bijvoorbeeld een dier object, en een concrete ezel implementatie die een extra functie &amp;ldquo;balk&amp;rdquo; definiëert.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function Vierpotige() {
-   this.aantalPoten = 4;
-   this.eetIets = function() {
-     console.log(&amp;quot;omnomnom&amp;quot;);
-   }
-}
-
-function Ezel() {
-  this.balk = function() {
-    console.log(&amp;quot;IEE-AA enzo&amp;quot;);
-  }  
-}
-
-Ezel.prototype = new Vierpotige();
-var ezeltje = new Ezel();
-ezeltje.eetIets(); // aha! outputs &#39;omnom&#39; en &#39;als ezel fret ik ook nog gras enzo&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Wat gebeurt hier precies?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Vierpotige bevat een property aantalPoten en een functie eetIets.&lt;/li&gt;
-&lt;li&gt;de constructor functie Vierpotige wordt aangeroepen zodra een Ezel aangemaakt wordt, zodat properties en functies overgenomen worden.&lt;/li&gt;
-&lt;li&gt;een nieuwe ezel eet iets via een prototype functie van een lege Vierpotige.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Opgelet&lt;/strong&gt; Vierpotige.prototype bevat enkel de constructor functie zelf en &lt;em&gt;NIET&lt;/em&gt; &amp;ldquo;eetIets&amp;rdquo;, daarom dat we Ezel.prototype gelijk stellen aan een nieuwe lege vierpotige. Dit zou niet werken:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Ezel.prototype = Vierpotige.prototype;
-new Ezel().eetIets() // kapot
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Tenzij we eetIets definiëren via &lt;code&gt;Vierpotige.prototype.eetIets = function() { ... }&lt;/code&gt; - &lt;em&gt;maar&lt;/em&gt; dan kan &lt;code&gt;aantalPoten&lt;/code&gt; niet meer vanaf een ezel accessed worden.&lt;/p&gt;
-
-&lt;p&gt;Nu de prototype property van Ezel en Vierpotige gelijk zijn, kunnen we het prototype uitbreiden met een functie en die direct op ons nieuw ezeltje toepassen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Vierpotige.prototype.verteer = function() {
-  console.log(&amp;quot;ist wc bezet??&amp;quot;)
-}
-ezeltje.verteer()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Waarschuwing&lt;/strong&gt; het prototype van &lt;code&gt;Vierpotige&lt;/code&gt; aanpassen past ook elke &lt;code&gt;Ezel&lt;/code&gt; instantie aan, dit is énorm gevaarlijk als er publieke properties zoals &lt;code&gt;aantalPoten&lt;/code&gt; gedefiniëerd zijn! Want in tegenstelling tot wat velen denken, worden properties &lt;strong&gt;niet&lt;/strong&gt; gekopiëerd! Dus dit zou het aantal poten van ALLE ezels aanpassen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;dier = new Vierpotige();
-Ezel.prototype = dier;
-new Ezel().aantalPoten ###### 4; // true
-dier.aantalPoten = 2;
-new Ezel().aantalPoten ###### 4; // false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;######= Properties overriden ######=&lt;/p&gt;
-
-&lt;p&gt;Prototypal inheritance werkt omdat JS bij elke property lookup kijkt in welk object die referentie gedefiniëerd is. Is dat het huidig object, neem dan die waarde. Indien neen, kijk in het &lt;code&gt;prototype&lt;/code&gt; object. Indien neen, kijk in het &lt;code&gt;prototype&lt;/code&gt; object van dat object, en zo maar door tot op &lt;code&gt;Object&lt;/code&gt; niveau. We kunnen zo ook een property van een prototype zelf overriden, door ander gedrag te definiëren, of zelfs de super aan te roepen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Vierpotige.prototype.eetIets = function() {
-  console.log(&amp;quot;vierpotige eten&amp;quot;);
-}
-Ezel.prototype.eetIets = function() {
-    Vierpotige.prototype.eetIets(); // &amp;quot;super&amp;quot;
-    console.log(&amp;quot;als ezel fret ik ook nog gras enzo&amp;quot;);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;######= Built-in JS types extenden ######=&lt;/p&gt;
-
-&lt;p&gt;❗ Extend &lt;strong&gt;nooit&lt;/strong&gt; &lt;code&gt;Object.prototype&lt;/code&gt;! Waarom? Omdat Eender welk object een instantie van &lt;code&gt;Object&lt;/code&gt; is, dus zijn prototype heeft, en met een &lt;code&gt;for(x in prop)&lt;/code&gt; deze property nu ineens toegankelijk is voor elk object. Een leeg object &lt;code&gt;{ }&lt;/code&gt; wordt verwacht géén properties te hebben!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Object.prototype.hack = function() {}
-for(x in {}) {
-  console.log(x); // print &amp;quot;hack&amp;quot;, zou hier niet in mogen komen
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;############ Checken op inheritance ############&lt;/p&gt;
-
-&lt;p&gt;Met Javascript kan men door middel van &lt;code&gt;typeof&lt;/code&gt; controleren van welk type een variabele is. Dat komt neer op:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;object (&lt;code&gt;{}&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;function (&lt;code&gt;function() {}&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;string (&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;number (&lt;code&gt;-47.2&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Het is niet zo interessant om te gebruiken voor eigen inheritance. Daarvoor dient &lt;code&gt;instanceof&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;ezeltje instanceof Vierpotige ###### true
-ezeltje instanceof Ezel ###### true
-new Vierpotige() instanceof Ezel ###### false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;######= Zelf inheritance afchecken met prototype ######=&lt;/p&gt;
-
-&lt;h6 id=&#34;met-constructors&#34;&gt;met constructors&lt;/h6&gt;
-
-&lt;p&gt;Dit is een zeer beperkte manier dat geen rekening houdt met &amp;ldquo;inheritance&amp;rdquo;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function instanceOf(One, Two) {
-  return One.constructor ###### Two;
-}
-
-instanceOf(Ezel, Vierpotige) // true
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Aangezien elk object een &lt;code&gt;.constructor&lt;/code&gt; property heeft die afgeleid werd vanuit de constructor functie die aangeroepen werd, kan men op deze manier een simpele check afwegen. Een praktischer voorbeeld is &lt;code&gt;(typeof (new Date()) ###### object) &amp;amp;&amp;amp; (new Date().constructor ###### Date)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h6 id=&#34;met-proto&#34;&gt;met &lt;strong&gt;proto&lt;/strong&gt;&lt;/h6&gt;
-
-&lt;p&gt;Het &lt;code&gt;instanceof&lt;/code&gt; keyword kijkt natuurlijk naar de &lt;code&gt;prototype&lt;/code&gt; properties van beide objecten om te controleren of object a van object b komt. Dit kan men ook zelf doen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function instanceOf(One, Two) {
-  return One.prototype.__proto__ ###### Two.prototype;
-}
-
-instanceOf(Ezel, Vierpotige) // true
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Hoe kan dit kloppen?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Herinner u dit statement: &lt;code&gt;Ezel.prototype = new Vierpotige();&lt;/code&gt;. Dit stelt de &lt;code&gt;prototype&lt;/code&gt; van Ezel gelijk aan die van een vierpotige. Het enige wat in de &lt;code&gt;prototype&lt;/code&gt; van Vierpotige steekt is de &lt;code&gt;verteer()&lt;/code&gt; functie, de rest werd via de constructor functie overgekopiëerd!&lt;/li&gt;
-&lt;li&gt;De magic property &lt;code&gt;_ _proto_ _&lt;/code&gt; wordt intern gezet zodra een prototype wordt toegekend aan een object. Aangezien Ezel zelf ook prototype functies heeft specifiek voor ezels, kunnen we die van Vierpotige niet overriden, maar wel gebruiken.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;❗ Bekijk iets toevoegen via &lt;code&gt;.property&lt;/code&gt; als iets toevoegen aan het algemeen prototype object, en iets rechtstreeks toevoegen via een key als iets toevoegen op een instance van dat prototype object. In andere dynamische talen stelt &lt;code&gt;property&lt;/code&gt; de &lt;code&gt;metaClass&lt;/code&gt; voor, maar JS werkt enkel met functies.&lt;/p&gt;
-
-&lt;p&gt;De betere oplossing: &lt;strong&gt;&lt;code&gt;isPrototypeOf()&lt;/code&gt;&lt;/strong&gt;! Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/magic_properties/&#34;&gt;magic_properties&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;&lt;code&gt;_ _proto_ _&lt;/code&gt; is een &lt;strong&gt;instance&lt;/strong&gt; property, &lt;code&gt;.prototype&lt;/code&gt; een constructor function property&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h6 id=&#34;met-properties&#34;&gt;met properties&lt;/h6&gt;
-
-&lt;p&gt;Door &lt;code&gt;hasOwnProperty()&lt;/code&gt; te gebruiken kan je nagaan of een property overgenomen is of niet. Vanaf JS 1.5.&lt;/p&gt;
-
-&lt;p&gt;############= call als inheritance ############=&lt;/p&gt;
-
-&lt;p&gt;De klassieke inheritance structuur zoals in Java en C++ kan beter benaderd worden door &lt;code&gt;call&lt;/code&gt; te gebruiken. Herbekijk onze ezels:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function Vierpotige() {
-   this.aantalPoten = 4;
-   this.eetIets = function() {
-     console.log(&amp;quot;omnomnom&amp;quot;);
-   }
-}
-
-function Ezel() {
-  Vierpotige.call(this);
-  this.balk = function() {
-    console.log(&amp;quot;IEE-AA enzo&amp;quot;);
-  }
-}
-
-var ezeltje = new Ezel();
-ezeltje.eetIets(); // aha! outputs omnom
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Door als eerste statement in de constructor functie van &lt;code&gt;Ezel&lt;/code&gt; een &lt;code&gt;call&lt;/code&gt; te plaatsen naar onze &amp;ldquo;parent&amp;rdquo;, &lt;em&gt;kopiëren&lt;/em&gt; we alle keys en values die daarin gedefiniëerd staan. In tegenstelling tot prototypal inheritance kost dit dus veel meer geheugengebruik, en is dit beperkter om uit te breiden. We linken eigenlijk impliciet twee functies aan elkaar door waarden over te nemen, maar iets aanpassen aan &lt;code&gt;Vierpotige&lt;/code&gt; gaat de &lt;code&gt;Ezel&lt;/code&gt; op geen ekele manier doen veranderen.&lt;/p&gt;
-
-&lt;p&gt;############= prototypal inheritance toepassen ############=&lt;/p&gt;
-
-&lt;p&gt;In plaats van &lt;code&gt;new&lt;/code&gt; overal te gebruiken zonder te weten wat hierachter ligt, kan men &lt;code&gt;create&lt;/code&gt; ook gebruiken:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;if (typeof Object.create !###### &#39;function&#39;) {
-    Object.create = function (o) {
-        function F() {}
-        F.prototype = o;
-        return new F();
-    };
-}
-newObject = Object.create(oldObject);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://javascript.crockford.com/prototypal.html&#34;&gt;http://javascript.crockford.com/prototypal.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;############ Een minder verbose manier om extra properties te definiëren ############&lt;/p&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://howtonode.org/prototypical-inheritance&#34;&gt;http://howtonode.org/prototypical-inheritance&lt;/a&gt; -&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Object.defineProperty(Object.prototype, &amp;quot;spawn&amp;quot;, {value: function (props) {
-  var defs = {}, key;
-  for (key in props) {
-    if (props.hasOwnProperty(key)) {
-      defs[key] = {value: props[key], enumerable: true};
-    }
-  }
-  return Object.create(this, defs);
-}});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Op die manier kan je &lt;code&gt;BaseObj.spawn({&#39;extraProp&#39;: &#39;extraValue&#39;});&lt;/code&gt; gebruiken, zonder de relatieve verbose manier van extra properties te moeten gebuiken die &lt;code&gt;Object.create&lt;/code&gt; &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/create#Classical_inheritance_with_Object.create&#34;&gt;handhaaft&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;############= Prototype JS en Class.create ############=&lt;/p&gt;
-
-&lt;p&gt;Javascript frameworks proberen altijd inheritance makkelijker te maken voor klassieke OO developers door functies te modelleren als klassen. In &lt;a href=&#34;http://www.prototypejs.org/api/class&#34;&gt;Prototype JS&lt;/a&gt; kan men zoiets doen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;
-var Animal = Class.create({
-  initialize: function() {
-    this.something = &amp;quot;wow&amp;quot;;
-  },
-
-  speak: function() {
-    console.log(this.something);
-  }
-});
-
-var Snake = Class.create(Animal, {
-  hiss: function() {
-    this.speak();
-  }
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Snake leidt af van Animal, en de &lt;code&gt;initialize()&lt;/code&gt; functies stellen de constructor functies voor. Wat gebeurt er dan achter de schermen bij &lt;code&gt;Class.create({...})&lt;/code&gt;?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Net zoals hierboven wordt de constructor functie via &lt;code&gt;apply&lt;/code&gt; aangeroepen (zelfde als call). Enkel wordt als &lt;code&gt;this&lt;/code&gt; een lege functie toegevoegd.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Object.extend()&lt;/code&gt; wordt gebruikt om alle keys van de parent te kopiëren naar de nieuwe lege functie. (zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/frameworks/&#34;&gt;code/javascript/frameworks&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;De &lt;code&gt;prototype&lt;/code&gt; property van de parent wordt net zoals hierboven gezet op de nieuwe &amp;ldquo;klasse&amp;rdquo;.&lt;/li&gt;
-&lt;li&gt;Speciale gevallen zoals een &amp;ldquo;lege constructor&amp;rdquo; functie indien nodig, intern bijhouden wat sub- en superklassen van elkaar zijn, etc.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;In essentie komt het neer op &amp;ldquo;&lt;em&gt;syntax sugaring&lt;/em&gt;&amp;rdquo; zodat het klassieke OO model gebruikt kan worden - terwijl er onderliggend iets anders gebeurt.&lt;br/&gt;&lt;br/&gt;
-Meer info over deze implementatie: &lt;a href=&#34;http://code.google.com/p/inheritance/&#34;&gt;http://code.google.com/p/inheritance/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;############= Multiple inheritance ############=&lt;/p&gt;
-
-&lt;p&gt;Perfect mogelijk, of slechts delen van object A en alles van B voor object C gebruiken (&lt;strong&gt;mixins&lt;/strong&gt;!). Simpelweg alles van de ene &lt;code&gt;prototype&lt;/code&gt; property naar de andere overzetten wat nodig is:&lt;/p&gt;
-
-&lt;p&gt;######= Methode 1 ######=&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function A(){};
-A.prototype.a = function() { return &amp;quot;a&amp;quot;; }
-A.prototype.c = function() { return &amp;quot;a&amp;quot;; }
-function B(){};
-B.prototype.b = function() { return &amp;quot;b&amp;quot;; }
-
-function C(){};
-for(prop in B.prototype) {
-  C.prototype[prop] = B.prototype[prop];
-}
-C.prototype.a = A.prototype.a;
-C.prototype.c = function() { return &amp;quot;c&amp;quot;; }
-
-var c = new C();
-c.a() ###### &amp;quot;a&amp;quot;;
-c.b() ###### &amp;quot;b&amp;quot;;
-c.c() ###### &amp;quot;c&amp;quot;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;######= Methode 2 ######=&lt;/p&gt;
-
-&lt;p&gt;Creeër de illusie om constructor(s) aan te roepen in een constructor functie van een ander object:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function B() {
-  this.b = function() { return &amp;quot;b&amp;quot;; }
-}
-function C() {
-  this.c = function() { return &amp;quot;c&amp;quot;; }
-}
- 
-function A() {
-  this.a = function() { return &amp;quot;a&amp;quot;; }
-  this.super = B;
-  this.super2 = C;
-  this.super(); // kopiëer de b functie in A, maar inherit niet!
-  this.super2();
-}
-
-
-var a = new A();
-a.a() ###### &amp;quot;a&amp;quot;;
-a.b() ###### &amp;quot;b&amp;quot;;
-a.c() ###### &amp;quot;c&amp;quot;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;######= Problemen met mixins ######=&lt;/p&gt;
-
-&lt;p&gt;❗ Dit is géén authentieke multiple inheritance. Hier zijn twee problemen aan gekoppeld:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Zodra via &lt;code&gt;B.prototype&lt;/code&gt; een nieuwe functie toegevoegd wordt, zal C deze &lt;strong&gt;niet&lt;/strong&gt; overpakken omdat &lt;code&gt;C.prototype&lt;/code&gt; niet &lt;em&gt;gelijk&lt;/em&gt; gesteld werd aan die van A of B&lt;/li&gt;
-&lt;li&gt;En bijgevolg dus ook de &lt;code&gt;instanceof&lt;/code&gt; operator naar de zak is:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;c instanceof C ###### true
-(c instanceof B || c instanceof A) ###### false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Als dit echt nodig is kan men zoiets zelf implementeren door weer te loopen via &lt;code&gt;for(prop in x.prototype) { ... }&lt;/code&gt; en te checken of alle keys voorkomen in een object.&lt;/p&gt;
-
-&lt;p&gt;Zie Mozilla Dev center: &lt;a href=&#34;https://developer.mozilla.org/en/Core_JavaScript_1.5_Guide/Details_of_the_Object_Model#No_Multiple_Inheritance&#34;&gt;Details of the Object Model&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Javascript Inheritance  JavaScript uses prototypal inheritance. This means that Javascript does not distinguish between classes/prototypes and instances and, therefore, we can add our desired behavior directly to the instance.
+ &amp;ldquo;new&amp;rdquo; operator Zie http://unitstep.net/blog/2008/01/24/javascript-and-inheritance/  Gegeven de volgende functie:
+function X(bla) { this.x = bla; console.log(&amp;quot;doeiets&amp;quot;); this.ding = function() { return this.x; }; }  Wat gebeurt er bij de klassieke manier van een &amp;ldquo;klasse&amp;rdquo; initialiseren? Zo:
+new X(&amp;quot;argument&amp;quot;).</description>
     </item>
     
     <item>
@@ -1950,360 +172,9 @@ a.c() ###### &amp;quot;c&amp;quot;;
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/inleiding/</guid>
-      <description>
-
-&lt;h1 id=&#34;javascript-inleiding&#34;&gt;Javascript Inleiding&lt;/h1&gt;
-
-&lt;h3 id=&#34;primitives&#34;&gt;Primitives&lt;/h3&gt;
-
-&lt;h4 id=&#34;soorten&#34;&gt;Soorten&lt;/h4&gt;
-
-&lt;p&gt;In javascript zijn er slechts 3 primitives:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;string&lt;/code&gt; (geassocieerd object: &lt;code&gt;String&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;boolean&lt;/code&gt; (geassocieerd object: &lt;code&gt;Boolean&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;number&lt;/code&gt; (geassocieerd object: &lt;code&gt;Number&lt;/code&gt;)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Primitives zijn &lt;strong&gt;immutable&lt;/strong&gt;! Toekennen van properties maakt ook een tijdelijk object aan, dus dit heeft geen nut.&lt;/p&gt;
-
-&lt;h5 id=&#34;soort-afchecken&#34;&gt;Soort afchecken&lt;/h5&gt;
-
-&lt;p&gt;Aangezien JS loosely typed is, kunnen we nooit weten wat er nu in &lt;code&gt;var variabele;&lt;/code&gt; steekt op een bepaald moment in de code.&lt;br/&gt;&lt;br/&gt;
-Om dit op te lossen kan men &lt;code&gt;typeof&lt;/code&gt; gebruiken, een functie die een string teruggeeft wat het type van die variabele is.&lt;/p&gt;
-
-&lt;p&gt;Typeof retourneert in het geval van een object, de string &lt;code&gt;object&lt;/code&gt;, in alle andere gevallen de bovenstaande primitive namen.&lt;/p&gt;
-
-&lt;h4 id=&#34;object-coercing&#34;&gt;Object coercing&lt;/h4&gt;
-
-&lt;p&gt;-&amp;gt; &lt;em&gt;(Lees eerst het stuk over objecten etc aub!)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Elk van de primitives worden door Javascript automatisch geconverteerd naar hun object representatie wanneer men properties of functies hierop probeert toe te passen. Bvb:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var someString = &amp;quot;someString&amp;quot;;
-
-someString.indexOf(&amp;quot;String&amp;quot;); // indexOf() wordt op new String(&amp;quot;someString&amp;quot;) opgeroepen
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Direct nadat dit geëvalueerd wordt schiet de garbage collector aan de gang en wordt het tijdelijk object verwijderd.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var tekst = &amp;quot;dit is tekst jong&amp;quot;;
-tekst.length = 3; // -&amp;gt; String object created &amp;amp; garbage-collected
-console.log(tekst); // dit is tekst jong (old primitive value)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Het object dat wordt aangemaakt bijhouden en daar de lengte van afkappen is zelfs gevaarlijk:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var s = new String(&amp;quot;ss&amp;quot;);
-s.length = 1;
-
-for(var i = 0; i &amp;lt; s.length; i++) {
-  console.log(s[i]); // prints only once &#39;s&#39;
-}
-console.log(s); // prints &#39;ss&#39;??
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Als we weten dat een object aangemaakt wordt zodra we een property oproepen, vraagt een mens zich af, hoe zit dat met &lt;code&gt;number&lt;/code&gt;s? De &lt;code&gt;.&lt;/code&gt; accessor wordt hier gebruikt om komma&amp;rsquo;s voor te stellen&amp;hellip; Wel, aangezien elk object ook values van properties kan retourneren via de &lt;code&gt;[]&lt;/code&gt; operator (zie later), werkt dit dus wel:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;21.54[&amp;quot;toFixed&amp;quot;]() // returns 22, way cool!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number&#34;&gt;Mozilla MDC Docs: JS Reference: Number&lt;/a&gt; voor wat mogelijke functies zijn op &lt;code&gt;Number&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;objecten-en-functies&#34;&gt;Objecten en Functies&lt;/h3&gt;
-
-&lt;p&gt;Douglas Crockford:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;An object is a dynamic collection of properties.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;As opposed to &amp;ldquo;&lt;em&gt;instances of classes&lt;/em&gt;&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;Een &lt;em&gt;functie&lt;/em&gt; in JS kan net zoals andere waarden toegekend worden aan een variabele. Een functie ís in feite een waarde. Dit is anders in bijvoorbeeld Java, een &amp;ldquo;functie&amp;rdquo; (method) is een syntax block code die uitgevoerd kan worden. Wanneer een functie aan een property van een object gekoppeld is spreken we van een method op dat object.&lt;/p&gt;
-
-&lt;p&gt;Een object bevat properties. Een functie is een rij van expressies die één waarde retourneert voor dezelfde input te evalueren. Bekijk een &amp;ldquo;functie&amp;rdquo; als zijn mathematische beschrijving: &lt;code&gt;f(x)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h4 id=&#34;object-literals&#34;&gt;Object Literals&lt;/h4&gt;
-
-&lt;p&gt;Een object definiëren gaat heel makkelijk:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var Ezel = new Object();
-Ezel.poten = 4;
-Ezel.balk = function() {
-   console.log(&amp;quot;iaia met mijn &amp;quot; + this.poten + &amp;quot; poten&amp;quot;);
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zodra een &lt;code&gt;Object&lt;/code&gt; gemaakt wordt, kunnen eender welke property keys toegekend worden met eender welke variabele. Dit kan ook op een &lt;em&gt;associatieve&lt;/em&gt; manier, bijvoorbeeld &lt;code&gt;Ezel[&amp;quot;poten&amp;quot;] = 4;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Bekijk het volgend stukje code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var Ezel = {
-  poten: 4,
-  balk: function() {
-    console.log(&amp;quot;iaia met mijn &amp;quot; + this.poten + &amp;quot; poten&amp;quot;);
-  }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Hier wordt een object door middel van een &lt;strong&gt;literal&lt;/strong&gt; gedefiniëerd. De correcte manier om de ezel te laten balken is &lt;code&gt;Ezel.balk()&lt;/code&gt;. Merk op dat &lt;code&gt;Ezel&lt;/code&gt; een gewoon object met wat simpele properties is, bekijk het als een map. Dit is een instantie van &lt;code&gt;Object&lt;/code&gt;: &lt;code&gt;typeof Ezel&lt;/code&gt; retourneert dit.&lt;/p&gt;
-
-&lt;h5 id=&#34;json-en-object-literals&#34;&gt;JSON en Object Literals&lt;/h5&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.json.org/js.html&#34;&gt;JSON&lt;/a&gt; ((JavaScript Object Notation)) is een subset van JavaScript, dus door de JS Compiler op te roepen met &lt;code&gt;eval()&lt;/code&gt; is het heel eenvoudig om JSON Strings te evalueren. Een JSON Object is in feite een JS Object Literal:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var JSONObj = {
-  &amp;quot;bindings&amp;quot;: [
-    { &amp;quot;key&amp;quot;: &amp;quot;value1&amp;quot;, &amp;quot;key2&amp;quot;: &amp;quot;value2&amp;quot; },
-    { &amp;quot;key&amp;quot;: &amp;quot;value3&amp;quot;, &amp;quot;key2&amp;quot;: &amp;quot;value4&amp;quot; }
-  ]
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dat object kan via een string opgebouwd worden door &lt;code&gt;eval()&lt;/code&gt; te gebruiken, maar dit is &lt;strong&gt;gevaarlijk&lt;/strong&gt; aangezien van een externe webserver ook JS functies in dat data object kunnen zitten! Gebruik daarvoor altijd een JSON Parser, zoals de built-in &lt;code&gt;JSON.parse()&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Om de omgekeerde weg uit te gaan, van object naar string, gebruik &lt;code&gt;JSON.stringify()&lt;/code&gt;. Meer uitleg, zie bovenstaande link.&lt;/p&gt;
-
-&lt;h4 id=&#34;functie-literals&#34;&gt;Functie Literals&lt;/h4&gt;
-
-&lt;p&gt;Een functie definiëren gaat op drie manieren:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;function bla() { ... }&lt;/code&gt; - de normale manier, een &lt;strong&gt;function statement&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;var bla = function() { ...}&lt;/code&gt; - een &lt;strong&gt;function literal&lt;/strong&gt;, ofwel een &lt;em&gt;lambda function&lt;/em&gt; (Lisp referentie). In feite een closure die toevallig toegekend wordt aan variabele &lt;code&gt;bla&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;var bla = new Function(&amp;quot;&amp;quot;, &amp;quot;...&amp;quot;)&lt;/code&gt; met als eerste argument de argumenten van de functie, allemaal in &lt;code&gt;string&lt;/code&gt; vorm.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;De onderstaande code definiëert bijvoorbeeld in lambda-stijl een functie genaamd Ezel:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var Ezel = function() {
-  this.poten = 4;
-  this.balk = function() {
-    console.log(&amp;quot;iaia met mijn &amp;quot; + this.poten + &amp;quot; poten&amp;quot;);
-  }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Merk de verschillen op met het bovenstaande:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;function()&lt;/code&gt; staat voor &lt;code&gt;{&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;this&lt;/code&gt; wordt gebruikt om keys aan te spreken! Waarom? zie &lt;strong&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/scoping/&#34;&gt;scoping&lt;/a&gt;&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;De functie bevat gewone statements met &lt;code&gt;=&lt;/code&gt; en niet met &lt;code&gt;:&lt;/code&gt;. Dit is geen object maar een functie!&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;❗ De functie die net aangemaakt is kan nu als constructor dienen. Die werd intern ook aan de Ezel &lt;code&gt;prototype&lt;/code&gt; property gekoppeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Ezel.prototype.constructor
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;De correcte manier om de ezel te laten balken is &lt;code&gt;new Ezel().balk()&lt;/code&gt;.&lt;br/&gt;&lt;br/&gt;
-Meer info over hoe &lt;code&gt;new&lt;/code&gt; werkt om de ezel instance de poten en de balk functie toe te kennen: zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/inheritance/&#34;&gt;code/javascript/inheritance&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h5 id=&#34;functies-zijn-objecten&#34;&gt;Functies zijn objecten&lt;/h5&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Functions are first class Objects!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Bewijs: (Uitleg: zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/inheritance/&#34;&gt;inheritance&lt;/a&gt;)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Function.prototype.__proto__ ##### Object.prototype;
-(function fn(){}).__proto__ ##### Function.prototype;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dus functies zijn &lt;em&gt;ook&lt;/em&gt; associatieve maps, dus &lt;code&gt;(function(){}).bla = 3;&lt;/code&gt; werkt perfect! Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/scoping/&#34;&gt;scoping&lt;/a&gt;, deel &amp;ldquo;Object/Class Member variables&amp;rdquo;.&lt;/p&gt;
-
-&lt;h5 id=&#34;de-kracht-van-closures&#34;&gt;De kracht van closures&lt;/h5&gt;
-
-&lt;p&gt;In Javascript is élke functie een &lt;em&gt;closure&lt;/em&gt;! In sommige andere talen kan enkel een closure &amp;ldquo;deep bindings&amp;rdquo; uitvoeren (= scope chain bijhouden, zie scoping deel), of een functie opnieuw retourneren. In JS is er geen verschil tussen een literal function en een gewone, buiten de notatie - een literal bind een anonieme functie aan een variabele. Zoiets kan dus perfect:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;a = function() {
-  var aGetal = 10;
-  return function() {
-    var bGetal = 20;
-    return function() {
-      var cGetal = 30;
-      
-      return aGetal + bGetal + cGetal;
-    }
-  }
-}
-
-a()()() // 60
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Merk op dat de &lt;code&gt;()&lt;/code&gt; operator een functie uivoert, en hier alles 3x genest is, maar toch de binnenste functie een referentie naar &lt;code&gt;aGetal&lt;/code&gt; kan gebruiken, gedefiniëert in de buitenste functie! Lees hierover meer in het scoping gedeelte.&lt;/p&gt;
-
-&lt;h5 id=&#34;declaratie-van-functie-literals&#34;&gt;Declaratie van functie literals&lt;/h5&gt;
-
-&lt;p&gt;In javascript worden variabelen die met &lt;code&gt;var&lt;/code&gt; gedeclareerd worden &lt;strong&gt;altijd&lt;/strong&gt; vooraan geplaatst, ook impliciet. Dit wil zeggen dat wanneer ik een function literal definieer, eigenlijk het volgende gebeurt:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function x() {
-  alert(&amp;quot;yo&amp;quot;);
-  var b = function() { };
-} // is for the JS parser equal to:
-
-function xParsed() {
-  var b;
-  alert(&amp;quot;yo&amp;quot;);
-  b = function() { };
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Wanneer je &lt;code&gt;b()&lt;/code&gt; probeert uit te voeren vóórdat b effectief geïnitialiseerd is, ontploft de boel. Let hier dus op, en gebruik als dit niet mogelijk is geen literal. Bij naamgevingen binnen een scope geldt een volgorde:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Language-defined (&lt;code&gt;this&lt;/code&gt;, &lt;code&gt;arguments&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;Formal-defined (arguments)&lt;/li&gt;
-&lt;li&gt;Function-defined&lt;/li&gt;
-&lt;li&gt;Variable-defined&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Dat wil zeggen dat wanneer je twee keer x probeert toe te kennen aan een getal én een functie, heeft de functie voorrang.&lt;/p&gt;
-
-&lt;p&gt;❗ Uitzondering: een formeel argument met naam &lt;code&gt;arguments&lt;/code&gt; heeft voorrang op lang-defined &lt;code&gt;arguments&lt;/code&gt;. Bad practice&amp;hellip;&lt;/p&gt;
-
-&lt;h5 id=&#34;itereren-over-properties-van-objecten&#34;&gt;Itereren over properties van objecten&lt;/h5&gt;
-
-&lt;p&gt;Vergeet niet dat in Javascript alle objecten (zowel object literals als instanties van functies) zich gedragen als een &lt;a href=&#34;https://en.wikipedia.org/wiki/Associative%20array&#34; target=&#34;_blank&#34;&gt;Associative array&lt;/a&gt;
- - en dat we dus ook kunnen lopen over alle keys:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var N = { one: 1, two: 2 };
-for(key in N) {
-  console.log(key + &amp;quot; represents as value: &amp;quot; + N[key]); 
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Om de value van een bepaalde key op te halen kan je natuurlijk ook &lt;code&gt;eval(&#39;N.&#39; + key)&lt;/code&gt; gebruiken - alle wegen leiden tot Rome&amp;hellip;&lt;/p&gt;
-
-&lt;h5 id=&#34;controleren-of-een-key-in-een-object-array-beschikbaar-is&#34;&gt;Controleren of een key in een object/array beschikbaar is&lt;/h5&gt;
-
-&lt;p&gt;Dit kan op enkele manieren:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;&#39;key&#39; in object&lt;/code&gt; ((Opgelet: &lt;code&gt;in&lt;/code&gt; kan misleidend effect hebben bij gebruik in combinatie met prototypal inheritance, zie later!))&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;object.hasOwnProperty(&#39;key&#39;)&lt;/code&gt; -&amp;gt; gaat wel &lt;code&gt;false&lt;/code&gt; retourneren bij overgenomen keys vanuit prototypes. Zie later.&lt;/li&gt;
-&lt;li&gt;nogmaals itereren (er zijn betere ideeën, dit is de neiging die veel mensen hebben, te procedureel denken!)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Wat géén goede manier is:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var Obj = {
-  x: &#39;x&#39;,
-  u: null,
-  un: undefined
-};
-
-Obj.x ###### undefined // false, so it must exist as a key, right?
-Obj.u ###### undefined // whoops, true? oplossing: gebruik &#39;#####&#39;
-Obj.un ##### undefined // whoops, still true? value kan ook undefined zijn natuurlijk!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;#####= Varargs #####=&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function f() {
-  return arguments[0] + arguments[1];
-}
-f(1, 2) // ###### 3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Indien er geen argumenten gespecifiëerd zijn, zijn ze allemaal &lt;em&gt;optioneel&lt;/em&gt;! Dit wil zeggen dat een functie aangeroepen kan worden zonder het aantal argumenten 100% te laten overeen komen.&lt;/p&gt;
-
-&lt;h6 id=&#34;anonymus-functions-en-recursie&#34;&gt;anonymus functions en recursie&lt;/h6&gt;
-
-&lt;p&gt;&lt;code&gt;arguuments&lt;/code&gt; heeft nog een speciale property: &lt;code&gt;arguments.callee(...)&lt;/code&gt; dat de huidige functie voorstelt, hiermee kan je jezelf aanroepen!&lt;/p&gt;
-
-&lt;p&gt;❗ Dit gaat een syntax error geven bij ECMA Script standaard 5 in &lt;em&gt;strict&lt;/em&gt; mode&lt;/p&gt;
-
-&lt;h6 id=&#34;verplicht-alle-argumenten-invullen&#34;&gt;verplicht alle argumenten invullen&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function f(x, y, z) {
-  if(arguments.length != arguments.callee.length) {
-    throw new Error(&amp;quot;kapot wabezig&amp;quot;);
-  }
-}
-f(1, 2) // ###### 3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Het is natuurlijk makkelijker om &lt;code&gt;!= 3&lt;/code&gt; hardcoded te plaatsen, maar dit kan extracted worden naar een aparte functie.&lt;/p&gt;
-
-&lt;h6 id=&#34;function-overloading&#34;&gt;Function overloading&lt;/h6&gt;
-
-&lt;p&gt;Overloading bestaat niet in JS aangezien de tweede definitie van de functie de eerste overschrijft (de property &amp;ldquo;functienaam&amp;rdquo; in het object, zeg maar). &lt;br/&gt;&lt;br/&gt;
-Het is wel mogelijk om één functie te maken die delegeert, zie &lt;a href=&#34;http://ejohn.org/blog/javascript-method-overloading/&#34;&gt;http://ejohn.org/blog/javascript-method-overloading/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Maak handig gebruik van het feit dat de &lt;code&gt;.length&lt;/code&gt; property ook op functies opgeroepen kunnen worden! (Telt enkel de gedefiniëerde)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;(function x(y, z) {}).length ###### 2; // y and z
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;#####= this Keyword #####=&lt;/p&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/scoping/&#34;&gt;scoping&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;#####= Aspect Oriented Programming in JS #####=&lt;/p&gt;
-
-&lt;p&gt;Via AOP kan men net voor of na een bepaalde functie gedrag toevoegen zonder dat een component dat die functie aanroept daar weet van heeft. Het is zo makkelijk om bijvoorbeeld logging toe te voegen. In Java wordt Spring AOP gedaan via proxy beans die van dezelfde interface afleiden en daarna delegeren, of via AspectJ die rechtstreeks bytecode wijzigt.&lt;/p&gt;
-
-&lt;p&gt;In Javascript kan dat makkelijker, omdat we de referentie naar een functie gewoon kunnen &amp;ldquo;vast&amp;rdquo; pakken. Stel dat ik voordat de ezel balkt wil loggen &amp;ldquo;ik ga balken&amp;rdquo;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var oldBalkF = Ezel.prototype.balk; // vereist dat balk via `prototype` werd toegevoegd
-Ezel.prototype.balk = function() {
-  console.log(&amp;quot;ik ga balken! &amp;quot;);
-  oldBalkF.call(this);
-}
-new Ezel().balk(); // print log eerst
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Hier merken we twee dingen op:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;In de nieuwe balk functie kan &lt;strong&gt;niet&lt;/strong&gt; zomaar &lt;code&gt;oldBalkF()&lt;/code&gt; uitgevoerd worden dan is mijn &lt;code&gt;this&lt;/code&gt; referentie naar de ezel instantie weer weg.&lt;/li&gt;
-&lt;li&gt;De &lt;code&gt;window&lt;/code&gt; scope werd vervuild door oldBalkF, die nog steeds toegankelijk is. Hier zijn twee oplossingen voor:
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;delete oldBalkF;&lt;/code&gt; na de &lt;code&gt;call&lt;/code&gt; instructie (extra werk)&lt;/li&gt;
-&lt;li&gt;Gebruik een anonieme functie die direct uitgevoerd wordt die de scope bewaakt!&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;#####= undefined #####=&lt;/p&gt;
-
-&lt;p&gt;Refereren naar een property in een object dat niet bestaat, geeft ons de speciale waarde &lt;code&gt;undefined&lt;/code&gt;.&lt;br/&gt;&lt;br/&gt;
-Merk op dat dit &lt;em&gt;niet hezelfde&lt;/em&gt; is als &lt;code&gt;null&lt;/code&gt;. Toch zijn ze gerelateerd:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var x = {
-  one: 1
-};
-if(x.two ###### null) {
-   3;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dit geeft 3 omdat &lt;code&gt;x.two ##### undefined&lt;/code&gt; en &lt;code&gt;null ###### undefined&lt;/code&gt;. Aangezien &lt;code&gt;null&lt;/code&gt; in een if test by default &lt;code&gt;true&lt;/code&gt; retourneert, kan de if test korter: &lt;code&gt;if(x.two) { ... }&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Zo is het makkelijk om optionele argumenten van functies na te gaan:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function count(one, two, three) {
-  if(!two) two = 0;
-  if(!three) three = 0;
-  return one + two + three;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ &lt;code&gt;undefined&lt;/code&gt; is een window-scope variabele die initiëel de value &lt;code&gt;undefined&lt;/code&gt; heeft, dit is dus géén keyword, pas op!&lt;/p&gt;
-
-&lt;p&gt;#####= By Value versus By Reference #####=&lt;/p&gt;
-
-&lt;p&gt;^ Type ^ Copied by ^ Passed By ^ Compared by ^
-| number | Value | Value | Value |
-| boolean | Value | Value | Value |
-| string | Immutable | Immutable | Value |
-| object | Reference | Reference | Reference |&lt;/p&gt;
-</description>
+      <description>Javascript Inleiding Primitives Soorten In javascript zijn er slechts 3 primitives:
+ string (geassocieerd object: String) boolean (geassocieerd object: Boolean) number (geassocieerd object: Number)  Primitives zijn immutable! Toekennen van properties maakt ook een tijdelijk object aan, dus dit heeft geen nut.
+Soort afchecken Aangezien JS loosely typed is, kunnen we nooit weten wat er nu in var variabele; steekt op een bepaald moment in de code. Om dit op te lossen kan men typeof gebruiken, een functie die een string teruggeeft wat het type van die variabele is.</description>
     </item>
     
     <item>
@@ -2312,43 +183,144 @@ if(x.two ###### null) {
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/jquery/</guid>
-      <description>
-
-&lt;h1 id=&#34;jquery&#34;&gt;Jquery&lt;/h1&gt;
-
-&lt;h2 id=&#34;eigen-css-filters-maken&#34;&gt;Eigen CSS filters maken&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$.expr[&#39;:&#39;].external = function(elem,index,match) {
-    var url = elem.href || elem.src,
-        loc = window.location;
-    return !!url.match(new RegExp(&#39;^&#39; + loc.protocol + &#39;//&#39; + &#39;(?!&#39; + loc.hostname + &#39;)&#39; ));
-};
- 
-// You can now use it within your selectors:
- 
-// Find all external anchors:
-$(&#39;a:external&#39;);
- 
-// Find all external script elements:
-$(&#39;script:external&#39;);
- 
-// Determine if link is external:
-$(&#39;a#mylink&#39;).is(&#39;:external&#39;); // true/false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Via &lt;a href=&#34;http://james.padolsey.com/javascript/things-you-may-not-know-about-jquery/&#34;&gt;Things you may not know about jQuery&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;data-meegeven-aan-events&#34;&gt;Data meegeven aan events&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;for(myObj in myObjects) {
-  $(&#39;.tr&#39;).bind(&#39;click&#39;, myObj, function(e) {
-     e.data.doeIets(); // .data ##### myObj
-  });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Werkt ook voor &lt;code&gt;live()&lt;/code&gt;.&lt;/p&gt;
-</description>
+      <description>Jquery Eigen CSS filters maken $.expr[&#39;:&#39;].external = function(elem,index,match) { var url = elem.href || elem.src, loc = window.location; return !!url.match(new RegExp(&#39;^&#39; + loc.protocol + &#39;//&#39; + &#39;(?!&#39; + loc.hostname + &#39;)&#39; )); }; // You can now use it within your selectors: // Find all external anchors: $(&#39;a:external&#39;); // Find all external script elements: $(&#39;script:external&#39;); // Determine if link is external: $(&#39;a#mylink&#39;).is(&#39;:external&#39;); // true/false  Via Things you may not know about jQuery</description>
+    </item>
+    
+    <item>
+      <title>knockout</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/knockout/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/knockout/</guid>
+      <description>Knockout JS Paged client-side table zelf voorzien ❗️ Zie http://jsfiddle.net/rniemeyer/5Xr2X/
+ The basic idea is that you have a dependentObservable that represents the rows in your current page and bind your table to it. You would slice the overall array to get the rows for the page. Then, you have pager buttons/links that manipulate the page index, which causes the dependentObservable to be re-evaluated resulting in the current rows.</description>
+    </item>
+    
+    <item>
+      <title>magic_properties</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/magic_properties/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/magic_properties/</guid>
+      <description>Javascript Magic properties ❗️ Waarschuwing: deze properties zijn normaal gezien niet toegankelijk en dienen enkel om uw algemene kennis van Javascript te verbreden. Deze &amp;ldquo;magic&amp;rdquo; properties zijn meestal exposed in Mozilla Firefox of via de Firebug plugin. Sommigen hiervan worden overgenomen in de nieuwe versie van javascript, versie 1.8.5 die de ECMA Standaard v5 implementeert. Dit is voor de volgende versie van Chrome en FF4.
+magic properties via Firefox Intern prototype object -&amp;gt; _ _proto_ _</description>
+    </item>
+    
+    <item>
+      <title>mobile</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/mobile/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/mobile/</guid>
+      <description>JS Clientside Mobile frameworks Native applicaties deployen Gebruik http://www.phonegap.com/ om met CSS3+HTML5+JS een native applicatie te builden - ondersteuning voor iOS, Android, Blackberry etc. Ondersteunt ook native hardware zoals camera, accelerometer, GPS etc - zie Documentatie
+WebSockets in Phonegap Zit in de milestone 1.0 planning - nog niet officiëel ondersteund.
+ Voor Android: Zie http:*anismiles.wordpress.com/2011/02/03/websocket-support-in-android%E2%80%99s-phonegap-apps/ en source Voor iPhone: Zie http:*remysharp.com/2010/10/04/websockets-in-phonegap-projects/ en source  Mobile apps &amp;amp; Viewports In de &amp;lt;head/&amp;gt; tag is het belangrijk om viewport meta-informatie aan te geven zoals:</description>
+    </item>
+    
+    <item>
+      <title>performance</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/performance/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/performance/</guid>
+      <description>Javascript Performance ❗️ Best practices on performance: zie http:*developer.yahoo.com/performance/rules.html en ook http:*sites.google.com/site/io/even-faster-web-sites
+Script volgorde  de &amp;lt;head/&amp;gt; tag wordt door de browser geparsed, inclusief sequentiëel alle &amp;lt;script/&amp;gt; blocks. Op dit moment kunnen scripts GEEN DOM Manipulatie doen. de &amp;lt;body/&amp;gt; tag wordt door de browser geparsed, &amp;hellip; de DOM tree is geladen nadat alle elementen in body geparsed zijn, dus events als $(document).ready worden gefired. de resources worden verder geladen (&amp;lt;img/&amp;gt; source attributes, dynamische script of css tags - zie volgende sectie -, en eventuele frames) de hele pagina is geladen, dus events als window.</description>
+    </item>
+    
+    <item>
+      <title>phantomjs</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/</guid>
+      <description>Test automatisatie: PhantomJS Een experiment om mijn JasmineTestRunner uit te breiden (of volledig op te splitsen) van Rhino + Envjs 1.2 naar PhantomJS 1.4 (liefst 1.5 maar dit moet ik nog compilerend krijgen onder Windows).
+Phantom.js test code Start script console.log(&amp;quot;loading&amp;quot;); var page = new WebPage(); // Is nodig omdat anders in uw testpagina console.log() niets doet. page.onConsoleMessage = function(msg) { console.log(&amp;quot;debug from page: &amp;quot; + msg); }; /** * Phantom JS 1.</description>
+    </item>
+    
+    <item>
+      <title>pitfalls</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/pitfalls/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/pitfalls/</guid>
+      <description>Pitfalls ❗️ Gebruik aub JSLint om onderstaande &amp;ldquo;probleempjes&amp;rdquo; makkelijker te kunnen tracen en aanpassen.
+Strict mode in ECMA5 is ook iets héél handig.
+-&amp;gt; Meer (al dan niet grappige) pitfalls/weetjes: http://www.wtfjs.com/
+Objecten Javascript gebruikt intern de toString() functie wanneer objecten als keys worden toegekend. Dit wil zeggen dat eigenlijk de string representatie als key gebruikt wordt. Bijvoorbeeld:
+var obj = {}; var key1 = new Object(); var key2 = new Object(); obj[key1] = &amp;quot;hi&amp;quot;; obj[key2] = &amp;quot;yo&amp;quot;; console.</description>
+    </item>
+    
+    <item>
+      <title>scoping</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/scoping/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/scoping/</guid>
+      <description>Javascript Scoping Toplevel Scope Een stuk Javascript in een HTML pagina, zonder eender welke functie te definiëren, werkt altijd op top-level scope. Dat stelt het window object voor, waar we ook resolutie gegevens en dergelijke kunnen uithalen. Dus simpele variabelen declareren om in HTML te kunnen gebruiken werkt altijd op de globale scope:
+var customerEmail = document.getElementById(&amp;quot;username&amp;quot;) + &amp;quot;@&amp;quot; + document.getElementById(&amp;quot;domain&amp;quot;) + &amp;quot;.com&amp;quot;; window.customerEmail // what did I do?? (null@null.</description>
+    </item>
+    
+    <item>
+      <title>serverside</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/serverside/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/serverside/</guid>
+      <description>JS Serverside draaien JS Server Parsers Java: Rhino Vooral gericht op serverside integratie met bijvoorbeeld Java EE.
+Zie http://www.mozilla.org/rhino/
+C++: Google V8 Wordt bijvoorbeeld gebruikt in Google Chrome.
+Zie http://code.google.com/p/v8/
+-&amp;gt; Ook via CLI aan te spreken in .NET - zie http://jint.codeplex.com/
+C: SpiderMonkey Wordt bijvoorbeeld gebruikt in Mozilla Firefox.
+Zie http://www.mozilla.org/js/spidermonkey/
+Headless DOM Manipulatie Omdat serverside Javascript geen window object als toplevel scope bestaat, kunnen we ook geen DOM manipulatie uitvoeren.</description>
+    </item>
+    
+    <item>
+      <title>snippets</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/snippets/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/snippets/</guid>
+      <description>Losse Javascript Snippets Interessante links http://javascript.crockford.com/prototypal.html
+Text Width Nut: Bereken tekst breedtes op een browser scherm onafhankelijk van de container waar hij in zit. Waarom: $(&amp;quot;bla&amp;quot;).getWidth() gaat altijd rekening houden met de bovenliggende container style! Dit voegt eerst een lege span toe aan de body, haalt de width op en smijt de span terug weg.
+String.prototype.getTextWidth = function() { var sensor = $j(document.createElement(&amp;quot;span&amp;quot;)); sensor.append(this.toString()); $j(&amp;quot;body&amp;quot;).append(sensor); var width = sensor.width(); sensor.</description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/testing/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/testing/</guid>
+      <description>Testing JS Code Testen schrijven Klassieke Unit testen Frameworks gebruiken zoals jQuery&amp;rsquo;s QUnit die het makkelijk maken modulair te testen:
+test(&amp;quot;dit zou dat moeten doen blabla&amp;quot;, function() { equal(expected, actual); ok(someThingExpectedToBeTrue); });  Mocking van bijvoorbeeld $ mogelijk via MockMe, een door Mockito geïnspireerde Javascript Object spy API. Iets van:
+when(f)(&#39;in&#39;).thenReturn(&#39;out&#39;); assertEqual(&#39;out&#39;, f(&#39;in&#39;));  ❗️ Vereist Prototype JS, en JsUnit om de assert functions te kunnen gebruiken
+Gedrag testen met Jasmine Inspiratie van de Ruby community gehaald, met name RSpec-based.</description>
+    </item>
+    
+    <item>
+      <title>troubleshooting</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/troubleshooting/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/troubleshooting/</guid>
+      <description>JS Troubleshooting Debugging Gecko Slechts één adres nodig: http://getfirebug.com/
+Internet Explorer &amp;lt; IE 6 De &amp;ldquo;officiële&amp;rdquo; web developer toolbar in IE6 kan totaal niets met javascript debugging aanvangen. Hiervoor gebruik je best &amp;ldquo;web development helper&amp;rdquo;: http://projects.nikhilk.net/WebDevHelper - Die maakt het mogelijk om JS statements uit te voeren en normaal gezien fatsoenlijke error logging uit te voeren. HTTP calls (zoals ajax) loggen gaat hier ook mee.
+❗️ Een voorwaarde om het bovenstaande te laten werken is &amp;ldquo;disable external script debugging&amp;rdquo; uitzetten in IE via: Extra &amp;gt; Options &amp;gt; Advanced &amp;gt; Surfing &amp;gt; &amp;ldquo;foutopsporing in scripts uitschakelen&amp;rdquo; uitvinken.</description>
+    </item>
+    
+    <item>
+      <title>yeoman</title>
+      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/yeoman/</link>
+      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/yeoman/</guid>
+      <description>Build tools: Yeoman, Grunt, RequireJS ea Zie ook integratie met code/javascript/frameworks/handlebars.
+Help nodig? Vast? &amp;gt;&amp;gt;
+ http://gruntjs.com/installing-grunt http://yeoman.io/commandline.html http://requirejs.org/docs/api.html https://github.com/twitter/bower https://npmjs.org/doc/  Meer info over Yeoman, tooling support, scaffolding, etc:
+ https://plus.google.com/115133653231679625609/posts/h8shHWJtcKd  Deploying Naar een FTP server Gebruik grunt-ftp-deploy node plugin: https://github.com/zonak/grunt-ftp-deploy
+&#39;ftp-deploy&#39;: { build: { auth: { host: &#39;server.com&#39;, port: 21, authKey: &#39;key1&#39; }, src: &#39;/path/to/source/folder&#39;, dest: &#39;/path/to/destination/folder&#39;, exclusions: [&#39;/path/to/source/folder/**/.DS_Store&#39;, &#39;/path/to/source/folder/**/Thumbs.db&#39;, &#39;dist/tmp&#39;] } }  ❗️ auth key ref verwijst naar .</description>
     </item>
     
   </channel>

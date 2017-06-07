@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Play on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/play/index.xml</link>
+    <link>http://www.brainbaking.com/tags/play/</link>
     <description>Recent content in Play on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/play/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/play/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>play</title>
@@ -16,73 +19,10 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/play/</guid>
-      <description>
-
-&lt;h1 id=&#34;play-framework-1-2&#34;&gt;Play! Framework 1.2&lt;/h1&gt;
-
-&lt;p&gt;❗ Heel interessante &lt;code&gt;.gitignore&lt;/code&gt; default configuratie voor Play terug te vinden op &lt;a href=&#34;https://github.com/github/gitignore&#34;&gt;https://github.com/github/gitignore&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;dependencies-toevoegen&#34;&gt;Dependencies Toevoegen&lt;/h3&gt;
-
-&lt;p&gt;Toevoegen in dependencies.yml - default maven2 repo is niet nodig:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;require:
-    1. play -&amp;gt; crud
-    2. org.easytesting -&amp;gt; fest-assert 1.4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Daarna altijd &lt;code&gt;play dependencies --sync&lt;/code&gt; of eventueel &lt;code&gt;play eclipsify&lt;/code&gt; en F5 op eclipse project.&lt;/p&gt;
-
-&lt;h4 id=&#34;lokale-repository-als-directory&#34;&gt;Lokale repository als directory&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;repositories:
-    1. Local_repo:
-        type: iBiblio
-        root: &amp;quot;file:///C:/Documents%20and%20Settings/Jefklak/.m2/repository/&amp;quot;
-        contains:
-            1. be.klak -&amp;gt; *
-            2. ch.ntb -&amp;gt; *
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;test-libraries&#34;&gt;Test libraries&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;Niet mogelijk om apart te packagen&lt;/strong&gt;! Tenzij met speciale &lt;code&gt;id&lt;/code&gt;, maar dan moet je de hele tijd bij &lt;code&gt;play run&lt;/code&gt; switchen en de juiste id als parameter meegeven&amp;hellip;&lt;/p&gt;
-
-&lt;h3 id=&#34;entities&#34;&gt;Entities&lt;/h3&gt;
-
-&lt;h4 id=&#34;querying&#34;&gt;Querying&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;  List&amp;lt;JPABase&amp;gt; entities = Entity.findAll();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;creating&#34;&gt;Creating&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Entity
-public class Thing extends Model {
-   public String name;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;-&amp;gt; Geen &lt;code&gt;@Id&lt;/code&gt; nodig, dit zit bij Play1 in uw &lt;code&gt;Model&lt;/code&gt; class. Dit is dus &lt;strong&gt;niet zo voor play2&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h4 id=&#34;testing&#34;&gt;Testing&lt;/h4&gt;
-
-&lt;p&gt;Extending van &lt;code&gt;UnitTest&lt;/code&gt; voor &amp;ldquo;integratietesten&amp;rdquo;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class HorseIntegrationTest extends UnitTest {
-
-    @Test
-    public void canBePersisted() {
-        new Horse(&amp;quot;joske&amp;quot;).save();
-        List&amp;lt;JPABase&amp;gt; horses = Horse.findAll();
-        
-        assertEquals(1, horses.size());
-        assertEquals(&amp;quot;joske&amp;quot;, ((Horse) horses.iterator().next()).name);
-    }
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Play! Framework 1.2 ❗️ Heel interessante .gitignore default configuratie voor Play terug te vinden op https://github.com/github/gitignore
+Dependencies Toevoegen Toevoegen in dependencies.yml - default maven2 repo is niet nodig:
+require: 1. play -&amp;gt; crud 2. org.easytesting -&amp;gt; fest-assert 1.4  Daarna altijd play dependencies --sync of eventueel play eclipsify en F5 op eclipse project.
+Lokale repository als directory repositories: 1. Local_repo: type: iBiblio root: &amp;quot;file:///C:/Documents%20and%20Settings/Jefklak/.m2/repository/&amp;quot; contains: 1. be.klak -&amp;gt; * 2.</description>
     </item>
     
   </channel>

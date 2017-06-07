@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gems on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/gems/index.xml</link>
+    <link>http://www.brainbaking.com/tags/gems/</link>
     <description>Recent content in Gems on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/gems/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Jan 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/gems/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>gems</title>
@@ -16,38 +19,7 @@
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/ruby/gems/</guid>
-      <description>
-
-&lt;h1 id=&#34;ruby-gems&#34;&gt;Ruby Gems&lt;/h1&gt;
-
-&lt;h3 id=&#34;gemfile-dependencies-installeren&#34;&gt;Gemfile dependencies installeren&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Heb je ruby geïnstalleerd? Dan is &lt;code&gt;gem&lt;/code&gt; beschikbaar.&lt;/li&gt;
-&lt;li&gt;Heb je &lt;code&gt;bundler&lt;/code&gt; geïnstalleerd? Dan is &lt;code&gt;bundler&lt;/code&gt; beschikbaar. Indien neen: &lt;code&gt;gem install bundler&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Is er een &lt;code&gt;Gemfile&lt;/code&gt; beschikbaar? Gebruik dan bundler met &lt;code&gt;bundle install&lt;/code&gt; om alles lokaal te installeren.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;problemen-met-installeren-van-packagse&#34;&gt;Problemen met installeren van packagse&lt;/h4&gt;
-
-&lt;h5 id=&#34;building-native-extension-makefile-target-pattern-contains-no-stop&#34;&gt;Building native extension: Makefile target pattern contains no %. Stop.&lt;/h5&gt;
-
-&lt;p&gt;Probleem met Gemfile &amp;gt; 2.3.0 en Ruby 1.9.3 samen met Ruby devkit. Zie &lt;a href=&#34;https:*github.com/rubygems/rubygems/issues/977&#34;&gt;Native gem installation doesn&amp;rsquo;t work on Windows with &amp;gt;= 2.4.0 #977&lt;/a&gt; en &lt;a href=&#34;https:*groups.google.com/forum/#!topic/rubyinstaller/k19SeJijpKU/discussion&#34;&gt;Google discussion group&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Oplossing: revert gems naar een oudere versie met &lt;code&gt;gem update --system 2.3.0&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h5 id=&#34;fetcherror-ssl-connect-returned1&#34;&gt;FetchError: SSL_Connect returned1&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;Gem::RemoteFetcher::FetchError: SSL_connect returned######1 errno0 state=SSLv3 read server certificate B: certificate verify failed (h
-ttps://rubygems.org/gems/kramdown-1.2.0.gem)
-An error occurred while installing kramdown (1.2.0), and Bundler cannot
-continue.
-Make sure that `gem install kramdown -v &#39;1.2.0&#39;` succeeds before bundling.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Op te lossen door &lt;code&gt;gem update --system&lt;/code&gt; uit te voeren.
-Lees &lt;a href=&#34;http:*stackoverflow.com/questions/10246023/bundle-install-fails-with-ssl-certificate-verification-error&#34;&gt;hier&lt;/a&gt; meer over, of &lt;a href=&#34;http:*ga.be/blog/2013/10/02/fixing-rubygems-ssl-issues-certificate-verify-failed/&#34;&gt;hier&lt;/a&gt; voor de Mac oplossing.&lt;/p&gt;
-</description>
+      <description>Ruby Gems Gemfile dependencies installeren  Heb je ruby geïnstalleerd? Dan is gem beschikbaar. Heb je bundler geïnstalleerd? Dan is bundler beschikbaar. Indien neen: gem install bundler. Is er een Gemfile beschikbaar? Gebruik dan bundler met bundle install om alles lokaal te installeren.  Problemen met installeren van packagse Building native extension: Makefile target pattern contains no %. Stop. Probleem met Gemfile &amp;gt; 2.3.0 en Ruby 1.9.3 samen met Ruby devkit.</description>
     </item>
     
   </channel>

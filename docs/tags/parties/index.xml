@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Parties on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/parties/index.xml</link>
+    <link>http://www.brainbaking.com/tags/parties/</link>
     <description>Recent content in Parties on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/parties/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/parties/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>parties</title>
@@ -16,202 +19,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/games/wizardry8/parties/</guid>
-      <description>
-
-&lt;h1 id=&#34;wizardry-8-parties&#34;&gt;Wizardry 8 Parties&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Party Number ONE - 31 July 2003&lt;/li&gt;
-&lt;li&gt;Party Number TWO - 04 June 2004&lt;/li&gt;
-&lt;li&gt;Party Number THREE - 21 January 2005
-&lt;a name=&#34;top&#34;&gt;&lt;/a&gt;
-Remember, You&amp;rsquo;ll need something like &lt;a href=&#34;https://en.wikipedia.org/wiki/7zip&#34; target=&#34;_blank&#34;&gt;7zip&lt;/a&gt;
- to extract the file&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;party-numer-one-31-july-2003&#34;&gt;Party Numer ONE - 31 July 2003&lt;/h2&gt;
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;p style######&#34;text-align: right;&#34;&gt;&lt;a class&#34;null&#34; name=&#34;party1&#34;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;table border######&#34;0&#34; cellspacing&#34;20&#34; cellpadding=&#34;10&#34;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/lizardman.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: This was probably the easiest char I&amp;rsquo;ve ever played in wizardry 8&amp;hellip; And he&amp;rsquo;s quite boring too. Well they are excellent professions early &amp;amp; mid-game those fighters, but tend to be very boring late-game because everything is maxed. They level fast too. He liked to whack every living being he saw - poor Crock&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Lizardman Fighter
-&lt;strong&gt;Name&lt;/strong&gt;: Slickrokka Rwhak
-&lt;strong&gt;Strength&lt;/strong&gt;: melee combat, sword &amp;amp; shield&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/dwarf.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: I was very disappointed when this guy reached level 10 (in Trynton). He just missed 75% of the blows and his magic was quite weak. The problem was not the profession &amp;ldquo;priest&amp;rdquo; but me assigning wrong skill points, hehe&amp;hellip; Well the first time everything goes wrong I guess.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Dwarf Priest
-&lt;strong&gt;Name&lt;/strong&gt;: Borlak Torgal
-&lt;strong&gt;Strength&lt;/strong&gt;: Divinity, melee combat using mace &amp;amp; shield&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/hobbit1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Holy crap this guy can really dish out some serious damage! He single handly managed to disable several enemies before the others even reached them. The thieves daggers, 10% kill is very powerfull. Including the x5 backstab multiplier and locks &amp;amp; traps. He levelled quite fast too. Amazing easy!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Hobbit Rogue
-&lt;strong&gt;Name&lt;/strong&gt;: Bilbo Balings
-&lt;strong&gt;Strength&lt;/strong&gt;: melee combat, dual daggers&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/mook.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: The ranged char. Nothing much to say except her scouting skill was very very handy. I really love to scout around and the &amp;ldquo;Found something!&amp;rdquo; sound coming out of your boxes is quite satisfacting. Later I found out there also excists &amp;ldquo;Find Secrets&amp;rdquo; - and because the ranger never did great damage; she won&amp;rsquo;t go along with me the next few times&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Mook Ranger
-&lt;strong&gt;Name&lt;/strong&gt;: Mokka Uruk-hai (&lt;em&gt;lol you got that&lt;/em&gt;)
-&lt;strong&gt;Strength&lt;/strong&gt;: ranged combat, bow &amp;amp; scouting&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/faerie.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: She was the most deadly character I think, it&amp;rsquo;s a long time ago. I do know her magic spells were quite great and effective too. But after level 15 she didn&amp;rsquo;t really learn any interesing new spells and became quite boring. Because the samurai also uses wizardry, I won&amp;rsquo;t have another mage in my next parties&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Faerie Mage
-&lt;strong&gt;Name&lt;/strong&gt;: Elunah Flyby
-&lt;strong&gt;Strength&lt;/strong&gt;: Wizardry, throwing &amp;amp; sling&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/hobbit2.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Everyone and their grandmother were talking about the famous &amp;ldquo;know-it-all&amp;rdquo; guy, the bard. Yeah whatever I tought, but I still wanted to try it out just to be sure nobody was making a fool out of me. Well I have to say she did quite well, especially after finding some nice lutes which is quite easy to do. The +STAT item gear you can aquire makes it even better!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Hobbit Bard
-&lt;strong&gt;Name&lt;/strong&gt;: Vanessa Sjilitor
-&lt;strong&gt;Strength&lt;/strong&gt;: Music &amp;amp; melee combat, not sure&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;p class=&#34;vspace&#34;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt; - My first attempt to Wizardry 8 failed, just like all of you guys, hehehe. I lost track of my character progression tables when I came back from Marten&amp;rsquo;s Bluff and stopped playing for a while. After &amp;ldquo;researching&amp;rdquo; some, the second try was a very nice attempt to ascend. Or let&amp;rsquo;s say better than the first one, hehe. The fighter &amp;amp; rogue were good but boring, the mage had too less spells, the priest couln&amp;rsquo;t hit anything and the ranger didn&amp;rsquo;t damage anything. They are all around level 13. Actually I&amp;rsquo;m lying right now; this is not the first party. I did 2 parties before, but they aren&amp;rsquo;t even worth this page, go figure.&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;party-numer-two-04-june-2004&#34;&gt;Party Numer TWO - 04 June 2004&lt;/h2&gt;
-
-&lt;p&gt;&lt;HTML&gt;&lt;/p&gt;
-
-&lt;p style######&#34;text-align: right;&#34;&gt;&lt;a class&#34;null&#34; name######&#34;party2&#34;&gt;&lt;/a&gt;[ &lt;a href&#34;#top&#34;&gt;Top&lt;/a&gt; ]&lt;/p&gt;
-
-&lt;p&gt;&lt;table border######&#34;0&#34; cellspacing&#34;20&#34; cellpadding=&#34;10&#34;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/felpurr.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: After the first game, I fell in love with swords. Oh, and I also disliked the mage - needless to say the samurai was my guy? And he damn right slices &amp;amp; dices trough almost everything especially with the muramasa blade, horray I got lucky indeed! Too bad his wizardry still sucks at level 19&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Felpurr Samurai
-&lt;strong&gt;Name&lt;/strong&gt;: Griswald Tigerhide
-&lt;strong&gt;Strength&lt;/strong&gt;: Dual swords melee &amp;amp; wizardry&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/mook.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Couldn&amp;rsquo;t miss the ranger I had before, and this one does it slightly better with increased number of attacks each round and a slight percentage instant-kill because of her quite high level. She&amp;rsquo;s all right, nothing more nothing less.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Mook Ranger
-&lt;strong&gt;Name&lt;/strong&gt;: Chewbakka Furball
-&lt;strong&gt;Strength&lt;/strong&gt;: Bows &amp;amp; some alchemy&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/human1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: The monk, a quite weird profession. Once you have the taste, you cannot and will not stop! This guy rocked the whole group!! Yup you heard me, monks are really really cool when their skills begin to develop, but are quite hard to keep at lower level. This french poor guy was hexed by the demoness but single-handly instant-killed her, BLAM! A spare insanity is also nice!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Human Monk
-&lt;strong&gt;Name&lt;/strong&gt;: Petrovski &lt;span class=&#34;wikiword&#34;&gt;LaFerrez&lt;/span&gt;
-&lt;strong&gt;Strength&lt;/strong&gt;: melee martial arts &amp;amp; some psionics&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/ninja.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Gotta try the Cane of Corpus, can&amp;rsquo;t resist the urge to&amp;hellip;. &lt;em&gt;sigh&lt;/em&gt; For those of you who don&amp;rsquo;t know: The &lt;a class######&#34;urllink&#34; rel&#34;nofollow&#34; href######&#34;http://www.flamestryke.com/wizardry8/itemsw8/weaponwiz8/staffs-caneofcorpus.html&#34; target&#34;_blank&#34;&gt;Destructive Weapon&lt;/a&gt; can only be wielded by Fairy Ninja&amp;rsquo;s.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Faery Ninja
-&lt;strong&gt;Name&lt;/strong&gt;: Sandrina Bluewing
-&lt;strong&gt;Strength&lt;/strong&gt;: melee dual paralyzing crazyness!&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/elf1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: So, the mage didn&amp;rsquo;t quite work out that good. Will the bishop do? Yes he will, if you are a little patient training up his skills! This guy is truly a unique star in this unbelevable party! Woah I love him so much&amp;hellip; Too bad his mace skill didn&amp;rsquo;t work out that well.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Elf Bishop
-&lt;strong&gt;Name&lt;/strong&gt;: Abraham Fastcast
-&lt;strong&gt;Strength&lt;/strong&gt;: Every single magic realm!&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/human3.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Wanted to try some other specialities of the bard because the previous one didn&amp;rsquo;t really work out. This one hacks quite a bit too with that Fang thing. My samurai had a better weapon anyway. And she has better &amp;amp; bigger instruments&amp;hellip; Pandemonium does hurt!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Human Bard
-&lt;strong&gt;Name&lt;/strong&gt;: Carla Fingerprint
-&lt;strong&gt;Strength&lt;/strong&gt;: Music &amp;amp; melee combat / sword&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;p class=&#34;vspace&#34;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt; - My first attempt to Wizardry 8 failed, - but what about the second one? I might actually say this is the best and most interesing party I&amp;rsquo;ve ever played with in a Roleplaying game! The monk, bishop &amp;amp; samurai became my favourite chars, that&amp;rsquo;s why I want to enlighten you some more about those professions (see navigation). We had quite a good time, until boredom striked me again - at level 19&amp;hellip; Too bad they didn&amp;rsquo;t ascend eihter, they eventually will some day I guess.&lt;/p&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;party-numer-three-21-january-2005&#34;&gt;Party Numer THREE - 21 January 2005&lt;/h2&gt;
-
-&lt;p&gt;&lt;HTML&gt;&lt;/p&gt;
-
-&lt;p style######&#34;text-align: right;&#34;&gt;&lt;a class&#34;null&#34; name######&#34;party3&#34;&gt;&lt;/a&gt;[ &lt;a href&#34;#top&#34;&gt;Top&lt;/a&gt; ]&lt;/p&gt;
-
-&lt;p&gt;&lt;table border######&#34;0&#34; cellspacing&#34;20&#34; cellpadding=&#34;10&#34;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/dracon.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Dracons look cool and have acid breath. They also go nicely with the aggressive voices (#1 especially). Oh, and I like samurais - see party 2. Conclusion: the second samurai with hopefully better magic because this time I&amp;rsquo;m going to train some.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Dracon Samurai
-&lt;strong&gt;Name&lt;/strong&gt;: Hooktail Acidbreath Strength: melee dual swords&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/rawulf2.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: The bards are retiring and I wanted to try something brand new. The lord or valk, and with some new polearms with Lana&amp;rsquo;s mod (version 2), I chose this one. She won&amp;rsquo;t forget to pillage the bodies, if you know what I mean, hehe. This&amp;rsquo;ll be the better priest!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Rawulf Valkyrie
-&lt;strong&gt;Name&lt;/strong&gt;: Ellorrienna Dreadsphere
-&lt;strong&gt;Strength&lt;/strong&gt;: melee polearms &amp;amp; some Divinity&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/human2.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Why should I skip the monk? What a stupid suggestion. I love &amp;lsquo;em! Exactly the same build, except some more strength and psionic skills. Hopefully he&amp;rsquo;ll do just fine&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Human Monk
-&lt;strong&gt;Name&lt;/strong&gt;: Jackie &lt;span class=&#34;wikiword&#34;&gt;SilverRaven&lt;/span&gt;
-&lt;strong&gt;Strength&lt;/strong&gt;: melee martial &amp;amp; psionics&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/felpurr.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: All right, the fist ninja was great BECAUSE the weapon was great. What about a non-faery ninja? Thanks to the modification, this one is doing extremely good! Nobody touches him with throwing 10% kill daggers and whacking dual maces with high %KO. Horray!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Felpurr Ninja
-&lt;strong&gt;Name&lt;/strong&gt;: Grommak Tigerhide
-&lt;strong&gt;Strength&lt;/strong&gt;: Throwing, alchemy and dual maces&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/elf2.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: I can&amp;rsquo;t miss any magic. She is great, except her &amp;ldquo;forecasting&amp;rdquo; voice. But thankfully, you can change that on the fly, &lt;em&gt;pfew&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Elf Bishop
-&lt;strong&gt;Name&lt;/strong&gt;: Cristinah Fleshseeker
-&lt;strong&gt;Strength&lt;/strong&gt;: Every magic realm &amp;amp; staff/shield&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/mook.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Finally a first try to the gadgeteer. I quite like him so far, but it&amp;rsquo;s not fair he indeed does have too less gadgets, compared to the bard. And you have to cross the whole world in order to combine 2 items into 1 usable object!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Mook Gadgeteer
-&lt;strong&gt;Name&lt;/strong&gt;: Flurcoat Bullethat
-&lt;strong&gt;Strength&lt;/strong&gt;: Modern weapons &amp;amp; gadgies&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;p class=&#34;vspace&#34;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt; - This was/is going to be a perfection of the second try. It quite is, right now! If you really have the patience to wait, train, rest and wait again, this group has most potential of them all. The gadgeteer is quite good but not good enough for me - I did not use Lana&amp;rsquo;s mod v3-4 yet. &lt;em&gt;WARNING&lt;/em&gt; - If you want to download the savegame, you WILL need Lana/Flamestrykes &lt;a class######&#34;urllink&#34; rel&#34;nofollow&#34; href=&#34;http://www.flamestryke.com/wizardry8/miscdataw8/modnewsw8.html&#34;&gt;Final Mod v2&lt;/a&gt; or higher!&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/HTML&gt;&lt;/p&gt;
-</description>
+      <description>Wizardry 8 Parties  Party Number ONE - 31 July 2003 Party Number TWO - 04 June 2004 Party Number THREE - 21 January 2005  Remember, You&amp;rsquo;ll need something like 7zipto extract the file&amp;hellip;  Party Numer ONE - 31 July 2003  
+   Attitude: This was probably the easiest char I&amp;rsquo;ve ever played in wizardry 8&amp;hellip; And he&amp;rsquo;s quite boring too. Well they are excellent professions early &amp;amp; mid-game those fighters, but tend to be very boring late-game because everything is maxed.</description>
     </item>
     
   </channel>

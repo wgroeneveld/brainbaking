@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C# on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/c</link>
+    <link>http://www.brainbaking.com/tags/c#/</link>
     <description>Recent content in C# on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/c" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Jan 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/c#/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Webdriver Exception Handling</title>
@@ -16,103 +19,7 @@
       <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/webdriver-exception-handling/</guid>
-      <description>&lt;p&gt;As the previous post indicated, we&amp;rsquo;re trying to stabilize our scenario tests created with WebDriver. One of the things we did was trying to capture as much data as possible if something goes wrong. Something like a typical &lt;code&gt;ElementNotFoundException&lt;/code&gt;, or the less common &lt;code&gt;StaleElementException&lt;/code&gt; (detached from DOM after evaluation) - these things can be hard to trace if you don&amp;rsquo;t run the tests locally. We also stumbled upon the &amp;ldquo;it works on my machine&amp;rdquo; problem - tests succeeding on one development machine but not on the other - mostly related due to timing issues.&lt;/p&gt;
-
-&lt;p&gt;So, what should you do when something goes wrong?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;capture what happened! (screenshot)&lt;/li&gt;
-&lt;li&gt;capture what happened! (exception stacktrace logging)&lt;/li&gt;
-&lt;li&gt;capture what happened! (serverside logging)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;WebDriver has a &lt;code&gt;GetScreenshot()&lt;/code&gt; method you can use to dump an image to a file on exception. We used a bit of pointcut magic using PostSharp to automagically handle every exception without manually having to write each &lt;code&gt;try { }&lt;/code&gt; clause.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    WebDriver().GetScreenshot().SaveAsFile(fileName + &amp;quot;.png&amp;quot;, ImageFormat.Png);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After saving the image, we also capture the exception and some extra serverside logging:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;        File.WriteAllText(fileName + &amp;quot;.txt&amp;quot;,
-            &amp;quot;-- Resolved URL: &amp;quot; + ScenarioFixture.Instance.ResolveHostAndPort() + Environment.NewLine +
-            &amp;quot;-- Actual URL: &amp;quot; + ScenarioFixture.Instance.Driver.Url + Environment.NewLine +
-            &amp;quot;-- Exception Message: &amp;quot; + ex.Message + Environment.NewLine +
-            &amp;quot;-- Stacktrace: &amp;quot; + Environment.NewLine + ex.StackTrace + Environment.NewLine + Environment.NewLine +
-            &amp;quot;-- Service log: &amp;quot; + Environment.NewLine + ReadServiceLogFromDeployedApp());
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Because the webservice is deployed somewhere else (scenario tests run againsst the nightly build IIS webserver), we need to access the logfiles using a ´GET´ call, done with RestSharp:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    private static string ReadServiceLogFromDeployedApp()
-    {
-        var restClient = new RestClient(ScenarioFixture.Instance.ResolveHostAndPort());
-        var restRequest = new RestRequest(&amp;quot;log/servicelog.txt&amp;quot;);
-        restRequest.AddHeader(&amp;quot;Content-Type&amp;quot;, &amp;quot;text/plain&amp;quot;);
-        restRequest.AddHeader(&amp;quot;Accept&amp;quot;, &amp;quot;text/plain&amp;quot;);
-        var response = restClient.Execute(restRequest);
-        return response.Content;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, to easily access those files (the screenshot and the written log for each failing test), we wrap the exception in another exception containing a direct link to both files. That enables every developer to simply browse to the failing test on our CI env (teamcity) and simply click on the link!&lt;/p&gt;
-
-&lt;p&gt;To be able to do that, combined with the pointcut, implement the &lt;code&gt;OnException()&lt;/code&gt; hook and call the above code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[Serializable]
-[ScenarioExceptionAspect(AttributeExclude = true)]
-public class ScenarioExceptionAspect : OnMethodBoundaryAspect
-{
-    public override void OnException(MethodExecutionArgs args)
-    {
-        var exceptionFileName = Directory.GetCurrentDirectory() + @&amp;quot;/&amp;quot; + WebDriverExceptionHandler.Handle(args.Exception);
-
-        exceptionFileName = exceptionFileName.Replace(@&amp;quot;C:&amp;quot;, @&amp;quot;file://teamcity/c$&amp;quot;);
-        exceptionFileName = exceptionFileName.Replace(@&amp;quot;\&amp;quot;, @&amp;quot;/&amp;quot;);
-
-        throw new Exception(&amp;quot;Scenario test failed&amp;quot;
-            + Environment.NewLine
-            + &amp;quot; -- Screenshot: &amp;quot; + exceptionFileName + &amp;quot;.png&amp;quot;
-            + Environment.NewLine
-            + &amp;quot; -- Log: &amp;quot; + exceptionFileName + &amp;quot;.txt&amp;quot;, args.Exception);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This introduces one more problem: what if you want to trigger an exception, something like &lt;code&gt;ExpectedException(typeof(InvalidArgumentException))&lt;/code&gt;? We&amp;rsquo;ll still end up in our aspect and we&amp;rsquo;ll take a screenshot and dump everything. We fixed this by taking a peek at the live stacktrace. I know it&amp;rsquo;s far from ideal, but it serves it&amp;rsquo;s purpose and works pretty well for the moment.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    private static bool ExpectedSomeException(StackTrace trace)
-    {
-        const int arbitraryMaxDepthToLookForAttribs = 5;
-        for (var stackElements = 1; stackElements &amp;lt;= arbitraryMaxDepthToLookForAttribs; stackElements++)
-        {
-            if (AnyExpectedExceptionInAttribute(trace, stackElements))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    private static bool AnyExpectedExceptionInAttribute(StackTrace trace, int stackElements)
-    {
-        var callingMethod = trace.GetFrame(stackElements).GetMethod();
-        var anyExpectedExceptionAttrib = callingMethod.GetCustomAttributes(typeof(ExpectedExceptionAttribute), true).Any();
-        return anyExpectedExceptionAttrib;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Every instance of a new &lt;code&gt;StackTrace&lt;/code&gt; element will contain all stack data from that point on, so create one in the onException method, otherwise remember to look &amp;ldquo;deeper&amp;rdquo; or further into the stack itself. Yes we could solve that using recursion instead of with an arbitrary number of elements inside a for loop, but we were trying to solve something else and this stood in the way so naturally the reaction was to not invest too much time.&lt;/p&gt;
-
-&lt;p&gt;What&amp;rsquo;s the outcome? This:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Test(s) failed. System.Exception : Scenario test failed
-&amp;ndash; Screenshot: file://teamcity/c$/buildagents/buildAgentOne/work/10dbfc9caad025f8/Proj/ScenarioTests/bin/Debug/ex-15-01-14-15-56-02.png
-&amp;ndash; Log: file://teamcity/c$/buildagents/buildAgentOne/work/10dbfc9caad025f8/Proj/ScenarioTests/bin/Debug/ex-15-01-14-15-56-02.txt
- &amp;mdash;-&amp;gt; System.Exception : Root menu could not be opened after 10 tries?
-  at Proj.ScenarioTests.ScenarioExceptionAspect.OnException(MethodExecutionArgs args) in c:\buildagents\buildAgentOne\work\10dbfc9caad025f8\Proj\Proj.ScenarioTests\ScenarioExceptionAttributeHandler.cs:line 36
-&amp;hellip;&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
+      <description>As the previous post indicated, we&amp;rsquo;re trying to stabilize our scenario tests created with WebDriver. One of the things we did was trying to capture as much data as possible if something goes wrong. Something like a typical ElementNotFoundException, or the less common StaleElementException (detached from DOM after evaluation) - these things can be hard to trace if you don&amp;rsquo;t run the tests locally. We also stumbled upon the &amp;ldquo;it works on my machine&amp;rdquo; problem - tests succeeding on one development machine but not on the other - mostly related due to timing issues.</description>
     </item>
     
     <item>
@@ -121,53 +28,7 @@ public class ScenarioExceptionAspect : OnMethodBoundaryAspect
       <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/faking-domain-logic/</guid>
-      <description>&lt;p&gt;Sometimes, life is just a little bit more difficult than you imagined the day before. Sometimes, you have to work on a legacy codebase with custom frameworks rooted so deeply you&amp;rsquo;re having lot&amp;rsquo;s of trouble trying to build around them. To make it a bit more concrete, here&amp;rsquo;s an example: imagine a separate DLL for interfaces and a separate DLL for the implementation. This decision was made because we use NHibernate as a data mapper and not to write beautiful domain driven design code. As a result, writing domain logic methods on our &amp;ldquo;domain&amp;rdquo; objects is impossible because we have three implementations.&lt;/p&gt;
-
-&lt;p&gt;There are a few solutions. The first would be the classic solution, called a &amp;ldquo;service layer&amp;rdquo; where you simply dump random &amp;ldquo;domain&amp;rdquo; logic. Done.&lt;/p&gt;
-
-&lt;p&gt;Then there&amp;rsquo;s a slightly better solution involving abstract classes. But it makes things more complicated, and it&amp;rsquo;s not always allowed to inherit from those classes. Besides, in which DLL should you put them? Dependency Entanglement. Welcome to hotel Cali&amp;mdash; erm, DLL Hell.&lt;/p&gt;
-
-&lt;p&gt;So, option number three: use extensions on those interfaces.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    public interface IVacancy
-    {
-        public string Description { get; set; }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;would have these implementations:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    public class FulltimeVacancy : IVacancy
-    {
-        public string Description { get { // ... }; set { field = value; }}
-    }
-    public class HalftimeVacancy : IVacancy
-    {
-        public string Description { get { // ... }; set { field = value; }}
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If I&amp;rsquo;d want to implement something like &lt;code&gt;RetrieveLocation()&lt;/code&gt; based on for example google maps and other properties, I can place the entry point in an extension class:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    public static class IVacancyExtensions
-    {
-        public static string RetrieveLocation(this IVacancy vacancy)
-        {
-            // do your thing
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Using the right namespace imports, I&amp;rsquo;m able to call the above method on any concrete implementation of &lt;code&gt;IVacancy&lt;/code&gt;, regardless of it&amp;rsquo;s (DLL) location. Now, why would I want to keep code like this as close to the original object as possible? this has multiple reasons:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;It makes code easier to read &amp;amp; refactor.&lt;/li&gt;
-&lt;li&gt;It reduces the chance of duplication in another service layer, as people often hit &amp;ldquo;CTRL+SPACE&amp;rdquo; to find a method from an object or a piece of logic, and don&amp;rsquo;t go looking in service classes.&lt;/li&gt;
-&lt;li&gt;It makes code easier to discuss (since it&amp;rsquo;s also easier to read).&lt;/li&gt;
-&lt;li&gt;It&amp;rsquo;s isolated and thus easier to test.&lt;/li&gt;
-&lt;li&gt;It avoids a lot of &lt;a href=&#34;http://martinfowler.com/bliki/CodeSmell.html&#34;&gt;other code smells&lt;/a&gt; (deserves it&amp;rsquo;s own article).&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Sometimes, life is just a little bit more difficult than you imagined the day before. Sometimes, you have to work on a legacy codebase with custom frameworks rooted so deeply you&amp;rsquo;re having lot&amp;rsquo;s of trouble trying to build around them. To make it a bit more concrete, here&amp;rsquo;s an example: imagine a separate DLL for interfaces and a separate DLL for the implementation. This decision was made because we use NHibernate as a data mapper and not to write beautiful domain driven design code.</description>
     </item>
     
     <item>
@@ -176,99 +37,8 @@ public class ScenarioExceptionAspect : OnMethodBoundaryAspect
       <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/custom-webdriver-page-factories/</guid>
-      <description>&lt;p&gt;The problem: Webdriver elements returned by &lt;code&gt;driver.FindElement()&lt;/code&gt; are too generic. There&amp;rsquo;re the &lt;code&gt;Text&lt;/code&gt;, &lt;code&gt;SendKeys()&lt;/code&gt; and &lt;code&gt;Click()&lt;/code&gt; methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like &lt;code&gt;ShouldContainValue&lt;/code&gt; or &lt;code&gt;Type&lt;/code&gt; (okay, that&amp;rsquo;s a one-to-one mapping with &lt;code&gt;SendKeys()&lt;/code&gt;, but it&amp;rsquo;s a lot less technical!). Instead of&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)]
-    private IWebElement startButton;
-
-    [FindsBy(How = How.CssSelector, Using = &amp;quot;.other&amp;quot;)]
-    private IWebElement whatever;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You&amp;rsquo;d find code like&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)]
-    private HTMLSubmitButton startButton;
-
-    [FindsBy(How = How.CssSelector, Using = &amp;quot;.other&amp;quot;)]
-    private HTMLInputBox whatever;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In java, this is not that difficult. Normally all fields annotated with FindsBy are filled in via reflection with &lt;code&gt;PageFactory.InitElements()&lt;/code&gt;. (warning: this creates proxies and does not yet actually do the lookup in the DOM tree. This is a good thing, as filling the fields usually happens inside the constructor of a page object.). &lt;code&gt;initElements&lt;/code&gt; returns the filled page, you can do a few things from there:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;postprocess the page and decorate your fields&lt;/li&gt;
-&lt;li&gt;create your own page factory and create your own fields, wrapped around the webdriver proxies&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In C#, you&amp;rsquo;re in trouble - the class is sealed, and the proxy classes are internal. Creating your own factory is possible, but produces fuzzy code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;internal class PageFactory
-{
-    private PageFactory()
-    {
-    }
-
-    private static By FindsByAttributeToBy(FindsByAttribute attribute)
-    {
-        return (By) typeof (FindsByAttribute).GetProperty(&amp;quot;Finder&amp;quot;, BindingFlags.NonPublic | BindingFlags.Instance).GetValue(attribute);
-    }
-
-    public static void InitElements(IWebDriver driver, object page)
-    {
-        foreach (FieldInfo field in FindAllFieldsAndProperties(page.GetType()))
-        {
-            Attribute[] findsByAttribs = Attribute.GetCustomAttributes(field, typeof (FindsByAttribute), true);
-            if (findsByAttribs.Length &amp;gt; 0)
-            {
-                var findsByAttribute = (findsByAttribs[0] as FindsByAttribute);
-                if (field.FieldType == typeof (IWebElement))
-                {
-                    field.SetValue(page, FindElement(driver, FindsByAttributeToBy(findsByAttribute)));
-                }
-                else if (typeof (IEnumerable).IsAssignableFrom(field.FieldType))
-                {
-                    field.SetValue(page, FindElements(driver, FindsByAttributeToBy(findsByAttribute)));
-                }
-            }
-        }
-    }
-
-    private static IWebElement FindElement(IWebDriver driver, By by)
-    {
-        // warning: create WebProxyElement instead of directly doing a lookup
-        return driver.FindElement(by);
-    }
-
-    private static IReadOnlyCollection&amp;lt;IWebElement&amp;gt; FindElements(IWebDriver driver, By by)
-    {
-        // warning: create WebListProxyElement instead of directly doing a lookup
-        return driver.FindElements(by);
-    }
-
-    private static IEnumerable&amp;lt;FieldInfo&amp;gt; FindAllFieldsAndProperties(Type type)
-    {
-        var list = new List&amp;lt;FieldInfo&amp;gt;();
-        list.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.Public));
-        for (; type != (Type) null; type = type.BaseType)
-        {
-            list.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic));
-        }
-        return list;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you have a keen eye, you notice a few things:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;caching of the attribute wouldn&amp;rsquo;t work anymore. The default C# WebDriver implementation is fuzzy and I didn&amp;rsquo;t want to copypaste code I won&amp;rsquo;t use.&lt;/li&gt;
-&lt;li&gt;proxying won&amp;rsquo;t work anymore, you&amp;rsquo;d have to use reflection to instantiate internal classes.&lt;/li&gt;
-&lt;li&gt;reflection has been used to fetch the &lt;code&gt;By&lt;/code&gt; instance of the &lt;code&gt;FindsByAttribute&lt;/code&gt;. Yay.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The above solution is too complex to solve a simple thing. Instead of a custom page factory, in C# we now use extension methods on &lt;code&gt;IWebElement&lt;/code&gt;. Another possibility would to create wrapper objects on-the-fly but you&amp;rsquo;d still have to map the &amp;ldquo;raw&amp;rdquo; web elements on page objects.&lt;/p&gt;
-</description>
+      <description>The problem: Webdriver elements returned by driver.FindElement() are too generic. There&amp;rsquo;re the Text, SendKeys() and Click() methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like ShouldContainValue or Type (okay, that&amp;rsquo;s a one-to-one mapping with SendKeys(), but it&amp;rsquo;s a lot less technical!). Instead of
+ [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)] private IWebElement startButton; [FindsBy(How = How.CssSelector, Using = &amp;quot;.</description>
     </item>
     
     <item>
@@ -277,60 +47,8 @@ public class ScenarioExceptionAspect : OnMethodBoundaryAspect
       <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/metaprogramming-convention-dry/</guid>
-      <description>&lt;p&gt;So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using &lt;code&gt;RhinoMock&lt;/code&gt; in &lt;code&gt;C#&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    [TestInitialize]
-    public void SetUp()
-    {
-        dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;();
-        mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;();
-        userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;();
-        userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;();
-        // ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth. So why should I repeat myself again and again but initializing a bunch of mocks using &lt;code&gt;GenerateMock&lt;/code&gt;?&lt;/p&gt;
-
-&lt;p&gt;In Java using Mockito, the &lt;code&gt;@Mock&lt;/code&gt; annotation automagically instantiates a mock for you, provided you annotated your test class with &lt;code&gt;@RunWith(MockitoJUnitRunner.class)&lt;/code&gt;. I would like to apply this pattern to MSTest but there&amp;rsquo;s not a single hook to be found where I can plug in my initialization code. Thanks a bunch.&lt;/p&gt;
-
-&lt;p&gt;Example taken from &lt;a href=&#34;http://docs.mockito.googlecode.com/&#34;&gt;Mockito docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class ArticleManagerTest {
-
-    @Mock private ArticleCalculator calculator;
-    @Mock private ArticleDatabase database;
-    @Mock private UserProvider userProvider;
-
-    private ArticleManager manager;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, this &amp;ldquo;problem&amp;rdquo; is easily solved with a bit of metaprogramming and an abstract class:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Loop over (private) fields&lt;/li&gt;
-&lt;li&gt;Filter out suffixed with &amp;lsquo;Mock&amp;rsquo;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Initialize.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public abstract class AbstractTestCase
-{
-    [TestInitialize]
-    public void CreateMocksBasedOnNamingConvention()
-    {
-        this.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(x =&amp;gt; x.Name.EndsWith(&amp;quot;Mock&amp;quot;)).All(InitMock);
-    }
-
-    private bool InitMock(FieldInfo field)
-    {
-        field.SetValue(this, MockRepository.GenerateMock(field.FieldType, new Type[]{}));
-        return true;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Very easy with &lt;code&gt;LINQ&lt;/code&gt;. The question is - is metaprogramming or reflection in this case &amp;ldquo;allowed&amp;rdquo;? Do you think this is &amp;ldquo;bad&amp;rdquo; (because it&amp;rsquo;s implicit), or is the convention of suffixing your fields with &amp;lsquo;Mock&amp;rsquo; good enough? The base test case could also be named something like &lt;code&gt;MockInitializingTestCase&lt;/code&gt; if that makes you feel better.&lt;/p&gt;
-</description>
+      <description>So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using RhinoMock in C#:
+ [TestInitialize] public void SetUp() { dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;(); mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;(); userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;(); userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;(); // ...  We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth.</description>
     </item>
     
     <item>
@@ -339,186 +57,8 @@ public class ScenarioExceptionAspect : OnMethodBoundaryAspect
       <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/builders-dsl/</guid>
-      <description>
-
-&lt;p&gt;This post is inspired by Venkat Subramaniam&amp;rsquo;s &lt;a href=&#34;http://www.devoxx.be/dv13-venkat-subramaniam.html&#34;&gt;Devoxx 2013 talk Thinking Functional Style&lt;/a&gt;. See downloads at &lt;a href=&#34;http://www.agiledeveloper.com/downloads.html&#34;&gt;agiledeveloper.com&lt;/a&gt; which has a rather cool Groovy example.&lt;/p&gt;
-
-&lt;h3 id=&#34;classic-builders&#34;&gt;Classic builders&lt;/h3&gt;
-
-&lt;p&gt;For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters. That quickly became very cumbersome to work with. Most of the time, the code will  look like this, whether it&amp;rsquo;s C# or Java doesn&amp;rsquo;t really matter:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class UserBuilder
-{
-    private UserType_V1_0 type = UserType_V1_0.Administrator;
-    private string code = &amp;quot;code&amp;quot;;
-
-    public User_V1_0 Build()
-    {
-        User_V1_0 user = new User_V1_0(code, &amp;quot;name&amp;quot;, type, &amp;quot;id&amp;quot;, &amp;quot;campusId&amp;quot;, true);
-        return user;
-    }
-
-    public UserBuilder WithCode(string code)
-    {
-        this.code = code;
-        return this;
-    }
-
-    public UserBuilder WithType(UserType_V1_0 type)
-    {
-        this.type = type;
-        return this;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Used this way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  var user = new UserBuilder()
-    .withCode(&amp;quot;AB&amp;quot;)
-    .Build();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Okay, what&amp;rsquo;s happening here?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Builder objects have &lt;code&gt;withX()&lt;/code&gt; methods, returning &lt;code&gt;this&lt;/code&gt; to be able to chain, to fill up every required variable&lt;/li&gt;
-&lt;li&gt;default values are provided, so we&amp;rsquo;re not obliged to call every method if we&amp;rsquo;re only interested in one field.&lt;/li&gt;
-&lt;li&gt;At the end of the chain, we call &lt;code&gt;Build()&lt;/code&gt;, which returns our object.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;enhanced-builders&#34;&gt;Enhanced builders&lt;/h3&gt;
-
-&lt;p&gt;I&amp;rsquo;ve never given it much thought, but yes, there are some problems with this implementation (as with everything). The most important one being, can you reuse your instantiated builder? No? Yes? We never assign it, but we &lt;strong&gt;could&lt;/strong&gt; if we really wanted to. Since we&amp;rsquo;re &lt;strong&gt;mutating the builder&lt;/strong&gt;, you are definatly getting into trouble.&lt;/p&gt;
-
-&lt;p&gt;Using a lambda to pass in the work on our builder might solve this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class UserBuilder
-{
-    private UserType_V1_0 type = UserType_V1_0.Administrator;
-    private string code = &amp;quot;code&amp;quot;;
-
-    private UserBuilder()
-    {
-    }
-
-    private User_V1_0 Build()
-    {
-        return new User_V1_0(code, &amp;quot;name&amp;quot;, type, &amp;quot;id&amp;quot;, &amp;quot;campusId&amp;quot;, true);
-    }
-
-    public static User_V1_0 Build(Func&amp;lt;UserBuilder, UserBuilder&amp;gt; block)
-    {
-        var builder = new UserBuilder();
-        block(builder);
-        return builder.Build();
-    }
-
-    public UserBuilder WithCode(string code)
-    {
-        this.code = code;
-        return this;
-    }
-
-    public UserBuilder WithType(UserType_V1_0 type)
-    {
-        this.type = type;
-        return this;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Used this way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  var user = UserBuilder.Build(_ =&amp;gt;
-    _.WithCode(&amp;quot;AB&amp;quot;)
-           .withType(UserType_V1_0.NursingStaff));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice that using the character &lt;code&gt;_&lt;/code&gt; is a convention if there&amp;rsquo;s only one parameter for the lambda, it could also be called &amp;ldquo;builder&amp;rdquo; but we still need to use this, as &lt;code&gt;block(builder)&lt;/code&gt; passes in the temp created builder. What did we solve?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The actual builder instance is bound within the &lt;code&gt;Build()&lt;/code&gt; scope. You&amp;rsquo;ll never be able to assign it when using the static method.&lt;/li&gt;
-&lt;li&gt;One might say, we reduced some redundancy in the implementation by eliminating the need to call the final &lt;code&gt;Build()&lt;/code&gt; method, but it&amp;rsquo;s simply being moved.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;supercharged-builders&#34;&gt;Supercharged builders&lt;/h3&gt;
-
-&lt;p&gt;In Groovy (the devoxx example), we can cleverly use the &lt;code&gt;.delegate&lt;/code&gt; mechanism to eliminate the need to chain at all. Groovy also reduces the syntax noise a bit (brackets, semicolons). We could create a &lt;code&gt;Build&lt;/code&gt; method like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  public static User_V1_0 Build(block) {
-    new UserBuilder().with block;
-    // does the same as cloning the block, assigning it with .delegate and executing it. 
-  }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Used this way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  UserBuilder.Build {
-     Code &amp;quot;AB&amp;quot; // Same as Code(&amp;quot;AB&amp;quot;);
-     Type UserType_V1_0.NursingStaff
-  }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;How does this work?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The &lt;code&gt;Code()&lt;/code&gt; method does not exist in our block closure, but we assign a delegate to it: our temp lexically scoped &lt;code&gt;UserBuilder&lt;/code&gt; instance - that&amp;rsquo;s where the method lives. When the code is executed, Groovy first looks for a method within the block, and then tries to fetch it via the delegate.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For more information on groovy delegates, see the &lt;a href=&#34;http://groovy.codehaus.org/Delegation+Pattern&#34;&gt;Groovy documentation: Delegation Pattern&lt;/a&gt;. This works thanks to the late binding of the language and won&amp;rsquo;t statically typed languages such as C#. You might be able to come close using &lt;code&gt;LINQ&lt;/code&gt; expression trees, but that requires a lot of effort to write a simple DSL.&lt;/p&gt;
-
-&lt;h3 id=&#34;leveraging-this-principle-to-dsls&#34;&gt;Leveraging this principle to DSLs&lt;/h3&gt;
-
-&lt;p&gt;In Javascript, you can also manage to do something like that using &lt;code&gt;.prototype&lt;/code&gt; and &lt;a href=&#34;http://brainbaking.com/wiki/code/javascript/inheritance&#34;&gt;prototypal inheritance&lt;/a&gt; and &lt;code&gt;apply()&lt;/code&gt; to dynamically bind the &lt;code&gt;this&lt;/code&gt; context (see &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply&#34;&gt;Function.prototype.apply MDN&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Of course, builders are completely redundant in JS. Just create a &lt;code&gt;JSON&lt;/code&gt; object using &lt;code&gt;{ key: value }&lt;/code&gt;. Done. But this principle might be interesting for things like creating a &amp;ldquo;mailer&amp;rdquo; - as in the devoxx 2013 example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var mailerPrototype = {
-    from: function() { console.log(&amp;quot;from&amp;quot;); },
-    to: function() { console.log(&amp;quot;to&amp;quot;); },
-    sub: function() { console.log(&amp;quot;sub&amp;quot;); },
-    body: function() { console.log(&amp;quot;body&amp;quot;); },
-    send: function() { console.log(&amp;quot;sending...&amp;quot;); }
-};
-
-var mailer = function() {};
-mailer.mail = function(block) {
-    // .prototype magic happens inside Object.create()
-    block.apply(Object.create(mailerPrototype));
-}
-
-// this still sucks, I don&#39;t want to use &#39;this.&#39;, can use chaining... 
-mailer.mail(function() {
-    this.from(&amp;quot;me@gmail.com&amp;quot;);
-    this.to(&amp;quot;you@gmail.com&amp;quot;);
-    this.sub(&amp;quot;this is my subject&amp;quot;);
-    this.body(&amp;quot;hello&amp;quot;);
-    this.send();
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You&amp;rsquo;ll still need &lt;code&gt;this.&lt;/code&gt;, sadly. This is not needed in Groovy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mailer.mail {
-    from &amp;quot;me@gmail.com&amp;quot;
-    to &amp;quot;you@gmail.com&amp;quot;
-    sub &amp;quot;this is my subject&amp;quot;
-    body &amp;quot;hello&amp;quot;
-    send()
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now &lt;strong&gt;that&lt;/strong&gt; looks readable. To be able to create something like that, a language has to:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;have functions as first-class citizens.&lt;/li&gt;
-&lt;li&gt;have a clean syntax, to be able to reduce a lot of noise (CoffeeScript can get this done for JS for instance)&lt;/li&gt;
-&lt;li&gt;have late binding or duck typing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That said, going back to Java 7 is going to be a major pain in the ass. No, I do not want to create usesless interfaces! (Tip: use &lt;code&gt;Function&lt;/code&gt; and &lt;code&gt;Predicate&lt;/code&gt; from &lt;a href=&#34;https://code.google.com/p/guava-libraries/&#34;&gt;Google Guava&lt;/a&gt;).&lt;/p&gt;
-</description>
+      <description>This post is inspired by Venkat Subramaniam&amp;rsquo;s Devoxx 2013 talk Thinking Functional Style. See downloads at agiledeveloper.com which has a rather cool Groovy example.
+Classic builders For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters.</description>
     </item>
     
     <item>
@@ -527,131 +67,8 @@ mailer.mail(function() {
       <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/integration-testing-sqlite/</guid>
-      <description>
-
-&lt;p&gt;This article is based on the notes I&amp;rsquo;ve collected on &lt;a href=&#34;http://brainbaking.com/wiki/code/db/sqlite&#34;&gt;My Wiki&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;On previous projects I&amp;rsquo;ve worked on, development PCs came with a local version of the database scheme. Each DB change also got rolled out to those computers, which enabled us developers to fool around without breaking anything on the development (or test) environment. This is another step closer to happiness, at least for our proxy customers who didn&amp;rsquo;t have to reinsert their test data every time we flushed something from a table. Sometimes though, there&amp;rsquo;s some lame excuse for not having a local database installed:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;We have a lot of stored procedures and it&amp;rsquo;s too hard to duplicate them locally&lt;/li&gt;
-&lt;li&gt;We worked like this for years, why would I want a local DB?&lt;/li&gt;
-&lt;li&gt;But then my data is out of sync!&lt;/li&gt;
-&lt;li&gt;I tried doing that but my manager says I should focus on delivering content&lt;/li&gt;
-&lt;li&gt;Blah blah blah&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Installing an Oracle XE runtime on your machine might include working around some issues which can take up some time but it&amp;rsquo;s time well invested, compared to multiple developers connecting to one shared database. In any case, there&amp;rsquo;s another possibility: an &lt;strong&gt;in-memory database&lt;/strong&gt;, such as &lt;a href=&#34;http://www.sqlite.org/&#34;&gt;SQLite&lt;/a&gt;. This does still require you to keep the upgrade scripts synced, but also enables you to get rid of a lot of annoying things like &lt;em&gt;foreign key constraints&lt;/em&gt; for testing purposes.&lt;/p&gt;
-
-&lt;h3 id=&#34;integrating-sqlite-with-net&#34;&gt;Integrating SQLite with .NET&lt;/h3&gt;
-
-&lt;p&gt;Simply use &lt;a href=&#34;http://system.data.sqlite.org/index.html/doc/trunk/www/index.wiki&#34;&gt;System.data.SQLite&lt;/a&gt;. For each OleDb object, there&amp;rsquo;s an equivalent SQLite one in the correct namespace. The only problem is, some of them don&amp;rsquo;t share an abstract object so you&amp;rsquo;ll have to come up with an anti-corruption layer yourself. Create a connection using this connection string:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    private SQLiteConnection SqLiteDbConnection()
-    {
-        return new SQLiteConnection()
-            {
-                ConnectionString = &amp;quot;Data Source=:memory:;Version=3;New=True;DateTimeFormat=Ticks&amp;quot;,
-                Flags = SQLiteConnectionFlags.LogAll
-            };
-    }
-
-    public void SetupDb()
-    {
-        using (var connection = SqLiteDbConnection())
-        {
-            connection.Open();
-            var transaction = connection.BeginTransaction();
-            var sqLiteCommand = new SQLiteCommand()
-                {
-                    Connection = (SQLiteConnection) connection,
-                    CommandType = CommandType.Text,
-                    CommandText = GetSchemaCreateSql()
-                };
-            sqLiteCommand.ExecuteNonQuery();
-            transaction.Commit();
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You need to pay attention to the &lt;code&gt;DateTimeFormat&lt;/code&gt; substring in the connection string as SQLite is &amp;ldquo;dynamically typed&amp;rdquo;, compared to Oracle. This means it stores dates exactly the same as chars, otherwise you might encounter an error like &lt;code&gt;&amp;quot;string was not recognized as a valid DateTime&amp;quot;&lt;/code&gt; when executing a select statement.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Watch out with closing the DB Connection&lt;/strong&gt; using an in-memory DB; as this completely resets everything. As soon as you open a connection, you can execute create table commands (read your stored DDL file and do it in bulk).
-Your anti-corruption layer between the abstract DB Connection and SQLite/OleDB should expose a few methods. It should be able to query (with or without parameters or providing a &lt;code&gt;DbCommand&lt;/code&gt;) and possibly stored procedures. This is what I&amp;rsquo;ve come up with:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public interface IdbConnection
-{
-    object QueryProcedure(string procedure, IDictionary&amp;lt;string, object&amp;gt; parameters, string outputParameter);
-
-    DbParameter CreateParameter(string field, object value);
-
-    DbCommand CreateCommand(string query);
-
-    DataSet Query(DbCommand command);
-
-    DataSet Query(string query);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Depending on the implementation, it&amp;rsquo;ll return an &lt;code&gt;SQLiteCommand&lt;/code&gt; or an &lt;code&gt;OleDbCommand&lt;/code&gt; instance.&lt;/p&gt;
-
-&lt;h3 id=&#34;creating-integration-tests-using-record-objects&#34;&gt;Creating integration tests, using Record objects&lt;/h3&gt;
-
-&lt;p&gt;To be able to quickly insert junk in an in-memory table, I came up with a simple object-table mapping which uses reflection to scan for each property of an object, and map that property to a column in a table. Normally you would simply use your domain objects and issue a &lt;code&gt;save()&lt;/code&gt; or &lt;code&gt;persist()&lt;/code&gt; call using for instance &lt;code&gt;NHibernate&lt;/code&gt; but we didn&amp;rsquo;t have anything like that and this was easy to setup.&lt;/p&gt;
-
-&lt;p&gt;Create an object for each table in your unit test project, extending &lt;code&gt;DatabaseInsertable&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public abstract class DatabaseInsertable
-{
-    protected abstract string GetTable();
-
-    public override string ToString()
-    {
-        var fieldDict = FieldDictionary();
-        var fields = &amp;quot;(&amp;quot; + string.Join(&amp;quot;,&amp;quot;, fieldDict.Keys) + &amp;quot;)&amp;quot;;
-        var values = &amp;quot;(&amp;quot; + string.Join(&amp;quot;,&amp;quot;, fieldDict.Values) + &amp;quot;)&amp;quot;;
-
-        return &amp;quot;insert into &amp;quot; + GetTable() + fields + &amp;quot; values &amp;quot; + values;
-    }
-
-    public void Save()
-    {
-        DbConnection.Instance.CreateCommand(ToString()).ExecuteNonQuery();
-    }
-
-    private Dictionary&amp;lt;string, string&amp;gt; FieldDictionary()
-    {
-        var dictionary = new Dictionary&amp;lt;string, string&amp;gt;();
-
-        foreach (var info in this.GetType().GetFields())
-        {
-            if (info.GetValue(this) != null)
-            {
-                dictionary.Add(info.Name, &amp;quot;&#39;&amp;quot; + info.GetValue(this).ToString() + &amp;quot;&#39;&amp;quot;);
-            }
-        }
-
-        return dictionary;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For instance:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;internal class UnitRecord : DatabaseInsertable
-{
-    public string creator;
-    public string guid;
-
-    protected override string GetTable()
-    {
-        return &amp;quot;UNIT&amp;quot;;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now you can simply issue &lt;code&gt;new UnitRecord() { creator = &amp;quot;bla&amp;quot;; guid = &amp;quot;lala&amp;quot;; }.Save();&lt;/code&gt; and it&amp;rsquo;s saved into the unit table, yay!&lt;/p&gt;
-</description>
+      <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
+On previous projects I&amp;rsquo;ve worked on, development PCs came with a local version of the database scheme. Each DB change also got rolled out to those computers, which enabled us developers to fool around without breaking anything on the development (or test) environment. This is another step closer to happiness, at least for our proxy customers who didn&amp;rsquo;t have to reinsert their test data every time we flushed something from a table.</description>
     </item>
     
   </channel>

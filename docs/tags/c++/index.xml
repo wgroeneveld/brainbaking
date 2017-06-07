@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C&#43;&#43; on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/c&#43;&#43;/index.xml</link>
+    <link>http://www.brainbaking.com/tags/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/c&#43;&#43;/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Mar 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Bye autotools hello Scons</title>
@@ -16,168 +19,9 @@
       <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/scons-building/</guid>
-      <description>
-
-&lt;p&gt;Remember this?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;./configure&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;make&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;make install&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That&amp;rsquo;s not so bad, as long as you have the right compiler and linker flags configured, depending on the target OS. The real problem, however, is trying to figure out how to alter something if you didn&amp;rsquo;t write the &lt;code&gt;Makefile&lt;/code&gt; yourself. Or if you in fact did write it, but it was some time ago. Two days. No, four hours.&lt;/p&gt;
-
-&lt;h3 id=&#34;the-problem&#34;&gt;The problem&lt;/h3&gt;
-
-&lt;p&gt;Try to study the autoconf and automake flow diagram, explained &lt;a href=&#34;http://en.wikipedia.org/wiki/GNU_build_system&#34;&gt;on Wikipedia: the GNU build system&lt;/a&gt;. Headache coming up? Suppose we would like to use these &amp;hellip; uhm, &amp;ldquo;thingies&amp;rdquo;, for a simple C++ project.&lt;/p&gt;
-
-&lt;p&gt;First, let me define simple:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;It has some (shared) library dependencies&lt;/li&gt;
-&lt;li&gt;The source lives in &lt;code&gt;src&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Since it&amp;rsquo;s obviously written the TDD way, the tests live in &lt;code&gt;test&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Onward, to the &lt;code&gt;Makefile&lt;/code&gt; creation station!
-This is a sample file, from the &lt;a href=&#34;https://code.google.com/p/googletest/source/browse/trunk/make/Makefile&#34;&gt;Google Test Makefile&lt;/a&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;GTEST_DIR = ..
-
-USER_DIR = ../samples
-
-CPPFLAGS += -isystem $(GTEST_DIR)/include
-CXXFLAGS += -g -Wall -Wextra -pthread
-
-TESTS = sample1_unittest
-GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
-                $(GTEST_DIR)/include/gtest/internal/*.h
-
-all : $(TESTS)
-
-clean :
-    rm -f $(TESTS) gtest.a gtest_main.a *.o
-
-GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
-gtest-all.o : $(GTEST_SRCS_)
-    $(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
-            $(GTEST_DIR)/src/gtest-all.cc
-
-gtest_main.o : $(GTEST_SRCS_)
-    $(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
-            $(GTEST_DIR)/src/gtest_main.cc
-
-gtest.a : gtest-all.o
-    $(AR) $(ARFLAGS) $@ $^
-
-gtest_main.a : gtest-all.o gtest_main.o
-    $(AR) $(ARFLAGS) $@ $^
-
-sample1.o : $(USER_DIR)/sample1.cc $(USER_DIR)/sample1.h $(GTEST_HEADERS)
-    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1.cc
-
-sample1_unittest.o : $(USER_DIR)/sample1_unittest.cc \
-                     $(USER_DIR)/sample1.h $(GTEST_HEADERS)
-    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1_unittest.cc
-
-sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
-    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This first builds the gtest_main.a binary, to be able to link that with our test after the source (sample1.o) has been is built. The syntax is clumsy, simple files require me to have a deep knowledge how flags and linking work, and I don&amp;rsquo;t want to specify everything in one block.&lt;/p&gt;
-
-&lt;p&gt;As esr in his blog post &lt;a href=&#34;http://esr.ibiblio.org/?p=3089&#34;&gt;Scons is full of win today&lt;/a&gt; said, it&amp;rsquo;s a maintenance nightmare. What to do?&lt;/p&gt;
-
-&lt;p&gt;There are a few alternatives which aim to cover everything autotools does, such as &lt;code&gt;QMake&lt;/code&gt; from Trolltech or &lt;code&gt;CMake&lt;/code&gt; (that actually generates Makefiles. You&amp;rsquo;re not helping, CMake!). Or, one could go for &lt;a href=&#34;http://scons.org/&#34;&gt;Scons&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;build-your-software-better&#34;&gt;build your software, better.&lt;/h3&gt;
-
-&lt;p&gt;Scons starts with a single &lt;code&gt;SConstruct&lt;/code&gt; file, which acts as the makefile. You can bootstrap the default build target using the &lt;code&gt;scons&lt;/code&gt; command. (cleaning with &lt;code&gt;scons --clean&lt;/code&gt;). The big deal here is that the contents of that file is simply python (2.7, I know)!&lt;/p&gt;
-
-&lt;p&gt;Want to write a utility function to gather all your &lt;code&gt;cpp&lt;/code&gt; files? Fine, go ahead, &lt;code&gt;def mystuff():&lt;/code&gt; (you do know this already exists, right? Use &lt;code&gt;Glob()&lt;/code&gt;) Want to unit test these, and include them? Done. Want to split up everything per source directory? Use &lt;code&gt;SConscript&lt;/code&gt; files and include these from within your root &lt;code&gt;SConstruct&lt;/code&gt; using &lt;code&gt;SConscript(&#39;file&#39;, &#39;envVarToExport&#39;)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;This is my blueprint construct file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;env = Environment(CXX = &#39;g++&#39;)
-
-gtest = env.SConscript(&#39;lib/gtest/SConscript&#39;, &#39;env&#39;)
-src = env.SConscript(&#39;src/SConscript&#39;, &#39;env&#39;)
-out = env.SConscript(&#39;test/SConscript&#39;, &#39;env gtest src&#39;)
-
-# output is an array with path to built binaries. We only built one file - run it (includes gtest_main).
-test = Command( target = &amp;quot;testoutput&amp;quot;,
-                source = str(out[0]),
-                action = str(out[0]) )
-AlwaysBuild(test)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Things to note:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Scons works with &lt;a href=&#34;http://www.scons.org/doc/2.3.1/HTML/scons-user.html#chap-environments&#34;&gt;Environments&lt;/a&gt; which can be shared and cloned (see below)&lt;/li&gt;
-&lt;li&gt;You can share variables with the second parameter&lt;/li&gt;
-&lt;li&gt;Executing after a build also works, passing in the result of conscripts.&lt;/li&gt;
-&lt;li&gt;Ensure to always build your test with &lt;code&gt;AlwaysBuild()&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This is the conscript which builds google test:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Import(&#39;env&#39;)
-env = env.Clone(CPPPATH = &#39;./:./include&#39;)
-
-env.Append(CXXFLAGS = [&#39;-g&#39;, &#39;-Wall&#39;, &#39;-Wextra&#39;, &#39;-pthread&#39;])
-gtest = env.Library(target = &#39;gtest&#39;, source = [&#39;src/gtest-all.cc&#39;, &#39;src/gtest_main.cc&#39;])
-
-Return(&#39;gtest&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Things to note:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Fetch the shared variables with &lt;code&gt;Import()&lt;/code&gt; and return stuff with &lt;code&gt;Return()&lt;/code&gt; (it&amp;rsquo;s a function)&lt;/li&gt;
-&lt;li&gt;specify flags all you want.&lt;/li&gt;
-&lt;li&gt;Building something? &lt;code&gt;Program()&lt;/code&gt;, &lt;code&gt;Library()&lt;/code&gt; or &lt;code&gt;SharedLibrary()&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Source:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Import(&#39;env&#39;)
-env = env.Clone(CPPPATH = &#39;./&#39;)
-src = env.Library(target = &#39;wizards&#39;, source = Glob(&#39;*.cc&#39;))
-
-Return(&#39;src&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Things to note:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Glob()&lt;/code&gt; auto-reads all files in the current dir.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And finally, test, linking both source and google test:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Import(&#39;env&#39;, &#39;gtest&#39;, &#39;src&#39;)
-env = env.Clone()
-
-env.Append(LIBPATH = [&#39;#lib/gtest&#39;, &#39;#src&#39;])
-env.Append(LIBS = [gtest, src])
-out = env.Program(target = &#39;wizards_unittests&#39;, source = Glob(&#39;*.cc&#39;))
-
-Return(&#39;out&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Things to note:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Use the hashtag &lt;code&gt;#&lt;/code&gt; to point to the root dir where the &lt;code&gt;SConstruct&lt;/code&gt; file resides.&lt;/li&gt;
-&lt;li&gt;Linking is as simple as providing &lt;code&gt;LIBS&lt;/code&gt; and the right path.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So where does that leave us? Yes there&amp;rsquo;s still &amp;ldquo;syntax&amp;rdquo; to be learned, even if you&amp;rsquo;re a seasoned python developer; you need to know which function to use for what, that&amp;rsquo;s what the excellent &lt;a href=&#34;http://www.scons.org/doc/2.3.1/HTML/scons-user.html&#34;&gt;scons doc&lt;/a&gt; is for. I know it made my life a lot easier while trying to do something simple and this is only the tip of the iceberg. Scons is relatively popular according to Stack Overflow, the documentation is excellent and if all else fails you can write your own garbage in a full-fledged dynamic language.&lt;/p&gt;
-
-&lt;p&gt;The only really irritating bit is the python 2.7 dependency, so don&amp;rsquo;t forget to use &lt;a href=&#34;https://pypi.python.org/pypi/virtualenv&#34;&gt;virtualenv&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>Remember this?
+ ./configure make make install  That&amp;rsquo;s not so bad, as long as you have the right compiler and linker flags configured, depending on the target OS. The real problem, however, is trying to figure out how to alter something if you didn&amp;rsquo;t write the Makefile yourself. Or if you in fact did write it, but it was some time ago. Two days. No, four hours.
+The problem Try to study the autoconf and automake flow diagram, explained on Wikipedia: the GNU build system.</description>
     </item>
     
   </channel>

@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Signing on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/signing/index.xml</link>
+    <link>http://www.brainbaking.com/tags/signing/</link>
     <description>Recent content in Signing on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/signing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Jul 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/signing/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>signing</title>
@@ -16,34 +19,8 @@
       <pubDate>Fri, 11 Jul 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/csharp/signing/</guid>
-      <description>
-
-&lt;h1 id=&#34;signing&#34;&gt;Signing&lt;/h1&gt;
-
-&lt;h4 id=&#34;compile-fouten-cannot-import-the-following-key-file&#34;&gt;Compile fouten: &amp;lsquo;cannot import the following key file&amp;rsquo;&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;C:&amp;lt;br/&amp;gt;Windows&amp;lt;br/&amp;gt;Microsoft.NET&amp;lt;br/&amp;gt;Framework&amp;lt;br/&amp;gt;v4.0.30319&amp;lt;br/&amp;gt;Microsoft.Common.targets(2455, 5): error MSB3325: Cannot import the following key file: ign.pfx. The key file may be password protected. To correct this, try to import the certificate again or manually install the certificate to the Strong Name CSP with the following key container name: VS_KEY_0E36C1B21D0EBCA4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Oplossen door met &lt;code&gt;sntool&lt;/code&gt; te registreren en die container naam aan te maken (VS&lt;em&gt;KEY&lt;/em&gt;&amp;hellip;)&lt;/p&gt;
-
-&lt;h4 id=&#34;assemblies-signen&#34;&gt;Assemblies signen&lt;/h4&gt;
-
-&lt;p&gt;Properties -&amp;gt; Signing -&amp;gt; Sign the assembly aanvinken. Choose a strong name key file&amp;hellip; (browse)&lt;/p&gt;
-
-&lt;h4 id=&#34;friend-classes-signed-assemblies&#34;&gt;Friend classes &amp;amp; signed assemblies&lt;/h4&gt;
-
-&lt;p&gt;In &lt;code&gt;AssemblyInfo.cs&lt;/code&gt; ook de public key meegeven van de friend assembly:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;[assembly: InternalsVisibleTo(&amp;quot;ServiceLayer.UnitTest, PublicKey=00240000048000002a51cadd46bbd321cda4e67d2...c125d7eb&amp;quot;)]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;de-public-key-opvragen-van-een-assembly&#34;&gt;De public key opvragen van een assembly&lt;/h5&gt;
-
-&lt;p&gt;Met &lt;code&gt;sn.exe&lt;/code&gt;, geïnstalleerd onder uw .NET SDK dir, bijvoorbeeld &lt;code&gt;C:&amp;lt;br/&amp;gt;Program Files (x86)&amp;lt;br/&amp;gt;Microsoft SDKs&amp;lt;br/&amp;gt;Windows&amp;lt;br/&amp;gt;v7.0A&amp;lt;br/&amp;gt;Bin&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;sn -Tp [assembly.dll]&lt;/code&gt; uitvoeren. Of de sign file vastnemen en deze uitlezen. Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/k5b5tt23(v=vs.110).aspx&#34;&gt;MSDN Strong Name Tool help&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>Signing Compile fouten: &amp;lsquo;cannot import the following key file&amp;rsquo; C:&amp;lt;br/&amp;gt;Windows&amp;lt;br/&amp;gt;Microsoft.NET&amp;lt;br/&amp;gt;Framework&amp;lt;br/&amp;gt;v4.0.30319&amp;lt;br/&amp;gt;Microsoft.Common.targets(2455, 5): error MSB3325: Cannot import the following key file: ign.pfx. The key file may be password protected. To correct this, try to import the certificate again or manually install the certificate to the Strong Name CSP with the following key container name: VS_KEY_0E36C1B21D0EBCA4  Oplossen door met sntool te registreren en die container naam aan te maken (VSKEY&amp;hellip;)
+Assemblies signen Properties -&amp;gt; Signing -&amp;gt; Sign the assembly aanvinken.</description>
     </item>
     
   </channel>

@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Magic_properties on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/magic_properties/index.xml</link>
+    <link>http://www.brainbaking.com/tags/magic_properties/</link>
     <description>Recent content in Magic_properties on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/magic_properties/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/magic_properties/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>magic_properties</title>
@@ -16,48 +19,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/magic_properties/</guid>
-      <description>
-
-&lt;h1 id=&#34;javascript-magic-properties&#34;&gt;Javascript Magic properties&lt;/h1&gt;
-
-&lt;p&gt;❗ Waarschuwing: deze properties zijn normaal gezien &lt;strong&gt;niet toegankelijk&lt;/strong&gt; en dienen enkel om uw algemene kennis van Javascript te verbreden. Deze &amp;ldquo;magic&amp;rdquo; properties zijn meestal &lt;em&gt;exposed&lt;/em&gt; in Mozilla Firefox of via de Firebug plugin. Sommigen hiervan worden overgenomen in de nieuwe versie van javascript, &lt;a href=&#34;https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.8.5&#34;&gt;versie &lt;em&gt;1.8.5&lt;/em&gt;&lt;/a&gt; die de ECMA Standaard v5 implementeert. Dit is voor de volgende versie van Chrome en FF4.&lt;/p&gt;
-
-&lt;h3 id=&#34;magic-properties-via-firefox&#34;&gt;magic properties via Firefox&lt;/h3&gt;
-
-&lt;h4 id=&#34;intern-prototype-object&#34;&gt;Intern prototype object&lt;/h4&gt;
-
-&lt;p&gt;-&amp;gt; &lt;code&gt;_ _proto_ _&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Deprecated&lt;/strong&gt;: gebruik &lt;code&gt;Object.getPrototypeOf&lt;/code&gt; in de plaats. Wordt deel van ECMA5, &lt;em&gt;reeds geïmplementeerd vanaf FF3.5&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Wat is hier mogelijk mee? We kunnen zo makkelijker via inheritance een &amp;ldquo;shadowed&amp;rdquo; functie aanroepen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function Dier() { }
-Dier.prototype.eet = function(extra) {
-  console.log(&amp;quot;omnom &amp;quot; + extra);
-}
-function Aap() { }
-Aap.prototype = new Dier();
-Aap.prototype.eet = function() {
-  Object.getPrototypeOf(this).eet(&amp;quot;banaan&amp;quot;);
-  // without getPrototypeOf, you&#39;d have to explicitly call it via Dier.prototype.eet
-}
-new Aap().eet();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zie
-  * Mozilla API: &lt;a href=&#34;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/proto&#34;&gt;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/proto&lt;/a&gt;
-  * &lt;a href=&#34;http://ejohn.org/blog/objectgetprototypeof/&#34;&gt;http://ejohn.org/blog/objectgetprototypeof/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;keys-van-objecten-retourneren&#34;&gt;Keys van objecten retourneren&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Object.keys({1: 1, 2: 2}) ###### [ &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;] 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Beschikbaar via Firebug, en in Node JS. Wordt deel van ECMA5.&lt;/p&gt;
-
-&lt;p&gt;Een andere manier is via de magic property &lt;code&gt;_ _count_ _&lt;/code&gt;.&lt;/p&gt;
-</description>
+      <description>Javascript Magic properties ❗️ Waarschuwing: deze properties zijn normaal gezien niet toegankelijk en dienen enkel om uw algemene kennis van Javascript te verbreden. Deze &amp;ldquo;magic&amp;rdquo; properties zijn meestal exposed in Mozilla Firefox of via de Firebug plugin. Sommigen hiervan worden overgenomen in de nieuwe versie van javascript, versie 1.8.5 die de ECMA Standaard v5 implementeert. Dit is voor de volgende versie van Chrome en FF4.
+magic properties via Firefox Intern prototype object -&amp;gt; _ _proto_ _</description>
     </item>
     
   </channel>

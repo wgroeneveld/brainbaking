@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mocking on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/mocking/index.xml</link>
+    <link>http://www.brainbaking.com/tags/mocking/</link>
     <description>Recent content in Mocking on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/mocking/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Mar 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/mocking/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Metaprogramming instead of duplication</title>
@@ -16,60 +19,8 @@
       <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/metaprogramming-convention-dry/</guid>
-      <description>&lt;p&gt;So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using &lt;code&gt;RhinoMock&lt;/code&gt; in &lt;code&gt;C#&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    [TestInitialize]
-    public void SetUp()
-    {
-        dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;();
-        mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;();
-        userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;();
-        userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;();
-        // ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth. So why should I repeat myself again and again but initializing a bunch of mocks using &lt;code&gt;GenerateMock&lt;/code&gt;?&lt;/p&gt;
-
-&lt;p&gt;In Java using Mockito, the &lt;code&gt;@Mock&lt;/code&gt; annotation automagically instantiates a mock for you, provided you annotated your test class with &lt;code&gt;@RunWith(MockitoJUnitRunner.class)&lt;/code&gt;. I would like to apply this pattern to MSTest but there&amp;rsquo;s not a single hook to be found where I can plug in my initialization code. Thanks a bunch.&lt;/p&gt;
-
-&lt;p&gt;Example taken from &lt;a href=&#34;http://docs.mockito.googlecode.com/&#34;&gt;Mockito docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class ArticleManagerTest {
-
-    @Mock private ArticleCalculator calculator;
-    @Mock private ArticleDatabase database;
-    @Mock private UserProvider userProvider;
-
-    private ArticleManager manager;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, this &amp;ldquo;problem&amp;rdquo; is easily solved with a bit of metaprogramming and an abstract class:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Loop over (private) fields&lt;/li&gt;
-&lt;li&gt;Filter out suffixed with &amp;lsquo;Mock&amp;rsquo;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Initialize.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public abstract class AbstractTestCase
-{
-    [TestInitialize]
-    public void CreateMocksBasedOnNamingConvention()
-    {
-        this.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(x =&amp;gt; x.Name.EndsWith(&amp;quot;Mock&amp;quot;)).All(InitMock);
-    }
-
-    private bool InitMock(FieldInfo field)
-    {
-        field.SetValue(this, MockRepository.GenerateMock(field.FieldType, new Type[]{}));
-        return true;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Very easy with &lt;code&gt;LINQ&lt;/code&gt;. The question is - is metaprogramming or reflection in this case &amp;ldquo;allowed&amp;rdquo;? Do you think this is &amp;ldquo;bad&amp;rdquo; (because it&amp;rsquo;s implicit), or is the convention of suffixing your fields with &amp;lsquo;Mock&amp;rsquo; good enough? The base test case could also be named something like &lt;code&gt;MockInitializingTestCase&lt;/code&gt; if that makes you feel better.&lt;/p&gt;
-</description>
+      <description>So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using RhinoMock in C#:
+ [TestInitialize] public void SetUp() { dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;(); mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;(); userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;(); userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;(); // ...  We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth.</description>
     </item>
     
   </channel>

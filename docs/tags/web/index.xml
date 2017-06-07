@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/web/index.xml</link>
+    <link>http://www.brainbaking.com/tags/web/</link>
     <description>Recent content in Web on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>web</title>
@@ -16,59 +19,9 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/web/</guid>
-      <description>
-
-&lt;h1 id=&#34;website-styles&#34;&gt;Website Styles&lt;/h1&gt;
-
-&lt;h2 id=&#34;quick-links&#34;&gt;Quick Links&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://htmldog.com/&#34;&gt;http://htmldog.com/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.alistapart.com/&#34;&gt;http://www.alistapart.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;css-stuff&#34;&gt;CSS Stuff&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;❗ &lt;a href=&#34;http://lesscss.org/&#34;&gt;http://lesscss.org/&lt;/a&gt; - Less.js Will Obsolete CSS! &lt;code&gt;LESS&lt;/code&gt; implementatie in Javascript&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.andybudd.com/&#34;&gt;http://www.andybudd.com/&lt;/a&gt; CSS centered blog&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;centering-a-div-met-margin-auto&#34;&gt;Centering a div met margin auto&lt;/h4&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.andybudd.com/archives/2004/02/css_crib_sheet_3_centering_a_div/&#34;&gt;http://www.andybudd.com/archives/2004/02/css_crib_sheet_3_centering_a_div/&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;body {
-    text-align: center;
-    min-width: 600px;
-}
-
-#wrapper {
-    margin:0 auto;
-    width:600px;
-    text-align: left;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;spaties-tussen-een-link-en-bovenstaande-blocks&#34;&gt;Spaties tussen een link en bovenstaande blocks&lt;/h4&gt;
-
-&lt;p&gt;Gegeven structuur:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div clas=&amp;quot;div&amp;quot;&amp;gt;
-  &amp;lt;a href######&amp;quot;#&amp;quot; clas&amp;quot;link&amp;quot;&amp;gt;bla&amp;lt;/a&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Hoe kan ik de div vergroten zodat die de link bevat maar de link zelf &lt;code&gt;margin-top&lt;/code&gt; bevat? zo:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.div a .link {
-  display: block;
-  margin-top: 10px;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Zonder &lt;code&gt;display: block&lt;/code&gt; wordt een link als &lt;code&gt;inline&lt;/code&gt; gerenderd. Inline betekent alles naast elkaar. Zie &lt;a href=&#34;http://www.quirksmode.org/css/display.html&#34;&gt;http://www.quirksmode.org/css/display.html&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Website Styles Quick Links  http://htmldog.com/ http://www.alistapart.com/  CSS Stuff  ❗️ http://lesscss.org/ - Less.js Will Obsolete CSS! LESS implementatie in Javascript http://www.andybudd.com/ CSS centered blog  Centering a div met margin auto Zie http://www.andybudd.com/archives/2004/02/css_crib_sheet_3_centering_a_div/
+body { text-align: center; min-width: 600px; } #wrapper { margin:0 auto; width:600px; text-align: left; }  Spaties tussen een link en bovenstaande blocks Gegeven structuur:
+&amp;lt;div clas=&amp;quot;div&amp;quot;&amp;gt; &amp;lt;a href######&amp;quot;#&amp;quot; clas&amp;quot;link&amp;quot;&amp;gt;bla&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt;  Hoe kan ik de div vergroten zodat die de link bevat maar de link zelf margin-top bevat?</description>
     </item>
     
   </channel>

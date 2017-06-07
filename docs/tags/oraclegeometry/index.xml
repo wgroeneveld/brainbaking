@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Oraclegeometry on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/oraclegeometry/index.xml</link>
+    <link>http://www.brainbaking.com/tags/oraclegeometry/</link>
     <description>Recent content in Oraclegeometry on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/oraclegeometry/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/oraclegeometry/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>oraclegeometry</title>
@@ -16,204 +19,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/java/oraclegeometry/</guid>
-      <description>
-
-&lt;h1 id=&#34;oracle-geometries&#34;&gt;Oracle Geometries&lt;/h1&gt;
-
-&lt;h2 id=&#34;sdo-geometry-mappen-in-de-db&#34;&gt;SDO_GEOMETRY Mappen in de DB&lt;/h2&gt;
-
-&lt;p&gt;Via Hibernate: met een &lt;code&gt;UserType&lt;/code&gt; implementatie&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    public Object nullSafeGet(ResultSet resultSet, String[] strings, Object o) throws HibernateException, SQLException {
-        STRUCT geometry = (STRUCT) resultSet.getObject(strings[0]);
-
-        if (resultSet.wasNull() || geometry ###### null) {
-            return null;
-        }
-        return new Geometry(JGeometry.load(geometry));
-    }
-
-    /**
-     * setNull(i, Types.OTHER or Types.STRUCT) results in &amp;quot;unknown column type&amp;quot; exceptions!
-     */
-    public void nullSafeSet(PreparedStatement preparedStatement, Object o, int i) throws HibernateException, SQLException {
-        if (o ###### null) {
-            preparedStatement.setNull(i, Types.STRUCT, OracleSpatialDialect.MSYS + &amp;quot;.&amp;quot; + OracleSpatialDialect.SDO_GEOM_TYPE_COLUMN);
-        } else {
-            if (o instanceof Geometry) {
-                Connection oracleConnection = ((DelegatingConnection) preparedStatement.getConnection()).getInnermostDelegate();
-                STRUCT struct = JGeometry.store(((Geometry) o).getInnerGeometry(), oracleConnection);
-                preparedStatement.setObject(i, struct);
-            }
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Merk op dat de &lt;code&gt;store()&lt;/code&gt; method op &lt;code&gt;JGeometry&lt;/code&gt; effectief een oracle connectie object nodig heeft (harde cast gebeurt in de implementatie). een struct object kan dan omgevormd worden naar &lt;code&gt;JGeometry&lt;/code&gt; (te downloaden: &lt;em&gt;sdoapi&lt;/em&gt; jar, Oracle Spatial Java API). Het &lt;code&gt;Geometry&lt;/code&gt; object is iets dat hierrond gewrapped is. Dit heeft een aantal voordelen:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Afscheiden spatial api dependency rest van de code&lt;/li&gt;
-&lt;li&gt;Makkelijk converteren van &lt;code&gt;SDO_GEOMETRY(&#39;...&#39;) String&lt;/code&gt; waarde naar object en omgekeerd&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;############= Van String naar Object en omgekeerd ############=&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Geometry implements Cloneable, Serializable {
-
-    private static final String MDSYS_POINT_TYPE = &amp;quot;MDSYS.SDO_POINT_TYPE&amp;quot;;
-    private static final String MDSYS_ORDINATE_ARR = &amp;quot;MDSYS.SDO_ORDINATE_ARRAY&amp;quot;;
-    private static final String MDSYS_ELEMENT_ARR = &amp;quot;MDSYS.SDO_ELEM_INFO_ARRAY&amp;quot;;
-    private static final String MDSYS_GEOM = &amp;quot;MDSYS.SDO_GEOMETRY&amp;quot;;
-
-    final static int SRID = 327680;
-
-    private final JGeometry geometry;
-
-    public Geometry() {
-        this.geometry = null;
-    }
-
-    public Geometry(String sdoGeometry) throws GeometryConversionException {
-        try {
-            this.geometry = disassembleSdoGeometry(sdoGeometry);
-        } catch (Exception disassemblingEx) {
-            throw new GeometryConversionException(disassemblingEx);
-        }
-    }
-
-    public Geometry(JGeometry jGeometry) {
-        this.geometry = jGeometry;
-    }
-
-    public JGeometry getInnerGeometry() {
-        return geometry;
-    }
-
-    @Override
-    public String toString() {
-        return toSDOGeometryString();
-    }
-
-    private JGeometry disassembleSdoGeometry(String sdoGeometry) {
-        return new JGeometry(retrieveGeometryType(sdoGeometry), //
-                retrieveSRID(sdoGeometry), //
-                retrievePointTypeX(sdoGeometry), //
-                retrievePointTypeY(sdoGeometry), //
-                retrievePointTypeZ(sdoGeometry), //
-                retrieveElemInfo(sdoGeometry), //
-                retrieveOrdinatesArray(sdoGeometry) //
-        );
-    }
-
-    private int retrieveGeometryType(String sdoGeometry) {
-        String geometryType = StringUtils.substringBetween(sdoGeometry, &amp;quot;(&amp;quot;, &amp;quot;,&amp;quot;);
-        return Integer.parseInt(geometryType.trim());
-    }
-
-    private int retrieveSRID(String sdoGeometry) {
-        String sridString = StringUtils.substringBetween(sdoGeometry, &amp;quot;,&amp;quot;, &amp;quot;,&amp;quot;);
-        return Integer.parseInt(sridString.trim());
-    }
-
-    private double retrievePointTypeX(String sdoGeometry) {
-        return retrievePointTypes(sdoGeometry)[0];
-    }
-
-    private double retrievePointTypeY(String sdoGeometry) {
-        return retrievePointTypes(sdoGeometry)[1];
-    }
-
-    private double retrievePointTypeZ(String sdoGeometry) {
-        return retrievePointTypes(sdoGeometry)[2];
-    }
-
-    private double[] retrievePointTypes(String sdoGeometry) {
-        double[] result = new double[3];
-        String pointTypesAsString = StringUtils.substringBetween(sdoGeometry, MDSYS_POINT_TYPE + &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;);
-        if (pointTypesAsString != null) {
-            result = toDoubleArray(pointTypesAsString);
-        }
-        return result;
-    }
-
-    private int[] retrieveElemInfo(String sdoGeometry) {
-        String elemInfoArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ELEMENT_ARR + &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;);
-        return toIntArray(elemInfoArray);
-    }
-
-    private double[] retrieveOrdinatesArray(String sdoGeometry) {
-        String ordinatesArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ORDINATE_ARR + &amp;quot;(&amp;quot;, &amp;quot;)&amp;quot;);
-        return toDoubleArray(ordinatesArray);
-    }
-
-    public String toSDOGeometryString() {
-        if (geometry ###### null)
-            return null;
-
-        StringBuilder string = new StringBuilder(MDSYS_GEOM + &amp;quot;(&amp;quot;);
-        string.append(getGeometryType() + &amp;quot;,&amp;quot;);
-        string.append(geometry.getSRID() + &amp;quot;,&amp;quot;);
-
-        if (geometry.getPoint() ###### null) {
-            string.append(&amp;quot;null,&amp;quot;);
-        } else {
-            string.append(MDSYS_POINT_TYPE);
-            string.append(toStringDoubleArray(geometry.getPoint()));
-            string.append(&amp;quot;,&amp;quot;);
-        }
-
-        if (geometry.getElemInfo() ###### null) {
-            string.append(&amp;quot;null,&amp;quot;);
-        } else {
-            string.append(MDSYS_ELEMENT_ARR);
-            string.append(toStringIntArray(geometry.getElemInfo()));
-            string.append(&amp;quot;,&amp;quot;);
-        }
-
-        if (geometry.getOrdinatesArray() ###### null) {
-            string.append(&amp;quot;null&amp;quot;);
-        } else {
-            string.append(MDSYS_ORDINATE_ARR);
-            string.append(toStringDoubleArray(geometry.getOrdinatesArray()));
-        }
-        return string.append(&amp;quot;)&amp;quot;).toString();
-    }
-
-    private int getGeometryType() {
-        return (geometry.getDimensions() * 1000 + geometry.getType());
-    }
-
-    @Override
-    public Object clone() {
-        return (geometry ###### null ? new Geometry() : new Geometry((JGeometry) geometry.clone()));
-    }
-
-    @Override
-    public int hashCode() {
-        return (geometry ###### null ? 0 : geometry.hashCode());
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Geometry))
-            return false;
-        JGeometry other = ((Geometry) obj).geometry;
-
-        return new EqualsBuilder().append(geometry, other).isEquals();
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;############= Joins uitvoeren ############=&lt;/p&gt;
-
-&lt;p&gt;Een Join kan uitgevoerd worden met een Oracle Geometry functie in de database: &lt;a href=&#34;http://download.oracle.com/docs/html/A85337_01/sdo_objg.htm#857626&#34;&gt;SDO_GEOM.SDO_UNION&lt;/a&gt;. Die voegt twee &lt;code&gt;SDO_GEOMETRY&lt;/code&gt; objecten samen tot een maar er is ook nog metadata nodig dat ergens anders zit:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT SDO_GEOM.SDO_UNION(?, diminfo, ?, diminfo) FROM ALL_SDO_GEOM_METADATA WHERE owner ###### ? and table_name  ?
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;NULL&lt;/code&gt; is toegelaten dus het is zo eenvoudig om een recursieve method aan te maken.&lt;/p&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Opgelet&lt;/strong&gt; Het is nodig om de voorgaande SQL in een &lt;code&gt;PreparedStatement&lt;/code&gt; te steken indien de geometrie coördinaten +1.000 items bevatten. Zelfs in SQL Developer gaat dit niet. Foutboodschap dan: &lt;strong&gt;&lt;em&gt;ORA-00939&lt;/em&gt;: too many arguments for function&lt;/strong&gt;&lt;/p&gt;
-</description>
+      <description>Oracle Geometries SDO_GEOMETRY Mappen in de DB Via Hibernate: met een UserType implementatie
+public Object nullSafeGet(ResultSet resultSet, String[] strings, Object o) throws HibernateException, SQLException { STRUCT geometry = (STRUCT) resultSet.getObject(strings[0]); if (resultSet.wasNull() || geometry ###### null) { return null; } return new Geometry(JGeometry.load(geometry)); } /** * setNull(i, Types.OTHER or Types.STRUCT) results in &amp;quot;unknown column type&amp;quot; exceptions! */ public void nullSafeSet(PreparedStatement preparedStatement, Object o, int i) throws HibernateException, SQLException { if (o ###### null) { preparedStatement.</description>
     </item>
     
   </channel>

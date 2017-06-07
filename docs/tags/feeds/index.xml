@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Feeds on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/feeds/index.xml</link>
+    <link>http://www.brainbaking.com/tags/feeds/</link>
     <description>Recent content in Feeds on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/feeds/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/feeds/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>feeds</title>
@@ -16,76 +19,9 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/feeds/</guid>
-      <description>
-
-&lt;h1 id=&#34;js-rss-feed-readers&#34;&gt;JS RSS Feed Readers&lt;/h1&gt;
-
-&lt;p&gt;Doel: Client-side RSS feeds lezen en via jQuery toevoegen aan de DOM tree in de vorm van &lt;code&gt;&amp;lt;li/&amp;gt;&lt;/code&gt; elementen.&lt;/p&gt;
-
-&lt;h3 id=&#34;feed-gebruiken&#34;&gt;Feed gebruiken&lt;/h3&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Prerequirements&lt;/strong&gt;: Eerst jQuery includen, Klak code is afhankelijk hiervan&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Include javascript: 2 files nodig, core klak en feeds klak:&lt;code&gt;html&amp;lt;script type######&amp;quot;text/javascript&amp;quot; src&amp;quot;http://www.jefklak.be/dev/js/klakCore.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script type######&amp;quot;text/javascript&amp;quot; src&amp;quot;http://www.jefklak.be/dev/js/klakFeeds.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Maak ergens een &lt;code&gt;&amp;lt;div/&amp;gt;&lt;/code&gt; element met een unieke ID waar de inhoud van de feed in komt.&lt;/li&gt;
-&lt;li&gt;Roep de feed code aan (Na DOM Load, we wijzigen de DOM tree!): &lt;code&gt;javascript
-jQuery(document).ready(function() {
-Klak.Feeds.read(new Klak.Feeds.WikiWouter().feed(), $j(&amp;quot;#wiki&amp;quot;));
-});
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Klaar!&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;custom-feeds-aanmaken&#34;&gt;Custom Feeds aanmaken&lt;/h3&gt;
-
-&lt;p&gt;De feed reader verwacht een object binnen te krijgen dat de volgende properties heeft:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;title&lt;/code&gt; (string) toegevoegd als header aan de container&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;url&lt;/code&gt; (string)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;params&lt;/code&gt; (object) wordt meegestuurd met JSON Request (optioneel)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;container&lt;/code&gt; (function) retourneert een DOM element waar alles in gestoken wordt&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;fetchData&lt;/code&gt; (function, &lt;code&gt;data&lt;/code&gt; arg) haalt uit het JSON response object (data) de lijst om over te loopen&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;parse&lt;/code&gt; (function, &lt;code&gt;item&lt;/code&gt; arg) retourneert een opgebouwd DOM element dat aan de container toegevoegd wordt, voor elk item&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Indien geen custom parsing vereist is, kan je je beperken tot de url en title en de rest overerven via &lt;code&gt;prototype&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Klak.Feeds.BlogWouter = function() {
-    this.title = &#39;Jefklak&amp;lt;br/&amp;gt;&#39;s Codex Blog Latest Updates&#39;;
-    this.url ###### &#39;https:*ajax.googleapis.com/ajax/services/feed/load?v1.0&amp;amp;q=http:*www.jefklak.be/feed/&#39;; 
-}
-Klak.Feeds.BlogWouter.prototype = new Klak.Feeds.WikiWouter();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Aangezien er ook al een predefined Twitter reader in zit, kan je makkelijk een nieuwe aanmaken en enkel &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt; en &lt;code&gt;user&lt;/code&gt; definiëren.&lt;/p&gt;
-
-&lt;h3 id=&#34;klak-api&#34;&gt;Klak API&lt;/h3&gt;
-
-&lt;h4 id=&#34;core&#34;&gt;Core&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;loading(jQueryEl)&lt;/code&gt; voegt een (hardcoded) loading image toe aan element&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;doneLoading(jQueryEl)&lt;/code&gt; verwijdert loading images die reeds toegevoegd zijn van dat element&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;loadScript()&lt;/code&gt; (vararg) laadt eender welk javascript bestand parallel - zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/performance/&#34;&gt;code/javascript/performance&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;feeds&#34;&gt;Feeds&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;read(feed, jQueryEl)&lt;/code&gt;: lees de feed en voeg de gerenderde elementen toe aan het meegegeven element. Mogelijke &lt;strong&gt;predefined&lt;/strong&gt; feeds:
-
-&lt;ul&gt;
-&lt;li&gt;BlogWouter&lt;/li&gt;
-&lt;li&gt;TwitterWouter&lt;/li&gt;
-&lt;li&gt;WikiWouter&lt;/li&gt;
-&lt;li&gt;WikiKristof&lt;/li&gt;
-&lt;li&gt;LibraryThing&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>JS RSS Feed Readers Doel: Client-side RSS feeds lezen en via jQuery toevoegen aan de DOM tree in de vorm van &amp;lt;li/&amp;gt; elementen.
+Feed gebruiken ❗️ Prerequirements: Eerst jQuery includen, Klak code is afhankelijk hiervan
+ Include javascript: 2 files nodig, core klak en feeds klak:html&amp;lt;script type######&amp;quot;text/javascript&amp;quot; src&amp;quot;http://www.jefklak.be/dev/js/klakCore.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type######&amp;quot;text/javascript&amp;quot; src&amp;quot;http://www.jefklak.be/dev/js/klakFeeds.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; Maak ergens een &amp;lt;div/&amp;gt; element met een unieke ID waar de inhoud van de feed in komt. Roep de feed code aan (Na DOM Load, we wijzigen de DOM tree!</description>
     </item>
     
   </channel>

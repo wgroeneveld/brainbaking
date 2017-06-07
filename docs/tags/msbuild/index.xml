@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Msbuild on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/msbuild/index.xml</link>
+    <link>http://www.brainbaking.com/tags/msbuild/</link>
     <description>Recent content in Msbuild on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 31 Jan 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>msbuild</title>
@@ -16,35 +19,8 @@
       <pubDate>Fri, 31 Jan 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/build/msbuild/</guid>
-      <description>
-
-&lt;h1 id=&#34;msbuild&#34;&gt;MSBuild&lt;/h1&gt;
-
-&lt;h2 id=&#34;adding-modifying-build-steps&#34;&gt;Adding/Modifying build steps&lt;/h2&gt;
-
-&lt;h5 id=&#34;q-hoe-kan-ik-iets-aan-de-build-toevoegen-zonder-de-xaml-template-te-wijzigen&#34;&gt;Q: Hoe kan ik iets aan de build toevoegen zonder de XAML template te wijzigen?&lt;/h5&gt;
-
-&lt;p&gt;A: Maak een nieuw &lt;strong&gt;dummy solution&lt;/strong&gt; met één project, waar in de &lt;code&gt;csproj&lt;/code&gt; file het volgende bijgevoegd is:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;  &amp;lt;Target Name=&amp;quot;AfterBuild&amp;quot;&amp;gt;
-    &amp;lt;Exec Condition######&amp;quot; &#39;$(Configuration)|$(Platform)&#39;  &#39;Release|x86&#39; &amp;quot; Command=&amp;quot;attrib -r ../../AUP/C-eHealthPortal.aup&amp;quot; /&amp;gt;    
-    &amp;lt;BuildUpdate Condition######&amp;quot; &#39;$(Configuration)|$(Platform)&#39;  &#39;Release|x86&#39; &amp;quot; ProjectFile######&amp;quot;../../AUP/C-eHealthPortal.aup&amp;quot; PublishLocations&amp;quot;LOCAL&amp;quot; /&amp;gt;
-    &amp;lt;Exec Condition######&amp;quot; &#39;$(Configuration)|$(Platform)&#39;  &#39;Release|x86&#39; &amp;quot; Command=&amp;quot;attrib +r ../../AUP/C-eHealthPortal.aup&amp;quot; /&amp;gt;  
-  &amp;lt;/Target&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;(Ter info, &lt;code&gt;BuildUpdate&lt;/code&gt; is een tag die met een using included werd: &lt;code&gt;&amp;lt;UsingTask AssemblyFile######&amp;quot;../../AUP/Kjs.AppLife.Update.BuildUpdateTask.dll&amp;quot; TaskName&amp;quot;Kjs.AppLife.Update.MSBuild.BuildUpdate&amp;quot; /&amp;gt;&lt;/code&gt;)&lt;/p&gt;
-
-&lt;p&gt;❗ Indien volgorde belangrijk is, aan MSBuild als parameter deze solution als laatste builden, zodat de output/bin folder al de juiste gegevens bevat.&lt;/p&gt;
-
-&lt;h2 id=&#34;webservers-drop-folder&#34;&gt;WebServers drop folder&lt;/h2&gt;
-
-&lt;h5 id=&#34;q-ik-wil-geen-publishedwebsite-zip-waar-heel-diep-packagetmp-in-zit-maar-de-exploded-dir&#34;&gt;Q: Ik wil geen _publishedWebsite.zip waar heel diep PackageTmp in zit maar de exploded dir!&lt;/h5&gt;
-
-&lt;p&gt;A: Append in &lt;code&gt;MSBuild&lt;/code&gt; arguments &lt;code&gt;;DeployOnBuild=true&lt;/code&gt; - zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.build.workflow.activities.msbuild.deployonbuild.aspx&#34;&gt;MSDN DeployOnBuild property&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Er is blijkbaar ook een &lt;code&gt;CreatePackageOnPublish&lt;/code&gt; property (?)&lt;/p&gt;
-</description>
+      <description>MSBuild Adding/Modifying build steps Q: Hoe kan ik iets aan de build toevoegen zonder de XAML template te wijzigen? A: Maak een nieuw dummy solution met één project, waar in de csproj file het volgende bijgevoegd is:
+&amp;lt;Target Name=&amp;quot;AfterBuild&amp;quot;&amp;gt; &amp;lt;Exec Condition######&amp;quot; &#39;$(Configuration)|$(Platform)&#39; &#39;Release|x86&#39; &amp;quot; Command=&amp;quot;attrib -r ../../AUP/C-eHealthPortal.aup&amp;quot; /&amp;gt; &amp;lt;BuildUpdate Condition######&amp;quot; &#39;$(Configuration)|$(Platform)&#39; &#39;Release|x86&#39; &amp;quot; ProjectFile######&amp;quot;../../AUP/C-eHealthPortal.aup&amp;quot; PublishLocations&amp;quot;LOCAL&amp;quot; /&amp;gt; &amp;lt;Exec Condition######&amp;quot; &#39;$(Configuration)|$(Platform)&#39; &#39;Release|x86&#39; &amp;quot; Command=&amp;quot;attrib +r ../../AUP/C-eHealthPortal.aup&amp;quot; /&amp;gt; &amp;lt;/Target&amp;gt;  (Ter info, BuildUpdate is een tag die met een using included werd: &amp;lt;UsingTask AssemblyFile######&amp;quot;.</description>
     </item>
     
   </channel>

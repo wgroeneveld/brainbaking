@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Getting_real on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/getting_real/index.xml</link>
+    <link>http://www.brainbaking.com/tags/getting_real/</link>
     <description>Recent content in Getting_real on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/getting_real/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/getting_real/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>getting_real</title>
@@ -16,210 +19,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/books/getting_real/</guid>
-      <description>
-
-&lt;h1 id=&#34;getting-real&#34;&gt;Getting real&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://gettingreal.37signals.com/toc.php&#34;&gt;http://gettingreal.37signals.com/toc.php&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;the-starting-line&#34;&gt;The Starting Line&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Build Less (&amp;ldquo;underdo your competetion&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;What&amp;rsquo;s your problem? (Stratch your own itch, zie Rework, &amp;ldquo;born out of necessity&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;Fund Yourself&lt;/li&gt;
-&lt;li&gt;Fix Time and Budget, Flex Scope&lt;/li&gt;
-&lt;li&gt;Have an Enemy (&amp;ldquo;Figure out your app&amp;rsquo;s enemy and use it as a motivator to what it shouldn&amp;rsquo;t be)&lt;/li&gt;
-&lt;li&gt;It shouldn&amp;rsquo;t be a Chore (your passion, or lack thereof, shines through)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;How does a project get to be a year behind schedule? One day at a time. (Fred Brooks)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&#34;stay-lean&#34;&gt;Stay Lean&lt;/h4&gt;
-
-&lt;p&gt;Agile reclame&amp;hellip;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Less Mass&lt;/li&gt;
-&lt;li&gt;Lower your Cost of Change&lt;/li&gt;
-&lt;li&gt;The Three Musketeers (&amp;ldquo;use only three people&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;Embrace Constraints (&amp;ldquo;let limitations guide you to creative solutions&amp;rdquo;)&lt;/li&gt;
-&lt;li&gt;Be Yourself&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Differentiate yourself from bigger companies by being personal and friendly.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&#34;priorities&#34;&gt;Priorities&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;What&amp;rsquo;s the big Idea (Define the &lt;strong&gt;one-point vision&lt;/strong&gt; for your app) -&amp;gt; elevator pitch, 140chars tweet?&lt;/li&gt;
-&lt;li&gt;Ignore details Early on&lt;/li&gt;
-&lt;li&gt;It&amp;rsquo;s a problem when it&amp;rsquo;s a problem&lt;/li&gt;
-&lt;li&gt;Hire the Right Customers&lt;/li&gt;
-&lt;li&gt;Scale Later&lt;/li&gt;
-&lt;li&gt;Make Opinionated software&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;feature-selection&#34;&gt;Feature Selection&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Take whatever you think your product should be and cut it in half&lt;/strong&gt;. Pare featuers down until you&amp;rsquo;re left with only the most essential version. Then do it again.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Half, not half-assed&lt;/li&gt;
-&lt;li&gt;It just doesn&amp;rsquo;t matter&lt;/li&gt;
-&lt;li&gt;Start with No (make featuers work hard to be implemented)&lt;/li&gt;
-&lt;li&gt;Hidden Costs&lt;/li&gt;
-&lt;li&gt;Can you Handle it? (build something you can handle, not because the competitor also does it)&lt;/li&gt;
-&lt;li&gt;Human solutions (build software for &lt;strong&gt;general concepts&lt;/strong&gt; to let people create their own solutions)&lt;/li&gt;
-&lt;li&gt;Forget Feature Requests&lt;/li&gt;
-&lt;li&gt;Hold the Mayo (ask people what they don&amp;rsquo;t want)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;process&#34;&gt;Process&lt;/h4&gt;
-
-&lt;p&gt;Impliciete XP reclame&amp;hellip;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Race the Running Software&lt;/li&gt;
-&lt;li&gt;Rinse and Repeat&lt;/li&gt;
-&lt;li&gt;From Idea to Implementation (brainstorm - paper sketches - HTML screens/CSS mockups - code it)&lt;/li&gt;
-&lt;li&gt;Avoid Preferences&lt;/li&gt;
-&lt;li&gt;&amp;ldquo;done&amp;rdquo;!&lt;/li&gt;
-&lt;li&gt;Test in the Wild&lt;/li&gt;
-&lt;li&gt;Shrink your Time&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Decide on the little details so your customers don&amp;rsquo;t have to.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Bvb. maak gewoon 50 units per tabel ipv daar een &lt;code&gt;property&lt;/code&gt; van te maken.&lt;/p&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Be an executioner&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;It&amp;rsquo;s so funny when I hear people being so protective of ideas (they want me to sign an NDA to tell me the simplest idea). To me, ideas are worth nothing unless executed. They are just a multiplier. Execution is worth millions. Weak idea ###### 1. Good idea  10. No execution ###### $1. Weak execution  $1000. (Derek Sivers)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&#34;the-organisation&#34;&gt;The Organisation&lt;/h4&gt;
-
-&lt;p&gt;Impliciete scrum team reclame&amp;hellip; (Niet UI en backend team, generalists &amp;gt; specialists etc)&lt;br/&gt;&lt;br/&gt;
-Bijna zelfde stuff als &lt;a href=&#34;http://www.brainbaking.com/wiki/books/rework/&#34;&gt;books/rework&lt;/a&gt;?&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Unity&lt;/li&gt;
-&lt;li&gt;Alone Time (people need uninterrupted time to get things done) vb make half the day &amp;ldquo;alone time&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;Meetings are Toxic&lt;/li&gt;
-&lt;li&gt;Seek and Celebrate Small Victories (release something today, 4hour quick wins)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;staffing&#34;&gt;Staffing&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Hire Less &amp;amp; later&lt;/li&gt;
-&lt;li&gt;Kick the Tires&lt;/li&gt;
-&lt;li&gt;Actions, not words&lt;/li&gt;
-&lt;li&gt;Get well rounded individuals&lt;/li&gt;
-&lt;li&gt;You can&amp;rsquo;t fake enthousiasm&lt;/li&gt;
-&lt;li&gt;Wordsmiths (hire good writers)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;interface-design&#34;&gt;Interface Design&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Another reason to design first is that &lt;strong&gt;the interface is your product&lt;/strong&gt;. What people see is what you&amp;rsquo;re selling. If you just slap an interface on at the end, the gaps will show.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Interface First&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://gettingreal.37signals.com/ch09_Epicenter_Design.php&#34;&gt;Epicenter design&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Three State solution&lt;/li&gt;
-&lt;li&gt;The Blank Slate&lt;/li&gt;
-&lt;li&gt;Get Defensive (design for when things go wrong)&lt;/li&gt;
-&lt;li&gt;Context over consistency&lt;/li&gt;
-&lt;li&gt;Copywriting is interface design (every letter matters! Karel stijl)&lt;/li&gt;
-&lt;li&gt;One Interface (incorporate admin functions into the main site design)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;code&#34;&gt;Code&lt;/h4&gt;
-
-&lt;p&gt;Impliciete XP practices reclame&amp;hellip;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Less Software&lt;/li&gt;
-&lt;li&gt;Opinionize for happiness&lt;/li&gt;
-&lt;li&gt;Code Speaks&lt;/li&gt;
-&lt;li&gt;Manage Debt&lt;/li&gt;
-&lt;li&gt;Open Doors (get data out to the world via RSS, APIs etc)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;A happy programmer is a productive programmer. &lt;strong&gt;Choose tools that keep your team excited and motivated&lt;/strong&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&#34;words&#34;&gt;Words&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;There&amp;rsquo;s nothing functional about a functional spec&lt;/li&gt;
-&lt;li&gt;Don&amp;rsquo;t do dead documents&lt;/li&gt;
-&lt;li&gt;tell me a quick story&lt;/li&gt;
-&lt;li&gt;use real words&lt;/li&gt;
-&lt;li&gt;personify your product&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;pricing-and-signup&#34;&gt;Pricing and Signup&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Free Samples&lt;/li&gt;
-&lt;li&gt;Easy On, Easy off&lt;/li&gt;
-&lt;li&gt;Silly Rabbit, tricks are for kids&lt;/li&gt;
-&lt;li&gt;A Softer Bullet&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;promotion&#34;&gt;Promotion&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Hollywood launch&lt;/li&gt;
-&lt;li&gt;A powerful promo site&lt;/li&gt;
-&lt;li&gt;ride the blog wave&lt;/li&gt;
-&lt;li&gt;solicit early&lt;/li&gt;
-&lt;li&gt;promote through education&lt;/li&gt;
-&lt;li&gt;feature food&lt;/li&gt;
-&lt;li&gt;track your logs&lt;/li&gt;
-&lt;li&gt;inline upsell&lt;/li&gt;
-&lt;li&gt;name hook&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;support&#34;&gt;Support&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Feel the pain&lt;/li&gt;
-&lt;li&gt;Zero Training&lt;/li&gt;
-&lt;li&gt;Answer Quick&lt;/li&gt;
-&lt;li&gt;Through Love&lt;/li&gt;
-&lt;li&gt;In Fine Forum&lt;/li&gt;
-&lt;li&gt;Publicize your Screwups&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;post-launch&#34;&gt;Post-Launch&lt;/h4&gt;
-
-&lt;ol&gt;
-&lt;li&gt;One Month Tuneup&lt;/li&gt;
-&lt;li&gt;Keep the Posts Coming&lt;/li&gt;
-&lt;li&gt;Better, not Beta&lt;/li&gt;
-&lt;li&gt;All Bugs are not created equal&lt;/li&gt;
-&lt;li&gt;Ride Out the storm&lt;/li&gt;
-&lt;li&gt;Keep Up with the Joneses&lt;/li&gt;
-&lt;li&gt;Beware the Bloat Monster&lt;/li&gt;
-&lt;li&gt;Go with the flow&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description>Getting real http://gettingreal.37signals.com/toc.php
+The Starting Line  Build Less (&amp;ldquo;underdo your competetion&amp;rdquo;) What&amp;rsquo;s your problem? (Stratch your own itch, zie Rework, &amp;ldquo;born out of necessity&amp;rdquo;) Fund Yourself Fix Time and Budget, Flex Scope Have an Enemy (&amp;ldquo;Figure out your app&amp;rsquo;s enemy and use it as a motivator to what it shouldn&amp;rsquo;t be) It shouldn&amp;rsquo;t be a Chore (your passion, or lack thereof, shines through)   How does a project get to be a year behind schedule?</description>
     </item>
     
   </channel>

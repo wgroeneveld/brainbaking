@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ddd on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/ddd/index.xml</link>
+    <link>http://www.brainbaking.com/tags/ddd/</link>
     <description>Recent content in Ddd on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/ddd/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/ddd/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>ddd</title>
@@ -16,26 +19,10 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/books/ddd/</guid>
-      <description>
-
-&lt;h1 id=&#34;domain-driven-design&#34;&gt;Domain Driven Design&lt;/h1&gt;
-
-&lt;h2 id=&#34;samenvatting&#34;&gt;Samenvatting&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.butskri.comuf.com/wiki/doku.php?id=boeken:ddd&#34;&gt;Zie Kristof&amp;rsquo;s Wiki&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;top-reasons-why-ddd-fails&#34;&gt;Top reasons Why DDD Fails&lt;/h2&gt;
-
-&lt;p&gt;Schema&amp;rsquo;s gebaseerd op conferentie: &lt;a href=&#34;http://architects.dzone.com/advice-for-ddd&#34;&gt;http://architects.dzone.com/advice-for-ddd&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Klik op images om te vergroten.&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;margin-left: auto; margin-right: auto; width: 400px;&#39; src=&#39;http://www.brainbaking.com/img//books/whydddfails_1.jpg&#39;&gt;&lt;/p&gt;
-
-&lt;p&gt;Deel twee:&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&#39;margin-left: auto; margin-right: auto; width: 400px;&#39; src=&#39;http://www.brainbaking.com/img//books/whydddfails_2.jpg&#39;&gt;&lt;/p&gt;
-</description>
+      <description>Domain Driven Design Samenvatting Zie Kristof&amp;rsquo;s Wiki
+Top reasons Why DDD Fails Schema&amp;rsquo;s gebaseerd op conferentie: http://architects.dzone.com/advice-for-ddd
+Klik op images om te vergroten.
+Deel twee:</description>
     </item>
     
   </channel>

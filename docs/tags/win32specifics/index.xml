@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Win32specifics on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/win32specifics/index.xml</link>
+    <link>http://www.brainbaking.com/tags/win32specifics/</link>
     <description>Recent content in Win32specifics on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/win32specifics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Dec 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/win32specifics/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>win32specifics</title>
@@ -16,48 +19,8 @@
       <pubDate>Thu, 12 Dec 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/c/win32specifics/</guid>
-      <description>
-
-&lt;h1 id=&#34;code-c-win32-api-specifics&#34;&gt;code:c &amp;gt;&amp;gt; Win32 API specifics&lt;/h1&gt;
-
-&lt;h4 id=&#34;get-loaded-dll-info-from-given-process&#34;&gt;Get Loaded DLL info from given process&lt;/h4&gt;
-
-&lt;p&gt;huidig proces: &lt;code&gt;GetCurrentProcessId()&lt;/code&gt; - dit is een &lt;code&gt;HANDLE&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;CString ExceptionHandler::GetLoadedDllInfo() const
-{
-    CString dlls = _T(&amp;quot;&amp;quot;);
-    HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
-    if(process ###### NULL)
-    {
-        return dlls;
-    }
-
-     HMODULE hMods[1024];
-     DWORD cbNeeded;
-     BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;amp;cbNeeded);
-     if(!modules)
-     {
-         return dlls;
-     }
-
-    for (int i = 0; i &amp;lt; (cbNeeded / sizeof(HMODULE)); i++)
-    {
-        TCHAR szModName[MAX_PATH];
-
-        if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR)))
-        {
-            dlls.Format(_T(&amp;quot;%s, %s&amp;quot;), dlls, szModName);
-        }
-    }
-
-    CloseHandle(process);
-    return dlls;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Hiervoor moet je &lt;code&gt;#include &amp;lt;psapi.h&amp;gt;&lt;/code&gt; includen én de psapi.lib file mee linken! Zie &lt;a href=&#34;http://msdn.microsoft.com/en-us/library/windows/desktop/ms682631(v=vs.85).aspx&#34;&gt;EnumProcessModules MSDN&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>code:c &amp;gt;&amp;gt; Win32 API specifics Get Loaded DLL info from given process huidig proces: GetCurrentProcessId() - dit is een HANDLE.
+CString ExceptionHandler::GetLoadedDllInfo() const { CString dlls = _T(&amp;quot;&amp;quot;); HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId()); if(process ###### NULL) { return dlls; } HMODULE hMods[1024]; DWORD cbNeeded; BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;amp;cbNeeded); if(!modules) { return dlls; } for (int i = 0; i &amp;lt; (cbNeeded / sizeof(HMODULE)); i++) { TCHAR szModName[MAX_PATH]; if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR))) { dlls.</description>
     </item>
     
   </channel>

@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xpath on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/xpath/index.xml</link>
+    <link>http://www.brainbaking.com/tags/xpath/</link>
     <description>Recent content in Xpath on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/xpath/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/xpath/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>xpath</title>
@@ -16,58 +19,11 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/xpath/</guid>
-      <description>
-
-&lt;h1 id=&#34;xpath-snippets&#34;&gt;Xpath snippets&lt;/h1&gt;
-
-&lt;h2 id=&#34;nuttige-xpath-functies&#34;&gt;Nuttige Xpath functies&lt;/h2&gt;
-
-&lt;h5 id=&#34;contains&#34;&gt;contains&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;*div[@role=&#39;listbox&#39; and not(contains(@style, &#39;display: none&#39;))]*li[1]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;not&#34;&gt;not&lt;/h5&gt;
-
-&lt;p&gt;Is dus een functie en geen operator in xpath! Zie boven&lt;/p&gt;
-
-&lt;h5 id=&#34;starts-with&#34;&gt;starts-with&lt;/h5&gt;
-
-&lt;p&gt;zie &lt;code&gt;contains()&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;true&#34;&gt;true&lt;/h5&gt;
-
-&lt;p&gt;Iets dat altijd waar is.&lt;/p&gt;
-
-&lt;h2 id=&#34;finding-elements-by-content&#34;&gt;Finding Elements by Content&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;//*[.=&#39;cat&#39;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Haal alle elementen op die de tekst cat bevatten. Gebruik dus &lt;em&gt;.=&lt;/em&gt;&lt;br/&gt;&lt;br/&gt;
-Meer info op: &lt;a href=&#34;http://www.exampledepot.com/egs/org.w3c.dom/xpath_GetElemByText.html&#34;&gt;http://www.exampledepot.com/egs/org.w3c.dom/xpath_GetElemByText.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;tag-attributes-afgaan&#34;&gt;Tag attributes afgaan&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;//img[@src=&#39;bla.png&#39;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Meestal wil je slechts een deel van die source hebben, dan de functie &lt;code&gt;contains()&lt;/code&gt; gebruiken.&lt;br/&gt;&lt;br/&gt;
-Meer info ivm &lt;strong&gt;functies&lt;/strong&gt; op: &lt;a href=&#34;http://www.w3schools.com/Xpath/xpath_functions.asp&#34;&gt;http://www.w3schools.com/Xpath/xpath_functions.asp&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;kind-selecteren&#34;&gt;Kind selecteren&lt;/h5&gt;
-
-&lt;p&gt;Verder gaan met tweede selector:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;*div[@id=&#39;bla&#39;]*input
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;= Selecteer alle inputs onder een div met ID &lt;code&gt;bla&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;snel-xpath-expressies-testen-in-firefox&#34;&gt;Snel Xpath expressies testen in Firefox&lt;/h2&gt;
-
-&lt;p&gt;Kan met deze plugin: &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/1095&#34;&gt;Xpath checker&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Xpath snippets Nuttige Xpath functies contains *div[@role=&#39;listbox&#39; and not(contains(@style, &#39;display: none&#39;))]*li[1]  not Is dus een functie en geen operator in xpath! Zie boven
+starts-with zie contains()
+true Iets dat altijd waar is.
+Finding Elements by Content //*[.=&#39;cat&#39;]  Haal alle elementen op die de tekst cat bevatten. Gebruik dus .= Meer info op: http://www.exampledepot.com/egs/org.w3c.dom/xpath_GetElemByText.html
+Tag attributes afgaan //img[@src=&#39;bla.png&#39;]  Meestal wil je slechts een deel van die source hebben, dan de functie contains() gebruiken.</description>
     </item>
     
   </channel>

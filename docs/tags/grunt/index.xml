@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Grunt on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/grunt/index.xml</link>
+    <link>http://www.brainbaking.com/tags/grunt/</link>
     <description>Recent content in Grunt on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/grunt/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/grunt/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>grunt</title>
@@ -16,12 +19,7 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/build/grunt/</guid>
-      <description>
-
-&lt;h1 id=&#34;grunt&#34;&gt;Grunt&lt;/h1&gt;
-
-&lt;p&gt;❗ Zie &lt;a href=&#34;http://www.brainbaking.com/wiki/code/javascript/frameworks/yeoman/&#34;&gt;code/javascript/frameworks/yeoman&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Grunt ❗️ Zie code/javascript/frameworks/yeoman</description>
     </item>
     
   </channel>

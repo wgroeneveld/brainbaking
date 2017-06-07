@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unix on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/unix/index.xml</link>
+    <link>http://www.brainbaking.com/tags/unix/</link>
     <description>Recent content in Unix on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 19 Oct 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>converters</title>
@@ -16,35 +19,11 @@
       <pubDate>Sat, 19 Oct 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/converters/</guid>
-      <description>
-
-&lt;h1 id=&#34;converters&#34;&gt;Converters&lt;/h1&gt;
-
-&lt;h2 id=&#34;video-converting-concatenating-etc&#34;&gt;Video converting/concatenating etc&lt;/h2&gt;
-
-&lt;p&gt;Met behulp van &lt;code&gt;ffmpeg&lt;/code&gt; (&lt;a href=&#34;https://trac.ffmpeg.org/wiki/How%20to%20concatenate%20(join,%20merge)%20media%20files):&#34;&gt;https://trac.ffmpeg.org/wiki/How%20to%20concatenate%20(join,%20merge)%20media%20files):&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;concatting&#34;&gt;Concatting&lt;/h4&gt;
-
-&lt;p&gt;Alle files die eindigen op mp4:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ffmpeg -f concat -i &amp;lt;(printf &amp;quot;file &#39;%s&#39;&amp;lt;br/&amp;gt;n&amp;quot; ./*.mp4) -c copy output.mp4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Gaat ook met &lt;code&gt;mplayer&lt;/code&gt; en de tool &lt;code&gt;mencoder&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mencoder -oac pcm -ovc copy -idx -o all.mp4 1.mp4 2.mp4 3.mp4 4.mp4 5.mp4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;resizing-compressing&#34;&gt;Resizing (compressing)&lt;/h4&gt;
-
-&lt;p&gt;Ook met &lt;code&gt;ffmpeg&lt;/code&gt; - bijvoorbeeld reduceren naar &amp;ldquo;medium&amp;rdquo; quality. Neem alle mp4s in folder:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;for i in *.mp4 ; do ffmpeg -i &amp;quot;$i&amp;quot; -c:a copy -preset medium &amp;quot;${i%.*}_medium.${i##*.}&amp;quot;; done
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Voor meer presets zoals &amp;ldquo;medium&amp;rdquo;, zie &lt;a href=&#34;http://trac.ffmpeg.org/wiki/x264EncodingGuide&#34;&gt;http://trac.ffmpeg.org/wiki/x264EncodingGuide&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Converters Video converting/concatenating etc Met behulp van ffmpeg (https://trac.ffmpeg.org/wiki/How%20to%20concatenate%20(join,%20merge)%20media%20files):
+Concatting Alle files die eindigen op mp4:
+ffmpeg -f concat -i &amp;lt;(printf &amp;quot;file &#39;%s&#39;&amp;lt;br/&amp;gt;n&amp;quot; ./*.mp4) -c copy output.mp4  Gaat ook met mplayer en de tool mencoder:
+mencoder -oac pcm -ovc copy -idx -o all.mp4 1.mp4 2.mp4 3.mp4 4.mp4 5.mp4  Resizing (compressing) Ook met ffmpeg - bijvoorbeeld reduceren naar &amp;ldquo;medium&amp;rdquo; quality. Neem alle mp4s in folder:
+for i in *.</description>
     </item>
     
     <item>
@@ -53,38 +32,11 @@
       <pubDate>Fri, 05 Apr 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/cmd/win/</guid>
-      <description>
-
-&lt;h1 id=&#34;windows-stuff&#34;&gt;Windows stuff&lt;/h1&gt;
-
-&lt;h4 id=&#34;list-processes&#34;&gt;list processes&lt;/h4&gt;
-
-&lt;p&gt;Te doen via:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;tasklist&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;wmic process get [caption/commandline/...]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;wmic process list | more&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;kill-specific-process&#34;&gt;Kill specific process&lt;/h4&gt;
-
-&lt;h5 id=&#34;by-window-title&#34;&gt;By window title&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;taskkill /F /FI &amp;quot;WINDOWTITLE eq Administrator:  STUBS&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;❗ er zijn TWEE SPATIES tussen Administrator en uw eigenlijke title. Hoe zet je dan die title in een bat of cmd file?&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;TITLE STUBS&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;by-commandline&#34;&gt;By commandline&lt;/h5&gt;
-
-&lt;p&gt;Stel: een &lt;code&gt;java&lt;/code&gt; proces draait met een bepaalde jar, maar je weet niet welke je moet afschieten omdat er nog een server draait. Oplossing: zoek op commandline:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;wmic process where (commandline like &#39;%stubs.jar%&#39;) delete&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;❗ het &lt;code&gt;%&lt;/code&gt; teken moet je escapen in een cmd of bat file omdat dit blijkbaar iets met argumenten te maken heeft (wuh?). Dit doe je door er 2 naast elkaar te plaatsen: &lt;code&gt;like %%stubs.jar%%&lt;/code&gt;&lt;/p&gt;
-</description>
+      <description>Windows stuff list processes Te doen via:
+ tasklist wmic process get [caption/commandline/...] wmic process list | more  Kill specific process By window title taskkill /F /FI &amp;quot;WINDOWTITLE eq Administrator: STUBS&amp;quot;
+❗️ er zijn TWEE SPATIES tussen Administrator en uw eigenlijke title. Hoe zet je dan die title in een bat of cmd file?
+TITLE STUBS
+By commandline Stel: een java proces draait met een bepaalde jar, maar je weet niet welke je moet afschieten omdat er nog een server draait.</description>
     </item>
     
     <item>
@@ -93,133 +45,9 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/cmd/bash/</guid>
-      <description>
-
-&lt;h1 id=&#34;bash-scripting&#34;&gt;Bash Scripting&lt;/h1&gt;
-
-&lt;h4 id=&#34;rerun-last-command&#34;&gt;Rerun last command&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;!!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Joink.&lt;/p&gt;
-
-&lt;h4 id=&#34;bash-opties-uit-een-shell-script-halen&#34;&gt;bash opties uit een shell script halen&lt;/h4&gt;
-
-&lt;p&gt;Gepikt van &lt;a href=&#34;http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash&#34;&gt;http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
-for i in $*
-do
-case $i in
-    -p######*|--prefix*)
-    PREFIX######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;`
-
-    ;;
-    -s######*|--searchpath*)
-    SEARCHPATH######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;`
-    ;;
-    -l######*|--lib*)
-    DIR######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;`
-    ;;
-    --default)
-    DEFAULT=YES
-    ;;
-    *)
-            # unknown option
-    ;;
-esac
-done
-echo PREFIX = ${PREFIX}
-echo SEARCH PATH = ${SEARCHPATH}
-echo DIRS = ${DIR}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Makkelijker dan &lt;code&gt;getopts()&lt;/code&gt;?&lt;/p&gt;
-
-&lt;h4 id=&#34;pipen-en-multiple-lines-in-shell-scripts&#34;&gt;Pipen en multiple lines in shell scripts&lt;/h4&gt;
-
-&lt;p&gt;Dit is legale shell code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
-cat dinges.log |
-  cut -d &#39; &#39; -f 3
-  grep &#39;Exception&#39; |
-  uniq
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;De pipe aan het begin van een nieuwe lijn alleszins niet. Ook &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; of &lt;code&gt;&amp;gt;&lt;/code&gt; kan niet het begin zijn van een nieuwe lijn, dan wordt een spatie gepiped naar de outputstream.&lt;/p&gt;
-
-&lt;h4 id=&#34;array-loops&#34;&gt;array loops&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;names=( Jennifer Tonya Anna Sadie )
-for name in ${names[@]}
-do
-  echo $name
-  # other stuff on $name
-done
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ook mogelijk om bvb een counter bij te houden met &lt;code&gt;for (( i = 0 ; i &amp;lt; ${#names[@]} ; i++ ))&lt;/code&gt;. Array waarde accessen met &lt;code&gt;${names[$i]}&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Inline arrays &amp;ldquo;maken&amp;rdquo; en over lopen gaat met &lt;code&gt;for VAR in &#39;a&#39; &#39;b&#39; &#39;c&#39; do ... done&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h5 id=&#34;argumenten-samen-rapen-in-een-variabele&#34;&gt;argumenten samen rapen in een variabele&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;DIR_EXCLUDES=(eclipsecompiled test bin target)
-FILE_EXCLUDES=(messages errors)
-
-SEARCH=&amp;quot;&amp;quot;
-
-for FILE_EXCLUDE in ${FILE_EXCLUDES[@]}
-do
-    SEARCH=&amp;quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&amp;quot;
-done
-for DIR_EXCLUDE in ${DIR_EXCLUDES[@]}
-do
-    SEARCH=&amp;quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&amp;quot;
-done
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ dit werkt &lt;strong&gt;niet&lt;/strong&gt; als er een dubbele quote bij komt kijken in de vorm van &lt;code&gt;&amp;lt;br/&amp;gt;&amp;quot;&lt;/code&gt; - vreemd? uit te zoeken&amp;hellip;&lt;/p&gt;
-
-&lt;h4 id=&#34;controleren-of-een-string-in-een-variabele-steekt&#34;&gt;Controleren of een string in een variabele steekt&lt;/h4&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://stackoverflow.com/questions/229551/string-contains-in-bash&#34;&gt;http://stackoverflow.com/questions/229551/string-contains-in-bash&lt;/a&gt; - makkelijkste manieren zijn&lt;/p&gt;
-
-&lt;h5 id=&#34;met-grep&#34;&gt;met grep&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;if grep -q &#39;|&#39; &amp;lt;&amp;lt;&amp;lt;$line; then
-  echo &amp;quot;jup&amp;quot;
-fi
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;met-regexp&#34;&gt;met regexp&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;if [[ &amp;quot;$line&amp;quot; =~ &amp;quot;|&amp;quot; ]]; then
-  echo &amp;quot;jup&amp;quot;
-fi
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;loopen-over-alle-lijnen-van-bepaalde-output-voor-verdere-processing&#34;&gt;Loopen over alle lijnen van bepaalde output voor verdere processing&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;`cat somefile` | while read line
-do
-  echo &amp;quot;lijn $line&amp;quot;
-done
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dit kan ook maar dan moet je de separator variabele voor &lt;code&gt;for&lt;/code&gt; aanpassen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;IFS=$&#39;&amp;lt;br/&amp;gt;n&#39;
-for line in `cat somefile`
-do
-  echo &amp;quot;lijn $line&amp;quot;
-done
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ By default splitst for &lt;strong&gt;op spaties&lt;/strong&gt;&lt;/p&gt;
-</description>
+      <description>Bash Scripting Rerun last command !!  Joink.
+bash opties uit een shell script halen Gepikt van http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
+#!/bin/bash for i in $* do case $i in -p######*|--prefix*) PREFIX######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;` ;; -s######*|--searchpath*) SEARCHPATH######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;` ;; -l######*|--lib*) DIR######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;` ;; --default) DEFAULT=YES ;; *) # unknown option ;; esac done echo PREFIX = ${PREFIX} echo SEARCH PATH = ${SEARCHPATH} echo DIRS = ${DIR}  Makkelijker dan getopts()?</description>
     </item>
     
     <item>
@@ -228,244 +56,8 @@ done
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/cmd/</guid>
-      <description>
-
-&lt;h1 id=&#34;unix-commandline-stuff&#34;&gt;Unix Commandline Stuff&lt;/h1&gt;
-
-&lt;h3 id=&#34;binaries-zoeken&#34;&gt;Binaries zoeken&lt;/h3&gt;
-
-&lt;p&gt;Kan met &lt;code&gt;whereis&lt;/code&gt;, &lt;strong&gt;maar&lt;/strong&gt; die zoekt blijkbaar niet in &amp;ldquo;alle&amp;rdquo; binary dirs - enkel degene die geconfigureerd zijn onder:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sysctl user.cs_path
-# output: user.cs_path = /usr/bin:/bin:/usr/sbin:/sbin
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;shell-automatisation&#34;&gt;Shell automatisation&lt;/h3&gt;
-
-&lt;p&gt;Command-line programs &lt;em&gt;feeden&lt;/em&gt; kan met het &lt;code&gt;expect&lt;/code&gt; tooltje. Bijvoorbeeld, bij het aanloggen in &lt;code&gt;ssh&lt;/code&gt; moet je daarna een wachtwoord geven en op enter drukken dat niet als commandline argument meegegeven kan worden. Dit kan je dan zo forceren:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/expect -f
-# Expect script to supply root/admin password for remote ssh server 
-# and execute command.
-# This script needs three argument to(s) connect to remote server:
-# password = Password of remote UNIX server, for root user.
-# ipaddr = IP Addreess of remote UNIX server, no hostname
-# scriptname = Path to remote script which will execute on remote server
-# For example:
-#  ./sshlogin.exp password 192.168.1.11 who 
-# ------------------------------------------------------------------------
-# Copyright (c) 2004 nixCraft project &amp;lt;http://cyberciti.biz/fb/&amp;gt;
-# This script is licensed under GNU GPL version 2.0 or above
-# -------------------------------------------------------------------------
-# This script is part of nixCraft shell script collection (NSSC)
-# Visit http://bash.cyberciti.biz/ for more information.
-# ----------------------------------------------------------------------
-# set Variables
-set password [lrange $argv 0 0] 
-set ipaddr [lrange $argv 1 1]   
-set username [lrange $argv 2 2] 
-set timeout -1   
-# now connect to remote UNIX box (ipaddr) with given script to execute
-spawn ssh $username@$ipaddr
-match_max 100000
-# Look for passwod prompt
-expect &amp;quot;*?assword:*&amp;quot;
-# Send password aka $password 
-send -- &amp;quot;$password&amp;lt;br/&amp;gt;r&amp;quot;
-# send blank line (&amp;lt;br/&amp;gt;r) to make sure we get back to gui
-send -- &amp;quot;&amp;lt;br/&amp;gt;r&amp;quot;
-expect eof
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;(&lt;a href=&#34;http://nixcraft.com/shell-scripting/4489-ssh-passing-unix-login-passwords-through-shell-scripts.html&#34;&gt;bron&lt;/a&gt;) - voor meer uitleg zie &lt;a href=&#34;https://en.wikipedia.org/wiki/Expect&#34; target=&#34;_blank&#34;&gt;Expect&lt;/a&gt;
- wiki.&lt;/p&gt;
-
-&lt;h3 id=&#34;synchronizing-backupping-file-copying&#34;&gt;Synchronizing/backupping/file copying&lt;/h3&gt;
-
-&lt;p&gt;Gebruik het &lt;code&gt;rsync&lt;/code&gt; commando om incrementeel een kopie te nemen van een directory en alle subdirs van plaats1 naar plaats2. Dit kan lokaal, naar een externe HDD of zelfs via een server. &lt;code&gt;rsync&lt;/code&gt; heeft ook een daemon mode die je aan kan zetten met &lt;code&gt;--daemon&lt;/code&gt; - Zie &lt;a href=&#34;http://www.samba.org/ftp/rsync/rsync.html&#34;&gt;rsync man&lt;/a&gt;. Het belangrijkste commando is zonder twijfel:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ rsync -auv -E -W --del [src] [dest]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Opties:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;-a&lt;/code&gt;: archive mode: auto-enable een hoop andere opties (keep timestamps etc)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-u&lt;/code&gt;: update (incremental mode)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-v&lt;/code&gt;: verbose&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-E&lt;/code&gt;: preserve executability (niet nodig onder windows)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;--del&lt;/code&gt;: delete files die in de source verdwijnen ook in de destination.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Een extra optie &lt;code&gt;-z&lt;/code&gt; kan ook compressie over netwerk toevoegen. Verwijder dan best &lt;code&gt;-W&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Je kan periodiek dit commando uit voeren om de destination dir up-to-date te houden. Vergeet niet dat rsync ook een &lt;code&gt;daemon&lt;/code&gt; mode heeft, met nog veel meer opties!&lt;/p&gt;
-
-&lt;h3 id=&#34;user-rechten-geven-om-root-te-worden&#34;&gt;User rechten geven om root te worden&lt;/h3&gt;
-
-&lt;p&gt;Probleem bij &lt;code&gt;su&lt;/code&gt; commando: &lt;em&gt;su: Sorry for normal user account.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Vergeten toe te voegen aan de &lt;code&gt;wheel&lt;/code&gt; user group, zo doen:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pw user mod vivek -G wheel&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;shell-editing-mode&#34;&gt;Shell editing mode&lt;/h3&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.catonmat.net/blog/bash-vi-editing-mode-cheat-sheet/&#34;&gt;http://www.catonmat.net/blog/bash-vi-editing-mode-cheat-sheet/&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ set -o vi
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Best opslaan in uw &lt;code&gt;.bashrc&lt;/code&gt; (of whateverrc)&lt;/p&gt;
-
-&lt;p&gt;-&amp;gt; Tof om te weten: &lt;code&gt;CTRL+L&lt;/code&gt; &lt;strong&gt;cleart het scherm&lt;/strong&gt; van een &lt;strong&gt;terminal&lt;/strong&gt; (dit werkt ook voor Cygwin!)&lt;/p&gt;
-
-&lt;h3 id=&#34;command-history&#34;&gt;Command History&lt;/h3&gt;
-
-&lt;p&gt;voorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dir $ history
-   1 ls -la
-   2 cd ~
-   3 rm somedir
-dir $ !2
-~ $ !!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;waarbij ![getal] laatste x commando uitvoert en !! het laatste. Zie &lt;code&gt;man history&lt;/code&gt; voor geavanceerde voorbeelden.&lt;/p&gt;
-
-&lt;h3 id=&#34;copy-and-auto-create-dir-structure&#34;&gt;Copy and auto-create dir structure&lt;/h3&gt;
-
-&lt;p&gt;Bewaar dit shell script naar cpi.sh:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
-if [ ! -d &amp;quot;$2&amp;quot; ]; then
-    mkdir -p &amp;quot;$2&amp;quot;
-fi
-cp -R &amp;quot;$1&amp;quot; &amp;quot;$2&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;chmod +x cpi.sh&lt;/code&gt; en dan in uw &lt;code&gt;.bashrc&lt;/code&gt; een link leggen om &lt;code&gt;cpi&lt;/code&gt; te gebruiken.&lt;/p&gt;
-
-&lt;h3 id=&#34;xargs&#34;&gt;xargs&lt;/h3&gt;
-
-&lt;p&gt;Het bovenstaande kan ook uitgevoerd worden met &lt;code&gt;xargs&lt;/code&gt; en piping. Bijvoorbeeld bepaalde bestanden (niet-recursief) kopiëren naar &amp;ldquo;tmp&amp;rdquo;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ls | grep .php | xargs -i cp {} ./tmp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Andere interessante opties van xargs:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;-ix&lt;/code&gt;: gebruik &lt;code&gt;{}&lt;/code&gt; (of &lt;code&gt;x&lt;/code&gt; karakters indien specified) om lijn per lijn de input te vervangen. Het kan zijn dat dit escaped moet worden met backslashen voor de shell!&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-0&lt;/code&gt;: gebruik in combinatie met &lt;code&gt;-print0&lt;/code&gt; en &lt;code&gt;find&lt;/code&gt; om het verschil tussen spaties en newlines duidelijk te maken&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-p&lt;/code&gt;: confirm elke actie, interessant bij verwijderen van crutiale files&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-lx&lt;/code&gt;: gebruik maximum x lijnen input per command line.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-nx&lt;/code&gt;: gebruik maximum x argumenten per command line.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-t&lt;/code&gt;: verbose mode (&lt;code&gt;--verbose&lt;/code&gt; werkt ook)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;sed&#34;&gt;sed&lt;/h3&gt;
-
-&lt;p&gt;Gebruik &lt;code&gt;sed&lt;/code&gt; om snel replaces te doen door middel van regex, of door lines te nummeren, &amp;hellip; &lt;br/&gt;&lt;br/&gt;
-Het is ook mogelijk om regex partities te &lt;em&gt;groeperen&lt;/em&gt;, vergeet niet de haakjes zelf te escapen! Om de gegroepeerde waarde in het &amp;ldquo;replace&amp;rdquo; geteelde te gebruiken, moeten we niet &lt;code&gt;$1&lt;/code&gt; maar &lt;code&gt;&amp;lt;br/&amp;gt;1&lt;/code&gt; gebruiken. Bijvoorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sed &#39;s/&amp;lt;br/&amp;gt;(.*&amp;lt;br/&amp;gt;)/regel:&amp;lt;br/&amp;gt;1/g&#39; log.tmp &amp;gt;&amp;gt; $logfile
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Resultaat:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Replace x door y via &lt;code&gt;s/regex/replace/&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Replace alle gevonden instanties (&lt;code&gt;g&lt;/code&gt; na expressie)&lt;/li&gt;
-&lt;li&gt;Groepeer alles door te zoeken op &lt;code&gt;.*&lt;/code&gt; en er haakjes rond te plaatsen&lt;/li&gt;
-&lt;li&gt;Vervang alles door &amp;lsquo;regel:&amp;rsquo; + alles van de groep&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Dus prepend elke regel met &amp;lsquo;regel:&amp;lsquo;.&lt;/p&gt;
-
-&lt;p&gt;-&amp;gt; Groeperen in sed vereist escaped parentheses, anders matchen we exact &lt;code&gt;(&lt;/code&gt; in de zoekstring zelf!&lt;/p&gt;
-
-&lt;h5 id=&#34;chainen&#34;&gt;chainen&lt;/h5&gt;
-
-&lt;p&gt;Een keer sed aanroepen en in een sequentie meerdere replaces doen gaat met het &lt;code&gt;-e&lt;/code&gt; argument (script mode):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cat file | sed -e &#39;s/replace/by/g&#39; -e &#39;s/other/new/g&#39; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;aan-begin-van-lijnen-prependen&#34;&gt;Aan begin van lijnen prependen&lt;/h5&gt;
-
-&lt;p&gt;Gebruik het symbool &amp;lsquo;^&amp;rsquo; om het begin van een lijn te matchen, en &amp;lsquo;$&amp;rsquo; om het einde van een lijn te matchen:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cat file | sed &#39;s/^&amp;lt;br/&amp;gt;([^=]&amp;lt;br/&amp;gt;)/  *&amp;lt;br/&amp;gt;1/&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Hier wordt in het begin van elke lijn spatie spatie ster toegevoegd behalve als de lijn begint met het gelijkheidsteken. Omdat we anders het eerste karakter vervangen moeten we die ook capturen!&lt;/p&gt;
-
-&lt;p&gt;-&amp;gt; Zoals in eclipse een getal matchen met &lt;code&gt;&amp;lt;br/&amp;gt;d&lt;/code&gt; werkt niet, daarvoor moet je &lt;code&gt;[0-9]&lt;/code&gt; gebruiken.&lt;/p&gt;
-
-&lt;h3 id=&#34;uniq&#34;&gt;uniq&lt;/h3&gt;
-
-&lt;p&gt;Vergelijkt een lijn met de volgende en gooit dubbels eruit. Instelbaar met een beperkt aantal parameters. &lt;br/&gt;&lt;br/&gt;
-&lt;strong&gt;adjacent matching lines&lt;/strong&gt;, meer kan dit ding niet!&lt;/p&gt;
-
-&lt;h5 id=&#34;sed-gebruiken-om-uniq-te-emuleren&#34;&gt;sed gebruiken om uniq te emuleren&lt;/h5&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.catonmat.net/blog/sed-one-liners-explained-part-three/&#34;&gt;http://www.catonmat.net/blog/sed-one-liners-explained-part-three/&lt;/a&gt; voor volledige uitleg&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sed &#39;$!N; /^&amp;lt;br/&amp;gt;(.*&amp;lt;br/&amp;gt;)&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;1$/!P; D&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;sed-gebruiken-om-álle-dubbels-eruit-te-smijten-buffering&#34;&gt;sed gebruiken om álle dubbels eruit te smijten: buffering&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;sed -n &#39;G; s/&amp;lt;br/&amp;gt;n/&amp;amp;&amp;amp;/; /^&amp;lt;br/&amp;gt;([ -~]*&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;).*&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;1/d; s/&amp;lt;br/&amp;gt;n//; h; P&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;cut&#34;&gt;cut&lt;/h3&gt;
-
-&lt;p&gt;Een utility command dat meestal gebruikt wordt om lijnen op te splitsen afhankelijk van een &lt;strong&gt;delimiter&lt;/strong&gt;. Bijvoorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cat test.txt | cut -d &#39;|&#39; -f 3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;meest gebruikte opties:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;-d&lt;/code&gt; verplicht, geef delimiter op&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-f&lt;/code&gt; selecteer enkel deze kolommen&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;combinatievoorbeeld&#34;&gt;Combinatievoorbeeld&lt;/h3&gt;
-
-&lt;p&gt;Onderstaand script zoekt in de svn log entries met &amp;lsquo;jira&amp;rsquo; of &amp;lsquo;hel&amp;rsquo; (case insensitive, &lt;code&gt;-i&lt;/code&gt; grep operator) behalve &amp;lsquo;gcl&amp;rsquo; of &amp;lsquo;lvm&amp;rsquo;, print context 1 lijn above en 2 lijnen below, filtert dubbels, haalt de derde kolom eruit gesplitst door &amp;lsquo;|&amp;rsquo; (datum), vervangt eender welke hoeveelheid &amp;lsquo;-&amp;rsquo; door niets en wrap datums beginnende met 2011 met twee = tekens.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
-datefrom=2011-02-28
-dateto=2011-03-12
-logfile=/cygdrive/c/opt/wamp/www/wiki/data/wiki/helena/svnlog.txt
-
-pushd /cygdrive/c/opt/hudson/jobs/Helena_build/workspace/burgerlijkestand
-echo &amp;quot;### Svn log Helena Trunk &amp;quot; &amp;gt; $logfile
-echo &amp;quot;❗ periode **[$datefrom - $dateto]**&amp;quot; &amp;gt;&amp;gt; $logfile
-echo &amp;quot;#### Helena Jira&#39;s via svn log&amp;quot; &amp;gt;&amp;gt; $logfile
-svn --username######cp8tsc --passwordq3Sp8Phu log -r{$datefrom}:{$dateto} |
-    grep -B 2 -A 1 -i &#39;HEL-&amp;lt;br/&amp;gt;|jira&#39; |
-    grep -v &#39;gcl&amp;lt;br/&amp;gt;|lvm&#39; |
-    sed -e &#39;s/-*//&#39; -e &#39;s/r[0-9]* .*(&amp;lt;br/&amp;gt;(.*&amp;lt;br/&amp;gt;)).*/#####&amp;lt;br/&amp;gt;1/g&#39; -e &#39;s/^&amp;lt;br/&amp;gt;([^=]&amp;lt;br/&amp;gt;)/  *&amp;lt;br/&amp;gt;1/&#39; |
-    sed -n &#39;G; s/&amp;lt;br/&amp;gt;n/&amp;amp;&amp;amp;/; /^&amp;lt;br/&amp;gt;([ -~]*&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;).*&amp;lt;br/&amp;gt;n&amp;lt;br/&amp;gt;1/d; s/&amp;lt;br/&amp;gt;n//; h; P&#39; &amp;gt;&amp;gt; $logfile
-popd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;random-commands&#34;&gt;Random commands&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;seq 1 10&lt;/code&gt; print in een sequence getalletjes.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;head&lt;/code&gt; werkt ook in plaats van &lt;code&gt;tail&lt;/code&gt;, maar zelfs van een lijst - ge kunt &lt;code&gt;head 1&lt;/code&gt; van een stream dus gebruiken als pop voor een stack.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ftp -i -n [host] &amp;lt;&amp;lt; FTP_SCRIPT&lt;/code&gt; newline, een hoop commands, en &lt;code&gt;FTP_SCRIPT&lt;/code&gt; op het laatste = in 1 regel wat op een ftp server doen.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;mail -a [attach]&lt;/code&gt; = in 1 regel als attach iets mailen naar iemand (zie &lt;code&gt;man&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;wc&lt;/code&gt; ###### wordcount; -e  enkel lijnen&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Unix Commandline Stuff Binaries zoeken Kan met whereis, maar die zoekt blijkbaar niet in &amp;ldquo;alle&amp;rdquo; binary dirs - enkel degene die geconfigureerd zijn onder:
+sysctl user.cs_path # output: user.cs_path = /usr/bin:/bin:/usr/sbin:/sbin  Shell automatisation Command-line programs feeden kan met het expect tooltje. Bijvoorbeeld, bij het aanloggen in ssh moet je daarna een wachtwoord geven en op enter drukken dat niet als commandline argument meegegeven kan worden. Dit kan je dan zo forceren:</description>
     </item>
     
     <item>
@@ -474,36 +66,9 @@ popd
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/cmd/find/</guid>
-      <description>
-
-&lt;h1 id=&#34;find-command&#34;&gt;Find command&lt;/h1&gt;
-
-&lt;p&gt;-&amp;gt; Zie &lt;a href=&#34;http://northredoubt.com/n/2009/12/30/linuxunixcygwin-find-command/&#34;&gt;http://northredoubt.com/n/2009/12/30/linuxunixcygwin-find-command/&lt;/a&gt; voor enorm veel uitleg over basics van &lt;code&gt;find&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Voor een combinatievoorbeeld met grep&lt;/strong&gt;, zie &lt;a href=&#34;http://www.brainbaking.com/wiki/unix/cmd/&#34;&gt;unix/cmd&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;finding-stuff&#34;&gt;Finding stuff&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;find / -name &amp;quot;*.ext&amp;quot; -type f -exec [command with args] {} &amp;lt;br/&amp;gt;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Bovenstaande lijn zoekt in root directory voor alle .ext bestanden (-type f is standaard, &lt;code&gt;d&lt;/code&gt; staat voor directory etc, zie manual) en pipet alle resultaten naar een bepaald commando achter &lt;code&gt;-exec&lt;/code&gt;. &lt;code&gt;{}&lt;/code&gt; Stelt het gevonden bestand voor (full path), &lt;code&gt;&amp;lt;br/&amp;gt;;&lt;/code&gt; eindigt het exec commando. De puntkomma wordt escaped door die backslash.&lt;/p&gt;
-
-&lt;p&gt;❗ - Er moet een &lt;strong&gt;Spatie&lt;/strong&gt; tussen &lt;code&gt;{}&lt;/code&gt; en &lt;code&gt;&amp;lt;br/&amp;gt;;&lt;/code&gt; komen, anders krijgt men een foutmelding:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;find: missing argument to &amp;lsquo;-exec&amp;rsquo;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;includen-en-excluden-filters&#34;&gt;Includen en excluden: filters&lt;/h3&gt;
-
-&lt;p&gt;Ik zoek *.properties behalve die en die file en overal behalve in die en die directory:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;find . -name &amp;quot;*.properties&amp;quot; -not -path &amp;quot;*dir*&amp;quot; -not -name &amp;quot;ugly.properties&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;-not&lt;/code&gt; is te combineren met eender wat én te chainen, bijvoorbeeld met &lt;code&gt;-size&lt;/code&gt; enzo.&lt;/p&gt;
-</description>
+      <description>Find command -&amp;gt; Zie http://northredoubt.com/n/2009/12/30/linuxunixcygwin-find-command/ voor enorm veel uitleg over basics van find.
+Voor een combinatievoorbeeld met grep, zie unix/cmd
+Finding stuff find / -name &amp;quot;*.ext&amp;quot; -type f -exec [command with args] {} &amp;lt;br/&amp;gt;;  Bovenstaande lijn zoekt in root directory voor alle .ext bestanden (-type f is standaard, d staat voor directory etc, zie manual) en pipet alle resultaten naar een bepaald commando achter -exec. {} Stelt het gevonden bestand voor (full path), &amp;lt;br/&amp;gt;; eindigt het exec commando.</description>
     </item>
     
     <item>
@@ -512,24 +77,9 @@ popd
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/freebsd/</guid>
-      <description>
-
-&lt;h1 id=&#34;freebsd&#34;&gt;FreeBSD&lt;/h1&gt;
-
-&lt;p&gt;❗ Manual waar alles instaat: &lt;a href=&#34;http://www.freebsd.org/doc/handbook/ports-using.html&#34;&gt;http://www.freebsd.org/doc/handbook/ports-using.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;partitioning&#34;&gt;Partitioning&lt;/h2&gt;
-
-&lt;h3 id=&#34;chunk-ad1s4-ad1s2-ad1s3-does-not-start-on-a-track-boundary&#34;&gt;chunk &amp;lsquo;ad1s4 ;ad1s2 ,ad1s3 does not start on a track boundary&lt;/h3&gt;
-
-&lt;p&gt;Negeren, verder gaan door op OK te drukken. Wil zeggen dat er nog een partitie voor de huidige master staat (windows wss) die leeg is en niet in bounds zit. Ge kunt hier niet iets tussen steken, dan begint het paritioning systeem 3 aparte stukken aan te maken.&lt;/p&gt;
-
-&lt;p&gt;Pas wel op met aanmaken van partities:
-  1. ad0 is HDD1, dus ad0s0 is partitie 1
-  2. da0 is SCSI1 (emu), dus waarschijnlijk een USB poort&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.freebsd.org/doc/handbook/disk-organization.html&#34;&gt;Meer informatie over disk organisation in FreeBSD&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>FreeBSD ❗️ Manual waar alles instaat: http://www.freebsd.org/doc/handbook/ports-using.html
+Partitioning chunk &amp;lsquo;ad1s4 ;ad1s2 ,ad1s3 does not start on a track boundary Negeren, verder gaan door op OK te drukken. Wil zeggen dat er nog een partitie voor de huidige master staat (windows wss) die leeg is en niet in bounds zit. Ge kunt hier niet iets tussen steken, dan begint het paritioning systeem 3 aparte stukken aan te maken.
+Pas wel op met aanmaken van partities: 1.</description>
     </item>
     
     <item>
@@ -538,84 +88,19 @@ popd
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/cmd/grep/</guid>
-      <description>
-
-&lt;h1 id=&#34;greppin-away&#34;&gt;Greppin&amp;rsquo; away&lt;/h1&gt;
-
-&lt;p&gt;❗ &lt;strong&gt;Combinatievoorbeeld met find&lt;/strong&gt; te vinden op &lt;a href=&#34;http://www.brainbaking.com/wiki/unix/cmd/&#34;&gt;unix/cmd&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h4 id=&#34;surrounding-lines-while-greppin&#34;&gt;Surrounding lines while greppin&amp;rsquo;&lt;/h4&gt;
-
-&lt;p&gt;Dit heet &lt;strong&gt;lines in context&lt;/strong&gt; in &lt;em&gt;man grep&lt;/em&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;grep -B 3 -A 2 foo README.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Verklaring: Zoek foo in readme.txt met 3 lijnen boven en 2 lijnen onderaan. &lt;br/&gt;&lt;br/&gt;
-Indien aantal lijnen gelijk, gebruik simpelweg &lt;code&gt;-C [x]&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h4 id=&#34;inverse-grepping&#34;&gt;Inverse grepping&lt;/h4&gt;
-
-&lt;h5 id=&#34;in-file-contents&#34;&gt;In file contents&lt;/h5&gt;
-
-&lt;p&gt;Om te zoeken naar bijvoorbeeld &amp;lsquo;hond&amp;rsquo;, maar niet &amp;lsquo;kat&amp;rsquo;, moet je inverse zoeken voor kat:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cat file | grep &#39;hond&#39; | grep -v &#39;kat&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;finding-pattern-a-or-b&#34;&gt;Finding pattern a OR b&lt;/h4&gt;
-
-&lt;p&gt;Combineren gaat met het pipe character (escaped) &lt;code&gt;&amp;lt;br/&amp;gt;|&lt;/code&gt; - voorbeeld zoekt naar hond of kat:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cat file | grep &#39;hond&amp;lt;br/&amp;gt;|kat&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;❗ Normale manier is &lt;code&gt;egrep pattern1|pattern2&lt;/code&gt; gebruiken of &lt;code&gt;grep -E pattern1|pattern2&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h4 id=&#34;toon-meer-info-bij-context&#34;&gt;Toon meer info bij context&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;grep &#39;zoekstring&#39; file.bla -n -H 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Print ook line numbers &amp;amp; filename, vooral handig wanneer dit van een &lt;code&gt;-exec&lt;/code&gt; commando komt van een search, bijvoorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;find . -name &amp;quot;*.php&amp;quot; -exec grep &#39;backlink&#39; {} -C 2 -n -H &amp;lt;br/&amp;gt;; &amp;gt; find_backlinks.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Zoek alle .php files vanaf de current directory&lt;/li&gt;
-&lt;li&gt;Zoek in alle gevonden files naar &amp;lsquo;backlink&amp;rsquo;&lt;/li&gt;
-&lt;li&gt;Print 2 bovenste en onderste context lijnen af&lt;/li&gt;
-&lt;li&gt;Print lijn nummer en prefix met bestandsnaam&lt;/li&gt;
-&lt;li&gt;Output alles naar find_backlinks.txt&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;De &lt;code&gt;-print&lt;/code&gt; flag bij find print de filename af voor elke gevonden file die naar de &lt;code&gt;-exec&lt;/code&gt; doorgegeven wordt.&lt;/p&gt;
-
-&lt;p&gt;❗ Onder Solaris een commando uitvoeren met &lt;code&gt;-exec&lt;/code&gt; moet dit ook nog gewrapped worden met een shell executable, zo:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;find . -name &amp;quot;*.php&amp;quot; -exec sh -c &#39;grep -n &amp;quot;backlink&amp;quot; $1&#39; {} {}&amp;lt;br/&amp;gt;; -print
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Vergeet niet dat grep ook &lt;strong&gt;andere argumenten&lt;/strong&gt; (of volgorde) heeft (eerst flags dan search pattern en file, geen -C option etc)!&lt;br/&gt;&lt;br/&gt;
-Zie &lt;a href=&#34;http://www.compuspec.net/reference/os/solaris/find/find_and_execute_with_pipe.shtml&#34;&gt;http://www.compuspec.net/reference/os/solaris/find/find_and_execute_with_pipe.shtml&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-</description>
+      <description>Greppin&amp;rsquo; away ❗️ Combinatievoorbeeld met find te vinden op unix/cmd.
+Surrounding lines while greppin&amp;rsquo; Dit heet lines in context in man grep.
+grep -B 3 -A 2 foo README.txt  Verklaring: Zoek foo in readme.txt met 3 lijnen boven en 2 lijnen onderaan.  Indien aantal lijnen gelijk, gebruik simpelweg -C [x].
+Inverse grepping In file contents Om te zoeken naar bijvoorbeeld &amp;lsquo;hond&amp;rsquo;, maar niet &amp;lsquo;kat&amp;rsquo;, moet je inverse zoeken voor kat:</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/</link>
+      <link>http://www.brainbaking.com/wiki/unix/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/</guid>
-      <description>
-
-&lt;h1 id=&#34;unix-home&#34;&gt;unix &amp;gt;&amp;gt; Home&lt;/h1&gt;
-
-&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-</description>
+      <guid>http://www.brainbaking.com/wiki/unix/</guid>
+      <description>unix &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
@@ -624,73 +109,7 @@ Zie &lt;a href=&#34;http://www.compuspec.net/reference/os/solaris/find/find_and_
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/shellconfig/</guid>
-      <description>
-
-&lt;h1 id=&#34;shell-configuration&#34;&gt;Shell Configuration&lt;/h1&gt;
-
-&lt;h2 id=&#34;zshell&#34;&gt;ZShell&lt;/h2&gt;
-
-&lt;p&gt;```bash&lt;/p&gt;
-
-&lt;p&gt;############################################&lt;/p&gt;
-
-&lt;h4 id=&#34;jefklak-s-zsh-config-file&#34;&gt;Jefklak&amp;rsquo;s ZSH Config file&lt;/h4&gt;
-
-&lt;h4 id=&#34;last-edited-18-10-2005&#34;&gt;Last Edited: 18/10/2005&lt;/h4&gt;
-
-&lt;h4 id=&#34;thank-you-gentoo-forum&#34;&gt;Thank you Gentoo Forum!&lt;/h4&gt;
-
-&lt;p&gt;############################################&lt;/p&gt;
-
-&lt;h4 id=&#34;freebsd-specific-stuff-here&#34;&gt;FreeBSD Specific stuff here&lt;/h4&gt;
-
-&lt;h1 id=&#34;export-clicolor-yes-for-the-bsd-ls-thing-flag-g&#34;&gt;export CLICOLOR=yes for the BSD ls thing (flag -G)&lt;/h1&gt;
-
-&lt;h1 id=&#34;lscolors-fxgxcxdxbxegedabagacad-export-lscolors&#34;&gt;LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS&lt;/h1&gt;
-
-&lt;h4 id=&#34;envoirnment-variables&#34;&gt;Envoirnment Variables&lt;/h4&gt;
-
-&lt;p&gt;export HOSTTYPE=&amp;ldquo;$(uname -m)&amp;rdquo;
-export COLORTERM=yes
-export LINKS_XTERM=screen&lt;/p&gt;
-
-&lt;h1 id=&#34;fixes-savage-mouse-problems&#34;&gt;Fixes Savage mouse problems.&lt;/h1&gt;
-
-&lt;p&gt;export SDL_VIDEO_X11_DGAMOUSE=0&lt;/p&gt;
-
-&lt;h4 id=&#34;aliases&#34;&gt;Aliases&lt;/h4&gt;
-
-&lt;p&gt;alias vi=&amp;ldquo;vim&amp;rdquo;
-alias ..=&amp;ldquo;cd .. &amp;amp;&amp;amp; ls&amp;rdquo;
-alias del=&amp;ldquo;nocorrect rm -rf&amp;rdquo;
-alias mv=&amp;ldquo;nocorrect mv -f&amp;rdquo;
-alias cp=&amp;ldquo;cp -rf&amp;rdquo;
-alias cls=&amp;lsquo;clear&amp;rsquo;
-alias l=&amp;ldquo;ls -la&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;alias showstuff=&amp;ldquo;figlet unix rocks | cowsay -n -d;uname -a&amp;rdquo;&lt;/p&gt;
-
-&lt;h4 id=&#34;set-the-console-title&#34;&gt;set the console title&lt;/h4&gt;
-
-&lt;p&gt;case $TERM in
-xterm&lt;em&gt;)
-    PR_TITLEBAR######$&amp;lsquo;%{&lt;br/&gt;e]0;%(!.-&lt;/em&gt;[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y&lt;br/&gt;a%}&amp;rsquo;
-    ;;
-&lt;em&gt;rxvt&lt;/em&gt;)
-    PR_TITLEBAR######$&amp;lsquo;%{&lt;br/&gt;e]0;%(!.-&lt;em&gt;[ROOT]&lt;/em&gt;=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y&lt;br/&gt;a%}&amp;rsquo;
-    ;;
-*)
-    PR_TITLEBAR=&amp;rdquo;
-    ;;
-esac&lt;/p&gt;
-
-&lt;h4 id=&#34;the-prompt-style&#34;&gt;the prompt style&lt;/h4&gt;
-
-&lt;h1 id=&#34;check-for-colors&#34;&gt;check for colors&lt;/h1&gt;
-
-&lt;p&gt;autoload colors zsh/terminfo
-if [ &amp;ldquo;$terminfo[colors]&amp;rdquo; -ge 8 ](&lt;/p&gt;
-</description>
+      <description>Shell Configuration ZShell ############################################ #### Jefklak&#39;s ZSH Config file #### #### Last Edited: 18/10/2005 #### #### Thank you Gentoo Forum! #### ############################################ #### FreeBSD Specific stuff here #### # export CLICOLOR=yes for the BSD ls thing (flag -G) # LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS #### Envoirnment Variables #### export HOSTTYPE=&amp;quot;$(uname -m)&amp;quot; export COLORTERM=yes export LINKS_XTERM=screen # Fixes Savage mouse problems. export SDL_VIDEO_X11_DGAMOUSE=0 #### Aliases #### alias vi=&amp;quot;vim&amp;quot; alias ..=&amp;quot;cd .. &amp;amp;&amp;amp; ls&amp;quot; alias del=&amp;quot;nocorrect rm -rf&amp;quot; alias mv=&amp;quot;nocorrect mv -f&amp;quot; alias cp=&amp;quot;cp -rf&amp;quot; alias cls=&#39;clear&#39; alias l=&amp;quot;ls -la&amp;quot; alias showstuff=&amp;quot;figlet unix rocks | cowsay -n -d;uname -a&amp;quot; #### set the console title #### case $TERM in xterm*) PR_TITLEBAR######$&#39;%{&amp;lt;br/&amp;gt;e]0;%(!</description>
     </item>
     
     <item>
@@ -699,178 +118,11 @@ if [ &amp;ldquo;$terminfo[colors]&amp;rdquo; -ge 8 ](&lt;/p&gt;
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/vi/</guid>
-      <description>
-
-&lt;h1 id=&#34;vi-m-tips-tricks&#34;&gt;Vi(m) tips &amp;amp; tricks&lt;/h1&gt;
-
-&lt;h3 id=&#34;externe-tutorials-en-manuals&#34;&gt;Externe tutorials en manuals&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.aip.de/~weber/doc/gs/node137.html&#34;&gt;http://www.aip.de/~weber/doc/gs/node137.html&lt;/a&gt; - short basic editing intro&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.cs.fsu.edu/general/vimanual.html&#34;&gt;http://www.cs.fsu.edu/general/vimanual.html&lt;/a&gt; - full vi manual&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://hea-www.harvard.edu/~fine/Tech/vi.html&#34;&gt;http://hea-www.harvard.edu/~fine/Tech/vi.html&lt;/a&gt; - complete key binding guide&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://vim.wikia.com/wiki/Word_wrap_without_line_breaks&#34;&gt;http://vim.wikia.com/wiki/Word_wrap_without_line_breaks&lt;/a&gt; -&amp;gt; Zeer goede Vi wiki&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.oualline.com/vim-cook.html&#34;&gt;http://www.oualline.com/vim-cook.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Dé Vi Man page: &lt;a href=&#34;http://vimdoc.sourceforge.net/htmldoc/help.html&#34;&gt;http://vimdoc.sourceforge.net/htmldoc/help.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;basic-editing&#34;&gt;Basic editing&lt;/h3&gt;
-
-&lt;p&gt;^ Command      ^ Function ^
-| e | start editing mode @ cursor position |
-| a | start editing mode @ AFTER cursor position |
-| R | start replace mode @ cursor position |
-| ! | override command by forcing |
-| u | undo |
-| U | undo everything without changing line |
-| redo | redo last change |
-| ~ | change case upper/lower |
-| w | move cursor to beginning of next word |
-| b | move cursor to beginning of previous word |
-| [x]w/b | move cursor to beginning/end of xth word |
-| % | move cursor to matching bracket (waar cursor op staat, bvb {} in java) |
-| 0 | move cursor to beginning of current line |
-| $ | move cursor to end of current line |
-| G | move cursor to end of current file |
-| [x]G | move cursor to xth line of current file |
-| CTRL+F | move cursor page forward |
-| CTRL+B | move cursor page backward |
-| d$ | delete everything from cursor to end of line |
-| dG | delete everything from cursor to end of file |
-| :q | quit window (CTRL+C) |
-| :q! | force quit without save |
-| :w | save file |
-| :x | quit with save |&lt;/p&gt;
-
-&lt;p&gt;❗ Restarten van editing mode force-override (&lt;code&gt;:e!&lt;/code&gt;) alle changes aan de huidige file, handig als &amp;ldquo;undo all&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;Undo werkt als een toggle tussen undo en redo in Vi compatible, maar in Vim &lt;em&gt;stackt&lt;/em&gt; dit. &lt;br/&gt;&lt;br/&gt;
-&lt;code&gt;uu&lt;/code&gt; maakt dus in Vim 2 wijzigingen ongedaan, maar in Vi &amp;ldquo;undo&amp;rdquo; de &amp;ldquo;undo&amp;rdquo; (dus nul-operatie).&lt;/p&gt;
-
-&lt;h3 id=&#34;faster-bash-editing-testing-in-vi&#34;&gt;Faster bash editing &amp;amp; testing in Vi&lt;/h3&gt;
-
-&lt;p&gt;Makkelijker om tijdens het editeren van een scriptje het direct te kunnen testen zonder de vi editor te verlaten, juist? &lt;br/&gt;&lt;br/&gt;
-Dit is mogelijk met:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;:! [command]&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Om de output te pasten in de editor ergens, gebruik &lt;code&gt;:r! [command]&lt;/code&gt; ((&lt;code&gt;:r&lt;/code&gt; paste de inhoud van een bestand in de editor zonder !)) .&lt;br/&gt;&lt;br/&gt;
-Om tijdelijk de editor te verlaten en terug te keren naar een shell, gebruik &lt;code&gt;:shell&lt;/code&gt;. Terug switchen kan door uit te loggen met &lt;code&gt;exit&lt;/code&gt;, zodat je terug in de editor terecht komt zoals je ze verlaten hebt.&lt;/p&gt;
-
-&lt;h3 id=&#34;visual-mode-and-formatting&#34;&gt;Visual mode and formatting&lt;/h3&gt;
-
-&lt;p&gt;Vi kan automatisch geselecteerde lijnen formatteren (indent) met &amp;ldquo;&lt;code&gt;######&lt;/code&gt;&amp;rdquo;. Hiervoor moeten in visual mode (&lt;code&gt;SHIFT+V&lt;/code&gt;) x aantal lijnen geselecteerd worden (pijltjes naar boven/beneden in visual mode auto-select die lijnen). Om uit visual mode te gaan, &lt;code&gt;SHIFT+G&lt;/code&gt;. Druk daarna op ``.&lt;/p&gt;
-
-&lt;p&gt;Combinatie om alles te selecteren en formatteren: &lt;code&gt;ggVG=&lt;/code&gt;:
-  1. &lt;code&gt;gg&lt;/code&gt; ga naar begin van file
-  2. &lt;code&gt;V&lt;/code&gt;: (hoofdletter) enter visual mode
-  3. &lt;code&gt;G&lt;/code&gt;: (hoofdletter) exit visual mode, op zelfde lijn = selecteer alles
-  4. &lt;code&gt;=&lt;/code&gt;: formatteer heel de boel.&lt;/p&gt;
-
-&lt;h3 id=&#34;multi-file-editing&#34;&gt;Multi-file editing&lt;/h3&gt;
-
-&lt;p&gt;Laat vi meerdere files editeren door &lt;code&gt;vi [file1] [file2] ...&lt;/code&gt; uit te voeren. Edit alle files in current path door &lt;code&gt;vi *&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;finding-stuff&#34;&gt;Finding stuff&lt;/h3&gt;
-
-&lt;p&gt;^ Command      ^ Function ^
-| / | type a query and press enter to find something |
-| ? | type a query and press enter to find something |
-| n | zoek volgende gevonden item |
-| N | zoek vorige gevondenn item |&lt;/p&gt;
-
-&lt;p&gt;Find &amp;amp; replacing:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;:%s/[search pattern]/[replace pattern]&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Vervangt in alle files.&lt;/p&gt;
-
-&lt;h4 id=&#34;switchen-tussen-files&#34;&gt;Switchen tussen files&lt;/h4&gt;
-
-&lt;p&gt;Open files list = &amp;ldquo;&lt;em&gt;buffer&lt;/em&gt;&amp;rdquo; in Vi.&lt;/p&gt;
-
-&lt;p&gt;^ Command      ^ Function ^
-| :ls of :buffers | show open buffers (zie onder) |
-| :reg | show open buffers én verwijderde/vroeger aangemaakte (0-9) |
-| :e [file] | add file to buffer list |
-| :n | goto next file in list |
-| :b [file] | switch to next file ((with TAB autocompletion: zet &lt;code&gt;set wildmenu&lt;/code&gt; in &lt;code&gt;.vimrc&lt;/code&gt;)) |
-| :b | switch to last visited file |
-| :[x]b | switch to xth file |
-| :bp | switch to previous buffer |
-| :bn | switch to next buffer |
-| CTRL+SHIFT+6| switch to next buffer in row |&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;:ls&lt;/code&gt; ziet er zo uit:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  1 %a   &amp;quot;./checkin.pl&amp;quot;            line 1
-  2 #    &amp;quot;./grabakamailogs.pl&amp;quot;     line 1
-  3      &amp;quot;./grabwmlogs.pl&amp;quot;         line 0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;%&lt;/code&gt; toont huidige actieve file, &lt;code&gt;#&lt;/code&gt; toont alternatieve.&lt;/p&gt;
-
-&lt;h4 id=&#34;tegelijkertijd-bekijken-van-files&#34;&gt;Tegelijkertijd bekijken van files&lt;/h4&gt;
-
-&lt;p&gt;^ Command      ^ Function ^
-| CTRL+W v  | split into tabs vertically |
-| CTRL+W s | split into tabs horizontally |
-| CTRL+W c | close current window |
-| CTRL+W o | close all windows but active |
-| CTRL+W up | focus upper window |
-| CTRL+W down | focus lower window |
-| CTRL+W _ | maximize current window |
-| :[x]sb | switch to xth file in buffer using split windows |&lt;/p&gt;
-
-&lt;h4 id=&#34;open-file-sessies-bewaren-in-vi&#34;&gt;Open file sessies bewaren in Vi&lt;/h4&gt;
-
-&lt;p&gt;Bewaar een huidige sessie met x open buffers:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;:mksession! ~/today.ses&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Terug openen van die sessie:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;vim -S ~/today.ses&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;command-history-window&#34;&gt;Command History window&lt;/h3&gt;
-
-&lt;p&gt;Het beu om constant hetzelfde commando in te typen? Voer een eerder uitgevoerd commando uit, zoals &lt;code&gt;history&lt;/code&gt; in bash! Hoe? &lt;a href=&#34;http://vim.wikia.com/wiki/Using_command-line_history&#34;&gt;http://vim.wikia.com/wiki/Using_command-line_history&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Search history&lt;/strong&gt;: &lt;code&gt;/ [CTRL+F]&lt;/code&gt; of &lt;code&gt;q/&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Command history&lt;/strong&gt;: &lt;code&gt;: [CTRL+F]&lt;/code&gt; of &lt;code&gt;:q&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Begin met slash of dubbelpunt en gebruik pijltjes om te scrollen in history&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;:his&lt;/code&gt; geeft een kort overzicht zonder een apart window te openen&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Hierin kan je ook weer commando&amp;rsquo;s zoals zoeken binnen het history window gebruiken! om dit te sluiten, zelfde als sluitshortcut window (&lt;code&gt;:q&lt;/code&gt;).&lt;/p&gt;
-
-&lt;h3 id=&#34;vimrc-preferences&#34;&gt;.vimrc preferences&lt;/h3&gt;
-
-&lt;h4 id=&#34;command-history-vergroten&#34;&gt;Command history vergroten&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;:set history=1000
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;shortcut-keys-mappen&#34;&gt;Shortcut keys mappen&lt;/h4&gt;
-
-&lt;p&gt;voorbeeld:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;map &amp;lt;C-J&amp;gt; &amp;lt;C-W&amp;gt;j&amp;lt;C-W&amp;gt;_
-map &amp;lt;C-K&amp;gt; &amp;lt;C-W&amp;gt;k&amp;lt;C-W&amp;gt;_
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;boeiende-plugins&#34;&gt;Boeiende plugins&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Jasmine JS Vim: &lt;a href=&#34;https://github.com/claco/jasmine.vim&#34;&gt;https://github.com/claco/jasmine.vim&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Vim Coffeescript hilighting: &lt;a href=&#34;https://github.com/kchmck/vim-coffee-script&#34;&gt;https://github.com/kchmck/vim-coffee-script&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Vi(m) tips &amp;amp; tricks Externe tutorials en manuals  http://www.aip.de/~weber/doc/gs/node137.html - short basic editing intro http://www.cs.fsu.edu/general/vimanual.html - full vi manual http://hea-www.harvard.edu/~fine/Tech/vi.html - complete key binding guide
+ http://vim.wikia.com/wiki/Word_wrap_without_line_breaks -&amp;gt; Zeer goede Vi wiki
+ http://www.oualline.com/vim-cook.html
+  Dé Vi Man page: http://vimdoc.sourceforge.net/htmldoc/help.html
+Basic editing ^ Command ^ Function ^ | e | start editing mode @ cursor position | | a | start editing mode @ AFTER cursor position | | R | start replace mode @ cursor position | | !</description>
     </item>
     
   </channel>

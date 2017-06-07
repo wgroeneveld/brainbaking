@@ -2,13 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Snippets on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/snippets/index.xml</link>
+    <link>http://www.brainbaking.com/tags/snippets/</link>
     <description>Recent content in Snippets on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/snippets/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/snippets/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>snippets</title>
@@ -16,79 +19,9 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/javascript/snippets/</guid>
-      <description>
-
-&lt;h1 id=&#34;losse-javascript-snippets&#34;&gt;Losse Javascript Snippets&lt;/h1&gt;
-
-&lt;h2 id=&#34;interessante-links&#34;&gt;Interessante links&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://javascript.crockford.com/prototypal.html&#34;&gt;http://javascript.crockford.com/prototypal.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;text-width&#34;&gt;Text Width&lt;/h2&gt;
-
-&lt;p&gt;Nut: Bereken tekst breedtes op een browser scherm onafhankelijk van de container waar hij in zit.
-Waarom: &lt;code&gt;$(&amp;quot;bla&amp;quot;).getWidth()&lt;/code&gt; gaat altijd rekening houden met de bovenliggende container style!
-Dit voegt eerst een lege span toe aan de body, haalt de width op en smijt de span terug weg.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;String.prototype.getTextWidth = function() {
-        var sensor = $j(document.createElement(&amp;quot;span&amp;quot;));
-        sensor.append(this.toString());
-        $j(&amp;quot;body&amp;quot;).append(sensor);
-        var width = sensor.width();
-        sensor.remove();
-        return width;
-} 
-
-// usage:
-&amp;quot;zever&amp;quot;.getTextWidth()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;##Verander element dimensies&lt;/p&gt;
-
-&lt;p&gt;Normaal gezien kan dit perfect:&lt;br/&gt;&lt;br/&gt;
-&lt;code&gt;$j(&amp;quot;#div&amp;quot;).width()&lt;/code&gt; en &lt;code&gt;.height()&lt;/code&gt;
-maar natuurlijk werkt dit niet in &lt;strong&gt;IE&lt;/strong&gt;. Daar moet je letterlijk de CSS properties van width en height aanpassen:&lt;br/&gt;&lt;br/&gt;
-&lt;code&gt;$j(&amp;quot;#div&amp;quot;).css({width: x, height: y})&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Dit geeft geen fout in Explorer maar doet gewoonweg niets, dus opletten!&lt;/p&gt;
-
-&lt;h2 id=&#34;makkelijk-string-naar-boolean-converteren&#34;&gt;Makkelijk String naar Boolean converteren&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;String.prototype.toBoolean = function() {
-return (/^true$/i).test(this);
-};
-
-&amp;quot;lala&amp;quot;.toBoolean() ###### false;
-&amp;quot;true&amp;quot;.toBoolean() ###### true;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;############= Currying &amp;amp; Applying ############=&lt;/p&gt;
-
-&lt;p&gt;Zonder &lt;strong&gt;Prototype JS&lt;/strong&gt; (built-in &lt;code&gt;curry&lt;/code&gt; functie, voor jQuery zijn er plugins)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;(function() {
-
-    var slice = Array.prototype.slice;
-    
-    Function.prototype.curry = function() {
-        if(!arguments.length) return this;
-        
-        var curryArgs = slice.call(arguments, 0);
-        var myFunction = this;
-        
-        return function() {
-            var functionArgs = slice.call(arguments, 0);
-            myFunction.apply(this, curryArgs.concat(functionArgs));
-        }
-    };
-    
-    Function.prototype.applyArgs = function(thisObj, args) {
-        return this.apply(thisObj, slice.call(args, 0));
-    };
-
-})();
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Losse Javascript Snippets Interessante links http://javascript.crockford.com/prototypal.html
+Text Width Nut: Bereken tekst breedtes op een browser scherm onafhankelijk van de container waar hij in zit. Waarom: $(&amp;quot;bla&amp;quot;).getWidth() gaat altijd rekening houden met de bovenliggende container style! Dit voegt eerst een lege span toe aan de body, haalt de width op en smijt de span terug weg.
+String.prototype.getTextWidth = function() { var sensor = $j(document.createElement(&amp;quot;span&amp;quot;)); sensor.append(this.toString()); $j(&amp;quot;body&amp;quot;).append(sensor); var width = sensor.width(); sensor.</description>
     </item>
     
   </channel>

@@ -2,52 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Games on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/games/index.xml</link>
+    <link>http://www.brainbaking.com/tags/games/</link>
     <description>Recent content in Games on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <atom:link href="http://www.brainbaking.com/tags/games/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/games/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/</link>
+      <link>http://www.brainbaking.com/wiki/games/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/</guid>
-      <description>
-
-&lt;h1 id=&#34;games-home&#34;&gt;games &amp;gt;&amp;gt; Home&lt;/h1&gt;
-
-&lt;h2 id=&#34;inhoudsopgave&#34;&gt;Inhoudsopgave&lt;/h2&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-</description>
+      <guid>http://www.brainbaking.com/wiki/games/</guid>
+      <description>games &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/</link>
+      <link>http://www.brainbaking.com/wiki/games/wizardry8/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/</guid>
-      <description>
-
-&lt;h1 id=&#34;wizardry-8&#34;&gt;Wizardry 8&lt;/h1&gt;
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;div style######&#34;text-align: center;&#34;&gt;&lt;img title&#34;Main title screen&#34; src######&#34;../../../games/Wizardry8/screens/1_titel.jpg&#34; alt&#34;Main title screen&#34; /&gt;
-&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;classes&#34;&gt;Classes&lt;/h2&gt;
-
-&lt;p&gt;&lt;img style=&#39;&#39; src=&#39;http://www.brainbaking.com/img/indexmenu&gt;.|js navbar nocookie&amp;rsquo;&amp;gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;parties&#34;&gt;Parties&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.brainbaking.com/wiki/games/wizardry8/parties/&#34;&gt;Parties I&amp;rsquo;ve used in the past&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://www.brainbaking.com/wiki/games/wizardry8/</guid>
+      <description>Wizardry 8  
+Classes .|js navbar nocookie&amp;rsquo;&amp;gt;
+Parties Parties I&amp;rsquo;ve used in the past</description>
     </item>
     
     <item>
@@ -56,202 +39,8 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/games/wizardry8/parties/</guid>
-      <description>
-
-&lt;h1 id=&#34;wizardry-8-parties&#34;&gt;Wizardry 8 Parties&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Party Number ONE - 31 July 2003&lt;/li&gt;
-&lt;li&gt;Party Number TWO - 04 June 2004&lt;/li&gt;
-&lt;li&gt;Party Number THREE - 21 January 2005
-&lt;a name=&#34;top&#34;&gt;&lt;/a&gt;
-Remember, You&amp;rsquo;ll need something like &lt;a href=&#34;https://en.wikipedia.org/wiki/7zip&#34; target=&#34;_blank&#34;&gt;7zip&lt;/a&gt;
- to extract the file&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;party-numer-one-31-july-2003&#34;&gt;Party Numer ONE - 31 July 2003&lt;/h2&gt;
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;p style######&#34;text-align: right;&#34;&gt;&lt;a class&#34;null&#34; name=&#34;party1&#34;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;table border######&#34;0&#34; cellspacing&#34;20&#34; cellpadding=&#34;10&#34;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/lizardman.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: This was probably the easiest char I&amp;rsquo;ve ever played in wizardry 8&amp;hellip; And he&amp;rsquo;s quite boring too. Well they are excellent professions early &amp;amp; mid-game those fighters, but tend to be very boring late-game because everything is maxed. They level fast too. He liked to whack every living being he saw - poor Crock&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Lizardman Fighter
-&lt;strong&gt;Name&lt;/strong&gt;: Slickrokka Rwhak
-&lt;strong&gt;Strength&lt;/strong&gt;: melee combat, sword &amp;amp; shield&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/dwarf.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: I was very disappointed when this guy reached level 10 (in Trynton). He just missed 75% of the blows and his magic was quite weak. The problem was not the profession &amp;ldquo;priest&amp;rdquo; but me assigning wrong skill points, hehe&amp;hellip; Well the first time everything goes wrong I guess.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Dwarf Priest
-&lt;strong&gt;Name&lt;/strong&gt;: Borlak Torgal
-&lt;strong&gt;Strength&lt;/strong&gt;: Divinity, melee combat using mace &amp;amp; shield&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/hobbit1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Holy crap this guy can really dish out some serious damage! He single handly managed to disable several enemies before the others even reached them. The thieves daggers, 10% kill is very powerfull. Including the x5 backstab multiplier and locks &amp;amp; traps. He levelled quite fast too. Amazing easy!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Hobbit Rogue
-&lt;strong&gt;Name&lt;/strong&gt;: Bilbo Balings
-&lt;strong&gt;Strength&lt;/strong&gt;: melee combat, dual daggers&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/mook.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: The ranged char. Nothing much to say except her scouting skill was very very handy. I really love to scout around and the &amp;ldquo;Found something!&amp;rdquo; sound coming out of your boxes is quite satisfacting. Later I found out there also excists &amp;ldquo;Find Secrets&amp;rdquo; - and because the ranger never did great damage; she won&amp;rsquo;t go along with me the next few times&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Mook Ranger
-&lt;strong&gt;Name&lt;/strong&gt;: Mokka Uruk-hai (&lt;em&gt;lol you got that&lt;/em&gt;)
-&lt;strong&gt;Strength&lt;/strong&gt;: ranged combat, bow &amp;amp; scouting&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/faerie.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: She was the most deadly character I think, it&amp;rsquo;s a long time ago. I do know her magic spells were quite great and effective too. But after level 15 she didn&amp;rsquo;t really learn any interesing new spells and became quite boring. Because the samurai also uses wizardry, I won&amp;rsquo;t have another mage in my next parties&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Faerie Mage
-&lt;strong&gt;Name&lt;/strong&gt;: Elunah Flyby
-&lt;strong&gt;Strength&lt;/strong&gt;: Wizardry, throwing &amp;amp; sling&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/hobbit2.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Everyone and their grandmother were talking about the famous &amp;ldquo;know-it-all&amp;rdquo; guy, the bard. Yeah whatever I tought, but I still wanted to try it out just to be sure nobody was making a fool out of me. Well I have to say she did quite well, especially after finding some nice lutes which is quite easy to do. The +STAT item gear you can aquire makes it even better!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Hobbit Bard
-&lt;strong&gt;Name&lt;/strong&gt;: Vanessa Sjilitor
-&lt;strong&gt;Strength&lt;/strong&gt;: Music &amp;amp; melee combat, not sure&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;p class=&#34;vspace&#34;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt; - My first attempt to Wizardry 8 failed, just like all of you guys, hehehe. I lost track of my character progression tables when I came back from Marten&amp;rsquo;s Bluff and stopped playing for a while. After &amp;ldquo;researching&amp;rdquo; some, the second try was a very nice attempt to ascend. Or let&amp;rsquo;s say better than the first one, hehe. The fighter &amp;amp; rogue were good but boring, the mage had too less spells, the priest couln&amp;rsquo;t hit anything and the ranger didn&amp;rsquo;t damage anything. They are all around level 13. Actually I&amp;rsquo;m lying right now; this is not the first party. I did 2 parties before, but they aren&amp;rsquo;t even worth this page, go figure.&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;party-numer-two-04-june-2004&#34;&gt;Party Numer TWO - 04 June 2004&lt;/h2&gt;
-
-&lt;p&gt;&lt;HTML&gt;&lt;/p&gt;
-
-&lt;p style######&#34;text-align: right;&#34;&gt;&lt;a class&#34;null&#34; name######&#34;party2&#34;&gt;&lt;/a&gt;[ &lt;a href&#34;#top&#34;&gt;Top&lt;/a&gt; ]&lt;/p&gt;
-
-&lt;p&gt;&lt;table border######&#34;0&#34; cellspacing&#34;20&#34; cellpadding=&#34;10&#34;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/felpurr.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: After the first game, I fell in love with swords. Oh, and I also disliked the mage - needless to say the samurai was my guy? And he damn right slices &amp;amp; dices trough almost everything especially with the muramasa blade, horray I got lucky indeed! Too bad his wizardry still sucks at level 19&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Felpurr Samurai
-&lt;strong&gt;Name&lt;/strong&gt;: Griswald Tigerhide
-&lt;strong&gt;Strength&lt;/strong&gt;: Dual swords melee &amp;amp; wizardry&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/mook.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Couldn&amp;rsquo;t miss the ranger I had before, and this one does it slightly better with increased number of attacks each round and a slight percentage instant-kill because of her quite high level. She&amp;rsquo;s all right, nothing more nothing less.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Mook Ranger
-&lt;strong&gt;Name&lt;/strong&gt;: Chewbakka Furball
-&lt;strong&gt;Strength&lt;/strong&gt;: Bows &amp;amp; some alchemy&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/human1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: The monk, a quite weird profession. Once you have the taste, you cannot and will not stop! This guy rocked the whole group!! Yup you heard me, monks are really really cool when their skills begin to develop, but are quite hard to keep at lower level. This french poor guy was hexed by the demoness but single-handly instant-killed her, BLAM! A spare insanity is also nice!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Human Monk
-&lt;strong&gt;Name&lt;/strong&gt;: Petrovski &lt;span class=&#34;wikiword&#34;&gt;LaFerrez&lt;/span&gt;
-&lt;strong&gt;Strength&lt;/strong&gt;: melee martial arts &amp;amp; some psionics&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/ninja.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Gotta try the Cane of Corpus, can&amp;rsquo;t resist the urge to&amp;hellip;. &lt;em&gt;sigh&lt;/em&gt; For those of you who don&amp;rsquo;t know: The &lt;a class######&#34;urllink&#34; rel&#34;nofollow&#34; href######&#34;http://www.flamestryke.com/wizardry8/itemsw8/weaponwiz8/staffs-caneofcorpus.html&#34; target&#34;_blank&#34;&gt;Destructive Weapon&lt;/a&gt; can only be wielded by Fairy Ninja&amp;rsquo;s.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Faery Ninja
-&lt;strong&gt;Name&lt;/strong&gt;: Sandrina Bluewing
-&lt;strong&gt;Strength&lt;/strong&gt;: melee dual paralyzing crazyness!&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/elf1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: So, the mage didn&amp;rsquo;t quite work out that good. Will the bishop do? Yes he will, if you are a little patient training up his skills! This guy is truly a unique star in this unbelevable party! Woah I love him so much&amp;hellip; Too bad his mace skill didn&amp;rsquo;t work out that well.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Elf Bishop
-&lt;strong&gt;Name&lt;/strong&gt;: Abraham Fastcast
-&lt;strong&gt;Strength&lt;/strong&gt;: Every single magic realm!&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/human3.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Wanted to try some other specialities of the bard because the previous one didn&amp;rsquo;t really work out. This one hacks quite a bit too with that Fang thing. My samurai had a better weapon anyway. And she has better &amp;amp; bigger instruments&amp;hellip; Pandemonium does hurt!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Human Bard
-&lt;strong&gt;Name&lt;/strong&gt;: Carla Fingerprint
-&lt;strong&gt;Strength&lt;/strong&gt;: Music &amp;amp; melee combat / sword&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;p class=&#34;vspace&#34;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt; - My first attempt to Wizardry 8 failed, - but what about the second one? I might actually say this is the best and most interesing party I&amp;rsquo;ve ever played with in a Roleplaying game! The monk, bishop &amp;amp; samurai became my favourite chars, that&amp;rsquo;s why I want to enlighten you some more about those professions (see navigation). We had quite a good time, until boredom striked me again - at level 19&amp;hellip; Too bad they didn&amp;rsquo;t ascend eihter, they eventually will some day I guess.&lt;/p&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;party-numer-three-21-january-2005&#34;&gt;Party Numer THREE - 21 January 2005&lt;/h2&gt;
-
-&lt;p&gt;&lt;HTML&gt;&lt;/p&gt;
-
-&lt;p style######&#34;text-align: right;&#34;&gt;&lt;a class&#34;null&#34; name######&#34;party3&#34;&gt;&lt;/a&gt;[ &lt;a href&#34;#top&#34;&gt;Top&lt;/a&gt; ]&lt;/p&gt;
-
-&lt;p&gt;&lt;table border######&#34;0&#34; cellspacing&#34;20&#34; cellpadding=&#34;10&#34;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/dracon.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Dracons look cool and have acid breath. They also go nicely with the aggressive voices (#1 especially). Oh, and I like samurais - see party 2. Conclusion: the second samurai with hopefully better magic because this time I&amp;rsquo;m going to train some.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Dracon Samurai
-&lt;strong&gt;Name&lt;/strong&gt;: Hooktail Acidbreath Strength: melee dual swords&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/rawulf2.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: The bards are retiring and I wanted to try something brand new. The lord or valk, and with some new polearms with Lana&amp;rsquo;s mod (version 2), I chose this one. She won&amp;rsquo;t forget to pillage the bodies, if you know what I mean, hehe. This&amp;rsquo;ll be the better priest!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Rawulf Valkyrie
-&lt;strong&gt;Name&lt;/strong&gt;: Ellorrienna Dreadsphere
-&lt;strong&gt;Strength&lt;/strong&gt;: melee polearms &amp;amp; some Divinity&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/human2.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Why should I skip the monk? What a stupid suggestion. I love &amp;lsquo;em! Exactly the same build, except some more strength and psionic skills. Hopefully he&amp;rsquo;ll do just fine&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Human Monk
-&lt;strong&gt;Name&lt;/strong&gt;: Jackie &lt;span class=&#34;wikiword&#34;&gt;SilverRaven&lt;/span&gt;
-&lt;strong&gt;Strength&lt;/strong&gt;: melee martial &amp;amp; psionics&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/felpurr.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: All right, the fist ninja was great BECAUSE the weapon was great. What about a non-faery ninja? Thanks to the modification, this one is doing extremely good! Nobody touches him with throwing 10% kill daggers and whacking dual maces with high %KO. Horray!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Male Felpurr Ninja
-&lt;strong&gt;Name&lt;/strong&gt;: Grommak Tigerhide
-&lt;strong&gt;Strength&lt;/strong&gt;: Throwing, alchemy and dual maces&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/elf2.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: I can&amp;rsquo;t miss any magic. She is great, except her &amp;ldquo;forecasting&amp;rdquo; voice. But thankfully, you can change that on the fly, &lt;em&gt;pfew&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Elf Bishop
-&lt;strong&gt;Name&lt;/strong&gt;: Cristinah Fleshseeker
-&lt;strong&gt;Strength&lt;/strong&gt;: Every magic realm &amp;amp; staff/shield&lt;/td&gt;
-&lt;td valign=&#34;top&#34;&gt;
-&lt;div&gt;&lt;span class######&#34;lfloat&#34;&gt; &lt;img src&#34;/games/Wizardry8/mook.jpg&#34; alt=&#34;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Attitude&lt;/strong&gt;: Finally a first try to the gadgeteer. I quite like him so far, but it&amp;rsquo;s not fair he indeed does have too less gadgets, compared to the bard. And you have to cross the whole world in order to combine 2 items into 1 usable object!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Type&lt;/strong&gt;: Female Mook Gadgeteer
-&lt;strong&gt;Name&lt;/strong&gt;: Flurcoat Bullethat
-&lt;strong&gt;Strength&lt;/strong&gt;: Modern weapons &amp;amp; gadgies&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;p class=&#34;vspace&#34;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt; - This was/is going to be a perfection of the second try. It quite is, right now! If you really have the patience to wait, train, rest and wait again, this group has most potential of them all. The gadgeteer is quite good but not good enough for me - I did not use Lana&amp;rsquo;s mod v3-4 yet. &lt;em&gt;WARNING&lt;/em&gt; - If you want to download the savegame, you WILL need Lana/Flamestrykes &lt;a class######&#34;urllink&#34; rel&#34;nofollow&#34; href=&#34;http://www.flamestryke.com/wizardry8/miscdataw8/modnewsw8.html&#34;&gt;Final Mod v2&lt;/a&gt; or higher!&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/HTML&gt;&lt;/p&gt;
-</description>
+      <description>Wizardry 8 Parties  Party Number ONE - 31 July 2003 Party Number TWO - 04 June 2004 Party Number THREE - 21 January 2005  Remember, You&amp;rsquo;ll need something like 7zipto extract the file&amp;hellip;  Party Numer ONE - 31 July 2003  
+   Attitude: This was probably the easiest char I&amp;rsquo;ve ever played in wizardry 8&amp;hellip; And he&amp;rsquo;s quite boring too. Well they are excellent professions early &amp;amp; mid-game those fighters, but tend to be very boring late-game because everything is maxed.</description>
     </item>
     
     <item>
@@ -260,60 +49,7 @@ Remember, You&amp;rsquo;ll need something like &lt;a href=&#34;https://en.wikipe
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/games/wizardry8/thebishop/</guid>
-      <description>
-
-&lt;h1 id=&#34;the-bishop&#34;&gt;The Bishop&lt;/h1&gt;
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;div&gt;&lt;span style######&#34;float: right;&#34;&gt; &lt;img src&#34;../../games/Wizardry8/bishop.gif&#34; style=&#34;border: none;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;strong&gt;Best Race&lt;/strong&gt;:
-&lt;em&gt;Fairy&lt;/em&gt;: best INT &amp;amp; SPE. Downside: low PIE and almost no weapons/armor usable. (go for sprite daggers if you want close-combat)
-&lt;em&gt;Elf&lt;/em&gt;: good INT, PIE &amp;amp; DEX. Downside: less than fairies but you&amp;rsquo;ll be able to use better armor &amp;amp; weapons (use staffs, maces &amp;amp; shield - you need AC - or throwing)
-Other good races: gnome, human. Mook for SEN + DEX.
-&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Controlling attriubutes&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Intelligence (max ASAP for power cast &amp;amp; keep on pumping this power skill!)&lt;/li&gt;
-&lt;li&gt;Piety (handy Iron Will power skill, but not neccesary. You&amp;rsquo;ll need this for priest spells e.d.)&lt;/li&gt;
-&lt;li&gt;Speed (Very much needed for protection spells + 4 Armor Class when maxed)&lt;/li&gt;
-&lt;li&gt;Dexterity (Psionic controlilng attrib, don&amp;rsquo;t raise too high)&lt;/li&gt;
-&lt;li&gt;Senses (Psionic controlilng attrib, don&amp;rsquo;t raise too much at all)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Controlling skills&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Every wizardry book (wizardry, psionics, divinity, alchemy)&lt;/li&gt;
-&lt;li&gt;Artifacts (don&amp;rsquo;t put too many points, instead practise by mixing potions &amp;amp; identifying!)&lt;/li&gt;
-&lt;li&gt;a Ranged skill when your magic points has run out: throwing &amp;amp; sling (don&amp;rsquo;t put too much)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;or if you like, try to go for the staff &amp;amp; wand skill. just practise trough combat, that&amp;rsquo;ll do.&lt;br/&gt;&lt;br/&gt;
-If you are going for the Elf, you&amp;rsquo;ll want the MACE skill + some shield. Very nice AC bonus, and a good weapon.&lt;/p&gt;
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;div style######&#34;text-align: center;&#34;&gt;&lt;img title&#34;The Bishop Inventory&#34; src######&#34;../../games/Wizardry8/bishopInv.jpg&#34; alt&#34;The Bishop Inventory&#34; /&gt;
-&lt;em&gt;The Bishop Inventory Window&lt;/em&gt;&lt;/div&gt;
-&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;p&gt;Training the different skills is very difficult. You should at least try to cast a variety of spells in combat. Start with a protective spell, use some healing, cast insanity and start throwing rocks. This makes use of all 4 realms much better. Another tip: use 1 level of rogue (they level quite fast, you&amp;rsquo;ll need 1000 XP instead of 1600 as specialist class) and train stealth - a lot-. Every 10 points in the skill allows you to increase your AC by 1. Or, if you like to train a lot, you&amp;rsquo;ll need to do the following:&lt;/p&gt;
-
-&lt;p&gt;the key thing to keep in mind is that many spells go into several different books (e.g. healing falls under divinity, alchemy and psionics) and when you cast a spell the book that has a chance to increase is whichever book has the HIGHEST skill at the time you cast the spell. So if you want to use a spell to increase wizardry, and that spell also happens to be under alchemy, you want to make sure that when you are ready to power-skill it your wizardry is higher than your alchemy.&lt;/p&gt;
-
-&lt;p&gt;The best way to train all four books in my experience is to use knock knock for wizardry (I&amp;rsquo;ve never found another good spell for wizardry). Since you cannot also use knock knock for alchemy, you should use healing (cure light condition e.d. for your water realm: gas chamber room in monastery) for alchemy. It would be a waste to use healing for divinity since divine traps works so nicely there (charm works too but is slower). Finally, that leaves mindread/charm for psionics. Of course, the more realms you increase the better.&lt;/p&gt;
-
-&lt;p&gt;Alchemy can also be increased by mixing potions, especially when you are in a location where you can buy the ingredients. This may even be faster than healing after you reach skill level 40 and can mix cure disease. At skill level 50 mixing renewal really boosts alchemy quickly. Split every newly mixed potion and try to identify it to boost your artifacts skill. You&amp;rsquo;ll also want to cast identify (buy a book from Anna at the fish store in Arnika) to raise your divinity. Some recipes:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;light heal + poison redux / bless (req 15)&lt;/li&gt;
-&lt;li&gt;light heal + mod heal (req 15)&lt;/li&gt;
-&lt;li&gt;mod heal + mod stamina (req 20)&lt;/li&gt;
-&lt;li&gt;cure disease + heavy heal (MONEY MAKER!) (req 40)&lt;/li&gt;
-&lt;li&gt;sneeze powder + flash powder (req 50)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>The Bishop   Best Race: Fairy: best INT &amp;amp; SPE. Downside: low PIE and almost no weapons/armor usable. (go for sprite daggers if you want close-combat) Elf: good INT, PIE &amp;amp; DEX. Downside: less than fairies but you&amp;rsquo;ll be able to use better armor &amp;amp; weapons (use staffs, maces &amp;amp; shield - you need AC - or throwing) Other good races: gnome, human. Mook for SEN + DEX.</description>
     </item>
     
     <item>
@@ -322,52 +58,10 @@ If you are going for the Elf, you&amp;rsquo;ll want the MACE skill + some shield
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/games/wizardry8/themonk/</guid>
-      <description>
-
-&lt;h1 id=&#34;wizardry-8-class-the-monk&#34;&gt;Wizardry 8 Class: the Monk&lt;/h1&gt;
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;div&gt;&lt;span style######&#34;float: right;&#34;&gt; &lt;img src&#34;../../games/Wizardry8/monk.gif&#34; style=&#34;border: none;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Best Race&lt;/strong&gt;:
-&lt;em&gt;Elf&lt;/em&gt;: good starting INT, PIE, DEX. Ok SEN but low VIT&lt;br/&gt;&lt;br/&gt;
-&lt;em&gt;Felpurr&lt;/em&gt;: Very good SPE, good DEX/SEN. Lower INT/PIE&lt;br/&gt;&lt;br/&gt;
-&lt;em&gt;Human&lt;/em&gt;: overall everything OK.&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Controlling attriubutes&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Dextirity (You need the AC badly, + #attacks is very nice. Also needed for close combat, stealth &amp;amp; martial arts)&lt;/li&gt;
-&lt;li&gt;Speed (See DEX, same + initiative bonusses for insanity-ing your opponent. mwhaha!)&lt;/li&gt;
-&lt;li&gt;Senses (Criticall strike, does that sound familiar? and decent amounth of &lt;span class=&#34;wikiword&#34;&gt;ToHIT&lt;/span&gt;/AR. + needed for psionics)&lt;/li&gt;
-&lt;li&gt;Intelligence (various things like easier developing magical and seoncd most controlling attrib)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Controlling Skills&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Martial Arts (DEX/SPE based, adds damage and &lt;span class=&#34;wikiword&#34;&gt;ToHIT&lt;/span&gt;/AR for your monk. The true power!)&lt;/li&gt;
-&lt;li&gt;Critical Strike (SEN/SPE; Horray, +#Hits from close combat and your stats and we&amp;rsquo;re set!)&lt;/li&gt;
-&lt;li&gt;Stealth (DEX/INT; you NEED to have AC. You simply need it - cannot wear any armor except robes&amp;hellip;)&lt;/li&gt;
-&lt;li&gt;Close Combat (DEX/SEN; secondary skill but always handy to have)&lt;/li&gt;
-&lt;li&gt;Psionics (SEN/INT; it&amp;rsquo;s always nice to cast a terrible spell before engaging fist-to-fist with your high speed)&lt;/li&gt;
-&lt;li&gt;Eventually throwing (I do not encourage, use your magic instead!) and a staff (the Bo&amp;rsquo;s/Staff of Doom) &amp;gt;&amp;gt; STR based which is not good&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;div style######&#34;text-align: center;&#34;&gt;&lt;img title&#34;The monk&#34; src######&#34;../../games/Wizardry8/monkInv.jpg&#34; alt&#34;The monk&#34; /&gt;
-&lt;em&gt;The Monk Inventory Window&lt;/em&gt;&lt;/div&gt;
-&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;p&gt;Do you go with a quick, agile Monk, capable of delivering an insane amount of attacks with a chance to critical on each blow landed? (Maximize as fast as possible SPE and DEX. Then go for SEN and INT) The tradeoff is that you wont deal much damage per hit. Or do you develop a Monk capable of dishing out incredible amounts of damage with each hit and able to withstand even the mightiest blow from the enemy? The tradeoff with this route is that you won&amp;rsquo;t have as many attacks per round when compared to the above setup. (Maximize first DEX, and SPE/STR, go for SEN/INT after that)&lt;/p&gt;
-
-&lt;p&gt;Don&amp;rsquo;t forget you are not able to use most weapons and armor in the game, regardless of your race. So, stealth/Dextirity/Speed are indeed VERY important. Also try to keep up your Psionics skill which enables you to mislead the enemy by &lt;span class=&#34;wikiword&#34;&gt;KOing&lt;/span&gt; or casting insanity. Oh yeah, maxed Dextirity unlocks reflexion with increases your Armor Class even more. Wo-hah, a dodging moddafokking casting instant-killing monk at your service. Spoken about KO: At higher levels (not sure at which level, though), Monks learn the ability to Knock-Out opponents. You won&amp;rsquo;t see any message, nor see anything on the Character Screen pertaining to it, but you&amp;rsquo;ll see it happen in combat. K.O.ing the opponent is AWESOME. It makes the opponent useless in combat, and allows you to deliver 2 times the damage to them while they&amp;rsquo;re in such a state. This is another reason why you want your Monk&amp;rsquo;s Initiative at high levels. Hit first, KO the opponent, and your other characters can take them down with ease.&lt;/p&gt;
-
-&lt;p&gt;Why Wand and Staff? Well, you&amp;rsquo;ll probably come across the awesome Zatoichi Bo sometime during your game. This weapon is only usable by Monks and Samurais. You&amp;rsquo;ll want to give it to your Monk since Samurais can use ranged offensive magic more easily (wizardry ###### offensive, psionics  mind-driven). This weapon will allow your Monk to hit enemies at extended range. Sometimes during combat, an enemy will be juuuuust outside of Melee range. A nice Zatoichi Bo in a Monk&amp;rsquo;s hands allows him/her to still partake in combat should the situation arise. There are a couple other Bos found in the game, but their power is nowhere near that of the Zatoichi Bo.&lt;/p&gt;
-
-&lt;p&gt;Practise psionics with healing, charming and mindreading (last works best, higher INT means faster increasing skill points. You won&amp;rsquo;t need Power Cast)&lt;/p&gt;
-</description>
+      <description>Wizardry 8 Class: the Monk   
+Best Race: Elf: good starting INT, PIE, DEX. Ok SEN but low VIT Felpurr: Very good SPE, good DEX/SEN. Lower INT/PIE Human: overall everything OK.
+Controlling attriubutes:
+ Dextirity (You need the AC badly, + #attacks is very nice. Also needed for close combat, stealth &amp;amp; martial arts) Speed (See DEX, same + initiative bonusses for insanity-ing your opponent. mwhaha!) Senses (Criticall strike, does that sound familiar?</description>
     </item>
     
     <item>
@@ -376,51 +70,10 @@ If you are going for the Elf, you&amp;rsquo;ll want the MACE skill + some shield
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/games/wizardry8/theninja/</guid>
-      <description>
-
-&lt;h1 id=&#34;wizardry-8-class-the-ninja&#34;&gt;Wizardry 8 class: the Ninja&lt;/h1&gt;
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;div&gt;&lt;span style######&#34;float: right;&#34;&gt; &lt;img src&#34;../../games/Wizardry8/ninja.gif&#34; style=&#34;border: none;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Best Race&lt;/strong&gt;:
-&lt;em&gt;Felpurr&lt;/em&gt;: very good SPE, decend DEX/SEN
-&lt;em&gt;Hobbit&lt;/em&gt;: good SEN, DEX and decent SPE, most bonus points.
-&lt;em&gt;Fairy&lt;/em&gt;: Very good INT, Ok DEX/SEN. For Cane of Corpus the best weapon (1handled short-range staff, Don Barlone in Trynton)
-&lt;em&gt;Mook&lt;/em&gt;: very good DEX, SEN. Downside: Very low SPE &amp;amp; humans of course&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Controlling attriubutes&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Senses (max ASAP for Eagle Eye!)&lt;/li&gt;
-&lt;li&gt;Dexterity (max ASAP, controlling attrib for many skills)&lt;/li&gt;
-&lt;li&gt;Speed (more hits per round &amp;amp; Initiative for using gadgets)&lt;/li&gt;
-&lt;li&gt;Intelligence (controlling attrib for traps &amp;amp; alchemy magic)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As a ninja, you have access to the thrown criticals special skill. It would be wise to invest into throwing stuff like shurikens/slings because you&amp;rsquo;ll be able to archive a nice #hits per round and a good critical strike skill maximizes the chance of instant-killing with every hit. If it doesn&amp;rsquo;t equip a lot of alignmentchanging items like KO/Poison/etc because you also automatically penetrate! Keep in mind, ranged user = maxing senses, keeping dex very high. just like the samurai you&amp;rsquo;ll want many hits, hence the speed factor.&lt;/p&gt;
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;div style######&#34;text-align: center;&#34;&gt;&lt;img title&#34;The ninja&#34; src######&#34;../../games/Wizardry8/ninjaInv.jpg&#34; alt&#34;The ninja&#34; /&gt;
-&lt;em&gt;The Ninja Skill Index&lt;/em&gt;
-&lt;/div&gt;
-&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Controlling skills&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Critical Strike (this also increases as you use your throwing weapons. Keep highest!)&lt;/li&gt;
-&lt;li&gt;Stealth (you can&amp;rsquo;t wear any good armor&amp;hellip; You simply need to increase AC)&lt;/li&gt;
-&lt;li&gt;Throwing &amp;amp; sling (auto-penetrate + thrown criticals = ranged character.)&lt;/li&gt;
-&lt;li&gt;Locks &amp;amp; traps (if you don&amp;rsquo;t have a gadgie/bard/rogue, otherwise it&amp;rsquo;s a waste of precious skill points)&lt;/li&gt;
-&lt;li&gt;Dual weapons (WARNING: dualling ranged items ALSO needs this skill! read dual section below)&lt;/li&gt;
-&lt;li&gt;Pickpocketing is also possible but stronly disencouraged since the v1024 patch makes things not worth it.&lt;/li&gt;
-&lt;li&gt;If you like to go for close-combat, you have access to the Martial Arts skill like the monk.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Other advised close-range weapons are the staff (extended reach, some good usable by the ninja) and of course swords (maybe even dual wielding) because they are also usable by ninjas. Don&amp;rsquo;t use swords if you have another sword-user, you don&amp;rsquo;t have enough STR and not enough stat points to increase close-combat damage! Some maces like cat-o-nine tails and vampire chain are also usable by the ninja. Polearms are better tough, some are ninja-only! Most weapons &amp;amp; armor aren&amp;rsquo;t usable like the monk, so keep your AC as high as possible by maxing out DEX, SPE and the stealth skill. Alchemy (mixing potions is a good way to increase this skill, also heal or knock-knock on the 8-tumbler vault in Arnika) requires DEX/INT, and higher int means faster training and maybe powercast which decreases enemy defence.&lt;/p&gt;
-</description>
+      <description>Wizardry 8 class: the Ninja   
+Best Race: Felpurr: very good SPE, decend DEX/SEN Hobbit: good SEN, DEX and decent SPE, most bonus points. Fairy: Very good INT, Ok DEX/SEN. For Cane of Corpus the best weapon (1handled short-range staff, Don Barlone in Trynton) Mook: very good DEX, SEN. Downside: Very low SPE &amp;amp; humans of course
+Controlling attriubutes:
+ Senses (max ASAP for Eagle Eye!) Dexterity (max ASAP, controlling attrib for many skills) Speed (more hits per round &amp;amp; Initiative for using gadgets) Intelligence (controlling attrib for traps &amp;amp; alchemy magic)  As a ninja, you have access to the thrown criticals special skill.</description>
     </item>
     
     <item>
@@ -429,53 +82,8 @@ If you are going for the Elf, you&amp;rsquo;ll want the MACE skill + some shield
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/games/wizardry8/thesamurai/</guid>
-      <description>
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;div&gt;&lt;span style######&#34;float: right;&#34;&gt; &lt;img src&#34;../../games/Wizardry8/samurai.gif&#34; style=&#34;border: none;&#34; /&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;wizardry-8-class-the-samurai&#34;&gt;Wizardry 8 Class: the Samurai&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;Best Race&lt;/strong&gt;:
-&lt;em&gt;Hobbit&lt;/em&gt;: best bonus points; good DEX &amp;amp; SEN
-&lt;em&gt;Felpurr&lt;/em&gt;: Best SPE, fairly good DEX &amp;amp; SEN
-&lt;em&gt;Mook&lt;/em&gt;: High SEN, DEX. &amp;amp; can wield Gaints Sword; KO 30%!!! (2handled) But Very low SPE.
-&lt;em&gt;Dracon&lt;/em&gt;: Very good DEX, STR, and Ok SPE. Bonus VIT. Warning: very low SEN!
-&lt;strong&gt;Controlling attriubutes&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Strength (best attrib for adding Attack Rating &amp;amp; to Hit points. Also adds damage, second controlling attrib for many skills)&lt;/li&gt;
-&lt;li&gt;Dexterity (controlling attrib for many skills, very good Hit &amp;amp; AR + extra attacks / round &amp;gt;&amp;gt; critical kills++)&lt;/li&gt;
-&lt;li&gt;Speed (Initiative - which is not needed -, +AC - which is not needed but handy -, extra attacks - which is VERY needed)&lt;/li&gt;
-&lt;li&gt;Senses (half AR &amp;amp; &lt;span class=&#34;wikiword&#34;&gt;ToHit&lt;/span&gt; of STR, Controlling attrib for Critical Strike which is what the sammy is quite all about)&lt;/li&gt;
-&lt;li&gt;Intelligence (if you want to cast wizardry spells, and want to do it good.)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ry to maximize STR and eventually INT for the power skills. You don&amp;rsquo;t need to keep SEN over 80 (second controlling for dual plus it only adds half of the points into hit, AR as STR or even DEX does.)&amp;hellip; Altough it is wise to keep on bumping points into dexterity because it is a controlling attribute for both close combat, your sword skill AND dual weapons!&lt;/p&gt;
-
-&lt;p&gt;&lt;HTML&gt;
-&lt;div style######&#34;text-align: center;&#34;&gt;&lt;img title&#34;The sammy&#34; src######&#34;../../games/Wizardry8/samuraiInv.jpg&#34; alt&#34;The sammy&#34; /&gt;
-&lt;em&gt;The Samurai Inventory Window&lt;/em&gt;&lt;/div&gt;
-&lt;/HTML&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Controlling Skills:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Dual weapons (you&amp;rsquo;ll want to hit as many and as often as possible for %kill percentages)&lt;/li&gt;
-&lt;li&gt;Criticall strike (see above)&lt;/li&gt;
-&lt;li&gt;Sword (25% bonus, muramasa blade has 15% kill factor and is samurai only. The ultimate weapon. Some nice off-hand things too, also daggers)&lt;/li&gt;
-&lt;li&gt;Close combat -obviously.&lt;/li&gt;
-&lt;li&gt;Wizardry when reached lvl5 - try to get power cast because it really helps to weaken enemy resistances&amp;hellip;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you want to work with staffs (some powerfull Bo&amp;rsquo;s are only usable by samurai &amp;amp; monks), ignore dual weapons and ignore sword.&lt;/p&gt;
-
-&lt;p&gt;If you want a samurai to be effective, you&amp;rsquo;ll likely want to hit as often as possible to instant kill as often as possible. So: use dual swords (highest kill rate), pump dex &amp;amp; spe for #hits, pump sen, int and str secondly for damage, hit e.d. and your magic powers (if the enemy is out of reach). I stronly disencourage any use of ranged weapons - just use your spells if you can&amp;rsquo;t reach an enemy! If you really want, you &lt;em&gt;could&lt;/em&gt; use a bow (high dex + sen anyway). You can also ignore his magic skills and boost STR some more, but that way you&amp;rsquo;re better off with a regular fighter.&lt;/p&gt;
-
-&lt;p&gt;About lightning strike special skill: I do have this feeling, though, that Lightning Strike just MIGHT be dependant on the amount of weight your Samurai is carrying. No, I don&amp;rsquo;t mean whether or not your Samura&amp;rsquo;s carrying load is over the top. I mean, for example, Samurai might Lightning Strike more often if, say, they&amp;rsquo;re carrying only 20% or less of their maximum Carrying Capacity. The reason why I think this may be is because I noticed that I get A LOT more Lightning Strikes in the beginning of the game. The ONLY things different during the beginning are 1)&amp;ndash;The enemies are of lower level, and 2)&amp;ndash;You&amp;rsquo;re only carrying about 25lbs or so with your Samurai.&lt;/p&gt;
-</description>
+      <description>Wizardry 8 Class: the Samurai Best Race: Hobbit: best bonus points; good DEX &amp;amp; SEN Felpurr: Best SPE, fairly good DEX &amp;amp; SEN Mook: High SEN, DEX. &amp;amp; can wield Gaints Sword; KO 30%!!! (2handled) But Very low SPE. Dracon: Very good DEX, STR, and Ok SPE. Bonus VIT. Warning: very low SEN! Controlling attriubutes:
+ Strength (best attrib for adding Attack Rating &amp;amp; to Hit points.</description>
     </item>
     
     <item>
@@ -484,62 +92,8 @@ If you are going for the Elf, you&amp;rsquo;ll want the MACE skill + some shield
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/games/troubleshooting/</guid>
-      <description>
-
-&lt;h1 id=&#34;troubleshooting-with-booting&#34;&gt;Troubleshooting with Booting&lt;/h1&gt;
-
-&lt;h2 id=&#34;raven-shield&#34;&gt;Raven Shield&lt;/h2&gt;
-
-&lt;p&gt;Zie &lt;a href=&#34;http://www.agr-s.com/forums/index.php?showtopic######383&amp;amp;modethreaded&amp;amp;pid=2624&#34;&gt;http://www.agr-s.com/forums/index.php?showtopic######383&amp;amp;modethreaded&amp;amp;pid=2624&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;your-cd-key-is-already-being-used&#34;&gt;Your CD Key is already being used.&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;This error message indicates one of two things:
-1. If you are on a LAN and another machine on your network is currently playing RVS, you will need to manually change the port that RVS uses to connect to the cd-authorization server. To do this, under the &amp;ldquo;[R6GameService.R6GSServers]&amp;rdquo; heading, locate the entry for &amp;ldquo;m_iCDKeyClientPort=5777&amp;rdquo; Each computer on the LAN will need to have a unique port number after the &amp;lsquo;equals&amp;rsquo; sign. For example, if you had three computers on the network, you could leave one computer using the port 5777, one using 5776, and the third using 5775.
-2. You cd key is actually being used by another player. Please contact the support office listed in your manual.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;plants-vs-zombies-steam&#34;&gt;Plants VS Zombies (Steam)&lt;/h2&gt;
-
-&lt;p&gt;Steam community forum: &lt;a href=&#34;http://forums.steampowered.com/forums/forumdisplay.php?f=574&#34;&gt;http://forums.steampowered.com/forums/forumdisplay.php?f=574&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;steam-cloud-is-unable-to-sync-zever&#34;&gt;Steam cloud is unable to sync zever&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;Savegame retrieval tip&lt;/strong&gt;: zie &lt;a href=&#34;http://forums.steampowered.com/forums/showthread.php?t=1397905&#34;&gt;http://forums.steampowered.com/forums/showthread.php?t=1397905&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;emperor-rise-of-the-middle-kingdom&#34;&gt;Emperor: rise of the Middle Kingdom&lt;/h2&gt;
-
-&lt;h4 id=&#34;unable-to-save-local-multiplayer&#34;&gt;Unable to save (local multiplayer)&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Patch v1.0.0.1 installeren&lt;/li&gt;
-&lt;li&gt;Nadat deze geïnstalleerd is, in game directories alle .cfg files opendoen en overal versie &amp;ldquo;1.0.0.0&amp;rdquo; veranderen naar &amp;ldquo;1.0.0.1&amp;rdquo;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;commandos-3&#34;&gt;Commandos 3&lt;/h2&gt;
-
-&lt;h4 id=&#34;wuh-no-hotkeys&#34;&gt;Wuh? No hotkeys?&lt;/h4&gt;
-
-&lt;p&gt;ES! Commandos 3 has hot keys just like Commandos 2 now!&lt;/p&gt;
-
-&lt;p&gt;For all if u who complained about the interface, here is your relief!&lt;br/&gt;&lt;br/&gt;
-link: &lt;a href=&#34;http://www3.sympatico.ca/hchen001/MAPEADOINPUT.MSB&#34;&gt;http://www3.sympatico.ca/hchen001/MAPEADOINPUT.MSB&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Simply put the file in the output folder EX: &lt;code&gt;C:&amp;lt;br/&amp;gt;Program Files&amp;lt;br/&amp;gt;Commandos 3&amp;lt;br/&amp;gt;Output&amp;lt;br/&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;This was made by the comandos fans in China.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;V - for the new rifle
-Ctrl+S-Quick Save
-Ctrl+L-Quick Load
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;hellip;. exactly like commandos 2&lt;br/&gt;&lt;br/&gt;
-For the hot keys, simply move your mouse on the icons in game to reveal.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://forums.eidosgames.com/showthread.php?t=43196&#34;&gt;SOURCE&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Troubleshooting with Booting Raven Shield Zie http://www.agr-s.com/forums/index.php?showtopic######383&amp;amp;modethreaded&amp;amp;pid=2624
+Your CD Key is already being used.  This error message indicates one of two things: 1. If you are on a LAN and another machine on your network is currently playing RVS, you will need to manually change the port that RVS uses to connect to the cd-authorization server. To do this, under the &amp;ldquo;[R6GameService.R6GSServers]&amp;rdquo; heading, locate the entry for &amp;ldquo;m_iCDKeyClientPort=5777&amp;rdquo; Each computer on the LAN will need to have a unique port number after the &amp;lsquo;equals&amp;rsquo; sign.</description>
     </item>
     
   </channel>
