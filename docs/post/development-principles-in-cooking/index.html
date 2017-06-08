@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Development principles in cooking</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.21" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="Development principles in cooking" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/development-principles-in-cooking/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
+      
+        
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
+        
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Development principles in cooking</h1>
+      
+      
+      
+      <span class="post-meta">9 June 2017</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/cooking">cooking</a> </li>
+  
+   <li><a href="/tags/development">development</a> </li>
+  
+   <li><a href="/tags/principles">principles</a> </li>
+  
+  </ul>
+
+
+
+      <article role="main" class="blog-post">
+          
+
+<p>A lot of people seem to think I&rsquo;m the kind of chef who uses loads and loads of ingredients, combining and layering without thinking twice. We were having a discussion about what to cook for dinner this evening. It&rsquo;s <a href="http://www.evavzw.be/donderdag-veggiedag">&lsquo;donerdag veggiedag&rsquo;</a>, an initiative from the Belgian EVA VZW to eat a vegetarian meal each thursday, and since I&rsquo;m a vegetarian, it&rsquo;s generally accepted that I should know a lot of good recipes.</p>
+
+<blockquote>
+<p>Friend: &ldquo;So, what&rsquo;s for dinner today, veggie?&rdquo;<br/>
+Me &ldquo;Uhm, act-&rdquo;<br/>
+Friend: &ldquo;Nevermind, you always cook super complicated stuff, right, I can&rsquo;t do that.&rdquo;<br/>
+(conversation continues about something else)</p>
+</blockquote>
+
+<p>That got me thinking. Do I think of myself as a &lsquo;complicated&rsquo; chef (sounds cooler than cook)?</p>
+
+<h2 id="complex-to-simple">Complex to simple</h2>
+
+<p>The answer is: I don&rsquo;t. I think I used to. When I started cooking for myself 10 years ago, I did my best to live up to my father&rsquo;s expectations to prepare intricate meals with lots of different steps to prepare. But as I had no idea what I was doing, I continually failed at creating something decent. I did not hesitate to create my own Thai curry paste, without even knowing what the required ingredients where. I bought a bag of 2 kilo dried hot peppers from the local asian market without even knowing I would ever use 4 of those peppers. I read and loved cookbooks like Yottam Ottolenghi&rsquo;s <a href="https://www.goodreads.com/book/show/8086216-plenty?ac=1&amp;from_search=true">Plenty</a> but couldn&rsquo;t keep up with the staggering amount of fresh herbs required for each recipe.</p>
+
+<p>Years passed. My cooking behaviour changed. I started to get the hang of it. I learned to learn about cooking, the <strong>meta-cooking</strong>, the &lsquo;deep stuff&rsquo;. I got into fermenting, creating simple things myself, creating everything myself and knowing what I&rsquo;m doing and why I&rsquo;m doing it. I started being addicted to food related (the why) books and stopped reading cookbooks (the how).</p>
+
+<p>So, my style evolved, as it usually does when you&rsquo;re doing something for quite some time with <strong>deliberate practice</strong>, with <strong>attention to detail</strong>.
+Today, after that weird discussion ending, it actually hit me: you can apply several software development principles to (my) cooking style(s).</p>
+
+<h3 id="kiss-keep-it-simple-stupid">KISS: Keep It Simple, Stupid!</h3>
+
+<p>Instead of throwing every herb and spice you have at something, be more picky. Think about what will go well with that one ingredient. Is pepper really needed here? Should you even add cheese, doesn&rsquo;t that hide the taste of your main ingredient? <strong>Keep it simple</strong>.</p>
+
+<p>I made something really simple for dinner: tortilla&rsquo;s. That would require something nice spreadable and some topping. I bought some local (another thing to focus on) buffalo mozzarella from the Ardennes and still had a cooked beetroot. BAM.</p>
+
+<p>Well, not really. I added a fermented shallot to create a sour tang and - of course - some salt. Because it had to be spreadable and because I happen to love olive oil, that was also added.</p>
+
+<p><img src="/img/yagni1.png" alt="YAGNI" /></p>
+
+<p>Three ingredients. (Salt and oil doesn&rsquo;t count as an ingredient in my kitchen)
+That&rsquo;s it.</p>
+
+<p>Okay, I&rsquo;m lying, fermenting a shallot requires a week of undevoted attention. (It actually does not&hellip;) I like <strong>layering simple things</strong> to create something complex, but still in essence, simple.</p>
+
+<p>I made something really simple this morning: a REST API. <br/>
+I made something really simple this evening: a beetroot spread.</p>
+
+<p><strong>You Aint Gonna Need It</strong> (YAGNI) is a variant of KISS. You won&rsquo;t be needing those nuts in a pesto if you&rsquo;re using a lot in pasta, you won&rsquo;t taste that anyway combined with the hard cheese. I&rsquo;ve found it a lot better if you toast the nuts whole and add them to the meal as a finisher, instead of grinding them in the pesto. Leave out the nuts when making a pesto as pizza base, that&rsquo;s going to be expensive and you won&rsquo;t be tasting it.</p>
+
+<p>Less is more, right?</p>
+
+<h3 id="dry-don-t-repeat-yourself">DRY: Don&rsquo;t Repeat Yourself!</h3>
+
+<p>Using a lot of the same tasting ingredients can ruin the whole meal. Simple examples are something too sour (lemon and too much acidity) or too sweet (strawberries with honey and sugar). Of course, fervent sweet lovers will disagree on this one. But it&rsquo;s a handy rule when combining ingredients.</p>
+
+<p>Don&rsquo;t add too much vinegar and a lot of lemon.<br/>
+Don&rsquo;t add loads of pepper combined with chilli.</p>
+
+<p>I think you can extrapolate any general programming principle to cooking principles if you&rsquo;re a bit creative.</p>
+
+<p>That said, I still don&rsquo;t have a clue of what I&rsquo;m doing when cooking because each time you try to create something, you end up with something else but you&rsquo;ve also been on a journey. <a href="http://mobile.seriouseats.com/2011/10/the-food-lab-the-science-of-risotto.html">Food Lab</a> might help me create a better risotto but in the end you&rsquo;re the one who has to buy and cook the rice&hellip;</p>
+
+      </article>
+
+      <ul class="blog-pagination blog-pager">
+        
+        <li>
+          &larr; Previous Post: <a href="http://www.brainbaking.com/post/handing-over-enough-when-inspiring/" data-toggle="tooltip" data-placement="top" title="Are you handing over enough when inspiring someone?">Are you handing over enough when inspiring someone?</a>
+          <span class="blog-pagination-date"> <i class="fa fa-calendar-o" aria-hidden="true"></i> 05/30/300056</span>
+        </li>
+        
+        
+      </ul>
+
+      <div class="disqus-comments">
+
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+		(function() {
+		      
+		      
+		      if (window.location.hostname == "localhost")
+		                return;
+
+		      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		      var disqus_shortname = 'brainbaking';
+		      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  &nbsp;&bull;&nbsp;
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+</html>
