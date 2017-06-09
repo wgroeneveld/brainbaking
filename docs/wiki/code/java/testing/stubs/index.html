@@ -176,91 +176,91 @@
 
 <pre><code class="language-java">public class StubHttpServer implements StubServer {
 
-	private RequestRecordingFilter filter = new RequestRecordingFilter();
+    private RequestRecordingFilter filter = new RequestRecordingFilter();
 
-	private int port;
+    private int port;
 
-	private Server httpServer;
+    private Server httpServer;
 
-	private Map&lt;String, ResettableHttpServlet&gt; servlets = new HashMap&lt;String, ResettableHttpServlet&gt;();
+    private Map&lt;String, ResettableHttpServlet&gt; servlets = new HashMap&lt;String, ResettableHttpServlet&gt;();
 
-	public StubHttpServer(int port) {
-		this.port = port;
-	}
+    public StubHttpServer(int port) {
+        this.port = port;
+    }
 
-	public void addHttpServlet(String uri, final HttpServlet servlet) {
-		addHttpServlet(uri, new ResettableHttpServlet() {
+    public void addHttpServlet(String uri, final HttpServlet servlet) {
+        addHttpServlet(uri, new ResettableHttpServlet() {
 
-			@Override
-			public void reset() {
-			}
+            @Override
+            public void reset() {
+            }
 
-			@Override
-			public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-				servlet.service(req, res);
-			}
+            @Override
+            public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+                servlet.service(req, res);
+            }
 
-		});
-	}
+        });
+    }
 
-	public void addHttpServlet(String uri, ResettableHttpServlet servlet) {
-		this.servlets.put(uri, servlet);
-	}
+    public void addHttpServlet(String uri, ResettableHttpServlet servlet) {
+        this.servlets.put(uri, servlet);
+    }
 
-	public boolean hasReceivedRequest(String method, String uri) {
-		return filter.hasReceivedRequest(method, uri);
-	}
+    public boolean hasReceivedRequest(String method, String uri) {
+        return filter.hasReceivedRequest(method, uri);
+    }
 
-	public boolean hasMatchingRequest(String method, String uriRegex) {
-		return filter.hasMatchingRequest(method, uriRegex);
-	}
+    public boolean hasMatchingRequest(String method, String uriRegex) {
+        return filter.hasMatchingRequest(method, uriRegex);
+    }
 
-	public void reset() {
-		filter.reset();
-		for (ResettableHttpServlet servlet : servlets.values()) {
-			servlet.reset();
-		}
-	}
+    public void reset() {
+        filter.reset();
+        for (ResettableHttpServlet servlet : servlets.values()) {
+            servlet.reset();
+        }
+    }
 
-	public void start() throws Exception {
-		if (httpServer ###### null) {
-			httpServer = new Server();
-			SocketConnector connector = new SocketConnector();
-			connector.setPort(port);
-			httpServer.setConnectors(new Connector[] { connector });
-			Context root = new Context(httpServer, &quot;/&quot;, Context.SESSIONS);
-			root.addFilter(new FilterHolder(filter), &quot;/*&quot;, 0);
-			for (String servletMapping : servlets.keySet()) {
-				root.addServlet(new ServletHolder(servlets.get(servletMapping)), servletMapping);
-			}
-			httpServer.start();
+    public void start() throws Exception {
+        if (httpServer ###### null) {
+            httpServer = new Server();
+            SocketConnector connector = new SocketConnector();
+            connector.setPort(port);
+            httpServer.setConnectors(new Connector[] { connector });
+            Context root = new Context(httpServer, &quot;/&quot;, Context.SESSIONS);
+            root.addFilter(new FilterHolder(filter), &quot;/*&quot;, 0);
+            for (String servletMapping : servlets.keySet()) {
+                root.addServlet(new ServletHolder(servlets.get(servletMapping)), servletMapping);
+            }
+            httpServer.start();
 
-			Runtime.getRuntime().addShutdownHook(new Thread() {
+            Runtime.getRuntime().addShutdownHook(new Thread() {
 
-				@Override
-				public void run() {
-					StubHttpServer.this.stop();
-				}
-			});
-		}
-	}
+                @Override
+                public void run() {
+                    StubHttpServer.this.stop();
+                }
+            });
+        }
+    }
 
-	public void stop() {
-		if (httpServer != null) {
-			try {
-				httpServer.stop();
-			} catch (Exception e) {
-				// ignore
-			} finally {
-				httpServer = null;
-			}
-		}
-	}
+    public void stop() {
+        if (httpServer != null) {
+            try {
+                httpServer.stop();
+            } catch (Exception e) {
+                // ignore
+            } finally {
+                httpServer = null;
+            }
+        }
+    }
 
-	@Override
-	public void startGooiExceptionIndienPoortNogNietVrij() throws Exception {
-		start();
-	}
+    @Override
+    public void startGooiExceptionIndienPoortNogNietVrij() throws Exception {
+        start();
+    }
 
 }
 </code></pre>
@@ -270,23 +270,23 @@
 <pre><code class="language-java">@StubServer(port = OEStubServer.PORT)
 public class OEStubServer extends be.test.stubserver.StubHttpServer {
 
-	public static final int PORT = 9106;
+    public static final int PORT = 9106;
 
-	private static OEStubServer INSTANCE;
+    private static OEStubServer INSTANCE;
 
-	public synchronized static OEStubServer getInstance() {
-		if (INSTANCE ###### null) {
-			INSTANCE = new OEStubServer();
-		}
-		return INSTANCE;
-	}
+    public synchronized static OEStubServer getInstance() {
+        if (INSTANCE ###### null) {
+            INSTANCE = new OEStubServer();
+        }
+        return INSTANCE;
+    }
 
-	private OeClientAwareServlet oeClientAwareServlet = new OeClientAwareServlet();
+    private OeClientAwareServlet oeClientAwareServlet = new OeClientAwareServlet();
 
-	private OEStubServer() {
-		super(PORT);
-		addHttpServlet(&quot;/*&quot;, oeClientAwareServlet);
-	}
+    private OEStubServer() {
+        super(PORT);
+        addHttpServlet(&quot;/*&quot;, oeClientAwareServlet);
+    }
 
 }
 </code></pre>

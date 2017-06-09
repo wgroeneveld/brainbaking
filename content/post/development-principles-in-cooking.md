@@ -53,6 +53,8 @@ Using a lot of the same tasting ingredients can ruin the whole meal. Simple exam
 Don't add too much vinegar and a lot of lemon.<br/>
 Don't add loads of pepper combined with chilli.
 
+Peter Reinhart's sacret [Quest for the Best pizza](https://www.goodreads.com/book/show/68648.American_Pie?ac=1&from_search=true) let him to believe you should use a very limited amount of core ingredients on your pizza, let's say 4. You can include the sauce as one of those ingredients, or not - that's up to you. But don't exceed that number or you risk the chance of tasting "pizza" in general and not "smoked bell pepper" and "mozzarella". I used to throw as much stuff on the pizza base as I could - one wouldn't want to be hungry afterwards, right? The crust couldn't even get baked well because of all the moisture. 
+
 I think you can extrapolate any general programming principle to cooking principles if you're a bit creative. 
 
 That said, I still don't have a clue of what I'm doing when cooking because each time you try to create something, you end up with something else but you've also been on a journey. [Food Lab](http://mobile.seriouseats.com/2011/10/the-food-lab-the-science-of-risotto.html) might help me create a better risotto but in the end you're the one who has to buy and cook the rice... 
