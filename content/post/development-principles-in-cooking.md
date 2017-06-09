@@ -5,7 +5,7 @@ tags: ['cooking', 'development', 'principles' ]
 published: true
 ---
 
-A lot of people seem to think I'm the kind of chef who uses loads and loads of ingredients, combining and layering without thinking twice. We were having a discussion about what to cook for dinner this evening. It's ['donerdag veggiedag'](http://www.evavzw.be/donderdag-veggiedag), an initiative from the Belgian EVA VZW to eat a vegetarian meal each thursday, and since I'm a vegetarian, it's generally accepted that I should know a lot of good recipes. 
+A lot of people seem to think I'm the kind of chef who uses loads and loads of ingredients, combining and layering without thinking twice. We were having a discussion about what to cook for dinner this evening. It's ['donderdag veggiedag'](http://www.evavzw.be/donderdag-veggiedag), an initiative from the Belgian EVA VZW to eat a vegetarian meal each thursday, and since I'm a vegetarian, it's generally accepted that I should know a lot of good recipes. 
 
 > Friend: "So, what's for dinner today, veggie?"<br/>
 Me "Uhm, act-"<br/>

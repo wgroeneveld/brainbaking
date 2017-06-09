@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>http://www.brainbaking.com/wiki/unix/cmderconfig/</loc>
+    <lastmod>2017-06-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/post/handing-over-enough-when-inspiring/</loc>
     <lastmod>2017-05-30T00:00:00+00:00</lastmod>
   </url>
@@ -1261,6 +1266,12 @@
   </url>
   
   <url>
+    <loc>http://www.brainbaking.com/tags/cmder/</loc>
+    <lastmod>2017-06-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/tags/code/</loc>
     <lastmod>2016-05-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -2066,7 +2077,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/shellconfig/</loc>
-    <lastmod>2013-03-12T00:00:00+00:00</lastmod>
+    <lastmod>2017-06-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2270,7 +2281,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/unix/</loc>
-    <lastmod>2013-10-19T00:00:00+00:00</lastmod>
+    <lastmod>2017-06-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

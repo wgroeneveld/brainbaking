@@ -19,7 +19,16 @@
       <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/post/development-principles-in-cooking/</guid>
-      <description>A lot of people seem to think I&amp;rsquo;m the kind of chef who uses loads and loads of ingredients, combining and layering without thinking twice. We were having a discussion about what to cook for dinner this evening. It&amp;rsquo;s &amp;lsquo;donerdag veggiedag&amp;rsquo;, an initiative from the Belgian EVA VZW to eat a vegetarian meal each thursday, and since I&amp;rsquo;m a vegetarian, it&amp;rsquo;s generally accepted that I should know a lot of good recipes.</description>
+      <description>A lot of people seem to think I&amp;rsquo;m the kind of chef who uses loads and loads of ingredients, combining and layering without thinking twice. We were having a discussion about what to cook for dinner this evening. It&amp;rsquo;s &amp;lsquo;donderdag veggiedag&amp;rsquo;, an initiative from the Belgian EVA VZW to eat a vegetarian meal each thursday, and since I&amp;rsquo;m a vegetarian, it&amp;rsquo;s generally accepted that I should know a lot of good recipes.</description>
+    </item>
+    
+    <item>
+      <title>cmder config</title>
+      <link>http://www.brainbaking.com/wiki/unix/cmderconfig/</link>
+      <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/unix/cmderconfig/</guid>
+      <description>Cmder user-profile.cmd ;= @echo off ;= rem Call DOSKEY and use this file as the macrofile ;= %SystemRoot%\system32\doskey /listsize=1000 /macrofile=%0% ;= rem In batch mode, jump to the end of the file ;= goto:eof ;= Add aliases below here e.=explorer . gl=git log --oneline --all --graph --decorate $* ls=ls --show-control-chars -F --color $* pwd=cd clear=cls history=cat &amp;quot;%CMDER_ROOT%\config\.history&amp;quot; unalias=alias /d $1 vi=vim $* cmderr=cd /d &amp;quot;%CMDER_ROOT%&amp;quot; checkout=SET argument=$* $t SET filepath=%argument:Modules/=% $t mkdir &amp;quot;c:\Sources\%filepath%&amp;quot; $t svn checkout https://websvn.</description>
     </item>
     
     <item>
