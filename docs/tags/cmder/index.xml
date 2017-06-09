@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cmder on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/cmder/</link>
+    <description>Recent content in Cmder on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Fri, 09 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/cmder/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cmder config</title>
+      <link>http://www.brainbaking.com/wiki/unix/cmderconfig/</link>
+      <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/wiki/unix/cmderconfig/</guid>
+      <description>Cmder user-profile.cmd ;= @echo off ;= rem Call DOSKEY and use this file as the macrofile ;= %SystemRoot%\system32\doskey /listsize=1000 /macrofile=%0% ;= rem In batch mode, jump to the end of the file ;= goto:eof ;= Add aliases below here e.=explorer . gl=git log --oneline --all --graph --decorate $* ls=ls --show-control-chars -F --color $* pwd=cd clear=cls history=cat &amp;quot;%CMDER_ROOT%\config\.history&amp;quot; unalias=alias /d $1 vi=vim $* cmderr=cd /d &amp;quot;%CMDER_ROOT%&amp;quot; checkout=SET argument=$* $t SET filepath=%argument:Modules/=% $t mkdir &amp;quot;c:\Sources\%filepath%&amp;quot; $t svn checkout https://websvn.</description>
+    </item>
+    
+  </channel>
+</rss>
