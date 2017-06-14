@@ -104,6 +104,15 @@
     </item>
     
     <item>
+      <title>Baking</title>
+      <link>http://www.brainbaking.com/tags/baking/</link>
+      <pubDate>Sun, 13 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/baking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Bash</title>
       <link>http://www.brainbaking.com/tags/bash/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
@@ -145,6 +154,24 @@
       <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/brain-dump/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Braindump</title>
+      <link>http://www.brainbaking.com/tags/braindump/</link>
+      <pubDate>Sun, 13 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/braindump/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bread</title>
+      <link>http://www.brainbaking.com/tags/bread/</link>
+      <pubDate>Sun, 13 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/bread/</guid>
       <description></description>
     </item>
     
@@ -793,6 +820,15 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/labs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Learning</title>
+      <link>http://www.brainbaking.com/tags/learning/</link>
+      <pubDate>Sun, 13 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/learning/</guid>
       <description></description>
     </item>
     
@@ -1787,6 +1823,15 @@
     </item>
     
     <item>
+      <title>Vegetarian</title>
+      <link>http://www.brainbaking.com/tags/vegetarian/</link>
+      <pubDate>Fri, 06 Sep 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/vegetarian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Vi</title>
       <link>http://www.brainbaking.com/tags/vi/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
@@ -1918,6 +1963,15 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/yeoman/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zen</title>
+      <link>http://www.brainbaking.com/tags/zen/</link>
+      <pubDate>Thu, 29 Aug 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/zen/</guid>
       <description></description>
     </item>
     

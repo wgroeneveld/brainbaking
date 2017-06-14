@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Braindump on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/braindump/</link>
+    <description>Recent content in Braindump on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Sun, 13 Oct 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/braindump/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Learning to become a baker</title>
+      <link>http://www.brainbaking.com/post/learning-to-become-a-baker/</link>
+      <pubDate>Sun, 13 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/learning-to-become-a-baker/</guid>
+      <description>Originally posted on Medium.
+Sometimes people tell me I’m obsessed with bread. That’s not entirely my fault. (I like to blame others, who doesn’t?) When I was little, my father always baked our own bread on sunday, every single sunday. I can’t remember anytime we actually bought bread, except on vacation. At a young age I had no idea how creating something out of nothing actually worked, but I knew it was intriguing — the addition of yeast which caused the dough to bubble up within a short period of time, wow!</description>
+    </item>
+    
+    <item>
+      <title>No, vegetarians do not eat fish!</title>
+      <link>http://www.brainbaking.com/post/vegetarians-do-not-eat-fish/</link>
+      <pubDate>Fri, 06 Sep 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/vegetarians-do-not-eat-fish/</guid>
+      <description>Originally posted on Medium.
+The amateurs  “So, you do eat a juicy peace of grilled salmon, right?” “No, I already told you, I’m a vegetarian.” (sigh) Frowning. You can almost hear them thinking “that’s what I meant”. “If you’re a pescatarian, you eat seafood but not other animals”. “Oh, right right, sorry!”.
+ It must have been the fourth conversation with somebody, where I have to explain what “being a vegetarian” actually means.</description>
+    </item>
+    
+    <item>
+      <title>On finding your inner zen in big cities</title>
+      <link>http://www.brainbaking.com/post/on-finding-your-inner-zen-in-big-cities/</link>
+      <pubDate>Thu, 29 Aug 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/on-finding-your-inner-zen-in-big-cities/</guid>
+      <description>Originally posted on Medium.
+There have been a lot of love letters to big cities here on Medium recently. I never really understood the love for those busy places, but that should not be a big surprise as we grew up in a relatively small village in Belgium. Our country must be one of the smallest in the world — you can drive from one edge to the other in less than 2 hours (excluding traffic jams of course).</description>
+    </item>
+    
+  </channel>
+</rss>

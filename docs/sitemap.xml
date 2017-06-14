@@ -423,6 +423,11 @@
   </url>
   
   <url>
+    <loc>http://www.brainbaking.com/post/learning-to-become-a-baker/</loc>
+    <lastmod>2013-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/post/unit-testing-stored-procedures/</loc>
     <lastmod>2013-10-10T00:00:00+00:00</lastmod>
   </url>
@@ -433,6 +438,11 @@
   </url>
   
   <url>
+    <loc>http://www.brainbaking.com/post/vegetarians-do-not-eat-fish/</loc>
+    <lastmod>2013-09-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/wiki/code/c/testing/testexplorer/</loc>
     <lastmod>2013-09-05T00:00:00+00:00</lastmod>
   </url>
@@ -440,6 +450,11 @@
   <url>
     <loc>http://www.brainbaking.com/wiki/code/db/sql/</loc>
     <lastmod>2013-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/post/on-finding-your-inner-zen-in-big-cities/</loc>
+    <lastmod>2013-08-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -1170,6 +1185,12 @@
   </url>
   
   <url>
+    <loc>http://www.brainbaking.com/tags/baking/</loc>
+    <lastmod>2013-10-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/tags/bash/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -1202,6 +1223,18 @@
   <url>
     <loc>http://www.brainbaking.com/tags/brain-dump/</loc>
     <lastmod>2017-05-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/braindump/</loc>
+    <lastmod>2013-10-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/bread/</loc>
+    <lastmod>2013-10-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1634,6 +1667,12 @@
   <url>
     <loc>http://www.brainbaking.com/tags/labs/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/learning/</loc>
+    <lastmod>2013-10-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2304,6 +2343,12 @@
   </url>
   
   <url>
+    <loc>http://www.brainbaking.com/tags/vegetarian/</loc>
+    <lastmod>2013-09-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/tags/vi/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -2390,6 +2435,12 @@
   <url>
     <loc>http://www.brainbaking.com/tags/yeoman/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/zen/</loc>
+    <lastmod>2013-08-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
