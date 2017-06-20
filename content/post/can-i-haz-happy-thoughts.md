@@ -2,6 +2,8 @@
 title: Ending your day with happy thoughts
 date: '2013-08-13'
 bigimg: /img/Ending your day with happy thoughts.jpg
+aliases:
+    - /ending-your-day-with-happy-thoughts/
 subtitle: Or how a tiny thing can really help you sleep better
 tags: ['self improvement']
 ---

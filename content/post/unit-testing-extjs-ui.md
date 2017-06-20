@@ -1,6 +1,8 @@
 ---
 title: Unit Testing Extjs UI with Siesta
 bigimg: /img/Unit Testing Extjs UI with Siesta.jpg
+aliases:
+    - /unit-testing-extjs-ui-with-siesta/
 date: '2014-12-23'
 subtitle: An attempt to replace instable Webdriver tests with Siesta UI tests
 tags: ['unit testing', 'javascript', 'extjs', 'siesta']

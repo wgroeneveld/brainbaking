@@ -1,6 +1,8 @@
 ---
 title: Integration Testing with SQLite
 bigimg: /img/Integration Testing with SQLite.jpg
+aliases:
+    - /integration-testing-with-sqlite/
 date: '2013-11-04'
 subtitle: Decoupling your integrated database environment from your development.
 tags: ['unit testing', 'sql', 'C#', 'sqlite' ]

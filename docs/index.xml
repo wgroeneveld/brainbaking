@@ -2233,11 +2233,12 @@ I used to be almost exclusively a fantasy reader. Now I mostly read non-fiction 
     
     <item>
       <title></title>
-      <link>http://www.brainbaking.com/talks/</link>
+      <link>http://www.brainbaking.com/teaching/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/talks/</guid>
-      <description>Talks TODO</description>
+      <guid>http://www.brainbaking.com/teaching/</guid>
+      <description>Teaching Talks Some talks are given in Dutch, others in English. I&amp;rsquo;ve copied over a quick description in the target language.
+On soft skills for developers 2017  Cultivating the right problem solving skills When you start working as a software developer somewhere, chances are you&amp;rsquo;ll feel great and write some completely awesome code which proudly has your name labeled on when committing. After a while, problems start to head your way.</description>
     </item>
     
   </channel>
