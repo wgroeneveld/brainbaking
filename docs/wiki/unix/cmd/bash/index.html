@@ -242,11 +242,11 @@ SEARCH=&quot;&quot;
 
 for FILE_EXCLUDE in ${FILE_EXCLUDES[@]}
 do
-    SEARCH=&quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&quot;
+	SEARCH=&quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&quot;
 done
 for DIR_EXCLUDE in ${DIR_EXCLUDES[@]}
 do
-    SEARCH=&quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&quot;
+	SEARCH=&quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&quot;
 done
 </code></pre>
 

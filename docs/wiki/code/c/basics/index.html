@@ -209,9 +209,9 @@ int main(int argc, char **argv)
 <pre><code class="language-c">class Simple
 {
 public:
-    Simple() : someMember(3) {}
-    virtual int guessNumber();
-    int someMember;
+	Simple() : someMember(3) {}
+	virtual int guessNumber();
+	int someMember;
 };
 </code></pre>
 
@@ -219,7 +219,7 @@ public:
 
 int Simple::guessNumber()
 {
-    return 5;
+	return 5;
 }
 </code></pre>
 
@@ -230,8 +230,8 @@ int Simple::guessNumber()
 class Complexer : public Simple
 {
 public:
-    Complexer() {}
-    int guessNumber();
+	Complexer() {}
+	int guessNumber();
 };
 </code></pre>
 
@@ -241,7 +241,7 @@ public:
 
 int Complexer::guessNumber()
 {
-    return 10;
+	return 10;
 }
 </code></pre>
 
@@ -253,9 +253,9 @@ int Complexer::guessNumber()
 
 int main()
 {
-    Simple* simple = new Complexer();
-    std::cout &lt;&lt; simple-&gt;guessNumber();
-    delete simple;
+	Simple* simple = new Complexer();
+	std::cout &lt;&lt; simple-&gt;guessNumber();
+	delete simple;
 }
 </code></pre>
 
@@ -278,15 +278,15 @@ Definiëer <code>Complexer</code> zo:</li>
 
 int main()
 {
-    Simple simpleInitialized; // oops, I created something?
-    // Simple simpleInitialized = NULL; cannot convert from 'int' to 'Simple' (#define NULL 0)
+	Simple simpleInitialized; // oops, I created something?
+	// Simple simpleInitialized = NULL; cannot convert from 'int' to 'Simple' (#define NULL 0)
 
-    Simple* simplePtr;
+	Simple* simplePtr;
 
-    std::cout &lt;&lt; &quot;&lt;br/&gt;n initialiezd: &quot; &lt;&lt; simplePtr-&gt;someMember;
-    // Run-Time Check Failure #3 - The variable 'simplePtr' is being used without being initialized
+	std::cout &lt;&lt; &quot;&lt;br/&gt;n initialiezd: &quot; &lt;&lt; simplePtr-&gt;someMember;
+	// Run-Time Check Failure #3 - The variable 'simplePtr' is being used without being initialized
 
-    delete simplePtr;
+	delete simplePtr;
 }
 </code></pre>
 

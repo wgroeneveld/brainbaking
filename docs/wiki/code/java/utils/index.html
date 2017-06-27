@@ -170,21 +170,21 @@
 
 <pre><code class="language-java">public class SetUtil {
 
-    public static &lt;T&gt; Set&lt;T&gt; asSet(T... elements) {
-        return new HashSet&lt;T&gt;(Arrays.asList(elements));
-    }
+	public static &lt;T&gt; Set&lt;T&gt; asSet(T... elements) {
+		return new HashSet&lt;T&gt;(Arrays.asList(elements));
+	}
 
-    public static &lt;T&gt; boolean bevat(Set&lt;T&gt; someSet, Predicate&lt;T&gt; predicate) {
-        return !Sets.filter(someSet, predicate).isEmpty();
-    }
+	public static &lt;T&gt; boolean bevat(Set&lt;T&gt; someSet, Predicate&lt;T&gt; predicate) {
+		return !Sets.filter(someSet, predicate).isEmpty();
+	}
 
-    public static &lt;E&gt; Set&lt;E&gt; cast(Set&lt;?&gt; someSet, Class&lt;E&gt; classToCastTo) {
-        Set&lt;E&gt; newSet = new LinkedHashSet&lt;E&gt;();
-        for (Object object : someSet) {
-            newSet.add(classToCastTo.cast(object));
-        }
-        return newSet;
-    }
+	public static &lt;E&gt; Set&lt;E&gt; cast(Set&lt;?&gt; someSet, Class&lt;E&gt; classToCastTo) {
+		Set&lt;E&gt; newSet = new LinkedHashSet&lt;E&gt;();
+		for (Object object : someSet) {
+			newSet.add(classToCastTo.cast(object));
+		}
+		return newSet;
+	}
 }
 </code></pre>
 
@@ -192,23 +192,23 @@
 
 <pre><code class="language-java">public class ListUtil {
 
-    public static &lt;T&gt; List&lt;T&gt; sort(Collection&lt;T&gt; collection, Comparator&lt;? super T&gt; comparator) {
-        List&lt;T&gt; toSort = new ArrayList&lt;T&gt;(collection);
-        Collections.sort(toSort, comparator);
-        return toSort;
-    }
+	public static &lt;T&gt; List&lt;T&gt; sort(Collection&lt;T&gt; collection, Comparator&lt;? super T&gt; comparator) {
+		List&lt;T&gt; toSort = new ArrayList&lt;T&gt;(collection);
+		Collections.sort(toSort, comparator);
+		return toSort;
+	}
 
-    public static boolean bevatDubbels(List&lt;?&gt; aList) {
-        return Sets.newHashSet(aList).size() != aList.size();
-    }
+	public static boolean bevatDubbels(List&lt;?&gt; aList) {
+		return Sets.newHashSet(aList).size() != aList.size();
+	}
 
-    public static &lt;T&gt; List&lt;T&gt; cast(List&lt;?&gt; aList, Class&lt;T&gt; clazz) {
-        List&lt;T&gt; result = new ArrayList&lt;T&gt;();
-        for (Object obj : aList) {
-            result.add(clazz.cast(obj));
-        }
-        return result;
-    }
+	public static &lt;T&gt; List&lt;T&gt; cast(List&lt;?&gt; aList, Class&lt;T&gt; clazz) {
+		List&lt;T&gt; result = new ArrayList&lt;T&gt;();
+		for (Object obj : aList) {
+			result.add(clazz.cast(obj));
+		}
+		return result;
+	}
 
 }
 

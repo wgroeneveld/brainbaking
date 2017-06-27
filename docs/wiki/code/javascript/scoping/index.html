@@ -299,17 +299,17 @@ Dit is vanzelfsprekend serieus verwarrend en <strong>bad practice</strong>, Fire
 &lt;head&gt;
 &lt;script&gt;
 function Iets(e) {
-    return function() {
-        alert(j); // DOM Element: Div met id &quot;j&quot;, al hebben we nergens j gedefiniëerd!!! 
-        
-        // j = 0: BOOM in IE: Object doesn't support this property or method
-        // reden =&gt; in IE is dit een readonly property, Gecko parsers zijn lakser hierin
-        for(j = 0; j &lt; 10; j++) {
-          // whatever
-        }
-        
-        alert(j); // 10
-    }
+	return function() {
+		alert(j); // DOM Element: Div met id &quot;j&quot;, al hebben we nergens j gedefiniëerd!!! 
+		
+		// j = 0: BOOM in IE: Object doesn't support this property or method
+		// reden =&gt; in IE is dit een readonly property, Gecko parsers zijn lakser hierin
+		for(j = 0; j &lt; 10; j++) {
+		  // whatever
+		}
+		
+		alert(j); // 10
+	}
 }
 &lt;/script&gt;
 &lt;/head&gt;
