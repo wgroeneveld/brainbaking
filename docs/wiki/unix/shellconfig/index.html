@@ -168,16 +168,16 @@
 
 <pre><code class="language-bash">
 ############################################
-####	Jefklak's ZSH Config file 		####
-####	Last Edited: 18/10/2005			####
-####	Thank you Gentoo Forum!			####
+####    Jefklak's ZSH Config file       ####
+####    Last Edited: 18/10/2005         ####
+####    Thank you Gentoo Forum!         ####
 ############################################
 
-####	FreeBSD Specific stuff here	####
+####    FreeBSD Specific stuff here ####
 # export CLICOLOR=yes for the BSD ls thing (flag -G)
 # LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS
 
-####	Envoirnment Variables	####
+####    Envoirnment Variables   ####
 export HOSTTYPE=&quot;$(uname -m)&quot;
 export COLORTERM=yes
 export LINKS_XTERM=screen
@@ -186,7 +186,7 @@ export LINKS_XTERM=screen
 export SDL_VIDEO_X11_DGAMOUSE=0
 
 
-####	Aliases	####
+####    Aliases ####
 alias vi=&quot;vim&quot;
 alias ..=&quot;cd .. &amp;&amp; ls&quot;
 alias del=&quot;nocorrect rm -rf&quot;
@@ -198,7 +198,7 @@ alias l=&quot;ls -la&quot;
 alias showstuff=&quot;figlet unix rocks | cowsay -n -d;uname -a&quot;
 
 
-####	set the console title	####
+####    set the console title   ####
 case $TERM in
 xterm*)
     PR_TITLEBAR######$'%{&lt;br/&gt;e]0;%(!.-*[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y&lt;br/&gt;a%}'
@@ -207,20 +207,20 @@ xterm*)
     PR_TITLEBAR######$'%{&lt;br/&gt;e]0;%(!.-*[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y&lt;br/&gt;a%}'
     ;;
 *)
-	PR_TITLEBAR=''
+    PR_TITLEBAR=''
     ;;
 esac
 
  
-####	the prompt style	####
+####    the prompt style    ####
 # check for colors
 autoload colors zsh/terminfo
 if [ &quot;$terminfo[colors]&quot; -ge 8 ](&quot;$terminfo[colors]&quot; -ge 8 .md&quot;); then colors; fi
 for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE
 do
-	eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-	eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-	(( count = $count + 1 ))
+    eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+    eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+    (( count = $count + 1 ))
 done
 PR_NO_COLOUR=&quot;%{$terminfo[sgr0]%}&quot;
 
@@ -232,7 +232,7 @@ $PR_BLUE($PR_YELLOW$(ls | wc -l | bc) files$PR_BLUE) %(30l.
 RPROMPT=$'%{&lt;br/&gt;e[0;15m&lt;br/&gt;e[0;15m%}'
 
 
-####	General Config setup	####
+####    General Config setup    ####
 # SCREENDIR will screw screen up
 unset SCREENDIR
 
@@ -247,7 +247,7 @@ HISTSIZE=800
 TMPPREFIX=/tmp
 
 
-####	Autocompletion rules ####
+####    Autocompletion rules ####
 # general setup
 autoload -U compinit
 compinit
@@ -275,21 +275,21 @@ compctl -c which
 compctl -c sudo
 
 
-####	Key bindings, useful.	####
+####    Key bindings, useful.   ####
 # get the code by pressing C-v and then a code
 bindkey &quot;&lt;br/&gt;e[3~&quot; delete-char
 bindkey &quot;&lt;br/&gt;e[7~&quot; beginning-of-line
 bindkey &quot;&lt;br/&gt;e[8~&quot; end-of-line
 bindkey &quot;&lt;br/&gt;e[5~&quot; history-search-backward
 bindkey &quot;&lt;br/&gt;e[6~&quot; history-search-forward 
-bindkey &quot;[3~&quot; delete-char				# Del
-bindkey &quot;[2~&quot; overwrite-mode			# Insert
-bindkey &quot;^[[Z&quot;  reverse-menu-complete	# shift+tab
+bindkey &quot;[3~&quot; delete-char              # Del
+bindkey &quot;[2~&quot; overwrite-mode           # Insert
+bindkey &quot;^[[Z&quot;  reverse-menu-complete   # shift+tab
 
 # Setting HOME and END keys to browse the last used commands
 case $TERM in (xterm*|aterm|rxvt)
-	bindkey '&lt;br/&gt;e[H' beginning-of-line
-	bindkey '&lt;br/&gt;e[F' end-of-line ;;
+    bindkey '&lt;br/&gt;e[H' beginning-of-line
+    bindkey '&lt;br/&gt;e[F' end-of-line ;;
 esac
 
 # =======================================
@@ -363,7 +363,7 @@ zstyle ':completion:*:*:kill:*' list-colors '######%*01;31'
 setopt                       &lt;br/&gt;
      NO_all_export           &lt;br/&gt;
         always_last_prompt   &lt;br/&gt;
-		nohashdirs			 &lt;br/&gt;
+        nohashdirs           &lt;br/&gt;
         always_to_end        &lt;br/&gt;
         append_history       &lt;br/&gt;
         auto_cd              &lt;br/&gt;
@@ -414,7 +414,7 @@ setopt                       &lt;br/&gt;
      NO_ignore_braces        &lt;br/&gt;
      NO_ignore_eof           &lt;br/&gt;
         interactive_comments &lt;br/&gt;
-      	inc_append_history   &lt;br/&gt;
+        inc_append_history   &lt;br/&gt;
      NO_list_ambiguous       &lt;br/&gt;
      NO_list_beep            &lt;br/&gt;
         list_types           &lt;br/&gt;

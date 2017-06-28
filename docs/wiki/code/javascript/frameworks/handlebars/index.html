@@ -189,31 +189,31 @@
     // Project configuration
     // ---------------------
 
-	handlebars: {
-		compile: {
-			files: {
-				&quot;app/scripts/templates.js&quot;: [
-					&quot;app/templates/*.hbs&quot;
-				]
-			}, 
-			options: {
-				amd: true,
-				processName: function(filename) {
-					return filename
-						.replace('app/templates/', '')
-						.replace(/&lt;br/&gt;.hbs$/, '');
-				}
-			}
-		}
-	},
+    handlebars: {
+        compile: {
+            files: {
+                &quot;app/scripts/templates.js&quot;: [
+                    &quot;app/templates/*.hbs&quot;
+                ]
+            }, 
+            options: {
+                amd: true,
+                processName: function(filename) {
+                    return filename
+                        .replace('app/templates/', '')
+                        .replace(/&lt;br/&gt;.hbs$/, '');
+                }
+            }
+        }
+    },
 // ...
 
     watch: {
       handlebars: {
-      	files: [
-      		'app/templates/*.hbs'
-      	],
-      	tasks: 'handlebars reload'
+        files: [
+            'app/templates/*.hbs'
+        ],
+        tasks: 'handlebars reload'
       },
 // ...
 
