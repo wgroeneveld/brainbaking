@@ -5,7 +5,7 @@ bigimg: /img/musashi.jpg
 subtitle: Bushido and the ever learning spirit, techniques for 1600 and 2017?
 tags:
   - learning
-  - braindump
+  - self improvement
 published: true
 ---
 
