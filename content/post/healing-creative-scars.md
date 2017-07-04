@@ -6,6 +6,7 @@ subtitle: My ultimate secret weapon for self improvement
 tags:
   - learning
   - self improvement
+  - journaling
 published: true
 ---
 

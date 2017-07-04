@@ -175,17 +175,17 @@ from calculator import Calculator
 
 class TestCalculator(unittest.TestCase):
 
-    def setUp(self):
-        self.calc = Calculator().calculate;
+	def setUp(self):
+		self.calc = Calculator().calculate;
 
-    def test_calculateBasicNumberReturnsNumber(self):
-        self.assertEqual(3, self.calc('3'))
+	def test_calculateBasicNumberReturnsNumber(self):
+ 		self.assertEqual(3, self.calc('3'))
 
-    def test_calculateSimpleMultiplicationReturnsResult(self):
-        self.assertEqual(10, self.calc('5*2'))
+	def test_calculateSimpleMultiplicationReturnsResult(self):
+		self.assertEqual(10, self.calc('5*2'))
 
-    def test_calculateInvalidStringShouldThrowException(self):
-        self.assertRaises(ValueError, self.calc, ('blabl'))
+	def test_calculateInvalidStringShouldThrowException(self):
+		self.assertRaises(ValueError, self.calc, ('blabl'))
 </code></pre>
 
 <p>Zie <a href="http://docs.python.org/3/library/unittest.html">http://docs.python.org/3/library/unittest.html</a></p>
@@ -200,7 +200,7 @@ class TestCalculator(unittest.TestCase):
 <p>Dit stuk onder uw py file plakken:</p>
 
 <pre><code class="language-python">if __name__ ###### '__main__':
-    unittest.main()
+	unittest.main()
 </code></pre>
 
 <p>En dan <code>python -m unittest -v calculatorTest</code>. de v flag geeft wat extra output, anders staat er gewoon OK. De test op zich builden in bijvoorbeeld sublime met de main method erin zorgt er ook voor dat deze automatisch uitgevoerd wordt.</p>

@@ -217,14 +217,14 @@ public class Thing extends Model {
 
 <pre><code class="language-java">public class HorseIntegrationTest extends UnitTest {
 
-    @Test
-    public void canBePersisted() {
-        new Horse(&quot;joske&quot;).save();
-        List&lt;JPABase&gt; horses = Horse.findAll();
-        
-        assertEquals(1, horses.size());
-        assertEquals(&quot;joske&quot;, ((Horse) horses.iterator().next()).name);
-    }
+	@Test
+	public void canBePersisted() {
+		new Horse(&quot;joske&quot;).save();
+		List&lt;JPABase&gt; horses = Horse.findAll();
+		
+		assertEquals(1, horses.size());
+		assertEquals(&quot;joske&quot;, ((Horse) horses.iterator().next()).name);
+	}
 }
 
 </code></pre>

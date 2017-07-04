@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Fri, 09 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jul 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.brainbaking.com/tags/cooking/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Nuts about local nuts</title>
+      <link>http://www.brainbaking.com/post/nuts-about-local-nuts/</link>
+      <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/nuts-about-local-nuts/</guid>
+      <description>Remembering David Lebovitz&amp;rsquo; pine nut syndrome, I started to take a closer look at packages of food we buy at the local supermarket. It&amp;rsquo;s so easy to get completely focused on buying local vegetables but forgetting to look at the label when throwing something like pine nuts into the shopping cart. The worst thing is, most supermarkets don&amp;rsquo;t care and don&amp;rsquo;t offer an alternative. However, let&amp;rsquo;s not panic just yet: this is slowly changing (but reached a plateau).</description>
+    </item>
     
     <item>
       <title>Development principles in cooking</title>

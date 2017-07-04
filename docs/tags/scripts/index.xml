@@ -21,7 +21,7 @@
       <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</guid>
       <description>Nexus deploy artifacts script Wat doet dit?
  haalt laatste versie van package op uit nuget nexus repository download nuget package &amp;amp; unzipt &amp;amp; haalt DLL file hier uit (kan 4.5 4.0 of 3.5 versie zijn) kopiëert dit naar doelserver  Integraal deel van &amp;ldquo;deployen&amp;rdquo; in verband met modules, wordt bvb gebruikt in Teamcity configuration
-require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;net/http&#39; require &#39;zip&#39; # gem install rubyzip first!</description>
+require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;net/http&#39; require &#39;zip&#39;	# gem install rubyzip first!</description>
     </item>
     
     <item>

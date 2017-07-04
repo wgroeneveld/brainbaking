@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.brainbaking.com/post/nuts-about-local-nuts/</loc>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/post/healing-creative-scars/</loc>
     <lastmod>2017-06-25T00:00:00+00:00</lastmod>
   </url>
@@ -1226,7 +1231,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/</loc>
-    <lastmod>2017-06-25T00:00:00+00:00</lastmod>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1334,7 +1339,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/cooking/</loc>
-    <lastmod>2017-06-09T00:00:00+00:00</lastmod>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1623,6 +1628,12 @@
   <url>
     <loc>http://www.brainbaking.com/tags/javascript/</loc>
     <lastmod>2016-01-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/journaling/</loc>
+    <lastmod>2017-06-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

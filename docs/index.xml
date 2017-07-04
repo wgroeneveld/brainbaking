@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Sun, 25 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jul 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Nuts about local nuts</title>
+      <link>http://www.brainbaking.com/post/nuts-about-local-nuts/</link>
+      <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/nuts-about-local-nuts/</guid>
+      <description>Remembering David Lebovitz&amp;rsquo; pine nut syndrome, I started to take a closer look at packages of food we buy at the local supermarket. It&amp;rsquo;s so easy to get completely focused on buying local vegetables but forgetting to look at the label when throwing something like pine nuts into the shopping cart. The worst thing is, most supermarkets don&amp;rsquo;t care and don&amp;rsquo;t offer an alternative. However, let&amp;rsquo;s not panic just yet: this is slowly changing (but reached a plateau).</description>
+    </item>
     
     <item>
       <title>Healing creative scars</title>
@@ -212,7 +221,7 @@ Paar dingen om op te letten:
       <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</guid>
       <description>Nexus deploy artifacts script Wat doet dit?
  haalt laatste versie van package op uit nuget nexus repository download nuget package &amp;amp; unzipt &amp;amp; haalt DLL file hier uit (kan 4.5 4.0 of 3.5 versie zijn) kopiëert dit naar doelserver  Integraal deel van &amp;ldquo;deployen&amp;rdquo; in verband met modules, wordt bvb gebruikt in Teamcity configuration
-require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;net/http&#39; require &#39;zip&#39; # gem install rubyzip first!</description>
+require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;net/http&#39; require &#39;zip&#39;	# gem install rubyzip first!</description>
     </item>
     
     <item>
@@ -637,9 +646,9 @@ C#/Python interop C# in Python Overerving In Python C# klassen over laten erven 
       <pubDate>Thu, 06 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/books/inspiraties/</guid>
-      <description>Inspirerende Boeken Specifieke skills/Organisatorisch Switch Switch: How to Change Things When Change Is Hard &amp;ldquo;Inability to change is not lazyness but simply exhaustion&amp;rdquo;. Self control is an exhaustable resource! Spreek zowel de &amp;lsquo;olifant&amp;rsquo; (emotioneel, feeling, smelling) aan als de &amp;lsquo;rider&amp;rsquo; (thinking, reflecting, planning) om mensen te overtuigen.
+      <description>Inspirerende Boeken Specifieke skills/Organisatorisch Switch Switch: How to Change Things When Change Is Hard  &amp;ldquo;Inability to change is not lazyness but simply exhaustion&amp;rdquo;. Self control is an exhaustable resource! Spreek zowel de &amp;lsquo;olifant&amp;rsquo; (emotioneel, feeling, smelling) aan als de &amp;lsquo;rider&amp;rsquo; (thinking, reflecting, planning) om mensen te overtuigen.
  Komen gelijkenissen in terug van het &amp;ldquo;director on stage&amp;rdquo; concept van &amp;ldquo;Your Brain at Work&amp;rdquo;.
-Purple Cow: Transform Your Business by Being Remarkable Purple Cow: Transform Your Business by Being Remarkable Het grootste probleem van bedrijven is angst.</description>
+Purple Cow: Transform Your Business by Being Remarkable Purple Cow: Transform Your Business by Being Remarkable  Het grootste probleem van bedrijven is angst.</description>
     </item>
     
     <item>
@@ -1050,7 +1059,7 @@ TLDR: ze gebruiken toString() om argument namen te parsen, zodat de volgorde nie
       <description>Rest Calls plegen met Java Jersey ❗️ User Guide: http://jersey.java.net/nonav/documentation/latest/user-guide.html
 Server maven &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jersey-server&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jersey-json&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jersey-servlet&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  jersey-json is niet nodig als je geen JSON wil gebruiken. jersey-servlet ook niet als je geen Servlet 2.x gebruikt.
 servlet 2.x config Dit moet in web.xml:
-&amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.sun.jersey.spi.container.servlet.ServletContainer&amp;lt;/servlet-class&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;com.sun.jersey.config.property.packages&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;be.klak.package&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;com.sun.jersey.api.json.POJOMappingFeature&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattern&amp;gt;/rest/*&amp;lt;/url-pattern&amp;gt; &amp;lt;/servlet-mapping&amp;gt;  ❗️ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:</description>
+&amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.sun.jersey.spi.container.servlet.ServletContainer&amp;lt;/servlet-class&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;com.sun.jersey.config.property.packages&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;be.klak.package&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;com.sun.jersey.api.json.POJOMappingFeature&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt;	&amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattern&amp;gt;/rest/*&amp;lt;/url-pattern&amp;gt; &amp;lt;/servlet-mapping&amp;gt;  ❗️ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:</description>
     </item>
     
     <item>
@@ -1394,8 +1403,8 @@ Pas wel op met aanmaken van partities: 1.</description>
       <guid>http://www.brainbaking.com/wiki/reflect/gathering/</guid>
       <description>Gathering Knowledge Ookwel bekend als &amp;ldquo;Knowledge Harvesting&amp;rdquo;.
 Methodes Gebruik een persoonlijke wiki Bijvoorbeeld http:*www.pmwiki.org/ of http:*www.dokuwiki.org/dokuwiki (PHP based)
-Persoonlijke wiki&amp;rsquo;s bestaande uit één pagina kan ook, voor variaties zie Personal wikiDoe het nodige onderhoud op de wiki, vernieuw op tijd informatie
-Gebruik mindmaps mindmapsdus!
+Persoonlijke wiki&amp;rsquo;s bestaande uit één pagina kan ook, voor variaties zie Personal wiki Doe het nodige onderhoud op de wiki, vernieuw op tijd informatie
+Gebruik mindmaps mindmaps dus!
 Waarom? 1. chaos over orde in schema: makkelijk te veranderen, &amp;ldquo;organisch&amp;rdquo; gestructureerd 2. connect the dots 3. collaboratie 4. &amp;hellip;
 Herwerk oude mindmaps, schrijf ze opnieuw, gebruik &amp;ldquo;thought walks&amp;rdquo; om iets nieuw te introduceren, verwerk ze in uw wiki.</description>
     </item>
@@ -1628,7 +1637,7 @@ Hierna is het mogelijk om met $ expressies te gebruiken in jsps.
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/reflect/retros/like-to-like/</guid>
-      <description>Like-to-like About This Like-To-Like game is a fun and interactive way to do a retro. You can find the full explanation on page 74 of the Agile Retrospectivesbook (Pragmatic Bookshelf).
+      <description>Like-to-like About This Like-To-Like game is a fun and interactive way to do a retro. You can find the full explanation on page 74 of the Agile Retrospectives book (Pragmatic Bookshelf).
 Contents One team member (lets call him Ben) prepares a stack of &amp;lsquo;quality cards&amp;rsquo;, each containing a &amp;lsquo;quality word&amp;rsquo;. Examples are: Fun, Cool, Late, Frustrating, Desireable, Stupid, Wasteful, Confusing, &amp;hellip; .
 The quality cards are stacked and not visible to the team.</description>
     </item>
@@ -1681,7 +1690,7 @@ WebSockets in Phonegap Zit in de milestone 1.0 planning - nog niet officiëel on
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/books/mojo/</guid>
-      <description>Mojo Auteur: Marshall Goldsmith Mojo how to get it|Librarything link Het is beter te springen dan geduwd te worden. 1. Marshall Goldsmith
+      <description>Mojo Auteur: Marshall Goldsmith Mojo how to get it|Librarything link  Het is beter te springen dan geduwd te worden. 1. Marshall Goldsmith
  Jij en je Mojo Wat is mojo? De positieve instelling Waarmee we nu iets doen wat van binnenuit komt,  en naar buiten uitstraalt.
 Jou Mojo meten Door middel van 2 pijlers:
  Professionele Mojo*
@@ -1718,7 +1727,7 @@ public Object nullSafeGet(ResultSet resultSet, String[] strings, Object o) throw
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/games/wizardry8/parties/</guid>
-      <description>Wizardry 8 Parties  Party Number ONE - 31 July 2003 Party Number TWO - 04 June 2004 Party Number THREE - 21 January 2005  Remember, You&amp;rsquo;ll need something like 7zipto extract the file&amp;hellip;  Party Numer ONE - 31 July 2003  
+      <description>Wizardry 8 Parties  Party Number ONE - 31 July 2003 Party Number TWO - 04 June 2004 Party Number THREE - 21 January 2005  Remember, You&amp;rsquo;ll need something like 7zip to extract the file&amp;hellip;  Party Numer ONE - 31 July 2003  
    Attitude: This was probably the easiest char I&amp;rsquo;ve ever played in wizardry 8&amp;hellip; And he&amp;rsquo;s quite boring too. Well they are excellent professions early &amp;amp; mid-game those fighters, but tend to be very boring late-game because everything is maxed.</description>
     </item>
     
@@ -1739,9 +1748,9 @@ Script volgorde  de &amp;lt;head/&amp;gt; tag wordt door de browser geparsed, in
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/flora/permaculture/</guid>
       <description>PermaCulture en ForestGardening Informatie Wikipedia:
- Forest gardening-&amp;gt; gelayerde tuin aanleggen in 7 lagen voor maximum vermogen Permaculture-&amp;gt; self sustained eigen biotoop aanleggen dat met het vorige gepaard gaat Polyculture-&amp;gt; Verschillende gewassen plaatsen die goed bij elkaar passen in plaats van monoculture  Algemene links:
+ Forest gardening -&amp;gt; gelayerde tuin aanleggen in 7 lagen voor maximum vermogen Permaculture -&amp;gt; self sustained eigen biotoop aanleggen dat met het vorige gepaard gaat Polyculture -&amp;gt; Verschillende gewassen plaatsen die goed bij elkaar passen in plaats van monoculture  Algemene links:
  Edible forest Gardens - about Gardening PolyCultures uitleg ❗️ Videoserie - a farm for the future (youtube)  Boeken:
- Gaia&amp;#39;s Garden, Second Edition: A Guide To Home-Scale Permaculture- introductie, duidelijke uitleg, tabellen Edible Forest Gardens- meer naslagwerk als &amp;ldquo;course ecological garden design&amp;ldquo;  Technieken  Herb Spiral (schema) 7 Layer woodland farming (schema) biomimicry  Grond begroeïng Zie http://www.</description>
+ Gaia&amp;#39;s Garden, Second Edition: A Guide To Home-Scale Permaculture - introductie, duidelijke uitleg, tabellen Edible Forest Gardens - meer naslagwerk als &amp;ldquo;course ecological garden design&amp;ldquo;  Technieken  Herb Spiral (schema) 7 Layer woodland farming (schema) biomimicry   Grond begroeïng Zie http://www.</description>
     </item>
     
     <item>
@@ -1816,7 +1825,7 @@ public static Result buyHorse() { Form&amp;lt;Horse&amp;gt; horseForm = form(Hor
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/books/presentation_zen/</guid>
-      <description>Presentation Zen Auteur: Garr Reynolds presentation zen|Librarything linkLeonardo da Vinci: &amp;gt; Eenvoud is de ultime perfectie
+      <description>Presentation Zen Auteur: Garr Reynolds presentation zen|Librarything link Leonardo da Vinci: &amp;gt; Eenvoud is de ultime perfectie
 Presenteren in de wereld van Vandaag Algemeen idee:
  Teveel tekst in PowerPoint presentaties. Mensen nemen het niet op en raken er niet door geboeid. Resultaat: iedereen geeuwt en valt in slaap Bouw uw presentatie rond een geloofwaardig verhaal op met de nodige humor. Hou de slides als verduidelijking maar laat ze niet op zichzelf staan!</description>
     </item>
@@ -1827,7 +1836,7 @@ Presenteren in de wereld van Vandaag Algemeen idee:
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/books/productive_programmer/</guid>
-      <description>The Productive Programmer Author: Neal Ford Productive programmer|Librarything LinkDit is een samenvatting van alle notes in essentie, opgedeeld per hoofdstuk.
+      <description>The Productive Programmer Author: Neal Ford Productive programmer|Librarything Link Dit is een samenvatting van alle notes in essentie, opgedeeld per hoofdstuk.
 Part 1: Mechanics Acceleration  Concentrate on essence, not ceremony. The usefulness of an application list is inversely proportional to its length. Eye candy looks goot but isn&amp;rsquo;t nutritious. Typing is faster than navigation. Prefer typing over mousing. The address bar is the most efficient Windows interface. Take the time to learn all the hidden keyboard shortcuts of your universe.</description>
     </item>
     
@@ -1839,7 +1848,7 @@ Part 1: Mechanics Acceleration  Concentrate on essence, not ceremony. The useful
       <guid>http://www.brainbaking.com/wiki/reflect/productivity/</guid>
       <description>Productivity Productiviteit verhogen doe je zelf. Bezig zijn met jezelf, is self-improvement. De volgende secties handelen kort over enkele topics rond dit idee.
 Psychologie Keyword: Cognitive Science
- Learn to Power Thinkhandelt over zelf-inzicht, gaat uit om doelen te bereiken  Focus Belangrijkste: how to keep it in the zone:
+ Learn to Power Think handelt over zelf-inzicht, gaat uit om doelen te bereiken  Focus Belangrijkste: how to keep it in the zone:
  http://zenhabits.net/16-ways-to-keep-a-razor-sharp-focus-at-work/ http://www.wikihow.com/Stay-Focused email verplicht u om te context switchen, 20min kwijt -&amp;gt; kijk enkel smorgens, smiddags en savonds smijt IM tools buiten introduceer no-talk thursday gebruik een Single point of Contact om trash talk voor uw team op te vangen  Ideeën opdoen, opbouwen en beheren Zie gathering</description>
     </item>
     
@@ -1849,7 +1858,7 @@ Psychologie Keyword: Cognitive Science
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/books/purplecow/</guid>
-      <description>Purple Cow: Transform Your Business by Being Remarkable Crossing the Chasm Crossing the ChasmFocus op Early Adopters in plaats van &amp;ldquo;majority&amp;rdquo;! Waarom?
+      <description>Purple Cow: Transform Your Business by Being Remarkable Crossing the Chasm Crossing the Chasm Focus op Early Adopters in plaats van &amp;ldquo;majority&amp;rdquo;! Waarom?
  Die mensen geven vroeg feedback Zijn de &amp;ldquo;niezers&amp;rdquo; die andere mensen besmetten via mond-op-mond reclame &amp;ldquo;kijk wat voor iets nieuws ik heb en hoe goed het werkt&amp;rdquo;. Binnen de majority groep is zo niets dat zijn allemaal slechts volgers, en tegen dan is het product &amp;ldquo;uitgebold&amp;rdquo;.</description>
     </item>
     
@@ -1918,7 +1927,7 @@ Contents First part: discovering the bad parts about your retrospectives Divide 
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/books/rework/</guid>
       <description>Rework Author: Jason Fried &amp;amp; David Heinemeier Hansson Context: Pragmatic project/company management
-Rework|Librarything LinkTakedowns  Ignore the real world  Hoofd niet laten hangen als iedereen beweert dat het onmogelijk is, niet geloven! Allemaal excuses om het niet te proberen, heeft niets met u te maken.  Learning from mistakes is overrated  Het is bewezen dat mensen die succes hebben een grotere kans op succes hebben in de toekomst &amp;ldquo;Learn by mistake&amp;rdquo; is dus niet altijd 100% correct  Planning is guessing  Het heeft geen nut om lange termijn plannen op te stellen Plan wat uitmaakt op korte termijn, vandaag!</description>
+Rework|Librarything Link Takedowns  Ignore the real world  Hoofd niet laten hangen als iedereen beweert dat het onmogelijk is, niet geloven! Allemaal excuses om het niet te proberen, heeft niets met u te maken.  Learning from mistakes is overrated  Het is bewezen dat mensen die succes hebben een grotere kans op succes hebben in de toekomst &amp;ldquo;Learn by mistake&amp;rdquo; is dus niet altijd 100% correct  Planning is guessing  Het heeft geen nut om lange termijn plannen op te stellen Plan wat uitmaakt op korte termijn, vandaag!</description>
     </item>
     
     <item>
@@ -1965,7 +1974,7 @@ Headless DOM Manipulatie Omdat serverside Javascript geen window object als topl
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/unix/shellconfig/</guid>
-      <description>Shell Configuration ZShell ############################################ #### Jefklak&#39;s ZSH Config file #### #### Last Edited: 18/10/2005 #### #### Thank you Gentoo Forum! #### ############################################ #### FreeBSD Specific stuff here #### # export CLICOLOR=yes for the BSD ls thing (flag -G) # LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS #### Envoirnment Variables #### export HOSTTYPE=&amp;quot;$(uname -m)&amp;quot; export COLORTERM=yes export LINKS_XTERM=screen # Fixes Savage mouse problems. export SDL_VIDEO_X11_DGAMOUSE=0 #### Aliases #### alias vi=&amp;quot;vim&amp;quot; alias ..=&amp;quot;cd .. &amp;amp;&amp;amp; ls&amp;quot; alias del=&amp;quot;nocorrect rm -rf&amp;quot; alias mv=&amp;quot;nocorrect mv -f&amp;quot; alias cp=&amp;quot;cp -rf&amp;quot; alias cls=&#39;clear&#39; alias l=&amp;quot;ls -la&amp;quot; alias showstuff=&amp;quot;figlet unix rocks | cowsay -n -d;uname -a&amp;quot; #### set the console title #### case $TERM in xterm*) PR_TITLEBAR######$&#39;%{&amp;lt;br/&amp;gt;e]0;%(!</description>
+      <description>Shell Configuration ZShell ############################################ ####	Jefklak&#39;s ZSH Config file #### ####	Last Edited: 18/10/2005	#### ####	Thank you Gentoo Forum!	#### ############################################ ####	FreeBSD Specific stuff here	#### # export CLICOLOR=yes for the BSD ls thing (flag -G) # LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS ####	Envoirnment Variables	#### export HOSTTYPE=&amp;quot;$(uname -m)&amp;quot; export COLORTERM=yes export LINKS_XTERM=screen # Fixes Savage mouse problems. export SDL_VIDEO_X11_DGAMOUSE=0 ####	Aliases	#### alias vi=&amp;quot;vim&amp;quot; alias ..=&amp;quot;cd .. &amp;amp;&amp;amp; ls&amp;quot; alias del=&amp;quot;nocorrect rm -rf&amp;quot; alias mv=&amp;quot;nocorrect mv -f&amp;quot; alias cp=&amp;quot;cp -rf&amp;quot; alias cls=&#39;clear&#39; alias l=&amp;quot;ls -la&amp;quot; alias showstuff=&amp;quot;figlet unix rocks | cowsay -n -d;uname -a&amp;quot; ####	set the console title	#### case $TERM in xterm*) PR_TITLEBAR######$&#39;%{&amp;lt;br/&amp;gt;e]0;%(!</description>
     </item>
     
     <item>
@@ -2180,9 +2189,9 @@ body { text-align: center; min-width: 600px; } #wrapper { margin:0 auto; width:6
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/books/where_good_ideas_come_from/</guid>
-      <description>Where good ideas come from Where Good Ideas come Fromvan Steven Johnson
+      <description>Where good ideas come from Where Good Ideas come From van Steven Johnson
 Zie p75C en p78B en p79C
-1. The Adjacent Possible Concept: Ideeën en uitvindingen die uitgebracht worden, openen de deur voor andere ideeën en uitvindingen. Kopiëren van anderen (het idee, niet de uitwerking) is niet slecht maar goed, en maakt het mogelijk om bijvoorbeeld verder te breiden op het vorige idee. Een primitieve computer werd reeds volledig mechanisch ontwikkeld (met ballen die tandwielen doen roteren, zie Charles Babbage&amp;rsquo;s analytical engine, reeds in 1834 aan begonnen!</description>
+1. The Adjacent Possible Concept: Ideeën en uitvindingen die uitgebracht worden, openen de deur voor andere ideeën en uitvindingen. Kopiëren van anderen (het idee, niet de uitwerking) is niet slecht maar goed, en maakt het mogelijk om bijvoorbeeld verder te breiden op het vorige idee. Een primitieve computer werd reeds volledig mechanisch ontwikkeld (met ballen die tandwielen doen roteren, zie Charles Babbage &amp;rsquo;s analytical engine, reeds in 1834 aan begonnen!</description>
     </item>
     
     <item>

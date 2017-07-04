@@ -5,7 +5,7 @@ bigimg: /img/Ending your day with happy thoughts.jpg
 aliases:
     - /ending-your-day-with-happy-thoughts/
 subtitle: Or how a tiny thing can really help you sleep better
-tags: ['self improvement']
+tags: ['self improvement', 'journaling']
 ---
 <div class="summary">
 Past new year, I stopped promising silly things to myself. “This year, I’ll for sure go jogging several times a week!” — or “This year, I’ll really get into learning another language!”. We all know how these things go. Not that I made something up on the very day, these ideas are usually carefully crafted in my sketchbook and are lingering there to be exposed and finally executed.
