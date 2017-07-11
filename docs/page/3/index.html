@@ -149,6 +149,31 @@
             
             
             <article class="post-preview">
+              <a href="http://www.brainbaking.com/post/metaprogramming-convention-dry/">
+          	  <h2 class="post-title">Metaprogramming instead of duplication</h2>
+          	
+          	  
+          	  <h3 class="post-subtitle">
+          	    convention over duplication, good or bad?
+          	  </h3>
+          	    
+              </a>
+
+              <p class="post-meta">
+                14 March 2014
+              </p>
+            
+              <div class="post-entry">
+              
+                So&hellip; What&rsquo;s up with all that duplication in your unit tests? Let&rsquo;s take a look at a very recognizable pattern when for instance using RhinoMock in C#:
+ [TestInitialize] public void SetUp() { dbConfigurationMock = MockRepository.GenerateMock&lt;IDbConfiguration&gt;(); mountPointLoaderMock = MockRepository.GenerateMock&lt;IMountPointLoader&gt;(); userEnvironmentFactoryMock = MockRepository.GenerateMock&lt;IUserEnvironmentFactory&gt;(); userEnvironmentLoaderMock = MockRepository.GenerateMock&lt;IUserEnvironmentLoader&gt;(); // ...  We agreed to suffix each instance variable with &lsquo;Mock&rsquo; if it&rsquo;s a mock. That way, when you scroll down to an actual test case, it&rsquo;s clear to everyone what&rsquo;s what: mocks, stubs, actual implementations, and so forth.
+                <a href="http://www.brainbaking.com/post/metaprogramming-convention-dry/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
+              
+              </div>
+            
+             </article>
+            
+            <article class="post-preview">
               <a href="http://www.brainbaking.com/post/builders-dsl/">
           	  <h2 class="post-title">Enhancing the builder pattern with closures</h2>
           	

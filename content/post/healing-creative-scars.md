@@ -10,6 +10,8 @@ tags:
 published: true
 ---
 
+[Want to skip to the practical part?](/post/journaling-in-practice/)
+
 ### Are you aware of your problems?
 
 Once upon a time in a land not very far away (in fact, it's the very same we live in), a small boy and his Gameboy grew up. He didn't have many hobbies: gaming. He didn't have many friends. Playing outside is okay as long as the 4 AA batteries are fully charged and the sun isn't shining too bright and the playing is confined to one square meter. As the boy grew up, his taste for music didn't broaden: it narrowed. Teachers said he couldn't draw or run or swim properly, so he naturally assumed he couldn't draw or run or swim properly. Twenty years later, that boy who became a man still has a hard time unthinking he cannot draw or run or swim. 
@@ -104,6 +106,6 @@ That's exactly what it feels like.
 
 ![full journals](/img/boekjes.jpg)
 
-There are a lot of techniques involved in efficient journaling I like to save for a future blog post to be linked here. But in practice, it all boils down to just starting to write. Do what works for you. If you decide to buy a journal, consider scanning in pages after it's full. I archive everything in Evernote but that requires tagging manually and soaks op a lot of hours. GTD is a nice way to keep track of things to do - if you're the kind of person who likes TODOs. I also like pasting pictures, doodling and sketching and even scrap-booking. Whatever that works. 
+There are a lot of techniques involved in efficient journaling I like to save for a future blog post to be linked here. (Update: [it's here!](/post/journaling-in-practice/)) But in practice, it all boils down to just starting to write. Do what works for you. If you decide to buy a journal, consider scanning in pages after it's full. I archive everything in Evernote but that requires tagging manually and soaks op a lot of hours. GTD is a nice way to keep track of things to do - if you're the kind of person who likes TODOs. I also like pasting pictures, doodling and sketching and even scrap-booking. Whatever that works. 
 
 Travel journals, details of book reviews, course summaries you've followed, loose notes, gardening schemes, ... It's all there waiting for you to discover. Have fun connecting the dots!

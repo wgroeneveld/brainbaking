@@ -1,5 +1,6 @@
 @import url("pygment_highlights.css");
 
+
 /* --- google search stuff --- */
 .gsc-search-box {
   display: none;
@@ -32,6 +33,13 @@
 }
 
 /* --- General --- */
+
+.blog-post img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border: 1px solid black;
+}
 
 body {
   font-family: 'Lora', 'Times New Roman', serif;
