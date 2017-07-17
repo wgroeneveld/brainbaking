@@ -6,6 +6,7 @@ subtitle: My guide to keeping a journal
 tags:
   - journaling
   - self improvement
+  - fountain pens
 published: true
 ---
 

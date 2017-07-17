@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fountain Pens on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/fountain-pens/</link>
+    <description>Recent content in Fountain Pens on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Tue, 18 Jul 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/fountain-pens/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A quick look at 6 fountain pens</title>
+      <link>http://www.brainbaking.com/post/fountain-pens-first-look/</link>
+      <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/fountain-pens-first-look/</guid>
+      <description>My recent addiction to fountain pens has reached new heights. I happened to talk about pens with a dear colleague and she asked if I also had pens with a flexible nib. Posing such a question usually requires some basic knowledge about types of nibs, and it turned out that her friend is another fountain pen enthusiast who owns a bunch of really neat looking (and writing) pens. I was very excited when she proposed to let me try some of his special nibs.</description>
+    </item>
+    
+    <item>
+      <title>Journaling in practice</title>
+      <link>http://www.brainbaking.com/post/journaling-in-practice/</link>
+      <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/journaling-in-practice/</guid>
+      <description>If you&amp;rsquo;re wondering why you should journal in the first place, then maybe it&amp;rsquo;s a good idea to start reading here and here.
+There are hundreds of resources available on the Internet on how to journal, how to keep a bullet journal, how to index everything, how to getting things done and so forth. The following advice is something that works for me - it might not work for you at all.</description>
+    </item>
+    
+  </channel>
+</rss>
