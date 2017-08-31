@@ -37,4 +37,6 @@ The last point is an interesting one. It's also called "making it come together"
 
 Doing these exercises gave me a real boost in confidence and motivated me to draw even more. I even started enjoying the use of a pencil - soft shading is nice and not doable with a pen!
 
+Read more on how to draw better in Jen Review's [How to Draw Better](https://www.jenreviews.com/how-to-draw-better/) blog post. 
+
 
