@@ -50,9 +50,9 @@ Less thinking, more being.
 
 Think about the amount of images that burn in our retinas daily, the amount of unneeded refresh rates it has to take for your eyes to read a stupid Facebook page of a distant friend you're not even remotely interested in in the first place. The amount of things you have to do each day because they're part of a weird ritual made up by your local government or employer. The amount of noise you have to dig through in order to reach the data that is actually relevant to you in order to get your job done. The ridiculous amount of mails you send and receive each day because you think you have to or otherwise others won't find you that productive. The amount of times you have to say "I know what you mean" and "really? How cool!" to someone, when, in fact, that person is very irritating and you just want to go home. The amount of hours you spend watching a television show that could be spent walking your dog, drawing or reading instead. 
 
-The amount of hours you waste sitting in a chair pretending to do something in order to get some money from someone you don't want it from. I might have a feeling of melancholy typing this, and you know that I might overreact, or not based on your situation, but you also know that time is better spent if you're in that very moment you're spending it. 
+The amount of hours you waste sitting in a chair thinking you could do something else right now. I might have a feeling of melancholy typing this, and you know that I might overreact, or not based on your situation, but you also know that time is better spent if you're in that very moment you're spending it. Maybe 
 
-Like bicycling instead of thinking about games. Or actively engaging into a conversation when you're committing yourself to it instead of thinking about games. Or honestly saying that you're not interested and simply going home. That'll do. 
+Like bicycling instead of thinking about games. Or just trying to sincerely help others instead of complaining about noise and receiving positive feedback on your way out. Or actively engaging into a conversation when you're committing yourself to it instead of thinking about games. Or honestly saying that you're not interested and simply going home. That'll do. 
 
 I'm still (not) working on a solution to this problem.
 <br/>I'll probably figure it out just before I die. 
