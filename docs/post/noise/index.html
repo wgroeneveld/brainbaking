@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Noise</title>
+  
+  <meta name="author" content="Wouter Groeneveld"/>
+  <meta name="generator" content="Hugo 0.21" />
+  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  
+  
+  <meta property="og:title" content="Noise" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/noise/" />
+  <meta property="og:image" content="/img/avatar-icon.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.brainbaking.com/">
+        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        Brain Baking
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      <li id="google-search-wrapper">
+	<script>
+	(function() {
+	  var cx = '015035874764642922467:uhhwew4ykvm';
+	  var gcse = document.createElement('script');
+	  gcse.type = 'text/javascript';
+	  gcse.async = true;
+	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	  var s = document.getElementsByTagName('script')[0];
+	  s.parentNode.insertBefore(gcse, s);
+	})();
+	</script>
+
+	<gcse:search></gcse:search>
+
+	<form onsubmit="return false;">
+		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
+		<input type="text" id="searchInput" placeholder="Search">
+	</form>
+
+	<script>
+	(function() {
+		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
+			if(event.keyCode === 13) {
+				event.stopPropagation();
+				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
+				document.querySelector('.gsc-search-button input').click();
+
+				var modal = document.querySelector('.gsc-modal-background-image');
+				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
+			}
+		});
+	})();
+	</script>
+</li>
+
+      
+        
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
+            <div class="navlinks-children">
+            
+              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
+            
+              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
+            
+              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
+            
+              <a href="/talks"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Talks</a>
+            
+              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
+            
+            </div>
+          </li>
+        
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+          <a title="Brain Baking" href="http://www.brainbaking.com/">
+              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          </a>
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+    
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="/img/noise.jpg"></div>
+  
+
+  <header class="header-section has-img">
+  
+    <div class="big-img intro-header">
+        <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Noise</h1>
+      
+        
+      <h2 class="post-subheading">Getting rid of noise, part 2</h2>
+      
+      
+      
+      
+      <span class="post-meta">24 October 2017</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+      <span class='img-desc'></span>
+    </div>
+  
+  <div class="intro-header no-img">
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Noise</h1>
+      
+        
+      <h2 class="post-subheading">Getting rid of noise, part 2</h2>
+      
+      
+      
+      
+      <span class="post-meta">24 October 2017</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </header>
+
+
+    <div class="container" role="main">	  
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
+  <ul id="tags">
+  
+   <li><a href="/tags/self-improvement">self improvement</a> </li>
+  
+  </ul>
+
+
+
+      <article role="main" class="blog-post">
+          
+
+<p>The meanwhile common problem of <a href="/post/i-am-jealous-of-my-dog/">noise in your head</a> has not been solved just yet. In fact, it has only gotten worse. A lot worse. The garbage thinking problem spread like a disease, clinging onto everything in it&rsquo;s way inside me. It has reached my ears and my mind. I&rsquo;d like to make a distinction between &ldquo;head&rdquo; and &ldquo;mind&rdquo; as &ldquo;head&rdquo; might be a temporary problem, getting something to stick in your &ldquo;mind&rdquo; sounds a lot more definitive to me. Allow me to elaborate.</p>
+
+<h3 id="pollution-in-my-ears">Pollution in my ears</h3>
+
+<p>Are you also fed up with this noise generating world? The louder the better. You&rsquo;re only cool if you are able to stand the music beating your ears in your plugs at level 15 or higher. It&rsquo;s awesome to drill a hole in an exhaust pipe so your motor doesn&rsquo;t get unheard. Yelling usually provides you with the direct attention you need, whether at the checkout or in a meeting.
+Does this sound familiar to you? I&rsquo;m not even talking about people who are highly sensitive or introverts vs extroverts, but in general. Just, in general, at every single level. Getting to work makes my body take more decibels than it used to thanks to the increased traffic full of ignorant people who like to listen to the (loud) radio and have the comfort of a leather chair instead of a bike. The absurd concept of open work spaces makes my day at work barely productive. A beginning headache by 3h PM is normal. Shopping for groceries in a mall or supermarket doesn&rsquo;t make my day any better as the non stop stream of commercials rolls out of speakers and mounted televisions. The end of an exhausting day marks watching television because my wife thinks that&rsquo;s the best way to relax. Don&rsquo;t forget to crank up that volume, otherwise you won&rsquo;t be able to follow that quiz.</p>
+
+<p>At last, in bed. I greet the ever present buzz inside my mind and sigh.</p>
+
+<p>Something has to be done. And so I did:</p>
+
+<ol>
+<li>When I&rsquo;m driving, the radio is <strong>always</strong> off. I love that bubble of silence.</li>
+<li>Take your foot off the clutch if you have an engine that stops automatically at a red light. Ahhhh.</li>
+<li>Get rid of everything that ticks and whirrs in your living room.</li>
+<li>Bike around traffic even if that means a couple of minutes extra commute.</li>
+<li>Try to use headphones that block out noise of others at work.</li>
+<li>Turn off the TV.</li>
+<li>Turn the TV back on after your wife gets angry.</li>
+<li>Read somewhere else where there&rsquo;s no TV on.</li>
+<li>Go back to the room with the TV because your wife is lonely.</li>
+</ol>
+
+<p>The above has only seen partial success. Traffic is everywhere, you can&rsquo;t bike around it that easily. Thanks to the nature of my job, as a software engineer working inside teams, I&rsquo;m constantly disturbed - headphones or not. However, we introduced a &ldquo;silent period&rdquo; of 1.5hrs twice a week in an attempt to reduce the general noise overhead. That does mean we need the cooperation of our colleagues&hellip;</p>
+
+<h3 id="pollution-in-my-mind">Pollution in my mind</h3>
+
+<p>Getting obsessed with something can prove to be dangerous too. Let&rsquo;s call it &ldquo;unhealthy&rdquo;. When I get excited about something, like fountain pens or more recently my reintroduction into Magic: the Gathering, I can get a bit too obsessed with it. Searching for the perfect pen, watching videos, looking around for the better shop, reading about what others think and say. Looking at what cards are played at tournaments, thinking about strategies, trying out different combinations inside my head. That sounds innocent, but can cause me to put all other things to hold. Suddenly, I lose interest in other things I was a lot more interested in, in the first place. Biking from and to work happens pseudo-automatically, pondering the right combination of killer combo cards to put into my deck. Oh, did I pass this street already? How time flies.</p>
+
+<p>My mind saves all ongoing progress of different stuff and loads up one single program: Magic.</p>
+
+<p>That&rsquo;ll mean I&rsquo;ll probably dream about it and talk about it until everyone thinks I&rsquo;m obsessed (at that point, I might very much well be).
+Until something else comes along, Magic probably will get stored as ongoing progress and something else (completely) occupies my mind.</p>
+
+<p>Sounds like mind-full-ness or mind-fool-ness to me. Every time I catch myself thinking &ldquo;I should meditate more and try to clear my head&rdquo;, I end up surfing to some Magic-related website again. The cards or the game aren&rsquo;t the problem, but my occupation with those temporary things is. And I&rsquo;m convinced the only solution will be to <strong>slow down and take a deep breath</strong>. The more I&rsquo;m upset with something like the repetitiveness of my work, the more I delve into that ever ready stream of happy Magic-thoughts. Yay!</p>
+
+<p>Less thinking, more being.</p>
+
+<h3 id="pollution-in-general">Pollution in general</h3>
+
+<p>Think about the amount of images that burn in our retinas daily, the amount of unneeded refresh rates it has to take for your eyes to read a stupid Facebook page of a distant friend you&rsquo;re not even remotely interested in in the first place. The amount of things you have to do each day because they&rsquo;re part of a weird ritual made up by your local government or employer. The amount of noise you have to dig through in order to reach the data that is actually relevant to you in order to get your job done. The ridiculous amount of mails you send and receive each day because you think you have to or otherwise others won&rsquo;t find you that productive. The amount of times you have to say &ldquo;I know what you mean&rdquo; and &ldquo;really? How cool!&rdquo; to someone, when, in fact, that person is very irritating and you just want to go home. The amount of hours you spend watching a television show that could be spent walking your dog, drawing or reading instead.</p>
+
+<p>The amount of hours you waste sitting in a chair pretending to do something in order to get some money from someone you don&rsquo;t want it from. I might have a feeling of melancholy typing this, and you know that I might overreact, or not based on your situation, but you also know that time is better spent if you&rsquo;re in that very moment you&rsquo;re spending it.</p>
+
+<p>Like bicycling instead of thinking about games. Or actively engaging into a conversation when you&rsquo;re committing yourself to it instead of thinking about games. Or honestly saying that you&rsquo;re not interested and simply going home. That&rsquo;ll do.</p>
+
+<p>I&rsquo;m still (not) working on a solution to this problem.
+<br/>I&rsquo;ll probably figure it out just before I die.</p>
+
+      </article>
+
+      <ul class="blog-pagination blog-pager">
+        
+        <li>
+          &larr; Previous Post: <a href="http://www.brainbaking.com/post/i-am-jealous-of-my-dog/" data-toggle="tooltip" data-placement="top" title="I&#39;m jealous of my dog">I&#39;m jealous of my dog</a>
+          <span class="blog-pagination-date"> <i class="fa fa-calendar-o" aria-hidden="true"></i> 08/17/170086</span>
+        </li>
+        
+        
+      </ul>
+
+      <div class="disqus-comments">
+
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+		(function() {
+		      
+		      
+		      if (window.location.hostname == "localhost")
+		                return;
+
+		      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		      var disqus_shortname = 'brainbaking';
+		      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+		      
+          <li>
+            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+	    	  
+          
+           
+          
+          
+          
+          
+          <li>
+            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+
+    		  <li>
+      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  &nbsp;&bull;&nbsp;
+    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
+    		  
+    	  
+    	  &nbsp;&bull;&nbsp;
+    	  <a href="http://www.brainbaking.com/">
+          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
+        </a>
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
+<script src="http://www.brainbaking.com//js/main.js"></script>
+<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+</html>
