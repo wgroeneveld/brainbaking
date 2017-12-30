@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.brainbaking.com/post/inventing-for-the-worse/</loc>
+    <lastmod>2017-12-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/post/noise/</loc>
     <lastmod>2017-10-24T00:00:00+00:00</lastmod>
   </url>
@@ -83,18 +88,8 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/post/vb6-unit-testing/</loc>
-    <lastmod>2016-12-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/wiki/code/db/mssql/</loc>
     <lastmod>2016-05-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/post/react-in-extjs/</loc>
-    <lastmod>2016-01-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -173,11 +168,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/post/webdriver-exception-handling/</loc>
-    <lastmod>2015-01-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/wiki/code/php/</loc>
     <lastmod>2015-01-07T00:00:00+00:00</lastmod>
   </url>
@@ -188,28 +178,8 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/post/unit-testing-extjs-ui/</loc>
-    <lastmod>2014-12-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/wiki/code/csharp/dynamica/</loc>
     <lastmod>2014-11-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/post/memory-management-vs-java/</loc>
-    <lastmod>2014-10-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/post/faking-domain-logic/</loc>
-    <lastmod>2014-09-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/post/custom-webdriver-page-factories/</loc>
-    <lastmod>2014-09-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -268,11 +238,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/post/scons-building/</loc>
-    <lastmod>2014-03-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/wiki/code/c/testing/gtest/</loc>
     <lastmod>2014-03-26T00:00:00+00:00</lastmod>
   </url>
@@ -295,11 +260,6 @@
   <url>
     <loc>http://www.brainbaking.com/wiki/code/csharp/utils/</loc>
     <lastmod>2014-03-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/post/metaprogramming-convention-dry/</loc>
-    <lastmod>2014-03-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -433,18 +393,8 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/post/builders-dsl/</loc>
-    <lastmod>2013-11-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/wiki/code/ceylon/</loc>
     <lastmod>2013-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/post/integration-testing-sqlite/</loc>
-    <lastmod>2013-11-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -453,18 +403,8 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/post/vstudio-missing-features/</loc>
-    <lastmod>2013-10-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/post/learning-to-become-a-baker/</loc>
     <lastmod>2013-10-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/post/unit-testing-stored-procedures/</loc>
-    <lastmod>2013-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -1160,12 +1100,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/.net/</loc>
-    <lastmod>2014-10-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/1/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -1251,7 +1185,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/</loc>
-    <lastmod>2017-10-24T00:00:00+00:00</lastmod>
+    <lastmod>2017-12-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1280,25 +1214,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/build-ecosystem/</loc>
-    <lastmod>2014-03-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/c/</loc>
-    <lastmod>2014-03-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/c#/</loc>
-    <lastmod>2015-01-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/c&#43;&#43;/</loc>
     <lastmod>2014-03-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1312,18 +1228,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/classes/</loc>
     <lastmod>2014-03-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/closures/</loc>
-    <lastmod>2013-11-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/clr/</loc>
-    <lastmod>2014-10-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1346,12 +1250,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/code-smells/</loc>
-    <lastmod>2014-09-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/converters/</loc>
     <lastmod>2013-10-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -1360,6 +1258,12 @@
   <url>
     <loc>http://www.brainbaking.com/tags/cooking/</loc>
     <lastmod>2017-07-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/craftsmanship/</loc>
+    <lastmod>2017-12-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1400,12 +1304,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/domain-driven-design/</loc>
-    <lastmod>2014-09-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/dont_make_me_think/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -1425,7 +1323,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/eclipse/</loc>
-    <lastmod>2013-10-14T00:00:00+00:00</lastmod>
+    <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1438,12 +1336,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/encoding/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/extjs/</loc>
-    <lastmod>2016-01-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1486,12 +1378,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/freebsd/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/functional-programming/</loc>
-    <lastmod>2013-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1558,12 +1444,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/groepsles_floret/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/groovy/</loc>
-    <lastmod>2013-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1647,13 +1527,13 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/java/</loc>
-    <lastmod>2014-09-22T00:00:00+00:00</lastmod>
+    <lastmod>2014-07-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.brainbaking.com/tags/javascript/</loc>
-    <lastmod>2016-01-26T00:00:00+00:00</lastmod>
+    <lastmod>2014-07-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1684,12 +1564,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/jsunit/</loc>
     <lastmod>2013-05-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/jvm/</loc>
-    <lastmod>2014-10-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1778,19 +1652,7 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/memory-management/</loc>
-    <lastmod>2014-10-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/meta/</loc>
-    <lastmod>2014-03-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/metaprogramming/</loc>
     <lastmod>2014-03-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1804,12 +1666,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/mobile/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/mocking/</loc>
-    <lastmod>2014-03-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2001,7 +1857,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/python/</loc>
-    <lastmod>2014-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2014-03-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2024,12 +1880,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/react/</loc>
-    <lastmod>2016-01-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/reflect/</loc>
     <lastmod>2015-07-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -2038,12 +1888,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/reflectie/</loc>
     <lastmod>2015-02-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/reflection/</loc>
-    <lastmod>2014-03-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2102,12 +1946,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/scenario-testing/</loc>
-    <lastmod>2015-01-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/scheme/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -2151,7 +1989,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/self-improvement/</loc>
-    <lastmod>2017-10-24T00:00:00+00:00</lastmod>
+    <lastmod>2017-12-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2164,12 +2002,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/shellconfig/</loc>
     <lastmod>2017-06-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/siesta/</loc>
-    <lastmod>2014-12-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2205,7 +2037,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/sql/</loc>
-    <lastmod>2013-11-04T00:00:00+00:00</lastmod>
+    <lastmod>2013-09-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2241,7 +2073,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/</loc>
-    <lastmod>2014-10-24T00:00:00+00:00</lastmod>
+    <lastmod>2013-03-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2360,12 +2192,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/unit-testing/</loc>
-    <lastmod>2016-12-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/unix/</loc>
     <lastmod>2017-06-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -2384,12 +2210,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/vb6/</loc>
-    <lastmod>2016-12-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/vegetarian/</loc>
     <lastmod>2013-09-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -2402,12 +2222,6 @@
   </url>
   
   <url>
-    <loc>http://www.brainbaking.com/tags/visual-studio/</loc>
-    <lastmod>2013-10-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://www.brainbaking.com/tags/visualstudio/</loc>
     <lastmod>2014-06-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -2416,12 +2230,6 @@
   <url>
     <loc>http://www.brainbaking.com/tags/web/</loc>
     <lastmod>2013-03-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.brainbaking.com/tags/webdriver/</loc>
-    <lastmod>2015-01-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
