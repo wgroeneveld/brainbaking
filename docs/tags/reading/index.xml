@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reading on Brain Baking</title>
+    <link>http://www.brainbaking.com/tags/reading/</link>
+    <description>Recent content in Reading on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Sat, 27 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.brainbaking.com/tags/reading/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2017 in books</title>
+      <link>http://www.brainbaking.com/post/2017-in-books/</link>
+      <pubDate>Sat, 27 Jan 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/2017-in-books/</guid>
+      <description>Goodreads presented me with a neat overview on my read books in 2017 you can also take a look at. The dull page statistics are of no interest to me, but the kind of books I&amp;rsquo;ve read do tell a story that might be worth sharing.
+When it comes to keeping track of what I read, Goodreads might be the best thing that happened to me yet. But I can&amp;rsquo;t say that I&amp;rsquo;m a consequent user of my own listage.</description>
+    </item>
+    
+  </channel>
+</rss>
