@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Wed, 23 Jul 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Sep 2014 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.brainbaking.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Custom Webdriver Page Factories</title>
+      <link>http://www.brainbaking.com/post/custom-webdriver-page-factories/</link>
+      <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/custom-webdriver-page-factories/</guid>
+      <description>The problem: Webdriver elements returned by driver.FindElement() are too generic. There&amp;rsquo;re the Text, SendKeys() and Click() methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like ShouldContainValue or Type (okay, that&amp;rsquo;s a one-to-one mapping with SendKeys(), but it&amp;rsquo;s a lot less technical!). Instead of
+ [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)] private IWebElement startButton; [FindsBy(How = How.CssSelector, Using = &amp;quot;.</description>
+    </item>
     
     <item>
       <title>selenium</title>
@@ -38,6 +48,16 @@ Enablen Params voor JMX te enablen op de queue:</description>
     </item>
     
     <item>
+      <title>Metaprogramming instead of duplication</title>
+      <link>http://www.brainbaking.com/post/metaprogramming-convention-dry/</link>
+      <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/metaprogramming-convention-dry/</guid>
+      <description>So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using RhinoMock in C#:
+ [TestInitialize] public void SetUp() { dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;(); mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;(); userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;(); userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;(); // ...  We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth.</description>
+    </item>
+    
+    <item>
       <title>home</title>
       <link>http://www.brainbaking.com/wiki/code/java/</link>
       <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
@@ -54,6 +74,16 @@ Enablen Params voor JMX te enablen op de queue:</description>
       <guid>http://www.brainbaking.com/wiki/code/java/resources/</guid>
       <description>Resource handling Opkuisen in try/finally block Vanaf Java 7 zit er ook ARM (automatic resource block management) in met een aanpassing op de try blocks:
 try ( FileInputStream stockQuoteReader = new FileInputStream(&amp;quot;StockQuotes.txt&amp;quot;); FileOutputStream stockQuoteWriter = new FileOutputStream(&amp;quot;StockQuotes.txt&amp;quot;) ) { int var; while((var###### stockQuoteReader.read()) ! -1 ) stockQuoteWriter.write(); }   The new construct extends try blocks to declare resources much like is the case with for loops. Any resource declared within a try block opening will be closed.</description>
+    </item>
+    
+    <item>
+      <title>Enhancing the builder pattern with closures</title>
+      <link>http://www.brainbaking.com/post/builders-dsl/</link>
+      <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/builders-dsl/</guid>
+      <description>This post is inspired by Venkat Subramaniam&amp;rsquo;s Devoxx 2013 talk Thinking Functional Style. See downloads at agiledeveloper.com which has a rather cool Groovy example.
+Classic builders For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters.</description>
     </item>
     
     <item>

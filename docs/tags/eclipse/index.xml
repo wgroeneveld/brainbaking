@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2013 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.brainbaking.com/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Visual Studio 2012 for Eclipse users</title>
+      <link>http://www.brainbaking.com/post/vstudio-missing-features/</link>
+      <pubDate>Mon, 14 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/vstudio-missing-features/</guid>
+      <description>When switching over to a new editor and new language, I can sometimes get frustrated by missing features I got (very) attached to. This excludes the obvious difference in shortcut keys.
+Shortcuts and refactoring tools One plugin to rule them all: ReSharpner. This productivity tool brings back the incredible development speed to the Visual Studio platform. You can almost map the eclipse (or IntelliJ, since they guys from JetBrains developed it) keys to the ReSharpner keys.</description>
+    </item>
     
     <item>
       <title>eclipse</title>

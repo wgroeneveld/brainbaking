@@ -8,10 +8,29 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Tue, 29 Jul 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 Jan 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.brainbaking.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Migrating from Extjs to React gradually</title>
+      <link>http://www.brainbaking.com/post/react-in-extjs/</link>
+      <pubDate>Tue, 26 Jan 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/react-in-extjs/</guid>
+      <description>We were looking for a few alternatives to our big ExtJS 4 application. Since it&amp;rsquo;s not that easy to completely migrate from one front-end framework to the next, a possible solution would be to start developing new parts in another framework. There&amp;rsquo;s a lot of domain logic spread in Ext views and controllers - which shouldn&amp;rsquo;t be there, we are well aware of that. Let&amp;rsquo;s call it &amp;ldquo;legacy&amp;rdquo; :-)
+The application right now uses Extjs as UI and C# as backend, and lets ext do the loading of the views/controllers (living in app.</description>
+    </item>
+    
+    <item>
+      <title>Unit Testing Extjs UI with Siesta</title>
+      <link>http://www.brainbaking.com/post/unit-testing-extjs-ui/</link>
+      <pubDate>Tue, 23 Dec 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/unit-testing-extjs-ui/</guid>
+      <description>WebDriver &amp;amp; js-heavy frameworks Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&amp;rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &amp;hellip; like you&amp;rsquo;re used to when using client/server desktop applications.</description>
+    </item>
     
     <item>
       <title>home</title>
@@ -38,6 +57,16 @@ Inhoudsopgave Om Prototypal Inheritance te kunnen begrijpen, moeten eerst een aa
       <description>Async coding in JS Asynchronous programming in JS: APIs interview (infoQ)
 Het probleem Alle events in javascript zijn asynchroon. Dat wil zeggen dat we geen idee hebben wanneer de eigenlijke code uitgevoerd is, en we een callback closure moeten meegeven, die verder werkt als de asynchrone code uitgevoerd is.
 Dit is oké voor 1-2 asynchrone calls. Maar stel u voor dat we 4+ async calls moeten maken om werk gedaan te krijgen.</description>
+    </item>
+    
+    <item>
+      <title>Enhancing the builder pattern with closures</title>
+      <link>http://www.brainbaking.com/post/builders-dsl/</link>
+      <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/builders-dsl/</guid>
+      <description>This post is inspired by Venkat Subramaniam&amp;rsquo;s Devoxx 2013 talk Thinking Functional Style. See downloads at agiledeveloper.com which has a rather cool Groovy example.
+Classic builders For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters.</description>
     </item>
     
     <item>

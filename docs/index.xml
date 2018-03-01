@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Fri, 16 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hiding Code Complexity</title>
+      <link>http://www.brainbaking.com/post/hiding-complexity/</link>
+      <pubDate>Mon, 26 Feb 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/hiding-complexity/</guid>
+      <description>We like to talk about the architecture of our software because we like complexity. Software developers are the bears, and complex patterns seem to be the honey. The more I pair with people the more I wonder: &amp;ldquo;what makes us decide to take on a simple question with a difficult answer&amp;rdquo;? Why would anyone choose to implement something so complex, that it cannot be easily understood even the day after it&amp;rsquo;s committed?</description>
+    </item>
     
     <item>
       <title>Take your time.</title>
@@ -196,6 +205,15 @@ Drawing and art in general has always been something I didn&amp;rsquo;t quite gr
     </item>
     
     <item>
+      <title>Unit testing in Legacy Projects: VB6</title>
+      <link>http://www.brainbaking.com/post/vb6-unit-testing/</link>
+      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/vb6-unit-testing/</guid>
+      <description>Thanks to the Postmodern VB6 article I&amp;rsquo;ve found on the internetz, I decided to give SimplyVBUnit a try. My job requires sporadic visual basic 6 code changes in the big legacy project we&amp;rsquo;re converting to C#. It&amp;rsquo;s an administrative system bound to Belgium laws so as you can imagine they change every few months and the old software still has to be complaint to those crazy new rules. As a result, we sometimes dabble in VB6 code.</description>
+    </item>
+    
+    <item>
       <title>mssql</title>
       <link>http://www.brainbaking.com/wiki/code/db/mssql/</link>
       <pubDate>Tue, 24 May 2016 00:00:00 +0000</pubDate>
@@ -203,6 +221,16 @@ Drawing and art in general has always been something I didn&amp;rsquo;t quite gr
       <guid>http://www.brainbaking.com/wiki/code/db/mssql/</guid>
       <description>MSSQL clustered indexen aanpassen door ze eerst te resolven in een cursor Onderstaand stukje code for future reference&amp;hellip;
 DECLARE @constraint NVARCHAR(MAX) DECLARE @cmd NVARCHAR(MAX) DECLARE @table NVARCHAR(MAX) DECLARE FKCURSOR CURSOR FOR select distinct name,object_name(parent_object_id) from sys.objects where object_id in ( select fk.constraint_object_id from sys.foreign_key_columns as fk where fk.referenced_object_id = (select object_id from sys.tables where name = &#39;Reference&#39;) ) OPEN FKCURSOR FETCH NEXT FROM FKCURSOR INTO @constraint, @table WHILE @@FETCH_STATUS = 0 BEGIN SET @cmd = N&#39;ALTER TABLE [dbo].</description>
+    </item>
+    
+    <item>
+      <title>Migrating from Extjs to React gradually</title>
+      <link>http://www.brainbaking.com/post/react-in-extjs/</link>
+      <pubDate>Tue, 26 Jan 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/react-in-extjs/</guid>
+      <description>We were looking for a few alternatives to our big ExtJS 4 application. Since it&amp;rsquo;s not that easy to completely migrate from one front-end framework to the next, a possible solution would be to start developing new parts in another framework. There&amp;rsquo;s a lot of domain logic spread in Ext views and controllers - which shouldn&amp;rsquo;t be there, we are well aware of that. Let&amp;rsquo;s call it &amp;ldquo;legacy&amp;rdquo; :-)
+The application right now uses Extjs as UI and C# as backend, and lets ext do the loading of the views/controllers (living in app.</description>
     </item>
     
     <item>
@@ -349,6 +377,15 @@ Specifieke post includen Zie get_posts documentatie.</description>
     </item>
     
     <item>
+      <title>Webdriver Exception Handling</title>
+      <link>http://www.brainbaking.com/post/webdriver-exception-handling/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/webdriver-exception-handling/</guid>
+      <description>As the previous post indicated, we&amp;rsquo;re trying to stabilize our scenario tests created with WebDriver. One of the things we did was trying to capture as much data as possible if something goes wrong. Something like a typical ElementNotFoundException, or the less common StaleElementException (detached from DOM after evaluation) - these things can be hard to trace if you don&amp;rsquo;t run the tests locally. We also stumbled upon the &amp;ldquo;it works on my machine&amp;rdquo; problem - tests succeeding on one development machine but not on the other - mostly related due to timing issues.</description>
+    </item>
+    
+    <item>
       <title>htaccess</title>
       <link>http://www.brainbaking.com/wiki/code/htaccess/</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
@@ -363,6 +400,15 @@ square bracket rules: rewrite flags zie ook docs
     </item>
     
     <item>
+      <title>Unit Testing Extjs UI with Siesta</title>
+      <link>http://www.brainbaking.com/post/unit-testing-extjs-ui/</link>
+      <pubDate>Tue, 23 Dec 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/unit-testing-extjs-ui/</guid>
+      <description>WebDriver &amp;amp; js-heavy frameworks Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&amp;rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &amp;hellip; like you&amp;rsquo;re used to when using client/server desktop applications.</description>
+    </item>
+    
+    <item>
       <title>dynamica</title>
       <link>http://www.brainbaking.com/wiki/code/csharp/dynamica/</link>
       <pubDate>Wed, 05 Nov 2014 00:00:00 +0000</pubDate>
@@ -372,6 +418,34 @@ square bracket rules: rewrite flags zie ook docs
 Expression trees opbouwen Van een MethodInfo instantie naar een Func&amp;lt;&amp;gt; var instanceToMemoize = Activator.CreateInstance&amp;lt;TClassToMemoize&amp;gt;(); foreach (var method in instanceToMemoize.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)) { var parameters ###### method.GetParameters().Select(p &amp;gt; Expression.Constant(&amp;quot;test&amp;quot;)); var expr = Expression.Lambda(Expression.Call(Expression.Constant(instanceToMemoize), method, parameters)).Compile(); _Delegates.Add(method.ToString(), expr); }  Argumenten stuk klopt nog niet. Refs:
  http://stackoverflow.com/questions/2933221/can-you-get-a-funct-or-similar-from-a-methodinfo-object http://stackoverflow.com/questions/11367830/how-to-find-full-name-of-calling-method-c-sharp  Memoization Ook mogelijk via Func&amp;lt;&amp;gt; wrappers; zie
  http://www.jaylee.org/post/2013/04/18/Memoization-and-Immutable-data-in-CSharp-Part-1.aspx http://www.jaylee.org/post/2013/04/22/Immutable-Data-and-Memoization-in-CSharp-Part-2.aspx  Dit is een extension die 2 type arguments aanvaard:</description>
+    </item>
+    
+    <item>
+      <title>.NET Memory management VS JVM Memory management</title>
+      <link>http://www.brainbaking.com/post/memory-management-vs-java/</link>
+      <pubDate>Fri, 24 Oct 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/memory-management-vs-java/</guid>
+      <description>Memory management is something to keep in mind when deploying and running applications on top of the JVM. Parameters like Xmx and Xms are things to juggle with when it comes to finding the perfect balance between too much memory hogging (at app startup) and too little, especially if you&amp;rsquo;re working with heavy duty entity mapping frameworks like Hibernate (and you&amp;rsquo;re not so good at writing fast HQL). When we bumped into an OutOfMemoryException in .</description>
+    </item>
+    
+    <item>
+      <title>Faking domain logic</title>
+      <link>http://www.brainbaking.com/post/faking-domain-logic/</link>
+      <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/faking-domain-logic/</guid>
+      <description>Sometimes, life is just a little bit more difficult than you imagined the day before. Sometimes, you have to work on a legacy codebase with custom frameworks rooted so deeply you&amp;rsquo;re having lot&amp;rsquo;s of trouble trying to build around them. To make it a bit more concrete, here&amp;rsquo;s an example: imagine a separate DLL for interfaces and a separate DLL for the implementation. This decision was made because we use NHibernate as a data mapper and not to write beautiful domain driven design code.</description>
+    </item>
+    
+    <item>
+      <title>Custom Webdriver Page Factories</title>
+      <link>http://www.brainbaking.com/post/custom-webdriver-page-factories/</link>
+      <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/custom-webdriver-page-factories/</guid>
+      <description>The problem: Webdriver elements returned by driver.FindElement() are too generic. There&amp;rsquo;re the Text, SendKeys() and Click() methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like ShouldContainValue or Type (okay, that&amp;rsquo;s a one-to-one mapping with SendKeys(), but it&amp;rsquo;s a lot less technical!). Instead of
+ [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)] private IWebElement startButton; [FindsBy(How = How.CssSelector, Using = &amp;quot;.</description>
     </item>
     
     <item>
@@ -501,6 +575,17 @@ Enablen Params voor JMX te enablen op de queue:</description>
     </item>
     
     <item>
+      <title>Bye autotools hello Scons</title>
+      <link>http://www.brainbaking.com/post/scons-building/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/scons-building/</guid>
+      <description>Remember this?
+ ./configure make make install  That&amp;rsquo;s not so bad, as long as you have the right compiler and linker flags configured, depending on the target OS. The real problem, however, is trying to figure out how to alter something if you didn&amp;rsquo;t write the Makefile yourself. Or if you in fact did write it, but it was some time ago. Two days. No, four hours.
+The problem Try to study the autoconf and automake flow diagram, explained on Wikipedia: the GNU build system.</description>
+    </item>
+    
+    <item>
       <title>gtest</title>
       <link>http://www.brainbaking.com/wiki/code/c/testing/gtest/</link>
       <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
@@ -554,6 +639,16 @@ Quick references  MiniTest quick reference  </description>
       <description>Utils Partials ObjectExtensions Waarom? Deep clone van een object maken zonder de boel te (de)-serialiseren.
 Bron: https://raw.github.com/Burtsev-Alexey/net-object-deep-copy/master/ObjectExtensions.cs - thank you Alexey
 public static class ObjectExtensions { private static readonly MethodInfo CloneMethod = typeof (Object).GetMethod(&amp;quot;MemberwiseClone&amp;quot;, BindingFlags.NonPublic | BindingFlags.Instance); public static bool IsPrimitive(this Type type) { if (type ###### typeof (String)) return true; return (type.IsValueType &amp;amp; type.IsPrimitive); } public static Object Copy(this Object originalObject) { return InternalCopy(originalObject, new Dictionary&amp;lt;Object, Object&amp;gt;(new ReferenceEqualityComparer())); } private static Object InternalCopy(Object originalObject, IDictionary&amp;lt;Object, Object&amp;gt; visited) { if (originalObject ###### null) return null; var typeToReflect = originalObject.</description>
+    </item>
+    
+    <item>
+      <title>Metaprogramming instead of duplication</title>
+      <link>http://www.brainbaking.com/post/metaprogramming-convention-dry/</link>
+      <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/metaprogramming-convention-dry/</guid>
+      <description>So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using RhinoMock in C#:
+ [TestInitialize] public void SetUp() { dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;(); mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;(); userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;(); userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;(); // ...  We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth.</description>
     </item>
     
     <item>
@@ -817,12 +912,32 @@ Onderstaand voorbeeld gebruikt Win32 code (WaitForSingleObject) en een mutex om 
     </item>
     
     <item>
+      <title>Enhancing the builder pattern with closures</title>
+      <link>http://www.brainbaking.com/post/builders-dsl/</link>
+      <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/builders-dsl/</guid>
+      <description>This post is inspired by Venkat Subramaniam&amp;rsquo;s Devoxx 2013 talk Thinking Functional Style. See downloads at agiledeveloper.com which has a rather cool Groovy example.
+Classic builders For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters.</description>
+    </item>
+    
+    <item>
       <title>ceylon</title>
       <link>http://www.brainbaking.com/wiki/code/ceylon/</link>
       <pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/wiki/code/ceylon/</guid>
       <description> Ceylon Interessant leesmateriaal  Why is there no protected visibility modifier in Ceylon? Ceylon 1.0 Tour die vergelijkingen met Java en C# legt op gebied van functies, variabelen, klassen, lambda&amp;rsquo;s, &amp;hellip;  </description>
+    </item>
+    
+    <item>
+      <title>Integration Testing with SQLite</title>
+      <link>http://www.brainbaking.com/post/integration-testing-sqlite/</link>
+      <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/integration-testing-sqlite/</guid>
+      <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
+On previous projects I&amp;rsquo;ve worked on, development PCs came with a local version of the database scheme. Each DB change also got rolled out to those computers, which enabled us developers to fool around without breaking anything on the development (or test) environment. This is another step closer to happiness, at least for our proxy customers who didn&amp;rsquo;t have to reinsert their test data every time we flushed something from a table.</description>
     </item>
     
     <item>
@@ -839,6 +954,16 @@ for i in *.</description>
     </item>
     
     <item>
+      <title>Visual Studio 2012 for Eclipse users</title>
+      <link>http://www.brainbaking.com/post/vstudio-missing-features/</link>
+      <pubDate>Mon, 14 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/vstudio-missing-features/</guid>
+      <description>When switching over to a new editor and new language, I can sometimes get frustrated by missing features I got (very) attached to. This excludes the obvious difference in shortcut keys.
+Shortcuts and refactoring tools One plugin to rule them all: ReSharpner. This productivity tool brings back the incredible development speed to the Visual Studio platform. You can almost map the eclipse (or IntelliJ, since they guys from JetBrains developed it) keys to the ReSharpner keys.</description>
+    </item>
+    
+    <item>
       <title>Learning to become a baker</title>
       <link>http://www.brainbaking.com/post/learning-to-become-a-baker/</link>
       <pubDate>Sun, 13 Oct 2013 00:00:00 +0000</pubDate>
@@ -846,6 +971,16 @@ for i in *.</description>
       <guid>http://www.brainbaking.com/post/learning-to-become-a-baker/</guid>
       <description>Originally posted on Medium.
 Sometimes people tell me I’m obsessed with bread. That’s not entirely my fault. (I like to blame others, who doesn’t?) When I was little, my father always baked our own bread on sunday, every single sunday. I can’t remember anytime we actually bought bread, except on vacation. At a young age I had no idea how creating something out of nothing actually worked, but I knew it was intriguing — the addition of yeast which caused the dough to bubble up within a short period of time, wow!</description>
+    </item>
+    
+    <item>
+      <title>Unit Testing Stored Procedures</title>
+      <link>http://www.brainbaking.com/post/unit-testing-stored-procedures/</link>
+      <pubDate>Thu, 10 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/unit-testing-stored-procedures/</guid>
+      <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
+Test Driven Development (or TDD), it&amp;rsquo;s one of those buzz words which usuallly appear in the same sentence with &amp;ldquo;scrum&amp;rdquo; or &amp;ldquo;XP&amp;rdquo;. But in practice, I&amp;rsquo;ve seen few people actually applying it all the way through. What do I mean by that? You&amp;rsquo;re probably very familiar with, say Java or .NET, and you know how to write unit tests in that language using your beloved IDE.</description>
     </item>
     
     <item>

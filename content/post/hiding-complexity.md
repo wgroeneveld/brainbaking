@@ -1,6 +1,6 @@
 ---
 title: Hiding Code Complexity
-bigimg: /img/Custom Webdriver Page Factories.jpg
+bigimg: /img/complexity.png
 date: '2018-02-26'
 subtitle: Do make it easy to read. Don't expose inner workings.
 tags: ['tech' ]

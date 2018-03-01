@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Oct 2014 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.brainbaking.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>.Net</title>
+      <link>http://www.brainbaking.com/tags/.net/</link>
+      <pubDate>Fri, 24 Oct 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/.net/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>1</title>
@@ -176,11 +185,38 @@
     </item>
     
     <item>
+      <title>Build Ecosystem</title>
+      <link>http://www.brainbaking.com/tags/build-ecosystem/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/build-ecosystem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>C</title>
       <link>http://www.brainbaking.com/tags/c/</link>
       <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C#</title>
+      <link>http://www.brainbaking.com/tags/c#/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/c#/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>http://www.brainbaking.com/tags/c&#43;&#43;/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
     
@@ -199,6 +235,24 @@
       <pubDate>Wed, 12 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/classes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Closures</title>
+      <link>http://www.brainbaking.com/tags/closures/</link>
+      <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/closures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clr</title>
+      <link>http://www.brainbaking.com/tags/clr/</link>
+      <pubDate>Fri, 24 Oct 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/clr/</guid>
       <description></description>
     </item>
     
@@ -226,6 +280,15 @@
       <pubDate>Tue, 24 May 2016 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code Smells</title>
+      <link>http://www.brainbaking.com/tags/code-smells/</link>
+      <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/code-smells/</guid>
       <description></description>
     </item>
     
@@ -311,6 +374,15 @@
     </item>
     
     <item>
+      <title>Domain Driven Design</title>
+      <link>http://www.brainbaking.com/tags/domain-driven-design/</link>
+      <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/domain-driven-design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Dont_make_me_think</title>
       <link>http://www.brainbaking.com/tags/dont_make_me_think/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
@@ -340,7 +412,7 @@
     <item>
       <title>Eclipse</title>
       <link>http://www.brainbaking.com/tags/eclipse/</link>
-      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 14 Oct 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/eclipse/</guid>
       <description></description>
@@ -361,6 +433,15 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/encoding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Extjs</title>
+      <link>http://www.brainbaking.com/tags/extjs/</link>
+      <pubDate>Tue, 26 Jan 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/extjs/</guid>
       <description></description>
     </item>
     
@@ -424,6 +505,15 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/freebsd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Functional Programming</title>
+      <link>http://www.brainbaking.com/tags/functional-programming/</link>
+      <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/functional-programming/</guid>
       <description></description>
     </item>
     
@@ -523,6 +613,15 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/groepsles_floret/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Groovy</title>
+      <link>http://www.brainbaking.com/tags/groovy/</link>
+      <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/groovy/</guid>
       <description></description>
     </item>
     
@@ -646,7 +745,7 @@
     <item>
       <title>Java</title>
       <link>http://www.brainbaking.com/tags/java/</link>
-      <pubDate>Wed, 23 Jul 2014 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/java/</guid>
       <description></description>
@@ -655,7 +754,7 @@
     <item>
       <title>Javascript</title>
       <link>http://www.brainbaking.com/tags/javascript/</link>
-      <pubDate>Tue, 29 Jul 2014 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 26 Jan 2016 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/javascript/</guid>
       <description></description>
@@ -703,6 +802,15 @@
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/jsunit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jvm</title>
+      <link>http://www.brainbaking.com/tags/jvm/</link>
+      <pubDate>Fri, 24 Oct 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/jvm/</guid>
       <description></description>
     </item>
     
@@ -833,11 +941,29 @@
     </item>
     
     <item>
+      <title>Memory Management</title>
+      <link>http://www.brainbaking.com/tags/memory-management/</link>
+      <pubDate>Fri, 24 Oct 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/memory-management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Meta</title>
       <link>http://www.brainbaking.com/tags/meta/</link>
       <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/meta/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Metaprogramming</title>
+      <link>http://www.brainbaking.com/tags/metaprogramming/</link>
+      <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/metaprogramming/</guid>
       <description></description>
     </item>
     
@@ -856,6 +982,15 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/mobile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mocking</title>
+      <link>http://www.brainbaking.com/tags/mocking/</link>
+      <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/mocking/</guid>
       <description></description>
     </item>
     
@@ -1141,7 +1276,7 @@
     <item>
       <title>Python</title>
       <link>http://www.brainbaking.com/tags/python/</link>
-      <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/python/</guid>
       <description></description>
@@ -1175,6 +1310,15 @@
     </item>
     
     <item>
+      <title>React</title>
+      <link>http://www.brainbaking.com/tags/react/</link>
+      <pubDate>Tue, 26 Jan 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Reading</title>
       <link>http://www.brainbaking.com/tags/reading/</link>
       <pubDate>Sat, 27 Jan 2018 00:00:00 +0000</pubDate>
@@ -1198,6 +1342,15 @@
       <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/reflectie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reflection</title>
+      <link>http://www.brainbaking.com/tags/reflection/</link>
+      <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/reflection/</guid>
       <description></description>
     </item>
     
@@ -1279,6 +1432,15 @@
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scenario Testing</title>
+      <link>http://www.brainbaking.com/tags/scenario-testing/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/scenario-testing/</guid>
       <description></description>
     </item>
     
@@ -1373,6 +1535,15 @@
     </item>
     
     <item>
+      <title>Siesta</title>
+      <link>http://www.brainbaking.com/tags/siesta/</link>
+      <pubDate>Tue, 23 Dec 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/siesta/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Signing</title>
       <link>http://www.brainbaking.com/tags/signing/</link>
       <pubDate>Fri, 11 Jul 2014 00:00:00 +0000</pubDate>
@@ -1420,7 +1591,7 @@
     <item>
       <title>Sql</title>
       <link>http://www.brainbaking.com/tags/sql/</link>
-      <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/sql/</guid>
       <description></description>
@@ -1472,6 +1643,15 @@
     </item>
     
     <item>
+      <title>Tag</title>
+      <link>http://www.brainbaking.com/tags/tag/</link>
+      <pubDate>Fri, 24 Oct 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/tag/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Teaching</title>
       <link>http://www.brainbaking.com/tags/teaching/</link>
       <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
@@ -1510,7 +1690,7 @@
     <item>
       <title>Tech</title>
       <link>http://www.brainbaking.com/tags/tech/</link>
-      <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 26 Feb 2018 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/tech/</guid>
       <description></description>
@@ -1643,6 +1823,15 @@
     </item>
     
     <item>
+      <title>Unit Testing</title>
+      <link>http://www.brainbaking.com/tags/unit-testing/</link>
+      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/unit-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Unix</title>
       <link>http://www.brainbaking.com/tags/unix/</link>
       <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
@@ -1670,6 +1859,15 @@
     </item>
     
     <item>
+      <title>Vb6</title>
+      <link>http://www.brainbaking.com/tags/vb6/</link>
+      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/vb6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Vegetarian</title>
       <link>http://www.brainbaking.com/tags/vegetarian/</link>
       <pubDate>Fri, 06 Sep 2013 00:00:00 +0000</pubDate>
@@ -1688,6 +1886,15 @@
     </item>
     
     <item>
+      <title>Visual Studio</title>
+      <link>http://www.brainbaking.com/tags/visual-studio/</link>
+      <pubDate>Mon, 14 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/visual-studio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Visualstudio</title>
       <link>http://www.brainbaking.com/tags/visualstudio/</link>
       <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
@@ -1702,6 +1909,15 @@
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>http://www.brainbaking.com/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webdriver</title>
+      <link>http://www.brainbaking.com/tags/webdriver/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/tags/webdriver/</guid>
       <description></description>
     </item>
     

@@ -8,10 +8,21 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Fri, 14 Mar 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Mar 2014 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.brainbaking.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bye autotools hello Scons</title>
+      <link>http://www.brainbaking.com/post/scons-building/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/scons-building/</guid>
+      <description>Remember this?
+ ./configure make make install  That&amp;rsquo;s not so bad, as long as you have the right compiler and linker flags configured, depending on the target OS. The real problem, however, is trying to figure out how to alter something if you didn&amp;rsquo;t write the Makefile yourself. Or if you in fact did write it, but it was some time ago. Two days. No, four hours.
+The problem Try to study the autoconf and automake flow diagram, explained on Wikipedia: the GNU build system.</description>
+    </item>
     
     <item>
       <title>meta</title>

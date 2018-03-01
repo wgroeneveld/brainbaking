@@ -24,5 +24,15 @@ Er zijn enkele verschillen:
  NOT NULL ENABLE wegdoen. NOT NULL maakt niets uit aangezien het in-memory is om te testen! USING INDEX blabla na de PRIMARY KEY statements zijn ook allemaal niet nodig (STORAGE etc) speciale defaults of syscalls zoals sys_guid() bestaan niet. definities van groottes: wegdoen van BYTE: VARCHAR2(26) dus.</description>
     </item>
     
+    <item>
+      <title>Integration Testing with SQLite</title>
+      <link>http://www.brainbaking.com/post/integration-testing-sqlite/</link>
+      <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/integration-testing-sqlite/</guid>
+      <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
+On previous projects I&amp;rsquo;ve worked on, development PCs came with a local version of the database scheme. Each DB change also got rolled out to those computers, which enabled us developers to fool around without breaking anything on the development (or test) environment. This is another step closer to happiness, at least for our proxy customers who didn&amp;rsquo;t have to reinsert their test data every time we flushed something from a table.</description>
+    </item>
+    
   </channel>
 </rss>
