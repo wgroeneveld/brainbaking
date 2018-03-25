@@ -63,10 +63,10 @@ tag = "tags"
     weight = 3
 
 [[menu.main]]
-    name = "Talks"
+    name = "Teaching"
     pre = "<i class='fa fa-graduation-cap'></i>"
     parent = "Menu"
-    url = "/talks"
+    url = "/teaching"
     weight = 4
 
 [[menu.main]]

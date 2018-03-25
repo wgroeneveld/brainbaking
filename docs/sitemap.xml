@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.brainbaking.com/post/serendipitous-creativity/</loc>
+    <lastmod>2018-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.brainbaking.com/post/hiding-complexity/</loc>
     <lastmod>2018-02-26T00:00:00+00:00</lastmod>
   </url>
@@ -1271,7 +1276,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/</loc>
-    <lastmod>2018-02-26T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1368,6 +1373,18 @@
   <url>
     <loc>http://www.brainbaking.com/tags/code-smells/</loc>
     <lastmod>2014-09-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/collaboration/</loc>
+    <lastmod>2018-03-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.brainbaking.com/tags/concentration/</loc>
+    <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2183,7 +2200,7 @@
   
   <url>
     <loc>http://www.brainbaking.com/tags/self-improvement/</loc>
-    <lastmod>2018-02-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
