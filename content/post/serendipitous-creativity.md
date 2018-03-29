@@ -18,7 +18,7 @@ And that brings us to the first **impasse**: the current trend in latest office 
 
 ![Talk to the duck!](/img/bert_and_ernie.jpg)
 
-In software engineering, that concept is called "**talk to the duck**". (The duck being your colleague) If you don't know how to solve a problem, likely you're simply suffering from some sort of tunnel vision. Once another approach to the problem is suggested and your "aha" moment has passed, the problem made it's way for a solution. A similar approach to finding another strategy to approach the problem is taking a break. Stand up, walk a bit, go to the toilet, and even before reaching it you might have already figured it out yourself. 
+In software engineering, that concept is called "**talk to the duck**". (The duck being your colleague) If you don't know how to solve a problem, likely you're simply suffering from some sort of tunnel vision. Once another approach to the problem is suggested and your "aha" moment has passed, the problem made its way for a solution. A similar approach to finding another strategy to approach the problem is taking a break. Stand up, walk a bit, go to the toilet, and even before reaching it you might have already figured it out yourself. 
 
 So what's wrong with creating temporary ducks to talk to? Nothing, except that those ducks might be working on something themselves and need to drop that work in order to help you. So what's wrong with that? Maybe nothing. Maybe a lot, as once you notice how **easy** it becomes to talk to someone else about your problem, you'll definitely think of doing it again the moment you stumble upon another problem. Maybe you'll turn to a colleague just a bit faster. And faster. Wait, did you think this problem through before asking? No you didn't! 
 
