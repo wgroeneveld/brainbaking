@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Mon, 26 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.brainbaking.com/tags/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Death to pseudocode?</title>
+      <link>http://www.brainbaking.com/post/pseudocode/</link>
+      <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>http://www.brainbaking.com/post/pseudocode/</guid>
+      <description>Coming across pseudocode isn&amp;rsquo;t something that might happen every day except if you&amp;rsquo;re used to browsing through the more theoretical and academic oriented &amp;ldquo;computer science&amp;rdquo; handbooks. We, the practical &amp;ldquo;software engineers&amp;rdquo; of nowadays, usually stop searching for something after our browser hits Stackoverflow. Stack is loaded with technical samples, gists of code, and lot&amp;rsquo;s of won&amp;rsquo;t-ever-compile-wrongly-copy-pasted code. Real code. If you&amp;rsquo;re working in Java, you probably end up with articles full of Java snippets.</description>
+    </item>
     
     <item>
       <title>Hiding Code Complexity</title>
