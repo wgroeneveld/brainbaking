@@ -5,6 +5,8 @@ bigimg: /img/btrees.png
 subtitle: Clean code, pseudocode or real code?
 tags:
   - tech
+  - java
+  - functional programming
 published: true
 ---
 
@@ -61,7 +63,15 @@ Instead of doing the swapping in 3 lines, two times repeated, they're simply hid
         list.set(oneBasedA - 1, list.get(oneBasedB - 1));
         list.set(oneBasedB - 1, temp);
 
-Pseudocode makes it possible to understand what an algorithm should do, even in technical terms, closely related to real code. Without the clutter of your favorite language. At first, I wasn't really convinced, because it does require quite a bit of work to translate it into actual code - based on the target language. If a book like "introduction to algorithms" would present elementary algorithms in plain "old" Python, it would require students to have some knowledge of it. But then again, would that be a bad thing? That will reduce the overhead required to comprehend what's going on. 
+Pseudocode makes it possible to understand what an algorithm should do, even in technical terms, closely related to real code. Without the clutter of your favorite language. "Exchange indexes" is still not the same as "exchange x with y". We're entering the realm of **Domain Specific Languages** (DSL) here. After sleeping over it for a few days, I refactored the above code to:
+
+```java 
+exchange(i).with(j).in(list);
+```
+
+What a difference. Exchange act as a [builder pattern](/post/builders-dsl) and wraps oneBasedA in a new class that gets mutated by oneBasedBy. The final act, `in(list)`, redirects to the actual implementation. 
+
+At first, I wasn't really convinced, because it does require quite a bit of work to translate it into actual code - based on the target language. If a book like "introduction to algorithms" would present elementary algorithms in plain "old" Python, it would require students to have some knowledge of it. But then again, would that be a bad thing? That will reduce the overhead required to comprehend what's going on. 
 
 I'm still not really fond of presenting pseudocode in an academic book. I want to focus on comprehension, not on syntax translation after I know what I have to do. I still often swear while trying out a certain algorithm in a textbook because one line of pseudocode contains so much **hidden assumptions**:
 
