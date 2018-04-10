@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mssql on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/mssql/</link>
+    <link>https://brainbaking.com/tags/mssql/</link>
     <description>Recent content in Mssql on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 24 May 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>mssql</title>
-      <link>http://www.brainbaking.com/wiki/code/db/mssql/</link>
+      <link>https://brainbaking.com/wiki/code/db/mssql/</link>
       <pubDate>Tue, 24 May 2016 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/db/mssql/</guid>
+      <guid>https://brainbaking.com/wiki/code/db/mssql/</guid>
       <description>MSSQL clustered indexen aanpassen door ze eerst te resolven in een cursor Onderstaand stukje code for future reference&amp;hellip;
 DECLARE @constraint NVARCHAR(MAX) DECLARE @cmd NVARCHAR(MAX) DECLARE @table NVARCHAR(MAX) DECLARE FKCURSOR CURSOR FOR select distinct name,object_name(parent_object_id) from sys.objects where object_id in ( select fk.constraint_object_id from sys.foreign_key_columns as fk where fk.referenced_object_id = (select object_id from sys.tables where name = &#39;Reference&#39;) ) OPEN FKCURSOR FETCH NEXT FROM FKCURSOR INTO @constraint, @table WHILE @@FETCH_STATUS = 0 BEGIN SET @cmd = N&#39;ALTER TABLE [dbo].</description>
     </item>

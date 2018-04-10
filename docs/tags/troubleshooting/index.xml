@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Troubleshooting on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/troubleshooting/</link>
+    <link>https://brainbaking.com/tags/troubleshooting/</link>
     <description>Recent content in Troubleshooting on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>troubleshooting</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/troubleshooting/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/troubleshooting/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/troubleshooting/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/troubleshooting/</guid>
       <description>JS Troubleshooting Debugging Gecko Slechts één adres nodig: http://getfirebug.com/
 Internet Explorer &amp;lt; IE 6 De &amp;ldquo;officiële&amp;rdquo; web developer toolbar in IE6 kan totaal niets met javascript debugging aanvangen. Hiervoor gebruik je best &amp;ldquo;web development helper&amp;rdquo;: http://projects.nikhilk.net/WebDevHelper - Die maakt het mogelijk om JS statements uit te voeren en normaal gezien fatsoenlijke error logging uit te voeren. HTTP calls (zoals ajax) loggen gaat hier ook mee.
 ❗️ Een voorwaarde om het bovenstaande te laten werken is &amp;ldquo;disable external script debugging&amp;rdquo; uitzetten in IE via: Extra &amp;gt; Options &amp;gt; Advanced &amp;gt; Surfing &amp;gt; &amp;ldquo;foutopsporing in scripts uitschakelen&amp;rdquo; uitvinken.</description>
@@ -26,10 +26,10 @@ Internet Explorer &amp;lt; IE 6 De &amp;ldquo;officiële&amp;rdquo; web develope
     
     <item>
       <title>troubleshooting</title>
-      <link>http://www.brainbaking.com/wiki/games/troubleshooting/</link>
+      <link>https://brainbaking.com/wiki/games/troubleshooting/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/games/troubleshooting/</guid>
+      <guid>https://brainbaking.com/wiki/games/troubleshooting/</guid>
       <description>Troubleshooting with Booting Raven Shield Zie http://www.agr-s.com/forums/index.php?showtopic######383&amp;amp;modethreaded&amp;amp;pid=2624
 Your CD Key is already being used.  This error message indicates one of two things: 1. If you are on a LAN and another machine on your network is currently playing RVS, you will need to manually change the port that RVS uses to connect to the cd-authorization server. To do this, under the &amp;ldquo;[R6GameService.R6GSServers]&amp;rdquo; heading, locate the entry for &amp;ldquo;m_iCDKeyClientPort=5777&amp;rdquo; Each computer on the LAN will need to have a unique port number after the &amp;lsquo;equals&amp;rsquo; sign.</description>
     </item>

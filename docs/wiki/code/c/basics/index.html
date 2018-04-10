@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="basics" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -209,9 +209,9 @@ int main(int argc, char **argv)
 <pre><code class="language-c">class Simple
 {
 public:
-	Simple() : someMember(3) {}
-	virtual int guessNumber();
-	int someMember;
+    Simple() : someMember(3) {}
+    virtual int guessNumber();
+    int someMember;
 };
 </code></pre>
 
@@ -219,7 +219,7 @@ public:
 
 int Simple::guessNumber()
 {
-	return 5;
+    return 5;
 }
 </code></pre>
 
@@ -230,8 +230,8 @@ int Simple::guessNumber()
 class Complexer : public Simple
 {
 public:
-	Complexer() {}
-	int guessNumber();
+    Complexer() {}
+    int guessNumber();
 };
 </code></pre>
 
@@ -241,7 +241,7 @@ public:
 
 int Complexer::guessNumber()
 {
-	return 10;
+    return 10;
 }
 </code></pre>
 
@@ -253,9 +253,9 @@ int Complexer::guessNumber()
 
 int main()
 {
-	Simple* simple = new Complexer();
-	std::cout &lt;&lt; simple-&gt;guessNumber();
-	delete simple;
+    Simple* simple = new Complexer();
+    std::cout &lt;&lt; simple-&gt;guessNumber();
+    delete simple;
 }
 </code></pre>
 
@@ -278,15 +278,15 @@ Definiëer <code>Complexer</code> zo:</li>
 
 int main()
 {
-	Simple simpleInitialized; // oops, I created something?
-	// Simple simpleInitialized = NULL; cannot convert from 'int' to 'Simple' (#define NULL 0)
+    Simple simpleInitialized; // oops, I created something?
+    // Simple simpleInitialized = NULL; cannot convert from 'int' to 'Simple' (#define NULL 0)
 
-	Simple* simplePtr;
+    Simple* simplePtr;
 
-	std::cout &lt;&lt; &quot;&lt;br/&gt;n initialiezd: &quot; &lt;&lt; simplePtr-&gt;someMember;
-	// Run-Time Check Failure #3 - The variable 'simplePtr' is being used without being initialized
+    std::cout &lt;&lt; &quot;&lt;br/&gt;n initialiezd: &quot; &lt;&lt; simplePtr-&gt;someMember;
+    // Run-Time Check Failure #3 - The variable 'simplePtr' is being used without being initialized
 
-	delete simplePtr;
+    delete simplePtr;
 }
 </code></pre>
 
@@ -393,7 +393,7 @@ Something something = getal; // use constructor
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -403,13 +403,13 @@ Something something = getal; // use constructor
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -424,10 +424,10 @@ Something something = getal; // use constructor
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

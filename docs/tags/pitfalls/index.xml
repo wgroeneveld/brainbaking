@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pitfalls on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/pitfalls/</link>
+    <link>https://brainbaking.com/tags/pitfalls/</link>
     <description>Recent content in Pitfalls on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/pitfalls/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/pitfalls/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>pitfalls</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/pitfalls/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/pitfalls/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/pitfalls/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/pitfalls/</guid>
       <description>Pitfalls ❗️ Gebruik aub JSLint om onderstaande &amp;ldquo;probleempjes&amp;rdquo; makkelijker te kunnen tracen en aanpassen.
 Strict mode in ECMA5 is ook iets héél handig.
 -&amp;gt; Meer (al dan niet grappige) pitfalls/weetjes: http://www.wtfjs.com/

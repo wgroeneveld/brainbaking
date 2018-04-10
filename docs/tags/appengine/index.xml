@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Appengine on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/appengine/</link>
+    <link>https://brainbaking.com/tags/appengine/</link>
     <description>Recent content in Appengine on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/appengine/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/appengine/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>appengine</title>
-      <link>http://www.brainbaking.com/wiki/code/build/maven/appengine/</link>
+      <link>https://brainbaking.com/wiki/code/build/maven/appengine/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/maven/appengine/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/maven/appengine/</guid>
       <description>Maven Google Appengine maven-cli-plugin gebruiken als semi-hot-deployer Zie Mavenizing my project
 In plaats van betalende JRebel kan je bvb. voor GAE de jetty server op zetten met gae:run, maar alles in webapp ziet hij niet als een change.
  In Tab1: mvn gae:run. In Tab2: mvn cli:execute en dan commando&amp;rsquo;s compile war in aparte tab die de eerste tab (nog actieve maven) oppikt dan.  Andere mogelijkheid is natuurlijk voor niet-GAE dingen, jetty:run gebruiken (zie code/build/maven).</description>

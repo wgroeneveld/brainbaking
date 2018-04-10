@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vi on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/vi/</link>
+    <link>https://brainbaking.com/tags/vi/</link>
     <description>Recent content in Vi on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/vi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/vi/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>vi</title>
-      <link>http://www.brainbaking.com/wiki/unix/vi/</link>
+      <link>https://brainbaking.com/wiki/unix/vi/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/vi/</guid>
+      <guid>https://brainbaking.com/wiki/unix/vi/</guid>
       <description>Vi(m) tips &amp;amp; tricks Externe tutorials en manuals  http://www.aip.de/~weber/doc/gs/node137.html - short basic editing intro http://www.cs.fsu.edu/general/vimanual.html - full vi manual http://hea-www.harvard.edu/~fine/Tech/vi.html - complete key binding guide
  http://vim.wikia.com/wiki/Word_wrap_without_line_breaks -&amp;gt; Zeer goede Vi wiki
  http://www.oualline.com/vim-cook.html

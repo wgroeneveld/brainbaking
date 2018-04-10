@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Converters on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/converters/</link>
+    <link>https://brainbaking.com/tags/converters/</link>
     <description>Recent content in Converters on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Sat, 19 Oct 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/converters/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/converters/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>converters</title>
-      <link>http://www.brainbaking.com/wiki/unix/converters/</link>
+      <link>https://brainbaking.com/wiki/unix/converters/</link>
       <pubDate>Sat, 19 Oct 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/converters/</guid>
+      <guid>https://brainbaking.com/wiki/unix/converters/</guid>
       <description>Converters Video converting/concatenating etc Met behulp van ffmpeg (https://trac.ffmpeg.org/wiki/How%20to%20concatenate%20(join,%20merge)%20media%20files):
 Concatting Alle files die eindigen op mp4:
 ffmpeg -f concat -i &amp;lt;(printf &amp;quot;file &#39;%s&#39;&amp;lt;br/&amp;gt;n&amp;quot; ./*.mp4) -c copy output.mp4  Gaat ook met mplayer en de tool mencoder:

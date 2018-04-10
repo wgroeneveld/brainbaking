@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/personal/</link>
+    <link>https://brainbaking.com/tags/personal/</link>
     <description>Recent content in Personal on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/personal/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/personal/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>gpsmaps</title>
-      <link>http://www.brainbaking.com/wiki/personal/random/gpsmaps/</link>
+      <link>https://brainbaking.com/wiki/personal/random/gpsmaps/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/personal/random/gpsmaps/</guid>
+      <guid>https://brainbaking.com/wiki/personal/random/gpsmaps/</guid>
       <description>Unlocking Garmin GPS Maps ❗️ Niet de keygen 1.5 ofzo gebruiken - werkt niet!! Ook niet MapSource upgraden hoger dan v. 6.15.7
 Topo kaarten met IMG files Gebruik Garmin Unlocker exe (44kb), die gaat by default kijken in uw register wat geïnstalleerd is.
 Ook mogelijk om één specifieke img file te unlocken met GarminUnlocker.exe imgset c:&amp;lt;br/&amp;gt;garmin (dir imgs)

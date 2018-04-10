@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Testexplorer on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/testexplorer/</link>
+    <link>https://brainbaking.com/tags/testexplorer/</link>
     <description>Recent content in Testexplorer on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Thu, 05 Sep 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/testexplorer/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/testexplorer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>testexplorer</title>
-      <link>http://www.brainbaking.com/wiki/code/c/testing/testexplorer/</link>
+      <link>https://brainbaking.com/wiki/code/c/testing/testexplorer/</link>
       <pubDate>Thu, 05 Sep 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/c/testing/testexplorer/</guid>
+      <guid>https://brainbaking.com/wiki/code/c/testing/testexplorer/</guid>
       <description>Visual Studio 2012 Test Explorer framework Waarom?
  Integratie VStudio, zelfde manier om te &amp;ldquo;runnen&amp;rdquo; als C# testen unmanaged (native) C++ code testen zonder vettige /cli mode die nodig is. Voor mixed team C#/C++ misschien beter/makkelijker?  Waarom niet?
  Weeral iets anders, Team Test buiten? Wat gaat het zijn voor VS3013? Niet 100% dezelfde syntax als C# (toch al closer, maar bvb geen attributes etc) VS2012 only momentel, dus 2008 = kinkloppen  Voorbeeld project in VS2012: Assertions schrijven Gebruik namespace CppUnitTestFramework - voorbeeld:</description>

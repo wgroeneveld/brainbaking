@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xpath on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/xpath/</link>
+    <link>https://brainbaking.com/tags/xpath/</link>
     <description>Recent content in Xpath on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/xpath/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/xpath/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>xpath</title>
-      <link>http://www.brainbaking.com/wiki/code/xpath/</link>
+      <link>https://brainbaking.com/wiki/code/xpath/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/xpath/</guid>
+      <guid>https://brainbaking.com/wiki/code/xpath/</guid>
       <description>Xpath snippets Nuttige Xpath functies contains *div[@role=&#39;listbox&#39; and not(contains(@style, &#39;display: none&#39;))]*li[1]  not Is dus een functie en geen operator in xpath! Zie boven
 starts-with zie contains()
 true Iets dat altijd waar is.

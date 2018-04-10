@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Listmerger on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/listmerger/</link>
+    <link>https://brainbaking.com/tags/listmerger/</link>
     <description>Recent content in Listmerger on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/listmerger/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/listmerger/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>listmerger</title>
-      <link>http://www.brainbaking.com/wiki/code/java/dynamica/listmerger/</link>
+      <link>https://brainbaking.com/wiki/code/java/dynamica/listmerger/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/dynamica/listmerger/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/dynamica/listmerger/</guid>
       <description>code:java:dynamica &amp;gt;&amp;gt; Listmerger public final class ListMerger&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; { private final Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; itemConverterFn; public ListMerger() { this.itemConverterFn = identityFn(); } public ListMerger(Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; itemConverterFn) { this.itemConverterFn = itemConverterFn; } private Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; identityFn() { return new Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt;() { @SuppressWarnings(&amp;quot;unchecked&amp;quot;) @Override public ItemTypeAfterConversion apply(ItemType input) { return (ItemTypeAfterConversion) input; } }; } public final void mergeLists(List&amp;lt;? extends ItemType&amp;gt; oldList, List&amp;lt;? extends ItemType&amp;gt; newList, ListMergable&amp;lt;ItemType&amp;gt; mergable) { List&amp;lt;ItemTypeAfterConversion&amp;gt; oldTransformed = new ArrayList&amp;lt;ItemTypeAfterConversion&amp;gt;(transform(oldList, itemConverterFn)); List&amp;lt;ItemTypeAfterConversion&amp;gt; newTransformed = new ArrayList&amp;lt;ItemTypeAfterConversion&amp;gt;(transform(newList, itemConverterFn)); for (ItemType item : new ArrayList&amp;lt;ItemType&amp;gt;(oldList)) { if (!</description>
     </item>
     

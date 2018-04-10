@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Snippets on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/snippets/</link>
+    <link>https://brainbaking.com/tags/snippets/</link>
     <description>Recent content in Snippets on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/snippets/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/snippets/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>snippets</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/snippets/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/snippets/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/snippets/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/snippets/</guid>
       <description>Losse Javascript Snippets Interessante links http://javascript.crockford.com/prototypal.html
 Text Width Nut: Bereken tekst breedtes op een browser scherm onafhankelijk van de container waar hij in zit. Waarom: $(&amp;quot;bla&amp;quot;).getWidth() gaat altijd rekening houden met de bovenliggende container style! Dit voegt eerst een lege span toe aan de body, haalt de width op en smijt de span terug weg.
 String.prototype.getTextWidth = function() { var sensor = $j(document.createElement(&amp;quot;span&amp;quot;)); sensor.append(this.toString()); $j(&amp;quot;body&amp;quot;).append(sensor); var width = sensor.width(); sensor.</description>

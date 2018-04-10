@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Profiling on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/profiling/</link>
+    <link>https://brainbaking.com/tags/profiling/</link>
     <description>Recent content in Profiling on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 17 May 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/profiling/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/profiling/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>profiling</title>
-      <link>http://www.brainbaking.com/wiki/code/java/profiling/</link>
+      <link>https://brainbaking.com/wiki/code/java/profiling/</link>
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/profiling/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/profiling/</guid>
       <description>Profiling Voor JMX, monitoring en andere: zie code/java/monitoring
 Verschillende profilers  jconsole: provided in JDK visualvm: provided in JDK Eclipse Memory Analyzer: http://www.eclipse.org/mat/ YourKit: http://www.yourkit.com/  Remote connecten gaat meestal via JMX, behalve your YourKit:
 Remote connecten met YourKit Zie http:*www.yourkit.com/docs/12/help/profiling_j2ee_remote.jsp en http:*www.yourkit.com/docs/95/help/agent.jsp - Je moet een agentpath JVM param meegeven om dit te kunnen doen:

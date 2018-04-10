@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shellconfig on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/shellconfig/</link>
+    <link>https://brainbaking.com/tags/shellconfig/</link>
     <description>Recent content in Shellconfig on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,25 +10,25 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 09 Jun 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/shellconfig/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/shellconfig/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>cmder config</title>
-      <link>http://www.brainbaking.com/wiki/unix/cmderconfig/</link>
+      <link>https://brainbaking.com/wiki/unix/cmderconfig/</link>
       <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/cmderconfig/</guid>
+      <guid>https://brainbaking.com/wiki/unix/cmderconfig/</guid>
       <description>Cmder user-profile.cmd ;= @echo off ;= rem Call DOSKEY and use this file as the macrofile ;= %SystemRoot%\system32\doskey /listsize=1000 /macrofile=%0% ;= rem In batch mode, jump to the end of the file ;= goto:eof ;= Add aliases below here e.=explorer . gl=git log --oneline --all --graph --decorate $* ls=ls --show-control-chars -F --color $* pwd=cd clear=cls history=cat &amp;quot;%CMDER_ROOT%\config\.history&amp;quot; unalias=alias /d $1 vi=vim $* cmderr=cd /d &amp;quot;%CMDER_ROOT%&amp;quot; checkout=SET argument=$* $t SET filepath=%argument:Modules/=% $t mkdir &amp;quot;c:\Sources\%filepath%&amp;quot; $t svn checkout https://websvn.</description>
     </item>
     
     <item>
       <title>shellconfig</title>
-      <link>http://www.brainbaking.com/wiki/unix/shellconfig/</link>
+      <link>https://brainbaking.com/wiki/unix/shellconfig/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/shellconfig/</guid>
-      <description>Shell Configuration ZShell ############################################ ####	Jefklak&#39;s ZSH Config file #### ####	Last Edited: 18/10/2005	#### ####	Thank you Gentoo Forum!	#### ############################################ ####	FreeBSD Specific stuff here	#### # export CLICOLOR=yes for the BSD ls thing (flag -G) # LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS ####	Envoirnment Variables	#### export HOSTTYPE=&amp;quot;$(uname -m)&amp;quot; export COLORTERM=yes export LINKS_XTERM=screen # Fixes Savage mouse problems. export SDL_VIDEO_X11_DGAMOUSE=0 ####	Aliases	#### alias vi=&amp;quot;vim&amp;quot; alias ..=&amp;quot;cd .. &amp;amp;&amp;amp; ls&amp;quot; alias del=&amp;quot;nocorrect rm -rf&amp;quot; alias mv=&amp;quot;nocorrect mv -f&amp;quot; alias cp=&amp;quot;cp -rf&amp;quot; alias cls=&#39;clear&#39; alias l=&amp;quot;ls -la&amp;quot; alias showstuff=&amp;quot;figlet unix rocks | cowsay -n -d;uname -a&amp;quot; ####	set the console title	#### case $TERM in xterm*) PR_TITLEBAR######$&#39;%{&amp;lt;br/&amp;gt;e]0;%(!</description>
+      <guid>https://brainbaking.com/wiki/unix/shellconfig/</guid>
+      <description>Shell Configuration ZShell ############################################ #### Jefklak&#39;s ZSH Config file #### #### Last Edited: 18/10/2005 #### #### Thank you Gentoo Forum! #### ############################################ #### FreeBSD Specific stuff here #### # export CLICOLOR=yes for the BSD ls thing (flag -G) # LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS #### Envoirnment Variables #### export HOSTTYPE=&amp;quot;$(uname -m)&amp;quot; export COLORTERM=yes export LINKS_XTERM=screen # Fixes Savage mouse problems. export SDL_VIDEO_X11_DGAMOUSE=0 #### Aliases #### alias vi=&amp;quot;vim&amp;quot; alias ..=&amp;quot;cd .. &amp;amp;&amp;amp; ls&amp;quot; alias del=&amp;quot;nocorrect rm -rf&amp;quot; alias mv=&amp;quot;nocorrect mv -f&amp;quot; alias cp=&amp;quot;cp -rf&amp;quot; alias cls=&#39;clear&#39; alias l=&amp;quot;ls -la&amp;quot; alias showstuff=&amp;quot;figlet unix rocks | cowsay -n -d;uname -a&amp;quot; #### set the console title #### case $TERM in xterm*) PR_TITLEBAR######$&#39;%{&amp;lt;br/&amp;gt;e]0;%(!</description>
     </item>
     
   </channel>

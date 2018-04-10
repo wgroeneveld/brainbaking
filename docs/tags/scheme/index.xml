@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scheme on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/scheme/</link>
+    <link>https://brainbaking.com/tags/scheme/</link>
     <description>Recent content in Scheme on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/scheme/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/scheme/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>edwin-shortcuts</title>
-      <link>http://www.brainbaking.com/wiki/code/scheme/edwin-shortcuts/</link>
+      <link>https://brainbaking.com/wiki/code/scheme/edwin-shortcuts/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/scheme/edwin-shortcuts/</guid>
+      <guid>https://brainbaking.com/wiki/code/scheme/edwin-shortcuts/</guid>
       <description>MIT-Scheme Edwin shortcuts Afkortingen: C ###### Control, M ALT (don&amp;rsquo;t ask&amp;hellip;)
 File manipulatie | afkorting | gevolg | | C-X s | save alle open files van alle buffers (vraagt per buffer&amp;hellip;) | | C-X C-S | save zonder vragen | | C-X C-F | find file of open nieuwe onbestaande (enter drukken = in buffer files browsen) |
 Buffer stuff | afkorting | gevolg | | C-U C-V | repeat last command | | C-C C-C | break operation (&amp;lsquo;Quits&amp;rsquo;) - in case of unlimited iterative recursive loop | | C-X [hoedje] | vergroot huidige buffer met één lijn | | C-X (getal) | open (getal) aantal buffers | | C-X o | toggle buffer (visible) | | C-X b | switch buffer met naam | | C-X k | kill buffer (vraagt evt bevestiging) | | M-o | evaluate buffer contents | | C-J | indent bij nieuwe line | | TAB | indent huidige regel (&amp;lt;&amp;gt; tab x lijnen prepended) | | C-X h | selecteer de hele buffer inhoud |</description>
@@ -26,28 +26,28 @@ Buffer stuff | afkorting | gevolg | | C-U C-V | repeat last command | | C-C C-C 
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/scheme/labs/1/</link>
+      <link>https://brainbaking.com/wiki/code/scheme/labs/1/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/scheme/labs/1/</guid>
+      <guid>https://brainbaking.com/wiki/code/scheme/labs/1/</guid>
       <description>Labs: Chapter 1 Section 1 1.1 (define (- a b) (+ a b)) (- 4 3) (define (een-of-twee een twee) (if (= een 1) een twee)) (define bla (een-of-twee 3 5)) (een-of-twee 2 3) (define a 6) (define b (+ 3 3)) (= a b) (cond ((= a 4) 6) ((= b 4) (+ 6 7 a)) (else 25))  1.2 (+ 5 (+ 4 (- 2 (- 3 (+ 6 4/5)))))  1.</description>
     </item>
     
     <item>
       <title>labs</title>
-      <link>http://www.brainbaking.com/wiki/code/scheme/labs/</link>
+      <link>https://brainbaking.com/wiki/code/scheme/labs/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/scheme/labs/</guid>
+      <guid>https://brainbaking.com/wiki/code/scheme/labs/</guid>
       <description>code:scheme &amp;gt;&amp;gt; Labs Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>scheme</title>
-      <link>http://www.brainbaking.com/wiki/code/scheme/</link>
+      <link>https://brainbaking.com/wiki/code/scheme/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/scheme/</guid>
+      <guid>https://brainbaking.com/wiki/code/scheme/</guid>
       <description>code &amp;gt;&amp;gt; Scheme ❗️ Exercices chapter 1
 code/scheme|js&amp;rsquo;&amp;gt;
 Variable arguments Bron: http://www.cs.utexas.edu/ftp/garbage/cs345/schintro-v14/schintro_68.html

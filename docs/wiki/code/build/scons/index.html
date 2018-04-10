@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="scons" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -193,7 +193,7 @@
 
 # construction variables: http://www.scons.org/doc/0.96.90/HTML/scons-user/a3061.html
 env ###### Environment(CXX  'g++',
-									CPPPATH = '../:./include')
+                                    CPPPATH = '../:./include')
 
 # add to library search path env.Append(LIBPATH = ['/usr/local/lib/'])
 # add to libraries link path env.Append(LIBS = ['SDL_image','GL'])
@@ -251,7 +251,7 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h &lt;br/&gt;
 all : $(TESTS)
 
 clean :
-	rm -f $(TESTS) gtest.a gtest_main.a *.o
+    rm -f $(TESTS) gtest.a gtest_main.a *.o
 
 # Builds gtest.a and gtest_main.a.
 
@@ -264,32 +264,32 @@ GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
 # conservative and not optimized.  This is fine as Google Test
 # compiles fast and for ordinary users its source rarely changes.
 gtest-all.o : $(GTEST_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c &lt;br/&gt;
+    $(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c &lt;br/&gt;
             $(GTEST_DIR)/src/gtest-all.cc
 
 gtest_main.o : $(GTEST_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c &lt;br/&gt;
+    $(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c &lt;br/&gt;
             $(GTEST_DIR)/src/gtest_main.cc
 
 gtest.a : gtest-all.o
-	$(AR) $(ARFLAGS) $@ $^
+    $(AR) $(ARFLAGS) $@ $^
 
 gtest_main.a : gtest-all.o gtest_main.o
-	$(AR) $(ARFLAGS) $@ $^
+    $(AR) $(ARFLAGS) $@ $^
 
 # Builds a sample test.  A test should link with either gtest.a or
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
 sample1.o : $(USER_DIR)/sample1.cc $(USER_DIR)/sample1.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1.cc
+    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1.cc
 
 sample1_unittest.o : $(USER_DIR)/sample1_unittest.cc &lt;br/&gt;
                      $(USER_DIR)/sample1.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1_unittest.cc
+    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1_unittest.cc
 
 sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+    $(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 </code></pre>
 
       
@@ -351,7 +351,7 @@ sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -361,13 +361,13 @@ sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -382,10 +382,10 @@ sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

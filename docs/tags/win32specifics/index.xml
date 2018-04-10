@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Win32specifics on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/win32specifics/</link>
+    <link>https://brainbaking.com/tags/win32specifics/</link>
     <description>Recent content in Win32specifics on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Thu, 12 Dec 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/win32specifics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/win32specifics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>win32specifics</title>
-      <link>http://www.brainbaking.com/wiki/code/c/win32specifics/</link>
+      <link>https://brainbaking.com/wiki/code/c/win32specifics/</link>
       <pubDate>Thu, 12 Dec 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/c/win32specifics/</guid>
+      <guid>https://brainbaking.com/wiki/code/c/win32specifics/</guid>
       <description>code:c &amp;gt;&amp;gt; Win32 API specifics Get Loaded DLL info from given process huidig proces: GetCurrentProcessId() - dit is een HANDLE.
 CString ExceptionHandler::GetLoadedDllInfo() const { CString dlls = _T(&amp;quot;&amp;quot;); HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId()); if(process ###### NULL) { return dlls; } HMODULE hMods[1024]; DWORD cbNeeded; BOOL modules = EnumProcessModules(process, hMods, sizeof(hMods), &amp;amp;cbNeeded); if(!modules) { return dlls; } for (int i = 0; i &amp;lt; (cbNeeded / sizeof(HMODULE)); i++) { TCHAR szModName[MAX_PATH]; if (GetModuleFileNameEx(process, hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR))) { dlls.</description>
     </item>

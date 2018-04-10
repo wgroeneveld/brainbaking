@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Csharp on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/csharp/</link>
+    <link>https://brainbaking.com/tags/csharp/</link>
     <description>Recent content in Csharp on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 09 Oct 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>resources</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/resources/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/resources/</link>
       <pubDate>Fri, 09 Oct 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/resources/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/resources/</guid>
       <description>C# Resources In Tests Zie code/csharp/testing
 Web config Zie http://msdn.microsoft.com/en-us/library/dd465326(VS.100).aspx
 .NET 4 voorziet een manier om de Web.config file automatisch te transformeren afhankelijk van uw build configuratie (Debug, Release, custom). Je hebt hier 2 files:
@@ -27,10 +27,10 @@ Web config Zie http://msdn.microsoft.com/en-us/library/dd465326(VS.100).aspx
     
     <item>
       <title>linqtosql</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/linqtosql/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/linqtosql/</link>
       <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/linqtosql/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/linqtosql/</guid>
       <description>code:csharp &amp;gt;&amp;gt; Linqtosql Zie ook MSDN LinqToSql pagina
 Basic Principe is een DataContext object aanmaken waar je je connectionstring aan meegeeft (Log kan naar Console.Out ofzo). Vanaf dan via het context object werken:
  context.GetTable&amp;lt;T&amp;gt;().Where(t ######&amp;gt; t.Property x).ToList() om te queryen bij deleten of wijzigen: .Attach(entity) en .DeleteOnSubmit(entity) &amp;hellip;  Modellen: annoteren met [Table(Name######&amp;quot;tabelnaam&amp;quot;)], kolommen met [Column(Name&amp;quot;kolomnaam&amp;quot;, IsPrimaryKey ###### true, IsDbGenerated true)]
@@ -39,10 +39,10 @@ Wijzigingen doorvoeren met SubmitChanges() door simpelweg properties van modelle
     
     <item>
       <title>persistence</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/persistence/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/persistence/</link>
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/persistence/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/persistence/</guid>
       <description>Persistence NHibernate Second level caching Gebruik SysCache2 voor Web projecten. Hoe enablen? DLL ref + in config:
 Configuration.SessionFactory().Caching.Through&amp;lt;SysCacheProvider&amp;gt;().WithDefaultExpiration(60); Configuration.SetProperty(Environment.UseSecondLevelCache, &amp;quot;true&amp;quot;); Configuration.SetProperty(Environment.UseQueryCache, &amp;quot;true&amp;quot;);  In hbm mappings moet je entiteiten cache-baar markeren (read-only, read-write, &amp;hellip; zie docs) met &amp;lt;cache usage=&amp;quot;read-write&amp;quot; /&amp;gt;. Vanaf dan kan je aan Criteria of LINQ queries dingen doen als:
  Session.Query&amp;lt;Obj&amp;gt;().Cachable().List() of Session.CreateCriteria&amp;lt;Obj&amp;gt;().SetCachable(true)  Groeperen in &amp;ldquo;regions&amp;rdquo; is ook mogelijk, mee te geven met criteria.
@@ -51,20 +51,20 @@ Clearing everything SessionFactory.</description>
     
     <item>
       <title>reflectie</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/reflectie/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/reflectie/</link>
       <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/reflectie/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/reflectie/</guid>
       <description>Reflectie Get Type based on string Probleem: een fully qualified classname in string vorm is geen Type en Type.GetType() gaat standaard in de huidige assembly kijken of die klasse daar in steekt. Hoe haal ik dit type op als ik niet vanbuiten weet in welke assembly ik moet gaan kijken? Via uw AppDomain:
 return AppDomain.CurrentDomain.GetAssemblies() .Single(app ######&amp;gt; app.GetType(fullClassName) ! null) .GetType(fullClassName);  Get Subclasses/interfaces of class Gebruik type.Assembly.GetTypes() en filter verder.</description>
     </item>
     
     <item>
       <title>dynamica</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/dynamica/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/dynamica/</link>
       <pubDate>Wed, 05 Nov 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/dynamica/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/dynamica/</guid>
       <description>Dynamica Zie ook code/csharp/reflectie
 Expression trees opbouwen Van een MethodInfo instantie naar een Func&amp;lt;&amp;gt; var instanceToMemoize = Activator.CreateInstance&amp;lt;TClassToMemoize&amp;gt;(); foreach (var method in instanceToMemoize.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)) { var parameters ###### method.GetParameters().Select(p &amp;gt; Expression.Constant(&amp;quot;test&amp;quot;)); var expr = Expression.Lambda(Expression.Call(Expression.Constant(instanceToMemoize), method, parameters)).Compile(); _Delegates.Add(method.ToString(), expr); }  Argumenten stuk klopt nog niet. Refs:
  http://stackoverflow.com/questions/2933221/can-you-get-a-funct-or-similar-from-a-methodinfo-object http://stackoverflow.com/questions/11367830/how-to-find-full-name-of-calling-method-c-sharp  Memoization Ook mogelijk via Func&amp;lt;&amp;gt; wrappers; zie
@@ -73,20 +73,20 @@ Expression trees opbouwen Van een MethodInfo instantie naar een Func&amp;lt;&amp
     
     <item>
       <title>signing</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/signing/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/signing/</link>
       <pubDate>Fri, 11 Jul 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/signing/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/signing/</guid>
       <description>Signing Compile fouten: &amp;lsquo;cannot import the following key file&amp;rsquo; C:&amp;lt;br/&amp;gt;Windows&amp;lt;br/&amp;gt;Microsoft.NET&amp;lt;br/&amp;gt;Framework&amp;lt;br/&amp;gt;v4.0.30319&amp;lt;br/&amp;gt;Microsoft.Common.targets(2455, 5): error MSB3325: Cannot import the following key file: ign.pfx. The key file may be password protected. To correct this, try to import the certificate again or manually install the certificate to the Strong Name CSP with the following key container name: VS_KEY_0E36C1B21D0EBCA4  Oplossen door met sntool te registreren en die container naam aan te maken (VSKEY&amp;hellip;)
 Assemblies signen Properties -&amp;gt; Signing -&amp;gt; Sign the assembly aanvinken.</description>
     </item>
     
     <item>
       <title>aspdotnet</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/aspdotnet/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/aspdotnet/</link>
       <pubDate>Mon, 30 Jun 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/aspdotnet/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/aspdotnet/</guid>
       <description>ASP.NET Troubleshooting &amp;lsquo;WebForm_DoPostBackWithOptions&amp;rsquo; is undefined in IE1 Probleem: How to get your ASP.NET application working in IE11
 Fix: App_Browsers folder aanmaken in uw webapp en een .browser file toevoegen:
 &amp;lt;browsers&amp;gt; &amp;lt;browser id######&amp;quot;IE11&amp;quot; parentID&amp;quot;Mozilla&amp;quot;&amp;gt; &amp;lt;identification&amp;gt; &amp;lt;userAgent match=&amp;quot;Trident/(?&#39;layoutVersion&#39;[7-9]|0*[1-9]&amp;lt;br/&amp;gt;d+)(&amp;lt;br/&amp;gt;.&amp;lt;br/&amp;gt;d+)?;(.*;)?&amp;lt;br/&amp;gt;s*rv:(?&#39;version&#39;(?&#39;major&#39;&amp;lt;br/&amp;gt;d+)(&amp;lt;br/&amp;gt;.(?&#39;minor&#39;&amp;lt;br/&amp;gt;d+)))&amp;quot; /&amp;gt; &amp;lt;userAgent nonMatch=&amp;quot;IEMobile&amp;quot; /&amp;gt; &amp;lt;/identification&amp;gt; &amp;lt;capture&amp;gt; &amp;lt;userAgent match=&amp;quot;Trident/(?&#39;layoutVersion&#39;&amp;lt;br/&amp;gt;d+)&amp;quot; /&amp;gt; &amp;lt;/capture&amp;gt; &amp;lt;capabilities&amp;gt; &amp;lt;capability name######&amp;quot;browser&amp;quot; value&amp;quot;IE&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;layoutEngine&amp;quot; value&amp;quot;Trident&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;layoutEngineVersion&amp;quot; value&amp;quot;${layoutVersion}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;extra&amp;quot; value&amp;quot;${extra}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;isColor&amp;quot; value&amp;quot;true&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;letters&amp;quot; value&amp;quot;${letters}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;majorversion&amp;quot; value&amp;quot;${major}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;minorversion&amp;quot; value&amp;quot;${minor}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;screenBitDepth&amp;quot; value&amp;quot;8&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;type&amp;quot; value&amp;quot;IE${major}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;version&amp;quot; value&amp;quot;${version}&amp;quot; /&amp;gt; &amp;lt;/capabilities&amp;gt; &amp;lt;/browser&amp;gt; &amp;lt;!</description>
@@ -94,10 +94,10 @@ Fix: App_Browsers folder aanmaken in uw webapp en een .browser file toevoegen:
     
     <item>
       <title>testing</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/testing/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/testing/</link>
       <pubDate>Fri, 27 Jun 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/testing/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/testing/</guid>
       <description>Testing met C#/.NET Test frameworks Selenium/WebDriver Zie http://www.joecolantonio.com/2012/07/31/getting-started-using-selenium-2-0-webdriver-for-ie-in-visual-studio-c/ - essentiëel identiek aan Java.
 Chaining - fluent acceptance criteria definitions Een typische test zou er dan zo kunnen uitzien:
 [Test] public void OpenAdminAuthenticationManagement() { LogInto() .OpenAdministrationAuthenticationManagement() .AuthenticationGrid .ShouldContainMinAmountRows(1) .DoubleClickOnRowNr(0) .ExpectOpened&amp;lt;ModifyUserDetailWindow&amp;gt;() .UserNameShouldContainSomeValue(); }   Gebruik overal return this Wanneer je niet wil upcasten en in een abstract component ClickSave() uw subtype moet retourneren: public class Panel&amp;lt;T&amp;gt; : Window where T : Panel&amp;lt;T&amp;gt; en return (T) this Wanneer je niet weet wat het volgend scherm is, gebruik ExpectOpened&amp;lt;Type&amp;gt;() dat via code/csharp/reflectie een instantie aanmaakt van uw component.</description>
@@ -105,10 +105,10 @@ Chaining - fluent acceptance criteria definitions Een typische test zou er dan z
     
     <item>
       <title>utils</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/utils/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/utils/</link>
       <pubDate>Mon, 17 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/utils/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/utils/</guid>
       <description>Utils Partials ObjectExtensions Waarom? Deep clone van een object maken zonder de boel te (de)-serialiseren.
 Bron: https://raw.github.com/Burtsev-Alexey/net-object-deep-copy/master/ObjectExtensions.cs - thank you Alexey
 public static class ObjectExtensions { private static readonly MethodInfo CloneMethod = typeof (Object).GetMethod(&amp;quot;MemberwiseClone&amp;quot;, BindingFlags.NonPublic | BindingFlags.Instance); public static bool IsPrimitive(this Type type) { if (type ###### typeof (String)) return true; return (type.IsValueType &amp;amp; type.IsPrimitive); } public static Object Copy(this Object originalObject) { return InternalCopy(originalObject, new Dictionary&amp;lt;Object, Object&amp;gt;(new ReferenceEqualityComparer())); } private static Object InternalCopy(Object originalObject, IDictionary&amp;lt;Object, Object&amp;gt; visited) { if (originalObject ###### null) return null; var typeToReflect = originalObject.</description>
@@ -116,10 +116,10 @@ public static class ObjectExtensions { private static readonly MethodInfo CloneM
     
     <item>
       <title>meta</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/meta/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/meta/</link>
       <pubDate>Thu, 13 Feb 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/meta/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/meta/</guid>
       <description>Metaprogramming Tests on source code contents Wat is de bedoeling? Lees alle source files in en check of er iets in voorkomt (in onderstaand geval Bla.Instance)
 De GoUpThreeDirs is omdat bij unit testen draaien dit in rootDir/unitTestProject/Bin/Debug uitgevoerd wordt, dat is de huidige dir. wij hebben nodig: rootDir/sourceCodeProject.
 [TestMethod] public void StaticInstanceShouldNeverBeUsedExceptInAllowedCases() { foreach (var file in Directory.GetFiles(GetSourcePath(), &amp;quot;*.cs&amp;quot;, SearchOption.AllDirectories)) { var source = File.ReadAllText(file); if (source.Contains(typeof(Bla).Name + &amp;quot;.Instance&amp;quot;) &amp;amp;&amp;amp; NoStaticRefAllowedInThatFile(file)) { Assert.</description>
@@ -127,10 +127,10 @@ De GoUpThreeDirs is omdat bij unit testen draaien dit in rootDir/unitTestProject
     
     <item>
       <title>classes</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/classes/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/classes/</link>
       <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/classes/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/classes/</guid>
       <description>Classes Dynamically creating instances Gebruik Activator:
 Activator.CreateInstance(type) as MyType  Overrides en shadowing: &amp;lsquo;new&amp;rsquo; en &amp;lsquo;virtual&amp;rsquo; Zie onder andere: 1. http://stackoverflow.com/questions/1014295/new-keyword-in-method-signature 2. http://stackoverflow.com/questions/9892468/java-is-there-java-equivalent-for-c-sharp-new-keyword-in-method-signature-how
 In java zijn alle methods virtual, dat wil zeggen dat ze overschrijfbaar zijn (@Override) zodat de method in de diepst geneste polymorfe structuur gebruikt wordt. In C# is daarvoor het keyword virtual nodig:
@@ -139,10 +139,10 @@ public class A { public virtual void One(); public void Two(); } public class B 
     
     <item>
       <title>linq</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/linq/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/linq/</link>
       <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/linq/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/linq/</guid>
       <description>Collections, Iterating, ???, Linq (profit) yield hocus pocus Zie The implementation of iterators in C# - wordt uitgelegd hoe yield door de compiler geïnterpreteerd wordt.
 Hiermee is het mogelijk om heel snel uw eigen IEnumerable te maken.
  “yield”, [&amp;hellip;] which allows you to quickly write iterators without worrying about preserving state.
@@ -152,20 +152,20 @@ Opgelet met foreach en de manier waarop die geïmplementeerd is (onder C# 5):</d
     
     <item>
       <title>nativecalls</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/nativecalls/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/nativecalls/</link>
       <pubDate>Fri, 13 Dec 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/nativecalls/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/nativecalls/</guid>
       <description>C++ Native calls uitvoeren Voorbeeld project Wat is het probleem:
  Ik wil Native C++ methods kunnen aanroepen vanuit C#. Dit kan met de DllImport attribute. Ik wil structs kunnen remarshallen die uit de native code komen. Dit kan met StructLayout en PtrToStructrue. Ik wil een char* mappen op een C# string: gebruik [MarshalAsAttribute(UnmanagedType.LPStr)] in uw C# struct. Ik wil parameters mee kunnen geven: gebruik de juiste calling method (STD of DECL) instelling, zie CallingConvention op UnmanagedFunctionPointer.</description>
     </item>
     
     <item>
       <title>threads</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/threads/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/threads/</link>
       <pubDate>Fri, 06 Dec 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/threads/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/threads/</guid>
       <description>Threads Locking en singletons See C#In Depth: Implementing the Singleton pattern in C#
 een lock() is heel duur om uit te voeren, daarom wordt er een null check hierrond nog eens geschreven, dat heet double-check locking:
 internal static ContextViewPresenter instance; private static readonly Object syncRoot = new Object(); public static ContextViewPresenter Instance { get { if (instance ###### null) { lock (syncRoot) { if (instance ###### null) { instance = new ContextViewPresenter(UserEnvironmentDataProviderSingleton.</description>
@@ -173,19 +173,19 @@ internal static ContextViewPresenter instance; private static readonly Object sy
     
     <item>
       <title>csharp</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/</link>
       <pubDate>Tue, 03 Dec 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/</guid>
       <description>code &amp;gt;&amp;gt; Csharp Inhoudsopgave code/csharp|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>tfs</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/tfs/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/tfs/</link>
       <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/tfs/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/tfs/</guid>
       <description>Tfs communicator TFS informatie vanuit .NET uitlezen OData TFS v2 is een tussenlaag REST API die je zelf nog op IIS kan deployen&amp;hellip;
 Onderstaande code doet hetzelfde (veel eenvoudiger) in een console appke
 using System; using System.Diagnostics.CodeAnalysis; using System.Linq; using Microsoft.TeamFoundation.Build.Client; using Microsoft.TeamFoundation.Client; namespace TfsCommunicator { [ExcludeFromCodeCoverage] public class BuildCommunicator : IBuildCommunicator { private string tfsServerAddress; public BuildCommunicator(string tfsServerAddress) { this.tfsServerAddress = tfsServerAddress; } public BuildStatus GetBuildInformation(int maxDays ###### 5, int maxRuns 10, string teamProject ###### &amp;quot;*&amp;quot;, string buildDefinition &amp;quot;&amp;quot;) { var buildStatus = new BuildStatus(); var builds = GetBuildsFromTfs(maxDays, teamProject, buildDefinition); var currentDefinition = string.</description>
@@ -193,10 +193,10 @@ using System; using System.Diagnostics.CodeAnalysis; using System.Linq; using Mi
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/</link>
       <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/</guid>
       <description>C# Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     

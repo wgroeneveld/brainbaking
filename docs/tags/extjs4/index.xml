@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Extjs4 on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/extjs4/</link>
+    <link>https://brainbaking.com/tags/extjs4/</link>
     <description>Recent content in Extjs4 on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/extjs4/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/extjs4/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>extjs4</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/extjs4/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/extjs4/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/extjs4/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/extjs4/</guid>
       <description>Extjs4 Documentatie: http://docs.sencha.com/ext-js/4-0/#!/api/
 Aanmaken van klassen en managers die loaden Met Ext.define maak je een klasse aan, met Ext.create maak je een instantie van die klasse.
 Een klasse heeft:

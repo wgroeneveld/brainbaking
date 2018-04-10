@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Visualstudio on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/visualstudio/</link>
+    <link>https://brainbaking.com/tags/visualstudio/</link>
     <description>Recent content in Visualstudio on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Thu, 19 Jun 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/visualstudio/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/visualstudio/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>visualstudio</title>
-      <link>http://www.brainbaking.com/wiki/code/tools/visualstudio/</link>
+      <link>https://brainbaking.com/wiki/code/tools/visualstudio/</link>
       <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/tools/visualstudio/</guid>
+      <guid>https://brainbaking.com/wiki/code/tools/visualstudio/</guid>
       <description>Visual Studio Handige plugins  http://www.codemaid.net/ - auto-cleanup on save, integratie resharper code/tools/resharper  Debugging PDB files auto-resolven: remote SymbolSource enablen Zie Using SymbolSource
  Go to Tools -&amp;gt; Options -&amp;gt; Debugger -&amp;gt; General. Uncheck “Enable Just My Code (Managed only)”. Uncheck “Enable .NET Framework source stepping”. Yes, it is misleading, but if you don&amp;rsquo;t, then Visual Studio will ignore your custom server order (see further on) and only use it&amp;rsquo;s own servers.</description>
     </item>

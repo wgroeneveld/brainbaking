@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Inleiding on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/inleiding/</link>
+    <link>https://brainbaking.com/tags/inleiding/</link>
     <description>Recent content in Inleiding on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/inleiding/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/inleiding/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>inleiding</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/inleiding/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/inleiding/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/inleiding/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/inleiding/</guid>
       <description>Javascript Inleiding Primitives Soorten In javascript zijn er slechts 3 primitives:
  string (geassocieerd object: String) boolean (geassocieerd object: Boolean) number (geassocieerd object: Number)  Primitives zijn immutable! Toekennen van properties maakt ook een tijdelijk object aan, dus dit heeft geen nut.
 Soort afchecken Aangezien JS loosely typed is, kunnen we nooit weten wat er nu in var variabele; steekt op een bepaald moment in de code. Om dit op te lossen kan men typeof gebruiken, een functie die een string teruggeeft wat het type van die variabele is.</description>

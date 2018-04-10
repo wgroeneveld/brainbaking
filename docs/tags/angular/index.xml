@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Angular on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/angular/</link>
+    <link>https://brainbaking.com/tags/angular/</link>
     <description>Recent content in Angular on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Wed, 05 Jun 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>angular</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/testing/angular/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/testing/angular/</link>
       <pubDate>Wed, 05 Jun 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/testing/angular/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/testing/angular/</guid>
       <description>AngularJS testing Voorbeeld voor angular app met mocks en testing en al: angular-seed
 Mocking en zo Zie angular.mock.module - twee hoofdfuncties die belangrijk zijn: module() en inject(). Het eerste maakt de module aan en het tweede zorgt voor de mock dependency injectie. Bijvoorbeeld:
 angular .module(&#39;bla.services&#39;, []) .factory(&#39;$bla&#39;, [&#39;$http&#39;, function($http) { // do stuff with $http, like a .get return { go: function() {} } }]) ;  Je kan dus met $bla.</description>
@@ -26,10 +26,10 @@ angular .module(&#39;bla.services&#39;, []) .factory(&#39;$bla&#39;, [&#39;$http
     
     <item>
       <title>angular</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/angular/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/angular/</link>
       <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/angular/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/angular/</guid>
       <description>Angular Testing: zie code/javascript/testing/angular
 Caching in HTTP IE8 cachet by default alle XHR requests en daar kan je niet zomaar iets aan veranderen. Een unieke URL elke keer callen is een oplossing (met new Date().getTime() bijvoorbeeld), maar je kan ook aan de server kant de Cache-Control header parameter op no-cache zetten.
 Zie issue https://github.com/angular/angular.js/issues/1418

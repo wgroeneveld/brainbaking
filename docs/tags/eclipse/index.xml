@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Eclipse on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/eclipse/</link>
+    <link>https://brainbaking.com/tags/eclipse/</link>
     <description>Recent content in Eclipse on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,25 +10,25 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Mon, 14 Oct 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Visual Studio 2012 for Eclipse users</title>
-      <link>http://www.brainbaking.com/post/vstudio-missing-features/</link>
+      <link>https://brainbaking.com/post/vstudio-missing-features/</link>
       <pubDate>Mon, 14 Oct 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/vstudio-missing-features/</guid>
+      <guid>https://brainbaking.com/post/vstudio-missing-features/</guid>
       <description>When switching over to a new editor and new language, I can sometimes get frustrated by missing features I got (very) attached to. This excludes the obvious difference in shortcut keys.
 Shortcuts and refactoring tools One plugin to rule them all: ReSharpner. This productivity tool brings back the incredible development speed to the Visual Studio platform. You can almost map the eclipse (or IntelliJ, since they guys from JetBrains developed it) keys to the ReSharpner keys.</description>
     </item>
     
     <item>
       <title>eclipse</title>
-      <link>http://www.brainbaking.com/wiki/code/tools/eclipse/</link>
+      <link>https://brainbaking.com/wiki/code/tools/eclipse/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/tools/eclipse/</guid>
+      <guid>https://brainbaking.com/wiki/code/tools/eclipse/</guid>
       <description>Eclipse tips &amp;amp; tricks Shortcuts die ik nog niet vanbuiten ken  CTRL+(SHIFT)+E: view open editors &amp;amp; quickfind!! CTRL+M: minimize/maximize editor CTRL+  F6: switch editor F7: switch view F8: switch perspective  CTRL+ALT+  R: run server D: debug server  CTLR+SHIFT+NUMPAD/: minimize all trees in package explorer (handig bij link with editor)  Custom preferences Static imports CTRL+3, &amp;ldquo;favorites&amp;rdquo; (Java/Editor/Context assist) -&amp;gt; New Type. Zeker handig voor Assertions van FEST Assert.</description>
     </item>
     

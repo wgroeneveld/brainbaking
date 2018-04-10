@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/python/</link>
+    <link>https://brainbaking.com/tags/python/</link>
     <description>Recent content in Python on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Wed, 26 Mar 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bye autotools hello Scons</title>
-      <link>http://www.brainbaking.com/post/scons-building/</link>
+      <link>https://brainbaking.com/post/scons-building/</link>
       <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/scons-building/</guid>
+      <guid>https://brainbaking.com/post/scons-building/</guid>
       <description>Remember this?
  ./configure make make install  That&amp;rsquo;s not so bad, as long as you have the right compiler and linker flags configured, depending on the target OS. The real problem, however, is trying to figure out how to alter something if you didn&amp;rsquo;t write the Makefile yourself. Or if you in fact did write it, but it was some time ago. Two days. No, four hours.
 The problem Try to study the autoconf and automake flow diagram, explained on Wikipedia: the GNU build system.</description>
@@ -26,10 +26,10 @@ The problem Try to study the autoconf and automake flow diagram, explained on Wi
     
     <item>
       <title>meta</title>
-      <link>http://www.brainbaking.com/wiki/code/python/meta/</link>
+      <link>https://brainbaking.com/wiki/code/python/meta/</link>
       <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/python/meta/</guid>
+      <guid>https://brainbaking.com/wiki/code/python/meta/</guid>
       <description> Metaprogramming Zie ook code/python/classes
 type, the metaclass of a class Resources:
  Python metaclasses by example Extremely detailed, stackoverflow: what is a metaclass in python Improve your python with metaclasses  </description>
@@ -37,10 +37,10 @@ type, the metaclass of a class Resources:
     
     <item>
       <title>classes</title>
-      <link>http://www.brainbaking.com/wiki/code/python/classes/</link>
+      <link>https://brainbaking.com/wiki/code/python/classes/</link>
       <pubDate>Wed, 12 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/python/classes/</guid>
+      <guid>https://brainbaking.com/wiki/code/python/classes/</guid>
       <description>Classes Handige links:
  special class methods like _ getattr _ and _ new _ dive into python - native datatypes Inside story on new style classes - ter info: Python3 heeft enkel &amp;ldquo;newstyle&amp;rdquo; classes!  Method overriding Is niet mogelijk. Gebruik default values!
 def func(i, j ###### 2, k 3): return i + j + k func(1) # 6 func(1, 1) # 5 func(1, 1, 1) # 3  Wat wel gaat, evt met decorators, zie Five-minute multimethods in Python - is _ _call_ _ implementeren en dan met metaprogrammeren te loopen over alle methods en te kijken of de argumenten overeen komen met het type dat required is.</description>
@@ -48,10 +48,10 @@ def func(i, j ###### 2, k 3): return i + j + k func(1) # 6 func(1, 1) # 5 func(1
     
     <item>
       <title>ironpython</title>
-      <link>http://www.brainbaking.com/wiki/code/python/ironpython/</link>
+      <link>https://brainbaking.com/wiki/code/python/ironpython/</link>
       <pubDate>Fri, 07 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/python/ironpython/</guid>
+      <guid>https://brainbaking.com/wiki/code/python/ironpython/</guid>
       <description>IronPython Interessante links: * Iron Python In Action - Dark corners * IronPython .NET Integration documentation * Python Tools for Visual Studio
 C#/Python interop C# in Python Overerving In Python C# klassen over laten erven gaat zonder meer. Constructors werken niet via _ _init_ _ maar via new:
  The init method is the Python initializer method. It is an instance method and so receives the instance as the first argument, which by convention is called self.</description>
@@ -59,10 +59,10 @@ C#/Python interop C# in Python Overerving In Python C# klassen over laten erven 
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/python/</link>
+      <link>https://brainbaking.com/wiki/code/python/</link>
       <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/python/</guid>
+      <guid>https://brainbaking.com/wiki/code/python/</guid>
       <description>Python class Pythonic: `&#39;I can access this doc using instance.__doc__, holy cow?`&#39; def __init__(self, arg, *args, **dict): pass  😳
  The pass statement in Python is like a empty set of curly braces ({}) in Java or C.
  Simpele server opstarten Waarom? Om lokale files makkelijk te kunnen serven (handig voor JS)
@@ -72,10 +72,10 @@ Python 2 vs 3  in py3 is print een functie geworden, gebruik dus () de SimpleHTT
     
     <item>
       <title>packages</title>
-      <link>http://www.brainbaking.com/wiki/code/python/packages/</link>
+      <link>https://brainbaking.com/wiki/code/python/packages/</link>
       <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/python/packages/</guid>
+      <guid>https://brainbaking.com/wiki/code/python/packages/</guid>
       <description>Package Management Pain in the ass. Geen built-in beschikbaar, gebruik pip. Zie http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows
 Installatie (windows dan) - let op, hangt zelfs van minor versie van python af:
  Install setuptools http://www.lfd.uci.edu/~gohlke/pythonlibs/#setuptools Install pip http://www.lfd.uci.edu/~gohlke/pythonlibs/#pip  Alternatief: grab get-pip.py en laat evalueren door python, haalt automatisch ook setuptools af.
@@ -84,10 +84,10 @@ Vanaf dan pip install [package] (voeg python base dir/Scripts toe aan uw PATH). 
     
     <item>
       <title>testing</title>
-      <link>http://www.brainbaking.com/wiki/code/python/testing/</link>
+      <link>https://brainbaking.com/wiki/code/python/testing/</link>
       <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/python/testing/</guid>
+      <guid>https://brainbaking.com/wiki/code/python/testing/</guid>
       <description>Python Unit Testing unittest module Spreekt voor zich:
 import unittest from calculator import Calculator class TestCalculator(unittest.TestCase): def setUp(self): self.calc = Calculator().calculate; def test_calculateBasicNumberReturnsNumber(self): self.assertEqual(3, self.calc(&#39;3&#39;)) def test_calculateSimpleMultiplicationReturnsResult(self): self.assertEqual(10, self.calc(&#39;5*2&#39;)) def test_calculateInvalidStringShouldThrowException(self): self.assertRaises(ValueError, self.calc, (&#39;blabl&#39;))  Zie http://docs.python.org/3/library/unittest.html
  setUp wordt automatisch aangeroepen. Beforeclass, aftereach etc etc bestaat ook. alle methods met test_ worden automatisch herkend.  Hoe voer ik dit nu uit? Dit stuk onder uw py file plakken:</description>

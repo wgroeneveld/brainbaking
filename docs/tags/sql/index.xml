@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sql on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/sql/</link>
+    <link>https://brainbaking.com/tags/sql/</link>
     <description>Recent content in Sql on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,35 +10,35 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Mon, 04 Nov 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/sql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Integration Testing with SQLite</title>
-      <link>http://www.brainbaking.com/post/integration-testing-sqlite/</link>
+      <link>https://brainbaking.com/post/integration-testing-sqlite/</link>
       <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/integration-testing-sqlite/</guid>
+      <guid>https://brainbaking.com/post/integration-testing-sqlite/</guid>
       <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
 On previous projects I&amp;rsquo;ve worked on, development PCs came with a local version of the database scheme. Each DB change also got rolled out to those computers, which enabled us developers to fool around without breaking anything on the development (or test) environment. This is another step closer to happiness, at least for our proxy customers who didn&amp;rsquo;t have to reinsert their test data every time we flushed something from a table.</description>
     </item>
     
     <item>
       <title>Unit Testing Stored Procedures</title>
-      <link>http://www.brainbaking.com/post/unit-testing-stored-procedures/</link>
+      <link>https://brainbaking.com/post/unit-testing-stored-procedures/</link>
       <pubDate>Thu, 10 Oct 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/unit-testing-stored-procedures/</guid>
+      <guid>https://brainbaking.com/post/unit-testing-stored-procedures/</guid>
       <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
 Test Driven Development (or TDD), it&amp;rsquo;s one of those buzz words which usuallly appear in the same sentence with &amp;ldquo;scrum&amp;rdquo; or &amp;ldquo;XP&amp;rdquo;. But in practice, I&amp;rsquo;ve seen few people actually applying it all the way through. What do I mean by that? You&amp;rsquo;re probably very familiar with, say Java or .NET, and you know how to write unit tests in that language using your beloved IDE.</description>
     </item>
     
     <item>
       <title>sql</title>
-      <link>http://www.brainbaking.com/wiki/code/db/sql/</link>
+      <link>https://brainbaking.com/wiki/code/db/sql/</link>
       <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/db/sql/</guid>
+      <guid>https://brainbaking.com/wiki/code/db/sql/</guid>
       <description>code:db &amp;gt;&amp;gt; Sql Stored procedures Oproepen Zie http://stackoverflow.com/questions/3991721/run-stored-procedure-in-sql-developer
 Gegeven: een procedure GETPERMISSIONSALL als volgt gedeclareerd:
 create or replace PROCEDURE &amp;quot;GETPERMISSIONALL&amp;quot; ( v_actCreator in VARCHAR2, v_repGuid in VARCHAR2, v_userid INT, v_retHasPermission out SMALLINT)  De laatste parameter is de return waarde (kunnen meerdere dingen zijn dus). Hoe roep ik nu zoiets aan?

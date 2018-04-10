@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>React on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/react/</link>
+    <link>https://brainbaking.com/tags/react/</link>
     <description>Recent content in React on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 26 Jan 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/react/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/react/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Migrating from Extjs to React gradually</title>
-      <link>http://www.brainbaking.com/post/react-in-extjs/</link>
+      <link>https://brainbaking.com/post/react-in-extjs/</link>
       <pubDate>Tue, 26 Jan 2016 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/react-in-extjs/</guid>
+      <guid>https://brainbaking.com/post/react-in-extjs/</guid>
       <description>We were looking for a few alternatives to our big ExtJS 4 application. Since it&amp;rsquo;s not that easy to completely migrate from one front-end framework to the next, a possible solution would be to start developing new parts in another framework. There&amp;rsquo;s a lot of domain logic spread in Ext views and controllers - which shouldn&amp;rsquo;t be there, we are well aware of that. Let&amp;rsquo;s call it &amp;ldquo;legacy&amp;rdquo; :-)
 The application right now uses Extjs as UI and C# as backend, and lets ext do the loading of the views/controllers (living in app.</description>
     </item>

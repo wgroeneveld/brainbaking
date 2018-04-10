@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dynamica on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/dynamica/</link>
+    <link>https://brainbaking.com/tags/dynamica/</link>
     <description>Recent content in Dynamica on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Wed, 05 Nov 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/dynamica/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/dynamica/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>dynamica</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/dynamica/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/dynamica/</link>
       <pubDate>Wed, 05 Nov 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/dynamica/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/dynamica/</guid>
       <description>Dynamica Zie ook code/csharp/reflectie
 Expression trees opbouwen Van een MethodInfo instantie naar een Func&amp;lt;&amp;gt; var instanceToMemoize = Activator.CreateInstance&amp;lt;TClassToMemoize&amp;gt;(); foreach (var method in instanceToMemoize.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)) { var parameters ###### method.GetParameters().Select(p &amp;gt; Expression.Constant(&amp;quot;test&amp;quot;)); var expr = Expression.Lambda(Expression.Call(Expression.Constant(instanceToMemoize), method, parameters)).Compile(); _Delegates.Add(method.ToString(), expr); }  Argumenten stuk klopt nog niet. Refs:
  http://stackoverflow.com/questions/2933221/can-you-get-a-funct-or-similar-from-a-methodinfo-object http://stackoverflow.com/questions/11367830/how-to-find-full-name-of-calling-method-c-sharp  Memoization Ook mogelijk via Func&amp;lt;&amp;gt; wrappers; zie
@@ -27,10 +27,10 @@ Expression trees opbouwen Van een MethodInfo instantie naar een Func&amp;lt;&amp
     
     <item>
       <title>aspectj</title>
-      <link>http://www.brainbaking.com/wiki/code/java/dynamica/aspectj/</link>
+      <link>https://brainbaking.com/wiki/code/java/dynamica/aspectj/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/dynamica/aspectj/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/dynamica/aspectj/</guid>
       <description>Loadtime weaving met aspectJ Spring weaving Zie demo projectje: ❗️ Vanaf versie 3.0 moet spring-instrument in plaats van spring-agent gebruikt worden! (bestaat niet meer)
 Zie http://static.springsource.org/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#aop
 Weavers:
@@ -39,10 +39,10 @@ Weavers:
     
     <item>
       <title>dynamica</title>
-      <link>http://www.brainbaking.com/wiki/code/java/dynamica/</link>
+      <link>https://brainbaking.com/wiki/code/java/dynamica/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/dynamica/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/dynamica/</guid>
       <description>Dynamica Hier zitten stukjes code om java meer dynamiek te geven (voorzover dat mogelijk is&amp;hellip;)
 Veel collectie gerelateerde dingen (filter, map etc) is reeds geïmplementeerd: http://code.google.com/p/guava-libraries/
 Reduce met optellen public class CollectionUtil { public static interface EnkelvoudigeTeller&amp;lt;TellerType&amp;gt; { boolean magMeegeteldWorden(TellerType object); } public static interface MeervoudigeTeller&amp;lt;TellerType&amp;gt; { int geefAantalMeegeteld(TellerType object); } public static &amp;lt;TellerType&amp;gt; int tel(Collection&amp;lt;TellerType&amp;gt; objecten, MeervoudigeTeller&amp;lt;TellerType&amp;gt; teller) { int geteld = 0; for (TellerType object : objecten) { geteld += teller.</description>
@@ -50,20 +50,20 @@ Reduce met optellen public class CollectionUtil { public static interface Enkelv
     
     <item>
       <title>innerclasses</title>
-      <link>http://www.brainbaking.com/wiki/code/java/dynamica/innerclasses/</link>
+      <link>https://brainbaking.com/wiki/code/java/dynamica/innerclasses/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/dynamica/innerclasses/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/dynamica/innerclasses/</guid>
       <description>code:java:dynamica &amp;gt;&amp;gt; Innerclasses Java is geen dynamische taal maar je kan wel gebruik maken van een aantal handige trucjes om duplicatie te vermijden. Bijvoorbeeld om state bij te houden en de implementatie zelf in een inner klasse te voorzien:
 private interface CrmEndpointWorker { void call(Holder&amp;lt;Status&amp;gt; status, Holder&amp;lt;String&amp;gt; result); } public CrmImportGatewayAction forCreation() { return new CrmImportGatewayAction(Action.CREATE); } public CrmImportGatewayAction forUpdating() { return new CrmImportGatewayAction(Action.UPDATE); } public CrmImportGatewayAction forDeletion() { return new CrmImportGatewayAction(Action.</description>
     </item>
     
     <item>
       <title>listmerger</title>
-      <link>http://www.brainbaking.com/wiki/code/java/dynamica/listmerger/</link>
+      <link>https://brainbaking.com/wiki/code/java/dynamica/listmerger/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/dynamica/listmerger/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/dynamica/listmerger/</guid>
       <description>code:java:dynamica &amp;gt;&amp;gt; Listmerger public final class ListMerger&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; { private final Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; itemConverterFn; public ListMerger() { this.itemConverterFn = identityFn(); } public ListMerger(Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; itemConverterFn) { this.itemConverterFn = itemConverterFn; } private Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt; identityFn() { return new Function&amp;lt;ItemType, ItemTypeAfterConversion&amp;gt;() { @SuppressWarnings(&amp;quot;unchecked&amp;quot;) @Override public ItemTypeAfterConversion apply(ItemType input) { return (ItemTypeAfterConversion) input; } }; } public final void mergeLists(List&amp;lt;? extends ItemType&amp;gt; oldList, List&amp;lt;? extends ItemType&amp;gt; newList, ListMergable&amp;lt;ItemType&amp;gt; mergable) { List&amp;lt;ItemTypeAfterConversion&amp;gt; oldTransformed = new ArrayList&amp;lt;ItemTypeAfterConversion&amp;gt;(transform(oldList, itemConverterFn)); List&amp;lt;ItemTypeAfterConversion&amp;gt; newTransformed = new ArrayList&amp;lt;ItemTypeAfterConversion&amp;gt;(transform(newList, itemConverterFn)); for (ItemType item : new ArrayList&amp;lt;ItemType&amp;gt;(oldList)) { if (!</description>
     </item>
     

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Knockout on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/knockout/</link>
+    <link>https://brainbaking.com/tags/knockout/</link>
     <description>Recent content in Knockout on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/knockout/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/knockout/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>knockout</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/knockout/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/knockout/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/knockout/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/knockout/</guid>
       <description>Knockout JS Paged client-side table zelf voorzien ❗️ Zie http://jsfiddle.net/rniemeyer/5Xr2X/
  The basic idea is that you have a dependentObservable that represents the rows in your current page and bind your table to it. You would slice the overall array to get the rows for the page. Then, you have pager buttons/links that manipulate the page index, which causes the dependentObservable to be re-evaluated resulting in the current rows.</description>
     </item>

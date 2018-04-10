@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="rest" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -174,21 +174,21 @@
 
 <h5 id="maven">maven</h5>
 
-<pre><code class="language-xml">		&lt;dependency&gt;
-			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
-			&lt;artifactId&gt;jersey-server&lt;/artifactId&gt;
-			&lt;version&gt;1.17&lt;/version&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
-			&lt;artifactId&gt;jersey-json&lt;/artifactId&gt;
-			&lt;version&gt;1.17&lt;/version&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
-			&lt;artifactId&gt;jersey-servlet&lt;/artifactId&gt;
-			&lt;version&gt;1.17&lt;/version&gt;
-		&lt;/dependency&gt;
+<pre><code class="language-xml">        &lt;dependency&gt;
+            &lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+            &lt;artifactId&gt;jersey-server&lt;/artifactId&gt;
+            &lt;version&gt;1.17&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+            &lt;artifactId&gt;jersey-json&lt;/artifactId&gt;
+            &lt;version&gt;1.17&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+            &lt;artifactId&gt;jersey-servlet&lt;/artifactId&gt;
+            &lt;version&gt;1.17&lt;/version&gt;
+        &lt;/dependency&gt;
 </code></pre>
 
 <p><code>jersey-json</code> is niet nodig als je geen <code>JSON</code> wil gebruiken. <code>jersey-servlet</code> ook niet als je geen Servlet 2.x gebruikt.</p>
@@ -197,32 +197,32 @@
 
 <p>Dit moet in <code>web.xml</code>:</p>
 
-<pre><code class="language-xml">	&lt;servlet&gt;
-		&lt;servlet-name&gt;jersey-serlvet&lt;/servlet-name&gt;
-		&lt;servlet-class&gt;com.sun.jersey.spi.container.servlet.ServletContainer&lt;/servlet-class&gt;
-		&lt;init-param&gt;
-			&lt;param-name&gt;com.sun.jersey.config.property.packages&lt;/param-name&gt;
-			&lt;param-value&gt;be.klak.package&lt;/param-value&gt;
-		&lt;/init-param&gt;
-		&lt;init-param&gt;
-			&lt;param-name&gt;com.sun.jersey.api.json.POJOMappingFeature&lt;/param-name&gt;
-			&lt;param-value&gt;true&lt;/param-value&gt;
-		&lt;/init-param&gt;		
-		&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-	&lt;/servlet&gt;
-	&lt;servlet-mapping&gt;
-		&lt;servlet-name&gt;jersey-serlvet&lt;/servlet-name&gt;
-		&lt;url-pattern&gt;/rest/*&lt;/url-pattern&gt;
-	&lt;/servlet-mapping&gt;
+<pre><code class="language-xml">    &lt;servlet&gt;
+        &lt;servlet-name&gt;jersey-serlvet&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;com.sun.jersey.spi.container.servlet.ServletContainer&lt;/servlet-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;com.sun.jersey.config.property.packages&lt;/param-name&gt;
+            &lt;param-value&gt;be.klak.package&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;com.sun.jersey.api.json.POJOMappingFeature&lt;/param-name&gt;
+            &lt;param-value&gt;true&lt;/param-value&gt;
+        &lt;/init-param&gt;       
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;jersey-serlvet&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/rest/*&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
 </code></pre>
 
 <p>❗️ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:</p>
 
-<pre><code class="language-xml">		&lt;!-- prevents classes that use reflection which is not allowed in GAE --&gt;
-		&lt;init-param&gt;
-			&lt;param-name&gt;com.sun.jersey.config.feature.DisableWADL&lt;/param-name&gt;
-			&lt;param-value&gt;true&lt;/param-value&gt;
-		&lt;/init-param&gt;
+<pre><code class="language-xml">        &lt;!-- prevents classes that use reflection which is not allowed in GAE --&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;com.sun.jersey.config.feature.DisableWADL&lt;/param-name&gt;
+            &lt;param-value&gt;true&lt;/param-value&gt;
+        &lt;/init-param&gt;
 </code></pre>
 
 <p>Zie <a href="http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine">http://stackoverflow.com/questions/14305035/jersey-setup-on-app-engine</a></p>
@@ -232,19 +232,19 @@
 <pre><code class="language-java">@Path(&quot;/gc&quot;)
 public class Controller {
 
-	@GET
-	@Path(&quot;/path&quot;)
-	@Produces(APPLICATION_JSON)
-	public List&lt;Pojo&gt; getStuff() {
-		return stuffRepo().getAll();
-	}
+    @GET
+    @Path(&quot;/path&quot;)
+    @Produces(APPLICATION_JSON)
+    public List&lt;Pojo&gt; getStuff() {
+        return stuffRepo().getAll();
+    }
 
-	@POST
-	@Consumes(MediaType.TEXT_PLAIN)
-	@Path(&quot;/bla/receive&quot;)
-	public Response received(String data) {
-		return ok().build();
-	}
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Path(&quot;/bla/receive&quot;)
+    public Response received(String data) {
+        return ok().build();
+    }
 </code></pre>
 
 <p>waarbij <code>ok()</code> op <code>javax.ws.rs.Response</code> zit.</p>
@@ -253,67 +253,67 @@ public class Controller {
 
 <h5 id="maven-1">maven</h5>
 
-<pre><code class="language-xml">		&lt;dependency&gt;
-			&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
-			&lt;artifactId&gt;jersey-client&lt;/artifactId&gt;
-			&lt;version&gt;1.17&lt;/version&gt;
-		&lt;/dependency&gt;
+<pre><code class="language-xml">        &lt;dependency&gt;
+            &lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+            &lt;artifactId&gt;jersey-client&lt;/artifactId&gt;
+            &lt;version&gt;1.17&lt;/version&gt;
+        &lt;/dependency&gt;
 </code></pre>
 
 <h5 id="voorbeeld-1">voorbeeld</h5>
 
 <p><code>com.sun.jersey.api.client.Client</code> client:</p>
 
-<pre><code class="language-java">		Client.create()
-				.resource(getGatecontrolServer() + &quot;/rest/gc/houses/receive&quot;)
-				.type(TEXT_PLAIN)
-				.post(&quot;request body data&quot;);
+<pre><code class="language-java">        Client.create()
+                .resource(getGatecontrolServer() + &quot;/rest/gc/houses/receive&quot;)
+                .type(TEXT_PLAIN)
+                .post(&quot;request body data&quot;);
 </code></pre>
 
 <h3 id="header-control-bvb-caching">Header control (bvb caching)</h3>
 
 <p>Kan via een filter factory die je meegeeft aan de init params van de servlet in web.xml:</p>
 
-<pre><code class="language-xml">		&lt;init-param&gt;
-			&lt;param-name&gt;com.sun.jersey.spi.container.ResourceFilters&lt;/param-name&gt;
-			&lt;param-value&gt;be.klak.rest.CacheFilterFactory&lt;/param-value&gt;
-		&lt;/init-param&gt;
+<pre><code class="language-xml">        &lt;init-param&gt;
+            &lt;param-name&gt;com.sun.jersey.spi.container.ResourceFilters&lt;/param-name&gt;
+            &lt;param-value&gt;be.klak.rest.CacheFilterFactory&lt;/param-value&gt;
+        &lt;/init-param&gt;
 &lt;/xml&gt;
 
 ```java
 public class CacheFilterFactory implements ResourceFilterFactory {
 
-	@Override
-	public List&lt;ResourceFilter&gt; create(AbstractMethod am) {
-		if (hasNoCacheAnnotationOnClass(am) != null) {
-			return Collections.&lt;ResourceFilter&gt; singletonList(new CacheResponseFilter());
-		}
+    @Override
+    public List&lt;ResourceFilter&gt; create(AbstractMethod am) {
+        if (hasNoCacheAnnotationOnClass(am) != null) {
+            return Collections.&lt;ResourceFilter&gt; singletonList(new CacheResponseFilter());
+        }
 
-		return new ArrayList&lt;&gt;();
-	}
+        return new ArrayList&lt;&gt;();
+    }
 
-	private CacheControlHeaderNoCache hasNoCacheAnnotationOnClass(AbstractMethod am) {
-		return am.getResource().getResourceClass().getAnnotation(CacheControlHeaderNoCache.class);
-	}
+    private CacheControlHeaderNoCache hasNoCacheAnnotationOnClass(AbstractMethod am) {
+        return am.getResource().getResourceClass().getAnnotation(CacheControlHeaderNoCache.class);
+    }
 
-	private static class CacheResponseFilter implements ResourceFilter, ContainerResponseFilter {
+    private static class CacheResponseFilter implements ResourceFilter, ContainerResponseFilter {
 
-		@Override
-		public ContainerRequestFilter getRequestFilter() {
-			return null;
-		}
+        @Override
+        public ContainerRequestFilter getRequestFilter() {
+            return null;
+        }
 
-		@Override
-		public ContainerResponseFilter getResponseFilter() {
-			return this;
-		}
+        @Override
+        public ContainerResponseFilter getResponseFilter() {
+            return this;
+        }
 
-		@Override
-		public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
-			response.getHttpHeaders().putSingle(HttpHeaders.CACHE_CONTROL, &quot;no-cache&quot;);
-			return response;
-		}
-	}
+        @Override
+        public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
+            response.getHttpHeaders().putSingle(HttpHeaders.CACHE_CONTROL, &quot;no-cache&quot;);
+            return response;
+        }
+    }
 }
 </code></pre>
 
@@ -386,7 +386,7 @@ public @interface CacheControlHeaderNoCache {
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -396,13 +396,13 @@ public @interface CacheControlHeaderNoCache {
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -417,10 +417,10 @@ public @interface CacheControlHeaderNoCache {
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

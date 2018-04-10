@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ontspanning on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/ontspanning/</link>
+    <link>https://brainbaking.com/tags/ontspanning/</link>
     <description>Recent content in Ontspanning on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,25 +10,25 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/ontspanning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/ontspanning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>kaarten</title>
-      <link>http://www.brainbaking.com/wiki/ontspanning/kaarten/</link>
+      <link>https://brainbaking.com/wiki/ontspanning/kaarten/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/ontspanning/kaarten/</guid>
+      <guid>https://brainbaking.com/wiki/ontspanning/kaarten/</guid>
       <description>Kaarten Zenuwen Zonder joker.
  Deel helft in 2. Ieder legt in solitaire vorm 5 hoopjes voor zich neer:  hoop 1: 1 omgedraaide kaart hoop 2: 1 gedekte, daarbovenop 1 omgedraaide Zo doorgaan tot 5 hopen  Rest gedekt in het midden leggen  Spelers draaien tegelijkertijd hun gedekte stapel om. Het is de bedoeling dat de kaarten zo snel mogelijk in volgorde worden weggewerkt, door kaarten van de 5 hoopjes op één van de twee gedraaide kaarten naast de 2 stapels te leggen.</description>
     </item>
     
     <item>
       <title>ontspanning</title>
-      <link>http://www.brainbaking.com/wiki/ontspanning/</link>
+      <link>https://brainbaking.com/wiki/ontspanning/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/ontspanning/</guid>
+      <guid>https://brainbaking.com/wiki/ontspanning/</guid>
       <description> Ontspanning 
 Inhoudsopgave Ontspanning ontspanning|js context navbar nocookie&amp;rsquo;&amp;gt;
 Schermen schermen|js context navbar nocookie&amp;rsquo;&amp;gt;

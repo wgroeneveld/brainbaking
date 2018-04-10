@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/windows/</link>
+    <link>https://brainbaking.com/tags/windows/</link>
     <description>Recent content in Windows on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>windows</title>
-      <link>http://www.brainbaking.com/wiki/tech/windows/</link>
+      <link>https://brainbaking.com/wiki/tech/windows/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/tech/windows/</guid>
+      <guid>https://brainbaking.com/wiki/tech/windows/</guid>
       <description>Windows Utility apps Productivity Clipboard caching CLCL http://www.nakka.com/soft/clcl/index_eng.html
 Process monitoring Procmon: http://technet.microsoft.com/en-us/sysinternals/bb896645 - handig voor bvb te zijn waar programma&amp;rsquo;s naar schrijven en regedit calls</description>
     </item>

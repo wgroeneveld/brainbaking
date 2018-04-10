@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rest on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/rest/</link>
+    <link>https://brainbaking.com/tags/rest/</link>
     <description>Recent content in Rest on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,19 +10,19 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Wed, 22 May 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/rest/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/rest/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>rest</title>
-      <link>http://www.brainbaking.com/wiki/code/java/rest/</link>
+      <link>https://brainbaking.com/wiki/code/java/rest/</link>
       <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/rest/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/rest/</guid>
       <description>Rest Calls plegen met Java Jersey ❗️ User Guide: http://jersey.java.net/nonav/documentation/latest/user-guide.html
 Server maven &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jersey-server&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jersey-json&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.sun.jersey&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jersey-servlet&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.17&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  jersey-json is niet nodig als je geen JSON wil gebruiken. jersey-servlet ook niet als je geen Servlet 2.x gebruikt.
 servlet 2.x config Dit moet in web.xml:
-&amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.sun.jersey.spi.container.servlet.ServletContainer&amp;lt;/servlet-class&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;com.sun.jersey.config.property.packages&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;be.klak.package&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;com.sun.jersey.api.json.POJOMappingFeature&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt;	&amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattern&amp;gt;/rest/*&amp;lt;/url-pattern&amp;gt; &amp;lt;/servlet-mapping&amp;gt;  ❗️ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:</description>
+&amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.sun.jersey.spi.container.servlet.ServletContainer&amp;lt;/servlet-class&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;com.sun.jersey.config.property.packages&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;be.klak.package&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;com.sun.jersey.api.json.POJOMappingFeature&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;jersey-serlvet&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattern&amp;gt;/rest/*&amp;lt;/url-pattern&amp;gt; &amp;lt;/servlet-mapping&amp;gt;  ❗️ Om Jersey samen met google app engine te kunnen gebruiken, moet je ook dit nog toevoegen:</description>
     </item>
     
   </channel>

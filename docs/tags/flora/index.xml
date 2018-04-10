@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Flora on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/flora/</link>
+    <link>https://brainbaking.com/tags/flora/</link>
     <description>Recent content in Flora on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,28 +10,28 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/flora/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/flora/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/flora/</link>
+      <link>https://brainbaking.com/wiki/flora/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/flora/</guid>
+      <guid>https://brainbaking.com/wiki/flora/</guid>
       <description>flora &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>permaculture</title>
-      <link>http://www.brainbaking.com/wiki/flora/permaculture/</link>
+      <link>https://brainbaking.com/wiki/flora/permaculture/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/flora/permaculture/</guid>
+      <guid>https://brainbaking.com/wiki/flora/permaculture/</guid>
       <description>PermaCulture en ForestGardening Informatie Wikipedia:
- Forest gardening -&amp;gt; gelayerde tuin aanleggen in 7 lagen voor maximum vermogen Permaculture -&amp;gt; self sustained eigen biotoop aanleggen dat met het vorige gepaard gaat Polyculture -&amp;gt; Verschillende gewassen plaatsen die goed bij elkaar passen in plaats van monoculture  Algemene links:
+ Forest gardening-&amp;gt; gelayerde tuin aanleggen in 7 lagen voor maximum vermogen Permaculture-&amp;gt; self sustained eigen biotoop aanleggen dat met het vorige gepaard gaat Polyculture-&amp;gt; Verschillende gewassen plaatsen die goed bij elkaar passen in plaats van monoculture  Algemene links:
  Edible forest Gardens - about Gardening PolyCultures uitleg ❗️ Videoserie - a farm for the future (youtube)  Boeken:
- Gaia&amp;#39;s Garden, Second Edition: A Guide To Home-Scale Permaculture - introductie, duidelijke uitleg, tabellen Edible Forest Gardens - meer naslagwerk als &amp;ldquo;course ecological garden design&amp;ldquo;  Technieken  Herb Spiral (schema) 7 Layer woodland farming (schema) biomimicry   Grond begroeïng Zie http://www.</description>
+ Gaia&amp;#39;s Garden, Second Edition: A Guide To Home-Scale Permaculture- introductie, duidelijke uitleg, tabellen Edible Forest Gardens- meer naslagwerk als &amp;ldquo;course ecological garden design&amp;ldquo;  Technieken  Herb Spiral (schema) 7 Layer woodland farming (schema) biomimicry  Grond begroeïng Zie http://www.</description>
     </item>
     
   </channel>

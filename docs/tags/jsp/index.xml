@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jsp on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/jsp/</link>
+    <link>https://brainbaking.com/tags/jsp/</link>
     <description>Recent content in Jsp on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/jsp/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/jsp/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>jsp</title>
-      <link>http://www.brainbaking.com/wiki/code/jsp/</link>
+      <link>https://brainbaking.com/wiki/code/jsp/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/jsp/</guid>
+      <guid>https://brainbaking.com/wiki/code/jsp/</guid>
       <description>JSP snippets Inhoudsopgave code/jsp|js context navbar nocookie&amp;rsquo;&amp;gt;
 Algemeen Variables in jsp pages with “included” pages Probleem: &amp;lt;c:set/&amp;gt; gebruikt om een variabele in een pagina te maken, daarna een subpagina geïnclude. Die heeft geen toegang tot die variabele??
 Oplossing:
@@ -29,10 +29,10 @@ n JSP there are two ways of including other jsp pages.
     
     <item>
       <title>jstl</title>
-      <link>http://www.brainbaking.com/wiki/code/jsp/jstl/</link>
+      <link>https://brainbaking.com/wiki/code/jsp/jstl/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/jsp/jstl/</guid>
+      <guid>https://brainbaking.com/wiki/code/jsp/jstl/</guid>
       <description>JSTL Snippets Installatie 1.2 Requirements: Web container 2.5 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd (dit is stricter dan de voorgaande!)
 Jars kopiëren naar WEB-INF lib. standard-x.jar mag verwijderd worden dit is een oude versie. jstl-api en jstl-impl moeten aanwezig zijn.
 Hierna is het mogelijk om met $ expressies te gebruiken in jsps.
@@ -41,10 +41,10 @@ Hierna is het mogelijk om met $ expressies te gebruiken in jsps.
     
     <item>
       <title>webflow</title>
-      <link>http://www.brainbaking.com/wiki/code/jsp/webflow/</link>
+      <link>https://brainbaking.com/wiki/code/jsp/webflow/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/jsp/webflow/</guid>
+      <guid>https://brainbaking.com/wiki/code/jsp/webflow/</guid>
       <description>Spring Webflow Pitfalls rond flow xml declaraties Gelieve in het geval van &amp;ldquo;problemen&amp;rdquo; de volgende checklist te raadplegen:
  bind = false setupForm gedaan? Anders worden PropertyEditors niet correct gebruikt resetForm leegmaken gui model scope opgeven in model attribute in action: setFormObjectName/setFormObjectScope en indien resetForm ook setFormObjectClass Ajax requets: vac_ajax_request op true zetten -&amp;gt; anders geen fragments Ajax: extend van AbstractWebflowAjaxAction Te combineren met setFormObjectName stap nestedPartialPage tag -&amp;gt; commandName ofwel hardcoded ofwel als var vanuit tiles meegegeven  AbstractWebflowAjaxAction package be.</description>
     </item>

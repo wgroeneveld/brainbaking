@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Thebishop on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/thebishop/</link>
+    <link>https://brainbaking.com/tags/thebishop/</link>
     <description>Recent content in Thebishop on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/thebishop/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/thebishop/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>thebishop</title>
-      <link>http://www.brainbaking.com/wiki/games/wizardry8/thebishop/</link>
+      <link>https://brainbaking.com/wiki/games/wizardry8/thebishop/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/games/wizardry8/thebishop/</guid>
+      <guid>https://brainbaking.com/wiki/games/wizardry8/thebishop/</guid>
       <description>The Bishop   Best Race: Fairy: best INT &amp;amp; SPE. Downside: low PIE and almost no weapons/armor usable. (go for sprite daggers if you want close-combat) Elf: good INT, PIE &amp;amp; DEX. Downside: less than fairies but you&amp;rsquo;ll be able to use better armor &amp;amp; weapons (use staffs, maces &amp;amp; shield - you need AC - or throwing) Other good races: gnome, human. Mook for SEN + DEX.</description>
     </item>
     

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gtest on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/gtest/</link>
+    <link>https://brainbaking.com/tags/gtest/</link>
     <description>Recent content in Gtest on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Wed, 26 Mar 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/gtest/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/gtest/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>gtest</title>
-      <link>http://www.brainbaking.com/wiki/code/c/testing/gtest/</link>
+      <link>https://brainbaking.com/wiki/code/c/testing/gtest/</link>
       <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/c/testing/gtest/</guid>
+      <guid>https://brainbaking.com/wiki/code/c/testing/gtest/</guid>
       <description>Google Test Downloaden op https://code.google.com/p/googletest/downloads/list
 Waarom?
  Platform onafhankelijk Snelheid Geen gezeik met Managed C++, compatibel met &amp;ldquo;eender wat&amp;rdquo; (enige vereiste: cc compiler variant) Wordt veel gebruikt (Chromium, Stack overflow)  Waarom niet?

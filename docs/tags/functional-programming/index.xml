@@ -2,23 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Functional Programming on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/functional-programming/</link>
+    <link>https://brainbaking.com/tags/functional-programming/</link>
     <description>Recent content in Functional Programming on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Thu, 14 Nov 2013 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Death to pseudocode?</title>
+      <link>https://brainbaking.com/post/pseudocode/</link>
+      <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/pseudocode/</guid>
+      <description>Coming across pseudocode isn&amp;rsquo;t something that might happen every day except if you&amp;rsquo;re used to browsing through the more theoretical and academic oriented &amp;ldquo;computer science&amp;rdquo; handbooks. We, the practical &amp;ldquo;software engineers&amp;rdquo; of nowadays, usually stop searching for something after our browser hits Stackoverflow. Stack is loaded with technical samples, gists of code, and lot&amp;rsquo;s of won&amp;rsquo;t-ever-compile-wrongly-copy-pasted code. Real code. If you&amp;rsquo;re working in Java, you probably end up with articles full of Java snippets.</description>
+    </item>
+    
+    <item>
       <title>Enhancing the builder pattern with closures</title>
-      <link>http://www.brainbaking.com/post/builders-dsl/</link>
+      <link>https://brainbaking.com/post/builders-dsl/</link>
       <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/builders-dsl/</guid>
+      <guid>https://brainbaking.com/post/builders-dsl/</guid>
       <description>This post is inspired by Venkat Subramaniam&amp;rsquo;s Devoxx 2013 talk Thinking Functional Style. See downloads at agiledeveloper.com which has a rather cool Groovy example.
 Classic builders For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters.</description>
     </item>

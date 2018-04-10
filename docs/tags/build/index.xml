@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Build on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/build/</link>
+    <link>https://brainbaking.com/tags/build/</link>
     <description>Recent content in Build on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Mon, 13 Jul 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/build/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/build/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>teamcity</title>
-      <link>http://www.brainbaking.com/wiki/code/build/teamcity/</link>
+      <link>https://brainbaking.com/wiki/code/build/teamcity/</link>
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/teamcity/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/teamcity/</guid>
       <description>Teamcity Build pipeline voor continuous deployment: zie http:*robdmoore.id.au/blog/2012/09/01/maintainable-teamcity-continuous-deployment-pipeline-configuration/
 Parameters: comboboxen/checkboxen Demo omgeving
 Dit ingeven in &amp;ldquo;spec&amp;rdquo;:
@@ -30,10 +30,10 @@ Artifacts bijhouden Edit build settings &amp;gt; Artifact paths &amp;gt; **/pack
     
     <item>
       <title>scons</title>
-      <link>http://www.brainbaking.com/wiki/code/build/scons/</link>
+      <link>https://brainbaking.com/wiki/code/build/scons/</link>
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/scons/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/scons/</guid>
       <description>SCons  SCons Wiki Frontpage Single HTML Manpage SCons Construction Variables om bvb de compiler te specifiëren.  Opsplitsen SConstruct en SConscript Waarom? http://www.scons.org/doc/2.1.0/HTML/scons-user/c3356.html
 Build output definiëren, duplicate source files, etc. Voorbeeld SConstruct file:
 SConscript(&#39;SConscript&#39;, variant_dir######&#39;build&#39;, duplicate0)  Voorbeeld file om Google Test mee te (proberen) builden SConscript:
@@ -42,30 +42,30 @@ def Glob( pattern ###### &#39;*.*&#39;, dir &#39;.&#39; ): import os, fnmatch fi
     
     <item>
       <title>msbuild</title>
-      <link>http://www.brainbaking.com/wiki/code/build/msbuild/</link>
+      <link>https://brainbaking.com/wiki/code/build/msbuild/</link>
       <pubDate>Fri, 31 Jan 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/msbuild/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/msbuild/</guid>
       <description>MSBuild Adding/Modifying build steps Q: Hoe kan ik iets aan de build toevoegen zonder de XAML template te wijzigen? A: Maak een nieuw dummy solution met één project, waar in de csproj file het volgende bijgevoegd is:
 &amp;lt;Target Name=&amp;quot;AfterBuild&amp;quot;&amp;gt; &amp;lt;Exec Condition######&amp;quot; &#39;$(Configuration)|$(Platform)&#39; &#39;Release|x86&#39; &amp;quot; Command=&amp;quot;attrib -r ../../AUP/C-eHealthPortal.aup&amp;quot; /&amp;gt; &amp;lt;BuildUpdate Condition######&amp;quot; &#39;$(Configuration)|$(Platform)&#39; &#39;Release|x86&#39; &amp;quot; ProjectFile######&amp;quot;../../AUP/C-eHealthPortal.aup&amp;quot; PublishLocations&amp;quot;LOCAL&amp;quot; /&amp;gt; &amp;lt;Exec Condition######&amp;quot; &#39;$(Configuration)|$(Platform)&#39; &#39;Release|x86&#39; &amp;quot; Command=&amp;quot;attrib +r ../../AUP/C-eHealthPortal.aup&amp;quot; /&amp;gt; &amp;lt;/Target&amp;gt;  (Ter info, BuildUpdate is een tag die met een using included werd: &amp;lt;UsingTask AssemblyFile######&amp;quot;.</description>
     </item>
     
     <item>
       <title>maven</title>
-      <link>http://www.brainbaking.com/wiki/code/build/maven/</link>
+      <link>https://brainbaking.com/wiki/code/build/maven/</link>
       <pubDate>Wed, 05 Jun 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/maven/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/maven/</guid>
       <description>Maven2 Build stuff ❗️ properties guide: http://docs.codehaus.org/display/MAVENUSER/MavenPropertiesGuide
 javascript files automatisch minify-en &amp;lt;profiles&amp;gt; &amp;lt;profile&amp;gt; &amp;lt;id&amp;gt;minify&amp;lt;/id&amp;gt; &amp;lt;build&amp;gt; &amp;lt;plugins&amp;gt; &amp;lt;plugin&amp;gt; &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;maven-war-plugin&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.1&amp;lt;/version&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;warSourceExcludes&amp;gt;**/js/**&amp;lt;/warSourceExcludes&amp;gt; &amp;lt;/configuration&amp;gt; &amp;lt;/plugin&amp;gt; &amp;lt;plugin&amp;gt; &amp;lt;groupId&amp;gt;net.tqh.plugins&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;uglifyjs-maven-plugin&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.0&amp;lt;/version&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;sourceDirectory&amp;gt;src/main/webapp/js&amp;lt;/sourceDirectory&amp;gt; &amp;lt;outputDirectory&amp;gt;target/${project.name}-${version}/js&amp;lt;/outputDirectory&amp;gt; &amp;lt;/configuration&amp;gt; &amp;lt;executions&amp;gt; &amp;lt;execution&amp;gt; &amp;lt;phase&amp;gt;prepare-package&amp;lt;/phase&amp;gt; &amp;lt;goals&amp;gt; &amp;lt;goal&amp;gt;uglify&amp;lt;/goal&amp;gt; &amp;lt;/goals&amp;gt; &amp;lt;/execution&amp;gt; &amp;lt;/executions&amp;gt; &amp;lt;/plugin&amp;gt; &amp;lt;/plugins&amp;gt; &amp;lt;/build&amp;gt; &amp;lt;/profile&amp;gt; &amp;lt;/profiles&amp;gt;  Bron: https:*github.com/mishoo/UglifyJS - maven plugin gebruikt Rhino om dit uit te voeren. Kan ook met node uitgevoerd worden - gebruik bij voorkeur r.js (zie http:*requirejs.</description>
     </item>
     
     <item>
       <title>jsunit</title>
-      <link>http://www.brainbaking.com/wiki/code/build/jsunit/</link>
+      <link>https://brainbaking.com/wiki/code/build/jsunit/</link>
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/jsunit/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/jsunit/</guid>
       <description>JsUnit Testen Integratie met een Ant build Zie http://www.jsunit.net/
 Hoofd JUnit klasse die gestart moet worden als junit tag vanuit ant: net.jsunit.StandaloneTest Voor uitleg over de parameters, zie jsunit website.
 ❗️ Belangrijk: JsUnit draait binnen een aparte context op een embedded Jetty server. Dit wil zeggen dat javascript test suites (html pagina&amp;rsquo;s) die javascript files includen wel binnen de context staan, maar javascript files in een web project binnen eclipse bijvoorbeeld niet.</description>
@@ -73,29 +73,29 @@ Hoofd JUnit klasse die gestart moet worden als junit tag vanuit ant: net.jsunit.
     
     <item>
       <title>releasing</title>
-      <link>http://www.brainbaking.com/wiki/code/build/maven/releasing/</link>
+      <link>https://brainbaking.com/wiki/code/build/maven/releasing/</link>
       <pubDate>Thu, 28 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/maven/releasing/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/maven/releasing/</guid>
       <description>Maven Releasing Opmerking: de te releasen code zetten onder een folder C:/xxx en niet te diep nesten (CVS kan te lange folder structuur niet uitchecken)
 Hoe een maven release uitvoeren ?  (eenmalig uit te voeren ❗️) voor elke nieuwe release maken we op een gepast moment een CVS &amp;lsquo;maintenance release branch&amp;rsquo; waarop we de laatste bugfixen uitvoeren :  deze zal steeds de vorm &amp;lsquo;versiez_y_x&amp;rsquo; hebben waarbij we z_y vervangen door een TOP release nummer b.</description>
     </item>
     
     <item>
       <title>ant</title>
-      <link>http://www.brainbaking.com/wiki/code/build/ant/</link>
+      <link>https://brainbaking.com/wiki/code/build/ant/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/ant/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/ant/</guid>
       <description>Ant scripts etc JSP files precompilen met tomcat lib &amp;lt;project name######&amp;quot;vac Precompilatie&amp;quot; default&amp;quot;precompile-all&amp;quot; basedir=&amp;quot;.&amp;quot;&amp;gt; &amp;lt;taskdef classname######&amp;quot;org.apache.jasper.JspC&amp;quot; name&amp;quot;jasper&amp;quot;&amp;gt; &amp;lt;!-- -Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true --&amp;gt; &amp;lt;classpath id=&amp;quot;jasperpath&amp;quot;&amp;gt; ```et &amp;lt;include name=&amp;quot;*.jar&amp;quot;/&amp;gt; &amp;lt;/fileset&amp;gt; ```et &amp;lt;include name=&amp;quot;*.jar&amp;quot;/&amp;gt; &amp;lt;/fileset&amp;gt; &amp;lt;/classpath&amp;gt; &amp;lt;/taskdef&amp;gt; &amp;lt;target name=&amp;quot;precompile-all&amp;quot;&amp;gt; &amp;lt;mkdir dir=&amp;quot;target/jsp&amp;quot; /&amp;gt; &amp;lt;jasper validatexml=&amp;quot;false&amp;quot; uriroot=&amp;quot;target/vac&amp;quot; outputdir=&amp;quot;target/jsp&amp;quot; /&amp;gt; &amp;lt;/target&amp;gt; &amp;lt;/project&amp;gt;  Als ge dit bovenstaande gebruikt, jasper als dep. toevoegen (org.apache.tomcat jasper 6.0.3x)</description>
     </item>
     
     <item>
       <title>appengine</title>
-      <link>http://www.brainbaking.com/wiki/code/build/maven/appengine/</link>
+      <link>https://brainbaking.com/wiki/code/build/maven/appengine/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/maven/appengine/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/maven/appengine/</guid>
       <description>Maven Google Appengine maven-cli-plugin gebruiken als semi-hot-deployer Zie Mavenizing my project
 In plaats van betalende JRebel kan je bvb. voor GAE de jetty server op zetten met gae:run, maar alles in webapp ziet hij niet als een change.
  In Tab1: mvn gae:run. In Tab2: mvn cli:execute en dan commando&amp;rsquo;s compile war in aparte tab die de eerste tab (nog actieve maven) oppikt dan.  Andere mogelijkheid is natuurlijk voor niet-GAE dingen, jetty:run gebruiken (zie code/build/maven).</description>
@@ -103,19 +103,19 @@ In plaats van betalende JRebel kan je bvb. voor GAE de jetty server op zetten me
     
     <item>
       <title>grunt</title>
-      <link>http://www.brainbaking.com/wiki/code/build/grunt/</link>
+      <link>https://brainbaking.com/wiki/code/build/grunt/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/grunt/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/grunt/</guid>
       <description>Grunt ❗️ Zie code/javascript/frameworks/yeoman</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/build/</link>
+      <link>https://brainbaking.com/wiki/code/build/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/</guid>
       <description> Building &amp;amp; Compiling .|js navbar nocookie&amp;rsquo;&amp;gt;
 Log management  http://www.splunk.com/ om zaken visueel samen te vatten, zelfde exceptions uit logs te halen, statistiekjes te trekken, &amp;hellip; unix/cmd tools zoals grep en sed gebruiken om de rest manueel te doen!  </description>
     </item>

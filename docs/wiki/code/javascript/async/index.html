@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="async" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -354,28 +354,28 @@ Los dit op met een utility functie:</p>
 <p>❗️ De laatste stap gaat <strong>altijd</strong> een <code>runs()</code> moeten bevatten voor de reporter om aan te duiden dat assertions uitgevoerd worden, aangezien de <code>exec()</code> functie direct retourneert. Dus moeten we 1x wachten, totdat de hele &ldquo;flow&rdquo; gedaan is. We kunnen dit combineren met BDD en een mini-DSL hierrond schrijven. Resultaat:</p>
 
 <pre><code class="language-javascript">function when() {
-	var flowDone = false;
-	var slice = Array.prototype.slice;
-	var argsArray = slice.call(arguments, 0);
-	var laatsteArgumenten;
-	
-	argsArray.push(function() {
-		laatsteArgumenten = slice.call(arguments, 0);
-		flowDone = true;
-	});
-	
-	flow.exec.apply(this, argsArray);
-	waitsFor(function() {
-		return flowDone ##### true;
-	});
-	
-	return {
-		then: function(assertionsFn) {
-			runs(function() {
-				assertionsFn.apply(this, laatsteArgumenten);
-			});
-		}
-	};
+    var flowDone = false;
+    var slice = Array.prototype.slice;
+    var argsArray = slice.call(arguments, 0);
+    var laatsteArgumenten;
+    
+    argsArray.push(function() {
+        laatsteArgumenten = slice.call(arguments, 0);
+        flowDone = true;
+    });
+    
+    flow.exec.apply(this, argsArray);
+    waitsFor(function() {
+        return flowDone ##### true;
+    });
+    
+    return {
+        then: function(assertionsFn) {
+            runs(function() {
+                assertionsFn.apply(this, laatsteArgumenten);
+            });
+        }
+    };
 }
 </code></pre>
 
@@ -383,24 +383,24 @@ Los dit op met een utility functie:</p>
 
 <pre><code class="language-javascript">
 describe(&quot;plaatsen domein&quot;, function() {
-	it(&quot;wanneer ik alle plaatsen ophaal, kan ik hier domeinspecifieke functies aan opvragen&quot;, function() {
-		var plaatsen;
-		when(
-			function() {
-				DOMEIN.plaatsRepository.bewaarPlaats(plaats, this.MULTI());
-				DOMEIN.plaatsRepository.bewaarPlaats(anderePlaats, this.MULTI());
-			},
-			function() {
-				DOMEIN.plaatsRepository.haalPlaatsenOp(this);
-			}
-		).then(
-			function(opgehaaldePlaatsen) {
-				opgehaaldePlaatsen.forEach(function(plaats) {
-					expect(plaats.geefMeting).toBeDefined();
-				});
-			}
-		);
-	});
+    it(&quot;wanneer ik alle plaatsen ophaal, kan ik hier domeinspecifieke functies aan opvragen&quot;, function() {
+        var plaatsen;
+        when(
+            function() {
+                DOMEIN.plaatsRepository.bewaarPlaats(plaats, this.MULTI());
+                DOMEIN.plaatsRepository.bewaarPlaats(anderePlaats, this.MULTI());
+            },
+            function() {
+                DOMEIN.plaatsRepository.haalPlaatsenOp(this);
+            }
+        ).then(
+            function(opgehaaldePlaatsen) {
+                opgehaaldePlaatsen.forEach(function(plaats) {
+                    expect(plaats.geefMeting).toBeDefined();
+                });
+            }
+        );
+    });
 });
 </code></pre>
 
@@ -451,18 +451,18 @@ startStuff().done(function() {
 <p>Stel dat eerst element #1 animatie triggert, dan #2, en daarna nog logica dient te gebeuren. Dit kan ook met <code>$.Deferred</code>, door <code>.pipe()</code> te gebruiken om verder te breiden aan de queue.</p>
 
 <pre><code class="language-javascript">$(&quot;button&quot;).bind( &quot;click&quot;, function() {
-	$(&quot;p&quot;).append( &quot;Started...&quot;);
-	var div1 ###### $(&quot;#div1&quot;), div2  $(&quot;#div2&quot;);
+    $(&quot;p&quot;).append( &quot;Started...&quot;);
+    var div1 ###### $(&quot;#div1&quot;), div2  $(&quot;#div2&quot;);
 
-	var df = $.Deferred();
-	df.pipe(function() {
-		return div1.fadeOut(&quot;slow&quot;)
-	}).pipe(function() {
-		return div2.fadeOut()
-	}).done(function() {
-		$(&quot;p&quot;).append( &quot;  --  DONE&quot;);
-	});
-	df.resolve(); 
+    var df = $.Deferred();
+    df.pipe(function() {
+        return div1.fadeOut(&quot;slow&quot;)
+    }).pipe(function() {
+        return div2.fadeOut()
+    }).done(function() {
+        $(&quot;p&quot;).append( &quot;  --  DONE&quot;);
+    });
+    df.resolve(); 
 });
 </code></pre>
 
@@ -527,7 +527,7 @@ startStuff().done(function() {
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -537,13 +537,13 @@ startStuff().done(function() {
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -558,10 +558,10 @@ startStuff().done(function() {
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

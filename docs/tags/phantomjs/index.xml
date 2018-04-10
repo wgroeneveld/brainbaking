@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Phantomjs on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/phantomjs/</link>
+    <link>https://brainbaking.com/tags/phantomjs/</link>
     <description>Recent content in Phantomjs on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/phantomjs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/phantomjs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>phantomjs</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/testing/phantomjs/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/testing/phantomjs/</guid>
       <description>Test automatisatie: PhantomJS Een experiment om mijn JasmineTestRunner uit te breiden (of volledig op te splitsen) van Rhino + Envjs 1.2 naar PhantomJS 1.4 (liefst 1.5 maar dit moet ik nog compilerend krijgen onder Windows).
 Phantom.js test code Start script console.log(&amp;quot;loading&amp;quot;); var page = new WebPage(); // Is nodig omdat anders in uw testpagina console.log() niets doet. page.onConsoleMessage = function(msg) { console.log(&amp;quot;debug from page: &amp;quot; + msg); }; /** * Phantom JS 1.</description>
     </item>

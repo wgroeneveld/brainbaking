@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vegetarian on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/vegetarian/</link>
+    <link>https://brainbaking.com/tags/vegetarian/</link>
     <description>Recent content in Vegetarian on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 06 Sep 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/vegetarian/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/vegetarian/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>No, vegetarians do not eat fish!</title>
-      <link>http://www.brainbaking.com/post/vegetarians-do-not-eat-fish/</link>
+      <link>https://brainbaking.com/post/vegetarians-do-not-eat-fish/</link>
       <pubDate>Fri, 06 Sep 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/vegetarians-do-not-eat-fish/</guid>
+      <guid>https://brainbaking.com/post/vegetarians-do-not-eat-fish/</guid>
       <description>Originally posted on Medium.
 The amateurs  “So, you do eat a juicy peace of grilled salmon, right?” “No, I already told you, I’m a vegetarian.” (sigh) Frowning. You can almost hear them thinking “that’s what I meant”. “If you’re a pescatarian, you eat seafood but not other animals”. “Oh, right right, sorry!”.
  It must have been the fourth conversation with somebody, where I have to explain what “being a vegetarian” actually means.</description>

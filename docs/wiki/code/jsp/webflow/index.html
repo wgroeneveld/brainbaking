@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="webflow" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -200,107 +200,107 @@ import org.springframework.webflow.execution.View;
 
 public abstract class AbstractWebFlowAjaxAction extends FormAction {
 
-	protected static final String COMMAND_NAME = &quot;commandName&quot;;
-	protected static final String ERRORS_PREFIX = BindingResult.MODEL_KEY_PREFIX;
+    protected static final String COMMAND_NAME = &quot;commandName&quot;;
+    protected static final String ERRORS_PREFIX = BindingResult.MODEL_KEY_PREFIX;
 
-	@Override
-	protected final Object getFormObject(RequestContext context) throws Exception {
-		String formObjectName = getFormObjectName();
-		ScopeType formObjectScope = getFormObjectScope();
-		Object result = null;
-		if (formObjectName != null) {
-			result = formObjectScope.getScope(context).get(formObjectName);
-		}
-		if (result ###### null) {
-			result = ((MutableAttributeMap) context.getFlowScope().get(&quot;viewScope&quot;)).get(&quot;currentFormObject&quot;);
-		}
-		if (result ###### null) {
-			result = context.getFlowScope().get(&quot;currentFormObject&quot;);
-		}
-		if (result ###### null) {
-			result = super.getFormObject(context);
-		}
-		return result;
-	}
+    @Override
+    protected final Object getFormObject(RequestContext context) throws Exception {
+        String formObjectName = getFormObjectName();
+        ScopeType formObjectScope = getFormObjectScope();
+        Object result = null;
+        if (formObjectName != null) {
+            result = formObjectScope.getScope(context).get(formObjectName);
+        }
+        if (result ###### null) {
+            result = ((MutableAttributeMap) context.getFlowScope().get(&quot;viewScope&quot;)).get(&quot;currentFormObject&quot;);
+        }
+        if (result ###### null) {
+            result = context.getFlowScope().get(&quot;currentFormObject&quot;);
+        }
+        if (result ###### null) {
+            result = super.getFormObject(context);
+        }
+        return result;
+    }
 
-	protected final String commandNameFromRequest(RequestContext context) {
-		return context.getRequestParameters().get(COMMAND_NAME);
-	}
+    protected final String commandNameFromRequest(RequestContext context) {
+        return context.getRequestParameters().get(COMMAND_NAME);
+    }
 
-	@Override
-	public Event bindAndValidate(RequestContext context) throws Exception {
-		Event result = super.bindAndValidate(context);
-		initFragmentToRender(context);
-		return result;
-	}
+    @Override
+    public Event bindAndValidate(RequestContext context) throws Exception {
+        Event result = super.bindAndValidate(context);
+        initFragmentToRender(context);
+        return result;
+    }
 
-	@Override
-	public Event bind(RequestContext context) throws Exception {
-		Event result = super.bind(context);
-		this.initFragmentToRender(context);
-		return result;
-	}
+    @Override
+    public Event bind(RequestContext context) throws Exception {
+        Event result = super.bind(context);
+        this.initFragmentToRender(context);
+        return result;
+    }
 
-	@Override
-	protected DataBinder createBinder(RequestContext context, Object formObject) throws Exception {
-		DataBinder binder = new WebDataBinder(formObject, commandNameFromRequest(context));
-		if (getMessageCodesResolver() != null) {
-			binder.setMessageCodesResolver(getMessageCodesResolver());
-		}
-		initBinder(context, binder);
-		registerPropertyEditors(context, binder);
-		return binder;
-	}
+    @Override
+    protected DataBinder createBinder(RequestContext context, Object formObject) throws Exception {
+        DataBinder binder = new WebDataBinder(formObject, commandNameFromRequest(context));
+        if (getMessageCodesResolver() != null) {
+            binder.setMessageCodesResolver(getMessageCodesResolver());
+        }
+        initBinder(context, binder);
+        registerPropertyEditors(context, binder);
+        return binder;
+    }
 
-	@Override
-	protected FormObjectAccessor getFormObjectAccessor(final RequestContext context) {
-		final String commandNameFromRequest = commandNameFromRequest(context);
-		return new FormObjectAccessor(context) {
-			@Override
-			public Errors getFormErrors(String formObjectName, ScopeType scopeType) {
-				return super.getFormErrors(commandNameFromRequest, scopeType);
-			}
+    @Override
+    protected FormObjectAccessor getFormObjectAccessor(final RequestContext context) {
+        final String commandNameFromRequest = commandNameFromRequest(context);
+        return new FormObjectAccessor(context) {
+            @Override
+            public Errors getFormErrors(String formObjectName, ScopeType scopeType) {
+                return super.getFormErrors(commandNameFromRequest, scopeType);
+            }
 
-			@Override
-			public Object getFormObject(String formObjectName, @SuppressWarnings(&quot;rawtypes&quot;) Class formObjectClass, ScopeType scopeType) {
-				return super.getFormObject(commandNameFromRequest, formObjectClass, scopeType);
-			}
+            @Override
+            public Object getFormObject(String formObjectName, @SuppressWarnings(&quot;rawtypes&quot;) Class formObjectClass, ScopeType scopeType) {
+                return super.getFormObject(commandNameFromRequest, formObjectClass, scopeType);
+            }
 
-			@Override
-			public Object getFormObject(String formObjectName, ScopeType scopeType) {
-				return super.getFormObject(commandNameFromRequest, scopeType);
-			}
+            @Override
+            public Object getFormObject(String formObjectName, ScopeType scopeType) {
+                return super.getFormObject(commandNameFromRequest, scopeType);
+            }
 
-			@Override
-			public Object getCurrentFormObject(ScopeType scopeType) {
-				return super.getFormObject(getCurrentFormObjectName(), scopeType);
-			}
+            @Override
+            public Object getCurrentFormObject(ScopeType scopeType) {
+                return super.getFormObject(getCurrentFormObjectName(), scopeType);
+            }
 
-			@Override
-			public Errors getCurrentFormErrors(ScopeType scopeType) {
-				return super.getFormErrors(getCurrentFormObjectName(), scopeType);
-			}
+            @Override
+            public Errors getCurrentFormErrors(ScopeType scopeType) {
+                return super.getFormErrors(getCurrentFormObjectName(), scopeType);
+            }
 
-			@Override
-			public void putFormObject(Object formObject, String formObjectName, ScopeType scopeType) {
-				super.putFormObject(formObject, commandNameFromRequest, scopeType);
-			}
+            @Override
+            public void putFormObject(Object formObject, String formObjectName, ScopeType scopeType) {
+                super.putFormObject(formObject, commandNameFromRequest, scopeType);
+            }
 
-			@Override
-			public void putFormErrors(Errors errors, ScopeType scopeType) {
-				scopeType.getScope(context).put(ERRORS_PREFIX + commandNameFromRequest, errors);
-				setCurrentFormErrors(errors, scopeType);
-			}
+            @Override
+            public void putFormErrors(Errors errors, ScopeType scopeType) {
+                scopeType.getScope(context).put(ERRORS_PREFIX + commandNameFromRequest, errors);
+                setCurrentFormErrors(errors, scopeType);
+            }
 
-		};
-	}
+        };
+    }
 
-	protected void initFragmentToRender(RequestContext context) {
-		context.getFlashScope().put(View.RENDER_FRAGMENTS_ATTRIBUTE, new String[] { fragmentToRender() });
-		context.getFlashScope().put(COMMAND_NAME, commandNameFromRequest(context));
-	}
+    protected void initFragmentToRender(RequestContext context) {
+        context.getFlashScope().put(View.RENDER_FRAGMENTS_ATTRIBUTE, new String[] { fragmentToRender() });
+        context.getFlashScope().put(COMMAND_NAME, commandNameFromRequest(context));
+    }
 
-	protected abstract String fragmentToRender();
+    protected abstract String fragmentToRender();
 
 }
 </code></pre>
@@ -364,7 +364,7 @@ public abstract class AbstractWebFlowAjaxAction extends FormAction {
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -374,13 +374,13 @@ public abstract class AbstractWebFlowAjaxAction extends FormAction {
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -395,10 +395,10 @@ public abstract class AbstractWebFlowAjaxAction extends FormAction {
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

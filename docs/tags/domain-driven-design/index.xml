@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Domain Driven Design on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/domain-driven-design/</link>
+    <link>https://brainbaking.com/tags/domain-driven-design/</link>
     <description>Recent content in Domain Driven Design on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 23 Sep 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/domain-driven-design/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/domain-driven-design/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Faking domain logic</title>
-      <link>http://www.brainbaking.com/post/faking-domain-logic/</link>
+      <link>https://brainbaking.com/post/faking-domain-logic/</link>
       <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/faking-domain-logic/</guid>
+      <guid>https://brainbaking.com/post/faking-domain-logic/</guid>
       <description>Sometimes, life is just a little bit more difficult than you imagined the day before. Sometimes, you have to work on a legacy codebase with custom frameworks rooted so deeply you&amp;rsquo;re having lot&amp;rsquo;s of trouble trying to build around them. To make it a bit more concrete, here&amp;rsquo;s an example: imagine a separate DLL for interfaces and a separate DLL for the implementation. This decision was made because we use NHibernate as a data mapper and not to write beautiful domain driven design code.</description>
     </item>
     

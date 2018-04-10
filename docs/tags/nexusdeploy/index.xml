@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nexusdeploy on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/nexusdeploy/</link>
+    <link>https://brainbaking.com/tags/nexusdeploy/</link>
     <description>Recent content in Nexusdeploy on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,18 +10,18 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Mon, 13 Jul 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/nexusdeploy/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/nexusdeploy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>nexusdeploy</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</link>
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</guid>
       <description>Nexus deploy artifacts script Wat doet dit?
  haalt laatste versie van package op uit nuget nexus repository download nuget package &amp;amp; unzipt &amp;amp; haalt DLL file hier uit (kan 4.5 4.0 of 3.5 versie zijn) kopiëert dit naar doelserver  Integraal deel van &amp;ldquo;deployen&amp;rdquo; in verband met modules, wordt bvb gebruikt in Teamcity configuration
-require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;net/http&#39; require &#39;zip&#39;	# gem install rubyzip first!</description>
+require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;net/http&#39; require &#39;zip&#39; # gem install rubyzip first!</description>
     </item>
     
   </channel>

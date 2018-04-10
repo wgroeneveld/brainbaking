@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stubs on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/stubs/</link>
+    <link>https://brainbaking.com/tags/stubs/</link>
     <description>Recent content in Stubs on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/stubs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/stubs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>stubs</title>
-      <link>http://www.brainbaking.com/wiki/code/java/testing/stubs/</link>
+      <link>https://brainbaking.com/wiki/code/java/testing/stubs/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/testing/stubs/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/testing/stubs/</guid>
       <description>Stubs Embedded Jetty Zie http://docs.codehaus.org/display/JETTY/Embedding+Jetty
 Stub Http server:
 public class StubHttpServer implements StubServer { private RequestRecordingFilter filter = new RequestRecordingFilter(); private int port; private Server httpServer; private Map&amp;lt;String, ResettableHttpServlet&amp;gt; servlets = new HashMap&amp;lt;String, ResettableHttpServlet&amp;gt;(); public StubHttpServer(int port) { this.port = port; } public void addHttpServlet(String uri, final HttpServlet servlet) { addHttpServlet(uri, new ResettableHttpServlet() { @Override public void reset() { } @Override public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException { servlet.</description>

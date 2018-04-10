@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linq on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/linq/</link>
+    <link>https://brainbaking.com/tags/linq/</link>
     <description>Recent content in Linq on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Wed, 29 Jan 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/linq/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/linq/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>linq</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/linq/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/linq/</link>
       <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/linq/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/linq/</guid>
       <description>Collections, Iterating, ???, Linq (profit) yield hocus pocus Zie The implementation of iterators in C# - wordt uitgelegd hoe yield door de compiler geïnterpreteerd wordt.
 Hiermee is het mogelijk om heel snel uw eigen IEnumerable te maken.
  “yield”, [&amp;hellip;] which allows you to quickly write iterators without worrying about preserving state.

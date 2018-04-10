@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rework on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/rework/</link>
+    <link>https://brainbaking.com/tags/rework/</link>
     <description>Recent content in Rework on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/rework/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/rework/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>rework</title>
-      <link>http://www.brainbaking.com/wiki/books/rework/</link>
+      <link>https://brainbaking.com/wiki/books/rework/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/books/rework/</guid>
+      <guid>https://brainbaking.com/wiki/books/rework/</guid>
       <description>Rework Author: Jason Fried &amp;amp; David Heinemeier Hansson Context: Pragmatic project/company management
-Rework|Librarything Link Takedowns  Ignore the real world  Hoofd niet laten hangen als iedereen beweert dat het onmogelijk is, niet geloven! Allemaal excuses om het niet te proberen, heeft niets met u te maken.  Learning from mistakes is overrated  Het is bewezen dat mensen die succes hebben een grotere kans op succes hebben in de toekomst &amp;ldquo;Learn by mistake&amp;rdquo; is dus niet altijd 100% correct  Planning is guessing  Het heeft geen nut om lange termijn plannen op te stellen Plan wat uitmaakt op korte termijn, vandaag!</description>
+Rework|Librarything LinkTakedowns  Ignore the real world  Hoofd niet laten hangen als iedereen beweert dat het onmogelijk is, niet geloven! Allemaal excuses om het niet te proberen, heeft niets met u te maken.  Learning from mistakes is overrated  Het is bewezen dat mensen die succes hebben een grotere kans op succes hebben in de toekomst &amp;ldquo;Learn by mistake&amp;rdquo; is dus niet altijd 100% correct  Planning is guessing  Het heeft geen nut om lange termijn plannen op te stellen Plan wat uitmaakt op korte termijn, vandaag!</description>
     </item>
     
   </channel>

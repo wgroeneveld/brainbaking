@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Testing on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/testing/</link>
+    <link>https://brainbaking.com/tags/testing/</link>
     <description>Recent content in Testing on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Wed, 23 Jul 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/testing/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>selenium</title>
-      <link>http://www.brainbaking.com/wiki/code/java/testing/selenium/</link>
+      <link>https://brainbaking.com/wiki/code/java/testing/selenium/</link>
       <pubDate>Wed, 23 Jul 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/testing/selenium/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/testing/selenium/</guid>
       <description>Selenium Scenario Testing Ter info: Webdriver = selenium 2.x.
 Webdriver samen met PhantomJS opzet Headless webdriver testen draaien gaat met HTMLUnit - vanaf 2.x zit org.openqa.selenium.htmlunit.HtmlUnitDriver ook in de jar. De JS die daar evaluated wordt is echter Rhino JS en niet native browser stuff. We kunnen in de plaats code/javascript/testing/phantomjs gebruiken - deze driver zit in een andere jar. In de centrale maven repo:
 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
@@ -26,10 +26,10 @@ Webdriver samen met PhantomJS opzet Headless webdriver testen draaien gaat met H
     
     <item>
       <title>testing</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/testing/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/testing/</link>
       <pubDate>Fri, 27 Jun 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/testing/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/testing/</guid>
       <description>Testing met C#/.NET Test frameworks Selenium/WebDriver Zie http://www.joecolantonio.com/2012/07/31/getting-started-using-selenium-2-0-webdriver-for-ie-in-visual-studio-c/ - essentiëel identiek aan Java.
 Chaining - fluent acceptance criteria definitions Een typische test zou er dan zo kunnen uitzien:
 [Test] public void OpenAdminAuthenticationManagement() { LogInto() .OpenAdministrationAuthenticationManagement() .AuthenticationGrid .ShouldContainMinAmountRows(1) .DoubleClickOnRowNr(0) .ExpectOpened&amp;lt;ModifyUserDetailWindow&amp;gt;() .UserNameShouldContainSomeValue(); }   Gebruik overal return this Wanneer je niet wil upcasten en in een abstract component ClickSave() uw subtype moet retourneren: public class Panel&amp;lt;T&amp;gt; : Window where T : Panel&amp;lt;T&amp;gt; en return (T) this Wanneer je niet weet wat het volgend scherm is, gebruik ExpectOpened&amp;lt;Type&amp;gt;() dat via code/csharp/reflectie een instantie aanmaakt van uw component.</description>
@@ -37,10 +37,10 @@ Chaining - fluent acceptance criteria definitions Een typische test zou er dan z
     
     <item>
       <title>gtest</title>
-      <link>http://www.brainbaking.com/wiki/code/c/testing/gtest/</link>
+      <link>https://brainbaking.com/wiki/code/c/testing/gtest/</link>
       <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/c/testing/gtest/</guid>
+      <guid>https://brainbaking.com/wiki/code/c/testing/gtest/</guid>
       <description>Google Test Downloaden op https://code.google.com/p/googletest/downloads/list
 Waarom?
  Platform onafhankelijk Snelheid Geen gezeik met Managed C++, compatibel met &amp;ldquo;eender wat&amp;rdquo; (enige vereiste: cc compiler variant) Wordt veel gebruikt (Chromium, Stack overflow)  Waarom niet?
@@ -49,20 +49,20 @@ Waarom?
     
     <item>
       <title>testing</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/testing/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/testing/</link>
       <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/testing/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/testing/</guid>
       <description> Testing gebruik autotest!
 Quick references  MiniTest quick reference  </description>
     </item>
     
     <item>
       <title>testing</title>
-      <link>http://www.brainbaking.com/wiki/code/python/testing/</link>
+      <link>https://brainbaking.com/wiki/code/python/testing/</link>
       <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/python/testing/</guid>
+      <guid>https://brainbaking.com/wiki/code/python/testing/</guid>
       <description>Python Unit Testing unittest module Spreekt voor zich:
 import unittest from calculator import Calculator class TestCalculator(unittest.TestCase): def setUp(self): self.calc = Calculator().calculate; def test_calculateBasicNumberReturnsNumber(self): self.assertEqual(3, self.calc(&#39;3&#39;)) def test_calculateSimpleMultiplicationReturnsResult(self): self.assertEqual(10, self.calc(&#39;5*2&#39;)) def test_calculateInvalidStringShouldThrowException(self): self.assertRaises(ValueError, self.calc, (&#39;blabl&#39;))  Zie http://docs.python.org/3/library/unittest.html
  setUp wordt automatisch aangeroepen. Beforeclass, aftereach etc etc bestaat ook. alle methods met test_ worden automatisch herkend.  Hoe voer ik dit nu uit? Dit stuk onder uw py file plakken:</description>
@@ -70,10 +70,10 @@ import unittest from calculator import Calculator class TestCalculator(unittest.
     
     <item>
       <title>testexplorer</title>
-      <link>http://www.brainbaking.com/wiki/code/c/testing/testexplorer/</link>
+      <link>https://brainbaking.com/wiki/code/c/testing/testexplorer/</link>
       <pubDate>Thu, 05 Sep 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/c/testing/testexplorer/</guid>
+      <guid>https://brainbaking.com/wiki/code/c/testing/testexplorer/</guid>
       <description>Visual Studio 2012 Test Explorer framework Waarom?
  Integratie VStudio, zelfde manier om te &amp;ldquo;runnen&amp;rdquo; als C# testen unmanaged (native) C++ code testen zonder vettige /cli mode die nodig is. Voor mixed team C#/C++ misschien beter/makkelijker?  Waarom niet?
  Weeral iets anders, Team Test buiten? Wat gaat het zijn voor VS3013? Niet 100% dezelfde syntax als C# (toch al closer, maar bvb geen attributes etc) VS2012 only momentel, dus 2008 = kinkloppen  Voorbeeld project in VS2012: Assertions schrijven Gebruik namespace CppUnitTestFramework - voorbeeld:</description>
@@ -81,19 +81,19 @@ import unittest from calculator import Calculator class TestCalculator(unittest.
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/c/testing/</link>
+      <link>https://brainbaking.com/wiki/code/c/testing/</link>
       <pubDate>Wed, 17 Jul 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/c/testing/</guid>
+      <guid>https://brainbaking.com/wiki/code/c/testing/</guid>
       <description>code:c:testing &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>teamtest</title>
-      <link>http://www.brainbaking.com/wiki/code/c/testing/teamtest/</link>
+      <link>https://brainbaking.com/wiki/code/c/testing/teamtest/</link>
       <pubDate>Wed, 17 Jul 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/c/testing/teamtest/</guid>
+      <guid>https://brainbaking.com/wiki/code/c/testing/teamtest/</guid>
       <description>Visual Studio 2005 TeamTest Framework Hoofdartikel (2005, C# voorbeelden): http://msdn.microsoft.com/en-us/library/ms379625(v=vs.80).aspx
 Waarom?
  Zelfde syntax als built-in C# unit tests voor Visual Studio Makkelijker te lezen dan bvb code/c/testing/gtest Garbage collector van Managed C++, joepie (?) Toch mogelijk om unmanaged native C++ te testen (zie onder), integratie VStudio.  Waarom niet?
@@ -102,10 +102,10 @@ Waarom?
     
     <item>
       <title>angular</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/testing/angular/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/testing/angular/</link>
       <pubDate>Wed, 05 Jun 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/testing/angular/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/testing/angular/</guid>
       <description>AngularJS testing Voorbeeld voor angular app met mocks en testing en al: angular-seed
 Mocking en zo Zie angular.mock.module - twee hoofdfuncties die belangrijk zijn: module() en inject(). Het eerste maakt de module aan en het tweede zorgt voor de mock dependency injectie. Bijvoorbeeld:
 angular .module(&#39;bla.services&#39;, []) .factory(&#39;$bla&#39;, [&#39;$http&#39;, function($http) { // do stuff with $http, like a .get return { go: function() {} } }]) ;  Je kan dus met $bla.</description>
@@ -113,10 +113,10 @@ angular .module(&#39;bla.services&#39;, []) .factory(&#39;$bla&#39;, [&#39;$http
     
     <item>
       <title>karma</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/testing/karma/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/testing/karma/</link>
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/testing/karma/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/testing/karma/</guid>
       <description>Karma (Testacular) Ook integratie met code/javascript/testing/phantomjs mogelijk.
 Installatie Om de Karma testen gedraaid te krijgen moet Node geïnstalleerd zijn samen met karma (npm install karma -g)
 Voor de ANSI console in eclipse: http://www.mihai-nita.net/eclipse/ installeren
@@ -126,30 +126,30 @@ Voor de Karma Phantom launcher in eclipse: dit importeren (launch file)
     
     <item>
       <title>strategie</title>
-      <link>http://www.brainbaking.com/wiki/code/java/testing/strategie/</link>
+      <link>https://brainbaking.com/wiki/code/java/testing/strategie/</link>
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/testing/strategie/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/testing/strategie/</guid>
       <description>Test strategie Er zijn verschillende soorten testen en deze komen (eventueel) in elke laag terug.
 Unit testen * Wat? Testen of een kleine unit/component op zich werkt. * Welke gevallen? alle gevallen: elk successpad (alle boundary conditions), alle mogelijke failure paden * Eventueel vriendjes van deze component wegmocken (let op voor mockitis!) * Testen zonder databank of andere integratie (rest calls) * Extenden van BaseTestCase -&amp;gt; NOOIT meer `[MockitoAnnotations.initMocks(this)](http://mockito.googlecode.com/svn/branches/1.6/javadoc/org/mockito/MockitoAnnotations.html)` uitvoeren!</description>
     </item>
     
     <item>
       <title>phantomjs</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/testing/phantomjs/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/testing/phantomjs/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/testing/phantomjs/</guid>
       <description>Test automatisatie: PhantomJS Een experiment om mijn JasmineTestRunner uit te breiden (of volledig op te splitsen) van Rhino + Envjs 1.2 naar PhantomJS 1.4 (liefst 1.5 maar dit moet ik nog compilerend krijgen onder Windows).
 Phantom.js test code Start script console.log(&amp;quot;loading&amp;quot;); var page = new WebPage(); // Is nodig omdat anders in uw testpagina console.log() niets doet. page.onConsoleMessage = function(msg) { console.log(&amp;quot;debug from page: &amp;quot; + msg); }; /** * Phantom JS 1.</description>
     </item>
     
     <item>
       <title>stubs</title>
-      <link>http://www.brainbaking.com/wiki/code/java/testing/stubs/</link>
+      <link>https://brainbaking.com/wiki/code/java/testing/stubs/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/testing/stubs/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/testing/stubs/</guid>
       <description>Stubs Embedded Jetty Zie http://docs.codehaus.org/display/JETTY/Embedding+Jetty
 Stub Http server:
 public class StubHttpServer implements StubServer { private RequestRecordingFilter filter = new RequestRecordingFilter(); private int port; private Server httpServer; private Map&amp;lt;String, ResettableHttpServlet&amp;gt; servlets = new HashMap&amp;lt;String, ResettableHttpServlet&amp;gt;(); public StubHttpServer(int port) { this.port = port; } public void addHttpServlet(String uri, final HttpServlet servlet) { addHttpServlet(uri, new ResettableHttpServlet() { @Override public void reset() { } @Override public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException { servlet.</description>
@@ -157,10 +157,10 @@ public class StubHttpServer implements StubServer { private RequestRecordingFilt
     
     <item>
       <title>testing</title>
-      <link>http://www.brainbaking.com/wiki/code/java/testing/</link>
+      <link>https://brainbaking.com/wiki/code/java/testing/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/testing/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/testing/</guid>
       <description>Testing in Java code/java/testing|js&amp;rsquo;&amp;gt;
 Acceptatietesten Zie &amp;gt;&amp;gt; code/java/testing/selenium
 Mocking Static mocking met PowerMock PowerMock gebruikt een eigen Classloader om klassen in te laden. Als er veel testen powermock gebruiken gaat de build alsmaar trager worden. Om te vermijden dat de boel dicht slibt een speciale annotatie gebruiken:
@@ -169,10 +169,10 @@ Mocking Static mocking met PowerMock PowerMock gebruikt een eigen Classloader om
     
     <item>
       <title>testing</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/testing/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/testing/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/testing/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/testing/</guid>
       <description>Testing JS Code Testen schrijven Klassieke Unit testen Frameworks gebruiken zoals jQuery&amp;rsquo;s QUnit die het makkelijk maken modulair te testen:
 test(&amp;quot;dit zou dat moeten doen blabla&amp;quot;, function() { equal(expected, actual); ok(someThingExpectedToBeTrue); });  Mocking van bijvoorbeeld $ mogelijk via MockMe, een door Mockito geïnspireerde Javascript Object spy API. Iets van:
 when(f)(&#39;in&#39;).thenReturn(&#39;out&#39;); assertEqual(&#39;out&#39;, f(&#39;in&#39;));  ❗️ Vereist Prototype JS, en JsUnit om de assert functions te kunnen gebruiken

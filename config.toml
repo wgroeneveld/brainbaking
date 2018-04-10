@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Brain Baking"
-baseurl = "http://www.brainbaking.com/"
+baseurl = "https://brainbaking.com/"
 enableEmoji = true
 theme = "beautifulbaking"
 pygmentsUseClasses = true

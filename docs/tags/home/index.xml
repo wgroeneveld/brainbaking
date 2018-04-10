@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/home/</link>
+    <link>https://brainbaking.com/tags/home/</link>
     <description>Recent content in Home on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,25 +10,25 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Mon, 13 Jul 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/home/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/home/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/reflect/retros/</link>
+      <link>https://brainbaking.com/wiki/reflect/retros/</link>
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/reflect/retros/</guid>
+      <guid>https://brainbaking.com/wiki/reflect/retros/</guid>
       <description> reflect &amp;gt;&amp;gt; Retros Inhoud reflect/retros|js navbar nocookie&amp;rsquo;&amp;gt;
-Referenties  The Agile Retrospectives boek http://agileretrospectivewiki.org/index.php?title=Main_Page  </description>
+Referenties  The Agile Retrospectivesboek http://agileretrospectivewiki.org/index.php?title=Main_Page  </description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/</link>
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/</guid>
       <description> code:ruby &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;
 code &amp;gt;&amp;gt; Ruby Certifications See http://railsapps.github.io/openssl-certificate-verify-failed.html
 Voor OSX:
@@ -37,19 +37,19 @@ rvm -v rvm osx-ssl-certs status all rvm osx-ssl-certs update all  </description>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/php/</link>
+      <link>https://brainbaking.com/wiki/code/php/</link>
       <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/php/</guid>
+      <guid>https://brainbaking.com/wiki/code/php/</guid>
       <description>code:php &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/</link>
       <pubDate>Tue, 29 Jul 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/</guid>
       <description>Javascript  Use functions to guard your scope and optimize encapsulation, gentlemen!
  JS in één-twéé-drié:
 https://docs.google.com/present/edit?id######0AXaRvIf-WHu3ZGRjNnFnN2pfMmM3ajVmdjN0&amp;amp;hlen&amp;amp;authkey=COqTqcsL
@@ -62,10 +62,10 @@ Inhoudsopgave Om Prototypal Inheritance te kunnen begrijpen, moeten eerst een aa
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/python/</link>
+      <link>https://brainbaking.com/wiki/code/python/</link>
       <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/python/</guid>
+      <guid>https://brainbaking.com/wiki/code/python/</guid>
       <description>Python class Pythonic: `&#39;I can access this doc using instance.__doc__, holy cow?`&#39; def __init__(self, arg, *args, **dict): pass  😳
  The pass statement in Python is like a empty set of curly braces ({}) in Java or C.
  Simpele server opstarten Waarom? Om lokale files makkelijk te kunnen serven (handig voor JS)
@@ -75,121 +75,121 @@ Python 2 vs 3  in py3 is print een functie geworden, gebruik dus () de SimpleHTT
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/java/</link>
+      <link>https://brainbaking.com/wiki/code/java/</link>
       <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/</guid>
       <description>code:java &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/c/</link>
+      <link>https://brainbaking.com/wiki/code/c/</link>
       <pubDate>Mon, 05 Aug 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/c/</guid>
+      <guid>https://brainbaking.com/wiki/code/c/</guid>
       <description> C/C++ &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;
 Nuttige links  The 5 minute guide to C Pointers A tutorial on Pointers and Arrays in C  </description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/</link>
       <pubDate>Fri, 19 Jul 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/</guid>
       <description>C# Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/c/testing/</link>
+      <link>https://brainbaking.com/wiki/code/c/testing/</link>
       <pubDate>Wed, 17 Jul 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/c/testing/</guid>
+      <guid>https://brainbaking.com/wiki/code/c/testing/</guid>
       <description>code:c:testing &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/</link>
+      <link>https://brainbaking.com/wiki/code/</link>
       <pubDate>Wed, 10 Jul 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/</guid>
+      <guid>https://brainbaking.com/wiki/code/</guid>
       <description>code &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/books/</link>
+      <link>https://brainbaking.com/wiki/books/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/books/</guid>
+      <guid>https://brainbaking.com/wiki/books/</guid>
       <description> books &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;
 Links Online digitale resources  http:*www.scribd.com/ (bvb jQuery novice to Ninja) (betalend)  </description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/build/</link>
+      <link>https://brainbaking.com/wiki/code/build/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/build/</guid>
+      <guid>https://brainbaking.com/wiki/code/build/</guid>
       <description> Building &amp;amp; Compiling .|js navbar nocookie&amp;rsquo;&amp;gt;
 Log management  http://www.splunk.com/ om zaken visueel samen te vatten, zelfde exceptions uit logs te halen, statistiekjes te trekken, &amp;hellip; unix/cmd tools zoals grep en sed gebruiken om de rest manueel te doen!  </description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/db/</link>
+      <link>https://brainbaking.com/wiki/code/db/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/db/</guid>
+      <guid>https://brainbaking.com/wiki/code/db/</guid>
       <description>code:db &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/scheme/labs/1/</link>
+      <link>https://brainbaking.com/wiki/code/scheme/labs/1/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/scheme/labs/1/</guid>
+      <guid>https://brainbaking.com/wiki/code/scheme/labs/1/</guid>
       <description>Labs: Chapter 1 Section 1 1.1 (define (- a b) (+ a b)) (- 4 3) (define (een-of-twee een twee) (if (= een 1) een twee)) (define bla (een-of-twee 3 5)) (een-of-twee 2 3) (define a 6) (define b (+ 3 3)) (= a b) (cond ((= a 4) 6) ((= b 4) (+ 6 7 a)) (else 25))  1.2 (+ 5 (+ 4 (- 2 (- 3 (+ 6 4/5)))))  1.</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/tools/</link>
+      <link>https://brainbaking.com/wiki/code/tools/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/tools/</guid>
+      <guid>https://brainbaking.com/wiki/code/tools/</guid>
       <description>code:tools &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/flora/</link>
+      <link>https://brainbaking.com/wiki/flora/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/flora/</guid>
+      <guid>https://brainbaking.com/wiki/flora/</guid>
       <description>flora &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/games/</link>
+      <link>https://brainbaking.com/wiki/games/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/games/</guid>
+      <guid>https://brainbaking.com/wiki/games/</guid>
       <description>games &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/games/wizardry8/</link>
+      <link>https://brainbaking.com/wiki/games/wizardry8/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/games/wizardry8/</guid>
+      <guid>https://brainbaking.com/wiki/games/wizardry8/</guid>
       <description>Wizardry 8  
 Classes .|js navbar nocookie&amp;rsquo;&amp;gt;
 Parties Parties I&amp;rsquo;ve used in the past</description>
@@ -197,37 +197,37 @@ Parties Parties I&amp;rsquo;ve used in the past</description>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/reflect/</link>
+      <link>https://brainbaking.com/wiki/reflect/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/reflect/</guid>
+      <guid>https://brainbaking.com/wiki/reflect/</guid>
       <description>reflect &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/schermen/</link>
+      <link>https://brainbaking.com/wiki/schermen/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/schermen/</guid>
+      <guid>https://brainbaking.com/wiki/schermen/</guid>
       <description>Schermen Algemeen  fencing terms English-French Fencing lines (foil target area)  -&amp;gt; merk op dat voor 7 en 8 uw hand niet lager komt, maar vanuit de vingers het floret lager geplaatst wordt!   Certificaten, opleidingen en anderen  Koninklijke Schermacademie België (ARAB) + downloads academische examens Vlaamse schermwiki - vooral gericht op sabelschermen Vlaamse Schermbond Academie  Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/tech/</link>
+      <link>https://brainbaking.com/wiki/tech/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/tech/</guid>
+      <guid>https://brainbaking.com/wiki/tech/</guid>
       <description>tech &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/unix/</link>
+      <link>https://brainbaking.com/wiki/unix/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/</guid>
+      <guid>https://brainbaking.com/wiki/unix/</guid>
       <description>unix &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     

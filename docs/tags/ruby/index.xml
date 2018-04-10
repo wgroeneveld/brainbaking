@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/ruby/</link>
+    <link>https://brainbaking.com/tags/ruby/</link>
     <description>Recent content in Ruby on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,53 +10,53 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Mon, 13 Jul 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>nexusdeploy</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</link>
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/scripts/nexusdeploy/</guid>
       <description>Nexus deploy artifacts script Wat doet dit?
  haalt laatste versie van package op uit nuget nexus repository download nuget package &amp;amp; unzipt &amp;amp; haalt DLL file hier uit (kan 4.5 4.0 of 3.5 versie zijn) kopiëert dit naar doelserver  Integraal deel van &amp;ldquo;deployen&amp;rdquo; in verband met modules, wordt bvb gebruikt in Teamcity configuration
-require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;net/http&#39; require &#39;zip&#39;	# gem install rubyzip first!</description>
+require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;net/http&#39; require &#39;zip&#39; # gem install rubyzip first!</description>
     </item>
     
     <item>
       <title>svnlog</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/scripts/svnlog/</link>
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/scripts/svnlog/</guid>
       <description>Svnlog require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;csv&#39; require &#39;date&#39; # Ex. XML: &amp;lt;log&amp;gt; ... &amp;lt;/log&amp;gt; # &amp;lt;logentry revision=&amp;quot;x&amp;quot;&amp;gt; # =&amp;gt; &amp;lt;author&amp;gt;name&amp;lt;/author&amp;gt; # =&amp;gt; &amp;lt;date&amp;gt;yyyy-mm-ddThh:mm:ssss&amp;lt;/date&amp;gt; # =&amp;gt; &amp;lt;msg&amp;gt;message&amp;lt;/msg&amp;gt; # &amp;lt;/logentry&amp;gt; puts &amp;quot;SVN Release notes creator&amp;quot; puts &amp;quot;---------&amp;quot; puts &amp;quot;Revision from? (ex revision &#39;8722&#39; or date {YYYY-MM-DD} or &#39;HEAD&#39;) &amp;gt; &amp;quot; revFrom = gets.chomp puts &amp;quot;Revision to? &amp;gt; &amp;quot; revTo = gets.chomp puts &amp;quot;Getting log from SVN, hang in there.</description>
     </item>
     
     <item>
       <title>scripts</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/scripts/</link>
       <pubDate>Wed, 29 Apr 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/scripts/</guid>
       <description>code:ruby &amp;gt;&amp;gt; Scripts Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>gems</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/gems/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/gems/</link>
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/gems/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/gems/</guid>
       <description>Ruby Gems Gemfile dependencies installeren  Heb je ruby geïnstalleerd? Dan is gem beschikbaar. Heb je bundler geïnstalleerd? Dan is bundler beschikbaar. Indien neen: gem install bundler. Is er een Gemfile beschikbaar? Gebruik dan bundler met bundle install om alles lokaal te installeren.  Problemen met installeren van packagse Building native extension: Makefile target pattern contains no %. Stop. Probleem met Gemfile &amp;gt; 2.3.0 en Ruby 1.9.3 samen met Ruby devkit.</description>
     </item>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/</link>
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/</guid>
       <description> code:ruby &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;
 code &amp;gt;&amp;gt; Ruby Certifications See http://railsapps.github.io/openssl-certificate-verify-failed.html
 Voor OSX:
@@ -65,30 +65,30 @@ rvm -v rvm osx-ssl-certs status all rvm osx-ssl-certs update all  </description>
     
     <item>
       <title>testing</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/testing/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/testing/</link>
       <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/testing/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/testing/</guid>
       <description> Testing gebruik autotest!
 Quick references  MiniTest quick reference  </description>
     </item>
     
     <item>
       <title>meta</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/meta/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/meta/</link>
       <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/meta/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/meta/</guid>
       <description> Metaprogramming in Ruby Zie ook code/ruby/classes
 Resources  Eigenclasses demystified Ruby metaprogramming idioms class_eval and instance_eval  </description>
     </item>
     
     <item>
       <title>classes</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/classes/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/classes/</link>
       <pubDate>Tue, 11 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/classes/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/classes/</guid>
       <description>Ruby Classes Closures and lambda&amp;rsquo;s Weer 4 verschillende mogelijkheden in Ruby, zie Proc and Lambda in Ruby
 Native &amp;ldquo;blocks&amp;rdquo; aanmaken Is niet mogelijk. a = { puts &amp;quot;hello&amp;quot; } geeft een Syntax error; dit moet effectief met Proc.new gebeuren.
 Lambdas aanmaken Kan ook weer op twee manieren:
@@ -97,10 +97,10 @@ a = lambda { puts &amp;quot;hello&amp;quot; } b = -&amp;gt; { puts &amp;quot;hel
     
     <item>
       <title>reflectie</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/reflectie/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/reflectie/</link>
       <pubDate>Tue, 11 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/reflectie/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/reflectie/</guid>
       <description>Metaprogrammeren: Ruby Reflectie Methods accessen Dit kan op twee manieren: op een object instance of op een class, met .method of .static_method, zie Ruby Method doc.
 1.method(:+).call 2 # output: 3 Fixnum.static_method(:+).bind(1).call 2 # output: 3 1.method(&amp;quot;+&amp;quot;).unbind().bind(1).call(2) # output: 3  Object Methods zijn al gebind en kan je dus losmaken van hun reference indien gewenst - zelfde effect als de static_method call. Je kan blijkbaar zowel een string als een ref meegeven om de naam van de method te resolven.</description>
     </item>

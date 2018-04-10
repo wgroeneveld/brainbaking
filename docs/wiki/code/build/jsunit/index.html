@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="jsunit" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -212,51 +212,51 @@ Voor uitleg over de parameters, zie jsunit website.</p>
             &lt;test name=&quot;net.jsunit.StandaloneTest&quot;/&gt;
         &lt;/junit&gt;
     &lt;/target&gt;
-	
+    
     &lt;target name######&quot;-compile-jsunit&quot; depends&quot;-jsunit-check&quot; if=&quot;jsunit.tests.present&quot;&gt;
-    	&lt;antcall target=&quot;-jsunit-copy-lib&quot; /&gt;
-    	&lt;antcall target=&quot;-jsunit-copy-common-js&quot; /&gt;
-    	&lt;antcall target=&quot;-jsunit-copy-tests&quot; /&gt;
-    	&lt;antcall target=&quot;-jsunit-copy-js&quot; /&gt;
-    	&lt;antcall target=&quot;-jsunit-build-suite&quot; /&gt;
+        &lt;antcall target=&quot;-jsunit-copy-lib&quot; /&gt;
+        &lt;antcall target=&quot;-jsunit-copy-common-js&quot; /&gt;
+        &lt;antcall target=&quot;-jsunit-copy-tests&quot; /&gt;
+        &lt;antcall target=&quot;-jsunit-copy-js&quot; /&gt;
+        &lt;antcall target=&quot;-jsunit-build-suite&quot; /&gt;
     &lt;/target&gt;
-	
+    
     &lt;target name=&quot;-jsunit-check&quot;&gt;
-    	&lt;available file######&quot;${jsunit.src.tests}&quot; property&quot;jsunit.tests.present&quot;/&gt;
+        &lt;available file######&quot;${jsunit.src.tests}&quot; property&quot;jsunit.tests.present&quot;/&gt;
     &lt;/target&gt;
-	
+    
     &lt;target name=&quot;-jsunit-copy-lib&quot;&gt;
-    	&lt;copy todir=&quot;${jsunit.target}&quot;&gt;
-    		```et
-    	&lt;/copy&gt;
-	&lt;/target&gt;
-	
+        &lt;copy todir=&quot;${jsunit.target}&quot;&gt;
+            ```et
+        &lt;/copy&gt;
+    &lt;/target&gt;
+    
     &lt;target name=&quot;-jsunit-copy-common-js&quot;&gt;
-    	&lt;unjar src######&quot;${jsunit.common.jar}&quot; dest&quot;${jsunit.target.js}/common&quot;&gt;
-    		&lt;patternset&gt;
-		        &lt;include name=&quot;**/*.js&quot; /&gt;
-    			&lt;exclude name=&quot;**/resourcesmini/**&quot;/&gt;
-    		&lt;/patternset&gt;
-    		&lt;mapper type=&quot;flatten&quot;/&gt;
-		&lt;/unjar&gt;
-	&lt;/target&gt;
-	
+        &lt;unjar src######&quot;${jsunit.common.jar}&quot; dest&quot;${jsunit.target.js}/common&quot;&gt;
+            &lt;patternset&gt;
+                &lt;include name=&quot;**/*.js&quot; /&gt;
+                &lt;exclude name=&quot;**/resourcesmini/**&quot;/&gt;
+            &lt;/patternset&gt;
+            &lt;mapper type=&quot;flatten&quot;/&gt;
+        &lt;/unjar&gt;
+    &lt;/target&gt;
+    
     &lt;target name=&quot;-jsunit-copy-tests&quot;&gt;
-    	&lt;copy todir=&quot;${jsunit.target.tests}&quot;&gt;
-    		```et
-    	&lt;/copy&gt;
-	&lt;/target&gt;
-	
+        &lt;copy todir=&quot;${jsunit.target.tests}&quot;&gt;
+            ```et
+        &lt;/copy&gt;
+    &lt;/target&gt;
+    
     &lt;target name=&quot;-jsunit-copy-js&quot;&gt;
-    	&lt;copy todir=&quot;${jsunit.target.js}&quot;&gt;
-    		```et
-    	&lt;/copy&gt;
-	&lt;/target&gt;
-	
+        &lt;copy todir=&quot;${jsunit.target.js}&quot;&gt;
+            ```et
+        &lt;/copy&gt;
+    &lt;/target&gt;
+    
     &lt;target name=&quot;-jsunit-build-suite&quot;&gt;
-    	&lt;taskdef name######&quot;jsUnitSuiteBuilder&quot; classname&quot;be.cegeka.ant.JsUnitSuiteBuilder&quot; classpath=&quot;${jsunit.lib.dir}/java/ant/cegekant.jar&quot; /&gt;
-    	&lt;jsUnitSuiteBuilder testdir######&quot;${jsunit.target.tests}&quot; testsuitefilename&quot;${jsunit.target.tests}/${jsunit.suite}&quot;
-    		suitetemplatefilename=&quot;${jsunit.target.tests}/suite_template.html&quot;/&gt;
+        &lt;taskdef name######&quot;jsUnitSuiteBuilder&quot; classname&quot;be.cegeka.ant.JsUnitSuiteBuilder&quot; classpath=&quot;${jsunit.lib.dir}/java/ant/cegekant.jar&quot; /&gt;
+        &lt;jsUnitSuiteBuilder testdir######&quot;${jsunit.target.tests}&quot; testsuitefilename&quot;${jsunit.target.tests}/${jsunit.suite}&quot;
+            suitetemplatefilename=&quot;${jsunit.target.tests}/suite_template.html&quot;/&gt;
     &lt;/target&gt;
 </code></pre>
 
@@ -328,7 +328,7 @@ Voor uitleg over de parameters, zie jsunit website.</p>
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -338,13 +338,13 @@ Voor uitleg over de parameters, zie jsunit website.</p>
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -359,10 +359,10 @@ Voor uitleg over de parameters, zie jsunit website.</p>
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

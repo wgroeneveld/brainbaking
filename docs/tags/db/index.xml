@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Db on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/db/</link>
+    <link>https://brainbaking.com/tags/db/</link>
     <description>Recent content in Db on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,25 +10,25 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 24 May 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/db/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/db/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>mssql</title>
-      <link>http://www.brainbaking.com/wiki/code/db/mssql/</link>
+      <link>https://brainbaking.com/wiki/code/db/mssql/</link>
       <pubDate>Tue, 24 May 2016 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/db/mssql/</guid>
+      <guid>https://brainbaking.com/wiki/code/db/mssql/</guid>
       <description>MSSQL clustered indexen aanpassen door ze eerst te resolven in een cursor Onderstaand stukje code for future reference&amp;hellip;
 DECLARE @constraint NVARCHAR(MAX) DECLARE @cmd NVARCHAR(MAX) DECLARE @table NVARCHAR(MAX) DECLARE FKCURSOR CURSOR FOR select distinct name,object_name(parent_object_id) from sys.objects where object_id in ( select fk.constraint_object_id from sys.foreign_key_columns as fk where fk.referenced_object_id = (select object_id from sys.tables where name = &#39;Reference&#39;) ) OPEN FKCURSOR FETCH NEXT FROM FKCURSOR INTO @constraint, @table WHILE @@FETCH_STATUS = 0 BEGIN SET @cmd = N&#39;ALTER TABLE [dbo].</description>
     </item>
     
     <item>
       <title>sqlite</title>
-      <link>http://www.brainbaking.com/wiki/code/db/sqlite/</link>
+      <link>https://brainbaking.com/wiki/code/db/sqlite/</link>
       <pubDate>Fri, 17 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/db/sqlite/</guid>
+      <guid>https://brainbaking.com/wiki/code/db/sqlite/</guid>
       <description>SQLite DDLs copypasten van Oracle Bijvoorbeeld de gegenereerde versie (SQL tab) van Oracle SQL Developer overnemen gaat niet zomaar.
 Er zijn enkele verschillen:
  NOT NULL ENABLE wegdoen. NOT NULL maakt niets uit aangezien het in-memory is om te testen! USING INDEX blabla na de PRIMARY KEY statements zijn ook allemaal niet nodig (STORAGE etc) speciale defaults of syscalls zoals sys_guid() bestaan niet. definities van groottes: wegdoen van BYTE: VARCHAR2(26) dus.</description>
@@ -36,10 +36,10 @@ Er zijn enkele verschillen:
     
     <item>
       <title>mysql</title>
-      <link>http://www.brainbaking.com/wiki/code/db/mysql/</link>
+      <link>https://brainbaking.com/wiki/code/db/mysql/</link>
       <pubDate>Thu, 11 Sep 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/db/mysql/</guid>
+      <guid>https://brainbaking.com/wiki/code/db/mysql/</guid>
       <description>MySQL DB Syncing Mogelijk met verschillende tools, over verschillende DB types heen. Bvb om schema&amp;rsquo;s te syncen tussen MSSQL DBs en MySQL DBs, etc etc. Enkele voorbeeldtools:
  MSSQL: AdeptSQL Diff http:*www.adeptsql.com/ MYSQL: SQLyog https:*www.webyog.com/  Maakt een SQL DDL aan met het verschil tussen database schema&amp;rsquo;s naar keuze.
 ADO.NET connection Pooling Enabled by default, zie Connector .NET Connection options; voorbeeld:
@@ -49,20 +49,20 @@ Dingen als maximum pool size, initial size etc ook instelbaar (zie link)</descri
     
     <item>
       <title>oledb</title>
-      <link>http://www.brainbaking.com/wiki/code/db/oledb/</link>
+      <link>https://brainbaking.com/wiki/code/db/oledb/</link>
       <pubDate>Thu, 27 Feb 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/db/oledb/</guid>
+      <guid>https://brainbaking.com/wiki/code/db/oledb/</guid>
       <description>Oledb Named parameter problem Blijkbaar werkt OleDbCommand nooit met named parameters, maar is de volgorde van toevoegen zeer belangrijk. In De query zelf worden &amp;lsquo;?&amp;rsquo; tekens gebruikt om een parameter aan te duiden. Dit is zeer vervelend, en maakt het abstraheren van de DB laag moeilijk - andere DB providers staan bijvoorbeeld @parameter toe, waarbij de naam wel uitmaakt. Hoe lossen we dat op?
 Convert named parameters into positional ones Hocus pocus: (zie ook http://stackoverflow.</description>
     </item>
     
     <item>
       <title>sql</title>
-      <link>http://www.brainbaking.com/wiki/code/db/sql/</link>
+      <link>https://brainbaking.com/wiki/code/db/sql/</link>
       <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/db/sql/</guid>
+      <guid>https://brainbaking.com/wiki/code/db/sql/</guid>
       <description>code:db &amp;gt;&amp;gt; Sql Stored procedures Oproepen Zie http://stackoverflow.com/questions/3991721/run-stored-procedure-in-sql-developer
 Gegeven: een procedure GETPERMISSIONSALL als volgt gedeclareerd:
 create or replace PROCEDURE &amp;quot;GETPERMISSIONALL&amp;quot; ( v_actCreator in VARCHAR2, v_repGuid in VARCHAR2, v_userid INT, v_retHasPermission out SMALLINT)  De laatste parameter is de return waarde (kunnen meerdere dingen zijn dus). Hoe roep ik nu zoiets aan?
@@ -72,10 +72,10 @@ SET serveroutput on; DECLARE v_actCreator VARCHAR2(100); v_repGuid VARCHAR2(100)
     
     <item>
       <title>postgresql</title>
-      <link>http://www.brainbaking.com/wiki/code/db/postgresql/</link>
+      <link>https://brainbaking.com/wiki/code/db/postgresql/</link>
       <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/db/postgresql/</guid>
+      <guid>https://brainbaking.com/wiki/code/db/postgresql/</guid>
       <description>PostgreSQL Documentatie: http://www.postgresql.org/docs/9.1/static/view-pg-locks.html pgAdmin: http://www.pgadmin.org/
 ❗️ Heeft géén commit &amp;amp; rollbacks, alles wat uitgevoerd wordt kan niet teruggedraaid worden!
 Metadata tabellen bekijken Alle views van een bepaald schema SELECT count(*) FROM information_schema.views where table_schema = &#39;public&#39;;, vergeet niet dat table_schema pg_catalog is voor de metadata tabellen die altijd bestaan in postgres.
@@ -85,10 +85,10 @@ SELECT * FROM information_schema.</description>
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/code/db/</link>
+      <link>https://brainbaking.com/wiki/code/db/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/db/</guid>
+      <guid>https://brainbaking.com/wiki/code/db/</guid>
       <description>code:db &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     

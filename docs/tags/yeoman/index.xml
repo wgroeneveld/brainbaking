@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Yeoman on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/yeoman/</link>
+    <link>https://brainbaking.com/tags/yeoman/</link>
     <description>Recent content in Yeoman on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/yeoman/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/yeoman/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>yeoman</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/yeoman/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/yeoman/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/yeoman/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/yeoman/</guid>
       <description>Build tools: Yeoman, Grunt, RequireJS ea Zie ook integratie met code/javascript/frameworks/handlebars.
 Help nodig? Vast? &amp;gt;&amp;gt;
  http://gruntjs.com/installing-grunt http://yeoman.io/commandline.html http://requirejs.org/docs/api.html https://github.com/twitter/bower https://npmjs.org/doc/  Meer info over Yeoman, tooling support, scaffolding, etc:

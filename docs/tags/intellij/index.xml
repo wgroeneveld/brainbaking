@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Intellij on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/intellij/</link>
+    <link>https://brainbaking.com/tags/intellij/</link>
     <description>Recent content in Intellij on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>intellij</title>
-      <link>http://www.brainbaking.com/wiki/code/tools/intellij/</link>
+      <link>https://brainbaking.com/wiki/code/tools/intellij/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/tools/intellij/</guid>
+      <guid>https://brainbaking.com/wiki/code/tools/intellij/</guid>
       <description>IntelliJ voor Eclipse users Shortcuts  Eclipse VS IntelliJ Keyboard shortcuts Shortcuts google docs van Janick IntelliJ Q&amp;amp;A for Eclipse users -&amp;gt; IntelliJ and Eclipse shortcuts meest interessante?  ❗️ Eclipse to IntelliJ shortcut plugin voor IntelliJ: http://plugins.intellij.net/plugin/?idea&amp;amp;id=6827 Source hier beschikbaar: https://github.com/janickr/shortcuttranslator
 De meest voorkomende shortcuts vergelijken | Betekenis | Eclipse shortcut | IntelliJ shortcut | | Open Type | CTRL+SHIFT+T | CTRL+N | | Close Editor | CTRL+W | CTRL+F4 | | Delete line | CTRL+D | CTRL+Y |</description>
     </item>

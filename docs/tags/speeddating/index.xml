@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Speeddating on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/speeddating/</link>
+    <link>https://brainbaking.com/tags/speeddating/</link>
     <description>Recent content in Speeddating on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/speeddating/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/speeddating/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>speeddating</title>
-      <link>http://www.brainbaking.com/wiki/reflect/retros/speeddating/</link>
+      <link>https://brainbaking.com/wiki/reflect/retros/speeddating/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/reflect/retros/speeddating/</guid>
+      <guid>https://brainbaking.com/wiki/reflect/retros/speeddating/</guid>
       <description>Speeddating Contents After the intro everybody is asked to reflect on possible ammeliorations for the working of the team and to choose 1 of them.
 Afterwards the speed dating starts. Team members work in pairs in 5 minutes:
  they are asked first to express their appreciation for one another each proposes his/her ammelioration and they have a discussion  Each 5 minutes the team members switch pairs. To conclude all ameliorations are proposed to the group, the most important are chosen and SMART actions for those are fixed.</description>

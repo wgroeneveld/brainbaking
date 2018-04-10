@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sublime on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/sublime/</link>
+    <link>https://brainbaking.com/tags/sublime/</link>
     <description>Recent content in Sublime on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Thu, 19 Jun 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/sublime/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/sublime/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>sublime</title>
-      <link>http://www.brainbaking.com/wiki/code/tools/sublime/</link>
+      <link>https://brainbaking.com/wiki/code/tools/sublime/</link>
       <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/tools/sublime/</guid>
+      <guid>https://brainbaking.com/wiki/code/tools/sublime/</guid>
       <description>Sublime Text protips Handige links  Keyb shortcuts voor mac: http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_osx.html Tips voor python devs ea: http://opensourcehacker.com/2012/05/11/sublime-text-2-tips-for-python-and-web-developers/  Must-have plugins Installeren via Sublime Package Control
  SublimeLinter - linting in verschillende talen (ook CoffeeScript) SublimeCodeIntel - autocompletion in verschillende talen. Werkt zoals in eclipse, gebruik ctrl+shift+space voor box te triggeren. git jsFormat (mapt by default op cmd+alt+F, heb het remapped naar eclipse equiv. cmd+shift+F) FilterLines om door logging te ploegen - greplike in subl.</description>
     </item>

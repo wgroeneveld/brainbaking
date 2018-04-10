@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Magic_properties on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/magic_properties/</link>
+    <link>https://brainbaking.com/tags/magic_properties/</link>
     <description>Recent content in Magic_properties on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/magic_properties/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/magic_properties/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>magic_properties</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/magic_properties/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/magic_properties/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/magic_properties/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/magic_properties/</guid>
       <description>Javascript Magic properties ❗️ Waarschuwing: deze properties zijn normaal gezien niet toegankelijk en dienen enkel om uw algemene kennis van Javascript te verbreden. Deze &amp;ldquo;magic&amp;rdquo; properties zijn meestal exposed in Mozilla Firefox of via de Firebug plugin. Sommigen hiervan worden overgenomen in de nieuwe versie van javascript, versie 1.8.5 die de ECMA Standaard v5 implementeert. Dit is voor de volgende versie van Chrome en FF4.
 magic properties via Firefox Intern prototype object -&amp;gt; _ _proto_ _</description>
     </item>

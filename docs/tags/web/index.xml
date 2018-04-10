@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/web/</link>
+    <link>https://brainbaking.com/tags/web/</link>
     <description>Recent content in Web on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>web</title>
-      <link>http://www.brainbaking.com/wiki/code/web/</link>
+      <link>https://brainbaking.com/wiki/code/web/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/web/</guid>
+      <guid>https://brainbaking.com/wiki/code/web/</guid>
       <description>Website Styles Quick Links  http://htmldog.com/ http://www.alistapart.com/  CSS Stuff  ❗️ http://lesscss.org/ - Less.js Will Obsolete CSS! LESS implementatie in Javascript http://www.andybudd.com/ CSS centered blog  Centering a div met margin auto Zie http://www.andybudd.com/archives/2004/02/css_crib_sheet_3_centering_a_div/
 body { text-align: center; min-width: 600px; } #wrapper { margin:0 auto; width:600px; text-align: left; }  Spaties tussen een link en bovenstaande blocks Gegeven structuur:
 &amp;lt;div clas=&amp;quot;div&amp;quot;&amp;gt; &amp;lt;a href######&amp;quot;#&amp;quot; clas&amp;quot;link&amp;quot;&amp;gt;bla&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt;  Hoe kan ik de div vergroten zodat die de link bevat maar de link zelf margin-top bevat?</description>

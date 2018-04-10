@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Frameworks on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/frameworks/</link>
+    <link>https://brainbaking.com/tags/frameworks/</link>
     <description>Recent content in Frameworks on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Wed, 22 May 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/frameworks/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/frameworks/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>angular</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/angular/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/angular/</link>
       <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/angular/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/angular/</guid>
       <description>Angular Testing: zie code/javascript/testing/angular
 Caching in HTTP IE8 cachet by default alle XHR requests en daar kan je niet zomaar iets aan veranderen. Een unieke URL elke keer callen is een oplossing (met new Date().getTime() bijvoorbeeld), maar je kan ook aan de server kant de Cache-Control header parameter op no-cache zetten.
 Zie issue https://github.com/angular/angular.js/issues/1418
@@ -28,10 +28,10 @@ TLDR: ze gebruiken toString() om argument namen te parsen, zodat de volgorde nie
     
     <item>
       <title>extjs4</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/extjs4/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/extjs4/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/extjs4/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/extjs4/</guid>
       <description>Extjs4 Documentatie: http://docs.sencha.com/ext-js/4-0/#!/api/
 Aanmaken van klassen en managers die loaden Met Ext.define maak je een klasse aan, met Ext.create maak je een instantie van die klasse.
 Een klasse heeft:
@@ -41,10 +41,10 @@ Ext.define(&#39;test&#39;, { // config stuff });  Die configs worden herbruikt v
     
     <item>
       <title>frameworks</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/</guid>
       <description>Hoe objecten extenden ❗️ Zie Uitleg over Javascript werking met inheritance en code/javascript/inleiding.
 Prototype&amp;rsquo;s Extend Op de vorige wijze werkt bijvoorbeeld Prototype&amp;rsquo;s Element.Extend of $ (naast de CSS Selector natuurlijk).
 // ignoring Prototype&#39;s initialize() constructor method var Poes = Class.create({ miauw: function() { return &amp;quot;prr&amp;quot;; } }); var Hond = Class.create({ blaf: function() { return &amp;quot;WOOF&amp;quot;; } }); var kat = new Poes(); Element.extend(kat, Hond); assertEquals(kat.blaf(), new Hond().blaf()); // hoo lee sjit  De bovenstaande code wordt intern gebruikt om inheritance te faken.</description>
@@ -52,10 +52,10 @@ Prototype&amp;rsquo;s Extend Op de vorige wijze werkt bijvoorbeeld Prototype&amp
     
     <item>
       <title>handlebars</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/handlebars/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/handlebars/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/handlebars/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/handlebars/</guid>
       <description>Handlebars Algemene uitleg ea:
  http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/#more-621 http://handlebarsjs.com/ http://tryhandlebarsjs.com/  Yeoman integratie Zie https://github.com/yeoman/yeoman/wiki/Handlebars-integration en code/javascript/frameworks/yeoman
 Maakt gebruik van grunt - Zie https://github.com/gruntjs/grunt-contrib-handlebars/
@@ -65,29 +65,29 @@ grunt.initConfig({ // Project configuration // --------------------- handlebars:
     
     <item>
       <title>jquery</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/jquery/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/jquery/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/jquery/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/jquery/</guid>
       <description>Jquery Eigen CSS filters maken $.expr[&#39;:&#39;].external = function(elem,index,match) { var url = elem.href || elem.src, loc = window.location; return !!url.match(new RegExp(&#39;^&#39; + loc.protocol + &#39;//&#39; + &#39;(?!&#39; + loc.hostname + &#39;)&#39; )); }; // You can now use it within your selectors: // Find all external anchors: $(&#39;a:external&#39;); // Find all external script elements: $(&#39;script:external&#39;); // Determine if link is external: $(&#39;a#mylink&#39;).is(&#39;:external&#39;); // true/false  Via Things you may not know about jQuery</description>
     </item>
     
     <item>
       <title>knockout</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/knockout/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/knockout/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/knockout/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/knockout/</guid>
       <description>Knockout JS Paged client-side table zelf voorzien ❗️ Zie http://jsfiddle.net/rniemeyer/5Xr2X/
  The basic idea is that you have a dependentObservable that represents the rows in your current page and bind your table to it. You would slice the overall array to get the rows for the page. Then, you have pager buttons/links that manipulate the page index, which causes the dependentObservable to be re-evaluated resulting in the current rows.</description>
     </item>
     
     <item>
       <title>mobile</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/mobile/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/mobile/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/mobile/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/mobile/</guid>
       <description>JS Clientside Mobile frameworks Native applicaties deployen Gebruik http://www.phonegap.com/ om met CSS3+HTML5+JS een native applicatie te builden - ondersteuning voor iOS, Android, Blackberry etc. Ondersteunt ook native hardware zoals camera, accelerometer, GPS etc - zie Documentatie
 WebSockets in Phonegap Zit in de milestone 1.0 planning - nog niet officiëel ondersteund.
  Voor Android: Zie http:*anismiles.wordpress.com/2011/02/03/websocket-support-in-android%E2%80%99s-phonegap-apps/ en source Voor iPhone: Zie http:*remysharp.com/2010/10/04/websockets-in-phonegap-projects/ en source  Mobile apps &amp;amp; Viewports In de &amp;lt;head/&amp;gt; tag is het belangrijk om viewport meta-informatie aan te geven zoals:</description>
@@ -95,10 +95,10 @@ WebSockets in Phonegap Zit in de milestone 1.0 planning - nog niet officiëel on
     
     <item>
       <title>yeoman</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/frameworks/yeoman/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/frameworks/yeoman/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/frameworks/yeoman/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/frameworks/yeoman/</guid>
       <description>Build tools: Yeoman, Grunt, RequireJS ea Zie ook integratie met code/javascript/frameworks/handlebars.
 Help nodig? Vast? &amp;gt;&amp;gt;
  http://gruntjs.com/installing-grunt http://yeoman.io/commandline.html http://requirejs.org/docs/api.html https://github.com/twitter/bower https://npmjs.org/doc/  Meer info over Yeoman, tooling support, scaffolding, etc:

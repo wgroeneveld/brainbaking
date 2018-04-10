@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Aspdotnet on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/aspdotnet/</link>
+    <link>https://brainbaking.com/tags/aspdotnet/</link>
     <description>Recent content in Aspdotnet on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Mon, 30 Jun 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/aspdotnet/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/aspdotnet/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>aspdotnet</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/aspdotnet/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/aspdotnet/</link>
       <pubDate>Mon, 30 Jun 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/aspdotnet/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/aspdotnet/</guid>
       <description>ASP.NET Troubleshooting &amp;lsquo;WebForm_DoPostBackWithOptions&amp;rsquo; is undefined in IE1 Probleem: How to get your ASP.NET application working in IE11
 Fix: App_Browsers folder aanmaken in uw webapp en een .browser file toevoegen:
 &amp;lt;browsers&amp;gt; &amp;lt;browser id######&amp;quot;IE11&amp;quot; parentID&amp;quot;Mozilla&amp;quot;&amp;gt; &amp;lt;identification&amp;gt; &amp;lt;userAgent match=&amp;quot;Trident/(?&#39;layoutVersion&#39;[7-9]|0*[1-9]&amp;lt;br/&amp;gt;d+)(&amp;lt;br/&amp;gt;.&amp;lt;br/&amp;gt;d+)?;(.*;)?&amp;lt;br/&amp;gt;s*rv:(?&#39;version&#39;(?&#39;major&#39;&amp;lt;br/&amp;gt;d+)(&amp;lt;br/&amp;gt;.(?&#39;minor&#39;&amp;lt;br/&amp;gt;d+)))&amp;quot; /&amp;gt; &amp;lt;userAgent nonMatch=&amp;quot;IEMobile&amp;quot; /&amp;gt; &amp;lt;/identification&amp;gt; &amp;lt;capture&amp;gt; &amp;lt;userAgent match=&amp;quot;Trident/(?&#39;layoutVersion&#39;&amp;lt;br/&amp;gt;d+)&amp;quot; /&amp;gt; &amp;lt;/capture&amp;gt; &amp;lt;capabilities&amp;gt; &amp;lt;capability name######&amp;quot;browser&amp;quot; value&amp;quot;IE&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;layoutEngine&amp;quot; value&amp;quot;Trident&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;layoutEngineVersion&amp;quot; value&amp;quot;${layoutVersion}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;extra&amp;quot; value&amp;quot;${extra}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;isColor&amp;quot; value&amp;quot;true&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;letters&amp;quot; value&amp;quot;${letters}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;majorversion&amp;quot; value&amp;quot;${major}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;minorversion&amp;quot; value&amp;quot;${minor}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;screenBitDepth&amp;quot; value&amp;quot;8&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;type&amp;quot; value&amp;quot;IE${major}&amp;quot; /&amp;gt; &amp;lt;capability name######&amp;quot;version&amp;quot; value&amp;quot;${version}&amp;quot; /&amp;gt; &amp;lt;/capabilities&amp;gt; &amp;lt;/browser&amp;gt; &amp;lt;!</description>

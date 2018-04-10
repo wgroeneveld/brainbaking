@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="selenium" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -176,18 +176,18 @@
 
 <p>Headless webdriver testen draaien gaat met <code>HTMLUnit</code> - vanaf 2.x zit <code>org.openqa.selenium.htmlunit.HtmlUnitDriver</code> ook in de jar. De JS die daar evaluated wordt is echter <code>Rhino</code> JS en niet native browser stuff. We kunnen in de plaats <a href="/wiki/code/javascript/testing/phantomjs/">code/javascript/testing/phantomjs</a> gebruiken - deze driver zit in een andere jar. In de centrale maven repo:</p>
 
-<pre><code class="language-xml">		&lt;dependency&gt;
-			&lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
-			&lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
-			&lt;version&gt;2.32.0&lt;/version&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.github.detro.ghostdriver&lt;/groupId&gt;
-			&lt;artifactId&gt;phantomjsdriver&lt;/artifactId&gt;
-			&lt;version&gt;1.0.3&lt;/version&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
+<pre><code class="language-xml">        &lt;dependency&gt;
+            &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+            &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
+            &lt;version&gt;2.32.0&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.github.detro.ghostdriver&lt;/groupId&gt;
+            &lt;artifactId&gt;phantomjsdriver&lt;/artifactId&gt;
+            &lt;version&gt;1.0.3&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
 </code></pre>
 
 <p><a href="https://github.com/detro/ghostdriver">ghostdriver</a> is de ingebouwde koppeling tussen phantomjs en webdriver (selenium server). Dit zit ingebouwd in phantomjs als je deze uitvoert met <code>--webdriver=[port]</code> - wat de service voor u doet.</p>
@@ -198,70 +198,70 @@
 
 <pre><code class="language-java">public abstract class WebdriverTest extends IntegrationTest {
 
-	private static ChromeDriverService service;
-	private static WebDriver driver;
+    private static ChromeDriverService service;
+    private static WebDriver driver;
 
-	static {
-		Runtime.getRuntime().addShutdownHook(new Thread() {
+    static {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
 
-			@Override
-			public void run() {
-				driver.quit();
-				if (service != null) {
-					service.stop();
-				}
-			}
-		});
-	}
+            @Override
+            public void run() {
+                driver.quit();
+                if (service != null) {
+                    service.stop();
+                }
+            }
+        });
+    }
 
-	private static void startService() {
-		try {
-			service = new ChromeDriverService.Builder()
-					.usingDriverExecutable(new File(properties().getChromeDriverExecutable()))
-					.usingAnyFreePort().build();
-			service.start();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
+    private static void startService() {
+        try {
+            service = new ChromeDriverService.Builder()
+                    .usingDriverExecutable(new File(properties().getChromeDriverExecutable()))
+                    .usingAnyFreePort().build();
+            service.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-	@Before
-	public void gaNaarStartpagina() {
-		getDriver().get(vitrineUrl());
-	}
+    @Before
+    public void gaNaarStartpagina() {
+        getDriver().get(vitrineUrl());
+    }
 
-	protected static WebDriver getDriver() {
-		if (driver ###### null) {
-			driver = startDriver();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		}
-		return driver;
-	}
+    protected static WebDriver getDriver() {
+        if (driver ###### null) {
+            driver = startDriver();
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        }
+        return driver;
+    }
 
-	private static RemoteWebDriver startDriver() {
-		if (properties().isChromeWebdriverNodig()) {
-			startService();
-			return new ChromeDriver(service);
-		}
-		return new PhantomJSDriver(phantomJSCapabilities());
-	}
+    private static RemoteWebDriver startDriver() {
+        if (properties().isChromeWebdriverNodig()) {
+            startService();
+            return new ChromeDriver(service);
+        }
+        return new PhantomJSDriver(phantomJSCapabilities());
+    }
 
-	private static DesiredCapabilities phantomJSCapabilities() {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setJavascriptEnabled(true);
-		capabilities.setCapability(&quot;takesScreenshot&quot;, false);
-		capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, properties().getPhantomJSExecutable());
-		capabilities.setCapability(PHANTOMJS_CLI_ARGS, new String[] { &quot;--webdriver-loglevel=DEBUG&quot; });
-		return capabilities;
-	}
+    private static DesiredCapabilities phantomJSCapabilities() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setJavascriptEnabled(true);
+        capabilities.setCapability(&quot;takesScreenshot&quot;, false);
+        capabilities.setCapability(PHANTOMJS_EXECUTABLE_PATH_PROPERTY, properties().getPhantomJSExecutable());
+        capabilities.setCapability(PHANTOMJS_CLI_ARGS, new String[] { &quot;--webdriver-loglevel=DEBUG&quot; });
+        return capabilities;
+    }
 
-	protected String toString(DateMidnight date) {
-		return date.toString(&quot;dd/MM/yyyy&quot;);
-	}
+    protected String toString(DateMidnight date) {
+        return date.toString(&quot;dd/MM/yyyy&quot;);
+    }
 
-	protected ZoekPage startPagina() {
-		return new ZoekPage(driver);
-	}
+    protected ZoekPage startPagina() {
+        return new ZoekPage(driver);
+    }
 
 }
 </code></pre>
@@ -274,26 +274,26 @@
 
 <p>Bij fouten als &ldquo;Protected Mode must be set to the same value&rdquo; (zie <a href="https://code.google.com/p/selenium/issues/detail?id=1795">hier</a> heb je een specifieke switch nodig:</p>
 
-<pre><code class="language-java">	private static DesiredCapabilities ieCapabilities() {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-		return capabilities;
-	}
+<pre><code class="language-java">    private static DesiredCapabilities ieCapabilities() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+        return capabilities;
+    }
 </code></pre>
 
 <p>Voor de rest is de setup gelijkaardig aan die van chrome - het maken van de service</p>
 
-<pre><code class="language-java">	private static void startIEService() {
-		ieService = new InternetExplorerDriverService.Builder()
-				.usingDriverExecutable(new File(properties().getIEDriverExecutable()))
-				.usingAnyFreePort()
-				.build();
-		try {
-			ieService.start();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
+<pre><code class="language-java">    private static void startIEService() {
+        ieService = new InternetExplorerDriverService.Builder()
+                .usingDriverExecutable(new File(properties().getIEDriverExecutable()))
+                .usingAnyFreePort()
+                .build();
+        try {
+            ieService.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 </code></pre>
 
 <p>En het maken van de driver via <code>return new InternetExplorerDriver(ieService, ieCapabilities());</code></p>
@@ -432,7 +432,7 @@ Op te lossen door waitForTextPresent te gebruiken. Het &ldquo;waitForValue&rdquo
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -442,13 +442,13 @@ Op te lossen door waitForTextPresent te gebruiken. Het &ldquo;waitForValue&rdquo
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -463,10 +463,10 @@ Op te lossen door waitForTextPresent te gebruiken. Het &ldquo;waitForValue&rdquo
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="nexusdeploy" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -180,66 +180,66 @@
 
 <pre><code class="language-ruby">require 'nokogiri' # gem install nokogiri first! 
 require 'net/http'
-require 'zip'	# gem install rubyzip first!
+require 'zip'   # gem install rubyzip first!
 require 'optparse'
 require 'time'
 
 def deploy_artifact(artifact, server, repo)
-	if repo.nil? then
-		repo = &quot;http://server:8888/nexus/service/local/repositories/nuget-prereleases/&quot;
-	else
-		repo = repo.sub(&quot;/local/nuget/&quot;, &quot;/local/repositories/&quot;)
-	end
-	nexus_url = &quot;#{repo}content/#{artifact}/&quot;
-	print &quot;-- Deploy artifact #{artifact} to #{server} from #{repo}&lt;br/&gt;n&quot;
+    if repo.nil? then
+        repo = &quot;http://server:8888/nexus/service/local/repositories/nuget-prereleases/&quot;
+    else
+        repo = repo.sub(&quot;/local/nuget/&quot;, &quot;/local/repositories/&quot;)
+    end
+    nexus_url = &quot;#{repo}content/#{artifact}/&quot;
+    print &quot;-- Deploy artifact #{artifact} to #{server} from #{repo}&lt;br/&gt;n&quot;
 
-	print &quot;fetching artifacts from nexus... &lt;br/&gt;n&lt;br/&gt;t#{nexus_url}&lt;br/&gt;n&quot;
-	response = Net::HTTP.get_response(URI.parse(nexus_url))
-	xml = Nokogiri::XML(response.body).xpath(&quot;//content-item&quot;).map { |entry|
-		hash = Hash.new
-		hash['url'] = entry.css(&quot;resourceURI&quot;).text
-		hash['buildnr'] = entry.css(&quot;text&quot;).text
-		hash['date'] = Time.parse(entry.css(&quot;lastModified&quot;).text)
+    print &quot;fetching artifacts from nexus... &lt;br/&gt;n&lt;br/&gt;t#{nexus_url}&lt;br/&gt;n&quot;
+    response = Net::HTTP.get_response(URI.parse(nexus_url))
+    xml = Nokogiri::XML(response.body).xpath(&quot;//content-item&quot;).map { |entry|
+        hash = Hash.new
+        hash['url'] = entry.css(&quot;resourceURI&quot;).text
+        hash['buildnr'] = entry.css(&quot;text&quot;).text
+        hash['date'] = Time.parse(entry.css(&quot;lastModified&quot;).text)
 
-		hash
-	}.sort { |one,two| two['date'] &lt;=&gt; one['date'] }.first
+        hash
+    }.sort { |one,two| two['date'] &lt;=&gt; one['date'] }.first
 
-	if xml.nil? then
-		throw &quot;Geen XML kunnen parsen uit URL, ligt nexus plat?&quot;
-	end
+    if xml.nil? then
+        throw &quot;Geen XML kunnen parsen uit URL, ligt nexus plat?&quot;
+    end
 
-	artifactContentUri = xml['url']
-	artifactBuildNr = xml['buildnr']
-	artifactDate = xml['date']
+    artifactContentUri = xml['url']
+    artifactBuildNr = xml['buildnr']
+    artifactDate = xml['date']
 
-	print &quot;fetching last artifact (modified date #{artifactDate}) package file from nexus... &lt;br/&gt;n&lt;br/&gt;t#{artifactContentUri}&lt;br/&gt;n&quot;
-	artifact_uri = Nokogiri::XML(Net::HTTP.get_response(URI.parse(artifactContentUri)).body).css(&quot;resourceURI&quot;).text
+    print &quot;fetching last artifact (modified date #{artifactDate}) package file from nexus... &lt;br/&gt;n&lt;br/&gt;t#{artifactContentUri}&lt;br/&gt;n&quot;
+    artifact_uri = Nokogiri::XML(Net::HTTP.get_response(URI.parse(artifactContentUri)).body).css(&quot;resourceURI&quot;).text
 
-	print &quot;fetching artifact (buildnr. #{artifactBuildNr}) itself from nexus... &lt;br/&gt;n&quot;
-	nupkg_file = &quot;#{artifact}-#{artifactBuildNr}.nupkg&quot;
-	open(nupkg_file, &quot;wb&quot;) do |file|
-	    file.write(Net::HTTP.get_response(URI.parse(artifact_uri)).body)
-	end
+    print &quot;fetching artifact (buildnr. #{artifactBuildNr}) itself from nexus... &lt;br/&gt;n&quot;
+    nupkg_file = &quot;#{artifact}-#{artifactBuildNr}.nupkg&quot;
+    open(nupkg_file, &quot;wb&quot;) do |file|
+        file.write(Net::HTTP.get_response(URI.parse(artifact_uri)).body)
+    end
 
-	def unzip_and_copy(zip_file, pattern, server)
-		zippedfile = zip_file.glob(pattern).first
-		unless zippedfile.nil?
-			fname = zippedfile.name.split('/').last
-			print &quot;&lt;br/&gt;tFound file to copy: #{fname}&lt;br/&gt;n&quot;
-			toname = &quot;#{server}&lt;br/&gt;&lt;br/&gt;#{fname}&quot;
-			File.delete(toname) if File.exist?(toname)
-			zippedfile.extract(toname)
-		end
-	end
+    def unzip_and_copy(zip_file, pattern, server)
+        zippedfile = zip_file.glob(pattern).first
+        unless zippedfile.nil?
+            fname = zippedfile.name.split('/').last
+            print &quot;&lt;br/&gt;tFound file to copy: #{fname}&lt;br/&gt;n&quot;
+            toname = &quot;#{server}&lt;br/&gt;&lt;br/&gt;#{fname}&quot;
+            File.delete(toname) if File.exist?(toname)
+            zippedfile.extract(toname)
+        end
+    end
 
-	print &quot;unzipping nuget package...&lt;br/&gt;n&quot;
-	Zip::File.open(nupkg_file) do |zip_file|
-		unzip_and_copy zip_file, 'lib/net35/*.dll', server
-		unzip_and_copy zip_file, 'lib/net40/*.dll', server
-		unzip_and_copy zip_file, 'lib/net45/*.dll', server
-	end
-	File.delete(nupkg_file)
-	print &quot;-- done, extracted to #{server}.&lt;br/&gt;n&quot;
+    print &quot;unzipping nuget package...&lt;br/&gt;n&quot;
+    Zip::File.open(nupkg_file) do |zip_file|
+        unzip_and_copy zip_file, 'lib/net35/*.dll', server
+        unzip_and_copy zip_file, 'lib/net40/*.dll', server
+        unzip_and_copy zip_file, 'lib/net45/*.dll', server
+    end
+    File.delete(nupkg_file)
+    print &quot;-- done, extracted to #{server}.&lt;br/&gt;n&quot;
 end
 
 # ex. usage: 
@@ -247,18 +247,18 @@ end
 options = {}
 ARGV &lt;&lt; '-h' if ARGV.empty?
 OptionParser.new do |opts|
-	opts.banner = &quot;Usage: deploy_artifact.rb [options]&quot;
-	opts.on('-r', '--repo REPOSITORY_URL', 'nexus repository url (bvb http://server:8888/nexus/service/local/repositories/nuget-prereleases/ - with trailing slash)') { |v| options[:repo] = v }
-	opts.on('-m', '--modules NAME', 'module name (comma separated)') { |v| options[:modules] = v }
-	opts.on('-s', '--server NAME', 'server target bin directory') { |v| options[:server] = v }
-	opts.on('-h', '--help', 'prints this help') { |v|
-		puts opts
-		exit
-	}
+    opts.banner = &quot;Usage: deploy_artifact.rb [options]&quot;
+    opts.on('-r', '--repo REPOSITORY_URL', 'nexus repository url (bvb http://server:8888/nexus/service/local/repositories/nuget-prereleases/ - with trailing slash)') { |v| options[:repo] = v }
+    opts.on('-m', '--modules NAME', 'module name (comma separated)') { |v| options[:modules] = v }
+    opts.on('-s', '--server NAME', 'server target bin directory') { |v| options[:server] = v }
+    opts.on('-h', '--help', 'prints this help') { |v|
+        puts opts
+        exit
+    }
 end.parse!
 
 options[:modules].split(&quot;,&quot;).each do |mod|
-	deploy_artifact mod, options[:server], options[:repo]
+    deploy_artifact mod, options[:server], options[:repo]
 end
 
 </code></pre>
@@ -322,7 +322,7 @@ end
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -332,13 +332,13 @@ end
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -353,10 +353,10 @@ end
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

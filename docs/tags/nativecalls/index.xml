@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nativecalls on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/nativecalls/</link>
+    <link>https://brainbaking.com/tags/nativecalls/</link>
     <description>Recent content in Nativecalls on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 13 Dec 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/nativecalls/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/nativecalls/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>nativecalls</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/nativecalls/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/nativecalls/</link>
       <pubDate>Fri, 13 Dec 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/nativecalls/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/nativecalls/</guid>
       <description>C++ Native calls uitvoeren Voorbeeld project Wat is het probleem:
  Ik wil Native C++ methods kunnen aanroepen vanuit C#. Dit kan met de DllImport attribute. Ik wil structs kunnen remarshallen die uit de native code komen. Dit kan met StructLayout en PtrToStructrue. Ik wil een char* mappen op een C# string: gebruik [MarshalAsAttribute(UnmanagedType.LPStr)] in uw C# struct. Ik wil parameters mee kunnen geven: gebruik de juiste calling method (STD of DECL) instelling, zie CallingConvention op UnmanagedFunctionPointer.</description>
     </item>

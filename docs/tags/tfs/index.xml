@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tfs on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/tfs/</link>
+    <link>https://brainbaking.com/tags/tfs/</link>
     <description>Recent content in Tfs on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 31 Jan 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/tfs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/tfs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>tfs</title>
-      <link>http://www.brainbaking.com/wiki/code/tools/tfs/</link>
+      <link>https://brainbaking.com/wiki/code/tools/tfs/</link>
       <pubDate>Fri, 31 Jan 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/tools/tfs/</guid>
+      <guid>https://brainbaking.com/wiki/code/tools/tfs/</guid>
       <description>Team Foundation Server Changing the default check-in action By default worden work items op &amp;ldquo;resolved&amp;rdquo; gezet. Dit is meestal geen gewenst gedrag. Niet automatisch oplosbaar: zie http://www.codesmartnothard.com/2013/02/09/ChangingTheDefaultCheckInOptionToAssociateInTFS2012.aspx
 Voor items op state &amp;ldquo;new&amp;rdquo; kan je deze key wijzigen in registry: HKEY_CURRENT_USER&amp;lt;br/&amp;gt;Software&amp;lt;br/&amp;gt;Microsoft&amp;lt;br/&amp;gt;VisualStudio&amp;lt;br/&amp;gt;**11.0**&amp;lt;br/&amp;gt;TeamFoundation&amp;lt;br/&amp;gt;SourceControl&amp;lt;br/&amp;gt;Behavior @ResolveAsDefaultCheckinAction = &amp;quot;False&amp;quot;
 Find latest work items Hoe kan ik mijn laatste &amp;ldquo;Related work item&amp;rdquo; terug ophalen om aan de in te checken changeset dezelfde items te koppelen?</description>
@@ -26,10 +26,10 @@ Find latest work items Hoe kan ik mijn laatste &amp;ldquo;Related work item&amp;
     
     <item>
       <title>tfs</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/tfs/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/tfs/</link>
       <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/tfs/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/tfs/</guid>
       <description>Tfs communicator TFS informatie vanuit .NET uitlezen OData TFS v2 is een tussenlaag REST API die je zelf nog op IIS kan deployen&amp;hellip;
 Onderstaande code doet hetzelfde (veel eenvoudiger) in een console appke
 using System; using System.Diagnostics.CodeAnalysis; using System.Linq; using Microsoft.TeamFoundation.Build.Client; using Microsoft.TeamFoundation.Client; namespace TfsCommunicator { [ExcludeFromCodeCoverage] public class BuildCommunicator : IBuildCommunicator { private string tfsServerAddress; public BuildCommunicator(string tfsServerAddress) { this.tfsServerAddress = tfsServerAddress; } public BuildStatus GetBuildInformation(int maxDays ###### 5, int maxRuns 10, string teamProject ###### &amp;quot;*&amp;quot;, string buildDefinition &amp;quot;&amp;quot;) { var buildStatus = new BuildStatus(); var builds = GetBuildsFromTfs(maxDays, teamProject, buildDefinition); var currentDefinition = string.</description>

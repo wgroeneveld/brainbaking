@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="karma" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -212,30 +212,30 @@ npm config set https-proxy http://proxy.be:8080
 
 <h3 id="integratie-in-maven">Integratie in maven</h3>
 
-<pre><code class="language-xml">			&lt;plugin&gt;
-				&lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
-				&lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
-				&lt;version&gt;1.2.1&lt;/version&gt;
-				&lt;executions&gt;
-					&lt;execution&gt;
-						&lt;id&gt;jsunit&lt;/id&gt;
-						&lt;phase&gt;test&lt;/phase&gt;
-						&lt;goals&gt;
-							&lt;goal&gt;exec&lt;/goal&gt;
-						&lt;/goals&gt;
-					&lt;/execution&gt;
-				&lt;/executions&gt;
-				&lt;configuration&gt;
-					&lt;skip&gt;${skipTests}&lt;/skip&gt;
-					&lt;successCodes&gt;
-						&lt;successCode&gt;0&lt;/successCode&gt;
-						&lt;successCode&gt;1&lt;/successCode&gt;&lt;!-- on failing test, don't get a build 
-							error --&gt;
-					&lt;/successCodes&gt;
-					&lt;executable&gt;${basedir}/src/test/javascript/build.bat&lt;/executable&gt;
-					&lt;workingDirectory&gt;${basedir}/src/test/javascript&lt;/workingDirectory&gt;
-				&lt;/configuration&gt;
-			&lt;/plugin&gt;
+<pre><code class="language-xml">            &lt;plugin&gt;
+                &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+                &lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;1.2.1&lt;/version&gt;
+                &lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;id&gt;jsunit&lt;/id&gt;
+                        &lt;phase&gt;test&lt;/phase&gt;
+                        &lt;goals&gt;
+                            &lt;goal&gt;exec&lt;/goal&gt;
+                        &lt;/goals&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+                &lt;configuration&gt;
+                    &lt;skip&gt;${skipTests}&lt;/skip&gt;
+                    &lt;successCodes&gt;
+                        &lt;successCode&gt;0&lt;/successCode&gt;
+                        &lt;successCode&gt;1&lt;/successCode&gt;&lt;!-- on failing test, don't get a build 
+                            error --&gt;
+                    &lt;/successCodes&gt;
+                    &lt;executable&gt;${basedir}/src/test/javascript/build.bat&lt;/executable&gt;
+                    &lt;workingDirectory&gt;${basedir}/src/test/javascript&lt;/workingDirectory&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
 </code></pre>
 
 <p>Bovenstaande <code>skip</code> config houdt dus ook rekening met bvb <code>mvn clean install -DskipTests</code> - de <code>test</code> phase van maven wordt <strong>niet</strong> geskipped maar de testen wel door de <code>maven-failsafe-plugin</code> - bijgevolg worden goals die aan de test fase hangen ook nog uitgevoerd.</p>
@@ -336,7 +336,7 @@ junitReporter = {
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -346,13 +346,13 @@ junitReporter = {
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -367,10 +367,10 @@ junitReporter = {
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

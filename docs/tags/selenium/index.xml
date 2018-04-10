@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Selenium on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/selenium/</link>
+    <link>https://brainbaking.com/tags/selenium/</link>
     <description>Recent content in Selenium on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Wed, 23 Jul 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/selenium/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/selenium/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>selenium</title>
-      <link>http://www.brainbaking.com/wiki/code/java/testing/selenium/</link>
+      <link>https://brainbaking.com/wiki/code/java/testing/selenium/</link>
       <pubDate>Wed, 23 Jul 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/testing/selenium/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/testing/selenium/</guid>
       <description>Selenium Scenario Testing Ter info: Webdriver = selenium 2.x.
 Webdriver samen met PhantomJS opzet Headless webdriver testen draaien gaat met HTMLUnit - vanaf 2.x zit org.openqa.selenium.htmlunit.HtmlUnitDriver ook in de jar. De JS die daar evaluated wordt is echter Rhino JS en niet native browser stuff. We kunnen in de plaats code/javascript/testing/phantomjs gebruiken - deze driver zit in een andere jar. In de centrale maven repo:
 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.32.0&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>

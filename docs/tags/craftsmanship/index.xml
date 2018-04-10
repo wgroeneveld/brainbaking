@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Craftsmanship on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/craftsmanship/</link>
+    <link>https://brainbaking.com/tags/craftsmanship/</link>
     <description>Recent content in Craftsmanship on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Sat, 30 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/craftsmanship/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/craftsmanship/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Inventing - for the worse?</title>
-      <link>http://www.brainbaking.com/post/inventing-for-the-worse/</link>
+      <link>https://brainbaking.com/post/inventing-for-the-worse/</link>
       <pubDate>Sat, 30 Dec 2017 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/inventing-for-the-worse/</guid>
+      <guid>https://brainbaking.com/post/inventing-for-the-worse/</guid>
       <description>People have an irresistible urge to create. But we often mistake productivity with creativity with really creating. Homo creativus. But is this always a good thing? The best inventions in the world bring great sorrow to millions of people today. Then I started wondering, what if&amp;hellip;
 Electricity wasn&amp;rsquo;t invented? Mass production wouldn&amp;rsquo;t be possible. Everything you use, from your watch to your laptop, stove, to what you&amp;rsquo;re wearing wouldn&amp;rsquo;t be possible.</description>
     </item>

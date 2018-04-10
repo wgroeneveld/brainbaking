@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Google Api on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/google-api/</link>
+    <link>https://brainbaking.com/tags/google-api/</link>
     <description>Recent content in Google Api on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/google-api/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/google-api/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>google-api</title>
-      <link>http://www.brainbaking.com/wiki/code/java/google-api/</link>
+      <link>https://brainbaking.com/wiki/code/java/google-api/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/google-api/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/google-api/</guid>
       <description>Google-api Google Endpoints Client lib Genereren van java files Timestamp: Tue Dec 11 12:41:31 CET 2012 #!/bin/sh echo &amp;quot;--- COMPILING...&amp;quot; mvn clean compile echo &amp;quot;--- REMOVING OLD FILES &amp;amp; COPYING TO WEB-INF...&amp;quot; rm -rf ./war/WEB-INF/devices-* rm -rf ./war/WEB-INF/classes cp -rf ./target/classes ./war/WEB-INF/ echo &amp;quot;--- GENERATING ENDPOINTS...&amp;quot; /Users/jefklak/development/appengine/bin/endpoints.sh get-java-client-lib be.klak.gatecontrolweb.DevicesController echo &amp;quot;--- EXTRACTING SOURCE JAR...&amp;quot; cd ./war/WEB-INF rm -rf devices unzip devices-v1-java.zip cd devices unzip `ls | grep sources.jar` cp -rf com ~/development/gatecontrol/receiver/src/main/java echo &amp;quot;--- DONE!</description>
     </item>
     

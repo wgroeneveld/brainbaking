@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Brain Dump on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/brain-dump/</link>
+    <link>https://brainbaking.com/tags/brain-dump/</link>
     <description>Recent content in Brain Dump on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 30 May 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/brain-dump/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/brain-dump/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Are you handing over enough when inspiring someone?</title>
-      <link>http://www.brainbaking.com/post/handing-over-enough-when-inspiring/</link>
+      <link>https://brainbaking.com/post/handing-over-enough-when-inspiring/</link>
       <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/handing-over-enough-when-inspiring/</guid>
+      <guid>https://brainbaking.com/post/handing-over-enough-when-inspiring/</guid>
       <description>The other day, I was having a discussion with a friend and colleague about reaching out to others. He had an idea on combining patterns learned from the enterprise software development world (clean code, TDD, domain driven design, you name it) with patterns learned from the gaming development world (rapid prototyping, getting stuff done, intensive usage of frameworks like Unity). An excellent idea if you ask me. But he was hesitant - others might not be that interested in taking time to write unit tests in their game.</description>
     </item>
     

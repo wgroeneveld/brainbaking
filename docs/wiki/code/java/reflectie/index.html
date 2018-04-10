@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="reflectie" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -168,52 +168,52 @@
 
 <h3 id="oplijsten-van-fields-die-enkel-boolean-en-true-zijn">Oplijsten van fields die enkel boolean en true zijn</h3>
 
-<pre><code class="language-java">	public static String listTrueBooleanFields(Object object) {
-		List&lt;String&gt; parts = Lists.newArrayList();
-		try {
-			for (Field field : object.getClass().getDeclaredFields()) {
-				boolean accessibleFlag = field.isAccessible();
-				field.setAccessible(true);
-				if (isTrueBooleanField(object, field)) {
-					parts.add(makeCamelCaseNatural(field.getName()));
-				}
-				field.setAccessible(accessibleFlag);
-			}
-		} catch (Exception ex) {
-			throw new RuntimeException(ex);
-		}
+<pre><code class="language-java">    public static String listTrueBooleanFields(Object object) {
+        List&lt;String&gt; parts = Lists.newArrayList();
+        try {
+            for (Field field : object.getClass().getDeclaredFields()) {
+                boolean accessibleFlag = field.isAccessible();
+                field.setAccessible(true);
+                if (isTrueBooleanField(object, field)) {
+                    parts.add(makeCamelCaseNatural(field.getName()));
+                }
+                field.setAccessible(accessibleFlag);
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
 
-		return StringUtils.join(parts, &quot;, &quot;);
-	}
+        return StringUtils.join(parts, &quot;, &quot;);
+    }
 
-	private static boolean isTrueBooleanField(Object object, Field field) throws IllegalAccessException {
-		return isBoolean(field) &amp;&amp; (Boolean) field.get(object);
-	}
+    private static boolean isTrueBooleanField(Object object, Field field) throws IllegalAccessException {
+        return isBoolean(field) &amp;&amp; (Boolean) field.get(object);
+    }
 
-	private static boolean isBoolean(Field field) {
-		return Boolean.class.isAssignableFrom(field.getType()) || boolean.class.isAssignableFrom(field.getType());
-	}
+    private static boolean isBoolean(Field field) {
+        return Boolean.class.isAssignableFrom(field.getType()) || boolean.class.isAssignableFrom(field.getType());
+    }
 </code></pre>
 
 <h3 id="nieuwe-instantie-van-een-klasse-met-default-constructor">Nieuwe instantie van een klasse met default constructor</h3>
 
 <pre><code class="language-java">public class ReflectionUtils {
 
-	public static &lt;T&gt; T createNewInstanceOf(Class&lt;T&gt; classToCreate) {
-		try {
-			Constructor&lt;T&gt; noArgConstructor = classToCreate.getDeclaredConstructor();
+    public static &lt;T&gt; T createNewInstanceOf(Class&lt;T&gt; classToCreate) {
+        try {
+            Constructor&lt;T&gt; noArgConstructor = classToCreate.getDeclaredConstructor();
 
-			boolean accessibleFlag = noArgConstructor.isAccessible();
-			noArgConstructor.setAccessible(true);
+            boolean accessibleFlag = noArgConstructor.isAccessible();
+            noArgConstructor.setAccessible(true);
 
-			T newInstance = noArgConstructor.newInstance();
+            T newInstance = noArgConstructor.newInstance();
 
-			noArgConstructor.setAccessible(accessibleFlag);
-			return newInstance;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
+            noArgConstructor.setAccessible(accessibleFlag);
+            return newInstance;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 </code></pre>
 
@@ -223,34 +223,34 @@
 
 <p>Met hulp van spring classes zoals <code>org.springframework.core.io.support.ResourcePatternResolver</code> en <code>org.springframework.core.type.classreading.MetadataReaderFactory</code>:</p>
 
-<pre><code class="language-java">			String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
-					ClassUtils.convertClassNameToResourcePath(basePackage) + &quot;/&quot; + this.resourcePattern;
-			Resource[] resources = this.resourcePatternResolver.getResources(packageSearchPath);
+<pre><code class="language-java">            String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
+                    ClassUtils.convertClassNameToResourcePath(basePackage) + &quot;/&quot; + this.resourcePattern;
+            Resource[] resources = this.resourcePatternResolver.getResources(packageSearchPath);
 
-			for (int i = 0; i &lt; resources.length; i++) {
-				Resource resource = resources[i];
-				MetadataReader metadataReader = this.metadataReaderFactory.getMetadataReader(resource);
-				if (isCandidateComponent(metadataReader)) {
-					Class&lt;?&gt; clazz = null;
-					try {
-						clazz = Class.forName(metadataReader.getClassMetadata().getClassName());
-					} catch (ClassNotFoundException e) {
-						e.printStackTrace();
-					}
-					candidates.add(clazz);
-				}
-			}
+            for (int i = 0; i &lt; resources.length; i++) {
+                Resource resource = resources[i];
+                MetadataReader metadataReader = this.metadataReaderFactory.getMetadataReader(resource);
+                if (isCandidateComponent(metadataReader)) {
+                    Class&lt;?&gt; clazz = null;
+                    try {
+                        clazz = Class.forName(metadataReader.getClassMetadata().getClassName());
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    candidates.add(clazz);
+                }
+            }
 </code></pre>
 
 <p><code>CLASSPATH_ALL_URL_PREFIX</code> is <strong><code>&quot;classpath*:&quot;</code></strong>.</p>
 
 <p>De <code>isCandidateComponent</code> method accepteert of verwerpt een item afhankelijk van de metadata met hulp van de spring interface <code>org.springframework.core.type.filter.TypeFilter</code>:</p>
 
-<pre><code class="language-java">		for (TypeFilter tf : this.includeFilters) {
-			if (tf.match(metadataReader, this.metadataReaderFactory)) {
-				return true;
-			}
-		}
+<pre><code class="language-java">        for (TypeFilter tf : this.includeFilters) {
+            if (tf.match(metadataReader, this.metadataReaderFactory)) {
+                return true;
+            }
+        }
 </code></pre>
 
 <p>Het is ook mogelijk om een &ldquo;default&rdquo; filter te voorzien die alles include: <code>new RegexPatternTypeFilter(Pattern.compile(&quot;.*&quot;));</code>.</p>
@@ -259,32 +259,32 @@
 
 <p>Kan ook met de bovenstaande code (de <code>ClassPathScanningCandidateComponentProvider</code> dus):</p>
 
-<pre><code class="language-java">	public &lt;T&gt; Set&lt;Class&lt;?&gt;&gt; getSubTypesOf(Class&lt;T&gt; type) {
-		ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
-		provider.addIncludeFilter(new AssignableTypeFilter(type));
-		Set&lt;Class&lt;?&gt;&gt; candidateSubtypes = provider.findCandidateComponents(getPackageToScan());
-		candidateSubtypes.remove(type);
-		return candidateSubtypes;
-	}
+<pre><code class="language-java">    public &lt;T&gt; Set&lt;Class&lt;?&gt;&gt; getSubTypesOf(Class&lt;T&gt; type) {
+        ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
+        provider.addIncludeFilter(new AssignableTypeFilter(type));
+        Set&lt;Class&lt;?&gt;&gt; candidateSubtypes = provider.findCandidateComponents(getPackageToScan());
+        candidateSubtypes.remove(type);
+        return candidateSubtypes;
+    }
 </code></pre>
 
 <h5 id="get-only-concrete-subclasses">get only concrete subclasses</h5>
 
 <p>In combinatie met bovenstaande method:</p>
 
-<pre><code class="language-java">	public &lt;T&gt; Set&lt;Class&lt;?&gt;&gt; getConcreteSubTypesOf(Class&lt;T&gt; type) {
-		Set&lt;Class&lt;?&gt;&gt; result = new HashSet&lt;Class&lt;?&gt;&gt;();
-		for (Class&lt;?&gt; aClass : getSubTypesOf(type)) {
-			if (isConcrete(aClass)) {
-				result.add(aClass);
-			}
-		}
-		return result;
-	}
+<pre><code class="language-java">    public &lt;T&gt; Set&lt;Class&lt;?&gt;&gt; getConcreteSubTypesOf(Class&lt;T&gt; type) {
+        Set&lt;Class&lt;?&gt;&gt; result = new HashSet&lt;Class&lt;?&gt;&gt;();
+        for (Class&lt;?&gt; aClass : getSubTypesOf(type)) {
+            if (isConcrete(aClass)) {
+                result.add(aClass);
+            }
+        }
+        return result;
+    }
 
-	private boolean isConcrete(Class&lt;?&gt; aClass) {
-		return !Modifier.isAbstract(aClass.getModifiers());
-	}
+    private boolean isConcrete(Class&lt;?&gt; aClass) {
+        return !Modifier.isAbstract(aClass.getModifiers());
+    }
 </code></pre>
 
 <h4 id="zonder-spring">Zonder Spring</h4>
@@ -358,7 +358,7 @@ Set&lt;Class&lt;? extends SomeClassOrInterface&gt;&gt; subTypes = reflections.ge
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -368,13 +368,13 @@ Set&lt;Class&lt;? extends SomeClassOrInterface&gt;&gt; subTypes = reflections.ge
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -389,10 +389,10 @@ Set&lt;Class&lt;? extends SomeClassOrInterface&gt;&gt; subTypes = reflections.ge
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

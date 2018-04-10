@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Svnlog on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/svnlog/</link>
+    <link>https://brainbaking.com/tags/svnlog/</link>
     <description>Recent content in Svnlog on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Mon, 13 Jul 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/svnlog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/svnlog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>svnlog</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/scripts/svnlog/</link>
       <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/scripts/svnlog/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/scripts/svnlog/</guid>
       <description>Svnlog require &#39;nokogiri&#39; # gem install nokogiri first! require &#39;csv&#39; require &#39;date&#39; # Ex. XML: &amp;lt;log&amp;gt; ... &amp;lt;/log&amp;gt; # &amp;lt;logentry revision=&amp;quot;x&amp;quot;&amp;gt; # =&amp;gt; &amp;lt;author&amp;gt;name&amp;lt;/author&amp;gt; # =&amp;gt; &amp;lt;date&amp;gt;yyyy-mm-ddThh:mm:ssss&amp;lt;/date&amp;gt; # =&amp;gt; &amp;lt;msg&amp;gt;message&amp;lt;/msg&amp;gt; # &amp;lt;/logentry&amp;gt; puts &amp;quot;SVN Release notes creator&amp;quot; puts &amp;quot;---------&amp;quot; puts &amp;quot;Revision from? (ex revision &#39;8722&#39; or date {YYYY-MM-DD} or &#39;HEAD&#39;) &amp;gt; &amp;quot; revFrom = gets.chomp puts &amp;quot;Revision to? &amp;gt; &amp;quot; revTo = gets.chomp puts &amp;quot;Getting log from SVN, hang in there.</description>
     </item>
     

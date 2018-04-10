@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Collaboration on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/collaboration/</link>
+    <link>https://brainbaking.com/tags/collaboration/</link>
     <description>Recent content in Collaboration on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Sun, 25 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/collaboration/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/collaboration/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Concentrating on serendipitous creativity</title>
-      <link>http://www.brainbaking.com/post/serendipitous-creativity/</link>
+      <link>https://brainbaking.com/post/serendipitous-creativity/</link>
       <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/serendipitous-creativity/</guid>
+      <guid>https://brainbaking.com/post/serendipitous-creativity/</guid>
       <description>When was the last time you were able to focus well on a difficult task in an office landscape? For long periods of time? Did you manage to finish the task in time? Knowledge workers are increasingly pushed together in large open spaces to promote collaboration and serendipity. But those unplanned happy accidents create another completely unplanned rather unhappy accident: the loss of concentration. According to Cal Newport&amp;rsquo;s &amp;ldquo;Deep Work&amp;rdquo; term, long uninterrupted hours of concentration manage to get difficult things done - not short bursts of collaboration.</description>
     </item>
     

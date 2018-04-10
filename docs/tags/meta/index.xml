@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Meta on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/meta/</link>
+    <link>https://brainbaking.com/tags/meta/</link>
     <description>Recent content in Meta on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 14 Mar 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/meta/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>meta</title>
-      <link>http://www.brainbaking.com/wiki/code/python/meta/</link>
+      <link>https://brainbaking.com/wiki/code/python/meta/</link>
       <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/python/meta/</guid>
+      <guid>https://brainbaking.com/wiki/code/python/meta/</guid>
       <description> Metaprogramming Zie ook code/python/classes
 type, the metaclass of a class Resources:
  Python metaclasses by example Extremely detailed, stackoverflow: what is a metaclass in python Improve your python with metaclasses  </description>
@@ -26,20 +26,20 @@ type, the metaclass of a class Resources:
     
     <item>
       <title>meta</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/meta/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/meta/</link>
       <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/meta/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/meta/</guid>
       <description> Metaprogramming in Ruby Zie ook code/ruby/classes
 Resources  Eigenclasses demystified Ruby metaprogramming idioms class_eval and instance_eval  </description>
     </item>
     
     <item>
       <title>meta</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/meta/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/meta/</link>
       <pubDate>Thu, 13 Feb 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/meta/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/meta/</guid>
       <description>Metaprogramming Tests on source code contents Wat is de bedoeling? Lees alle source files in en check of er iets in voorkomt (in onderstaand geval Bla.Instance)
 De GoUpThreeDirs is omdat bij unit testen draaien dit in rootDir/unitTestProject/Bin/Debug uitgevoerd wordt, dat is de huidige dir. wij hebben nodig: rootDir/sourceCodeProject.
 [TestMethod] public void StaticInstanceShouldNeverBeUsedExceptInAllowedCases() { foreach (var file in Directory.GetFiles(GetSourcePath(), &amp;quot;*.cs&amp;quot;, SearchOption.AllDirectories)) { var source = File.ReadAllText(file); if (source.Contains(typeof(Bla).Name + &amp;quot;.Instance&amp;quot;) &amp;amp;&amp;amp; NoStaticRefAllowedInThatFile(file)) { Assert.</description>

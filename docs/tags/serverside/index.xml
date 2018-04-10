@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Serverside on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/serverside/</link>
+    <link>https://brainbaking.com/tags/serverside/</link>
     <description>Recent content in Serverside on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/serverside/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/serverside/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>serverside</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/serverside/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/serverside/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/serverside/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/serverside/</guid>
       <description>JS Serverside draaien JS Server Parsers Java: Rhino Vooral gericht op serverside integratie met bijvoorbeeld Java EE.
 Zie http://www.mozilla.org/rhino/
 C++: Google V8 Wordt bijvoorbeeld gebruikt in Google Chrome.

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Clr on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/clr/</link>
+    <link>https://brainbaking.com/tags/clr/</link>
     <description>Recent content in Clr on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 24 Oct 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/clr/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/clr/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>.NET Memory management VS JVM Memory management</title>
-      <link>http://www.brainbaking.com/post/memory-management-vs-java/</link>
+      <link>https://brainbaking.com/post/memory-management-vs-java/</link>
       <pubDate>Fri, 24 Oct 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/post/memory-management-vs-java/</guid>
+      <guid>https://brainbaking.com/post/memory-management-vs-java/</guid>
       <description>Memory management is something to keep in mind when deploying and running applications on top of the JVM. Parameters like Xmx and Xms are things to juggle with when it comes to finding the perfect balance between too much memory hogging (at app startup) and too little, especially if you&amp;rsquo;re working with heavy duty entity mapping frameworks like Hibernate (and you&amp;rsquo;re not so good at writing fast HQL). When we bumped into an OutOfMemoryException in .</description>
     </item>
     

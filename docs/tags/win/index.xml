@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Win on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/win/</link>
+    <link>https://brainbaking.com/tags/win/</link>
     <description>Recent content in Win on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 05 Apr 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/win/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/win/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>win</title>
-      <link>http://www.brainbaking.com/wiki/unix/cmd/win/</link>
+      <link>https://brainbaking.com/wiki/unix/cmd/win/</link>
       <pubDate>Fri, 05 Apr 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/cmd/win/</guid>
+      <guid>https://brainbaking.com/wiki/unix/cmd/win/</guid>
       <description>Windows stuff list processes Te doen via:
  tasklist wmic process get [caption/commandline/...] wmic process list | more  Kill specific process By window title taskkill /F /FI &amp;quot;WINDOWTITLE eq Administrator: STUBS&amp;quot;
 ❗️ er zijn TWEE SPATIES tussen Administrator en uw eigenlijke title. Hoe zet je dan die title in een bat of cmd file?

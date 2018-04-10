@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reflectie on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/reflectie/</link>
+    <link>https://brainbaking.com/tags/reflectie/</link>
     <description>Recent content in Reflectie on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,35 +10,35 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Mon, 09 Feb 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/reflectie/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/reflectie/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>reflectie</title>
-      <link>http://www.brainbaking.com/wiki/code/csharp/reflectie/</link>
+      <link>https://brainbaking.com/wiki/code/csharp/reflectie/</link>
       <pubDate>Mon, 09 Feb 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/csharp/reflectie/</guid>
+      <guid>https://brainbaking.com/wiki/code/csharp/reflectie/</guid>
       <description>Reflectie Get Type based on string Probleem: een fully qualified classname in string vorm is geen Type en Type.GetType() gaat standaard in de huidige assembly kijken of die klasse daar in steekt. Hoe haal ik dit type op als ik niet vanbuiten weet in welke assembly ik moet gaan kijken? Via uw AppDomain:
 return AppDomain.CurrentDomain.GetAssemblies() .Single(app ######&amp;gt; app.GetType(fullClassName) ! null) .GetType(fullClassName);  Get Subclasses/interfaces of class Gebruik type.Assembly.GetTypes() en filter verder.</description>
     </item>
     
     <item>
       <title>reflectie</title>
-      <link>http://www.brainbaking.com/wiki/code/ruby/reflectie/</link>
+      <link>https://brainbaking.com/wiki/code/ruby/reflectie/</link>
       <pubDate>Tue, 11 Mar 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/ruby/reflectie/</guid>
+      <guid>https://brainbaking.com/wiki/code/ruby/reflectie/</guid>
       <description>Metaprogrammeren: Ruby Reflectie Methods accessen Dit kan op twee manieren: op een object instance of op een class, met .method of .static_method, zie Ruby Method doc.
 1.method(:+).call 2 # output: 3 Fixnum.static_method(:+).bind(1).call 2 # output: 3 1.method(&amp;quot;+&amp;quot;).unbind().bind(1).call(2) # output: 3  Object Methods zijn al gebind en kan je dus losmaken van hun reference indien gewenst - zelfde effect als de static_method call. Je kan blijkbaar zowel een string als een ref meegeven om de naam van de method te resolven.</description>
     </item>
     
     <item>
       <title>reflectie</title>
-      <link>http://www.brainbaking.com/wiki/code/java/reflectie/</link>
+      <link>https://brainbaking.com/wiki/code/java/reflectie/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/java/reflectie/</guid>
+      <guid>https://brainbaking.com/wiki/code/java/reflectie/</guid>
       <description>Reflectie, Classpath scanning etc Oplijsten van fields die enkel boolean en true zijn public static String listTrueBooleanFields(Object object) { List&amp;lt;String&amp;gt; parts = Lists.newArrayList(); try { for (Field field : object.getClass().getDeclaredFields()) { boolean accessibleFlag = field.isAccessible(); field.setAccessible(true); if (isTrueBooleanField(object, field)) { parts.add(makeCamelCaseNatural(field.getName())); } field.setAccessible(accessibleFlag); } } catch (Exception ex) { throw new RuntimeException(ex); } return StringUtils.join(parts, &amp;quot;, &amp;quot;); } private static boolean isTrueBooleanField(Object object, Field field) throws IllegalAccessException { return isBoolean(field) &amp;amp;&amp;amp; (Boolean) field.</description>
     </item>
     

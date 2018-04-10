@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Karma on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/karma/</link>
+    <link>https://brainbaking.com/tags/karma/</link>
     <description>Recent content in Karma on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 17 May 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/karma/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/karma/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>karma</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/testing/karma/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/testing/karma/</link>
       <pubDate>Fri, 17 May 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/testing/karma/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/testing/karma/</guid>
       <description>Karma (Testacular) Ook integratie met code/javascript/testing/phantomjs mogelijk.
 Installatie Om de Karma testen gedraaid te krijgen moet Node geïnstalleerd zijn samen met karma (npm install karma -g)
 Voor de ANSI console in eclipse: http://www.mihai-nita.net/eclipse/ installeren

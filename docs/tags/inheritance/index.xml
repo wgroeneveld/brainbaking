@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Inheritance on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/inheritance/</link>
+    <link>https://brainbaking.com/tags/inheritance/</link>
     <description>Recent content in Inheritance on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/inheritance/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/inheritance/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>inheritance</title>
-      <link>http://www.brainbaking.com/wiki/code/javascript/inheritance/</link>
+      <link>https://brainbaking.com/wiki/code/javascript/inheritance/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/javascript/inheritance/</guid>
+      <guid>https://brainbaking.com/wiki/code/javascript/inheritance/</guid>
       <description>Javascript Inheritance  JavaScript uses prototypal inheritance. This means that Javascript does not distinguish between classes/prototypes and instances and, therefore, we can add our desired behavior directly to the instance.
  &amp;ldquo;new&amp;rdquo; operator Zie http://unitstep.net/blog/2008/01/24/javascript-and-inheritance/  Gegeven de volgende functie:
 function X(bla) { this.x = bla; console.log(&amp;quot;doeiets&amp;quot;); this.ding = function() { return this.x; }; }  Wat gebeurt er bij de klassieke manier van een &amp;ldquo;klasse&amp;rdquo; initialiseren? Zo:

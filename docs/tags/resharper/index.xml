@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Resharper on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/resharper/</link>
+    <link>https://brainbaking.com/tags/resharper/</link>
     <description>Recent content in Resharper on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Thu, 19 Jun 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/resharper/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/resharper/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>resharper</title>
-      <link>http://www.brainbaking.com/wiki/code/tools/resharper/</link>
+      <link>https://brainbaking.com/wiki/code/tools/resharper/</link>
       <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/tools/resharper/</guid>
+      <guid>https://brainbaking.com/wiki/code/tools/resharper/</guid>
       <description>ReSharper Documentatie:
  ​Default keymap PDF overview​ IntelliJ keymap PDF overview​  Shortcut ref VS Eclipse | Eclipse shortcut | ReSharper shortcut | description | CTRL+D | CTRL+L | remove line | ALT+DOWN | CTRL+D | duplicate line | CTRL+SPACE (CTRL+ENTER) | CTRL+SPACE (TAB) | code completion, select in combobox | ALT+SHIFT+UP/DOWN | CTRL+ALT+LEFT/RIGHT | Extend/Shrink selection | CTRL+SHIFT+/ | CTRL+ALT+/ | commend line | CTRL+SHIFT+1 | ALT+ENTER | quick fix | ALT+UP/DOWN | CTRL+SHIFT+ALT+UP/DOWN | move line | CTRL+SHIFT+O | CTRL+E, &amp;copy;/F | organize imports (and format etc, F = silent) | CTRL+F11 | CTRL+U, U | rerun last | CTRL+O | ALT+ | Go to file member | CTRL+SHIFT+G | CTRL+SHIFT+ALT+F12 (SHIFT+F12) | find usages | F3 | F12 | go to definition | CTRL+SHIFT+.</description>
     </item>

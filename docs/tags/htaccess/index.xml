@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Htaccess on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/htaccess/</link>
+    <link>https://brainbaking.com/tags/htaccess/</link>
     <description>Recent content in Htaccess on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 06 Jan 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/htaccess/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/htaccess/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>htaccess</title>
-      <link>http://www.brainbaking.com/wiki/code/htaccess/</link>
+      <link>https://brainbaking.com/wiki/code/htaccess/</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/code/htaccess/</guid>
+      <guid>https://brainbaking.com/wiki/code/htaccess/</guid>
       <description>.htaccess stuff Basisprincipe van rewriterules: altijd RewriteEngine On en RewriteBase / toevoegen.
 Daarna: RewriteCond slaat enkel op éérstvolgende RewriteRule regel.
 Request exceeded the limit of 10 internal redirects due to probable configuration error bron

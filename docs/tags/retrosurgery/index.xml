@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Retrosurgery on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/retrosurgery/</link>
+    <link>https://brainbaking.com/tags/retrosurgery/</link>
     <description>Recent content in Retrosurgery on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/retrosurgery/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/retrosurgery/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>retrosurgery</title>
-      <link>http://www.brainbaking.com/wiki/reflect/retros/retrosurgery/</link>
+      <link>https://brainbaking.com/wiki/reflect/retros/retrosurgery/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/reflect/retros/retrosurgery/</guid>
+      <guid>https://brainbaking.com/wiki/reflect/retros/retrosurgery/</guid>
       <description>Retrospective surgery See http://retrospectivewiki.org/index.php?title=Retrospective_Surgery
 About This type of retro really focusses on the retro of the retro. It&amp;rsquo;s obviously something you shouldn&amp;rsquo;t do every retrospective but it can result into a lot of interesting topics on how your retrospectives are actually doing.
 The retro should take about 60 min and people should work in pairs or ideally groups of 3.

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unix on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/unix/</link>
+    <link>https://brainbaking.com/tags/unix/</link>
     <description>Recent content in Unix on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,24 +10,24 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Fri, 09 Jun 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/unix/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>cmder config</title>
-      <link>http://www.brainbaking.com/wiki/unix/cmderconfig/</link>
+      <link>https://brainbaking.com/wiki/unix/cmderconfig/</link>
       <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/cmderconfig/</guid>
+      <guid>https://brainbaking.com/wiki/unix/cmderconfig/</guid>
       <description>Cmder user-profile.cmd ;= @echo off ;= rem Call DOSKEY and use this file as the macrofile ;= %SystemRoot%\system32\doskey /listsize=1000 /macrofile=%0% ;= rem In batch mode, jump to the end of the file ;= goto:eof ;= Add aliases below here e.=explorer . gl=git log --oneline --all --graph --decorate $* ls=ls --show-control-chars -F --color $* pwd=cd clear=cls history=cat &amp;quot;%CMDER_ROOT%\config\.history&amp;quot; unalias=alias /d $1 vi=vim $* cmderr=cd /d &amp;quot;%CMDER_ROOT%&amp;quot; checkout=SET argument=$* $t SET filepath=%argument:Modules/=% $t mkdir &amp;quot;c:\Sources\%filepath%&amp;quot; $t svn checkout https://websvn.</description>
     </item>
     
     <item>
       <title>converters</title>
-      <link>http://www.brainbaking.com/wiki/unix/converters/</link>
+      <link>https://brainbaking.com/wiki/unix/converters/</link>
       <pubDate>Sat, 19 Oct 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/converters/</guid>
+      <guid>https://brainbaking.com/wiki/unix/converters/</guid>
       <description>Converters Video converting/concatenating etc Met behulp van ffmpeg (https://trac.ffmpeg.org/wiki/How%20to%20concatenate%20(join,%20merge)%20media%20files):
 Concatting Alle files die eindigen op mp4:
 ffmpeg -f concat -i &amp;lt;(printf &amp;quot;file &#39;%s&#39;&amp;lt;br/&amp;gt;n&amp;quot; ./*.mp4) -c copy output.mp4  Gaat ook met mplayer en de tool mencoder:
@@ -37,10 +37,10 @@ for i in *.</description>
     
     <item>
       <title>win</title>
-      <link>http://www.brainbaking.com/wiki/unix/cmd/win/</link>
+      <link>https://brainbaking.com/wiki/unix/cmd/win/</link>
       <pubDate>Fri, 05 Apr 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/cmd/win/</guid>
+      <guid>https://brainbaking.com/wiki/unix/cmd/win/</guid>
       <description>Windows stuff list processes Te doen via:
  tasklist wmic process get [caption/commandline/...] wmic process list | more  Kill specific process By window title taskkill /F /FI &amp;quot;WINDOWTITLE eq Administrator: STUBS&amp;quot;
 ❗️ er zijn TWEE SPATIES tussen Administrator en uw eigenlijke title. Hoe zet je dan die title in een bat of cmd file?
@@ -50,10 +50,10 @@ By commandline Stel: een java proces draait met een bepaalde jar, maar je weet n
     
     <item>
       <title>bash</title>
-      <link>http://www.brainbaking.com/wiki/unix/cmd/bash/</link>
+      <link>https://brainbaking.com/wiki/unix/cmd/bash/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/cmd/bash/</guid>
+      <guid>https://brainbaking.com/wiki/unix/cmd/bash/</guid>
       <description>Bash Scripting Rerun last command !!  Joink.
 bash opties uit een shell script halen Gepikt van http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 #!/bin/bash for i in $* do case $i in -p######*|--prefix*) PREFIX######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;` ;; -s######*|--searchpath*) SEARCHPATH######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;` ;; -l######*|--lib*) DIR######`echo $i | sed &#39;s/[-a-zA-Z0-9]*//&#39;` ;; --default) DEFAULT=YES ;; *) # unknown option ;; esac done echo PREFIX = ${PREFIX} echo SEARCH PATH = ${SEARCHPATH} echo DIRS = ${DIR}  Makkelijker dan getopts()?</description>
@@ -61,20 +61,20 @@ bash opties uit een shell script halen Gepikt van http://stackoverflow.com/quest
     
     <item>
       <title>cmd</title>
-      <link>http://www.brainbaking.com/wiki/unix/cmd/</link>
+      <link>https://brainbaking.com/wiki/unix/cmd/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/cmd/</guid>
+      <guid>https://brainbaking.com/wiki/unix/cmd/</guid>
       <description>Unix Commandline Stuff Binaries zoeken Kan met whereis, maar die zoekt blijkbaar niet in &amp;ldquo;alle&amp;rdquo; binary dirs - enkel degene die geconfigureerd zijn onder:
 sysctl user.cs_path # output: user.cs_path = /usr/bin:/bin:/usr/sbin:/sbin  Shell automatisation Command-line programs feeden kan met het expect tooltje. Bijvoorbeeld, bij het aanloggen in ssh moet je daarna een wachtwoord geven en op enter drukken dat niet als commandline argument meegegeven kan worden. Dit kan je dan zo forceren:</description>
     </item>
     
     <item>
       <title>find</title>
-      <link>http://www.brainbaking.com/wiki/unix/cmd/find/</link>
+      <link>https://brainbaking.com/wiki/unix/cmd/find/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/cmd/find/</guid>
+      <guid>https://brainbaking.com/wiki/unix/cmd/find/</guid>
       <description>Find command -&amp;gt; Zie http://northredoubt.com/n/2009/12/30/linuxunixcygwin-find-command/ voor enorm veel uitleg over basics van find.
 Voor een combinatievoorbeeld met grep, zie unix/cmd
 Finding stuff find / -name &amp;quot;*.ext&amp;quot; -type f -exec [command with args] {} &amp;lt;br/&amp;gt;;  Bovenstaande lijn zoekt in root directory voor alle .ext bestanden (-type f is standaard, d staat voor directory etc, zie manual) en pipet alle resultaten naar een bepaald commando achter -exec. {} Stelt het gevonden bestand voor (full path), &amp;lt;br/&amp;gt;; eindigt het exec commando.</description>
@@ -82,10 +82,10 @@ Finding stuff find / -name &amp;quot;*.ext&amp;quot; -type f -exec [command with
     
     <item>
       <title>freebsd</title>
-      <link>http://www.brainbaking.com/wiki/unix/freebsd/</link>
+      <link>https://brainbaking.com/wiki/unix/freebsd/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/freebsd/</guid>
+      <guid>https://brainbaking.com/wiki/unix/freebsd/</guid>
       <description>FreeBSD ❗️ Manual waar alles instaat: http://www.freebsd.org/doc/handbook/ports-using.html
 Partitioning chunk &amp;lsquo;ad1s4 ;ad1s2 ,ad1s3 does not start on a track boundary Negeren, verder gaan door op OK te drukken. Wil zeggen dat er nog een partitie voor de huidige master staat (windows wss) die leeg is en niet in bounds zit. Ge kunt hier niet iets tussen steken, dan begint het paritioning systeem 3 aparte stukken aan te maken.
 Pas wel op met aanmaken van partities: 1.</description>
@@ -93,10 +93,10 @@ Pas wel op met aanmaken van partities: 1.</description>
     
     <item>
       <title>grep</title>
-      <link>http://www.brainbaking.com/wiki/unix/cmd/grep/</link>
+      <link>https://brainbaking.com/wiki/unix/cmd/grep/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/cmd/grep/</guid>
+      <guid>https://brainbaking.com/wiki/unix/cmd/grep/</guid>
       <description>Greppin&amp;rsquo; away ❗️ Combinatievoorbeeld met find te vinden op unix/cmd.
 Surrounding lines while greppin&amp;rsquo; Dit heet lines in context in man grep.
 grep -B 3 -A 2 foo README.txt  Verklaring: Zoek foo in readme.txt met 3 lijnen boven en 2 lijnen onderaan.  Indien aantal lijnen gelijk, gebruik simpelweg -C [x].
@@ -105,28 +105,28 @@ Inverse grepping In file contents Om te zoeken naar bijvoorbeeld &amp;lsquo;hond
     
     <item>
       <title>home</title>
-      <link>http://www.brainbaking.com/wiki/unix/</link>
+      <link>https://brainbaking.com/wiki/unix/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/</guid>
+      <guid>https://brainbaking.com/wiki/unix/</guid>
       <description>unix &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
     </item>
     
     <item>
       <title>shellconfig</title>
-      <link>http://www.brainbaking.com/wiki/unix/shellconfig/</link>
+      <link>https://brainbaking.com/wiki/unix/shellconfig/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/shellconfig/</guid>
-      <description>Shell Configuration ZShell ############################################ ####	Jefklak&#39;s ZSH Config file #### ####	Last Edited: 18/10/2005	#### ####	Thank you Gentoo Forum!	#### ############################################ ####	FreeBSD Specific stuff here	#### # export CLICOLOR=yes for the BSD ls thing (flag -G) # LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS ####	Envoirnment Variables	#### export HOSTTYPE=&amp;quot;$(uname -m)&amp;quot; export COLORTERM=yes export LINKS_XTERM=screen # Fixes Savage mouse problems. export SDL_VIDEO_X11_DGAMOUSE=0 ####	Aliases	#### alias vi=&amp;quot;vim&amp;quot; alias ..=&amp;quot;cd .. &amp;amp;&amp;amp; ls&amp;quot; alias del=&amp;quot;nocorrect rm -rf&amp;quot; alias mv=&amp;quot;nocorrect mv -f&amp;quot; alias cp=&amp;quot;cp -rf&amp;quot; alias cls=&#39;clear&#39; alias l=&amp;quot;ls -la&amp;quot; alias showstuff=&amp;quot;figlet unix rocks | cowsay -n -d;uname -a&amp;quot; ####	set the console title	#### case $TERM in xterm*) PR_TITLEBAR######$&#39;%{&amp;lt;br/&amp;gt;e]0;%(!</description>
+      <guid>https://brainbaking.com/wiki/unix/shellconfig/</guid>
+      <description>Shell Configuration ZShell ############################################ #### Jefklak&#39;s ZSH Config file #### #### Last Edited: 18/10/2005 #### #### Thank you Gentoo Forum! #### ############################################ #### FreeBSD Specific stuff here #### # export CLICOLOR=yes for the BSD ls thing (flag -G) # LSCOLORS=fxgxcxdxbxegedabagacad; export LSCOLORS #### Envoirnment Variables #### export HOSTTYPE=&amp;quot;$(uname -m)&amp;quot; export COLORTERM=yes export LINKS_XTERM=screen # Fixes Savage mouse problems. export SDL_VIDEO_X11_DGAMOUSE=0 #### Aliases #### alias vi=&amp;quot;vim&amp;quot; alias ..=&amp;quot;cd .. &amp;amp;&amp;amp; ls&amp;quot; alias del=&amp;quot;nocorrect rm -rf&amp;quot; alias mv=&amp;quot;nocorrect mv -f&amp;quot; alias cp=&amp;quot;cp -rf&amp;quot; alias cls=&#39;clear&#39; alias l=&amp;quot;ls -la&amp;quot; alias showstuff=&amp;quot;figlet unix rocks | cowsay -n -d;uname -a&amp;quot; #### set the console title #### case $TERM in xterm*) PR_TITLEBAR######$&#39;%{&amp;lt;br/&amp;gt;e]0;%(!</description>
     </item>
     
     <item>
       <title>vi</title>
-      <link>http://www.brainbaking.com/wiki/unix/vi/</link>
+      <link>https://brainbaking.com/wiki/unix/vi/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/vi/</guid>
+      <guid>https://brainbaking.com/wiki/unix/vi/</guid>
       <description>Vi(m) tips &amp;amp; tricks Externe tutorials en manuals  http://www.aip.de/~weber/doc/gs/node137.html - short basic editing intro http://www.cs.fsu.edu/general/vimanual.html - full vi manual http://hea-www.harvard.edu/~fine/Tech/vi.html - complete key binding guide
  http://vim.wikia.com/wiki/Word_wrap_without_line_breaks -&amp;gt; Zeer goede Vi wiki
  http://www.oualline.com/vim-cook.html

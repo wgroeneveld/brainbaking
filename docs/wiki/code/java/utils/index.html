@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="utils" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -170,21 +170,21 @@
 
 <pre><code class="language-java">public class SetUtil {
 
-	public static &lt;T&gt; Set&lt;T&gt; asSet(T... elements) {
-		return new HashSet&lt;T&gt;(Arrays.asList(elements));
-	}
+    public static &lt;T&gt; Set&lt;T&gt; asSet(T... elements) {
+        return new HashSet&lt;T&gt;(Arrays.asList(elements));
+    }
 
-	public static &lt;T&gt; boolean bevat(Set&lt;T&gt; someSet, Predicate&lt;T&gt; predicate) {
-		return !Sets.filter(someSet, predicate).isEmpty();
-	}
+    public static &lt;T&gt; boolean bevat(Set&lt;T&gt; someSet, Predicate&lt;T&gt; predicate) {
+        return !Sets.filter(someSet, predicate).isEmpty();
+    }
 
-	public static &lt;E&gt; Set&lt;E&gt; cast(Set&lt;?&gt; someSet, Class&lt;E&gt; classToCastTo) {
-		Set&lt;E&gt; newSet = new LinkedHashSet&lt;E&gt;();
-		for (Object object : someSet) {
-			newSet.add(classToCastTo.cast(object));
-		}
-		return newSet;
-	}
+    public static &lt;E&gt; Set&lt;E&gt; cast(Set&lt;?&gt; someSet, Class&lt;E&gt; classToCastTo) {
+        Set&lt;E&gt; newSet = new LinkedHashSet&lt;E&gt;();
+        for (Object object : someSet) {
+            newSet.add(classToCastTo.cast(object));
+        }
+        return newSet;
+    }
 }
 </code></pre>
 
@@ -192,23 +192,23 @@
 
 <pre><code class="language-java">public class ListUtil {
 
-	public static &lt;T&gt; List&lt;T&gt; sort(Collection&lt;T&gt; collection, Comparator&lt;? super T&gt; comparator) {
-		List&lt;T&gt; toSort = new ArrayList&lt;T&gt;(collection);
-		Collections.sort(toSort, comparator);
-		return toSort;
-	}
+    public static &lt;T&gt; List&lt;T&gt; sort(Collection&lt;T&gt; collection, Comparator&lt;? super T&gt; comparator) {
+        List&lt;T&gt; toSort = new ArrayList&lt;T&gt;(collection);
+        Collections.sort(toSort, comparator);
+        return toSort;
+    }
 
-	public static boolean bevatDubbels(List&lt;?&gt; aList) {
-		return Sets.newHashSet(aList).size() != aList.size();
-	}
+    public static boolean bevatDubbels(List&lt;?&gt; aList) {
+        return Sets.newHashSet(aList).size() != aList.size();
+    }
 
-	public static &lt;T&gt; List&lt;T&gt; cast(List&lt;?&gt; aList, Class&lt;T&gt; clazz) {
-		List&lt;T&gt; result = new ArrayList&lt;T&gt;();
-		for (Object obj : aList) {
-			result.add(clazz.cast(obj));
-		}
-		return result;
-	}
+    public static &lt;T&gt; List&lt;T&gt; cast(List&lt;?&gt; aList, Class&lt;T&gt; clazz) {
+        List&lt;T&gt; result = new ArrayList&lt;T&gt;();
+        for (Object obj : aList) {
+            result.add(clazz.cast(obj));
+        }
+        return result;
+    }
 
 }
 
@@ -273,7 +273,7 @@
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -283,13 +283,13 @@
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -304,10 +304,10 @@
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();

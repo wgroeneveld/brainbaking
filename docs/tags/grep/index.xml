@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Grep on Brain Baking</title>
-    <link>http://www.brainbaking.com/tags/grep/</link>
+    <link>https://brainbaking.com/tags/grep/</link>
     <description>Recent content in Grep on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,15 +10,15 @@
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
     <lastBuildDate>Tue, 12 Mar 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.brainbaking.com/tags/grep/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brainbaking.com/tags/grep/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>grep</title>
-      <link>http://www.brainbaking.com/wiki/unix/cmd/grep/</link>
+      <link>https://brainbaking.com/wiki/unix/cmd/grep/</link>
       <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>http://www.brainbaking.com/wiki/unix/cmd/grep/</guid>
+      <guid>https://brainbaking.com/wiki/unix/cmd/grep/</guid>
       <description>Greppin&amp;rsquo; away ❗️ Combinatievoorbeeld met find te vinden op unix/cmd.
 Surrounding lines while greppin&amp;rsquo; Dit heet lines in context in man grep.
 grep -B 3 -A 2 foo README.txt  Verklaring: Zoek foo in readme.txt met 3 lijnen boven en 2 lijnen onderaan.  Indien aantal lijnen gelijk, gebruik simpelweg -C [x].

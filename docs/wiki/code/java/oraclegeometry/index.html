@@ -10,17 +10,17 @@
   
   <meta name="author" content="Wouter Groeneveld"/>
   <meta name="generator" content="Hugo 0.21" />
-  <link href='http://www.brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
 
-  <link rel="alternate" href="http://www.brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/main.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://www.brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="http://www.brainbaking.com/css/highlight.min.css">
+  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
   
   
   <meta property="og:title" content="oraclegeometry" />
@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.brainbaking.com/">
+      <a class="navbar-brand" href="https://brainbaking.com/">
         <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
         Brain Baking
       </a>
@@ -76,7 +76,7 @@
 			if(event.keyCode === 13) {
 				event.stopPropagation();
 				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button input').click();
+				document.querySelector('.gsc-search-button button').click();
 
 				var modal = document.querySelector('.gsc-modal-background-image');
 				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
@@ -112,8 +112,8 @@
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
       
-          <a title="Brain Baking" href="http://www.brainbaking.com/">
-              <img class="avatar-img" src="http://www.brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
+          <a title="Brain Baking" href="https://brainbaking.com/">
+              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
           </a>
       
 	  </div>
@@ -206,147 +206,147 @@
 
 <pre><code class="language-java">public class Geometry implements Cloneable, Serializable {
 
-	private static final String MDSYS_POINT_TYPE = &quot;MDSYS.SDO_POINT_TYPE&quot;;
-	private static final String MDSYS_ORDINATE_ARR = &quot;MDSYS.SDO_ORDINATE_ARRAY&quot;;
-	private static final String MDSYS_ELEMENT_ARR = &quot;MDSYS.SDO_ELEM_INFO_ARRAY&quot;;
-	private static final String MDSYS_GEOM = &quot;MDSYS.SDO_GEOMETRY&quot;;
+    private static final String MDSYS_POINT_TYPE = &quot;MDSYS.SDO_POINT_TYPE&quot;;
+    private static final String MDSYS_ORDINATE_ARR = &quot;MDSYS.SDO_ORDINATE_ARRAY&quot;;
+    private static final String MDSYS_ELEMENT_ARR = &quot;MDSYS.SDO_ELEM_INFO_ARRAY&quot;;
+    private static final String MDSYS_GEOM = &quot;MDSYS.SDO_GEOMETRY&quot;;
 
-	final static int SRID = 327680;
+    final static int SRID = 327680;
 
-	private final JGeometry geometry;
+    private final JGeometry geometry;
 
-	public Geometry() {
-		this.geometry = null;
-	}
+    public Geometry() {
+        this.geometry = null;
+    }
 
-	public Geometry(String sdoGeometry) throws GeometryConversionException {
-		try {
-			this.geometry = disassembleSdoGeometry(sdoGeometry);
-		} catch (Exception disassemblingEx) {
-			throw new GeometryConversionException(disassemblingEx);
-		}
-	}
+    public Geometry(String sdoGeometry) throws GeometryConversionException {
+        try {
+            this.geometry = disassembleSdoGeometry(sdoGeometry);
+        } catch (Exception disassemblingEx) {
+            throw new GeometryConversionException(disassemblingEx);
+        }
+    }
 
-	public Geometry(JGeometry jGeometry) {
-		this.geometry = jGeometry;
-	}
+    public Geometry(JGeometry jGeometry) {
+        this.geometry = jGeometry;
+    }
 
-	public JGeometry getInnerGeometry() {
-		return geometry;
-	}
+    public JGeometry getInnerGeometry() {
+        return geometry;
+    }
 
-	@Override
-	public String toString() {
-		return toSDOGeometryString();
-	}
+    @Override
+    public String toString() {
+        return toSDOGeometryString();
+    }
 
-	private JGeometry disassembleSdoGeometry(String sdoGeometry) {
-		return new JGeometry(retrieveGeometryType(sdoGeometry), //
-				retrieveSRID(sdoGeometry), //
-				retrievePointTypeX(sdoGeometry), //
-				retrievePointTypeY(sdoGeometry), //
-				retrievePointTypeZ(sdoGeometry), //
-				retrieveElemInfo(sdoGeometry), //
-				retrieveOrdinatesArray(sdoGeometry) //
-		);
-	}
+    private JGeometry disassembleSdoGeometry(String sdoGeometry) {
+        return new JGeometry(retrieveGeometryType(sdoGeometry), //
+                retrieveSRID(sdoGeometry), //
+                retrievePointTypeX(sdoGeometry), //
+                retrievePointTypeY(sdoGeometry), //
+                retrievePointTypeZ(sdoGeometry), //
+                retrieveElemInfo(sdoGeometry), //
+                retrieveOrdinatesArray(sdoGeometry) //
+        );
+    }
 
-	private int retrieveGeometryType(String sdoGeometry) {
-		String geometryType = StringUtils.substringBetween(sdoGeometry, &quot;(&quot;, &quot;,&quot;);
-		return Integer.parseInt(geometryType.trim());
-	}
+    private int retrieveGeometryType(String sdoGeometry) {
+        String geometryType = StringUtils.substringBetween(sdoGeometry, &quot;(&quot;, &quot;,&quot;);
+        return Integer.parseInt(geometryType.trim());
+    }
 
-	private int retrieveSRID(String sdoGeometry) {
-		String sridString = StringUtils.substringBetween(sdoGeometry, &quot;,&quot;, &quot;,&quot;);
-		return Integer.parseInt(sridString.trim());
-	}
+    private int retrieveSRID(String sdoGeometry) {
+        String sridString = StringUtils.substringBetween(sdoGeometry, &quot;,&quot;, &quot;,&quot;);
+        return Integer.parseInt(sridString.trim());
+    }
 
-	private double retrievePointTypeX(String sdoGeometry) {
-		return retrievePointTypes(sdoGeometry)[0];
-	}
+    private double retrievePointTypeX(String sdoGeometry) {
+        return retrievePointTypes(sdoGeometry)[0];
+    }
 
-	private double retrievePointTypeY(String sdoGeometry) {
-		return retrievePointTypes(sdoGeometry)[1];
-	}
+    private double retrievePointTypeY(String sdoGeometry) {
+        return retrievePointTypes(sdoGeometry)[1];
+    }
 
-	private double retrievePointTypeZ(String sdoGeometry) {
-		return retrievePointTypes(sdoGeometry)[2];
-	}
+    private double retrievePointTypeZ(String sdoGeometry) {
+        return retrievePointTypes(sdoGeometry)[2];
+    }
 
-	private double[] retrievePointTypes(String sdoGeometry) {
-		double[] result = new double[3];
-		String pointTypesAsString = StringUtils.substringBetween(sdoGeometry, MDSYS_POINT_TYPE + &quot;(&quot;, &quot;)&quot;);
-		if (pointTypesAsString != null) {
-			result = toDoubleArray(pointTypesAsString);
-		}
-		return result;
-	}
+    private double[] retrievePointTypes(String sdoGeometry) {
+        double[] result = new double[3];
+        String pointTypesAsString = StringUtils.substringBetween(sdoGeometry, MDSYS_POINT_TYPE + &quot;(&quot;, &quot;)&quot;);
+        if (pointTypesAsString != null) {
+            result = toDoubleArray(pointTypesAsString);
+        }
+        return result;
+    }
 
-	private int[] retrieveElemInfo(String sdoGeometry) {
-		String elemInfoArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ELEMENT_ARR + &quot;(&quot;, &quot;)&quot;);
-		return toIntArray(elemInfoArray);
-	}
+    private int[] retrieveElemInfo(String sdoGeometry) {
+        String elemInfoArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ELEMENT_ARR + &quot;(&quot;, &quot;)&quot;);
+        return toIntArray(elemInfoArray);
+    }
 
-	private double[] retrieveOrdinatesArray(String sdoGeometry) {
-		String ordinatesArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ORDINATE_ARR + &quot;(&quot;, &quot;)&quot;);
-		return toDoubleArray(ordinatesArray);
-	}
+    private double[] retrieveOrdinatesArray(String sdoGeometry) {
+        String ordinatesArray = StringUtils.substringBetween(sdoGeometry, MDSYS_ORDINATE_ARR + &quot;(&quot;, &quot;)&quot;);
+        return toDoubleArray(ordinatesArray);
+    }
 
-	public String toSDOGeometryString() {
-		if (geometry ###### null)
-			return null;
+    public String toSDOGeometryString() {
+        if (geometry ###### null)
+            return null;
 
-		StringBuilder string = new StringBuilder(MDSYS_GEOM + &quot;(&quot;);
-		string.append(getGeometryType() + &quot;,&quot;);
-		string.append(geometry.getSRID() + &quot;,&quot;);
+        StringBuilder string = new StringBuilder(MDSYS_GEOM + &quot;(&quot;);
+        string.append(getGeometryType() + &quot;,&quot;);
+        string.append(geometry.getSRID() + &quot;,&quot;);
 
-		if (geometry.getPoint() ###### null) {
-			string.append(&quot;null,&quot;);
-		} else {
-			string.append(MDSYS_POINT_TYPE);
-			string.append(toStringDoubleArray(geometry.getPoint()));
-			string.append(&quot;,&quot;);
-		}
+        if (geometry.getPoint() ###### null) {
+            string.append(&quot;null,&quot;);
+        } else {
+            string.append(MDSYS_POINT_TYPE);
+            string.append(toStringDoubleArray(geometry.getPoint()));
+            string.append(&quot;,&quot;);
+        }
 
-		if (geometry.getElemInfo() ###### null) {
-			string.append(&quot;null,&quot;);
-		} else {
-			string.append(MDSYS_ELEMENT_ARR);
-			string.append(toStringIntArray(geometry.getElemInfo()));
-			string.append(&quot;,&quot;);
-		}
+        if (geometry.getElemInfo() ###### null) {
+            string.append(&quot;null,&quot;);
+        } else {
+            string.append(MDSYS_ELEMENT_ARR);
+            string.append(toStringIntArray(geometry.getElemInfo()));
+            string.append(&quot;,&quot;);
+        }
 
-		if (geometry.getOrdinatesArray() ###### null) {
-			string.append(&quot;null&quot;);
-		} else {
-			string.append(MDSYS_ORDINATE_ARR);
-			string.append(toStringDoubleArray(geometry.getOrdinatesArray()));
-		}
-		return string.append(&quot;)&quot;).toString();
-	}
+        if (geometry.getOrdinatesArray() ###### null) {
+            string.append(&quot;null&quot;);
+        } else {
+            string.append(MDSYS_ORDINATE_ARR);
+            string.append(toStringDoubleArray(geometry.getOrdinatesArray()));
+        }
+        return string.append(&quot;)&quot;).toString();
+    }
 
-	private int getGeometryType() {
-		return (geometry.getDimensions() * 1000 + geometry.getType());
-	}
+    private int getGeometryType() {
+        return (geometry.getDimensions() * 1000 + geometry.getType());
+    }
 
-	@Override
-	public Object clone() {
-		return (geometry ###### null ? new Geometry() : new Geometry((JGeometry) geometry.clone()));
-	}
+    @Override
+    public Object clone() {
+        return (geometry ###### null ? new Geometry() : new Geometry((JGeometry) geometry.clone()));
+    }
 
-	@Override
-	public int hashCode() {
-		return (geometry ###### null ? 0 : geometry.hashCode());
-	}
+    @Override
+    public int hashCode() {
+        return (geometry ###### null ? 0 : geometry.hashCode());
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (!(obj instanceof Geometry))
-			return false;
-		JGeometry other = ((Geometry) obj).geometry;
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Geometry))
+            return false;
+        JGeometry other = ((Geometry) obj).geometry;
 
-		return new EqualsBuilder().append(geometry, other).isEquals();
-	}
+        return new EqualsBuilder().append(geometry, other).isEquals();
+    }
 </code></pre>
 
 <p>############= Joins uitvoeren ############=</p>
@@ -419,7 +419,7 @@
           
 
     		  <li>
-      			<a href="http://www.brainbaking.com/index.xml" title="RSS">
+      			<a href="https://brainbaking.com/index.xml" title="RSS">
       			  <span class="fa-stack fa-lg">
         				<i class="fa fa-circle fa-stack-2x"></i>
         				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -429,13 +429,13 @@
 
         </ul>
         <p class="credits copyright text-muted">
-    	  <a href="http://www.brainbaking.com/about">Wouter Groeneveld</a>
+    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
     	  &nbsp;&bull;&nbsp;
     	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
     		  
     	  
     	  &nbsp;&bull;&nbsp;
-    	  <a href="http://www.brainbaking.com/">
+    	  <a href="https://brainbaking.com/">
           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
         </a>
     	  
@@ -450,10 +450,10 @@
   </div>
 </footer>
 
-<script src="http://www.brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="http://www.brainbaking.com//js/bootstrap.min.js"></script>
-<script src="http://www.brainbaking.com//js/main.js"></script>
-<script src="http://www.brainbaking.com/js/highlight.min.js"></script>
+<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
+<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
+<script src="https://brainbaking.com//js/main.js"></script>
+<script src="https://brainbaking.com/js/highlight.min.js"></script>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script>
   hljs.initHighlightingOnLoad();
