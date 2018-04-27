@@ -3,7 +3,7 @@ title: Bye autotools hello Scons
 bigimg: /img/Bye autotools hello Scons.jpg
 date: '2014-03-26'
 subtitle: Building C++ projects with Scons
-tags: [ 'tech', 'C++', 'python', 'build ecosystem' ]
+tags: [ 'C++', 'python', 'build ecosystem' ]
 ---
 
 Remember this? 

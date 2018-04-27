@@ -3,7 +3,7 @@ title: Faking domain logic
 bigimg: /img/Faking domain logic.jpg
 date: '2014-09-23'
 subtitle: Using C# extensions to create the illusion of domain logic
-tags: [ 'tech', 'domain driven design', 'C#', 'code smells' ]
+tags: ['domain driven design', 'CSharp', 'code smells' ]
 ---
 
 Sometimes, life is just a little bit more difficult than you imagined the day before. Sometimes, you have to work on a legacy codebase with custom frameworks rooted so deeply you're having lot's of trouble trying to build around them. To make it a bit more concrete, here's an example: imagine a separate DLL for interfaces and a separate DLL for the implementation. This decision was made because we use NHibernate as a data mapper and not to write beautiful domain driven design code. As a result, writing domain logic methods on our "domain" objects is impossible because we have three implementations. 

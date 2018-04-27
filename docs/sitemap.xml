@@ -208,12 +208,6 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/tags/c#/</loc>
-    <lastmod>2015-01-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://brainbaking.com/tags/c&#43;&#43;/</loc>
     <lastmod>2014-03-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -262,6 +256,12 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/csharp/</loc>
+    <lastmod>2015-01-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/tags/development/</loc>
     <lastmod>2017-06-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -269,7 +269,7 @@
   
   <url>
     <loc>https://brainbaking.com/tags/domain-driven-design/</loc>
-    <lastmod>2014-09-23T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -435,12 +435,6 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/tags/tag/</loc>
-    <lastmod>2014-10-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://brainbaking.com/tags/</loc>
     <lastmod>2014-10-24T00:00:00+00:00</lastmod>
   </url>
@@ -458,12 +452,6 @@
   <url>
     <loc>https://brainbaking.com/tags/teaching-yourself-to-draw/</loc>
     <lastmod>2017-02-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/tech/</loc>
-    <lastmod>2018-04-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

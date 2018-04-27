@@ -5,7 +5,7 @@ aliases:
     - /migrating-from-extjs-to-react-gradually/
 date: '2016-01-26'
 subtitle: Migrating from Extjs to React gradually
-tags: ['tech', 'javascript', 'extjs', 'react' ]
+tags: [ 'javascript', 'extjs', 'react' ]
 ---
 
 We were looking for a few alternatives to our big ExtJS 4 application. Since it's not that easy to completely migrate from one front-end framework to the next, a possible solution would be to start developing new parts in another framework. There's a lot of domain logic spread in Ext views and controllers - which shouldn't be there, we are well aware of that. Let's call it "legacy" :-) 

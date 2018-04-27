@@ -2,7 +2,7 @@
 title: .NET Memory management VS JVM Memory management
 date: '2014-10-24'
 subtitle: Increasing your maximum heap size in .NET? Tough luck.
-tags: [ 'tag', 'memory management', 'CLR', '.NET', 'JVM' ]
+tags: [ 'memory management', 'CLR', '.NET', 'JVM' ]
 ---
 Memory management is something to keep in mind when deploying and running applications on top of the JVM. Parameters like `Xmx` and `Xms` are things to juggle with when it comes to finding the perfect balance between too much memory hogging (at app startup) and too little, especially if you're working with heavy duty entity mapping frameworks like Hibernate (and you're not so good at writing fast HQL). 
 When we bumped into an `OutOfMemoryException` in .NET, I got an Xmx flashback and started searching on how to do the same with the CLR. 

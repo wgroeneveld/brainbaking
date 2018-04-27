@@ -3,7 +3,7 @@ title: Metaprogramming instead of duplication
 bigimg: /img/Metaprogramming instead of duplication.jpg
 date: '2014-03-14'
 subtitle: convention over duplication, good or bad?
-tags: [ 'tech', 'C#', 'java', 'metaprogramming', 'reflection', 'unit testing', 'mocking' ]
+tags: [ 'CSharp', 'java', 'metaprogramming', 'reflection', 'unit testing', 'mocking' ]
 ---
 
 So... What's up with all that duplication in your unit tests? Let's take a look at a very recognizable pattern when for instance using `RhinoMock` in `C#`:

@@ -59,15 +59,6 @@
     </item>
     
     <item>
-      <title>C#</title>
-      <link>https://brainbaking.com/tags/c#/</link>
-      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/tags/c#/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>C&#43;&#43;</title>
       <link>https://brainbaking.com/tags/c&#43;&#43;/</link>
       <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
@@ -140,6 +131,15 @@
     </item>
     
     <item>
+      <title>Csharp</title>
+      <link>https://brainbaking.com/tags/csharp/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tags/csharp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Development</title>
       <link>https://brainbaking.com/tags/development/</link>
       <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
@@ -151,7 +151,7 @@
     <item>
       <title>Domain Driven Design</title>
       <link>https://brainbaking.com/tags/domain-driven-design/</link>
-      <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 26 Feb 2018 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/tags/domain-driven-design/</guid>
       <description></description>
@@ -392,15 +392,6 @@
     </item>
     
     <item>
-      <title>Tag</title>
-      <link>https://brainbaking.com/tags/tag/</link>
-      <pubDate>Fri, 24 Oct 2014 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/tags/tag/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Teaching</title>
       <link>https://brainbaking.com/tags/teaching/</link>
       <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
@@ -415,15 +406,6 @@
       <pubDate>Wed, 01 Feb 2017 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/tags/teaching-yourself-to-draw/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tech</title>
-      <link>https://brainbaking.com/tags/tech/</link>
-      <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/tags/tech/</guid>
       <description></description>
     </item>
     

@@ -3,7 +3,7 @@ title: Webdriver Exception Handling
 date: '2015-01-14'
 subtitle: What should you do when something goes wrong with your scenario tests
 bigimg: /img/Webdriver Exception Handling.jpg
-tags: [ 'tech', 'unit testing', 'C#', 'webdriver', 'scenario testing' ]
+tags: [ 'unit testing', 'CSharp', 'webdriver', 'scenario testing' ]
 ---
 
 As the previous post indicated, we're trying to stabilize our scenario tests created with WebDriver. One of the things we did was trying to capture as much data as possible if something goes wrong. Something like a typical `ElementNotFoundException`, or the less common `StaleElementException` (detached from DOM after evaluation) - these things can be hard to trace if you don't run the tests locally. We also stumbled upon the "it works on my machine" problem - tests succeeding on one development machine but not on the other - mostly related due to timing issues.

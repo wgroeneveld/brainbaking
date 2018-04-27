@@ -3,7 +3,7 @@ title: Unit Testing Stored Procedures
 bigimg: /img/Unit Testing Stored Procedures.jpg
 date: '2013-10-10'
 subtitle: And a pragmatic guide on how to include them into your build system. 
-tags: [ 'tech', 'unit testing', 'sql']
+tags: [ 'unit testing', 'sql']
 ---
 
 This article is based on the notes I've collected on [My Wiki](http://brainbaking.com/wiki/code/db/sql). 

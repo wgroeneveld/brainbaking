@@ -3,7 +3,7 @@ title: Visual Studio 2012 for Eclipse users
 bigimg: /img/Visual Studio 2012 for Eclipse users.jpg
 date: '2013-10-14'
 subtitle: Trying to fill the gap of missing features in VStudio.
-tags: [ 'tech', 'visual studio', 'eclipse']
+tags: [ 'visual studio', 'eclipse']
 ---
 
 When switching over to a new editor and new language, I can sometimes get frustrated by missing features I got (very) attached to. This excludes the obvious difference in shortcut keys. 

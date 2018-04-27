@@ -5,7 +5,7 @@ aliases:
     - /integration-testing-with-sqlite/
 date: '2013-11-04'
 subtitle: Decoupling your integrated database environment from your development.
-tags: [ 'tech', 'unit testing', 'sql', 'C#', 'sqlite' ]
+tags: [ 'unit testing', 'sql', 'CSharp', 'sqlite' ]
 ---
 
 This article is based on the notes I've collected on [My Wiki](http://brainbaking.com/wiki/code/db/sqlite). 

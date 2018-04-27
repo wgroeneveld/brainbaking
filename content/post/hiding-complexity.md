@@ -3,7 +3,7 @@ title: Hiding Code Complexity
 bigimg: /img/complexity.png
 date: '2018-02-26'
 subtitle: Do make it easy to read. Don't expose inner workings.
-tags: ['tech' ]
+tags: ['domain driven design' ]
 ---
 
 We like to talk about the architecture of our software because we like complexity. Software developers are the bears, and complex patterns seem to be the honey. The more I pair with people the more I wonder: "what makes us decide to take on a simple question with a difficult answer"? Why would anyone choose to implement something so complex, that it cannot be easily understood even the day after it's committed? 

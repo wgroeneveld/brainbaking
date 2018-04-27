@@ -4,7 +4,6 @@ date: '2018-04-06'
 bigimg: /img/btrees.png
 subtitle: Clean code, pseudocode or real code?
 tags:
-  - tech
   - java
   - functional programming
 published: true

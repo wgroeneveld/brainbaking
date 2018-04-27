@@ -1,7 +1,7 @@
 ---
 title: 'Unit testing in Legacy Projects: VB6'
 date: '2016-12-27'
-tags: [ 'tech', 'unit testing', 'VB6' ]
+tags: [ 'unit testing', 'VB6' ]
 ---
 
 Thanks to the [Postmodern VB6](https://ihadthisideaonce.com/2015/05/13/postmodern-vb6-a-quick-start-with-simplyvbunit/) article I've found on the internetz, I decided to give [SimplyVBUnit](simplyvbunit.sourceforge.net) a try. My job requires sporadic visual basic 6 code changes in the big legacy project we're converting to C#. It's an administrative system bound to Belgium laws so as you can imagine they change every few months and the old software still has to be complaint to those crazy new rules. As a result, we sometimes dabble in VB6 code. It feels more like drowning, really. 

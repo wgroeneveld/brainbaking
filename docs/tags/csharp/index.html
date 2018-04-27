@@ -93,7 +93,7 @@ main .text-justify blockquote p {
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>.NET Memory management VS JVM Memory management</title>
+        <title>Csharp</title>
         
         <style>
 
@@ -150,6 +150,9 @@ main .text-justify blockquote p {
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.39" />
         
+        <link href="https://brainbaking.com/tags/csharp/index.xml" rel="alternate" type="application/rss+xml" title="Brain Baking" />
+        <link href="https://brainbaking.com/tags/csharp/index.xml" rel="feed" type="application/rss+xml" title="Brain Baking" />
+        
 
         
         
@@ -179,7 +182,7 @@ main .text-justify blockquote p {
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">.NET Memory management VS JVM Memory management</a>
+                    <a class="navbar-brand visible-xs" href="#">Csharp</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -220,65 +223,105 @@ main .text-justify blockquote p {
         </nav>
 
 
-
-
 <main>
 
-    <div class="item">
-
-    <h3>
-        
-        <a href="/post/memory-management-vs-java/">.NET Memory management VS JVM Memory management</a>
-    </h3>
-
-    
-    
-    
-        <h4>Increasing your maximum heap size in .NET? Tough luck.</h4>
-        <h5>
-        	<span style="color: grey;">
-        		<i class='fa fa-calendar'></i>&nbsp;24 October 2014
-    		</span>
-    	</h5>
-    
-
-
-    
-	   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
-    
-    
-        <a href="https://brainbaking.com/tags/memory-management"><kbd class="item-tag">memory management</kbd></a>
-    
-        <a href="https://brainbaking.com/tags/clr"><kbd class="item-tag">CLR</kbd></a>
-    
-        <a href="https://brainbaking.com/tags/.net"><kbd class="item-tag">.NET</kbd></a>
-    
-        <a href="https://brainbaking.com/tags/jvm"><kbd class="item-tag">JVM</kbd></a>
-    
-
-</div>
-
-
-    <br> <div class="text-justify"><p>Memory management is something to keep in mind when deploying and running applications on top of the JVM. Parameters like <code>Xmx</code> and <code>Xms</code> are things to juggle with when it comes to finding the perfect balance between too much memory hogging (at app startup) and too little, especially if you&rsquo;re working with heavy duty entity mapping frameworks like Hibernate (and you&rsquo;re not so good at writing fast HQL).
-When we bumped into an <code>OutOfMemoryException</code> in .NET, I got an Xmx flashback and started searching on how to do the same with the CLR.</p>
-
-<p>Turns out you can&rsquo;t.</p>
-
-<p>You can&rsquo;t set max heap size in .Net unless you host the CLR yourself in a process. (<a href="http://stackoverflow.com/questions/301393/can-i-and-do-i-ever-want-to-set-the-maximum-heap-size-in-net">source</a>)
-To control the memory allocations of CLR including the max heap size, you need to use the hosting api to host the clr and specifically use the &ldquo;Memory manager interfaces&rdquo;, some starter info can be found here <a href="http://msdn.microsoft.com/en-us/magazine/cc163567.aspx">MSDN Magazine, column CLR Inside Out : CLR Hosting APIs</a></p>
-
-<p>The heap does indeed keep growing until it can&rsquo;t grow any more. (Obviously this is &ldquo;after attempting to recover memory through GC, grow the heap&rdquo;.) Basically there isn&rsquo;t nearly as much tuning available in the .NET GC as in Java. You can choose the server GC or the client one, and I think there&rsquo;s an option for turning on/off the concurrent GC (I&rsquo;ll find links in a minute) but that&rsquo;s basically it.</p>
-
-<p>See also:
-  - <a href="http://www.atalasoft.com/cs/blogs/rickm/archive/2008/05/14/choosing-the-right-garbage-collector-settings-for-your-application-net-memory-management-part-4.aspx">Choosing the right garbage collector for your .NET Application</a></p>
-</div>
-
-    
-    
+    <h2><i class='fa '></i>&nbsp;Csharp</h2>
+    <hr/>
 
     
 
-    
+	
+	<h4 style="float: left; color: grey;">01-2015</h4>
+	<ul style="text-align: left; float: left; margin-left: 20px; width: 80%; list-style-type: none; border-left: #eee 1px solid;">
+	    
+	    	
+	    	
+
+		<li style="margin-bottom: 15px;">
+
+		    <h4>
+		    	<a href="/post/webdriver-exception-handling/">Webdriver Exception Handling</a>
+		    </h4>
+		    What should you do when something goes wrong with your scenario tests <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;14 January</span>
+		</li>
+	    
+	</ul>
+	<hr style="clear: both;"/>
+	
+	<h4 style="float: left; color: grey;">09-2014</h4>
+	<ul style="text-align: left; float: left; margin-left: 20px; width: 80%; list-style-type: none; border-left: #eee 1px solid;">
+	    
+	    	
+	    	
+
+		<li style="margin-bottom: 15px;">
+
+		    <h4>
+		    	<a href="/post/faking-domain-logic/">Faking domain logic</a>
+		    </h4>
+		    Using C# extensions to create the illusion of domain logic <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;23 September</span>
+		</li>
+	    
+	    	
+	    	
+
+		<li style="margin-bottom: 15px;">
+
+		    <h4>
+		    	<a href="/post/custom-webdriver-page-factories/">Custom Webdriver Page Factories</a>
+		    </h4>
+		    Wrapping WebElements to reduce boilerplate clutter <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;22 September</span>
+		</li>
+	    
+	</ul>
+	<hr style="clear: both;"/>
+	
+	<h4 style="float: left; color: grey;">03-2014</h4>
+	<ul style="text-align: left; float: left; margin-left: 20px; width: 80%; list-style-type: none; border-left: #eee 1px solid;">
+	    
+	    	
+	    	
+
+		<li style="margin-bottom: 15px;">
+
+		    <h4>
+		    	<a href="/post/metaprogramming-convention-dry/">Metaprogramming instead of duplication</a>
+		    </h4>
+		    convention over duplication, good or bad? <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;14 March</span>
+		</li>
+	    
+	</ul>
+	<hr style="clear: both;"/>
+	
+	<h4 style="float: left; color: grey;">11-2013</h4>
+	<ul style="text-align: left; float: left; margin-left: 20px; width: 80%; list-style-type: none; border-left: #eee 1px solid;">
+	    
+	    	
+	    	
+
+		<li style="margin-bottom: 15px;">
+
+		    <h4>
+		    	<a href="/post/builders-dsl/">Enhancing the builder pattern with closures</a>
+		    </h4>
+		    the trainwreck/builder/chaining pattern can be dangerous and here&#39;s why <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;14 November</span>
+		</li>
+	    
+	    	
+	    	
+
+		<li style="margin-bottom: 15px;">
+
+		    <h4>
+		    	<a href="/post/integration-testing-sqlite/">Integration Testing with SQLite</a>
+		    </h4>
+		    Decoupling your integrated database environment from your development. <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;4 November</span>
+		</li>
+	    
+	</ul>
+	<hr style="clear: both;"/>
+	
+
 
 </main>
 

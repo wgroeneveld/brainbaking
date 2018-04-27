@@ -3,7 +3,6 @@ title: 'Denken in termen van objecten'
 date: '2018-04-25'
 subtitle: Software ontwerp in termen van objecten
 tags:
-- tech
 - teaching
 published: false
 ---

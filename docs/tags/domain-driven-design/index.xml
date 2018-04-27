@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Tue, 23 Sep 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/tags/domain-driven-design/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hiding Code Complexity</title>
+      <link>https://brainbaking.com/post/hiding-complexity/</link>
+      <pubDate>Mon, 26 Feb 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/hiding-complexity/</guid>
+      <description>We like to talk about the architecture of our software because we like complexity. Software developers are the bears, and complex patterns seem to be the honey. The more I pair with people the more I wonder: &amp;ldquo;what makes us decide to take on a simple question with a difficult answer&amp;rdquo;? Why would anyone choose to implement something so complex, that it cannot be easily understood even the day after it&amp;rsquo;s committed?</description>
+    </item>
     
     <item>
       <title>Faking domain logic</title>
