@@ -6,6 +6,9 @@ title = "Teaching"
 icontag = "fa-graduation-cap"
 +++
 
+> I cannot teach anybody anything, I can only make them think. - Socrates
+
+Transforming knowledge into well-digestible material is <i class='fa fa-lightbulb-o'></i>&nbsp;<a href="/">my mission</a>. The best way to learn something is to teach it, and I fully agree with that quote. It makes me come outside my comfort zone to break down something I _think_ I know really well into abstract concepts to be able to redefine something together with eager learners. 
 
 #### 2018
 

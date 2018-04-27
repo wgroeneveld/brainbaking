@@ -8,20 +8,10 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Wed, 25 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/tags/tech/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Denken in termen van objecten</title>
-      <link>https://brainbaking.com/post/thinking-in-terms-of-objects/</link>
-      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/post/thinking-in-terms-of-objects/</guid>
-      <description>Software schrijven is niet veel anders dan een wereld beschrijven. Dé wereld, waarin wij leven, is één wereld. Met software kunnen we dus theoretisch gezien onze wereld beschrijven. Als we even niet aan software ontwikkeling denken, hoe beschrijven we dan een of de wereld? Hoe bouw ik een fantasie wereld op in een roman waarbij mijn lezers zich comfortabel kunnen inleven in die wereld?
-Door beschrijvingen met behulp van onze taal.</description>
-    </item>
     
     <item>
       <title>Death to pseudocode?</title>

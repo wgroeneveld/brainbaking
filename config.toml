@@ -1,7 +1,6 @@
 languageCode = "en-us"
 title = "Brain Baking"
 baseurl = "https://brainbaking.com/"
-enableEmoji = true
 theme = "minimal"
 pygmentsUseClasses = true
 pygmentCodeFences = true
@@ -9,10 +8,10 @@ googleAnalytics = "UA-45748221-1"
 publishDir = "docs"
 
 [taxonomies]
-  tag = "tags"
+    tag = "tags"
 
 [params]
-    description = "Freshly baked thoughts."
+    description = "Freshly baked thought"
     # see single.html, DisqusShortname also needed
     disableComments = true
     accent = "purple"
@@ -22,7 +21,7 @@ publishDir = "docs"
     highlightStyle = "paraiso-dark"
     highlightLanguages = ["c#", "java", "scala", "javascript"]
     font = "Open Sans"
-    copyright = "No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brainbaking</a>"
+    copyright = "No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a>"
 
 [Author]
   name = "Wouter Groeneveld"

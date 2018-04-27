@@ -3,6 +3,47 @@
     <head>
         <style>
 
+.avatar-container {
+  width: 50px;
+  margin-left: 40px;
+}
+.avatar-container  .avatar-img-border {
+  width: 100%;
+  border-radius: 50%;
+  margin-left: -50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+.avatar-container  .avatar-img {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+@media only screen and (min-width: 768px) {
+   .avatar-container {
+    width: 100px;
+  }
+  
+  .avatar-container  .avatar-img-border {
+    width: 100%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+  }
+  
+  .avatar-container  .avatar-img {
+    width: 100%;
+  }
+}
+
+blockquote {
+  color: #888 !important;
+  border-left: 5px solid var(--accent) !important;
+}
+
 main {
 	padding-top: 0 !important;
 }
@@ -10,6 +51,11 @@ main {
 main .text-justify p {
   margin: 0 0 20px !important;
 }
+
+main .text-justify blockquote p {
+  margin: 0 !important;
+}
+
 
 .big-img {
   	background: no-repeat center center;
@@ -248,17 +294,6 @@ Unit tests are useless if they aren&rsquo;t run (automatically). At this moment 
         <div class="text-justify">
              <div class="item">
 
-    <h4><a href="/post/thinking-in-terms-of-objects/">Denken in termen van objecten</a></h4>
-
-    
-    
-    
-        Software ontwerp in termen van objecten <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;25 April 2018</span>
-    
-
-</div>
-  <div class="item">
-
     <h4><a href="/post/pseudocode/">Death to pseudocode?</a></h4>
 
     
@@ -279,6 +314,17 @@ Unit tests are useless if they aren&rsquo;t run (automatically). At this moment 
     
 
 </div>
+  <div class="item">
+
+    <h4><a href="/post/react-in-extjs/">Migrating from Extjs to React gradually</a></h4>
+
+    
+    
+    
+        Migrating from Extjs to React gradually <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;26 January 2016</span>
+    
+
+</div>
  
         </div>
 
@@ -292,7 +338,7 @@ Unit tests are useless if they aren&rsquo;t run (automatically). At this moment 
 
         <footer>
 
-            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brainbaking</a></p>
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
 
         </footer>
        

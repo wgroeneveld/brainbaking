@@ -3,6 +3,47 @@
     <head>
         <style>
 
+.avatar-container {
+  width: 50px;
+  margin-left: 40px;
+}
+.avatar-container  .avatar-img-border {
+  width: 100%;
+  border-radius: 50%;
+  margin-left: -50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+.avatar-container  .avatar-img {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+@media only screen and (min-width: 768px) {
+   .avatar-container {
+    width: 100px;
+  }
+  
+  .avatar-container  .avatar-img-border {
+    width: 100%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+  }
+  
+  .avatar-container  .avatar-img {
+    width: 100%;
+  }
+}
+
+blockquote {
+  color: #888 !important;
+  border-left: 5px solid var(--accent) !important;
+}
+
 main {
 	padding-top: 0 !important;
 }
@@ -10,6 +51,11 @@ main {
 main .text-justify p {
   margin: 0 0 20px !important;
 }
+
+main .text-justify blockquote p {
+  margin: 0 !important;
+}
+
 
 .big-img {
   	background: no-repeat center center;
@@ -179,21 +225,68 @@ main .text-justify p {
 
 <main>
 
-    <div class="intro">
+    <div class="intro" style="margin-top: -40px;">
 
         
 
-        <h1>Brain Baking</h1>
+        <h1 style="color: #555">
+        	<span style="float: left;">Brain</span>
+			<div class="avatar-container" style="float: left;">
+			  <div class="avatar-img-border">
+		          <a title="Brain Baking" href="https://brainbaking.com/">
+		              <img class="avatar-img" src="/img/avatar-icon.png" alt="Brain Baking" />
+		          </a>
+			  </div>
+			</div>
+			<span style="float: left;">Baking</span>
+		</h1>
 
-        <h2>Freshly baked thoughts.</h2>
+        <blockquote class="text-justify" style="clear: both;">
+        	<em><i class="fa fa-lightbulb-o"></i>&nbsp;<a href="/">Brain Baking</a>:</em> transforming 
+        	<span style="white-space: nowrap;">
+        		<i class='fa fa-user'></i>&nbsp;<a href="/about">personal</a>
+    		</span> thoughts about thoughts into 
+    		<span style="white-space: nowrap;">
+        		<i class='fa fa-graduation-cap'></i>&nbsp;<a href="/teaching">well-digestible</a>
+    		</span> material. The reflective aroma of burnt nervous tissue. <br/>
+        	Includes a crispy crust of relations between 
+        	<span style="white-space: nowrap;">
+        		<i class='fa fa-file-code-o'></i>&nbsp;<a href="/post">technology</a>
+    		</span>,
+    		<span style="white-space: nowrap;">
+        		<i class='fa fa-book'></i>&nbsp;<a href="/essays">philosophy</a>
+    		</span> and 
+    		<span style="white-space: nowrap;">
+        		<i class='fa fa-tags'></i>&nbsp;<a href="/tags">the world</a>
+    		</span>.
+        </blockquote>
+
+        <hr/>
+        <h2>
+        	<i class="fa fa-newspaper-o"></i>&nbsp;Freshly baked thought:
+        </h2>
+
+        
+	    	
+	    	
+
+		    <h4>
+		    	<a href="/post/pseudocode/">Death to pseudocode?</a>
+		    </h4>
+		    Clean code, pseudocode or real code? <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;6 April 2018</span>
+        
+
+        <hr/>
 
     </div>
+
+
 
 </main>
 
         <footer>
 
-            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brainbaking</a></p>
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
 
         </footer>
        

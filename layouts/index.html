@@ -2,15 +2,62 @@
 
 <main>
 
-    <div class="intro">
+    <div class="intro" style="margin-top: -40px;">
 
         {{ with .Site.Params.profilePic }} <img class="profile" src="{{ . }}"> {{ end }}
 
-        <h1>{{ .Site.Title }}</h1>
+        <h1 style="color: #555">
+        	<span style="float: left;">Brain</span>
+			<div class="avatar-container" style="float: left;">
+			  <div class="avatar-img-border">
+		          <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
+		              <img class="avatar-img" src="/img/avatar-icon.png" alt="{{ .Site.Title }}" />
+		          </a>
+			  </div>
+			</div>
+			<span style="float: left;">Baking</span>
+		</h1>
 
-        <h2>{{ markdownify .Site.Params.Description }}</h2>
+        <blockquote class="text-justify" style="clear: both;">
+        	<em><i class="fa fa-lightbulb-o"></i>&nbsp;<a href="/">Brain Baking</a>:</em> transforming 
+        	<span style="white-space: nowrap;">
+        		<i class='fa fa-user'></i>&nbsp;<a href="/about">personal</a>
+    		</span> thoughts about thoughts into 
+    		<span style="white-space: nowrap;">
+        		<i class='fa fa-graduation-cap'></i>&nbsp;<a href="/teaching">well-digestible</a>
+    		</span> material. The reflective aroma of burnt nervous tissue. <br/>
+        	Includes a crispy crust of relations between 
+        	<span style="white-space: nowrap;">
+        		<i class='fa fa-file-code-o'></i>&nbsp;<a href="/post">technology</a>
+    		</span>,
+    		<span style="white-space: nowrap;">
+        		<i class='fa fa-book'></i>&nbsp;<a href="/essays">philosophy</a>
+    		</span> and 
+    		<span style="white-space: nowrap;">
+        		<i class='fa fa-tags'></i>&nbsp;<a href="/tags">the world</a>
+    		</span>.
+        </blockquote>
+
+        <hr/>
+        <h2>
+        	<i class="fa fa-newspaper-o"></i>&nbsp;{{ markdownify .Site.Params.Description }}:
+        </h2>
+
+        {{ range (.Paginator 1).Pages.ByDate.Reverse }}
+	    	{{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") | $.Scratch.Set "subtitle" }}
+	    	{{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
+
+		    <h4>
+		    	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+		    </h4>
+		    {{ .Params.subtitle }} <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}</span>
+        {{ end }}
+
+        <hr/>
 
     </div>
+
+
 
 </main>
 

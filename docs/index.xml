@@ -8,20 +8,10 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Wed, 25 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Denken in termen van objecten</title>
-      <link>https://brainbaking.com/post/thinking-in-terms-of-objects/</link>
-      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/post/thinking-in-terms-of-objects/</guid>
-      <description>Software schrijven is niet veel anders dan een wereld beschrijven. Dé wereld, waarin wij leven, is één wereld. Met software kunnen we dus theoretisch gezien onze wereld beschrijven. Als we even niet aan software ontwikkeling denken, hoe beschrijven we dan een of de wereld? Hoe bouw ik een fantasie wereld op in een roman waarbij mijn lezers zich comfortabel kunnen inleven in die wereld?
-Door beschrijvingen met behulp van onze taal.</description>
-    </item>
     
     <item>
       <title>Death to pseudocode?</title>
@@ -357,7 +347,8 @@ There have been a lot of love letters to big cities here on Medium recently. I n
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/</guid>
-      <description>2018  Software design in Java, KULeuven &amp;amp; UHasselt industrial engineering  The fundamentals of software design thought in Java. We use JavaFX as a prime example to explain the concept of dividing big problems into subproblems and thinking about who needs to do what (Model View Controller) Industrial engineers with and without IT specialization both follow this course.   2017  Test Driven Design for Teachers Based on our own experience and books we&amp;rsquo;ve read.</description>
+      <description>I cannot teach anybody anything, I can only make them think. - Socrates
+ Transforming knowledge into well-digestible material is &amp;nbsp;my mission. The best way to learn something is to teach it, and I fully agree with that quote. It makes me come outside my comfort zone to break down something I think I know really well into abstract concepts to be able to redefine something together with eager learners.</description>
     </item>
     
   </channel>

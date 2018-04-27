@@ -5,7 +5,7 @@ subtitle: Software ontwerp in termen van objecten
 tags:
 - tech
 - teaching
-published: true
+published: false
 ---
 
 Software schrijven is niet veel anders dan een wereld beschrijven. Dé wereld, waarin wij leven, is één wereld. Met software kunnen we dus theoretisch gezien onze wereld beschrijven. Als we even niet aan software ontwikkeling denken, hoe beschrijven we dan een of de wereld? Hoe bouw ik een fantasie wereld op in een roman waarbij mijn lezers zich comfortabel kunnen inleven in die wereld? 
