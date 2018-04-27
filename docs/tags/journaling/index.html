@@ -24,8 +24,18 @@
   display: block;
 }
 
+.intro .freshly-baked {
+  visibility: hidden;
+}
+
 .intro {
   margin-top: -150px;
+}
+
+@media only screen and (min-width: 500px) {
+  .intro .freshly-baked {
+    visibility: visible;
+  }
 }
 
 @media only screen and (min-width: 768px) {

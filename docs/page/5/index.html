@@ -24,8 +24,18 @@
   display: block;
 }
 
+.intro .freshly-baked {
+  visibility: hidden;
+}
+
 .intro {
   margin-top: -150px;
+}
+
+@media only screen and (min-width: 500px) {
+  .intro .freshly-baked {
+    visibility: visible;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -274,21 +284,24 @@ main .text-justify blockquote p {
         </blockquote>
 
         <hr/>
-        <h2>
-        	<i class="fa fa-newspaper-o"></i>&nbsp;Freshly baked thought:
-        </h2>
 
-        
-	    	
-	    	
+        <div class="freshly-baked">
+	        <h2>
+	        	<i class="fa fa-newspaper-o"></i>&nbsp;Freshly baked thought:
+	        </h2>
 
-		    <h4>
-		    	<a href="/post/2017-in-books/">2017 in books</a>
-		    </h4>
-		    Pattern recognition in books <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;27 January 2018</span>
-        
+	        
+		    	
+		    	
 
-        <hr/>
+			    <h4>
+			    	<a href="/post/2017-in-books/">2017 in books</a>
+			    </h4>
+			    Pattern recognition in books <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;27 January 2018</span>
+	        
+
+	        <hr/>
+	    </div>
 
     </div>
 

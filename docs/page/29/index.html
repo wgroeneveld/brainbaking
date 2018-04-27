@@ -24,8 +24,18 @@
   display: block;
 }
 
+.intro .freshly-baked {
+  visibility: hidden;
+}
+
 .intro {
   margin-top: -150px;
+}
+
+@media only screen and (min-width: 500px) {
+  .intro .freshly-baked {
+    visibility: visible;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -274,21 +284,24 @@ main .text-justify blockquote p {
         </blockquote>
 
         <hr/>
-        <h2>
-        	<i class="fa fa-newspaper-o"></i>&nbsp;Freshly baked thought:
-        </h2>
 
-        
-	    	
-	    	
+        <div class="freshly-baked">
+	        <h2>
+	        	<i class="fa fa-newspaper-o"></i>&nbsp;Freshly baked thought:
+	        </h2>
 
-		    <h4>
-		    	<a href="/post/learning-to-become-a-baker/">Learning to become a baker</a>
-		    </h4>
-		    Why there are more and more industrial bakers who don’t care what they sell. <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;13 October 2013</span>
-        
+	        
+		    	
+		    	
 
-        <hr/>
+			    <h4>
+			    	<a href="/post/learning-to-become-a-baker/">Learning to become a baker</a>
+			    </h4>
+			    Why there are more and more industrial bakers who don’t care what they sell. <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;13 October 2013</span>
+	        
+
+	        <hr/>
+	    </div>
 
     </div>
 

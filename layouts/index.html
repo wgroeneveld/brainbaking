@@ -39,21 +39,24 @@
         </blockquote>
 
         <hr/>
-        <h2>
-        	<i class="fa fa-newspaper-o"></i>&nbsp;{{ markdownify .Site.Params.Description }}:
-        </h2>
 
-        {{ range (.Paginator 1).Pages.ByDate.Reverse }}
-	    	{{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") | $.Scratch.Set "subtitle" }}
-	    	{{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
+        <div class="freshly-baked">
+	        <h2>
+	        	<i class="fa fa-newspaper-o"></i>&nbsp;{{ markdownify .Site.Params.Description }}:
+	        </h2>
 
-		    <h4>
-		    	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
-		    </h4>
-		    {{ .Params.subtitle }} <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}</span>
-        {{ end }}
+	        {{ range (.Paginator 1).Pages.ByDate.Reverse }}
+		    	{{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") | $.Scratch.Set "subtitle" }}
+		    	{{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
 
-        <hr/>
+			    <h4>
+			    	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+			    </h4>
+			    {{ .Params.subtitle }} <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}</span>
+	        {{ end }}
+
+	        <hr/>
+	    </div>
 
     </div>
 

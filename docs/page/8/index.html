@@ -24,8 +24,18 @@
   display: block;
 }
 
+.intro .freshly-baked {
+  visibility: hidden;
+}
+
 .intro {
   margin-top: -150px;
+}
+
+@media only screen and (min-width: 500px) {
+  .intro .freshly-baked {
+    visibility: visible;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -274,21 +284,24 @@ main .text-justify blockquote p {
         </blockquote>
 
         <hr/>
-        <h2>
-        	<i class="fa fa-newspaper-o"></i>&nbsp;Freshly baked thought:
-        </h2>
 
-        
-	    	
-	    	
+        <div class="freshly-baked">
+	        <h2>
+	        	<i class="fa fa-newspaper-o"></i>&nbsp;Freshly baked thought:
+	        </h2>
 
-		    <h4>
-		    	<a href="/post/fountain-pens-first-look/">A quick look at 6 fountain pens</a>
-		    </h4>
-		    A test drive from a drawing perspective <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;18 July 2017</span>
-        
+	        
+		    	
+		    	
 
-        <hr/>
+			    <h4>
+			    	<a href="/post/fountain-pens-first-look/">A quick look at 6 fountain pens</a>
+			    </h4>
+			    A test drive from a drawing perspective <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;18 July 2017</span>
+	        
+
+	        <hr/>
+	    </div>
 
     </div>
 

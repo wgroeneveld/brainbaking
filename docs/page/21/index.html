@@ -24,8 +24,18 @@
   display: block;
 }
 
+.intro .freshly-baked {
+  visibility: hidden;
+}
+
 .intro {
   margin-top: -150px;
+}
+
+@media only screen and (min-width: 500px) {
+  .intro .freshly-baked {
+    visibility: visible;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -274,21 +284,24 @@ main .text-justify blockquote p {
         </blockquote>
 
         <hr/>
-        <h2>
-        	<i class="fa fa-newspaper-o"></i>&nbsp;Freshly baked thought:
-        </h2>
 
-        
-	    	
-	    	
+        <div class="freshly-baked">
+	        <h2>
+	        	<i class="fa fa-newspaper-o"></i>&nbsp;Freshly baked thought:
+	        </h2>
 
-		    <h4>
-		    	<a href="/post/memory-management-vs-java/">.NET Memory management VS JVM Memory management</a>
-		    </h4>
-		    Increasing your maximum heap size in .NET? Tough luck. <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;24 October 2014</span>
-        
+	        
+		    	
+		    	
 
-        <hr/>
+			    <h4>
+			    	<a href="/post/memory-management-vs-java/">.NET Memory management VS JVM Memory management</a>
+			    </h4>
+			    Increasing your maximum heap size in .NET? Tough luck. <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;24 October 2014</span>
+	        
+
+	        <hr/>
+	    </div>
 
     </div>
 
