@@ -1,8 +1,0 @@
-{{ if not (eq (len .Params.tags) 0) }}
-  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-  <ul id="tags">
-  {{ range .Params.tags }}
-   <li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
-  {{ end }}
-  </ul>
-{{ end }}

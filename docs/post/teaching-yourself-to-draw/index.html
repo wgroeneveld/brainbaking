@@ -1,175 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+    <head>
+        <style>
 
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+main {
+	padding-top: 0 !important;
+}
 
-  <title>Teaching yourself to draw</title>
-  
-  <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.21" />
-  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+main .text-justify p {
+  margin: 0 0 20px !important;
+}
 
-  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+.big-img {
+  	background: no-repeat center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	background-size: cover;
+  	-o-background-size: cover;
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
-  
-  
-  <meta property="og:title" content="Teaching yourself to draw" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="/post/teaching-yourself-to-draw/" />
-  <meta property="og:image" content="/img/avatar-icon.png" />
-  
-</head>
+	border-top: 2px solid lightgray;
+	border-bottom: 1px solid var(--accent);
+}
 
+@media only screen and (min-width: 768px) {
+  .big-img .container {
+    height: 150px;
+  }
+}
 
-  <body>
+ 
+.gr_grid_container {
+}
 
-    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="https://brainbaking.com/">
-        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
-        Brain Baking
-      </a>
-    </div>
+.gr_grid_book_container {
+   
+  float: left;
+  width: 98px;
+  height: 160px;
+  padding: 0px 0px;
+  border: 1px solid black;
+  margin: 5px;
+  overflow: hidden;
+}
 
-    <div class="collapse navbar-collapse" id="main-navbar">
-      <ul class="nav navbar-nav navbar-right">
-      <li id="google-search-wrapper">
-	<script>
-	(function() {
-	  var cx = '015035874764642922467:uhhwew4ykvm';
-	  var gcse = document.createElement('script');
-	  gcse.type = 'text/javascript';
-	  gcse.async = true;
-	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-	  var s = document.getElementsByTagName('script')[0];
-	  s.parentNode.insertBefore(gcse, s);
-	})();
-	</script>
-
-	<gcse:search></gcse:search>
-
-	<form onsubmit="return false;">
-		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
-		<input type="text" id="searchInput" placeholder="Search">
-	</form>
-
-	<script>
-	(function() {
-		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
-			if(event.keyCode === 13) {
-				event.stopPropagation();
-				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button button').click();
-
-				var modal = document.querySelector('.gsc-modal-background-image');
-				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
-			}
-		});
-	})();
-	</script>
-</li>
-
-      
+</style>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Teaching yourself to draw</title>
         
-          <li class="navlinks-container">
-            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
-            <div class="navlinks-children">
-            
-              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
-            
-              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
-            
-              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
-            
-              <a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Teaching</a>
-            
-              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
-            
+        <style>
+
+    html body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c#.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.39" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Teaching yourself to draw</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
             </div>
-          </li>
+
+        </nav>
+
+
+
+
+<main>
+
+    <div class="item">
+
+    <h3>
         
-      
-      </ul>
-    </div>
+        <a href="/post/teaching-yourself-to-draw/">Teaching yourself to draw</a>
+    </h3>
 
-	<div class="avatar-container">
-	  <div class="avatar-img-border">
-      
-          <a title="Brain Baking" href="https://brainbaking.com/">
-              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
-          </a>
-      
-	  </div>
-	</div>
-
-  </div>
-</nav>
-
+    
+    
+    
+        <h4>A year of spilling lots of ink</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<i class='fa fa-calendar'></i>&nbsp;1 February 2017
+    		</span>
+    	</h5>
     
 
 
+    
+	   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+    
+    
+        <a href="https://brainbaking.com/tags/teaching-yourself-to-draw"><kbd class="item-tag">Teaching yourself to draw</kbd></a>
+    
 
-  
-
-  <header class="header-section ">
-  
-  <div class="intro-header no-img">
-      <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-heading">
-          <h1>Teaching yourself to draw</h1>
-      
-        
-      <h2 class="post-subheading">A year of spilling lots of ink</h2>
-      
-      
-      
-      
-      <span class="post-meta">1 February 2017</span>
-      
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </header>
+</div>
 
 
-    <div class="container" role="main">	  
-      
-        <div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      
-  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-  <ul id="tags">
-  
-   <li><a href="/tags/teaching-yourself-to-draw">Teaching yourself to draw</a> </li>
-  
-  </ul>
-
-
-
-      <article role="main" class="blog-post">
-          
+    <br> <div class="text-justify">
 
 <p>Inspired by Noah Bradley&rsquo;s <a href="https://medium.com/i-m-h-o/dont-go-to-art-school-138c5efd45e9#.aul09q3wr">Don&rsquo;t go to art school</a> blog at Medium.com.</p>
 
@@ -232,160 +270,165 @@ If you&rsquo;re looking for all blog posts about learning to draw, check out the
 
 <p>Each week (this sounds like a promise I&rsquo;ll have to make to myself) I&rsquo;ll post a new blog post summarizing what I&rsquo;ve learned about drawing, art ant painting. Hopefully, after 52 posts, others who are thinking about making the step won&rsquo;t be that intimidated as I am right now. I&rsquo;ve already felt that looking too much at work of others (in Pinterest for example) completely demotivates me. You&rsquo;ll always find someone who completely outperforms you. It&rsquo;s not about their work, it&rsquo;s about your own, and <strong>the progress you make</strong>, however small that might be. If it&rsquo;s going forward, it&rsquo;s going forward. There is no hardwired limit on where to go to. Let&rsquo;s just keep on trying, failing, getting up and trying again! It looks like 2017 is going to be an interesting year for me.</p>
 
-      </article>
+<h3 id="week-1">Week 1</h3>
 
-      <ul class="blog-pagination blog-pager">
-        
-        <li>
-          &larr; Previous Post: <a href="https://brainbaking.com/post/vb6-unit-testing/" data-toggle="tooltip" data-placement="top" title="Unit testing in Legacy Projects: VB6">Unit testing in Legacy Projects: VB6</a>
-          <span class="blog-pagination-date"> <i class="fa fa-calendar-o" aria-hidden="true"></i> 12/27/270126</span>
-        </li>
-        
-        
-        <li>
-          &rarr; Next Post: <a href="https://brainbaking.com/post/drawing-week-01/" data-toggle="tooltip" data-placement="top" title="Drawing week 01 - pencil illustrations">Drawing week 01 - pencil illustrations</a>
-          <span class="blog-pagination-date"> <i class="fa fa-calendar-o" aria-hidden="true"></i> 03/01/10036</span>
-        </li>
-        
-      </ul>
+<p>As you might already have read, I started the drawing adventure with a 10-week &lsquo;illustrative techniques&rsquo; course. It sounds complicated but it wasn&rsquo;t really: it&rsquo;s more of a gentle introduction in different mediums (pencil, ink, acrylic paint, &hellip;) than a crash course in drawing techniques. I didn&rsquo;t know then that to draw illustrations, you still have to be able to draw. (I&rsquo;m reading &ldquo;drawing at the right side of the brain&rdquo; and I know better now). But still, thse drawings might be fun to look at or to compare to the other weeks.</p>
 
-      <div class="disqus-comments">
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443972926/" target="_blank" title="Pinterest pin"></a>
 
-	<div id="disqus_thread"></div>
-	<script type="text/javascript">
-		(function() {
-		      
-		      
-		      if (window.location.hostname == "localhost")
-		                return;
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443972958/" target="_blank" title="Pinterest pin"></a>
 
-		      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		      var disqus_shortname = 'brainbaking';
-		      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443972977/" target="_blank" title="Pinterest pin"></a>
+</p>
 
+<p>These are all random drawings I did between the lessons to get myself familiar with a pencil. That sounds awful, doesn&rsquo;t it? Who uses pencils anyway. The left scan contains some color: that&rsquo;s an experiment. The brown is <strong>bistre</strong>, something we had to work with in the second class. The other colors are very cheap <strong>pastels</strong>.</p>
+
+<p>So, what did I learn this week:</p>
+
+<ol>
+<li>Bistre can be a bit of a mess. You absolutely cannot wait, edges will form and it&rsquo;ll be worse than watercolor.</li>
+<li>Expensive tools <strong>are</strong> better than cheap ones. Pastels are softer and contain a lot more pigment than the ones you can find in sale bins.</li>
+<li>I know the difference between a <strong>HB</strong> and a <strong>B4</strong> pencil. I know how to sharpen one. Yay.</li>
+<li>These drawings look like doodles because they are a lot like doodles. I like drawing that but I have the feeling I&rsquo;m missing a lot background info (will be continued&hellip;)</li>
+<li>Patience looks like an important skill to aid me in learning how to draw.</li>
+<li><strong>Do not look at the work of others!</strong></li>
+</ol>
+
+<p>I warned you:</p>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/568720259163636687/" target="_blank" title="Pinterest pin"></a>
+
+
+<p>This also is bistre.
+Ouch.</p>
+
+<h2 id="week-2">Week 2</h2>
+
+<p>After the illustration course, I&rsquo;m not ashamed to admit I completely dropped the pencil out of the game. It creates lines easy to remove and that means I&rsquo;m working on a drawing forever. I need something to commit myself to. That something is called ink.</p>
+
+<p>It also seems that I already have stuff to get ink on a paper: pens. Ballpoint pens. Black, blue, whatever. Just simple pens you use to write with - the cheaper, the better. I came across <strong>Danny Gregory</strong>&rsquo;s work <a href="https://dannygregorysblog.com/books/art-before-breakfast/">Art before breakfast</a> and <a href="http://www.dannygregory.com/author">The Creative Licence</a> (buy the latter one if you can). These are very inspirational books that get you kickstarted drawing from zero by learning how to see, explaning negative space and other simple techniques. It doesn&rsquo;t go into detail, it simply helps you get drawing.</p>
+
+<p>And Danny is a fan of ink + watercolor. I immediately fell in love and knew that was what I wanted. So yes, put that pencil back where it belongs. I started trying to draw what I see:</p>
+
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443972993/" target="_blank" title="Pinterest pin"></a>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443973015/" target="_blank" title="Pinterest pin"></a>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443973029/" target="_blank" title="Pinterest pin"></a>
+</p>
+
+<p>It looks a lot brighter than <a href="/post/drawing-week-01">week 1</a>. After drawing with a pen a few times, it felt better and better. I tried to copy Danny&rsquo;s style a bit by giving it some (water)color but that might be too much new stuff within a few weeks.</p>
+
+<p>I&rsquo;m particulary fond of the yellow post-it note: an impression of my left foot while waiting for my wife to finish shopping. I keep pen &amp; paper with me at all times: that&rsquo;s a healthy habit I developed 7 years ago when starting journaling.
+The first foot trace was a complete disaster by the way.</p>
+
+<p>So, what did I learn this week:</p>
+
+<ol>
+<li>Pen &gt; pencil.</li>
+<li>Danny Gregory rocks. He has tons of books and is co-founder of the <a href="http://sketchbookskool.com/">Sketchbook Skool</a>. Once I knew that, I enrolled in the &ldquo;beginning&rdquo; kourse.</li>
+<li>I like sketching more than doodling.</li>
+<li>&ldquo;Seeing&rdquo; is incredibly hard: I constantly mess up proportions.</li>
+<li>Adding watercolor seems to add a lot of dimension.</li>
+</ol>
+
+<p>Let&rsquo;s take a look at what Danny does:</p>
+
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/381609768399365667/" target="_blank" title="Pinterest pin"></a>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/233976143118067754/" target="_blank" title="Pinterest pin"></a>
+</p>
+
+<p>Awesome.</p>
+
+<h2 id="week-3">Week 3</h2>
+
+<p>I wanted to continue my quest of finding my own style within ink and watercolor boundaries. After the amazing discovery of <a href="https://www.skillshare.com">Skillshare.com</a>, I switched to using Artline fineliners. I also have some Steadlers but hardly notice any difference between different felt tip pens if they have the same thickness. I found a short course by Shirish Deshpande on drawing with ink and creating some contrast and texture. The drawings in the videos are amazing and I tried to copy them to my best abilities:</p>
+
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443973054/" target="_blank" title="Pinterest pin"></a>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443973073/" target="_blank" title="Pinterest pin"></a>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749443973094/" target="_blank" title="Pinterest pin"></a>
+</p>
+
+<p>The ink flowing from a technical pen is much more intense than a standard ballpoint pen as seen in <a href="/post/drawing-week-02">week 2</a>. I like that a lot. It also enables me to be much more precise and that is something that I tend to do a lot. I usually draw (too) small and try to cram in as much details as possible. The thinner the felt tip pen, the better for me. (Although I borked a 005 one, those guys are very sensitive!).</p>
+
+<p>During the snow &amp; rose course, the lesson with the fineliners suited me the most, and now I have that same feeling. I finally give (cross-)hatching a shot and it really looks a lot better. Thanks Shirish, for building up my confidence in drawing with ink!</p>
+
+<p>So, what did I learn this week:</p>
+
+<ol>
+<li>Intensity of ink matters.</li>
+<li>Contrast is extermely important and gives your drawing an &ldquo;oomph&rdquo;</li>
+<li>I learned the &ldquo;hatching&rdquo;, &ldquo;stipling&rdquo;, and &ldquo;random&rdquo; technique.</li>
+<li>Fineliners &gt; ballpoint pens &gt; pencils (sensing a trend here, fountain pen coming up)</li>
+</ol>
+
+<p>Let&rsquo;s take a look at what Shirish does with his pens (and added colored ink):</p>
+
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/394698354817739793/" target="_blank" title="Pinterest pin"></a>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/364299057333088725/" target="_blank" title="Pinterest pin"></a>
+</p>
+
+<p>He usually doesn&rsquo;t color with watercolor but with (diluted) colored ink. I have yet to try that.</p>
+
+<h2 id="week-4">Week 4</h2>
+
+<p>As I&rsquo;m slowly getting a tiny bit better at drawing things I see, I still don&rsquo;t have a fundamental basis to rely on. Until I&rsquo;ve read &ldquo;<a href="http://drawright.com/">Drawing at the right side of the brian</a>&rdquo; from Betty Edwards. Everything I&rsquo;ve read in there came as a complete revelation to me. She explains how you should &ldquo;look&rdquo; at things, what is important to look out for when realisticly drawing and how values/tones work. It&rsquo;s an amazing book and I&rsquo;m very glad I&rsquo;ve added it to my toread list (a few years ago, I finally got around to actually reading it.)</p>
+
+<p>Can you spot the difference between the portraits below?</p>
+
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749447642788/" target="_blank" title="Pinterest pin"></a>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749447642793/" target="_blank" title="Pinterest pin"></a>
+</p>
+
+<p>Yes, I am well aware that the second portrait still looks like crap but come on, at least it shows highlights, it has a decent contour and my skull isn&rsquo;t &ldquo;chopped off&rdquo;. Both drawings took me 45 minutes. I&rsquo;d say that&rsquo;s a definitive improvement here.</p>
+
+<p>Other exercises in the books concentrate on hands, interiour, chairs, &hellip;:</p>
+
+<p><a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749447642796/" target="_blank" title="Pinterest pin"></a>
+
+<a data-pin-do="embedPin" href="https://www.pinterest.com/pin/308707749447642801/" target="_blank" title="Pinterest pin"></a>
+</p>
+
+<p>Everything is done with a pencil. My preference is starting to lean towards 2B and 4B instead of HB.</p>
+
+<p>So, what did I learn this week: (these are some quick oneliners that summarize each important chapter in the book)</p>
+
+<ol>
+<li>Draw (shared) edges of stuff: call them contours.</li>
+<li>Draw spaces between stuff: call it negative space.</li>
+<li>Draw relationships between stuff: call them angles and proportions.</li>
+<li>Draw lights and shadows on stuff: call them tonal differences.</li>
+<li>Do not draw the appearance of stuff: call it &ldquo;the gestalt&rdquo;.</li>
+</ol>
+
+<p>The last point is an interesting one. It&rsquo;s also called &ldquo;making it come together&rdquo; and is usually achieved by simply focusing on the other 4 points.</p>
+
+<p>Doing these exercises gave me a real boost in confidence and motivated me to draw even more. I even started enjoying the use of a pencil - soft shading is nice and not doable with a pen!</p>
+
+<p>Read more on how to draw better in Jen Review&rsquo;s <a href="https://www.jenreviews.com/how-to-draw-better/">How to Draw Better</a> blog post.</p>
 </div>
 
+    
+    
 
-    </div>
-  </div>
-</div>
+    
 
-      
-    </div>
+    
 
-    <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <ul class="list-inline text-center footer-links">
-          
-          
-          <li>
-            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-		      
-		      
-          <li>
-            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-		      
-	    	  
-          
-           
-          
-          
-          
-          
-          <li>
-            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          <li>
-            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
+</main>
 
-    		  <li>
-      			<a href="https://brainbaking.com/index.xml" title="RSS">
-      			  <span class="fa-stack fa-lg">
-        				<i class="fa fa-circle fa-stack-2x"></i>
-        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-      			  </span>
-      			</a>
-    		  </li>		
+        <footer>
 
-        </ul>
-        <p class="credits copyright text-muted">
-    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
-    	  &nbsp;&bull;&nbsp;
-    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
-    		  
-    	  
-    	  &nbsp;&bull;&nbsp;
-    	  <a href="https://brainbaking.com/">
-          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
-        </a>
-    	  
-  	    </p>
-  	    
-    	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
-          
-    	</p>
-      </div>
-    </div>
-  </div>
-</footer>
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brainbaking</a></p>
 
-<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
-<script src="https://brainbaking.com//js/main.js"></script>
-<script src="https://brainbaking.com/js/highlight.min.js"></script>
-<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-<script>
-  hljs.initHighlightingOnLoad();
-</script>
+        </footer>
+       
+    </body>
 
-
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-45748221-1', 'auto');
-ga('send', 'pageview');
-</script>
-
-
-
-  </body>
 </html>
+

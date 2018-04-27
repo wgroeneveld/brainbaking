@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Fri, 06 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/tags/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Denken in termen van objecten</title>
+      <link>https://brainbaking.com/post/thinking-in-terms-of-objects/</link>
+      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/thinking-in-terms-of-objects/</guid>
+      <description>Software schrijven is niet veel anders dan een wereld beschrijven. Dé wereld, waarin wij leven, is één wereld. Met software kunnen we dus theoretisch gezien onze wereld beschrijven. Als we even niet aan software ontwikkeling denken, hoe beschrijven we dan een of de wereld? Hoe bouw ik een fantasie wereld op in een roman waarbij mijn lezers zich comfortabel kunnen inleven in die wereld?
+Door beschrijvingen met behulp van onze taal.</description>
+    </item>
     
     <item>
       <title>Death to pseudocode?</title>
@@ -48,18 +58,6 @@
       <guid>https://brainbaking.com/post/react-in-extjs/</guid>
       <description>We were looking for a few alternatives to our big ExtJS 4 application. Since it&amp;rsquo;s not that easy to completely migrate from one front-end framework to the next, a possible solution would be to start developing new parts in another framework. There&amp;rsquo;s a lot of domain logic spread in Ext views and controllers - which shouldn&amp;rsquo;t be there, we are well aware of that. Let&amp;rsquo;s call it &amp;ldquo;legacy&amp;rdquo; :-)
 The application right now uses Extjs as UI and C# as backend, and lets ext do the loading of the views/controllers (living in app.</description>
-    </item>
-    
-    <item>
-      <title>security</title>
-      <link>https://brainbaking.com/wiki/tech/security/</link>
-      <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/wiki/tech/security/</guid>
-      <description>tech &amp;gt;&amp;gt; Security OpenSSL Conversie certificaten PFX naar PEM: openssl pkcs12 -in [.pfx] -out [.pem]
-PKCS7 signing van bestanden openssl smime -sign -in [tosignfile] -signer [privatekeyfile] -passin [passw] -outform PEM -out [outfile]
-Paar dingen om op te letten:
- infile moet in UTF-8 encoded zonder UTF-8 identifier weggeschreven zijn. In C# bvb zo File.WriteAllText(inFile, data, new UTF8Encoding(false)); privatekeyfile moet een PEM bestand zijn output door openssl bevat begin en eind PKCS7 notaties, plus newlines op het laatste.</description>
     </item>
     
     <item>
@@ -158,25 +156,6 @@ Shortcuts and refactoring tools One plugin to rule them all: ReSharpner. This pr
       <guid>https://brainbaking.com/post/unit-testing-stored-procedures/</guid>
       <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
 Test Driven Development (or TDD), it&amp;rsquo;s one of those buzz words which usuallly appear in the same sentence with &amp;ldquo;scrum&amp;rdquo; or &amp;ldquo;XP&amp;rdquo;. But in practice, I&amp;rsquo;ve seen few people actually applying it all the way through. What do I mean by that? You&amp;rsquo;re probably very familiar with, say Java or .NET, and you know how to write unit tests in that language using your beloved IDE.</description>
-    </item>
-    
-    <item>
-      <title>home</title>
-      <link>https://brainbaking.com/wiki/tech/</link>
-      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/wiki/tech/</guid>
-      <description>tech &amp;gt;&amp;gt; Home Inhoudsopgave .|js navbar nocookie&amp;rsquo;&amp;gt;</description>
-    </item>
-    
-    <item>
-      <title>windows</title>
-      <link>https://brainbaking.com/wiki/tech/windows/</link>
-      <pubDate>Tue, 12 Mar 2013 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/wiki/tech/windows/</guid>
-      <description>Windows Utility apps Productivity Clipboard caching CLCL http://www.nakka.com/soft/clcl/index_eng.html
-Process monitoring Procmon: http://technet.microsoft.com/en-us/sysinternals/bb896645 - handig voor bvb te zijn waar programma&amp;rsquo;s naar schrijven en regedit calls</description>
     </item>
     
   </channel>

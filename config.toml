@@ -2,76 +2,59 @@ languageCode = "en-us"
 title = "Brain Baking"
 baseurl = "https://brainbaking.com/"
 enableEmoji = true
-theme = "beautifulbaking"
+theme = "minimal"
 pygmentsUseClasses = true
 pygmentCodeFences = true
-disqusShortname = "brainbaking"
 googleAnalytics = "UA-45748221-1"
-
 publishDir = "docs"
 
 [taxonomies]
-tag = "tags"
+  tag = "tags"
 
-[Params]
-  subtitle = "Freshly baked thoughts"
-  logo = "img/avatar-icon.png"
-  favicon = "img/favicon.ico"
-  commit = false
+[params]
+    description = "Freshly baked thoughts."
+    # see single.html, DisqusShortname also needed
+    disableComments = true
+    accent = "purple"
+    showBorder = true
+    backgroundColor = "white"
+    highlight = true
+    highlightStyle = "paraiso-dark"
+    highlightLanguages = ["c#", "java", "scala", "javascript"]
+    font = "Open Sans"
+    copyright = "No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brainbaking</a>"
 
 [Author]
   name = "Wouter Groeneveld"
   email = "wouter.groeneveld@gmail.com"
-  #facebook = "username"
-  github = "wgroeneveld"
-  #twitter = "woutergroenev"
-  #linkedin = "username"
-  #stackoverflow = "users/XXXXXXX/username"
-  #soundcloud = "username"
-  #instagram = "username"
-  #youtube = "user/username" # or channel/channelname
-  #spotify = "username"
-  #itchio = "username"
-  pinterest = "woutergroenev"
-  goodreads = "5451893-wouter"
 
 [[menu.main]]
-    name = "Menu"
-    url = "/"
-    weight = 1
-    pre = "<i class='fa fa-home'></i>"
-
-[[menu.main]]
-    name = "Wiki"
-    parent = "Menu"
-    url = "/wiki/"
-    pre = "<i class='fa fa-wikipedia-w'></i>"
+    name = "Tech Blog"
+    pre = "<i class='fa fa-file-code-o'></i>"
+    url = "/post"
     weight = 1
 
 [[menu.main]]
-    name = "Tags"
-    parent = "Menu"
-    url = "/tags"
-    pre = "<i class='fa fa-tags'></i>"
+    name = "Essays"
+    pre = "<i class='fa fa-book'></i>"
+    url = "/essays"
     weight = 2
 
 [[menu.main]]
-    name = "About me"
-    parent = "Menu"
-    url = "/about"
-    pre = "<i class='fa fa-address-card-o'></i>"
+    name = "Tags"
+    pre = "<i class='fa fa-tags'></i>"
+    url = "/tags"
     weight = 3
 
-[[menu.main]]
-    name = "Teaching"
-    pre = "<i class='fa fa-graduation-cap'></i>"
-    parent = "Menu"
-    url = "/teaching"
+[[menu.mainright]]
+    name = "About Me"
+    pre = "<i class='fa fa-user'></i>" 
+    url = "/about"
     weight = 4
 
-[[menu.main]]
-    name = "Books"
-    pre = "<i class='fa fa-book' aria-hidden='true'></i>"
-    parent = "Menu"
-    url = "/books"
+[[menu.mainright]]
+    name = "Teaching"
+    pre = "<i class='fa fa-graduation-cap'></i>"
+    url = "/teaching"
     weight = 5
+

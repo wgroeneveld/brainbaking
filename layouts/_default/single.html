@@ -1,0 +1,42 @@
+{{ partial "header" . }}
+
+{{ if .Params.bigimg }}
+    <div class="jumbotron big-img" style='background-image: url("{{.Params.bigimg}}");'>
+        <div class="container">
+            &nbsp;
+        </div>
+    </div>
+{{ end }}
+
+<main>
+
+    {{ partial "list-item" . }}
+
+    <br> <div class="text-justify">{{ .Content }}</div>
+
+    <!-- related posts with the same tags -->
+    {{ $related := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+
+    {{ if $related }}
+
+        <h4 class="page-header"><i class="fa fa-newspaper-o"></i>&nbsp;Related by Tags</h4>
+
+        <div class="text-justify">
+            {{ range $related }} {{ partial "related-item" . }} {{ end }}
+        </div>
+
+        <hr/>
+
+    {{ end }}
+
+    {{ if and .Site.DisqusShortname (not .Params.disableComments) }}
+
+        <h4 class="page-header">Comments</h4>
+
+        {{ template "_internal/disqus.html" . }}
+
+    {{ end }}
+
+</main>
+
+{{ partial "footer.html" . }}

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <style>
+
+main {
+	padding-top: 0 !important;
+}
+
+.big-img {
+  	background: no-repeat center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	background-size: cover;
+  	-o-background-size: cover;
+
+	border-top: 2px solid lightgray;
+	border-bottom: 1px solid var(--accent);
+}
+
+@media only screen and (min-width: 768px) {
+  .big-img .container {
+    height: 150px;
+  }
+}
+
+ 
+.gr_grid_container {
+}
+
+.gr_grid_book_container {
+   
+  float: left;
+  width: 98px;
+  height: 160px;
+  padding: 0px 0px;
+  border: 1px solid black;
+  margin: 5px;
+  overflow: hidden;
+}
+
+</style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Unit Testing Extjs UI with Siesta</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.39" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Unit Testing Extjs UI with Siesta</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/tech"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+    <div class="jumbotron big-img" style='background-image: url("/img/Unit%20Testing%20Extjs%20UI%20with%20Siesta.jpg");'>
+        <div class="container">
+            &nbsp;
+        </div>
+    </div>
+
+
+<main>
+
+    <div class="item">
+
+    <h3><a href="/tech/unit-testing-extjs-ui/">Unit Testing Extjs UI with Siesta</a></h3>
+
+    
+    
+    
+        <h4>An attempt to replace instable Webdriver tests with Siesta UI tests</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<i class='fa fa-calendar'></i>&nbsp;23 December 2014
+    		</span>
+    	</h5>
+    
+
+    
+    <a href="https://brainbaking.com/tags/tech"><kbd class="item-tag">tech</kbd></a>
+    
+    <a href="https://brainbaking.com/tags/unit-testing"><kbd class="item-tag">unit testing</kbd></a>
+    
+    <a href="https://brainbaking.com/tags/javascript"><kbd class="item-tag">javascript</kbd></a>
+    
+    <a href="https://brainbaking.com/tags/extjs"><kbd class="item-tag">extjs</kbd></a>
+    
+    <a href="https://brainbaking.com/tags/siesta"><kbd class="item-tag">siesta</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h3 id="webdriver-js-heavy-frameworks">WebDriver &amp; js-heavy frameworks</h3>
+
+<p>Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &hellip; like you&rsquo;re used to when using client/server desktop applications. You define components on a view, behavior on a controller, and data and the way it&rsquo;s loaded on the model.</p>
+
+<p>The problem with Javascript-heavy frameworks like this is that if your team does not have a lot of experience using JS in general, it can get extremely messy and cluttered. Which it did, coupled with a lot of regression (a misplaced &ldquo;;&rdquo; could break an entire part of the application), we needed an automated way to catch up with those bugs.
+Since I have a lot of experience with WebDriver, we started using it to write scenario tests when the application is deployed. A test should emulate customer behavior: click on a menu, expect a window to be opened, fill in a form and expect something else to happen. It&rsquo;s not isolated but tests everything together.</p>
+
+<p>WebDriver is great, but since a lot of javascript events are happening in the background it&rsquo;s very difficult to write a easily usable DSL to manipulate the UI. One has to wait for ajax calls to finish, for DOM elements to appear or disappear, and so on. Tests became instable and failed sometimes, even sometimes on the CI build but never on your development environment. It takes more and more time to find &amp; fix those things.</p>
+
+<h3 id="a-possible-solution-siesta">A possible solution: Siesta</h3>
+
+<p><a href="http://www.bryntum.com/products/siesta/">Siesta</a> is a product from Bryntum especially written to unit test Extjs applications, focussing on the UI. Sounds nice, so we decided to check it out as a possible alternative to WebDriver. As the website states:</p>
+
+<blockquote>
+<p>Siesta is a JavaScript unit testing tool that can help you test any JavaScript code and also perform testing of the DOM and simulate user interactions. The tool can be used together with any type of JavaScript codebase – jQuery, Ext JS, NodeJS, Dojo, YUI etc. Using the API, you can choose from many types of assertions ranging from simple logical JS object</p>
+</blockquote>
+
+<p>Sounds good, right?</p>
+
+<p>The setup isn&rsquo;t too difficult, after a few hours of fiddling I managed to bootstrap our Extjs application using this index.js file:</p>
+
+<p>var Harness = Siesta.Harness.Browser.ExtJS;</p>
+
+<pre><code>    Harness.configure({
+        title       : 'Test Suite',
+        loaderPath  : { 
+            'Ext': '../extjs',
+            'Ext.ux': '../extjs/ux',
+            'MyApp': '../app'
+        },
+        preload     : [
+            // version of ExtJS used by your application
+            '../extjs/resources/css/ext-all.css',
+            '../resources/css/workb.css',
+
+            // version of ExtJS used by your application
+            '../extjs/ext-all-debug.js',
+            './app-vars.js',
+            {
+                text: &quot;Ext.Loader.setConfig({ 'Ext': '../extjs', 'Ext.ux': '../extjs/ux', 'MyApp': '../app' })&quot;
+            },
+            '../extjs/overrides/javascript-overrides.js',
+            '../extjs/overrides/PFW-overrides.js',
+            '../app/app.js'
+        ]
+    });
+
+    Harness.start(
+        'tests/001_sanity.t.js',
+        'tests/002_window.t.js'
+    );
+</code></pre>
+
+<p>Some pitfalls: <code>loaderPath</code> isn&rsquo;t evaluated in the preload so you have to reset it with <code>Ext.Loader.setConfig()</code> and I had to alter our app.js file. Our directory structure looks like this:</p>
+
+<p>root
+&ndash; app
+&ndash; extjs
+&mdash;- ux
+&ndash; siesta
+&mdash;- tests</p>
+
+<p>So you have to watch out for relative paths like <code>appFolder</code> in app.js:</p>
+
+<pre><code>Ext.application({
+    name: 'MyApp',
+    appFolder: (_siesta ? '../' : '') + 'app',
+</code></pre>
+
+<p>After that, you can start writing tests. Looking at the examples, the test flow looks a lot like our current WebDriver tests (wait for rows present, wait x seconds, click on this, do that). Here&rsquo;s a simple test to create a view and check if the grid has some rows:</p>
+
+<pre><code>StartTest(function(t) {
+    t.diag(&quot;Creating some window&quot;);
+
+    var view = Ext.create('MyApp.view.SomeOverview', {
+        renderTo: Ext.getBody() // required
+    });
+    var grid = view.down(&quot;grid&quot;);
+
+    t.chain(
+        { waitFor : 'rowsVisible', args : grid }
+    );
+});
+</code></pre>
+
+<p><img src="{{urls.media}}/siesta.png" alt="siesta view test in action" /></p>
+
+<p>Siesta also comes with it&rsquo;s downsides though.</p>
+
+<ul>
+<li>JS Test code is really messy. Chaining, async calls, ugly data setup for stores, &hellip; A simple test can get complicated fast and requires advanced JS knowledge not everybody in our team has.</li>
+<li><code>waitFor</code> exposes the same problems we have with our current WebDriver tests, so it&rsquo;s not that much of an improvement</li>
+<li>Test data setup cannot be reused from our backend integration tests (we use the builder pattern there to create data in the DB)</li>
+<li>Creating a view to test doesn&rsquo;t test the controller and vice versa. Still too low level for us.</li>
+</ul>
+
+<p>The biggest problem is that it&rsquo;s still more an integration/unit test than a scenario test and quite tightly coupled to your implementation. Since our implementation is far from perfect, Siesta is not the optimal solution for us. For example, we create stores inside our views and load them in <code>initComponent()</code>. No way to provide a stub store with some dummy data. We&rsquo;d have to refactor 200+ views to create tests. Of course tests should be written before the implementation&hellip;</p>
+
+<p>If you would like to know more about Siesta or JS BDD testing, take a look at</p>
+
+<ul>
+<li><a href="http://pivotallabs.com/sencha-touch-bdd-part-5-controller-testing/">Pivotallabs blog post</a></li>
+<li><a href="http://www.bryntum.com/docs/siesta/#!/guide/siesta_getting_started">Siesta API doc: Getting started</a></li>
+</ul>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No rights reserved - sharing is caring. <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> Brainbaking</p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

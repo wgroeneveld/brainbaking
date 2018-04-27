@@ -1,0 +1,11 @@
+<div class="item">
+
+    <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+
+    {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") | $.Scratch.Set "subtitle" }}
+    {{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
+    {{ if isset $.Params "subtitle" }}
+        {{ .Params.subtitle }} <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}</span>
+    {{ end }}
+
+</div>

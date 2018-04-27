@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teches on Brain Baking</title>
+    <link>https://brainbaking.com/tech/</link>
+    <description>Recent content in Teches on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Wed, 25 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://brainbaking.com/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Denken in termen van objecten</title>
+      <link>https://brainbaking.com/tech/thinking-in-terms-of-objects/</link>
+      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/thinking-in-terms-of-objects/</guid>
+      <description>Software schrijven is niet veel anders dan een wereld beschrijven. Dé wereld, waarin wij leven, is één wereld. Met software kunnen we dus theoretisch gezien onze wereld beschrijven. Als we even niet aan software ontwikkeling denken, hoe beschrijven we dan een of de wereld? Hoe bouw ik een fantasie wereld op in een roman waarbij mijn lezers zich comfortabel kunnen inleven in die wereld?
+Door beschrijvingen met behulp van onze taal.</description>
+    </item>
+    
+    <item>
+      <title>Death to pseudocode?</title>
+      <link>https://brainbaking.com/tech/pseudocode/</link>
+      <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/pseudocode/</guid>
+      <description>Coming across pseudocode isn&amp;rsquo;t something that might happen every day except if you&amp;rsquo;re used to browsing through the more theoretical and academic oriented &amp;ldquo;computer science&amp;rdquo; handbooks. We, the practical &amp;ldquo;software engineers&amp;rdquo; of nowadays, usually stop searching for something after our browser hits Stackoverflow. Stack is loaded with technical samples, gists of code, and lot&amp;rsquo;s of won&amp;rsquo;t-ever-compile-wrongly-copy-pasted code. Real code. If you&amp;rsquo;re working in Java, you probably end up with articles full of Java snippets.</description>
+    </item>
+    
+    <item>
+      <title>Concentrating on serendipitous creativity</title>
+      <link>https://brainbaking.com/tech/serendipitous-creativity/</link>
+      <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/serendipitous-creativity/</guid>
+      <description>When was the last time you were able to focus well on a difficult task in an office landscape? For long periods of time? Did you manage to finish the task in time? Knowledge workers are increasingly pushed together in large open spaces to promote collaboration and serendipity. But those unplanned happy accidents create another completely unplanned rather unhappy accident: the loss of concentration. According to Cal Newport&amp;rsquo;s &amp;ldquo;Deep Work&amp;rdquo; term, long uninterrupted hours of concentration manage to get difficult things done - not short bursts of collaboration.</description>
+    </item>
+    
+    <item>
+      <title>Hiding Code Complexity</title>
+      <link>https://brainbaking.com/tech/hiding-complexity/</link>
+      <pubDate>Mon, 26 Feb 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/hiding-complexity/</guid>
+      <description>We like to talk about the architecture of our software because we like complexity. Software developers are the bears, and complex patterns seem to be the honey. The more I pair with people the more I wonder: &amp;ldquo;what makes us decide to take on a simple question with a difficult answer&amp;rdquo;? Why would anyone choose to implement something so complex, that it cannot be easily understood even the day after it&amp;rsquo;s committed?</description>
+    </item>
+    
+    <item>
+      <title>2017 in books</title>
+      <link>https://brainbaking.com/tech/2017-in-books/</link>
+      <pubDate>Sat, 27 Jan 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/2017-in-books/</guid>
+      <description>Goodreads presented me with a neat overview on my read books in 2017 you can also take a look at. The dull page statistics are of no interest to me, but the kind of books I&amp;rsquo;ve read do tell a story that might be worth sharing.
+When it comes to keeping track of what I read, Goodreads might be the best thing that happened to me yet. But I can&amp;rsquo;t say that I&amp;rsquo;m a consequent user of my own listage.</description>
+    </item>
+    
+    <item>
+      <title>Noise</title>
+      <link>https://brainbaking.com/tech/noise/</link>
+      <pubDate>Tue, 24 Oct 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/noise/</guid>
+      <description>The meanwhile common problem of noise in your head has not been solved just yet. In fact, it has only gotten worse. A lot worse. The garbage thinking problem spread like a disease, clinging onto everything in it&amp;rsquo;s way inside me. It has reached my ears and my mind. I&amp;rsquo;d like to make a distinction between &amp;ldquo;head&amp;rdquo; and &amp;ldquo;mind&amp;rdquo; as &amp;ldquo;head&amp;rdquo; might be a temporary problem, getting something to stick in your &amp;ldquo;mind&amp;rdquo; sounds a lot more definitive to me.</description>
+    </item>
+    
+    <item>
+      <title>A quick look at 6 fountain pens</title>
+      <link>https://brainbaking.com/tech/fountain-pens-first-look/</link>
+      <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/fountain-pens-first-look/</guid>
+      <description>My recent addiction to fountain pens has reached new heights. I happened to talk about pens with a dear colleague and she asked if I also had pens with a flexible nib. Posing such a question usually requires some basic knowledge about types of nibs, and it turned out that her friend is another fountain pen enthusiast who owns a bunch of really neat looking (and writing) pens. I was very excited when she proposed to let me try some of his special nibs.</description>
+    </item>
+    
+    <item>
+      <title>Journaling in practice</title>
+      <link>https://brainbaking.com/tech/journaling-in-practice/</link>
+      <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/journaling-in-practice/</guid>
+      <description>If you&amp;rsquo;re wondering why you should journal in the first place, then maybe it&amp;rsquo;s a good idea to start reading here and here.
+There are hundreds of resources available on the Internet on how to journal, how to keep a bullet journal, how to index everything, how to getting things done and so forth. The following advice is something that works for me - it might not work for you at all.</description>
+    </item>
+    
+    <item>
+      <title>Nuts about local nuts</title>
+      <link>https://brainbaking.com/tech/nuts-about-local-nuts/</link>
+      <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/nuts-about-local-nuts/</guid>
+      <description>Remembering David Lebovitz&amp;rsquo; pine nut syndrome, I started to take a closer look at packages of food we buy at the local supermarket. It&amp;rsquo;s so easy to get completely focused on buying local vegetables but forgetting to look at the label when throwing something like pine nuts into the shopping cart. The worst thing is, most supermarkets don&amp;rsquo;t care and don&amp;rsquo;t offer an alternative. However, let&amp;rsquo;s not panic just yet: this is slowly changing (but reached a plateau).</description>
+    </item>
+    
+    <item>
+      <title>Healing creative scars</title>
+      <link>https://brainbaking.com/tech/healing-creative-scars/</link>
+      <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/healing-creative-scars/</guid>
+      <description>Want to skip to the practical part?
+Are you aware of your problems? Once upon a time in a land not very far away (in fact, it&amp;rsquo;s the very same we live in), a small boy and his Gameboy grew up. He didn&amp;rsquo;t have many hobbies: gaming. He didn&amp;rsquo;t have many friends. Playing outside is okay as long as the 4 AA batteries are fully charged and the sun isn&amp;rsquo;t shining too bright and the playing is confined to one square meter.</description>
+    </item>
+    
+    <item>
+      <title>A samurai learning mindset</title>
+      <link>https://brainbaking.com/tech/a-samurai-learning-mindset/</link>
+      <pubDate>Tue, 20 Jun 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/a-samurai-learning-mindset/</guid>
+      <description>After reading the famed books The Book of five rings By Miyamoto Musashi and the Life-giving sword By Yagyu Munenori, I started making connections between the teachings of the art of war and the teachings of any other craft. Yagyu clearly mentions the state of mind required to survive in battle can be used in any other profession to your advantage as well.
+The back of the book states that &amp;ldquo;every manager, seeker of life wisdom and practician of martial arts should use this&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Development principles in cooking</title>
+      <link>https://brainbaking.com/tech/development-principles-in-cooking/</link>
+      <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/development-principles-in-cooking/</guid>
+      <description>A lot of people seem to think I&amp;rsquo;m the kind of chef who uses loads and loads of ingredients, combining and layering without thinking twice. We were having a discussion about what to cook for dinner this evening. It&amp;rsquo;s &amp;lsquo;donderdag veggiedag&amp;rsquo;, an initiative from the Belgian EVA VZW to eat a vegetarian meal each thursday, and since I&amp;rsquo;m a vegetarian, it&amp;rsquo;s generally accepted that I should know a lot of good recipes.</description>
+    </item>
+    
+    <item>
+      <title>Are you handing over enough when inspiring someone?</title>
+      <link>https://brainbaking.com/tech/handing-over-enough-when-inspiring/</link>
+      <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/handing-over-enough-when-inspiring/</guid>
+      <description>The other day, I was having a discussion with a friend and colleague about reaching out to others. He had an idea on combining patterns learned from the enterprise software development world (clean code, TDD, domain driven design, you name it) with patterns learned from the gaming development world (rapid prototyping, getting stuff done, intensive usage of frameworks like Unity). An excellent idea if you ask me. But he was hesitant - others might not be that interested in taking time to write unit tests in their game.</description>
+    </item>
+    
+    <item>
+      <title>How to teach kids to program</title>
+      <link>https://brainbaking.com/tech/teaching-kids-how-to-program/</link>
+      <pubDate>Thu, 25 May 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/teaching-kids-how-to-program/</guid>
+      <description>Jessica Ellis gave a lot of great tips on how to teach kids to program at Techorama 2017 in Antwerp. She has ben an active teacher in the tkplabs.org society and introduced something clever called &amp;ldquo;barbecoding&amp;rdquo;. In an attempt to create an appealing programming camp for boys and girls, she successfully combined food and science. She shared her story in an hour and I did my best to extract the most important principles as I thought it might be a great idea to apply that to our team in my daily work as a software developer.</description>
+    </item>
+    
+    <item>
+      <title>Drawing week 04 - Using the brain</title>
+      <link>https://brainbaking.com/tech/drawing-week-04/</link>
+      <pubDate>Tue, 09 May 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/drawing-week-04/</guid>
+      <description>Also read Teaching yourself to draw.
+As I&amp;rsquo;m slowly getting a tiny bit better at drawing things I see, I still don&amp;rsquo;t have a fundamental basis to rely on. Until I&amp;rsquo;ve read &amp;ldquo;Drawing at the right side of the brian&amp;rdquo; from Betty Edwards. Everything I&amp;rsquo;ve read in there came as a complete revelation to me. She explains how you should &amp;ldquo;look&amp;rdquo; at things, what is important to look out for when realisticly drawing and how values/tones work.</description>
+    </item>
+    
+    <item>
+      <title>Drawing week 03 - Fineliners and texture</title>
+      <link>https://brainbaking.com/tech/drawing-week-03/</link>
+      <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/drawing-week-03/</guid>
+      <description>Also read Teaching yourself to draw.
+I wanted to continue my quest of finding my own style within ink and watercolor boundaries. After the amazing discovery of Skillshare.com, I switched to using Artline fineliners. I also have some Steadlers but hardly notice any difference between different felt tip pens if they have the same thickness. I found a short course by Shirish Deshpande on drawing with ink and creating some contrast and texture.</description>
+    </item>
+    
+    <item>
+      <title>Drawing week 02 - Art before breakfast</title>
+      <link>https://brainbaking.com/tech/drawing-week-02/</link>
+      <pubDate>Tue, 07 Mar 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/drawing-week-02/</guid>
+      <description>Also read Teaching yourself to draw.
+After the illustration course, I&amp;rsquo;m not ashamed to admit I completely dropped the pencil out of the game. It creates lines easy to remove and that means I&amp;rsquo;m working on a drawing forever. I need something to commit myself to. That something is called ink.
+It also seems that I already have stuff to get ink on a paper: pens. Ballpoint pens. Black, blue, whatever.</description>
+    </item>
+    
+    <item>
+      <title>Drawing week 01 - pencil illustrations</title>
+      <link>https://brainbaking.com/tech/drawing-week-01/</link>
+      <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/drawing-week-01/</guid>
+      <description>Also read Teaching yourself to draw.
+As you might already have read, I started the drawing adventure with a 10-week &amp;lsquo;illustrative techniques&amp;rsquo; course. It sounds complicated but it wasn&amp;rsquo;t really: it&amp;rsquo;s more of a gentle introduction in different mediums (pencil, ink, acrylic paint, &amp;hellip;) than a crash course in drawing techniques. I didn&amp;rsquo;t know then that to draw illustrations, you still have to be able to draw. (I&amp;rsquo;m reading &amp;ldquo;drawing at the right side of the brain&amp;rdquo; and I know better now).</description>
+    </item>
+    
+    <item>
+      <title>Teaching yourself to draw</title>
+      <link>https://brainbaking.com/tech/teaching-yourself-to-draw/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/teaching-yourself-to-draw/</guid>
+      <description>Inspired by Noah Bradley&amp;rsquo;s Don&amp;rsquo;t go to art school blog at Medium.com.
+Drawing and art in general has always been something I didn&amp;rsquo;t quite grasp or try to understand. I was a software development guy, a technical guy, used to writing code, looking at text, spending days and years in text editors others call IDE&amp;rsquo;s. Software development and art aren&amp;rsquo;t that different actually: they both require an open mindset and an extreme creative approach at solving problems.</description>
+    </item>
+    
+    <item>
+      <title>Unit testing in Legacy Projects: VB6</title>
+      <link>https://brainbaking.com/tech/vb6-unit-testing/</link>
+      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/vb6-unit-testing/</guid>
+      <description>Thanks to the Postmodern VB6 article I&amp;rsquo;ve found on the internetz, I decided to give SimplyVBUnit a try. My job requires sporadic visual basic 6 code changes in the big legacy project we&amp;rsquo;re converting to C#. It&amp;rsquo;s an administrative system bound to Belgium laws so as you can imagine they change every few months and the old software still has to be complaint to those crazy new rules. As a result, we sometimes dabble in VB6 code.</description>
+    </item>
+    
+    <item>
+      <title>Migrating from Extjs to React gradually</title>
+      <link>https://brainbaking.com/tech/react-in-extjs/</link>
+      <pubDate>Tue, 26 Jan 2016 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/react-in-extjs/</guid>
+      <description>We were looking for a few alternatives to our big ExtJS 4 application. Since it&amp;rsquo;s not that easy to completely migrate from one front-end framework to the next, a possible solution would be to start developing new parts in another framework. There&amp;rsquo;s a lot of domain logic spread in Ext views and controllers - which shouldn&amp;rsquo;t be there, we are well aware of that. Let&amp;rsquo;s call it &amp;ldquo;legacy&amp;rdquo; :-)
+The application right now uses Extjs as UI and C# as backend, and lets ext do the loading of the views/controllers (living in app.</description>
+    </item>
+    
+    <item>
+      <title>Webdriver Exception Handling</title>
+      <link>https://brainbaking.com/tech/webdriver-exception-handling/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/webdriver-exception-handling/</guid>
+      <description>As the previous post indicated, we&amp;rsquo;re trying to stabilize our scenario tests created with WebDriver. One of the things we did was trying to capture as much data as possible if something goes wrong. Something like a typical ElementNotFoundException, or the less common StaleElementException (detached from DOM after evaluation) - these things can be hard to trace if you don&amp;rsquo;t run the tests locally. We also stumbled upon the &amp;ldquo;it works on my machine&amp;rdquo; problem - tests succeeding on one development machine but not on the other - mostly related due to timing issues.</description>
+    </item>
+    
+    <item>
+      <title>Unit Testing Extjs UI with Siesta</title>
+      <link>https://brainbaking.com/tech/unit-testing-extjs-ui/</link>
+      <pubDate>Tue, 23 Dec 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/unit-testing-extjs-ui/</guid>
+      <description>WebDriver &amp;amp; js-heavy frameworks Writing scenario tests for javascript-heavy UI webpages can be really difficult. It gets complicated pretty quickly if you&amp;rsquo;re using a lot of async calls or a lot of javascript-heavy UI components. On our current project, we use Extjs as the UI layer in a single-page aspx page to bootstrap our Extjs app. Extjs is a (heavyweight) javascript framework for creating windows, panels, grids, buttons, menus, &amp;hellip; like you&amp;rsquo;re used to when using client/server desktop applications.</description>
+    </item>
+    
+    <item>
+      <title>.NET Memory management VS JVM Memory management</title>
+      <link>https://brainbaking.com/tech/memory-management-vs-java/</link>
+      <pubDate>Fri, 24 Oct 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/memory-management-vs-java/</guid>
+      <description>Memory management is something to keep in mind when deploying and running applications on top of the JVM. Parameters like Xmx and Xms are things to juggle with when it comes to finding the perfect balance between too much memory hogging (at app startup) and too little, especially if you&amp;rsquo;re working with heavy duty entity mapping frameworks like Hibernate (and you&amp;rsquo;re not so good at writing fast HQL). When we bumped into an OutOfMemoryException in .</description>
+    </item>
+    
+    <item>
+      <title>Faking domain logic</title>
+      <link>https://brainbaking.com/tech/faking-domain-logic/</link>
+      <pubDate>Tue, 23 Sep 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/faking-domain-logic/</guid>
+      <description>Sometimes, life is just a little bit more difficult than you imagined the day before. Sometimes, you have to work on a legacy codebase with custom frameworks rooted so deeply you&amp;rsquo;re having lot&amp;rsquo;s of trouble trying to build around them. To make it a bit more concrete, here&amp;rsquo;s an example: imagine a separate DLL for interfaces and a separate DLL for the implementation. This decision was made because we use NHibernate as a data mapper and not to write beautiful domain driven design code.</description>
+    </item>
+    
+    <item>
+      <title>Custom Webdriver Page Factories</title>
+      <link>https://brainbaking.com/tech/custom-webdriver-page-factories/</link>
+      <pubDate>Mon, 22 Sep 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/custom-webdriver-page-factories/</guid>
+      <description>The problem: Webdriver elements returned by driver.FindElement() are too generic. There&amp;rsquo;re the Text, SendKeys() and Click() methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like ShouldContainValue or Type (okay, that&amp;rsquo;s a one-to-one mapping with SendKeys(), but it&amp;rsquo;s a lot less technical!). Instead of
+ [FindsBy(How = How.CssSelector, Using = &amp;quot;.ux-desktop-taskbar-startbutton&amp;quot;)] private IWebElement startButton; [FindsBy(How = How.CssSelector, Using = &amp;quot;.</description>
+    </item>
+    
+    <item>
+      <title>Bye autotools hello Scons</title>
+      <link>https://brainbaking.com/tech/scons-building/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/scons-building/</guid>
+      <description>Remember this?
+ ./configure make make install  That&amp;rsquo;s not so bad, as long as you have the right compiler and linker flags configured, depending on the target OS. The real problem, however, is trying to figure out how to alter something if you didn&amp;rsquo;t write the Makefile yourself. Or if you in fact did write it, but it was some time ago. Two days. No, four hours.
+The problem Try to study the autoconf and automake flow diagram, explained on Wikipedia: the GNU build system.</description>
+    </item>
+    
+    <item>
+      <title>Metaprogramming instead of duplication</title>
+      <link>https://brainbaking.com/tech/metaprogramming-convention-dry/</link>
+      <pubDate>Fri, 14 Mar 2014 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/metaprogramming-convention-dry/</guid>
+      <description>So&amp;hellip; What&amp;rsquo;s up with all that duplication in your unit tests? Let&amp;rsquo;s take a look at a very recognizable pattern when for instance using RhinoMock in C#:
+ [TestInitialize] public void SetUp() { dbConfigurationMock = MockRepository.GenerateMock&amp;lt;IDbConfiguration&amp;gt;(); mountPointLoaderMock = MockRepository.GenerateMock&amp;lt;IMountPointLoader&amp;gt;(); userEnvironmentFactoryMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentFactory&amp;gt;(); userEnvironmentLoaderMock = MockRepository.GenerateMock&amp;lt;IUserEnvironmentLoader&amp;gt;(); // ...  We agreed to suffix each instance variable with &amp;lsquo;Mock&amp;rsquo; if it&amp;rsquo;s a mock. That way, when you scroll down to an actual test case, it&amp;rsquo;s clear to everyone what&amp;rsquo;s what: mocks, stubs, actual implementations, and so forth.</description>
+    </item>
+    
+    <item>
+      <title>Enhancing the builder pattern with closures</title>
+      <link>https://brainbaking.com/tech/builders-dsl/</link>
+      <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/builders-dsl/</guid>
+      <description>This post is inspired by Venkat Subramaniam&amp;rsquo;s Devoxx 2013 talk Thinking Functional Style. See downloads at agiledeveloper.com which has a rather cool Groovy example.
+Classic builders For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters.</description>
+    </item>
+    
+    <item>
+      <title>Integration Testing with SQLite</title>
+      <link>https://brainbaking.com/tech/integration-testing-sqlite/</link>
+      <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/integration-testing-sqlite/</guid>
+      <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
+On previous projects I&amp;rsquo;ve worked on, development PCs came with a local version of the database scheme. Each DB change also got rolled out to those computers, which enabled us developers to fool around without breaking anything on the development (or test) environment. This is another step closer to happiness, at least for our proxy customers who didn&amp;rsquo;t have to reinsert their test data every time we flushed something from a table.</description>
+    </item>
+    
+    <item>
+      <title>Visual Studio 2012 for Eclipse users</title>
+      <link>https://brainbaking.com/tech/vstudio-missing-features/</link>
+      <pubDate>Mon, 14 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/vstudio-missing-features/</guid>
+      <description>When switching over to a new editor and new language, I can sometimes get frustrated by missing features I got (very) attached to. This excludes the obvious difference in shortcut keys.
+Shortcuts and refactoring tools One plugin to rule them all: ReSharpner. This productivity tool brings back the incredible development speed to the Visual Studio platform. You can almost map the eclipse (or IntelliJ, since they guys from JetBrains developed it) keys to the ReSharpner keys.</description>
+    </item>
+    
+    <item>
+      <title>Learning to become a baker</title>
+      <link>https://brainbaking.com/tech/learning-to-become-a-baker/</link>
+      <pubDate>Sun, 13 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/learning-to-become-a-baker/</guid>
+      <description>Originally posted on Medium.
+Sometimes people tell me I’m obsessed with bread. That’s not entirely my fault. (I like to blame others, who doesn’t?) When I was little, my father always baked our own bread on sunday, every single sunday. I can’t remember anytime we actually bought bread, except on vacation. At a young age I had no idea how creating something out of nothing actually worked, but I knew it was intriguing — the addition of yeast which caused the dough to bubble up within a short period of time, wow!</description>
+    </item>
+    
+    <item>
+      <title>Unit Testing Stored Procedures</title>
+      <link>https://brainbaking.com/tech/unit-testing-stored-procedures/</link>
+      <pubDate>Thu, 10 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/unit-testing-stored-procedures/</guid>
+      <description>This article is based on the notes I&amp;rsquo;ve collected on My Wiki.
+Test Driven Development (or TDD), it&amp;rsquo;s one of those buzz words which usuallly appear in the same sentence with &amp;ldquo;scrum&amp;rdquo; or &amp;ldquo;XP&amp;rdquo;. But in practice, I&amp;rsquo;ve seen few people actually applying it all the way through. What do I mean by that? You&amp;rsquo;re probably very familiar with, say Java or .NET, and you know how to write unit tests in that language using your beloved IDE.</description>
+    </item>
+    
+    <item>
+      <title>No, vegetarians do not eat fish!</title>
+      <link>https://brainbaking.com/tech/vegetarians-do-not-eat-fish/</link>
+      <pubDate>Fri, 06 Sep 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/vegetarians-do-not-eat-fish/</guid>
+      <description>Originally posted on Medium.
+The amateurs  “So, you do eat a juicy peace of grilled salmon, right?” “No, I already told you, I’m a vegetarian.” (sigh) Frowning. You can almost hear them thinking “that’s what I meant”. “If you’re a pescatarian, you eat seafood but not other animals”. “Oh, right right, sorry!”.
+ It must have been the fourth conversation with somebody, where I have to explain what “being a vegetarian” actually means.</description>
+    </item>
+    
+    <item>
+      <title>On finding your inner zen in big cities</title>
+      <link>https://brainbaking.com/tech/on-finding-your-inner-zen-in-big-cities/</link>
+      <pubDate>Thu, 29 Aug 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/on-finding-your-inner-zen-in-big-cities/</guid>
+      <description>Originally posted on Medium.
+There have been a lot of love letters to big cities here on Medium recently. I never really understood the love for those busy places, but that should not be a big surprise as we grew up in a relatively small village in Belgium. Our country must be one of the smallest in the world — you can drive from one edge to the other in less than 2 hours (excluding traffic jams of course).</description>
+    </item>
+    
+    <item>
+      <title>Ending your day with happy thoughts</title>
+      <link>https://brainbaking.com/tech/can-i-haz-happy-thoughts/</link>
+      <pubDate>Tue, 13 Aug 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tech/can-i-haz-happy-thoughts/</guid>
+      <description>Past new year, I stopped promising silly things to myself. “This year, I’ll for sure go jogging several times a week!” — or “This year, I’ll really get into learning another language!”. We all know how these things go. Not that I made something up on the very day, these ideas are usually carefully crafted in my sketchbook and are lingering there to be exposed and finally executed.  Originally posted on Medium.</description>
+    </item>
+    
+  </channel>
+</rss>

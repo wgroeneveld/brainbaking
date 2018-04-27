@@ -33,18 +33,5 @@ On previous projects I&amp;rsquo;ve worked on, development PCs came with a local
 Test Driven Development (or TDD), it&amp;rsquo;s one of those buzz words which usuallly appear in the same sentence with &amp;ldquo;scrum&amp;rdquo; or &amp;ldquo;XP&amp;rdquo;. But in practice, I&amp;rsquo;ve seen few people actually applying it all the way through. What do I mean by that? You&amp;rsquo;re probably very familiar with, say Java or .NET, and you know how to write unit tests in that language using your beloved IDE.</description>
     </item>
     
-    <item>
-      <title>sql</title>
-      <link>https://brainbaking.com/wiki/code/db/sql/</link>
-      <pubDate>Tue, 03 Sep 2013 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/wiki/code/db/sql/</guid>
-      <description>code:db &amp;gt;&amp;gt; Sql Stored procedures Oproepen Zie http://stackoverflow.com/questions/3991721/run-stored-procedure-in-sql-developer
-Gegeven: een procedure GETPERMISSIONSALL als volgt gedeclareerd:
-create or replace PROCEDURE &amp;quot;GETPERMISSIONALL&amp;quot; ( v_actCreator in VARCHAR2, v_repGuid in VARCHAR2, v_userid INT, v_retHasPermission out SMALLINT)  De laatste parameter is de return waarde (kunnen meerdere dingen zijn dus). Hoe roep ik nu zoiets aan?
-In SQL Developer Definiëer eerst uw variabelen, om ze daarna eventueel af te drukken -
-SET serveroutput on; DECLARE v_actCreator VARCHAR2(100); v_repGuid VARCHAR2(100); v_userid int; Output smallint; BEGIN /* Assign values to IN parameters */ v_actCreator := &#39;19980121164845.</description>
-    </item>
-    
   </channel>
 </rss>

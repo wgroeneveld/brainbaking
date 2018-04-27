@@ -1,520 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+    <head>
+        <style>
 
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+main {
+	padding-top: 0 !important;
+}
 
-  <title>Brain Baking</title>
-  
-  <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.21" />
-  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+main .text-justify p {
+  margin: 0 0 20px !important;
+}
 
-  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+.big-img {
+  	background: no-repeat center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	background-size: cover;
+  	-o-background-size: cover;
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
-  
-  
-  <meta property="og:title" content="Brain Baking" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="/" />
-  <meta property="og:image" content="/img/avatar-icon.png" />
-  
-</head>
+	border-top: 2px solid lightgray;
+	border-bottom: 1px solid var(--accent);
+}
 
+@media only screen and (min-width: 768px) {
+  .big-img .container {
+    height: 150px;
+  }
+}
 
-  <body>
+ 
+.gr_grid_container {
+}
 
-    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="https://brainbaking.com/">
-        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
-        Brain Baking
-      </a>
-    </div>
+.gr_grid_book_container {
+   
+  float: left;
+  width: 98px;
+  height: 160px;
+  padding: 0px 0px;
+  border: 1px solid black;
+  margin: 5px;
+  overflow: hidden;
+}
 
-    <div class="collapse navbar-collapse" id="main-navbar">
-      <ul class="nav navbar-nav navbar-right">
-      <li id="google-search-wrapper">
-	<script>
-	(function() {
-	  var cx = '015035874764642922467:uhhwew4ykvm';
-	  var gcse = document.createElement('script');
-	  gcse.type = 'text/javascript';
-	  gcse.async = true;
-	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-	  var s = document.getElementsByTagName('script')[0];
-	  s.parentNode.insertBefore(gcse, s);
-	})();
-	</script>
-
-	<gcse:search></gcse:search>
-
-	<form onsubmit="return false;">
-		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
-		<input type="text" id="searchInput" placeholder="Search">
-	</form>
-
-	<script>
-	(function() {
-		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
-			if(event.keyCode === 13) {
-				event.stopPropagation();
-				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button button').click();
-
-				var modal = document.querySelector('.gsc-modal-background-image');
-				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
-			}
-		});
-	})();
-	</script>
-</li>
-
-      
-        
-          <li class="navlinks-container">
-            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
-            <div class="navlinks-children">
-            
-              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
-            
-              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
-            
-              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
-            
-              <a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Teaching</a>
-            
-              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
-            
-            </div>
-          </li>
-        
-      
-      </ul>
-    </div>
-
-	<div class="avatar-container">
-	  <div class="avatar-img-border">
-      
-          <a title="Brain Baking" href="https://brainbaking.com/">
-              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
-          </a>
-      
-	  </div>
-	</div>
-
-  </div>
-</nav>
-
-
-    <header class="header-section ">
-      <div class="intro-header no-img">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-              <div class="page-heading">
-                <h1>Brain Baking</h1>
-                
-                  <hr class="small">
-                  <span class="page-subheading">Freshly baked thoughts</span>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-
-    <div role="main" class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          <div class="posts-list">
-            
-            
-            <article class="post-preview">
-              <a href="https://brainbaking.com/post/pseudocode/">
-          	  <h2 class="post-title">Death to pseudocode?</h2>
-          	
-          	  
-          	  <h3 class="post-subtitle">
-          	    Clean code, pseudocode or real code?
-          	  </h3>
-          	    
-              </a>
-
-              <p class="post-meta">
-                6 April 2018
-              </p>
-            
-              <div class="post-entry">
-              
-                Coming across pseudocode isn&rsquo;t something that might happen every day except if you&rsquo;re used to browsing through the more theoretical and academic oriented &ldquo;computer science&rdquo; handbooks. We, the practical &ldquo;software engineers&rdquo; of nowadays, usually stop searching for something after our browser hits Stackoverflow. Stack is loaded with technical samples, gists of code, and lot&rsquo;s of won&rsquo;t-ever-compile-wrongly-copy-pasted code. Real code. If you&rsquo;re working in Java, you probably end up with articles full of Java snippets.
-                <a href="https://brainbaking.com/post/pseudocode/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
-              
-              </div>
-            
-             </article>
-            
-            <article class="post-preview">
-              <a href="https://brainbaking.com/post/serendipitous-creativity/">
-          	  <h2 class="post-title">Concentrating on serendipitous creativity</h2>
-          	
-          	  
-          	  <h3 class="post-subtitle">
-          	    Focused or collaborative attention?
-          	  </h3>
-          	    
-              </a>
-
-              <p class="post-meta">
-                25 March 2018
-              </p>
-            
-              <div class="post-entry">
-              
-                When was the last time you were able to focus well on a difficult task in an office landscape? For long periods of time? Did you manage to finish the task in time? Knowledge workers are increasingly pushed together in large open spaces to promote collaboration and serendipity. But those unplanned happy accidents create another completely unplanned rather unhappy accident: the loss of concentration. According to Cal Newport&rsquo;s &ldquo;Deep Work&rdquo; term, long uninterrupted hours of concentration manage to get difficult things done - not short bursts of collaboration.
-                <a href="https://brainbaking.com/post/serendipitous-creativity/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
-              
-              </div>
-            
-             </article>
-            
-            <article class="post-preview">
-              <a href="https://brainbaking.com/post/hiding-complexity/">
-          	  <h2 class="post-title">Hiding Code Complexity</h2>
-          	
-          	  
-          	  <h3 class="post-subtitle">
-          	    Do make it easy to read. Don&#39;t expose inner workings.
-          	  </h3>
-          	    
-              </a>
-
-              <p class="post-meta">
-                26 February 2018
-              </p>
-            
-              <div class="post-entry">
-              
-                We like to talk about the architecture of our software because we like complexity. Software developers are the bears, and complex patterns seem to be the honey. The more I pair with people the more I wonder: &ldquo;what makes us decide to take on a simple question with a difficult answer&rdquo;? Why would anyone choose to implement something so complex, that it cannot be easily understood even the day after it&rsquo;s committed?
-                <a href="https://brainbaking.com/post/hiding-complexity/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
-              
-              </div>
-            
-             </article>
-            
-            <article class="post-preview">
-              <a href="https://brainbaking.com/post/take-your-time/">
-          	  <h2 class="post-title">Take your time.</h2>
-          	
-          	  
-          	  <h3 class="post-subtitle">
-          	    Stop rushing. Start watching.
-          	  </h3>
-          	    
-              </a>
-
-              <p class="post-meta">
-                16 February 2018
-              </p>
-            
-              <div class="post-entry">
-              
-                &ldquo;Let&rsquo;s try to keep silent for a minute and enjoy the complete absence of traffic noise!&rdquo; I yelled to my friends. We were standing on a sandy hill in the middle of national park &ldquo;Hoge Veluwe&rdquo;. One of our friends, a biologist, enticed us to help him identify animal tracks in the sand. I don&rsquo;t know anything about even-toed ungulates, but I know a bit about the joy of discovery.  &ldquo;Great idea!
-                <a href="https://brainbaking.com/post/take-your-time/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
-              
-              </div>
-            
-             </article>
-            
-            <article class="post-preview">
-              <a href="https://brainbaking.com/post/2017-in-books/">
-          	  <h2 class="post-title">2017 in books</h2>
-          	
-          	  
-          	  <h3 class="post-subtitle">
-          	    Pattern recognition in books
-          	  </h3>
-          	    
-              </a>
-
-              <p class="post-meta">
-                27 January 2018
-              </p>
-            
-              <div class="post-entry">
-              
-                Goodreads presented me with a neat overview on my read books in 2017 you can also take a look at. The dull page statistics are of no interest to me, but the kind of books I&rsquo;ve read do tell a story that might be worth sharing.
-When it comes to keeping track of what I read, Goodreads might be the best thing that happened to me yet. But I can&rsquo;t say that I&rsquo;m a consequent user of my own listage.
-                <a href="https://brainbaking.com/post/2017-in-books/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
-              
-              </div>
-            
-             </article>
-            
-            <article class="post-preview">
-              <a href="https://brainbaking.com/post/inventing-for-the-worse/">
-          	  <h2 class="post-title">Inventing - for the worse?</h2>
-          	
-          	  
-          	  <h3 class="post-subtitle">
-          	    Is inventing always a good thing?
-          	  </h3>
-          	    
-              </a>
-
-              <p class="post-meta">
-                30 December 2017
-              </p>
-            
-              <div class="post-entry">
-              
-                People have an irresistible urge to create. But we often mistake productivity with creativity with really creating. Homo creativus. But is this always a good thing? The best inventions in the world bring great sorrow to millions of people today. Then I started wondering, what if&hellip;
-Electricity wasn&rsquo;t invented? Mass production wouldn&rsquo;t be possible. Everything you use, from your watch to your laptop, stove, to what you&rsquo;re wearing wouldn&rsquo;t be possible.
-                <a href="https://brainbaking.com/post/inventing-for-the-worse/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
-              
-              </div>
-            
-             </article>
-            
-            <article class="post-preview">
-              <a href="https://brainbaking.com/post/noise/">
-          	  <h2 class="post-title">Noise</h2>
-          	
-          	  
-          	  <h3 class="post-subtitle">
-          	    Getting rid of noise, part 2
-          	  </h3>
-          	    
-              </a>
-
-              <p class="post-meta">
-                24 October 2017
-              </p>
-            
-              <div class="post-entry">
-              
-                The meanwhile common problem of noise in your head has not been solved just yet. In fact, it has only gotten worse. A lot worse. The garbage thinking problem spread like a disease, clinging onto everything in it&rsquo;s way inside me. It has reached my ears and my mind. I&rsquo;d like to make a distinction between &ldquo;head&rdquo; and &ldquo;mind&rdquo; as &ldquo;head&rdquo; might be a temporary problem, getting something to stick in your &ldquo;mind&rdquo; sounds a lot more definitive to me.
-                <a href="https://brainbaking.com/post/noise/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
-              
-              </div>
-            
-             </article>
-            
-            <article class="post-preview">
-              <a href="https://brainbaking.com/post/i-am-jealous-of-my-dog/">
-          	  <h2 class="post-title">I&#39;m jealous of my dog</h2>
-          	
-          	  
-          	  <h3 class="post-subtitle">
-          	    Getting rid of garbage in your head
-          	  </h3>
-          	    
-              </a>
-
-              <p class="post-meta">
-                17 August 2017
-              </p>
-            
-              <div class="post-entry">
-              
-                My dog, Miel (yes, like the French word for honey. It&rsquo;s a Golden Retriever, get the link?), loves to walk. He also likes playing a lot, but as soon as I put on my shoes or get near the garden gate, he starts to freak out, thinking it&rsquo;s that time again. Since I have no idea what is going on in is head, I said &ldquo;thinking&rdquo;, because we humans associate animals with our own behavior - because that&rsquo;s what we&rsquo;re familiar with.
-                <a href="https://brainbaking.com/post/i-am-jealous-of-my-dog/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
-              
-              </div>
-            
-             </article>
-            
-            <article class="post-preview">
-              <a href="https://brainbaking.com/post/fountain-pens-first-look/">
-          	  <h2 class="post-title">A quick look at 6 fountain pens</h2>
-          	
-          	  
-          	  <h3 class="post-subtitle">
-          	    A test drive from a drawing perspective
-          	  </h3>
-          	    
-              </a>
-
-              <p class="post-meta">
-                18 July 2017
-              </p>
-            
-              <div class="post-entry">
-              
-                My recent addiction to fountain pens has reached new heights. I happened to talk about pens with a dear colleague and she asked if I also had pens with a flexible nib. Posing such a question usually requires some basic knowledge about types of nibs, and it turned out that her friend is another fountain pen enthusiast who owns a bunch of really neat looking (and writing) pens. I was very excited when she proposed to let me try some of his special nibs.
-                <a href="https://brainbaking.com/post/fountain-pens-first-look/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
-              
-              </div>
-            
-             </article>
-            
-            <article class="post-preview">
-              <a href="https://brainbaking.com/post/journaling-in-practice/">
-          	  <h2 class="post-title">Journaling in practice</h2>
-          	
-          	  
-          	  <h3 class="post-subtitle">
-          	    My guide to keeping a journal
-          	  </h3>
-          	    
-              </a>
-
-              <p class="post-meta">
-                10 July 2017
-              </p>
-            
-              <div class="post-entry">
-              
-                If you&rsquo;re wondering why you should journal in the first place, then maybe it&rsquo;s a good idea to start reading here and here.
-There are hundreds of resources available on the Internet on how to journal, how to keep a bullet journal, how to index everything, how to getting things done and so forth. The following advice is something that works for me - it might not work for you at all.
-                <a href="https://brainbaking.com/post/journaling-in-practice/" class="post-read-more">Read&nbsp;More&nbsp;&raquo;</a>
-              
-              </div>
-            
-             </article>
-            
-          </div>
-
-          
-          <ul class="pager main-pager">
-            
-            
-            <li class="next">
-              <a href="/page/2">Older Posts &rarr;</a>
-            </li>
-            
-          </ul>
-          
-        </div>
-      </div>
-    </div>
-
-    <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <ul class="list-inline text-center footer-links">
-          
-          
-          <li>
-            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-		      
-		      
-          <li>
-            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-		      
-	    	  
-          
-           
-          
-          
-          
-          
-          <li>
-            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          <li>
-            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-
-    		  <li>
-      			<a href="https://brainbaking.com/index.xml" title="RSS">
-      			  <span class="fa-stack fa-lg">
-        				<i class="fa fa-circle fa-stack-2x"></i>
-        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-      			  </span>
-      			</a>
-    		  </li>		
-
-        </ul>
-        <p class="credits copyright text-muted">
-    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
-    	  &nbsp;&bull;&nbsp;
-    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
-    		  
-    	  
-    	  &nbsp;&bull;&nbsp;
-    	  <a href="https://brainbaking.com/">
-          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
-        </a>
-    	  
-  	    </p>
-  	    
-    	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
-          
-    	</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
-<script src="https://brainbaking.com//js/main.js"></script>
-<script src="https://brainbaking.com/js/highlight.min.js"></script>
+</style>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-<script>
-  hljs.initHighlightingOnLoad();
-</script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Brain Baking</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-45748221-1', 'auto');
-ga('send', 'pageview');
-</script>
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
 
 
 
-  </body>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c#.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.39" />
+        
+        <link href="https://brainbaking.com/index.xml" rel="alternate" type="application/rss+xml" title="Brain Baking" />
+        <link href="https://brainbaking.com/index.xml" rel="feed" type="application/rss+xml" title="Brain Baking" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Brain Baking</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="intro">
+
+        
+
+        <h1>Brain Baking</h1>
+
+        <h2>Freshly baked thoughts.</h2>
+
+    </div>
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brainbaking</a></p>
+
+        </footer>
+       
+    </body>
+
 </html>
+

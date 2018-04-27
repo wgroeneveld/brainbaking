@@ -8,21 +8,10 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Fri, 17 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Nov 2013 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/tags/sqlite/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>sqlite</title>
-      <link>https://brainbaking.com/wiki/code/db/sqlite/</link>
-      <pubDate>Fri, 17 Jul 2015 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/wiki/code/db/sqlite/</guid>
-      <description>SQLite DDLs copypasten van Oracle Bijvoorbeeld de gegenereerde versie (SQL tab) van Oracle SQL Developer overnemen gaat niet zomaar.
-Er zijn enkele verschillen:
- NOT NULL ENABLE wegdoen. NOT NULL maakt niets uit aangezien het in-memory is om te testen! USING INDEX blabla na de PRIMARY KEY statements zijn ook allemaal niet nodig (STORAGE etc) speciale defaults of syscalls zoals sys_guid() bestaan niet. definities van groottes: wegdoen van BYTE: VARCHAR2(26) dus.</description>
-    </item>
     
     <item>
       <title>Integration Testing with SQLite</title>

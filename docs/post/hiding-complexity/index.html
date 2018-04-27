@@ -1,199 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+    <head>
+        <style>
 
-  <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+main {
+	padding-top: 0 !important;
+}
 
-  <title>Hiding Code Complexity</title>
-  
-  <meta name="author" content="Wouter Groeneveld"/>
-  <meta name="generator" content="Hugo 0.21" />
-  <link href='https://brainbaking.com//img/favicon.ico' rel='icon' type='image/x-icon'/>
+main .text-justify p {
+  margin: 0 0 20px !important;
+}
 
-  <link rel="alternate" href="https://brainbaking.com/index.xml" type="application/rss+xml" title="Brain Baking">
+.big-img {
+  	background: no-repeat center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	background-size: cover;
+  	-o-background-size: cover;
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="https://brainbaking.com//css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://brainbaking.com//css/main.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="https://brainbaking.com//css/pygment_highlights.css" />
-  <link rel="stylesheet" href="https://brainbaking.com/css/highlight.min.css">
-  
-  
-  <meta property="og:title" content="Hiding Code Complexity" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="/post/hiding-complexity/" />
-  <meta property="og:image" content="/img/avatar-icon.png" />
-  
-</head>
+	border-top: 2px solid lightgray;
+	border-bottom: 1px solid var(--accent);
+}
 
+@media only screen and (min-width: 768px) {
+  .big-img .container {
+    height: 150px;
+  }
+}
 
-  <body>
+ 
+.gr_grid_container {
+}
 
-    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="https://brainbaking.com/">
-        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;
-        Brain Baking
-      </a>
-    </div>
+.gr_grid_book_container {
+   
+  float: left;
+  width: 98px;
+  height: 160px;
+  padding: 0px 0px;
+  border: 1px solid black;
+  margin: 5px;
+  overflow: hidden;
+}
 
-    <div class="collapse navbar-collapse" id="main-navbar">
-      <ul class="nav navbar-nav navbar-right">
-      <li id="google-search-wrapper">
-	<script>
-	(function() {
-	  var cx = '015035874764642922467:uhhwew4ykvm';
-	  var gcse = document.createElement('script');
-	  gcse.type = 'text/javascript';
-	  gcse.async = true;
-	  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-	  var s = document.getElementsByTagName('script')[0];
-	  s.parentNode.insertBefore(gcse, s);
-	})();
-	</script>
-
-	<gcse:search></gcse:search>
-
-	<form onsubmit="return false;">
-		<label for="searchInput"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></label>
-		<input type="text" id="searchInput" placeholder="Search">
-	</form>
-
-	<script>
-	(function() {
-		document.querySelector('#searchInput').addEventListener("keypress", function(event) {
-			if(event.keyCode === 13) {
-				event.stopPropagation();
-				document.querySelector('#___gcse_0 input').value = document.querySelector('#searchInput').value;
-				document.querySelector('.gsc-search-button button').click();
-
-				var modal = document.querySelector('.gsc-modal-background-image');
-				modal.attributes['class'].value = "gsc-modal-background-image gsc-modal-background-image-visible";
-			}
-		});
-	})();
-	</script>
-</li>
-
-      
+</style>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hiding Code Complexity</title>
         
-          <li class="navlinks-container">
-            <a class="navlinks-parent" href="javascript:void(0)">Menu</a>
-            <div class="navlinks-children">
-            
-              <a href="/wiki/"><i class='fa fa-wikipedia-w'></i>&nbsp;&nbsp;Wiki</a>
-            
-              <a href="/tags"><i class='fa fa-tags'></i>&nbsp;&nbsp;Tags</a>
-            
-              <a href="/about"><i class='fa fa-address-card-o'></i>&nbsp;&nbsp;About me</a>
-            
-              <a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;&nbsp;Teaching</a>
-            
-              <a href="/books"><i class='fa fa-book' aria-hidden='true'></i>&nbsp;&nbsp;Books</a>
-            
+        <style>
+
+    html body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c#.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.39" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Hiding Code Complexity</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
             </div>
-          </li>
-        
-      
-      </ul>
+
+        </nav>
+
+
+
+    <div class="jumbotron big-img" style='background-image: url("/img/complexity.png");'>
+        <div class="container">
+            &nbsp;
+        </div>
     </div>
 
-	<div class="avatar-container">
-	  <div class="avatar-img-border">
-      
-          <a title="Brain Baking" href="https://brainbaking.com/">
-              <img class="avatar-img" src="https://brainbaking.com//img/avatar-icon.png" alt="Brain Baking" />
-          </a>
-      
-	  </div>
-	</div>
 
-  </div>
-</nav>
+<main>
 
+    <div class="item">
+
+    <h3>
+        
+        <a href="/post/hiding-complexity/">Hiding Code Complexity</a>
+    </h3>
+
+    
+    
+    
+        <h4>Do make it easy to read. Don&#39;t expose inner workings.</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<i class='fa fa-calendar'></i>&nbsp;26 February 2018
+    		</span>
+    	</h5>
     
 
 
+    
+	   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+    
+    
+        <a href="https://brainbaking.com/tags/tech"><kbd class="item-tag">tech</kbd></a>
+    
 
-  
-    <div id="header-big-imgs" data-num-img=1 data-img-src-1="/img/complexity.png"></div>
-  
-
-  <header class="header-section has-img">
-  
-    <div class="big-img intro-header">
-        <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-heading">
-          <h1>Hiding Code Complexity</h1>
-      
-        
-      <h2 class="post-subheading">Do make it easy to read. Don&#39;t expose inner workings.</h2>
-      
-      
-      
-      
-      <span class="post-meta">26 February 2018</span>
-      
-        </div>
-      </div>
-    </div>
-  </div>
-      <span class='img-desc'></span>
-    </div>
-  
-  <div class="intro-header no-img">
-      <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-heading">
-          <h1>Hiding Code Complexity</h1>
-      
-        
-      <h2 class="post-subheading">Do make it easy to read. Don&#39;t expose inner workings.</h2>
-      
-      
-      
-      
-      <span class="post-meta">26 February 2018</span>
-      
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </header>
+</div>
 
 
-    <div class="container" role="main">	  
-      
-        <div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      
-  <i class="fa fa-tags" style="float: left;" aria-hidden="true"></i>
-  <ul id="tags">
-  
-   <li><a href="/tags/tech">tech</a> </li>
-  
-  </ul>
-
-
-
-      <article role="main" class="blog-post">
-          
+    <br> <div class="text-justify">
 
 <p>We like to talk about the architecture of our software because we like complexity. Software developers are the bears, and complex patterns seem to be the honey. The more I pair with people the more I wonder: &ldquo;what makes us decide to take on a simple question with a difficult answer&rdquo;? Why would anyone choose to implement something so complex, that it cannot be easily understood even the day after it&rsquo;s committed?</p>
 
@@ -294,161 +314,65 @@ We&rsquo;re not done yet:</p>
 <p>The first constructor is used in unit testing and allows us to <em>inject</em> (aha!) mocks into the loaded instance, while the second constructor is used in production. This approach has some drawbacks, like any other approach - like the cascading effect of object creation. But that might be enough for your application.</p>
 
 <p><a href="https://en.wikipedia.org/wiki/KISS_principle">Keep it simple, stupid</a>.</p>
-
-      </article>
-
-      <ul class="blog-pagination blog-pager">
-        
-        <li>
-          &larr; Previous Post: <a href="https://brainbaking.com/post/take-your-time/" data-toggle="tooltip" data-placement="top" title="Take your time.">Take your time.</a>
-          <span class="blog-pagination-date"> <i class="fa fa-calendar-o" aria-hidden="true"></i> 02/16/160026</span>
-        </li>
-        
-        
-        <li>
-          &rarr; Next Post: <a href="https://brainbaking.com/post/serendipitous-creativity/" data-toggle="tooltip" data-placement="top" title="Concentrating on serendipitous creativity">Concentrating on serendipitous creativity</a>
-          <span class="blog-pagination-date"> <i class="fa fa-calendar-o" aria-hidden="true"></i> 03/25/250036</span>
-        </li>
-        
-      </ul>
-
-      <div class="disqus-comments">
-
-	<div id="disqus_thread"></div>
-	<script type="text/javascript">
-		(function() {
-		      
-		      
-		      if (window.location.hostname == "localhost")
-		                return;
-
-		      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		      var disqus_shortname = 'brainbaking';
-		      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
 </div>
 
+    
+    
 
-    </div>
-  </div>
+    
+
+        <h4 class="page-header"><i class="fa fa-newspaper-o"></i>&nbsp;Related by Tags</h4>
+
+        <div class="text-justify">
+             <div class="item">
+
+    <h4><a href="/post/thinking-in-terms-of-objects/">Denken in termen van objecten</a></h4>
+
+    
+    
+    
+        Software ontwerp in termen van objecten <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;25 April 2018</span>
+    
+
 </div>
+  <div class="item">
 
-      
-    </div>
+    <h4><a href="/post/pseudocode/">Death to pseudocode?</a></h4>
 
-    <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <ul class="list-inline text-center footer-links">
-          
-          
-          <li>
-            <a href="https://github.com/wgroeneveld" target="_blank" title="GitHub">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-		      
-		      
-          <li>
-            <a href="mailto:wouter.groeneveld@gmail.com" title="Email me">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-		      
-	    	  
-          
-           
-          
-          
-          
-          
-          <li>
-            <a href="https://www.pinterest.com/woutergroenev" target="_blank" title="Pinterest">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          <li>
-            <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank" title="Goodreads">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
+    
+    
+    
+        Clean code, pseudocode or real code? <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;6 April 2018</span>
+    
 
-    		  <li>
-      			<a href="https://brainbaking.com/index.xml" title="RSS">
-      			  <span class="fa-stack fa-lg">
-        				<i class="fa fa-circle fa-stack-2x"></i>
-        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-      			  </span>
-      			</a>
-    		  </li>		
+</div>
+  <div class="item">
 
-        </ul>
-        <p class="credits copyright text-muted">
-    	  <a href="https://brainbaking.com/about">Wouter Groeneveld</a>
-    	  &nbsp;&bull;&nbsp;
-    	  No copyright - <a href="https://github.com/wgroeneveld/brainbaking" target="_blank">Hack away!</a>
-    		  
-    	  
-    	  &nbsp;&bull;&nbsp;
-    	  <a href="https://brainbaking.com/">
-          <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;Brain Baking
-        </a>
-    	  
-  	    </p>
-  	    
-    	<p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.21</a> powered &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/halogenica/beautifulhugo" target="_blank">Beautiful Hugo</a> adapted to <a href="https://github.com/wgroeneveld/beautifulbaking">Beautiful Baking</a>
-          
-    	</p>
-      </div>
-    </div>
-  </div>
-</footer>
+    <h4><a href="/post/vb6-unit-testing/">Unit testing in Legacy Projects: VB6</a></h4>
 
-<script src="https://brainbaking.com//js/jquery-1.11.2.min.js"></script>
-<script src="https://brainbaking.com//js/bootstrap.min.js"></script>
-<script src="https://brainbaking.com//js/main.js"></script>
-<script src="https://brainbaking.com/js/highlight.min.js"></script>
-<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-<script>
-  hljs.initHighlightingOnLoad();
-</script>
+    
+    
+    
 
+</div>
+ 
+        </div>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        <hr/>
 
-ga('create', 'UA-45748221-1', 'auto');
-ga('send', 'pageview');
-</script>
+    
 
+    
 
+</main>
 
-  </body>
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brainbaking</a></p>
+
+        </footer>
+       
+    </body>
+
 </html>
+

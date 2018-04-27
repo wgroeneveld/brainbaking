@@ -2,10 +2,10 @@
 aliases = [
     "/talks/"
 ]
+title = "Teaching"
+icontag = "fa-graduation-cap"
 +++
 
-
-# Teaching
 
 #### 2018
 

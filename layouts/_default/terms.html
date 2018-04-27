@@ -1,0 +1,54 @@
+{{ partial "header" . }}
+
+<main>
+
+
+    <h2><i class='fa {{ .Params.icontag }}'></i>&nbsp;{{ .Title }}</h2>
+
+    <hr/>
+
+    {{ with .Content }}
+    <div class="text-justify">
+    	{{ . }}
+	</div>
+	{{ end }}
+
+    <div class="text-justify">
+
+		<!-- https://discourse.gohugo.io/t/lists-of-content-divided-by-posts-first-letter/8534/2 - create a list with all uppercase letters -->
+		{{ $letters := split "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "" }}
+
+		<!-- range all pages sorted by their title -->
+		{{ range .Data.Pages.ByTitle }}
+		  <!-- get the first character of each title. Assumes that the title is never empty! -->
+		  {{ $firstChar := substr .Title 0 1 | upper }}
+		 
+		  <!-- in case $firstChar is a letter -->
+		  {{ if $firstChar | in $letters }}
+		    <!-- get the current letter -->
+		    {{ $curLetter := $.Scratch.Get "curLetter" }}
+		    <!-- if $curLetter isn't set or the letter has changed -->
+		    {{ if ne $firstChar $curLetter }}
+			    <!-- update the current letter and print it -->
+	  			</ul>
+	  			<hr style="clear: both;"/>
+		      	{{ $.Scratch.Set "curLetter" $firstChar }}
+
+	      		<h4 style="float: left; color: grey;">
+	      			<i class='fa fa-tag'></i>&nbsp;{{ $firstChar }}
+      			</h4>
+	      		<ul style="text-align: left; float: left; margin-left: 20px; width: 80%; list-style-type: none; border-left: #eee 1px solid;">
+		    {{ end }}
+
+		   	<li>
+			    <h4>
+			    	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+			    </h4>
+			</li>
+		  {{ end }}
+		{{ end }} 
+	</div>
+
+</main>
+
+{{ partial "footer" . }}
