@@ -34,7 +34,7 @@ Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://git
 
 #### Drawing
 
-* Starting out to [learn](/post/drawing-week-01) how to use ink other than writing. 
+* Starting out to [learn](/post/teaching-yourself-to-draw/) how to use ink other than writing. 
 
 ## Where good ideas come from: Books
 

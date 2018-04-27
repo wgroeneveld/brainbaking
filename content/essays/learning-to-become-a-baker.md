@@ -27,8 +27,8 @@ Eating without cooking it yourself abruptly stopped when I rented an appartment.
 It didn’t stop there, that was only the beginning. I started researching on the internet, gathering more and more recipes, experimenting with the bread baking machine on using different flours, mixing them with fruits and nuts. (using fresh kiwi’s was a failure, but hey, at least I tried, right?)
 After another year, I stumbled upon one of the many food blogs, “[Food wishes](http://foodwishes.blogspot.be/2008/03/follow-sourdough-day-1-can-you-say.html)” with chef John, where he explained the process of creating a “sourdough”. In Belgium, bakers don’t use sourdough, so I didn’t even know what that meant. It was so fascinating that I decided to try that myself.
 
-![Most people I bake for even complain about the “holes” — their chocolate spread drops thorugh them!](/img/brood1.jpg)
-_Most people I bake for even complain about the “holes” — their chocolate spread drops thorugh them!_
+![Most people I bake for even complain about the “holes” — their chocolate spread drops through them!](/img/brood1.jpg)
+_Most people I bake for even complain about the “holes” — their chocolate spread drops through them!_
 
 Which of course worked with enough patience. As soon as my sourdough starter was active, I got really obsessed with baking bread.Not just bread, but **bread** — the real stuff, hand crafted, with (sometimes extremely) long fermentation times. I gave away my bread baking machine (and made someone else happy with their first baking experience) and started investing my time and money in artisan bread baking books like “Bread”. I had to order everything on the internet as I couldn’t find a single book on the topic locally which is very,_very_ sad.
 
