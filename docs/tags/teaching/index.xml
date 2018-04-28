@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Tue, 30 May 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Thinking in terms of objects</title>
+      <link>https://brainbaking.com/post/thinking-in-terms-of-objects/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/thinking-in-terms-of-objects/</guid>
+      <description>Writing software isn&amp;rsquo;t much different than describing a world. Thé world, where we live in, is a world, not the only one. With software, we could, theoretically speaking, describe our own world. If we don&amp;rsquo;t thinkg about software, how would we describe that or another world? How would I build a fantasy world in a noval where my readers can relate to the world and be engaged?
+By describing with our language.</description>
+    </item>
     
     <item>
       <title>Are you handing over enough when inspiring someone?</title>

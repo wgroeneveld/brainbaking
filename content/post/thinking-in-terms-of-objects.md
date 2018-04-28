@@ -1,108 +1,122 @@
 ---
-title: 'Denken in termen van objecten'
-date: '2018-04-25'
-subtitle: Software ontwerp in termen van objecten
+title: 'Thinking in terms of objects'
+date: '2018-04-28'
+subtitle: An introduction to software design in terms of objects
 tags:
 - teaching
-published: false
+published: true
 ---
 
-Software schrijven is niet veel anders dan een wereld beschrijven. Dé wereld, waarin wij leven, is één wereld. Met software kunnen we dus theoretisch gezien onze wereld beschrijven. Als we even niet aan software ontwikkeling denken, hoe beschrijven we dan een of de wereld? Hoe bouw ik een fantasie wereld op in een roman waarbij mijn lezers zich comfortabel kunnen inleven in die wereld? 
+Writing software isn't much different than describing a world. Thé world, where we live in, is **a** world, not the **only** one. With software, we could, theoretically speaking, describe our own world. If we don't thinkg about software, how would we describe that or another world? How would I build a fantasy world in a noval where my readers can relate to the world and be engaged? 
 
-Door **beschrijvingen** met behulp van onze **taal**. Of deze beschrijving een a priori of a posteriori redenering is maarkt niet uit. 
+By **describing** with our **language**. If there descriptions are a priori or a posteriori doesn't really matter. 
 
-Ik kan het volgende beweren:
+I can claim the following
 
-	"twee plus drie is vijf" 
+> "Two plus three is five" 
 
-Hier zijn geen zintuigen mee gemoeid, en dit is een tautologie. (A = A, 2 + 3 = 5, de linkerkant van de vergelijking is de rechterkant en omgekeerd.) 
-Deze uitspraak kan je moeilijk in een object steken, want als we deze zin deconstrueren, kunnen we de volgende elementen er uit halen:
+No senses are involed in this claim, and this is a tautology. (A = A, 2 + 3 = 5, the left-hand side of the equation is the right-hand side and the other way around.) This claim is a bit more difficult to put in terms of objects, because when we try to decronstruct the sentence, we can extract the following elements:
 
-- wat is "plus" (een operatie)
-- wat is "twee" en "drie" en "vijf" (een getal)
-- wat is "is" (de gelijkstelling)
+- What is "plus" (an operation)
+- What is "two", "three" and "five" (numbers)
+- What is "is" (the equation)
 
-De "operatie" is iets wat we met "getallen" kunnen doen. Ik zet hier "operatie" tussen haakjes omdat het een eigenschap aanduidt op het tweede woord tussen haakjes, "getal". We leiden dus het volgende object af met de volgende eigenschappen:
+THe "operation" is something we can do with the "numbers". I put operation between quotes because it denotes a property on the second word between quotes, "numbers". Thus we can deduct the following object with properties:
 
-	Getal {
-		plus(Getal ander);
+	Number {
+		plus(Number other);
 	}
 
-Ik kan als tweede voorbeeld het volgende beweren:
+As we know, in any (modern) programming language, the concept of numbers is almost always defined for us. "Things" involving mathematics - or any a priori claim - are usually provided. In _Ruby_, numbers are first-class citizens meaning they are also objects - as they should be.
 
-	"Een boom heeft een groen blad"
+As a second example, I could also claim:
 
-Dit is duidelijk een a posteriori uitspraak: om dit te kunnen verifiëren zou ik met mijn ogen moeten zien dat het blad "groen" is. 
-Hier kunnen we veel makkelijker eigenschappen en objecten uit deduceren:
+> "A tree has a green leaf"
 
-- wat is "boom" (een "iets")
-- wat is "heeft" (de eigenschap toekennend)
-- wat is "groen" (een eigenschap)
-- wat is "blad" (een eigenschap van boom, én een "iets" op zichzelf)
+This clearly is a posteriori claim: to be able to verify its truthness, you'd have to see with your own eyes that the leaf is in fact green. A posteriori claims are much easier to convert into objects as we have implicitly learned our own language empirically.
 
-Zodra we ergens in een zin **heeft een x** tegen komen weten we dat we een eigenschap van een "iets" aan het beschrijven zijn. Dus:
+So:
 
-	Boom {
-		groen blad
+- What is "tree" (a "something")
+- What is "has" (denoting a property)
+- What is "green" (a property)
+- What is "leaf" (another property, of the tree, and a "something")
+
+As soon as we encounter **has a** in a sentence, we know it means the left-hand side of the "has a" is the one receiving the property, and the right-hand side is the property we're talking about.
+
+> "(A tree) HAS A (green leaf)"
+
+Gives us:
+
+	Tree {
+		green leaf
 	}
 
-Alles tussen de haakjes beschrijft hoe het object genaamd Boom er uit ziet. Een boom heeft een groen blad. Wat is een groen blad?
+But what's a green leaf?
 
-	Boom {
-		Blad {
-			groen
+	Tree {
+		Leaf {
+			green
 		}
 	}
 
-"Een boom heeft een groen blad" betekent "Een boom heeft een blad, dat blad **is groen**". Wat betekent "is groen"? "Een boom heeft een blad, dat blad heeft een **kleur**, die kleur **is groen**." We hebben dus nog een extra eigenschap nodig die impliciet uit in de structuur "een groen blad" verborgen zit! 
+"A tree has a green leaf" means "a tree has a leaf, and that leaf is green". But what does "green" mean?
 
-	Boom {
-		Blad {
-			kleur: groen
+> "(A tree) HAS A (leaf). (That leaf) HAS A (color), (That color) IS (green)"
+
+So we're missing a few properties that are hidden within the structure of our language! 
+
+	Tree {
+		Leaf {
+			Color: green
 		}
 	}
 
-Het schema is verwarrend als we spreken over "Een boom heeft een groen blad" en "Een struik heeft een bruin blad", want dan moeten we:
+The schematic is confusing when we're talking about "a tree has a green leaf" and "a Shrubbery has a brown leaf". In that case we'd also need to define:
 
-	Struik {
-		Blad {
-			kleur: bruin
+	Shrubbery {
+		Leaf {
+			Color: brown
 		}
 	}
 
-ook definiëren, en zijn twe twee keer het object "blad" aan het beschrijven, terwijl we het over hetzelfde object hebben. Een "blad" kan ook een "bladzijde" of een A4 pagina betekenen, maar **in context van** struiken en bomen is het duidelijk dat "blad" het blad met fotosynthese betekent. 
+, And those "Leaf" objects are one and the same: they describe a leaf that can have the property color. Of course, the leaves of the tree are not the same as the leaves on the shrubbery, but they both can be classified as "Leaf". **in context of** shrubberies and trees, it's obvious that we're talking about leaves as organic material with a color that can wither.
 
-	Boom {
-		blad(groen)
+	Tree {
+		leaf(green)
 	}
 
-	Struik {
-		blad(bruin)
+	Shrubbery {
+		leaf(brown)
 	}
 
-	Blad {
-		kleur
+	Leaf {
+		color
 	}
 
-In feite kan ik in mijn eerste bewering dit afleiden: "getallen kun je met elkaar optellen" verder vereenvoudigd tot "getallen kun je met elkaar plussen" en dus "Een getal heeft een plus met een ander getal". 
+In fact, in my first claim, I can deduct the following: "numbers can be added up with each other" simplified to "numbers can be _plussed_ with each other" and thus "(a Number) HAS A (plus another number)".
 
-Merk op dat, in een **formele taal** zoals een programmeertaal, we objecten niet syntactisch exact zoals we de spreektaal hanteren. 
+Notice that, in a **formal language** such as a programming language, objects aren't handled exactly the same as our syntactically correct speaking language:
 
-- "Een groen blad" wordt "**object** blad met **eigenschap** kleur die groen **is**"
-- "Een luie ambtenaar" wordt "**object** ambtenaar met **eigenschap** karakter die lui **is**"
+- "A green leaf" becomes "**object** leaf with **property** color that **is** green" - I didn't talk about colors at all!
+- "A lazy employer" becomes "**object** employer with **property** character that **is** lazy" - I didn't talk about character at all!
 
-De impliciete extra eigenschappen die we nodig hebben, "kleur" en "karakter", kunnen op zichzelf staande objecten zijn!
+Those implicit extra properties that we need, "color" and "character", can be valid objects on their own.
 
-	Kleur {
-		Roodwaarde
-		Groenwaarde
-		Blauwwaarde
-		Alfawaarde
+	Color {
+		Redvalue
+		Greenvalue
+		Bluevalue
+		Aphavalue
 	}
 
-	Karakter {
-		Goedgezindheid
-		Werkgezindheid
+	Character {
+		Wellbeingness
+		Laborwillingness
 	}
 
-De zuivere kleur "groen" is dan Kleur(rood: 0, groen: max, blauw: 0, alfa: max). Het karakter "lui" is dan Karakter(goedgezindheid: ?, werkgezindheid: laag). Een 
+The pure color "green" could then be defined as Color(red: 0, green: max, blue: 0, alpha: max). There character "lazy" could then be defined as Character(Wellbeingness: ?, Laborwillingness: low). Notice the first property of the object "character": it's undefined. It's there, but we don't care if we're talking about a lazy character. We do care about the red, blue and alpha values if we're talking about pure green: otherwise a color wouldn't be viewed as "green". 
+
+Organic matter in our own world consists of other organic matter, that can be reduced to chemicals, that can be reduced to subatoms. That doesn't neccecarily mean we should introduce all those concepts in the world we're building. **Only introduce a concept if it has some meaning** in your world. Are you going to do something with it? Will it be able to decide things on it's own? Will it contain logic? If that is not the case, don't bother. 
+
+Remember to make _implicit concepts_ **explicit**. Don't forget "color"!

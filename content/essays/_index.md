@@ -15,10 +15,10 @@ Ik ontdekte lang geleden de stereotypische "positieve psychologie" boeken die mi
 </div>
 <div class="row">
     <div class="col-md-6">
-        De Werken van bovenstaande grote filosofen  zijn allemaal geschreven in de moedertaal van de auteur. Ik heb jaren geprobeerd om mijn denken om te zetten in de gewenste Internet taal (Engels), en ben tot de conclusie gekomen dat dit niet werkt. Daarom zijn onderstaande werken geschreven in het Nederlands vanaf 2018. 
+        De Werken van bovenstaande grote filosofen  zijn allemaal geschreven in hun moedertaal. Ik heb jaren geprobeerd om mijn denken om te zetten in de gewenste Internet taal (Engels), en ben tot de conclusie gekomen dat dit niet werkt. Daarom zijn onderstaande werken geschreven in het Nederlands vanaf 2018. 
     </div>
     <div class="col-md-6">
-        The works of big philosophers I admire are all written in their own native language. For years I've tried to convert my thinking into the widely-accepted Internet language (English), and I've concluded that this simply does not work. That's why the works below are all written in Dutch since 2018.
+        The works of big philosophers I admire are all written in their native language. For years I've tried to convert my thinking into the widely-accepted Internet language (English), and I've concluded that this simply does not work. That's why the works below are all written in Dutch since 2018.
     </div>
 </div>
 

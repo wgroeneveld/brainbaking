@@ -20,7 +20,7 @@ Those areas of knowledge include:
 * I love dynamic languages. I also love converting the haters to the dark side. I teach javascript as a dynamic and functional language - it helps to create your own funky labs to people get more engaged.
 * Pair programming used as a tool to learn from each other and to improve code quality are two values I believe in.
 
-Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://github.com/wgroeneveld).
+Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://github.com/wgroeneveld) or [<i class='fa fa-paperclip'></i>&nbsp;Curriculum Vitae](/files/groeneveldw_cv.pdf) in Dutch.
 
 #### Baking
 
