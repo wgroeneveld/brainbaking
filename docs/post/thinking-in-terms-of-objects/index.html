@@ -113,6 +113,15 @@ main .text-justify blockquote p {
 
 </style>
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Thinking in terms of objects</title>
@@ -275,9 +284,13 @@ main .text-justify blockquote p {
 </div>
 
 
-    <br> <div class="text-justify"><p>Writing software isn&rsquo;t much different than describing a world. Thé world, where we live in, is <strong>a</strong> world, not the <strong>only</strong> one. With software, we could, theoretically speaking, describe our own world. If we don&rsquo;t thinkg about software, how would we describe that or another world? How would I build a fantasy world in a noval where my readers can relate to the world and be engaged?</p>
+    <br> <div class="text-justify">
+
+<p>Writing software isn&rsquo;t much different than describing a world. <strong>The</strong> world, where we live in, is <strong>a</strong> world, not the <strong>only</strong> one. With software, we could, theoretically speaking, describe our own world. If we don&rsquo;t think about software, how would we describe that or another world? How would I build a fantasy world in a novel where my readers can relate to the world and be engaged?</p>
 
 <p>By <strong>describing</strong> with our <strong>language</strong>. If there descriptions are a priori or a posteriori doesn&rsquo;t really matter.</p>
+
+<h2 id="using-language-to-describe-a-world">Using language to describe a world</h2>
 
 <p>I can claim the following</p>
 
@@ -285,7 +298,7 @@ main .text-justify blockquote p {
 <p>&ldquo;Two plus three is five&rdquo;</p>
 </blockquote>
 
-<p>No senses are involed in this claim, and this is a tautology. (A = A, 2 + 3 = 5, the left-hand side of the equation is the right-hand side and the other way around.) This claim is a bit more difficult to put in terms of objects, because when we try to decronstruct the sentence, we can extract the following elements:</p>
+<p>No senses are involved in this claim, and this is a tautology. (A = A, 2 + 3 = 5, the left-hand side of the equation is the right-hand side and the other way around.) This claim is a bit more difficult to put in terms of objects, because when we try to decronstruct the sentence, we can extract the following elements:</p>
 
 <ul>
 <li>What is &ldquo;plus&rdquo; (an operation)</li>
@@ -308,7 +321,7 @@ main .text-justify blockquote p {
 <p>&ldquo;A tree has a green leaf&rdquo;</p>
 </blockquote>
 
-<p>This clearly is a posteriori claim: to be able to verify its truthness, you&rsquo;d have to see with your own eyes that the leaf is in fact green. A posteriori claims are much easier to convert into objects as we have implicitly learned our own language empirically.</p>
+<p>This clearly is a posteriori claim: to be able to verify its truthfulness, you&rsquo;d have to see with your own eyes that the leaf is in fact green. A posteriori claims are much easier to convert into objects as we have implicitly learned our own language empirically.</p>
 
 <p>So:</p>
 
@@ -406,9 +419,89 @@ Character {
 
 <p>The pure color &ldquo;green&rdquo; could then be defined as Color(red: 0, green: max, blue: 0, alpha: max). There character &ldquo;lazy&rdquo; could then be defined as Character(Wellbeingness: ?, Laborwillingness: low). Notice the first property of the object &ldquo;character&rdquo;: it&rsquo;s undefined. It&rsquo;s there, but we don&rsquo;t care if we&rsquo;re talking about a lazy character. We do care about the red, blue and alpha values if we&rsquo;re talking about pure green: otherwise a color wouldn&rsquo;t be viewed as &ldquo;green&rdquo;.</p>
 
-<p>Organic matter in our own world consists of other organic matter, that can be reduced to chemicals, that can be reduced to subatoms. That doesn&rsquo;t neccecarily mean we should introduce all those concepts in the world we&rsquo;re building. <strong>Only introduce a concept if it has some meaning</strong> in your world. Are you going to do something with it? Will it be able to decide things on it&rsquo;s own? Will it contain logic? If that is not the case, don&rsquo;t bother.</p>
+<h2 id="relationships-in-a-world">Relationships in a world</h2>
+
+<p>When thinking in terms of objects, we&rsquo;ve seen two major categories of partial sentences:</p>
+
+<ol>
+<li>X <strong>HAS-A</strong> Y</li>
+<li>X <strong>IS-A</strong> Y</li>
+</ol>
+
+<h3 id="1-property-acquisition">1. Property acquisition</h3>
+
+<p>This should hopefully be clear by now after looking at the &ldquo;a tree has a leaf&rdquo; example, leaving behind the complexity of the color.</p>
+
+<h3 id="2-property-definition">2. Property definition</h3>
+
+<p>Without directly using the technical term &ldquo;inheritance&rdquo;, &ldquo;x is y&rdquo; defines X in terms of Y. &ldquo;green is a color&rdquo;, or implicitly &ldquo;the leaf is green&rdquo;. Things can indeed build upon other things by defining <strong>subsets</strong>:</p>
+
+<blockquote>
+<p>&ldquo;a tree has a leaf&rdquo;</p>
+</blockquote>
+
+<p>combined with</p>
+
+<blockquote>
+<p>&ldquo;an oak is a tree&rdquo;</p>
+</blockquote>
+
+<p>means</p>
+
+<blockquote>
+<p>&ldquo;an oak has a leaf&rdquo;</p>
+</blockquote>
+
+<p>, since the oak <strong>is a</strong> tree. We can build a simple schematic of the oak like this:</p>
+
+<pre><code>Tree {
+    leaf
+}
+
+Oak is-a Tree {
+}
+</code></pre>
+
+<p>To avoid having to redefine the leaf as part of the oak, a <em>keyword</em> is used to denote the relationship between the oak and the tree. Once the assumption of the tree containing a leaf holds, we can safely conclude the oak also contains a leaf. In Java, &ldquo;is-a&rdquo; means <code>extends</code> and <code>implements</code>, in C# or C++ <code>:</code>.</p>
+
+<p>Organic matter in our own world consists of other organic matter, that can be reduced to chemicals, that can be reduced to sub-atoms. That doesn&rsquo;t necessarily mean we should introduce all those concepts in the world we&rsquo;re building. <strong>Only introduce a concept if it has some meaning</strong> in your world. Are you going to do something with it? Will it be able to decide things on it&rsquo;s own? Will it contain logic? If that is not the case, don&rsquo;t bother.</p>
 
 <p>Remember to make <em>implicit concepts</em> <strong>explicit</strong>. Don&rsquo;t forget &ldquo;color&rdquo;!</p>
+
+<h2 id="in-practice">In practice</h2>
+
+<p>The most challenging part about writing (software) is deconstructing the requirements in the above terms to be able to identify our much-needed objects. Let&rsquo;s look at an example.ca</p>
+
+<p>You&rsquo;re creating a simple game in which a character (Mario) can move in a 2D world, collecting coins within a time limit. Mario moves in a level that has enemies and can die if he touches one.</p>
+
+<p>Redefine that world in those sentences or <em>acceptance criteria</em>:</p>
+
+<ol>
+<li>Mario can move =&gt; Mario &ldquo;has a&rdquo; move()</li>
+<li>Moving can be done on the X or Y axis =&gt; move &ldquo;needs a&rdquo; X, Y</li>
+<li>Mario has a total score</li>
+<li>Mario can collect coins</li>
+<li>A coin has a static score</li>
+<li>The world has a time limit</li>
+<li>Enemies can move</li>
+<li>Mario can touch someone</li>
+<li>Enemies can touch someone</li>
+<li>Die is &ldquo;game over&rdquo;</li>
+<li>&hellip;</li>
+</ol>
+
+<p>Since Mario and the enemies share properties, it would be wise to reduce the clutter by defining both as a <code>Player</code> or moving object.</p>
+
+<p>All these claims are true context of the <code>Game</code> or <code>2D World</code> (we also might need those concepts as our base collection of objects). The fact that Mario <strong>can</strong> move has the same connotation that Mario <strong>has-a</strong> &ldquo;move&rdquo; property. We could define a third category of a sentence:</p>
+
+<blockquote>
+<p>Move needs a X and Y (in order to &ldquo;work&rdquo;)</p>
+</blockquote>
+
+<p>Mario can move, but won&rsquo;t move without providing a direction. Since the world is a 2D world, there will be two (dimensions) times two (positive, negative) possibilities.
+Instead of saying &ldquo;move needs a x&rdquo;, one can also say <em>&ldquo;move has-a direction&rdquo;</em> that eliminates the need of a third keyword.</p>
+
+<p>Now it&rsquo;s your turn to come up with a schematic for the identified objects! Try not to <strong>over-analyze</strong> the criteria by building something too complex. It will grow - and shrink - in time.</p>
 </div>
 
     
