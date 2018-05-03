@@ -42,5 +42,26 @@ The application right now uses Extjs as UI and C# as backend, and lets ext do th
 Classic builders For years, I&amp;rsquo;ve been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called &amp;ldquo;Object Mothers&amp;rdquo;, static methods which simply create and fill up an object, passing in a huge amount of parameters.</description>
     </item>
     
+    <item>
+      <title>A look at dynamic languages</title>
+      <link>https://brainbaking.com/post/dynamic-languages/</link>
+      <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/dynamic-languages/</guid>
+      <description>Dynamic Languages: Constructs vergelijken Deze pagina vergelijkt verschillende dynamische talen in een poging om een overzicht te maken tussen de alsmaar groeiende lijst. De meest gebruikte features van zulke talen worden hieronder opgelijst.
+Het verschil tussen MOPs en Prototypal inheritance ❗️ Javascript heeft géén Meta Object Protocol (MOP) dat de taal dynamisch maakt, maar bouwt verder op prototypes. Dat wil zeggen dat het klassieke inheritance systeem niet bestaat in Javascript, maar wel nagebootst kan worden door objecten te laten afleiden van objecten.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to JavaScript</title>
+      <link>https://brainbaking.com/post/introduction-to-js/</link>
+      <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/introduction-to-js/</guid>
+      <description>Javascript Inleiding Primitives Soorten In javascript zijn er slechts 3 primitives:
+ string (geassocieerd object: String) boolean (geassocieerd object: Boolean) number (geassocieerd object: Number)  Primitives zijn immutable! Toekennen van properties maakt ook een tijdelijk object aan, dus dit heeft geen nut.
+Soort afchecken Aangezien JS loosely typed is, kunnen we nooit weten wat er nu in var variabele; steekt op een bepaald moment in de code. Om dit op te lossen kan men typeof gebruiken, een functie die een string teruggeeft wat het type van die variabele is.</description>
+    </item>
+    
   </channel>
 </rss>

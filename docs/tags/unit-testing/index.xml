@@ -80,5 +80,27 @@ On previous projects I&amp;rsquo;ve worked on, development PCs came with a local
 Test Driven Development (or TDD), it&amp;rsquo;s one of those buzz words which usuallly appear in the same sentence with &amp;ldquo;scrum&amp;rdquo; or &amp;ldquo;XP&amp;rdquo;. But in practice, I&amp;rsquo;ve seen few people actually applying it all the way through. What do I mean by that? You&amp;rsquo;re probably very familiar with, say Java or .NET, and you know how to write unit tests in that language using your beloved IDE.</description>
     </item>
     
+    <item>
+      <title>C&#43;&#43; Basics: unit testing</title>
+      <link>https://brainbaking.com/post/cplusplus-testing/</link>
+      <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/cplusplus-testing/</guid>
+      <description>Using Google Test Downloaden op https://code.google.com/p/googletest/downloads/list
+Waarom?
+ Platform onafhankelijk Snelheid Geen gezeik met Managed C++, compatibel met &amp;ldquo;eender wat&amp;rdquo; (enige vereiste: cc compiler variant) Wordt veel gebruikt (Chromium, Stack overflow)  Waarom niet?
+ slechte of geen integratie met VStudio (zie onder) wéér een andere syntax dan MS .NET testen beetje awkward assertions  Assertions schrijven #include &amp;quot;../BaseCode/BaseCode.h&amp;quot; #include &amp;quot;gtest/gtest.h&amp;quot; TEST(MyTestCase, MyTest_Success) { EXPECT_EQ(2, MySum(1, 1)); } TEST(MyTestCase, MyTest_Failure) { EXPECT_EQ(3, MySum(1, 2)); }  Waarbij dan BaseCode uw system under test zaken bevat (waar MySum defined is)</description>
+    </item>
+    
+    <item>
+      <title>Scheme tips and tricks</title>
+      <link>https://brainbaking.com/post/scheme/</link>
+      <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/scheme/</guid>
+      <description>Variable arguments Bron: http://www.cs.utexas.edu/ftp/garbage/cs345/schintro-v14/schintro_68.html
+(define (stack . args) (display args)) (define (plus a b) (stack a b) (+ a b)) (plus 1 2)  Print in een lijst (1 2) af. In scheme is het mogelijk om args op te splitsen, alles dat na de &amp;ldquo;.&amp;rdquo; komt, wordt samengenomen als een lijst in een speciale variabele die de rest van de argumenten binnen pakt. Je kan dus ook x aantal argumenten &amp;ldquo;vast&amp;rdquo; zetten en de rest laten opvangen door een lijst.</description>
+    </item>
+    
   </channel>
 </rss>

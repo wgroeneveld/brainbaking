@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Classes on Brain Baking</title>
+    <link>https://brainbaking.com/tags/classes/</link>
+    <description>Recent content in Classes on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Tue, 01 Oct 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://brainbaking.com/tags/classes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python Class structure basics</title>
+      <link>https://brainbaking.com/post/python-basics/</link>
+      <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/python-basics/</guid>
+      <description>Handy links:
+ special class methods like _ getattr _ and _ new _ dive into python - native datatypes Inside story on new style classes - ter info: Python3 heeft enkel &amp;ldquo;newstyle&amp;rdquo; classes!  Method overriding Is niet mogelijk. Gebruik default values!
+def func(i, j = 2, k 3): return i + j + k func(1) # 6 func(1, 1) # 5 func(1, 1, 1) # 3  Wat wel gaat, evt met decorators, zie Five-minute multimethods in Python - is __call__ implementeren en dan met metaprogrammeren te loopen over alle methods en te kijken of de argumenten overeen komen met het type dat required is.</description>
+    </item>
+    
+    <item>
+      <title>Ruby Class structures basics</title>
+      <link>https://brainbaking.com/post/ruby-classes/</link>
+      <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/ruby-classes/</guid>
+      <description>Ruby Classes Closures and lambda&amp;rsquo;s Weer 4 verschillende mogelijkheden in Ruby, zie Proc and Lambda in Ruby
+Native &amp;ldquo;blocks&amp;rdquo; aanmaken Is niet mogelijk. a = { puts &amp;quot;hello&amp;quot; } geeft een Syntax error; dit moet effectief met Proc.new gebeuren.
+Lambdas aanmaken Kan ook weer op twee manieren:
+a = lambda { puts &amp;quot;hello&amp;quot; } b = -&amp;gt; { puts &amp;quot;hello&amp;quot; }  Blocks als argumenten doorgeven Wordt slechts één aanvaard, Procs zijn objecten en kan dus op eender welke manier.</description>
+    </item>
+    
+  </channel>
+</rss>

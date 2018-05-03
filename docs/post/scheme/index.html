@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <style>
+
+ 
+
+.avatar-container {
+  width: 50px;
+  margin-left: 45px;
+}
+.avatar-container  .avatar-img-border {
+  width: 100%;
+  border-radius: 50%;
+  margin-left: -50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+.avatar-container  .avatar-img {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.intro .freshly-baked {
+  visibility: hidden;
+}
+
+.intro {
+  margin-top: -150px;
+}
+
+@media only screen and (min-width: 500px) {
+  .intro .freshly-baked {
+    visibility: visible;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .intro {
+    margin-top: -40px;
+  }
+
+   .avatar-container {
+    width: 100px;
+  }
+  
+  .avatar-container  .avatar-img-border {
+    width: 100%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+  }
+  
+  .avatar-container  .avatar-img {
+    width: 100%;
+  }
+}
+
+ 
+
+blockquote {
+  color: #888 !important;
+  border-left: 5px solid var(--accent) !important;
+}
+
+main {
+	padding-top: 0 !important;
+}
+
+main .text-justify p {
+  margin: 0 0 20px !important;
+}
+
+main .text-justify blockquote p {
+  margin: 0 !important;
+}
+
+
+.big-img {
+  	background: no-repeat center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	background-size: cover;
+  	-o-background-size: cover;
+
+	border-top: 2px solid lightgray;
+	border-bottom: 1px solid var(--accent);
+}
+
+@media only screen and (min-width: 768px) {
+  .big-img .container {
+    height: 150px;
+  }
+}
+
+ 
+.gr_grid_container {
+}
+
+.gr_grid_book_container {
+   
+  float: left;
+  width: 98px;
+  height: 160px;
+  padding: 0px 0px;
+  border: 1px solid black;
+  margin: 5px;
+  overflow: hidden;
+}
+
+</style>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Scheme tips and tricks</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c#.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.39" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Scheme tips and tricks</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <div class="item">
+
+    <h3>
+        
+        <a href="/post/scheme/">Scheme tips and tricks</a>
+    </h3>
+
+    
+    
+    
+        <h4>Unit testing in Scheme</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<i class='fa fa-calendar'></i>&nbsp;1 October 2013
+    		</span>
+    	</h5>
+    
+
+
+    
+	   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+    
+    
+        <a href="https://brainbaking.com/tags/scheme"><kbd class="item-tag">scheme</kbd></a>
+    
+        <a href="https://brainbaking.com/tags/unit-testing"><kbd class="item-tag">Unit Testing</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h3 id="variable-arguments">Variable arguments</h3>
+
+<p>Bron: <a href="http://www.cs.utexas.edu/ftp/garbage/cs345/schintro-v14/schintro_68.html">http://www.cs.utexas.edu/ftp/garbage/cs345/schintro-v14/schintro_68.html</a></p>
+
+<pre><code class="language-scheme">(define (stack . args)
+  (display args))
+
+(define (plus a b)
+  (stack a b)
+  (+ a b))
+  
+(plus 1 2)
+</code></pre>
+
+<p>Print in een lijst <code>(1 2)</code> af. In scheme is het mogelijk om args op te splitsen, alles dat na de &ldquo;.&rdquo; komt, wordt samengenomen als een lijst in een speciale variabele die de rest van de argumenten binnen pakt. Je kan dus ook x aantal argumenten &ldquo;vast&rdquo; zetten en de rest laten opvangen door een lijst. <code>display</code> print alles in lijst vorm af.</p>
+
+<h3 id="conditional-expressions-and-predicates">Conditional Expressions and Predicates</h3>
+
+<h5 id="debugging-purposes">Debugging purposes</h5>
+
+<ul>
+<li><code>(display arg)</code> print argument in de <code>*scheme*</code> buffer af. (pakt een <strong>lijst</strong> binnen: bvb <code>(display '(&quot;bezig met afdrukken van &quot; arg1 arg2))</code></li>
+<li><code>(newline)</code> maakt een nieuwe lijn in diezelfde buffer.</li>
+</ul>
+
+<h5 id="de-undefined-variabele">de &lsquo;undefined&rsquo; variabele</h5>
+
+<p>Een conditional operator die door alle gevallen heen valt (zoals een switch zonder default), retourneert de variabele <strong>unspecific</strong>. Dit is een reserved keyword:</p>
+
+<pre><code class="language-scheme">(load &quot;./test-manager/load.scm&quot;)
+
+(in-test-group conditionals
+ (define x 0)
+ (define-test (case-fall-through-returns-undefined)
+   (assert-equals unspecific
+		  (cond ((&lt; x 0) 1)
+			((&gt; x 0) 1)))
+   ))
+
+(run-registered-tests)
+</code></pre>
+
+<p>Het is niet mogelijk om die variabele te overschrijven met <code>(define unspecific 8934)</code>, volgende fout wordt dan gegenereerd: &ldquo;Premature reference to reserved name: unspecific.&rdquo;</p>
+
+<h3 id="implementaties">Implementaties</h3>
+
+<ul>
+<li>MIT-Scheme: <a href="http://www.gnu.org/s/mit-scheme/">http://www.gnu.org/s/mit-scheme/</a> -&gt; ingebouwde emacs evaluator</li>
+<li>Racket: <a href="http://racket-lang.org/">http://racket-lang.org/</a></li>
+</ul>
+
+<h3 id="testen-schrijven">Testen schrijven</h3>
+
+<p>Testing framework: Zie <a href="http://web.mit.edu/~axch/www/testing-1.2.html">http://web.mit.edu/~axch/www/testing-1.2.html</a></p>
+
+<p>Inladen test-manager &amp; testen definen en kunnen wrappen in elkaar à-la Jasmine in JS:</p>
+
+<pre><code class="language-scheme">(load &quot;./test-manager/load.scm&quot;)
+
+(in-test-group my-first-tests
+
+  (in-test-group getallekes
+    
+	 (define-test (add-simple-numbers)
+	   (assert-equals (my-add 1 2) 3)))
+	   
+	(in-test-group meer-getallekes
+	 (define-test (add-more-complex-numbers)
+	   (assert-equals (my-add 3 7) 10))))
+
+(run-registered-tests)
+</code></pre>
+
+<p>Achteraf altijd <strong><code>run-registered-tests</code></strong> evalueren, in de default scheme editor wordt dan de test output getoond. (Default editor = <strong>scheme</strong>*, gewoon enter drukken bij open doen nieuwe editor)</p>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header"><i class="fa fa-newspaper-o"></i>&nbsp;Related by Tags</h4>
+
+        <div class="text-justify">
+             <div class="item">
+
+    <h4><a href="/post/cplusplus-testing/">C&#43;&#43; Basics: unit testing</a></h4>
+
+    
+    
+    
+        C&#43;&#43; Basics: Unit Testing with GTest <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;1 October 2013</span>
+    
+
+</div>
+ 
+        </div>
+
+        <hr/>
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

@@ -158,6 +158,46 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/post/dynamic-languages/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/post/cplusplus-basics/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/post/cplusplus-testing/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/post/unix-cmd/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/post/introduction-to-js/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/post/python-basics/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/post/ruby-classes/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/post/scheme/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/no-vegetarians-do-not-eat-fish/</loc>
     <lastmod>2013-09-06T00:00:00+00:00</lastmod>
   </url>
@@ -219,6 +259,12 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/classes/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/tags/closures/</loc>
     <lastmod>2013-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -227,6 +273,12 @@
   <url>
     <loc>https://brainbaking.com/tags/clr/</loc>
     <lastmod>2014-10-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/cmd/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -279,6 +331,12 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/dynamiclangs/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/tags/eclipse/</loc>
     <lastmod>2013-10-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -316,6 +374,12 @@
   <url>
     <loc>https://brainbaking.com/tags/groovy/</loc>
     <lastmod>2013-11-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/gtest/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -410,8 +474,20 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/ruby/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/tags/scenario-testing/</loc>
     <lastmod>2015-01-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/scheme/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -474,6 +550,12 @@
   <url>
     <loc>https://brainbaking.com/tags/unit-testing/</loc>
     <lastmod>2016-12-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/unix/</loc>
+    <lastmod>2013-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

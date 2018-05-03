@@ -24,7 +24,13 @@
 		    <h4>
 		    	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
 		    </h4>
-		    {{ .Params.subtitle }} <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}</span>
+	    	{{ with .Params.archived }}
+				<kbd class="item-tag">Archived</kbd>
+	    	{{ end }}		    
+		    {{ .Params.subtitle }} 
+		    <span style="color: lightgrey;">
+		    	<i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}
+		    </span>
 		</li>
 	    {{ end }}
 	</ul>

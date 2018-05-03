@@ -6,6 +6,7 @@ pygmentsUseClasses = true
 pygmentCodeFences = true
 googleAnalytics = "UA-45748221-1"
 publishDir = "docs"
+enableEmoji = true
 
 [taxonomies]
     tag = "tags"
@@ -19,7 +20,7 @@ publishDir = "docs"
     backgroundColor = "white"
     highlight = true
     highlightStyle = "paraiso-dark"
-    highlightLanguages = ["c#", "java", "scala", "javascript"]
+    highlightLanguages = ["c#", "c", "scheme", "python", "java", "scala", "javascript"]
     font = "Open Sans"
     copyright = "No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a>"
 

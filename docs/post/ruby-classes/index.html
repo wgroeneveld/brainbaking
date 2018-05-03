@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <style>
+
+ 
+
+.avatar-container {
+  width: 50px;
+  margin-left: 45px;
+}
+.avatar-container  .avatar-img-border {
+  width: 100%;
+  border-radius: 50%;
+  margin-left: -50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+.avatar-container  .avatar-img {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.intro .freshly-baked {
+  visibility: hidden;
+}
+
+.intro {
+  margin-top: -150px;
+}
+
+@media only screen and (min-width: 500px) {
+  .intro .freshly-baked {
+    visibility: visible;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .intro {
+    margin-top: -40px;
+  }
+
+   .avatar-container {
+    width: 100px;
+  }
+  
+  .avatar-container  .avatar-img-border {
+    width: 100%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+  }
+  
+  .avatar-container  .avatar-img {
+    width: 100%;
+  }
+}
+
+ 
+
+blockquote {
+  color: #888 !important;
+  border-left: 5px solid var(--accent) !important;
+}
+
+main {
+	padding-top: 0 !important;
+}
+
+main .text-justify p {
+  margin: 0 0 20px !important;
+}
+
+main .text-justify blockquote p {
+  margin: 0 !important;
+}
+
+
+.big-img {
+  	background: no-repeat center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	background-size: cover;
+  	-o-background-size: cover;
+
+	border-top: 2px solid lightgray;
+	border-bottom: 1px solid var(--accent);
+}
+
+@media only screen and (min-width: 768px) {
+  .big-img .container {
+    height: 150px;
+  }
+}
+
+ 
+.gr_grid_container {
+}
+
+.gr_grid_book_container {
+   
+  float: left;
+  width: 98px;
+  height: 160px;
+  padding: 0px 0px;
+  border: 1px solid black;
+  margin: 5px;
+  overflow: hidden;
+}
+
+</style>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ruby Class structures basics</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c#.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.39" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Ruby Class structures basics</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <div class="item">
+
+    <h3>
+        
+        <a href="/post/ruby-classes/">Ruby Class structures basics</a>
+    </h3>
+
+    
+    
+    
+        <h4>A look at ruby&#39;s lambda&#39;s</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<i class='fa fa-calendar'></i>&nbsp;1 October 2013
+    		</span>
+    	</h5>
+    
+
+
+    
+	   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+    
+    
+        <a href="https://brainbaking.com/tags/ruby"><kbd class="item-tag">ruby</kbd></a>
+    
+        <a href="https://brainbaking.com/tags/classes"><kbd class="item-tag">classes</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h1 id="ruby-classes">Ruby Classes</h1>
+
+<h3 id="closures-and-lambda-s">Closures and lambda&rsquo;s</h3>
+
+<p>Weer 4 verschillende mogelijkheden in Ruby, zie <a href="http://techspry.com/ruby_and_rails/proc-and-lambda-in-ruby/">Proc and Lambda in Ruby</a></p>
+
+<h5 id="native-blocks-aanmaken">Native &ldquo;blocks&rdquo; aanmaken</h5>
+
+<p>Is niet mogelijk. <code>a = { puts &quot;hello&quot; }</code> geeft een Syntax error; dit moet effectief met <code>Proc.new</code> gebeuren.</p>
+
+<h5 id="lambdas-aanmaken">Lambdas aanmaken</h5>
+
+<p>Kan ook weer op twee manieren:</p>
+
+<pre><code class="language-ruby">a = lambda { puts &quot;hello&quot; }
+b = -&gt; { puts &quot;hello&quot; }
+</code></pre>
+
+<h5 id="blocks-als-argumenten-doorgeven">Blocks als argumenten doorgeven</h5>
+
+<p>Wordt slechts één aanvaard, <code>Proc</code>s zijn objecten en kan dus op eender welke manier. Een block is eerder deel van de taal als syntax. (zoals bij <code>do</code>)</p>
+
+<h5 id="een-lambda-is-een-proc">Een lambda is een Proc</h5>
+
+<p>Met twee grote verschillen (zie <a href="http://awaxman11.github.io/blog/2013/08/05/what-is-the-difference-between-a-block/">What is the difference between a block, a proc and a lambda in ruby?</a>):</p>
+
+<ol>
+<li>een <code>lambda</code> controleert argumenten, een <code>Proc</code> kan het niet schelen.</li>
+<li>een <code>return</code> statement in een <code>lambda</code> stopt slechts de closure. In een <code>Proc</code> stopt het de hele enclosing method ❗️</li>
+</ol>
+
+<pre><code class="language-ruby">def proc_test
+  proc = Proc.new { return }
+  proc.call
+  puts &quot;Hello world&quot;
+end
+
+proc_test                 # calling proc_test prints nothing
+</code></pre>
+
+<h3 id="class-methods">Class methods</h3>
+
+<p>Zie <a href="http://www.railstips.org/blog/archives/2009/05/11/class-and-instance-methods-in-ruby/">Class and instance methods in Ruby</a>. Er zijn verschillende manieren om een class method te maken in ruby:</p>
+
+<pre><code class="language-ruby"># Way 1
+class Foo
+  def self.bar
+    puts 'class method'
+  end
+end
+
+Foo.bar # &quot;class method&quot;
+
+# Way 2
+class Foo
+  class &lt;&lt; self
+    def bar
+      puts 'class method'
+    end
+  end
+end
+
+Foo.bar # &quot;class method&quot;
+
+# Way 3
+class Foo; end
+def Foo.bar
+  puts 'class method'
+end
+
+Foo.bar # &quot;class method&quot;
+</code></pre>
+
+<p>Instance methods worden met <code>def name</code> gedefiniëerd, zoals men intuïtief zou aannemen (wow).</p>
+
+<h3 id="reflectie-methods-accessen">&ldquo;Reflectie&rdquo;: Methods accessen</h3>
+
+<p>Dit kan op twee manieren: op een object <strong>instance</strong> of op een <strong>class</strong>, met <code>.method</code> of <code>.static_method</code>, zie <a href="http://www.ruby-doc.org/core-2.1.1/Method.html">Ruby Method doc</a>.</p>
+
+<pre><code class="language-ruby">1.method(:+).call 2 # output: 3
+Fixnum.static_method(:+).bind(1).call 2 # output: 3
+1.method(&quot;+&quot;).unbind().bind(1).call(2) # output: 3
+</code></pre>
+
+<p>Object Methods zijn al gebind en kan je dus losmaken van hun reference indien gewenst - zelfde effect als de <code>static_method</code> call. Je kan blijkbaar zowel een string als een ref meegeven om de naam van de method te resolven.</p>
+
+<h5 id="ik-wil-meer">Ik wil meer</h5>
+
+<p><code>1.methods.each{|x| puts x}</code></p>
+
+<p>of <code>.static_methods</code> natuurlijk. Enkel public of protected, ook van subklassen.</p>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header"><i class="fa fa-newspaper-o"></i>&nbsp;Related by Tags</h4>
+
+        <div class="text-justify">
+             <div class="item">
+
+    <h4><a href="/post/python-basics/">Python Class structure basics</a></h4>
+
+    
+    
+    
+        A crash course in Python classes <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;1 October 2013</span>
+    
+
+</div>
+  <div class="item">
+
+    <h4><a href="/post/dynamic-languages/">A look at dynamic languages</a></h4>
+
+    
+    
+    
+        A comparison on some dynamic languages <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;1 October 2013</span>
+    
+
+</div>
+ 
+        </div>
+
+        <hr/>
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
