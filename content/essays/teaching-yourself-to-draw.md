@@ -181,3 +181,4 @@ Doing these exercises gave me a real boost in confidence and motivated me to dra
 
 Read more on how to draw better in Jen Review's [How to Draw Better](https://www.jenreviews.com/how-to-draw-better/) blog post. 
 
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
