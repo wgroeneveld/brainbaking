@@ -10,7 +10,7 @@ Vanuit die vraag ben ik vertrokken.
 
 Als software ingenieur met meer dan een [decennium ervaring](/about) heb ik een grote interesse ontwikkeld in de manier waarop software tot stand komt. Ik heb een stevige technische achtergrond met een voorliefde om die kennis te delen die zich uit in een actieve rol als coach en lesgever. 
 
-Dat coachen en lesgeven brengt echter niet altijd even veel op. Dat kan natuurlijk aan mij liggen (de manier waarop), aan het de stof die ik wil overbrengen (het onderwerp) of aan de interesse van het doelpubliek (de ontvanger). Bij veel teams waar ik de afgelopen jaren tijd in heb doorgebracht is het moeilijk om iedereen op dezelfde golflengte te krijgen. 
+Het traditioneel coachen en lesgeven brengt echter niet altijd even veel op. Dat kan natuurlijk aan mij liggen (de manier waarop), aan het de stof die ik wil overbrengen (het onderwerp) of aan de interesse van het doelpubliek (de ontvanger). Bij veel teams waar ik de afgelopen jaren tijd in heb doorgebracht is het moeilijk om iedereen op dezelfde golflengte te krijgen. 
 
 <center>
     <img src="/img/sweng_prob.png">
@@ -24,12 +24,17 @@ Vandaar dat ik bovenstaande vraag wil ombuigen naar een doctoraatsvoorstel:
 
 De woorden in de titel verklarend:
 
-1. **Industrial**: Ik wil het hebben over software die in de industrie gemaakt wordt, waar ik altijd een deel van heb uitgemaakt. Het moet concreet toepasbaar zijn. Ik wil nauw samenwerken met bedrijven, niet enkel met een onderwijsinstelling.
+1. **Industrial**: Ik wil het hebben over software die in de industrie gemaakt wordt - de industrie waar ik een integraal deel van uitmaak. Het moet concreet toepasbaar zijn. Ik wil nauw samenwerken met bedrijven, niet enkel met een onderwijsinstelling.
 2. **Requirements**: de link naar wat ontwikkelteams en developers missen, de vraag waaruit ik ben vertrokken.
 3. **Modern**: Het doctoraat moet actueel zijn, in de tegenwoordige tijd. Zelfs al zou het onderzoek jaren duren, daarna moet het nog van toepassing zijn. In de ontwikkelwereld verandert alles bliksemsnel. Ik wil mij focussen op concepten, niet op frameworks die vervangen worden, en zo een blijvende impact maken.
 4. **Software engineer**: met een insteek vanuit de _engineering_ hoek, niet de theoretische computerwetenschappen hoek. In de industrie noemen we onszelf alemaal graag 'ingenieur', maar dat gaat verder dan enkel het technische programmeerwerk. 
 
 ## De inhoud
+
+<center>
+    <a href="/img/phd_summary.jpg"><img src="/img/phd_summary.jpg"></a>
+    Klik om te vergroten.
+</center>
 
 Wat valt er allemaal onder die zogenaamde vereisten? Ik wil fundamenteel onderzoek verrichten naar verschillende vereisten die allemaal één ding gemeen hebben, namelijk het bovenstaand onderwerp. Als we terugdenken aan de vraag "wat missen we", onderscheiden we[^2] een aantal belangrijke **subonderwerpen**.
 
@@ -114,7 +119,7 @@ Een industriëel getint onderzoek zonder directe toepasbaarheid voelt maar slap 
 
 Voor mij persoonlijk, als deels software ontwikkelaar bij [Prato](http://www.prato.be) en deels lesgever aan [KULeuven](http://www.kuleuven.be), is het voornaam dat de toepasbaarheid van het voorstel zowel in de industrie als in de onderwijsinstelling mogelijk is. Ik zou daarom ook nauw willen samenwerken met beide partijen.
 
-### A. In de industrie
+### A. Industriële toepasbaarheid
 
 Academisch onderzoek is leuk voor de industrie gegeven de (technische) gerichtheid van het onderwerp. Desondanks de absractere insteek van het voorstel mik ik op de volgende toepasbaarheid binnen bedrijven:
 
@@ -136,7 +141,7 @@ Zie ook het [PREFER Project](http://preferproject.eu/): _Professional Roles and 
 
 Als we de vraag waaruit ik ben vertrokken kunnen beantwoorden, kunnen we ook de aanwerving van nieuwe ontwikkelaars hierop afstemmen. Het subjectief buikgevoel of algehele gebrek aan uniforme testen wordt vervangen door een heldere blik op de vereisten van een moderne ingenieur. 
 
-### B. Didactiek
+### B. Didactische toepasbaarheid
 
 #### A. Als curriculum wijziging
 
