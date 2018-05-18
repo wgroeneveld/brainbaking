@@ -1,5 +1,5 @@
 ---
-title: Ph.D. Thesis voorstel
+title: Ph.D. Thesis Voorstel
 ---
 
 ## Het onderwerp
@@ -27,7 +27,7 @@ De woorden in de titel verklarend:
 1. **Industrial**: Ik wil het hebben over software die in de industrie gemaakt wordt - de industrie waar ik een integraal deel van uitmaak. Het moet concreet toepasbaar zijn. Ik wil nauw samenwerken met bedrijven, niet enkel met een onderwijsinstelling.
 2. **Requirements**: de link naar wat ontwikkelteams en developers missen, de vraag waaruit ik ben vertrokken.
 3. **Modern**: Het doctoraat moet actueel zijn, in de tegenwoordige tijd. Zelfs al zou het onderzoek jaren duren, daarna moet het nog van toepassing zijn. In de ontwikkelwereld verandert alles bliksemsnel. Ik wil mij focussen op concepten, niet op frameworks die vervangen worden, en zo een blijvende impact maken.
-4. **Software engineer**: met een insteek vanuit de _engineering_ hoek, niet de theoretische computerwetenschappen hoek. In de industrie noemen we onszelf alemaal graag 'ingenieur', maar dat gaat verder dan enkel het technische programmeerwerk. 
+4. **Software engineer**: met een insteek vanuit de praktische _engineering_ hoek, niet de theoretische computerwetenschappen hoek. In de industrie noemen we onszelf alemaal graag 'ingenieur', maar dat gaat verder dan enkel het technische programmeerwerk. 
 
 ## De inhoud
 
@@ -47,20 +47,20 @@ Productiviteit manifesteert zich op twee manieren binnen software ontwikkeling:
 1. In het beheren van _tools_. Shortcuts vanbuiten kennen van uw geliefde IDE.
 2. In het _metafysische_. Strategiëen voor het overwinnen van afleiding.  
 
-Het is verbazingwekkend hoeveel ontwikkelaars nog steeds niet blind kunnen typen. Zonder een bewustwordingsproces op gang te brengen gaat dit niet beteren. Een simpele productiviteitswinst van 1% kan al voor een flinke besparing op jaarbasis zorgen. 
+Het is verbazingwekkend hoeveel ontwikkelaars nog steeds niet blind kunnen typen. Zonder een bewustwordingsproces op gang te brengen gaat dit niet beteren. Een simpele productiviteitswinst van 1%[^4] kan al voor een flinke besparing op jaarbasis zorgen. 
 
 #### 2. Samenwerking & Coördinatie
 
 Desondanks bekende boeken als _"PeopleWare: Productive Projects and Teams"_ van [Tom DeMarco](https://en.wikipedia.org/wiki/Peopleware:_Productive_Projects_and_Teams) is dit iets waar bedrijven altijd het meeste budget in snoeien. 80%[^2] van de ontwikkelproblemen zijn mens-gerelateerd. 
 
-Scholen laten studenten vaak samenwerken aan projecten maar vergeten uit te leggen wat de worden "samen" en "werken" feitelijk betekenen als ze in één woord gebruikt worden. Bijgevolg kunnen wij niet verwachten dat dit in teams vanzelf goed komt. 
+Scholen laten studenten vaak samenwerken aan projecten maar vergeten uit te leggen wat de woorden "_samen_" en "_werken_" feitelijk betekenen als ze in één woord gebruikt worden. Bijgevolg kunnen wij niet verwachten dat dit in teams vanzelf goed komt. 
 
 Wij hebben vaak de behoefte om volledige controle te hebben en dat is makkelijk terug te vinden in code. Elkaar volledig vertrouwen kan alleen maar als iedereen weet wat de vereisten van een moderne ingenieur zijn en zich daar achter schaart. 
 Wantrouwen moet omgebogen worden naar slim vertrouwen.
 
 #### 3. Begeleiding
 
-Een gebrek aan een goed _mentor model_ kan vreselijke gevolgen hebben voor de continuïteit van een software project. Begeleiding is van crutiaal belang om op dezelfde golflengte te zitten met een minimale inspanning. 
+Een gebrek aan een goed _mentor model_ kan vreselijke gevolgen hebben voor de continuïteit van een software project. Begeleiding is van cruciaal belang om op dezelfde golflengte te zitten met een minimale inspanning. 
 
 Hoe leer ik iemand iets bij?[^3] Hoe presenteer ik mijn bevindingen? Hoe overwin ik weigerachtige houdingen van collega's om open te staan voor nieuwe ideeën? 
 
@@ -68,7 +68,7 @@ Hoe leer ik iemand iets bij?[^3] Hoe presenteer ik mijn bevindingen? Hoe overwin
 
 _Verstandsverslaving_ is jammer genoeg een erg aanstekelijke ziekte onder software ingenieurs, en volgens [Raj Raghunathan](https://www.happysmarts.com/) ook een doodzonde van geluk. Het verschil tussen een goede en een heel goede software ingenieur is weten wanneer te stoppen met _engineering_.  
 
-We wensen immers technologie te gebruiken om iets (het domein) uit te drukken, en niet om iets te gebruiken om technologie te tonen. Soberheid is een deugd die dringend in de software industrie gestandardiseerd moet worden.
+We wensen immers technologie te gebruiken om iets (het domein) uit te drukken, en niet om iets te gebruiken om technologie te tonen. Soberheid is een deugd die dringend in de software industrie gestandaardiseerd moet worden.
 
 #### 5. Leren leren
 
@@ -121,13 +121,13 @@ Voor mij persoonlijk, als deels software ontwikkelaar bij [Prato](http://www.pra
 
 ### A. Industriële toepasbaarheid
 
-Academisch onderzoek is leuk voor de industrie gegeven de (technische) gerichtheid van het onderwerp. Desondanks de absractere insteek van het voorstel mik ik op de volgende toepasbaarheid binnen bedrijven:
+Academisch onderzoek kan een meerwaarde zijn voor de industrie gegeven de (technische) gerichtheid van het onderwerp. Desondanks de abstractere insteek van het voorstel mik ik op de volgende toepasbaarheid binnen bedrijven:
 
 #### 1. Als **concreet** smeermiddel voor teams
 
 Het resultaat van onderzoek naar de bovenstaande subonderwerpen kan concreet ingezet worden in ontwikkelteams, gegeven de flexibele manier waarop deze thesis tot stand kan komen. 
 
-Onderzoek rond productiviteit kan bijvoorbeeld direct geïntroduceerd worden en een kostenreductie van 1+% betekenen. Die introductie gaat uiteraard meer werk zijn dan enkel het resultaat van dit werk voordragen: dat is nog maar het begin.
+Onderzoek rond productiviteit kan bijvoorbeeld direct geïntroduceerd worden en een kostenreductie van 1+%[^4] betekenen. Die introductie gaat uiteraard meer werk zijn dan enkel het resultaat van dit werk voordragen: dat is nog maar het begin.
 
 #### 2. Als leidraad voor een **Groeimodel**
 
@@ -191,7 +191,7 @@ Dit is de status van het huidig onderzoek in context van mijn voorstel:
 
 #### 5. Rond Leren leren
 
-- [Learning research](https://www.esrale.org/): en de toepasbaarheid op sw.eng. Hoe leren we? Welke manieren zijn goed om teams dingen bij te leren? Brown bags VS random meetings VS coding schools VS ... => MICROLEARNING etc
+- [Learning research](https://www.esrale.org/): en de toepasbaarheid op sw.eng. Hoe leren we? Welke manieren zijn goed om teams dingen bij te leren? Brown bags VS random meetings VS coding schools VS ... _Microlearning_ onder andere.
 
 #### 6. Rond Software ontwikkeling als organisch proces
 
@@ -209,3 +209,4 @@ Dit is de status van het huidig onderzoek in context van mijn voorstel:
 [^1]: De woorden 'programmeur', 'ontwikkelaar', en 'software ingenieur' worden hier door elkaar gebruikt, ondanks hun wezenlijke verschillen. 
 [^2]: Dit is een afgeleide uit eigen ervaring en moet onderzocht worden.
 [^3]: In context van concrete software ontwikkeling natuurlijk.
+[^4]: 1% is het subjectief angenomen absoluut minimum.
