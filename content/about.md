@@ -30,7 +30,7 @@ Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://git
 #### Writing and philosophizing
 
 * A [fountain pen addict](/post/fountain-pens-first-look/) and avid [<i class='fa fa-pencil'></i>&nbsp;journaler](/post/journaling-in-practice/)
-* This blog is the ideal base for writing down my thoughts about virtually anything, primarly intended to amuse myself and not others.
+* This website is the ideal base for writing down my thoughts about virtually anything, primarly intended to amuse myself and not others.
 
 #### Drawing
 
@@ -42,10 +42,10 @@ I keep an active <a href="https://www.goodreads.com/user/show/5451893-wouter" ta
 
 I used to be almost exclusively a fantasy reader. Now I mostly read non-fiction on the most diverse topics, but I do have a soft spot for things like philosophy, art, mindful food and software engineering. 
 
-These are the latest 52 books I've read:
+These are the latest 12 books I've read:
 
 <div id="gr_grid_widget_1496758344">
 </div>
 
 </div>
-<script src="https://www.goodreads.com/review/grid_widget/5451893.Wouter's%20bookshelf:%20read?cover_size=medium&hide_link=&hide_title=&num_books=52&order=d&shelf=read&sort=date_added&widget_id=1496758344" type="text/javascript" charset="utf-8"></script>
+<script src="https://www.goodreads.com/review/grid_widget/5451893.Wouter's%20bookshelf:%20read?cover_size=medium&hide_link=&hide_title=&num_books=12&order=d&shelf=read&sort=date_added&widget_id=1496758344" type="text/javascript" charset="utf-8"></script>

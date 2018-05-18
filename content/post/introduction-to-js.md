@@ -466,7 +466,7 @@ Pitfalls:
   * Ge moet een speciale test method gebruiken, `asyncTest()`
   * Ge moet na uw assertions `start()` aanroepen (??)
 
-#####== De oplossing #####==
+##### De oplossing #####
 
 https://github.com/willconant/flow-js e.a. (of iets zelfgemaakt in die aard). 
 
@@ -595,7 +595,7 @@ describe("plaatsen domein", function() {
 
 Merk op dat de closure meegeven in `then()` (slechts 1 mogelijk voor assertions) als **argument** het resultaat van de laatste closure in `when()` meekrijgt! 
 
-#####== jQuery 1.6: Deferred en piping #####==
+##### jQuery 1.6: Deferred en piping #####
 
 Vanaf **jQuery 1.6** is het mogelijk om met `$.Deferred` te werken, dat het mogelijk maakt om een closure uit te voeren op het moment dat "werk" gedaan is. Met werk bedoelen we:
 
@@ -704,7 +704,7 @@ Eender welke functie heeft een `prototype`. Een "lege" functie bevat een dynamis
 (function(){}).prototype
 ```
 
-######= Gewenst gedrag - wat waar plaatsen ######=
+##### Gewenst gedrag - wat waar plaatsen #####
 
   * Indien ik een functie of een variabele heb die anders kan zijn naargelang de implementatie (definiëer de "naamgeving"), plaats deze dan in de **constructor** functie.
   * Indien ik een functie of een variabele heb die specifiek voor die functie is en niet gaat veranderen, plaats deze dan **in het concreet object** via `this.`. 
@@ -712,7 +712,7 @@ Eender welke functie heeft een `prototype`. Een "lege" functie bevat een dynamis
 
 Typisch bevatten constructor functies ook *geen* return waarden ((dit retourneert dus impliciet `undefined`)) - we gebruiken deze functies toch altijd in combinatie met de `new` operator, dus kennen de nieuwe instantie van het object direct toe aan een variabele. 
 
-############= prototype gebruiken als inheritance ############=
+##### prototype gebruiken als inheritance #####
 
 -> Meer informatie inclusief grafen met uitgebreide uitleg hoe prototype en constructors werken: zie http://joost.zeekat.nl/constructors-considered-mildly-confusing.html
 
@@ -771,7 +771,7 @@ dier.aantalPoten = 2;
 new Ezel().aantalPoten ###### 4; // false
 ```
 
-######= Properties overriden ######=
+##### Properties overriden #####
 
 Prototypal inheritance werkt omdat JS bij elke property lookup kijkt in welk object die referentie gedefiniëerd is. Is dat het huidig object, neem dan die waarde. Indien neen, kijk in het `prototype` object. Indien neen, kijk in het `prototype` object van dat object, en zo maar door tot op `Object` niveau. We kunnen zo ook een property van een prototype zelf overriden, door ander gedrag te definiëren, of zelfs de super aan te roepen:
 
@@ -785,7 +785,7 @@ Ezel.prototype.eetIets = function() {
 }
 ```
 
-######= Built-in JS types extenden ######=
+##### Built-in JS types extenden #####
 
 :exclamation: Extend **nooit** `Object.prototype`! Waarom? Omdat Eender welk object een instantie van `Object` is, dus zijn prototype heeft, en met een `for(x in prop)` deze property nu ineens toegankelijk is voor elk object. Een leeg object `{ }` wordt verwacht géén properties te hebben! 
 
@@ -796,7 +796,7 @@ for(x in {}) {
 }
 ```
 
-############ Checken op inheritance ############
+##### Checken op inheritance #####
 
 Met Javascript kan men door middel van `typeof` controleren van welk type een variabele is. Dat komt neer op:
 
@@ -808,12 +808,12 @@ Met Javascript kan men door middel van `typeof` controleren van welk type een va
 Het is niet zo interessant om te gebruiken voor eigen inheritance. Daarvoor dient `instanceof`:
 
 ```javascript
-ezeltje instanceof Vierpotige ###### true
-ezeltje instanceof Ezel ###### true
-new Vierpotige() instanceof Ezel ###### false
+ezeltje instanceof Vierpotige == true
+ezeltje instanceof Ezel == true
+new Vierpotige() instanceof Ezel == false
 ```
 
-######= Zelf inheritance afchecken met prototype ######=
+##### Zelf inheritance afchecken met prototype #####
 
 ###### met constructors ######
 
@@ -856,7 +856,7 @@ De betere oplossing: **`isPrototypeOf()`**! Zie magic properties.
 
 Door `hasOwnProperty()` te gebruiken kan je nagaan of een property overgenomen is of niet. Vanaf JS 1.5.
 
-############= call als inheritance ############=
+##### call als inheritance #####
 
 De klassieke inheritance structuur zoals in Java en C++ kan beter benaderd worden door `call` te gebruiken. Herbekijk onze ezels:
 
@@ -881,7 +881,7 @@ ezeltje.eetIets(); // aha! outputs omnom
 
 Door als eerste statement in de constructor functie van `Ezel` een `call` te plaatsen naar onze "parent", *kopiëren* we alle keys en values die daarin gedefiniëerd staan. In tegenstelling tot prototypal inheritance kost dit dus veel meer geheugengebruik, en is dit beperkter om uit te breiden. We linken eigenlijk impliciet twee functies aan elkaar door waarden over te nemen, maar iets aanpassen aan `Vierpotige` gaat de `Ezel` op geen ekele manier doen veranderen.
 
-############= prototypal inheritance toepassen ############=
+##### prototypal inheritance toepassen #####
 
 In plaats van `new` overal te gebruiken zonder te weten wat hierachter ligt, kan men `create` ook gebruiken:
 
@@ -898,7 +898,7 @@ newObject = Object.create(oldObject);
 
 Zie http://javascript.crockford.com/prototypal.html
 
-############ Een minder verbose manier om extra properties te definiëren ############
+##### Een minder verbose manier om extra properties te definiëren #####
 
 Zie http://howtonode.org/prototypical-inheritance - 
 
@@ -916,7 +916,7 @@ Object.defineProperty(Object.prototype, "spawn", {value: function (props) {
 
 Op die manier kan je `BaseObj.spawn({'extraProp': 'extraValue'});` gebruiken, zonder de relatieve verbose manier van extra properties te moeten gebuiken die `Object.create` [handhaaft](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/create#Classical_inheritance_with_Object.create).
 
-############= Prototype JS en Class.create ############=
+##### Prototype JS en Class.create #####
 
 Javascript frameworks proberen altijd inheritance makkelijker te maken voor klassieke OO developers door functies te modelleren als klassen. In [Prototype JS](http://www.prototypejs.org/api/class) kan men zoiets doen:
 

@@ -758,7 +758,7 @@ it(&quot;should be green, right??&quot;, function() {
 <li>Ge moet na uw assertions <code>start()</code> aanroepen (??)</li>
 </ul>
 
-<p>#####== De oplossing #####==</p>
+<h5 id="de-oplossing">De oplossing</h5>
 
 <p><a href="https://github.com/willconant/flow-js">https://github.com/willconant/flow-js</a> e.a. (of iets zelfgemaakt in die aard).</p>
 
@@ -884,7 +884,7 @@ describe(&quot;plaatsen domein&quot;, function() {
 
 <p>Merk op dat de closure meegeven in <code>then()</code> (slechts 1 mogelijk voor assertions) als <strong>argument</strong> het resultaat van de laatste closure in <code>when()</code> meekrijgt!</p>
 
-<p>#####== jQuery 1.6: Deferred en piping #####==</p>
+<h5 id="jquery-1-6-deferred-en-piping">jQuery 1.6: Deferred en piping</h5>
 
 <p>Vanaf <strong>jQuery 1.6</strong> is het mogelijk om met <code>$.Deferred</code> te werken, dat het mogelijk maakt om een closure uit te voeren op het moment dat &ldquo;werk&rdquo; gedaan is. Met werk bedoelen we:</p>
 
@@ -992,7 +992,7 @@ johnDoe.x ###### &quot;dinges&quot;
 <pre><code class="language-javascript">(function(){}).prototype
 </code></pre>
 
-<p>######= Gewenst gedrag - wat waar plaatsen ######=</p>
+<h5 id="gewenst-gedrag-wat-waar-plaatsen">Gewenst gedrag - wat waar plaatsen</h5>
 
 <ul>
 <li>Indien ik een functie of een variabele heb die anders kan zijn naargelang de implementatie (definiëer de &ldquo;naamgeving&rdquo;), plaats deze dan in de <strong>constructor</strong> functie.</li>
@@ -1002,7 +1002,7 @@ johnDoe.x ###### &quot;dinges&quot;
 
 <p>Typisch bevatten constructor functies ook <em>geen</em> return waarden ((dit retourneert dus impliciet <code>undefined</code>)) - we gebruiken deze functies toch altijd in combinatie met de <code>new</code> operator, dus kennen de nieuwe instantie van het object direct toe aan een variabele.</p>
 
-<p>############= prototype gebruiken als inheritance ############=</p>
+<h5 id="prototype-gebruiken-als-inheritance">prototype gebruiken als inheritance</h5>
 
 <p>-&gt; Meer informatie inclusief grafen met uitgebreide uitleg hoe prototype en constructors werken: zie <a href="http://joost.zeekat.nl/constructors-considered-mildly-confusing.html">http://joost.zeekat.nl/constructors-considered-mildly-confusing.html</a></p>
 
@@ -1059,7 +1059,7 @@ dier.aantalPoten = 2;
 new Ezel().aantalPoten ###### 4; // false
 </code></pre>
 
-<p>######= Properties overriden ######=</p>
+<h5 id="properties-overriden">Properties overriden</h5>
 
 <p>Prototypal inheritance werkt omdat JS bij elke property lookup kijkt in welk object die referentie gedefiniëerd is. Is dat het huidig object, neem dan die waarde. Indien neen, kijk in het <code>prototype</code> object. Indien neen, kijk in het <code>prototype</code> object van dat object, en zo maar door tot op <code>Object</code> niveau. We kunnen zo ook een property van een prototype zelf overriden, door ander gedrag te definiëren, of zelfs de super aan te roepen:</p>
 
@@ -1072,7 +1072,7 @@ Ezel.prototype.eetIets = function() {
 }
 </code></pre>
 
-<p>######= Built-in JS types extenden ######=</p>
+<h5 id="built-in-js-types-extenden">Built-in JS types extenden</h5>
 
 <p>❗️ Extend <strong>nooit</strong> <code>Object.prototype</code>! Waarom? Omdat Eender welk object een instantie van <code>Object</code> is, dus zijn prototype heeft, en met een <code>for(x in prop)</code> deze property nu ineens toegankelijk is voor elk object. Een leeg object <code>{ }</code> wordt verwacht géén properties te hebben!</p>
 
@@ -1082,7 +1082,7 @@ for(x in {}) {
 }
 </code></pre>
 
-<p>############ Checken op inheritance ############</p>
+<h5 id="checken-op-inheritance">Checken op inheritance</h5>
 
 <p>Met Javascript kan men door middel van <code>typeof</code> controleren van welk type een variabele is. Dat komt neer op:</p>
 
@@ -1095,12 +1095,12 @@ for(x in {}) {
 
 <p>Het is niet zo interessant om te gebruiken voor eigen inheritance. Daarvoor dient <code>instanceof</code>:</p>
 
-<pre><code class="language-javascript">ezeltje instanceof Vierpotige ###### true
-ezeltje instanceof Ezel ###### true
-new Vierpotige() instanceof Ezel ###### false
+<pre><code class="language-javascript">ezeltje instanceof Vierpotige == true
+ezeltje instanceof Ezel == true
+new Vierpotige() instanceof Ezel == false
 </code></pre>
 
-<p>######= Zelf inheritance afchecken met prototype ######=</p>
+<h5 id="zelf-inheritance-afchecken-met-prototype">Zelf inheritance afchecken met prototype</h5>
 
 <h6 id="met-constructors">met constructors</h6>
 
@@ -1143,7 +1143,7 @@ instanceOf(Ezel, Vierpotige) // true
 
 <p>Door <code>hasOwnProperty()</code> te gebruiken kan je nagaan of een property overgenomen is of niet. Vanaf JS 1.5.</p>
 
-<p>############= call als inheritance ############=</p>
+<h5 id="call-als-inheritance">call als inheritance</h5>
 
 <p>De klassieke inheritance structuur zoals in Java en C++ kan beter benaderd worden door <code>call</code> te gebruiken. Herbekijk onze ezels:</p>
 
@@ -1167,7 +1167,7 @@ ezeltje.eetIets(); // aha! outputs omnom
 
 <p>Door als eerste statement in de constructor functie van <code>Ezel</code> een <code>call</code> te plaatsen naar onze &ldquo;parent&rdquo;, <em>kopiëren</em> we alle keys en values die daarin gedefiniëerd staan. In tegenstelling tot prototypal inheritance kost dit dus veel meer geheugengebruik, en is dit beperkter om uit te breiden. We linken eigenlijk impliciet twee functies aan elkaar door waarden over te nemen, maar iets aanpassen aan <code>Vierpotige</code> gaat de <code>Ezel</code> op geen ekele manier doen veranderen.</p>
 
-<p>############= prototypal inheritance toepassen ############=</p>
+<h5 id="prototypal-inheritance-toepassen">prototypal inheritance toepassen</h5>
 
 <p>In plaats van <code>new</code> overal te gebruiken zonder te weten wat hierachter ligt, kan men <code>create</code> ook gebruiken:</p>
 
@@ -1183,7 +1183,7 @@ newObject = Object.create(oldObject);
 
 <p>Zie <a href="http://javascript.crockford.com/prototypal.html">http://javascript.crockford.com/prototypal.html</a></p>
 
-<p>############ Een minder verbose manier om extra properties te definiëren ############</p>
+<h5 id="een-minder-verbose-manier-om-extra-properties-te-definiëren">Een minder verbose manier om extra properties te definiëren</h5>
 
 <p>Zie <a href="http://howtonode.org/prototypical-inheritance">http://howtonode.org/prototypical-inheritance</a> -</p>
 
@@ -1200,7 +1200,7 @@ newObject = Object.create(oldObject);
 
 <p>Op die manier kan je <code>BaseObj.spawn({'extraProp': 'extraValue'});</code> gebruiken, zonder de relatieve verbose manier van extra properties te moeten gebuiken die <code>Object.create</code> <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/create#Classical_inheritance_with_Object.create">handhaaft</a>.</p>
 
-<p>############= Prototype JS en Class.create ############=</p>
+<h5 id="prototype-js-en-class-create">Prototype JS en Class.create</h5>
 
 <p>Javascript frameworks proberen altijd inheritance makkelijker te maken voor klassieke OO developers door functies te modelleren als klassen. In <a href="http://www.prototypejs.org/api/class">Prototype JS</a> kan men zoiets doen:</p>
 
