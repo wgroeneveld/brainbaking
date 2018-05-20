@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <style>
+
+ 
+
+.avatar-container {
+  width: 50px;
+  margin-left: 45px;
+}
+.avatar-container  .avatar-img-border {
+  width: 100%;
+  border-radius: 50%;
+  margin-left: -50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+.avatar-container  .avatar-img {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.intro .freshly-baked {
+  visibility: hidden;
+}
+
+.intro {
+  margin-top: -150px;
+}
+
+@media only screen and (min-width: 500px) {
+  .intro .freshly-baked {
+    visibility: visible;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .intro {
+    margin-top: -40px;
+  }
+
+   .avatar-container {
+    width: 100px;
+  }
+  
+  .avatar-container  .avatar-img-border {
+    width: 100%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+  }
+  
+  .avatar-container  .avatar-img {
+    width: 100%;
+  }
+}
+
+ 
+
+ 
+@media only screen and (min-width: 1600px) {
+
+	main {
+	    max-width: 930px !important;
+	}
+
+  .big-img .container {
+    height: 250px !important;
+  }
+
+}
+
+blockquote {
+  color: #888 !important;
+  border-left: 5px solid var(--accent) !important;
+}
+
+main {
+	padding-top: 0 !important;
+}
+
+main .text-justify p {
+  margin: 0 0 20px !important;
+}
+
+main .text-justify blockquote p {
+  margin: 0 !important;
+}
+
+
+.big-img {
+  	background: no-repeat center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	background-size: cover;
+  	-o-background-size: cover;
+
+	border-top: 2px solid lightgray;
+	border-bottom: 1px solid var(--accent);
+}
+
+@media only screen and (min-width: 768px) {
+  .big-img .container {
+    height: 150px;
+  }
+}
+
+ 
+.gr_grid_container {
+}
+
+.gr_grid_book_container {
+   
+  float: left;
+  width: 98px;
+  height: 160px;
+  padding: 0px 0px;
+  border: 1px solid black;
+  margin: 5px;
+  overflow: hidden;
+}
+
+</style>
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Over entropie</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.39" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Over entropie</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <div class="item">
+
+    <h3>
+        
+        <a href="/essays/over-entropie/">Over entropie</a>
+    </h3>
+
+    
+    
+    
+        <h4>Hoe gaan wij om met chaos?</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<i class='fa fa-calendar'></i>&nbsp;20 May 2018
+    		</span>
+    	</h5>
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>Filosofie kan gezien worden als een <strong>poging</strong> om <strong>dingen</strong> rondom de mensheid te definiëren. Ik noem het een <strong>poging</strong>, en geen manier, omdat we al duizenden jaren kritiek aan het geven zijn op elkaars definities. Ik noem het <strong>dingen</strong>, en niet zichtbare dingen, omdat juist ongrijpbare dingen ons zo sterk intrigeren dat we ook de nood voelen om daar een theoretische vorm aan te koppelen.</p>
+
+<p>Ons bewustzijn produceert veel prachtige wetenschapstakken maar ook veel angsten. Dé grootste angst van de mensheid moet dan wel een doodsangst voor chaos zijn. Welke pogingen ondernemen wij dagelijks om die chaos in te tomen:</p>
+
+<ul>
+<li>Het gras moet afgemaaid zijn. De tuin moet er immers netjes bij liggen. Mails moeten weggewerkt worden. De afwas moet gedaan zijn. De keuken moet er immers ook netjes bij liggen. (<strong>Wegwerken</strong>)</li>
+<li>Boeken horen in de boekenkast. Auto&rsquo;s horen in de parking. Liefst mooi in een rijtje, in een op voorhand opgelegde manier &ldquo;gesorteerd&rdquo;. (<strong>Groeperen</strong>)</li>
+<li>Pijn hoort benoemd te worden (&ldquo;het zal wel buikpijn zijn, waarschijnlijk van die vis van gisteren&rdquo;). De aanwezigheid van objecten en mensen in een bepaalde omgeving moet een plaats gegeven worden. (&ldquo;Het is normaal dat deze persoon bij ons in de straat komt rond deze tijd, het is de postbode.&rdquo;) (<strong>Verklaren</strong>)</li>
+</ul>
+
+<p>Als er aan één of meer van deze voorwaarden niet voldaan wordt stijt onze stress waarde onverbiddelijk. Om met de grote hoeveelheid aan onzekerheid te kunnen leven verzonnen wij manieren om hier mee om te gaan: onzekerheid wegwerken, onzekerheid groeperen en vooral: onzekerheid verklaren. Deze voorwaarden zijn allemaal varianten van <strong>controle</strong>.</p>
+
+<h3 id="onzekerheid-wegwerken-en-groeperen">Onzekerheid wegwerken en groeperen</h3>
+
+<p>Veel dingen groeperen onder één gezamelijke noemer geeft minder dingen om mee om te gaan. Wegwerken en groeperen is daarom hetzelfde. Vuile was laten rondslingeren in de slaapkamer, in de sofa en op de keukenkast geeft meer prikkels dan vuile was op één plaats: de linnenmand. <a href="https://en.wikipedia.org/wiki/Cognitive_load">Cognitieve overload</a> treedt op wanneer ons brein met te veel tegelijkertijd te maken krijgt. Dit is wetenschappelijk (empirisch) bewezen en neem ik aan voor waar, niet alleen omdat het voor mijzelf geldt, maar omdat het eenvoudig te extrapoleren is naar iedereen. Wat dan met adrenaline junkies? Onbewuste prikkels zijn ook prikkels: niemand is bezig met zijn boodschappenlijstje, e-mails en aandelen tijdens een vrije val.</p>
+
+<p>Een opgeruimd huis betekent ook een opgeruimd innerlijk. &ldquo;Meer controle over je leven? Begin met opruimen!&rdquo; luidt een slogan over schoonmaken. Dit kunnen we veralgemenen naar de volgende stelling:</p>
+
+<blockquote>
+<p>Een opgeruimde buitenwereld betekent ook een opgeruimde innerlijke wereld.</p>
+</blockquote>
+
+<p>Mattheüs 23:26 draait de stelling echter om: <em>&ldquo;Gij blinde Farizeer, reinig eerst wat binnen in den drinkbeker en den schotel is, opdat ook het buitenste derzelve rein worde&rdquo;</em>. En daar kan ik wel reden in vinden, net als vele Stoïcijnen. De onzekerheid die we zo neurotisch willen wegwerken is immers slechts een schaduw van ons eigen bewustzijn. Meer hierover later in onzekerheid laten voor wat het is.</p>
+
+<p>Onder &ldquo;wegwerken&rdquo; versta ik ook het <strong>ombuigen van de natuur</strong> naar onze wil. Hoezo hier kunnen geen rijstvelden groeien? Irrigeren die handel! Hoezo jullie beschikken niet over een virusresistente variant van de mango? Importeren die handel! De onzekerheid die weggewerkt wordt is dus zeker niet altijd slecht. Vooruitgang heeft veel te danken aan onze aversie voor chaos. De vraag is echter of we de vraag wel stellen voordat we iets ombuigen. En het antwoord is meer en meer een overduidelijke neen.</p>
+
+<h3 id="onzekerheid-verklaren">Onzekerheid verklaren</h3>
+
+<p>Waarom willen wij toch altijd ons eigen geweten gerust stellen door middel van een onbenullige verklaring? Het gebeurt zo snel dat we er ons niet eens altijd van bewust zijn. Tijdens een overnachting in een burcht op een hoger gelegen gebied in Duitsland merkte mijn vrouw de afwezigheid op van de in dat gebied gekenmerkte agressieve muggen. Ik stond onmiddellijk klaar met een <strong>logische verklaring</strong>: &ldquo;Het is hier hoger, muggen zullen zo hoog niet vliegen.&rdquo;. Achteraf gezien klinkt dat belachelijk, want of het nu waar is of niet, ik ken niets van het gedrag van muggen maar voelde de drang om te antwoorden.</p>
+
+<p>De Westelijke wereld heeft die drang te danken aan de Grieken: de scheiding van de <strong>mythos</strong> en de <strong>logos</strong> sinds Socrates zorgde voor een dramatische verschuiving in ons denkpatroon. In plaats van te aanvaarden of iets toe te schrijven aan het hogere (dat ook een verklaring kan zijn), gaan we meer onderzoekend dingen bestuderen en verklaren gebaseerd op andere werkelijke verklaringen. Volgens mij heeft Socretes dit verklaren slechts ingedeeld in logica en mythica: de drang om te willen verklaren is ongewijzigd gebleven. Enkel de intensiteit is versterkt.</p>
+
+<p>Wij denken kennelijk dat we experten zijn in alles, terwijl we in werkelijkheid niets weten. Grootouders die zeggen &ldquo;ga maar naar de Kerk dan maak je minder ruzie&rdquo;, ouders die zeggen &ldquo;ga maar met de auto dat is veiliger&rdquo;, collega&rsquo;s die zeggen &ldquo;gebruik dit maar dat is beter&rdquo;, het Internet die zegt &ldquo;fenomeen x komt door y&rdquo;. Onzekerheid verklaren. En erger: <strong>onzekerheid aannemen</strong>.</p>
+
+<blockquote>
+<p>we doen er alles aan om zekerheden te creëren, maar er zijn geen zekerheden in het leven. - Alan Watts</p>
+</blockquote>
+
+<p>De onzekerheid van het menselijk bestaan was draagbaar dankzij de <em>mythos</em> van God. Na de Middeleuwen werd dit Geloof meer en meer buiten gewerkt en vervangen door de besturing van logische redenering. Maar niet alles <strong>is</strong> logisch te verklaren. Beter gezegd: niet alle wetenschapstakken zijn volledig uitgewerkt en niet alle personen kennen alle details van alle takken. Dus moeten we altijd terugvallen op (bedorven) kennis van anderen.</p>
+
+<p>Of moeten we terugvallen op onzekerheid.</p>
+
+<h3 id="onzekerheid-laten-voor-wat-het-is">Onzekerheid laten voor wat het is</h3>
+
+<p>In een poging de nood tot controle los te laten kunnen we ook gewoon meer open staan voor onzekerheid in ons leven. In plaats van ons op een bepaalde manier te kleden omdat we reacties vrezen van anderen, kunnen we ook gewoon onze schouders ophalen.</p>
+
+<h4 id="minder-wegwerken-en-groeperen">Minder wegwerken en groeperen</h4>
+
+<blockquote>
+<p>Een opgeruimde innerlijke wereld vermindert de stress van een onopgeruimde buitenwereld.</p>
+</blockquote>
+
+<p>Hoe goed ik ook mijn best doe, het zal me nooit lukken om &ldquo;een opgeruimde innerlijke wereld is een opgeruimde buitenwereld&rdquo; naar waarde te kunnen schatten. De rommel van de buitenwereld blijft bestaan, ik stoor me er gewoon minder aan.</p>
+
+<p>Tot op welke hoogte moeten we ons minder storen aan rommel? De balans opzoeken tussen opruimen en onopgeruimd laten is moeilijk en vooral ook subjectief. Wat doet mij rust geven als ik kijk naar een nauwkeurig verzorgde tuin waar geen greintje chaos meer te bekennen is? Ik weet het niet. Het feit dat ik mijn vinger hier niet op kan leggen duidt toch op een aangeboren oergevoel dat ons <em>instinctief doet weglopen van (te veel) chaos</em>.</p>
+
+<p>Het is dat instinct dat we moeten onder controle krijgen. Merk op dat ik het woord &ldquo;controle&rdquo; hanteer waarvan ik net beweer dat we af moeten geraken! Het beheersen van rauwe emoties valt in diezelfde categorie. Aristoteles zijn <strong>matiging</strong> kan ons ook hier van groot nut zijn: zoek geen grenzen op (ondeugden en deugden) maar zoek matiging op.</p>
+
+<blockquote>
+<p>Deugd is de gulden middenweg tussen twee ondeugden: tussen die van overmaat en die van tekortkoming. - Aristoteles</p>
+</blockquote>
+
+<p>Het blijven wegwerken van vetcellen, het dwangmatig opkuisen, het willen overwinnen wat niet overwonnen kan worden, het niet ontkennen van het kennen. Allemaal opgelost met matiging. Want volledig stoppen met wegwerken van vetcellen, kuisen en overwinnen zou ons roven van een doel en uiteindelijk ook lust om te leven.</p>
+
+<h4 id="minder-verklaren">Minder verklaren</h4>
+
+<p>In hoeverre is verklaren hetzelfde als oordelen? Een oordeel vellen gebeurt zo snel dat we het zelf bijna nooit door hebben. Systeem 1 (het snelle, onderbewuste, primitieve brein) van Daniel Kahneman oordeelt in minder dan één oogwenk gebaseerd op een complex aantal parameters waarvan zowel huidige zintuigen als voorgaande geregistreerde gebeurtenissen deel uitmaken. Het goede nieuws is dat we blijkbaar wel in staat kunnen zijn om dit (gedeeltelijk) te overschrijven met Systeem 2 (het trage, beredenerende brein), voordat het gevolg van de handelingen van systeem 1 de volledige greep krijgt over ons bewustzijn.</p>
+
+<p>De Stoïcijnce (verklaring van) oordelen zoekt het in het innerlijke, en niet in de wereld rondom ons. Waarom willen we een onbekende persoon die mogelijks als &ldquo;dreigend&rdquo; gezien kan worden door Systeem 1 onmiddellijk kunnen classificeren door te proberen verklaren waarom deze persoon in onze nabijheid is? Om het aantal onbekende variabelen te kunnen reduceren en ons stress niveau te laten zakken. De makkelijkste verklaring is een verklaring buiten onszelf. Die chauffeur rijdt slecht &ldquo;want het is een Johnny&rdquo;. Criteria? Volkswagen, petje, zonnebril. Die chauffeur rijdt slecht &ldquo;want het is weer een vrouw&rdquo;. Doe je oordeel weg, en weg is je gevoel, ik ben benadeeld.</p>
+
+<blockquote>
+<p>Doe je oordeel weg, en weg is je gevoel, &ldquo;ik ben benadeeld&rdquo;. - Marcus Aurelius</p>
+</blockquote>
+
+<p>In plaats van zonder meer verklaringen - van anderen én van jezelf - aan te nemen, kunnen we ons misschien beter eerst enkele kritische vragen stellen:</p>
+
+<ol>
+<li>Is het wel nodig dat ik dit weet? (Moet het verklaard worden?)</li>
+<li>Is deze persoon iemand die snel verklaringen geeft om zijn eigen angst onder controle te houden?</li>
+<li>Is een tweede verklaring nodig?</li>
+</ol>
+
+<p>Ik heb uit ervaring geleerd dat negativisten meer angst tonen door sneller (onlogische) verklaringen te geven dan positivisten. Na een tijdje leer je aan te voelen bij wie je meer of minder moet twijfelen. Vergeet niet dat dit ook op jezelf van toepassing is!</p>
+
+<h4 id="is-er-zonder-verklaringen-wel-een-toekomst">Is er zonder verklaringen wel een toekomst?</h4>
+
+<p>De filosofie is immers niets meer dan één groot onderzoek naar het onderzoek - het <em>meta-</em> onderzoek. Maar het is evenzeer op zoek naar verklaringen, en evenzeer in de hoop om entropie te kunnen beteugelen. Onze wetenschappelijke honger drijft ons altijd maar verder. Weinig mensen zullen durven toegeven dat dit negatief is en ons wijzen op de geweldigste en beste uitvindingen van ons als mensheid zoals kernenergie, ruimtevaart en geneeskunde.</p>
+
+<p>In mijn ogen is er niets meer natuurlijk aan een IVF-behandeling. Dat klinkt erg hard voor mensen die een grote kinderwens hebben en niet willen aanvaarden dat dit niet voor hun is weggelegd. Met &ldquo;weggelegd&rdquo; doel ik niet op een hogere entiteit die op voorhand iemand&rsquo;s lot zou vastleggen, maar op de helaasheid van stom &ldquo;toeval&rdquo;, of chaos. Het woord toeval of geluk in die context is trouwens een synoniem voor chaos: we kunnen iets niet verklaren dus schrijven het maar &ldquo;ergens&rdquo; aan toe. In plaats van als mens <strong>alles</strong> te wensen overwinnen, zelfs de dood, het leven en de ruimte, wordt het dringend tijd te beseffen dat we op veel vlakken te ver aan het gaan zijn.</p>
+
+<p>Ik zou stom zijn om te ontkennen dat onze gezonde schrik van chaos ons niet ver gebracht zou hebben. Maar de redenen om verder te blijven gaan zijn ondertussen ook veranderd. Weten wij nog waarom we sommige dingen blijven verder verklaren? Het verhaal heeft ondertussen ook een politiek en kapitalistisch tintje gekregen: &ldquo;wij als X zullen eens laten zien hoe ver we staan&rdquo;.</p>
+
+<p>Als computerwetenschapper ben ik maar al te graag bezig met onderzoek en het aanbrengen van structuur en dus het &ldquo;overwinnen&rdquo; van chaos of het &ldquo;scheppen&rdquo; van orde. Toch vraag ik mij regelmatig af wat het nut is van die overwinningen en scheppingen. Meestal dienen ze slechts als financiëel doel in de ogen van anderen.</p>
+
+<p><strong>Stil staan en niet verklaren doet soms véél meer deugd dan vooruit gaan en verklaren.</strong></p>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

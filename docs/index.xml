@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Sat, 28 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Over entropie</title>
+      <link>https://brainbaking.com/essays/over-entropie/</link>
+      <pubDate>Sun, 20 May 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/essays/over-entropie/</guid>
+      <description>Filosofie kan gezien worden als een poging om dingen rondom de mensheid te definiëren. Ik noem het een poging, en geen manier, omdat we al duizenden jaren kritiek aan het geven zijn op elkaars definities. Ik noem het dingen, en niet zichtbare dingen, omdat juist ongrijpbare dingen ons zo sterk intrigeren dat we ook de nood voelen om daar een theoretische vorm aan te koppelen.
+Ons bewustzijn produceert veel prachtige wetenschapstakken maar ook veel angsten.</description>
+    </item>
     
     <item>
       <title>Thinking in terms of objects</title>
