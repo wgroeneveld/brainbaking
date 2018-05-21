@@ -15,6 +15,14 @@ Ons bewustzijn produceert veel prachtige wetenschapstakken maar ook veel angsten
 
 Als er aan één of meer van deze voorwaarden niet voldaan wordt stijt onze stress waarde onverbiddelijk. Om met de grote hoeveelheid aan onzekerheid te kunnen leven verzonnen wij manieren om hier mee om te gaan: onzekerheid wegwerken, onzekerheid groeperen en vooral: onzekerheid verklaren. Deze voorwaarden zijn allemaal varianten van **controle**.
 
+> Cosmos: the world or universe regarded as an orderly, harmonious system. a complete, orderly, harmonious system. Order; Harmony. - English Dictionary
+
+Pythagoras beschreef met het woord "[kosmos](https://en.wikipedia.org/wiki/Cosmos#cite_note-2)" het universum als een oderlijk geheel, in zijn ideologie volledig bestaand uit wiskunde. Veel onderzoeken na Pythagoras voegen hier alleen maar meer verklaringen aan toe onder de noemer van de natuurkunde. Het is duidelijk dat wij als mens nooit openlijk getwijfeld hebben aan de ordelijkheid van het heelal, ook al hebben we dit zelf verzonnen. Noem het maar een wetenschappelijke variant van **controle** - een mooi voorbeeld van groeperen en verklaren. 
+
+De oersterke nieuwschierigheid naar het achterliggende die ons drijft tot een verklaring, ook al is er misschien geen zinnige. "De wereld is plat!" - 200 jaar later "ahneen toch niet!". Of het nu onderbouwd is of niet, en met wat het onderbouwd is, dat maakt allemaal niet uit. Zolang alles maar netjes en ordelijk is, en érgens aan opgehangen kan worden. 
+
+Is het je ook al opgevallen dat mensen niet graag toegeven dat ze dingen niet weten? Zelfs wetenschappers trappen hier soms in. Dit is zo gekend dat het zelfs een psychologisch fenomeen is geworden met een toepasselijke naam: **[Jumping conclusion bias](https://en.wikipedia.org/wiki/Jumping_to_conclusions)**.
+
 ### Onzekerheid wegwerken en groeperen
 
 Veel dingen groeperen onder één gezamelijke noemer geeft minder dingen om mee om te gaan. Wegwerken en groeperen is daarom hetzelfde. Vuile was laten rondslingeren in de slaapkamer, in de sofa en op de keukenkast geeft meer prikkels dan vuile was op één plaats: de linnenmand. [Cognitieve overload](https://en.wikipedia.org/wiki/Cognitive_load) treedt op wanneer ons brein met te veel tegelijkertijd te maken krijgt. Dit is wetenschappelijk (empirisch) bewezen en neem ik aan voor waar, niet alleen omdat het voor mijzelf geldt, maar omdat het eenvoudig te extrapoleren is naar iedereen. Wat dan met adrenaline junkies? Onbewuste prikkels zijn ook prikkels: niemand is bezig met zijn boodschappenlijstje, e-mails en aandelen tijdens een vrije val. 
@@ -44,6 +52,9 @@ Of moeten we terugvallen op onzekerheid.
 ### Onzekerheid laten voor wat het is
 
 In een poging de nood tot controle los te laten kunnen we ook gewoon meer open staan voor onzekerheid in ons leven. In plaats van ons op een bepaalde manier te kleden omdat we reacties vrezen van anderen, kunnen we ook gewoon onze schouders ophalen. 
+
+Hoe vaak heb jij je angst voor het onbekende laten zegevieren?<br/>
+Juist ja. 
 
 #### Minder wegwerken en groeperen
 
