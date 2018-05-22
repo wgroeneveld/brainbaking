@@ -180,22 +180,36 @@ Dit is de status van het huidig onderzoek in context van mijn voorstel:
 
 - [André Meyer's Ph.D. research rond productiviteit](http://www.andre-meyer.ch/category/research/)
 - [Google Research "how developers search for code"](https://research.google.com/pubs/pub43835.html)
+- [A Systematic Review of Productivity Factors in Software Development](https://arxiv.org/abs/1801.06475)
 
 #### 2. Rond Samenwerking
 
 - [Complex group decision making in agile projets](https://ieeexplore.ieee.org/document/7958489/)
+- [Non-technical individual skills are weakly connected to the maturity of agile practices
+](https://www.sciencedirect.com/science/article/pii/S0950584918300223)
 
 #### 3. Rond Begeleiding
 
+- [Group developmental psychology and software development performance](https://www.gu.se/english/research/publication/?publicationId=262631)
+- [The Big Effects of Short-term Efforts: Mentorship and Code Integration in Open Source Scientific Software](https://openresearchsoftware.metajnl.com/articles/10.5334/jors.bc/)
+- [A Mentorship Framework for Work Integrated Learning in Software Development](https://link.springer.com/chapter/10.1007/978-94-017-9115-1_26)
+
 #### 4. Rond Pragmatiek
+
+- [On the relation between unit testing and code quality](https://www.gu.se/english/research/publication/?publicationId=262633)
+- [Pragmatic software engineering for computational science](https://www.researchgate.net/publication/291754462_Pragmatic_software_engineering_for_computational_science)
+- [The Research-practice gap](https://www.jnd.org/dn.mss/the_research-practice_gap_1.html)
+- [Over-engineering enterprise architecture and business competitiveness](https://www.infosys.com/consulting/architecture-services/white-papers/Documents/engineering-enterprise-architecture.pdf)
 
 #### 5. Rond Leren leren
 
 - [Learning research](https://www.esrale.org/): en de toepasbaarheid op sw.eng. Hoe leren we? Welke manieren zijn goed om teams dingen bij te leren? Brown bags VS random meetings VS coding schools VS ... _Microlearning_ onder andere.
+- [What makes good research in Software Engineering](https://link.springer.com/article/10.1007/s10009-002-0083-4) 
 
 #### 6. Rond Software ontwikkeling als organisch proces
 
 - [Theorizing about software development practices](https://www.sciencedirect.com/science/article/pii/S0167642314005449#fg0010)
+- [Lucas Gren's Ph.D. research rond agile software engineering](https://www.gu.se/english/about_the_university/staff/?languageId=100001&userId=xgrelu&userName=Lucas%20Gren)
 
 #### 7. Rond Creativiteit
 
