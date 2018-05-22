@@ -209,4 +209,4 @@ Dit is de status van het huidig onderzoek in context van mijn voorstel:
 [^1]: De woorden 'programmeur', 'ontwikkelaar', en 'software ingenieur' worden hier door elkaar gebruikt, ondanks hun wezenlijke verschillen. 
 [^2]: Dit is een afgeleide uit eigen ervaring en moet onderzocht worden.
 [^3]: In context van concrete software ontwikkeling natuurlijk.
-[^4]: 1% is het subjectief angenomen absoluut minimum.
+[^4]: 1% is het subjectief aangenomen absoluut minimum.
