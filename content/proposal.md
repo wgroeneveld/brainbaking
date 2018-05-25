@@ -100,7 +100,7 @@ Ook _Veranderbaarheid_ of _agility_ is een alsmaar belangrijker onderdeel van so
 
 De criminologische [broken windows theorie](https://nl.wikipedia.org/wiki/Broken_windows_theory) die stelt dat omgevingen die vuil zijn, meer vuil aantrekken, is jammer genoeg ook van toepassing bij software ontwikkeling. Net als bij het tuinieren zakt de moed je in de schoenen bij het tegenkomen van een groot overwoekerd stuk _legacy code_. 
 
-Buiten [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627) van Steve Freeman ontbreekt eender welke vorm van een formeel model om software ontwikkeling te benaderen als een organisch proces waar ik met dit voorstel een verschil ik kan maken. 
+Buiten [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627) van Steve Freeman ontbreekt eender welke vorm van een formeel model om software ontwikkeling te benaderen als een organisch proces waar ik met dit voorstel een verschil in kan maken. 
 
 #### 5. Creativiteit
 
