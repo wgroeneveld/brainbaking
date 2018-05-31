@@ -136,7 +136,7 @@ ga('send', 'pageview');
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Are you handing over enough when inspiring someone?</title>
+        <title>Teaching by philosophy</title>
         
         <style>
 
@@ -222,7 +222,7 @@ ga('send', 'pageview');
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Are you handing over enough when inspiring someone?</a>
+                    <a class="navbar-brand visible-xs" href="#">Teaching by philosophy</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -271,16 +271,16 @@ ga('send', 'pageview');
 
     <h3>
         
-        <a href="/post/handing-over-enough-when-inspiring/">Are you handing over enough when inspiring someone?</a>
+        <a href="/post/teaching-philosophy-first/">Teaching by philosophy</a>
     </h3>
 
     
     
     
-        <h4>What info to convey, when to stop?</h4>
+        <h4>On explaining the why before the how</h4>
         <h5>
         	<span style="color: grey;">
-        		<i class='fa fa-calendar'></i>&nbsp;30 May 2017
+        		<i class='fa fa-calendar'></i>&nbsp;31 May 2018
     		</span>
     	</h5>
     
@@ -292,46 +292,75 @@ ga('send', 'pageview');
     
         <a href="https://brainbaking.com/tags/teaching"><kbd class="item-tag">teaching</kbd></a>
     
-        <a href="https://brainbaking.com/tags/inspiring"><kbd class="item-tag">inspiring</kbd></a>
-    
-        <a href="https://brainbaking.com/tags/giving"><kbd class="item-tag">giving</kbd></a>
-    
-        <a href="https://brainbaking.com/tags/braindump"><kbd class="item-tag">braindump</kbd></a>
+        <a href="https://brainbaking.com/tags/philosophy"><kbd class="item-tag">philosophy</kbd></a>
     
 
 </div>
 
 
-    <br> <div class="text-justify"><p>The other day, I was having a discussion with a friend and colleague about reaching out to others. He had an idea on combining patterns learned from the enterprise software development world (clean code, TDD, domain driven design, you name it) with patterns learned from the gaming development world (rapid prototyping, getting stuff done, intensive usage of frameworks like Unity). An excellent idea if you ask me. But he was hesitant - others might not be that interested in taking time to write unit tests in their game.</p>
+    <br> <div class="text-justify">
 
-<p>That&rsquo;s called an assumption. So I proposed to write small blog posts in <a href="https://gohugo.io/">hugo</a> using Markdown and GitHub pages. Very lightweight, only one command away from generating concise entries. This might take 10 minutes of your time per week.
-So he nodded. &ldquo;Hm-hmm&rdquo;. And we started talking about something else.</p>
+<p><strong>Awareness</strong>, that&rsquo;s the keyword I&rsquo;m looking for here.</p>
 
-<p>At that point I had two choices:</p>
+<p>Students are required to slog through a lot of classes during their university years. You pick a major, computer science, and you start learning things like algorithms, data structures, compilers, operating systems, and more abstract (maybe even worse) things like mathematics, geometry and logic. You of course accept those separate subjects as a part of the computer science major - there&rsquo;s little other choice. Professors do their best at throwing random theories at you while you do your best at catching them - and possibly letting them go after passing the exam.</p>
+
+<h3 id="the-problem">The problem</h3>
+
+<p>But nobody ever tells you why you need to learn mathematics, geometry and logic. You implicitly know algorithms, data structures and compilers are part of &ldquo;computer science&rdquo; and there are overlapping pieces of knowledge to be learned. For instance, the first year you&rsquo;d need to learn a <em>syntax</em> to express those algorithms in. Probably Java. But why would you need to learn the same amount of proofs that mathematics majors need to learn? All subjects are intertwined but you don&rsquo;t know how. And nobody seems to care.</p>
+
+<p>A more concrete example. I teach &ldquo;software design in Java&rdquo;, an introductory course in <strong>software design</strong> using <strong>Java</strong> as a syntax. We need something to express yourselves in and that&rsquo;s not going to be Dutch or English. But since for most students it&rsquo;s also their first time with Java, the &ldquo;design&rdquo; part rapidly succumbs to heavyweight syntax lifting in Java: brackets here, generics there, libraries and imports everywhere. Students simply call this course &ldquo;Java&rdquo;. Uh, wait&hellip;</p>
+
+<p>The &ldquo;software design in&rdquo; part seems to have been be completely dropped. Whoops! Did you as a teacher maybe intend to learn them something else except</p>
+
+<pre><code class="language-java">List&lt;string&gt; stuff = new ArrayList&lt;&gt;(); // don't forget ;
+</code></pre>
+
+<p>? Didn&rsquo;t think so.</p>
+
+<h3 id="the-solution">The solution</h3>
+
+<h4 id="1-the-graduate-school-solution-drop-concepts">1. The graduate school solution: drop concepts</h4>
+
+<p>A short sighted solution would be to rename the course.</p>
+
+<blockquote>
+<p>Software design in Java -&gt; <strong>Java</strong></p>
+</blockquote>
+
+<p>Skip the design, that&rsquo;s something students will pick up during classwork, their thesis or after school. It&rsquo;ll even depend on the firm they will land in so why bother. Just fit them with enough syntax knowledge that is not translatable to another language (because we dropped the concept!). That would require the language to be stable and growing.</p>
+
+<p>And that would require the school to be ever vigilant of &ldquo;hot new fuzz&rdquo; from the IT world so the course &ldquo;Java&rdquo; could be redone in &ldquo;TypeScript&rdquo; or even &ldquo;Solidity&rdquo;.</p>
+
+<h4 id="2-the-university-school-solution-drop-implementation">2. The university school solution: drop implementation</h4>
+
+<p>A short sighted solution would be to rename the course.</p>
+
+<blockquote>
+<p>Software design in Java &gt; <strong>Software design</strong></p>
+</blockquote>
+
+<p>Skip (emphasis on) the syntax, that&rsquo;s something students will pick up during classwork, their thesis or after school. It&rsquo;ll even depend on the firm they will land in so why bother. Just fit them with enough conceptual knowledge that is applicable in any language (but you&rsquo;d have to get your hands dirty first!).</p>
+
+<p>Did you see what I did there?</p>
+
+<h4 id="3-my-solution-use-philosophy">3. My solution: <strong>use philosophy</strong>!</h4>
+
+<p>Instead of immediately focusing on how to write example x or y in Java, instead focus on <strong>why</strong> you&rsquo;re teaching this course. Focus on why &ldquo;software design&rdquo; is prepended in the course title, but still followed by &ldquo;in Java&rdquo;. I had no clue that by learning (let&rsquo;s call it following a course instead) mathematics, I was actually learning how to use lemma&rsquo;s (something you know works) to deduct another truth (something you&rsquo;re trying to aim at). If the professor explained why math is important to computer science students (pick a concept and apply it somewhere else) and how it fits into my education, I would no doubt have paid more attention.</p>
+
+<p>Therefore, every single practical lab should:</p>
 
 <ol>
-<li>Interrupt the conversation and push further.</li>
-<li>Ignore it for now and take a mental note do do something with it later.</li>
+<li><a href="https://startwithwhy.com/">Start with why</a></li>
+<li>Followed with practical examples using syntax as a means to an end</li>
 </ol>
 
-<p>Often enough I&rsquo;ve hit a brick wall with option one. It&rsquo;s annoying for the other person to constantly be interrupted and I wouldn&rsquo;t make myself very popular. I do have that nasty habit and I&rsquo;m working on that.
-But let&rsquo;s return to option two for now.</p>
+<p>Simply translating &ldquo;MVC&rdquo; into &ldquo;Model-View-Controller&rdquo; would not suffice. Why would you want to separate these concepts? What is each concept? <strong>Show them</strong>. And then, show them the syntax. But since students sleep during the theory (the explaining part) and struggle during the labs (the practical part), you have to be very, very consistent with this message. Repeat it every single time a lesson starts.</p>
 
-<p>I forgot about the discussion and moved on.
-But taking mental notes is like async AJAX calls: they do return, but you don&rsquo;t know when. That&rsquo;s when it hit me: why don&rsquo;t I email him some details on how to quickly start a blog? Would that be appropriate or not? In any case he&rsquo;s free to delete the email - no harm done. But if he decides to do something with it, all the better. The step from no blog and no experience in Hugo is smaller when a friendly push in the right direction has been given.</p>
+<p>Otherwise &ldquo;Software design in Java&rdquo; will inevitably degrade into &ldquo;Java&rdquo;.</p>
 
-<p><img src="/img/sharing.png" alt="giving" /></p>
+<p>That is why <a href="/post/thinking-in-terms-of-objects/">thinking in terms of objects using natural language</a> is so important to me. The most important exercise in the design course contains almost zero syntax difficulty, but since later exercises require more Java knowledge like threading and JavaFX, they seem to be of higher importance.</p>
 
-<p>One could say &ldquo;what have you to gain? Why do you care?&rdquo; And I don&rsquo;t - I&rsquo;m not a game developer, but I do care - a bit - about the subject. I do care - a lot - about my friend and his personal growth. <a href="/post/teaching-kids-how-to-program/">Show your work</a>, remember?
-I love to inspire others on things that I&rsquo;m passionate about myself. And sharing is caring. I would love to receive an email with loose ends like this from someone I talked to.</p>
-
-<p>So my decision to throw some info over the wall has been made. I&rsquo;m eager to find out if the seed has been planted and nurtured. We&rsquo;ll have to see. I will not be disappointed if it has not - giving and expecting something in return is not giving. I love giving. Altruism must have originated from the egocentric self, some believe. I would not count myself to be part of that group.
-The Japanese encounter a lot of stress if they are given a gift: it has to be matched in value to give something back which has the same value: not less (shame) or more. It&rsquo;s like trying to buy presents for your family at Christmas: a sometimes horrifying experience. You do not know the value of the gift you&rsquo;ll be given and you&rsquo;ll have to guess how much to spend to give.</p>
-
-<p>Of course, handing out information - which should be free in the first place - is not the same as handing out something physical.</p>
-
-<p><a href="http://www.rd.com/true-stories/inspiring/5-stories-that-celebrate-the-spirit-of-giving/">True giving</a> is expecting nothing in return.
-<a href="https://www.themindfulword.org/2014/joy-of-giving/">True giving</a> is wanting nothing in return!</p>
+<p>One could say: &ldquo;I don&rsquo;t really know what threads are doing in such a course!&rdquo; and I would heartily agree with you. But unfortunately, sometimes at schools subject matter is jammed together within one course because of &hellip;. (fill in: time constraints, political issues, lack of consultation with professors)</p>
 </div>
 
     
@@ -343,17 +372,6 @@ The Japanese encounter a lot of stress if they are given a gift: it has to be ma
 
         <div class="text-justify">
              <div class="item">
-
-    <h4><a href="/post/teaching-philosophy-first/">Teaching by philosophy</a></h4>
-
-    
-    
-    
-        On explaining the why before the how <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;31 May 2018</span>
-    
-
-</div>
-  <div class="item">
 
     <h4><a href="/post/thinking-in-terms-of-objects/">Thinking in terms of objects</a></h4>
 

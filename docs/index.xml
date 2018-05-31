@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Sun, 20 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Teaching by philosophy</title>
+      <link>https://brainbaking.com/post/teaching-philosophy-first/</link>
+      <pubDate>Thu, 31 May 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/teaching-philosophy-first/</guid>
+      <description>Awareness, that&amp;rsquo;s the keyword I&amp;rsquo;m looking for here.
+Students are required to slog through a lot of classes during their university years. You pick a major, computer science, and you start learning things like algorithms, data structures, compilers, operating systems, and more abstract (maybe even worse) things like mathematics, geometry and logic. You of course accept those separate subjects as a part of the computer science major - there&amp;rsquo;s little other choice.</description>
+    </item>
     
     <item>
       <title>Over entropie</title>
