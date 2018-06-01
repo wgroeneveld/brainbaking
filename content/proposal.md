@@ -2,7 +2,7 @@
 title: Ph.D. Thesis Voorstel
 ---
 
-## Het onderwerp
+## De probleemstelling
 
 > Wat missen ontwikkelteams en developers[^1] tegenwoordig? 
 
@@ -18,27 +18,28 @@ Het traditioneel coachen en lesgeven brengt echter niet altijd even veel op. Dat
 
 Ik begon mij af te vragen hoe ik het probleem zou kunnen identificeren en hier iets concreet rond doen. De vraag werd een **meta-vraag**: in plaats van te vragen wat te leren begon ik te vragen hoe het leren te leren. Dus: _wat zien we over het hoofd wanneer we toegeven dat software schrijven niet altijd gesmeerd loopt?_
 
+Aan industriële eisen van moderne software engineers wordt vaak niet voldaan. De alsmaar groeiende nood aan informatici verergert dit probleem slechts: het voorzetzel "goede" is compleet verdwenen in die nood. De schuld geven aan een gebrek van een goede opleiding lijkt erg kortzichtig. 
 Vandaar dat ik bovenstaande vraag wil ombuigen naar een doctoraatsvoorstel:
 
-> **The industrial requirements of a modern software engineer.**
+> **The disparity between the industrial requirements and classic education of modern software engineering.**
+
+Op die manier formuleer ik de probleemstelling met persoonlijke inbreng in context van coaching in de industrie en in context van doceren in de onderwijsinstelling. 
 
 De woorden in de titel verklarend:
 
-1. **Industrial**: Ik wil het hebben over software die in de industrie gemaakt wordt - de industrie waar ik een integraal deel van uitmaak. Het moet concreet toepasbaar zijn. Ik wil nauw samenwerken met bedrijven, niet enkel met een onderwijsinstelling.
-2. **Requirements**: de link naar wat ontwikkelteams en developers missen, de vraag waaruit ik ben vertrokken.
-3. **Modern**: Het doctoraat moet actueel zijn, in de tegenwoordige tijd. Zelfs al zou het onderzoek jaren duren, daarna moet het nog van toepassing zijn. In de ontwikkelwereld verandert alles bliksemsnel. Ik wil mij focussen op concepten, niet op frameworks die vervangen worden, en zo een blijvende impact maken.
-4. **Software engineer**: met een insteek vanuit de praktische _engineering_ hoek, niet de theoretische computerwetenschappen hoek. In de industrie noemen we onszelf alemaal graag 'ingenieur', maar dat gaat verder dan enkel het technische programmeerwerk. 
+0. **Disparity**: De vraag waaruit ik ben vertrokken, afgebakend en doelgericht op klassieke opleidingen. 
+1. **Industrial requirements**: Ik wil het hebben over software die in de industrie gemaakt wordt - de industrie waar ik een integraal deel van uitmaak. Het moet concreet toepasbaar zijn. Ik wil nauw samenwerken met bedrijven, niet enkel met een onderwijsinstelling.
+3. **Software engineer**: met een insteek vanuit de praktische _engineering_ hoek, niet de theoretische computerwetenschappen hoek. In de industrie noemen we onszelf alemaal graag 'ingenieur', maar dat gaat verder dan enkel het technische programmeerwerk. 
+4. **Modern**: Het doctoraat moet actueel zijn, in de tegenwoordige tijd. Zelfs al zou het onderzoek jaren duren, daarna moet het nog van toepassing zijn. In de ontwikkelwereld verandert alles bliksemsnel. Ik wil mij focussen op concepten, niet op frameworks die vervangen worden, en zo een blijvende impact maken.
 
-## De inhoud
+## De doelstelling
 
 <center>
     <a href="/img/phd_summary.jpg"><img src="/img/phd_summary.jpg"></a>
     Klik om te vergroten.
 </center>
 
-Wat valt er allemaal onder die zogenaamde vereisten? Ik wil fundamenteel onderzoek verrichten naar verschillende vereisten die allemaal één ding gemeen hebben, namelijk het bovenstaand onderwerp. Als we terugdenken aan de vraag "wat missen we", onderscheiden we[^2] een aantal belangrijke **subonderwerpen**.
-
-De rode draad doorheen de subonderwerpen, **de context**, is van groot belang! "Samenwerking" en "creativiteit" kan in een volledig ander daglicht gesteld worden als we niet spreken over software ingenieurs maar bijvoorbeeld maatschappelijk werk. Dat neemt niet weg dat principes uiteraard overlappen. 
+Voordat we die ongelijkheid uit de weg kunnen ruimen moeten we een andere vraag stellen: wat valt er allemaal onder die zogenaamde industriële vereisten? Die eisen kunnen we langs diverse opleidingen plaatsen om een kritische blik te werpen op de inhoud ervan. Als we terugdenken aan de vraag "wat missen we", onderscheiden we[^2] een aantal belangrijke **deelvragen**:
 
 #### 1. Productiviteit
 
@@ -125,31 +126,17 @@ Dit sluit beter aan met de _agile proces_ dat ook bij Prato gebruikt wordt om sn
 
 ## De toepasbaarheid
 
-Een industriëel getint onderzoek zonder directe toepasbaarheid voelt maar slap aan. Als we kijken naar de evolutie van tools, technieken en praktijken in de software industrie is het des te belangrijk dat iets zo snel mogelijk concrete resultaten oplevert. 
-
-Voor mij persoonlijk, als deels software ontwikkelaar bij [Prato](http://www.prato.be) en deels lesgever aan [KULeuven](http://www.kuleuven.be), is het voornaam dat de toepasbaarheid van het voorstel zowel in de industrie als in de onderwijsinstelling mogelijk is. Ik zou daarom ook nauw willen samenwerken met beide partijen.
+Een industriëel getint onderzoek zonder directe toepasbaarheid voelt maar slap aan. Voor mij persoonlijk, als deels software ontwikkelaar bij [Prato](http://www.prato.be) en deels lesgever aan [KULeuven](http://www.kuleuven.be), is het voornaam dat de toepasbaarheid van het voorstel zowel in de industrie als in de onderwijsinstelling mogelijk is. Ik zou daarom ook nauw willen samenwerken met beide partijen. Die _disparity_ of ongelijkheid in de titel van het voorstel vormt een brug tussen deze beide werelden.
 
 ### A. Industriële toepasbaarheid
 
-Academisch onderzoek kan een meerwaarde zijn voor de industrie gegeven de (technische) gerichtheid van het onderwerp. Desondanks de abstractere insteek van het voorstel mik ik op de volgende toepasbaarheid binnen bedrijven:
+De bewustwording van industriële eisen stelt ons in staat om aan zelfontplooiing te doen als individuele ontwikkelaar en als ontwikkelteam. Concrete resultaten van het onderzoek kan de manier waarop opleidingen tot stand komen aanscherpen, ook binnen een bedrijf. 
 
-#### 1. Als **concreet** smeermiddel voor teams
+Onderzoek rond productiviteit kan bijvoorbeeld direct geïntroduceerd worden als een kostenreductie van 1+%[^3]. Die introductie gaat uiteraard meer werk zijn dan enkel het resultaat van dit werk voordragen: dat is nog maar het begin.
 
-Het resultaat van onderzoek naar de bovenstaande subonderwerpen kan concreet ingezet worden in ontwikkelteams, gegeven de flexibele manier waarop deze thesis tot stand kan komen. 
+Als we de vraag waaruit ik ben vertrokken kunnen beantwoorden, kunnen we ook onze (sprekend vanuit mijn standpunt als technische coach) ontwikkelaars laten zien waar men naar toe kan groeien. Dit kan zelfs gebruikt worden als officieel groeimodel voor ingenieurs, in plaats van archaïsche classificaties van functiedefinities als "junior", "senior" en "architect". 
 
-Onderzoek rond productiviteit kan bijvoorbeeld direct geïntroduceerd worden en een kostenreductie van 1+%[^3] betekenen. Die introductie gaat uiteraard meer werk zijn dan enkel het resultaat van dit werk voordragen: dat is nog maar het begin.
-
-#### 2. Als leidraad voor een **Groeimodel**
-
-Als we de vraag waaruit ik ben vertrokken kunnen beantwoorden, kunnen we ook onze (sprekend vanuit mijn standpunt als werknemer van Prato) ontwikkelaars laten zien waar men naar toe kan groeien. 
-
-Dit kan zelfs gebruikt worden als officieel groeimodel voor ingenieurs, in plaats van archaïsche classificaties van functiedefinities als "junior", "senior" en "architect". 
-
-Zie ook het [PREFER Project](http://preferproject.eu/): _Professional Roles and Employability of Future EngineeRs_.
-
-#### 3. Als leidraad voor het **Selectieproces**
-
-Als we de vraag waaruit ik ben vertrokken kunnen beantwoorden, kunnen we ook de aanwerving van nieuwe ontwikkelaars hierop afstemmen. Het subjectief buikgevoel of algehele gebrek aan uniforme testen wordt vervangen door een heldere blik op de vereisten van een moderne ingenieur. 
+Ook de aanwerving en inzetbaarheid[^4] van nieuwe ontwikkelaars kan hierop afstemd worden. Het subjectief buikgevoel of algehele gebrek aan uniforme testen wordt vervangen door een heldere blik op de vereisten van een moderne ingenieur. 
 
 ### B. Didactische toepasbaarheid
 
@@ -177,7 +164,7 @@ Een concreet voorbeeld: het vak "Software ontwerp in Java" leert studenten het _
 
 Dit voorstel past perfect binnen de onderzoeksgroep [LESEC](https://set.kuleuven.be/LESEC):
 
-> **LEUVEN ENGINEERING & SCIENCE EDUCATION CENTER** - A community of researchers and practicioners contributing to the advancement of education in the Science, Engineering & Technology group.<br/>
+> **LEUVEN ENGINEERING & SCIENCE EDUCATION CENTER**<br/> A community of researchers and practicioners contributing to the advancement of education in the Science, Engineering & Technology group.<br/>
 This includes R&D and consultancy activities, and the establishment of a network for cooperation and the exchange of experiences.
 
 ## Huidig onderzoek
@@ -186,11 +173,17 @@ Er is reeds huidig academisch onderzoek ondernomen in de aparte subonderwerpen. 
 
 Dit is de status van het huidig onderzoek in context van mijn voorstel:
 
+#### A. Rond het curriculum van software engineers
+
+- [Mehdi Jazayeri's](http://www.inf.usi.ch/jazayeri/) werk als [The Education of a Software Engineer](http://www.inf.usi.ch/jazayeri/docs/papers/educationofSEASE.pdf)
+- [A rational design process: how and why to fake it](http://users.ece.utexas.edu/~perry/education/SE-Intro/fakeit.pdf)
+
 #### 1. Rond Productiviteit
 
 - [André Meyer's Ph.D. research rond productiviteit](http://www.andre-meyer.ch/category/research/)
 - [Google Research "how developers search for code"](https://research.google.com/pubs/pub43835.html)
 - [A Systematic Review of Productivity Factors in Software Development](https://arxiv.org/abs/1801.06475)
+- [L. Hatton: The Chimera of Software Quality](https://pdfs.semanticscholar.org/03e0/a475e5c2e39fd1f834acc4fbf5fee49467e3.pdf)
 
 #### 2. Rond Samenwerking & Begeleiding
 
@@ -227,3 +220,4 @@ Dit is de status van het huidig onderzoek in context van mijn voorstel:
 [^1]: De woorden 'programmeur', 'ontwikkelaar', en 'software ingenieur' worden hier door elkaar gebruikt, ondanks hun wezenlijke verschillen. 
 [^2]: Dit is een afgeleide uit eigen ervaring en moet onderzocht worden.
 [^3]: 1% is het subjectief aangenomen absoluut minimum.
+[^4]: Zie ook het [PREFER Project](http://preferproject.eu/): _Professional Roles and Employability of Future EngineeRs_.
