@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <style>
+
+ 
+
+.avatar-container {
+  width: 50px;
+  margin-left: 45px;
+}
+.avatar-container  .avatar-img-border {
+  width: 100%;
+  border-radius: 50%;
+  margin-left: -50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+.avatar-container  .avatar-img {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.intro .freshly-baked {
+  visibility: hidden;
+}
+
+.intro {
+  margin-top: -150px;
+}
+
+@media only screen and (min-width: 500px) {
+  .intro .freshly-baked {
+    visibility: visible;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .intro {
+    margin-top: -40px;
+  }
+
+   .avatar-container {
+    width: 100px;
+  }
+  
+  .avatar-container  .avatar-img-border {
+    width: 100%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+  }
+  
+  .avatar-container  .avatar-img {
+    width: 100%;
+  }
+}
+
+ 
+
+ 
+@media only screen and (min-width: 1600px) {
+
+	main {
+	    max-width: 930px !important;
+	}
+
+  .big-img .container {
+    height: 250px !important;
+  }
+
+}
+
+blockquote {
+  color: #888 !important;
+  border-left: 5px solid var(--accent) !important;
+}
+
+main {
+	padding-top: 0 !important;
+}
+
+main .text-justify p {
+  margin: 0 0 20px !important;
+}
+
+main .text-justify blockquote p {
+  margin: 0 !important;
+}
+
+
+.big-img {
+  	background: no-repeat center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	background-size: cover;
+  	-o-background-size: cover;
+
+	border-top: 2px solid lightgray;
+	border-bottom: 1px solid var(--accent);
+}
+
+@media only screen and (min-width: 768px) {
+  .big-img .container {
+    height: 150px;
+  }
+}
+
+ 
+.gr_grid_container {
+}
+
+.gr_grid_book_container {
+   
+  float: left;
+  width: 98px;
+  height: 160px;
+  padding: 0px 0px;
+  border: 1px solid black;
+  margin: 5px;
+  overflow: hidden;
+}
+
+</style>
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>A Ph.D. Thesis Proposal</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.40.2" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">A Ph.D. Thesis Proposal</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <div class="item">
+
+    <h3>
+        
+        <a href="/post/phd-proposal/">A Ph.D. Thesis Proposal</a>
+    </h3>
+
+    
+    
+    
+        <h4>Bridging the gap between the industry and the academia</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<i class='fa fa-calendar'></i>&nbsp;4 June 2018
+    		</span>
+    	</h5>
+    
+
+
+    
+	   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+    
+    
+        <a href="https://brainbaking.com/tags/phd"><kbd class="item-tag">phd</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>The following Ph.D. proposal has been tailored to act as a clarification for colleagues and professors, hence it&rsquo;s written in Dutch. The English abstract will follow later. The thesis subject:</p>
+
+<blockquote>
+<p><strong>The disparity between industrial requirements and classic education of modern software engineering.</strong></p>
+</blockquote>
+
+<h2 id="de-probleemstelling">De probleemstelling</h2>
+
+<blockquote>
+<p>Wat missen ontwikkelteams en developers<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> tegenwoordig?</p>
+</blockquote>
+
+<p>Vanuit die vraag ben ik vertrokken.</p>
+
+<p>Als software ingenieur met meer dan een <a href="/about">decennium ervaring</a> heb ik een grote interesse ontwikkeld in de manier waarop software tot stand komt. Ik heb een stevige technische achtergrond met een voorliefde om die kennis te delen die zich uit in een actieve rol als coach en lesgever.</p>
+
+<p>Het traditioneel coachen en lesgeven brengt echter niet altijd even veel op. Dat kan natuurlijk aan mij liggen (de manier waarop), aan het de stof die ik wil overbrengen (het onderwerp) of aan de interesse van het doelpubliek (de ontvanger). Bij veel teams waar ik de afgelopen jaren tijd in heb doorgebracht is het moeilijk om iedereen op dezelfde golflengte te krijgen.</p>
+
+<p><center>
+    <img src="/img/sweng_prob.png">
+</center></p>
+
+<p>Ik begon mij af te vragen hoe ik het probleem zou kunnen identificeren en hier iets concreet rond doen. De vraag werd een <strong>meta-vraag</strong>: in plaats van te vragen wat te leren begon ik te vragen hoe het leren te leren. Dus: <em>wat zien we over het hoofd wanneer we toegeven dat software schrijven niet altijd gesmeerd loopt?</em></p>
+
+<p>Aan industriële eisen van moderne software engineers wordt vaak niet voldaan. De alsmaar groeiende nood aan informatici verergert dit probleem slechts: het voorzetzel &ldquo;goede&rdquo; is compleet verdwenen in die nood. De schuld geven aan een gebrek van een goede opleiding lijkt erg kortzichtig.
+Vandaar dat ik bovenstaande vraag wil ombuigen naar een doctoraatsvoorstel:</p>
+
+<blockquote>
+<p><strong>De ongelijkhheid tussen industriële vereisten en klassieke opleidingen van moderne software ingenieurs.</strong></p>
+</blockquote>
+
+<p>Op die manier formuleer ik de probleemstelling met persoonlijke inbreng in context van coaching in de industrie en in context van doceren in de onderwijsinstelling.</p>
+
+<p>De woorden in de (Engelstalige) titel verklarend:</p>
+
+<ol>
+<li><strong>Disparity</strong>: De vraag waaruit ik ben vertrokken, afgebakend en doelgericht op klassieke opleidingen.</li>
+<li><strong>Industrial requirements</strong>: Ik wil het hebben over software die in de industrie gemaakt wordt - de industrie waar ik een integraal deel van uitmaak. Het moet concreet toepasbaar zijn. Ik wil nauw samenwerken met bedrijven, niet enkel met een onderwijsinstelling.</li>
+<li><strong>Software engineer</strong>: met een insteek vanuit de praktische <em>engineering</em> hoek, niet de theoretische computerwetenschappen hoek. In de industrie noemen we onszelf alemaal graag &lsquo;ingenieur&rsquo;, maar dat gaat verder dan enkel het technische programmeerwerk.</li>
+<li><strong>Modern</strong>: Het doctoraat moet actueel zijn, in de tegenwoordige tijd. Zelfs al zou het onderzoek jaren duren, daarna moet het nog van toepassing zijn. In de ontwikkelwereld verandert alles bliksemsnel. Ik wil mij focussen op concepten, niet op frameworks die vervangen worden, en zo een blijvende impact maken.</li>
+</ol>
+
+<h2 id="de-doelstelling">De doelstelling</h2>
+
+<p><center>
+    <a href="/img/phd_summary.jpg"><img src="/img/phd_summary.jpg"></a>
+    Klik om te vergroten.
+</center></p>
+
+<p>Voordat we die ongelijkheid uit de weg kunnen ruimen moeten we een andere vraag stellen: wat valt er allemaal onder die zogenaamde industriële vereisten? Die eisen kunnen we langs diverse opleidingen plaatsen om een kritische blik te werpen op de inhoud ervan. Als we terugdenken aan de vraag &ldquo;wat missen we&rdquo;, onderscheiden we<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> een aantal belangrijke <strong>deelvragen</strong>:</p>
+
+<h4 id="1-productiviteit">1. Productiviteit</h4>
+
+<p>Productiviteit manifesteert zich op drie manieren binnen software ontwikkeling:</p>
+
+<ol>
+<li>In het beheren van ondersteunende <em>tools</em>. <br/>Bijvoorbeeld shortcuts vanbuiten kennen van uw geliefde IDE of blind kunnen typen.</li>
+<li>In efficiëntere codeertechnieken. <br/>Bijvoorbeeld door het sneller herkennen en toepassen van patronen (zie ook Pragmatiek).</li>
+<li>In het <em>metafysische</em>. <br/>Bijvoorbeeld strategiëen voor het overwinnen van afleiding of het beter richten van je sterktes.</li>
+</ol>
+
+<p>Zonder een <strong>bewustwordingsproces</strong> op gang te brengen gaat dit niet beteren. Een simpele productiviteitswinst van 1%<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup> kan al voor een flinke besparing op jaarbasis zorgen. Ondersteunende tools winnen en verliezen snel aan populariteit waarbij kennis van specifiek ingebouwde hulpmiddelen snel irrelevant worden. Die kennis kan echter omgezet worden naar een bewustwording van hun bestaan zodat men ook in de toekomstige tools efficiënt kan werken.<br/>
+Een goede ingenieur is een luie ingenieur die zich constant afvraagt &ldquo;kan ik hier meer uit halen met minder moeite?&rdquo;.</p>
+
+<p>Een ander aspect van metafysische productiviteit is het zoeken naarde juiste stemming. Daarmee bedoel ik Flow van <a href="https://www.ted.com/talks/mihaly_csikszentmihalyi_on_flow">Mihaly Csikszentmihalyi</a>, Deep Work van <a href="https://www.ted.com/talks/cal_newport_why_you_should_quit_social_media">Cal Newport</a> en een Growth Mindset van <a href="https://www.ted.com/talks/carol_dweck_the_power_of_believing_that_you_can_improve">Carol Dweck</a>.</p>
+
+<p>De nodige aandacht dient gegeven te worden aan kwantificeerbaarheid van deze productiviteit binnen software engineering om een correct formeel onderzoek te kunnen uitvoeren.</p>
+
+<h4 id="2-samenwerking-begeleiding-software-maak-je-niet-alleen">2. Samenwerking &amp; Begeleiding: Software maak je niet alleen</h4>
+
+<p>Desondanks bekende boeken als <em>&ldquo;PeopleWare: Productive Projects and Teams&rdquo;</em> van <a href="https://en.wikipedia.org/wiki/Peopleware:_Productive_Projects_and_Teams">Tom DeMarco</a> is dit iets waar bedrijven altijd het meeste budget in snoeien. 80%<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> van de ontwikkelproblemen zijn mens-gerelateerd.</p>
+
+<p>Scholen laten studenten vaak samenwerken aan projecten maar vergeten uit te leggen wat de woorden &ldquo;<em>samen</em>&rdquo; en &ldquo;<em>werken</em>&rdquo; feitelijk betekenen als ze in één woord gebruikt worden. Bijgevolg kunnen wij niet verwachten dat dit in teams vanzelf goed komt.</p>
+
+<p>In de industrie wordt binnen <em>eXtreme Programming</em> vaak het <em>pair programming</em> principe toegepast: met twee personen aan één computer ontwikkelen. De ervaring leert mij dat dit een zeer efficiënte techniek kan zijn om op korte termijn iedereen op dezelfde golflengte te krijgen. Het kan echter ook een recept voor een ramp zijn als geen van beiden toegevingen kan doen.</p>
+
+<p>Een gebrek aan een goed <em>mentor model</em> kan vreselijke gevolgen hebben voor de continuïteit van een software project. Begeleiding is van cruciaal belang om op collega&rsquo;s één lijn te brengen met een minimale inspanning.</p>
+
+<p>Wij hebben vaak de behoefte om volledige controle te hebben en dat is makkelijk terug te vinden in code. Elkaar volledig vertrouwen kan alleen maar als iedereen weet wat de vereisten van een moderne ingenieur zijn en zich daar achter schaart.
+Wantrouwen moet omgebogen worden naar slim vertrouwen.<br/>
+Ik wil mij hier richten op een mens-gerichte oplossing die los staat van project ontwikkelingsmethodologieën die komen en gaan als scrum en kanban.</p>
+
+<h4 id="3-pragmatiek-het-belangrijke-van-het-onbelangrijke-onderscheiden">3. Pragmatiek: Het belangrijke van het onbelangrijke onderscheiden</h4>
+
+<p><em>Verstandsverslaving</em> is jammer genoeg een erg aanstekelijke ziekte onder software ingenieurs, en volgens <a href="https://www.happysmarts.com/">Raj Raghunathan</a> ook een doodzonde van geluk. Het verschil tussen een goede en een heel goede software ingenieur is weten wanneer te stoppen met <em>engineering</em>.</p>
+
+<p>We wensen immers technologie te gebruiken om iets (het domein) uit te drukken, en niet om iets te gebruiken om technologie te tonen. <strong>Soberheid</strong> is een deugd die dringend in de software industrie gestandaardiseerd moet worden.</p>
+
+<p>Dit probleem beperkt zich echter niet binnen de software ingenieurs maar komt ook terug bij ingenieurs in het algemeen. Ik merk uit mijn ervaring als lesgever dat studenten opdrachten vaak te goed willen doen, en uit mijn ervaring als technische coach dat collega ontwikkelaars dit nog steeds niet hebben afgeleerd.</p>
+
+<p><center>
+    <img src="/img/frameworks.jpg">
+</center></p>
+
+<p>De focus leggen op het <em>concept</em> in plaats van het <em>framework</em> is echter makkelijk gezegd: hoe doe je dat? Waarom zijn hogescholen zo gebrand op praktische voordelen van frameworks die na 2 jaar toch niet meer actueel zijn? Waarom zijn universiteiten zo gebrand op theoretische concepten zonder een praktisch voorbeeld aan te halen?</p>
+
+<p>Ik wil op zoek gaan naar een goede cocktail van het conceptuele met het praktische. Het is momenteel een moeilijk te definiëren en moeilijk te beheersen kunst om op het juiste moment die grens te trekken. Het beoordelen van Frameworks zoals <a href="https://angularjs.org/">Angular</a> en <a href="https://reactjs.org/">React</a> zou kunnen betekenen dat hier gewoon concepten uit overgenomen kunnen worden zonder zich te moeten toeleggen op een volledig nieuw systeem.</p>
+
+<h4 id="4-software-ontwikkeling-als-een-organisch-proces">4. Software ontwikkeling als een organisch proces</h4>
+
+<p>De metafoor die zegt dat software ontwikkelen een beetje zoals tuinieren is sluit mooi aan met mijn idee. Maar wanneer beslis je om takken weg te knippen en bomen bij te planten? Op welke manier druk je je dan uit? Het &ldquo;groeien&rdquo; van software wordt altijd ondersteund door <em>test-driven development</em>, zoals het groeien van bomen wordt ondersteund door organische meststoffen. Op die manier reduceer je drastisch het mythische &ldquo;aantal WTFs per minuut&rdquo;.</p>
+
+<p><center>
+    <img src="/img/wtfm.jpg"/>
+</center></p>
+
+<p>De beschrijving van vereisten met de <strong>natuurlijke taal</strong> in code zorgt voor een belangrijke bijdrage tot onderhoudbaarheid. Concepten die van belang zijn voor je product (zoals een vacature, sollicitatie of contract) moeten dezelfde dingen betekenen in de code zelf. Ik wil hier <em>Domain-Driven Design</em> aanraken, maar er niet helemaal in mee gaan.</p>
+
+<p>Ook <em>Veranderbaarheid</em> of <em>agility</em> is een alsmaar belangrijker onderdeel van software ontwerp dat ook in deze categorie past. Technologieën volgen elkaar in een moordend tempo op: moet je dat altijd volgen?</p>
+
+<p>De criminologische <a href="https://nl.wikipedia.org/wiki/Broken_windows_theory">broken windows theorie</a> die stelt dat omgevingen die vuil zijn, meer vuil aantrekken, is jammer genoeg ook van toepassing bij software ontwikkeling. Net als bij het tuinieren zakt de moed je in de schoenen bij het tegenkomen van een groot overwoekerd stuk <em>legacy code</em>.</p>
+
+<p>Buiten <a href="https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627">Growing Object-Oriented Software, Guided by Tests</a> van Steve Freeman ontbreekt eender welke vorm van een formeel model om software ontwikkeling te benaderen als een organisch proces waar ik met dit voorstel een verschil in kan maken.</p>
+
+<h4 id="5-creativiteit">5. Creativiteit</h4>
+
+<p>Iets creëren vereist altijd een zekere vorm van creativiteit. Patronen leren herkennen maakt het mogelijk om deze toe te passen op andere projecten. Die patronen kunnen een aantal dingen zijn:</p>
+
+<ol>
+<li>Letterlijke <em>design patterns</em> zoals de &ldquo;<a href="https://en.wikipedia.org/wiki/Design_Patterns">Gang of Four</a>&rdquo; ze aanbiedt.</li>
+<li>Concepten lenen van verschillende programmeertalen en bibliotheken als een echte <em>polyglot</em>.</li>
+</ol>
+
+<p>Over creativiteit hoor je bitter weinig als software ontwikkelaar en dat is een gemiste kans. Het is zelfs een <strong>kerndeel</strong> van het beroep, als dagelijkse scheppers van virtuele werelden. Hoe bevorderen grote bedrijven als Google de creativiteit van hun techneuten?</p>
+
+<p>Computerwetenschappen is een van de weinige concrete wetenschappen die zich niet moet houden aan de fysieke wetten van onze wereld zoals zwaartekracht. De enige beperking binnen dit domein is je eigen creativiteit! Ik ben ervan overtuigd dat hier meer aandacht aan besteed moet worden.</p>
+
+<h2 id="de-manier-waarop">De manier waarop</h2>
+
+<p>Moderne software moet bestand zijn tegen frequente wijzigingen in de vereisten door onder andere grillen van de klant. Daarom kiest men tegenwoordig voor een <em>iteratieve methode</em> die in staat stelt om regelmatig wijzigingen door te voeren zonder jaren nodig te hebben om één groot pakket te realiseren.</p>
+
+<p>Dit concept wil ik graag doortrekken in dit doctoraatsvoorstel. In plaats van een monografie te schrijven die pas na een (heel) aantal jaren af is, zou ik het <em>iteratief</em> willen aanpakken door een <strong>collectie van opeenvolgende artikels</strong> te schrijven in context van het algehele onderwerp. Deze papers worden op het einde van de rit één mooi geheel door middel van een voorwoord en conclusie.</p>
+
+<p>Dit sluit beter aan met de <em>agile proces</em> dat ook bij Prato gebruikt wordt om sneller feedback te kunnen verzamelen en ook sneller een meerwaarde te kunnen bieden.</p>
+
+<p><img src="/img/agile.png"/></p>
+
+<h2 id="de-toepasbaarheid">De toepasbaarheid</h2>
+
+<p>Een industriëel getint onderzoek zonder directe toepasbaarheid voelt maar slap aan. Voor mij persoonlijk, als deels software ontwikkelaar bij <a href="http://www.prato.be">Prato</a> en deels lesgever aan <a href="http://www.kuleuven.be">KULeuven</a>, is het voornaam dat de toepasbaarheid van het voorstel zowel in de industrie als in de onderwijsinstelling mogelijk is. Ik zou daarom ook nauw willen samenwerken met beide partijen. Die <em>disparity</em> of ongelijkheid in de titel van het voorstel vormt een brug tussen deze beide werelden.</p>
+
+<h3 id="a-industriële-toepasbaarheid">A. Industriële toepasbaarheid</h3>
+
+<p>De bewustwording van industriële eisen stelt ons in staat om aan zelfontplooiing te doen als individuele ontwikkelaar en als ontwikkelteam. Concrete resultaten van het onderzoek kan de manier waarop opleidingen tot stand komen aanscherpen, ook binnen een bedrijf.</p>
+
+<p>Onderzoek rond productiviteit kan bijvoorbeeld direct geïntroduceerd worden als een kostenreductie van 1+%<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>. Die introductie gaat uiteraard meer werk zijn dan enkel het resultaat van dit werk voordragen: dat is nog maar het begin.</p>
+
+<p>Als we de vraag waaruit ik ben vertrokken kunnen beantwoorden, kunnen we ook onze (sprekend vanuit mijn standpunt als technische coach) ontwikkelaars laten zien waar men naar toe kan groeien. Dit kan zelfs gebruikt worden als officieel groeimodel voor ingenieurs, in plaats van archaïsche classificaties van functiedefinities als &ldquo;junior&rdquo;, &ldquo;senior&rdquo; en &ldquo;architect&rdquo;.</p>
+
+<p>Ook de aanwerving en inzetbaarheid<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup> van nieuwe ontwikkelaars kan hierop afstemd worden. Het subjectief buikgevoel of algehele gebrek aan uniforme testen wordt vervangen door een heldere blik op de vereisten van een moderne ingenieur.</p>
+
+<h3 id="b-didactische-toepasbaarheid">B. Didactische toepasbaarheid</h3>
+
+<h4 id="a-als-curriculum-wijziging">A. Als curriculum wijziging</h4>
+
+<p>Kijken we naar een professioneel bachelorprogramma als toegepaste informatica, dan onderscheiden we vakken in ongeveer deze groepen:</p>
+
+<ul>
+<li>Syntactiek (Java, .NET, PHP, &hellip; &ldquo;essentials&rdquo;)</li>
+<li>Techniek (Netwerken, OS, &hellip;)</li>
+<li>Analytiek (Problem solving, business, &hellip;)</li>
+</ul>
+
+<p>Merk op hoe weinig van bovenstaande subonderwerpen hieronder vallen. Af en toe verschijnt er een vak &ldquo;communicatie&rdquo; onder de laatste groep. Los van de gebrekkige inhoud is dat zeker een stap in de goede richting.</p>
+
+<p>Kijken we naar een academisch masterprogramma als computerwetenschappen of (industriële) ingenieurswetenschappen, dan onderscheiden we de volgende extra groepen:</p>
+
+<ul>
+<li>Technische Concepten (Algoritmes, datastructuren, &hellip;)</li>
+<li>Functionele Concepten (Wiskunde, natuurkunde)</li>
+</ul>
+
+<p>Deze grondlaag <strong>kan</strong> voor een uitmuntend inzicht zorgen van een toekomstige software ingenieur. Het probleem is dat niemand een student uitlegt waarom concepten en leren leren belangrijk zijn. Levensbeschouwing om toekomstige samenwerking en inzicht in elkaars denken te bevorderen wordt totaal achterwege gelaten in exacte wetenschapsrichtingen als deze. <br/>
+Een curriculum wijziging die meer toegespitst is naar de noden van de industrie kan dus zeker geen kwaad, ook al komen niet alle afgestudeerde studenten uiteindelijk in die sector waar ik mij nu tot richt terecht.</p>
+
+<p>Een concreet voorbeeld: het vak &ldquo;Software ontwerp in Java&rdquo; leert studenten het <em>ontwerpen software</em> aan met <em>behulp van</em> Java als taal. In werkelijkheid moeten studenten teveel syntactiek leren en verbasteren ze het vak naar &ldquo;Java&rdquo;. Het belangrijkste valt dus tevergeefs weg.</p>
+
+<h4 id="b-als-deel-van-lesec">B. Als deel van LESEC</h4>
+
+<p>Dit voorstel past perfect binnen de onderzoeksgroep <a href="https://set.kuleuven.be/LESEC">LESEC</a>:</p>
+
+<blockquote>
+<p><strong>LEUVEN ENGINEERING &amp; SCIENCE EDUCATION CENTER</strong><br/> A community of researchers and practicioners contributing to the advancement of education in the Science, Engineering &amp; Technology group.<br/>
+This includes R&amp;D and consultancy activities, and the establishment of a network for cooperation and the exchange of experiences.</p>
+</blockquote>
+
+<h2 id="huidig-onderzoek">Huidig onderzoek</h2>
+
+<p>Er is reeds huidig academisch onderzoek ondernomen in de aparte subonderwerpen. Het is iets moeilijker om bestaande wetenschappelijke artikels terug te vinden rond het overkoepelende onderwerp. Typisch wordt een vraag als &ldquo;<em>wat missen we nog in de dev teams?</em>&rdquo; empirisch beantwoord door vallen en opstaan in de bedrijven zelf.</p>
+
+<p>Dit is de status van het huidig onderzoek in context van mijn voorstel:</p>
+
+<h4 id="a-rond-het-curriculum-van-software-engineers">A. Rond het curriculum van software engineers</h4>
+
+<ul>
+<li><a href="http://www.inf.usi.ch/jazayeri/">Mehdi Jazayeri&rsquo;s</a> werk als <a href="http://www.inf.usi.ch/jazayeri/docs/papers/educationofSEASE.pdf">The Education of a Software Engineer</a></li>
+<li><a href="http://users.ece.utexas.edu/~perry/education/SE-Intro/fakeit.pdf">A rational design process: how and why to fake it</a></li>
+</ul>
+
+<h4 id="1-rond-productiviteit">1. Rond Productiviteit</h4>
+
+<ul>
+<li><a href="http://www.andre-meyer.ch/category/research/">André Meyer&rsquo;s Ph.D. research rond productiviteit</a></li>
+<li><a href="https://research.google.com/pubs/pub43835.html">Google Research &ldquo;how developers search for code&rdquo;</a></li>
+<li><a href="https://arxiv.org/abs/1801.06475">A Systematic Review of Productivity Factors in Software Development</a></li>
+<li><a href="https://pdfs.semanticscholar.org/03e0/a475e5c2e39fd1f834acc4fbf5fee49467e3.pdf">L. Hatton: The Chimera of Software Quality</a></li>
+</ul>
+
+<h4 id="2-rond-samenwerking-begeleiding">2. Rond Samenwerking &amp; Begeleiding</h4>
+
+<ul>
+<li><a href="https://ieeexplore.ieee.org/document/7958489/">Complex group decision making in agile projets</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0950584918300223">Non-technical individual skills are weakly connected to the maturity of agile practices
+</a></li>
+<li><a href="https://www.gu.se/english/research/publication/?publicationId=262631">Group developmental psychology and software development performance</a></li>
+<li><a href="https://openresearchsoftware.metajnl.com/articles/10.5334/jors.bc/">The Big Effects of Short-term Efforts: Mentorship and Code Integration in Open Source Scientific Software</a></li>
+<li><a href="https://link.springer.com/chapter/10.1007/978-94-017-9115-1_26">A Mentorship Framework for Work Integrated Learning in Software Development</a></li>
+</ul>
+
+<h4 id="3-rond-pragmatiek">3. Rond Pragmatiek</h4>
+
+<ul>
+<li><a href="https://www.gu.se/english/research/publication/?publicationId=262633">On the relation between unit testing and code quality</a></li>
+<li><a href="https://www.researchgate.net/publication/291754462_Pragmatic_software_engineering_for_computational_science">Pragmatic software engineering for computational science</a></li>
+<li><a href="https://www.jnd.org/dn.mss/the_research-practice_gap_1.html">The Research-practice gap</a></li>
+<li><a href="https://www.infosys.com/consulting/architecture-services/white-papers/Documents/engineering-enterprise-architecture.pdf">Over-engineering enterprise architecture and business competitiveness</a></li>
+<li><a href="https://www.esrale.org/">Learning research</a>: en de toepasbaarheid op sw.eng. Hoe leren we? Welke manieren zijn goed om teams dingen bij te leren? Brown bags VS random meetings VS coding schools VS &hellip; <em>Microlearning</em> onder andere.</li>
+<li><a href="https://link.springer.com/article/10.1007/s10009-002-0083-4">What makes good research in Software Engineering</a></li>
+</ul>
+
+<h4 id="4-rond-software-ontwikkeling-als-organisch-proces">4. Rond Software ontwikkeling als organisch proces</h4>
+
+<ul>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0167642314005449#fg0010">Theorizing about software development practices</a></li>
+<li><a href="https://www.gu.se/english/about_the_university/staff/?languageId=100001&amp;userId=xgrelu&amp;userName=Lucas%20Gren">Lucas Gren&rsquo;s Ph.D. research rond agile software engineering</a></li>
+</ul>
+
+<h4 id="5-rond-creativiteit">5. Rond Creativiteit</h4>
+
+<ul>
+<li><a href="https://www.emeraldinsight.com/doi/abs/10.1108/00907320010359623">Creativity research: implications for teaching, learning and thinking</a></li>
+<li><a href="https://link.springer.com/article/10.3758/BF03196731">The cognitive neuroscience of creativity</a></li>
+<li><a href="https://journals.aom.org/doi/abs/10.5465/256995">Assessing the Work Environment for Creativity</a></li>
+<li><a href="https://books.google.co.uk/books/about/How_Would_You_Move_Mount_Fuji.html?id=9yzUtgAACAAJ&amp;redir_esc=y">How Would You Move Mount Fuji?: How the World&rsquo;s Smartest Companies Select the Most Creative Thinkers</a></li>
+</ul>
+
+<p>&nbsp;</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">De woorden &lsquo;programmeur&rsquo;, &lsquo;ontwikkelaar&rsquo;, en &lsquo;software ingenieur&rsquo; worden hier door elkaar gebruikt, ondanks hun wezenlijke verschillen. 
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">Dit is een afgeleide uit eigen ervaring en moet onderzocht worden.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">1% is het subjectief aangenomen absoluut minimum.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">Zie ook het <a href="http://preferproject.eu/">PREFER Project</a>: <em>Professional Roles and Employability of Future EngineeRs</em>.
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+</ol>
+</div>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
