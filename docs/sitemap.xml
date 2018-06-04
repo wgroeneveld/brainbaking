@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://brainbaking.com/post/phd-proposal/</loc>
+    <lastmod>2018-06-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/teaching-philosophy-first/</loc>
     <lastmod>2018-05-31T00:00:00+00:00</lastmod>
   </url>
@@ -240,7 +245,7 @@
   
   <url>
     <loc>https://brainbaking.com/</loc>
-    <lastmod>2018-05-31T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -448,7 +453,9 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/proposal/</loc>
+    <loc>https://brainbaking.com/tags/phd/</loc>
+    <lastmod>2018-06-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -558,7 +565,7 @@
   
   <url>
     <loc>https://brainbaking.com/post/</loc>
-    <lastmod>2018-05-31T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>

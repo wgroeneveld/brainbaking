@@ -8,10 +8,23 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Thu, 31 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Ph.D. Thesis Proposal</title>
+      <link>https://brainbaking.com/post/phd-proposal/</link>
+      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/phd-proposal/</guid>
+      <description>The following Ph.D. proposal has been tailored to act as a clarification for colleagues and professors, hence it&amp;rsquo;s written in Dutch. The English abstract will follow later. The thesis subject:
+ The disparity between industrial requirements and classic education of modern software engineering.
+ De probleemstelling  Wat missen ontwikkelteams en developers1 tegenwoordig?
+ Vanuit die vraag ben ik vertrokken.
+Als software ingenieur met meer dan een decennium ervaring heb ik een grote interesse ontwikkeld in de manier waarop software tot stand komt.</description>
+    </item>
     
     <item>
       <title>Teaching by philosophy</title>
