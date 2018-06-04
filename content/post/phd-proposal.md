@@ -1,6 +1,17 @@
 ---
-title: Ph.D. Thesis Voorstel
+title: A Ph.D. Thesis Proposal
+date: '2018-06-04'
+subtitle: Bridging the gap between the industry and the academia
+tags:
+  - phd
+published: true
+aliases: ["/proposal"]
 ---
+
+The following Ph.D. proposal has been tailored to act as a clarification for colleagues and professors, hence it's written in Dutch. The English abstract will follow later. The thesis subject:
+
+> **The disparity between industrial requirements and classic education of modern software engineering.**
+
 
 ## De probleemstelling
 
@@ -21,11 +32,11 @@ Ik begon mij af te vragen hoe ik het probleem zou kunnen identificeren en hier i
 Aan industriële eisen van moderne software engineers wordt vaak niet voldaan. De alsmaar groeiende nood aan informatici verergert dit probleem slechts: het voorzetzel "goede" is compleet verdwenen in die nood. De schuld geven aan een gebrek van een goede opleiding lijkt erg kortzichtig. 
 Vandaar dat ik bovenstaande vraag wil ombuigen naar een doctoraatsvoorstel:
 
-> **The disparity between the industrial requirements and classic education of modern software engineering.**
+> **De ongelijkhheid tussen industriële vereisten en klassieke opleidingen van moderne software ingenieurs.**
 
 Op die manier formuleer ik de probleemstelling met persoonlijke inbreng in context van coaching in de industrie en in context van doceren in de onderwijsinstelling. 
 
-De woorden in de titel verklarend:
+De woorden in de (Engelstalige) titel verklarend:
 
 0. **Disparity**: De vraag waaruit ik ben vertrokken, afgebakend en doelgericht op klassieke opleidingen. 
 1. **Industrial requirements**: Ik wil het hebben over software die in de industrie gemaakt wordt - de industrie waar ik een integraal deel van uitmaak. Het moet concreet toepasbaar zijn. Ik wil nauw samenwerken met bedrijven, niet enkel met een onderwijsinstelling.
