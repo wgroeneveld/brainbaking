@@ -1,6 +1,6 @@
 ---
-title: 'Over bedrijfsethiek'
-date: '2018-06-07'
+title: 'Over het introduceren van bedrijfsethiek'
+date: '2018-06-11'
 subtitle: Een cultuur aanbrengen en onderhouden
 published: true
 ---
@@ -11,6 +11,8 @@ Een cultuur kweken, hoe doe je dat? Op een Petri schaaltje? Wat als die specifie
 2. Het is bewezen dat gedragsveranderingen weken (al dan niet maanden) duren, mét actieve inspanning. 
 3. Via één of twéé kanalen iets verspreiden betekent niet dat iedereen het ziet. Alles open trekken dus. 
 4. Het is niet omdat iemand je idee ziet, dat het blijft hangen. Herhaling en geregeld aanwakkering tot enthousiasme is noodzakelijk.
+
+### Een praktische benadering
 
 Wat is het **nut** van een bedrijfsethiek? Staan we daar voldoende stil bij, en brengen we dit voldoende aan zonder klassieke ethiek en vakterminologie van de filosofie te betrekken? Met andere woorden: Schrijf iets
 
@@ -32,6 +34,24 @@ Een technische [definitie](https://www.managementsite.nl/kennisbank/organisatiec
 > de gemeenschappelijke verstandhouding van de leden van – en de belanghebbenden bij het bedrijf’. Schein (1992) 
 
 De extractie van kernwaarden om tot die verstandhouding te komen is niet zo moeilijk (zie het voorbeeld hieronder). In plaats van ethiek te zien als doel, moeten we het ombuigen tot **een middel**. En dat middel moet elke keer gehandhaafd worden als er iets te bereiken valt in het bedrijf. Elke keer: dus alle acties, hoe klein of groot ook, zouden in context van de ethiek geplaatst moeten worden. Enkel zo kan de verschuiving in de gedachtegang tot stand komen. 
+
+### Een academische benadering
+
+Bedrijfsethiek als opleidingsonderdeel van [Economische Wetenschappen](https://onderwijsaanbod.kuleuven.be/syllabi/n/D0R91AN.htm#activetab=plaatsen_in_het_onderwijsaanbod_idp7440448) geeft de volgende topics aan die belangrijk zouden zijn binnen de bedrijfsethiek:
+
+- Welke rol spelen waarden en normen in het goede beheer van de onderneming
+- De aard van ethiek en bedrijfsethiek in het bijzonder
+- Rechten en plichten van werkgevers en werknemers
+- Marketingethiek
+- Corporate Governance
+- Onderneming en maatschappij
+- De ecologische uitdaging van de onderneming
+
+Enkel de eerste twee punten zijn hier interessant, de rest gaat veel te ver in op de technische implementatie die mij hier niet bezig houden. Welke rol spelen waarden en normen in het goede beheer van de onderneming? Dit betekent dat de waarden en normen **in context** geplaatst moeten worden. Bedrijfscultuur lijkt een onderdeel te zijn van "bedrijfsethiek" in de bredere zin van het woord, waar ook bedrijfscodes en strategische marketing bij horen. Ik ben enkel geïnteresseerd in de cultuur die iets zou moeten losmaken van de werkgevers en werknemers. 
+
+Een adequate bedrijfsethiek vereist een visie op het goede leven, op fundamentele waarden en doelen die betekenis geven aan het handelen - zegt [Ensie](https://www.ensie.nl/lexicon-van-de-ethiek/bedrijfsethiek). **De creatie van een zinvolle omgeving waarin personeelsleden worden getransformeerd van passieve contractuele werknemers tot gemotiveerde leden van een doelgerichte en waardevolle organisatie**. 
+
+Passief -> actief door middel van doel en waarde - prachtige woorden, op naar een voorbeeld! 
 
 ## Een uitgebouwd voorbeeld
 
