@@ -17,6 +17,7 @@ enableEmoji = true
     disableComments = true
     accent = "purple"
     showBorder = true
+    twitter = "woutergroenev"
     backgroundColor = "white"
     highlight = true
     highlightStyle = "paraiso-dark"

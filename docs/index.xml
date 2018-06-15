@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Mon, 11 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Reverse engineering a curriculum</title>
+      <link>https://brainbaking.com/post/reverse-engineering-a-curriculum/</link>
+      <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/reverse-engineering-a-curriculum/</guid>
+      <description>Also worth reading: Teaching by philosophy.
+What if, instead of starting with the beginning, you&amp;rsquo;d start with imagining where you&amp;rsquo;d land if you&amp;rsquo;d successfully finish a big project? Thinking like this would temporarily eliminate the how question and focus on the what or why question on a higher level. It&amp;rsquo;s a good exercise that might net me new ideas or forge novel connections between two slumbering thoughts. Let&amp;rsquo;s try to imagine what a curriculum for computer science should look like ideally without holding back on the actual practical possibilities - based on rough ideas noted in my proposal.</description>
+    </item>
     
     <item>
       <title>Over het introduceren van bedrijfsethiek</title>
@@ -42,7 +52,8 @@ Als software ingenieur met meer dan een decennium ervaring heb ik een grote inte
       <pubDate>Thu, 31 May 2018 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/post/teaching-philosophy-first/</guid>
-      <description>Awareness, that&amp;rsquo;s the keyword I&amp;rsquo;m looking for here.
+      <description>Also worth reading: reverse engineering a curriculum.
+Awareness, that&amp;rsquo;s the keyword I&amp;rsquo;m looking for here.
 Students are required to slog through a lot of classes during their university years. You pick a major, computer science, and you start learning things like algorithms, data structures, compilers, operating systems, and more abstract (maybe even worse) things like mathematics, geometry and logic. You of course accept those separate subjects as a part of the computer science major - there&amp;rsquo;s little other choice.</description>
     </item>
     

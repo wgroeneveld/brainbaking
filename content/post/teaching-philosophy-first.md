@@ -6,7 +6,10 @@ tags:
 - teaching
 - philosophy
 published: true
+aliases: ["/post/teaching-by-philosophy"]
 ---
+
+Also worth reading: [reverse engineering a curriculum](/post/reverse-engineering-a-curriculum/).
 
 **Awareness**, that's the keyword I'm looking for here. 
 
