@@ -1,7 +1,7 @@
 ---
 title: A Ph.D. Thesis Proposal
 date: '2018-06-04'
-subtitle: Bridging the gap between the industry and the academia
+subtitle: Bridging the gap between software development requirements in the industry and eudcations in the academia
 tags:
   - phd
 published: true

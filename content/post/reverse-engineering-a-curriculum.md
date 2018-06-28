@@ -1,7 +1,7 @@
 ---
 title: 'Reverse engineering a curriculum'
 date: '2018-06-15'
-subtitle: Imagining the end before starting with the beginning
+subtitle: Can a unified software engineering philosopy shape the right context in a curriculum?
 tags:
 - teaching
 - phd
