@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Fri, 15 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Computer Science education modules</title>
+      <link>https://brainbaking.com/post/informatics-education-modules/</link>
+      <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/informatics-education-modules/</guid>
+      <description>Also worth reading: Reverse engineering a curriculum.
+I happened to come across a very interesting study path for &amp;ldquo;game programmers&amp;rdquo; published at https://github.com/miloyip/game-programmer. It&amp;rsquo;s a nice visual representation of books that help you become a better (game) programmer, starting from zero (game programming for kids) and ending at advanced game physics and Artificial Intelligence. I am not keen on becoming a game programmer but the reason this is interesting is that the author has done a great job trying to categorize the different requirements - what it takes to be a programmer in general.</description>
+    </item>
     
     <item>
       <title>Reverse engineering a curriculum</title>
