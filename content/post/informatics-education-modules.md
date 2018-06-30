@@ -1,7 +1,7 @@
 ---
-title: 'Computer Science education modules'
+title: 'Computer Science learning pathways'
 date: '2018-06-29'
-subtitle: Categorizing the essential Computer Science knowledge
+subtitle: Categorizing essential Computer Science knowledge
 tags:
 - teaching
 - phd
@@ -151,11 +151,16 @@ So what about the professional Bachelor in Applied Informatics? Is this the road
 
 The third year is a specialization year with three choices: application development (mobile development, programming "expert", software engineering), software management (modeling, management) and networking (cloud & automation, OS expert). I can only guess at the contents of the very vague course descriptions but almost anything from the computer science path seems to be completely vanished. 
 
-That leaves me to conclude that the _"2. Programming Languages"_ study path with a bit of _"3. software development"_ apply for a professional bachelor[^3]. Advanced principles might as well be learned on-the-job if you're hired (_"6. Game development"_) but it's sad to see that not even a little bit of the essentials are integrated into the plan. I know this to be true because I was a guest lecturer for courses like the essential and advanced application development parts. 
+That leaves me to conclude that the _"2. Programming Languages"_ study path with a bit of _"3. software development"_ apply for a professional bachelor[^3]. Advanced principles might as well be learned on-the-job if you're hired (_"6. Game development"_) but it's sad to see that not even a little bit of the essentials are integrated into the plan. I know this to be true because I was a guest lecturer for courses like the essential and advanced application development parts. <br/>
+Of course as an academic I'm highly biased, but I have worked for 11 years in the software development industry where practicality is most important and most colleagues came from the applied trajectory.
 
-Of course as a Master and a PhD student I'm highly biased towards academia but I worked for 11 years in the software development industry where practicality is more important and most colleagues came from the applied trajectory.
-<br/>This will prove to be insightful when thinking about a global software engineering philosophy!  
+## Conclusion
+
+Is basic Computer Science knowledge required to be a great software developer? I think that will depend on what kind of software you'll be working on. If it's domain-driven enterprise software then most of the complexity will come from unclear business rules that drives miscommunication. In that case common sense and critical thinking will be enough[^4]. If it's a game engine, a deep learning network or a new distributed protocol then the right mindset alone won't cut it.
+
+That also seems to clarify the difference between developing and engineering. There are a lot of [articles on this subject](https://www.google.be/search?q=software+engineer+vs+software+developer) to be found and the explanation is never clear but bound to the industrial context.
 
 [^1]: According to the github link, and according to all academic educations. Applied informatics seems to completely (or partially) skip this step, see later on.
 [^2]: To quote the source: "Large software companies like Google, Amazon, Facebook and Microsoft view software engineering as different from software/web development, and they require computer science knowledge."
 [^3]: Remember, other graduate schools offer other trajectories. 
+[^4]: Those skills are also trained while learning CS so it's not to say that it will be useless!
