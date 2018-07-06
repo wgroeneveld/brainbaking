@@ -1,34 +1,51 @@
-+++
-aliases = [
-    "/talks/"
-]
-title = "Teaching"
-icontag = "fa-graduation-cap"
-+++
+---
+title: 'Teaching'
+icontag: 'fa-graduation-cap'
+accent: "#008eb3"
+disableList: true
+---
 
 > I cannot teach anybody anything, I can only make them think. - Socrates
 
 Transforming knowledge into well-digestible material is <i class='fa fa-lightbulb-o'></i>&nbsp;<a href="/">my mission</a>. The best way to learn something is to teach it, and I fully agree with that quote. It makes me come outside my comfort zone to break down something I _think_ I know really well into abstract concepts to be able to redefine something together with eager learners. 
 
-#### 2018
+### KU Leuven Industrial Engineering
 
-- [Software design in Java](https://www.uhasselt.be/documents/BROCHURES/2018-2019/Masterflyer-Elektronica-ICT-2018-web.pdf), KULeuven &amp; UHasselt industrial engineering<br/>
+<span></span>
+<img src="/img/kul.svg" style="float: right;"/>
+
+#### 2018 - 2019
+
+- [Software design in C/C++](/teaching/cpp/)
+
+#### 2017 - 2018
+
+- [Software design in Java](https://www.uhasselt.be/documents/BROCHURES/2018-2019/Masterflyer-Elektronica-ICT-2018-web.pdf)<br/>
 	<small>
 		The fundamentals of software design thought in Java. We use JavaFX as a prime example to explain the concept of dividing big problems into subproblems and thinking about who needs to do what (Model View Controller)<br/>
 		Industrial engineers with and without IT specialization both follow this course. 
 	</small>
 
-#### 2017
+### PXL Guest Lectures
+
+<span></span>
+<img src="/img/pxl.png" style="float: right; width: 140px;"/>
+
+#### 2016 - 2017
 
 - [Test Driven Design for Teachers](https://github.com/wgroeneveld/tdd-course)<br/>
 	<small>Based on our own experience and books we've read. These files will be used to teach and educate others on how to write clean code, in an object-oriented way. Using tests as a solid base.</small>
 
-#### 2016
+#### 2015 - 2016
 
 - [Clean Code courses](https://github.com/wgroeneveld/cleancode-course)<br/>
 	<small>
 		Based on our own experience and books we've read. These files will be used to teach and educate others on how to write clean code, in an object-oriented way. This course is aimed towards college students in IT. 
 	</small>
+
+### Internal company courses
+
+<span></span>
 
 #### 2014
 

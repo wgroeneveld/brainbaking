@@ -30,14 +30,16 @@
     {{ end }}
 
     <!-- discuss without disqus: twitter knopke -->
+    {{ if (not .Params.disableComments) }}
     <h4 class="page-header"><i class="fa fa-comments-o"></i>&nbsp;Join the Discussion on 
         <a href="https://twitter.com/{{ .Site.Params.twitter }}">Twitter</a>!</h4>
 
-    {{ if and .Site.DisqusShortname (not .Params.disableComments) }}
+        {{ if .Site.DisqusShortname }}
 
-        <h4 class="page-header">Comments</h4>
+            <h4 class="page-header">Comments</h4>
+            {{ template "_internal/disqus.html" . }}
 
-        {{ template "_internal/disqus.html" . }}
+        {{ end }}
 
     {{ end }}
 
