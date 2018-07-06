@@ -502,13 +502,14 @@ There have been a lot of love letters to big cities here on Medium recently. I n
     </item>
     
     <item>
-      <title>Teaching</title>
-      <link>https://brainbaking.com/teaching/</link>
+      <title>Software ontwerp in C/C&#43;&#43; met Qt</title>
+      <link>https://brainbaking.com/teaching/cpp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/teaching/</guid>
-      <description>I cannot teach anybody anything, I can only make them think. - Socrates
- Transforming knowledge into well-digestible material is &amp;nbsp;my mission. The best way to learn something is to teach it, and I fully agree with that quote. It makes me come outside my comfort zone to break down something I think I know really well into abstract concepts to be able to redefine something together with eager learners.</description>
+      <guid>https://brainbaking.com/teaching/cpp/</guid>
+      <description>Laatste aanpassingen voor academiejaar 2018 - 2019.
+Cursus notities De hoorcolleges en labo&amp;rsquo;s lopen door elkaar.
+Hoorcolleges  Introductie in C/C++: context, pointers Het C/C++ Build Ecosysteem Object-Georiënteerd denken in C++: domein modellen, erving, virtuele functies en friend classes Object-Georiënteerd denken in C++: functiepointers, lambda&amp;rsquo;s, STL Een introductie in GUI ontwerp met Qt Samenvatting, examen info  Labo&amp;rsquo;s  todo todo todo todo todo todo todo todo todo todo todo todo  Syllabus  Lesgever: Wouter Groeneveld - wouter.</description>
     </item>
     
   </channel>

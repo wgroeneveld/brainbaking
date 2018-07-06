@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-45748221-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Software ontwerp in C/C&#43;&#43; met Qt</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.39" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Software ontwerp in C/C&#43;&#43; met Qt</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <div class="item">
+
+    <h3>
+        
+        <a href="/teaching/cpp/">Software ontwerp in C/C&#43;&#43; met Qt</a>
+    </h3>
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p><span style="float: right;">
+    <img src="/img/kul.svg" /><br/>
+    <img src="/img/uhasselt.svg" style="width: 165px;"/>
+</span>
+Laatste aanpassingen voor academiejaar <em>2018 - 2019</em>.</p>
+
+<h2 id="cursus-notities">Cursus notities</h2>
+
+<p>De hoorcolleges en labo&rsquo;s lopen door elkaar.</p>
+
+<h3 id="hoorcolleges">Hoorcolleges</h3>
+
+<ol>
+<li>Introductie in C/C++: context, pointers</li>
+<li>Het C/C++ Build Ecosysteem</li>
+<li>Object-Georiënteerd denken in C++: domein modellen, erving, virtuele functies en friend classes</li>
+<li>Object-Georiënteerd denken in C++: functiepointers, lambda&rsquo;s, STL</li>
+<li>Een introductie in GUI ontwerp met Qt</li>
+<li>Samenvatting, examen info</li>
+</ol>
+
+<h3 id="labo-s">Labo&rsquo;s</h3>
+
+<ol>
+<li>todo</li>
+<li>todo</li>
+<li>todo</li>
+<li>todo</li>
+<li>todo</li>
+<li>todo</li>
+<li>todo</li>
+<li>todo</li>
+<li>todo</li>
+<li>todo</li>
+<li>todo</li>
+<li>todo</li>
+</ol>
+
+<h2 id="syllabus">Syllabus</h2>
+
+<ul>
+<li><strong>Lesgever</strong>: Wouter Groeneveld - <a href="mailto:wouter.groeneveld@kuleuven.be">wouter.groeneveld@kuleuven.be</a></li>
+<li><strong>Kantoor</strong>: <a href="https://www.ucll.be/studeren/student-aan-ucll/campussen/campus-diepenbeek">Quadri gebouw</a>, 1.06</li>
+<li><strong>Verplicht handboek</strong>: <a href="https://www.goodreads.com/book/show/768080.C_Primer">C++ Primer</a>, Stanley B. Lippman</li>
+</ul>
+
+<h4 id="cursusbeschrijving">Cursusbeschrijving</h4>
+
+<p>C is oorspronkelijk ontwikkeld om hardware heel gericht te kunnen aansturen. Later, en zeker met de toevoeging van C++, is C/C++ ook gebruikt voor gewone software. Tegenwoordig wordt die rol eerder overgenomen door Java en .NET en is het belang van C en C++ (terug) verschoven naar de ingebedde systemen.</p>
+
+<p>Vanuit die optiek is het niet meer dan logisch om studenten elektronica/ict vaardigheden in C/C++ te laten verwerven. Vanuit dezelfde verbredende visie doen we dit met Linux als (cross-platform) ontwikkelplatform en met embedded systemen als doelplatform.</p>
+
+<p>C++ wordt aangebracht vanuit de kennis van Java, zoals verworven in eerdere opleidingsonderdelen. Er wordt dan ook geregeld gewezen op de verschillen en gelijkenissen tussen C++ en Java. Een aantal concepten zijn gelijkaardig met (lichtjes) andere syntax, maar er zijn ook fundamenteel andere dingen, zoals pointers, friends, virtuele functies, operator overloading, destructors, STL, &hellip; Voor de GUI wordt gewerkt met QT.</p>
+
+<p>In een latere faze van de oefeningen maakt de student kennis met crosscompilatie zodat de oefening kan draaien op een single board &ldquo;computer&rdquo; zoals een Gameboy Advance.</p>
+
+<ul>
+<li>Imperatief programmeren in C
+
+<ul>
+<li>Controlestructuren, functies, arrays</li>
+<li>Pointers en reference variabelen.</li>
+</ul></li>
+<li>Object-Georiënteerd programmeren C++
+
+<ul>
+<li>Operatoren, virtuele functie, abstracte klasse, uitzonderingen, sjablonen, containers.</li>
+<li>De STL bibliotheek</li>
+<li>C++ 11 lambda&rsquo;s</li>
+</ul></li>
+<li>Het gehele C/C++ Ecosysteem: makefiles, builden, linken.</li>
+<li>Software ontwerpen met domein modellen.</li>
+<li>Vergelijking tussen C/C++ en Java.</li>
+<li>Cross-platform-ontwikkeling voor Single Board Computers.</li>
+<li>Kennismaking met het Qt framework voor GUI ontwerp in C++.</li>
+</ul>
+
+<h4 id="doelstellingen">Doelstellingen</h4>
+
+<p>Zie ook <a href="https://www.uhasselt.be/studiegids">Studiegids UHasselt</a></p>
+
+<p>De context en het overzicht worden aangereikt in het hoorcollege.</p>
+
+<p>Als practicum wordt een grotere probleemstelling als project uitgewerkt. Alle aan te leren aspecten van C++ komen in dit project aan bod. Studenten kunnen facultatief buiten het practicum extra thematische oefeningen oplossen.</p>
+
+<h4 id="beoordeling-en-evaluatie">Beoordeling en evaluatie</h4>
+
+<p>Zowel in de eerste als de tweede examenkans is er een project (thuiswerk) en een schriftelijk examen. De verdeling tussen beide is afhankelijk van de omvang van de taak en wordt meegedeeld wanneer de taak wordt opgegeven.</p>
+
+<p>Overdracht van het punt op de taak naar de tweede examenkans en een volgend academiejaar vanaf <sup>12</sup>&frasl;<sub>20</sub>.</p>
+
+<p>Overdracht van het punt op het examen naar de tweede examenkans vanaf <sup>10</sup>&frasl;<sub>20</sub>. Er is geen overdracht naar een volgend academiejaar.</p>
+
+<h4 id="meer-leermiddelen">Meer leermiddelen</h4>
+
+<p>Een interessante vergelijkende cursus met nadruk op computer architectuur: <a href="http://cs.umw.edu/~finlayson/class/spring18/cpsc305/">Computer Systems and Architecture</a> aan de Universiteit Mary Washington.</p>
+
+<h5 id="c-in-depth">C in-depth</h5>
+
+<ul>
+<li><a href="https://www.goodreads.com/book/show/515601.The_C_Programming_Language?from_search=true">The C Programming Language</a></li>
+</ul>
+
+<h5 id="embedded-gba-programming-in-c">Embedded GBA Programming in C</h5>
+
+<ul>
+<li><a href="https://www.coranac.com/tonc/text/toc.htm">Tonc: principles of GBA programming</a></li>
+<li><a href="http://www.loirak.com/gameboy/gbatutor.php">GBA Programming for beginners</a></li>
+</ul>
+
+<h5 id="c-in-depth-1">C++ in-depth</h5>
+
+<ul>
+<li><a href="https://www.goodreads.com/book/show/22800553-effective-modern-c">Effective Modern C++</a></li>
+</ul>
+
+<h5 id="qt-gui-programming">Qt GUI Programming</h5>
+
+<ul>
+<li><a href="http://doc.qt.io/qt-5/qtexamplesandtutorials.html">Qt Examples and Tutorials</a></li>
+<li><a href="http://doc.qt.io/qt-5/classes.html">Qt Class reference</a></li>
+</ul>
+
+<h4 id="kalender">Kalender</h4>
+
+<p>Zie <a href="http://collegeroosters.uhasselt.be">collegeroosters UHasselt</a>.</p>
+</div>
+
+    
+    
+
+    
+
+    
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
