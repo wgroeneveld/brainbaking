@@ -60,9 +60,64 @@ img.bordered {
 
 /** general **/
 
-/* voor 20'+ breedbeeldschermen de main content verhogen */
-@media only screen and (min-width: 1600px) {
+/* -- Typography overrides bootstrap.
+   -- default CSS included, can't override less settings from https://getbootstrap.com/docs/3.3/customize/ */
+main {
+  font-size: 14pt !important;
+  line-height: 1.7;
+}
 
+nav {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.8 !important;
+  font-weight: bold !important;
+}
+
+h2 {
+  font-size: 26pt !important;
+}
+
+h3 {
+  font-size: 22pt !important;
+}
+
+h4 {
+  font-size: 16pt !important;
+}
+
+pre {
+  font-size: 12pt !important;
+}
+
+@media (max-width: 767px) {
+  main {
+    font-size: 12pt !important;
+  }
+  h2 {
+    font-size: 24pt !important;
+  }
+
+  h3 {
+    font-size: 20pt !important;
+  }
+
+  h4 {
+    font-size: 14pt !important;
+  }
+
+  pre {
+    font-size: 10pt !important;
+  }
+}
+
+/* -- voor 20'+ breedbeeldschermen */
+@media only screen and (min-width: 1600px) {
+  /* de main content verhogen */
 	main {
 	    max-width: 930px !important;
 	}
@@ -70,7 +125,14 @@ img.bordered {
   .big-img .container {
     height: 250px !important;
   }
+}
 
+/* -- voor fatsoenlijke schermen */
+@media only screen and (min-width: 768px) {
+  /* indien header image, hoogte vergroten */
+  .big-img .container {
+    height: 150px;
+  }
 }
 
 blockquote {
@@ -100,12 +162,6 @@ main .text-justify blockquote p {
 
 	border-top: 2px solid lightgray;
 	border-bottom: 1px solid var(--accent);
-}
-
-@media only screen and (min-width: 768px) {
-  .big-img .container {
-    height: 150px;
-  }
 }
 
 /* --- goodreads widget styles --- */

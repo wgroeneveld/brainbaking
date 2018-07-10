@@ -41,9 +41,9 @@
         <hr/>
 
         <div class="freshly-baked">
-	        <h2>
+	        <h3>
 	        	<i class="fa fa-newspaper-o"></i>&nbsp;{{ markdownify .Site.Params.Description }}:
-	        </h2>
+	        </h3>
 
 	        {{ range (.Paginator 1).Pages.ByDate.Reverse }}
 		    	{{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") | $.Scratch.Set "subtitle" }}
