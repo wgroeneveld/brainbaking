@@ -5,11 +5,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-45748221-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-45748221-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
         <meta charset="utf-8">
@@ -69,7 +73,7 @@ ga('send', 'pageview');
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.40.2" />
+ <meta name="generator" content="Hugo 0.43" />
         
 
         
@@ -367,19 +371,18 @@ someInstanceOfString.properties.each {
 bla(1, 2, 3);
 </code></pre>
 
-<p><strong>Groovy</strong>
-```javadef bla(Object[] args) { // method 1
-def bla(Object&hellip; args) { // classic Java 1.5 method 2
+<p><strong>Groovy</strong></p>
+
+<pre><code class="language-javadef">def bla(Object... args) { // classic Java 1.5 method 2
   args.each{ println it }
 }
 bla(1, 2, 3);
-}</p>
+}
+</code></pre>
 
-<pre><code>
-Een map meegeven gaat altijd natuurlijk, om argumenten expressiever te maken, zoals configuratie: (Groovy vb.)
+<p>Een map meegeven gaat altijd natuurlijk, om argumenten expressiever te maken, zoals configuratie: (Groovy vb.)</p>
 
-```java
-def bla(Map args) {
+<pre><code class="language-java">def bla(Map args) {
   println args.stuff
 }
 bla(stuff: &quot;wow&quot;, c: 3)

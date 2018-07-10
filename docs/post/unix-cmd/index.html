@@ -5,11 +5,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-45748221-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-45748221-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
         <meta charset="utf-8">
@@ -69,7 +73,7 @@ ga('send', 'pageview');
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.40.2" />
+ <meta name="generator" content="Hugo 0.43" />
         
 
         
@@ -253,38 +257,42 @@ expect eof
 
 <p>Vergeten toe te voegen aan de <code>wheel</code> user group, zo doen:</p>
 
-<p><code>pw user mod vivek -G wheel</code></p>
+<pre><code class="language-pw">
+### Shell editing mode 
 
-<h3 id="shell-editing-mode">Shell editing mode</h3>
+Zie http://www.catonmat.net/blog/bash-vi-editing-mode-cheat-sheet/
 
-<p>Zie <a href="http://www.catonmat.net/blog/bash-vi-editing-mode-cheat-sheet/">http://www.catonmat.net/blog/bash-vi-editing-mode-cheat-sheet/</a></p>
-
-<pre><code>$ set -o vi
 </code></pre>
 
-<p>Best opslaan in uw <code>.bashrc</code> (of whateverrc)</p>
+<p>$ set -o vi</p>
 
-<p>-&gt; Tof om te weten: <code>CTRL+L</code> <strong>cleart het scherm</strong> van een <strong>terminal</strong> (dit werkt ook voor Cygwin!)</p>
+<pre><code>
+Best opslaan in uw `.bashrc` (of whateverrc)
 
-<h3 id="command-history">Command History</h3>
+-&gt; Tof om te weten: `CTRL+L` **cleart het scherm** van een **terminal** (dit werkt ook voor Cygwin!)
 
-<p>voorbeeld:</p>
+### Command History 
 
-<pre><code>dir $ history
+voorbeeld:
+
+</code></pre>
+
+<p>dir $ history
    1 ls -la
    2 cd ~
    3 rm somedir
 dir $ !2
-~ $ !!
-</code></pre>
+~ $ !!</p>
 
-<p>waarbij ![getal] laatste x commando uitvoert en !! het laatste. Zie <code>man history</code> voor geavanceerde voorbeelden.</p>
+<pre><code>
+waarbij ![getal] laatste x commando uitvoert en !! het laatste. Zie `man history` voor geavanceerde voorbeelden.
 
-<h3 id="copy-and-auto-create-dir-structure">Copy and auto-create dir structure</h3>
+### Copy and auto-create dir structure 
 
-<p>Bewaar dit shell script naar cpi.sh:</p>
+Bewaar dit shell script naar cpi.sh:
 
-<pre><code class="language-bash">#!/bin/bash
+```bash
+#!/bin/bash
 if [ ! -d &quot;$2&quot; ]; then
     mkdir -p &quot;$2&quot;
 fi

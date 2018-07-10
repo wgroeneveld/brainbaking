@@ -5,11 +5,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-45748221-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-45748221-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
         <meta charset="utf-8">
@@ -69,7 +73,7 @@ ga('send', 'pageview');
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.40.2" />
+ <meta name="generator" content="Hugo 0.43" />
         
 
         
@@ -213,8 +217,8 @@ ga('send', 'pageview');
  (define x 0)
  (define-test (case-fall-through-returns-undefined)
    (assert-equals unspecific
-          (cond ((&lt; x 0) 1)
-            ((&gt; x 0) 1)))
+		  (cond ((&lt; x 0) 1)
+			((&gt; x 0) 1)))
    ))
 
 (run-registered-tests)
@@ -241,12 +245,12 @@ ga('send', 'pageview');
 
   (in-test-group getallekes
     
-     (define-test (add-simple-numbers)
-       (assert-equals (my-add 1 2) 3)))
-       
-    (in-test-group meer-getallekes
-     (define-test (add-more-complex-numbers)
-       (assert-equals (my-add 3 7) 10))))
+	 (define-test (add-simple-numbers)
+	   (assert-equals (my-add 1 2) 3)))
+	   
+	(in-test-group meer-getallekes
+	 (define-test (add-more-complex-numbers)
+	   (assert-equals (my-add 3 7) 10))))
 
 (run-registered-tests)
 </code></pre>

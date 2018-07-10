@@ -5,11 +5,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-45748221-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-45748221-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
         <meta charset="utf-8">
@@ -69,7 +73,7 @@ ga('send', 'pageview');
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.40.2" />
+ <meta name="generator" content="Hugo 0.43" />
         
         <link href="https://brainbaking.com/tags/braindump/index.xml" rel="alternate" type="application/rss+xml" title="Brain Baking" />
         <link href="https://brainbaking.com/tags/braindump/index.xml" rel="feed" type="application/rss+xml" title="Brain Baking" />
