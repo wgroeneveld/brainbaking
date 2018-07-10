@@ -21,8 +21,8 @@ enableEmoji = true
     backgroundColor = "white"
     highlight = true
     highlightStyle = "paraiso-dark"
-    highlightLanguages = ["cs", "c", "scheme", "python", "java", "scala", "javascript"]
-    font = "Cambria"
+    highlightLanguages = ["cs", "cpp", "scheme", "python", "java", "scala", "javascript"]
+    font = "Source Serif Pro"
     copyright = "No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a>"
 
 [Author]

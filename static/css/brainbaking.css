@@ -62,7 +62,7 @@ img.bordered {
 
 /* -- Typography overrides bootstrap.
    -- default CSS included, can't override less settings from https://getbootstrap.com/docs/3.3/customize/ */
-main {
+main, blockquote {
   font-size: 14pt !important;
   line-height: 1.7;
 }
@@ -90,12 +90,20 @@ h4 {
   font-size: 16pt !important;
 }
 
+h5 {
+ font-size: 14pt !important; 
+}
+
+h4 a {
+  font-weight: normal;
+}
+
 pre {
   font-size: 12pt !important;
 }
 
 @media (max-width: 767px) {
-  main {
+  main, blockquote {
     font-size: 12pt !important;
   }
   h2 {
@@ -108,6 +116,10 @@ pre {
 
   h4 {
     font-size: 14pt !important;
+  }
+
+  h5 {
+    font-size: 13pt !important; 
   }
 
   pre {
