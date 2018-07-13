@@ -289,7 +289,7 @@ paddle_sprite->attr2 = 2; // vanaf de 2de tile, palet 0
 
 Merk op dat voor `attr1` (zie [8.4.2](http://www.coranac.com/tonc/text/regobj.htm)) de grootte bepaald wordt in combinatie met de sprite shape. 32x8 of 8x32 zou twee keer `0x4000` vereisen, alleen in `attr0` op bit 15 en 16 een andere waarde. 
 
-### Een OAM object plaatsen
+### Een OAM object verplaatsen
 
 De x en y coordinaten zijn veruit de belangrijkste die dynamisch wijzigen gedurende het spel. Daarom verdienen deze hun eigen functie om gemanipuleerd te worden:
 
@@ -334,9 +334,28 @@ void vsync() {
 }
 ```
 
-Oef! Nu kunnen we alles samen rapen. [Download het resultaat hier](/teaching/cpp/labo-4-gba-1.c).
+Oef! Nu kunnen we alles samen rapen. [Download het resultaat hier](/teaching/cpp/labo-4-gba-1.c). Het spel luistert ook naar de keypads om de paddle te bewegen zoals we gezien hebben in labo 3. Hieronder een gif van het spel:
+
+<img src="/img/teaching/arkanoid.gif" />
+
+Ik hoop dat jullie nu wat meer respect tonen naar programmeurs en spellen van zulke low-level embedded systemen als de GBA. Het kost zoals we gezien hebben véél meer moeite dan een JPEG in te laden in JavaFX.
+
+De geïnteresseerden kunnen hieronder eens kijken hoe je externe sprites met hun paletten sprites gebruikt in plaats van ze zelf te definiëren. Die worden meestal gegenereerd gebaseerd op een `PCX` bestand als aparte header files. 
+
+* [Sprites and animation](http://cs.umw.edu/~finlayson/class/spring18/cpsc305/notes/15-sprites.html)
+* [png2gba](https://github.com/IanFinlayson/png2gba) converter tool
+* [wingrit](https://www.coranac.com/man/grit/html/wingrit.htm) bitmap converter tool (bestaat ook een UNIX versie van)
 
 ## Labo oefeningen
 <a name="oef"></a>
 
+Er ontbreken nog een aantal belangrijke zaken in ons spel.
 
+1. De bal sprite beweegt niet! Oei? Verzin een simpele implementatie in de main loop die de x en y waardes van de bal OAM manipuleert. Rekening houden met physics hoeft nog niet, maar wel met de edges van het scherm. 
+2. Er zijn helemaal geen blokjes om tegen te botsen bovenaan. Wat een klote spel. Maak nieuwe sprites aan die je een eigen kleur geeft, en bovenaan positioneert. Merk op dat je sprites kan herbruiken! 
+3. Tijd voor wat basis collision detection. Als de bal botst tegen één van de blokjes die je hebt bijgemaakt, verdwijnt dat blokje. Zichtbaarheid is ook een bit in OAM, raadpleeg de documentatie. 
+4. Kuis de code een beetje op. `create_paddle` en `create_ball` zijn nu van elkaar afhankelijk door indices in register pointers. Voorzie een globale variabele om dit allemaal te beheren. 
+
+## Denkvragen
+
+1. Kan je je een ideaal soort spel inbeelden waarin video mode 1 bruikbaar zou kunnen zijn? En wanneer zou video mode 3 (of 4 met buffering) wel handig zijn? Tip: er zijn wel degelijk spellen ontwikkeld in mode 4, zoals [James bond 007: Nightfire](https://www.youtube.com/watch?v=kdiXB8xeF1k).

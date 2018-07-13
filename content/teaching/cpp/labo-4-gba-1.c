@@ -1,7 +1,7 @@
 #define SCREEN_WIDTH  240
 #define SCREEN_HEIGHT 160
 
-#define REG_DISPLAY (*((volatile uint32 *)0x04000000))
+#define REG_DISPLAY (*((volatile uint16 *)0x04000000))
 #define DISPLAY_MODE1 0x1000
 #define DISPLAY_ENABLE_OBJECTS 0x0040
 
@@ -14,6 +14,13 @@
 #define OAM_MEM  ((volatile object *)0x07000000)
 #define Y_MASK 0x0FF
 #define X_MASK 0x1FF
+
+#define REG_KEY_INPUT (*((volatile uint16 *)0x04000130))
+#define KEY_ANY  0x03FF
+#define KEY_LEFT (1 << 4)
+#define KEY_RIGHT (1 << 5)
+
+#define VELOCITY 2
 
 typedef unsigned short uint16;      // controle bits voor OAM, RGB
 typedef unsigned int uint32;        // 1 tile bit in de GBA
@@ -89,16 +96,35 @@ void initScreen() {
     REG_DISPLAY = DISPLAY_MODE1 | DISPLAY_ENABLE_OBJECTS;
 }
 
+uint16 readKeys() {
+    return ~REG_KEY_INPUT & KEY_ANY;
+}
+
 int main() {
+    uint16 keys;
     volatile object* ball = create_ball();
     volatile object* paddle = create_paddle();
 
+    int px = (SCREEN_WIDTH / 2) - (32 / 2);
+    int py = SCREEN_HEIGHT - 10;
     position(ball, 50, 50);
-    position(paddle, (SCREEN_WIDTH / 2) - (32 / 2), SCREEN_HEIGHT - 10);
+    position(paddle, px, py);
 
     initScreen();
 
     while(1) {
         vsync();
+
+        keys = readKeys();
+        if(keys & KEY_RIGHT) {
+            px -= VELOCITY;
+            if(px < 0) px = 0;
+        }
+        if(keys & KEY_LEFT) {
+            px += VELOCITY;
+            if(px > (SCREEN_WIDTH - 32)) px = SCREEN_WIDTH - 32;
+        }
+
+        position(paddle, px, py);
     }
 }
