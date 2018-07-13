@@ -12,16 +12,5 @@
 	<atom:link href="https://brainbaking.com/teaching/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title>Software ontwerp in C/C&#43;&#43; met Qt</title>
-      <link>https://brainbaking.com/teaching/cpp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/teaching/cpp/</guid>
-      <description>Laatste aanpassingen voor academiejaar 2018 - 2019.
-Cursus notities De hoorcolleges en labo&amp;rsquo;s lopen door elkaar.
-Hoorcolleges  Introductie in C/C++: context, pointers Het C/C++ Build Ecosysteem Object-Georiënteerd denken in C++: domein modellen, erving, virtuele functies en friend classes Object-Georiënteerd denken in C++: functiepointers, lambda&amp;rsquo;s, STL Een introductie in GUI ontwerp met Qt Samenvatting, examen info  Labo&amp;rsquo;s  todo todo todo todo todo todo todo todo todo todo todo todo  Syllabus  Lesgever: Wouter Groeneveld - wouter.</description>
-    </item>
-    
   </channel>
 </rss>

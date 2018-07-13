@@ -1,12 +1,11 @@
 ---
 bigimg: /img/About Me.jpg
-title: About Me
-icontag: "fa-user"
+disableComments: true
 ---
 
 ## Hi, I’m Wouter Groeneveld
-
-And I have a deep passion to inspire others on everything that drives me. I like to think of myself as one of those Rennaissance Men:
+<hr/>
+And I have a deep passion to inspire others on everything that drives me. I like to think of myself as one of those _polymaths_ or Rennaissance Men:
 
 > Renaissance man (noun) - a person with many talents or areas of knowledge.
 

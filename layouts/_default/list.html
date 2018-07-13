@@ -2,8 +2,12 @@
 
 <main>
 
-    <h2><i class='fa {{ .Params.icontag }}'></i>&nbsp;{{ .Title }}</h2>
-    <hr/>
+	{{ if .Title }}
+	    <h2>
+			<i class='fa {{ .Params.icontag }}'></i>&nbsp;{{ .Title }}
+		</h2>
+	    <hr/>
+    {{ end }}
 
     {{ with .Content }}
     <div class="text-justify">

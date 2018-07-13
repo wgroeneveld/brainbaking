@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-45748221-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Labo 1: Introductie in C</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.43" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Labo 1: Introductie in C</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/cpp/labo-1/">Labo 1: Introductie in C</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++ met Qt</a><br/>
+&raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
+
+<h2 id="de-c-programmeertaal">De C programmeertaal</h2>
+
+<p>De <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C taal</a> is een  programmeertaal in de jaren &lsquo;70 ontwikkeld om makkelijk hardware te kunnen aanspreken. C was/is in essentie niet veel meer dan een kleine abstractielaag bovenop assembly.</p>
+
+<p>C is een <strong>imperatieve</strong> programmeertaal. Dat zal je bij het oefenen wel merken: we schrijven instructies als <em>statements</em>. Deze regels of statements zijn gestructureerd in functies en <code>struct</code> types. Het jammere hier aan is dat er weinig <strong>declarativiteit</strong> aan de pas komt. Omdat C zo weinig om het lijf heeft (low-level), drukken statements bijna altijd uit <em>hoe</em> iets moet werken, in plaats van <em>wat</em> het moet doen.</p>
+
+<p>Toch is <strong>clean code</strong> voor mij van levensbelang en gaan we ook in C ons focussen op <em>leesbaarheid</em>. In plaats van getallen in de code gebruiken we <code>#define</code>, in plaats van lange statements splitsen we logische blokken op in duidelijke <code>function</code> blokken.</p>
+
+<p>C wordt voornamelijk gebruikt in embedded system development, net omdat het zo kort bij de hardware staat. De UNIX, Windows en OSX kernels zijn volledig geschreven in C bijvoorbeeld. Het besturingssysteem van je GSM, smartwatch of (handheld) gaming systeem bouwt verder op C. Enorm veel talen zoals Java (JVM), Python, Ruby en PHP zijn geschreven in C.</p>
+
+<h3 id="wat-is-c-dan">Wat is C++ dan?</h3>
+
+<p>Zoals we zullen zien, bevat C weinig mogelijkheden om declaratief te zijn. C++ is de objectenlaag bovenop C die de taal uitbreidt met &lsquo;moderne&rsquo; mogelijkheden tot structureren: inheritance, templating, eenvoudigere libraries (STL), &hellip; De C++ compiler gebruikt gewoon C met laagjes C++ &ldquo;sugar&rdquo;, zoals de <a href="https://isocpp.org/std/the-standard">ANSI C++ Standard</a> aangeeft.</p>
+
+<p>De C taal is compact, de C++ taal is dat helaas niet. Kijk zelf maar:</p>
+
+<p><img src="/img/teaching/cppbooks.jpg" class="bordered" /></p>
+
+<p>Ik neem aan dat ze met &lsquo;++&rsquo; het aantal pagina&rsquo;s in handboeken bedoelden. Vergeet niet dat bovenstaande handleiding nog maar een &ldquo;primer&rdquo; is.</p>
+
+<h3 id="vergelijkingen-met-java">Vergelijkingen met Java</h3>
+
+<pre><code class="language-java">import java.io.IOException;
+import java.nio.*;
+
+class FileReader {
+
+    @Override
+    public String read(String file) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(file)));
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        System.out.println(&quot;reading file: &quot;);
+        System.out.println(new FileReader().read(&quot;sup.txt&quot;));
+    }
+}
+</code></pre>
+
+<p>Hoe zouden we zoiets in C doen? Dat wordt moeilijk. C heeft geen <code>class</code> systeem! De low-level C implementatie is als volgt:</p>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+char* read(char* file) {
+    FILE *filePointer = fopen(file, &quot;r&quot;);
+    char *buffer = malloc(255);
+
+    fgets(buffer, 255, (FILE*) filePointer);
+    fclose(filePointer);
+    return buffer;
+}
+
+int main() {
+    printf(&quot;reading file: \n&quot;);
+    printf(&quot;%s\n&quot;, read(&quot;sup.txt&quot;));
+    return 0;
+}
+</code></pre>
+
+<p>Compileren met <code>gcc -o fileio fileio.c</code></p>
+
+<p>Hier zijn nog veel dingen mee mis: de buffer lengte is hardcoded en het geheugen wordt niet vrijgegeven. Een <code>FileReader</code> klasse kan gewoon niet aangemaakt kan worden. Zoals je kan zien is dit véél meer <strong>low-level</strong> werk dan een simpele Java one-liner als <code>Files.readAllBytes</code>!</p>
+
+<p>Met de STL library in C++ gaat het iets beter:</p>
+
+<pre><code class="language-C++">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+class FileReader {
+public:
+    string readFile(const char* file);
+};
+
+string FileReader::readFile(const char* file) {
+    ifstream inFile(&quot;sup.txt&quot;, ios::in | ios::binary);  
+    return (string((istreambuf_iterator&lt;char&gt;(inFile)), istreambuf_iterator&lt;char&gt;()));
+}
+
+int main() {
+    auto reader = new FileReader();
+    cout &lt;&lt; &quot;reading file:&quot; &lt;&lt; endl;
+    cout &lt;&lt; reader-&gt;readFile(&quot;sup.txt&quot;);
+}
+</code></pre>
+
+<p>Compileren met `<code>g++ -std=c++11 -o fileio fileio.cpp</code></p>
+
+<p>C++ streams verbergen de low-level details van C File IO maar achterliggend <a href="http://insanecoding.blogspot.com/2011/11/how-to-read-in-file-in-c.html">gebeurt natuurlijk hetzelfde</a>. Zoals je kan zien voorziet C++ ook <code>class</code>, <code>public</code>en <code>new</code> <em>keywords</em> die Java programmeurs wel kennen. Zelfs <code>auto</code>in C++ 11 is de <code>var</code>in C# die Java mist.</p>
+
+<p>De essentiële verschillen tussen C en een hogere taal zoals Java of C#:</p>
+
+<ol>
+<li>C heeft weinig om het lijf: geen private/protected/class/interface/inheritance/bool/string&hellip; Er zijn geen &ldquo;standard&rdquo; libraries.</li>
+<li>C heeft geen exceptions! Het werkt met <em>interrupts</em> en error codes (<code>return 0</code>).</li>
+<li>C heeft geen garbage collection: geheugen beheer jij zelf.</li>
+<li>C draait niet op een virtuele machine (JVM, CLR) maar wordt gecompileerd naar native machine code.</li>
+<li>C maakt intensief gebruik van pointer variabelen om geheugen direct te manipuleren.</li>
+<li>C staat toe om combinatie-integer-types te maken (<code>unsigned short int</code>)</li>
+<li>C/C++ werkt met headers (.h) en source (.c/cpp) files. Een uitvoerbaar bestand vereist twee stappen: compileren én linken. Met linken kan je eenvoudig <a href="https://www.devdungeon.com/content/how-mix-c-and-assembly">assembly en C mixen</a>.</li>
+</ol>
+
+<h2 id="basis-c">Basis C</h2>
+
+<h3 id="hello-world">Hello World</h3>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+int main() {
+    int getalleke = 42;
+    printf(&quot;sup wereld? %d&quot;, getalleke);
+    return 0;
+}
+</code></pre>
+
+<p>De hoofd functie, <code>main()</code>, geeft een getal terug dat aangeeft aan het systeem of je programma met succes uitgevoerd is (0), of een andere error code wenst terug te geven. <code>printf</code> is een functie in de standaard IO header die we moeten includen, zoals een <code>import</code> in Java.</p>
+
+<p>De &ldquo;f&rdquo; van printf staat voor &ldquo;formatting&rdquo; zoals je hierboven kan zien. Zie <a href="https://www.gnu.org/software/libc/manual/html_node/Formatted-Output.html">Formatted output</a>.</p>
+
+<h3 id="structuur-aanbrengen">Structuur aanbrengen</h3>
+
+<p>Doe je met <code>function</code>. Blocks zoals if, for, while, do zijn bekend en werken op dezelfde manier als in Java:</p>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+void zeg_iets_als_dit_positief_is(int getalleke) {
+    if(getalleke &gt; 5) {
+        printf(&quot;wow, positief ofwa? \n&quot;);
+        for(int i = 1; i &lt;= getalleke; i++) {
+            printf(&quot;%d &quot;, i);
+        }
+        printf(&quot;\n&quot;);
+    }
+} 
+
+int main() {
+    zeg_iets_als_dit_positief_is(5);
+    return 0;
+}
+</code></pre>
+
+<p>Functies kan je <strong>niet overloaden</strong> in C - in C++ en Java wel. Er kunnen geen twee functies met naam &ldquo;main&rdquo; of &ldquo;zeg_iets_als_dit_positief_is&rdquo; maar met andere parameters bestaan.</p>
+
+<h3 id="strings-hoezo">Strings? Hoezo?</h3>
+
+<p>Vergeet het maar: <code>char[]</code> of een <code>char*</code> pointer is de enige mogelijkheid. <code>std::string</code> zien we later als deel van C++ STL. Een array in Java is een object waar je de lengte van kan opvragen. Handig toch. Ook niet mogelijk in C&hellip;</p>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#define GROOTTE 10
+
+int main() {
+    int arr[GROOTTE];
+    for(int i = 0; i &lt; GROOTTE; i++) {
+        arr[i] = i * 10;
+    }
+
+    for(int j = 0; j &lt; GROOTTE; j++) {
+        printf(&quot;array index %d heeft waarde %d \n&quot;, j, arr[j]);
+    }
+
+    char string[] = &quot;heykes cava&quot;;
+    printf(&quot;%s&quot;, string);
+
+    return 0;
+}
+
+</code></pre>
+
+<p>C voorziet de juiste hoeveelheid geheugen bij &ldquo;string literals&rdquo; die we kennen vanuit Java. De <code>string[]</code> char array bevat <strong>12 tekens</strong> en geen 11! Omdat we het einde van de array niet kennen wordt er altijd de <strong>NULL terminator</strong> toegevoegd, <code>\0</code>. Zo kan je loopen en per char afdrukken - of printf het laten doen met %s.</p>
+
+<p>In <code>&lt;string.h&gt;</code> zitten een aantal handige functies om strings te kopiëren, de lengte op te vragen of te concateneren. Dat kan je in <a href="https://www.gnu.org/software/libc/manual/html_node/String-and-Array-Utilities.html">GNU C: String utils</a> terugvinden.</p>
+
+<h3 id="structs">Structs</h3>
+
+<p>De enige manier om in C data te structureren is met het <code>struct</code> keyword:</p>
+
+<pre><code class="language-C">struct Persoon {
+    int leeftijd;
+    int geslacht;   // geen bool, remember?
+    char naam[];
+}
+</code></pre>
+
+<p>We kunnen deze structuur gebruiken door aan de members waarden toe te kennen:</p>
+
+<pre><code class="language-C">struct Persoon jaak;    // vergeet &quot;struct&quot; niet
+jaak.naam = &quot;Jaak Trekhaak&quot;;
+jaak.leeftijd = 80;
+jaak.geslacht = 1;
+</code></pre>
+
+<p>Uiteraard kan je structs ook doorgeven in functies en dan members aanspreken met de puntnotatie.</p>
+
+<p>De vraag is dan, kunnen we ook functies definiëren in een <code>struct</code>? Ja en neen. Een functie pointer (zie <a href="/teaching/cpp/labo-2">labo 2</a>) maakt dit wel mogelijk, maar het is niet zoals een C++ member variabele van een klasse. C functie pointers worden gebruikt als <em>callback methods</em>:</p>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+struct Persoon {
+    int leeftijd;
+    int (*is_oud)();
+};
+
+int is_oud(struct Persoon this) {
+    printf(&quot;checking leeftijd van persoon: %d\n&quot;, this.leeftijd);
+    return this.leeftijd &gt; 60;
+}
+
+int main() {
+    struct Persoon jaak;
+    jaak.leeftijd = 40;
+    jaak.is_oud = is_oud;
+
+    printf(&quot;is jaak oud? %d\n&quot;, jaak.is_oud(jaak));  
+}
+</code></pre>
+
+<p>Het toekennen van is_oud aan is_oud is heel gek natuurlijk. Dit is dan ook het emuleren van iets dat ontbreekt in een taal. Met pointers in labo 2 komen we hier nog op terug.</p>
+
+<h3 id="extra-definities">Extra definities</h3>
+
+<p>Die struct voor de Persoon jaak is een beetje vreemd en kan je wegwerken met een eigen <code>typedef</code>. Op die manier kan je ook het keyword <code>string</code> in andere talen emuleren, door er een char array of pointer van te maken:</p>
+
+<pre><code class="language-C">typedef struct Persoon Persoon;
+typedef char* string;
+</code></pre>
+
+<p>Magische getallen worden best ook als constante gedefiniëerd bovenaan (liefst in header files) met <code>#define</code>. Met wat gefoefel en combinaties kunnen we zo een bool emuleren in C:</p>
+
+<pre><code class="language-C">#define TRUE 1
+#define FALSE 0
+
+typedef unsigned short int bool;
+
+bool mannelijk = TRUE;
+</code></pre>
+
+<p>Typische C code die je kan tegenkomen wegens gebrek aan een bool: <code>if(result) { ... }</code> waarbij result een <code>int</code> is. Dit is in <strong>geen geval</strong> hetzelfde als <a href="https://j11y.io/javascript/truthy-falsey/">JavaScripts Truthy/Falsey</a> constructie! Het getal <code>0</code> is false. <code>EOF</code>, <code>NULL</code> of <code>\0</code> evalueren allemaal naar een getal om dit te kunnen gebruiken.</p>
+
+<h2 id="gebruik-van-header-files">Gebruik van header Files</h2>
+
+<p>De <code>#include</code> statements zorgen voor de juiste inclusies van functies in je programma. Grote programma&rsquo;s bestaan uit meerdere C (source) en H (header) files die met compileren en linken aan elkaar geplakt worden. In een header file zitten functie <strong>definities</strong>, de <strong>declaraties</strong> zitten in de source files:</p>
+
+<pre><code>// persoon.h
+
+struct Persoon {
+    int leeftijd;
+}
+int is_oud(struct Persoon p);
+</code></pre>
+
+<p>Met als bron:</p>
+
+<pre><code>// persoon.c
+
+#include &lt;stdio.h&gt;
+#include &quot;persoon.h&quot;
+
+int is_oud(struct Persoon p) {
+    return p.leeftijd &gt; 60;
+}
+
+int main() {
+    struct Persoon jaak;
+    jaak.leeftijd = 10;
+
+    return 0;
+}
+</code></pre>
+
+<p>De <code>main</code> functie werkt als bootstrapper en wordt nooit in een header file geplaatst. Merk het verschil tussen brackets en haakjes op bij include: dat is het verschil tussen systeem includes en eigen includes (relatief pad gebruiken!).</p>
+
+<p>De reden om dit zo op te splitsen is andere source files ook toegang te verschaffen tot <code>is_oud()</code> en <code>Persoon</code> en zo dingen te herbruiken.</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph LR;
+    A{persoon.h} -->|source| B[persoon.c] 
+    B --> E[definitie is_oud]
+    A{persoon.h} -->|source| C[facebook.c] 
+    C --> F[gebruik struct]
+    A{persoon.h} -->|source| D[twitter.c] 
+    D --> G[gebruik struct]
+
+</div>
+
+<p>Functies die in andere source files gedeclareerd zijn moet je herdefiniëren met het <code>extern</code> keyword in je eigen source file waar je de functie wenst te gebruiken. Zo weet de compiler dat een functie met die signatuur bestaat, maar &ldquo;zal hij deze nog wel tegenkomen&rdquo;.</p>
+
+<h2 id="de-boel-compileren">De boel compileren</h2>
+
+<p>We gebruiken de UNIX <code>gcc</code> compiler om C soure files om te zetten in binaries. Het simpelste om iets te compileren is:</p>
+
+<blockquote>
+<p><code>gcc *.c</code></p>
+</blockquote>
+
+<p>Door het gebrek aan een doelbestandsnaam maakt de compiler een bestand &ldquo;a.out&rdquo; dat je kan uitvoeren. Met de &ldquo;-o&rdquo; flag kan je dit specifiëren. Heb je iets meer te linken, zet dan alles in een rijtje achter elkaar.</p>
+
+<p>Er zijn echter nog een hoop compiler opties die <a href="https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html">hier</a> staan waar je eens mee kan spelen.</p>
+
+<h3 id="herhaaldelijk-compileren-een-scriptje">Herhaaldelijk compileren: een scriptje</h3>
+
+<p>Het is vervelend om de hele tijd hetzelfde commando te moeten typen, dus een simpel alternatief is je gcc commando in een shell script steken:</p>
+
+<pre><code class="language-sh">#!/bin/sh
+clear &amp;&amp; gcc -o mijnding source.c &amp;&amp; ./mijnding
+</code></pre>
+
+<h3 id="herhaaldelijk-compileren-makefiles">Herhaaldelijk compileren: Makefiles</h3>
+
+<p>In de C/C++ wereld bestaat er zoiets als een <code>Makefile</code> dat definiëert welke source files gecompileerd moeten worden, en in welke volgorde. Dit is handig voor grote applicaties waarbij een overzicht moet bewaard worden.</p>
+
+<p>Met Makefiles kan je &ldquo;targets&rdquo; beschrijven die voor jou bepaalde acties uitvoeren. Bijvoorbeeld het opkuisen van binaries, het compileren en het linken, allemaal als aparte stap. Stappen aan elkaar rijgen gaat natuurlijk ook.</p>
+
+<pre><code>.DEFAULT_GOAL := all
+
+CC=gcc
+
+clean:
+    rm -rf *.o
+    rm -rf *.out
+
+compile:
+    $(CC) -c main.c -o main.o
+
+link:
+    $(CC) -o main.out main.o
+
+all: clean compile link
+</code></pre>
+
+<p>Typisch wordt de gebruikte compiler als shell variabele gezet (CC=gcc). Je ziet hier dat compileren (gcc met de -c optie linkt niet) en linken opgesplitst is. Dat is in onze oefeningen eigenlijk niet nodig, maar laat hier de organisatorische kracht van Make zien.</p>
+
+<p>Uitvoeren met <code>make</code> als default goal (all) of <code>make compile</code> voor een specifieke goal.</p>
+
+<p>Voor meer uitleg over Makefile syntax, zie <a href="ftp://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_2.html">GNU make</a>.</p>
+
+<h3 id="herhaaldelijk-compileren-lichtgewicht-ides">Herhaaldelijk compileren: lichtgewicht IDEs</h3>
+
+<p>Een source file bestaat uit platte tekst. Eender welke text editor is voldoende om je C programma te kunnen schrijven. Het kan echter handig zijn om Sublime Text of Visual Studio Code te gebruiken. Deze moderne krachtige editors hebben auto-completion en build tools ingebouwd.</p>
+
+<ul>
+<li><a href="https://www.thecrazyprogrammer.com/2017/04/how-to-run-c-and-c-program-in-sublime-text.html">Sublime Text 3 Build Systems en C/C++</a> en <a href="http://docs.sublimetext.info/en/latest/file_processing/build_systems.html">docs</a></li>
+<li><a href="https://code.visualstudio.com/docs/languages/cpp">Visual Studio Code C/C++ integratie</a></li>
+</ul>
+
+<p>Ik houd old-school fans niet tegen om Emacs of Vim te gebruiken.</p>
+
+<h2 id="labo-oefeningen">Labo oefeningen</h2>
+
+<p><a name="oef"></a></p>
+
+<ol>
+<li>Het is oorlog! De orcs vallen aan en zien er hongerig uit! Ze eten al je klinkers op! Schrijf een programma dat de functie <code>char* omnom(char zin[])</code> implementeert en alle klinkers uit een zin haalt (of ze verdoezelt met een X). Je moet ook een <code>main()</code> functie schrijven die de gebruiker een zin laat ingeven en het resultaat afdrukt op het scherm. (Tip: <code>scanf</code> of <code>fgets</code>, rara?)<br /></li>
+<li>Laten we die smerige orcs eens modelleren. Vraag de gebruiker om een nummer. Dat nummer is het aantal orcs dat in het leger zit. Maak zoveel orc <code>struct</code> instances aan met een random waarde voor de eigenschappen. Druk dit af op het scherm. Een orc heeft de volgende eigenschappen:
+
+<ul>
+<li><code>aanval</code></li>
+<li><code>levens</code></li>
+</ul></li>
+<li>De orcs worden gek van honger en eten alvast elkaar op! Breid het programma uit zodat de eerste orc met de volgende vecht (levens - aanval). Voorzie de functie <code>Orc vecht(Orc aanvaller, Orc verdediger)</code>. Leeft de verdediger na de aanval nog? Dan is hij de winnaar. Welke orc weet zich tot het laatste te verweren? Druk deze af.</li>
+<li>Herstructureer je orc struct door het in een header file te zetten. Maak een makefile om alles netjes te compileren met het commando `make.</li>
+</ol>
+
+<p>Je hebt het pointer symbool <code>*</code> in de oefeningen enkel nodig om een array terug te geven, zoals de omnom functie. In Java zou dat gewoon <code>char[] omnom(char[] zin)</code> zijn - merk op waar de vierkante haakjes precies staan: achter het type! In C is dat achter de naam van de variable.</p>
+
+<p>Hint: denk aan de <a href="https://www.gnu.org/prep/standards/html_node/Writing-C.html">GNU Coding Standards</a>. De <a href="https://google.github.io/styleguide/cppguide.html">C++ Style Guide</a> van Google kan je ook eens bekijken. Merk op dat in C methodes <em>snake-cased</em> zijn: <code>mijn_mooie_methode</code> - ten opzicht van C++ en Java&rsquo;s <em>camel-casing</em>: <code>mijnMooieMethode</code>.</p>
+
+<h2 id="denkvragen">Denkvragen</h2>
+
+<ol>
+<li>Waarom zou je kiezen voor een implementatie in C bij een bepaald probleem, of waarom niet? Beargumenteer je keuze.</li>
+<li>Op welke manier kan je object-geörienteerd programmeren emuleren in C? Geef een voorbeeld.</li>
+<li>Wat is het belangrijkste verschil tussen een low-level taal als C en Java of C#? Denk aan het resultaat van compilatie.</li>
+</ol>
+</div>
+
+    
+    
+
+    
+
+    
+    
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

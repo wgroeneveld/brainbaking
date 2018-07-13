@@ -1,11 +1,13 @@
 <div class="item">
 
+    {{ if .Title }}
     <h3>
         {{ with .Params.icontag }}
             <i class='fa {{ . }}'></i>&nbsp;
         {{ end }}
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </h3>
+    {{ end }}
 
     {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") | $.Scratch.Set "subtitle" }}
     {{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}

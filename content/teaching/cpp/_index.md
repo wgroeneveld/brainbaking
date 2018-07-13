@@ -2,6 +2,7 @@
 title: 'Software ontwerp in C/C++ met Qt'
 accent: "#008eb3"
 disableComments: true
+disableList: true
 ---
 
 <span style="float: right;">
@@ -10,9 +11,9 @@ disableComments: true
 </span>
 Laatste aanpassingen voor academiejaar _2018 - 2019_.
 
-## Cursus notities
+## _Cursus notities_
 
-De hoorcolleges en labo's lopen door elkaar.
+De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in de slides van de hoorcolleges vindt zijn weg in de tekst van de verschillende labo's. 
 
 ### Hoorcolleges
 
@@ -25,15 +26,15 @@ De hoorcolleges en labo's lopen door elkaar.
 
 ### Labo's
 
-1. todo
-2. todo
-3. todo
-4. todo
-5. todo
+1. [Introductie in C](/teaching/cpp/labo-1)
+2. [Pointers in C en C++](/teaching/cpp/labo-2)
+3. [GBA Programming in C: een introductie](/teaching/cpp/labo-3)
+4. [GBA Programming in C: tilesets, een simpel spel](/teaching/cpp/labo-4)
+5. [Weg met C, hallo C++](/teaching/cpp/labo-5)
 6. todo
 7. todo
 8. todo
-9. todo
+9. C++ Streams
 10. todo
 11. todo
 12. todo
@@ -66,6 +67,11 @@ In een latere faze van de oefeningen maakt de student kennis met crosscompilatie
 - Vergelijking tussen C/C++ en Java.
 - Cross-platform-ontwikkeling voor Single Board Computers.
 - Kennismaking met het Qt framework voor GUI ontwerp in C++.
+
+#### Vereiste voorkennis
+
+- Basiskennis van een Object-Geörienteerde programmeertaal als Java of C#
+- Basiskennis van het UNIX systeem, werken met commandline
 
 #### Doelstellingen
 

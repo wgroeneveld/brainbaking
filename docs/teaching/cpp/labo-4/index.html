@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-45748221-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Labo 4: GBA Tilesets, een simpel spel</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.43" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Labo 4: GBA Tilesets, een simpel spel</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/cpp/labo-4/">Labo 4: GBA Tilesets, een simpel spel</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++ met Qt</a><br/>
+&raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
+
+<p>In <a href="/teaching/cpp/labo-3">labo 3</a> maakten we kennis met de Gameboy Advance en het ontwikkelplatform - als je het zo kan noemen. We gebruikten mode 3 om pixels te manipuleren. Natuurlijk is dat erg onpraktisch en veel te belastend wanneer er veel op het scherm getekend moet worden. Als doelstelling voor labo 4 willen we een simpel geïntegreerd spelletje maken waar we video <strong>mode 1</strong> en tilesets voor nodig hebben.</p>
+
+<h2 id="tileset-modes">Tileset modes</h2>
+
+<p>Rechtstreekse pixels aanspreken is flexibel maar niet bepaald handig. De GBA kan hardwarematig &ldquo;<em>tiles</em>&rdquo; zelf renderen zonder trailing pixels na te laten: wij moeten bij transformaties niet pixel per pixel zelf verplaatsen. Een beetje moderniteit in een embedded systeem dus.</p>
+
+<p>Een &ldquo;tile&rdquo; is een 8x8 bitmap met 4 of 8 bits per pixel (<em>bpp</em>): 32 of 64 bytes in grootte. Herinner je dat voor de GBA we 15 bits nodig hebben om kleuren in een pixel op te slaan. 15 bits passen niet in die 4 of 8 bits! Daarvoor dienen <em>kleurenpaletten</em> die een kleur mappen op een index, met een maximum van 512. Het palet register leeft op <code>0x05000000</code>.</p>
+
+<p>Als je goed kijkt zie je in de eerste screenshot allemaal 8x8 bitmaps tegen elkaar geplakt die het titel scherm en het Konami logo voorstellen voor het spel Castlevania: Aria of Sorrow:</p>
+
+<p><img src="/img/teaching/gba-castlevania-tile.jpg" /></p>
+
+<p>Getekend op het scherm ziet dat er zoals verwacht zo uit:</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <img src="/img/teaching/gba-castlevania-title.jpg" style="width: 100%" />
+    </div>
+    <div class="col-md-6">
+        <img src="/img/teaching/gba-castlevania-konami.jpg" style="width: 100%" />
+    </div>
+</div>
+
+<p>Als we een deeltje van de &ldquo;a&rdquo; van Castlevania zoals aangeduid opblazen zie je duidelijk de 8x8 structuur:</p>
+
+<p><img src="/img/teaching/gba-castlevania-blownup.jpg" /></p>
+
+<p>Elke zichtbare bit stelt een kleur voor die in het palet is opgeslagen, aangeduid met een nummer als index. Merk op dat objecten die je ziet als je een spel speelt bijna altijd bestaan uit verschillende tiles. Elke tile wordt maar één keer opgeslagen en kan oneindig keren herhaald worden. Bovenstaande &ldquo;a&rdquo; kan ruwweg vertaald worden naar deze tabel (eigen interpretatie):</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <u>Bitmap tabel</u>:
+    <table class="table table-condensed">
+        <tr>
+            <td>1</td>
+            <td>5</td>
+            <td>4</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>4</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>4</td>
+            <td>5</td>
+            <td>4</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+            <td>2</td>
+            <td>4</td>
+            <td>3</td>
+            <td>3</td>
+            <td>4</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>5</td>
+            <td>2</td>
+            <td>3</td>
+            <td>3</td>
+            <td>1</td>
+            <td>3</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>2</td>
+            <td>6</td>
+            <td>3</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>2</td>
+            <td>4</td>
+            <td>3</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>5</td>
+            <td>4</td>
+            <td>3</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>6</td>
+        </tr>
+    </table>
+    </div>
+    <div class="col-md-6">
+        <u>Palet tabel</u>:
+
+        <table class="table table-hover">
+            <tr>
+                <th>index</th>
+                <th>kleur</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td> -> zwart</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td> -> groen</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td> -> rood</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td> -> wit</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td> -> blauw</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td> -> paars (transparant)</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td> -> geel</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<h3 id="tilesets-in-het-video-ram">Tilesets in het video RAM</h3>
+
+<p>Anders als in mode 3 kan je nu geen tiles mappen op pixels. Het VRAM voor tilesets werkt helemaal anders: het is opgesplitst in &ldquo;tile blocks&rdquo; (image data) en &ldquo;screen blocks&rdquo; (tile map data). Per 8 screen &ldquo;block&rdquo; van 2kb is er één tile block beschikbaar. Een tile block is dus 16kb en kan 512 4bpp tiles houden - 6 in het heel VRAM in totaal.</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph TD
+    subgraph tile block 0
+        A[screen blocks 0 - 7<br/><pre>0x6000000 - 0x60003800</pre>]
+    end
+    subgraph tile block 1
+        A --> B[screen blocks 8 - 15<br/><pre>0x6004000 - 0x60007800</pre>]
+    end
+    subgraph tile block 2
+        B --> C[screen blocks 16 - 23<br/><pre>0x6008000 - 0x6000b800</pre>]
+    end
+    subgraph tile block 3
+        C --> D[screen blocks 24 - 31<br/><pre>0x600c000 - 0x6000f800</pre>]
+    end
+
+</div>
+
+<p>Tile blocks 0 tot 3 worden gebruikt voor achtergrond, en 4 (<code>0x6010000</code>) tot 5 (<code>0x6014000</code>) voor sprites. Het palet geheugen is ook opgesplitst in 2x16 voor achtergrond en sprites. We zijn voorlopig niet geïnteresseerd in de achtergrond: voor ons spel volstaan sprites.</p>
+
+<h3 id="sprites">Sprites</h3>
+
+<p>Een sprite in Computer Graphics is een 2D image die deel is van een scene. De GBA kan sprite objecten voor ons renderen zonder dat wij alle pixels moeten manipuleren - dat moeten we dan nog aan zetten met bit 13 of <code>0x1000</code> in het controleregister.</p>
+
+<p>De GBA voorziet een rudimentair object-model, &ldquo;<em>Object Attribute Memory</em>&rdquo; - zie <a href="http://www.akkit.org/info/gbatek.htm#lcdobjoamattributes">specificaties</a>. Een object heeft 3 sets van 16-bit attributen:</p>
+
+<ul>
+<li>0: y coordinaat, vorm, 4 of 8 bpp mode</li>
+<li>1: x coordinaat, grootte</li>
+<li>2: tile index, welke kleur van het palet te gebruiken</li>
+</ul>
+
+<p>Een combinatie van &ldquo;vorm&rdquo; en &ldquo;grootte&rdquo; eigenschappen bepalen de vorm van het object. Complexe vormen bestaan uit verschillende deelobjecten. We gaan het niet te ingewikkeld maken: prutsen met bits is al erg genoeg!</p>
+
+<p>Om een een &ldquo;object&rdquo; te definiëren gebruiken we deze struct:</p>
+
+<pre><code class="language-C">typedef struct object {
+    uint16 attr0;
+    uint16 attr1;
+    uint16 attr2;
+    uint16 unused;
+} __attribute__((packed, aligned(4))) object;
+
+#define OAM_MEM  ((volatile object *)0x07000000)
+</code></pre>
+
+<p>Objecten wegschrijven doen we in register <code>0x07000000</code>. Omdat <code>OAM_MEM</code> een pointer is, kunnen we objecten met <code>[]</code> wegschrijven - herinner je dat de pointer index verschuiven hetzelfde als de array index is. <code>__attribute__</code> is nodig om het juiste adres aan te spreken en valt buiten deze cursus (<a href="https://gcc.gnu.org/onlinedocs/gcc-6.2.0/gcc/Type-Attributes.html">zie hier</a>).</p>
+
+<p>Een nieuw object maken is relatief simpel: <code>volatile object *sprite = &amp;OAM_MEM[0];</code>. De attributen goed zetten is een ander paar mouwen omdat de bits in sets samengepakt zitten. De <a href="http://www.coranac.com/tonc/text/regobj.htm">Tonc</a> documentatie beschrijft elke bit van elk attribute in detail. We hebben bit 0 tot 7 voor de y coordinaat nodig, en bit 14 tot 15 voor de vorm (<em>square = <code>00</code>, wide = <code>10</code>, tall = <code>01</code></em>).</p>
+
+<p>Als we willen starten op y coordinaat 50 met een wide object en 4bpp moeten we 50 omzetten naar 8 bits (gebruik <a href="https://www.binaryhexconverter.com/decimal-to-binary-converter">deze converter</a>) en bits 14 en 15 goed zetten: dat levert <code>1000000000110010</code> op, of <code>0x8032</code>.</p>
+
+<h2 id="alles-samen-zetten">Alles samen zetten</h2>
+
+<p>Om deze low-level bit manipulaties in de code wat leesbaar te maken voorzien we de volgende typedefs en defines:</p>
+
+<pre><code class="language-C">typedef unsigned short uint16;      // controle bits voor OAM, RGB
+typedef unsigned int uint32;        // 1 tile bit in de GBA
+typedef uint32 tile_4bpp[8];        // 8 rijen, elk 1 bit
+typedef tile_4bpp tile_block[512];  // tile block = 8 screen blocks, 512 tiles 
+typedef uint16 palette[16];         // 16 palettes beschikbaar
+
+#define TILE_MEM ((volatile tile_block *)0x06000000)
+#define PALETTE_MEM ((volatile palette *)(0x05000000 + 0x200))  // ignore bg mem
+#define OAM_MEM ((volatile object *)0x07000000)
+</code></pre>
+
+<h3 id="een-spel-arkanoid-https-en-wikipedia-org-wiki-arkanoid">Een spel: <a href="https://en.wikipedia.org/wiki/Arkanoid">Arkanoid</a></h3>
+
+<p>Geïnspireerd op <a href="https://www.reinterpretcast.com/writing-a-game-boy-advance-game">dit</a> en <a href="http://cs.umw.edu/~finlayson/class/spring18/cpsc305/notes/06-gba1.html">dit</a>.</p>
+
+<p>Laten we de basis leggen voor een Arkanoid clone op de GBA. We hebben een &ldquo;paddle&rdquo; nodig onderaan het scherm, dat is sprite #1. Daarnast moet er een balletje rondvliegen die blokjes raakt, dat is sprite #2. De blokjes zelf laten we voorlopig even achterwege.</p>
+
+<p>Voor de gemakkelijkheid negeren we de (x,y) coordinaten in de attribute bits van de objecten bij de OAM initializatie - die zetten we daarna wel.</p>
+
+<h4 id="de-bal">De bal</h4>
+
+<p>Een simpele 8x8 <em>square</em> sprite, dus 1 tile is voldoende. Kleur wit.</p>
+
+<pre><code class="language-C">// 1. kleur
+PALETTE_MEM[0][1] = color(31, 31, 31); // wit - zie labo 3
+
+// 2. tile
+volatile uint16 *ball_tile = (uint16*) TILE_MEM[4][1];  // 1 block
+// vul de tile met de palet index 1 - dit is per rij, vandaar 0x1111
+for(int i = 0; i &lt; sizeof(tile_4bpp) / 2; i++) {
+    ball_tile[i] = 0x1111;
+}
+
+// 3. object
+volatile object *ball_sprite = &amp;OAM_MEM[0];
+ball_sprite-&gt;attr0 = 0; // 4bpp, square
+ball_sprite-&gt;attr1 = 0; // grootte 8x8 met square
+ball_sprite-&gt;attr2 = 1; // eerste tile, palet 0
+</code></pre>
+
+<p>Merk op dat <code>TILE_MEM[4]</code> betekent dat we de eerste 3 tile blocks overslaan: die dienen immers voor de achtergrond, zie boven.</p>
+
+<h4 id="de-paddle">De paddle</h4>
+
+<p>Een horizontaal geörienteerde rechthoek (<em>wide</em>) die groter moet zijn dan onze bal, dus meer dan 1 tile zal in beslag nemen. Als we 4 ballen achter elkaar plakken krijgen we een 32x8 sprite. Kleur rood.</p>
+
+<p>Omdat palet index #0 maar &ldquo;bezet&rdquo; is met één kleur (wit, van onze bal), kunnen we dat rood er bij steken, of kiezen voor een nieuw palet. Dat is het verschil tussen <code>[0][2]</code> (bestaand herbruiken, index 2) of <code>[1][1]</code> (nieuw palet, index 1).</p>
+
+<pre><code class="language-C">// 1. kleur
+PALETTE_MEM[0][2] = color(31, 0, 0);
+
+// 2. tile - vanaf hieronder alles bezet tot TILE_MEM[4][6]!
+volatile uint16 *paddle_tile = (uint16*) TILE_MEM[4][2];  // begin vanaf 2
+// vul de tile met de palet index 2 - dit is per rij, vandaar 0x2222
+for(int i = 0; i &lt; 4 * sizeof(tile_4bpp) / 2; i++) {
+    paddle_tile[i] = 0x2222;
+}
+
+// 3. object
+volatile object *paddle_sprite = &amp;OAM_MEM[1];
+paddle_sprite-&gt;attr0 = 0x4000; // 4bpp, wide
+paddle_sprite-&gt;attr1 = 0x4000; // 32x8 met wide shape
+paddle_sprite-&gt;attr2 = 2; // vanaf de 2de tile, palet 0
+</code></pre>
+
+<p>Merk op dat voor <code>attr1</code> (zie <a href="http://www.coranac.com/tonc/text/regobj.htm">8.4.2</a>) de grootte bepaald wordt in combinatie met de sprite shape. 32x8 of 8x32 zou twee keer <code>0x4000</code> vereisen, alleen in <code>attr0</code> op bit 15 en 16 een andere waarde.</p>
+
+<h3 id="een-oam-object-plaatsen">Een OAM object plaatsen</h3>
+
+<p>De x en y coordinaten zijn veruit de belangrijkste die dynamisch wijzigen gedurende het spel. Daarom verdienen deze hun eigen functie om gemanipuleerd te worden:</p>
+
+<pre><code class="language-C">#define Y_MASK 0x0FF
+#define X_MASK 0x1FF
+
+void position(volatile object *obj, int x, int y) {
+    obj-&gt;attr0 = (obj-&gt;attr0 &amp;  ~Y_MASK) | (y &amp; Y_MASK);
+    obj-&gt;attr1 = (obj-&gt;attr1 &amp; ~X_MASK) | (x &amp; X_MASK);
+}
+</code></pre>
+
+<p>We plakken de attribute waardes zonder huidige locatie vast aan de nieuwe locatie, geshift op de juiste plaats. In de game loop, waar onze bal logica zit, gebruiken we dit om de objecten te verplaatsen.</p>
+
+<h3 id="de-game-loop">De game loop</h3>
+
+<p>De structuur van het spel ziet er als volgt uit:</p>
+
+<ol>
+<li>Initialiseer de juiste video registers.</li>
+<li>Maak objecten aan en alles wat daarbij komt kijken.</li>
+<li>Plaats op initiële positie.</li>
+<li>while true:
+
+<ol>
+<li>vsync (??)</li>
+<li>Lees keys</li>
+<li>Herpositioneer. Collision, physics, &hellip;</li>
+</ol></li>
+</ol>
+
+<p>Géén individueel VRAM meer aanspreken dankzij OAM, joepie&hellip; Er is nog slechts één probleempje: het plaatsen van objecten triggert een draw callback. We kunnen objecten niet halverwege het drawen verplaatsen, dan krijgen we &ldquo;tearing&rdquo;: de helft is maar getekend! Om deze synchronizatie problemen te vermijden, moeten we wachten tot de GBA zijn display refresh klaar is.</p>
+
+<h4 id="vblanking">VBlanking</h4>
+
+<p>De GBA tekent lijn per lijn op het scherm, en wij hebben ruimte om iets te doen tussenin. Er is echter méér ruimte nadat het hele scherm refreshed is: die ruimte heet een &ldquo;<em>V-Blank</em>&rdquo;. Tekenen zelf is een <em>V-Draw</em>.</p>
+
+<p>Er zijn (natuurlijk) IO registers beschikbaar voor ons om te luisteren of de GBA aan het blanken of drawen is, op <code>0x04000006</code>. Dit register is een teller van scanlines. Wij wachten simpelweg tot dit hoger of gelijk aan 160 is: de resolutie hoogte van het GBA scherm.</p>
+
+<pre><code class="language-C">#define REG_VCOUNT (*(volatile uint16*) 0x04000006)
+
+void vsync() {
+    while (REG_VCOUNT &gt;= 160);
+    while (REG_VCOUNT &lt; 160);
+}
+</code></pre>
+
+<p>Oef! Nu kunnen we alles samen rapen. <a href="/teaching/cpp/labo-4-gba-1.c">Download het resultaat hier</a>.</p>
+
+<h2 id="labo-oefeningen">Labo oefeningen</h2>
+
+<p><a name="oef"></a></p>
+</div>
+
+    
+    
+
+    
+
+    
+    
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

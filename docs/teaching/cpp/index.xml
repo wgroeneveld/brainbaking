@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software ontwerp in C/C&#43;&#43; met Qt on Brain Baking</title>
+    <link>https://brainbaking.com/teaching/cpp/</link>
+    <description>Recent content in Software ontwerp in C/C&#43;&#43; met Qt on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    
+	<atom:link href="https://brainbaking.com/teaching/cpp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Labo 1: Introductie in C</title>
+      <link>https://brainbaking.com/teaching/cpp/labo-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/labo-1/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+De C programmeertaal De C taal is een programmeertaal in de jaren &amp;lsquo;70 ontwikkeld om makkelijk hardware te kunnen aanspreken. C was/is in essentie niet veel meer dan een kleine abstractielaag bovenop assembly.
+C is een imperatieve programmeertaal. Dat zal je bij het oefenen wel merken: we schrijven instructies als statements. Deze regels of statements zijn gestructureerd in functies en struct types.</description>
+    </item>
+    
+    <item>
+      <title>Labo 2: Pointers in C en C&#43;&#43;</title>
+      <link>https://brainbaking.com/teaching/cpp/labo-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/labo-2/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+&amp;ldquo;Compound&amp;rdquo; types C/C++ gebruikt een pass-by-value systeem om variabelen door te geven aan functies. Dit wil zeggen dat de waarde gekopiëerd wordt, en die functie geen wijzigingen kan aanbrengen aan de originele waarde. Dat is iets positief: separation of concerns.
+Als we denken aan ons persoon voorbeeld van labo 1, wordt die struct dus telkens overgekopiëerd. Dat kan zeer inefficiënt zijn, naargelang de grootte van de data!</description>
+    </item>
+    
+    <item>
+      <title>Labo 3: Introductie in GBA Programming</title>
+      <link>https://brainbaking.com/teaching/cpp/labo-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/labo-3/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+Je hebt nu een crashcrusus C achter de kiezen met een grondige focus op pointers. Hoog tijd om die kennis om te zetten in iets concreet én plezant. We gaan een héél simpel Gameboy Advance (GBA) spel ontwikkelen.
+De GBA is een goede keuze om de kracht (en zwakheden) van C te demonstreren. Er is immers géén besturingsyssteem aanwezig.</description>
+    </item>
+    
+    <item>
+      <title>Labo 4: GBA Tilesets, een simpel spel</title>
+      <link>https://brainbaking.com/teaching/cpp/labo-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/labo-4/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+In labo 3 maakten we kennis met de Gameboy Advance en het ontwikkelplatform - als je het zo kan noemen. We gebruikten mode 3 om pixels te manipuleren. Natuurlijk is dat erg onpraktisch en veel te belastend wanneer er veel op het scherm getekend moet worden. Als doelstelling voor labo 4 willen we een simpel geïntegreerd spelletje maken waar we video mode 1 en tilesets voor nodig hebben.</description>
+    </item>
+    
+    <item>
+      <title>Labo 5: Weg met C, Hallo C&#43;&#43;</title>
+      <link>https://brainbaking.com/teaching/cpp/labo-5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/labo-5/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+Dingen die opvallen: wel in C++, niet in C  bool los van std::string (bovenop char) en std::wstring (bovenop wchar_t), Extra Integral types:  wchar_t, char16_t, char32_t  Zelf te definiëren operaties:  scope resolutie :: en namespaces &amp;lt;&amp;lt;, &amp;gt;&amp;gt; bitshifts, of &amp;ldquo;streams&amp;rdquo; zoals in C++  class en alles wat daar mee te maken heeft  new, delete  nullptr in plaats van NULL vanaf C++11  Classes in C++ Terug naar de isOud opgave, maar dan in C++ Het is tijd om malloc() en struct achterwege te laten:</description>
+    </item>
+    
+  </channel>
+</rss>

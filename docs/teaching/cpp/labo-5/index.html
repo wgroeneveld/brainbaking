@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-45748221-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Labo 5: Weg met C, Hallo C&#43;&#43;</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.43" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Labo 5: Weg met C, Hallo C&#43;&#43;</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/cpp/labo-5/">Labo 5: Weg met C, Hallo C&#43;&#43;</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++ met Qt</a><br/>
+&raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
+
+<h2 id="dingen-die-opvallen-wel-in-c-niet-in-c">Dingen die opvallen: wel in C++, niet in C</h2>
+
+<ul>
+<li><code>bool</code></li>
+<li>los van <code>std::string</code> (bovenop <code>char</code>) en <code>std::wstring</code> (bovenop <code>wchar_t</code>), Extra Integral types:
+
+<ul>
+<li><code>wchar_t</code>, <code>char16_t</code>, <code>char32_t</code></li>
+</ul></li>
+<li><a href="https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B">Zelf te definiëren operaties</a>:
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Scope_resolution_operator">scope resolutie</a> <code>::</code> en namespaces</li>
+<li><code>&lt;&lt;</code>, <code>&gt;&gt;</code> bitshifts, of &ldquo;streams&rdquo; zoals in C++</li>
+</ul></li>
+<li><code>class</code> en alles wat daar mee te maken heeft
+
+<ul>
+<li><code>new</code>, <code>delete</code></li>
+</ul></li>
+<li><code>nullptr</code> in plaats van <code>NULL</code> vanaf C++11</li>
+</ul>
+
+<h2 id="classes-in-c">Classes in C++</h2>
+
+<h3 id="terug-naar-de-isoud-opgave-maar-dan-in-c">Terug naar de isOud opgave, maar dan in C++</h3>
+
+<p>Het is tijd om <code>malloc()</code> en <code>struct</code> achterwege te laten:</p>
+
+<pre><code class="language-C++">#include &lt;iostream&gt;
+
+class Persoon {
+private:
+    int leeftijd;
+public:
+    Persoon(int leeftijd);
+    bool isOud() const { 
+        std::cout &lt;&lt; &quot;checking leeftijd van persoon &quot; &lt;&lt; leeftijd &lt;&lt; std::endl;
+        return leeftijd &gt; 60;
+    }
+    int getLeeftijd() const { return leeftijd; }
+};
+
+Persoon::Persoon(int leeftijd) {
+    this-&gt;leeftijd = leeftijd;
+} 
+
+int main() {
+    auto jaak = new Persoon(70);
+    std::cout &lt;&lt; &quot;is jaak oud? &quot; &lt;&lt; jaak-&gt;isOud() &lt;&lt; std::endl;
+}
+</code></pre>
+
+<p>Dat ziet er al heel wat properder uit:</p>
+
+<ul>
+<li>We hebben een constructor gebruikt om een persoon aan te maken met leeftijd, zoals we kennen vanuit Java. De <code>this</code> pointer verwijst naar de huidige instance van de klasse.</li>
+<li>We hebben methodes (inline) gedeclareerd in de klasse Persoon.</li>
+<li>Jaak aanmaken hoeft geen type definitie als <code>Persoon *</code> met C++11&rsquo;s <code>auto</code> keyword. Leer auto goed kennen en gebruiken: <a href="http://www.acodersjourney.com/2016/02/c-11-auto/">overtuig jezelf</a>!</li>
+</ul>
+
+<h2 id="de-c-standard-library">De C++ Standard Library</h2>
+
+<p>De Standard Template Library <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> is een bibliotheek die meegeleverd wordt bij de meeste moderne C++ compilers. Deze implementeert de nieuwe standaarden, zoals C++11. Compilers vragen soms wel een flag om te kiezen met welke library er gelinkt wordt: <code>g++ -std=c++11</code>.</p>
+
+<p>STL bevat een hoop dingen die je het leven makkelijker maakt: strings (gek genoeg nog steeds geen deel van de taal zelf), collecties, streams, IO, &hellip; Bekijk het als de .NET library voor de C# taal of de meegebakken <code>java.*</code> klassen en methodes voor Java. &ldquo;Part II: The C++ Library (p. 307)&rdquo; behandelt deze zaken in het handboek.</p>
+
+<p>Includes van STL worden zonder &ldquo;.h&rdquo; gedaan: <code>#include &lt;iosteram&gt;</code>. Laat het maar aan de compiler over om de systeembestanden te zoeken tijdens het linken.</p>
+
+<h2 id="smart-pointers-in-c-11">Smart pointers in C++11</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Smart_pointer#unique_ptr">https://en.wikipedia.org/wiki/Smart_pointer#unique_ptr</a></p>
+</div>
+
+    
+    
+
+    
+
+    
+    
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

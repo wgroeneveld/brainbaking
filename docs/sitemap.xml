@@ -248,13 +248,13 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/tags/.net/</loc>
-    <lastmod>2014-10-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://brainbaking.com/about/</loc>
   </url>
   
   <url>
-    <loc>https://brainbaking.com/about/</loc>
+    <loc>https://brainbaking.com/tags/.net/</loc>
+    <lastmod>2014-10-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -446,6 +446,26 @@
     <loc>https://brainbaking.com/tags/jvm/</loc>
     <lastmod>2014-10-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/teaching/cpp/labo-1/</loc>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/teaching/cpp/labo-2/</loc>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/teaching/cpp/labo-3/</loc>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/teaching/cpp/labo-4/</loc>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/teaching/cpp/labo-5/</loc>
   </url>
   
   <url>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-45748221-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Labo 3: Introductie in GBA Programming</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.43" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Labo 3: Introductie in GBA Programming</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/cpp/labo-3/">Labo 3: Introductie in GBA Programming</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++ met Qt</a><br/>
+&raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
+
+<p>Je hebt nu een crashcrusus C achter de kiezen met een grondige focus op pointers. Hoog tijd om die kennis om te zetten in iets concreet én plezant. We gaan een héél simpel Gameboy Advance (GBA) spel ontwikkelen.</p>
+
+<p>De GBA is een goede keuze om de kracht (en zwakheden) van C te demonstreren. Er is immers géén besturingsyssteem aanwezig. Er zijn géén libraries aanwezig voor memory management, IO, files, error handling, &hellip; Het is een embedded hardware systeem dat een <em>cross-compiler</em> vereist: een compiler op onze PC&rsquo;s dat compileert voor een ander platform en CPU, namelijk een 32-bit <a href="https://en.wikipedia.org/wiki/ARM_architecture">ARM</a> op 16.78 Mhz.</p>
+
+<p><center>
+    <img src="/img/teaching/gba.jpg" class="bordered" /><br/>
+    Het resultaat van veel hard werk in C (en Assemly)&hellip;
+</center></p>
+
+<h2 id="gba-programming-een-introductie">GBA Programming: een introductie</h2>
+
+<p>Om eender wat gedaan te krijgen op een GBA zullen we alles met <a href="https://en.wikipedia.org/wiki/Memory-mapped_I/O">memory-mapped IO</a> moeten doen, door rechtstreeks bits weg te schrijven in geheugenadressen die zaken als het scherm, knoppen en het geluid voorstellen. Er is niet eens een <code>printf()</code> functie! In de plaats daarvan moeten we &ldquo;hello world&rdquo; tekenen op het scherm, wat véél meer werk vereist.</p>
+
+<p>Programmeren op een extern systeem brengt véél hardwarematige complexiteit met zich mee. We gaan hier niet alles behandelen. De geïnteresseerden kunnen hier terecht voor meer diepgaande tutorials:</p>
+
+<ul>
+<li><a href="http://www.loirak.com/gameboy/gbatutor.php">http://www.loirak.com/gameboy/gbatutor.php</a></li>
+<li><a href="https://www.coranac.com/tonc/text/first.htm">https://www.coranac.com/tonc/text/first.htm</a></li>
+</ul>
+
+<p>Laten we het eenvoudigste eerst proberen: de achtergrond te kleuren.</p>
+
+<h3 id="display-setup">Display setup</h3>
+
+<p>Er zijn 6 verschillende &ldquo;Video Modes&rdquo; beschikbaar die je moet aan- of uitzetten voordat je iets kan tekenen op het scherm. De GBA ondersteunt tilesets om sprites efficiënter te tekenen (de 3 laatste modes), maar wij hebben voorlopig genoeg aan pixel per pixel de kleur te zetten (de 3 eerste modes). De eenvoudigste mode zonder buffering is <strong>video mode 3</strong>. Dit heeft een resolutie van 240x160. Elke pixel RGB waardes om aan te spreken.</p>
+
+<p>Naast mode 3 moeten we ook een &ldquo;Background mode&rdquo; kiezen. Er zijn 4 achtergrond lagen beschikbaar die het mogelijk maken om een 3D illusie te creëren door laag per laag te tekenen. BG mode 2 volstaat voorlopig.</p>
+
+<p>De video parameters worden weggeschreven in controleregister <code>0x4000000</code>. De combinatie van BG2 en Mode3 kunnen we met een bitwise operator <code>|</code> samen plakken, maar je kan evengoed de bits apart manipuleren. Om de cryptische registers wat te verduidelijken gebruiken we preprocessor defines.</p>
+
+<pre><code class="language-C">#define MODE3 0x0003
+#define BG2 0x0400
+
+volatile unsigned int *display_control = (volatile unsigned int*) 0x4000000;
+
+int main() {
+    *display_control = MODE3 | BG2;
+}
+</code></pre>
+
+<p>Zie <a href="https://www.cs.rit.edu/~tjh8300/CowBite/CowBiteSpec.htm">Hardware Specifications</a> documentatie.</p>
+
+<p>Wat doet die <code>volatile</code> daar? Dit zijn low-level registeradressen die op eender welk moment door de hardware zelf veranderd kunnen worden. Het volatile keyword zegt tegen de compiler dat dit stukje code niet geoptimaliseerd mag worden. De compiler kan anders nog beslissen om instructies van volgorde te wisselen met vreemde werking tot gevolg.</p>
+
+<h3 id="simpele-display-manipulatie">Simpele display manipulatie</h3>
+
+<p>De vereiste display setup is gebeurd, laten we wat pixels wegschrijven in het scherm register op <code>0x6000000</code>:</p>
+
+<pre><code class="language-C">#define WIDTH 240
+#define HEIGHT 160
+volatile unsigned short *vram = (volatile unsigned short*) 0x6000000;
+
+vram[80*WIDTH + 115] = 0x001F; // 000000000011111 = R
+vram[80*WIDTH + 120] = 0x03E0; // 000001111100000 = G
+vram[80*WIDTH + 125] = 0x7C00; // 111110000000000 = B
+
+while(1);
+</code></pre>
+
+<p>Prachtig, een rode, groene en blauwe pixel opgelicht!</p>
+
+<p>VRAM is een (short, 16-bit) pointer naar een adres, om de X en Y coördinaten te bepalen gebruiken we een formule <code>vram[X*WIDTH +Y]</code>. De oneindige lus zorgt er voor dat het spel niet plots &ldquo;stopt&rdquo; - vergeet niet dat er geen OS is, dus zo&rsquo;n gevaarlijke code moet zelfs op de GBA.</p>
+
+<p>Kleueren zijn binaire nummers. De hoeveelheid aan bits geeft ons een idee hoeveel unieke kleuren we hebben. De originele Gameboy had 2 bits: zwart, wit, en twee schakeringen van grijs tussenin. De GBA heeft er 15 (1 bit ongebruikt), met 5 bits per interval:</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph LR;
+    A[--] --- B[B]
+    B --- C[B]
+    C --- D[B]
+    D --- E[B]
+    E --- F[B]
+    F --- G[G]
+    G --- H[G]
+    H --- I[G]
+    I --- J[G]
+    J --- K[G]
+    K --- L[R]
+    L --- M[R]
+    M --- N[R]
+    N --- O[R]
+    O --- P[R]
+    style B stroke:blue
+    style C stroke:blue
+    style D stroke:blue
+    style E stroke:blue
+    style F stroke:blue
+    style G stroke:green
+    style H stroke:green
+    style I stroke:green
+    style J stroke:green
+    style K stroke:green
+    style L stroke:red
+    style M stroke:red
+    style N stroke:red
+    style O stroke:red
+    style P stroke:red
+
+</div>
+
+<p>Hexadecimale kleuren tekenen is onbegonnen werk natuurlijk, laten we een functie maken die de juiste bits shift afhankelijk van een R,G,B waarde van 0 tot 31 (<code>unsigned int</code>):</p>
+
+<pre><code class="language-C">unsigned short color(unsigned int r, unsigned int g, unsigned int b) {
+    unsigned short c = (b &amp; 0x1f) &lt;&lt; 10;
+    c |= (g &amp; 0x1f) &lt;&lt; 5;
+    c |= (r &amp; 0x1f);
+    return c;
+}
+</code></pre>
+
+<p><code>Ox1f</code> verzekert 5-bits (<code>11111</code> binair), met eerst blauw, dan groen en dan rood op de juiste plaats geshift. 240x160 = 38.400 kleuren x 16-bit = 614.400 bits / 8 = 76.800 bytes. Adres <code>0x6000000</code> gaat dus tot <code>0x6012c00</code>.</p>
+
+<p>Om niet altijd het adres rechtstreeks aan te spreken met de breedte berekening, wrappen we dat ook nog in een functie:</p>
+
+<pre><code class="language-C">void set_pixel(int x, int y, unsigned short color) {
+    vram[x*WIDTH + y] = color;
+}
+</code></pre>
+
+<p>Een loop over X en Y waardes van het scherm zorgt voor een vrolijke kleur op je Gameboy scherm. <a href="/teaching/cpp/labo-3-gbabg.c">Download het labo-3-gbabg.c hier</a>. Merk op dat dit pushen van pixel per pixel natuurlijk erg inefficiënt is: daarvoor zijn de tile video modes 0, 1 en 2.</p>
+
+<p>Dit is wat je te zien krijgt:</p>
+
+<p><center>
+    <img src="/img/teaching/mgba_output.png" class="bordered" />
+</center></p>
+
+<h2 id="keypad-input">Keypad input</h2>
+
+<p>Oké, we hebben en &ldquo;spel&rdquo; geschreven met een blauwe achtergrond. Hoe passen we dit aan afhankelijk van een bepaalde toetsencombinatie? Volgens de GBA Keypad input <a href="http://www.akkit.org/info/gbatek.htm#gbakeypadinput">specificaties</a> moeten we hiervoor IO register <code>0x04000130</code> uitlezen.</p>
+
+<p>Bit 6 staat bijvoorbeeld voor &ldquo;up&rdquo;. <a href="https://www.binaryhexconverter.com/binary-to-hex-converter">Geconverteerd van binary naar hex</a> levert <code>1000000</code> (6de bit op 1, beginnend vanaf 0) ons <code>40</code> op. We kunnen key up dus definiëren als <code>#define KEY_UP 0x0040</code>. Je kan ook dynamisch 6 bits shiften: <code>#define KEY_UP (1 &lt;&lt; 6)</code>. Een derde mogelijkheid is in machten van 2 te werken (bits): <code>#define KEY_UP 64</code>.</p>
+
+<p>Het is een goed idee om maar 1x tijdens de game loop alle key states uit te lezen. Een mask die alle input bits checkt is daarvoor nodig:</p>
+
+<pre><code class="language-C">#define KEY_ANY  0x03FF
+
+int main() {
+    unsigned int keys;
+    while(1) {
+        keys = ~*key_input &amp; KEY_ANY;
+        // do stuff
+        if(keys &amp; KEY_UP) {
+            // do more stuff
+        }
+    }
+}
+</code></pre>
+
+<p>Merk de <code>~</code> op: het register bewaart de state omgekeerd.</p>
+
+<h2 id="compileren-voor-de-gba">Compileren voor de GBA</h2>
+
+<p>De gcc compiler kan je C programma ook compileren - het is tenslotte in de C taal geschreven. De register adressen verwijzen echter niet naar het juiste als je die binary op je PC wil uitvoeren, wat resulteert in &ldquo;Segmentation Fault&rdquo; waarschuwingen.</p>
+
+<h3 id="de-cross-compiler">De cross-compiler</h3>
+
+<p>De &ldquo;DevkitPro&rdquo; toolchain installeren levert je een aantal cross-compilers en linkers op die een C source file omzetten ine en GBA binary. Zie <a href="https://devkitpro.org/wiki/Getting_Started">installatie instructies</a> per OS. Via de meegeleverde package manager <code>pacman</code> kan je op OSX de package <code>gba-dev</code> installeren. Voor Windows is er een installer voorzien.</p>
+
+<p>Je hebt 2 dingen nodig:</p>
+
+<ol>
+<li><code>arm-none-eabi-gcc</code>, de cross-compiler</li>
+<li><code>arm-none-eabi-objcopy</code>, de linker</li>
+</ol>
+
+<p><a href="/teaching/cpp/labo-3-gba.Makefile">Download een Makefile voor gba dev hier</a>. Pas je emulator pad en source bestandsnaam aan.</p>
+
+<h3 id="je-gba-file-emuleren-op-pc">Je GBA file emuleren op PC</h3>
+
+<p>Compileren met een cross-compiler gaat, maar de binaries kan je nooit op een ander systeem draaien dan waarvoor het gecompileerd is - tenzij je dit emuleert. Een <code>.gba</code> binary kan je emuleren op de PC met <a href="https://mgba.io">mGBA</a>.</p>
+
+<h3 id="je-gba-file-spelen-op-een-echte-gameboy">Je GBA file spelen op een echte Gameboy</h3>
+
+<p>aan te vullen</p>
+
+<h2 id="labo-oefeningen">Labo oefeningen</h2>
+
+<p><a name="oef"></a></p>
+
+<ol>
+<li>Vorm het voorbeeld in de tekst om naar een &ldquo;hi!&rdquo; hello world applicatie. Teken de symbolen per pixel. <a href="/teaching/cpp/labo-3-gbabg.c">Download het labo-3-gbabg.c hier</a>. <a href="/teaching/cpp/labo-3-gba.Makefile">Download een Makefile voor gba dev hier</a>. Probeer eerst het bestaande te compileren met <code>make</code>.</li>
+<li>Laten we het iets dynamischer maken. Lees het key input register in en maak gebruik van de pijltjes om je &ldquo;hi!&rdquo; tekst te verschuiven. Wat een spannend spel is dit aan het worden! Definiëer het input register op exact dezelfde manier als <code>vram</code> in de tekst.</li>
+</ol>
+
+<h2 id="denkvragen">Denkvragen</h2>
+
+<ol>
+<li>Waarom denk je dat Video mode 3 inefficiënt is? Kan je een alternatief verzinnen en dit vergelijken met mode 3 in termen van werking?</li>
+<li>Nu je gezien hebt hoe we iets compileren voor een andere architectuur (<code>ARM</code> en niet <code>x86</code>), kan je ook een definitie geven van een <em>embedded system</em>? Hoe past een cross-compiler in dat plaatje?</li>
+</ol>
+</div>
+
+    
+    
+
+    
+
+    
+    
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
