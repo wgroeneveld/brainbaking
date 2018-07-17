@@ -359,3 +359,5 @@ Er ontbreken nog een aantal belangrijke zaken in ons spel.
 ## Denkvragen
 
 1. Kan je je een ideaal soort spel inbeelden waarin video mode 1 bruikbaar zou kunnen zijn? En wanneer zou video mode 3 (of 4 met buffering) wel handig zijn? Tip: er zijn wel degelijk spellen ontwikkeld in mode 4, zoals [James bond 007: Nightfire](https://www.youtube.com/watch?v=kdiXB8xeF1k).
+2. Wanneer gebruik je een `char`, wanneer een `int` en wanneer plaats je er `unsigned` of `short` voor? Tip: gebruik `sizeof()` om de grootte af te drukken en kijk naar het verschil. 
+3. Weet jij waarom sommige macro's gedefiniëerd zijn als `(*(volatile uint16*) 0x0)` en anderen als `(volatile uint16*) 0x0`? 
