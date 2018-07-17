@@ -183,6 +183,35 @@ Compileren met een cross-compiler gaat, maar de binaries kan je nooit op een and
 
 aan te vullen
 
+## Bits en bytes beter begrijpen in C
+
+Om hexadecimale geheugenadressen en bit flags beter te begrijpen op de GBA moeten we ontdekken hoe bitwise operatoren, `sizeof()` en shifts werken in C. De implementatie van byte groottes wijzigt per computer maar is (bijna) altijd 8 bits: `00000000`. De GBA vereist vaak - zoals het definiëren van kleuren - 16 bits: 8x2. Die kracht van 2 is geen toeval in de binaire wereld. We gebruiken 3 types in zo'n embedded systeem: 
+
+1. 8 bits: `typedef unsigned char uint8`
+2. 16 bits: `typedef unsigned short uint16`
+3. 32 bits: `typedef unsigned int uint32`
+
+Elke individuele bit op `1` of op `0` zetten kan je doen met hulp van binaire of bitshift operatoren. Een 16-bit variabele kan in feite 16 individuele eigenschappen opslaan (die actief of inactief staan). In een moderne taal als Java, op een moderner besturingssysteem, speelt geheugengebruik op zo'n niveau geen rol meer. Daar definiëren we voor praktische redenen gewoon 16 aparte `boolean` variabelen. 
+
+Op de GBA speelt geheugengebruik een zeer belangrijke rol en kunnen we met "bit masks" alle eigenschappen samen proppen in 2 bytes. Vergeet niet dat er bijvoorbeeld maar 96KB aan 16-bit VRAM beschikbaar is. De [technische GBA Memory Map](https://problemkaputt.de/gbatek.htm#gbamemorymap) pagina geeft weer hoeveel geheugen er bij welk IO adres beschikbaar is. 
+
+[Download het voorbeeldprogramma hier](/teaching/cpp/labo-3-bits.c) om wat te experimenteren met deze gegevens. [Hex naar Binary](https://www.binaryhexconverter.com/hex-to-binary-converter) converters en [Wikipedia](https://en.wikipedia.org/wiki/Bitwise_operations_in_C) kunnen helpen. 
+
+```
+hoeveel bits zit er in ene byte hier? 8
+sizeof BYTES unsigned short 2 - unsigned int BYTES: 4
+sizeof BITS unsigned short 16 - unsigned int BITS: 32
+sizeof arr8 uint32: 32
+
+key right (1 << 4):             0000 0000 0001 0000
+key right na nog 1 bitshift:    0000 0000 0010 0000
+opgeteld met bitwise OR |:      0000 0000 0011 0000
+inverse met bitwise ~:          1111 1111 1100 1111
+
+x mask:                         0000 0001 1111 1111
+y mask:                         0000 0000 1111 1111
+```
+
 ## Labo oefeningen
 <a name="oef"></a>
 
@@ -193,3 +222,4 @@ aan te vullen
 
 1. Waarom denk je dat Video mode 3 inefficiënt is? Kan je een alternatief verzinnen en dit vergelijken met mode 3 in termen van werking? 
 2. Nu je gezien hebt hoe we iets compileren voor een andere architectuur (`ARM` en niet `x86`), kan je ook een definitie geven van een _embedded system_? Hoe past een cross-compiler in dat plaatje? 
+3. Wat gebeurt er met de output van het x en y mask als je in het bits voorbeeldprogramma in main `uint16 nr;` herdefiniëert als een `uint8`? Kunnen we dit om geheugen te besparen overal toepassen?
