@@ -514,9 +514,20 @@ void vsync() {
 }
 </code></pre>
 
-<p>Oef! Nu kunnen we alles samen rapen. <a href="/teaching/cpp/labo-4-gba-1.c">Download het resultaat hier</a>. Het spel luistert ook naar de keypads om de paddle te bewegen zoals we gezien hebben in labo 3. Hieronder een gif van het spel:</p>
+<p>Oef! Nu kunnen we alles samen rapen. <a href="/teaching/cpp/labo-4-gba-1.c">Download het resultaat hier</a>. Het spel luistert ook naar de keypads om de paddle te bewegen zoals we gezien hebben in labo 3. Hieronder een gif van het spel (links: de download. rechts: labo oefening):</p>
 
-<p><img src="/img/teaching/arkanoid.gif" /></p>
+<div class="row">
+    <div class="col-md-6">
+        <center>
+            <img src="/img/teaching/arkanoid.gif" />
+        </center>
+    </div>
+    <div class="col-md-6 center-block">
+        <center>
+            <img src="/img/teaching/arkanoid-bal.gif" />
+        </center>
+    </div>
+</div>
 
 <p>Ik hoop dat jullie nu wat meer respect tonen naar programmeurs en spellen van zulke low-level embedded systemen als de GBA. Het kost zoals we gezien hebben véél meer moeite dan een JPEG in te laden in JavaFX.</p>
 
@@ -545,6 +556,8 @@ void vsync() {
 
 <ol>
 <li>Kan je je een ideaal soort spel inbeelden waarin video mode 1 bruikbaar zou kunnen zijn? En wanneer zou video mode 3 (of 4 met buffering) wel handig zijn? Tip: er zijn wel degelijk spellen ontwikkeld in mode 4, zoals <a href="https://www.youtube.com/watch?v=kdiXB8xeF1k">James bond 007: Nightfire</a>.</li>
+<li>Weet jij waarom sommige macro&rsquo;s gedefiniëerd zijn als <code>(*(volatile uint16*) 0x0)</code> en anderen als <code>(volatile uint16*) 0x0</code>?</li>
+<li>Het beheren van de OAM is heel vervelend: geheugen vrijgeven verknoeit de index pointer, en de Z-index van sprites is afhankelijk van de geheugenlocatie. Een sprite manager die dit voor ons beheert zou niet misstaan. Wat is een mogelijke implementatie hiervan? Tip: lees het <a href="https://www.gamasutra.com/view/feature/131491/gameboy_advance_resource_management.php">Gamasutra GBA Resource management</a> artikel.</li>
 </ol>
 </div>
 

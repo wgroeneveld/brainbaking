@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software ontwerp in C/C&#43;&#43; met Qt on Brain Baking</title>
+    <title>Software ontwerp in C/C&#43;&#43; on Brain Baking</title>
     <link>https://brainbaking.com/teaching/cpp/</link>
-    <description>Recent content in Software ontwerp in C/C&#43;&#43; met Qt on Brain Baking</description>
+    <description>Recent content in Software ontwerp in C/C&#43;&#43; on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
@@ -62,7 +62,8 @@ In labo 3 maakten we kennis met de Gameboy Advance en het ontwikkelplatform - al
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/labo-5/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
-Dingen die opvallen: wel in C++, niet in C  bool los van std::string (bovenop char) en std::wstring (bovenop wchar_t), Extra Integral types:  wchar_t, char16_t, char32_t  Zelf te definiëren operaties:  scope resolutie :: en namespaces &amp;lt;&amp;lt;, &amp;gt;&amp;gt; bitshifts, of &amp;ldquo;streams&amp;rdquo; zoals in C++  class en alles wat daar mee te maken heeft  new, delete  nullptr in plaats van NULL vanaf C++11  Classes in C++ Terug naar de isOud opgave, maar dan in C++ Het is tijd om malloc() en struct achterwege te laten:</description>
+De ++ in C++ De introductie van C++ in 1985 geeft de ervaren C programmeur enkele extra mogelijkheden om zijn of haar code te structureren. C++ wordt nog steeds omschreven als een &amp;ldquo;general purpose&amp;rdquo; low-level taal op Wikipedia:
+ C++ is a general-purpose programming language. It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.</description>
     </item>
     
   </channel>

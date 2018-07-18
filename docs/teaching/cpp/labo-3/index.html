@@ -361,6 +361,36 @@ int main() {
 
 <p>aan te vullen</p>
 
+<h2 id="bits-en-bytes-beter-begrijpen-in-c">Bits en bytes beter begrijpen in C</h2>
+
+<p>Om hexadecimale geheugenadressen en bit flags beter te begrijpen op de GBA moeten we ontdekken hoe bitwise operatoren, <code>sizeof()</code> en shifts werken in C. De implementatie van byte groottes wijzigt per computer maar is (bijna) altijd 8 bits: <code>00000000</code>. De GBA vereist vaak - zoals het definiëren van kleuren - 16 bits: 8x2. Die kracht van 2 is geen toeval in de binaire wereld. We gebruiken 3 types in zo&rsquo;n embedded systeem:</p>
+
+<ol>
+<li>8 bits: <code>typedef unsigned char uint8</code></li>
+<li>16 bits: <code>typedef unsigned short uint16</code></li>
+<li>32 bits: <code>typedef unsigned int uint32</code></li>
+</ol>
+
+<p>Elke individuele bit op <code>1</code> of op <code>0</code> zetten kan je doen met hulp van binaire of bitshift operatoren. Een 16-bit variabele kan in feite 16 individuele eigenschappen opslaan (die actief of inactief staan). In een moderne taal als Java, op een moderner besturingssysteem, speelt geheugengebruik op zo&rsquo;n niveau geen rol meer. Daar definiëren we voor praktische redenen gewoon 16 aparte <code>boolean</code> variabelen.</p>
+
+<p>Op de GBA speelt geheugengebruik een zeer belangrijke rol en kunnen we met &ldquo;bit masks&rdquo; alle eigenschappen samen proppen in 2 bytes. Vergeet niet dat er bijvoorbeeld maar 96KB aan 16-bit VRAM beschikbaar is. De <a href="https://problemkaputt.de/gbatek.htm#gbamemorymap">technische GBA Memory Map</a> pagina geeft weer hoeveel geheugen er bij welk IO adres beschikbaar is.</p>
+
+<p><a href="/teaching/cpp/labo-3-bits.c">Download het voorbeeldprogramma hier</a> om wat te experimenteren met deze gegevens. <a href="https://www.binaryhexconverter.com/hex-to-binary-converter">Hex naar Binary</a> converters en <a href="https://en.wikipedia.org/wiki/Bitwise_operations_in_C">Wikipedia</a> kunnen helpen.</p>
+
+<pre><code>hoeveel bits zit er in ene byte hier? 8
+sizeof BYTES unsigned short 2 - unsigned int BYTES: 4
+sizeof BITS unsigned short 16 - unsigned int BITS: 32
+sizeof arr8 uint32: 32
+
+key right (1 &lt;&lt; 4):             0000 0000 0001 0000
+key right na nog 1 bitshift:    0000 0000 0010 0000
+opgeteld met bitwise OR |:      0000 0000 0011 0000
+inverse met bitwise ~:          1111 1111 1100 1111
+
+x mask:                         0000 0001 1111 1111
+y mask:                         0000 0000 1111 1111
+</code></pre>
+
 <h2 id="labo-oefeningen">Labo oefeningen</h2>
 
 <p><a name="oef"></a></p>
@@ -375,6 +405,7 @@ int main() {
 <ol>
 <li>Waarom denk je dat Video mode 3 inefficiënt is? Kan je een alternatief verzinnen en dit vergelijken met mode 3 in termen van werking?</li>
 <li>Nu je gezien hebt hoe we iets compileren voor een andere architectuur (<code>ARM</code> en niet <code>x86</code>), kan je ook een definitie geven van een <em>embedded system</em>? Hoe past een cross-compiler in dat plaatje?</li>
+<li>Wat gebeurt er met de output van het x en y mask als je in het bits voorbeeldprogramma in main <code>uint16 nr;</code> herdefiniëert als een <code>uint8</code>? Kunnen we dit om geheugen te besparen overal toepassen?</li>
 </ol>
 </div>
 
