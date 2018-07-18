@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-45748221-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Labo 6: C&#43;&#43; Class Inheritance, operators en templates</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.43" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Labo 6: C&#43;&#43; Class Inheritance, operators en templates</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/cpp/labo-6/">Labo 6: C&#43;&#43; Class Inheritance, operators en templates</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++ met Qt</a><br/>
+&raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
+
+<h2 id="c-classes-revisited">C++ Classes revisited</h2>
+
+<p>Nu je een <a href="/teaching/cpp/labo-5">basis van klassen</a> hebt opgedaan in C++ gaan we erving introduceren. Gegeven de volgende modellen:</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph TD;
+  A[Dier]
+  B[Viervoeter]
+  C[Hond]
+  D[Kat]
+  E[Vlinder]
+  F[Vlees]
+  G[Groenten]
+  H[Voedsel]
+  B --> A
+  C --> B
+  D --> B
+  E --> A
+  F --> H
+  G --> H
+
+</div>
+
+<p>Gegeven de volgende acceptatie criteria:</p>
+
+<ol>
+<li>Elk dier kan een aantal centimeter <em>bewegen</em>.
+
+<ul>
+<li>Bij viervoeten hangt dit van de snelheid van het dier af in combinatie met het aantal poten.</li>
+<li>Een kat beweegt sneller dan een hond maar is na 2x moe.</li>
+<li>Een vlinder beweegt liniair met de grootte van zijn vleugels.</li>
+</ul></li>
+<li>Elk dier eet <strong>voedsel</strong>.
+
+<ul>
+<li>Een hond eet alles.</li>
+<li>Een kat eet enkel vlees.</li>
+<li>Een vlinder eet enkel groenten.</li>
+</ul></li>
+</ol>
+
+<p>Een voorbeeldimplementatie in Java zou dit kunnen zijn:</p>
+
+<pre><code class="language-Java">public abstract class Voedsel { }
+public class Vlees extends Voedsel { }
+public class Groenten extends Voedsel { }
+
+public abstract class Dier {
+    public abstract boolean kanEten(Voedsel voedsel);
+    public abstract int beweeg();
+}
+public abstract class Viervoeter extends Dier {
+    protected int aantalPoten = 4;
+}
+public class Hond extends Viervoeter {
+    @Override
+    public boolean kanEten(Voedsel voedsel) {
+        return true;
+    }
+    @Override
+    public int beweeg() {
+        return 10 * aantalPoten;
+    }
+}
+public class Kat extends Viervoeter {
+    private int aantalKeerBewogen; 
+    @Override
+    public boolean kanEten(Voedsel voedsel) {
+        return voedsel instanceof Vlees;
+    }
+    @Override
+    public int beweeg() {
+        aantalKeerBewogen++;
+        int velocity = aantalKeerBewogen &gt;= 2 ? 5 : 15;
+        return velocity * aantalPoten;
+    }
+}
+public class Vlinder extends Dier {
+    private int vleugelGrootte = 4;
+    @Override
+    public boolean kanEten(Voedsel voedsel) {
+        return voedsel instanceof Groenten;
+    }
+    @Override
+    public int beweeg() {
+        return 2 * vleugelGrootte;
+    }
+}
+</code></pre>
+
+<p>De noties van <code>abstract</code>, de <code>@Override</code> annotatie en access modifiers bestaan natuurlijk ook in C++ - zie hoofdstuk 15. Bovenstaande Java code omgezet naar C++:</p>
+
+<pre><code class="language-C">class Voedsel {
+    virtual int voedingswaarde() = 0;
+};
+class Vlees : public Voedsel {
+    int voedingswaarde() override { return 10; }
+};
+class Groenten : public Voedsel {
+    int voedingswaarde() override {        return 15;    }
+};
+
+class Dier {
+public:
+    virtual bool kanEten(const Voedsel&amp; voedsel) = 0;
+    virtual int beweeg() = 0;
+};
+class Viervoeter : public Dier {
+protected:
+    int aantalPoten;
+
+public:
+    Viervoeter() : aantalPoten(4) {}
+};
+class Hond : public Viervoeter {
+public:
+    int beweeg() override {
+        return 10 * aantalPoten;
+    }
+    bool kanEten(const Voedsel &amp;voedsel) override {
+        return true;
+    }
+};
+class Kat : Viervoeter {
+private:
+    int aantalKeerBewogen;
+public:
+    bool kanEten(const Voedsel &amp;voedsel) override {
+        return typeid(voedsel) == typeid(Vlees);
+    }
+
+    int beweeg() override {
+        aantalKeerBewogen++;
+        int velocity = aantalKeerBewogen &gt;= 2 ? 5 : 15;
+        return velocity * aantalPoten;
+    }
+};
+class Vlinder : Dier {
+private:
+    int vleugelGrootte;
+public:
+    Vlinder() : vleugelGrootte(4) {}
+
+private:
+    bool kanEten(const Voedsel &amp;voedsel) override {
+        return typeid(voedsel) == typeid(Groenten);
+    }
+
+    int beweeg() override {
+        return 2 * vleugelGrootte;
+    }
+};
+</code></pre>
+
+<p><code>typeid()</code> leeft in de <code>&lt;typeinfo&gt;</code> header. <a href="https://en.wikipedia.org/wiki/Run-time_type_information">Een alternatief</a> is dynamische pointers casten en kijken of het al dan niet <code>NULL</code> is. Voor de rest zijn de grootste verschillen - buiten de syntax:</p>
+
+<ul>
+<li>C++11&rsquo;s <code>override</code> na een methode wordt ook door de compiler gebruikt om te controleren of wat je override wel een virtuele methode is. In Java is <code>@Override</code> enkel ter documentatie.</li>
+<li><code>abstract</code> op een klasse bestaat niet. Daarvoor moet je een &ldquo;pure virtuele methode&rdquo; (<code>= 0</code>) aanmaken.</li>
+<li>Access modifiers bij een te overerven klasse beslissen of de methodes van die superklasse publiek zijn of niet. Dit bestaat niet in Java.</li>
+<li>Methodes die je overschrijfbaar wil maken moet je prefixen met <code>virtual</code>. In Java zijn alle methodes virtual.</li>
+</ul>
+
+<p>Als je de access modifiers in de klasse definitie vergeet wordt <code>private</code> aangehouden. Voor een struct is dit standaard <code>public</code>.</p>
+
+<p>Wat is de output van het volgende programma?</p>
+
+<pre><code class="language-C">int main() {
+    Groenten g; // vergeet niet dat dit in Java null zou zijn.
+    Vlees v;
+    Kat k;
+
+    std::cout &lt;&lt; &quot;kan een kat groenten eten? &quot; &lt;&lt; k.kanEten(g);
+    std::cout &lt;&lt; &quot;kan een kat vlees eten? &quot; &lt;&lt; k.kanEten(v);
+}
+</code></pre>
+
+<p>En wat is de output van <code>Dier d;</code>? Juist: error: variable type &lsquo;Dier&rsquo; is an abstract class.</p>
+
+<h3 id="extra-flexibiliteit">Extra Flexibiliteit</h3>
+
+<ul>
+<li>Gebruik <code>final</code> als suffix als een subklasse deze virtuele methode niet meer mag overschrijven. Kan op klasse of methode niveau.</li>
+<li>Gebruik de <code>::</code> operator als je toch een virtual base methode wil aanspreken die reeds overschreven is: <code>kat.Dier::iets()</code> waarbij iets zowel op Kat als op Dier gedefiniëerd is.</li>
+<li>Gebruik <code>friend</code> als prefix om een klasse instantie toegang te geven tot private fields van de andere. Kan op klasse of methode niveau. Zie <a href="https://docs.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute?view=netframework-4.7.2">InternalsVisibleTo</a> C# AssemblyInfo.</li>
+<li>Gebruik <code>using Base::member</code> als prefix om bepaalde members toch public access te geven als alles als private gedeclareerd is.</li>
+</ul>
+
+<p>De method shadowing regels volgen ongeveer dezelfde als die van Java: een non-virtual functie met dezelfde naam en argumenten kan een functie hiden van een superklasse.</p>
+
+<h4 id="extra-ongewenste-flexibiliteit-static-vs-dynamic-binding">Extra (ongewenste) flexibiliteit: static VS dynamic binding</h4>
+
+<p>Kijk eens goed naar het volgend voorbeeld:</p>
+
+<pre><code class="language-C">class A {
+public:
+    virtual int a() { return 3; }
+};
+class B : public A {
+public:
+    int a() { return 5; }
+};
+
+int main() {
+    A b = B();
+    std::cout &lt;&lt; b.a() &lt;&lt; std::endl;
+}
+</code></pre>
+
+<p>Wat is de output? 3, en niet 5, ook al is het type van b een instantie van klasse B. Huh? Calls naar virtuele functies <em>kunnen</em> at run-time resolved worden, maar dat &ldquo;hoeft&rdquo; niet (zie p.604). De enige uitzondering hier is het gebruik van pointers: met <code>A* b = new B();</code> geeft <code>b-&gt;a()</code> wél 5 terug.</p>
+
+<p><code>typeid(b).name()</code> blijft &ldquo;1A&rdquo; teruggeven omdat de variabele als type A gedeclareerd is.</p>
+
+<h2 id="labo-oefeningen">Labo oefeningen</h2>
+
+<p><a name="oef"></a></p>
+
+<h2 id="denkvragen">Denkvragen</h2>
+</div>
+
+    
+    
+
+    
+
+    
+    
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

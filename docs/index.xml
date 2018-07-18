@@ -564,5 +564,16 @@ De ++ in C++ De introductie van C++ in 1985 geeft de ervaren C programmeur enkel
  C++ is a general-purpose programming language. It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.</description>
     </item>
     
+    <item>
+      <title>Labo 6: C&#43;&#43; Class Inheritance, operators en templates</title>
+      <link>https://brainbaking.com/teaching/cpp/labo-6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/labo-6/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+C++ Classes revisited Nu je een basis van klassen hebt opgedaan in C++ gaan we erving introduceren. Gegeven de volgende modellen:
+mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  graph TD; A[Dier] B[Viervoeter] C[Hond] D[Kat] E[Vlinder] F[Vlees] G[Groenten] H[Voedsel] B -- A C -- B D -- B E -- A F -- H G -- H  Gegeven de volgende acceptatie criteria:</description>
+    </item>
+    
   </channel>
 </rss>
