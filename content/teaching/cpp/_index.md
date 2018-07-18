@@ -1,5 +1,5 @@
 ---
-title: 'Software ontwerp in C/C++ met Qt'
+title: 'Software ontwerp in C/C++'
 accent: "#008eb3"
 disableComments: true
 disableList: true
@@ -24,20 +24,20 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 5. Een introductie in GUI ontwerp met Qt
 6. Samenvatting, examen info
 
-### Labo's
+### Labo noties
 
 1. [Introductie in C](/teaching/cpp/labo-1)
 2. [Pointers in C en C++](/teaching/cpp/labo-2)
 3. [GBA Programming in C: een introductie](/teaching/cpp/labo-3)
 4. [GBA Programming in C: tilesets, een simpel spel](/teaching/cpp/labo-4)
-5. [Weg met C, hallo C++](/teaching/cpp/labo-5)
-6. todo
-7. todo
-8. todo
-9. C++ Streams
-10. todo
-11. todo
-12. todo
+5. [Introductie in C++](/teaching/cpp/labo-5)
+6. [C++ Class Inheritance, operators en templates](/teaching/labo-6)
+7. [Software ontwerpen: denken en testen voor coderen](/teaching/cpp/labo-6)
+8. [STL Collecties en streams](/teaching/cpp/labo-8)
+9. [GBA Programming in C++: abstraheren](/teaching/cpp/labo-7)
+10. [GBA Programming in C++: scrolling backgrounds](/teaching/cpp/labo-10)
+11. [GUI ontwerp met C++ in Qt: een introductie](/teaching/cpp/labo-11)
+12. [GUI ontwerp met C++ in Qt: een GBA spel porten naar Qt](/teaching/cpp/labo-12)
 
 ## Syllabus
 

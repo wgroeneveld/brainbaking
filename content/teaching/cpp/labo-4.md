@@ -334,9 +334,20 @@ void vsync() {
 }
 ```
 
-Oef! Nu kunnen we alles samen rapen. [Download het resultaat hier](/teaching/cpp/labo-4-gba-1.c). Het spel luistert ook naar de keypads om de paddle te bewegen zoals we gezien hebben in labo 3. Hieronder een gif van het spel:
+Oef! Nu kunnen we alles samen rapen. [Download het resultaat hier](/teaching/cpp/labo-4-gba-1.c). Het spel luistert ook naar de keypads om de paddle te bewegen zoals we gezien hebben in labo 3. Hieronder een gif van het spel (links: de download. rechts: labo oefening):
 
-<img src="/img/teaching/arkanoid.gif" />
+<div class="row">
+    <div class="col-md-6">
+        <center>
+            <img src="/img/teaching/arkanoid.gif" />
+        </center>
+    </div>
+    <div class="col-md-6 center-block">
+        <center>
+            <img src="/img/teaching/arkanoid-bal.gif" />
+        </center>
+    </div>
+</div>
 
 Ik hoop dat jullie nu wat meer respect tonen naar programmeurs en spellen van zulke low-level embedded systemen als de GBA. Het kost zoals we gezien hebben véél meer moeite dan een JPEG in te laden in JavaFX.
 
@@ -359,5 +370,5 @@ Er ontbreken nog een aantal belangrijke zaken in ons spel.
 ## Denkvragen
 
 1. Kan je je een ideaal soort spel inbeelden waarin video mode 1 bruikbaar zou kunnen zijn? En wanneer zou video mode 3 (of 4 met buffering) wel handig zijn? Tip: er zijn wel degelijk spellen ontwikkeld in mode 4, zoals [James bond 007: Nightfire](https://www.youtube.com/watch?v=kdiXB8xeF1k).
-2. Wanneer gebruik je een `char`, wanneer een `int` en wanneer plaats je er `unsigned` of `short` voor? Tip: gebruik `sizeof()` om de grootte af te drukken en kijk naar het verschil. 
-3. Weet jij waarom sommige macro's gedefiniëerd zijn als `(*(volatile uint16*) 0x0)` en anderen als `(volatile uint16*) 0x0`? 
+2. Weet jij waarom sommige macro's gedefiniëerd zijn als `(*(volatile uint16*) 0x0)` en anderen als `(volatile uint16*) 0x0`? 
+3. Het beheren van de OAM is heel vervelend: geheugen vrijgeven verknoeit de index pointer, en de Z-index van sprites is afhankelijk van de geheugenlocatie. Een sprite manager die dit voor ons beheert zou niet misstaan. Wat is een mogelijke implementatie hiervan? Tip: lees het [Gamasutra GBA Resource management](https://www.gamasutra.com/view/feature/131491/gameboy_advance_resource_management.php) artikel. 
