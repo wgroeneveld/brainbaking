@@ -190,7 +190,7 @@ De method shadowing regels volgen ongeveer dezelfde als die van Java: een non-vi
 
 #### Extra (ongewenste) flexibiliteit: static VS dynamic binding
 
-Kijk eens goed naar het volgend voorbeeld:
+Kijk eens goed naar het volgende voorbeeld:
 
 ```C
 class A {
@@ -212,7 +212,248 @@ Wat is de output? 3, en niet 5, ook al is het type van b een instantie van klass
 
 `typeid(b).name()` blijft "1A" teruggeven omdat de variabele als type A gedeclareerd is. 
 
+#### Upcasten en downcasten
+
+C++ voorziet een hele resem aan cast methodes die in het licht van klassen en subklassen nodig kunnen zijn:
+
+1. `dynamic_cast<T>(t)`: downcaster in gebruik. Geeft `nullptr` terug indien niet gelukt. Dit is Java's aangenomen `instanceof` manier. 
+2. `static_cast<T>(t)`: impliciete conversie ongedaan maken (zie elders). Als je bijvoorbeeld weet dat een `void*` eigenlijk een `Punt*` is.Dit kan fouten at compiletime geven.
+3. `reinterpret_cast<T>(t)`: pointer conversies in lijn van C. Dit kan fouten at runtime geven. 
+4. `const_cast<T>(t)`: verwijdert of voegt `const` speficier toe. 
+
+De C-style cast `(Punt*) pt` wordt aanzien als bad practice in de C++ wereld.
+
+## Operatoren en klassen mixen
+
+C++ biedt zoals verwacht zelfs op operator niveau flexibiliteit: je kan je eigen operatoren implementeren in klassen (p.552). Op die manier kan je bijvoorbeeld twee 2D punten met elkaar optellen: `punt1 + punt2`. In Java zal je een methode moeten maken: `punt1.plus(punt2)` dat een nieuw punt teruggeeft. 
+
+Alle mogelijke operatoren kunnen overloaded worden, behalve `::`, `.*`, `.` en `?:`. Dit brengt ook potentiële problemen met zich mee! Stel je voor dat `->` overloaded is en je klasse zich heel anders gedraagt dan een standaard pointer reference. With great power comes great responsibility... 
+
+Een voorbeeld:
+
+```C
+class Punt {
+  private:
+    int x, y;
+  public:
+    Punt(int theX, int theY) : x(theX), y(theY) {}
+    Punt operator +(const Punt& other) {
+      return Punt(x + other.x, y + other.y);
+    }
+    friend ostream& operator<<(ostream& os, Punt& punt);
+}
+ostream& operator<<(ostream& os, Punt& punt) {
+  os << "(" << punt.x << "," << punt.y << ")";
+  return os;
+}
+
+int main() {
+  Punt a(1, 2);
+  Punt b(3, 4);
+
+  std::cout << a + b << endl; // print (4,6)
+}
+```
+
+Operators kan je ook rechtstreeks aanroepen met `punt.operator+(other)`. Ze zijn niet verplicht om member te zijn van de klasse zelf maar ik zie geen reden om dingen die samen te horen niet samen te zetten. Een duidelijke uitzondering zijn IO operators! (p.557)
+
+Andere veelgebruikte operatoren:
+
+* `<<` als `toString()` in Java naar stdout.
+* `==` als `equals()` in Java. Vergeet niet `!=` ook te implementeren dan!
+* `=` als in-assignment om `{ }` te gebruiken. 
+* `[]` als lijst-accessor.
+
+### Conversion operators
+
+Een conversie tussen twee types gebeurt impliciet als de compiler een match kan vinden. Je kan de compiler een handje helpen door er zelf in je klasse bij te definiëren: `operator int()` (zonder return type). Vanaf dan compileert `Punt p; p + 5;` in combinatie met de plus operator! 
+
+Impliciete conversies zijn niet altijd wenselijk, daarvoor dient de prefix `explicit` (ook toepasbaar op constructoren). Expliciete conversies doe je zelf met `static_cast<int>(p)` - gegeven dat de operator geïmplementeerd is natuurlijk.
+
+## Templating: "generics"
+
+Herinner je de STL `vector` klasse. Deze collectie kan integers opslaan, of Punt instances, door tussen `<>` een type mee te geven: `vector<Punt> punten;`. Er is een template voor gedefiniëerd. Stel dat ik de punt klasse wens uit te breiden met de mogelijkheid niet alleen integers maar ook doubles als coordinaten te gebruiken:
+
+```C
+template<typename T> class Punt {
+  private:
+   T x, y;
+  public:
+   Punt(T theX, T theY) : x(theX), y(theY) {}
+};
+Punt<double> pt(1.2, 3.4);
+Punt<int> pt2(3, 5);
+```
+
+Templates kunnen ook op functie niveau gedefiniëerd worden, als losstaande functie en als deel van een klasse genaamd member templates. (p.672)
+
+#### Hercompilatie van templates 
+
+De C++ compiler maakt voor elk template argument in je code (hier `double` en `int`) een aparte versie van de `Punt` klasse. In Java wordt dat weggecompileerd en dienen generics enkel als syntaxtisch hulpmiddel. Dit heeft wel als negatief gevolg dat de binary erg groot kan worden als die vol zit met duplicate versies van `Punt`!
+
+Er zijn mogelijkheden tot compiler- en objectoptimalisatie met het keyword `extern`. Aanschouw het volgende schema met bijhorende code:
+
+```C
+// header.h
+#ifndef _header_h
+#define _header_h
+template<typename T> T punt(T t) {
+    return t;
+}
+#endif
+// source1.cpp 
+#include "header.h"
+void punt1() {
+  auto pt = punt<int>(5);  // template<int> compiled
+}
+// source2.cpp
+#include "header.h"
+void punt2() {
+  auto pt = punt<int>(4);  // template<int> compiled - opnieuw!!
+}
+```
+
+{{<mermaid>}}
+graph TD;
+  subgraph source code
+    H[header.h<br/> template definitie van Punt]
+    A[source1.cpp<br/> gebruik Punt van int]
+    B[source2.cp<br/> gebruik Punt van int]
+    A --> H
+    B --> H
+  end
+  subgraph object output
+    O[source1.o<br/> compilatie Punt van int]
+    P[source1.o<br/> compilatie Punt van int]
+  end
+{{< /mermaid >}}
+
+Als we een source file compileren én proberen te linken vinden we geen `main()` functie:
+
+<pre>
+Wouters-MacBook-Air:cmake-build-debug jefklak$ g++ -std=c++11 source1.cpp
+Undefined symbols for architecture x86_64:
+  "_main", referenced from:
+     implicit entry/start for main executable
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+</pre>
+
+Vergeet de `-c` optie dus niet. Door de symbol table van de machine code van source1.o te inspecteren krijgen we inzicht in de zonet gecompileerde bytes. Op Unix kan dit met `nm`:
+
+<pre>
+  Wouters-MacBook-Air:cmake-build-debug jefklak$ nm source1.o | c++filt
+0000000000000070 short EH_frame0
+0000000000000020 S int punt<int>(int)
+00000000000000b0 S int punt<int>(int) (.eh)
+0000000000000000 T punt1()
+0000000000000088 S punt1() (.eh)
+</pre>
+
+Je ziet op adres `00000000000000b0` de nieuwe functie die als `<int>` gecompileerd is. Dit zit dubbel en ook in source2.cpp! Dit lossen we op door in één van de twee cpp bestanden `extern template int punt(int x);` toe te voegen zodat de compiler dit niet opnieuw behandelt:
+
+<pre>
+Wouters-MacBook-Air:cmake-build-debug jefklak$ nm source1.o | c++filt
+0000000000000040 short EH_frame0
+                 U int punt<int>(int)
+0000000000000000 T punt1()
+0000000000000058 S punt1() (.eh)
+</pre>
+
+De `U` duidt aan dat dit een onbekende functie is die naderhand (hopelijk) gelinkt zal worden en binnen een ander object leeft. [Lees meer](http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/) over interessante object files en symbolen. In de praktijk geldt dit ook voor STL klassen als `vector<int>`: externals worden meestal in een gedeelde header file geplaatst. 
+
+Omdat een `Punt<double>` dus een andere klasse is dan een `Punt<int>` zijn ze niet compatibel met elkaar: het zijn twee unieke klassen. Dit is het grootste verschil tussen Templates in C++ en Generics in Java. De notatie `<T extends BaseClass>` is hierdoor niet nodig (maar kan wel met [`enable_if`](https://en.cppreference.com/w/cpp/types/enable_if)).
+
+#### Herdeclaratie van templates
+
+De constructor - of eender welke methode met `T` buiten de klasse template definiëren betekent dat we de template notatie zullen moeten herhalen want de compiler weet dan niet meer wat die `T` precies is:
+
+```C
+// in punt.h
+template<typename T> class Punt {
+  Punt(T theX, T theY);
+}
+// in punt.cpp
+template<typename T> Punt<T>::Punt(T theX, T theY) : x(theX), y(theY) {
+}
+```
+
+#### Type en non-type arguments
+
+`typename` staat voor "dit is type T" en kan eender welk type zijn. Een constante expressie zoals `5` of een string `"hallo"` aanvaarden gaat zo ook: dat zijn immers ook types. 
+
+Constante expressies met `unsigned` in de template definitie kunnen pointers, value references of integrale types zijn. In ons voorbeeld is het niet aangewezen om dit toe te passen: `Punt<3, 4> pt;` slaat enkel op iets als dit punt nooit kan muteren. 
+
+#### Herhaling vermijden met typedef
+
+Kan op twee manieren:
+
+1. `typedef Punt<int> iPunt;`: `iPunt p;`
+2. `template<typename T> using pt = Punt<T>;`: `pt<int> p;`
+
+Waarbij optie twee meestal gebruikt wordt om verschillende template types te linken: nu heeft dit niet bijzonder veel nut. `typedef` kan niet refereren naar een template type.
+
+#### Template default arguments
+
+Als ik een template type wil van een klasse aangeven, maar dit in 80% van de gevallen een `int` gaat zijn kan ik deze defaulten:
+
+```C
+template<typename T = int> class Punt;
+Punt<> pt;  // <> nog steeds verplicht. 
+```
+
+Zonder `<>` krijg je "error: use of class template 'Punt' requires template arguments".
+
+Voor functies probeert de compiler automatisch het type te deduceren gebaseerd op het meegegeven argument (p.678). Dat wil zeggen dat we het type niet moeten meegeven en ook niet hoeven te defaulten:
+
+```C
+template<typename T> T puntFn(T t) {
+    return t;
+}
+int pt = puntFn<int>(5);  // geldig
+int pt = puntFn(5);       // ook geldig!
+auto pt = puntFn(5);      // ook geldig!
+```
+
+#### Template variable arguments: packs
+
+Wat nu als je verschillende argumenten nodig hebt die allemaal verschillende types hebben, waarvan je het type niet op voorhand weet? De altijd-aanwezige flexibiliteit in C++ lost dit probleem even voor je op met _variadic templates_:
+
+```C
+template <typename... Ts> void som(Ts... args) {}
+```
+
+Dankzij compiler deductie hoeven we niet alle templates aan te vullen als we hey aanroepen: `som(1, 2.0, true);` zou hetzelfde zijn als `som<int, double, bool>(1, 2.0, true);`. Om dit voorbeld te laten werken hebben we echter **recursie** nodig: een functie voor een basisgeval, en een functie voor de rest. Daarom heet dit "packing" en is `...` het unpacken van de template arguments.
+
+```C
+template<typename T> T som(T t) { return t; }
+template<typename T, typename... TRest> T som(T first, TRest... args) {
+  return first + som(args...);
+}
+auto result = som(1, 2.0, 3);
+```
+
+Zie [docs](https://en.cppreference.com/w/cpp/language/parameter_pack).
+
 ## Labo oefeningen
 <a name="oef"></a>
 
+1. Implementeer de volgende business criteria. Werk eerst een snel model uit op papier. Elke schuin gedrukte term verwacht ik terug te zien als een klasse of methode:
+  1. Een _vacature_ bevat een onderwerp, een lijst van vereisten in de vorm van _diploma's_. 
+  2. Een _sollicitant_ heeft een naam en ook _diploma's_: een _universitair_ heeft een bepaald diploma en een _doctor_ een andere. 
+  3. Een sollicitant kan _solliciteren_ op een bepaalde vacature. Hij komt in aanmerking of niet (`bool` is OK), gebaseerd op de matchende diploma's. 
+  4. We hebben een manier nodig om het _aantal sollicitanten_ van een vacature op te vragen (naar `stdout`). 
+  5. We hebben een manier nodig om voor elke sollicitant snel zijn gegevens (naam en aantal diploma's) af te drukken. 
+2. Breid de `Punt` klasse uit met de volgende vereisten:
+  1. Er kunnen 2D of 3D punten bestaan
+  2. De punten kunnen gehele of rationale getallen bevatten. 
+  3. Ik kan punten converteren van 2D naar 3D of omgekeerd (met verlies)
+  4. Ik kan punten met elkaar optellen.
+
+Tips: denk aan het thema: subklassen, operators, templates.
+
 ## Denkvragen
+
+1. Welke operatoren buiten `->` overload je best niet, en waarom? Geef een voorbeeld. 
+2. Hoe kan je `Punt` uitbreiden tot X dimensies? 
+3. Wat is het fundamentele verschil tussen Generics in Java en Templates in C++?

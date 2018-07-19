@@ -105,6 +105,7 @@ Een interessante vergelijkende cursus met nadruk op computer architectuur: [Comp
 ##### C++ in-depth
 
 * [Effective Modern C++](https://www.goodreads.com/book/show/22800553-effective-modern-c)
+* [Bjarne Stroustrup's C++ Style and Technique FAQ](http://www.stroustrup.com/bs_faq2.html)
 
 ##### Qt GUI Programming
 

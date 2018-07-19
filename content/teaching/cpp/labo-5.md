@@ -30,6 +30,7 @@ Enkele belangrijke zaken die onmiddellijk opvallen:
 - `nullptr` in plaats van `NULL`, 
 - [smart pointers](https://en.wikipedia.org/wiki/Smart_pointer#unique_ptr) voor auto garbage collection
 - `auto` als _type inference_ zoals `var` in C#, `decltype` in plaats van `typeof`
+- Exception handling
 
 ## Classes in C++
 
@@ -300,7 +301,17 @@ Hiervoor is een **copy constructor** nodig.
 
 Merk op dat gebruik van accolades `{ }` eigenlijk copy initialisatie doorvoert, evenals single return statements als `return 3 + 4`. Dit kan je omzetten naar direct initialization met `int retval(3 + 4); return retval;`.
 
-Constructors en copy constructors hoeven niet zelf aangemaakt te worden: C++ voorziet defaults. Een lege constructor maakt een leeg object aan. Een lege copy constructor voert eenm ember-wise (shallow) copy door.
+Constructors en copy constructors hoeven niet zelf aangemaakt te worden: C++ voorziet defaults. Een lege constructor maakt een leeg object aan. Een lege copy constructor voert eenm ember-wise (shallow) copy door. Als je die toch wil maken doe je dat zo:
+
+```C
+class Punt {
+  private:
+   int x, y;
+  public:
+   Punt() : x(1), y(1) { }                              // default
+   Punt(const Punt& other) : x(other.x), y(other.y) { } // copy 
+}
+```
 
 ## Strings
 
@@ -356,10 +367,15 @@ p.98 of [cppdocs](https://en.cppreference.com/w/cpp/container/vector) bevat basi
   * sorteerfuncties van STL
 2. [Orc labo 1 redux](/teaching/cpp/labo-1/#oef): herimplementeer het Orc model in een C++ klasse (opgave 2 en 3). Let op met memory leaks als orcs dood gaan! Hoe ziet de oude C functie `Orc vecht(Orc aanvaller, Orc verdediger)` er nu uit?
 
-Vergeet niet de [C++ Style Guide](https://google.github.io/styleguide/cppguide.html) te volgen en gebruik _camelCasing_ voor C++ in plaats van snake casing voor C!
+Vergeet het volgende niet:
+
+* [C++ Style Guide](https://google.github.io/styleguide/cppguide.html) te volgen en gebruik _camelCasing_ voor C++ in plaats van snake casing voor C!
+* C++ online compileren kan op [rextester.com](http://rextester.com/l/cpp_online_compiler_clang).
+* [C++ Style and Technique FAQ](http://www.stroustrup.com/bs_faq2.html)
 
 ## Denkvragen
 
 1. Kan je je een situatie inbeelden waarin het gebruik van raw pointers in een methode van een klasse toch aangewezen is? 
-2. Wat is het fundamenteel verschil tussen een struct en een class? 
+2. Wat is het fundamenteel verschil tussen een struct in C en een class in C++? 
 3. Wat betekent de foutboodschap "Segmentation fault" precies? 
+4. Wanneer wordt een copy constructor aangeroepen? Leg aan de hand daarvan het verschil tussen initialisatie en toekenning uit. 

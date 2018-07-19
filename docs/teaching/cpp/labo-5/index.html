@@ -210,6 +210,7 @@ if (!doNotTrack) {
 <li><code>nullptr</code> in plaats van <code>NULL</code>,</li>
 <li><a href="https://en.wikipedia.org/wiki/Smart_pointer#unique_ptr">smart pointers</a> voor auto garbage collection</li>
 <li><code>auto</code> als <em>type inference</em> zoals <code>var</code> in C#, <code>decltype</code> in plaats van <code>typeof</code></li>
+<li>Exception handling</li>
 </ul>
 
 <h2 id="classes-in-c">Classes in C++</h2>
@@ -491,7 +492,16 @@ heykes.zegIets();     // ok
 
 <p>Merk op dat gebruik van accolades <code>{ }</code> eigenlijk copy initialisatie doorvoert, evenals single return statements als <code>return 3 + 4</code>. Dit kan je omzetten naar direct initialization met <code>int retval(3 + 4); return retval;</code>.</p>
 
-<p>Constructors en copy constructors hoeven niet zelf aangemaakt te worden: C++ voorziet defaults. Een lege constructor maakt een leeg object aan. Een lege copy constructor voert eenm ember-wise (shallow) copy door.</p>
+<p>Constructors en copy constructors hoeven niet zelf aangemaakt te worden: C++ voorziet defaults. Een lege constructor maakt een leeg object aan. Een lege copy constructor voert eenm ember-wise (shallow) copy door. Als je die toch wil maken doe je dat zo:</p>
+
+<pre><code class="language-C">class Punt {
+  private:
+   int x, y;
+  public:
+   Punt() : x(1), y(1) { }                              // default
+   Punt(const Punt&amp; other) : x(other.x), y(other.y) { } // copy 
+}
+</code></pre>
 
 <h2 id="strings">Strings</h2>
 
@@ -555,14 +565,21 @@ tekst[0] = &quot;nul&quot;;           // ok
 <li><a href="/teaching/cpp/labo-1/#oef">Orc labo 1 redux</a>: herimplementeer het Orc model in een C++ klasse (opgave 2 en 3). Let op met memory leaks als orcs dood gaan! Hoe ziet de oude C functie <code>Orc vecht(Orc aanvaller, Orc verdediger)</code> er nu uit?</li>
 </ol>
 
-<p>Vergeet niet de <a href="https://google.github.io/styleguide/cppguide.html">C++ Style Guide</a> te volgen en gebruik <em>camelCasing</em> voor C++ in plaats van snake casing voor C!</p>
+<p>Vergeet het volgende niet:</p>
+
+<ul>
+<li><a href="https://google.github.io/styleguide/cppguide.html">C++ Style Guide</a> te volgen en gebruik <em>camelCasing</em> voor C++ in plaats van snake casing voor C!</li>
+<li>C++ online compileren kan op <a href="http://rextester.com/l/cpp_online_compiler_clang">rextester.com</a>.</li>
+<li><a href="http://www.stroustrup.com/bs_faq2.html">C++ Style and Technique FAQ</a></li>
+</ul>
 
 <h2 id="denkvragen">Denkvragen</h2>
 
 <ol>
 <li>Kan je je een situatie inbeelden waarin het gebruik van raw pointers in een methode van een klasse toch aangewezen is?</li>
-<li>Wat is het fundamenteel verschil tussen een struct en een class?</li>
+<li>Wat is het fundamenteel verschil tussen een struct in C en een class in C++?</li>
 <li>Wat betekent de foutboodschap &ldquo;Segmentation fault&rdquo; precies?</li>
+<li>Wanneer wordt een copy constructor aangeroepen? Leg aan de hand daarvan het verschil tussen initialisatie en toekenning uit.</li>
 </ol>
 </div>
 

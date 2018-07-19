@@ -307,7 +307,137 @@ graph LR;
     D --> G[gebruik struct]
 {{< /mermaid >}}
 
-Functies die in andere source files gedeclareerd zijn moet je herdefiniëren met het `extern` keyword in je eigen source file waar je de functie wenst te gebruiken. Zo weet de compiler dat een functie met die signatuur bestaat, maar "zal hij deze nog wel tegenkomen".
+### Scheiding van goederen: functies in aparte C files
+
+Om de opsplitsing duidelijker te maken stellen we de volgende C code op, gesplitst in verschillende bestanden:
+
+```C
+// hallo.c
+char* hallo() {
+    return "heykes";
+}
+// main.c
+#include <printf.h>
+int main() {
+    printf("%s", hallo());
+    return 0;
+}
+```
+
+De main functie heeft eigenlijk geen weet van `hallo()` omdat die in een andere source file leeft. Dit komt goed als we de machine code samen linken, na het compileren. main.c apart compileren geeft dit:
+
+<pre>
+Wouters-MacBook-Air:cmake-build-debug jefklak$ gcc -c main.c
+main.c:5:18: warning: implicit declaration of function 'hallo' is invalid in C99
+      [-Wimplicit-function-declaration]
+    printf("%s", hallo());
+                 ^
+1 warning generated.
+</pre>
+
+Merk de `-c` flag op (compile only). Makkelijk opgelost met een **forward functie declaratie** voor int main: `char* hallo();`. Dit is het cruciaal verschil tussen declaratie en definitie. De problemen zijn echter nog niet opgelost als we dit willen linken zonder hallo.c:
+
+<pre>
+Wouters-MacBook-Air:cmake-build-debug jefklak$ gcc main.o
+Undefined symbols for architecture x86_64:
+  "_hallo", referenced from:
+      _main in main.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+</pre>
+
+We hebben de binaries van hallo.o ook nodig om tot een succesvol werkend programma te komen. Daarvoor moeten we dus eerst nog `gcc -c hallo.c` en dan `gcc main.o hallo.o -o hey` uitvoeren.
+
+Met het UNIX tooltje `nm` kunnen we de adressen bekijken die de linker nodig heeft om tot de `hey` executable te komen. Probeer eens hallo.o te openen met een tekstverwerker. Je ziet dan dit:
+
+<pre>
+cffa edfe 0700 0001 0300 0000 0100 0000
+0300 0000 f001 0000 0020 0000 0000 0000
+1900 0000 8801 0000 0000 0000 0000 0000
+0000 0000 0000 0000 0000 0000 0000 0000
+7800 0000 0000 0000 1002 0000 0000 0000
+7800 0000 0000 0000 0700 0000 0700 0000
+0400 0000 0000 0000 5f5f 7465 7874 0000
+0000 0000 0000 0000 5f5f 5445 5854 0000
+0000 0000 0000 0000 0000 0000 0000 0000
+0d00 0000 0000 0000 1002 0000 0400 0000
+8802 0000 0100 0000 0004 0080 0000 0000
+0000 0000 0000 0000 5f5f 6373 7472 696e
+6700 0000 0000 0000 5f5f 5445 5854 0000
+0000 0000 0000 0000 0d00 0000 0000 0000
+0700 0000 0000 0000 1d02 0000 0000 0000
+0000 0000 0000 0000 0200 0000 0000 0000
+0000 0000 0000 0000 5f5f 636f 6d70 6163
+745f 756e 7769 6e64 5f5f 4c44 0000 0000
+0000 0000 0000 0000 1800 0000 0000 0000
+2000 0000 0000 0000 2802 0000 0300 0000
+9002 0000 0100 0000 0000 0002 0000 0000
+0000 0000 0000 0000 5f5f 6568 5f66 7261
+6d65 0000 0000 0000 5f5f 5445 5854 0000
+0000 0000 0000 0000 3800 0000 0000 0000
+4000 0000 0000 0000 4802 0000 0300 0000
+0000 0000 0000 0000 0b00 0068 0000 0000
+0000 0000 0000 0000 0200 0000 1800 0000
+9802 0000 0400 0000 d802 0000 2400 0000
+0b00 0000 5000 0000 0000 0000 0200 0000
+0200 0000 0200 0000 0400 0000 0000 0000
+0000 0000 0000 0000 0000 0000 0000 0000
+0000 0000 0000 0000 0000 0000 0000 0000
+0000 0000 0000 0000 0000 0000 0000 0000
+5548 89e5 488d 0500 0000 005d c368 6579
+6b65 7300 0000 0000 0000 0000 0000 0000
+0d00 0000 0000 0001 0000 0000 0000 0000
+0000 0000 0000 0000 1400 0000 0000 0000
+017a 5200 0178 1001 100c 0708 9001 0000
+2400 0000 1c00 0000 a8ff ffff ffff ffff
+0d00 0000 0000 0000 0041 0e10 8602 430d
+0600 0000 0000 0000 0700 0000 0000 001d
+0000 0000 0100 0006 1200 0000 0e02 0000
+0d00 0000 0000 0000 1900 0000 0e04 0000
+3800 0000 0000 0000 0100 0000 0f01 0000
+0000 0000 0000 0000 0800 0000 0f04 0000
+5000 0000 0000 0000 005f 6861 6c6c 6f00
+5f68 616c 6c6f 2e65 6800 4c5f 2e73 7472
+0045 485f 6672 616d 6530 0000 
+</pre>
+
+Prachtig, maar niet erg duidelijk. `nm` helpt:
+
+<pre>
+heykesWouters-MacBook-Air:cmake-build-debug jefklak$ nm hallo.o
+0000000000000038 s EH_frame0
+000000000000000d s L_.str
+0000000000000000 T _hallo
+0000000000000050 S _hallo.eh
+Wouters-MacBook-Air:cmake-build-debug jefklak$ nm main.o
+0000000000000060 s EH_frame0
+0000000000000037 s L_.str
+                 U _hallo
+0000000000000000 T _main
+0000000000000078 S _main.eh
+                 U _printf
+</pre>
+
+Je ziet zo dat in main.o de functie `_hallo` een **onbekend adres** krijgt toegewezen (vandaar de U). Dit betekent dat de linker er maar van uit moet gaan dat die nog moet komen - en gelukkig genoeg staat die wel correct gedefiniëerd in hallo.o op adres `0000000000000000` (er is maar 1 functie).
+
+De bestanden worden zo aan elkaar gekoppeld:
+
+{{<mermaid>}}
+graph TD
+    A[hallo.c]
+    B[main.c]
+    C>hallo.o]
+    D>main.o]
+    E{hey executable}
+    E --> C
+    E -->|"zoek main() via linker"|D
+    C --> A
+    D --> B
+    D -.->|"zoek hallo() via linker"|C
+{{< /mermaid >}}
+
+
+Functies die in andere source files gedeclareerd zijn moet je dus herdefiniëren (eventueel met het `extern` keyword) in je eigen source file waar je de functie wenst te gebruiken. Zo weet de compiler dat een functie met die signatuur bestaat, maar "zal hij deze nog wel tegenkomen". Hier gaan we nog op verder in [labo 6](/teaching/cpp/labo-6/).
 
 ## De boel compileren
 
@@ -358,7 +488,9 @@ Uitvoeren met ``make`` als default goal (all) of ``make compile`` voor een speci
 
 Voor meer uitleg over Makefile syntax, zie [GNU make](ftp://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_2.html).
 
-### Herhaaldelijk compileren: lichtgewicht IDEs
+### Herhaaldelijk compileren IDEs
+
+#### Lichtgewichten
 
 Een source file bestaat uit platte tekst. Eender welke text editor is voldoende om je C programma te kunnen schrijven. Het kan echter handig zijn om Sublime Text of Visual Studio Code te gebruiken. Deze moderne krachtige editors hebben auto-completion en build tools ingebouwd. 
 
@@ -366,6 +498,24 @@ Een source file bestaat uit platte tekst. Eender welke text editor is voldoende 
 * [Visual Studio Code C/C++ integratie](https://code.visualstudio.com/docs/languages/cpp)
 
 Ik houd old-school fans niet tegen om Emacs of Vim te gebruiken. 
+
+#### Zwaargewichten
+
+[CLion](https://www.jetbrains.com/clion/) is de perfecte cross-platform en cross-compiler kandidaat om het zware C/C++ ontwikkelwerk van je over te nemen met geïntegreerde debugging, stack inspectie en alles wat men van een IDE verwacht. Dit is gebouwd bovenop IDEA en dus exact hetzelfde als IntelliJ voor Java - inclusief de shortcuts. 
+
+<img src="/img/teaching/clion.png" class="bordered" />
+
+CLion is niet gratis maar voor studenten wel en erg aan te raden. CLion werkt met CMake: `CMakeLists.txt` bevat instructies om een `Makefile` te genereren:
+
+<pre>
+cmake_minimum_required(VERSION 3.10)
+project(testje)
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(testje main.cpp biblio.cpp biblio.h dieren.cpp dieren.h)    
+</pre>
+
+Een simpel CMake bestand is véél eenvoudiger dan een Make bestand. Zie [CMake tutorial](https://cmake.org/cmake-tutorial/). CLion beheert de `add_executable` voor jou: nieuwe files toevoegen aan je project komen er automatisch in terecht. 
 
 ## Labo oefeningen
 <a name="oef"></a>
@@ -380,6 +530,8 @@ Ik houd old-school fans niet tegen om Emacs of Vim te gebruiken.
 Je hebt het pointer symbool `*` in de oefeningen enkel nodig om een array terug te geven, zoals de omnom functie. In Java zou dat gewoon `char[] omnom(char[] zin)` zijn - merk op waar de vierkante haakjes precies staan: achter het type! In C is dat achter de naam van de variable.
 
 Hint: denk aan de [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Writing-C.html). De [C++ Style Guide](https://google.github.io/styleguide/cppguide.html) van Google kan je ook eens bekijken. Merk op dat in C methodes _snake-cased_ zijn: `mijn_mooie_methode` - ten opzicht van C++ en Java's _camel-casing_: `mijnMooieMethode`.
+
+C online compileren kan op [rextester.com](http://rextester.com/l/c_online_compiler_clang).
 
 ## Denkvragen
 

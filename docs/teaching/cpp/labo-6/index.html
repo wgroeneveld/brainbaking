@@ -378,7 +378,7 @@ private:
 
 <h4 id="extra-ongewenste-flexibiliteit-static-vs-dynamic-binding">Extra (ongewenste) flexibiliteit: static VS dynamic binding</h4>
 
-<p>Kijk eens goed naar het volgend voorbeeld:</p>
+<p>Kijk eens goed naar het volgende voorbeeld:</p>
 
 <pre><code class="language-C">class A {
 public:
@@ -399,11 +399,271 @@ int main() {
 
 <p><code>typeid(b).name()</code> blijft &ldquo;1A&rdquo; teruggeven omdat de variabele als type A gedeclareerd is.</p>
 
+<h4 id="upcasten-en-downcasten">Upcasten en downcasten</h4>
+
+<p>C++ voorziet een hele resem aan cast methodes die in het licht van klassen en subklassen nodig kunnen zijn:</p>
+
+<ol>
+<li><code>dynamic_cast&lt;T&gt;(t)</code>: downcaster in gebruik. Geeft <code>nullptr</code> terug indien niet gelukt. Dit is Java&rsquo;s aangenomen <code>instanceof</code> manier.</li>
+<li><code>static_cast&lt;T&gt;(t)</code>: impliciete conversie ongedaan maken (zie elders). Als je bijvoorbeeld weet dat een <code>void*</code> eigenlijk een <code>Punt*</code> is.Dit kan fouten at compiletime geven.</li>
+<li><code>reinterpret_cast&lt;T&gt;(t)</code>: pointer conversies in lijn van C. Dit kan fouten at runtime geven.</li>
+<li><code>const_cast&lt;T&gt;(t)</code>: verwijdert of voegt <code>const</code> speficier toe.</li>
+</ol>
+
+<p>De C-style cast <code>(Punt*) pt</code> wordt aanzien als bad practice in de C++ wereld.</p>
+
+<h2 id="operatoren-en-klassen-mixen">Operatoren en klassen mixen</h2>
+
+<p>C++ biedt zoals verwacht zelfs op operator niveau flexibiliteit: je kan je eigen operatoren implementeren in klassen (p.552). Op die manier kan je bijvoorbeeld twee 2D punten met elkaar optellen: <code>punt1 + punt2</code>. In Java zal je een methode moeten maken: <code>punt1.plus(punt2)</code> dat een nieuw punt teruggeeft.</p>
+
+<p>Alle mogelijke operatoren kunnen overloaded worden, behalve <code>::</code>, <code>.*</code>, <code>.</code> en <code>?:</code>. Dit brengt ook potentiële problemen met zich mee! Stel je voor dat <code>-&gt;</code> overloaded is en je klasse zich heel anders gedraagt dan een standaard pointer reference. With great power comes great responsibility&hellip;</p>
+
+<p>Een voorbeeld:</p>
+
+<pre><code class="language-C">class Punt {
+  private:
+    int x, y;
+  public:
+    Punt(int theX, int theY) : x(theX), y(theY) {}
+    Punt operator +(const Punt&amp; other) {
+      return Punt(x + other.x, y + other.y);
+    }
+    friend ostream&amp; operator&lt;&lt;(ostream&amp; os, Punt&amp; punt);
+}
+ostream&amp; operator&lt;&lt;(ostream&amp; os, Punt&amp; punt) {
+  os &lt;&lt; &quot;(&quot; &lt;&lt; punt.x &lt;&lt; &quot;,&quot; &lt;&lt; punt.y &lt;&lt; &quot;)&quot;;
+  return os;
+}
+
+int main() {
+  Punt a(1, 2);
+  Punt b(3, 4);
+
+  std::cout &lt;&lt; a + b &lt;&lt; endl; // print (4,6)
+}
+</code></pre>
+
+<p>Operators kan je ook rechtstreeks aanroepen met <code>punt.operator+(other)</code>. Ze zijn niet verplicht om member te zijn van de klasse zelf maar ik zie geen reden om dingen die samen te horen niet samen te zetten. Een duidelijke uitzondering zijn IO operators! (p.557)</p>
+
+<p>Andere veelgebruikte operatoren:</p>
+
+<ul>
+<li><code>&lt;&lt;</code> als <code>toString()</code> in Java naar stdout.</li>
+<li><code>==</code> als <code>equals()</code> in Java. Vergeet niet <code>!=</code> ook te implementeren dan!</li>
+<li><code>=</code> als in-assignment om <code>{ }</code> te gebruiken.</li>
+<li><code>[]</code> als lijst-accessor.</li>
+</ul>
+
+<h3 id="conversion-operators">Conversion operators</h3>
+
+<p>Een conversie tussen twee types gebeurt impliciet als de compiler een match kan vinden. Je kan de compiler een handje helpen door er zelf in je klasse bij te definiëren: <code>operator int()</code> (zonder return type). Vanaf dan compileert <code>Punt p; p + 5;</code> in combinatie met de plus operator!</p>
+
+<p>Impliciete conversies zijn niet altijd wenselijk, daarvoor dient de prefix <code>explicit</code> (ook toepasbaar op constructoren). Expliciete conversies doe je zelf met <code>static_cast&lt;int&gt;(p)</code> - gegeven dat de operator geïmplementeerd is natuurlijk.</p>
+
+<h2 id="templating-generics">Templating: &ldquo;generics&rdquo;</h2>
+
+<p>Herinner je de STL <code>vector</code> klasse. Deze collectie kan integers opslaan, of Punt instances, door tussen <code>&lt;&gt;</code> een type mee te geven: <code>vector&lt;Punt&gt; punten;</code>. Er is een template voor gedefiniëerd. Stel dat ik de punt klasse wens uit te breiden met de mogelijkheid niet alleen integers maar ook doubles als coordinaten te gebruiken:</p>
+
+<pre><code class="language-C">template&lt;typename T&gt; class Punt {
+  private:
+   T x, y;
+  public:
+   Punt(T theX, T theY) : x(theX), y(theY) {}
+};
+Punt&lt;double&gt; pt(1.2, 3.4);
+Punt&lt;int&gt; pt2(3, 5);
+</code></pre>
+
+<p>Templates kunnen ook op functie niveau gedefiniëerd worden, als losstaande functie en als deel van een klasse genaamd member templates. (p.672)</p>
+
+<h4 id="hercompilatie-van-templates">Hercompilatie van templates</h4>
+
+<p>De C++ compiler maakt voor elk template argument in je code (hier <code>double</code> en <code>int</code>) een aparte versie van de <code>Punt</code> klasse. In Java wordt dat weggecompileerd en dienen generics enkel als syntaxtisch hulpmiddel. Dit heeft wel als negatief gevolg dat de binary erg groot kan worden als die vol zit met duplicate versies van <code>Punt</code>!</p>
+
+<p>Er zijn mogelijkheden tot compiler- en objectoptimalisatie met het keyword <code>extern</code>. Aanschouw het volgende schema met bijhorende code:</p>
+
+<pre><code class="language-C">// header.h
+#ifndef _header_h
+#define _header_h
+template&lt;typename T&gt; T punt(T t) {
+    return t;
+}
+#endif
+// source1.cpp 
+#include &quot;header.h&quot;
+void punt1() {
+  auto pt = punt&lt;int&gt;(5);  // template&lt;int&gt; compiled
+}
+// source2.cpp
+#include &quot;header.h&quot;
+void punt2() {
+  auto pt = punt&lt;int&gt;(4);  // template&lt;int&gt; compiled - opnieuw!!
+}
+</code></pre>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph TD;
+  subgraph source code
+    H[header.h<br/> template definitie van Punt]
+    A[source1.cpp<br/> gebruik Punt van int]
+    B[source2.cp<br/> gebruik Punt van int]
+    A --> H
+    B --> H
+  end
+  subgraph object output
+    O[source1.o<br/> compilatie Punt van int]
+    P[source1.o<br/> compilatie Punt van int]
+  end
+
+</div>
+
+<p>Als we een source file compileren én proberen te linken vinden we geen <code>main()</code> functie:</p>
+
+<pre>
+Wouters-MacBook-Air:cmake-build-debug jefklak$ g++ -std=c++11 source1.cpp
+Undefined symbols for architecture x86_64:
+  "_main", referenced from:
+     implicit entry/start for main executable
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+</pre>
+
+<p>Vergeet de <code>-c</code> optie dus niet. Door de symbol table van de machine code van source1.o te inspecteren krijgen we inzicht in de zonet gecompileerde bytes. Op Unix kan dit met <code>nm</code>:</p>
+
+<pre>
+  Wouters-MacBook-Air:cmake-build-debug jefklak$ nm source1.o | c++filt
+0000000000000070 short EH_frame0
+0000000000000020 S int punt<int>(int)
+00000000000000b0 S int punt<int>(int) (.eh)
+0000000000000000 T punt1()
+0000000000000088 S punt1() (.eh)
+</pre>
+
+<p>Je ziet op adres <code>00000000000000b0</code> de nieuwe functie die als <code>&lt;int&gt;</code> gecompileerd is. Dit zit dubbel en ook in source2.cpp! Dit lossen we op door in één van de twee cpp bestanden <code>extern template int punt(int x);</code> toe te voegen zodat de compiler dit niet opnieuw behandelt:</p>
+
+<pre>
+Wouters-MacBook-Air:cmake-build-debug jefklak$ nm source1.o | c++filt
+0000000000000040 short EH_frame0
+                 U int punt<int>(int)
+0000000000000000 T punt1()
+0000000000000058 S punt1() (.eh)
+</pre>
+
+<p>De <code>U</code> duidt aan dat dit een onbekende functie is die naderhand (hopelijk) gelinkt zal worden en binnen een ander object leeft. <a href="http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/">Lees meer</a> over interessante object files en symbolen. In de praktijk geldt dit ook voor STL klassen als <code>vector&lt;int&gt;</code>: externals worden meestal in een gedeelde header file geplaatst.</p>
+
+<p>Omdat een <code>Punt&lt;double&gt;</code> dus een andere klasse is dan een <code>Punt&lt;int&gt;</code> zijn ze niet compatibel met elkaar: het zijn twee unieke klassen. Dit is het grootste verschil tussen Templates in C++ en Generics in Java. De notatie <code>&lt;T extends BaseClass&gt;</code> is hierdoor niet nodig (maar kan wel met <a href="https://en.cppreference.com/w/cpp/types/enable_if"><code>enable_if</code></a>).</p>
+
+<h4 id="herdeclaratie-van-templates">Herdeclaratie van templates</h4>
+
+<p>De constructor - of eender welke methode met <code>T</code> buiten de klasse template definiëren betekent dat we de template notatie zullen moeten herhalen want de compiler weet dan niet meer wat die <code>T</code> precies is:</p>
+
+<pre><code class="language-C">// in punt.h
+template&lt;typename T&gt; class Punt {
+  Punt(T theX, T theY);
+}
+// in punt.cpp
+template&lt;typename T&gt; Punt&lt;T&gt;::Punt(T theX, T theY) : x(theX), y(theY) {
+}
+</code></pre>
+
+<h4 id="type-en-non-type-arguments">Type en non-type arguments</h4>
+
+<p><code>typename</code> staat voor &ldquo;dit is type T&rdquo; en kan eender welk type zijn. Een constante expressie zoals <code>5</code> of een string <code>&quot;hallo&quot;</code> aanvaarden gaat zo ook: dat zijn immers ook types.</p>
+
+<p>Constante expressies met <code>unsigned</code> in de template definitie kunnen pointers, value references of integrale types zijn. In ons voorbeeld is het niet aangewezen om dit toe te passen: <code>Punt&lt;3, 4&gt; pt;</code> slaat enkel op iets als dit punt nooit kan muteren.</p>
+
+<h4 id="herhaling-vermijden-met-typedef">Herhaling vermijden met typedef</h4>
+
+<p>Kan op twee manieren:</p>
+
+<ol>
+<li><code>typedef Punt&lt;int&gt; iPunt;</code>: <code>iPunt p;</code></li>
+<li><code>template&lt;typename T&gt; using pt = Punt&lt;T&gt;;</code>: <code>pt&lt;int&gt; p;</code></li>
+</ol>
+
+<p>Waarbij optie twee meestal gebruikt wordt om verschillende template types te linken: nu heeft dit niet bijzonder veel nut. <code>typedef</code> kan niet refereren naar een template type.</p>
+
+<h4 id="template-default-arguments">Template default arguments</h4>
+
+<p>Als ik een template type wil van een klasse aangeven, maar dit in 80% van de gevallen een <code>int</code> gaat zijn kan ik deze defaulten:</p>
+
+<pre><code class="language-C">template&lt;typename T = int&gt; class Punt;
+Punt&lt;&gt; pt;  // &lt;&gt; nog steeds verplicht. 
+</code></pre>
+
+<p>Zonder <code>&lt;&gt;</code> krijg je &ldquo;error: use of class template &lsquo;Punt&rsquo; requires template arguments&rdquo;.</p>
+
+<p>Voor functies probeert de compiler automatisch het type te deduceren gebaseerd op het meegegeven argument (p.678). Dat wil zeggen dat we het type niet moeten meegeven en ook niet hoeven te defaulten:</p>
+
+<pre><code class="language-C">template&lt;typename T&gt; T puntFn(T t) {
+    return t;
+}
+int pt = puntFn&lt;int&gt;(5);  // geldig
+int pt = puntFn(5);       // ook geldig!
+auto pt = puntFn(5);      // ook geldig!
+</code></pre>
+
+<h4 id="template-variable-arguments-packs">Template variable arguments: packs</h4>
+
+<p>Wat nu als je verschillende argumenten nodig hebt die allemaal verschillende types hebben, waarvan je het type niet op voorhand weet? De altijd-aanwezige flexibiliteit in C++ lost dit probleem even voor je op met <em>variadic templates</em>:</p>
+
+<pre><code class="language-C">template &lt;typename... Ts&gt; void som(Ts... args) {}
+</code></pre>
+
+<p>Dankzij compiler deductie hoeven we niet alle templates aan te vullen als we hey aanroepen: <code>som(1, 2.0, true);</code> zou hetzelfde zijn als <code>som&lt;int, double, bool&gt;(1, 2.0, true);</code>. Om dit voorbeld te laten werken hebben we echter <strong>recursie</strong> nodig: een functie voor een basisgeval, en een functie voor de rest. Daarom heet dit &ldquo;packing&rdquo; en is <code>...</code> het unpacken van de template arguments.</p>
+
+<pre><code class="language-C">template&lt;typename T&gt; T som(T t) { return t; }
+template&lt;typename T, typename... TRest&gt; T som(T first, TRest... args) {
+  return first + som(args...);
+}
+auto result = som(1, 2.0, 3);
+</code></pre>
+
+<p>Zie <a href="https://en.cppreference.com/w/cpp/language/parameter_pack">docs</a>.</p>
+
 <h2 id="labo-oefeningen">Labo oefeningen</h2>
 
 <p><a name="oef"></a></p>
 
+<ol>
+<li>Implementeer de volgende business criteria. Werk eerst een snel model uit op papier. Elke schuin gedrukte term verwacht ik terug te zien als een klasse of methode:
+
+<ol>
+<li>Een <em>vacature</em> bevat een onderwerp, een lijst van vereisten in de vorm van <em>diploma&rsquo;s</em>.</li>
+<li>Een <em>sollicitant</em> heeft een naam en ook <em>diploma&rsquo;s</em>: een <em>universitair</em> heeft een bepaald diploma en een <em>doctor</em> een andere.</li>
+<li>Een sollicitant kan <em>solliciteren</em> op een bepaalde vacature. Hij komt in aanmerking of niet (<code>bool</code> is OK), gebaseerd op de matchende diploma&rsquo;s.</li>
+<li>We hebben een manier nodig om het <em>aantal sollicitanten</em> van een vacature op te vragen (naar <code>stdout</code>).</li>
+<li>We hebben een manier nodig om voor elke sollicitant snel zijn gegevens (naam en aantal diploma&rsquo;s) af te drukken.</li>
+</ol></li>
+<li>Breid de <code>Punt</code> klasse uit met de volgende vereisten:
+
+<ol>
+<li>Er kunnen 2D of 3D punten bestaan</li>
+<li>De punten kunnen gehele of rationale getallen bevatten.</li>
+<li>Ik kan punten converteren van 2D naar 3D of omgekeerd (met verlies)</li>
+<li>Ik kan punten met elkaar optellen.</li>
+</ol></li>
+</ol>
+
+<p>Tips: denk aan het thema: subklassen, operators, templates.</p>
+
 <h2 id="denkvragen">Denkvragen</h2>
+
+<ol>
+<li>Welke operatoren buiten <code>-&gt;</code> overload je best niet, en waarom? Geef een voorbeeld.</li>
+<li>Hoe kan je <code>Punt</code> uitbreiden tot X dimensies?</li>
+<li>Wat is het fundamentele verschil tussen Generics in Java en Templates in C++?</li>
+</ol>
 </div>
 
     
