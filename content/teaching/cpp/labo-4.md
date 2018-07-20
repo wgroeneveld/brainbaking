@@ -4,7 +4,7 @@ accent: "#008eb3"
 disableComments: true
 ---
 
-&laquo;&nbsp;[Terug naar Software ontwerp in C/C++ met Qt](/teaching/cpp)<br/>
+&laquo;&nbsp;[Terug naar Software ontwerp in C/C++](/teaching/cpp)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
 
 In [labo 3](/teaching/cpp/labo-3) maakten we kennis met de Gameboy Advance en het ontwikkelplatform - als je het zo kan noemen. We gebruikten mode 3 om pixels te manipuleren. Natuurlijk is dat erg onpraktisch en veel te belastend wanneer er veel op het scherm getekend moet worden. Als doelstelling voor labo 4 willen we een simpel geïntegreerd spelletje maken waar we video **mode 1** en tilesets voor nodig hebben.

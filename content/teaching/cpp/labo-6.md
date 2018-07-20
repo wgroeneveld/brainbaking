@@ -4,7 +4,7 @@ accent: "#008eb3"
 disableComments: true
 ---
 
-&laquo;&nbsp;[Terug naar Software ontwerp in C/C++ met Qt](/teaching/cpp)<br/>
+&laquo;&nbsp;[Terug naar Software ontwerp in C/C++](/teaching/cpp)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
 
 ## C++ Classes revisited
@@ -100,7 +100,7 @@ class Vlees : public Voedsel {
     int voedingswaarde() override { return 10; }
 };
 class Groenten : public Voedsel {
-    int voedingswaarde() override {        return 15;    }
+    int voedingswaarde() override { return 15; }
 };
 
 class Dier {
@@ -155,7 +155,7 @@ private:
 };
 ```
 
-`typeid()` leeft in de `<typeinfo>` header. [Een alternatief](https://en.wikipedia.org/wiki/Run-time_type_information) is dynamische pointers casten en kijken of het al dan niet `NULL` is. Voor de rest zijn de grootste verschillen - buiten de syntax:
+`typeid()` leeft in de `<typeinfo>` header. [Een alternatief](https://en.wikipedia.org/wiki/Run-time_type_information) is dynamische pointers casten (zie onder). Voor de rest zijn de grootste verschillen - buiten de syntax:
 
 * C++11's `override` na een methode wordt ook door de compiler gebruikt om te controleren of wat je override wel een virtuele methode is. In Java is `@Override` enkel ter documentatie.
 * `abstract` op een klasse bestaat niet. Daarvoor moet je een "pure virtuele methode" (`= 0`) aanmaken. 

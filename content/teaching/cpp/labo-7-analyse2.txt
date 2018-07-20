@@ -1,0 +1,12 @@
+WINKL002. Gebruikers kunnen items verwijderen van hun winkelmandje
+
+Beschrijving:
+Gebruikers zijn blijkbaar niet altijd tevreden met hun keuze. Het moet vanaf nu ook mogelijk zijn om schoenen die in het winkelmandje zijn te verwijderen. Je kan ook je winkelmandje in één keer leegmaken.
+
+Context:
+De e-winkel "Shoppi" verkoopt schoenen online in verschillende maten en gewichten. Families kunnen op Shoppi terecht om vanuit hun luie zetel schoenen aan te kopen met gratis verzending. Een gebruiker kan meerdere schoenen tegelijkertijd aankopen: hoe meer hoe beter.
+
+Acceptatiecriteria:
+- Als ik uitlog wordt mijn winkelmandje leeggemaakt.
+- Als ik uitgelogd ben kan ik geen items toevoegen in mijn mandje.
+- Als gebruiker kan ik item per item verwijderen uit mijn mandje. De prijzen worden ad-hoc herberekend.

@@ -4,7 +4,7 @@ accent: "#008eb3"
 disableComments: true
 ---
 
-&laquo;&nbsp;[Terug naar Software ontwerp in C/C++ met Qt](/teaching/cpp)<br/>
+&laquo;&nbsp;[Terug naar Software ontwerp in C/C++](/teaching/cpp)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
 
 ## De ++ in C++
@@ -150,6 +150,56 @@ g->telOpMet(5);
 ```
 
 Het `const` keyword achter de get methode verandert de `this` pointer naar een constante pointer. Op die manier kan de body van de methode geen wijzigingen doorvoeren, enkel opvragen. (Zie p. 258)
+
+### (auto-generated) Constructoren
+
+Een klasse instantiëren roept de (default) constructor aan. Als er geen eigen gedefiniëerde constructor aanwezig is, genereert de compiler die voor u, net als in Java. Zodra je één constructor definiëert, zal C++ geen enkele zelf genereren. 
+
+```C
+class Getal {
+  private: 
+    int *x;
+  public:
+   Getal(int x) : x(new int(x)) {}
+};
+auto g = new Getal(5);  // ok: eigen constructor aangeroepen
+auto g = new Getal();   // error: Too few arguments, expects 1
+```
+
+De default constructor is makkelijk zelf te voorzien met `Getal() {}` maar met `Getal() = default;` zeggen we tegen de compiler dat hij expliciet wél eentje moet genereren. 
+
+Merk op dat we hier een _memory leak_ introduceren door `*x` niet zelf op te kuisen! Als een klasse _resources_ zoals pointers bevat is het de bedoeling dat deze zelf verantwoordelijk is voor de opkuis. Dit gebeurt in de destructor prefixed met `~`:
+
+```C
+class Getal {
+  private: 
+    int *x;
+  public:
+   Getal() = default;
+   ~Getal() { delete x; }
+   Getal(int x) : x(new int(x)) {}
+};
+```
+
+Java heeft geen destructors omdat objecten op de heap leven en door de Garbage Collector opgeruimd worden zonder invloed van de programmeur. Er is wel een `finalize` die je zelf kan aanroepen om resources op te kuisen. In C# wordt ook de `~Object(){}` notatie gebruikt, maar dat is ook een soort van finalizer en geen échte destructor.
+
+Een derde soort constructor, de "copy constructor", wordt ook door C++ voorzien en aangeroepen wanneer de expressie `getal1 = getal2` geëvalueerd wordt. De compiler maakt een nieuwe `Getal` instance aan en kopiëert alle velden over. 
+
+Dit is echter helemaal niet wat we willen als we _resources_ als members hebben zoals `*x`: de pointer wordt gekopiëerd maar niet de inhoud. Beide getal instances verwijzen dan dezelfde `x` waarde:
+
+Wat is de output van dit programma?
+
+```C
+int main() {
+    auto g = new Getal(5);
+    auto g2 = g;
+    g2->x = new int(10);
+    cout << *(g2->x) << endl;   // ?
+    cout << *(g->x) << endl;    // ?
+}
+```
+
+Oeps. Voorzie in dat geval je eigen copy constructor met `Getal(const Getal& other) : x(new int(*(other.x))) {}`. Copy constructors kan je ook defaulten. 
 
 ### Methodes in Klassen en Reference types
 

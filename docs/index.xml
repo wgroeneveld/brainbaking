@@ -516,7 +516,7 @@ There have been a lot of love letters to big cities here on Medium recently. I n
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/labo-1/</guid>
-      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
 De C programmeertaal De C taal is een programmeertaal in de jaren &amp;lsquo;70 ontwikkeld om makkelijk hardware te kunnen aanspreken. C was/is in essentie niet veel meer dan een kleine abstractielaag bovenop assembly.
 C is een imperatieve programmeertaal. Dat zal je bij het oefenen wel merken: we schrijven instructies als statements. Deze regels of statements zijn gestructureerd in functies en struct types.</description>
     </item>
@@ -527,7 +527,7 @@ C is een imperatieve programmeertaal. Dat zal je bij het oefenen wel merken: we 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/labo-2/</guid>
-      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
 &amp;ldquo;Compound&amp;rdquo; types C/C++ gebruikt een pass-by-value systeem om variabelen door te geven aan functies. Dit wil zeggen dat de waarde gekopiëerd wordt, en die functie geen wijzigingen kan aanbrengen aan de originele waarde. Dat is iets positief: separation of concerns.
 Als we denken aan ons persoon voorbeeld van labo 1, wordt die struct dus telkens overgekopiëerd. Dat kan zeer inefficiënt zijn, naargelang de grootte van de data!</description>
     </item>
@@ -538,9 +538,9 @@ Als we denken aan ons persoon voorbeeld van labo 1, wordt die struct dus telkens
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/labo-3/</guid>
-      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
 Je hebt nu een crashcrusus C achter de kiezen met een grondige focus op pointers. Hoog tijd om die kennis om te zetten in iets concreet én plezant. We gaan een héél simpel Gameboy Advance (GBA) spel ontwikkelen.
-De GBA is een goede keuze om de kracht (en zwakheden) van C te demonstreren. Er is immers géén besturingsyssteem aanwezig.</description>
+De GBA is een goede keuze om de kracht (en zwakheden) van C te demonstreren. Er is immers géén besturingsyssteem aanwezig. Er zijn géén libraries aanwezig voor memory management, IO, files, error handling, &amp;hellip; Het is een embedded hardware systeem dat een cross-compiler vereist: een compiler op onze PC&amp;rsquo;s dat compileert voor een ander platform en CPU, namelijk een 32-bit ARM op 16.</description>
     </item>
     
     <item>
@@ -549,7 +549,7 @@ De GBA is een goede keuze om de kracht (en zwakheden) van C te demonstreren. Er 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/labo-4/</guid>
-      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
 In labo 3 maakten we kennis met de Gameboy Advance en het ontwikkelplatform - als je het zo kan noemen. We gebruikten mode 3 om pixels te manipuleren. Natuurlijk is dat erg onpraktisch en veel te belastend wanneer er veel op het scherm getekend moet worden. Als doelstelling voor labo 4 willen we een simpel geïntegreerd spelletje maken waar we video mode 1 en tilesets voor nodig hebben.</description>
     </item>
     
@@ -559,7 +559,7 @@ In labo 3 maakten we kennis met de Gameboy Advance en het ontwikkelplatform - al
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/labo-5/</guid>
-      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
 De ++ in C++ De introductie van C++ in 1985 geeft de ervaren C programmeur enkele extra mogelijkheden om zijn of haar code te structureren. C++ wordt nog steeds omschreven als een &amp;ldquo;general purpose&amp;rdquo; low-level taal op Wikipedia:
  C++ is a general-purpose programming language. It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.</description>
     </item>
@@ -570,9 +570,20 @@ De ++ in C++ De introductie van C++ in 1985 geeft de ervaren C programmeur enkel
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/labo-6/</guid>
-      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ met Qt &amp;raquo;&amp;nbsp;Naar de labo opgave
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
 C++ Classes revisited Nu je een basis van klassen hebt opgedaan in C++ gaan we erving introduceren. Gegeven de volgende modellen:
 mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  graph TD; A[Dier] B[Viervoeter] C[Hond] D[Kat] E[Vlinder] F[Vlees] G[Groenten] H[Voedsel] B -- A C -- B D -- B E -- A F -- H G -- H  Gegeven de volgende acceptatie criteria:</description>
+    </item>
+    
+    <item>
+      <title>Labo 7: Software ontwerpen</title>
+      <link>https://brainbaking.com/teaching/cpp/labo-7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/labo-7/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
+Een programmeertaal als C++ leren vereist het achteroverslaan van heel wat syntaxtische cryptologie als decltype(), template&amp;lt;typename T&amp;gt; en *(x-&amp;gt;o). Met programmeren alleen kom je er echter niet: software ontwerpen vereist heel wat meer inzicht dan de juiste code op de juiste plaats typen.
+Software Modelleren Als software ontwikkelaar ben jij de uitvoerende kracht die vereisten van de klant implementeert in het software systeem.</description>
     </item>
     
   </channel>

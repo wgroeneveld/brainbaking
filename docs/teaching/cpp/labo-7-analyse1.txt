@@ -1,0 +1,13 @@
+WINKL001. Gebruikers kunnen items toevoegen aan hun winkelmandje
+
+Beschrijving:
+Een ingelogde gebruiker kan op de e-winkel "Shoppi" items toevoegen aan zijn winkelmandje om later te kunnen afrekenen met verschillende manieren ter betaling. Een bezoeker is een gebruiker die niet ingelogd is. Bezoekers kunnen niets toevoegen en hebben geen winkelmandje. 
+
+Context:
+De e-winkel "Shoppi" verkoopt schoenen online in verschillende maten en gewichten. Families kunnen op Shoppi terecht om vanuit hun luie zetel schoenen aan te kopen met gratis verzending. Een gebruiker kan meerdere schoenen tegelijkertijd aankopen: hoe meer hoe beter.
+
+Acceptatiecriteria:
+- Een item in de webshop is voorzien van beschrijving en prijs.
+- Het winkelmandje geeft een totaal aan items aan, samen met een totaalprijs tot nu toe.
+- Een bezoeker kan niets toevoegen aan een winkelmandje.
+- Vanaf 5 items voorziet Shoppi een korting van 10% op het totaal. Deze korting wordt onmiddellijk verrekend in het mandje.

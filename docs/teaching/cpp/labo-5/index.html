@@ -172,7 +172,7 @@ if (!doNotTrack) {
 
     <br> <div class="text-justify">
 
-<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++ met Qt</a><br/>
+<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++</a><br/>
 &raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
 
 <h2 id="de-in-c">De ++ in C++</h2>
@@ -333,6 +333,53 @@ g-&gt;telOpMet(5);
 </code></pre>
 
 <p>Het <code>const</code> keyword achter de get methode verandert de <code>this</code> pointer naar een constante pointer. Op die manier kan de body van de methode geen wijzigingen doorvoeren, enkel opvragen. (Zie p. 258)</p>
+
+<h3 id="auto-generated-constructoren">(auto-generated) Constructoren</h3>
+
+<p>Een klasse instantiëren roept de (default) constructor aan. Als er geen eigen gedefiniëerde constructor aanwezig is, genereert de compiler die voor u, net als in Java. Zodra je één constructor definiëert, zal C++ geen enkele zelf genereren.</p>
+
+<pre><code class="language-C">class Getal {
+  private: 
+    int *x;
+  public:
+   Getal(int x) : x(new int(x)) {}
+};
+auto g = new Getal(5);  // ok: eigen constructor aangeroepen
+auto g = new Getal();   // error: Too few arguments, expects 1
+</code></pre>
+
+<p>De default constructor is makkelijk zelf te voorzien met <code>Getal() {}</code> maar met <code>Getal() = default;</code> zeggen we tegen de compiler dat hij expliciet wél eentje moet genereren.</p>
+
+<p>Merk op dat we hier een <em>memory leak</em> introduceren door <code>*x</code> niet zelf op te kuisen! Als een klasse <em>resources</em> zoals pointers bevat is het de bedoeling dat deze zelf verantwoordelijk is voor de opkuis. Dit gebeurt in de destructor prefixed met <code>~</code>:</p>
+
+<pre><code class="language-C">class Getal {
+  private: 
+    int *x;
+  public:
+   Getal() = default;
+   ~Getal() { delete x; }
+   Getal(int x) : x(new int(x)) {}
+};
+</code></pre>
+
+<p>Java heeft geen destructors omdat objecten op de heap leven en door de Garbage Collector opgeruimd worden zonder invloed van de programmeur. Er is wel een <code>finalize</code> die je zelf kan aanroepen om resources op te kuisen. In C# wordt ook de <code>~Object(){}</code> notatie gebruikt, maar dat is ook een soort van finalizer en geen échte destructor.</p>
+
+<p>Een derde soort constructor, de &ldquo;copy constructor&rdquo;, wordt ook door C++ voorzien en aangeroepen wanneer de expressie <code>getal1 = getal2</code> geëvalueerd wordt. De compiler maakt een nieuwe <code>Getal</code> instance aan en kopiëert alle velden over.</p>
+
+<p>Dit is echter helemaal niet wat we willen als we <em>resources</em> als members hebben zoals <code>*x</code>: de pointer wordt gekopiëerd maar niet de inhoud. Beide getal instances verwijzen dan dezelfde <code>x</code> waarde:</p>
+
+<p>Wat is de output van dit programma?</p>
+
+<pre><code class="language-C">int main() {
+    auto g = new Getal(5);
+    auto g2 = g;
+    g2-&gt;x = new int(10);
+    cout &lt;&lt; *(g2-&gt;x) &lt;&lt; endl;   // ?
+    cout &lt;&lt; *(g-&gt;x) &lt;&lt; endl;    // ?
+}
+</code></pre>
+
+<p>Oeps. Voorzie in dat geval je eigen copy constructor met <code>Getal(const Getal&amp; other) : x(new int(*(other.x))) {}</code>. Copy constructors kan je ook defaulten.</p>
 
 <h3 id="methodes-in-klassen-en-reference-types">Methodes in Klassen en Reference types</h3>
 

@@ -172,7 +172,7 @@ if (!doNotTrack) {
 
     <br> <div class="text-justify">
 
-<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++ met Qt</a><br/>
+<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++</a><br/>
 &raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
 
 <h2 id="c-classes-revisited">C++ Classes revisited</h2>
@@ -285,7 +285,7 @@ class Vlees : public Voedsel {
     int voedingswaarde() override { return 10; }
 };
 class Groenten : public Voedsel {
-    int voedingswaarde() override {        return 15;    }
+    int voedingswaarde() override { return 15; }
 };
 
 class Dier {
@@ -340,7 +340,7 @@ private:
 };
 </code></pre>
 
-<p><code>typeid()</code> leeft in de <code>&lt;typeinfo&gt;</code> header. <a href="https://en.wikipedia.org/wiki/Run-time_type_information">Een alternatief</a> is dynamische pointers casten en kijken of het al dan niet <code>NULL</code> is. Voor de rest zijn de grootste verschillen - buiten de syntax:</p>
+<p><code>typeid()</code> leeft in de <code>&lt;typeinfo&gt;</code> header. <a href="https://en.wikipedia.org/wiki/Run-time_type_information">Een alternatief</a> is dynamische pointers casten (zie onder). Voor de rest zijn de grootste verschillen - buiten de syntax:</p>
 
 <ul>
 <li>C++11&rsquo;s <code>override</code> na een methode wordt ook door de compiler gebruikt om te controleren of wat je override wel een virtuele methode is. In Java is <code>@Override</code> enkel ter documentatie.</li>
