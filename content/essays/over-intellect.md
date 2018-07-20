@@ -3,7 +3,7 @@ title: 'Over de inflatie van intellect'
 date: '2018-07-18'
 bigimg: /img/overtijdsbesef.jpg
 subtitle: De McDonaldisering van cultuur?
-published: true
+published: false
 ---
 
 Het resultaat van een onderzoek dat ik las in Frank Furedi's "Waar zijn de intellectuelen?" boezemt mij veel angst in: minder dan de helft van de samenleving wil tegenwoordig nog literatuur lezen. En dit gaat dan nog over literatuur! Ik ken veel mensen die met hun ogen draaien zodra ik nog maar het woord "boek" uitspreek, laat staan een conversatie over filosofie aan te gaan. Ik had er niet bij stilgestaan dat dit eenvoudig geëxtrapoleerd kan worden. 
