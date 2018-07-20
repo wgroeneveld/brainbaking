@@ -146,7 +146,7 @@ void velocity(sprite *s) {
 
     s->y += s->dy;
     if(s->y < 0) s->y = 0;
-    if(s-> y > (SCREEN_HEIGHT - s->h)) s->y = SCREEN_HEIGHT - s-h;
+    if(s-> y > (SCREEN_HEIGHT - s->h)) s->y = SCREEN_HEIGHT - s->h;
 }
 
 int collides(sprite *s, sprite *o) {

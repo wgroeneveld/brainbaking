@@ -181,7 +181,25 @@ Compileren met een cross-compiler gaat, maar de binaries kan je nooit op een and
 
 ### Je GBA file spelen op een echte Gameboy
 
-aan te vullen
+De aanschaf van een [EZ-FLASH Omega](http://www.ezflash.cn/product/omega/) bord maakt het mogelijk om met microSD kaarten `.gba` roms in te laden op je Gameboy Advance. Zo'n cartridges bestaan al jaren: vroeger was EZ-Flash IV en Supercard populair. Tegenwoordig kan je met een SD adapter files drag- en droppen. 
+
+<center>
+    <img src="/img/teaching/gba_ezflash.png" class="bordered" />
+</center>
+
+Het plastieken omhulsel open gevezen geeft zicht op het bord:
+
+<center>
+    <img src="/img/teaching/ezflash.jpg" class="bordered" />
+</center>
+
+Dit is een deel van [labo 4](/teaching/cpp/labo-4) op de eigenlijke hardware:
+
+<center>
+    <img src="/img/teaching/gba_labo3.gif" style="width: 75%" class="bordered" />
+</center>
+
+Een EZ-FLASH Omega kaart kost ongeveer €30 op Ebay. Dit is uiteraard volledig vrijblijvend: een minimum vereiste is de werking van je creatie op een emulator. Een rom uitvoeren op de eigenlijke hardware kàn verrassend zijn; sommige emulatoren zijn flexibeler in werking. 
 
 ## Bits en bytes beter begrijpen in C
 
