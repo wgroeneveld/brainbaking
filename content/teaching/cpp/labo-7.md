@@ -209,6 +209,28 @@ Subtiele verschillen maken vaak een wereld van verschil:
 
 **Kritisch denken** brengt je een heel eind. Wees streng genoeg: stel constant de vraag "is dit wel nodig?". `maxTimes` is bijvoorbeeld nutteloos als de methode altijd aangeroepen wordt met eenzelfde constante waarde. 
 
+Een laatste voorbeeld uit de realiteit gegrepen:
+
+```C#
+PermissionItem CreatePermission(const std::string& key, bool visible, const DBType type = DBType.Default) { }
+
+// gebruik:
+auto pi1 = CreatePermission("some_key", true);
+auto pi2 = CreatePermission("bla_key", false, DBType.Default);
+
+PermissionItem CreateVisiblePermission(const std::string& key) { }
+PermissionItem CreateInvisiblePermission(const std::string& key) { }
+
+// gebruik:
+auto pi1 = CreateVisiblePermission("some_key");
+auto pi2 = CreateInvisiblePermission("bla_key");
+```
+
+Het verschil is hemel en aarde:
+
+1. Het woord "visible" of "invisible" in de methodenaam **verduidelijkt** enorm veel. Vermijd altijd magische `bool` flags! Vergeet niet dat de methode definitie ergens in een header file leeft en er naar navigeren om te begrijpen wat welk argument doet véél tijd kost.
+2. Wees kritisch met parameters. Als een parameter altijd met default waardes wordt meegegeven kan je het net zo goed weglaten. 
+
 Zie ook de verkorte [Clean Code cursus](https://wgroeneveld.github.io/cleancode-course/) slides.
 
 ## Software Testen
