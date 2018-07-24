@@ -3,6 +3,26 @@
     <head>
         <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
 
+	<meta name="description" content="Labo 3: Introductie in GBA Programming - Brain Baking">
+	<meta content="Labo 3: Introductie in GBA Programming - Brain Baking" property="og:title">
+	<meta content="Labo 3: Introductie in GBA Programming - Brain Baking" property="og:description">
+
+
+
+
+<meta property="og:url" content="https://brainbaking.com/teaching/cpp/labo-3/" />
+<meta property="og:type" content="website" />
+
+
+
+
+
+<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="teaching" />
+
+
+
 
 <script>
 var doNotTrack = false;
@@ -196,6 +216,22 @@ if (!doNotTrack) {
 </ul>
 
 <p>Laten we het eenvoudigste eerst proberen: de achtergrond te kleuren.</p>
+
+<h3 id="het-geheugen-layout-van-de-gba">Het geheugen layout van de GBA</h3>
+
+<p>Een duidelijk zicht op I/O adressen en hun functie zijn belangrijk. Adressen vallen in een range, afhankelijk van de grootte van het geheugen van elk systeem. Hieronder een kort overzicht (<a href="https://www.reinterpretcast.com/writing-a-game-boy-advance-game">bron</a>):</p>
+
+<ol>
+<li><code>0x00000000 - 0x00003FFF</code> - 16 KB System ROM (executable, but not readable)</li>
+<li><code>0x02000000 - 0x02030000</code> - 256 KB EWRAM (general purpose RAM external to the CPU)</li>
+<li><code>0x03000000 - 0x03007FFF</code> - 32 KB IWRAM (general purpose RAM internal to the CPU)</li>
+<li><code>0x04000000 - 0x040003FF</code> - I/O Registers</li>
+<li><code>0x05000000 - 0x050003FF</code> - 1 KB Colour Palette RAM</li>
+<li><code>0x06000000 - 0x06017FFF</code> - 96 KB VRAM (Video RAM)</li>
+<li><code>0x07000000 - 0x070003FF</code> - 1 KB OAM RAM (Object Attribute Memory — discussed later)</li>
+<li><code>0x08000000 - 0x????????</code> - Game Pak ROM (0 to 32 MB)</li>
+<li><code>0x0E000000 - 0x????????</code> - Game Pak RAM</li>
+</ol>
 
 <h3 id="display-setup">Display setup</h3>
 

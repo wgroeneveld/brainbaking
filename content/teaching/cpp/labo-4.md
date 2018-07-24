@@ -9,16 +9,19 @@ disableComments: true
 
 In [labo 3](/teaching/cpp/labo-3) maakten we kennis met de Gameboy Advance en het ontwikkelplatform - als je het zo kan noemen. We gebruikten mode 3 om pixels te manipuleren. Natuurlijk is dat erg onpraktisch en veel te belastend wanneer er veel op het scherm getekend moet worden. Als doelstelling voor labo 4 willen we een simpel geïntegreerd spelletje maken waar we video **mode 1** en tilesets voor nodig hebben.
 
+Het overzicht van I/O registers leert ons dat `0x06000000 - 0x06017FFF` 96kb aan Video RAM of VRAM voorziet waar we mee kunnen spelen zonder pixel per pixel te manipuleren.
+
 ## Tileset modes
 
 Rechtstreekse pixels aanspreken is flexibel maar niet bepaald handig. De GBA kan hardwarematig "_tiles_" zelf renderen zonder trailing pixels na te laten: wij moeten bij transformaties niet pixel per pixel zelf verplaatsen. Een beetje moderniteit in een embedded systeem dus. 
 
-Een "tile" is een 8x8 bitmap met 4 of 8 bits per pixel (_bpp_): 32 of 64 bytes in grootte. Herinner je dat voor de GBA we 15 bits nodig hebben om kleuren in een pixel op te slaan. 15 bits passen niet in die 4 of 8 bits! Daarvoor dienen _kleurenpaletten_ die een kleur mappen op een index, met een maximum van 512. Het palet register leeft op `0x05000000`.
+Een "tile" is een 8x8 bitmap met 4 of 8 bits per pixel (_bpp_): 32 of 64 bytes in grootte. Herinner je dat voor de GBA we 15 bits nodig hebben om kleuren in een pixel op te slaan. 15 bits passen niet in die 4 of 8 bits! Daarvoor dienen _kleurenpaletten_ die een kleur mappen op een index, met een maximum van 512. Het voorgrond palet register leeft op `0x05000000` -voor het achetgrond palet tel je `0x200` erbij.
 
-Als je goed kijkt zie je in de eerste screenshot allemaal 8x8 bitmaps tegen elkaar geplakt die het titel scherm en het Konami logo voorstellen voor het spel Castlevania: Aria of Sorrow:
+Als je goed kijkt zie je in de eerste screenshot allemaal 8x8 tiles tegen elkaar geplakt die het titel scherm en het Konami logo voorstellen voor het spel Castlevania: Aria of Sorrow:
 
 <img src="/img/teaching/gba-castlevania-tile.jpg" />
 
+Dit is de **tileset**: de unieke collectie van alle 8x8 tiles die we nodig hebben om een achtergrond of sprite te renderen.
 Getekend op het scherm ziet dat er zoals verwacht zo uit:
 
 <div class="row">
@@ -30,11 +33,13 @@ Getekend op het scherm ziet dat er zoals verwacht zo uit:
     </div>
 </div>
 
+Om tegen de GBA te zeggen welke tile op welke plaats in het scherm moet komen hebben we een **tilemap** nodig. Een tilemap kan wél heel groot worden en stelt letterlijk het "level" of de "map" voor, met op elke plaats in de 2-dimensionele lijst een referentie naar een tile. Zie [Metroid Level voorbeeld](https://www.coranac.com/tonc/text/regbg.htm).
+
 Als we een deeltje van de "a" van Castlevania zoals aangeduid opblazen zie je duidelijk de 8x8 structuur:
 
 <img src="/img/teaching/gba-castlevania-blownup.jpg" />
 
-Elke zichtbare bit stelt een kleur voor die in het palet is opgeslagen, aangeduid met een nummer als index. Merk op dat objecten die je ziet als je een spel speelt bijna altijd bestaan uit verschillende tiles. Elke tile wordt maar één keer opgeslagen en kan oneindig keren herhaald worden. Bovenstaande "a" kan ruwweg vertaald worden naar deze tabel (eigen interpretatie):
+Elke zichtbare bit stelt een kleur voor die in het palet is opgeslagen, aangeduid met een nummer als index: de **tileindex**. Merk op dat objecten die je ziet als je een spel speelt bijna altijd bestaan uit verschillende tiles. Elke tile wordt maar één keer opgeslagen en kan oneindig keren herhaald worden in de tile map. Bovenstaande "a" kan ruwweg vertaald worden naar deze tabel (eigen interpretatie):
 
 <div class="row">
     <div class="col-md-6">
@@ -162,27 +167,79 @@ Elke zichtbare bit stelt een kleur voor die in het palet is opgeslagen, aangedui
     </div>
 </div>
 
-### Tilesets in het video RAM
+We onderscheiden dus 4 belangrijke concepten om een image te renderen op de Gameboy Advance:
 
-Anders als in mode 3 kan je nu geen tiles mappen op pixels. Het VRAM voor tilesets werkt helemaal anders: het is opgesplitst in "tile blocks" (image data) en "screen blocks" (tile map data). Per 8 screen "block" van 2kb is er één tile block beschikbaar. Een tile block is dus 16kb en kan 512 4bpp tiles houden - 6 in het heel VRAM in totaal.
+1. Een 8x8 tile met indices die verwijzen naar het palet
+2. Een tileset waar alle tiles achter elkaar gepropt leven
+3. Een tilemap waar een image uit bestaat die verwijst naar indices in de set
+4. Een palet met kleuren
+
+### Images inladen in video RAM
+
+Anders als in mode 3 kan je dus geen tiles mappen op pixels. Het VRAM voor tilesets werkt helemaal anders: het is opgesplitst in "character blocks" (voor image data, onze tileset) en "screen blocks" (tile map data). Per 8 screen blokken van 2kb is er één character block beschikbaar. Een char block is dus 16kb en kan 512 4bpp tiles opslaan - 6 in het heel VRAM in totaal dat inderdaad 96kb oplevert. 
 
 {{<mermaid>}}
 graph TD
-    subgraph tile block 0
-        A[screen blocks 0 - 7<br/><pre>0x6000000 - 0x60003800</pre>]
+    subgraph background blocks
+        subgraph char block 0
+            A[screen blocks 0 - 7<br/><pre>0x6000000 - 0x60003800</pre>]
+        end
+        subgraph char block 1
+            A --> B[screen blocks 8 - 15<br/><pre>0x6004000 - 0x60007800</pre>]
+        end
+        subgraph char block 2
+            B --> C[screen blocks 16 - 23<br/><pre>0x6008000 - 0x6000b800</pre>]
+        end
+        subgraph char block 3
+            C --> D[screen blocks 24 - 31<br/><pre>0x600c000 - 0x6000f800</pre>]
+        end
     end
-    subgraph tile block 1
-        A --> B[screen blocks 8 - 15<br/><pre>0x6004000 - 0x60007800</pre>]
-    end
-    subgraph tile block 2
-        B --> C[screen blocks 16 - 23<br/><pre>0x6008000 - 0x6000b800</pre>]
-    end
-    subgraph tile block 3
-        C --> D[screen blocks 24 - 31<br/><pre>0x600c000 - 0x6000f800</pre>]
+    subgraph sprite blocks
+        subgraph char block 4
+            E[screen blocks 32 - 39<br/><pre>0x6010000 - 0x6013800</pre>]
+            D --> E
+        end
+        subgraph char block 5
+            E --> F[screen blocks 40 - 47<br/><pre>0x6014000 - 0x60107800</pre>]
+        end
     end
 {{< /mermaid >}}
 
-Tile blocks 0 tot 3 worden gebruikt voor achtergrond, en 4 (`0x6010000`) tot 5 (`0x6014000`) voor sprites. Het palet geheugen is ook opgesplitst in 2x16 voor achtergrond en sprites. We zijn voorlopig niet geïnteresseerd in de achtergrond: voor ons spel volstaan sprites. 
+Character blocks 0 tot 3 (_background RAM_) worden gebruikt voor achtergrond, en 4 (`0x6010000`) tot 5 (`0x6014000`), _Object VRAM (OVRAM)_, voor sprites. Het palet geheugen is ook opgesplitst in 2x16 voor achtergrond en sprites. We zijn voorlopig niet geïnteresseerd in de achtergrond: voor ons spel volstaan sprites. Tilemaps worden ook enkel gebruikt om grote images zoals een achtergrond te renderen, zoals het titelscherm en logo van Castlevania.
+
+Om van char block naar char block te springen tellen we `0x4000` bij elke block (15de bit - 16kb). Om van screen block naar screen block te springen tellen we `0x800` bij elke block (16de bit, 2kb). 
+
+Merk op dat character block 0 en screen block 0 beiden naar adres `0x6000000` verwijzen! Dat wil zeggen dat als tilesets in char block 0 opgeslagen worden, we niet screen block 0 maar bijvoorbeeld 8 of 16 moeten gebruiken voor onze tilemap - opschuiven afhankelijk van de grootte van de tileset. Herinner je de gelijkenis tussen [pointers en arrays](/teaching/cpp/labo-2) uit labo 2.
+
+Om het behandelen van deze hexadecimale adressen te vereenvoudigen kunnen we functies schrijven die het adres berekent van blokken zoals [hier](http://cs.umw.edu/~finlayson/class/spring18/cpsc305/notes/13-tiles.html):
+
+```C
+volatile unsigned short* char_block(unsigned long block) {
+    return (volatile unsigned short*) (0x6000000 + (block * 0x4000));
+}
+
+volatile unsigned short* screen_block(unsigned long block) {
+    return (volatile unsigned short*) (0x6000000 + (block * 0x800));
+}
+```
+
+Dat heeft als nadeel dat je moet weten dat `char_block(4)` een sprite block is en 0-3 niet, en dat je moet weten dat `screen_block(8)` bij char block 1 hoort. Dat tweede nadeel kunnen we wegwerken met typedefs en arrays zoals [hier](https://www.coranac.com/tonc/text/objbg.htm#ssec-img-cbb):
+
+```C
+typedef unsigned short  uint16;
+typedef unsigned int    uint32;
+typedef struct { uint32 data[8];  } TILE, TILE4; // tile 8x8@4bpp: 32bytes; 8 ints
+typedef TILE    CHARBLOCK[512];
+typedef uint16  SCREENBLOCK[1024];
+
+#define MEM_VRAM    0x06000000
+#define tile_mem    ((CHARBLOCK*)MEM_VRAM)
+#define se_mem      ((SCREENBLOCK*)MEM_VRAM)
+```
+
+Dat maakt het mogelijk om met `TILE *ptr= &tile_mem[4][12]` het OVRAM (block 4) op tile 12 aan te spreken en data te kopiëren zoals `memcpy(&tile_mem[4][12], spriteData, sizeof(spriteData))`.
+
+De library [LibTonc](https://www.coranac.com/man/tonclib/group__grpMemArray.htm#_details) ([source](https://github.com/devkitPro/libtonc/blob/master/include/tonc_memmap.h)) voorziet een aantal defaults.
 
 ### Sprites
 
@@ -204,12 +261,12 @@ typedef struct object {
     uint16 attr1;
     uint16 attr2;
     uint16 unused;
-} __attribute__((packed, aligned(4))) object;
+} object;
 
 #define OAM_MEM  ((volatile object *)0x07000000)
 ```
 
-Objecten wegschrijven doen we in register `0x07000000`. Omdat `OAM_MEM` een pointer is, kunnen we objecten met `[]` wegschrijven - herinner je dat de pointer index verschuiven hetzelfde als de array index is. `__attribute__` is nodig om het juiste adres aan te spreken en valt buiten deze cursus ([zie hier](https://gcc.gnu.org/onlinedocs/gcc-6.2.0/gcc/Type-Attributes.html)). 
+Objecten wegschrijven doen we in register `0x07000000`. Omdat `OAM_MEM` een pointer is, kunnen we objecten met `[]` wegschrijven - herinner je dat de pointer index verschuiven hetzelfde als de array index is.  
 
 Een nieuw object maken is relatief simpel: `volatile object *sprite = &OAM_MEM[0];`. De attributen goed zetten is een ander paar mouwen omdat de bits in sets samengepakt zitten. De [Tonc](http://www.coranac.com/tonc/text/regobj.htm) documentatie beschrijft elke bit van elk attribute in detail. We hebben bit 0 tot 7 voor de y coordinaat nodig, en bit 14 tot 15 voor de vorm (_square = `00`, wide = `10`, tall = `01`_).
 
@@ -217,19 +274,7 @@ Als we willen starten op y coordinaat 50 met een wide object en 4bpp moeten we 5
 
 ## Alles samen zetten
 
-Om deze low-level bit manipulaties in de code wat leesbaar te maken voorzien we de volgende typedefs en defines:
-
-```C
-typedef unsigned short uint16;      // controle bits voor OAM, RGB
-typedef unsigned int uint32;        // 1 tile bit in de GBA
-typedef uint32 tile_4bpp[8];        // 8 rijen, elk 1 bit
-typedef tile_4bpp tile_block[512];  // tile block = 8 screen blocks, 512 tiles 
-typedef uint16 palette[16];         // 16 palettes beschikbaar
-
-#define TILE_MEM ((volatile tile_block *)0x06000000)
-#define PALETTE_MEM ((volatile palette *)(0x05000000 + 0x200))  // ignore bg mem
-#define OAM_MEM ((volatile object *)0x07000000)
-```
+Om deze low-level bit manipulaties in de code wat leesbaar te maken gebruiken we de voorziene typedefs en definities `tile_mem`, `se_mem` en `oam_mem` die hierboven zijn uitgelegd. 
 
 ### Een spel: [Arkanoid](https://en.wikipedia.org/wiki/Arkanoid)
 
@@ -261,7 +306,7 @@ ball_sprite->attr1 = 0; // grootte 8x8 met square
 ball_sprite->attr2 = 1; // eerste tile, palet 0
 ```
 
-Merk op dat `TILE_MEM[4]` betekent dat we de eerste 3 tile blocks overslaan: die dienen immers voor de achtergrond, zie boven. 
+Merk op dat `TILE_MEM[4]` betekent dat we de eerste 3 char of tile blocks overslaan: die dienen immers voor de achtergrond. 
 
 #### De paddle
 

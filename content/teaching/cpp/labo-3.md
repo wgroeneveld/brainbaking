@@ -27,6 +27,20 @@ Programmeren op een extern systeem brengt véél hardwarematige complexiteit met
 
 Laten we het eenvoudigste eerst proberen: de achtergrond te kleuren. 
 
+### Het geheugen layout van de GBA
+
+Een duidelijk zicht op I/O adressen en hun functie zijn belangrijk. Adressen vallen in een range, afhankelijk van de grootte van het geheugen van elk systeem. Hieronder een kort overzicht ([bron](https://www.reinterpretcast.com/writing-a-game-boy-advance-game)):
+
+1. `0x00000000 - 0x00003FFF` - 16 KB System ROM (executable, but not readable)
+2. `0x02000000 - 0x02030000` - 256 KB EWRAM (general purpose RAM external to the CPU)
+3. `0x03000000 - 0x03007FFF` - 32 KB IWRAM (general purpose RAM internal to the CPU)
+4. `0x04000000 - 0x040003FF` - I/O Registers
+5. `0x05000000 - 0x050003FF` - 1 KB Colour Palette RAM
+6. `0x06000000 - 0x06017FFF` - 96 KB VRAM (Video RAM)
+7. `0x07000000 - 0x070003FF` - 1 KB OAM RAM (Object Attribute Memory — discussed later)
+8. `0x08000000 - 0x????????` - Game Pak ROM (0 to 32 MB)
+9. `0x0E000000 - 0x????????` - Game Pak RAM
+
 ### Display setup
 
 Er zijn 6 verschillende "Video Modes" beschikbaar die je moet aan- of uitzetten voordat je iets kan tekenen op het scherm. De GBA ondersteunt tilesets om sprites efficiënter te tekenen (de 3 laatste modes), maar wij hebben voorlopig genoeg aan pixel per pixel de kleur te zetten (de 3 eerste modes). De eenvoudigste mode zonder buffering is **video mode 3**. Dit heeft een resolutie van 240x160. Elke pixel RGB waardes om aan te spreken. 

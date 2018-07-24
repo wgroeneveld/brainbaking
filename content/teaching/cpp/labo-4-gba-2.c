@@ -11,13 +11,16 @@
 #define TILE_MEM_FG 4
 #define TILE_MEM_BG 1
 #define PALETTE_MEM ((volatile palette *)(0x05000000 + 0x200))  // ignore bg mem
+#define PALETTE_MEM_BG ((volatile palette *)(0x05000000))
+#define PALETTE_SIZE 256
+
 #define OAM_MEM ((volatile object *)0x07000000)
+#define OAM_HIDE_MASK 0x300         // 0000 0000 0011 0000 0000
+#define OAM_HIDE 0x200              // 0000 0000 0010 0000 0000
+#define OAM_Y_MASK 0x0FF
+#define OAM_X_MASK 0x1FF
 
 #define REG_VCOUNT (*(volatile uint16*) 0x04000006)
-
-#define OAM_MEM  ((volatile object *)0x07000000)
-#define Y_MASK 0x0FF
-#define X_MASK 0x1FF
 
 #define REG_KEY_INPUT (*((volatile uint16 *)0x04000130))
 #define KEY_ANY  0x03FF
@@ -56,8 +59,8 @@ void position(sprite *s) {
     volatile object *obj = s->obj;
     int x = s->x;
     int y = s->y;
-    obj->attr0 = (obj->attr0 &  ~Y_MASK) | (y & Y_MASK);
-    obj->attr1 = (obj->attr1 & ~X_MASK) | (x & X_MASK);
+    obj->attr0 = (obj->attr0 &  ~OAM_Y_MASK) | (y & OAM_Y_MASK);
+    obj->attr1 = (obj->attr1 & ~OAM_X_MASK) | (x & OAM_X_MASK);
 }
 
 void vsync() {
@@ -74,6 +77,16 @@ uint16 color(uint16 r, uint16 g, uint16 b) {
 
 int next_oam_mem;
 int next_tile_mem = 1;
+
+int is_hidden(sprite *s) {
+    volatile object *obj = s->obj;
+    return obj->attr0 & OAM_HIDE;
+}
+
+void hide(sprite *s) {
+    volatile object *obj = s->obj;
+    obj->attr0 = (obj->attr0 & ~OAM_HIDE_MASK) | OAM_HIDE;
+}
 
 volatile object* create_object(int attr0, int attr1, int attr2) {
     volatile object *obj = &OAM_MEM[next_oam_mem++];
@@ -193,16 +206,23 @@ int main() {
         if(ball->x <= 0 || ball->x >= (SCREEN_WIDTH - ball->w)) {
             ball->dx = -ball->dx;
         }
-        if(ball->y <= 0 || ball->y >= (SCREEN_HEIGHT - ball->h)) {
+        if(ball->y <= 0 || collides(ball, paddle)) {
             ball->dy = -ball->dy;
         }
 
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 5; j++) {
-                sprite* block = blocks[i][j];
-                
-                if(collides(ball, block)) {
-                    ball->dy = -ball->dy;
+        if(ball->y >= (SCREEN_HEIGHT - ball->h)) {
+            you_died();
+        } else {
+            for(int i = 0; i < 3; i++) {
+                for(int j = 0; j < 5; j++) {
+                    sprite* block = blocks[i][j];
+                    
+                    if(!is_hidden(block) && collides(ball, block)) {
+                        hide(block);
+                        score++;
+
+                        ball->dy = -ball->dy;
+                    }
                 }
             }
         }
