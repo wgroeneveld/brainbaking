@@ -88,5 +88,16 @@ Een programmeertaal als C++ leren vereist het achteroverslaan van heel wat synta
 Software Modelleren Als software ontwikkelaar ben jij de uitvoerende kracht die vereisten van de klant implementeert in het software systeem.</description>
     </item>
     
+    <item>
+      <title>Labo 8: GBA Programming in C&#43;&#43;: een abstractielaag</title>
+      <link>https://brainbaking.com/teaching/cpp/labo-8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/labo-8/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
+Het zal je ondertussen wel al duidelijk zijn dat technische details zoals IO pointers en OAM vanuit labo 4 de code er niet bepaald duidelijker op maken. Jammer genoeg voorziet de GBA geen andere mogelijkheden. Een oplossing zal van de ontwikkelaar zelf moeten komen, in de vorm van de principes uit labo 7.
+Abstracties creëren Als ontwikkelaar wil ik niet altijd bezig zijn met de juiste hexadecimale waarde voor IO pointer aan te spreken om een sprite te renderen.</description>
+    </item>
+    
   </channel>
 </rss>
