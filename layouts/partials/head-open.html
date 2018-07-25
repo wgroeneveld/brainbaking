@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="{{ "css/brainbaking.css" | absURL }}">
+
+<!-- meta data tags, open graph -->
 {{ if .Params.subtitle }}
 	<meta name="description" content="{{ .Title }} - {{ .Params.subtitle }}">
 	<meta content="{{ .Title }}" property="og:title">
@@ -35,5 +37,45 @@
   <meta property="article:tag" content="{{ . }}" />
 {{ end }}{{ end }}
 <!-- end og -->
+
+<!-- structured data -->
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "{{ .Site.BaseURL }}"
+    },
+    "articleSection" : "{{ .Section }}",
+    "name" : "{{ .Title }}",
+    "headline" : "{{ .Params.subtitle }}",
+    "description" : "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
+    "inLanguage" : "{{ if eq "essays" .Section }}nl-BE{{ else }}en-US{{ end }}",
+    {{ if .Params.bigimg }}
+    	"image": "{{.Site.BaseURL}}{{ .Params.bigimg }}",
+    {{ end }}
+    "author" : {
+    	"@type": "Person",
+    	"name": "{{ .Site.Author.name }}"
+	},
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "{{ .Site.Title }}",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "{{.Site.BaseURL}}img/avatar-icon.png"
+    	}
+	},
+    "accountablePerson" : "{{ .Site.Author.name }}",
+    "copyrightHolder" : "{{ .Site.Author.name }}",
+    "copyrightYear" : "{{ .Date.Format "2006" }}",
+    "datePublished": "{{ .Date }}",
+    "dateModified" : "{{ .Date }}",
+    "url" : "{{ .Permalink }}",
+    "wordCount" : "{{ .WordCount }}",
+    "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }}"{{ .Title }}", "{{ .Section }}" ]
+}
+</script>
 
 {{ template "_internal/google_analytics_async.html" . }}

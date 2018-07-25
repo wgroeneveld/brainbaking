@@ -7,6 +7,7 @@ pygmentCodeFences = true
 googleAnalytics = "UA-45748221-1"
 publishDir = "docs"
 enableEmoji = true
+enableRobotsTXT = true
 
 [taxonomies]
     tag = "tags"
