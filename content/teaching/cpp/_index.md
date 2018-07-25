@@ -33,11 +33,10 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 5. [Introductie in C++](/teaching/cpp/labo-5)
 6. [C++ Class Inheritance, operators en templates](/teaching/cpp/labo-6)
 7. [Software ontwerpen: denken en testen voor coderen](/teaching/cpp/labo-7)
-8. [STL Collecties en streams](/teaching/cpp/labo-8)
-9. [GBA Programming in C++: abstraheren](/teaching/cpp/labo-9)
-10. [GBA Programming in C++: scrolling backgrounds](/teaching/cpp/labo-10)
-11. [GUI ontwerp met C++ in Qt: een introductie](/teaching/cpp/labo-11)
-12. [GUI ontwerp met C++ in Qt: een GBA spel porten naar Qt](/teaching/cpp/labo-12)
+8. [GBA Programming in C++: een abstractielaag](/teaching/cpp/labo-8)
+9. [GBA Programming in C++: scrolling backgrounds](/teaching/cpp/labo-9)
+10. [GUI ontwerp met C++ in Qt: een introductie](/teaching/cpp/labo-10)
+11. [GUI ontwerp met C++ in Qt: een GBA spel porten naar Qt](/teaching/cpp/labo-11)
 
 ## Syllabus
 

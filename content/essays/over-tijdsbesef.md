@@ -23,7 +23,7 @@ Een wijnmaker draait zijn hand niet om voor een jaar meer of minder. Wij in de m
 	Onze gids te [Maison Autréau-Lasnot](http://www.champagne-autreau-lasnot.com/maison/)
 </center>
 
-Druivenvelden zijn in de streek erg duur: de concurrentie aast constant op lapjes grond. Voor grote champagnehuizen in Reims is die kostprijs verwaarloosbaarder dan voor een familiebedrijf als Autréau. Ze zijn begonnen in 1932 en van generatie op generatie werd de grond binnen de familie gehouden. Dat is dan ook de enige manier om het te doen: het is zo duur dat het voor kleine bedrijven 50 jaar kost om rendabel te zijn.
+Druivenvelden zijn in de streek erg duur: de concurrentie aast constant op lapjes grond. Voor grote champagnehuizen in Reims is die kostprijs verwaarloosbaard ten opzichte van een familiebedrijf als Autréau. Ze zijn begonnen in 1932 en van generatie op generatie werd de grond binnen de familie gehouden. Dat is dan ook de enige manier om het te doen: het is zo duur dat het voor kleine bedrijven 50 jaar kost om rendabel te zijn.
 
 Kunnen wij ons dat nog inbeelden? Zo'n grote onkosten maken over generaties heen? Zo in het onzekere durven stappen? Vijf jaar wachten om te weten of je product écht goed is, of maar middelmatige brol geworden is? Om dan daarna ook de ballen te hebben om alles gewoon weg te kappen en opnieuw te beginnen? 
 
