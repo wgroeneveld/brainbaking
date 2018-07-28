@@ -60,7 +60,7 @@ Abstracties creëren Als ontwikkelaar wil ik niet altijd bezig zijn met de juist
     "datePublished": "0001-01-01 00:00:00 &#43;0000 UTC",
     "dateModified" : "0001-01-01 00:00:00 &#43;0000 UTC",
     "url" : "https://brainbaking.com/teaching/cpp/labo-8/",
-    "wordCount" : "1289",
+    "wordCount" : "1618",
     "keywords" : [ "Labo 8: GBA Programming in C&#43;&#43;: een abstractielaag", "teaching" ]
 }
 </script>
@@ -411,6 +411,49 @@ graph TD;
 
 <p>OAM attributes maken het eenvoudig om de image horizontaal of verticaal te <em>flippen</em>, bijvoorbeeld bij sprite animaties die naar links of naar rechts lopen. Transformatiematriches zijn nodig om te roteren.</p>
 
+<p>Export tool <a href="https://github.com/eigerva/grit">grit</a> geeft meer mogelijkheden, om bijvoorbeeld stukken van een palet te exporteren met <code>./grit piskel.png -p -gt -gB4 -ftc -pe 16</code> - zie <a href="http://www.coranac.com/man/grit/html/grit.htm">handleiding</a>. Maak op <a href="www.piskelapp.com">piskelapp.com</a> je eigen pixel art.</p>
+
+<h3 id="een-kijkje-achter-de-schermen">Een kijkje achter de schermen</h3>
+
+<p>Emulators zoals mGBA zijn krachtige tools voor de beginnende GBA ontwikkelaar om te graven in hun favoriete ROM. Ze bieden de mogelijkheid om tiles, palettes, sprites, geheugenwaardes, &hellip; allemaal in te kijken. Een van mijn favoriete games is Castlevania: Aria of Sorrow. Ik kan met mGBA zien hoe de sprites zijn opgedeeld in het scherm.</p>
+
+<p>Probeer aan de hand van deze animatie maar eens te bepalen welke sprites gebrukt worden, en welke achtergronden:</p>
+
+<p><img src="/img/teaching/aria-of-sorrow.gif" style="width: 100%" class="bordered" /></p>
+
+<p>Herinner je uit labo 4 dat er 4 VRAM pointers naar achtergrond geheugen is: 4 char blocks. Bovenstaand spel creëert zo de illusie van diepte: verschillende achtergronden schuiven over elkaar met verschillende snelheden (kijk goed naar de maan).</p>
+
+<div class="row">
+  <div class="col-md-6">
+      <img src="/img/teaching/aria-of-sorrow-0.png" /><br/>
+      Alles aan
+  </div>
+  <div class="col-md-6">
+    <img src="/img/teaching/aria-of-sorrow-1.png" /><br/>
+    Sprites (OAM) uit
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <img src="/img/teaching/aria-of-sorrow-2.png" /><br/>
+    bg3 uit
+  </div>
+  <div class="col-md-6">
+    <img src="/img/teaching/aria-of-sorrow-3.png" /><br/>
+    bg2 uit
+  </div>
+</div>
+
+<p>Uiteindelijk stelt zo&rsquo;n 2D platformspel niet zo veel voor op gebied van sprite engine. Er kunnen immers maar maximum 128 objecten tegelijkertijd in het geheugen opgeslagen worden. In Aria of Sorrow wordt dat opgelost met &ldquo;tussenschermen&rdquo;: van area 1 naar 2 moet je door een soort van sluis. In de achtergrond wordt een hoop nieuwe data in alle IO adressen gepompt.</p>
+
+<p>Het meeste werk ligt bij de artist. De screenshot linksboven toont de aanwezigheid van 2 personage sprites (Alucard en Soma) en 3 nummer sprites (Healthbar: 3, 2, 0). Toch klopt dit niet helemaal als je graaft in de mGBA sprite explorer:</p>
+
+<p><img src="/img/teaching/aria-of-sorrow-sprites.png" /></p>
+
+<p>Soma bestaat uit 2x 64x32 OAM objecten! <br/>
+Er zal dus ook een soort van OAM manager nodig zijn die beide sprites aan elkaar rijgt, zodat in de code en in het spel dit één sprite lijkt te zijn. Dit zijn nog <a href="http://gbdev.gg8.se/wiki/articles/GBDK_Sprite_Tutorial">artefacten van de originele Gameboy</a>.</p>
+
 <h2 id="labo-oefeningen">Labo oefeningen</h2>
 
 <p><a name="oef"></a></p>
@@ -424,7 +467,7 @@ graph TD;
 
 <ol>
 <li>Welke functies uit de opgave zou je <em>niet</em> abstraheren in klassen maar voldoen aan een duidelijke naamgeving? Waarom zouden dezen wel in de global namespace mogen leven?</li>
-<li>Wat als ik een sprite nodig heb die groter is dan 64x64?</li>
+<li>Wat als ik een sprite nodig heb die groter is dan 64x64? Wat zou de <code>SpriteManager</code> klasse moeten teruggeven bij het aanmaken van een &ldquo;sprite&rdquo; (niet een GBA sprite, maar de term die wij handhaven)?</li>
 </ol>
 </div>
 
