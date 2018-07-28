@@ -409,7 +409,7 @@ Er ontbreken nog een aantal belangrijke zaken in ons spel.
 
 1. De bal sprite beweegt niet! Oei? Verzin een simpele implementatie in de main loop die de x en y waardes van de bal OAM manipuleert. Rekening houden met physics hoeft nog niet, maar wel met de edges van het scherm. 
 2. Er zijn helemaal geen blokjes om tegen te botsen bovenaan. Wat een klote spel. Maak nieuwe sprites aan die je een eigen kleur geeft, en bovenaan positioneert. Merk op dat je sprites kan herbruiken! 
-3. Tijd voor wat basis collision detection. Als de bal botst tegen één van de blokjes die je hebt bijgemaakt, verdwijnt dat blokje. Zichtbaarheid is ook een bit in OAM, raadpleeg de documentatie. 
+3. Tijd voor wat [basis collision detection](http://image.diku.dk/projects/media/kirk.06.pdf). Als de bal botst tegen één van de blokjes die je hebt bijgemaakt, verdwijnt dat blokje. Zichtbaarheid is ook een bit in OAM, raadpleeg de documentatie. 
 4. Kuis de code een beetje op. `create_paddle` en `create_ball` zijn nu van elkaar afhankelijk door indices in register pointers. Voorzie een globale variabele om dit allemaal te beheren. 
 
 ## Denkvragen

@@ -157,6 +157,50 @@ void copy_image_data() {
 
 OAM attributes maken het eenvoudig om de image horizontaal of verticaal te _flippen_, bijvoorbeeld bij sprite animaties die naar links of naar rechts lopen. Transformatiematriches zijn nodig om te roteren.
 
+Export tool [grit](https://github.com/eigerva/grit) geeft meer mogelijkheden, om bijvoorbeeld stukken van een palet te exporteren met `./grit piskel.png -p -gt -gB4 -ftc -pe 16` - zie [handleiding](http://www.coranac.com/man/grit/html/grit.htm). Maak op [piskelapp.com](www.piskelapp.com) je eigen pixel art. 
+
+### Een kijkje achter de schermen
+
+Emulators zoals mGBA zijn krachtige tools voor de beginnende GBA ontwikkelaar om te graven in hun favoriete ROM. Ze bieden de mogelijkheid om tiles, palettes, sprites, geheugenwaardes, ... allemaal in te kijken. Een van mijn favoriete games is Castlevania: Aria of Sorrow. Ik kan met mGBA zien hoe de sprites zijn opgedeeld in het scherm.
+
+Probeer aan de hand van deze animatie maar eens te bepalen welke sprites gebrukt worden, en welke achtergronden:
+
+<img src="/img/teaching/aria-of-sorrow.gif" style="width: 100%" class="bordered" />
+
+Herinner je uit labo 4 dat er 4 VRAM pointers naar achtergrond geheugen is: 4 char blocks. Bovenstaand spel creëert zo de illusie van diepte: verschillende achtergronden schuiven over elkaar met verschillende snelheden (kijk goed naar de maan). 
+
+<div class="row">
+  <div class="col-md-6">
+      <img src="/img/teaching/aria-of-sorrow-0.png" /><br/>
+      Alles aan
+  </div>
+  <div class="col-md-6">
+    <img src="/img/teaching/aria-of-sorrow-1.png" /><br/>
+    Sprites (OAM) uit
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <img src="/img/teaching/aria-of-sorrow-2.png" /><br/>
+    bg3 uit
+  </div>
+  <div class="col-md-6">
+    <img src="/img/teaching/aria-of-sorrow-3.png" /><br/>
+    bg2 uit
+  </div>
+</div>
+
+Uiteindelijk stelt zo'n 2D platformspel niet zo veel voor op gebied van sprite engine. Er kunnen immers maar maximum 128 objecten tegelijkertijd in het geheugen opgeslagen worden. In Aria of Sorrow wordt dat opgelost met "tussenschermen": van area 1 naar 2 moet je door een soort van sluis. In de achtergrond wordt een hoop nieuwe data in alle IO adressen gepompt. 
+
+Het meeste werk ligt bij de artist. De screenshot linksboven toont de aanwezigheid van 2 personage sprites (Alucard en Soma) en 3 nummer sprites (Healthbar: 3, 2, 0). Toch klopt dit niet helemaal als je graaft in de mGBA sprite explorer:
+
+<img src="/img/teaching/aria-of-sorrow-sprites.png" /> 
+
+Soma bestaat uit 2x 64x32 OAM objecten! <br/>
+Er zal dus ook een soort van OAM manager nodig zijn die beide sprites aan elkaar rijgt, zodat in de code en in het spel dit één sprite lijkt te zijn. Dit zijn nog [artefacten van de originele Gameboy](http://gbdev.gg8.se/wiki/articles/GBDK_Sprite_Tutorial).
+
 ## Labo oefeningen
 <a name="oef"></a>
 
@@ -166,4 +210,4 @@ OAM attributes maken het eenvoudig om de image horizontaal of verticaal te _flip
 ## Denkvragen
 
 1. Welke functies uit de opgave zou je _niet_ abstraheren in klassen maar voldoen aan een duidelijke naamgeving? Waarom zouden dezen wel in de global namespace mogen leven?
-2. Wat als ik een sprite nodig heb die groter is dan 64x64? 
+2. Wat als ik een sprite nodig heb die groter is dan 64x64? Wat zou de `SpriteManager` klasse moeten teruggeven bij het aanmaken van een "sprite" (niet een GBA sprite, maar de term die wij handhaven)?
