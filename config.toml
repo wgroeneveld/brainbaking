@@ -8,6 +8,8 @@ googleAnalytics = "UA-45748221-1"
 publishDir = "docs"
 enableEmoji = true
 enableRobotsTXT = true
+# for .Lastmod to work with .GitInfo: --enableGitInfo https://gohugo.io/variables/git/
+enableGitInfo = true
 
 [taxonomies]
     tag = "tags"

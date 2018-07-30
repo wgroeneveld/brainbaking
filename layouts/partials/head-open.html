@@ -49,16 +49,22 @@
     },
     "articleSection" : "{{ .Section }}",
     "name" : "{{ .Title }}",
-    "headline" : "{{ .Params.subtitle }}",
+    {{ if .Params.subtitle }}
+      "headline" : "{{ .Params.subtitle }}",
+    {{ else }}
+      "headline" : "{{ .Title }}",
+    {{ end }}
     "description" : "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
     "inLanguage" : "{{ if eq "essays" .Section }}nl-BE{{ else }}en-US{{ end }}",
     {{ if .Params.bigimg }}
     	"image": "{{.Site.BaseURL}}{{ .Params.bigimg }}",
+    {{ else }}
+      "image": "{{.Site.BaseURL}}img/avatar-icon.png",
     {{ end }}
     "author" : {
     	"@type": "Person",
     	"name": "{{ .Site.Author.name }}"
-	},
+	  },
     "publisher": {
     	"@type": "Organization",
     	"name": "{{ .Site.Title }}",
@@ -66,12 +72,12 @@
     		"@type": "ImageObject",
     		"url": "{{.Site.BaseURL}}img/avatar-icon.png"
     	}
-	},
+	  },
     "accountablePerson" : "{{ .Site.Author.name }}",
     "copyrightHolder" : "{{ .Site.Author.name }}",
     "copyrightYear" : "{{ .Date.Format "2006" }}",
-    "datePublished": "{{ .Date }}",
-    "dateModified" : "{{ .Date }}",
+    "datePublished": "{{ if isset .Params "date" }}{{ .Date }}{{ else }}{{ .Lastmod }}{{ end }}",
+    "dateModified" : "{{ .Lastmod }}",
     "url" : "{{ .Permalink }}",
     "wordCount" : "{{ .WordCount }}",
     "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }}"{{ .Title }}", "{{ .Section }}" ]
