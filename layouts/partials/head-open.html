@@ -55,7 +55,15 @@
       "headline" : "{{ .Title }}",
     {{ end }}
     "description" : "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
-    "inLanguage" : "{{ if eq "essays" .Section }}nl-BE{{ else }}en-US{{ end }}",
+    {{ if isset .Params "language" }}
+      "inLanguage" : "{{ .Params.language }}",
+    {{ else if eq "essays" .Section }}
+      "inLanguage" : "nl-BE",
+    {{ else if eq "teaching" .Section }}
+      "inLanguage" : "nl-BE",
+    {{ else }}
+      "inLanguage" : "en-US",
+    {{ end }}
     {{ if .Params.bigimg }}
     	"image": "{{.Site.BaseURL}}{{ .Params.bigimg }}",
     {{ else }}
