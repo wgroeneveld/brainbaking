@@ -137,3 +137,4 @@ De memory manager en het achtergrondpalet zijn gedeeld tussen de backgroundlayer
 ## Denkvragen
 
 1. Scrollen gebeurt niet altijd. Kijk nog eens goed naar Soma als hij naar links beweegt richting de deur. Hoe kunnen we dit implementeren - gegeven een karakter in het midden van het scherm, wanneer starten we en wanneer stoppen we met scrollen? 
+2. Op welke manier kan je de nadelen van het gedeelde achtergrondpalet minimaliseren?

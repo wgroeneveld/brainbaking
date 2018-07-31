@@ -292,6 +292,21 @@ We komen later nog op de template `<>` notatie terug. Neem hier aan dat dit werk
 
 Zie p.470 of [Smart pointers in modern C++](https://docs.microsoft.com/en-us/cpp/cpp/smart-pointers-modern-cpp).
 
+Vergeet niet dat smart pointers niet werken in combinatie met variabelen op de stack (dus altijd `new` gebruiken). Stel dat een klasse een referentie naar een `unique_ptr` heeft die automatisch de pointer zou moeten opkuisen: 
+
+```C
+class Holder {
+  public: 
+   unique_ptr<Iets> autoDeleted;
+   Holder() {
+    Iets iets("1");
+    this->autoDeleted = unique_ptr<Iets>(&iets);
+   }
+}
+```
+
+De deconstrutor van de holder gaat automatisch de waarde die autoDeleted vasthoudt terug vrijgeven, maar de variabele `iets` bestaat al niet meer omdat die enkel op de stack binnen de constructor functie leeft. `&iets` verwijst nu naar "niks" en dit crasht. 
+
 ## De C++ Standard Library
 
 Merk op dat in bovenstaande Persoon klasse `printf()` verdwenen is. In C++ gebruiken we streams: `cout` als `stdout` en `cin` als `stdin`. Deze leven in de `std` namespace zodra je `iostream` include. Laat de ".h" suffix achterwege bij het includen van systeembibliotheken van C++. Laat het maar aan de compiler over om de systeembestanden te zoeken tijdens het linken. 
