@@ -36,16 +36,22 @@
     },
     "articleSection" : "teaching",
     "name" : "Labo 5: Weg met C, Hallo C&#43;&#43;",
-    "headline" : "",
+    
+      "headline" : "Labo 5: Weg met C, Hallo C&#43;&#43;",
+    
     "description" : "&laquo;&nbsp;Terug naar Software ontwerp in C/C++ &raquo;&nbsp;Naar de labo opgave
 De ++ in C++ De introductie van C++ in 1985 geeft de ervaren C programmeur enkele extra mogelijkheden om zijn of haar code te structureren. C++ wordt nog steeds omschreven als een &ldquo;general purpose&rdquo; low-level taal op Wikipedia:
  C++ is a general-purpose programming language. It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.",
-    "inLanguage" : "en-US",
+    
+      "inLanguage" : "nl-BE",
+    
+    
+      "image": "https://brainbaking.com/img/avatar-icon.png",
     
     "author" : {
     	"@type": "Person",
     	"name": "Wouter Groeneveld"
-	},
+	  },
     "publisher": {
     	"@type": "Organization",
     	"name": "Brain Baking",
@@ -53,14 +59,14 @@ De ++ in C++ De introductie van C++ in 1985 geeft de ervaren C programmeur enkel
     		"@type": "ImageObject",
     		"url": "https://brainbaking.com/img/avatar-icon.png"
     	}
-	},
+	  },
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "0001-01-01 00:00:00 &#43;0000 UTC",
-    "dateModified" : "0001-01-01 00:00:00 &#43;0000 UTC",
+    "datePublished": "2018-07-31 12:28:23 &#43;0200 CEST",
+    "dateModified" : "2018-07-31 12:28:23 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-5/",
-    "wordCount" : "2833",
+    "wordCount" : "2924",
     "keywords" : [ "Labo 5: Weg met C, Hallo C&#43;&#43;", "teaching" ]
 }
 </script>
@@ -543,6 +549,20 @@ nieuwGetal-&gt;telOpMet(*g);
 <p>We komen later nog op de template <code>&lt;&gt;</code> notatie terug. Neem hier aan dat dit werkt als Generics in Java.</p>
 
 <p>Zie p.470 of <a href="https://docs.microsoft.com/en-us/cpp/cpp/smart-pointers-modern-cpp">Smart pointers in modern C++</a>.</p>
+
+<p>Vergeet niet dat smart pointers niet werken in combinatie met variabelen op de stack (dus altijd <code>new</code> gebruiken). Stel dat een klasse een referentie naar een <code>unique_ptr</code> heeft die automatisch de pointer zou moeten opkuisen:</p>
+
+<pre><code class="language-C">class Holder {
+  public: 
+   unique_ptr&lt;Iets&gt; autoDeleted;
+   Holder() {
+    Iets iets(&quot;1&quot;);
+    this-&gt;autoDeleted = unique_ptr&lt;Iets&gt;(&amp;iets);
+   }
+}
+</code></pre>
+
+<p>De deconstrutor van de holder gaat automatisch de waarde die autoDeleted vasthoudt terug vrijgeven, maar de variabele <code>iets</code> bestaat al niet meer omdat die enkel op de stack binnen de constructor functie leeft. <code>&amp;iets</code> verwijst nu naar &ldquo;niks&rdquo; en dit crasht.</p>
 
 <h2 id="de-c-standard-library">De C++ Standard Library</h2>
 

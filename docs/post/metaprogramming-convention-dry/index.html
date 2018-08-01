@@ -60,17 +60,21 @@
     },
     "articleSection" : "post",
     "name" : "Metaprogramming instead of duplication",
-    "headline" : "convention over duplication, good or bad?",
+    
+      "headline" : "convention over duplication, good or bad?",
+    
     "description" : "So&hellip; What&rsquo;s up with all that duplication in your unit tests? Let&rsquo;s take a look at a very recognizable pattern when for instance using RhinoMock in C#:
  [TestInitialize] public void SetUp() { dbConfigurationMock = MockRepository.GenerateMock&lt;IDbConfiguration&gt;(); mountPointLoaderMock = MockRepository.GenerateMock&lt;IMountPointLoader&gt;(); userEnvironmentFactoryMock = MockRepository.GenerateMock&lt;IUserEnvironmentFactory&gt;(); userEnvironmentLoaderMock = MockRepository.GenerateMock&lt;IUserEnvironmentLoader&gt;(); // ...  We agreed to suffix each instance variable with &lsquo;Mock&rsquo; if it&rsquo;s a mock. That way, when you scroll down to an actual test case, it&rsquo;s clear to everyone what&rsquo;s what: mocks, stubs, actual implementations, and so forth.",
-    "inLanguage" : "en-US",
+    
+      "inLanguage" : "en-US",
+    
     
     	"image": "https://brainbaking.com//img/Metaprogramming instead of duplication.jpg",
     
     "author" : {
     	"@type": "Person",
     	"name": "Wouter Groeneveld"
-	},
+	  },
     "publisher": {
     	"@type": "Organization",
     	"name": "Brain Baking",
@@ -78,12 +82,12 @@
     		"@type": "ImageObject",
     		"url": "https://brainbaking.com/img/avatar-icon.png"
     	}
-	},
+	  },
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "2014",
     "datePublished": "2014-03-14 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2014-03-14 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2018-04-27 15:37:08 &#43;0200 CEST",
     "url" : "https://brainbaking.com/post/metaprogramming-convention-dry/",
     "wordCount" : "282",
     "keywords" : [ "CSharp","java","metaprogramming","reflection","unit testing","mocking","Metaprogramming instead of duplication", "post" ]
