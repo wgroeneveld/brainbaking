@@ -63,10 +63,10 @@ C is een imperatieve programmeertaal. Dat zal je bij het oefenen wel merken: we 
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-07-20 13:24:42 &#43;0200 CEST",
-    "dateModified" : "2018-07-20 13:24:42 &#43;0200 CEST",
+    "datePublished": "2018-08-02 10:20:05 &#43;0200 CEST",
+    "dateModified" : "2018-08-02 10:20:05 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-1/",
-    "wordCount" : "3196",
+    "wordCount" : "3197",
     "keywords" : [ "Labo 1: Introductie in C", "teaching" ]
 }
 </script>
@@ -305,7 +305,7 @@ int main() {
 }
 </code></pre>
 
-<p>Compileren met <code>gcc -o fileio fileio.c</code></p>
+<p>Compileren met <code>gcc -o fileio fileio.c</code>.</p>
 
 <p>Hier zijn nog veel dingen mee mis: de buffer lengte is hardcoded en het geheugen wordt niet vrijgegeven. Een <code>FileReader</code> klasse kan gewoon niet aangemaakt kan worden. Zoals je kan zien is dit véél meer <strong>low-level</strong> werk dan een simpele Java one-liner als <code>Files.readAllBytes</code>!</p>
 
@@ -335,7 +335,7 @@ int main() {
 }
 </code></pre>
 
-<p>Compileren met `<code>g++ -std=c++11 -o fileio fileio.cpp</code></p>
+<p>Compileren met <code>g++ -std=c++11 -o fileio fileio.cpp</code>.</p>
 
 <p>C++ streams verbergen de low-level details van C File IO maar achterliggend <a href="http://insanecoding.blogspot.com/2011/11/how-to-read-in-file-in-c.html">gebeurt natuurlijk hetzelfde</a>. Zoals je kan zien voorziet C++ ook <code>class</code>, <code>public</code>en <code>new</code> <em>keywords</em> die Java programmeurs wel kennen. Zelfs <code>auto</code>in C++ 11 is de <code>var</code>in C# die Java mist.</p>
 
@@ -686,7 +686,7 @@ graph TD
 
 <h2 id="de-boel-compileren">De boel compileren</h2>
 
-<p>We gebruiken de UNIX <code>gcc</code> compiler om C soure files om te zetten in binaries. Het simpelste om iets te compileren is:</p>
+<p>We gebruiken de UNIX GNU <code>gcc</code> compiler om C soure files om te zetten in binaries. Het simpelste om iets te compileren is:</p>
 
 <blockquote>
 <p><code>gcc *.c</code></p>
