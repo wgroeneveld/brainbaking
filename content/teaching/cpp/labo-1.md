@@ -71,7 +71,7 @@ int main() {
 }
 ```
 
-Compileren met ``gcc -o fileio fileio.c``
+Compileren met `gcc -o fileio fileio.c`.
 
 Hier zijn nog veel dingen mee mis: de buffer lengte is hardcoded en het geheugen wordt niet vrijgegeven. Een `FileReader` klasse kan gewoon niet aangemaakt kan worden. Zoals je kan zien is dit véél meer **low-level** werk dan een simpele Java one-liner als `Files.readAllBytes`!
 
@@ -102,7 +102,7 @@ int main() {
 }
 ```
 
-Compileren met ``g++ -std=c++11 -o fileio fileio.cpp`
+Compileren met `g++ -std=c++11 -o fileio fileio.cpp`.
 
 C++ streams verbergen de low-level details van C File IO maar achterliggend [gebeurt natuurlijk hetzelfde](http://insanecoding.blogspot.com/2011/11/how-to-read-in-file-in-c.html). Zoals je kan zien voorziet C++ ook ``class``, ``public``en ``new`` _keywords_ die Java programmeurs wel kennen. Zelfs ``auto``in C++ 11 is de ``var``in C# die Java mist.
 
@@ -441,7 +441,7 @@ Functies die in andere source files gedeclareerd zijn moet je dus herdefiniëren
 
 ## De boel compileren
 
-We gebruiken de UNIX `gcc` compiler om C soure files om te zetten in binaries. Het simpelste om iets te compileren is:
+We gebruiken de UNIX GNU `gcc` compiler om C soure files om te zetten in binaries. Het simpelste om iets te compileren is:
 
 > `gcc *.c`
 

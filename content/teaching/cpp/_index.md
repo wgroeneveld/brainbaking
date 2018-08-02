@@ -38,6 +38,11 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 10. [GUI ontwerp met C++ in Qt: een introductie](/teaching/cpp/labo-10)
 11. [GUI ontwerp met C++ in Qt: een GBA spel porten naar Qt](/teaching/cpp/labo-11)
 
+### Extra informatie
+
+- Project opdracht
+- Evaluatiecriteria schriftelijk examen
+
 ## Syllabus
 
 - **Lesgever**: Wouter Groeneveld - <a href="mailto:wouter.groeneveld@kuleuven.be">wouter.groeneveld@kuleuven.be</a>
