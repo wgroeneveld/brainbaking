@@ -17,12 +17,10 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 
 ### Hoorcolleges
 
-1. [Introductie in C: context, ecosysteem](/teaching/cpp/slides-1/)
-2. Pointers in C/C++
-3. Introductie in C++: context, ecosysteem
-4. Object-Georiënteerd denken in C++: domein modellen, abstractielagen
-5. Een introductie in GUI ontwerp met Qt
-6. Samenvatting, examen info
+1. [Introductie in C/C++: context, ecosysteem](/teaching/cpp/slides-1/)
+2. [Pointers in C, dynamisch geheugen in C++](/teaching/cpp/slides-2/)
+3. Introductie in Object-Georiënteerd denken in C++
+4. Een introductie in GUI ontwerp met Qt, Samenvatting, examen info
 
 ### Labo noties
 

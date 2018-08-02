@@ -15,6 +15,16 @@
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//lib/js/html5shiv.js"></script>
     <![endif]-->
+
+    <link href="{{"mermaid/mermaid.css" | relURL}}" type="text/css" rel="stylesheet"/>
+    <script defer src="{{"mermaid/mermaid.min.js" | relURL}}">
+      mermaid.initialize({
+        startOnLoad: true,
+        flowchart: {
+          useMaxWidth: true
+        }
+      });
+    </script>
   </head>
 
   <body>

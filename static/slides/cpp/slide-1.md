@@ -26,31 +26,31 @@ ___
 
 ## Waarom C(++) leren?
 
-Daarom: embedded systems
+#### Daarom: embedded systems
 
 <img src="/slides/cpp/img/embedded.png"/>
 
 ___
 
-Daarom: embedded systems
+#### Daarom: embedded systems
 
 <img src="/img/teaching/gba.jpg"/>
 
 ___
 
-Daarom: als performantie een prioriteit is
+#### Daarom: als performantie een prioriteit is
 
 <img src="/slides/cpp/img/unrealengine.jpg"/>
 
 ___
 
-Daarom: TIOBE Index
+#### Daarom: TIOBE Index
 
 <img src="/slides/cpp/img/index.png"/>
 
 ___
 
-Daarom: 
+#### Daarom: 
 
 - Historiek
   - Lang in gebruik t.o.v. andere moderne talen
