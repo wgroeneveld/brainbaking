@@ -14,6 +14,16 @@
     
     
     <item>
+      <title>Domain Driven Design in C</title>
+      <link>https://brainbaking.com/post/domain-driven-design-in-c/</link>
+      <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/domain-driven-design-in-c/</guid>
+      <description>As old as the language C may be, it took other languages a long time to catch up with something as mundane as a pointer. Pointers are the bread and butter of any C program and are widely regarded as a horrifying thing to work with. It might be a drag and require some plumbing (as with any language) but the payoff is extreme flexibility and control.
+An address can point to anything - that includes functions.</description>
+    </item>
+    
+    <item>
       <title>Computer Science learning pathways</title>
       <link>https://brainbaking.com/post/informatics-education-modules/</link>
       <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>

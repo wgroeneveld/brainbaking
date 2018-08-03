@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://brainbaking.com/post/domain-driven-design-in-c/</loc>
+    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/essays/over-intellect/</loc>
     <lastmod>2018-07-28T12:59:48+02:00</lastmod>
   </url>
@@ -281,7 +286,7 @@
   
   <url>
     <loc>https://brainbaking.com/</loc>
-    <lastmod>2018-07-28T12:59:48+02:00</lastmod>
+    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -304,8 +309,14 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/c/</loc>
+    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/tags/c&#43;&#43;/</loc>
-    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
+    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -377,7 +388,7 @@
   
   <url>
     <loc>https://brainbaking.com/tags/domain-driven-design/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

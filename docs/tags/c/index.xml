@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on Brain Baking</title>
+    <link>https://brainbaking.com/tags/c/</link>
+    <description>Recent content in C on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Fri, 03 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://brainbaking.com/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Domain Driven Design in C</title>
+      <link>https://brainbaking.com/post/domain-driven-design-in-c/</link>
+      <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/domain-driven-design-in-c/</guid>
+      <description>As old as the language C may be, it took other languages a long time to catch up with something as mundane as a pointer. Pointers are the bread and butter of any C program and are widely regarded as a horrifying thing to work with. It might be a drag and require some plumbing (as with any language) but the payoff is extreme flexibility and control.
+An address can point to anything - that includes functions.</description>
+    </item>
+    
+  </channel>
+</rss>

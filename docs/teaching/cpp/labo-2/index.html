@@ -438,7 +438,7 @@ int is_oud(Persoon* this) {
 Persoon* create_persoon(int leeftijd) {
     Persoon* persoon = malloc(sizeof(Persoon));
     persoon-&gt;leeftijd = leeftijd;
-    persoon-&gt;is_oud = is_oud;
+    persoon-&gt;is_oud = &amp;is_oud;
 
     return persoon;
 }

@@ -173,7 +173,7 @@ int is_oud(Persoon* this) {
 Persoon* create_persoon(int leeftijd) {
     Persoon* persoon = malloc(sizeof(Persoon));
     persoon->leeftijd = leeftijd;
-    persoon->is_oud = is_oud;
+    persoon->is_oud = &is_oud;
 
     return persoon;
 }
