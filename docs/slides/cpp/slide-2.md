@@ -327,6 +327,10 @@ int main() {
 }
 ```
 
+___
+
+### Member variables: pointers? refs? 
+
 ---
 
 <!-- .slide: data-background="#008eb3" -->

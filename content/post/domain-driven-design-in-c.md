@@ -100,7 +100,7 @@ Person* newPerson(int age) {
 
 ### What about C++?
 
-Are you wondering what the ++ in C++ might stand for? The addition of "real" classes is a revelation to old-time C programmers that tried aiming for readability in a "domain". The above example implemented in C++ is trivial:
+Are you wondering what the ++ in C++ might stand for? The addition of "real" classes is a revelation to old-time C programmers that tried aiming for readability in a "domain"[^2]. The above example implemented in C++ is trivial:
 
 ```C
 class Person {
@@ -158,3 +158,4 @@ That leaves us to conclude that if you're still writing C on some embedded hardw
 The C++ language is continually evolving while the ANSI C standard is "done"[^1] - the C++11 standard eased a lot of the mystical syntax pain. So if you can migrate from `gcc` to `g++`, I don't see why not. 
 
 [^1]: Well, not completely, [C11](https://en.wikipedia.org/wiki/ANSI_C#C11) introduced an cross-platform multi-threading API.
+[^2]: DDD practices can't be implemented without proper use of an object model - within that context I'm calling that "domain" driven.

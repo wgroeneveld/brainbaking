@@ -66,9 +66,28 @@ int* ptr = val;          // compiler error
 int* ptr = &val;         // ok
 int** ptr_to_ptr = ptr;  // compiler error
 int** ptr_to_ptr = &ptr; // ok
+int*& ref_to_ptr = &ptr; // ok in C++ met const
 ```
 
-<img src="/slides/cpp/img/we-need-to-go-deeper.jpg"/>
+<img src="/slides/cpp/img/we-need-to-go-deeper.jpg" style="width: 60%" />
+
+Lees symbolen van rechts naar links:<br/>
+**reference** van **pointer** van **int**.
+
+___
+
+### Pointer declaratie valkuil
+
+Wat is er mis met
+
+```C
+int* ptr, ptr2;
+```
+
+Oeps!
+
+* `int* bla` of `int *bla`
+* `int& ref` of `int &ref`
 
 ---
 
@@ -326,6 +345,64 @@ int main() {
   passSomeRef(struct.get());  // pass-by-pointer ref, geen kopie, ok
 }
 ```
+
+___
+
+### Member variables: pointers? refs? 
+
+```C
+class Stuff {
+private:
+  Dependency  dep;                   // ok?
+  Dependency* dep;                   // better?
+  Dependency& dep;                   // more better?
+  std::unique_ptr<Dependency> dep;   // better-st?
+  std::shared_ptr<Dependency> dep;   // bestesttt?
+}
+```
+Hangt ervan af...
+
+___
+
+### Stack VS Heap: let op Java devs
+
+```Java
+class Stuff {
+  private Dependency dep;
+  public Stuff(Dependency dep) { this.dep = dep; }
+  public void go() { dep.go(); }
+}
+Stuff someMethod() {
+  Dependency localDepInstance = new Dependency(5); // on heap!
+  return new Stuff(localDepInstance);             // ok
+}
+```
+Probleem in C++:
+
+```C
+class Stuff {
+private:
+  Dependency* dep;
+public:
+  Stuff(Dependency* dep) : dep(dep) {}
+  void go() { dep->go(); }
+}
+Stuff* someMethod() {
+  Dependency localDepInstance(5);       // whoops, on stack!
+  return new Stuff(&localDepInstance);  // will hold invalid ref
+}
+```
+___
+
+<img src="/slides/cpp/img/stack.png"/>
+
+<span style="font-size: 8pt;">[bron](http://kholdstare.github.io/index.html)</span>
+
+___
+
+### Java: <br/>Objecten = heap, primitives = stack
+
+### C++: <br/>Alle non-dynamics = stack. Zelf beheren
 
 ---
 
