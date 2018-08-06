@@ -81,9 +81,9 @@ An address can point to anything - that includes functions.",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "2018",
     "datePublished": "2018-08-03 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-08-03 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2018-08-06 11:34:08 &#43;0200 CEST",
     "url" : "https://brainbaking.com/post/domain-driven-design-in-c/",
-    "wordCount" : "1006",
+    "wordCount" : "1028",
     "keywords" : [ "domain driven design","C","C&#43;&#43;","Domain Driven Design in C", "post" ]
 }
 </script>
@@ -379,7 +379,7 @@ prinf(&quot;%d&quot;, is_old(george));        // 1
 
 <h3 id="what-about-c">What about C++?</h3>
 
-<p>Are you wondering what the ++ in C++ might stand for? The addition of &ldquo;real&rdquo; classes is a revelation to old-time C programmers that tried aiming for readability in a &ldquo;domain&rdquo;. The above example implemented in C++ is trivial:</p>
+<p>Are you wondering what the ++ in C++ might stand for? The addition of &ldquo;real&rdquo; classes is a revelation to old-time C programmers that tried aiming for readability in a &ldquo;domain&rdquo;<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">1</a></sup>. The above example implemented in C++ is trivial:</p>
 
 <pre><code class="language-C">class Person {
 private:
@@ -430,12 +430,14 @@ int main() {
 
 <p>That leaves us to conclude that if you&rsquo;re still writing C on some embedded hardware, don&rsquo;t forget that it is possible to group functions using structures but requires some plumbing that you may or may not like.</p>
 
-<p>The C++ language is continually evolving while the ANSI C standard is &ldquo;done&rdquo;<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> - the C++11 standard eased a lot of the mystical syntax pain. So if you can migrate from <code>gcc</code> to <code>g++</code>, I don&rsquo;t see why not.</p>
+<p>The C++ language is continually evolving while the ANSI C standard is &ldquo;done&rdquo;<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">2</a></sup> - the C++11 standard eased a lot of the mystical syntax pain. So if you can migrate from <code>gcc</code> to <code>g++</code>, I don&rsquo;t see why not.</p>
 <div class="footnotes">
 
 <hr />
 
 <ol>
+<li id="fn:2">DDD practices can&rsquo;t be implemented without proper use of an object model - within that context I&rsquo;m calling that &ldquo;domain&rdquo; driven.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
 <li id="fn:1">Well, not completely, <a href="https://en.wikipedia.org/wiki/ANSI_C#C11">C11</a> introduced an cross-platform multi-threading API.
  <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
 </ol>

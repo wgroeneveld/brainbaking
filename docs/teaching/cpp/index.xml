@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Thu, 02 Aug 2018 12:31:05 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 06 Aug 2018 11:34:08 +0200</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/teaching/cpp/index.xml" rel="self" type="application/rss+xml" />
     
@@ -29,6 +29,26 @@
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/slides-2/</guid>
       <description>document.write( &#39;&#39; );  mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });          Reveal.initialize({ width: 960, height: 700, controls: true, progress: true, history: true, transition: &#39;fade&#39;, center: true, slideNumber: true, theme: Reveal.getQueryHash().theme, dependencies: [ { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//lib/js/classList.js&#39;, condition: function() { return !document.body.classList; } }, { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//plugin/markdown/marked.js&#39;, condition: function() { return !!document.querySelector( &#39;[data-markdown]&#39; ); } }, { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//plugin/markdown/markdown.js&#39;, condition: function() { return !</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://brainbaking.com/teaching/cpp/slides-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/slides-3/</guid>
+      <description>document.write( &#39;&#39; );  mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });          Reveal.initialize({ width: 960, height: 700, controls: true, progress: true, history: true, transition: &#39;fade&#39;, center: true, slideNumber: true, theme: Reveal.getQueryHash().theme, dependencies: [ { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//lib/js/classList.js&#39;, condition: function() { return !document.body.classList; } }, { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//plugin/markdown/marked.js&#39;, condition: function() { return !!document.querySelector( &#39;[data-markdown]&#39; ); } }, { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//plugin/markdown/markdown.js&#39;, condition: function() { return !</description>
+    </item>
+    
+    <item>
+      <title>Labo 10: Een introductie in GUI ontwerp met C&#43;&#43; in Qt</title>
+      <link>https://brainbaking.com/teaching/cpp/labo-10/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/labo-10/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
+UI Frameworks De C++ taal is een krachtige tool om native code te compileren voor specifieke CPU en OS systemen. Daardoor is het ook vaak een logische keuze om complexe interfaces in te ontwerpen en ontwikkelen, van Photoshop tot Google Chrome. Interfaces brengen echter weer andere problemen met zich mee: elk besturingssysteem heeft ondertussen zijn eigen interpretatie.
+De Windows standaard was MFC die de WinAPI wrapt, voor OSX was dit de Carbon API.</description>
     </item>
     
     <item>
