@@ -110,7 +110,7 @@ Look at this well-documented [Google Coding Interview University](https://github
 > I originally created this as a short to-do list of study topics for becoming a software engineer, but it grew to the large list you see today. After going through this study plan, I got hired as a Software Development Engineer at Amazon. <br/>
 > This is my multi-month study plan for going from web developer (self-taught, no CS degree) to software engineer for a large company.
 
-This clearly suggests a (big?) difference between a developer and an _engineer_.[^2] The latter sounds a cooler for sure. But what exactly would be required to make the jump from one title to the other, according to jwasham? The list is too long so let's make some abstractions:
+This clearly suggests a (big?) difference between a developer and an _engineer_.[^2] The latter sounds a lot cooler for sure. But what exactly would be required to make the jump from one title to the other, according to jwasham? The list is too long so let's make some abstractions:
 
 - Algorithms (including NP-completeness) and their complexity
 - Data structures (including dynamic programming)
