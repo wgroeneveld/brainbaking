@@ -80,16 +80,12 @@ When it comes to keeping track of what I read, Goodreads might be the best thing
 
 
 <script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-45748221-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
+<script async src='//www.google-analytics.com/analytics.js'></script>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -246,7 +242,12 @@ if (!doNotTrack) {
         <h4>Pattern recognition in books</h4>
         <h5>
         	<span style="color: grey;">
-        		<i class='fa fa-calendar'></i>&nbsp;27 January 2018
+        		<span title="Created Date">
+                    <i class='fa fa-calendar'></i>&nbsp;27 January 2018
+                </span>&nbsp;|&nbsp;
+                <span title="Last Modified Date">
+                    <i class='fa fa-calendar-check-o'></i>&nbsp;27 April 2018
+                </span>
     		</span>
     	</h5>
     
@@ -338,7 +339,10 @@ if (!doNotTrack) {
 
     
     
-    <h4 class="page-header"><i class="fa fa-comments-o"></i>&nbsp;Join the Discussion on 
+    <h4 class="page-header"><i class="fa fa-comments-o"></i>&nbsp;
+        
+            Discussieer mee op 
+        
         <a href="https://twitter.com/woutergroenev">Twitter</a>!</h4>
 
         

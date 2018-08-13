@@ -29,7 +29,7 @@ Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://git
 #### Writing and philosophizing
 
 * A [fountain pen addict](/post/fountain-pens-first-look/) and avid [<i class='fa fa-pencil'></i>&nbsp;journaler](/post/journaling-in-practice/)
-* This website is the ideal base for writing down my thoughts about virtually anything, primarly intended to amuse myself and not others.
+* This website[^1] is the ideal base for writing down my thoughts about virtually anything, primarly intended to amuse myself and not others.
 
 #### Drawing
 
@@ -48,3 +48,5 @@ These are the latest 12 books I've read:
 
 </div>
 <script src="https://www.goodreads.com/review/grid_widget/5451893.Wouter's%20bookshelf:%20read?cover_size=medium&hide_link=&hide_title=&num_books=12&order=d&shelf=read&sort=date_added&widget_id=1496758344" type="text/javascript" charset="utf-8"></script>
+
+[^1]: This website uses an [anonymized IP](https://support.google.com/analytics/answer/2763052?hl=en) form of Google Analytics for the sole purpose of tracking website traffic. 

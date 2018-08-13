@@ -32,7 +32,12 @@
 
     <!-- discuss without disqus: twitter knopke -->
     {{ if (not .Params.disableComments) }}
-    <h4 class="page-header"><i class="fa fa-comments-o"></i>&nbsp;Join the Discussion on 
+    <h4 class="page-header"><i class="fa fa-comments-o"></i>&nbsp;
+        {{ if eq "essays" .Section }}
+            Discussieer mee op 
+        {{ else }}
+            Join the Discussion on 
+        {{ end }}
         <a href="https://twitter.com/{{ .Site.Params.twitter }}">Twitter</a>!</h4>
 
         {{ if .Site.DisqusShortname }}

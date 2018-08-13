@@ -15,7 +15,12 @@
         <h4>{{ .Params.subtitle }}</h4>
         <h5>
         	<span style="color: grey;">
-        		<i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}
+        		<span title="Created Date">
+                    <i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}
+                </span>&nbsp;|&nbsp;
+                <span title="Last Modified Date">
+                    <i class='fa fa-calendar-check-o'></i>&nbsp;{{ .Lastmod.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+                </span>
     		</span>
     	</h5>
     {{ end }}
