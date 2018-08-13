@@ -5,6 +5,8 @@ subtitle: Een cultuur aanbrengen en onderhouden
 published: true
 ---
 
+Addendum: [7 highly successful software engineering cultures](https://techbeacon.com/lessons-7-highly-successful-software-engineering-cultures) is de moeite om in detail na te lezen, waarbij bedrijven zoals GitLab hun _"Team Handboek"_ open stellen. Het gaat véél verder dan enkel een cultuur: er staat in wanneer aandeelhouders samenkomen, hoe er omgegaan wordt met nieuwe kandidaten en hoe je je verlof dient in te plannen. **Transparantie** zò sterk door de aorta van het bedrijf laten stromen, is zeer bewonderenswaardig. 
+
 Een cultuur kweken, hoe doe je dat? Op een Petri schaaltje? Wat als die specifieke cultuur _bedrijfscultuur_ zou zijn? Een interessant probleem waar uiteraard ook filosofie bij komt kijken. Ethiek, in de bedrijfswereld. Een klassieke **gouden regel** introduceren en verwachten dat vanaf dan alle werknemers zie regel handhaven zou naïef zijn: we weten uit ervaring dat dit heel vaak onvoldoende is. Wat ik met "uit ervaring" bedoel is:
 
 1. Ideeën zoals deze worden vaker aanvaard _bottom-up_ in plaats van _top-down_.

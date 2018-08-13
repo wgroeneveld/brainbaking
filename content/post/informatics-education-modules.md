@@ -99,6 +99,12 @@ There has been a lot of shoving-around (from bachelor to master and the other wa
 4. AI and machine learning became more apparent. I was interested in this but in 2006 you could only follow a Master after Master in AI in another university. 
 5. "Agile" is a thing and part of policy informatics. (Huh?)
 
+According to the "Computer Science Education in 2018" interview[^5], CS education has been relatively static, with core classes still focused on programming (languages, algorithms, data structures), mathematics and systems design (operating systems, computer architecture). The objectives stay the same but the content has obviously been evolving among with us. 
+
+> Over the years, I have seen curricular changes to make room for breadth courses unrelated to CS, and to make the programs more accessible to those who are not strong in mathematics. I believe that these changes come at the expense of a deeper understanding of computation.
+
+Something has to be cut if one intends to make room and that something usually is mathematics - for better or for worse. 
+
 ## Essential Computer Science
 
 It seems to me that most courses map quite well with Milo's requirements on game programming. Would that also be the case with other source material?
@@ -164,3 +170,4 @@ That also seems to clarify the difference between developing and engineering. Th
 [^2]: To quote the source: "Large software companies like Google, Amazon, Facebook and Microsoft view software engineering as different from software/web development, and they require computer science knowledge."
 [^3]: Remember, other graduate schools offer other trajectories. 
 [^4]: Those skills are also trained while learning CS so it's not to say that it will be useless!
+[^5]: February 2018, DOI: 10.1109/MITP.2018.011021350
