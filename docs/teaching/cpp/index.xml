@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Mon, 06 Aug 2018 11:34:08 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Aug 2018 12:10:05 +0200</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/teaching/cpp/index.xml" rel="self" type="application/rss+xml" />
     
@@ -147,6 +147,16 @@ Abstracties creëren Als ontwikkelaar wil ik niet altijd bezig zijn met de juist
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
 Uit labo 4 weten we hoe het VRAM van de GBA in elkaar steekt: het bestaat uit char en screen blocks. Character blocks 0 tot en met 3 vanaf 0x6010000 zijn gereserveerd voor achtergrond lagen: dat is in totaal meer geheugen dan voor sprites. De Gameboy Advance voorziet aparte registers om de 4 achtergrond lagen te configureren.
 Voor sprites speelde een tilemap geen rol, voor grote achtergronden wel: het kost immers minder ruimte om de tile data apart op te slaan en in een map per tile te refereren naar die data.</description>
+    </item>
+    
+    <item>
+      <title>Software ontwerp in C/C&#43;&#43;: Project opdracht</title>
+      <link>https://brainbaking.com/teaching/cpp/project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/project/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
+Project opdracht Om jullie recent bijgeslepen object-geörienteerde technieken te laten zien gaan jullie een GBA spel ontwerpen en ontwikkelen in C++11. De focus van de opdracht ligt niet op correcte low-level IO mapping maar op kritisch denken en testen zoals gezien in labo 7. Uiteraard komen zowel pointers en GBA programming technieken van de vroegere labo&amp;rsquo;s, als C++ class inheritance en abstractie lagen uit de latere labo&amp;rsquo;s aan bod.</description>
     </item>
     
   </channel>
