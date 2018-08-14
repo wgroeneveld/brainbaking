@@ -38,7 +38,7 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 
 ### Extra informatie
 
-- Project opdracht
+- [Project opdracht](/teaching/cpp/project)
 - Evaluatiecriteria schriftelijk examen
 
 ## Syllabus
