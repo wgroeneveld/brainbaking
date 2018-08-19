@@ -1,7 +1,7 @@
 ---
 title: Boeken die mij gevormd hebben tot wie ik ben
 date: '2018-08-20'
-bigimg: /img/boekjesheader.png
+bigimg: /img/2017inbooks.png
 subtitle: Deze teksten lieten een blijvende indruk na
 tags:
   - reading
