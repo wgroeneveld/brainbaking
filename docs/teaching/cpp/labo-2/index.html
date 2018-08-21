@@ -40,8 +40,9 @@
       "headline" : "Labo 2: Pointers in C en C&#43;&#43;",
     
     "description" : "&laquo;&nbsp;Terug naar Software ontwerp in C/C++ &raquo;&nbsp;Naar de labo opgave
-&ldquo;Compound&rdquo; types C/C++ gebruikt een pass-by-value systeem om variabelen door te geven aan functies. Dit wil zeggen dat de waarde gekopiëerd wordt, en die functie geen wijzigingen kan aanbrengen aan de originele waarde. Dat is iets positief: separation of concerns.
-Als we denken aan ons persoon voorbeeld van labo 1, wordt die struct dus telkens overgekopiëerd. Dat kan zeer inefficiënt zijn, naargelang de grootte van de data!",
+In onderstaande schematische voorbeelden zijn de volgende concepten expliciet te onderscheiden:
+ Een naam van een variabele Een waarde van een variabele  En de volgende impliciet:
+ Het type van een variabele Het adres van een variabele  Het type van een variabele bepaalt de hoeveelheid geheugen die vrijgemaakt wordt om de waarde te kunnen bewaren. De waarde is ofwel een actuele waarde ofwel een adres dat refereert naar een andere waarde.",
     
       "inLanguage" : "nl-BE",
     
@@ -63,10 +64,10 @@ Als we denken aan ons persoon voorbeeld van labo 1, wordt die struct dus telkens
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-08-03 14:11:41 &#43;0200 CEST",
-    "dateModified" : "2018-08-03 14:11:41 &#43;0200 CEST",
+    "datePublished": "2018-08-21 15:22:26 &#43;0200 CEST",
+    "dateModified" : "2018-08-21 15:22:26 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-2/",
-    "wordCount" : "1763",
+    "wordCount" : "1911",
     "keywords" : [ "Labo 2: Pointers in C en C&#43;&#43;", "teaching" ]
 }
 </script>
@@ -137,7 +138,7 @@ Als we denken aan ons persoon voorbeeld van labo 1, wordt die struct dus telkens
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.43" />
+ <meta name="generator" content="Hugo 0.47.1" />
         
 
         
@@ -239,6 +240,59 @@ Als we denken aan ons persoon voorbeeld van labo 1, wordt die struct dus telkens
 <p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++</a><br/>
 &raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
 
+<p>In onderstaande schematische voorbeelden zijn de volgende concepten expliciet te onderscheiden:</p>
+
+<ol>
+<li>Een <strong>naam</strong> van een variabele</li>
+<li>Een <strong>waarde</strong> van een variabele</li>
+</ol>
+
+<p>En de volgende impliciet:</p>
+
+<ol>
+<li>Het <strong>type</strong> van een variabele</li>
+<li>Het <strong>adres</strong> van een variabele</li>
+</ol>
+
+<p>Het <strong>type</strong> van een variabele bepaalt de hoeveelheid geheugen die vrijgemaakt wordt om de waarde te kunnen bewaren. De waarde is ofwel een actuele waarde ofwel een adres dat refereert naar een andere waarde. Elke variabele heeft een uniek adres. Variabelen kunnen dus naar elkaar verwijzen.</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph TD;
+    A[variabelenaam<br/>waarde]
+    B{variabelenaam<br/>adres}
+
+</div>
+
+<p>Dit voorbeeld visualiseert <code>int a = 5</code>:</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph TD;
+    A[a<br/>5]
+
+</div>
+
+<p>Waarbij het type, <code>int</code>, afhankelijk van het platform een aantal bytes reserveert (<code>sizeof(int)</code>) op een bepaald adres. Het adres kunnen we zelfs manipuleren in C/C++ en is essentiëel voor het gebruik van onder andere arrays.</p>
+
 <h2 id="compound-types">&ldquo;Compound&rdquo; types</h2>
 
 <p>C/C++ gebruikt een <em>pass-by-value</em> systeem om variabelen door te geven aan functies. Dit wil zeggen dat de waarde gekopiëerd wordt, en die functie geen wijzigingen kan aanbrengen aan de originele waarde. Dat is iets positief: <strong>separation of concerns</strong>.</p>
@@ -277,7 +331,7 @@ int &amp;vrouwelijkheid;    // compiler error
 <div class="mermaid" align="center" >
 	
 graph LR;
-    A[&mannelijkheid] -->|ref| B[geslacht<br/>10] 
+    A{&mannelijkheid} -->|ref| B[geslacht<br/>10] 
 
 </div>
 
@@ -307,7 +361,7 @@ leeftijd = &amp;oud;
 <div class="mermaid" align="center" >
 	
 graph LR;
-    A[*leeftijd] -->|na regel 3| B[jong<br/>10]
+    A{*leeftijd} -->|na regel 3| B[jong<br/>10]
     A --> |na regel 4| C[oud<br/>80]
 
 </div>
@@ -342,7 +396,7 @@ int **ptr_to_ptr = &amp;ptr;
 <div class="mermaid" align="center" >
 	
 graph LR;
-    A[**ptr_to_ptr] -->|ref| B[*ptr]
+    A{"**ptr_to_ptr"} -->|ref| B{"*ptr"}
     B --> |ref| C[jong<br/>10]
 
 </div>

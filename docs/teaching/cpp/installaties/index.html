@@ -5,14 +5,14 @@
 
 
 
-	<meta name="description" content="Brain Baking">
-	<meta content="Brain Baking" property="og:title">
-	<meta content="Brain Baking" property="og:description">
+	<meta name="description" content="Installatieinstructies op Linux - Brain Baking">
+	<meta content="Installatieinstructies op Linux - Brain Baking" property="og:title">
+	<meta content="Installatieinstructies op Linux - Brain Baking" property="og:description">
 
 
 
 
-<meta property="og:url" content="https://brainbaking.com/" />
+<meta property="og:url" content="https://brainbaking.com/teaching/cpp/installaties/" />
 <meta property="og:type" content="website" />
 
 
@@ -20,8 +20,8 @@
 
 
 <meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
-<meta property="article:modified_time" content="2013-10-01 00:00:00 &#43;0000 UTC" />
-<meta property="article:section" content="" />
+<meta property="article:modified_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="teaching" />
 
 
 
@@ -34,14 +34,18 @@
          "@type": "WebPage",
          "@id": "https://brainbaking.com/"
     },
-    "articleSection" : "",
-    "name" : "Brain Baking",
+    "articleSection" : "teaching",
+    "name" : "Installatieinstructies op Linux",
     
-      "headline" : "Brain Baking",
+      "headline" : "Installatieinstructies op Linux",
     
-    "description" : "",
+    "description" : "&laquo;&nbsp;Terug naar Software ontwerp in C/C++
+Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de package tool apt-get bij Ubuntu:
+ build-essential als gcc/g++ build tools (preinstalled?) git qt5-default en daarna qtcreator  Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren. sublime-text (vereist toevoegen van een repository).
+De volgende tools worden verwacht gedownload te worden via git:
+ Google Test (zie labo 7) gba-sprite-engine (zie opdracht)  De volgende tools worden verwacht manueel te downloaden:",
     
-      "inLanguage" : "en-US",
+      "inLanguage" : "nl-BE",
     
     
       "image": "https://brainbaking.com/img/avatar-icon.png",
@@ -60,12 +64,12 @@
 	  },
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
-    "copyrightYear" : "2013",
-    "datePublished": "2018-05-03 16:09:41 &#43;0200 CEST",
-    "dateModified" : "2018-05-03 16:09:41 &#43;0200 CEST",
-    "url" : "https://brainbaking.com/",
-    "wordCount" : "0",
-    "keywords" : [ "Brain Baking", "" ]
+    "copyrightYear" : "0001",
+    "datePublished": "2018-08-21 15:44:01 &#43;0200 CEST",
+    "dateModified" : "2018-08-21 15:44:01 &#43;0200 CEST",
+    "url" : "https://brainbaking.com/teaching/cpp/installaties/",
+    "wordCount" : "117",
+    "keywords" : [ "Installatieinstructies op Linux", "teaching" ]
 }
 </script>
 
@@ -80,7 +84,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Brain Baking</title>
+        <title>Installatieinstructies op Linux</title>
         
         <style>
 
@@ -90,7 +94,7 @@
     }
 
     :root {
-    	--accent: purple;
+    	--accent: #008eb3;
         --border-width:  5px ;
     }
 
@@ -137,9 +141,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.47.1" />
         
-        <link href="https://brainbaking.com/index.xml" rel="alternate" type="application/rss+xml" title="Brain Baking" />
-        <link href="https://brainbaking.com/index.xml" rel="feed" type="application/rss+xml" title="Brain Baking" />
-        
 
         
         
@@ -169,7 +170,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Brain Baking</a>
+                    <a class="navbar-brand visible-xs" href="#">Installatieinstructies op Linux</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -210,67 +211,86 @@
         </nav>
 
 
+
+
 <main>
 
-    <div class="intro">
+    <a name="top"></a>
+    <div class="item">
 
+    
+    <h3>
         
+        <a href="/teaching/cpp/installaties/">Installatieinstructies op Linux</a>
+    </h3>
+    
 
-        <h1 style="color: #555">
-        	<span style="float: left;">Brain</span>
-			<div class="avatar-container" style="float: left;">
-			  <div class="avatar-img-border">
-		          <a title="Brain Baking" href="https://brainbaking.com/">
-		              <img class="avatar-img" src="/img/avatar-icon.png" alt="Brain Baking" />
-		          </a>
-			  </div>
-			</div>
-			<span style="float: left;">Baking</span>
-		</h1>
-
-        <blockquote class="text-justify" style="clear: both;">
-        	<em><i class="fa fa-lightbulb-o"></i>&nbsp;<a href="/">Brain Baking</a>:</em> transforming 
-        	<span style="white-space: nowrap;">
-        		<i class='fa fa-user'></i>&nbsp;<a href="/about">personal</a>
-    		</span> thoughts about thoughts into 
-    		<span style="white-space: nowrap;">
-        		<i class='fa fa-graduation-cap'></i>&nbsp;<a href="/teaching">well-digestible</a>
-    		</span> material. The reflective aroma of burnt nervous tissue. <br/>
-        	Includes a crispy crust of relations between 
-        	<span style="white-space: nowrap;">
-        		<i class='fa fa-file-code-o'></i>&nbsp;<a href="/post">technology</a>
-    		</span>,
-    		<span style="white-space: nowrap;">
-        		<i class='fa fa-book'></i>&nbsp;<a href="/essays">philosophy</a>
-    		</span> and 
-    		<span style="white-space: nowrap;">
-        		<i class='fa fa-tags'></i>&nbsp;<a href="/tags">the world</a>
-    		</span>.
-        </blockquote>
-
-        <hr/>
-
-        <div class="freshly-baked">
-	        <h3>
-	        	<i class="fa fa-newspaper-o"></i>&nbsp;Freshly baked thought:
-	        </h3>
-
-	        
-		    	
-		    	
-
-			    <h4>
-			    	<a href="/post/python-basics/">Python Class structure basics</a>
-			    </h4>
-			    A crash course in Python classes <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;1 October 2013</span>
-	        
-
-	        <hr/>
-	    </div>
-
-    </div>
+    
+    
+    
 
 
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++</a><br/></p>
+
+<h2 id="basisvereisten">Basisvereisten</h2>
+
+<p>De volgende tools worden verwacht geïnstalleerd te worden via de package tool <code>apt-get</code> bij Ubuntu:</p>
+
+<ul>
+<li>build-essential als gcc/g++ build tools (preinstalled?)</li>
+<li>git</li>
+<li>qt5-default en daarna qtcreator</li>
+</ul>
+
+<p>Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren. <code>sublime-text</code> (vereist toevoegen van <a href="https://www.sublimetext.com/docs/3/linux_repositories.html">een repository</a>).</p>
+
+<p>De volgende tools worden verwacht gedownload te worden via git:</p>
+
+<ul>
+<li>Google Test (zie <a href="/teaching/cpp/labo-7">labo 7</a>)</li>
+<li>gba-sprite-engine (zie <a href="/teaching/cpp/project">opdracht</a>)</li>
+</ul>
+
+<p>De volgende tools worden verwacht manueel te downloaden:</p>
+
+<ul>
+<li>CLion</li>
+<li>CMake 3.12.x (nog niet in de package tool)</li>
+</ul>
+
+<h3 id="devkitpro-installeren">DevkitPro installeren</h3>
+
+<p>Zie <a href="/teaching/cpp/labo-3">labo 3</a></p>
+
+<h3 id="wijzigingen-in-het-bash-profiel">Wijzigingen in het Bash profiel</h3>
+
+<p>In je <code>.bashrc</code> bestand in de home folder <code>~</code> voeg je het volgende toe:</p>
+
+<pre>
+export DEVKITPATH="/opt/devkitpro/devkitARM/bin"
+export CMAKE_HOME="/opt/cmake-3.12.1-Linux-x86_64"
+export GTEST_DIR="/home/wouter/Development/googletest/googletest"
+PATH="$DEVKITPATH:$CMAKE_HOME/bin:$PATH"
+</pre>
+</div>
+
+    
+    
+
+    
+
+    
+    
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
 
 </main>
 

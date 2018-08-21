@@ -10,8 +10,11 @@ disableComments: true
 
 De volgende tools worden verwacht geïnstalleerd te worden via de package tool `apt-get` bij Ubuntu:
 
+* build-essential als gcc/g++ build tools (preinstalled?)
 * git
-* sublime-text (vereist toevoegen van [een repository](https://www.sublimetext.com/docs/3/linux_repositories.html))
+* qt5-default en daarna qtcreator
+
+Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren. `sublime-text` (vereist toevoegen van [een repository](https://www.sublimetext.com/docs/3/linux_repositories.html)).
 
 De volgende tools worden verwacht gedownload te worden via git:
 

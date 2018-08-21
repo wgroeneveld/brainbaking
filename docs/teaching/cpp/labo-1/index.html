@@ -63,10 +63,10 @@ C is een imperatieve programmeertaal. Dat zal je bij het oefenen wel merken: we 
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-08-02 10:20:05 &#43;0200 CEST",
-    "dateModified" : "2018-08-02 10:20:05 &#43;0200 CEST",
+    "datePublished": "2018-08-21 15:22:26 &#43;0200 CEST",
+    "dateModified" : "2018-08-21 15:22:26 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-1/",
-    "wordCount" : "3197",
+    "wordCount" : "3264",
     "keywords" : [ "Labo 1: Introductie in C", "teaching" ]
 }
 </script>
@@ -137,7 +137,7 @@ C is een imperatieve programmeertaal. Dat zal je bij het oefenen wel merken: we 
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.43" />
+ <meta name="generator" content="Hugo 0.47.1" />
         
 
         
@@ -759,6 +759,10 @@ add_executable(testje main.cpp biblio.cpp biblio.h dieren.cpp dieren.h)
 </pre>
 
 <p>Een simpel CMake bestand is véél eenvoudiger dan een Make bestand. Zie <a href="https://cmake.org/cmake-tutorial/">CMake tutorial</a>. CLion beheert de <code>add_executable</code> voor jou: nieuwe files toevoegen aan je project komen er automatisch in terecht.</p>
+
+<h5 id="cmake-voor-ubuntu">CMake voor Ubuntu</h5>
+
+<p>Ubuntu&rsquo;s <code>apt-get</code> package manager heeft niet altijd de laatste versie van CMake in zijn repository. Als alternatief kan je op <a href="https://cmake.org/download/">https://cmake.org/download/</a> de binaries downloaden (shellscript) en dit &ldquo;ergens&rdquo; installeren. Aangeraden is een <code>$CMAKE_HOME</code> omgevingsvariabele te maken en die toe te voegen aan je <code>$PATH</code>. In CLion kan je via <a href="https://www.jetbrains.com/help/clion/configuring-cmake.html">CLion settings</a> (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen.</p>
 
 <h2 id="labo-oefeningen">Labo oefeningen</h2>
 

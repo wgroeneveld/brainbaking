@@ -63,10 +63,10 @@ Software Modelleren Als software ontwikkelaar ben jij de uitvoerende kracht die 
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-07-23 17:00:52 &#43;0200 CEST",
-    "dateModified" : "2018-07-23 17:00:52 &#43;0200 CEST",
+    "datePublished": "2018-08-21 15:22:26 &#43;0200 CEST",
+    "dateModified" : "2018-08-21 15:22:26 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-7/",
-    "wordCount" : "2459",
+    "wordCount" : "2468",
     "keywords" : [ "Labo 7: Software ontwerpen", "teaching" ]
 }
 </script>
@@ -137,7 +137,7 @@ Software Modelleren Als software ontwikkelaar ben jij de uitvoerende kracht die 
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.43" />
+ <meta name="generator" content="Hugo 0.47.1" />
         
 
         
@@ -559,7 +559,8 @@ TEST(FactorialTest, HandlesPositiveInput) {
 
 <ul>
 <li>Download een release of clone de github repository</li>
-<li>Maak een build directory: <code>mkdir build</code> in de map googletest</li>
+<li><code>cd googletest</code></li>
+<li>Maak een build directory: <code>mkdir build</code> <strong>in de map googletest</strong></li>
 <li>Build cmake: <code>cd build &amp;&amp; cmake ./../</code></li>
 <li>Build google test: <code>make</code>. Dit geeft <code>libgtest.a</code> en <code>libgtest_main.a</code><br /></li>
 </ul></li>
@@ -568,6 +569,7 @@ TEST(FactorialTest, HandlesPositiveInput) {
 <ul>
 <li>Include de gtest headers met <code>include_directories()</code></li>
 <li>Link de libraries met <code>target_link_libraries()</code></li>
+<li>En (voor later) voorzie een omgevingsvariabele <code>$GTEST_DIR</code>.</li>
 </ul></li>
 </ul>
 

@@ -63,10 +63,10 @@ De GBA is een goede keuze om de kracht (en zwakheden) van C te demonstreren. Er 
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-07-24 21:43:40 &#43;0200 CEST",
-    "dateModified" : "2018-07-24 21:43:40 &#43;0200 CEST",
+    "datePublished": "2018-08-21 15:22:26 &#43;0200 CEST",
+    "dateModified" : "2018-08-21 15:22:26 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-3/",
-    "wordCount" : "1985",
+    "wordCount" : "2044",
     "keywords" : [ "Labo 3: Introductie in GBA Programming", "teaching" ]
 }
 </script>
@@ -137,7 +137,7 @@ De GBA is een goede keuze om de kracht (en zwakheden) van C te demonstreren. Er 
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.43" />
+ <meta name="generator" content="Hugo 0.47.1" />
         
 
         
@@ -432,6 +432,10 @@ int main() {
 </ol>
 
 <p><a href="/teaching/cpp/labo-3-gba.Makefile">Download een Makefile voor gba dev hier</a>. Pas je emulator pad en source bestandsnaam aan.</p>
+
+<h4 id="ubuntu-specifieke-installatie">Ubuntu specifieke installatie</h4>
+
+<p>Voor Ubuntu moet je eerst de devkitpro-pacman <code>.deb</code> file installeren die je <a href="https://github.com/devkitPro/pacman/releases">hier op Github</a> kan vinden. Het <code>pacman</code> commando is dan het <code>dkp-pacman</code> commando om verwarring met <code>apt</code> te vermijden. Installeer alle gba dev tools met <code>sudo dkp-pacman -S gba-dev</code>. De compilers zijn dan geïnstalleerd in <code>/opt/devkitpro/devkitARM/bin</code> dus voeg die folder toe aan je <code>$PATH</code>.</p>
 
 <h3 id="je-gba-file-emuleren-op-pc">Je GBA file emuleren op PC</h3>
 
