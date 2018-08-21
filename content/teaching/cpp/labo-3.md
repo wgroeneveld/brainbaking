@@ -189,6 +189,10 @@ Je hebt 2 dingen nodig:
 
 [Download een Makefile voor gba dev hier](/teaching/cpp/labo-3-gba.Makefile). Pas je emulator pad en source bestandsnaam aan. 
 
+#### Ubuntu specifieke installatie
+
+Voor Ubuntu moet je eerst de devkitpro-pacman `.deb` file installeren die je [hier op Github](https://github.com/devkitPro/pacman/releases) kan vinden. Het `pacman` commando is dan het `dkp-pacman` commando om verwarring met `apt` te vermijden. Installeer alle gba dev tools met `sudo dkp-pacman -S gba-dev`. De compilers zijn dan geïnstalleerd in `/opt/devkitpro/devkitARM/bin` dus voeg die folder toe aan je `$PATH`.
+
 ### Je GBA file emuleren op PC
 
 Compileren met een cross-compiler gaat, maar de binaries kan je nooit op een ander systeem draaien dan waarvoor het gecompileerd is - tenzij je dit emuleert. Een `.gba` binary kan je emuleren op de PC met [mGBA](https://mgba.io). 

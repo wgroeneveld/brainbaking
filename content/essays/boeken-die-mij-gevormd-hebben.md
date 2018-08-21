@@ -49,7 +49,7 @@ Op gebied van voedsel spelen twee boeken voor mij in 2015 een belangrijke rol: C
 
 Een hoop middelmatige boeken later las ik Flow van Mihaly Csikszentmihalyi (ik heb de naam moeten kopiëren) en Lessen in Levenskunst van Wilfried van Craen. De vorige boeken refereerden al vaak naar Flow en het boek zelf vond ik niet zo geweldig, maar ik probeer het concept wel een belangrijke rol te laten spelen in mijn leven. Wilfried's gelatenheid en gezapige verhalen waren de ideale compaignon op een _"nadenk vakantie"_. Edward Slingerhand introduceerde me in de wereld van Lao Tzu en Confucius met Trying not to try, iets wat smaakte naar meer. 
 
-Die _"meer"_ kreeg in 2016 vorm in Hamlet's Blackberry van William Powers en Zen and the Art of Motorcycle Maintenance van Robert M. Pirsig, alhoewel die laatste niet bepaald een "blijvende" indruk heeft nagelaten ben ik toch blij dat ik deze gelezen heb. (en heb volgehouden...) 
+Die _"meer"_ kreeg in 2016 vorm in Hamlet's Blackberry van William Powers en Zen and the Art of Motorcycle Maintenance van Robert M. Pirsig, alhoewel die laatste niet bepaald een "blijvende" indruk heeft nagelaten ben ik toch blij dat ik deze gelezen heb. Hamlet's Blackberry is weer zo'n boek dat ik heel toevallig ben tegengekomen, door een opruimactie van een vriend wegens verhuis. Hij had het boek niet eens gelezen... 
 
 Mijn gestructureerde, materialistische geest werd dankzij Marie Kondo gewezen op "Opgeruimd!", waarbij ik prompt "minimalisme" en "ontspullen" naar voren schoof door verwoede lokale opruimacties organiseerde, tot de grootste ergernis van mijn vrouw. Ik ben nog steeds van plan om ooit "Goodbye, Things: The New Japanese Minimalism" te lezen van Fumio Sasaki. 
 

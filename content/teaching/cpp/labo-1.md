@@ -517,6 +517,10 @@ add_executable(testje main.cpp biblio.cpp biblio.h dieren.cpp dieren.h)
 
 Een simpel CMake bestand is véél eenvoudiger dan een Make bestand. Zie [CMake tutorial](https://cmake.org/cmake-tutorial/). CLion beheert de `add_executable` voor jou: nieuwe files toevoegen aan je project komen er automatisch in terecht. 
 
+##### CMake voor Ubuntu
+
+Ubuntu's `apt-get` package manager heeft niet altijd de laatste versie van CMake in zijn repository. Als alternatief kan je op [https://cmake.org/download/](https://cmake.org/download/) de binaries downloaden (shellscript) en dit "ergens" installeren. Aangeraden is een `$CMAKE_HOME` omgevingsvariabele te maken en die toe te voegen aan je `$PATH`. In CLion kan je via [CLion settings](https://www.jetbrains.com/help/clion/configuring-cmake.html) (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen. 
+
 ## Labo oefeningen
 <a name="oef"></a>
 

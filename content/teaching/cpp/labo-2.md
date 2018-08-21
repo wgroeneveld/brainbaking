@@ -7,6 +7,33 @@ disableComments: true
 &laquo;&nbsp;[Terug naar Software ontwerp in C/C++](/teaching/cpp)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
 
+In onderstaande schematische voorbeelden zijn de volgende concepten expliciet te onderscheiden:
+
+1. Een **naam** van een variabele
+2. Een **waarde** van een variabele
+
+En de volgende impliciet:
+
+1. Het **type** van een variabele
+2. Het **adres** van een variabele
+
+Het **type** van een variabele bepaalt de hoeveelheid geheugen die vrijgemaakt wordt om de waarde te kunnen bewaren. De waarde is ofwel een actuele waarde ofwel een adres dat refereert naar een andere waarde. Elke variabele heeft een uniek adres. Variabelen kunnen dus naar elkaar verwijzen.
+
+{{<mermaid>}}
+graph TD;
+    A[variabelenaam<br/>waarde]
+    B{variabelenaam<br/>adres}
+{{< /mermaid >}}
+
+Dit voorbeeld visualiseert `int a = 5`:
+
+{{<mermaid>}}
+graph TD;
+    A[a<br/>5]
+{{< /mermaid >}}
+
+Waarbij het type, `int`, afhankelijk van het platform een aantal bytes reserveert (`sizeof(int)`) op een bepaald adres. Het adres kunnen we zelfs manipuleren in C/C++ en is essentiëel voor het gebruik van onder andere arrays. 
+
 ## "Compound" types
 
 C/C++ gebruikt een _pass-by-value_ systeem om variabelen door te geven aan functies. Dit wil zeggen dat de waarde gekopiëerd wordt, en die functie geen wijzigingen kan aanbrengen aan de originele waarde. Dat is iets positief: **separation of concerns**.
@@ -34,7 +61,7 @@ int &vrouwelijkheid;    // compiler error
 
 {{<mermaid>}}
 graph LR;
-    A[&mannelijkheid] -->|ref| B[geslacht<br/>10] 
+    A{&mannelijkheid} -->|ref| B[geslacht<br/>10] 
 {{< /mermaid >}}
 
 Referenties kan je zien als "constante pointers" die automatisch de `->` toepassen. Het adres van het doel wordt bewaard, niet de eigenlijke waarde. Referenties zijn geen objecten en hebben geen volwaardig adres op de stack. 
@@ -55,7 +82,7 @@ leeftijd = &oud;
 
 {{<mermaid>}}
 graph LR;
-    A[*leeftijd] -->|na regel 3| B[jong<br/>10]
+    A{*leeftijd} -->|na regel 3| B[jong<br/>10]
     A --> |na regel 4| C[oud<br/>80]
 {{< /mermaid >}}
 
@@ -78,7 +105,7 @@ int **ptr_to_ptr = &ptr;
 
 {{<mermaid>}}
 graph LR;
-    A[**ptr_to_ptr] -->|ref| B[*ptr]
+    A{"**ptr_to_ptr"} -->|ref| B{"*ptr"}
     B --> |ref| C[jong<br/>10]
 {{< /mermaid >}}
 

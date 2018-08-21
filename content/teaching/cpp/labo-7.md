@@ -284,12 +284,14 @@ Volg de volgende stappen:
 
 * Download en compileer googletest:
   * Download een release of clone de github repository
-  * Maak een build directory: `mkdir build` in de map googletest
+  * `cd googletest`
+  * Maak een build directory: `mkdir build` **in de map googletest**
   * Build cmake: `cd build && cmake ./../`
   * Build google test: `make`. Dit geeft `libgtest.a` en `libgtest_main.a`   
 * Integreer googletest in je CLion project met CMake:
   * Include de gtest headers met `include_directories()`
   * Link de libraries met `target_link_libraries()`
+  * En (voor later) voorzie een omgevingsvariabele `$GTEST_DIR`.
 
 Het CMakeLists.txt ziet er dan als volgt uit:
 
