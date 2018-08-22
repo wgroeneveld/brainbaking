@@ -101,10 +101,10 @@ volatile object* copy_object(volatile object* other) {
     return create_object(other->attr0, other->attr1, other->attr2);
 }
 
-sprite* create_sprite(volatile object* obj, int intialx, int initialy, uint8 w, uint8 h) {
+sprite* create_sprite(volatile object* obj, int initialx, int initialy, uint8 w, uint8 h) {
     sprite* s = malloc(sizeof(sprite));
     s->obj = obj;
-    s->x = intialx;
+    s->x = initialx;
     s->y = initialy;
     s->w = w;
     s->h = h;
@@ -170,8 +170,12 @@ int collides(sprite *s, sprite *o) {
     return 0;
 }
 
+void you_died() {
+
+}
+
 int main() {
-    uint16 keys;
+    uint16 keys, score = 0;
     sprite *ball = create_sprite(create_ball(), 50, 50, 8, 8);
     ball->dx = 2;
     ball->dy = 1;

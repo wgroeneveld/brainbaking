@@ -47,10 +47,9 @@
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/installaties/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
+Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je Cygwin als compiler toolchain.
 Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de package tool apt-get bij Ubuntu:
- build-essential als gcc/g++ build tools (preinstalled?) git qt5-default en daarna qtcreator  Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren. sublime-text (vereist toevoegen van een repository).
-De volgende tools worden verwacht gedownload te worden via git:
- Google Test (zie labo 7) gba-sprite-engine (zie opdracht)  De volgende tools worden verwacht manueel te downloaden:</description>
+ build-essential als gcc/g++ build tools (preinstalled?) git qt5-default en daarna qtcreator  Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren.</description>
     </item>
     
     <item>
@@ -62,6 +61,17 @@ De volgende tools worden verwacht gedownload te worden via git:
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
 UI Frameworks De C++ taal is een krachtige tool om native code te compileren voor specifieke CPU en OS systemen. Daardoor is het ook vaak een logische keuze om complexe interfaces in te ontwerpen en ontwikkelen, van Photoshop tot Google Chrome. Interfaces brengen echter weer andere problemen met zich mee: elk besturingssysteem heeft ondertussen zijn eigen interpretatie.
 De Windows standaard was MFC die de WinAPI wrapt, voor OSX was dit de Carbon API.</description>
+    </item>
+    
+    <item>
+      <title>Labo 11: een GBA spel porten naar Qt</title>
+      <link>https://brainbaking.com/teaching/cpp/labo-11/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/labo-11/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
+Eigen widgets implementeren De objectenboom uit labo 10 leert ons dat heel wat Qt objecten afleiden van QWidget. Dat is de ideale startplaats om zelf een widget te implementeren. Veel Qt objecten voorzien een override om het tekenen zelf af te kunnen handelen, vergelijkbaar met de while loop in een typisch gameboy spel.
+void paintEvent(QPaintEvent *event) override;  In het Textrix Qt Voorbeeld wordt er gebruikt gemaakt van custom QFrame en QWidget implementaties die eigen objecten bijhouden die de tetris blokken voorstellen.</description>
     </item>
     
     <item>

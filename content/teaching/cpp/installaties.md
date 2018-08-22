@@ -6,6 +6,8 @@ disableComments: true
 
 &laquo;&nbsp;[Terug naar Software ontwerp in C/C++](/teaching/cpp)<br/>
 
+Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je [Cygwin](http://www.cygwin.com/install.html) als compiler toolchain. 
+
 ## Basisvereisten
 
 De volgende tools worden verwacht geïnstalleerd te worden via de package tool `apt-get` bij Ubuntu:
@@ -26,9 +28,37 @@ De volgende tools worden verwacht manueel te downloaden:
 * CLion
 * CMake 3.12.x (nog niet in de package tool)
 
+### CMake installeren
+
+Voor OSX via Homebrew: `brew install cmake`. <br/>
+Voor Windows is er [een installer voorzien](https://cmake.org/download/).
+
+#### CMake voor Ubuntu
+
+Ubuntu's `apt-get` package manager heeft niet altijd **de laatste versie** van CMake in zijn repository - wij moeten 3.12 of hoger hebben. Als alternatief kan je op [https://cmake.org/download/](https://cmake.org/download/) de binaries downloaden (shellscript) en dit "ergens" installeren. Aangeraden is een `$CMAKE_HOME` omgevingsvariabele te maken en die toe te voegen aan je `$PATH`. In CLion kan je via [CLion settings](https://www.jetbrains.com/help/clion/configuring-cmake.html) (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen. 
+
+### Google Test compileren
+
+Volg de volgende stappen na een `git clone`:
+
+* Download en compileer googletest:
+  * Download een release of clone de github repository
+  * `cd googletest`
+  * Maak een build directory: `mkdir build` **in de map googletest**
+  * Build cmake: `cd build && cmake ./../`
+  * Build google test: `make`. Dit geeft `libgtest.a` en `libgtest_main.a`   
+* Integreer googletest in je CLion project met CMake:
+  * Include de gtest headers met `include_directories()`
+  * Link de libraries met `target_link_libraries()`
+  * Voorzie een omgevingsvariabele `$GTEST_DIR`.
+
 ### DevkitPro installeren
 
-Zie [labo 3](/teaching/cpp/labo-3)
+De "DevkitPro" toolchain installeren levert je een aantal cross-compilers en linkers op die een C source file omzetten ine en GBA binary. Zie [installatie instructies](https://devkitpro.org/wiki/Getting_Started) per OS. Via de meegeleverde package manager `pacman` kan je op OSX de package `gba-dev` installeren. Voor Windows is er een installer voorzien. 
+
+#### Ubuntu specifieke installatie
+
+Voor Ubuntu moet je eerst de devkitpro-pacman `.deb` file installeren die je [hier op Github](https://github.com/devkitPro/pacman/releases) kan vinden. Het `pacman` commando is dan het `dkp-pacman` commando om verwarring met `apt` te vermijden. Installeer alle gba dev tools met `sudo dkp-pacman -S gba-dev`. De compilers zijn dan geïnstalleerd in `/opt/devkitpro/devkitARM/bin` dus voeg die folder toe aan je `$PATH`.
 
 ### Wijzigingen in het Bash profiel
 

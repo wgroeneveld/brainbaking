@@ -38,7 +38,7 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 
 ### Extra informatie
 
-- [Installatieinstructies Linux](/teaching/cpp/installaties)
+- [Installatieinstructies Tools](/teaching/cpp/installaties)
 - [Project opdracht](/teaching/cpp/project)
 - Evaluatiecriteria schriftelijk examen
 

@@ -107,3 +107,6 @@ void TetrixBoard::timerEvent(QTimerEvent *event) {
 2. Download [gba-arkanoid](/teaching/cpp/gba-arkanoid.zip), een C++ implementatie van de oefening uit [labo 4](/teaching/cpp/labo-4#oef). Dit CMake/CLion project is opgesplitst in 2 submappen: _domain_ en _gba_. Het domein bevat methodes als `collidesWith` en `updatePosition`. De OAM GBA impelemntatie leeft in de gba submap. <br/>Port dit werkend minimalistisch spel naar Qt door de domein submap volledig _intact_ te laten! De makkelijkste start is een nieuw project via Qt Creator waarbij je de domein code kopiëert. 
 
 ## Denkvragen
+
+1. Beargumenteer waarom het principe van "separation of concerns" belangrijk kan zijn. Geef twee concrete voorbeelden waarom dit het geval is. 
+2. Wanneer beslis je om code te kopiëren, en wanneer beslis je om code te herbruiken? Beschrijf twee situaties waarin je het ene of het andere zou handhaven. 

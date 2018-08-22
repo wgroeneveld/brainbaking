@@ -40,10 +40,9 @@
       "headline" : "Installatieinstructies op Linux",
     
     "description" : "&laquo;&nbsp;Terug naar Software ontwerp in C/C++
+Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je Cygwin als compiler toolchain.
 Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de package tool apt-get bij Ubuntu:
- build-essential als gcc/g++ build tools (preinstalled?) git qt5-default en daarna qtcreator  Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren. sublime-text (vereist toevoegen van een repository).
-De volgende tools worden verwacht gedownload te worden via git:
- Google Test (zie labo 7) gba-sprite-engine (zie opdracht)  De volgende tools worden verwacht manueel te downloaden:",
+ build-essential als gcc/g++ build tools (preinstalled?) git qt5-default en daarna qtcreator  Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren.",
     
       "inLanguage" : "nl-BE",
     
@@ -65,10 +64,10 @@ De volgende tools worden verwacht gedownload te worden via git:
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-08-21 15:44:01 &#43;0200 CEST",
-    "dateModified" : "2018-08-21 15:44:01 &#43;0200 CEST",
+    "datePublished": "2018-08-21 16:09:49 &#43;0200 CEST",
+    "dateModified" : "2018-08-21 16:09:49 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/installaties/",
-    "wordCount" : "117",
+    "wordCount" : "411",
     "keywords" : [ "Installatieinstructies op Linux", "teaching" ]
 }
 </script>
@@ -240,6 +239,8 @@ De volgende tools worden verwacht gedownload te worden via git:
 
 <p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++</a><br/></p>
 
+<p>Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je <a href="http://www.cygwin.com/install.html">Cygwin</a> als compiler toolchain.</p>
+
 <h2 id="basisvereisten">Basisvereisten</h2>
 
 <p>De volgende tools worden verwacht geïnstalleerd te worden via de package tool <code>apt-get</code> bij Ubuntu:</p>
@@ -266,9 +267,45 @@ De volgende tools worden verwacht gedownload te worden via git:
 <li>CMake 3.12.x (nog niet in de package tool)</li>
 </ul>
 
+<h3 id="cmake-installeren">CMake installeren</h3>
+
+<p>Voor OSX via Homebrew: <code>brew install cmake</code>. <br/>
+Voor Windows is er <a href="https://cmake.org/download/">een installer voorzien</a>.</p>
+
+<h4 id="cmake-voor-ubuntu">CMake voor Ubuntu</h4>
+
+<p>Ubuntu&rsquo;s <code>apt-get</code> package manager heeft niet altijd <strong>de laatste versie</strong> van CMake in zijn repository - wij moeten 3.12 of hoger hebben. Als alternatief kan je op <a href="https://cmake.org/download/">https://cmake.org/download/</a> de binaries downloaden (shellscript) en dit &ldquo;ergens&rdquo; installeren. Aangeraden is een <code>$CMAKE_HOME</code> omgevingsvariabele te maken en die toe te voegen aan je <code>$PATH</code>. In CLion kan je via <a href="https://www.jetbrains.com/help/clion/configuring-cmake.html">CLion settings</a> (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen.</p>
+
+<h3 id="google-test-compileren">Google Test compileren</h3>
+
+<p>Volg de volgende stappen na een <code>git clone</code>:</p>
+
+<ul>
+<li>Download en compileer googletest:
+
+<ul>
+<li>Download een release of clone de github repository</li>
+<li><code>cd googletest</code></li>
+<li>Maak een build directory: <code>mkdir build</code> <strong>in de map googletest</strong></li>
+<li>Build cmake: <code>cd build &amp;&amp; cmake ./../</code></li>
+<li>Build google test: <code>make</code>. Dit geeft <code>libgtest.a</code> en <code>libgtest_main.a</code><br /></li>
+</ul></li>
+<li>Integreer googletest in je CLion project met CMake:
+
+<ul>
+<li>Include de gtest headers met <code>include_directories()</code></li>
+<li>Link de libraries met <code>target_link_libraries()</code></li>
+<li>Voorzie een omgevingsvariabele <code>$GTEST_DIR</code>.</li>
+</ul></li>
+</ul>
+
 <h3 id="devkitpro-installeren">DevkitPro installeren</h3>
 
-<p>Zie <a href="/teaching/cpp/labo-3">labo 3</a></p>
+<p>De &ldquo;DevkitPro&rdquo; toolchain installeren levert je een aantal cross-compilers en linkers op die een C source file omzetten ine en GBA binary. Zie <a href="https://devkitpro.org/wiki/Getting_Started">installatie instructies</a> per OS. Via de meegeleverde package manager <code>pacman</code> kan je op OSX de package <code>gba-dev</code> installeren. Voor Windows is er een installer voorzien.</p>
+
+<h4 id="ubuntu-specifieke-installatie">Ubuntu specifieke installatie</h4>
+
+<p>Voor Ubuntu moet je eerst de devkitpro-pacman <code>.deb</code> file installeren die je <a href="https://github.com/devkitPro/pacman/releases">hier op Github</a> kan vinden. Het <code>pacman</code> commando is dan het <code>dkp-pacman</code> commando om verwarring met <code>apt</code> te vermijden. Installeer alle gba dev tools met <code>sudo dkp-pacman -S gba-dev</code>. De compilers zijn dan geïnstalleerd in <code>/opt/devkitpro/devkitARM/bin</code> dus voeg die folder toe aan je <code>$PATH</code>.</p>
 
 <h3 id="wijzigingen-in-het-bash-profiel">Wijzigingen in het Bash profiel</h3>
 
