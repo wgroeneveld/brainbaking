@@ -29,7 +29,11 @@ Shortcut usage in IDEs or editors can be confusing if you're used to the CMD or 
 
 **OSX**: CMD+Space is all you need. There are tools that enhance the experience but I find them unneeded since El Capitan. 
 
-**Ubuntu**: Unity's "dash" thing does almost what I want: it searches in possible software and files and it's (a bit) customizable. The only problem is mapping it to CMD (or CTRL)+Space. I had to install the **CompizConfig Settings Manager** and go to Desktop -> Ubuntu Unity Plugin -> Launcher to fiddle with the available key options. 
+**Ubuntu**: Unity's "dash" thing does almost what I want: it searches in possible software and files and it's (a bit) customizable. The only problem is mapping it to CMD (or CTRL)+Space. This can be done in the Keyboard shortcut settings, but after choosing CTRL+Space I had to revert to Super+Space: the latter key combination has already been heavily used to autocomplete statements in IDEs! 
+
+#### Same ALT+TAB behavior
+
+Linux' virtual desktops makes for a very configurable environment but that also means ALT+TAB might or might not include windows in the current active desktop. I simply like to "have them all" in there, meaning I again had to modify some settings. I had to install the **CompizConfig Settings Manager** and go to Desktop -> Ubuntu Unity Plugin -> Launcher to fiddle with the available key options in subtab _"switcher"_. 
 
 ### Multitouch
 
