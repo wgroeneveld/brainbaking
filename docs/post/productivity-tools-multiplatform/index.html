@@ -68,9 +68,9 @@
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "2018",
     "datePublished": "2018-08-28 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-08-28 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2018-08-29 16:39:44 &#43;0200 CEST",
     "url" : "https://brainbaking.com/post/productivity-tools-multiplatform/",
-    "wordCount" : "839",
+    "wordCount" : "1086",
     "keywords" : [ "Productivity","tools","Productivity Tools on all platforms", "post" ]
 }
 </script>
@@ -237,7 +237,7 @@
                     <i class='fa fa-calendar'></i>&nbsp;28 August 2018
                 </span>&nbsp;|&nbsp;
                 <span title="Last Modified Date">
-                    <i class='fa fa-calendar-check-o'></i>&nbsp;28 August 2018
+                    <i class='fa fa-calendar-check-o'></i>&nbsp;29 August 2018
                 </span>
     		</span>
     	</h5>
@@ -281,7 +281,11 @@
 
 <p><strong>OSX</strong>: CMD+Space is all you need. There are tools that enhance the experience but I find them unneeded since El Capitan.</p>
 
-<p><strong>Ubuntu</strong>: Unity&rsquo;s &ldquo;dash&rdquo; thing does almost what I want: it searches in possible software and files and it&rsquo;s (a bit) customizable. The only problem is mapping it to CMD (or CTRL)+Space. I had to install the <strong>CompizConfig Settings Manager</strong> and go to Desktop -&gt; Ubuntu Unity Plugin -&gt; Launcher to fiddle with the available key options.</p>
+<p><strong>Ubuntu</strong>: Unity&rsquo;s &ldquo;dash&rdquo; thing does almost what I want: it searches in possible software and files and it&rsquo;s (a bit) customizable. The only problem is mapping it to CMD (or CTRL)+Space. This can be done in the Keyboard shortcut settings, but after choosing CTRL+Space I had to revert to Super+Space: the latter key combination has already been heavily used to autocomplete statements in IDEs!</p>
+
+<h4 id="same-alt-tab-behavior">Same ALT+TAB behavior</h4>
+
+<p>Linux&rsquo; virtual desktops makes for a very configurable environment but that also means ALT+TAB might or might not include windows in the current active desktop. I simply like to &ldquo;have them all&rdquo; in there, meaning I again had to modify some settings. I had to install the <strong>CompizConfig Settings Manager</strong> and go to Desktop -&gt; Ubuntu Unity Plugin -&gt; Launcher to fiddle with the available key options in subtab <em>&ldquo;switcher&rdquo;</em>.</p>
 
 <h3 id="multitouch">Multitouch</h3>
 
@@ -289,13 +293,21 @@
 
 <p><strong>Ubuntu</strong>: Again a bit of a pain, even if it comes with a lot of flexibility. Scrolling with both fingers works out of the box, but swiping combined with a browser does not - ALT+LEFT/RIGHT need to be mapped to swiping. <a href="https://github.com/iberianpig/fusuma">Fusuma</a> is a small Ruby tool that monitors input and executes things based on a config file. It does not work with 2 finger motions meaning I have to do an unnecessary context switch between OSX and Ubuntu&hellip;</p>
 
+<p>After a week working with Fusuma and alternatives, I&rsquo;m a bit disappointed by the lack of a solid implementation. Scrolling to the next virtual window for example works but without releasing the touch pad, scrolling back to the previous (by swiping up again) doesn&rsquo;t: after a motion is recognized, touch input needs to be interrupted.</p>
+
 <h3 id="clipboard-histroy">Clipboard histroy</h3>
 
 <p><strong>Windows</strong>: Happy <a href="https://www.nakka.com/soft/clcl/index_eng.html">CLCL</a> user for years.</p>
 
-<p><strong>OSX</strong>: Can&rsquo;t remember, will fill in later</p>
+<p><strong>OSX</strong>: <a href="http://www.clipmenu.com">ClipMenu</a> is free and works well.</p>
 
 <p><strong>Ubuntu</strong>: <a href="https://launchpad.net/diodon">Diodon</a> does exactly what I need after mapping ALT+C to command <code>/usr/bin/diodon</code>.</p>
+
+<h3 id="mail-clients">Mail clients</h3>
+
+<p>If GMail isn&rsquo;t an option, like my current work address, a mail client that emulates a threaded view is the next best thing. Again OSX wins here with the built-in Mail application that works exactly as I want it to work.</p>
+
+<p>As an alternative, on any OS, there&rsquo;s Mozilla <strong>Thunderbird</strong>. It is a hassle to get calendars and threaded views working though, I had to follow <a href="https://www.joshcurry.co.uk/posts/mozilla-thunderbird-show-sent-messages-in-thread-view">these steps</a> to show sent messages in thread view and that still isn&rsquo;t what I want. There are &ldquo;gmail conversation&rdquo;-alike plugins like <a href="https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/">this one</a> that come as close as they can get to what I&rsquo;m aimnig for. Don&rsquo;t forget the Lightning Calendar extension.</p>
 
 <h3 id="terminals">Terminals</h3>
 

@@ -39,15 +39,23 @@ Linux' virtual desktops makes for a very configurable environment but that also 
 
 **OSX**: built-in. Of course...
 
-**Ubuntu**: Again a bit of a pain, even if it comes with a lot of flexibility. Scrolling with both fingers works out of the box, but swiping combined with a browser does not - ALT+LEFT/RIGHT need to be mapped to swiping. [Fusuma](https://github.com/iberianpig/fusuma) is a small Ruby tool that monitors input and executes things based on a config file. It does not work with 2 finger motions meaning I have to do an unnecessary context switch between OSX and Ubuntu... 
+**Ubuntu**: Again a bit of a pain, even if it comes with a lot of flexibility. Scrolling with both fingers works out of the box, but swiping combined with a browser does not - ALT+LEFT/RIGHT need to be mapped to swiping. [Fusuma](https://github.com/iberianpig/fusuma) is a small Ruby tool that monitors input and executes things based on a config file. It does not work with 2 finger motions meaning I have to do an unnecessary context switch between OSX and Ubuntu...
+
+After a week working with Fusuma and alternatives, I'm a bit disappointed by the lack of a solid implementation. Scrolling to the next virtual window for example works but without releasing the touch pad, scrolling back to the previous (by swiping up again) doesn't: after a motion is recognized, touch input needs to be interrupted. 
 
 ### Clipboard histroy
 
 **Windows**: Happy [CLCL](https://www.nakka.com/soft/clcl/index_eng.html) user for years.
 
-**OSX**: Can't remember, will fill in later 
+**OSX**: [ClipMenu](http://www.clipmenu.com) is free and works well.
 
 **Ubuntu**: [Diodon](https://launchpad.net/diodon) does exactly what I need after mapping ALT+C to command `/usr/bin/diodon`.
+
+### Mail clients
+
+If GMail isn't an option, like my current work address, a mail client that emulates a threaded view is the next best thing. Again OSX wins here with the built-in Mail application that works exactly as I want it to work. 
+
+As an alternative, on any OS, there's Mozilla **Thunderbird**. It is a hassle to get calendars and threaded views working though, I had to follow [these steps](https://www.joshcurry.co.uk/posts/mozilla-thunderbird-show-sent-messages-in-thread-view) to show sent messages in thread view and that still isn't what I want. There are "gmail conversation"-alike plugins like [this one](https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/) that come as close as they can get to what I'm aimnig for. Don't forget the Lightning Calendar extension.
 
 ### Terminals
 
