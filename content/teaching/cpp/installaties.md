@@ -34,6 +34,10 @@ De volgende tools worden verwacht manueel te downloaden:
 
 Gelieve [Deze instructies](https://warwick.ac.uk/fac/sci/moac/people/students/peter_cock/cygwin/part2/) te volgen om [Cygwin 64-BIT](https://www.cygwin.com/install.html) te installeren, samen met alle "devel" opties. Dit kan een tijdje duren. Daarna kan je je installatie valideren met `gcc -v`. 
 
+Voeg de bin folder van je Cygwin installatie toe aan `%PATH%` om in eender welke console toegang te hebben tot de toolchain. Vanaf dan kan je je terminal naar keuze gebruiken in plaats van enkel Cygwin zelf - bijvoorbeeld [Cmder](http://cmder.net).
+
+Hier zit ook een CMake versie in (3.6), maar die is te oud voor ons - zie verder. 
+
 #### Voor Linux
 
 Geen speciale actie vereist, compiler built-in.
@@ -53,17 +57,23 @@ Ubuntu's `apt-get` package manager heeft niet altijd **de laatste versie** van C
 
 #### CMake voor Windows
 
-De 64-BIT installer is hier te downloaden: [https://cmake.org/download/](https://cmake.org/download/) - wij moeten 3.12 of hoger hebben. Aangeraden is een `%CMAKE_HOME%` omgevingsvariabele te maken en die toe te voegen aan je `%PATH%`. In CLion kan je via [CLion settings](https://www.jetbrains.com/help/clion/configuring-cmake.html) (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen. 
+De 64-BIT installer is hier te downloaden: [https://cmake.org/download/](https://cmake.org/download/) - wij moeten 3.12 of hoger hebben. Aangeraden is een `%CMAKE_HOME%` omgevingsvariabele te maken. 
+
+* Kies tijdens de installatie **niet** voor "Add CMake to the system PATH for all users** - dat heb je al toegevoegd met de Cygwin installatie.
+* Installeer op een **dezelfde locatie** als de Cygwin folder, bijvoorbeeld  C:\Development\Cygwin64. Dit is belangrijk om de bestaande versie van CMake bij Cygwin te overschrijven. 
+
+Het kan zijn dat `cmake` niet voldoende is of je compilers niet kan vinden maar de VC++ versie probeert (nmake, cl). In dat geval `cmake -G "Unix Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND"` als commando hanteren. Als er tijdens het compileren iets misloopt, controleer dan even in het gegenereerde `CMakeCache.txt` bestand of CMake de juiste compilers gevonden heeft. 
+
+In CLion kan je via [CLion settings](https://www.jetbrains.com/help/clion/configuring-cmake.html) (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen. 
 
 ### Google Test compileren
 
 Deze stappen zijn onafhankelijk van je gekozen besturingssysteem, zodra je de basis gcc toolchain én CMake gecompileerd hebt. 
 
-Volg de volgende stappen na een `git clone`:
+Volg de volgende stappen na een `git clone https://github.com/google/googletest`:
 
 * Download en compileer googletest:
-  * Download een release of clone de github repository
-  * `cd googletest`
+  * `cd googletest/googletest`
   * Maak een build directory: `mkdir build` **in de map googletest**
   * Build cmake: `cd build && cmake ./../`
   * Build google test: `make`. Dit geeft `libgtest.a` en `libgtest_main.a`   
@@ -74,7 +84,13 @@ Volg de volgende stappen na een `git clone`:
 
 ### DevkitPro installeren
 
-De "DevkitPro" toolchain installeren levert je een aantal cross-compilers en linkers op die een C source file omzetten ine en GBA binary. Zie [installatie instructies](https://devkitpro.org/wiki/Getting_Started) per OS. Via de meegeleverde package manager `pacman` kan je op OSX de package `gba-dev` installeren. Voor Windows is er een installer voorzien. 
+De "DevkitPro" toolchain installeren levert je een aantal cross-compilers en linkers op die een C source file omzetten ine en GBA binary. Zie [installatie instructies](https://devkitpro.org/wiki/Getting_Started) per OS. Via de meegeleverde package manager `pacman` kan je op OSX de package `gba-dev` installeren. 
+
+#### Windows specifiek
+
+Voor Windows is er een installer voorzien. Vink enkel als "components to install" GBA development aan. Er is 300MB voor nodig omdat er weer een virtuele omgeving voor bij komt (msys). 
+
+Vergeet geen omgevingsvariabele `%DEVKITPATH%` aan te maken en deze toe te voegen aan je `%PATH%`; zie verder.
 
 #### Ubuntu specifieke installatie
 

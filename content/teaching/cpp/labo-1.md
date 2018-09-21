@@ -535,7 +535,7 @@ Je hebt het pointer symbool `*` in de oefeningen enkel nodig om een array terug 
 
 Hint: denk aan de [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Writing-C.html). De [C++ Style Guide](https://google.github.io/styleguide/cppguide.html) van Google kan je ook eens bekijken. Merk op dat in C methodes _snake-cased_ zijn: `mijn_mooie_methode` - ten opzicht van C++ en Java's _camel-casing_: `mijnMooieMethode`.
 
-C online compileren kan op [rextester.com](http://rextester.com/l/c_online_compiler_clang).
+C online compileren kan op [rextester.com](http://rextester.com/l/c_online_compiler_clang) of oefenen op [repl.it](https://repl.it/repls/EntirePowerfulAdmins).
 
 ## Denkvragen
 

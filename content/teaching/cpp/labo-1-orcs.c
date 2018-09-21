@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 struct Orc {
 	int aanval;
@@ -40,6 +41,9 @@ char* omnom(char zin[]) {
 }
 
 int main() {
+	// genereer een nieuwe seed voor de random waarde
+	srand(time(NULL));
+
 	printf("oorlog! woaah\n");
 	printf("Zeg rap iets (100chars) --> ");
 

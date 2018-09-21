@@ -8,7 +8,7 @@ Software ontwerp in C/C++: #1
 
 ## Het vak
 
-- <i class='fa fa-pencil'></i> 4 studiepunten, 6 colleges, 12 labo's
+- <i class='fa fa-pencil'></i> 4 studiepunten, 4 colleges, 11 labo's
 - <i class='fa fa-graduation-cap'></i> wouter.groeneveld@kuleuven.be
 - <i class="fa fa-link" aria-hidden="true"></i> [https://brainbaking.com/teaching/cpp/](https://brainbaking.com/teaching/cpp/)
 
@@ -151,6 +151,8 @@ ___
     include/
       file.h
       debug.h
+    test/
+      fileTest.c
     src/
       file.c
       debug.c
@@ -171,7 +173,7 @@ Unix: "**GNU C Compiler**". Alternatieven:
 - Unix: `clang`
 - Windows: MS' [`cl](https://msdn.microsoft.com/en-us/library/bb384838.aspx)
 
-GNU op Windows? [MinGW](http://www.mingw.org)
+GNU op Windows? [Cygwin](https://www.cygwin.com/install.html)
 
 ___
 

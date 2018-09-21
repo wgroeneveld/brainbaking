@@ -67,7 +67,7 @@ Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de
     "datePublished": "2018-09-21 12:01:00 &#43;0200 CEST",
     "dateModified" : "2018-09-21 12:01:00 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/installaties/",
-    "wordCount" : "585",
+    "wordCount" : "774",
     "keywords" : [ "Installatieinstructies op Linux", "teaching" ]
 }
 </script>
@@ -273,6 +273,10 @@ Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de
 
 <p>Gelieve <a href="https://warwick.ac.uk/fac/sci/moac/people/students/peter_cock/cygwin/part2/">Deze instructies</a> te volgen om <a href="https://www.cygwin.com/install.html">Cygwin 64-BIT</a> te installeren, samen met alle &ldquo;devel&rdquo; opties. Dit kan een tijdje duren. Daarna kan je je installatie valideren met <code>gcc -v</code>.</p>
 
+<p>Voeg de bin folder van je Cygwin installatie toe aan <code>%PATH%</code> om in eender welke console toegang te hebben tot de toolchain. Vanaf dan kan je je terminal naar keuze gebruiken in plaats van enkel Cygwin zelf - bijvoorbeeld <a href="http://cmder.net">Cmder</a>.</p>
+
+<p>Hier zit ook een CMake versie in (3.6), maar die is te oud voor ons - zie verder.</p>
+
 <h4 id="voor-linux">Voor Linux</h4>
 
 <p>Geen speciale actie vereist, compiler built-in.</p>
@@ -292,20 +296,28 @@ Voor Windows is er <a href="https://cmake.org/download/">een installer voorzien<
 
 <h4 id="cmake-voor-windows">CMake voor Windows</h4>
 
-<p>De 64-BIT installer is hier te downloaden: <a href="https://cmake.org/download/">https://cmake.org/download/</a> - wij moeten 3.12 of hoger hebben. Aangeraden is een <code>%CMAKE_HOME%</code> omgevingsvariabele te maken en die toe te voegen aan je <code>%PATH%</code>. In CLion kan je via <a href="https://www.jetbrains.com/help/clion/configuring-cmake.html">CLion settings</a> (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen.</p>
+<p>De 64-BIT installer is hier te downloaden: <a href="https://cmake.org/download/">https://cmake.org/download/</a> - wij moeten 3.12 of hoger hebben. Aangeraden is een <code>%CMAKE_HOME%</code> omgevingsvariabele te maken.</p>
+
+<ul>
+<li>Kies tijdens de installatie <strong>niet</strong> voor &ldquo;Add CMake to the system PATH for all users** - dat heb je al toegevoegd met de Cygwin installatie.</li>
+<li>Installeer op een <strong>dezelfde locatie</strong> als de Cygwin folder, bijvoorbeeld  C:\Development\Cygwin64. Dit is belangrijk om de bestaande versie van CMake bij Cygwin te overschrijven.</li>
+</ul>
+
+<p>Het kan zijn dat <code>cmake</code> niet voldoende is of je compilers niet kan vinden maar de VC++ versie probeert (nmake, cl). In dat geval <code>cmake -G &quot;Unix Makefiles&quot; -DCMAKE_SH=&quot;CMAKE_SH-NOTFOUND&quot;</code> als commando hanteren. Als er tijdens het compileren iets misloopt, controleer dan even in het gegenereerde <code>CMakeCache.txt</code> bestand of CMake de juiste compilers gevonden heeft.</p>
+
+<p>In CLion kan je via <a href="https://www.jetbrains.com/help/clion/configuring-cmake.html">CLion settings</a> (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen.</p>
 
 <h3 id="google-test-compileren">Google Test compileren</h3>
 
 <p>Deze stappen zijn onafhankelijk van je gekozen besturingssysteem, zodra je de basis gcc toolchain én CMake gecompileerd hebt.</p>
 
-<p>Volg de volgende stappen na een <code>git clone</code>:</p>
+<p>Volg de volgende stappen na een <code>git clone https://github.com/google/googletest</code>:</p>
 
 <ul>
 <li>Download en compileer googletest:
 
 <ul>
-<li>Download een release of clone de github repository</li>
-<li><code>cd googletest</code></li>
+<li><code>cd googletest/googletest</code></li>
 <li>Maak een build directory: <code>mkdir build</code> <strong>in de map googletest</strong></li>
 <li>Build cmake: <code>cd build &amp;&amp; cmake ./../</code></li>
 <li>Build google test: <code>make</code>. Dit geeft <code>libgtest.a</code> en <code>libgtest_main.a</code><br /></li>
@@ -321,7 +333,13 @@ Voor Windows is er <a href="https://cmake.org/download/">een installer voorzien<
 
 <h3 id="devkitpro-installeren">DevkitPro installeren</h3>
 
-<p>De &ldquo;DevkitPro&rdquo; toolchain installeren levert je een aantal cross-compilers en linkers op die een C source file omzetten ine en GBA binary. Zie <a href="https://devkitpro.org/wiki/Getting_Started">installatie instructies</a> per OS. Via de meegeleverde package manager <code>pacman</code> kan je op OSX de package <code>gba-dev</code> installeren. Voor Windows is er een installer voorzien.</p>
+<p>De &ldquo;DevkitPro&rdquo; toolchain installeren levert je een aantal cross-compilers en linkers op die een C source file omzetten ine en GBA binary. Zie <a href="https://devkitpro.org/wiki/Getting_Started">installatie instructies</a> per OS. Via de meegeleverde package manager <code>pacman</code> kan je op OSX de package <code>gba-dev</code> installeren.</p>
+
+<h4 id="windows-specifiek">Windows specifiek</h4>
+
+<p>Voor Windows is er een installer voorzien. Vink enkel als &ldquo;components to install&rdquo; GBA development aan. Er is 300MB voor nodig omdat er weer een virtuele omgeving voor bij komt (msys).</p>
+
+<p>Vergeet geen omgevingsvariabele <code>%DEVKITPATH%</code> aan te maken en deze toe te voegen aan je <code>%PATH%</code>; zie verder.</p>
 
 <h4 id="ubuntu-specifieke-installatie">Ubuntu specifieke installatie</h4>
 
