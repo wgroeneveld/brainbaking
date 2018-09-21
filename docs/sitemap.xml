@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://brainbaking.com/post/productivity-tools-multiplatform/</loc>
+    <lastmod>2018-08-29T16:39:44+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/essays/boeken-die-mij-gevormd-hebben/</loc>
     <lastmod>2018-08-21T15:22:26+02:00</lastmod>
   </url>
@@ -291,7 +296,7 @@
   
   <url>
     <loc>https://brainbaking.com/</loc>
-    <lastmod>2018-08-21T15:22:26+02:00</lastmod>
+    <lastmod>2018-08-29T16:39:44+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -577,6 +582,12 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/productivity/</loc>
+    <lastmod>2018-08-29T16:39:44+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/tags/programming/</loc>
     <lastmod>2017-05-25T22:04:53+02:00</lastmod>
     <priority>0</priority>
@@ -688,6 +699,12 @@
   <url>
     <loc>https://brainbaking.com/tags/techorama/</loc>
     <lastmod>2017-05-25T22:04:53+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/tools/</loc>
+    <lastmod>2018-08-29T16:39:44+02:00</lastmod>
     <priority>0</priority>
   </url>
   

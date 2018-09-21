@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Productivity on Brain Baking</title>
+    <link>https://brainbaking.com/tags/productivity/</link>
+    <description>Recent content in Productivity on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Tue, 28 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://brainbaking.com/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Productivity Tools on all platforms</title>
+      <link>https://brainbaking.com/post/productivity-tools-multiplatform/</link>
+      <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/productivity-tools-multiplatform/</guid>
+      <description>I&amp;rsquo;ve grown so accustomed to some of Neal Ford&amp;rsquo;s The Productive Programmer &amp;ldquo;power tools&amp;rdquo; that each time I install a new OS or get a new laptop, I start with my list of cant-live-without tools. I don&amp;rsquo;t usually switch between OSes a lot, but my recent switch of work environment has opened up the possibility to boot Linux again, next to Windows 10 or of course my beloved own laptop with OSX.</description>
+    </item>
+    
+  </channel>
+</rss>
