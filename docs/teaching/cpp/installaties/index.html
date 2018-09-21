@@ -64,10 +64,10 @@ Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-08-21 16:09:49 &#43;0200 CEST",
-    "dateModified" : "2018-08-21 16:09:49 &#43;0200 CEST",
+    "datePublished": "2018-08-22 12:44:34 &#43;0200 CEST",
+    "dateModified" : "2018-08-22 12:44:34 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/installaties/",
-    "wordCount" : "411",
+    "wordCount" : "585",
     "keywords" : [ "Installatieinstructies op Linux", "teaching" ]
 }
 </script>
@@ -263,9 +263,23 @@ Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de
 <p>De volgende tools worden verwacht manueel te downloaden:</p>
 
 <ul>
-<li>CLion</li>
+<li><a href="https://www.jetbrains.com/clion/download/">CLion</a></li>
 <li>CMake 3.12.x (nog niet in de package tool)</li>
 </ul>
+
+<h3 id="gcc-compiler-installeren">gcc Compiler installeren</h3>
+
+<h4 id="voor-windows">Voor Windows</h4>
+
+<p>Gelieve <a href="https://warwick.ac.uk/fac/sci/moac/people/students/peter_cock/cygwin/part2/">Deze instructies</a> te volgen om <a href="https://www.cygwin.com/install.html">Cygwin 64-BIT</a> te installeren, samen met alle &ldquo;devel&rdquo; opties. Dit kan een tijdje duren. Daarna kan je je installatie valideren met <code>gcc -v</code>.</p>
+
+<h4 id="voor-linux">Voor Linux</h4>
+
+<p>Geen speciale actie vereist, compiler built-in.</p>
+
+<h4 id="voor-osx">Voor OSX</h4>
+
+<p>Installeer de XCode toolchain via de Mac Appstore. Daarna kan je je installatie valideren met <code>gcc -v</code>.</p>
 
 <h3 id="cmake-installeren">CMake installeren</h3>
 
@@ -276,7 +290,13 @@ Voor Windows is er <a href="https://cmake.org/download/">een installer voorzien<
 
 <p>Ubuntu&rsquo;s <code>apt-get</code> package manager heeft niet altijd <strong>de laatste versie</strong> van CMake in zijn repository - wij moeten 3.12 of hoger hebben. Als alternatief kan je op <a href="https://cmake.org/download/">https://cmake.org/download/</a> de binaries downloaden (shellscript) en dit &ldquo;ergens&rdquo; installeren. Aangeraden is een <code>$CMAKE_HOME</code> omgevingsvariabele te maken en die toe te voegen aan je <code>$PATH</code>. In CLion kan je via <a href="https://www.jetbrains.com/help/clion/configuring-cmake.html">CLion settings</a> (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen.</p>
 
+<h4 id="cmake-voor-windows">CMake voor Windows</h4>
+
+<p>De 64-BIT installer is hier te downloaden: <a href="https://cmake.org/download/">https://cmake.org/download/</a> - wij moeten 3.12 of hoger hebben. Aangeraden is een <code>%CMAKE_HOME%</code> omgevingsvariabele te maken en die toe te voegen aan je <code>%PATH%</code>. In CLion kan je via <a href="https://www.jetbrains.com/help/clion/configuring-cmake.html">CLion settings</a> (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen.</p>
+
 <h3 id="google-test-compileren">Google Test compileren</h3>
+
+<p>Deze stappen zijn onafhankelijk van je gekozen besturingssysteem, zodra je de basis gcc toolchain én CMake gecompileerd hebt.</p>
 
 <p>Volg de volgende stappen na een <code>git clone</code>:</p>
 
@@ -317,6 +337,8 @@ export CMAKE_HOME="/opt/cmake-3.12.1-Linux-x86_64"
 export GTEST_DIR="/home/wouter/Development/googletest/googletest"
 PATH="$DEVKITPATH:$CMAKE_HOME/bin:$PATH"
 </pre>
+
+<p>Bovenstaande variabelen worden onder andere verwacht aanwezig te zijn op systeem niveau in de gba sprite engine. Voor windows pas je dit aan in het &ldquo;System Configuration&rdquo; scherm en klik je op &ldquo;Environment Variables&rdquo; om wijzigingen door te voeren (admin rechten vereist).</p>
 </div>
 
     

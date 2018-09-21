@@ -25,8 +25,22 @@ De volgende tools worden verwacht gedownload te worden via git:
 
 De volgende tools worden verwacht manueel te downloaden:
 
-* CLion
+* [CLion](https://www.jetbrains.com/clion/download/)
 * CMake 3.12.x (nog niet in de package tool)
+
+### gcc Compiler installeren
+
+#### Voor Windows
+
+Gelieve [Deze instructies](https://warwick.ac.uk/fac/sci/moac/people/students/peter_cock/cygwin/part2/) te volgen om [Cygwin 64-BIT](https://www.cygwin.com/install.html) te installeren, samen met alle "devel" opties. Dit kan een tijdje duren. Daarna kan je je installatie valideren met `gcc -v`. 
+
+#### Voor Linux
+
+Geen speciale actie vereist, compiler built-in.
+
+#### Voor OSX
+
+Installeer de XCode toolchain via de Mac Appstore. Daarna kan je je installatie valideren met `gcc -v`.
 
 ### CMake installeren
 
@@ -37,7 +51,13 @@ Voor Windows is er [een installer voorzien](https://cmake.org/download/).
 
 Ubuntu's `apt-get` package manager heeft niet altijd **de laatste versie** van CMake in zijn repository - wij moeten 3.12 of hoger hebben. Als alternatief kan je op [https://cmake.org/download/](https://cmake.org/download/) de binaries downloaden (shellscript) en dit "ergens" installeren. Aangeraden is een `$CMAKE_HOME` omgevingsvariabele te maken en die toe te voegen aan je `$PATH`. In CLion kan je via [CLion settings](https://www.jetbrains.com/help/clion/configuring-cmake.html) (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen. 
 
+#### CMake voor Windows
+
+De 64-BIT installer is hier te downloaden: [https://cmake.org/download/](https://cmake.org/download/) - wij moeten 3.12 of hoger hebben. Aangeraden is een `%CMAKE_HOME%` omgevingsvariabele te maken en die toe te voegen aan je `%PATH%`. In CLion kan je via [CLion settings](https://www.jetbrains.com/help/clion/configuring-cmake.html) (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen. 
+
 ### Google Test compileren
+
+Deze stappen zijn onafhankelijk van je gekozen besturingssysteem, zodra je de basis gcc toolchain én CMake gecompileerd hebt. 
 
 Volg de volgende stappen na een `git clone`:
 
@@ -70,3 +90,5 @@ export CMAKE_HOME="/opt/cmake-3.12.1-Linux-x86_64"
 export GTEST_DIR="/home/wouter/Development/googletest/googletest"
 PATH="$DEVKITPATH:$CMAKE_HOME/bin:$PATH"
 </pre>
+
+Bovenstaande variabelen worden onder andere verwacht aanwezig te zijn op systeem niveau in de gba sprite engine. Voor windows pas je dit aan in het "System Configuration" scherm en klik je op "Environment Variables" om wijzigingen door te voeren (admin rechten vereist). 
