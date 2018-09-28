@@ -278,6 +278,8 @@ Zie pagina 53 - symbolen zoals `*` en `&` in C en C++ hebben verschillende betek
 - `p = &i` - & gebruikt in een experessie als _address-of_ operatie
 - `*p = i` - * gebruikt in een expressie als _dereference_ operatie
 
+Vergeet niet dat de eerste regel enkel geldig is in C++.
+
 ## Labo oefeningen
 <a name="oef"></a>
 
