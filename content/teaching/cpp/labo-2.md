@@ -51,6 +51,8 @@ In Java spreek je members natuurlijk altijd aan met `.`.
 
 ### Reference types
 
+**Opgelet** - reference types zijn C++ specifiek. Dit is echter een integraal onderdeel van je kennis van compound types en wordt dus hier al uitgelegd. Als je onderstaande voorbeelden wenst te testen, gebruik dan `g++` in plaats van `gcc`! 
+
 Een referentie variabele is niet meer dan een alternatieve naam voor dezelfde variabele. Ze zijn herkenbaar door `&` na variabele type. Referenties moeten "gebind" worden bij declaratie:
 
 ```C
