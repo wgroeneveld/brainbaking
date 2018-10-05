@@ -562,6 +562,15 @@ There have been a lot of love letters to big cities here on Medium recently. I n
     </item>
     
     <item>
+      <title></title>
+      <link>https://brainbaking.com/teaching/cpp/slides-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/slides-4/</guid>
+      <description>document.write( &#39;&#39; );  mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });          Reveal.initialize({ width: 960, height: 700, controls: true, progress: true, history: true, transition: &#39;fade&#39;, center: true, slideNumber: true, theme: Reveal.getQueryHash().theme, dependencies: [ { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//lib/js/classList.js&#39;, condition: function() { return !document.body.classList; } }, { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//plugin/markdown/marked.js&#39;, condition: function() { return !!document.querySelector( &#39;[data-markdown]&#39; ); } }, { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//plugin/markdown/markdown.js&#39;, condition: function() { return !</description>
+    </item>
+    
+    <item>
       <title>Installatieinstructies op Linux</title>
       <link>https://brainbaking.com/teaching/cpp/installaties/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
