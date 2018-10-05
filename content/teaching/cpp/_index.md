@@ -20,7 +20,7 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 1. [Introductie in C/C++: context, ecosysteem](/teaching/cpp/slides-1/)
 2. [Pointers in C, dynamisch geheugen in C++](/teaching/cpp/slides-2/)
 3. [Introductie in Object-Georiënteerd denken in C++](/teaching/cpp/slides-3/)
-4. Een introductie in GUI ontwerp met Qt, Samenvatting, examen info
+4. [Een introductie in GUI ontwerp met Qt, Samenvatting, examen info](/teaching/cpp/slides-4)
 
 ### Labo noties
 
