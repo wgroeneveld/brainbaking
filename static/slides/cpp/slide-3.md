@@ -14,21 +14,6 @@ Euhm...
 
 ___
 
-### "Ontwerp" in Software Ontwerp
-
-Start op "papier" = modelleren:
-
-<div class="mermaid" align="center" >
-graph LR;
-    A[Sollicitant]
-    B[Vacature]
-    C[Competenties]
-    B --> C
-    B -.-> A
-</div>    
-
-___
-
 ### Ontwerp uitwerken: analyses
 
 <pre>
@@ -48,6 +33,21 @@ Acceptatiecriteria:
 </pre>
 
 Hoe uitwerken tot code? 
+
+___
+
+### "Ontwerp" in Software Ontwerp
+
+Start op "papier" = modelleren:
+
+<div class="mermaid" align="center" >
+graph LR;
+    A[Sollicitant]
+    B[Vacature]
+    C[Competenties]
+    B --> C
+    B -.-> A
+</div>
 
 ___
 
@@ -135,7 +135,38 @@ ___
 
 ___
 
-### Google Test
+### Java: JUnit
+
+```Java
+public class Rekenmachine {
+  public static void telOp(int a, int b) { return a + b; }
+}
+
+public class RekenmachineTests {
+  @Test
+  public void SomIsAPlusB() {
+    int result = Rekenmachine.telOp(1, 2);
+    Assertions.assertEquals(3, result);
+  }
+  @Test
+  public void KanMetNegatieveGetallenOverweg() {
+    int result = Rekenmachine.telOp(-1, 2);
+    Assertions.assertEquals(1, result);  
+  }
+}
+```
+
+___
+
+
+### Testen uitvoeren: IntelliJ
+
+
+<img src="/img/teaching/intellij_test.png" />
+
+___
+
+### C(++) Google Test
 
 https://github.com/google/googletest
 
@@ -191,6 +222,8 @@ ___
 ### Testen uitvoeren: CLion
 
 <img src="/img/teaching/clion_gtest.png" />
+
+Ziet er bekend uit? Gebaseerd op zelfde [JetBrains](https://www.jetbrains.com/) platform
 
 ---
 

@@ -283,7 +283,7 @@ Vergeet niet dat de eerste regel enkel geldig is in C++.
 ## Labo oefeningen
 <a name="oef"></a>
 
-1. Implementeer `int strcmp_own(char *s, char *t)` van `<string.h>` zelf. Geef het getal 0 terug indien strings gelijk zijn, -1 indien s < t en 1 indien s > t. Gebruik je pointer kennis om snel het geheugen te scannen.
+1. Implementeer `int strcmp_own(char *s, char *t)` van `<string.h>` zelf. Geef het getal 0 terug indien strings gelijk zijn, een getal kleiner dan 0 (bvb. -1) indien s < t en een getal groter dan 0 (bvb. 1) indien s > t. Gebruik je pointer kennis om snel het geheugen te scannen.
 2. Jij bent een brave bibliothecaris. En als brave bibliothecaris is het je taak om boeken alfabetisch te sorteren op achternaam. Laat de gebruiker een aantal achternamen ingeven, gescheiden door spatie (tip: [strtok](http://www.cplusplus.com/reference/cstring/strtok/), en druk dan gesorteerd de inventaris af. Uiteraard gebruik je pointers.
   - input: `lenaerts zwanskop aerts groeneveld`
   - output: `aerts groeneveld lenaerts zwanskop`
@@ -293,6 +293,7 @@ Vergeet niet dat de eerste regel enkel geldig is in C++.
 
 Tips:
 
+- [Voorbeeld gebruik](https://www.tutorialspoint.com/c_standard_library/c_function_strcmp.htm) van de standaard `strcmp` functie.
 - Opnieuw: denk aan de [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Writing-C.html)!
 - Een "array van strings" is in C een pointer naar pointers van characters (`char**`).
 - Je mag een arbitraire hoeveelheid spaties aannemen. 
