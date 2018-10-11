@@ -339,6 +339,28 @@ auto braveke = new Student();   // ok, = Student* maar ZELF opkuisen!
 auto braveke = std::unique_ptr<Student>(new Student()); // ok
 ```
 
+___
+
+### Aanmaken: De Stack VS de heap
+
+```C
+class Boom {
+private:
+    Bos* bos;
+public:
+    void maakBosAan() {
+        Bos bosje;          // stack
+        this->bos = &bosje; // ??
+    }
+    void echo() {
+        bos->oehoe();
+    }
+}
+```
+
+Waarom crasht `echo()`?<br/>
+Zie [college 2](/teaching/cpp/slides-2)
+
 ---
 
 ## Tip 1: leer lezen & begrijpen

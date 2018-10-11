@@ -342,7 +342,7 @@ void passSomePtr(SomeStruct* struct) {
 }
 int main() {
   auto struct = std::unique_ptr<SomeStruct>(new SomeStruct());
-  passSomeRef(struct.get());  // pass-by-pointer ref, geen kopie, ok
+  passSomePtr(struct.get());  // pass-by-pointer ref, geen kopie, ok
 }
 ```
 
