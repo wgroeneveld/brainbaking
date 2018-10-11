@@ -22,8 +22,8 @@ int main() {
     *display_control = MODE3 | BG2;
     unsigned short color = get_color(0, 0, 10);
 
-    for(int x = 0; x < HEIGHT; x++) {
-    	for(int y = 0; y < WIDTH; y++) {
+    for(int x = 0; x < WIDTH; x++) {
+    	for(int y = 0; y < HEIGHT; y++) {
     		set_pixel(x, y, color);
     	}
     }
