@@ -15,7 +15,7 @@ unsigned short get_color(unsigned char r, unsigned char g, unsigned char b) {
 }
 
 void set_pixel(int x, int y, unsigned short color) {
-    vram[x*WIDTH + y] = color;
+    vram[y*WIDTH + x] = color;
 }
 
 int main() {
