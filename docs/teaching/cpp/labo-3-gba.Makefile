@@ -11,8 +11,8 @@ clean:
 	rm -rf *.elf
 	rm -rf *.gba
 
-compile: simple.c
-	$(CC) -c simple.c -mthumb-interwork -mthumb -O2 -o main.o
+compile: labo-3-gbabg.c
+	$(CC) -c labo-3-gbabg.c -mthumb-interwork -mthumb -O2 -o main.o
 	$(CC) main.o -mthumb-interwork -mthumb -specs=gba.specs -o main.elf
 
 copybin: main.elf
