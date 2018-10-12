@@ -26,7 +26,7 @@ ___
 
 ```Java
 // student.java
-class Student {
+public class Student {
     private int leeftijd;
     private String naam;
 
@@ -148,7 +148,7 @@ class Student {
 private:
     int punten;
 public:
-    void slijm(const Leerkracht& leerkracht) {
+    void slijm(const Leerkracht& leerkracht) {  // const, zie onder
         punten = leerkracht.geefVeelPunten();
     }
 }
@@ -156,7 +156,7 @@ public:
 #include "student.h"
 class Leerkracht {
 private:
-    int geefVeelPunten() { return 20; }
+    int geefVeelPunten() const { return 20; }   // const nodig
 public:
     void buis(const Student& student);
 }
@@ -302,12 +302,14 @@ public:
   Groet(std::string s) {}
 };
 Groet heykes = "sup";  // error: no conversion from const char[3] to Groet
-Groet heykes("sup"):   // ok: impliciete conversie
-Groet hekyes = "sup"s; // ok: char[] zelf omgezet
+Groet heykes("sup"):   // ok: direct constructor call
+Groet hekyes = "sup"s; // ok: impliciete conversie string->Groet
 Groet heykes;          // ok: heykes is nieuw leeg Groet object op stack
 ```
 
 `x = y` gebruikt copy constructor voor zelfde type.
+
+`"string"s` = conversie char[] -> std::string
 
 ___
 
