@@ -65,7 +65,7 @@ In labo 3 maakten we kennis met de Gameboy Advance en het ontwikkelplatform - al
     "datePublished": "2018-07-28 12:59:48 &#43;0200 CEST",
     "dateModified" : "2018-07-28 12:59:48 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-4/",
-    "wordCount" : "2504",
+    "wordCount" : "2519",
     "keywords" : [ "Labo 4: GBA Tilesets, een simpel spel", "teaching" ]
 }
 </script>
@@ -655,7 +655,7 @@ void vsync() {
 <p>Er ontbreken nog een aantal belangrijke zaken in ons spel.</p>
 
 <ol>
-<li>De bal sprite beweegt niet! Oei? Verzin een simpele implementatie in de main loop die de x en y waardes van de bal OAM manipuleert. Rekening houden met physics hoeft nog niet, maar wel met de edges van het scherm.</li>
+<li><a href="/teaching/cpp/labo-4-gba-1.c">Download de opgave hier</a>. Gebruik de makefile uit het vorige labo (pas de bestandsnaam aan!)<br/> De bal sprite beweegt niet! Oei? Verzin een simpele implementatie in de main loop die de x en y waardes van de bal OAM manipuleert. Rekening houden met physics hoeft nog niet, maar wel met de edges van het scherm.</li>
 <li>Er zijn helemaal geen blokjes om tegen te botsen bovenaan. Wat een klote spel. Maak nieuwe sprites aan die je een eigen kleur geeft, en bovenaan positioneert. Merk op dat je sprites kan herbruiken!</li>
 <li>Tijd voor wat <a href="http://image.diku.dk/projects/media/kirk.06.pdf">basis collision detection</a>. Als de bal botst tegen één van de blokjes die je hebt bijgemaakt, verdwijnt dat blokje. Zichtbaarheid is ook een bit in OAM, raadpleeg de documentatie.</li>
 <li>Kuis de code een beetje op. <code>create_paddle</code> en <code>create_ball</code> zijn nu van elkaar afhankelijk door indices in register pointers. Voorzie een globale variabele om dit allemaal te beheren.</li>
