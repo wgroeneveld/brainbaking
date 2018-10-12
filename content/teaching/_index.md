@@ -9,14 +9,28 @@ disableList: true
 
 Transforming knowledge into well-digestible material is <i class='fa fa-lightbulb-o'></i>&nbsp;<a href="/">my mission</a>. The best way to learn something is to teach it, and I fully agree with that quote. It makes me come outside my comfort zone to break down something I _think_ I know really well into abstract concepts to be able to redefine something together with eager learners. 
 
-### KU Leuven Industrial Engineering
+<span style="float: right;">
+    <img src="/img/kul.svg" /><br/>
+    <img src="/img/uhasselt.svg" style="width: 165px;"/>
+</span>
+
+### KU Leuven - Faculty [Engineering Technology](https://iiw.kuleuven.be/english)
 
 <span></span>
-<img src="/img/kul.svg" style="float: right;"/>
 
 #### 2018 - 2019
 
-- [Software design in C/C++](/teaching/cpp/)
+- [Software design in C/C++](/teaching/cpp/)<br/>
+	<small>
+		The fundamentals of software design thought in C++ which touches upon three concepts: embedded system development in C, object-oriented design in C++ and software design principles.<br/>
+		Third bachelor year course, specialization Electronics/ICT.  
+	</small>
+
+- [Basic Engineering Skills in Python](https://uhintra03.uhasselt.be/studiegidswww/opleidingsonderdeel.aspx?a=2018&i=3825&n=4&t=01)<br/>
+	<small>
+		As a new interdisciplinary course, Basic Engineering Skills teaches new engineering students how to handle a problem, how to write an academic report and how to draw constructions. Python is used to facilitate problem solving skil <br/>
+		First bachelor year course. 
+	</small>
 
 #### 2017 - 2018
 
@@ -26,10 +40,11 @@ Transforming knowledge into well-digestible material is <i class='fa fa-lightbul
 		Industrial engineers with and without IT specialization both follow this course. 
 	</small>
 
+<img src="/img/pxl.png" style="float: right; width: 140px;"/>
+
 ### PXL Guest Lectures
 
 <span></span>
-<img src="/img/pxl.png" style="float: right; width: 140px;"/>
 
 #### 2016 - 2017
 

@@ -166,6 +166,79 @@ public:
 
 ---
 
+## Templates
+
+```Java
+public abstract class Item {
+    public abstract int getId();
+}
+public class Boek extends Item {
+    public int getId() { return 1; }
+}
+public class Appel { }
+public class Rugzak<T extends Item> {
+    private List<T> items = new ArrayList<>();
+    public void voegToe(T item) { items.add(item); }
+}
+```
+
+Gebruik:
+
+```Java
+Rugzak<Boek> boekentas = new Rugzak<>();
+boekentas.voegToe(new Boek());   // ok
+boekentas.voegToe(new Appel());  // compilation error
+```
+
+Generics bedoel je?
+
+___
+
+```C
+class Item {
+public:
+    virtual int getId() = 0;
+};
+class Boek : public Item {
+public:
+    virtual int getId() { return 1; }
+};
+class Appel {};
+template<typename T> class Rugzak {
+private:
+    std::vector<T const&> items;
+public:
+    void voegToe(const T& item);
+};
+template<typename T> void Rugzak<T>::voegToe(const T& item) {
+    this->items->push_back(item);   // should use emplace_back
+}
+```
+
+gebruik:
+
+```C
+Ruzak<Boek> boekentas;
+Boek boek1;
+Appel appel;
+boekentas.voegToe(boek1);   // ok
+boekentas.voegToe(appel);   // compilation error (parameter type mismatch)
+```
+
+Niet helemaal hetzelfde. 
+
+___
+
+### Grootste verschillen?
+
+* `<? extends>` bestaat niet
+* `Herhalen template<typename T>` in definities
+* `g++` **kopieert** elke `<T>` implementatie opnieuw!
+
+vb. [https://github.com/wgroeneveld/gba-sprite-engine/blob/master/engine/include/libgba-sprite-engine/sprites/sprite_builder.h](https://github.com/wgroeneveld/gba-sprite-engine/blob/master/engine/include/libgba-sprite-engine/sprites/sprite_builder.h)
+
+---
+
 ## STL
 
 [http://www.cplusplus.com/reference/stl/](http://www.cplusplus.com/reference/stl/)
@@ -363,9 +436,23 @@ Zie [college 2](/teaching/cpp/slides-2)
 
 ---
 
+## C++ en GUI design met Qt
+
+<img src="/img/teaching/qt.svg" style="border: 0; width: 25%" />
+
+demootje
+
+---
+
+## Conclusie - Hoe leer je dit vak? 
+
+___
+
 ## Tip 1: leer lezen & begrijpen
 
 [https://github.com/wgroeneveld/gba-sprite-engine/blob/master/engine/include/libgba-sprite-engine/sprites/sprite.h](https://github.com/wgroeneveld/gba-sprite-engine/blob/master/engine/include/libgba-sprite-engine/sprites/sprite.h)
+
+Weet je wat de code doet als je iets **kopieert** van Stack Overflow? 
 
 ___
 
@@ -375,17 +462,50 @@ ___
 
 ___
 
-## Tip 3
+## Tip 3: Ken de _toolchain_
+
+* wat is `gcc` VS `arm-none-eabi-gcc` VS `g++`
+* wat is `make` VS `cmake` VS `qmake`
+* wat is compilen VS (static) linking VS binary builden
+
+en
+
+* Hoe installeer en gebruik ik toolchain 1/2
+* Hoe werk ik efficiënt in **cmdline**
+
+Google "crash course linux commands"
+
+___
+
+## Tip 4
 
 <img src="/img/teaching/homework.jpg" />
 
----
+Oefeningen in C++ Primer boek ook maken!
 
-## C++ en GUI design met Qt
+___
 
----
+### Examen info
 
-## Conclusie - Hoe leer je dit vak? 
+* Open boek
+* **Begrijpen**, niet reproduceren
+* Denkvragen oplossen! 
+* **Scenario's**: model uitwerken, klassen skelet uitschrijven
+* **Syntax**
+
+___
+
+### Wat moet ik kennen?
+
+- Syllabus: slides hoorcolleges + labo noties
+- C++ Primer handboek
+
+<br/>
+
+### Wat moet ik niet kennen?
+
+- Qt API syntax
+- GBA API & design => deel van project
 
 ---
 
