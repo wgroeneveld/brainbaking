@@ -66,7 +66,7 @@ mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  gr
     "datePublished": "2018-07-20 13:24:42 &#43;0200 CEST",
     "dateModified" : "2018-07-20 13:24:42 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-6/",
-    "wordCount" : "2557",
+    "wordCount" : "2707",
     "keywords" : [ "Labo 6: C&#43;&#43; Class Inheritance, operators en templates", "teaching" ]
 }
 </script>
@@ -717,6 +717,9 @@ auto result = som(1, 2.0, 3);
 <li>Ik kan punten converteren van 2D naar 3D of omgekeerd (met verlies)</li>
 <li>Ik kan punten met elkaar optellen.</li>
 </ol></li>
+<li><em>Extra</em>: Denk terug aan je dierentuin van <a href="/teaching/cpp/labo-5">labo 5</a>. Dieren moeten gevoed worden met de <code>bool voeder(const Voedsel &amp;voedsel)</code> methode op dierentuin. De functie geeft <code>TRUE</code> terug indien het voedsel voldoende is voor alle dieren en <code>FALSE</code> indien het onvoldoende is. Voedsel heeft een <code>voedingswaarde</code>. Elk dier eet even veel in voedingswaarde als zijn gewicht. Verzin voedsel <strong>subklassen</strong> om alle edge cases te kunnen testen!</li>
+<li><em>Extra</em>: Dieren zijn carnivoren, herbivoren of omnivoren. Voedsel is ofwel plant- ofwel vleesgebaseerd. Wat doe je als je een carnivoor sla geeft, of een herbivoor een stukje kip? Hoe implementeer je deze specificaties?</li>
+<li><em>Extra</em>: Dieren zijn allergisch aan bepaald voedsel. Wat doe je als je een dier eten geeft dat het niet verdraagd? Wat doe je in je <code>voeder()</code> implementatie? Voorzie een methode <code>bool isAllergischAan(const Voedsel &amp;voedsel)</code> in je Dier klasse.</li>
 </ol>
 
 <p>Tips: denk aan het thema: subklassen, operators, templates.</p>
@@ -727,6 +730,7 @@ auto result = som(1, 2.0, 3);
 <li>Welke operatoren buiten <code>-&gt;</code> overload je best niet, en waarom? Geef een voorbeeld.</li>
 <li>Hoe kan je <code>Punt</code> uitbreiden tot X dimensies?</li>
 <li>Wat is het fundamentele verschil tussen Generics in Java en Templates in C++?</li>
+<li>Wat is polymorfisme in je eigen woorden? Hoe pas je dit toe in C++?</li>
 </ol>
 </div>
 

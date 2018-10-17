@@ -449,6 +449,9 @@ Zie [docs](https://en.cppreference.com/w/cpp/language/parameter_pack).
   2. De punten kunnen gehele of rationale getallen bevatten. 
   3. Ik kan punten converteren van 2D naar 3D of omgekeerd (met verlies)
   4. Ik kan punten met elkaar optellen.
+3. _Extra_: Denk terug aan je dierentuin van [labo 5](/teaching/cpp/labo-5). Dieren moeten gevoed worden met de `bool voeder(const Voedsel &voedsel)` methode op dierentuin. De functie geeft `TRUE` terug indien het voedsel voldoende is voor alle dieren en `FALSE` indien het onvoldoende is. Voedsel heeft een `voedingswaarde`. Elk dier eet even veel in voedingswaarde als zijn gewicht. Verzin voedsel **subklassen** om alle edge cases te kunnen testen!
+4. _Extra_: Dieren zijn carnivoren, herbivoren of omnivoren. Voedsel is ofwel plant- ofwel vleesgebaseerd. Wat doe je als je een carnivoor sla geeft, of een herbivoor een stukje kip? Hoe implementeer je deze specificaties?
+5. _Extra_: Dieren zijn allergisch aan bepaald voedsel. Wat doe je als je een dier eten geeft dat het niet verdraagd? Wat doe je in je `voeder()` implementatie? Voorzie een methode `bool isAllergischAan(const Voedsel &voedsel)` in je Dier klasse. 
 
 Tips: denk aan het thema: subklassen, operators, templates.
 
@@ -457,3 +460,4 @@ Tips: denk aan het thema: subklassen, operators, templates.
 1. Welke operatoren buiten `->` overload je best niet, en waarom? Geef een voorbeeld. 
 2. Hoe kan je `Punt` uitbreiden tot X dimensies? 
 3. Wat is het fundamentele verschil tussen Generics in Java en Templates in C++?
+4. Wat is polymorfisme in je eigen woorden? Hoe pas je dit toe in C++? 
