@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="The Lean Doctorate - Using agile practices to tacle a long-term research project">
+	<meta content="The Lean Doctorate" property="og:title">
+	<meta content="Using agile practices to tacle a long-term research project" property="og:description">
+
+
+
+  <meta content="phd, tools, agile" name="keywords">
+
+
+<meta property="og:url" content="https://brainbaking.com/post/lean-doctorate/" />
+<meta property="og:type" content="website" />
+
+
+
+
+
+  
+    <meta property="og:see_also" content="https://brainbaking.com/post/productivity-tools-multiplatform/" />
+  
+    <meta property="og:see_also" content="https://brainbaking.com/post/informatics-education-modules/" />
+  
+    <meta property="og:see_also" content="https://brainbaking.com/post/reverse-engineering-a-curriculum/" />
+  
+
+<meta property="article:published_time" content="2018-10-19 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2018-10-19 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="post" />
+
+  <meta property="article:tag" content="phd" />
+
+  <meta property="article:tag" content="tools" />
+
+  <meta property="article:tag" content="agile" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://brainbaking.com/"
+    },
+    "articleSection" : "post",
+    "name" : "The Lean Doctorate",
+    
+      "headline" : "Using agile practices to tacle a long-term research project",
+    
+    "description" : "At the start of my doctoral study, things are a bit woozy. The use of that word &ldquo;bit&rdquo; may be the inverse of exaggeration: shaping an abstract idea into a malleable and well-defined project is a process that can easily take up months. After that you still have to &ldquo;start&rdquo; actually doing stuff in context of your invented project! Most doctorates are classical examples of a waterfall process: come up with an abstract, do your (and a lot of) literature study, reach certain milestones.",
+    
+      "inLanguage" : "en-US",
+    
+    
+      "image": "https://brainbaking.com/img/avatar-icon.png",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https://brainbaking.com/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-10-19 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2018-10-19 00:00:00 &#43;0000 UTC",
+    "url" : "https://brainbaking.com/post/lean-doctorate/",
+    "wordCount" : "1128",
+    "keywords" : [ "phd","tools","agile","The Lean Doctorate", "post" ]
+}
+</script>
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Lean Doctorate</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.47.1" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">The Lean Doctorate</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/post/lean-doctorate/">The Lean Doctorate</a>
+    </h3>
+    
+
+    
+    
+    
+        <h4>Using agile practices to tacle a long-term research project</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<span title="Created Date">
+                    <i class='fa fa-calendar'></i>&nbsp;19 October 2018
+                </span>&nbsp;|&nbsp;
+                <span title="Last Modified Date">
+                    <i class='fa fa-calendar-check-o'></i>&nbsp;19 October 2018
+                </span>
+    		</span>
+    	</h5>
+    
+
+
+    
+	   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+    
+    
+        <a href="https://brainbaking.com/tags/phd"><kbd class="item-tag">phd</kbd></a>
+    
+        <a href="https://brainbaking.com/tags/tools"><kbd class="item-tag">tools</kbd></a>
+    
+        <a href="https://brainbaking.com/tags/agile"><kbd class="item-tag">agile</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>At the start of my doctoral study, things are a bit <em>woozy</em>. The use of that word &ldquo;bit&rdquo; may be the inverse of exaggeration: shaping an abstract idea into a malleable and well-defined project is a process that can easily take up months. After that you still have to &ldquo;start&rdquo; actually doing stuff in context of your invented project! Most doctorates are classical examples of a <strong>waterfall</strong> process: come up with an abstract, do your (and a lot of) literature study, reach certain milestones. It&rsquo;s clearly visible in the <a href="https://set.kuleuven.be/phd/roadmap.htm">Arenberg Doctoral School Roadmap</a>.</p>
+
+<p>As an <em>agile</em> software engineer, that uncertainty leaves me with an unpleasant feeling as I struggle to define clear goals on a weekly basis. Sprints of 2 or 3 weeks are out of the question&hellip; Are they? Why should they be? A quick &ldquo;<em>agile doctorate</em>&rdquo; lookup in Google Scholar nets me academic papers like <a href="http://csis.pace.edu/~ctappert/srd2015/2015PDF/d4.pdf">An Agile Approach to the Doctoral Dissertation Process</a> and <a href="http://csis.pace.edu/~ctappert/srd2016/2016PDF/a3.pdf">The Conclusion</a>. The only problem with these papers is that they propose to change the formula all together in an experimental context. There is - surprisingly - next to nothing academically published about someone&rsquo;s PhD process in an iterative or <em>agile</em> way!</p>
+
+<h3 id="how-to-be-an-agile-academic">How to be an Agile Academic</h3>
+
+<p>Maybe we should ask <a href="https://www.scrumalliance.org/community/profile/jsutherland">Jeff Sutherland</a> on how to achieve this, but I doubt the SCRUM Alliance principles were in his head when he did his dictorate. Katy Peplin wrote a nice article about <a href="https://www.katypeplin.com/blog/2017/10/25/be-an-agile-academic">being an agile academic</a> that advocates for principles like getting feedback, fast(er) and using Test Driven Design. As some wise men once said,</p>
+
+<blockquote>
+<p>Fail fast, fail often.</p>
+</blockquote>
+
+<h4 id="early-feedback">Early feedback</h4>
+
+<p>To fail means to get feedback. To get feedback means to <strong>publish</strong>. That&rsquo;s right, publish as early and as often as possible! But how can you publish papers when you haven&rsquo;t even started researching, let alone writing something useful yet? I&rsquo;m not only talking about <a href="https://speakerdeck.com/jakevdp/in-defense-of-extreme-openness">lean publishing of academic papers</a> (as Jake VanderPlas said <em>in defense of extreme openness</em>), but also about concepts. Anything you put on (virtual) paper can be used to get feedback.</p>
+
+<p>For example, Katy identified daily stand ups used in agile teams as a useful way to identify what was blocking her progress by doing a stand-up with&hellip; yourself! That way she got feedback from herself. A PhD can be a lonely process indeed, but it doesn&rsquo;t have to be that way. You can change that yourself by explicitly asking feedback to your peers, colleagues and friends.</p>
+
+<p>My way to get feedback is to follow in Jake&rsquo;s footsteps and to simply <a href="wgroeneveld.github.io/phd">publish <strong>everything</strong> on Github</a>. Add a big &ldquo;feedback&rdquo; button that redirects to the Github Issues page to invite people who come across your work to leave valuable insights. Why only publishing a paper, if you can publish everything related to your work, including papers? It contains reports of meetings, brainstorms, concept items I&rsquo;m working on, definitions, bibliography, &hellip; Literally everything. <strong>Document everything</strong> - a useful tip!</p>
+
+<p>Another way to get feedback if you&rsquo;re developing is using your trusty Unit Tests and Continuous Integration system. As I&rsquo;m not coding for my PhD, this might not apply, you might think. But actually, I can still take those concepts and try to apply them to my writing:</p>
+
+<ul>
+<li>Create separate pages for separate ideas/subjects. (Test Classes)</li>
+<li>First write down <em>what</em> you&rsquo;re trying to write down. (&ldquo;X in here&rdquo;, &ldquo;WHEN I&rsquo;m finished with this, X and Y SHOULD be defined here&rdquo;). (Given, When, Then Test Cases)</li>
+<li>Then write, and rewrite, and rewrite. The expected outcome of that page might also change.</li>
+</ul>
+
+<p>Publishing these pages as a website using <code>Hugo</code> makes it very easy to share a link and ask someone for feedback. Of course, before simply pushing everything into the open, your supervisor (and possibly your Faculty) should agree with this. But after showing the advantages of being open, I&rsquo;m sure that won&rsquo;t be a big problem.</p>
+
+<h4 id="planning">Planning</h4>
+
+<p>Another useful tip you hear often might be to &ldquo;try to work on a weekly basis&rdquo;. They are talking about <em>planning</em> your week. If planning a whole doctorate is too difficult (it is, and it&rsquo;s scope will change often) - simply plan each week. I use <a href="https://trello.com/b/xbb3Wh56/phd-wouter">Trello</a> for that and you guessed it - it&rsquo;s open to the public. It&rsquo;s a bit more intricate than your average &ldquo;todo - doing - done&rdquo; list, but not by much:</p>
+
+<ol>
+<li>Todo - backlog: anything in here. Things I will need to do in the next months - years. Very vague items. Might and probably will be split in multiple items.</li>
+<li>Todo - Week X [Deadline Y]: Something to work towards, for example a seminar you&rsquo;re attending or holding next month, or a brainstorm week you&rsquo;re holding with a research group where you can get feedback from your supervisor (or others).</li>
+<li>Todo - Week X: the current week. What will you be doing this week? Try to be as descriptive and concrete as possible.</li>
+<li>Doing</li>
+<li>Done: timestamped.</li>
+</ol>
+
+<p>Apart from that, I&rsquo;m relying on the following labels:</p>
+
+<ul>
+<li>Red: BLOCKED (no separate column, preserves the overview). You want as little as possible of those. Check on those daily!</li>
+<li>Green: WRITING</li>
+<li>Blue: LITERATURE STUDY (research from others to go through)</li>
+<li>Orange: FEEDBACK</li>
+<li>Yellow: DOCTORAL STUDY (classes to attend)</li>
+<li>Purple: ADMINISTRATION</li>
+</ul>
+
+<h3 id="the-lean-tools-used-to-battle-with">The <em>lean</em> Tools used to battle with</h3>
+
+<p>Writing requires a&hellip; typewriter? Text editor? Sublime Text. Pushing to a github repository means we&rsquo;ll be using <code>git</code> and the command line (<code>iTerm</code>) a lot. I&rsquo;m a big fan of Markdown thanks to small but great generators like <code>Hugo</code> used on this site. Instead of redirecting everyone to the Github repository homepage, I converted my PhD repository to a Hugo website and published it as a Github Page. That means written Markdown files are instantly and easily readable by a bigger audience and sharing the work through a website is a bit easier.</p>
+
+<p>Sublime works well in combination with Git and Markdown; especially with plugins like WordCount, MarkdownEditing, GitGutter, BracketHighlighter and Compare Side-By-Side. My choice for using Markdown instead of LaTeX might sound strange for academics, but Hugo&rsquo;s publishing skills are simply unmatched if you want feedback, fast. Things like Pandoc and AcademicMarkdown can be used to convert <code>.md</code> files to academic <code>.pdf</code> papers, like <a href="http://www.ericmjl.com/blog/2016/6/22/tooling-up-for-plain-text-academic-writing-in-markdown/">Eric J. Ma</a> did. More on that later when I&rsquo;m on the verge of actually publishing something in an academic journal.</p>
+
+<h3 id="anything-else">Anything else?</h3>
+
+<p>I&rsquo;m sure my methods of bootstrapping my research can be further enhanced by people who&rsquo;ve been through the whole process and are also agile advocates. If you think my work might benefit from some other tool or practice not mentioned here, please let me know by <a href="https://github.com/wgroeneveld/phd/issues">adding an issue in the Github repo</a> as feedback. Every remark is greatly appreciated!</p>
+
+<p>In the meantime, take a second to skim through <a href="https://wgroeneveld.github.io/phd/">my work so far</a>. Thank you!</p>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header"><i class="fa fa-newspaper-o"></i>&nbsp;Related by Tags</h4>
+
+        <div class="text-justify">
+             <div class="item">
+
+    <h4><a href="/post/productivity-tools-multiplatform/">Productivity Tools on all platforms</a></h4>
+
+    
+    
+    
+        Matching my most frequently used tools on OSX, Linux and Windows <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;28 August 2018</span>
+    
+
+</div>
+  <div class="item">
+
+    <h4><a href="/post/informatics-education-modules/">Computer Science learning pathways</a></h4>
+
+    
+    
+    
+        Categorizing essential Computer Science knowledge <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;29 June 2018</span>
+    
+
+</div>
+  <div class="item">
+
+    <h4><a href="/post/reverse-engineering-a-curriculum/">Reverse engineering a curriculum</a></h4>
+
+    
+    
+    
+        Can a unified software engineering philosopy shape the right context in a curriculum? <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;15 June 2018</span>
+    
+
+</div>
+ 
+        </div>
+
+        <hr/>
+
+    
+
+    
+    
+    <h4 class="page-header"><i class="fa fa-comments-o"></i>&nbsp;
+        
+            Join the Discussion on 
+        
+        <a href="https://twitter.com/woutergroenev">Twitter</a>!</h4>
+
+        
+
+    
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

@@ -45,7 +45,7 @@ void vsync() {
     while (REG_VCOUNT < 160);
 }
 
-uint16 color(uint16 r, uint16 g, uint16 b) {
+uint16 get_color(uint16 r, uint16 g, uint16 b) {
     uint16 c = (b & 0x1f) << 10;
     c |= (g & 0x1f) << 5;
     c |= (r & 0x1f);
@@ -54,7 +54,7 @@ uint16 color(uint16 r, uint16 g, uint16 b) {
 
 volatile object* create_paddle() {
     // 1. kleur
-    PALETTE_MEM[0][2] = color(31, 0, 0);
+    PALETTE_MEM[0][2] = get_color(31, 0, 0);
 
     // 2. tile - vanaf hieronder alles bezet tot TILE_MEM[4][6]!
     volatile uint16 *paddle_tile = (uint16*) TILE_MEM[4][2];  // begin vanaf 2
@@ -74,7 +74,7 @@ volatile object* create_paddle() {
 
 volatile object* create_ball() {
     // 1. kleur
-    PALETTE_MEM[0][1] = color(31, 31, 31); // wit - zie labo 3
+    PALETTE_MEM[0][1] = get_color(31, 31, 31); // wit - zie labo 3
 
     // 2. tile
     volatile uint16 *ball_tile = (uint16*) TILE_MEM[4][1];  // 1 block
