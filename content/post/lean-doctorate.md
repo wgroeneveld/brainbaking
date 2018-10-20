@@ -1,6 +1,7 @@
 ---
-title: The Lean Doctorate
+title: The Startup of a Lean Doctorate
 date: '2018-10-19'
+bigimg: /img/lightbulbs.jpg
 subtitle: Using agile practices to tacle a long-term research project
 tags:
   - phd
@@ -35,6 +36,20 @@ Another way to get feedback if you're developing is using your trusty Unit Tests
 
 Publishing these pages as a website using `Hugo` makes it very easy to share a link and ask someone for feedback. Of course, before simply pushing everything into the open, your supervisor (and possibly your Faculty) should agree with this. But after showing the advantages of being open, I'm sure that won't be a big problem. 
 
+##### _Demo or die_
+
+_Closing the feedback loop_ might not be that simple: professors are usually extremely busy and have a tight schedule, so don't expect them to read every long piece you've written. Most PhD students meet with their supervisor once a month, just like me. I know students who are less lucky and have more trouble squeezing in a meeting. If you're really unlucky, your supervisor might not show any interest at all in your research. That's quite sad and should not happen. 
+
+In most agile software development companies, teams present their progress weekly or every two weeks. This is a short moment of reflection that allows for (in their case last-minute) feedback from all stakeholders. I try to emulate this principle by meeting with my supervisor once a month, and meeting with another interested party _in the field_ - also once a month. If you plan this in alternating two weeks, you can gather feedback every 14 days.
+
+The added benefit of gathering feedback from people in the field is another important **angle of approach**. The result is not a pure theoretical academic work but a good balance between theory and practice. Our Engineering & Technology Faculty at KU Leuven obliges PhD students to write a valorisation report to prove applicability. Another thing more easily checked off...
+
+##### Reading
+
+Another way to tap into the brains of others is to simply _read_. Reading books related to your subject will spark new ideas and might even make you rethink certain options. Static feedback is still feedback, even if it's your own responsibility to interpret written opinions of others. 
+
+I am not talking about your typical academic literature, but also about popular science books, philosophy, sociology and psychology, ... - anything that even remotely _touches_ upon your research questions might be worth looking into. I prioritize my reading list **based on interest** instead of relevance: embrace the possibility for new ideas coming from _any_ direction. For example, I'm researching non-cognitive skills in software engineering;  [Work Rules!](https://www.goodreads.com/book/show/22875447-work-rules?ac=1&from_search=true), [Mindset](https://www.goodreads.com/book/show/40745.Mindset?ac=1&from_search=true) and [The Reflective Practitioner](https://www.goodreads.com/book/show/134454.The_Reflective_Practitioner?ac=1&from_search=true) are currently on my list. 
+
 #### Planning
 
 Another useful tip you hear often might be to "try to work on a weekly basis". They are talking about _planning_ your week. If planning a whole doctorate is too difficult (it is, and it's scope will change often) - simply plan each week. I use [Trello](https://trello.com/b/xbb3Wh56/phd-wouter) for that and you guessed it - it's open to the public. It's a bit more intricate than your average "todo - doing - done" list, but not by much:
@@ -56,6 +71,17 @@ Apart from that, I'm relying on the following labels:
 
 ### The _lean_ Tools used to battle with
 
+<img src="/img/acm_notes.jpg" class="bordered" />
+
+#### 1. Use _analog_ tools
+
+I have never had that much freedom in any long term project I've ever worked on, than my own doctorate. I am the one who decides what to focus on and I am the one who decides which direction to go to - of course all in dialogue with my supervisors. But that liberating feeling generates a lot of **wild new ideas**. Those ideas present themselves on unexpected moments - so you better make sure you have something to write with and something to write on. My love for pen & paper is [well known](/post/journaling-in-practice/). I jot down ideas, mindmaps and summaries of papers and manage to fill at least 2 A4 papers every single day. 
+
+As with all things, if you don't re-read your notes, they will be lost. See my post about [journaling in practice](/post/journaling-in-practice/) for details on how to set up an easy, working system.<br/>
+After the rough sketching skep, ripened and mature ideas might be worthy of a more substantial body.
+
+#### 2. Use _simple_ digital tools
+
 Writing requires a... typewriter? Text editor? Sublime Text. Pushing to a github repository means we'll be using `git` and the command line (`iTerm`) a lot. I'm a big fan of Markdown thanks to small but great generators like `Hugo` used on this site. Instead of redirecting everyone to the Github repository homepage, I converted my PhD repository to a Hugo website and published it as a Github Page. That means written Markdown files are instantly and easily readable by a bigger audience and sharing the work through a website is a bit easier. 
 
 Sublime works well in combination with Git and Markdown; especially with plugins like WordCount, MarkdownEditing, GitGutter, BracketHighlighter and Compare Side-By-Side. My choice for using Markdown instead of LaTeX might sound strange for academics, but Hugo's publishing skills are simply unmatched if you want feedback, fast. Things like Pandoc and AcademicMarkdown can be used to convert `.md` files to academic `.pdf` papers, like [Eric J. Ma](http://www.ericmjl.com/blog/2016/6/22/tooling-up-for-plain-text-academic-writing-in-markdown/) did. More on that later when I'm on the verge of actually publishing something in an academic journal. 
@@ -65,3 +91,7 @@ Sublime works well in combination with Git and Markdown; especially with plugins
 I'm sure my methods of bootstrapping my research can be further enhanced by people who've been through the whole process and are also agile advocates. If you think my work might benefit from some other tool or practice not mentioned here, please let me know by [adding an issue in the Github repo](https://github.com/wgroeneveld/phd/issues) as feedback. Every remark is greatly appreciated!  
 
 In the meantime, take a second to skim through [my work so far](https://wgroeneveld.github.io/phd/). Thank you!
+
+<span style="font-size: 9pt; color: grey;">
+    Lightbulbs [image source](https://www.saddingtonbaynes.com/work/pharma/lightbulbs).
+</span>
