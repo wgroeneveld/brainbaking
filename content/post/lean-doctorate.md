@@ -91,7 +91,3 @@ Sublime works well in combination with Git and Markdown; especially with plugins
 I'm sure my methods of bootstrapping my research can be further enhanced by people who've been through the whole process and are also agile advocates. If you think my work might benefit from some other tool or practice not mentioned here, please let me know by [adding an issue in the Github repo](https://github.com/wgroeneveld/phd/issues) as feedback. Every remark is greatly appreciated!  
 
 In the meantime, take a second to skim through [my work so far](https://wgroeneveld.github.io/phd/). Thank you!
-
-<span style="font-size: 9pt; color: grey;">
-    Lightbulbs [image source](https://www.saddingtonbaynes.com/work/pharma/lightbulbs).
-</span>
