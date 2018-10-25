@@ -318,7 +318,7 @@ graph TD;
   subgraph source code
     H[header.h<br/> template definitie van Punt]
     A[source1.cpp<br/> gebruik Punt van int]
-    B[source2.cp<br/> gebruik Punt van int]
+    B[source2.cpp<br/> gebruik Punt van int]
     A --> H
     B --> H
   end
