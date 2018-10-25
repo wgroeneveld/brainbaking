@@ -232,6 +232,7 @@ Alle mogelijke operatoren kunnen overloaded worden, behalve `::`, `.*`, `.` en `
 Een voorbeeld:
 
 ```C
+using namespace std;
 class Punt {
   private:
     int x, y;
@@ -240,9 +241,9 @@ class Punt {
     Punt operator +(const Punt& other) {
       return Punt(x + other.x, y + other.y);
     }
-    friend ostream& operator<<(ostream& os, Punt& punt);
-}
-ostream& operator<<(ostream& os, Punt& punt) {
+    friend ostream& operator<<(ostream& os, Punt punt);
+};
+ostream& operator<<(ostream& os, Punt punt) {
   os << "(" << punt.x << "," << punt.y << ")";
   return os;
 }
@@ -251,7 +252,7 @@ int main() {
   Punt a(1, 2);
   Punt b(3, 4);
 
-  std::cout << a + b << endl; // print (4,6)
+  cout << a + b << endl; // print (4,6)
 }
 ```
 

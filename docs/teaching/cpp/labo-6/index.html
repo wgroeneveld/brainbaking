@@ -66,7 +66,7 @@ mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  gr
     "datePublished": "2018-10-17 21:43:14 &#43;0200 CEST",
     "dateModified" : "2018-10-17 21:43:14 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-6/",
-    "wordCount" : "2707",
+    "wordCount" : "2710",
     "keywords" : [ "Labo 6: C&#43;&#43; Class Inheritance, operators en templates", "teaching" ]
 }
 </script>
@@ -484,7 +484,8 @@ int main() {
 
 <p>Een voorbeeld:</p>
 
-<pre><code class="language-C">class Punt {
+<pre><code class="language-C">using namespace std;
+class Punt {
   private:
     int x, y;
   public:
@@ -492,9 +493,9 @@ int main() {
     Punt operator +(const Punt&amp; other) {
       return Punt(x + other.x, y + other.y);
     }
-    friend ostream&amp; operator&lt;&lt;(ostream&amp; os, Punt&amp; punt);
-}
-ostream&amp; operator&lt;&lt;(ostream&amp; os, Punt&amp; punt) {
+    friend ostream&amp; operator&lt;&lt;(ostream&amp; os, Punt punt);
+};
+ostream&amp; operator&lt;&lt;(ostream&amp; os, Punt punt) {
   os &lt;&lt; &quot;(&quot; &lt;&lt; punt.x &lt;&lt; &quot;,&quot; &lt;&lt; punt.y &lt;&lt; &quot;)&quot;;
   return os;
 }
@@ -503,7 +504,7 @@ int main() {
   Punt a(1, 2);
   Punt b(3, 4);
 
-  std::cout &lt;&lt; a + b &lt;&lt; endl; // print (4,6)
+  cout &lt;&lt; a + b &lt;&lt; endl; // print (4,6)
 }
 </code></pre>
 
