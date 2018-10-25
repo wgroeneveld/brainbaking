@@ -27,7 +27,7 @@ Enkele belangrijke zaken die onmiddellijk opvallen:
   - `<<`, `>>` streams
 - `class` en alles wat daar mee te maken heeft
   - `new`, `delete` in plaats van `malloc()` en `free()`
-- `nullptr` in plaats van `NULL`, 
+- `nullptr` in plaats van `NULL`,
 - [smart pointers](https://en.wikipedia.org/wiki/Smart_pointer#unique_ptr) voor auto garbage collection
 - `auto` als _type inference_ zoals `var` in C#, `decltype` in plaats van `typeof`
 - Exception handling
@@ -46,7 +46,7 @@ private:
     int leeftijd;
 public:
     Persoon(int leeftijd);
-    bool isOud() const { 
+    bool isOud() const {
         std::cout << "checking leeftijd van persoon " << leeftijd << std::endl;
         return leeftijd > 60;
     }
@@ -55,7 +55,7 @@ public:
 
 Persoon::Persoon(int leeftijd) {
     this->leeftijd = leeftijd;
-} 
+}
 
 int main() {
     auto jaak = new Persoon(70);
@@ -69,7 +69,7 @@ Dat ziet er al heel wat properder uit:
 - We hebben methodes (inline) gedeclareerd in de klasse Persoon.
 - Jaak aanmaken hoeft geen type definitie als `Persoon *` met C++11's `auto` keyword. Leer auto goed kennen en gebruiken: [overtuig jezelf](http://www.acodersjourney.com/2016/02/c-11-auto/)!
 
-Type inference is in combinatie met top-level `const` en references niet zo triviaal, zie p.68. 
+Type inference is in combinatie met top-level `const` en references niet zo triviaal, zie p.68.
 
 ### De Klasse structuur
 
@@ -98,7 +98,7 @@ void Getal::vermenigvuldigMet(int ander) {
 Twee van de drie methodes staan buiten de klasse definitie. We maken hier typisch twee files voor aan:
 
 1. getal.h waar de klasse definitie in leeft
-2. getal.cpp waar de methode declaraties in leven 
+2. getal.cpp waar de methode declaraties in leven
 
 Verschillende andere source files kunnen de Getal klasse gebruiken met `#include "getal.h"`. De klasse kan maar 1x gedefiniëerd worden, en 2x de header includen in je programma geeft een compilatiefout:
 
@@ -131,12 +131,12 @@ Waarom is de eerste methode in de body gedeclareerd? Dit is een `inline` functie
 
 Wanneer schrijven we een inline functie?
 
-1. **Duidelijkheid**: Als de functie zeer klein is en die in de header file kan leven zodat gebruikers hiervan ondubbelzinnig kunnen zien wat dit doet. 
-2. **Optimalisatie** kàn ook. 
+1. **Duidelijkheid**: Als de functie zeer klein is en die in de header file kan leven zodat gebruikers hiervan ondubbelzinnig kunnen zien wat dit doet.
+2. **Optimalisatie** kàn ook.
 
 #### In-class initialization
 
-Sinds C++ 11 kan je ook default values meegeven aan data members in de definitie van de klasse zelf. Dit klinkt belachelijk omdat zoiets in Java vanaf het begin al kon. In de private sectie van de Getal klasse kunnen we dus `int getal = 5;` zetten. Als er geen constructor deze member initialiseert wordt getal op 5 gezet. 
+Sinds C++ 11 kan je ook default values meegeven aan data members in de definitie van de klasse zelf. Dit klinkt belachelijk omdat zoiets in Java vanaf het begin al kon. In de private sectie van de Getal klasse kunnen we dus `int getal = 5;` zetten. Als er geen constructor deze member initialiseert wordt getal op 5 gezet.
 
 #### "this" en Constante functies
 
@@ -153,11 +153,11 @@ Het `const` keyword achter de get methode verandert de `this` pointer naar een c
 
 ### (auto-generated) Constructoren
 
-Een klasse instantiëren roept de (default) constructor aan. Als er geen eigen gedefiniëerde constructor aanwezig is, genereert de compiler die voor u, net als in Java. Zodra je één constructor definiëert, zal C++ geen enkele zelf genereren. 
+Een klasse instantiëren roept de (default) constructor aan. Als er geen eigen gedefiniëerde constructor aanwezig is, genereert de compiler die voor u, net als in Java. Zodra je één constructor definiëert, zal C++ geen enkele zelf genereren.
 
 ```C
 class Getal {
-  private: 
+  private:
     int *x;
   public:
    Getal(int x) : x(new int(x)) {}
@@ -166,13 +166,13 @@ auto g = new Getal(5);  // ok: eigen constructor aangeroepen
 auto g = new Getal();   // error: Too few arguments, expects 1
 ```
 
-De default constructor is makkelijk zelf te voorzien met `Getal() {}` maar met `Getal() = default;` zeggen we tegen de compiler dat hij expliciet wél eentje moet genereren. 
+De default constructor is makkelijk zelf te voorzien met `Getal() {}` maar met `Getal() = default;` zeggen we tegen de compiler dat hij expliciet wél eentje moet genereren.
 
 Merk op dat we hier een _memory leak_ introduceren door `*x` niet zelf op te kuisen! Als een klasse _resources_ zoals pointers bevat is het de bedoeling dat deze zelf verantwoordelijk is voor de opkuis. Dit gebeurt in de destructor prefixed met `~`:
 
 ```C
 class Getal {
-  private: 
+  private:
     int *x;
   public:
    Getal() = default;
@@ -183,7 +183,7 @@ class Getal {
 
 Java heeft geen destructors omdat objecten op de heap leven en door de Garbage Collector opgeruimd worden zonder invloed van de programmeur. Er is wel een `finalize` die je zelf kan aanroepen om resources op te kuisen. In C# wordt ook de `~Object(){}` notatie gebruikt, maar dat is ook een soort van finalizer en geen échte destructor.
 
-Een derde soort constructor, de "copy constructor", wordt ook door C++ voorzien en aangeroepen wanneer de expressie `getal1 = getal2` geëvalueerd wordt. De compiler maakt een nieuwe `Getal` instance aan en kopiëert alle velden over. 
+Een derde soort constructor, de "copy constructor", wordt ook door C++ voorzien en aangeroepen wanneer de expressie `getal1 = getal2` geëvalueerd wordt. De compiler maakt een nieuwe `Getal` instance aan en kopiëert alle velden over.
 
 Dit is echter helemaal niet wat we willen als we _resources_ als members hebben zoals `*x`: de pointer wordt gekopiëerd maar niet de inhoud. Beide getal instances verwijzen dan dezelfde `x` waarde:
 
@@ -199,7 +199,7 @@ int main() {
 }
 ```
 
-Oeps. Voorzie in dat geval je eigen copy constructor met `Getal(const Getal& other) : x(new int(*(other.x))) {}`. Copy constructors kan je ook defaulten. 
+Oeps. Voorzie in dat geval je eigen copy constructor met `Getal(const Getal& other) : x(new int(*(other.x))) {}`. Copy constructors kan je ook defaulten.
 
 ### Methodes in Klassen en Reference types
 
@@ -227,9 +227,9 @@ nieuwGetal->telOpMet(*g);
 
 We moeten g _dereferencen_ om als reference mee te kunnen geven. `const` wordt hier gebruikt om zeker te zijn dat het binnenkomende getal niet gewijzigd kan worden. Alternatief kunnen we `new` twee keer weglaten: `auto g = Getal();` en dan `nieuwGetal.telOpMet(g);`.
 
-### Wanneer gebruik ik "new" en wanneer niet? 
+### Wanneer gebruik ik "new" en wanneer niet?
 
-Een pointer naar een object in het geheugen aanmaken (en geheugen reserveren) met `new` vereist dat je die *zelf opkuist* met `delete`! Als je dit niet doet blijft dat geheugen bezet en krijg je wat men noemt "memory leaks": hoe langer men je programma gebruikt, hoe meer geheugen het (ongewenst) in beslag neemt. 
+Een pointer naar een object in het geheugen aanmaken (en geheugen reserveren) met `new` vereist dat je die *zelf opkuist* met `delete`! Als je dit niet doet blijft dat geheugen bezet en krijg je wat men noemt "memory leaks": hoe langer men je programma gebruikt, hoe meer geheugen het (ongewenst) in beslag neemt.
 
 Om dat te vermijden gebruik je best binnen functies nooit `new`:
 
@@ -247,15 +247,15 @@ void telOpManualClean() {
 }
 ```
 
-`Getal(3)` zonder new ziet er vreemd uit als je talen als C# en Java gewoon bent, maar de constructor wordt evenzeer aangeroepen en een object wordt evenzeer voor je geïnstantieerd. 
+`Getal(3)` zonder new ziet er vreemd uit als je talen als C# en Java gewoon bent, maar de constructor wordt evenzeer aangeroepen en een object wordt evenzeer voor je geïnstantieerd.
 
 #### De Stack
 
-Lokale variabelen worden op de **stack** bewaard. De stack bevat een tijdelijke workspace aan geheugen wanneer functies aangeroepen worden, die automatisch opgeruimd worden als die functies klaar zijn met hun werk. De Stack is een LIFO lijst. 
+Lokale variabelen worden op de **stack** bewaard. De stack bevat een tijdelijke workspace aan geheugen wanneer functies aangeroepen worden, die automatisch opgeruimd worden als die functies klaar zijn met hun werk. De Stack is een LIFO lijst.
 
 #### De Heap
 
-De heap is geheugen dat opzij gezet wordt voor dynamische allocatie. Zodra je een pointer aanmaakt komt dit op de heap terecht en ben je zelf verantwoordelijk voor het opruimen hiervan. In Java zijn instance variabelen en objecten deel van de heap, in C++ is dat wat complexer. 
+De heap is geheugen dat opzij gezet wordt voor dynamische allocatie. Zodra je een pointer aanmaakt komt dit op de heap terecht en ben je zelf verantwoordelijk voor het opruimen hiervan. In Java zijn instance variabelen en objecten deel van de heap, in C++ is dat wat complexer.
 
 {{<mermaid>}}
 graph TD;
@@ -274,9 +274,9 @@ graph TD;
     end
 {{< /mermaid >}}
 
-Het adres in `ptr_getal` leeft op de stack binnen de `telOp()` methode, maar het geheugen waar het naar verwijst leeft op de heap. Het adres verdwijnt als alles van telOp weggegooid wordt in de stack - maar het getal geheugen blijft bestaan totdat iemand met `delete` de opkuis doet. 
+Het adres in `ptr_getal` leeft op de stack binnen de `telOp()` methode, maar het geheugen waar het naar verwijst leeft op de heap. Het adres verdwijnt als alles van telOp weggegooid wordt in de stack - maar het getal geheugen blijft bestaan totdat iemand met `delete` de opkuis doet.
 
-De dotted pijl van ptr_getal naar getal in de heap verdwijnt en is nooit meer toegankelijk: dit noemt men "_leaking_". Moderne C++ programma's maken zelden gebruik van "raw pointers" (`*`) en laten de compiler en het OS beslissen of zaken op de stack of de heap moeten komen. 
+De dotted pijl van ptr_getal naar getal in de heap verdwijnt en is nooit meer toegankelijk: dit noemt men "_leaking_". Moderne C++ programma's maken zelden gebruik van "raw pointers" (`*`) en laten de compiler en het OS beslissen of zaken op de stack of de heap moeten komen.
 
 #### Smart pointers in C++ 11
 
@@ -288,15 +288,15 @@ auto nieuwGetal = unique_ptr<Getal>(new Getal()); // met auto
 nieuwGetal->telOpMet(*g);
 ```
 
-We komen later nog op de template `<>` notatie terug. Neem hier aan dat dit werkt als Generics in Java. 
+We komen later nog op de template `<>` notatie terug. Neem hier aan dat dit werkt als Generics in Java.
 
 Zie p.470 of [Smart pointers in modern C++](https://docs.microsoft.com/en-us/cpp/cpp/smart-pointers-modern-cpp).
 
-Vergeet niet dat smart pointers niet werken in combinatie met variabelen op de stack (dus altijd `new` gebruiken). Stel dat een klasse een referentie naar een `unique_ptr` heeft die automatisch de pointer zou moeten opkuisen: 
+Vergeet niet dat smart pointers niet werken in combinatie met variabelen op de stack (dus altijd `new` gebruiken). Stel dat een klasse een referentie naar een `unique_ptr` heeft die automatisch de pointer zou moeten opkuisen:
 
 ```C
 class Holder {
-  public: 
+  public:
    unique_ptr<Iets> autoDeleted;
    Holder() {
     Iets iets("1");
@@ -305,27 +305,27 @@ class Holder {
 }
 ```
 
-De deconstrutor van de holder gaat automatisch de waarde die autoDeleted vasthoudt terug vrijgeven, maar de variabele `iets` bestaat al niet meer omdat die enkel op de stack binnen de constructor functie leeft. `&iets` verwijst nu naar "niks" en dit crasht. 
+De deconstrutor van de holder gaat automatisch de waarde die autoDeleted vasthoudt terug vrijgeven, maar de variabele `iets` bestaat al niet meer omdat die enkel op de stack binnen de constructor functie leeft. `&iets` verwijst nu naar "niks" en dit crasht.
 
 ## De C++ Standard Library
 
-Merk op dat in bovenstaande Persoon klasse `printf()` verdwenen is. In C++ gebruiken we streams: `cout` als `stdout` en `cin` als `stdin`. Deze leven in de `std` namespace zodra je `iostream` include. Laat de ".h" suffix achterwege bij het includen van systeembibliotheken van C++. Laat het maar aan de compiler over om de systeembestanden te zoeken tijdens het linken. 
+Merk op dat in bovenstaande Persoon klasse `printf()` verdwenen is. In C++ gebruiken we streams: `cout` als `stdout` en `cin` als `stdin`. Deze leven in de `std` namespace zodra je `iostream` include. Laat de ".h" suffix achterwege bij het includen van systeembibliotheken van C++. Laat het maar aan de compiler over om de systeembestanden te zoeken tijdens het linken.
 
 De Standard Template Library [STL](https://en.wikipedia.org/wiki/Standard_Template_Library) is een bibliotheek die meegeleverd wordt bij de meeste moderne C++ compilers waar `iostream` in leeft. Deze implementeert de nieuwe standaarden, zoals C++11. Compilers vragen soms wel een flag om te kiezen met welke library er gelinkt wordt: `g++ -std=c++11`.
 
-STL bevat een hoop dingen die je het leven makkelijker maakt: strings (gek genoeg nog steeds geen deel van de taal zelf), collecties, streams, IO, ... Bekijk het als de .NET library voor de C# taal of de meegebakken `java.*` klassen en methodes voor Java. "Part II: The C++ Library (p. 307)" behandelt deze zaken in het handboek. 
+STL bevat een hoop dingen die je het leven makkelijker maakt: strings (gek genoeg nog steeds geen deel van de taal zelf), collecties, streams, IO, ... Bekijk het als de .NET library voor de C# taal of de meegebakken `java.*` klassen en methodes voor Java. "Part II: The C++ Library (p. 307)" behandelt deze zaken in het handboek.
 
 In plaats van constant `std::cout` te moeten typen kunnen we alles wat in die namespace zit ook "importeren" zoals een Java `import java.io.*` met `using namespace std;`. `cout` is een instantie van de klasse `ostream`.
 
 ## Initialisatie van objecten
 
-In C++ kan je op twee manieren aan objecten een waarde toekennen (Zie p.43). Het is belangrijk om de verschillende nuances te kunnen onderscheiden omdat met objecten verschillende constructoren gemoeid zijn. 
+In C++ kan je op twee manieren aan objecten een waarde toekennen (Zie p.43). Het is belangrijk om de verschillende nuances te kunnen onderscheiden omdat met objecten verschillende constructoren gemoeid zijn.
 
 #### Direct initialization
 
 `int x(5)` of `Getal g(5)`
 
-Hiervoor is een **constructor** (met argument) nodig. 
+Hiervoor is een **constructor** (met argument) nodig.
 
 Waarom zou je `()` doen in plaats van `=`? Omdat impliciete conversie enkel via direct initialization gebeurt. Stel, ik wil een string in de constructor aanvaarden. Strings met quotes in C++ zijn nog steeds char arrays vanuit C. Dit gaat niet:
 
@@ -362,7 +362,7 @@ heykes.zegIets();     // ok
 
 `int x = 5` of `Getal g = Getal(5)` of `int x = { 5 }`
 
-Hiervoor is een **copy constructor** nodig. 
+Hiervoor is een **copy constructor** nodig.
 
 Merk op dat gebruik van accolades `{ }` eigenlijk copy initialisatie doorvoert, evenals single return statements als `return 3 + 4`. Dit kan je omzetten naar direct initialization met `int retval(3 + 4); return retval;`.
 
@@ -374,7 +374,7 @@ class Punt {
    int x, y;
   public:
    Punt() : x(1), y(1) { }                              // default
-   Punt(const Punt& other) : x(other.x), y(other.y) { } // copy 
+   Punt(const Punt& other) : x(other.x), y(other.y) { } // copy
 }
 ```
 
@@ -400,7 +400,7 @@ for(auto c : str) {
 }
 ```
 
-Als c een reference is kan je in de loop zelf de karakters ook wijzigen. 
+Als c een reference is kan je in de loop zelf de karakters ook wijzigen.
 
 ## Collecties: Vector
 
@@ -422,8 +422,7 @@ p.98 of [cppdocs](https://en.cppreference.com/w/cpp/container/vector) bevat basi
 * grootte controleren met `size()` en `empty()` zoals `std::string`
 * correct gebruik van iterators `begin()` en `end()`
 
-## Labo oefeningen
-<a name="oef"></a>
+## <a name="oef"></a>Labo oefeningen
 
 1. [bibliothecaris labo 2 redux](/teaching/cpp/labo-2/#oef): herimplementeer de bibliothecaris oefening in C++. Let op de verplichte aanwezigheid van:
   * een klasse `Bibliotheek` die een lijst van boeken (als simpele string) bevat
@@ -432,7 +431,7 @@ p.98 of [cppdocs](https://en.cppreference.com/w/cpp/container/vector) bevat basi
   * sorteerfuncties van STL
 2. [Orc labo 1 redux](/teaching/cpp/labo-1/#oef): herimplementeer het Orc model in een C++ klasse (opgave 2 en 3). Let op met memory leaks als orcs dood gaan! Hoe ziet de oude C functie `Orc vecht(Orc aanvaller, Orc verdediger)` er nu uit?
 3. _Extra_: maak een `Dierentuin` klasse. Een dierentuin kan verschillende _dieren_ (`Dier` klasse) ontvangen (`ontvang()` functie). Elk dier heeft een grootte en een naam: Neushoorn(40), Giraf(25), Poema(10). Elke dierentuin heeft x beschikbare ruimte. Wat doet het bestuur van je dierentuin als het te ontvangen dier te groot is? <br/>Bijvoorbeeld: dierentuin(20), leeuw(15) en panda(10). 15 + 10 > 20.
-4. _Extra_: We starten met een taxi bedrijf dat chauffeurs in dienst neemt en wagens koopt om mee rond te rijden. Welke klassen denk je nodig te gaan hebben, en waarom? Teken eerst een model en trek pijlen die relaties voorstellen. Voorzie ook het concept "klant", die kan vervoerd worden. Welke methodes ga je voorzien in je klassen? 
+4. _Extra_: We starten met een taxi bedrijf dat chauffeurs in dienst neemt en wagens koopt om mee rond te rijden. Welke klassen denk je nodig te gaan hebben, en waarom? Teken eerst een model en trek pijlen die relaties voorstellen. Voorzie ook het concept "klant", die kan vervoerd worden. Welke methodes ga je voorzien in je klassen?
 
 Vergeet het volgende niet:
 
@@ -442,7 +441,7 @@ Vergeet het volgende niet:
 
 ## Denkvragen
 
-1. Kan je je een situatie inbeelden waarin het gebruik van raw pointers in een methode van een klasse toch aangewezen is? 
-2. Wat is het fundamenteel verschil tussen een struct in C en een class in C++? 
-3. Wat betekent de foutboodschap "Segmentation fault" precies? 
-4. Wanneer wordt een copy constructor aangeroepen? Leg aan de hand daarvan het verschil tussen initialisatie en toekenning uit. 
+1. Kan je je een situatie inbeelden waarin het gebruik van raw pointers in een methode van een klasse toch aangewezen is?
+2. Wat is het fundamenteel verschil tussen een struct in C en een class in C++?
+3. Wat betekent de foutboodschap "Segmentation fault" precies?
+4. Wanneer wordt een copy constructor aangeroepen? Leg aan de hand daarvan het verschil tussen initialisatie en toekenning uit.

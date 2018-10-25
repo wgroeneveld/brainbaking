@@ -31,11 +31,11 @@ graph TD;
 
 Gegeven de volgende acceptatie criteria:
 
-1. Elk dier kan een aantal centimeter *bewegen*. 
-  * Bij viervoeten hangt dit van de snelheid van het dier af in combinatie met het aantal poten. 
-  * Een kat beweegt sneller dan een hond maar is na 2x moe. 
-  * Een vlinder beweegt liniair met de grootte van zijn vleugels. 
-2. Elk dier eet **voedsel**. 
+1. Elk dier kan een aantal centimeter *bewegen*.
+  * Bij viervoeten hangt dit van de snelheid van het dier af in combinatie met het aantal poten.
+  * Een kat beweegt sneller dan een hond maar is na 2x moe.
+  * Een vlinder beweegt liniair met de grootte van zijn vleugels.
+2. Elk dier eet **voedsel**.
   * Een hond eet alles.
   * Een kat eet enkel vlees.
   * Een vlinder eet enkel groenten.
@@ -65,7 +65,7 @@ public class Hond extends Viervoeter {
     }
 }
 public class Kat extends Viervoeter {
-    private int aantalKeerBewogen; 
+    private int aantalKeerBewogen;
     @Override
     public boolean kanEten(Voedsel voedsel) {
         return voedsel instanceof Vlees;
@@ -158,9 +158,9 @@ private:
 `typeid()` leeft in de `<typeinfo>` header. [Een alternatief](https://en.wikipedia.org/wiki/Run-time_type_information) is dynamische pointers casten (zie onder). Voor de rest zijn de grootste verschillen - buiten de syntax:
 
 * C++11's `override` na een methode wordt ook door de compiler gebruikt om te controleren of wat je override wel een virtuele methode is. In Java is `@Override` enkel ter documentatie.
-* `abstract` op een klasse bestaat niet. Daarvoor moet je een "pure virtuele methode" (`= 0`) aanmaken. 
+* `abstract` op een klasse bestaat niet. Daarvoor moet je een "pure virtuele methode" (`= 0`) aanmaken.
 * Access modifiers bij een te overerven klasse beslissen of de methodes van die superklasse publiek zijn of niet. Dit bestaat niet in Java.
-* Methodes die je overschrijfbaar wil maken moet je prefixen met `virtual`. In Java zijn alle methodes virtual. 
+* Methodes die je overschrijfbaar wil maken moet je prefixen met `virtual`. In Java zijn alle methodes virtual.
 
 Als je de access modifiers in de klasse definitie vergeet wordt `private` aangehouden. Voor een struct is dit standaard `public`.
 
@@ -181,12 +181,12 @@ En wat is de output van `Dier d;`? Juist: error: variable type 'Dier' is an abst
 
 ### Extra Flexibiliteit
 
-* Gebruik `final` als suffix als een subklasse deze virtuele methode niet meer mag overschrijven. Kan op klasse of methode niveau. 
+* Gebruik `final` als suffix als een subklasse deze virtuele methode niet meer mag overschrijven. Kan op klasse of methode niveau.
 * Gebruik de `::` operator als je toch een virtual base methode wil aanspreken die reeds overschreven is: `kat.Dier::iets()` waarbij iets zowel op Kat als op Dier gedefiniëerd is.
 * Gebruik `friend` als prefix om een klasse instantie toegang te geven tot private fields van de andere. Kan op klasse of methode niveau. Zie [InternalsVisibleTo](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute?view=netframework-4.7.2) C# AssemblyInfo.
-* Gebruik `using Base::member` als prefix om bepaalde members toch public access te geven als alles als private gedeclareerd is. 
+* Gebruik `using Base::member` als prefix om bepaalde members toch public access te geven als alles als private gedeclareerd is.
 
-De method shadowing regels volgen ongeveer dezelfde als die van Java: een non-virtual functie met dezelfde naam en argumenten kan een functie hiden van een superklasse. 
+De method shadowing regels volgen ongeveer dezelfde als die van Java: een non-virtual functie met dezelfde naam en argumenten kan een functie hiden van een superklasse.
 
 #### Extra (ongewenste) flexibiliteit: static VS dynamic binding
 
@@ -210,24 +210,24 @@ int main() {
 
 Wat is de output? 3, en niet 5, ook al is het type van b een instantie van klasse B. Huh? Calls naar virtuele functies _kunnen_ at run-time resolved worden, maar dat "hoeft" niet (zie p.604). De enige uitzondering hier is het gebruik van pointers: met `A* b = new B();` geeft `b->a()` wél 5 terug.
 
-`typeid(b).name()` blijft "1A" teruggeven omdat de variabele als type A gedeclareerd is. 
+`typeid(b).name()` blijft "1A" teruggeven omdat de variabele als type A gedeclareerd is.
 
 #### Upcasten en downcasten
 
 C++ voorziet een hele resem aan cast methodes die in het licht van klassen en subklassen nodig kunnen zijn:
 
-1. `dynamic_cast<T>(t)`: downcaster in gebruik. Geeft `nullptr` terug indien niet gelukt. Dit is Java's aangenomen `instanceof` manier. 
+1. `dynamic_cast<T>(t)`: downcaster in gebruik. Geeft `nullptr` terug indien niet gelukt. Dit is Java's aangenomen `instanceof` manier.
 2. `static_cast<T>(t)`: impliciete conversie ongedaan maken (zie elders). Als je bijvoorbeeld weet dat een `void*` eigenlijk een `Punt*` is.Dit kan fouten at compiletime geven.
-3. `reinterpret_cast<T>(t)`: pointer conversies in lijn van C. Dit kan fouten at runtime geven. 
-4. `const_cast<T>(t)`: verwijdert of voegt `const` speficier toe. 
+3. `reinterpret_cast<T>(t)`: pointer conversies in lijn van C. Dit kan fouten at runtime geven.
+4. `const_cast<T>(t)`: verwijdert of voegt `const` speficier toe.
 
 De C-style cast `(Punt*) pt` wordt aanzien als bad practice in de C++ wereld.
 
 ## Operatoren en klassen mixen
 
-C++ biedt zoals verwacht zelfs op operator niveau flexibiliteit: je kan je eigen operatoren implementeren in klassen (p.552). Op die manier kan je bijvoorbeeld twee 2D punten met elkaar optellen: `punt1 + punt2`. In Java zal je een methode moeten maken: `punt1.plus(punt2)` dat een nieuw punt teruggeeft. 
+C++ biedt zoals verwacht zelfs op operator niveau flexibiliteit: je kan je eigen operatoren implementeren in klassen (p.552). Op die manier kan je bijvoorbeeld twee 2D punten met elkaar optellen: `punt1 + punt2`. In Java zal je een methode moeten maken: `punt1.plus(punt2)` dat een nieuw punt teruggeeft.
 
-Alle mogelijke operatoren kunnen overloaded worden, behalve `::`, `.*`, `.` en `?:`. Dit brengt ook potentiële problemen met zich mee! Stel je voor dat `->` overloaded is en je klasse zich heel anders gedraagt dan een standaard pointer reference. With great power comes great responsibility... 
+Alle mogelijke operatoren kunnen overloaded worden, behalve `::`, `.*`, `.` en `?:`. Dit brengt ook potentiële problemen met zich mee! Stel je voor dat `->` overloaded is en je klasse zich heel anders gedraagt dan een standaard pointer reference. With great power comes great responsibility...
 
 Een voorbeeld:
 
@@ -262,12 +262,12 @@ Andere veelgebruikte operatoren:
 
 * `<<` als `toString()` in Java naar stdout.
 * `==` als `equals()` in Java. Vergeet niet `!=` ook te implementeren dan!
-* `=` als in-assignment om `{ }` te gebruiken. 
+* `=` als in-assignment om `{ }` te gebruiken.
 * `[]` als lijst-accessor.
 
 ### Conversion operators
 
-Een conversie tussen twee types gebeurt impliciet als de compiler een match kan vinden. Je kan de compiler een handje helpen door er zelf in je klasse bij te definiëren: `operator int()` (zonder return type). Vanaf dan compileert `Punt p; p + 5;` in combinatie met de plus operator! 
+Een conversie tussen twee types gebeurt impliciet als de compiler een match kan vinden. Je kan de compiler een handje helpen door er zelf in je klasse bij te definiëren: `operator int()` (zonder return type). Vanaf dan compileert `Punt p; p + 5;` in combinatie met de plus operator!
 
 Impliciete conversies zijn niet altijd wenselijk, daarvoor dient de prefix `explicit` (ook toepasbaar op constructoren). Expliciete conversies doe je zelf met `static_cast<int>(p)` - gegeven dat de operator geïmplementeerd is natuurlijk.
 
@@ -288,7 +288,7 @@ Punt<int> pt2(3, 5);
 
 Templates kunnen ook op functie niveau gedefiniëerd worden, als losstaande functie en als deel van een klasse genaamd member templates. (p.672)
 
-#### Hercompilatie van templates 
+#### Hercompilatie van templates
 
 De C++ compiler maakt voor elk template argument in je code (hier `double` en `int`) een aparte versie van de `Punt` klasse. In Java wordt dat weggecompileerd en dienen generics enkel als syntaxtisch hulpmiddel. Dit heeft wel als negatief gevolg dat de binary erg groot kan worden als die vol zit met duplicate versies van `Punt`!
 
@@ -302,7 +302,7 @@ template<typename T> T punt(T t) {
     return t;
 }
 #endif
-// source1.cpp 
+// source1.cpp
 #include "header.h"
 void punt1() {
   auto pt = punt<int>(5);  // template<int> compiled
@@ -361,7 +361,7 @@ Wouters-MacBook-Air:cmake-build-debug jefklak$ nm source1.o | c++filt
 0000000000000058 S punt1() (.eh)
 </pre>
 
-De `U` duidt aan dat dit een onbekende functie is die naderhand (hopelijk) gelinkt zal worden en binnen een ander object leeft. [Lees meer](http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/) over interessante object files en symbolen. In de praktijk geldt dit ook voor STL klassen als `vector<int>`: externals worden meestal in een gedeelde header file geplaatst. 
+De `U` duidt aan dat dit een onbekende functie is die naderhand (hopelijk) gelinkt zal worden en binnen een ander object leeft. [Lees meer](http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/) over interessante object files en symbolen. In de praktijk geldt dit ook voor STL klassen als `vector<int>`: externals worden meestal in een gedeelde header file geplaatst.
 
 Omdat een `Punt<double>` dus een andere klasse is dan een `Punt<int>` zijn ze niet compatibel met elkaar: het zijn twee unieke klassen. Dit is het grootste verschil tussen Templates in C++ en Generics in Java. De notatie `<T extends BaseClass>` is hierdoor niet nodig (maar kan wel met [`enable_if`](https://en.cppreference.com/w/cpp/types/enable_if)).
 
@@ -381,9 +381,9 @@ template<typename T> Punt<T>::Punt(T theX, T theY) : x(theX), y(theY) {
 
 #### Type en non-type arguments
 
-`typename` staat voor "dit is type T" en kan eender welk type zijn. Een constante expressie zoals `5` of een string `"hallo"` aanvaarden gaat zo ook: dat zijn immers ook types. 
+`typename` staat voor "dit is type T" en kan eender welk type zijn. Een constante expressie zoals `5` of een string `"hallo"` aanvaarden gaat zo ook: dat zijn immers ook types.
 
-Constante expressies met `unsigned` in de template definitie kunnen pointers, value references of integrale types zijn. In ons voorbeeld is het niet aangewezen om dit toe te passen: `Punt<3, 4> pt;` slaat enkel op iets als dit punt nooit kan muteren. 
+Constante expressies met `unsigned` in de template definitie kunnen pointers, value references of integrale types zijn. In ons voorbeeld is het niet aangewezen om dit toe te passen: `Punt<3, 4> pt;` slaat enkel op iets als dit punt nooit kan muteren.
 
 #### Herhaling vermijden met typedef
 
@@ -400,7 +400,7 @@ Als ik een template type wil van een klasse aangeven, maar dit in 80% van de gev
 
 ```C
 template<typename T = int> class Punt;
-Punt<> pt;  // <> nog steeds verplicht. 
+Punt<> pt;  // <> nog steeds verplicht.
 ```
 
 Zonder `<>` krijg je "error: use of class template 'Punt' requires template arguments".
@@ -436,29 +436,28 @@ auto result = som(1, 2.0, 3);
 
 Zie [docs](https://en.cppreference.com/w/cpp/language/parameter_pack).
 
-## Labo oefeningen
-<a name="oef"></a>
+## <a name="oef"></a>Labo oefeningen
 
 1. Implementeer de volgende business criteria. Werk eerst een snel model uit op papier. Elke schuin gedrukte term verwacht ik terug te zien als een klasse of methode:
-  1. Een _vacature_ bevat een onderwerp, een lijst van vereisten in de vorm van _diploma's_. 
-  2. Een _sollicitant_ heeft een naam en ook _diploma's_: een _universitair_ heeft een bepaald diploma en een _doctor_ een andere. 
-  3. Een sollicitant kan _solliciteren_ op een bepaalde vacature. Hij komt in aanmerking of niet (`bool` is OK), gebaseerd op de matchende diploma's. 
-  4. We hebben een manier nodig om het _aantal sollicitanten_ van een vacature op te vragen (naar `stdout`). 
-  5. We hebben een manier nodig om voor elke sollicitant snel zijn gegevens (naam en aantal diploma's) af te drukken. 
+  1. Een _vacature_ bevat een onderwerp, een lijst van vereisten in de vorm van _diploma's_.
+  2. Een _sollicitant_ heeft een naam en ook _diploma's_: een _universitair_ heeft een bepaald diploma en een _doctor_ een andere.
+  3. Een sollicitant kan _solliciteren_ op een bepaalde vacature. Hij komt in aanmerking of niet (`bool` is OK), gebaseerd op de matchende diploma's.
+  4. We hebben een manier nodig om het _aantal sollicitanten_ van een vacature op te vragen (naar `stdout`).
+  5. We hebben een manier nodig om voor elke sollicitant snel zijn gegevens (naam en aantal diploma's) af te drukken.
 2. Breid de `Punt` klasse uit met de volgende vereisten:
   1. Er kunnen 2D of 3D punten bestaan
-  2. De punten kunnen gehele of rationale getallen bevatten. 
+  2. De punten kunnen gehele of rationale getallen bevatten.
   3. Ik kan punten converteren van 2D naar 3D of omgekeerd (met verlies)
   4. Ik kan punten met elkaar optellen.
 3. _Extra_: Denk terug aan je dierentuin van [labo 5](/teaching/cpp/labo-5). Dieren moeten gevoed worden met de `bool voeder(const Voedsel &voedsel)` methode op dierentuin. De functie geeft `TRUE` terug indien het voedsel voldoende is voor alle dieren en `FALSE` indien het onvoldoende is. Voedsel heeft een `voedingswaarde`. Elk dier eet even veel in voedingswaarde als zijn gewicht. Verzin voedsel **subklassen** om alle edge cases te kunnen testen!
 4. _Extra_: Dieren zijn carnivoren, herbivoren of omnivoren. Voedsel is ofwel plant- ofwel vleesgebaseerd. Wat doe je als je een carnivoor sla geeft, of een herbivoor een stukje kip? Hoe implementeer je deze specificaties?
-5. _Extra_: Dieren zijn allergisch aan bepaald voedsel. Wat doe je als je een dier eten geeft dat het niet verdraagd? Wat doe je in je `voeder()` implementatie? Voorzie een methode `bool isAllergischAan(const Voedsel &voedsel)` in je Dier klasse. 
+5. _Extra_: Dieren zijn allergisch aan bepaald voedsel. Wat doe je als je een dier eten geeft dat het niet verdraagd? Wat doe je in je `voeder()` implementatie? Voorzie een methode `bool isAllergischAan(const Voedsel &voedsel)` in je Dier klasse.
 
 Tips: denk aan het thema: subklassen, operators, templates.
 
 ## Denkvragen
 
-1. Welke operatoren buiten `->` overload je best niet, en waarom? Geef een voorbeeld. 
-2. Hoe kan je `Punt` uitbreiden tot X dimensies? 
+1. Welke operatoren buiten `->` overload je best niet, en waarom? Geef een voorbeeld.
+2. Hoe kan je `Punt` uitbreiden tot X dimensies?
 3. Wat is het fundamentele verschil tussen Generics in Java en Templates in C++?
-4. Wat is polymorfisme in je eigen woorden? Hoe pas je dit toe in C++? 
+4. Wat is polymorfisme in je eigen woorden? Hoe pas je dit toe in C++?
