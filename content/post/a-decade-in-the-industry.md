@@ -27,11 +27,11 @@ In stage 3, I discovered I like teaching others what I taught myself. In fact, I
 
 ### So, What did I learn?
 
-Not one person working for 10 years in the IT world will walk the same path above as I did: different backgrounds, education, domain, company culture, implementation practices, ... So take my advice with a pinch of salt as it's _personal_ and might not help you very much. My academic colleagues are curious to hear about my experience "in the field" and I hope to inspire one or two, but it might also be enlightening for the lunatics I've shamelessly left behind (_tirez votre plan!_). 
+Not one person working for 10 years in the IT world will walk the same path above as I did: different backgrounds, education, interests, domain, company culture, implementation practices, ... So take my advice with a pinch of salt as it's _personal_ and might not help you very much. My academic colleagues are curious to hear about my experience "in the field" and I hope to inspire one or two, but it might also be enlightening for the lunatics I've shamelessly left behind (_tirez votre plan!_). 
 
 #### 1. Go Wide & Go Deep
 
-I'm a big advocate for **generalism** as I've written in the [about me](/about/) page. Being a _Polymath_ or a _Renaissance man_ as enriched my world in so many ways I cannot even begin to imagine what it would be like if I was only interested in a few subjects. **Be open to anything**. Don't limit yourself to one programming language: do yourself a favor and learn as much languages as you can manage. **Cross-pollination** is extremely important - not only in (software) engineering, but in life in general! So don't limit applying these principles to programming, but learn from other domains as well. Try a psychology course, read some philosophy. Get your hands on anything you don't know anything about. This not only broadens your own knowledge, but feeds those serendipitous connections. Get to know _a lot of_ things.
+I'm a big advocate for **generalism** as I've written in the [about me](/about/) page. Being a _Polymath_ or a _Renaissance man_ as enriched my world in so many ways I cannot even begin to imagine what it would be like if I was only interested in a few subjects. **Be open to anything**. Don't limit yourself to one programming language: do yourself a favor and learn as much languages as you can manage. **Cross-pollination** is extremely important - not only in (software) engineering, but in life in general! So don't limit applying these principles to programming, but learn from other domains as well. Try a psychology course, read some philosophy. Get your hands on anything you don't know anything about. This not only broadens your own knowledge, but feeds those serendipitous connections. Get to know _a lot of_ things. _Keep on_ wanting to know a lot of things, again and again. Build a [samurai learning mindset](/post/a-samurai-learning-mindset/).
 
 > Study the science of art. Study the art of science. Develop your senses - especially learn how to see. Realize that everything connects to everything else. - Leonardo Da Vinci
 
@@ -51,7 +51,7 @@ However, sometimes, you need to **stand there, don't just do something**. With c
 
 > People who join a social practice gradually adopt shared values and strive for standards of excellence defined within it - Alasdair Maclntyre, After Virtue
 
-Some developers might not like this, but we have to face the facts and admit that social skills are as least as important as technical ones. How many times did you witness a software project fail due to technical issues? And due to miscommunication of some sort? Right. Being open to _anything_ (go wide) also means **being open to others** as they are usually the ones who surprise you the most, you learn from the most and you can rely on the most! Software development is people development.
+Some developers might not like this, but we have to face the facts and admit that social skills are as least as important as technical ones. How many times did you witness a software project fail due to technical issues? And due to miscommunication of some sort? Right. Being open to _anything_ (go wide) also means **being open to others** as they are usually the ones who surprise you the most, you learn from the most and you can rely on the most! Software development is people development. This is not by chance the subject of [my doctorate](/tags/phd/).
 
 #### 4. Motivate, Inspire & Share
 
@@ -65,11 +65,11 @@ To inspire, you **share** information. You never withhold information! Remember 
 
 #### 5. Ignore Ego's
 
-Working with others can be very tiresome at moments, especially if someone sees his or hers work as a _career_ opportunity. Boring chit chat about ladder climbing, money and company cars make your sandwiches hard to digest during noon. Some people are simply too stubborn. I love an emphatic approach but my daily limited willpower resources are drained very quickly if people like these ruin the peace. Whatever you do, **do not go into their advances**. Ignore ego's. 
+Working with others can be very tiresome at moments, especially if someone sees his or hers work only as yet another _career_ opportunity. Boring chit chat about ladder climbing, money and company cars make your sandwiches hard to digest during noon. Some people are simply too stubborn. I love an emphatic approach but my daily limited willpower resources are drained very quickly if people like these ruin the peace. Whatever you do, **do not go into their advances**. Ignore ego's. 
 
 > It's a trap! - Admiral Ackbar
 
-Try to protect yourself from these leeches by promptly blocking their train of thought, changing the subject or simply moving away. I've come across more than a few of these, it's very sad to see the software engineering field being riddled with cowboys, money makers and assholes. I suppose you'll encounter these in any field. The best piece of advice is to try and surround yourself with people who are brighter than you, people who also **value the same things as you do**. Not everyone can be changed that easily, sometimes it's not worth your effort. Oh, and delete your Linkedin account.
+Try to protect yourself from these leeches by promptly blocking their train of thought, changing the subject or simply moving away. I've come across more than a few of these, it's very sad to see the software engineering field being riddled with cowboys, money makers and assholes. I suppose you'll encounter these in any field. The best piece of advice is to try and surround yourself with people who are brighter than you, people who also **value the same things as you do**. Not everyone can be changed that easily, sometimes it's not worth your effort. Oh, and delete your Linkedin account. 
 
 #### 6. Sometimes, Grass Is Greener
 
@@ -101,7 +101,7 @@ Thinking forward is okay, but remember to hit the breaks and shift gears to thin
 
 > Men should pledge themselves for nothing; for reflection makes a liar of their solution. - Sophocles
 
-_Retrospectives_ shouldn't only be held at work to help improve your team's or company's performance. They can also help yourself. Why would you limit yourself to using things what they're made for if they can be used in another setting? If you're writing code daily but you find yourself copy-pasting a lot, did you know that clipboard utilities can enhance your workflow? Are you thinking about **how to do something better**? Do you bother learning keyboard shortcuts of your IDE? Do you think about how to dice your onion the most efficient way on your cutting board? You should. 
+_Retrospectives_ shouldn't only be held at work to help improve your team's or company's performance. They can also help yourself. Why would you limit yourself to using things what they're made for if they can be used in another setting? If you're writing code daily but you find yourself copy-pasting a lot, did you know that clipboard utilities can enhance your workflow? (Just as a means to be more productive, not by embracing copy-paste programming! First understand, then reproduce.) Are you thinking about **how to do something better**? Do you bother learning keyboard shortcuts of your IDE? Do you think about how to dice your onion the most efficient way on your cutting board? You should. 
 
 ### What about applicability?
 
