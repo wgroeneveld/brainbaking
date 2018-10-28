@@ -16,7 +16,7 @@ As an _agile_ software engineer, that uncertainty leaves me with an unpleasant f
 
 ### How to be an Agile Academic
 
-Maybe we should ask [Jeff Sutherland](https://www.scrumalliance.org/community/profile/jsutherland) on how to achieve this, but I doubt the SCRUM Alliance principles were in his head when he did his dictorate. Katy Peplin wrote a nice article about [being an agile academic](https://www.katypeplin.com/blog/2017/10/25/be-an-agile-academic) that advocates for principles like getting feedback, fast(er) and using Test Driven Design. As some wise men once said,
+Maybe we should ask [Jeff Sutherland](https://www.scrumalliance.org/community/profile/jsutherland) on how to achieve this, but I doubt the SCRUM Alliance principles were in his head when he did his doctorate. Katy Peplin wrote a nice article about [being an agile academic](https://www.katypeplin.com/blog/2017/10/25/be-an-agile-academic) that advocates for principles like getting feedback, fast(er) and using Test Driven Design. As some wise men once said,
 
 > Fail fast, fail often. 
 
