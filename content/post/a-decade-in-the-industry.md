@@ -15,7 +15,7 @@ It never occurred to me that an article like this might be very informative for 
 
 ### A Brief History
 
-Before getting down to business, it might be more appropriate to frame my experience first, by explaining how I ended up _not_ working for the industry anymore. My first job with a major IT consultancy firm as as software developer took quite a while and lasted 7 years. When I started looking for other opportunities, recruiters were astonished: "wow, you stayed at one company for 7 years?". The current job hopping trend makes me sad: to me, switching every year might damage your CV instead of enrich it. We did consultancy work, but were always outsourced as a team. That makes a huge difference. I've learned a lot in little time. After getting tired of commuting too long, I switched from consulting to in-house product development and stayed with my second company for 4 years.
+Before getting down to business, it might be more appropriate to frame my experience first, by explaining how I ended up _not_ working for the industry anymore. My first job with a major IT consultancy firm as as software developer took quite a while and lasted 7 years. When I started looking for other opportunities, recruiters were astonished: "wow, you stayed at one company for 7 years?". The current job hopping trend makes me sad: to me, switching every year might damage your CV instead of enrich it. We did consultancy work, but were always outsourced as a team. That makes a huge difference. I've learned a lot in little time. After getting tired of commuting too long, I switched from consulting to in-house product development and stayed with my second employer for 4 years.
 
 I've had a lot of different roles, even if my title mostly stagnated at "software developer". Cooler colleagues made theirs "engineer" and prefixed it with "enterprise" or "senior", that always works. My experience can be roughly cut up in these different stages - I'm sure you'll recognize them. If you want, you can map these to the Dreyfus model, or any other learning model.
 
@@ -27,7 +27,7 @@ In stage 3, I discovered I like teaching others what I taught myself. In fact, I
 
 ### So, What did I learn?
 
-Not one person working for 10 years in the IT world will walk the same path above as I did: different backgrounds, education, interests, domain, company culture, implementation practices, ... So take my advice with a pinch of salt as it's _personal_ and might not help you very much. My academic colleagues are curious to hear about my experience "in the field" and I hope to inspire one or two, but it might also be enlightening for the lunatics I've shamelessly left behind (_tirez votre plan!_). 
+Not one person working for 10 years in the IT world will walk the same path above as I did: different backgrounds, education, interests, domain, company culture, implementation practices, ... So take my advice with a pinch of salt as it's _personal_ and might not help you very much. My academic colleagues are curious to hear about my experience "in the field" and I hope to inspire one or two, but it might also be enlightening for the lunatics I've shamelessly left behind (_tirez votre plan!_)[^1]. 
 
 #### 1. Go Wide & Go Deep
 
@@ -106,3 +106,5 @@ _Retrospectives_ shouldn't only be held at work to help improve your team's or c
 ### What about applicability?
 
 It seems like these "rules of thumb" aren't limited to just software engineering. That makes them all the more important - and transferable to a new sector and a new challenge. The article might have more appropriately be titled "what I've learned in life so far". After all, what's the difference between work and life? 
+
+[^1]: Remember guys, I miss you, I'm just trying to be funny here!
