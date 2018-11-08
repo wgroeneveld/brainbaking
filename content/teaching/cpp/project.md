@@ -19,6 +19,14 @@ Wat voor soort spel het moet zijn laat ik volledig aan jullie over. Het spreekt 
 
 Werk in **groepen van 2** of indien oneven 3. 
 
+In het kader van onderzoek naar onderwijs ﻿vragen wij jullie je tijd gespendeerd aan het project bij houden in een bestandje. Dit mag niet veel administratie vragen: enkel in een simpele CSV bijhouden op welke dag jullie hoeveel tijd werk aan het project spendeerden is voldoende. De eenheid is in uren - een halfuur kan bijvoorbeeld met 0.5 uitgedrukt worden. 
+Dit is een voorbeeld bestandje:
+[https://github.com/wgroeneveld/gba-sprite-engine/blob/master/timespent.csv](https://github.com/wgroeneveld/gba-sprite-engine/blob/master/timespent.csv). 
+Wanneer jullie het project in Github overnemen komt deze file automatisch mee. 
+Werk dit tijdig bij, dat voorkomt moeten gokken. Dit is individueel dus als jullie samen aan een project werken, maak dan twee files aan!
+
+Bedankt om mee te werken aan een beter onderwijs!
+
 ## Minimumvereisten
 
 Lees dit goed na: projecten die niet voldoen aan de volgende vereisten zullen niet geëvalueerd worden. 
@@ -29,6 +37,7 @@ Lees dit goed na: projecten die niet voldoen aan de volgende vereisten zullen ni
 4. Je voorziet minstens één extra **unit test** klasse waar je je logica in test zoals zwaartekracht en botsingen.
 5. Je project moet uiteraard minstens compileren.
 6. Je repository `README.md` bevat een kleine functionele beschrijving van jullie spel, gecombineerd met een schets van het **domein model**. 
+7. Je repository `timespent.csv` bevat jullie **individueel** geregistreerde tijd in uren.  
 
 Het is **niet** de bedoeling om je te baseren op één van de engine demo's en die simpelweg verder uit te werken. Dat biedt onvoldoende uitdaging en originaliteit. 
 
