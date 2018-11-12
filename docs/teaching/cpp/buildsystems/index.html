@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="Een introductie in C(&#43;&#43;) Build Systemen - Brain Baking">
+	<meta content="Een introductie in C(&#43;&#43;) Build Systemen - Brain Baking" property="og:title">
+	<meta content="Een introductie in C(&#43;&#43;) Build Systemen - Brain Baking" property="og:description">
+
+
+
+
+<meta property="og:url" content="https://brainbaking.com/teaching/cpp/buildsystems/" />
+<meta property="og:type" content="website" />
+
+
+
+
+
+<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="teaching" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://brainbaking.com/"
+    },
+    "articleSection" : "teaching",
+    "name" : "Een introductie in C(&#43;&#43;) Build Systemen",
+    
+      "headline" : "Een introductie in C(&#43;&#43;) Build Systemen",
+    
+    "description" : "&laquo;&nbsp;Terug naar Software ontwerp in C/C++
+Zie ook labo 1: (herhaaldelijk) compileren
+Een greep uit de mogelijkheden, schematisch samengevat:
+mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  graph LR; compiler[compiler rechtstreeks uitvoeren] make[Makefiles roepen compiler aan] scons[SCons files roepen compiler aan] cmake[CMake files genereren Makefiles] qmake[QMake files genereren Makefiles] shell[Eigen script roept compiler aan] qmake -- make cmake -- make scons -- compiler make -- compiler shell -- compiler  Hoe compileer ik één file?",
+    
+      "inLanguage" : "nl-BE",
+    
+    
+      "image": "https://brainbaking.com/img/avatar-icon.png",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https://brainbaking.com/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "0001",
+    "datePublished": "0001-01-01 00:00:00 &#43;0000 UTC",
+    "dateModified" : "0001-01-01 00:00:00 &#43;0000 UTC",
+    "url" : "https://brainbaking.com/teaching/cpp/buildsystems/",
+    "wordCount" : "1025",
+    "keywords" : [ "Een introductie in C(&#43;&#43;) Build Systemen", "teaching" ]
+}
+</script>
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Een introductie in C(&#43;&#43;) Build Systemen</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.47.1" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Een introductie in C(&#43;&#43;) Build Systemen</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/cpp/buildsystems/">Een introductie in C(&#43;&#43;) Build Systemen</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++</a><br/></p>
+
+<p>Zie ook <a href="/teaching/cpp/labo-1#compiling">labo 1: (herhaaldelijk) compileren</a></p>
+
+<p>Een greep uit de mogelijkheden, schematisch samengevat:</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph LR;
+    compiler[compiler rechtstreeks uitvoeren]
+    make[Makefiles roepen compiler aan]
+    scons[SCons files roepen compiler aan]
+    cmake[CMake files genereren Makefiles]
+    qmake[QMake files genereren Makefiles]
+    shell[Eigen script roept compiler aan]
+    qmake --> make
+    cmake --> make
+    scons --> compiler
+    make --> compiler
+    shell --> compiler
+
+</div>
+
+<h2 id="hoe-compileer-ik-één-file">Hoe compileer ik één file?</h2>
+
+<p>We gebruiken de UNIX GNU gcc compiler om C soure files om te zetten in binaries. Het simpelste om iets te compileren is:</p>
+
+<blockquote>
+<p><code>g++ [bestand.cpp] -o [output.bin]</code></p>
+</blockquote>
+
+<p>Het programma uitvoeren doe je dan met <code>./output.bin</code>. Normaal gezien kent het OS de execute flag automatisch toe, anders moet je nog <code>chmod +x output.bin</code> uitvoeren.</p>
+
+<p>Dit kan je makkelijk automatiseren met een shell script door de compilatie en de executie in twee regels onder elkaar te plaatsen. De C(++) wereld voorziet echter flexibelere tools die dit voor je kunnen vergemakkelijken.</p>
+
+<h2 id="hoe-vergemakkelijk-ik-het-compileren-van-één-project">Hoe vergemakkelijk ik het compileren van één project?</h2>
+
+<p>Gebruik daarvoor <code>Makefile</code> bestanden. Een Makefile is platte tekst die informatie bevat over je bronbestanden, libraries, binaries, &hellip; zodat je met één enkel commando:</p>
+
+<blockquote>
+<p><code>make</code></p>
+</blockquote>
+
+<p>Een aantal instructies kan ontketenen. Een Makefile is opgesplitst in verschillende <strong>blokken</strong>. Elke blok bevat één <em>keyword</em> gevolgd door <code>:</code>, met op de volgende regels (voorafgaand met tab!) de uit te voeren instructies. Bijvoorbeeld:</p>
+
+<pre><code>.DEFAULT_GOAL := all
+
+CC=gcc
+
+clean:
+    rm -rf *.o
+    rm -rf *.out
+
+compile:
+    $(CC) -c main.c -o main.o
+
+link:
+    $(CC) -o main.out main.o
+
+all: clean compile link
+</code></pre>
+
+<p>Bovenstaande Makefile bevat de volgende blokken:</p>
+
+<ol>
+<li>clean</li>
+<li>compile</li>
+<li>link</li>
+<li>all</li>
+</ol>
+
+<p>Merk op dat als géén blok als argument op <code>make</code> voorzien is, dat dan de &ldquo;all&rdquo; block uitgevoerd wordt (<code>.DEFAULT_GOAL</code>, eerste regel). Op die manier kan je met het commando <code>make compile</code> de compilatiestap uitvoeren, maar met <code>make</code> of <code>make all</code> een hele reeks aan stappen.</p>
+
+<p>Makefiles verzorgen dus het uitvoeren van de compilatie, zodat wij nooit meer rechtstreeks <code>g++</code> of <code>gcc</code> moeten uitvoeren.</p>
+
+<p>Deze configuratiebestanden komen niet zonder nadelen:</p>
+
+<ol>
+<li>De syntax is erg cryptisch.</li>
+<li>Makefiles kunnen énorm groot, en dus verwarrend, worden.</li>
+</ol>
+
+<p><a href="ftp://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_2.html">Meer info over Makefiles</a>.</p>
+
+<h2 id="hoe-vergemakkelijk-ik-het-maken-van-een-makefile">Hoe vergemakkelijk ik het maken van een Makefile?</h2>
+
+<p>Om tekortkomingen van de archaïsche Makefile bestanden goed te maken zijn er nieuwe tools ontwikkeld die Makefiles genereren. Er zijn twee grote varianten voorzien: CMake en QMake.</p>
+
+<h3 id="a-gebruik-cmake">A. Gebruik CMake</h3>
+
+<p>CMake genereert <code>Makefile</code> bestanden door middel van <code>CMakeLists.txt</code> configuratie bestanden. Hierin <strong>beschrijf</strong> je je project, met een eenvoudigere syntax, waarna CMake het genereren van de Makefile uit handen neemt. Dit wil zeggen dat je nog steeds 2 stappen dient uit te voeren: het genereren, én het uiteindelijk uitvoeren van de Makefile zelf. <strong>Make blijft dus je comipler aanroepen!</strong>.</p>
+
+<p>Een typisch <code>CMakeLists.txt</code> bestand ziet er als volgt uit:</p>
+
+<pre><code>cmake_minimum_required(VERSION 3.10)
+project(mijn_project)
+SET(CMAKE_CXX_STANDARD 11)
+
+add_executable(mijn_binary main.cpp bla.h bla.cpp)
+</code></pre>
+
+<p>De volgende eigenschappen zijn beschreven:</p>
+
+<ol>
+<li>Welke compiler toolchain gebruik je? (C++ STD. 11 of hoger)</li>
+<li>Hoe heet je project? (mijn_project)</li>
+<li>Welke source en header files moeten gecompileerd worden? (main.cpp bla.h bla.cpp)</li>
+<li>Hoe heet je binary? (mijn_bindary)</li>
+</ol>
+
+<p>Extra bestanden compileren is een kwestie van bestanden toe te voegen aan het lijstje.</p>
+
+<p>CMake is de standaard build tool in CLion. Je kan met CMake ook eenvoudig <strong>subprojecten</strong> maken, bijvoorbeeld een productie stukje in /src en een test stukje in /test. Download een <a href="/teaching/cpp/labo-7-unittest.zip">CMake voorbeeld project met unittesten</a> hier.</p>
+
+<p><a href="https://cmake.org/cmake-tutorial/">Meer info over CMake files</a>.</p>
+
+<h3 id="b-gebruik-qmake">B. Gebruik QMake</h3>
+
+<p>Qt heeft zijn eigen Makefile generatie systeem dat <code>QMake</code> heet. Dit voornamelijk om de tussencompilatie stap te voorzien omdat Qt eigen keywords bij &ldquo;verzonnen&rdquo; heeft in de C++ standaard, zoals <code>signals:</code> en <code>slots:</code>. Omdat QMake deel is van een product is het nooit een goed idee om hier voor te kiezen als je geen Qt project gaat aanmaken. Uiteraard is QMake de standaard build tool in Qt Designer/Creator.</p>
+
+<p>QMake gebruikt projectfiles om de configuratie in op te slaan. Een voorbeeld projectfile (gegenereerd):</p>
+
+<pre><code>#-------------------------------------------------
+#
+# Project created by QtCreator 2018-08-22T11:10:02
+#
+#-------------------------------------------------
+
+QT       += core gui widgets
+
+TARGET = qt-labo-11-player
+TEMPLATE = app
+
+# The following define makes your compiler emit warnings if you use
+# any feature of Qt which has been marked as deprecated (the exact warnings
+# depend on your compiler). Please consult the documentation of the
+# deprecated API in order to know how to port your code away from it.
+DEFINES += QT_DEPRECATED_WARNINGS
+
+# You can also make your code fail to compile if you use deprecated APIs.
+# In order to do so, uncomment the following line.
+# You can also select to disable deprecated APIs only up to a certain version of Qt.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+CONFIG += c++11
+
+SOURCES += \
+        main.cpp \
+        mainwindow.cpp \
+    playercanvas.cpp
+
+HEADERS += \
+        mainwindow.h \
+    playercanvas.h
+
+FORMS += \
+        mainwindow.ui
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
+</code></pre>
+
+<p>Deze bestanden worden beheerd door de IDE, niet door jezelf. Dat betekent dat toevoegingen niet manueel dienen te gebeuren.</p>
+
+<p><a href="http://doc.qt.io/archives/qt-4.8/qmake-project-files.html">Meer info over qmake project files</a>.</p>
+
+<h2 id="hoe-vergemakkelijk-ik-het-compileren-zonder-makefiles">Hoe vergemakkelijk ik het compileren zonder Makefiles?</h2>
+
+<p>QMake en CMake bouwen nog steeds verder op het <code>Makefile</code> model. Er zijn echter buildsystemen die hier volledig los van staan, waarvan de populairste SCons is.</p>
+
+<h3 id="a-gebruik-scons">A. Gebruik SCons</h3>
+
+<p>In SCons beschrijf je je project met <strong>python</strong>! Er is gekozen voor een bestaande programmeertaal, in plaats van weeral een configuratie taaltje te verzinnen. Dit maakt SCons bijzonder flexibel: loopen over files in het systeem om ze te pipen naar een compiler, of een zipfile maken als distributiestap, zijn simpele zaken die met bovenstaande tools moeilijker te realiseren zijn.</p>
+
+<p>SCons verwacht één <code>SConstruct</code> bestand. Een voorbeeld <code>SConstruct</code> file:</p>
+
+<pre><code>env = Environment(CXX = 'g++')
+
+gtest = env.SConscript('lib/gtest/SConscript', 'env')
+src = env.SConscript('src/SConscript', 'env')
+out = env.SConscript('test/SConscript', 'env gtest src')
+
+# output is an array with path to built binaries. We only built one file - run it (includes gtest_main).
+test = Command( target = &quot;testoutput&quot;,
+                source = str(out[0]),
+                action = str(out[0]) )
+AlwaysBuild(test)
+</code></pre>
+
+<p>SCons vereist een python interpreter (en wat python kennis), en valt daarom buiten de scope van deze cursus. Voor de geïnteresseerden: lees ook <a href="/post/scons-building/">SCons building in practice</a>.</p>
+
+<p><a href="https://scons.org/doc/production/HTML/scons-man.html">Meer info over SCons</a>.</p>
+</div>
+
+    
+    
+
+    
+
+    
+    
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

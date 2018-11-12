@@ -589,6 +589,18 @@ There have been a lot of love letters to big cities here on Medium recently. I n
     </item>
     
     <item>
+      <title>Een introductie in C(&#43;&#43;) Build Systemen</title>
+      <link>https://brainbaking.com/teaching/cpp/buildsystems/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/buildsystems/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
+Zie ook labo 1: (herhaaldelijk) compileren
+Een greep uit de mogelijkheden, schematisch samengevat:
+mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  graph LR; compiler[compiler rechtstreeks uitvoeren] make[Makefiles roepen compiler aan] scons[SCons files roepen compiler aan] cmake[CMake files genereren Makefiles] qmake[QMake files genereren Makefiles] shell[Eigen script roept compiler aan] qmake -- make cmake -- make scons -- compiler make -- compiler shell -- compiler  Hoe compileer ik één file?</description>
+    </item>
+    
+    <item>
       <title>Installatieinstructies op Linux</title>
       <link>https://brainbaking.com/teaching/cpp/installaties/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

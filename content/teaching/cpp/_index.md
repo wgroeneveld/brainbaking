@@ -38,6 +38,7 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 
 ### Extra informatie
 
+- [Een introductie in C(++) Build Systemen](/teaching/cpp/buildsystems)
 - [Installatieinstructies Tools](/teaching/cpp/installaties)
 - [Project opdracht](/teaching/cpp/project)
 - Evaluatiecriteria schriftelijk examen
