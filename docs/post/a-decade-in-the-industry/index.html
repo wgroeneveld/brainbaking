@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="A Decade in the Software Engineering industry - Everything I&#39;ve learned in 10 &#43; 1 years">
+	<meta content="A Decade in the Software Engineering industry" property="og:title">
+	<meta content="Everything I&#39;ve learned in 10 &#43; 1 years" property="og:description">
+
+
+
+  <meta content="braindump, craftsmanship, development, journaling" name="keywords">
+
+
+<meta property="og:url" content="https://brainbaking.com/post/a-decade-in-the-industry/" />
+<meta property="og:type" content="website" />
+
+  <meta property="og:image" content="https://brainbaking.com//img/glasses.jpg" />
+
+
+
+
+
+  
+    <meta property="og:see_also" content="https://brainbaking.com/post/development-principles-in-cooking/" />
+  
+
+<meta property="article:published_time" content="2018-10-27 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2018-10-27 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="post" />
+
+  <meta property="article:tag" content="braindump" />
+
+  <meta property="article:tag" content="craftsmanship" />
+
+  <meta property="article:tag" content="development" />
+
+  <meta property="article:tag" content="journaling" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://brainbaking.com/"
+    },
+    "articleSection" : "post",
+    "name" : "A Decade in the Software Engineering industry",
+    
+      "headline" : "Everything I&#39;ve learned in 10 &#43; 1 years",
+    
+    "description" : "It never occurred to me that an article like this might be very informative for those interested in knowing how things work in the software engineering industry. Google&rsquo;s related results to &ldquo;10 years in IT industry&rdquo; are rather depressing: &ldquo;what to do after 10 years of experience&rdquo;, &ldquo;career options after 10 years&rdquo;, &ldquo;how to survive industry after 10 years&rdquo;, &ldquo;best career path after 10 years&rdquo;. It seems to suggest you&rsquo;re done after &ldquo;grinding to level 10&rdquo; - time to boot up another character build?",
+    
+      "inLanguage" : "en-US",
+    
+    
+    	"image": "https://brainbaking.com//img/glasses.jpg",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https://brainbaking.com/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-10-27 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2018-10-28 16:26:25 &#43;0100 CET",
+    "url" : "https://brainbaking.com/post/a-decade-in-the-industry/",
+    "wordCount" : "2684",
+    "keywords" : [ "braindump","craftsmanship","development","journaling","A Decade in the Software Engineering industry", "post" ]
+}
+</script>
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>A Decade in the Software Engineering industry</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.47.1" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">A Decade in the Software Engineering industry</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+    <div class="jumbotron big-img" style='background-image: url("/img/glasses.jpg");'>
+        <div class="container">
+            &nbsp;
+        </div>
+    </div>
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/post/a-decade-in-the-industry/">A Decade in the Software Engineering industry</a>
+    </h3>
+    
+
+    
+    
+    
+        <h4>Everything I&#39;ve learned in 10 &#43; 1 years</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<span title="Created Date">
+                    <i class='fa fa-calendar'></i>&nbsp;27 October 2018
+                </span>&nbsp;|&nbsp;
+                <span title="Last Modified Date">
+                    <i class='fa fa-calendar-check-o'></i>&nbsp;28 October 2018
+                </span>
+    		</span>
+    	</h5>
+    
+
+
+    
+	   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+    
+    
+        <a href="https://brainbaking.com/tags/braindump"><kbd class="item-tag">braindump</kbd></a>
+    
+        <a href="https://brainbaking.com/tags/craftsmanship"><kbd class="item-tag">craftsmanship</kbd></a>
+    
+        <a href="https://brainbaking.com/tags/development"><kbd class="item-tag">development</kbd></a>
+    
+        <a href="https://brainbaking.com/tags/journaling"><kbd class="item-tag">journaling</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>It never occurred to me that an article like this might be very informative for those interested in knowing how things work in the software engineering industry. Google&rsquo;s related results to &ldquo;10 years in IT industry&rdquo; are rather depressing: &ldquo;what to do after 10 years of experience&rdquo;, &ldquo;career options after 10 years&rdquo;, &ldquo;how to survive industry after 10 years&rdquo;, &ldquo;best career path after 10 years&rdquo;. It seems to suggest you&rsquo;re done after <em>&ldquo;grinding to level 10&rdquo;</em> - time to boot up another character build? I don&rsquo;t know - there&rsquo;s a plethora of options available to you, as long as you&rsquo;re creative enough to see them.</p>
+
+<h3 id="a-brief-history">A Brief History</h3>
+
+<p>Before getting down to business, it might be more appropriate to frame my experience first, by explaining how I ended up <em>not</em> working for the industry anymore. My first job with a major IT consultancy firm as as software developer took quite a while and lasted 7 years. When I started looking for other opportunities, recruiters were astonished: &ldquo;wow, you stayed at one company for 7 years?&rdquo;. The current job hopping trend makes me sad: to me, switching every year might damage your CV instead of enrich it. We did consultancy work, but were always outsourced as a team. That makes a huge difference. I&rsquo;ve learned a lot in little time. After getting tired of commuting too long, I switched from consulting to in-house product development and stayed with my second employer for 4 years.</p>
+
+<p>I&rsquo;ve had a lot of different roles, even if my title mostly stagnated at &ldquo;software developer&rdquo;. Cooler colleagues made theirs &ldquo;engineer&rdquo; and prefixed it with &ldquo;enterprise&rdquo; or &ldquo;senior&rdquo;, that always works. My experience can be roughly cut up in these different stages - I&rsquo;m sure you&rsquo;ll recognize them. If you want, you can map these to the Dreyfus model, or any other learning model.</p>
+
+<ol>
+<li>Stage 1: <strong>Ignorance</strong>. Soak up as much as you can, because you don&rsquo;t know how anything works. This took 4 years. Yes, 4 years. My Master education took that long, and after graduating, you still have no clue. Does this sound bad? I was a (junior) developer.</li>
+<li>Sage 2: <strong>Competent</strong>. You&rsquo;re getting the hang of it: you start to easily recognize code parts that need refactor work, you&rsquo;ve gone <em>wide</em> by exploring all possible kinds of technologies and gone <em>deep</em> by really, really knowing something well. Another 2 years pass by. I became a (senior) developer.</li>
+<li>Stage 3: <strong>Expert</strong>. People go to you if something has to be debugged. You create courses, do technical interviews, help others grow and enjoy the ride. Things are getting boring: you identify problems with your eyes closed. So you&rsquo;re seeking challenges elsewhere: in collaboration. Another 5 years are gone. I was a coach, architect, developer, &hellip;</li>
+</ol>
+
+<p>In stage 3, I discovered I like teaching others what I taught myself. In fact, I liked it so much that I started (this website? and) giving guest lectures in colleges and universities, ultimately translating into a full-time switch from industry to the academic world. Figuring out how patterns work for me was one of the most satisfactory challenges I faced while co-developing enterprise software in agile teams. But once you see through the (in-)differences between tools, languages and APIs, repeatedly applying them made the jump easier for me - towards ideas and concepts instead of application.</p>
+
+<h3 id="so-what-did-i-learn">So, What did I learn?</h3>
+
+<p>Not one person working for 10 years in the IT world will walk the same path above as I did: different backgrounds, education, interests, domain, company culture, implementation practices, &hellip; So take my advice with a pinch of salt as it&rsquo;s <em>personal</em> and might not help you very much. My academic colleagues are curious to hear about my experience &ldquo;in the field&rdquo; and I hope to inspire one or two, but it might also be enlightening for the lunatics I&rsquo;ve shamelessly left behind (<em>tirez votre plan!</em>)<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>.</p>
+
+<h4 id="1-go-wide-go-deep">1. Go Wide &amp; Go Deep</h4>
+
+<p>I&rsquo;m a big advocate for <strong>generalism</strong> as I&rsquo;ve written in the <a href="/about/">about me</a> page. Being a <em>Polymath</em> or a <em>Renaissance man</em> as enriched my world in so many ways I cannot even begin to imagine what it would be like if I was only interested in a few subjects. <strong>Be open to anything</strong>. Don&rsquo;t limit yourself to one programming language: do yourself a favor and learn as much languages as you can manage. <strong>Cross-pollination</strong> is extremely important - not only in (software) engineering, but in life in general! So don&rsquo;t limit applying these principles to programming, but learn from other domains as well. Try a psychology course, read some philosophy. Get your hands on anything you don&rsquo;t know anything about. This not only broadens your own knowledge, but feeds those serendipitous connections. Get to know <em>a lot of</em> things. <em>Keep on</em> wanting to know a lot of things, again and again. Build a <a href="/post/a-samurai-learning-mindset/">samurai learning mindset</a>.</p>
+
+<blockquote>
+<p>Study the science of art. Study the art of science. Develop your senses - especially learn how to see. Realize that everything connects to everything else. - Leonardo Da Vinci</p>
+</blockquote>
+
+<p>That&rsquo;s not to say that specializing isn&rsquo;t bad: in fact, it&rsquo;s the default way to go in IT. Just make sure you&rsquo;re not in so &ldquo;deep&rdquo; that you can&rsquo;t get out! <strong>Be the best at something, and the worst at something else</strong>. Are you learning JavaScript? Great, how about digging deep and really, <em>really</em> knowing how prototypal inheritance works instead of only being able to apply it&rsquo;s patterns? Did you take a look at the V8 source code? Can you learn anything from contributing to the React Github repository? Get to know something <em>very well</em>.</p>
+
+<h4 id="2-fail-fast-fail-often">2. Fail Fast &amp; Fail Often</h4>
+
+<p>I&rsquo;m sure you&rsquo;re familiar with the agile <em>&ldquo;demo or die&rdquo;</em> principle: if you can&rsquo;t show what you&rsquo;re working on every few weeks (iteration), we&rsquo;ll cancel that project of yours. As simple as that. Forget about specifications, Gantt charts and R4 models: <strong>don&rsquo;t just stand there, do something</strong>! Launching something means getting something in the air, as soon as possible. I&rsquo;ve sworn by Test Driven Development and Continuous Integration &amp; Deployment since then. Unit tests save lives and keep my brain sane. Software development is <em>incremental development</em>.</p>
+
+<blockquote>
+<p>If you&rsquo;re not failing every now and again, it&rsquo;s a sign you&rsquo;re not doing anything very innovative. - Woody Allen</p>
+</blockquote>
+
+<p>However, sometimes, you need to <strong>stand there, don&rsquo;t just do something</strong>. With complex pieces of software, refactoring in a new requirement comes with two pathways: that of least and of most resistance. It&rsquo;s obvious which is easier for you to go with, but that doesn&rsquo;t mean you should blindly act. Think, talk to others, turn it on it&rsquo;s head, approach it differently and come up with multiple solutions. Then pick one and go for it. Remember to let it fail first. A word of warning: failure can be painful and frustrating. You need to learn <strong>how to be resilient</strong> before - to be able to get up and do it again.</p>
+
+<h4 id="3-work-with-people-not-technology">3. Work with People, not Technology</h4>
+
+<p>&ldquo;Engineering&rdquo; software is hard: there&rsquo;s no clearly defined set of requirements, implementation patterns change and shift frequently as do API&rsquo;s and languages. But Creating software is first and foremost a <strong>social practice</strong>. Teamwork is obvious, but working across teams, across divisions, talking to customers, owners, business experts and devOps means even more contact with others.</p>
+
+<blockquote>
+<p>People who join a social practice gradually adopt shared values and strive for standards of excellence defined within it - Alasdair Maclntyre, After Virtue</p>
+</blockquote>
+
+<p>Some developers might not like this, but we have to face the facts and admit that social skills are as least as important as technical ones. How many times did you witness a software project fail due to technical issues? And due to miscommunication of some sort? Right. Being open to <em>anything</em> (go wide) also means <strong>being open to others</strong> as they are usually the ones who surprise you the most, you learn from the most and you can rely on the most! Software development is people development. This is not by chance the subject of <a href="/tags/phd/">my doctorate</a>.</p>
+
+<h4 id="4-motivate-inspire-share">4. Motivate, Inspire &amp; Share</h4>
+
+<p>First, <strong>motivate and inspire yourself</strong> to do something <em>great</em> - something hard that demands the most of your abilities. <em>Intrinsic</em> self-motivation always pays off in the long run, don&rsquo;t get fooled by money or fancy cars. It&rsquo;s easy to fall in that trap, but after a few years you&rsquo;ll notice it will become harder and harder to motivate yourself to even get out of bed. <a href="/post/journaling-in-practice/">Keep a journal</a>. I cannot express in words how much that helped me to keep pushing myself - and in the end, others.</p>
+
+<p>Then, <strong>motivate and inspire</strong> others. Remember this order: if you&rsquo;re not motivated, you will never be able to inspire someone else to do the same! I love inspiring others; this is my number one reason to do whatever I do. This is the reason I&rsquo;m writing this, the reason I want to teach, to talk about good books I&rsquo;ve read, to convince someone to follow that course that helped me so much, &hellip; And it&rsquo;s amazing how much energy this gives me - given that others are willing to receive.</p>
+
+<blockquote>
+<p>As soon as you seek to inspire others, it inspires the best in you. - Brendon Burchard</p>
+</blockquote>
+
+<p>To inspire, you <strong>share</strong> information. You never withhold information! Remember you&rsquo;re working <em>together</em>, nobody is going to steal your job, you&rsquo;re not going to get fired, and you can even try to convince your company to publish small modules open source as a means to give something back to the community or even to make a name. Sharing is indeed caring. This doesn&rsquo;t stop with code or domain knowledge! Share as much as you like to inspire others. Share articles, buy books and give them away, bake cookies and bring them to meetings, &hellip; This has a huge impact on the bond between you and your colleagues and will make the crucial difference between team member and friend.</p>
+
+<h4 id="5-ignore-ego-s">5. Ignore Ego&rsquo;s</h4>
+
+<p>Working with others can be very tiresome at moments, especially if someone sees his or hers work only as yet another <em>career</em> opportunity. Boring chit chat about ladder climbing, money and company cars make your sandwiches hard to digest during noon. Some people are simply too stubborn. I love an emphatic approach but my daily limited willpower resources are drained very quickly if people like these ruin the peace. Whatever you do, <strong>do not go into their advances</strong>. Ignore ego&rsquo;s.</p>
+
+<blockquote>
+<p>It&rsquo;s a trap! - Admiral Ackbar</p>
+</blockquote>
+
+<p>Try to protect yourself from these leeches by promptly blocking their train of thought, changing the subject or simply moving away. I&rsquo;ve come across more than a few of these, it&rsquo;s very sad to see the software engineering field being riddled with cowboys, money makers and assholes. I suppose you&rsquo;ll encounter these in any field. The best piece of advice is to try and surround yourself with people who are brighter than you, people who also <strong>value the same things as you do</strong>. Not everyone can be changed that easily, sometimes it&rsquo;s not worth your effort. Oh, and delete your Linkedin account.</p>
+
+<h4 id="6-sometimes-grass-is-greener">6. Sometimes, Grass Is Greener</h4>
+
+<p>Things might start to be a drag, and you might wonder, &ldquo;what if I got to work in company Y, maybe things will be better there&hellip;&rdquo;. The answer usually isn&rsquo;t that one-dimensional: sometimes it is, sometimes it isn&rsquo;t. But that should not hold you back from taking a peek. The moment you get up in the morning and don&rsquo;t feel like going to work, you shouldn&rsquo;t immediately resign but try to figure out <em>why not</em>. If the answer is something substantial, it might be worth to still do so.</p>
+
+<blockquote>
+<p>Never waste your time trying to explain who you are to people who are committed to misunderstanding you. - Unknown</p>
+</blockquote>
+
+<p>I&rsquo;m not a fan of job hopping, and I never will be. But I&rsquo;ve been in some really, really <em>shitty</em> teams, and in some really, really <em>great</em> teams. If your critical mass is too small (say, like, only you?), you&rsquo;re not going to make it. Don&rsquo;t keep on hoping for the best. Sometimes, it&rsquo;s better to <strong>cut your losses</strong> and go. I&rsquo;m not saying you shouldn&rsquo;t try - you&rsquo;ll notice soon enough if there is any hope left.</p>
+
+<h4 id="7-read-and-then-write">7. Read, and then Write</h4>
+
+<p>A good writer needs to read first in order to work in the literature. The same applies for a software developer: developers are first and foremost <strong>readers</strong>. Being an author comes in second place. Therefore, keeping things <em>readable</em> will be your primary objective. Practices like Clean Code and Test-Driven Development will help immensely to achieve this objective.</p>
+
+<blockquote>
+<p>“Indeed, the ratio of time spent reading versus writing is well over 10 to 1. We are constantly reading old code as part of the effort to write new code. &hellip;[Therefore,] making it easy to read makes it easier to write.” - Robert C. Martin, Clean Code</p>
+</blockquote>
+
+<p>But reading shouldn&rsquo;t be limited to reading code or reading within your own subject domain. As stated before, being open to anything also means reading more on new and exciting subjects, which generates unique ideas and peaks your interest. Writing about something in detail is one of the best teach masters that forces you to look at things from another direction. Keep a Wiki, write Blog posts, track your notes, add remarks to Evernote. Anything to keep ideas and knowledge flowing.</p>
+
+<h4 id="8-be-creative">8. Be Creative</h4>
+
+<p>There are multiple books about &ldquo;how to be a better programmer&rdquo;: the productive programmer, the pragmatic programmer, the passionate programmer, &hellip; But there&rsquo;s surprisingly little said about the fact that you&rsquo;re <em>creating</em> something. To create could mean to have a plan (analysis) and simply execute (code) it. It could also mean to approach a problem holistically, to come up with a multitude of possible solutions and to deliberately pick the best possible fit. Creating with uncertain requirements can be scary. Who knows what will happen. I know what will happen if you don&rsquo;t: nothing.</p>
+
+<blockquote>
+<p>The human spirit lives on creativity and dies in conformity and routine. - Vilayat Inayat Khan</p>
+</blockquote>
+
+<p>Being creative does not necessarily mean drawing on paper - but that does help. For me, it means coming out of your comfort zone and trying something new. Combine things that shouldn&rsquo;t be combined. Execute your ideas, don&rsquo;t simply collect them, even if they turn out to be nothing, I bet you&rsquo;ll have learned at least something. I bootstrapped <em>Brain Baking</em> thanks to a lot of previous (failed) efforts.</p>
+
+<h4 id="9-be-reflective-productive">9. Be Reflective &amp; Productive</h4>
+
+<p>Thinking forward is okay, but remember to hit the breaks and shift gears to think backwards for a while. When you take notes, are you re-reading them? And how often are you doing that? Your creative process will wither without a reflective approach. Think about what you&rsquo;re trying to do, about what you&rsquo;ve done and about what you&rsquo;ll do. Act, and modify accordingly.</p>
+
+<blockquote>
+<p>Men should pledge themselves for nothing; for reflection makes a liar of their solution. - Sophocles</p>
+</blockquote>
+
+<p><em>Retrospectives</em> shouldn&rsquo;t only be held at work to help improve your team&rsquo;s or company&rsquo;s performance. They can also help yourself. Why would you limit yourself to using things what they&rsquo;re made for if they can be used in another setting? If you&rsquo;re writing code daily but you find yourself copy-pasting a lot, did you know that clipboard utilities can enhance your workflow? (Just as a means to be more productive, not by embracing copy-paste programming! First understand, then reproduce.) Are you thinking about <strong>how to do something better</strong>? Do you bother learning keyboard shortcuts of your IDE? Do you think about how to dice your onion the most efficient way on your cutting board? You should.</p>
+
+<h3 id="what-about-applicability">What about applicability?</h3>
+
+<p>It seems like these &ldquo;rules of thumb&rdquo; aren&rsquo;t limited to just software engineering. That makes them all the more important - and transferable to a new sector and a new challenge. The article might have more appropriately be titled &ldquo;what I&rsquo;ve learned in life so far&rdquo;. After all, what&rsquo;s the difference between work and life?</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Remember guys, I miss you, I&rsquo;m just trying to be funny here!
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header"><i class="fa fa-newspaper-o"></i>&nbsp;Related by Tags</h4>
+
+        <div class="text-justify">
+             <div class="item">
+
+    <h4><a href="/post/development-principles-in-cooking/">Development principles in cooking</a></h4>
+
+    
+    
+    
+
+</div>
+ 
+        </div>
+
+        <hr/>
+
+    
+
+    
+    
+    <h4 class="page-header"><i class="fa fa-comments-o"></i>&nbsp;
+        
+            Join the Discussion on 
+        
+        <a href="https://twitter.com/woutergroenev">Twitter</a>!</h4>
+
+        
+
+    
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

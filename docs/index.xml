@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Fri, 19 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Decade in the Software Engineering industry</title>
+      <link>https://brainbaking.com/post/a-decade-in-the-industry/</link>
+      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/a-decade-in-the-industry/</guid>
+      <description>It never occurred to me that an article like this might be very informative for those interested in knowing how things work in the software engineering industry. Google&amp;rsquo;s related results to &amp;ldquo;10 years in IT industry&amp;rdquo; are rather depressing: &amp;ldquo;what to do after 10 years of experience&amp;rdquo;, &amp;ldquo;career options after 10 years&amp;rdquo;, &amp;ldquo;how to survive industry after 10 years&amp;rdquo;, &amp;ldquo;best career path after 10 years&amp;rdquo;. It seems to suggest you&amp;rsquo;re done after &amp;ldquo;grinding to level 10&amp;rdquo; - time to boot up another character build?</description>
+    </item>
     
     <item>
       <title>The Startup of a Lean Doctorate</title>
@@ -577,6 +586,18 @@ There have been a lot of love letters to big cities here on Medium recently. I n
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/slides-4/</guid>
       <description>document.write( &#39;&#39; );  mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });          Reveal.initialize({ width: 960, height: 700, controls: true, progress: true, history: true, transition: &#39;fade&#39;, center: true, slideNumber: true, theme: Reveal.getQueryHash().theme, dependencies: [ { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//lib/js/classList.js&#39;, condition: function() { return !document.body.classList; } }, { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//plugin/markdown/marked.js&#39;, condition: function() { return !!document.querySelector( &#39;[data-markdown]&#39; ); } }, { src: &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0//plugin/markdown/markdown.js&#39;, condition: function() { return !</description>
+    </item>
+    
+    <item>
+      <title>Een introductie in C(&#43;&#43;) Build Systemen</title>
+      <link>https://brainbaking.com/teaching/cpp/buildsystems/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/buildsystems/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
+Zie ook labo 1: (herhaaldelijk) compileren
+Een greep uit de mogelijkheden, schematisch samengevat:
+mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  graph LR; compiler[compiler rechtstreeks uitvoeren] make[Makefiles roepen compiler aan] scons[SCons files roepen compiler aan] cmake[CMake files genereren Makefiles] qmake[QMake files genereren Makefiles] shell[Eigen script roept compiler aan] qmake -- make cmake -- make scons -- compiler make -- compiler shell -- compiler  Hoe compileer ik één file?</description>
     </item>
     
     <item>

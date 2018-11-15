@@ -449,7 +449,8 @@ De compiler toolchain voorziet een commandline debugger `gdb`. Daarvoor moet je 
 Er wordt verwacht aan unit testen te denken voor (simpele) logica. Experimenteer dus eerst met Google Test en probeer de voorbeelden op deze pagina zelf. Maak voor de oefeningen een nieuwe Github repository aan, of een nieuwe submap in een bestaande als dat al gebeurd is.
 
 1. Gegeven het [volgende analyse document](/teaching/cpp/labo-7-analyse1.txt): werk een implementatie uit. Begin met een model te tekenen en denk aan de relaties!
-2. Gegeven [de vervolganalyse](/teaching/cpp/labo-7-analyse2.txt). Herwerk je implementatie en breid uit.
+2. Compileer Google Test [volgens de instructies](/teaching/cpp/installaties). Werk verder op de interval implementatie hierboven: [download het CMake startproject](/teaching/cpp/labo-7-unittest.zip) - open dit in CLion. voorzie de `operator +` Die een nieuw interval berekent. Schrijf **eerst unit testen** in GTest hiervoor!
+3. Gegeven [de vervolganalyse](/teaching/cpp/labo-7-analyse2.txt). Herwerk je implementatie en breid uit. 
 
 ## Denkvragen
 

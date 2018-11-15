@@ -28,6 +28,8 @@ De volgende tools worden verwacht manueel te downloaden:
 * [CLion](https://www.jetbrains.com/clion/download/)
 * CMake 3.12.x (nog niet in de package tool)
 
+[CLion](https://www.jetbrains.com/clion/download) is **gratis voor studenten**: registreet je via de [JetBrains Student](https://www.jetbrains.com/student/) pagina met je studenten e-mail adres om een licentiesleutel toegestuurd te krijgen. 
+
 ### gcc Compiler installeren
 
 #### Voor Windows

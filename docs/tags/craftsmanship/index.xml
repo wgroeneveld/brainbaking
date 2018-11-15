@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Sat, 30 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/tags/craftsmanship/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Decade in the Software Engineering industry</title>
+      <link>https://brainbaking.com/post/a-decade-in-the-industry/</link>
+      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/a-decade-in-the-industry/</guid>
+      <description>It never occurred to me that an article like this might be very informative for those interested in knowing how things work in the software engineering industry. Google&amp;rsquo;s related results to &amp;ldquo;10 years in IT industry&amp;rdquo; are rather depressing: &amp;ldquo;what to do after 10 years of experience&amp;rdquo;, &amp;ldquo;career options after 10 years&amp;rdquo;, &amp;ldquo;how to survive industry after 10 years&amp;rdquo;, &amp;ldquo;best career path after 10 years&amp;rdquo;. It seems to suggest you&amp;rsquo;re done after &amp;ldquo;grinding to level 10&amp;rdquo; - time to boot up another character build?</description>
+    </item>
     
     <item>
       <title>Inventing - for the worse?</title>
