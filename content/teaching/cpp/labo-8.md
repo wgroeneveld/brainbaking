@@ -7,7 +7,7 @@ disableComments: true
 &laquo;&nbsp;[Terug naar Software ontwerp in C/C++](/teaching/cpp)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
 
-Het zal je ondertussen wel al duidelijk zijn dat technische details zoals IO pointers en OAM vanuit [labo 4](/teaching/cpp/labo-4) de code er niet bepaald duidelijker op maken. Jammer genoeg voorziet de GBA geen andere mogelijkheden. Een oplossing zal van de ontwikkelaar zelf moeten komen, in de vorm van de principes uit [labo 7](/teaching/cpp/labo-7). 
+Het zal je ondertussen wel al duidelijk zijn dat technische details zoals IO pointers en OAM vanuit [labo 4](/teaching/cpp/labo-4) de code er niet bepaald duidelijker op maken. Jammer genoeg voorziet de GBA geen andere mogelijkheden. Een oplossing zal van de ontwikkelaar zelf moeten komen, in de vorm van de principes uit [labo 7](/teaching/cpp/labo-7).
 
 ## Abstracties creëren
 
@@ -55,14 +55,14 @@ void position(sprite *s) {
 
 ## De Gameboy Advance en C++
 
-De devKit toolchain voorziet ook een C++ cross-compiler: `arm-none-eabi-gcc` wordt simpelweg `arm-none-eabi-g++`. _That's it!_ Je kan C++11 gebruiken en naar hartelust STL bibliotheken in de code verwerken in plaats van met `char*` "collecties" te moeten werken. 
+De devKit toolchain voorziet ook een C++ cross-compiler: `arm-none-eabi-gcc` wordt simpelweg `arm-none-eabi-g++`. _That's it!_ Je kan C++11 gebruiken en naar hartelust STL bibliotheken in de code verwerken in plaats van met `char*` "collecties" te moeten werken.
 
 Echter... Er is geen enkel productiespel ooit uitgebracht op een cartridge dat in C++ geschreven is. Dit om de eenvoudige reden dat C++ een hoop overhead met zich meebrengt:
 
 * De _footprint_ van een `.gba` ROM is véél groter in C++ door extra libraries
 * De memory _footprint_ van een `class` t.o.v. een `struct` zou +/- 4 bytes extra zijn
 
-Gezien de erg beperkte hardwaremogelijkheden van de GBA is het voor veel grote spellen praktisch gezien niet haalbaar om alles in C++ te schrijven. Trouwens ook niet in C: veel kritieke instructies in engines zijn nog in Assembly geschreven. 
+Gezien de erg beperkte hardwaremogelijkheden van de GBA is het voor veel grote spellen praktisch gezien niet haalbaar om alles in C++ te schrijven. Trouwens ook niet in C: veel kritieke instructies in engines zijn nog in Assembly geschreven.
 
 `ls -la` output:
 
@@ -72,9 +72,9 @@ Gezien de erg beperkte hardwaremogelijkheden van de GBA is het voor veel grote s
 -rwxr-xr-x   1 jefklak  staff   24032 Jul 25 13:55 main_cpp_stl.gba
 </pre>
 
-De C++ ROM is 280% groter dan de C ROM, als je `<vector>` e.d. mee include zelfs 288% - van 8K naar 23K! 
+De C++ ROM is 280% groter dan de C ROM, als je `<vector>` e.d. mee include zelfs 288% - van 8K naar 23K!
 
-Voor Software ontwerp in C/C++ ligt de focus op **software ontwerp**, niet op performante algoritmes of hardware. Wij gaan dit "probleem" dus straal negeren en vanaf nu alles in C++ schrijven. Emulators hebben hier geen probleem mee, evenals de EZ-FLASH Omega ROM die ik gebruik om op echte hardware te draaien. 
+Voor Software ontwerp in C/C++ ligt de focus op **software ontwerp**, niet op performante algoritmes of hardware. Wij gaan dit "probleem" dus straal negeren en vanaf nu alles in C++ schrijven. Emulators hebben hier geen probleem mee, evenals de EZ-FLASH Omega ROM die ik gebruik om op echte hardware te draaien.
 
 ### Een minimale 2D sprite engine
 
@@ -84,16 +84,16 @@ Welke concepten hebben we nodig om een minimaal spel te ontwerpen dat met 2D spr
 GBA001. Een minimale 2D sprite engine
 
 Beschrijving:
-Als programmeur wil ik niet bezig zijn met technische details van de GBA interface bij het ontwikkelen van een spel. 
-Ik wil eenvoudig sprites op het beeld kunnen toveren en deze kunnen manipuleren. 
+Als programmeur wil ik niet bezig zijn met technische details van de GBA interface bij het ontwikkelen van een spel.
+Ik wil eenvoudig sprites op het beeld kunnen toveren en deze kunnen manipuleren.
 
-Context: Het moet mogelijk zijn om het gebruik van OAM en VRAM te vergemakkelijken. 
+Context: Het moet mogelijk zijn om het gebruik van OAM en VRAM te vergemakkelijken.
 
 Acceptatiecriteria:
 - Ik wil als ontwikkelaar bij het boostrappen van het spel "sprite mode" kunnen kiezen.
-- Ik wil makkelijk sprites kunnen toevoegen aan de hand van een externe image in jpg/png formaat zonder iets van het palet af te weten. 
+- Ik wil makkelijk sprites kunnen toevoegen aan de hand van een externe image in jpg/png formaat zonder iets van het palet af te weten.
 - Ik wil sprites kunnen verplaatsen op het scherm
-- Ik wil eenvoudig kunnen zien of sprite 1 "botst" met sprite 2. 
+- Ik wil eenvoudig kunnen zien of sprite 1 "botst" met sprite 2.
 </pre>
 
 Dit vraagt niet om een volledige herwerking van de opgave uit labo 4, maar om een abstractielaag in de vorm van klassen. Welke concepten kunnen we afleiden uit de analyse, of welke ontbreken er nog?
@@ -115,9 +115,9 @@ graph TD;
   B -.-> E
 {{< /mermaid >}}
 
-Bovenstaand model kan afwijken van wat jij in gedachten had: hier is geen enkelvoudig antwoord op te geven, de enige vereiste is een laag tussen het gebruik van OAM, VRAM en de programmeur die als designer optreedt. 
+Bovenstaand model kan afwijken van wat jij in gedachten had: hier is geen enkelvoudig antwoord op te geven, de enige vereiste is een laag tussen het gebruik van OAM, VRAM en de programmeur die als designer optreedt.
 
-Denk bij het ontwerpen van een klasse na over eventuele logische operatoren die van pas kunnen komen. Het is niet de bedoeling om een hoop overrides te implementeren om te laten zien hoe goed je daar in bent: code wordt "_just-in-time_" geschreven: [YAGNI](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it). Templates en abstracte klassen zijn ook niet altijd nodig. 
+Denk bij het ontwerpen van een klasse na over eventuele logische operatoren die van pas kunnen komen. Het is niet de bedoeling om een hoop overrides te implementeren om te laten zien hoe goed je daar in bent: code wordt "_just-in-time_" geschreven: [YAGNI](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it). Templates en abstracte klassen zijn ook niet altijd nodig.
 
 Ga uit van het eenvoudigst mogelijke. Welke minimale elementen heb je absoluut nodig om de vereiste analyse tot een goed einde te brengen? Laat alle toeters en bellen achterwege en concentreer je op herbruikbaarheid en Clean Code.
 
@@ -131,7 +131,7 @@ Het OAM is gekoppeld aan een referentie naar het palet samen met een referentie 
     }
 ```
 
-In de praktijk wordt art aangeleverd door 2D artiesten die gespecialiseerd zijn in pixel art. Deze files moeten we vertalen naar hexadecimale waarden gegroepeerd in tileset en palet data. 
+In de praktijk wordt art aangeleverd door 2D artiesten die gespecialiseerd zijn in pixel art. Deze files moeten we vertalen naar hexadecimale waarden gegroepeerd in tileset en palet data.
 
 Gegeven de volgende "pixel art":
 
@@ -157,7 +157,7 @@ void copy_image_data() {
 
 OAM attributes maken het eenvoudig om de image horizontaal of verticaal te _flippen_, bijvoorbeeld bij sprite animaties die naar links of naar rechts lopen. Transformatiematriches zijn nodig om te roteren.
 
-Export tool [grit](https://github.com/eigerva/grit) geeft meer mogelijkheden, om bijvoorbeeld stukken van een palet te exporteren met `./grit piskel.png -p -gt -gB4 -ftc -pe 16` - zie [handleiding](http://www.coranac.com/man/grit/html/grit.htm). Maak op [piskelapp.com](www.piskelapp.com) je eigen pixel art. 
+Export tool [grit](https://github.com/eigerva/grit) geeft meer mogelijkheden, om bijvoorbeeld stukken van een palet te exporteren met `./grit piskel.png -p -gt -gB4 -ftc -pe 16` - zie [handleiding](http://www.coranac.com/man/grit/html/grit.htm). Maak op [piskelapp.com](www.piskelapp.com) je eigen pixel art.
 
 ### Een kijkje achter de schermen
 
@@ -167,7 +167,7 @@ Probeer aan de hand van deze animatie maar eens te bepalen welke sprites gebrukt
 
 <img src="/img/teaching/aria-of-sorrow.gif" style="width: 100%" class="bordered" />
 
-Herinner je uit labo 4 dat er 4 VRAM pointers naar achtergrond geheugen is: 4 char blocks. Bovenstaand spel creëert zo de illusie van diepte: verschillende achtergronden schuiven over elkaar met verschillende snelheden (kijk goed naar de maan). 
+Herinner je uit labo 4 dat er 4 VRAM pointers naar achtergrond geheugen is: 4 char blocks. Bovenstaand spel creëert zo de illusie van diepte: verschillende achtergronden schuiven over elkaar met verschillende snelheden (kijk goed naar de maan).
 
 <div class="row">
   <div class="col-md-6">
@@ -192,20 +192,19 @@ Herinner je uit labo 4 dat er 4 VRAM pointers naar achtergrond geheugen is: 4 ch
   </div>
 </div>
 
-Uiteindelijk stelt zo'n 2D platformspel niet zo veel voor op gebied van sprite engine. Er kunnen immers maar maximum 128 objecten tegelijkertijd in het geheugen opgeslagen worden. In Aria of Sorrow wordt dat opgelost met "tussenschermen": van area 1 naar 2 moet je door een soort van sluis. In de achtergrond wordt een hoop nieuwe data in alle IO adressen gepompt. 
+Uiteindelijk stelt zo'n 2D platformspel niet zo veel voor op gebied van sprite engine. Er kunnen immers maar maximum 128 objecten tegelijkertijd in het geheugen opgeslagen worden. In Aria of Sorrow wordt dat opgelost met "tussenschermen": van area 1 naar 2 moet je door een soort van sluis. In de achtergrond wordt een hoop nieuwe data in alle IO adressen gepompt.
 
 Het meeste werk ligt bij de artist. De screenshot linksboven toont de aanwezigheid van 2 personage sprites (Alucard en Soma) en 3 nummer sprites (Healthbar: 3, 2, 0). Toch klopt dit niet helemaal als je graaft in de mGBA sprite explorer:
 
-<img src="/img/teaching/aria-of-sorrow-sprites.png" /> 
+<img src="/img/teaching/aria-of-sorrow-sprites.png" />
 
 Soma bestaat uit 2x 64x32 OAM objecten! <br/>
 Er zal dus ook een soort van OAM manager nodig zijn die beide sprites aan elkaar rijgt, zodat in de code en in het spel dit één sprite lijkt te zijn. Dit zijn nog [artefacten van de originele Gameboy](http://gbdev.gg8.se/wiki/articles/GBDK_Sprite_Tutorial).
 
-## Labo oefeningen
-<a name="oef"></a>
+## <a name="oef"></a>Labo oefeningen
 
-1. Implementeer bovenstaande technische analyse in C++. Verterk vanuit een [modeloplossing](/teaching/cpp/labo-4-gba-2.c) van labo 4. Bedenk welke verplichte parameters nodig zijn om een sprite "in te laden". 
-2. Voorzie ook een `KeyManager` die inlezen van toetsen abstraheert. Werken met functie pointers als callback methodes is niet nodig. 
+1. Implementeer bovenstaande technische analyse in C++. Verterk vanuit een [modeloplossing](/teaching/cpp/labo-4-gba-2.c) van labo 4. Bedenk welke verplichte parameters nodig zijn om een sprite "in te laden".
+2. Voorzie ook een `KeyManager` die inlezen van toetsen abstraheert. Werken met functie pointers als callback methodes is niet nodig.
 
 ## Denkvragen
 
