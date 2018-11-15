@@ -32,18 +32,18 @@ graph TD;
     A[a<br/>5]
 {{< /mermaid >}}
 
-Waarbij het type, `int`, afhankelijk van het platform een aantal bytes reserveert (`sizeof(int)`) op een bepaald adres. Het adres kunnen we zelfs manipuleren in C/C++ en is essentiëel voor het gebruik van onder andere arrays. 
+Waarbij het type, `int`, afhankelijk van het platform een aantal bytes reserveert (`sizeof(int)`) op een bepaald adres. Het adres kunnen we zelfs manipuleren in C/C++ en is essentiëel voor het gebruik van onder andere arrays.
 
 ## "Compound" types
 
 C/C++ gebruikt een _pass-by-value_ systeem om variabelen door te geven aan functies. Dit wil zeggen dat de waarde gekopiëerd wordt, en die functie geen wijzigingen kan aanbrengen aan de originele waarde. Dat is iets positief: **separation of concerns**.
 
-Als we denken aan ons persoon voorbeeld van [labo 1](/teaching/cpp/labo-1), wordt die struct dus telkens overgekopiëerd. Dat kan zeer inefficiënt zijn, naargelang de grootte van de data! Om dit te vermijden, gebruiken we een "pointer": een referentie naar de actuele data. Objecten worden in Java standaard _pass-by-reference_ meegegeven - in C moeten we hier nog iets extra voor doen dus. 
+Als we denken aan ons persoon voorbeeld van [labo 1](/teaching/cpp/labo-1), wordt die struct dus telkens overgekopiëerd. Dat kan zeer inefficiënt zijn, naargelang de grootte van de data! Om dit te vermijden, gebruiken we een "pointer": een referentie naar de actuele data. Objecten worden in Java standaard _pass-by-reference_ meegegeven - in C moeten we hier nog iets extra voor doen dus.
 
-In plaats van `is_oud(struct Persoon persoon)` wordt de signatuur `is_oud(struct Persoon* persoon)`. Om hier een waarde uit te lezen hebben we twee mogelijkheden: 
+In plaats van `is_oud(struct Persoon persoon)` wordt de signatuur `is_oud(struct Persoon* persoon)`. Om hier een waarde uit te lezen hebben we twee mogelijkheden:
 
-1. De pointer _"dereferencen"_: de eigenlijke waarde opvragen, achter de referentie. 
-2. Via de pointer de members van de struct opvragen met "`.`". 
+1. De pointer _"dereferencen"_: de eigenlijke waarde opvragen, achter de referentie.
+2. Via de pointer de members van de struct opvragen met "`.`".
 
 Omdat in C de `.` operator voorrang heeft op `*`, moeten we haakjes gebruiken voor optie twee: `(*persoon).leeftijd`. Dat is vervelend om constant te gebruiken, daarom is er een alternatieve syntax met de arrow `->` operator: `persoon->leeftijd`.
 
@@ -51,7 +51,7 @@ In Java spreek je members natuurlijk altijd aan met `.`.
 
 ### Reference types
 
-**Opgelet** - reference types zijn C++ specifiek. Dit is echter een integraal onderdeel van je kennis van compound types en wordt dus hier al uitgelegd. Als je onderstaande voorbeelden wenst te testen, gebruik dan `g++` in plaats van `gcc`! 
+**Opgelet** - reference types zijn C++ specifiek. Dit is echter een integraal onderdeel van je kennis van compound types en wordt dus hier al uitgelegd. Als je onderstaande voorbeelden wenst te testen, gebruik dan `g++` in plaats van `gcc`!
 
 Een referentie variabele is niet meer dan een alternatieve naam voor dezelfde variabele. Ze zijn herkenbaar door `&` na variabele type. Referenties moeten "gebind" worden bij declaratie:
 
@@ -63,12 +63,12 @@ int &vrouwelijkheid;    // compiler error
 
 {{<mermaid>}}
 graph LR;
-    A{&mannelijkheid} -->|ref| B[geslacht<br/>10] 
+    A{&mannelijkheid} -->|ref| B[geslacht<br/>10]
 {{< /mermaid >}}
 
-Referenties kan je zien als "constante pointers" die automatisch de `->` toepassen. Het adres van het doel wordt bewaard, niet de eigenlijke waarde. Referenties zijn geen objecten en hebben geen volwaardig adres op de stack. 
+Referenties kan je zien als "constante pointers" die automatisch de `->` toepassen. Het adres van het doel wordt bewaard, niet de eigenlijke waarde. Referenties zijn geen objecten en hebben geen volwaardig adres op de stack.
 
-Je kan nog steeds de waarde van het object wijzigen via de referentie: `mannelijkheid = 20;` zal de variabele geslacht ook wijzigen - die zijn immers hetzelfde. Als je dat wil vermijden heb je `const` nodig (p60). 
+Je kan nog steeds de waarde van het object wijzigen via de referentie: `mannelijkheid = 20;` zal de variabele geslacht ook wijzigen - die zijn immers hetzelfde. Als je dat wil vermijden heb je `const` nodig (p60).
 
 ### Pointer types
 
@@ -88,7 +88,7 @@ graph LR;
     A --> |na regel 4| C[oud<br/>80]
 {{< /mermaid >}}
 
-Merk op dat we hier toch nog `&` gebruiken! Dit is geen referentie type maar de _address-of_ operator om het adres van de variabele jong vast te krijgen. Een pointer verwijst naar een adres, niet naar een waarde. 
+Merk op dat we hier toch nog `&` gebruiken! Dit is geen referentie type maar de _address-of_ operator om het adres van de variabele jong vast te krijgen. Een pointer verwijst naar een adres, niet naar een waarde.
 
 Wat is de output van `printf("%d", leeftijd);`? 1389434244! Huh? We drukken het **adres** van de pointer af, niet waar de pointer naar verwijst. Om dat te doen heb je weer de `*` operator nodig: `printf("%d", *leetijd);`. Dit noemen we _dereferencen_.
 
@@ -96,7 +96,7 @@ De compiler geeft dit ook aan als warning:
 
 > warning: format specifies type 'int' but the argument has type 'int *' [-Wformat]
 
-Pointers kunnen ook verwijzen naar... pointers naar... pointers naar ... Genoeg keer `*` toevoegen. 
+Pointers kunnen ook verwijzen naar... pointers naar... pointers naar ... Genoeg keer `*` toevoegen.
 
 ```C
 int jong = 10;
@@ -118,7 +118,7 @@ int *ptr;
 printf("%d", *ptr); // print 0
 ```
 
-`NULL` is een platform-afhankelijke macro die in C verwijst naar 0, meestal in de vorm van een void pointer. Een `void*` pointer kan naar eender welk type verwijzen en wordt meestal gebruikt om low-level memory aan te spreken, zoals we zullen zien bij de GBA. 
+`NULL` is een platform-afhankelijke macro die in C verwijst naar 0, meestal in de vorm van een void pointer. Een `void*` pointer kan naar eender welk type verwijzen en wordt meestal gebruikt om low-level memory aan te spreken, zoals we zullen zien bij de GBA.
 
 De definitie van een pointer schrijft niet voor waar de `*` precies moet staan: `int* leeftijd` is hetzelfde als `int *leeftijd`. Pas om met dingen als `int* leeftijd, ouderdom`! De laatste veriabele is hier een gewone int, en géén pointer!
 
@@ -149,7 +149,7 @@ int main() {
 }
 ```
 
-De definitie van de op pointer ziet er wat vreemd uit, maar de signatuur voorspelt dat we een `int` retourneren (meest links), en dat er één parameter nodig is, ook in de vorm van een `int` (tussen haakjes). 
+De definitie van de op pointer ziet er wat vreemd uit, maar de signatuur voorspelt dat we een `int` retourneren (meest links), en dat er één parameter nodig is, ook in de vorm van een `int` (tussen haakjes).
 
 Functie pointers kan je ook als parameter meegeven, bijvoorbeeld met `void exec(int (*op)(int)) {`. Een functie kan een functie (pointer) teruggeven, bijvoorbeeld met `int (*kies_op(int mod))(int) {`. De functie "kies_op" verwacht 1 int parameter en geeft een functie pointer terug die verwijst naar een functie met 1 int parameter en returnvalue int. Om dat warboeltje te vereenvoudigen wordt meestal `typedef` gebruikt:
 
@@ -168,7 +168,7 @@ int verdubbel(int getal) {
 
 func_type kies_op(int mod) {
     return mod == 0 ? &verhoog : &verdubbel;
-} 
+}
 
 void exec(int (*op)(int)) {
     printf("exec: %d\n", op(5));
@@ -224,7 +224,7 @@ Wat is er veranderd?
 2. Pointers zijn gebruikt om struts door te geven. `malloc()` komt kijken om geheugen te reserveren voor een nieuwe persoon. Vergeet niet dat we dit zelf moeten terug vrijgeven met `free()`!
 3. Het belangrijkste: een **factory method** `create_persoon` is nodig om een nieuwe persoon te assembleren en de is_oud methode aan de struct te plakken.
 
-Dat ziet er al iets gestroomlijnder uit maar vereist nog steeds te veel boilerplating. Zo'n constructies ga je zelden tegen komen in de praktijk. Ontwikkelaars die graag objecten maken zullen C links laten liggen. 
+Dat ziet er al iets gestroomlijnder uit maar vereist nog steeds te veel boilerplating. Zo'n constructies ga je zelden tegen komen in de praktijk. Ontwikkelaars die graag objecten maken zullen C links laten liggen.
 
 ### Praktisch gebruik van pointers
 
@@ -242,8 +242,8 @@ swap(&x, &y);
 printf("(%d, %d)\n", x, y); // print (20, 10)
 ```
 
-Zoiets is ondenkbaar in Java - daar hebben we truckjes voor nodig als een `int[]` dat toch een object is. Natuurlijk is deze implementatie ook **nadelig**: is het wel duidelijk voor de caller dat variabelen gewijzigd worden? 
-Performante algoritme implementaties profiteren van deze mogelijkheden. Duidelijke domain-driven applicaties niet: daar dient een hogere taal voor. 
+Zoiets is ondenkbaar in Java - daar hebben we truckjes voor nodig als een `int[]` dat toch een object is. Natuurlijk is deze implementatie ook **nadelig**: is het wel duidelijk voor de caller dat variabelen gewijzigd worden?
+Performante algoritme implementaties profiteren van deze mogelijkheden. Duidelijke domain-driven applicaties niet: daar dient een hogere taal voor.
 
 Pointers en arrays gaan hand-in-hand in C. Op pointers kan je ook operaties als `++` en `--` uitvoeren die de pointer in het geheugen één plaatsje naar links of rechts opschuiven. Met `char *tekst = "sup"` verwijst de pointer naar het eerste karakter:
 
@@ -267,7 +267,7 @@ void print_tekst(char *tekst) {
 }
 ```
 
-In C is `a[i]` exact hetzelfde als `*(a + i)`! 
+In C is `a[i]` exact hetzelfde als `*(a + i)`!
 
 ## Herhaling: let op met syntax!
 
@@ -280,14 +280,13 @@ Zie pagina 53 - symbolen zoals `*` en `&` in C en C++ hebben verschillende betek
 
 Vergeet niet dat de eerste regel enkel geldig is in C++.
 
-## Labo oefeningen
-<a name="oef"></a>
+## <a name="oef"></a>Labo oefeningen
 
 1. Implementeer `int strcmp_own(char *s, char *t)` van `<string.h>` zelf. Geef het getal 0 terug indien strings gelijk zijn, een getal kleiner dan 0 (bvb. -1) indien s < t en een getal groter dan 0 (bvb. 1) indien s > t. Gebruik je pointer kennis om snel het geheugen te scannen.
 2. Jij bent een brave bibliothecaris. En als brave bibliothecaris is het je taak om boeken alfabetisch te sorteren op achternaam. Laat de gebruiker een aantal achternamen ingeven, gescheiden door spatie (tip: [strtok](http://www.cplusplus.com/reference/cstring/strtok/), en druk dan gesorteerd de inventaris af. Uiteraard gebruik je pointers.
   - input: `lenaerts zwanskop aerts groeneveld`
   - output: `aerts groeneveld lenaerts zwanskop`
-3. Ohnee, je broer de stoute bibliothecaris is gearriveerd! Hij maakt een zootje avn de bibliotheek en sorteert graag omgekeerd van Z naar A, de smeerlap. Voorzie naast `void brave_bibliothecaris(char **auteurs, int aantal)` ook een `void stoute_bibliothecaris(char **auteurs, int aantal)` methode. Vraag de gebruiker eerst of hij stout of braaf geweest is. Gebruik functie pointers om te wisselen van bibliothecaris! 
+3. Ohnee, je broer de stoute bibliothecaris is gearriveerd! Hij maakt een zootje avn de bibliotheek en sorteert graag omgekeerd van Z naar A, de smeerlap. Voorzie naast `void brave_bibliothecaris(char **auteurs, int aantal)` ook een `void stoute_bibliothecaris(char **auteurs, int aantal)` methode. Vraag de gebruiker eerst of hij stout of braaf geweest is. Gebruik functie pointers om te wisselen van bibliothecaris!
   - input: `stout` (enter) `lenaerts zwanskop aerts groeneveld`
   - output: `zwanskop lenaerts groeneveld aerts`
 
@@ -296,7 +295,7 @@ Tips:
 - [Voorbeeld gebruik](https://www.tutorialspoint.com/c_standard_library/c_function_strcmp.htm) van de standaard `strcmp` functie.
 - Opnieuw: denk aan de [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Writing-C.html)!
 - Een "array van strings" is in C een pointer naar pointers van characters (`char**`).
-- Je mag een arbitraire hoeveelheid spaties aannemen. 
+- Je mag een arbitraire hoeveelheid spaties aannemen.
 - [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort) is goed genoeg, pseudocode staat daar. Gebruik je eigen strcmp!
 - De stoute bibliothecaris mag de brave zijn werk gebruiken en _reversen_!
 - Pas op met `fgets` na `scanf` - deze laat `\n` nog in de stream achter die de eerste onterecht verwerkt. Gebruik `getchar()` om dat karakter te negeren.
@@ -305,6 +304,6 @@ Tips:
 
 1. Wat is het verschil tussen `char msg[] = "heykes"` en `char *msg = "heykes"`? Verduidelijk je antwoord met een schema.
 2. Wat is het verschil tussen `int a[10][20]` en `int *b[10]`? Kan je ook iets zeggen over het geheugengebruik?
-3. Hoe zouden we de bibliothecaris kunnen veralgemenen naar een sorteerder van eender welk datatype in plaats van enkel char? Denk aan Java's generics. 
-4. In welk geval zou jij zeker pointers gebruiken in C, en in welk geval niet? Beargumenteer je keuze. 
-5. Als ik mijn eigen gelinkte lijst wens te implementeren, hoe ziet mijn data structuur er dan uit? Teken ook een schema van zo'n lijst als voorbeeld. 
+3. Hoe zouden we de bibliothecaris kunnen veralgemenen naar een sorteerder van eender welk datatype in plaats van enkel char? Denk aan Java's generics.
+4. In welk geval zou jij zeker pointers gebruiken in C, en in welk geval niet? Beargumenteer je keuze.
+5. Als ik mijn eigen gelinkte lijst wens te implementeren, hoe ziet mijn data structuur er dan uit? Teken ook een schema van zo'n lijst als voorbeeld.

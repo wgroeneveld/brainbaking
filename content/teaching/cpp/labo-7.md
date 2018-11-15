@@ -11,9 +11,9 @@ Een programmeertaal als C++ leren vereist het achteroverslaan van heel wat synta
 
 ## Software Modelleren
 
-Als software ontwikkelaar ben jij de uitvoerende kracht die vereisten van de klant implementeert in het software systeem. Een analist staat tussen de klant en de ontwikkelaar in die de vertaalslag tussen de grillen van klanten en vereisten in de vorm van business regels maakt. 
+Als software ontwikkelaar ben jij de uitvoerende kracht die vereisten van de klant implementeert in het software systeem. Een analist staat tussen de klant en de ontwikkelaar in die de vertaalslag tussen de grillen van klanten en vereisten in de vorm van business regels maakt.
 
-Het is onze taak als ontwikkelaar om die regels met succes te verwerken in de code. Een software ontwikkelteam bestaat uit meer dan één ontwikkelaar, daarom is het belangrijk dat alles op een uniforme manier geïmplementeerd wordt. Collega's moeten eenvoudig concepten kunnen localiseren. De source files veranderen immers dagelijks, vaak jaren aan één stuk. 
+Het is onze taak als ontwikkelaar om die regels met succes te verwerken in de code. Een software ontwikkelteam bestaat uit meer dan één ontwikkelaar, daarom is het belangrijk dat alles op een uniforme manier geïmplementeerd wordt. Collega's moeten eenvoudig concepten kunnen localiseren. De source files veranderen immers dagelijks, vaak jaren aan één stuk.
 
 ### Business rules analyseren
 
@@ -51,7 +51,7 @@ graph TD;
   C[Contract]
 {{< /mermaid >}}
 
-Als woorden als "werknemer" en "persoon" ("persoonsfiche") door elkaar gebruikt worden zal je de analist hierop moeten aanspreken en dit uitklaren. Iedereen moet bij het woord "werknemer" onmiddellijk aan hetzelfde denken. 
+Als woorden als "werknemer" en "persoon" ("persoonsfiche") door elkaar gebruikt worden zal je de analist hierop moeten aanspreken en dit uitklaren. Iedereen moet bij het woord "werknemer" onmiddellijk aan hetzelfde denken.
 
 Welke relaties hebben de entiteiten?
 
@@ -107,9 +107,9 @@ public:
 
 ## Software Onderhouden
 
-Productie code leeft véél langer dan je gemiddeld project op de universiteit, afhankelijk van de sector en de grootte van het project. Het kan goed zijn dat er nog 10 jaar lang verder gewerkt wordt aan één pakket. Dat betekent dat het van enorm belang is om ordelijk en doordacht tewerk te gaan. 
+Productie code leeft véél langer dan je gemiddeld project op de universiteit, afhankelijk van de sector en de grootte van het project. Het kan goed zijn dat er nog 10 jaar lang verder gewerkt wordt aan één pakket. Dat betekent dat het van enorm belang is om ordelijk en doordacht tewerk te gaan.
 
-Besef dat doorheen de jaren compilers komen en gaan en standaarden komen en gaan. C++11 is van 2011 geleden, De [C++17 standaard](https://isocpp.org/std/status) introduceert weer een hele hoop nieuwigheden, en C++20 is onderweg, die we niet gaan behandelen maar misschien wel in dat project kunnen toegevoegd worden. 
+Besef dat doorheen de jaren compilers komen en gaan en standaarden komen en gaan. C++11 is van 2011 geleden, De [C++17 standaard](https://isocpp.org/std/status) introduceert weer een hele hoop nieuwigheden, en C++20 is onderweg, die we niet gaan behandelen maar misschien wel in dat project kunnen toegevoegd worden.
 
 Flexibiliteit naar onderhoud toe is belangrijk voor de succes van een project op lange termijn.  
 
@@ -119,7 +119,7 @@ Flexibiliteit naar onderhoud toe is belangrijk voor de succes van een project op
 
 Vanaf nu wordt verondersteld dat labo oefeningen gecommit worden in `git` op [Github](https://github.com): een zeer populair open source software ontwikkelingsplatform dat gebruiksvriendelijk is. Het [Pro Git](https://git-scm.com/book/en/v2) handboek leert je alles over de werking van git. Een typische workflow is als volgt:
 
-1. `git clone [url]`: Maakt een lokale repository aan die je op Github hebt gecreëerd. Het commando maakt een subdirectory aan. 
+1. `git clone [url]`: Maakt een lokale repository aan die je op Github hebt gecreëerd. Het commando maakt een subdirectory aan.
 2. Doe je programmeerwerk.
 3. `git status` en `git diff`: Bekijk lokale changes voordat ze naar de server gaan.
 4. `git add [.]`: Geef aan welke changes staged worden voor commit
@@ -169,11 +169,11 @@ index 654a4f6..11f0597 100644
 
 Een quote uit het Clean Code boek van Robert C. Martin verduidelijkt het woordgebruik:
 
-> Even bad code can function. But if code isn t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn t have to be that way. 
+> Even bad code can function. But if code isn t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn t have to be that way.
 
-Raadpleeg het boek [Clean Code](https://www.goodreads.com/book/show/3735293-clean-code?ac=1&from_search=true) voor meer informatie. 
+Raadpleeg het boek [Clean Code](https://www.goodreads.com/book/show/3735293-clean-code?ac=1&from_search=true) voor meer informatie.
 
-Inderdaad, slechte code compileert ook en wordt ook uitgevoerd, maar dit komt onderhoudbaarheid helemaal niet ten goede. Er is voor "Modern C++" (C++11) zelfs een aparte [clean-cpp](http://clean-cpp.org) blog toegeweid aan proper C++ gebruik. 
+Inderdaad, slechte code compileert ook en wordt ook uitgevoerd, maar dit komt onderhoudbaarheid helemaal niet ten goede. Er is voor "Modern C++" (C++11) zelfs een aparte [clean-cpp](http://clean-cpp.org) blog toegeweid aan proper C++ gebruik.
 
 Een voorbeeld ter verduidelijking:
 
@@ -186,7 +186,7 @@ void process(Cl &c, int times) {
 }
 ```
 
-Dit is een simpele functie, maar zie jij op het eerste zicht wat dit doet? 
+Dit is een simpele functie, maar zie jij op het eerste zicht wat dit doet?
 
 ```C
 void tryToLoginAmountOfTimes(const User &user, int maxTimes) {
@@ -204,10 +204,10 @@ Subtiele verschillen maken vaak een wereld van verschil:
 * Naamgeving is zéér belangrijk.
 * Objecten die niet gewijzigd mogen worden voorzie je van `const`.
 * Bad practices als `break` worden vermeden.
-* Formattering in code maakt het lezen aangenamer. 
+* Formattering in code maakt het lezen aangenamer.
 * Denk na over de juiste plaats: waarom parameters doorgeven als `login` bij de gebruiker klasse kan horen?
 
-**Kritisch denken** brengt je een heel eind. Wees streng genoeg: stel constant de vraag "is dit wel nodig?". `maxTimes` is bijvoorbeeld nutteloos als de methode altijd aangeroepen wordt met eenzelfde constante waarde. 
+**Kritisch denken** brengt je een heel eind. Wees streng genoeg: stel constant de vraag "is dit wel nodig?". `maxTimes` is bijvoorbeeld nutteloos als de methode altijd aangeroepen wordt met eenzelfde constante waarde.
 
 Een laatste voorbeeld uit de realiteit gegrepen:
 
@@ -229,7 +229,7 @@ auto pi2 = CreateInvisiblePermission("bla_key");
 Het verschil is hemel en aarde:
 
 1. Het woord "visible" of "invisible" in de methodenaam **verduidelijkt** enorm veel. Vermijd altijd magische `bool` flags! Vergeet niet dat de methode definitie ergens in een header file leeft en er naar navigeren om te begrijpen wat welk argument doet véél tijd kost.
-2. Wees kritisch met parameters. Als een parameter altijd met default waardes wordt meegegeven kan je het net zo goed weglaten. 
+2. Wees kritisch met parameters. Als een parameter altijd met default waardes wordt meegegeven kan je het net zo goed weglaten.
 
 Zie ook de verkorte [Clean Code cursus](https://wgroeneveld.github.io/cleancode-course/) slides.
 
@@ -377,7 +377,7 @@ To be equal to: 5
 Enkele verbeterpunten:
 
 * Het is vervelend dat je de gtest libraries manueel moet builden. [CMake kan dit ook automatisch](https://crascit.com/2015/07/25/cmake-gtest/)
-* Je main binary voert nu testen uit in plaats van productie code. Een typisch C++ project is opgesplitst in een map `src` en een map `test`, en build 2 binaries. [Download hier een voorbeeld](/teaching/cpp/unittest_example.zip) met opgesplitste CMake files. 
+* Je main binary voert nu testen uit in plaats van productie code. Een typisch C++ project is opgesplitst in een map `src` en een map `test`, en build 2 binaries. [Download hier een voorbeeld](/teaching/cpp/unittest_example.zip) met opgesplitste CMake files.
 
 ### Regressie tegen gaan met testen
 
@@ -432,7 +432,7 @@ TEST_F(IntervalSuite, GetalKleinerDanBeginZitNietInInterval) {
 }
 ```
 
-Waarvan `BeginZitInInterval` faalt. Verander in de implementatie `>` door `>=` en de suite zorgt er voor dat deze code altijd correct is. 
+Waarvan `BeginZitInInterval` faalt. Verander in de implementatie `>` door `>=` en de suite zorgt er voor dat deze code altijd correct is.
 
 ### Debuggen in C++
 
@@ -442,12 +442,11 @@ De stack bekijken, lokale variabelen inspecteren, ... kennen we van IDEs als Net
 
 #### Handmatig
 
-De compiler toolchain voorziet een commandline debugger `gdb`. Daarvoor moet je debug informatie genereren bij compilatie met `g++` flag `-g`. De tool is vrij rudimentair in gebruik. Zie [documentatie](https://www.gnu.org/software/gdb/documentation/) voor informatie rond commando's. 
+De compiler toolchain voorziet een commandline debugger `gdb`. Daarvoor moet je debug informatie genereren bij compilatie met `g++` flag `-g`. De tool is vrij rudimentair in gebruik. Zie [documentatie](https://www.gnu.org/software/gdb/documentation/) voor informatie rond commando's.
 
-## Labo oefeningen
-<a name="oef"></a>
+## <a name="oef"></a>Labo oefeningen
 
-Er wordt verwacht aan unit testen te denken voor (simpele) logica. Experimenteer dus eerst met Google Test en probeer de voorbeelden op deze pagina zelf. Maak voor de oefeningen een nieuwe Github repository aan, of een nieuwe submap in een bestaande als dat al gebeurd is. 
+Er wordt verwacht aan unit testen te denken voor (simpele) logica. Experimenteer dus eerst met Google Test en probeer de voorbeelden op deze pagina zelf. Maak voor de oefeningen een nieuwe Github repository aan, of een nieuwe submap in een bestaande als dat al gebeurd is.
 
 1. Gegeven het [volgende analyse document](/teaching/cpp/labo-7-analyse1.txt): werk een implementatie uit. Begin met een model te tekenen en denk aan de relaties!
 2. Compileer Google Test [volgens de instructies](/teaching/cpp/installaties). Werk verder op de interval implementatie hierboven: [download het CMake startproject](/teaching/cpp/labo-7-unittest.zip) - open dit in CLion. voorzie de `operator +` Die een nieuw interval berekent. Schrijf **eerst unit testen** in GTest hiervoor!
@@ -455,6 +454,6 @@ Er wordt verwacht aan unit testen te denken voor (simpele) logica. Experimenteer
 
 ## Denkvragen
 
-1. Hoe komt het dat bij `TEST_F(Suite, TestNaam)` de test naam niet tussen quotes moet? 
-2. Waarom is in het test suite voorbeeld `*Interval` een pointer en geen gewone instance van de klasse `Interval`? In dat geval hoeven we toch geen `delete` uit te voeren en is de tear down methode irrelevant... 
-3. Bouw een repliek op tegen de stelling _"code is code: kwaliteit is enkel ijdelheid"_. Beargumenteer met minstens 3 voorbeelden. 
+1. Hoe komt het dat bij `TEST_F(Suite, TestNaam)` de test naam niet tussen quotes moet?
+2. Waarom is in het test suite voorbeeld `*Interval` een pointer en geen gewone instance van de klasse `Interval`? In dat geval hoeven we toch geen `delete` uit te voeren en is de tear down methode irrelevant...
+3. Bouw een repliek op tegen de stelling _"code is code: kwaliteit is enkel ijdelheid"_. Beargumenteer met minstens 3 voorbeelden.

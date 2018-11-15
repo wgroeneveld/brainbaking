@@ -9,17 +9,17 @@ disableComments: true
 
 ## De C programmeertaal
 
-De [C taal](https://en.wikipedia.org/wiki/C_(programming_language)) is een  programmeertaal in de jaren '70 ontwikkeld om makkelijk hardware te kunnen aanspreken. C was/is in essentie niet veel meer dan een kleine abstractielaag bovenop assembly. 
+De [C taal](https://en.wikipedia.org/wiki/C_(programming_language)) is een  programmeertaal in de jaren '70 ontwikkeld om makkelijk hardware te kunnen aanspreken. C was/is in essentie niet veel meer dan een kleine abstractielaag bovenop assembly.
 
-C is een **imperatieve** programmeertaal. Dat zal je bij het oefenen wel merken: we schrijven instructies als _statements_. Deze regels of statements zijn gestructureerd in functies en `struct` types. Het jammere hier aan is dat er weinig **declarativiteit** aan de pas komt. Omdat C zo weinig om het lijf heeft (low-level), drukken statements bijna altijd uit _hoe_ iets moet werken, in plaats van _wat_ het moet doen. 
+C is een **imperatieve** programmeertaal. Dat zal je bij het oefenen wel merken: we schrijven instructies als _statements_. Deze regels of statements zijn gestructureerd in functies en `struct` types. Het jammere hier aan is dat er weinig **declarativiteit** aan de pas komt. Omdat C zo weinig om het lijf heeft (low-level), drukken statements bijna altijd uit _hoe_ iets moet werken, in plaats van _wat_ het moet doen.
 
 Toch is **clean code** voor mij van levensbelang en gaan we ook in C ons focussen op _leesbaarheid_. In plaats van getallen in de code gebruiken we `#define`, in plaats van lange statements splitsen we logische blokken op in duidelijke `function` blokken.
 
-C wordt voornamelijk gebruikt in embedded system development, net omdat het zo kort bij de hardware staat. De UNIX, Windows en OSX kernels zijn volledig geschreven in C bijvoorbeeld. Het besturingssysteem van je GSM, smartwatch of (handheld) gaming systeem bouwt verder op C. Enorm veel talen zoals Java (JVM), Python, Ruby en PHP zijn geschreven in C. 
+C wordt voornamelijk gebruikt in embedded system development, net omdat het zo kort bij de hardware staat. De UNIX, Windows en OSX kernels zijn volledig geschreven in C bijvoorbeeld. Het besturingssysteem van je GSM, smartwatch of (handheld) gaming systeem bouwt verder op C. Enorm veel talen zoals Java (JVM), Python, Ruby en PHP zijn geschreven in C.
 
 ### Wat is C++ dan?
 
-Zoals we zullen zien, bevat C weinig mogelijkheden om declaratief te zijn. C++ is de objectenlaag bovenop C die de taal uitbreidt met 'moderne' mogelijkheden tot structureren: inheritance, templating, eenvoudigere libraries (STL), ... De C++ compiler gebruikt gewoon C met laagjes C++ "sugar", zoals de [ANSI C++ Standard](https://isocpp.org/std/the-standard) aangeeft. 
+Zoals we zullen zien, bevat C weinig mogelijkheden om declaratief te zijn. C++ is de objectenlaag bovenop C die de taal uitbreidt met 'moderne' mogelijkheden tot structureren: inheritance, templating, eenvoudigere libraries (STL), ... De C++ compiler gebruikt gewoon C met laagjes C++ "sugar", zoals de [ANSI C++ Standard](https://isocpp.org/std/the-standard) aangeeft.
 
 De C taal is compact, de C++ taal is dat helaas niet. Kijk zelf maar:
 
@@ -108,11 +108,11 @@ C++ streams verbergen de low-level details van C File IO maar achterliggend [geb
 
 De essentiële verschillen tussen C en een hogere taal zoals Java of C#:
 
-1. C heeft weinig om het lijf: geen private/protected/class/interface/inheritance/bool/string... Er zijn geen "standard" libraries. 
+1. C heeft weinig om het lijf: geen private/protected/class/interface/inheritance/bool/string... Er zijn geen "standard" libraries.
 2. C heeft geen exceptions! Het werkt met _interrupts_ en error codes (`return 0`).
 3. C heeft geen garbage collection: geheugen beheer jij zelf.
 4. C draait niet op een virtuele machine (JVM, CLR) maar wordt gecompileerd naar native machine code.
-5. C maakt intensief gebruik van pointer variabelen om geheugen direct te manipuleren. 
+5. C maakt intensief gebruik van pointer variabelen om geheugen direct te manipuleren.
 6. C staat toe om combinatie-integer-types te maken (`unsigned short int`)
 7. C/C++ werkt met headers (.h) en source (.c/cpp) files. Een uitvoerbaar bestand vereist twee stappen: compileren én linken. Met linken kan je eenvoudig [assembly en C mixen](https://www.devdungeon.com/content/how-mix-c-and-assembly).
 
@@ -130,9 +130,9 @@ int main() {
 }
 ```
 
-De hoofd functie, `main()`, geeft een getal terug dat aangeeft aan het systeem of je programma met succes uitgevoerd is (0), of een andere error code wenst terug te geven. `printf` is een functie in de standaard IO header die we moeten includen, zoals een `import` in Java. 
+De hoofd functie, `main()`, geeft een getal terug dat aangeeft aan het systeem of je programma met succes uitgevoerd is (0), of een andere error code wenst terug te geven. `printf` is een functie in de standaard IO header die we moeten includen, zoals een `import` in Java.
 
-De "f" van printf staat voor "formatting" zoals je hierboven kan zien. Zie [Formatted output](https://www.gnu.org/software/libc/manual/html_node/Formatted-Output.html). 
+De "f" van printf staat voor "formatting" zoals je hierboven kan zien. Zie [Formatted output](https://www.gnu.org/software/libc/manual/html_node/Formatted-Output.html).
 
 ### Structuur aanbrengen
 
@@ -149,7 +149,7 @@ void zeg_iets_als_dit_positief_is(int getalleke) {
         }
         printf("\n");
     }
-} 
+}
 
 int main() {
     zeg_iets_als_dit_positief_is(5);
@@ -157,7 +157,7 @@ int main() {
 }
 ```
 
-Functies kan je **niet overloaden** in C - in C++ en Java wel. Er kunnen geen twee functies met naam "main" of "zeg_iets_als_dit_positief_is" maar met andere parameters bestaan. 
+Functies kan je **niet overloaden** in C - in C++ en Java wel. Er kunnen geen twee functies met naam "main" of "zeg_iets_als_dit_positief_is" maar met andere parameters bestaan.
 
 ### Strings? Hoezo?
 
@@ -187,7 +187,7 @@ int main() {
 
 C voorziet de juiste hoeveelheid geheugen bij "string literals" die we kennen vanuit Java. De `string[]` char array bevat **12 tekens** en geen 11! Omdat we het einde van de array niet kennen wordt er altijd de **NULL terminator** toegevoegd, `\0`. Zo kan je loopen en per char afdrukken - of printf het laten doen met %s.
 
-In `<string.h>` zitten een aantal handige functies om strings te kopiëren, de lengte op te vragen of te concateneren. Dat kan je in [GNU C: String utils](https://www.gnu.org/software/libc/manual/html_node/String-and-Array-Utilities.html) terugvinden. 
+In `<string.h>` zitten een aantal handige functies om strings te kopiëren, de lengte op te vragen of te concateneren. Dat kan je in [GNU C: String utils](https://www.gnu.org/software/libc/manual/html_node/String-and-Array-Utilities.html) terugvinden.
 
 ### Structs
 
@@ -210,7 +210,7 @@ jaak.leeftijd = 80;
 jaak.geslacht = 1;
 ```
 
-Uiteraard kan je structs ook doorgeven in functies en dan members aanspreken met de puntnotatie. 
+Uiteraard kan je structs ook doorgeven in functies en dan members aanspreken met de puntnotatie.
 
 De vraag is dan, kunnen we ook functies definiëren in een `struct`? Ja en neen. Een functie pointer (zie [labo 2](/teaching/cpp/labo-2)) maakt dit wel mogelijk, maar het is niet zoals een C++ member variabele van een klasse. C functie pointers worden gebruikt als _callback methods_:
 
@@ -258,7 +258,7 @@ typedef unsigned short int bool;
 bool mannelijk = TRUE;
 ```
 
-Typische C code die je kan tegenkomen wegens gebrek aan een bool: `if(result) { ... }` waarbij result een `int` is. Dit is in **geen geval** hetzelfde als [JavaScripts Truthy/Falsey](https://j11y.io/javascript/truthy-falsey/) constructie! Het getal `0` is false. `EOF`, `NULL` of `\0` evalueren allemaal naar een getal om dit te kunnen gebruiken. 
+Typische C code die je kan tegenkomen wegens gebrek aan een bool: `if(result) { ... }` waarbij result een `int` is. Dit is in **geen geval** hetzelfde als [JavaScripts Truthy/Falsey](https://j11y.io/javascript/truthy-falsey/) constructie! Het getal `0` is false. `EOF`, `NULL` of `\0` evalueren allemaal naar een getal om dit te kunnen gebruiken.
 
 ## Gebruik van header Files
 
@@ -295,15 +295,15 @@ int main() {
 
 De ``main`` functie werkt als bootstrapper en wordt nooit in een header file geplaatst. Merk het verschil tussen brackets en haakjes op bij include: dat is het verschil tussen systeem includes en eigen includes (relatief pad gebruiken!).
 
-De reden om dit zo op te splitsen is andere source files ook toegang te verschaffen tot `is_oud()` en `Persoon` en zo dingen te herbruiken. 
+De reden om dit zo op te splitsen is andere source files ook toegang te verschaffen tot `is_oud()` en `Persoon` en zo dingen te herbruiken.
 
 {{<mermaid>}}
 graph LR;
-    A{persoon.h} -->|source| B[persoon.c] 
+    A{persoon.h} -->|source| B[persoon.c]
     B --> E[definitie is_oud]
-    A{persoon.h} -->|source| C[facebook.c] 
+    A{persoon.h} -->|source| C[facebook.c]
     C --> F[gebruik struct]
-    A{persoon.h} -->|source| D[twitter.c] 
+    A{persoon.h} -->|source| D[twitter.c]
     D --> G[gebruik struct]
 {{< /mermaid >}}
 
@@ -398,7 +398,7 @@ cffa edfe 0700 0001 0300 0000 0100 0000
 0000 0000 0000 0000 0800 0000 0f04 0000
 5000 0000 0000 0000 005f 6861 6c6c 6f00
 5f68 616c 6c6f 2e65 6800 4c5f 2e73 7472
-0045 485f 6672 616d 6530 0000 
+0045 485f 6672 616d 6530 0000
 </pre>
 
 Prachtig, maar niet erg duidelijk. `nm` helpt:
@@ -445,9 +445,9 @@ We gebruiken de UNIX GNU `gcc` compiler om C soure files om te zetten in binarie
 
 > `gcc *.c`
 
-Door het gebrek aan een doelbestandsnaam maakt de compiler een bestand "a.out" dat je kan uitvoeren. Met de "-o" flag kan je dit specifiëren. Heb je iets meer te linken, zet dan alles in een rijtje achter elkaar. 
+Door het gebrek aan een doelbestandsnaam maakt de compiler een bestand "a.out" dat je kan uitvoeren. Met de "-o" flag kan je dit specifiëren. Heb je iets meer te linken, zet dan alles in een rijtje achter elkaar.
 
-Er zijn echter nog een hoop compiler opties die [hier](https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html) staan waar je eens mee kan spelen. 
+Er zijn echter nog een hoop compiler opties die [hier](https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html) staan waar je eens mee kan spelen.
 
 ### Herhaaldelijk compileren: een scriptje
 
@@ -460,7 +460,7 @@ clear && gcc -o mijnding source.c && ./mijnding
 
 ### Herhaaldelijk compileren: Makefiles
 
-In de C/C++ wereld bestaat er zoiets als een `Makefile` dat definiëert welke source files gecompileerd moeten worden, en in welke volgorde. Dit is handig voor grote applicaties waarbij een overzicht moet bewaard worden. 
+In de C/C++ wereld bestaat er zoiets als een `Makefile` dat definiëert welke source files gecompileerd moeten worden, en in welke volgorde. Dit is handig voor grote applicaties waarbij een overzicht moet bewaard worden.
 
 Met Makefiles kan je "targets" beschrijven die voor jou bepaalde acties uitvoeren. Bijvoorbeeld het opkuisen van binaries, het compileren en het linken, allemaal als aparte stap. Stappen aan elkaar rijgen gaat natuurlijk ook.
 
@@ -482,7 +482,7 @@ link:
 all: clean compile link
 ```
 
-Typisch wordt de gebruikte compiler als shell variabele gezet (CC=gcc). Je ziet hier dat compileren (gcc met de -c optie linkt niet) en linken opgesplitst is. Dat is in onze oefeningen eigenlijk niet nodig, maar laat hier de organisatorische kracht van Make zien. 
+Typisch wordt de gebruikte compiler als shell variabele gezet (CC=gcc). Je ziet hier dat compileren (gcc met de -c optie linkt niet) en linken opgesplitst is. Dat is in onze oefeningen eigenlijk niet nodig, maar laat hier de organisatorische kracht van Make zien.
 
 Uitvoeren met ``make`` als default goal (all) of ``make compile`` voor een specifieke goal.
 
@@ -492,16 +492,16 @@ Voor meer uitleg over Makefile syntax, zie [GNU make](ftp://ftp.gnu.org/old-gnu/
 
 #### Lichtgewichten
 
-Een source file bestaat uit platte tekst. Eender welke text editor is voldoende om je C programma te kunnen schrijven. Het kan echter handig zijn om Sublime Text of Visual Studio Code te gebruiken. Deze moderne krachtige editors hebben auto-completion en build tools ingebouwd. 
+Een source file bestaat uit platte tekst. Eender welke text editor is voldoende om je C programma te kunnen schrijven. Het kan echter handig zijn om Sublime Text of Visual Studio Code te gebruiken. Deze moderne krachtige editors hebben auto-completion en build tools ingebouwd.
 
 * [Sublime Text 3 Build Systems en C/C++](https://www.thecrazyprogrammer.com/2017/04/how-to-run-c-and-c-program-in-sublime-text.html) en [docs](http://docs.sublimetext.info/en/latest/file_processing/build_systems.html)
 * [Visual Studio Code C/C++ integratie](https://code.visualstudio.com/docs/languages/cpp)
 
-Ik houd old-school fans niet tegen om Emacs of Vim te gebruiken. 
+Ik houd old-school fans niet tegen om Emacs of Vim te gebruiken.
 
 #### Zwaargewichten
 
-[CLion](https://www.jetbrains.com/clion/) is de perfecte cross-platform en cross-compiler kandidaat om het zware C/C++ ontwikkelwerk van je over te nemen met geïntegreerde debugging, stack inspectie en alles wat men van een IDE verwacht. Dit is gebouwd bovenop IDEA en dus exact hetzelfde als IntelliJ voor Java - inclusief de shortcuts. 
+[CLion](https://www.jetbrains.com/clion/) is de perfecte cross-platform en cross-compiler kandidaat om het zware C/C++ ontwikkelwerk van je over te nemen met geïntegreerde debugging, stack inspectie en alles wat men van een IDE verwacht. Dit is gebouwd bovenop IDEA en dus exact hetzelfde als IntelliJ voor Java - inclusief de shortcuts.
 
 <img src="/img/teaching/clion.png" class="bordered" />
 
@@ -515,20 +515,19 @@ set(CMAKE_CXX_STANDARD 11)
 add_executable(testje main.cpp biblio.cpp biblio.h dieren.cpp dieren.h)    
 </pre>
 
-Een simpel CMake bestand is véél eenvoudiger dan een Make bestand. Zie [CMake tutorial](https://cmake.org/cmake-tutorial/). CLion beheert de `add_executable` voor jou: nieuwe files toevoegen aan je project komen er automatisch in terecht. 
+Een simpel CMake bestand is véél eenvoudiger dan een Make bestand. Zie [CMake tutorial](https://cmake.org/cmake-tutorial/). CLion beheert de `add_executable` voor jou: nieuwe files toevoegen aan je project komen er automatisch in terecht.
 
 ##### CMake voor Ubuntu
 
-Ubuntu's `apt-get` package manager heeft niet altijd de laatste versie van CMake in zijn repository. Als alternatief kan je op [https://cmake.org/download/](https://cmake.org/download/) de binaries downloaden (shellscript) en dit "ergens" installeren. Aangeraden is een `$CMAKE_HOME` omgevingsvariabele te maken en die toe te voegen aan je `$PATH`. In CLion kan je via [CLion settings](https://www.jetbrains.com/help/clion/configuring-cmake.html) (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen. 
+Ubuntu's `apt-get` package manager heeft niet altijd de laatste versie van CMake in zijn repository. Als alternatief kan je op [https://cmake.org/download/](https://cmake.org/download/) de binaries downloaden (shellscript) en dit "ergens" installeren. Aangeraden is een `$CMAKE_HOME` omgevingsvariabele te maken en die toe te voegen aan je `$PATH`. In CLion kan je via [CLion settings](https://www.jetbrains.com/help/clion/configuring-cmake.html) (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen.
 
-## Labo oefeningen
-<a name="oef"></a>
+## <a name="oef"></a>Labo oefeningen
 
 1. Het is oorlog! De orcs vallen aan en zien er hongerig uit! Ze eten al je klinkers op! Schrijf een programma dat de functie `char* omnom(char zin[])` implementeert en alle klinkers uit een zin haalt (of ze verdoezelt met een X). Je moet ook een `main()` functie schrijven die de gebruiker een zin laat ingeven en het resultaat afdrukt op het scherm. (Tip: `scanf` of `fgets`, rara?)  
 2. Laten we die smerige orcs eens modelleren. Vraag de gebruiker om een nummer. Dat nummer is het aantal orcs dat in het leger zit. Maak zoveel orc `struct` instances aan met een random waarde voor de eigenschappen. Druk dit af op het scherm. Een orc heeft de volgende eigenschappen:
   - `aanval`
-  - `levens` 
-3. De orcs worden gek van honger en eten alvast elkaar op! Breid het programma uit zodat de eerste orc met de volgende vecht (levens - aanval). Voorzie de functie `Orc vecht(Orc aanvaller, Orc verdediger)`. Leeft de verdediger na de aanval nog? Dan is hij de winnaar. Welke orc weet zich tot het laatste te verweren? Druk deze af. 
+  - `levens`
+3. De orcs worden gek van honger en eten alvast elkaar op! Breid het programma uit zodat de eerste orc met de volgende vecht (levens - aanval). Voorzie de functie `Orc vecht(Orc aanvaller, Orc verdediger)`. Leeft de verdediger na de aanval nog? Dan is hij de winnaar. Welke orc weet zich tot het laatste te verweren? Druk deze af.
 4. Herstructureer je orc struct door het in een header file te zetten. Maak een makefile om alles netjes te compileren met het commando `make.
 
 Je hebt het pointer symbool `*` in de oefeningen enkel nodig om een array terug te geven, zoals de omnom functie. In Java zou dat gewoon `char[] omnom(char[] zin)` zijn - merk op waar de vierkante haakjes precies staan: achter het type! In C is dat achter de naam van de variable.
@@ -541,4 +540,4 @@ C online compileren kan op [rextester.com](http://rextester.com/l/c_online_compi
 
 1. Waarom zou je kiezen voor een implementatie in C bij een bepaald probleem, of waarom niet? Beargumenteer je keuze.
 2. Op welke manier kan je object-geörienteerd programmeren emuleren in C? Geef een voorbeeld.
-3. Wat is het belangrijkste verschil tussen een low-level taal als C en Java of C#? Denk aan het resultaat van compilatie. 
+3. Wat is het belangrijkste verschil tussen een low-level taal als C en Java of C#? Denk aan het resultaat van compilatie.

@@ -13,7 +13,7 @@ Het overzicht van I/O registers leert ons dat `0x06000000 - 0x06017FFF` 96kb aan
 
 ## Tileset modes
 
-Rechtstreekse pixels aanspreken is flexibel maar niet bepaald handig. De GBA kan hardwarematig "_tiles_" zelf renderen zonder trailing pixels na te laten: wij moeten bij transformaties niet pixel per pixel zelf verplaatsen. Een beetje moderniteit in een embedded systeem dus. 
+Rechtstreekse pixels aanspreken is flexibel maar niet bepaald handig. De GBA kan hardwarematig "_tiles_" zelf renderen zonder trailing pixels na te laten: wij moeten bij transformaties niet pixel per pixel zelf verplaatsen. Een beetje moderniteit in een embedded systeem dus.
 
 Een "tile" is een 8x8 bitmap met 4 of 8 bits per pixel (_bpp_): 32 of 64 bytes in grootte. Herinner je dat voor de GBA we 15 bits nodig hebben om kleuren in een pixel op te slaan. 15 bits passen niet in die 4 of 8 bits! Daarvoor dienen _kleurenpaletten_ die een kleur mappen op een index, met een maximum van 512. Het voorgrond palet register leeft op `0x05000000` -voor het achetgrond palet tel je `0x200` erbij.
 
@@ -176,7 +176,7 @@ We onderscheiden dus 4 belangrijke concepten om een image te renderen op de Game
 
 ### Images inladen in video RAM
 
-Anders als in mode 3 kan je dus geen tiles mappen op pixels. Het VRAM voor tilesets werkt helemaal anders: het is opgesplitst in "character blocks" (voor image data, onze tileset) en "screen blocks" (tile map data). Per 8 screen blokken van 2kb is er één character block beschikbaar. Een char block is dus 16kb en kan 512 4bpp tiles opslaan - 6 in het heel VRAM in totaal dat inderdaad 96kb oplevert. 
+Anders als in mode 3 kan je dus geen tiles mappen op pixels. Het VRAM voor tilesets werkt helemaal anders: het is opgesplitst in "character blocks" (voor image data, onze tileset) en "screen blocks" (tile map data). Per 8 screen blokken van 2kb is er één character block beschikbaar. Een char block is dus 16kb en kan 512 4bpp tiles opslaan - 6 in het heel VRAM in totaal dat inderdaad 96kb oplevert.
 
 {{<mermaid>}}
 graph TD
@@ -207,7 +207,7 @@ graph TD
 
 Character blocks 0 tot 3 (_background RAM_) worden gebruikt voor achtergrond, en 4 (`0x6010000`) tot 5 (`0x6014000`), _Object VRAM (OVRAM)_, voor sprites. Het palet geheugen is ook opgesplitst in 2x16 voor achtergrond en sprites. We zijn voorlopig niet geïnteresseerd in de achtergrond: voor ons spel volstaan sprites. Tilemaps worden ook enkel gebruikt om grote images zoals een achtergrond te renderen, zoals het titelscherm en logo van Castlevania.
 
-Om van char block naar char block te springen tellen we `0x4000` bij elke block (15de bit - 16kb). Om van screen block naar screen block te springen tellen we `0x800` bij elke block (16de bit, 2kb). 
+Om van char block naar char block te springen tellen we `0x4000` bij elke block (15de bit - 16kb). Om van screen block naar screen block te springen tellen we `0x800` bij elke block (16de bit, 2kb).
 
 Merk op dat character block 0 en screen block 0 beiden naar adres `0x6000000` verwijzen! Dat wil zeggen dat als tilesets in char block 0 opgeslagen worden, we niet screen block 0 maar bijvoorbeeld 8 of 16 moeten gebruiken voor onze tilemap - opschuiven afhankelijk van de grootte van de tileset. Herinner je de gelijkenis tussen [pointers en arrays](/teaching/cpp/labo-2) uit labo 2.
 
@@ -243,7 +243,7 @@ De library [LibTonc](https://www.coranac.com/man/tonclib/group__grpMemArray.htm#
 
 ### Sprites
 
-Een sprite in Computer Graphics is een 2D image die deel is van een scene. De GBA kan sprite objecten voor ons renderen zonder dat wij alle pixels moeten manipuleren - dat moeten we dan nog aan zetten met bit 13 of `0x1000` in het controleregister. 
+Een sprite in Computer Graphics is een 2D image die deel is van een scene. De GBA kan sprite objecten voor ons renderen zonder dat wij alle pixels moeten manipuleren - dat moeten we dan nog aan zetten met bit 13 of `0x1000` in het controleregister.
 
 De GBA voorziet een rudimentair object-model, "_Object Attribute Memory_" - zie [specificaties](http://www.akkit.org/info/gbatek.htm#lcdobjoamattributes). Een object heeft 3 sets van 16-bit attributen:
 
@@ -251,7 +251,7 @@ De GBA voorziet een rudimentair object-model, "_Object Attribute Memory_" - zie 
 * 1: x coordinaat, grootte
 * 2: tile index, welke kleur van het palet te gebruiken
 
-Een combinatie van "vorm" en "grootte" eigenschappen bepalen de vorm van het object. Complexe vormen bestaan uit verschillende deelobjecten. We gaan het niet te ingewikkeld maken: prutsen met bits is al erg genoeg! 
+Een combinatie van "vorm" en "grootte" eigenschappen bepalen de vorm van het object. Complexe vormen bestaan uit verschillende deelobjecten. We gaan het niet te ingewikkeld maken: prutsen met bits is al erg genoeg!
 
 Om een een "object" te definiëren gebruiken we deze struct:
 
@@ -270,23 +270,23 @@ Objecten wegschrijven doen we in register `0x07000000`. Omdat `OAM_MEM` een poin
 
 Een nieuw object maken is relatief simpel: `volatile object *sprite = &OAM_MEM[0];`. De attributen goed zetten is een ander paar mouwen omdat de bits in sets samengepakt zitten. De [Tonc](http://www.coranac.com/tonc/text/regobj.htm) documentatie beschrijft elke bit van elk attribute in detail. We hebben bit 0 tot 7 voor de y coordinaat nodig, en bit 14 tot 15 voor de vorm (_square = `00`, wide = `10`, tall = `01`_).
 
-Als we willen starten op y coordinaat 50 met een wide object en 4bpp moeten we 50 omzetten naar 8 bits (gebruik [deze converter](https://www.binaryhexconverter.com/decimal-to-binary-converter)) en bits 14 en 15 goed zetten: dat levert `1000000000110010` op, of `0x8032`. 
+Als we willen starten op y coordinaat 50 met een wide object en 4bpp moeten we 50 omzetten naar 8 bits (gebruik [deze converter](https://www.binaryhexconverter.com/decimal-to-binary-converter)) en bits 14 en 15 goed zetten: dat levert `1000000000110010` op, of `0x8032`.
 
 ## Alles samen zetten
 
-Om deze low-level bit manipulaties in de code wat leesbaar te maken gebruiken we de voorziene typedefs en definities `tile_mem`, `se_mem` en `oam_mem` die hierboven zijn uitgelegd. 
+Om deze low-level bit manipulaties in de code wat leesbaar te maken gebruiken we de voorziene typedefs en definities `tile_mem`, `se_mem` en `oam_mem` die hierboven zijn uitgelegd.
 
 ### Een spel: [Arkanoid](https://en.wikipedia.org/wiki/Arkanoid)
 
 Geïnspireerd op [dit](https://www.reinterpretcast.com/writing-a-game-boy-advance-game) en [dit](http://cs.umw.edu/~finlayson/class/spring18/cpsc305/notes/06-gba1.html).
 
-Laten we de basis leggen voor een Arkanoid clone op de GBA. We hebben een "paddle" nodig onderaan het scherm, dat is sprite #1. Daarnast moet er een balletje rondvliegen die blokjes raakt, dat is sprite #2. De blokjes zelf laten we voorlopig even achterwege. 
+Laten we de basis leggen voor een Arkanoid clone op de GBA. We hebben een "paddle" nodig onderaan het scherm, dat is sprite #1. Daarnast moet er een balletje rondvliegen die blokjes raakt, dat is sprite #2. De blokjes zelf laten we voorlopig even achterwege.
 
 Voor de gemakkelijkheid negeren we de (x,y) coordinaten in de attribute bits van de objecten bij de OAM initializatie - die zetten we daarna wel.
 
 #### De bal
 
-Een simpele 8x8 _square_ sprite, dus 1 tile is voldoende. Kleur wit. 
+Een simpele 8x8 _square_ sprite, dus 1 tile is voldoende. Kleur wit.
 
 ```C
 // 1. kleur
@@ -306,11 +306,11 @@ ball_sprite->attr1 = 0; // grootte 8x8 met square
 ball_sprite->attr2 = 1; // eerste tile, palet 0
 ```
 
-Merk op dat `TILE_MEM[4]` betekent dat we de eerste 3 char of tile blocks overslaan: die dienen immers voor de achtergrond. 
+Merk op dat `TILE_MEM[4]` betekent dat we de eerste 3 char of tile blocks overslaan: die dienen immers voor de achtergrond.
 
 #### De paddle
 
-Een horizontaal geörienteerde rechthoek (_wide_) die groter moet zijn dan onze bal, dus meer dan 1 tile zal in beslag nemen. Als we 4 ballen achter elkaar plakken krijgen we een 32x8 sprite. Kleur rood. 
+Een horizontaal geörienteerde rechthoek (_wide_) die groter moet zijn dan onze bal, dus meer dan 1 tile zal in beslag nemen. Als we 4 ballen achter elkaar plakken krijgen we een 32x8 sprite. Kleur rood.
 
 Omdat palet index #0 maar "bezet" is met één kleur (wit, van onze bal), kunnen we dat rood er bij steken, of kiezen voor een nieuw palet. Dat is het verschil tussen `[0][2]` (bestaand herbruiken, index 2) of `[1][1]` (nieuw palet, index 1).
 
@@ -332,7 +332,7 @@ paddle_sprite->attr1 = 0x4000; // 32x8 met wide shape
 paddle_sprite->attr2 = 2; // vanaf de 2de tile, palet 0
 ```
 
-Merk op dat voor `attr1` (zie [8.4.2](http://www.coranac.com/tonc/text/regobj.htm)) de grootte bepaald wordt in combinatie met de sprite shape. 32x8 of 8x32 zou twee keer `0x4000` vereisen, alleen in `attr0` op bit 15 en 16 een andere waarde. 
+Merk op dat voor `attr1` (zie [8.4.2](http://www.coranac.com/tonc/text/regobj.htm)) de grootte bepaald wordt in combinatie met de sprite shape. 32x8 of 8x32 zou twee keer `0x4000` vereisen, alleen in `attr0` op bit 15 en 16 een andere waarde.
 
 ### Een OAM object verplaatsen
 
@@ -348,7 +348,7 @@ void position(volatile object *obj, int x, int y) {
 }
 ```
 
-We plakken de attribute waardes zonder huidige locatie vast aan de nieuwe locatie, geshift op de juiste plaats. In de game loop, waar onze bal logica zit, gebruiken we dit om de objecten te verplaatsen. 
+We plakken de attribute waardes zonder huidige locatie vast aan de nieuwe locatie, geshift op de juiste plaats. In de game loop, waar onze bal logica zit, gebruiken we dit om de objecten te verplaatsen.
 
 ### De game loop
 
@@ -362,13 +362,13 @@ De structuur van het spel ziet er als volgt uit:
   2. Lees keys
   3. Herpositioneer. Collision, physics, ...
 
-Géén individueel VRAM meer aanspreken dankzij OAM, joepie... Er is nog slechts één probleempje: het plaatsen van objecten triggert een draw callback. We kunnen objecten niet halverwege het drawen verplaatsen, dan krijgen we "tearing": de helft is maar getekend! Om deze synchronizatie problemen te vermijden, moeten we wachten tot de GBA zijn display refresh klaar is. 
+Géén individueel VRAM meer aanspreken dankzij OAM, joepie... Er is nog slechts één probleempje: het plaatsen van objecten triggert een draw callback. We kunnen objecten niet halverwege het drawen verplaatsen, dan krijgen we "tearing": de helft is maar getekend! Om deze synchronizatie problemen te vermijden, moeten we wachten tot de GBA zijn display refresh klaar is.
 
 #### VBlanking
 
 De GBA tekent lijn per lijn op het scherm, en wij hebben ruimte om iets te doen tussenin. Er is echter méér ruimte nadat het hele scherm refreshed is: die ruimte heet een "_V-Blank_". Tekenen zelf is een _V-Draw_.
 
-Er zijn (natuurlijk) IO registers beschikbaar voor ons om te luisteren of de GBA aan het blanken of drawen is, op `0x04000006`. Dit register is een teller van scanlines. Wij wachten simpelweg tot dit hoger of gelijk aan 160 is: de resolutie hoogte van het GBA scherm. 
+Er zijn (natuurlijk) IO registers beschikbaar voor ons om te luisteren of de GBA aan het blanken of drawen is, op `0x04000006`. Dit register is een teller van scanlines. Wij wachten simpelweg tot dit hoger of gelijk aan 160 is: de resolutie hoogte van het GBA scherm.
 
 ```C
 #define REG_VCOUNT (*(volatile uint16*) 0x04000006)
@@ -396,26 +396,25 @@ Oef! Nu kunnen we alles samen rapen. [Download het resultaat hier](/teaching/cpp
 
 Ik hoop dat jullie nu wat meer respect tonen naar programmeurs en spellen van zulke low-level embedded systemen als de GBA. Het kost zoals we gezien hebben véél meer moeite dan een JPEG in te laden in JavaFX.
 
-De geïnteresseerden kunnen hieronder eens kijken hoe je externe sprites met hun paletten sprites gebruikt in plaats van ze zelf te definiëren. Die worden meestal gegenereerd gebaseerd op een `PCX` bestand als aparte header files. 
+De geïnteresseerden kunnen hieronder eens kijken hoe je externe sprites met hun paletten sprites gebruikt in plaats van ze zelf te definiëren. Die worden meestal gegenereerd gebaseerd op een `PCX` bestand als aparte header files.
 
 * [Sprites and animation](http://cs.umw.edu/~finlayson/class/spring18/cpsc305/notes/15-sprites.html)
 * [png2gba](https://github.com/IanFinlayson/png2gba) converter tool
 * [wingrit](https://www.coranac.com/man/grit/html/wingrit.htm) bitmap converter tool (bestaat ook een UNIX versie van)
 
-## Labo oefeningen
-<a name="oef"></a>
+## <a name="oef"></a>Labo oefeningen
 
 Er ontbreken nog een aantal belangrijke zaken in ons spel.
 
-1. [Download de opgave hier](/teaching/cpp/labo-4-gba-1.c). Gebruik de makefile uit het vorige labo (pas de bestandsnaam aan!)<br/> De bal sprite beweegt niet! Oei? Verzin een simpele implementatie in de main loop die de x en y waardes van de bal OAM manipuleert. Rekening houden met physics hoeft nog niet, maar wel met de edges van het scherm. 
-2. Er zijn helemaal geen blokjes om tegen te botsen bovenaan. Wat een klote spel. Maak nieuwe sprites aan die je een eigen kleur geeft, en bovenaan positioneert. Merk op dat je sprites kan herbruiken! 
-3. Tijd voor wat [basis collision detection](http://image.diku.dk/projects/media/kirk.06.pdf). Als de bal botst tegen één van de blokjes die je hebt bijgemaakt, verdwijnt dat blokje. Zichtbaarheid is ook een bit in OAM, raadpleeg de documentatie. 
-4. _Extra_: Kuis de code een beetje op. `create_paddle` en `create_ball` zijn nu van elkaar afhankelijk door indices in register pointers. Voorzie een globale variabele om dit allemaal te beheren. 
-5. _Extra_: Geef elke rij van blokjes een andere kleur. De kleur stelt de **hardheid** voor: bijvoorbeeld voor groene blokjes te breken moet je 2x het blokje raken en voor blauwe 3x. Denk er aan om zo nauwkeurig mogelijk tewerk te gaan zonder code doelloos te kopiëren. 
-6. _Extra_: Hoe zou je de score bij kunnen houden? En wat als je die effectief wil laten zien aan de speler? Bedenk minstens 3 verschillende implementaties en werk daarna 1 versie uit. 
+1. [Download de opgave hier](/teaching/cpp/labo-4-gba-1.c). Gebruik de makefile uit het vorige labo (pas de bestandsnaam aan!)<br/> De bal sprite beweegt niet! Oei? Verzin een simpele implementatie in de main loop die de x en y waardes van de bal OAM manipuleert. Rekening houden met physics hoeft nog niet, maar wel met de edges van het scherm.
+2. Er zijn helemaal geen blokjes om tegen te botsen bovenaan. Wat een klote spel. Maak nieuwe sprites aan die je een eigen kleur geeft, en bovenaan positioneert. Merk op dat je sprites kan herbruiken!
+3. Tijd voor wat [basis collision detection](http://image.diku.dk/projects/media/kirk.06.pdf). Als de bal botst tegen één van de blokjes die je hebt bijgemaakt, verdwijnt dat blokje. Zichtbaarheid is ook een bit in OAM, raadpleeg de documentatie.
+4. _Extra_: Kuis de code een beetje op. `create_paddle` en `create_ball` zijn nu van elkaar afhankelijk door indices in register pointers. Voorzie een globale variabele om dit allemaal te beheren.
+5. _Extra_: Geef elke rij van blokjes een andere kleur. De kleur stelt de **hardheid** voor: bijvoorbeeld voor groene blokjes te breken moet je 2x het blokje raken en voor blauwe 3x. Denk er aan om zo nauwkeurig mogelijk tewerk te gaan zonder code doelloos te kopiëren.
+6. _Extra_: Hoe zou je de score bij kunnen houden? En wat als je die effectief wil laten zien aan de speler? Bedenk minstens 3 verschillende implementaties en werk daarna 1 versie uit.
 
 ## Denkvragen
 
 1. Kan je je een ideaal soort spel inbeelden waarin video mode 1 bruikbaar zou kunnen zijn? En wanneer zou video mode 3 (of 4 met buffering) wel handig zijn? Tip: er zijn wel degelijk spellen ontwikkeld in mode 4, zoals [James bond 007: Nightfire](https://www.youtube.com/watch?v=kdiXB8xeF1k).
-2. Weet jij waarom sommige macro's gedefiniëerd zijn als `(*(volatile uint16*) 0x0)` en anderen als `(volatile uint16*) 0x0`? 
-3. Het beheren van de OAM is heel vervelend: geheugen vrijgeven verknoeit de index pointer, en de Z-index van sprites is afhankelijk van de geheugenlocatie. Een sprite manager die dit voor ons beheert zou niet misstaan. Wat is een mogelijke implementatie hiervan? Tip: lees het [Gamasutra GBA Resource management](https://www.gamasutra.com/view/feature/131491/gameboy_advance_resource_management.php) artikel. 
+2. Weet jij waarom sommige macro's gedefiniëerd zijn als `(*(volatile uint16*) 0x0)` en anderen als `(volatile uint16*) 0x0`?
+3. Het beheren van de OAM is heel vervelend: geheugen vrijgeven verknoeit de index pointer, en de Z-index van sprites is afhankelijk van de geheugenlocatie. Een sprite manager die dit voor ons beheert zou niet misstaan. Wat is een mogelijke implementatie hiervan? Tip: lees het [Gamasutra GBA Resource management](https://www.gamasutra.com/view/feature/131491/gameboy_advance_resource_management.php) artikel.

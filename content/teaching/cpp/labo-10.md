@@ -9,7 +9,7 @@ disableComments: true
 
 ## UI Frameworks
 
-De C++ taal is een krachtige tool om native code te compileren voor specifieke CPU en OS systemen. Daardoor is het ook vaak een logische keuze om complexe interfaces in te ontwerpen en ontwikkelen, van Photoshop tot Google Chrome. Interfaces brengen echter weer andere problemen met zich mee: elk besturingssysteem heeft ondertussen zijn eigen interpretatie. 
+De C++ taal is een krachtige tool om native code te compileren voor specifieke CPU en OS systemen. Daardoor is het ook vaak een logische keuze om complexe interfaces in te ontwerpen en ontwikkelen, van Photoshop tot Google Chrome. Interfaces brengen echter weer andere problemen met zich mee: elk besturingssysteem heeft ondertussen zijn eigen interpretatie.
 
 De Windows standaard was MFC die de WinAPI wrapt, voor OSX was dit de Carbon API. Ondertussen zijn beide frameworks vervangen door WPF (Ook in C#) en Cocoa (enkel in Objective-C). Voor Linux waren er 2 grote Window Managers: KDE en Gnome, die beiden hun eigen UI framework implementeerden: Qt en GTK.
 
@@ -22,7 +22,7 @@ Wat is een Framework?
 In ons geval een set van libraries waar we mee linken (met `g++`) zodat we `#include <ui_component.h>` in onze code kunnen gebruiken zonder die zelf te moeten maken. Dat brengt buiten een hoop componenten en includes, een aantal erg belangrijke **nadelen** met zich mee:
 
 1. Frameworks leggen vaak een stricte structuur op. Code moet op een bepaalde manier geschreven zijn, zoals voor Qt de `Q_OBJECT` macro in je klasse.
-2. Frameworks leven: ze ontstaan, groeien en gaan dood. Dat betekent dat wij als ontwikkelaar een doordachte keuze moeten maken, en na x jaar ons moeten aanpassen. 
+2. Frameworks leven: ze ontstaan, groeien en gaan dood. Dat betekent dat wij als ontwikkelaar een doordachte keuze moeten maken, en na x jaar ons moeten aanpassen.
 
 Qt en GTK zijn _cross-platform_ UI frameworks: die kan je zowel op UNIX als op Windows compilen. Schrijf je je programma met behulp van Qt, dan zal (met minimale aanpassingen) het zowel voor UNIX als voor Windows kunnen compileren, en dan zal je doelpubliek vergroten. Qt werkt zelfs op [iOS](http://doc.qt.io/qt-5/ios-support.html) en [Android](http://doc.qt.io/qt-5/android-support.html) - dus waarom ooit Android-specifieke Widgets leren?
 
@@ -40,7 +40,7 @@ Qt en GTK zijn _cross-platform_ UI frameworks: die kan je zowel op UNIX als op W
 * Een eigen concurrency model
 * ...
 
-Met als belangrijkste extra's Qt Designer en Qt Creator, de grafische UI designer (zoals je SceneGraph kent van JavaFX) en een hele eigen IDE. 
+Met als belangrijkste extra's Qt Designer en Qt Creator, de grafische UI designer (zoals je SceneGraph kent van JavaFX) en een hele eigen IDE.
 
 <img src="/img/teaching/qtcreator.png" class="bordered" />
 
@@ -103,7 +103,7 @@ Merk hier framework-specifieke zaken op:
 
 1. De `Q_OBJECT` macro moet in elk Qt object aanwezig zijn dat _signals_ en _slots_ gebruikt.
 2. Een private reference naar... jezelf? De Qt Designer genereert code! De forward reference is een reference naar een gegenereerde header file die je zelf nooit mag wijzigen.
-3. De `private slots` accessor bestaat natuurlijk niet in C++. Qt voorziet een aparte plek om slots te definiëren. 
+3. De `private slots` accessor bestaat natuurlijk niet in C++. Qt voorziet een aparte plek om slots te definiëren.
 
 Qt genereert deze code voor jou - de destructor verwijdert de onderliggende ui pointer met `delete`.
 
@@ -135,7 +135,7 @@ De volgende code verbindt een progress bar `valueChanged` slot met een C++11 lam
     });
 ```
 
-Dit kan je zelf in de constructor van je window toevoegen. `connect` geeft een `QMetaObject::Connection` object terug, zodat je dit kan disconnecten wanneer je zelf wilt. 
+Dit kan je zelf in de constructor van je window toevoegen. `connect` geeft een `QMetaObject::Connection` object terug, zodat je dit kan disconnecten wanneer je zelf wilt.
 
 Een eenvoudigere manier om zaken met elkaar te verbinden is via de UI designer rechtermsuiknop op een element -> "Go to slot..." en een voorstel selecteren. Op dat moment wordt de juiste slot code gegenereerd.
 
@@ -172,7 +172,7 @@ graph TD;
   L --> J
 {{< /mermaid >}}
 
-Voor een eigen widget implementatie lijkt ons overerven van `QWidget` dus een goede keuze. 
+Voor een eigen widget implementatie lijkt ons overerven van `QWidget` dus een goede keuze.
 
 ## Een kijkje achter de C++ extensions
 
@@ -186,13 +186,12 @@ Die gegenereerde source file moet ook meegecompileerd worden. Qt projecten worde
 
 Qt komt met een eigen `Makefile` generator in de vorm van `QMake` in plaats van `CMake` dat centraal staat in CLion. [Het is mogelijk](https://stackoverflow.com/questions/30235175/how-to-configure-clion-ide-for-qt-framework) om CLion Qt projecten te laten builden gegeven enkele wijzigingen in de `CMakeLists.txt` file om Qt libraries te linken. Het probleem is echter de gegenereerde source files door MOC. Dit zou ons echter te ver leiden.
 
-## Labo oefeningen
-<a name="oef"></a>
+## <a name="oef"></a>Labo oefeningen
 
-1. Maak een programma dat de gebruiker 2 breuken laat ingeven in de vorm van 4 aparte textfields. Een knop "som" drukt het resultaat af in een output textfield. Valideer de input en geef een foutboodschap in de vorm van een `QMessageBox` indien een ongeldige waarde ingegeven. 
+1. Maak een programma dat de gebruiker 2 breuken laat ingeven in de vorm van 4 aparte textfields. Een knop "som" drukt het resultaat af in een output textfield. Valideer de input en geef een foutboodschap in de vorm van een `QMessageBox` indien een ongeldige waarde ingegeven.
 2. Als uitbreiding moet een tweede window openen die bereken knoppen bevat als een rekenmachine. Scherm 1: input fields, output. Scherm 2: knop "plus", knop "maal". Het tweede scherm kan men openen via een menu "Bestand -> Acites" in scherm 1.  
 
 ## Denkvragen
 
-1. Beargumenteer waarom ik als software ontwikkelaar voor een UI framework als Qt zou kiezen in plaats van het _native_ alternatief voor mijn ontwikkelplatform. Zijn hier ook nadelen aan verbonden? 
-2. Hoe komt het dat ik `connect()` in de constructor van een `QMainWindow` klasse kan uitvoeren? Waar is deze methode gedefiniëerd? 
+1. Beargumenteer waarom ik als software ontwikkelaar voor een UI framework als Qt zou kiezen in plaats van het _native_ alternatief voor mijn ontwikkelplatform. Zijn hier ook nadelen aan verbonden?
+2. Hoe komt het dat ik `connect()` in de constructor van een `QMainWindow` klasse kan uitvoeren? Waar is deze methode gedefiniëerd?
