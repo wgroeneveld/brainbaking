@@ -63,8 +63,8 @@ mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  gr
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-10-25 11:56:54 &#43;0200 CEST",
-    "dateModified" : "2018-10-25 11:56:54 &#43;0200 CEST",
+    "datePublished": "2018-10-25 11:40:06 &#43;0200 CEST",
+    "dateModified" : "2018-10-25 11:40:06 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-6/",
     "wordCount" : "2710",
     "keywords" : [ "Labo 6: C&#43;&#43; Class Inheritance, operators en templates", "teaching" ]
@@ -315,7 +315,7 @@ public class Hond extends Viervoeter {
     }
 }
 public class Kat extends Viervoeter {
-    private int aantalKeerBewogen; 
+    private int aantalKeerBewogen;
     @Override
     public boolean kanEten(Voedsel voedsel) {
         return voedsel instanceof Vlees;
@@ -554,7 +554,7 @@ template&lt;typename T&gt; T punt(T t) {
     return t;
 }
 #endif
-// source1.cpp 
+// source1.cpp
 #include &quot;header.h&quot;
 void punt1() {
   auto pt = punt&lt;int&gt;(5);  // template&lt;int&gt; compiled
@@ -581,7 +581,7 @@ graph TD;
   subgraph source code
     H[header.h<br/> template definitie van Punt]
     A[source1.cpp<br/> gebruik Punt van int]
-    B[source2.cp<br/> gebruik Punt van int]
+    B[source2.cpp<br/> gebruik Punt van int]
     A --> H
     B --> H
   end
@@ -663,7 +663,7 @@ template&lt;typename T&gt; Punt&lt;T&gt;::Punt(T theX, T theY) : x(theX), y(theY
 <p>Als ik een template type wil van een klasse aangeven, maar dit in 80% van de gevallen een <code>int</code> gaat zijn kan ik deze defaulten:</p>
 
 <pre><code class="language-C">template&lt;typename T = int&gt; class Punt;
-Punt&lt;&gt; pt;  // &lt;&gt; nog steeds verplicht. 
+Punt&lt;&gt; pt;  // &lt;&gt; nog steeds verplicht.
 </code></pre>
 
 <p>Zonder <code>&lt;&gt;</code> krijg je &ldquo;error: use of class template &lsquo;Punt&rsquo; requires template arguments&rdquo;.</p>
@@ -696,9 +696,7 @@ auto result = som(1, 2.0, 3);
 
 <p>Zie <a href="https://en.cppreference.com/w/cpp/language/parameter_pack">docs</a>.</p>
 
-<h2 id="labo-oefeningen">Labo oefeningen</h2>
-
-<p><a name="oef"></a></p>
+<h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ol>
 <li>Implementeer de volgende business criteria. Werk eerst een snel model uit op papier. Elke schuin gedrukte term verwacht ik terug te zien als een klasse of methode:

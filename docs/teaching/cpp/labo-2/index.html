@@ -64,8 +64,8 @@ In onderstaande schematische voorbeelden zijn de volgende concepten expliciet te
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-10-05 09:02:10 &#43;0200 CEST",
-    "dateModified" : "2018-10-05 09:02:10 &#43;0200 CEST",
+    "datePublished": "2018-10-25 15:45:12 &#43;0200 CEST",
+    "dateModified" : "2018-10-25 15:45:12 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-2/",
     "wordCount" : "1980",
     "keywords" : [ "Labo 2: Pointers in C en C&#43;&#43;", "teaching" ]
@@ -333,7 +333,7 @@ int &amp;vrouwelijkheid;    // compiler error
 <div class="mermaid" align="center" >
 	
 graph LR;
-    A{&mannelijkheid} -->|ref| B[geslacht<br/>10] 
+    A{&mannelijkheid} -->|ref| B[geslacht<br/>10]
 
 </div>
 
@@ -457,7 +457,7 @@ int verdubbel(int getal) {
 
 func_type kies_op(int mod) {
     return mod == 0 ? &amp;verhoog : &amp;verdubbel;
-} 
+}
 
 void exec(int (*op)(int)) {
     printf(&quot;exec: %d\n&quot;, op(5));
@@ -581,9 +581,7 @@ graph TD
 
 <p>Vergeet niet dat de eerste regel enkel geldig is in C++.</p>
 
-<h2 id="labo-oefeningen">Labo oefeningen</h2>
-
-<p><a name="oef"></a></p>
+<h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ol>
 <li>Implementeer <code>int strcmp_own(char *s, char *t)</code> van <code>&lt;string.h&gt;</code> zelf. Geef het getal 0 terug indien strings gelijk zijn, een getal kleiner dan 0 (bvb. -1) indien s &lt; t en een getal groter dan 0 (bvb. 1) indien s &gt; t. Gebruik je pointer kennis om snel het geheugen te scannen.</li>

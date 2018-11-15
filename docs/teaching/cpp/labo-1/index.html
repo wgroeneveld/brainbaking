@@ -63,8 +63,8 @@ C is een imperatieve programmeertaal. Dat zal je bij het oefenen wel merken: we 
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-09-21 16:45:08 &#43;0200 CEST",
-    "dateModified" : "2018-09-21 16:45:08 &#43;0200 CEST",
+    "datePublished": "2018-10-25 15:45:12 &#43;0200 CEST",
+    "dateModified" : "2018-10-25 15:45:12 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-1/",
     "wordCount" : "3268",
     "keywords" : [ "Labo 1: Introductie in C", "teaching" ]
@@ -378,7 +378,7 @@ void zeg_iets_als_dit_positief_is(int getalleke) {
         }
         printf(&quot;\n&quot;);
     }
-} 
+}
 
 int main() {
     zeg_iets_als_dit_positief_is(5);
@@ -530,11 +530,11 @@ int main() {
 <div class="mermaid" align="center" >
 	
 graph LR;
-    A{persoon.h} -->|source| B[persoon.c] 
+    A{persoon.h} -->|source| B[persoon.c]
     B --> E[definitie is_oud]
-    A{persoon.h} -->|source| C[facebook.c] 
+    A{persoon.h} -->|source| C[facebook.c]
     C --> F[gebruik struct]
-    A{persoon.h} -->|source| D[twitter.c] 
+    A{persoon.h} -->|source| D[twitter.c]
     D --> G[gebruik struct]
 
 </div>
@@ -629,7 +629,7 @@ cffa edfe 0700 0001 0300 0000 0100 0000
 0000 0000 0000 0000 0800 0000 0f04 0000
 5000 0000 0000 0000 005f 6861 6c6c 6f00
 5f68 616c 6c6f 2e65 6800 4c5f 2e73 7472
-0045 485f 6672 616d 6530 0000 
+0045 485f 6672 616d 6530 0000
 </pre>
 
 <p>Prachtig, maar niet erg duidelijk. <code>nm</code> helpt:</p>
@@ -764,9 +764,7 @@ add_executable(testje main.cpp biblio.cpp biblio.h dieren.cpp dieren.h)
 
 <p>Ubuntu&rsquo;s <code>apt-get</code> package manager heeft niet altijd de laatste versie van CMake in zijn repository. Als alternatief kan je op <a href="https://cmake.org/download/">https://cmake.org/download/</a> de binaries downloaden (shellscript) en dit &ldquo;ergens&rdquo; installeren. Aangeraden is een <code>$CMAKE_HOME</code> omgevingsvariabele te maken en die toe te voegen aan je <code>$PATH</code>. In CLion kan je via <a href="https://www.jetbrains.com/help/clion/configuring-cmake.html">CLion settings</a> (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen.</p>
 
-<h2 id="labo-oefeningen">Labo oefeningen</h2>
-
-<p><a name="oef"></a></p>
+<h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ol>
 <li>Het is oorlog! De orcs vallen aan en zien er hongerig uit! Ze eten al je klinkers op! Schrijf een programma dat de functie <code>char* omnom(char zin[])</code> implementeert en alle klinkers uit een zin haalt (of ze verdoezelt met een X). Je moet ook een <code>main()</code> functie schrijven die de gebruiker een zin laat ingeven en het resultaat afdrukt op het scherm. (Tip: <code>scanf</code> of <code>fgets</code>, rara?)<br /></li>

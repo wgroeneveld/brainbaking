@@ -63,8 +63,8 @@ Abstracties creëren Als ontwikkelaar wil ik niet altijd bezig zijn met de juist
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-07-28 12:59:48 &#43;0200 CEST",
-    "dateModified" : "2018-07-28 12:59:48 &#43;0200 CEST",
+    "datePublished": "2018-11-15 11:14:56 &#43;0100 CET",
+    "dateModified" : "2018-11-15 11:14:56 &#43;0100 CET",
     "url" : "https://brainbaking.com/teaching/cpp/labo-8/",
     "wordCount" : "1637",
     "keywords" : [ "Labo 8: GBA Programming in C&#43;&#43;: een abstractielaag", "teaching" ]
@@ -329,16 +329,16 @@ graph TD;
 GBA001. Een minimale 2D sprite engine
 
 Beschrijving:
-Als programmeur wil ik niet bezig zijn met technische details van de GBA interface bij het ontwikkelen van een spel. 
-Ik wil eenvoudig sprites op het beeld kunnen toveren en deze kunnen manipuleren. 
+Als programmeur wil ik niet bezig zijn met technische details van de GBA interface bij het ontwikkelen van een spel.
+Ik wil eenvoudig sprites op het beeld kunnen toveren en deze kunnen manipuleren.
 
-Context: Het moet mogelijk zijn om het gebruik van OAM en VRAM te vergemakkelijken. 
+Context: Het moet mogelijk zijn om het gebruik van OAM en VRAM te vergemakkelijken.
 
 Acceptatiecriteria:
 - Ik wil als ontwikkelaar bij het boostrappen van het spel "sprite mode" kunnen kiezen.
-- Ik wil makkelijk sprites kunnen toevoegen aan de hand van een externe image in jpg/png formaat zonder iets van het palet af te weten. 
+- Ik wil makkelijk sprites kunnen toevoegen aan de hand van een externe image in jpg/png formaat zonder iets van het palet af te weten.
 - Ik wil sprites kunnen verplaatsen op het scherm
-- Ik wil eenvoudig kunnen zien of sprite 1 "botst" met sprite 2. 
+- Ik wil eenvoudig kunnen zien of sprite 1 "botst" met sprite 2.
 </pre>
 
 <p>Dit vraagt niet om een volledige herwerking van de opgave uit labo 4, maar om een abstractielaag in de vorm van klassen. Welke concepten kunnen we afleiden uit de analyse, of welke ontbreken er nog?</p>
@@ -456,9 +456,7 @@ graph TD;
 <p>Soma bestaat uit 2x 64x32 OAM objecten! <br/>
 Er zal dus ook een soort van OAM manager nodig zijn die beide sprites aan elkaar rijgt, zodat in de code en in het spel dit één sprite lijkt te zijn. Dit zijn nog <a href="http://gbdev.gg8.se/wiki/articles/GBDK_Sprite_Tutorial">artefacten van de originele Gameboy</a>.</p>
 
-<h2 id="labo-oefeningen">Labo oefeningen</h2>
-
-<p><a name="oef"></a></p>
+<h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ol>
 <li>Implementeer bovenstaande technische analyse in C++. Verterk vanuit een <a href="/teaching/cpp/labo-4-gba-2.c">modeloplossing</a> van labo 4. Bedenk welke verplichte parameters nodig zijn om een sprite &ldquo;in te laden&rdquo;. Test om te beginnen de C implementatie met de <code>gcc</code> compiler met behulp van de Makefile uit <a href="/teaching/cpp/labo-3-gba.Makefile">labo 3</a>.</li>

@@ -102,7 +102,7 @@ volatile object* copy_object(volatile object* other) {
 }
 
 sprite* create_sprite(volatile object* obj, int initialx, int initialy, uint8 w, uint8 h) {
-    sprite* s = malloc(sizeof(sprite));
+    sprite* s = (sprite*) malloc(sizeof(sprite));
     s->obj = obj;
     s->x = initialx;
     s->y = initialy;

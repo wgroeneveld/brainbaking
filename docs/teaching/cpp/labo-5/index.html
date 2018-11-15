@@ -63,8 +63,8 @@ De ++ in C++ De introductie van C++ in 1985 geeft de ervaren C programmeur enkel
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-10-17 21:43:14 &#43;0200 CEST",
-    "dateModified" : "2018-10-17 21:43:14 &#43;0200 CEST",
+    "datePublished": "2018-10-25 15:45:12 &#43;0200 CEST",
+    "dateModified" : "2018-10-25 15:45:12 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-5/",
     "wordCount" : "3038",
     "keywords" : [ "Labo 5: Weg met C, Hallo C&#43;&#43;", "teaching" ]
@@ -290,7 +290,7 @@ private:
     int leeftijd;
 public:
     Persoon(int leeftijd);
-    bool isOud() const { 
+    bool isOud() const {
         std::cout &lt;&lt; &quot;checking leeftijd van persoon &quot; &lt;&lt; leeftijd &lt;&lt; std::endl;
         return leeftijd &gt; 60;
     }
@@ -299,7 +299,7 @@ public:
 
 Persoon::Persoon(int leeftijd) {
     this-&gt;leeftijd = leeftijd;
-} 
+}
 
 int main() {
     auto jaak = new Persoon(70);
@@ -403,7 +403,7 @@ g-&gt;telOpMet(5);
 <p>Een klasse instantiëren roept de (default) constructor aan. Als er geen eigen gedefiniëerde constructor aanwezig is, genereert de compiler die voor u, net als in Java. Zodra je één constructor definiëert, zal C++ geen enkele zelf genereren.</p>
 
 <pre><code class="language-C">class Getal {
-  private: 
+  private:
     int *x;
   public:
    Getal(int x) : x(new int(x)) {}
@@ -417,7 +417,7 @@ auto g = new Getal();   // error: Too few arguments, expects 1
 <p>Merk op dat we hier een <em>memory leak</em> introduceren door <code>*x</code> niet zelf op te kuisen! Als een klasse <em>resources</em> zoals pointers bevat is het de bedoeling dat deze zelf verantwoordelijk is voor de opkuis. Dit gebeurt in de destructor prefixed met <code>~</code>:</p>
 
 <pre><code class="language-C">class Getal {
-  private: 
+  private:
     int *x;
   public:
    Getal() = default;
@@ -549,7 +549,7 @@ nieuwGetal-&gt;telOpMet(*g);
 <p>Vergeet niet dat smart pointers niet werken in combinatie met variabelen op de stack (dus altijd <code>new</code> gebruiken). Stel dat een klasse een referentie naar een <code>unique_ptr</code> heeft die automatisch de pointer zou moeten opkuisen:</p>
 
 <pre><code class="language-C">class Holder {
-  public: 
+  public:
    unique_ptr&lt;Iets&gt; autoDeleted;
    Holder() {
     Iets iets(&quot;1&quot;);
@@ -624,7 +624,7 @@ heykes.zegIets();     // ok
    int x, y;
   public:
    Punt() : x(1), y(1) { }                              // default
-   Punt(const Punt&amp; other) : x(other.x), y(other.y) { } // copy 
+   Punt(const Punt&amp; other) : x(other.x), y(other.y) { } // copy
 }
 </code></pre>
 
@@ -674,9 +674,7 @@ tekst[0] = &quot;nul&quot;;           // ok
 <li>correct gebruik van iterators <code>begin()</code> en <code>end()</code></li>
 </ul>
 
-<h2 id="labo-oefeningen">Labo oefeningen</h2>
-
-<p><a name="oef"></a></p>
+<h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ol>
 <li><a href="/teaching/cpp/labo-2/#oef">bibliothecaris labo 2 redux</a>: herimplementeer de bibliothecaris oefening in C++. Let op de verplichte aanwezigheid van:

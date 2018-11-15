@@ -63,8 +63,8 @@ Voor sprites speelde een tilemap geen rol, voor grote achtergronden wel: het kos
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-07-31 12:28:23 &#43;0200 CEST",
-    "dateModified" : "2018-07-31 12:28:23 &#43;0200 CEST",
+    "datePublished": "2018-10-25 15:45:12 &#43;0200 CEST",
+    "dateModified" : "2018-10-25 15:45:12 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-9/",
     "wordCount" : "979",
     "keywords" : [ "Labo 9: GBA Programming in C&#43;&#43;: scrolling backgrounds", "teaching" ]
@@ -332,11 +332,11 @@ display_control = MODE0 | BG0_ENABLE;
 <p>De Onderste image is de <strong>tileset</strong>. Selecteer één tile en klik dan op een plaats om die tile op de map te doen verschijnen. De editor exporteert de map als een <code>unsigned short[]</code>:</p>
 
 <pre><code class="language-C">const unsigned short map [] = {
-    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
-    0x0000, 0x0000, 0x0000, 0x0012, 0x0014, 0x0014, 0x0015, 0x0000, 0x0000, 
-    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0008, 
-    0x0009, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
-    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x001d, 
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+    0x0000, 0x0000, 0x0000, 0x0012, 0x0014, 0x0014, 0x0015, 0x0000, 0x0000,
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0008,
+    0x0009, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x001d,
 };
 </code></pre>
 
@@ -386,9 +386,7 @@ graph TD;
 
 <p>De memory manager en het achtergrondpalet zijn gedeeld tussen de backgroundlayer instanties.</p>
 
-<h2 id="labo-oefeningen">Labo oefeningen</h2>
-
-<p><a name="oef"></a></p>
+<h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ol>
 <li>Ontwerp een minimale applicatie die bovenstaande modellen bevat en 1 achtergrondlaag toont. Negeer het scrollen voorlopig nog. Gebruik voor de achtergrond <a href="/teaching/cpp/labo-9-tileset.png">deze tileset</a>. Haal dit door de png2gba tool die we kennen uit labo 8. Verzin je eigen tilemap.</li>
