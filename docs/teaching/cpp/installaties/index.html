@@ -40,7 +40,7 @@
       "headline" : "Installatieinstructies op Linux",
     
     "description" : "&laquo;&nbsp;Terug naar Software ontwerp in C/C++
-Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je Cygwin als compiler toolchain.
+Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je MinGW 64 als compiler toolchain.
 Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de package tool apt-get bij Ubuntu:
  build-essential als gcc/g++ build tools (preinstalled?) git qt5-default en daarna qtcreator  Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren.",
     
@@ -64,10 +64,10 @@ Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-11-08 12:04:32 &#43;0100 CET",
-    "dateModified" : "2018-11-08 12:04:32 &#43;0100 CET",
+    "datePublished": "2018-11-16 09:39:46 &#43;0100 CET",
+    "dateModified" : "2018-11-16 09:39:46 &#43;0100 CET",
     "url" : "https://brainbaking.com/teaching/cpp/installaties/",
-    "wordCount" : "797",
+    "wordCount" : "931",
     "keywords" : [ "Installatieinstructies op Linux", "teaching" ]
 }
 </script>
@@ -239,7 +239,7 @@ Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de
 
 <p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++</a><br/></p>
 
-<p>Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je <a href="http://www.cygwin.com/install.html">Cygwin</a> als compiler toolchain.</p>
+<p>Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je <a href="https://sourceforge.net/projects/mingw-w64/">MinGW 64</a> als compiler toolchain.</p>
 
 <h2 id="basisvereisten">Basisvereisten</h2>
 
@@ -263,8 +263,7 @@ Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de
 <p>De volgende tools worden verwacht manueel te downloaden:</p>
 
 <ul>
-<li><a href="https://www.jetbrains.com/clion/download/">CLion</a></li>
-<li>CMake 3.12.x (nog niet in de package tool)</li>
+<li><a href="https://www.jetbrains.com/clion/download/">CLion</a><br/>Vanaf CLion 2018.1 bevat deze reeds CMake 3.12.x.</li>
 </ul>
 
 <p><a href="https://www.jetbrains.com/clion/download">CLion</a> is <strong>gratis voor studenten</strong>: registreet je via de <a href="https://www.jetbrains.com/student/">JetBrains Student</a> pagina met je studenten e-mail adres om een licentiesleutel toegestuurd te krijgen.</p>
@@ -273,11 +272,35 @@ Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de
 
 <h4 id="voor-windows">Voor Windows</h4>
 
-<p>Gelieve <a href="https://warwick.ac.uk/fac/sci/moac/people/students/peter_cock/cygwin/part2/">Deze instructies</a> te volgen om <a href="https://www.cygwin.com/install.html">Cygwin 64-BIT</a> te installeren, samen met alle &ldquo;devel&rdquo; opties. Dit kan een tijdje duren. Daarna kan je je installatie valideren met <code>gcc -v</code>.</p>
+<p>Download en installeer <a href="https://sourceforge.net/projects/mingw-w64/">MinGW 64</a>. <strong>Cygwin geeft problemen</strong> met UNIX paden en de cross compiler! In Cygwin stelt de windows dir <code>C:\Development\github</code> bijvoorbeeld <code>/cygdrive/c/Development/github</code> voor. Die forward slashes gecombineerd met de cygdrive prefix kan de GBA cross-compiler niet interpreteren.</p>
 
-<p>Voeg de bin folder van je Cygwin installatie toe aan <code>%PATH%</code> om in eender welke console toegang te hebben tot de toolchain. Vanaf dan kan je je terminal naar keuze gebruiken in plaats van enkel Cygwin zelf - bijvoorbeeld <a href="http://cmder.net">Cmder</a>.</p>
+<ol>
+<li>Dubbelklik op <code>mingw-w64-install.exe</code></li>
+<li>Kies bij de installatie settings bij Architecture voor <strong>x86_64</strong></li>
+<li>Verander je destination folder naar believen</li>
+</ol>
 
-<p>Hier zit ook een CMake versie in (3.6), maar die is te oud voor ons - zie verder.</p>
+<p>Start MinGW met de shortcut die geplaatst werd in je destination folder. Daarna kan je je installatie valideren met het commando <code>gcc -v</code> in de geopende terminal.</p>
+
+<p><strong>Opgelet</strong> voor mensen die switchen van Cygwin naar MinGW: de bin folder van je Cygwin installatie mag <em>niet</em> toegevoegd zijn aan <code>%PATH%</code>. Je krijgt dan de volgende foutboodschap:</p>
+
+<pre>
+sh.exe was found in your PATH, here:
+C:/Program Files/Git/user/bin/sh.exe
+For MinGW make to work correctly sh.exe must NOT be in your path.
+</pre>
+
+<p>Verwijder je oude Cygwin <code>%PATH%</code> variabele via start - &ldquo;Omgevingsvariabelen voor uw account bewerken&rdquo; - zoek &ldquo;Path&rdquo; in de lijst, klik op Bewerken - verwijder de referentie naar je Cygwin pad.</p>
+
+<h5 id="mingw-integratie-in-clion">MinGW integratie in CLion</h5>
+
+<p>Ga naar bestand - settings - klik op &ldquo;Build, Execution, Deployment&rdquo; - klik op Toolchains:</p>
+
+<p><img src="/img/teaching/clion_settings_mingw.png" class="bordered" /></p>
+
+<p>Kies in de &ldquo;Environment&rdquo; dropdown voor &ldquo;MinGW&rdquo; en zet het pad juist naar je installatie folder van MinGW64. Merk op dat onder &ldquo;C++ Compiler&rdquo; Een foutboodschap kan verschijnen &ldquo;For MinGW make to work correctly&hellip;&rdquo; - dit mag je negeren. De C en C++ compilers zelf mag je leeg laten en komen van de CMake instellingen.</p>
+
+<p>Vanaf dan zal CLion bij het builden de MinGW omgeving gebruiken om CMake en Make uit te voeren.</p>
 
 <h4 id="voor-linux">Voor Linux</h4>
 
@@ -300,14 +323,12 @@ Voor Windows is er <a href="https://cmake.org/download/">een installer voorzien<
 
 <p>De 64-BIT installer is hier te downloaden: <a href="https://cmake.org/download/">https://cmake.org/download/</a> - wij moeten 3.12 of hoger hebben. Aangeraden is een <code>%CMAKE_HOME%</code> omgevingsvariabele te maken.</p>
 
-<ul>
-<li>Kies tijdens de installatie <strong>niet</strong> voor &ldquo;Add CMake to the system PATH for all users** - dat heb je al toegevoegd met de Cygwin installatie.</li>
-<li>Installeer op een <strong>dezelfde locatie</strong> als de Cygwin folder, bijvoorbeeld  C:\Development\Cygwin64. Dit is belangrijk om de bestaande versie van CMake bij Cygwin te overschrijven.</li>
-</ul>
+<ol>
+<li>Kies tijdens de installatie <strong>wel</strong> voor &ldquo;Add CMake to the system PATH for all users&rdquo;.</li>
+<li>Verander je destination folder naar believen</li>
+</ol>
 
 <p>Het kan zijn dat <code>cmake</code> niet voldoende is of je compilers niet kan vinden maar de VC++ versie probeert (nmake, cl). In dat geval <code>cmake -G &quot;Unix Makefiles&quot; -DCMAKE_SH=&quot;CMAKE_SH-NOTFOUND&quot;</code> als commando hanteren. Als er tijdens het compileren iets misloopt, controleer dan even in het gegenereerde <code>CMakeCache.txt</code> bestand of CMake de juiste compilers gevonden heeft.</p>
-
-<p>In CLion kan je via <a href="https://www.jetbrains.com/help/clion/configuring-cmake.html">CLion settings</a> (File - Settings - Build, Execution, Deployment, Toolchains) een andere CMake executable kiezen.</p>
 
 <h3 id="google-test-compileren">Google Test compileren</h3>
 
@@ -321,7 +342,7 @@ Voor Windows is er <a href="https://cmake.org/download/">een installer voorzien<
 <ul>
 <li><code>cd googletest/googletest</code></li>
 <li>Maak een build directory: <code>mkdir build</code> <strong>in de map googletest</strong></li>
-<li>Build cmake: <code>cd build &amp;&amp; cmake ./../</code></li>
+<li>Build cmake: <code>cd build &amp;&amp; cmake ./../</code>. <br/>Vergeet niet op Windows de <code>-G</code> optie mee te geven (zie boven)</li>
 <li>Build google test: <code>make</code>. Dit geeft <code>libgtest.a</code> en <code>libgtest_main.a</code><br /></li>
 </ul></li>
 <li>Integreer googletest in je CLion project met CMake:
@@ -329,7 +350,7 @@ Voor Windows is er <a href="https://cmake.org/download/">een installer voorzien<
 <ul>
 <li>Include de gtest headers met <code>include_directories()</code></li>
 <li>Link de libraries met <code>target_link_libraries()</code></li>
-<li>Voorzie een omgevingsvariabele <code>$GTEST_DIR</code>.</li>
+<li>Voorzie een omgevingsvariabele <code>GTEST_DIR</code>.</li>
 </ul></li>
 </ul>
 

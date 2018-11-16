@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Mon, 12 Nov 2018 10:01:24 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 16 Nov 2018 09:39:46 +0100</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/teaching/cpp/index.xml" rel="self" type="application/rss+xml" />
     
@@ -62,13 +62,25 @@ mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  gr
     </item>
     
     <item>
+      <title>FAQ</title>
+      <link>https://brainbaking.com/teaching/cpp/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/faq/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
+Neem ook eens een kijkje bij de Installatieinstructies!
+Problemen met build omgevingen SH.exe was found in your path Fout:
+ sh.exe was found in your PATH, here: C:/Program Files/Git/user/bin/sh.exe For MinGW make to work correctly sh.exe must NOT be in your path.  Oorzaak: je Cygwin /bin folder zit in de PATH omgevingsvariabele, terwijl je MinGW gebruikt als compilatieomgeving. Verwijder de Cygwin bin folder.</description>
+    </item>
+    
+    <item>
       <title>Installatieinstructies op Linux</title>
       <link>https://brainbaking.com/teaching/cpp/installaties/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/installaties/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
-Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je Cygwin als compiler toolchain.
+Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je MinGW 64 als compiler toolchain.
 Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de package tool apt-get bij Ubuntu:
  build-essential als gcc/g++ build tools (preinstalled?) git qt5-default en daarna qtcreator  Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren.</description>
     </item>
