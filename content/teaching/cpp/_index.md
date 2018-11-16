@@ -38,6 +38,7 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 
 ### Extra informatie
 
+- Hulp, iets werkt niet! Raadpleeg de [FAQ](/teaching/cpp/faq).
 - [Een introductie in C(++) Build Systemen](/teaching/cpp/buildsystems)
 - [Installatieinstructies Tools](/teaching/cpp/installaties)
 - [Project opdracht](/teaching/cpp/project)
