@@ -173,7 +173,7 @@ Unix: "**GNU C Compiler**". Alternatieven:
 - Unix: `clang`
 - Windows: MS' [`cl](https://msdn.microsoft.com/en-us/library/bb384838.aspx)
 
-GNU op Windows? [Cygwin](https://www.cygwin.com/install.html)
+GNU op Windows? [MinGW](http://www.mingw.org)
 
 ___
 
