@@ -81,6 +81,7 @@ Een tilemap ontwerpen in notepad is snel vervelend en geeft geen visuele feedbac
 
 <img src="/img/teaching/tileeditor.png" />
 
+(Voor Windows gebruikers: [Wingrit](https://www.coranac.com/man/grit/html/wingrit.htm)) <br/>
 De Onderste image is de **tileset**. Selecteer één tile en klik dan op een plaats om die tile op de map te doen verschijnen. De editor exporteert de map als een `unsigned short[]`:
 
 ```C
