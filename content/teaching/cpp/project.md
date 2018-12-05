@@ -34,9 +34,9 @@ Lees dit goed na: projecten die niet voldoen aan de volgende vereisten zullen ni
 1. De code leeft in een repository op Github onder jullie username met de [MIT](https://help.github.com/articles/licensing-a-repository/#disclaimer) license. 
 2. Je vertrekt vanuit `gba-sprite-engine` - zie hierboven. Daarbij blijf je binnen GBA `MODE0` en werk je met sprites. C++11 is hiermee ook een vereiste.
 3. Indien je je baseert op andere bestaande code doe je aan **bronvermelding**! Plagiaat wordt zeer ernstig bestraft. 
-4. Je voorziet minstens één extra **unit test** klasse waar je je logica in test zoals zwaartekracht en botsingen.
-5. Je project moet uiteraard minstens compileren.
-6. Je repository `README.md` bevat een kleine functionele beschrijving van jullie spel, gecombineerd met een schets van het **domein model**. 
+4. Je project moet uiteraard minstens compileren.
+5. Je repository `README.md` bevat een kleine functionele beschrijving van jullie spel.
+6. Naast de functionele beschrijving upload je ook een schets van je **domein model**, gepaard met verklarende tekst. 
 7. Je repository `timespent.csv` bevat jullie **individueel** geregistreerde tijd in uren.  
 
 Het is **niet** de bedoeling om je te baseren op één van de engine demo's en die simpelweg verder uit te werken. Dat biedt onvoldoende uitdaging en originaliteit. 
@@ -47,15 +47,27 @@ Omdat als vereiste elk project op Github leeft kunnen jullie elkaar's repository
 
 Punten worden op twee keer op `/20` gegeven. Eenmalig een globaal cijfer, eenmalig een genormaliseerd cijfer, rekening houdend met de volgende subcriteria en gewichten:
 
-1. `O.5` Abstracties
-2. `O.5` Clean Code
-3. `0.3` Complexiteit
-4. `0.3` Originaliteit
-5. `0.2` Unit testing
-6. `O.2` Domein model
+1. `O.5` Design<br/>
+Hoe is je Object-Oriented design en domein model?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: duidelijk herkenbare objecten, terug te vinden in domein model, met gescheiden verantwoordelijkheden. </span>
+2. `O.5` Clean Code<br/>
+Hoe leesbaar is je code?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: eenvoudig begrijpbare variabelen, methodes, klassen.</span>
+3. `0.1` C++ Conventies <br/>
+Is je code opgebouwd volgens de aangeleerde C++11 standaarden?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: correct gebruik van header/source files, smart pointers, STL, templates, naamgeving conventies hoofdletters. </span>
+4. `0.3` Complexiteit <br/>
+Hoe moeilijk heb je het gemaakt?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: gekozen voor een uitdaging in de plaats van een eenvoudige implementatie.</span>
+5. `0.3` Originaliteit <br/>
+Met welke insteek heb je je idee vorm gegeven?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: een origineel idee uitgewerkt in plaats van een standaard 2D platformer.</span>
+6. `0.2` GBA UI <br/>
+Hoe uitgebreid is de grafische representatie?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: alle UI technieken uitgebreid toegepast: tiles, sprites, scrolling backgrounds, ...</span>
 
 Waarbij beide cijfers herleid worden tot één. <br/>
-Criteria en gewichten onderhevig aan verandering tot 5 weken voor het laatste labo.
+Bovenstaande criteria zijn herzien op 05/12/2018 en finaal voor academiejaar 2018 - 2019. 
 
 ## Inleverformaat
 
@@ -72,3 +84,4 @@ Datum te bepalen, evenals verdedigingsdata.
 * Denk voor stukjes met logica eerst aan unit testen. Een test die slaagt helpt je al een heel eind verder. 
 * Test je spel tijdig op de mGBA emulator, of in de GBA zelf met een flashcard. 
 * Gebruik het voordeel van git: check in op regelmatige tijdstippen, zelfs meerdere keren per dag, wanneer iets werkt. Op die manier bespaar je jezelf een hoop werk als er iets teruggedraaid moet worden. 
+* Denk aan concepten die je geleerd hebt in andere programmeervakken, zoals Model-View-Controller (MVC) in "Software ontwerp in Java". [Separation of Concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) is ook in C++ van toepassing. 

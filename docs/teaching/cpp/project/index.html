@@ -65,7 +65,7 @@ Project opdracht Om jullie recent bijgeslepen object-geörienteerde technieken t
     "datePublished": "2018-11-08 09:34:50 &#43;0100 CET",
     "dateModified" : "2018-11-08 09:34:50 &#43;0100 CET",
     "url" : "https://brainbaking.com/teaching/cpp/project/",
-    "wordCount" : "779",
+    "wordCount" : "913",
     "keywords" : [ "Software ontwerp in C/C&#43;&#43;: Project opdracht", "teaching" ]
 }
 </script>
@@ -268,9 +268,9 @@ Werk dit tijdig bij, dat voorkomt moeten gokken. Dit is individueel dus als jull
 <li>De code leeft in een repository op Github onder jullie username met de <a href="https://help.github.com/articles/licensing-a-repository/#disclaimer">MIT</a> license.</li>
 <li>Je vertrekt vanuit <code>gba-sprite-engine</code> - zie hierboven. Daarbij blijf je binnen GBA <code>MODE0</code> en werk je met sprites. C++11 is hiermee ook een vereiste.</li>
 <li>Indien je je baseert op andere bestaande code doe je aan <strong>bronvermelding</strong>! Plagiaat wordt zeer ernstig bestraft.</li>
-<li>Je voorziet minstens één extra <strong>unit test</strong> klasse waar je je logica in test zoals zwaartekracht en botsingen.</li>
 <li>Je project moet uiteraard minstens compileren.</li>
-<li>Je repository <code>README.md</code> bevat een kleine functionele beschrijving van jullie spel, gecombineerd met een schets van het <strong>domein model</strong>.</li>
+<li>Je repository <code>README.md</code> bevat een kleine functionele beschrijving van jullie spel.</li>
+<li>Naast de functionele beschrijving upload je ook een schets van je <strong>domein model</strong>, gepaard met verklarende tekst.</li>
 <li>Je repository <code>timespent.csv</code> bevat jullie <strong>individueel</strong> geregistreerde tijd in uren.<br /></li>
 </ol>
 
@@ -283,16 +283,28 @@ Werk dit tijdig bij, dat voorkomt moeten gokken. Dit is individueel dus als jull
 <p>Punten worden op twee keer op <code>/20</code> gegeven. Eenmalig een globaal cijfer, eenmalig een genormaliseerd cijfer, rekening houdend met de volgende subcriteria en gewichten:</p>
 
 <ol>
-<li><code>O.5</code> Abstracties</li>
-<li><code>O.5</code> Clean Code</li>
-<li><code>0.3</code> Complexiteit</li>
-<li><code>0.3</code> Originaliteit</li>
-<li><code>0.2</code> Unit testing</li>
-<li><code>O.2</code> Domein model</li>
+<li><code>O.5</code> Design<br/>
+Hoe is je Object-Oriented design en domein model?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: duidelijk herkenbare objecten, terug te vinden in domein model, met gescheiden verantwoordelijkheden. </span></li>
+<li><code>O.5</code> Clean Code<br/>
+Hoe leesbaar is je code?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: eenvoudig begrijpbare variabelen, methodes, klassen.</span></li>
+<li><code>0.1</code> C++ Conventies <br/>
+Is je code opgebouwd volgens de aangeleerde C++11 standaarden?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: correct gebruik van header/source files, smart pointers, STL, templates, naamgeving conventies hoofdletters. </span></li>
+<li><code>0.3</code> Complexiteit <br/>
+Hoe moeilijk heb je het gemaakt?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: gekozen voor een uitdaging in de plaats van een eenvoudige implementatie.</span></li>
+<li><code>0.3</code> Originaliteit <br/>
+Met welke insteek heb je je idee vorm gegeven?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: een origineel idee uitgewerkt in plaats van een standaard 2D platformer.</span></li>
+<li><code>0.2</code> GBA UI <br/>
+Hoe uitgebreid is de grafische representatie?<br/>
+<span style="color: lightgrey; font-style: italic;">Hoge score: alle UI technieken uitgebreid toegepast: tiles, sprites, scrolling backgrounds, &hellip;</span></li>
 </ol>
 
 <p>Waarbij beide cijfers herleid worden tot één. <br/>
-Criteria en gewichten onderhevig aan verandering tot 5 weken voor het laatste labo.</p>
+Bovenstaande criteria zijn herzien op 05/12/2018 en finaal voor academiejaar 2018 - 2019.</p>
 
 <h2 id="inleverformaat">Inleverformaat</h2>
 
@@ -312,6 +324,7 @@ Criteria en gewichten onderhevig aan verandering tot 5 weken voor het laatste la
 <li>Denk voor stukjes met logica eerst aan unit testen. Een test die slaagt helpt je al een heel eind verder.</li>
 <li>Test je spel tijdig op de mGBA emulator, of in de GBA zelf met een flashcard.</li>
 <li>Gebruik het voordeel van git: check in op regelmatige tijdstippen, zelfs meerdere keren per dag, wanneer iets werkt. Op die manier bespaar je jezelf een hoop werk als er iets teruggedraaid moet worden.</li>
+<li>Denk aan concepten die je geleerd hebt in andere programmeervakken, zoals Model-View-Controller (MVC) in &ldquo;Software ontwerp in Java&rdquo;. <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">Separation of Concerns</a> is ook in C++ van toepassing.</li>
 </ul>
 </div>
 
