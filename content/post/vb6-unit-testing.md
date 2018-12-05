@@ -1,5 +1,6 @@
 ---
 title: 'Unit testing in Legacy Projects: VB6'
+subtitle: 'Even older 4GL languages have unit testing capabilities'
 date: '2016-12-27'
 tags: [ 'unit testing', 'VB6' ]
 ---

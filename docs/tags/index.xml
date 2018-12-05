@@ -32,6 +32,15 @@
     </item>
     
     <item>
+      <title>Assembly</title>
+      <link>https://brainbaking.com/tags/assembly/</link>
+      <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tags/assembly/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Baking</title>
       <link>https://brainbaking.com/tags/baking/</link>
       <pubDate>Sun, 13 Oct 2013 00:00:00 +0000</pubDate>
@@ -356,6 +365,15 @@
     </item>
     
     <item>
+      <title>Picoblaze</title>
+      <link>https://brainbaking.com/tags/picoblaze/</link>
+      <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/tags/picoblaze/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Principles</title>
       <link>https://brainbaking.com/tags/principles/</link>
       <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
@@ -520,7 +538,7 @@
     <item>
       <title>Unit Testing</title>
       <link>https://brainbaking.com/tags/unit-testing/</link>
-      <pubDate>Tue, 27 Dec 2016 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/tags/unit-testing/</guid>
       <description></description>
