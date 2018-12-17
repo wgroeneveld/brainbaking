@@ -18,7 +18,13 @@ Transforming knowledge into well-digestible material is <i class='fa fa-lightbul
 
 <span></span>
 
-#### 2018 - 2019
+#### 2017 - present
+
+- [Software design in Java](/teaching/java/)<br/>
+	<small>
+		The fundamentals of software design thought in Java. We use JavaFX as a prime example to explain the concept of dividing big problems into subproblems and thinking about who needs to do what (Model View Controller)<br/>
+		Industrial engineers with and without IT specialization both follow this course. 
+	</small>
 
 - [Software design in C/C++](/teaching/cpp/)<br/>
 	<small>
@@ -30,14 +36,6 @@ Transforming knowledge into well-digestible material is <i class='fa fa-lightbul
 	<small>
 		As a new interdisciplinary course, Basic Engineering Skills teaches new engineering students how to handle a problem, how to write an academic report and how to draw constructions. Python is used to facilitate problem solving skil <br/>
 		First bachelor year course. 
-	</small>
-
-#### 2017 - 2018
-
-- [Software design in Java](https://www.uhasselt.be/documents/BROCHURES/2018-2019/Masterflyer-Elektronica-ICT-2018-web.pdf)<br/>
-	<small>
-		The fundamentals of software design thought in Java. We use JavaFX as a prime example to explain the concept of dividing big problems into subproblems and thinking about who needs to do what (Model View Controller)<br/>
-		Industrial engineers with and without IT specialization both follow this course. 
 	</small>
 
 <img src="/img/pxl.png" style="float: right; width: 140px;"/>

@@ -6,7 +6,7 @@ subtitle: Writing Psm Assembly test-first, because why wouldn't you?
 tags: [ 'unit testing', 'assembly', 'picoblaze']
 ---
 
-To continue our [unit testing tradition](/tags/unit-testing/), each time I land on a new language or piece of technology, I carefully assess whether it's possible to write tests first. Unsurprisingly, even in Assembly it's possible. My recent foray into the digital electronics world has let me to write instructions for the [Xilinx PicoBlaze](https://www.xilinx.com/products/intellectual-property/picoblaze.html) 6 FPGA microcontroller. This Assembly dialect, written in "Psm(4)" files, is destined for another architecture than x86 or x64. That means compiling and leaning on Google Test using C++ isn't possible. 
+To continue our [unit testing tradition](/tags/unit-testing/), each time I land on a new language or piece of technology, I carefully assess whether it's possible to write tests first. Unsurprisingly, even in Assembly it's possible. My recent foray into the digital electronics world has let me to write instructions for the [Xilinx PicoBlaze](https://www.xilinx.com/products/intellectual-property/picoblaze.html) 6 FPGA microcontroller. This Assembly dialect, written in "Psm(4)" files, is destined for a different architecture. That means linking and leaning on Google Test using C++ isn't possible. 
 
 As any good software developer does, I decided to reinvent the wheel and create an [Open PicoBlaze Assembler Unit Test package](https://github.com/wgroeneveld/opbtest) myself, written in Python 3. It uses the open `opbasm` and `opbsim` cross-platform assembler and simulator to compile your written Assembly, and then leverages Python's `unittest` package to execute assertions. Take a look at the [github repository](https://github.com/wgroeneveld/opbtest) README file an in-depth technical background. 
 
@@ -70,7 +70,7 @@ Assertions like `reg`, `scratchpad`, `port` verify the correct end state of your
     <img src="/img/picoblaze_sim.png" class="bordered" />
 </center>
 
-Inspecting a wave form after simulating your hardware in tools like Vivado is a huge pain compared to writing separate test cases in software. I know the Test Bench tooling can be used to write test for your synthesis, but when uploading a bitstream into an FPGA, you never know whether it's the HDL that's incorrect, or the Assembly loaded into it. 
+Inspecting a wave form after simulating your hardware configuration in tools like Vivado is a huge pain compared to writing separate test cases in software. I know the Test Bench tooling can be used to write test for your synthesis, but when uploading a bitstream into an FPGA, you never know whether it's the HDL that's incorrect, or the Assembly loaded into it. 
 
 My `opbtest` package comes with one serious downside (more of a disguised upside): it requires you to write your tests in another language, namely Python 3. I am aware of possibilities like embedded Assembly testing [such as this](http://blog.code-cop.org/2015/08/how-to-unit-test-assembly.html), but it's implementation lacks the ability to mock out statements I don't want to evaluate. 
 
