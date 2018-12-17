@@ -20,8 +20,12 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 
 ### Labo noties
 
-1. [Classificaties, gedrag en beschrijvingen](/teaching/java/labo-1)
-2. [Relaties van objecten](/teaching/java/labo-2)
+1. Introductie in Java als programmeertaal
+2. [Classificaties, gedrag en beschrijvingen](/teaching/java/labo-1)
+3. Relaties van objecten
+4. Software Leeft: bijsnoeien, onderhouden en herwerken
+5. Patroon herkenning
+6. Grafische User Interfaces in Java met JavaFX
 
 ### Extra informatie
 

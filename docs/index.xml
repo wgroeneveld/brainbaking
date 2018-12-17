@@ -19,7 +19,7 @@
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/post/unit-testing-picoblaze-assembly/</guid>
-      <description>To continue our unit testing tradition, each time I land on a new language or piece of technology, I carefully assess whether it&amp;rsquo;s possible to write tests first. Unsurprisingly, even in Assembly it&amp;rsquo;s possible. My recent foray into the digital electronics world has let me to write instructions for the Xilinx PicoBlaze 6 FPGA microcontroller. This Assembly dialect, written in &amp;ldquo;Psm(4)&amp;rdquo; files, is destined for another architecture than x86 or x64.</description>
+      <description>To continue our unit testing tradition, each time I land on a new language or piece of technology, I carefully assess whether it&amp;rsquo;s possible to write tests first. Unsurprisingly, even in Assembly it&amp;rsquo;s possible. My recent foray into the digital electronics world has let me to write instructions for the Xilinx PicoBlaze 6 FPGA microcontroller. This Assembly dialect, written in &amp;ldquo;Psm(4)&amp;rdquo; files, is destined for a different architecture. That means linking and leaning on Google Test using C++ isn&amp;rsquo;t possible.</description>
     </item>
     
     <item>
@@ -653,6 +653,16 @@ De Windows standaard was MFC die de WinAPI wrapt, voor OSX was dit de Carbon API
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
 Eigen widgets implementeren De objectenboom uit labo 10 leert ons dat heel wat Qt objecten afleiden van QWidget. Dat is de ideale startplaats om zelf een widget te implementeren. Veel Qt objecten voorzien een override om het tekenen zelf af te kunnen handelen, vergelijkbaar met de while loop in een typisch gameboy spel.
 void paintEvent(QPaintEvent *event) override;  In het Textrix Qt Voorbeeld wordt er gebruikt gemaakt van custom QFrame en QWidget implementaties die eigen objecten bijhouden die de tetris blokken voorstellen.</description>
+    </item>
+    
+    <item>
+      <title>Labo 1: Classificaties, gedrag en beschrijvingen</title>
+      <link>https://brainbaking.com/teaching/java/labo-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/java/labo-1/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in Java &amp;raquo;&amp;nbsp;Naar de labo opgave
+Classificaties van een ontdekkingsreiziger Om tot de definitie van een Class - al dan niet in een programmeertaal als Java - te bekomen, denken we even terug naar classificaties waar het woord &amp;ldquo;class&amp;rdquo; ook in terug komt. Stel je voor dat je Charles Darwin bent, met het schip The Beagle op ontdekkingsreis doorheen de wereld. In je reizen kom je verschillende vreemde, tot nu toe ongekende wezens tegen, die je op een of andere ingenieuze wijze tracht op te delen in verschillende categorieën - of classificaties.</description>
     </item>
     
     <item>

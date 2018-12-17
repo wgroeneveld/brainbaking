@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software ontwerp in Java on Brain Baking</title>
+    <link>https://brainbaking.com/teaching/java/</link>
+    <description>Recent content in Software ontwerp in Java on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Mon, 17 Dec 2018 15:33:39 +0100</lastBuildDate>
+    
+	<atom:link href="https://brainbaking.com/teaching/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Labo 1: Classificaties, gedrag en beschrijvingen</title>
+      <link>https://brainbaking.com/teaching/java/labo-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/java/labo-1/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in Java &amp;raquo;&amp;nbsp;Naar de labo opgave
+Classificaties van een ontdekkingsreiziger Om tot de definitie van een Class - al dan niet in een programmeertaal als Java - te bekomen, denken we even terug naar classificaties waar het woord &amp;ldquo;class&amp;rdquo; ook in terug komt. Stel je voor dat je Charles Darwin bent, met het schip The Beagle op ontdekkingsreis doorheen de wereld. In je reizen kom je verschillende vreemde, tot nu toe ongekende wezens tegen, die je op een of andere ingenieuze wijze tracht op te delen in verschillende categorieën - of classificaties.</description>
+    </item>
+    
+  </channel>
+</rss>

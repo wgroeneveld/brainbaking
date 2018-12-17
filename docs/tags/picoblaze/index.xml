@@ -19,7 +19,7 @@
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/post/unit-testing-picoblaze-assembly/</guid>
-      <description>To continue our unit testing tradition, each time I land on a new language or piece of technology, I carefully assess whether it&amp;rsquo;s possible to write tests first. Unsurprisingly, even in Assembly it&amp;rsquo;s possible. My recent foray into the digital electronics world has let me to write instructions for the Xilinx PicoBlaze 6 FPGA microcontroller. This Assembly dialect, written in &amp;ldquo;Psm(4)&amp;rdquo; files, is destined for another architecture than x86 or x64.</description>
+      <description>To continue our unit testing tradition, each time I land on a new language or piece of technology, I carefully assess whether it&amp;rsquo;s possible to write tests first. Unsurprisingly, even in Assembly it&amp;rsquo;s possible. My recent foray into the digital electronics world has let me to write instructions for the Xilinx PicoBlaze 6 FPGA microcontroller. This Assembly dialect, written in &amp;ldquo;Psm(4)&amp;rdquo; files, is destined for a different architecture. That means linking and leaning on Google Test using C++ isn&amp;rsquo;t possible.</description>
     </item>
     
   </channel>

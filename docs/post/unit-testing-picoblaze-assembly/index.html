@@ -57,7 +57,7 @@
     
       "headline" : "Writing Psm Assembly test-first, because why wouldn&#39;t you?",
     
-    "description" : "To continue our unit testing tradition, each time I land on a new language or piece of technology, I carefully assess whether it&rsquo;s possible to write tests first. Unsurprisingly, even in Assembly it&rsquo;s possible. My recent foray into the digital electronics world has let me to write instructions for the Xilinx PicoBlaze 6 FPGA microcontroller. This Assembly dialect, written in &ldquo;Psm(4)&rdquo; files, is destined for another architecture than x86 or x64.",
+    "description" : "To continue our unit testing tradition, each time I land on a new language or piece of technology, I carefully assess whether it&rsquo;s possible to write tests first. Unsurprisingly, even in Assembly it&rsquo;s possible. My recent foray into the digital electronics world has let me to write instructions for the Xilinx PicoBlaze 6 FPGA microcontroller. This Assembly dialect, written in &ldquo;Psm(4)&rdquo; files, is destined for a different architecture. That means linking and leaning on Google Test using C++ isn&rsquo;t possible.",
     
       "inLanguage" : "en-US",
     
@@ -80,9 +80,9 @@
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "2018",
     "datePublished": "2018-12-05 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-12-05 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2018-12-17 15:33:39 &#43;0100 CET",
     "url" : "https://brainbaking.com/post/unit-testing-picoblaze-assembly/",
-    "wordCount" : "766",
+    "wordCount" : "764",
     "keywords" : [ "unit testing","assembly","picoblaze","Unit Testing PicoBlaze Assembly files", "post" ]
 }
 </script>
@@ -255,7 +255,7 @@
                     <i class='fa fa-calendar'></i>&nbsp;5 December 2018
                 </span>&nbsp;|&nbsp;
                 <span title="Last Modified Date">
-                    <i class='fa fa-calendar-check-o'></i>&nbsp;5 December 2018
+                    <i class='fa fa-calendar-check-o'></i>&nbsp;17 December 2018
                 </span>
     		</span>
     	</h5>
@@ -276,7 +276,7 @@
 </div>
 
 
-    <br> <div class="text-justify"><p>To continue our <a href="/tags/unit-testing/">unit testing tradition</a>, each time I land on a new language or piece of technology, I carefully assess whether it&rsquo;s possible to write tests first. Unsurprisingly, even in Assembly it&rsquo;s possible. My recent foray into the digital electronics world has let me to write instructions for the <a href="https://www.xilinx.com/products/intellectual-property/picoblaze.html">Xilinx PicoBlaze</a> 6 FPGA microcontroller. This Assembly dialect, written in &ldquo;Psm(4)&rdquo; files, is destined for another architecture than x86 or x64. That means compiling and leaning on Google Test using C++ isn&rsquo;t possible.</p>
+    <br> <div class="text-justify"><p>To continue our <a href="/tags/unit-testing/">unit testing tradition</a>, each time I land on a new language or piece of technology, I carefully assess whether it&rsquo;s possible to write tests first. Unsurprisingly, even in Assembly it&rsquo;s possible. My recent foray into the digital electronics world has let me to write instructions for the <a href="https://www.xilinx.com/products/intellectual-property/picoblaze.html">Xilinx PicoBlaze</a> 6 FPGA microcontroller. This Assembly dialect, written in &ldquo;Psm(4)&rdquo; files, is destined for a different architecture. That means linking and leaning on Google Test using C++ isn&rsquo;t possible.</p>
 
 <p>As any good software developer does, I decided to reinvent the wheel and create an <a href="https://github.com/wgroeneveld/opbtest">Open PicoBlaze Assembler Unit Test package</a> myself, written in Python 3. It uses the open <code>opbasm</code> and <code>opbsim</code> cross-platform assembler and simulator to compile your written Assembly, and then leverages Python&rsquo;s <code>unittest</code> package to execute assertions. Take a look at the <a href="https://github.com/wgroeneveld/opbtest">github repository</a> README file an in-depth technical background.</p>
 
@@ -342,7 +342,7 @@ Assert state after execution? Check.</p>
     <img src="/img/picoblaze_sim.png" class="bordered" />
 </center></p>
 
-<p>Inspecting a wave form after simulating your hardware in tools like Vivado is a huge pain compared to writing separate test cases in software. I know the Test Bench tooling can be used to write test for your synthesis, but when uploading a bitstream into an FPGA, you never know whether it&rsquo;s the HDL that&rsquo;s incorrect, or the Assembly loaded into it.</p>
+<p>Inspecting a wave form after simulating your hardware configuration in tools like Vivado is a huge pain compared to writing separate test cases in software. I know the Test Bench tooling can be used to write test for your synthesis, but when uploading a bitstream into an FPGA, you never know whether it&rsquo;s the HDL that&rsquo;s incorrect, or the Assembly loaded into it.</p>
 
 <p>My <code>opbtest</code> package comes with one serious downside (more of a disguised upside): it requires you to write your tests in another language, namely Python 3. I am aware of possibilities like embedded Assembly testing <a href="http://blog.code-cop.org/2015/08/how-to-unit-test-assembly.html">such as this</a>, but it&rsquo;s implementation lacks the ability to mock out statements I don&rsquo;t want to evaluate.</p>
 
