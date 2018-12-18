@@ -46,7 +46,9 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 
 ## Syllabus
 
-- **Lesgever**: Wouter Groeneveld - <a href="mailto:wouter.groeneveld@kuleuven.be">wouter.groeneveld@kuleuven.be</a>
+- **Lesgevers**:<br/>
+Coördinerend Verantwoordelijke: prof. dr. Kris Aerts - <a href="mailto:kris.aerts@kuleuven.be">kris.aerts@kuleuven.be</a><br/>
+Onderwijsassistent: Wouter Groeneveld - <a href="mailto:wouter.groeneveld@kuleuven.be">wouter.groeneveld@kuleuven.be</a>
 - **Kantoor**: [Quadri gebouw](https://www.ucll.be/studeren/student-aan-ucll/campussen/campus-diepenbeek), 1.06 
 - **Verplicht handboek**: [C++ Primer](https://www.goodreads.com/book/show/768080.C_Primer), Stanley B. Lippman
 

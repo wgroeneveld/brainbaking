@@ -33,7 +33,8 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 ## Syllabus
 
 - **Lesgevers**: <br/>
-Coördinerend Verantwoordelijke: Prof. Dr. Kris Aerts - <a href="mailto:kris.aerts@kuleuven.be">kris.aerts@kuleuven.be</a><br/>Wouter Groeneveld - <a href="mailto:wouter.groeneveld@kuleuven.be">wouter.groeneveld@kuleuven.be</a>
+Coördinerend Verantwoordelijke: prof. dr. Kris Aerts - <a href="mailto:kris.aerts@kuleuven.be">kris.aerts@kuleuven.be</a><br/>
+Onderwijsassistent: Wouter Groeneveld - <a href="mailto:wouter.groeneveld@kuleuven.be">wouter.groeneveld@kuleuven.be</a>
 - **Kantoor**: [Quadri gebouw](https://www.ucll.be/studeren/student-aan-ucll/campussen/campus-diepenbeek), 1.06 
 - **Verplicht handboek**: Syllabus "Softwareontwerp in Java" (INFS)
 
