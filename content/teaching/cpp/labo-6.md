@@ -332,7 +332,7 @@ graph TD;
 Als we een source file compileren én proberen te linken vinden we geen `main()` functie:
 
 <pre>
-Wouters-MacBook-Air:cmake-build-debug jefklak$ g++ -std=c++11 source1.cpp
+Wouters-MacBook-Air:cmake-build-debug wgroenev$ g++ -std=c++11 source1.cpp
 Undefined symbols for architecture x86_64:
   "_main", referenced from:
      implicit entry/start for main executable
@@ -343,7 +343,7 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 Vergeet de `-c` optie dus niet. Door de symbol table van de machine code van source1.o te inspecteren krijgen we inzicht in de zonet gecompileerde bytes. Op Unix kan dit met `nm`:
 
 <pre>
-  Wouters-MacBook-Air:cmake-build-debug jefklak$ nm source1.o | c++filt
+  Wouters-MacBook-Air:cmake-build-debug wgroenev$ nm source1.o | c++filt
 0000000000000070 short EH_frame0
 0000000000000020 S int punt<int>(int)
 00000000000000b0 S int punt<int>(int) (.eh)
@@ -354,7 +354,7 @@ Vergeet de `-c` optie dus niet. Door de symbol table van de machine code van sou
 Je ziet op adres `00000000000000b0` de nieuwe functie die als `<int>` gecompileerd is. Dit zit dubbel en ook in source2.cpp! Dit lossen we op door in één van de twee cpp bestanden `extern template int punt(int x);` toe te voegen zodat de compiler dit niet opnieuw behandelt:
 
 <pre>
-Wouters-MacBook-Air:cmake-build-debug jefklak$ nm source1.o | c++filt
+Wouters-MacBook-Air:cmake-build-debug wgroenev$ nm source1.o | c++filt
 0000000000000040 short EH_frame0
                  U int punt<int>(int)
 0000000000000000 T punt1()

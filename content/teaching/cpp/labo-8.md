@@ -67,9 +67,9 @@ Gezien de erg beperkte hardwaremogelijkheden van de GBA is het voor veel grote s
 `ls -la` output:
 
 <pre>
--rwxr-xr-x   1 jefklak  staff    8320 Jul 25 13:54 main_c.gba
--rwxr-xr-x   1 jefklak  staff   23328 Jul 22 20:36 main_cpp.gba
--rwxr-xr-x   1 jefklak  staff   24032 Jul 25 13:55 main_cpp_stl.gba
+-rwxr-xr-x   1 wgroenev  staff    8320 Jul 25 13:54 main_c.gba
+-rwxr-xr-x   1 wgroenev  staff   23328 Jul 22 20:36 main_cpp.gba
+-rwxr-xr-x   1 wgroenev  staff   24032 Jul 25 13:55 main_cpp_stl.gba
 </pre>
 
 De C++ ROM is 280% groter dan de C ROM, als je `<vector>` e.d. mee include zelfs 288% - van 8K naar 23K!

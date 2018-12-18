@@ -130,7 +130,7 @@ Vanaf nu wordt verondersteld dat labo oefeningen gecommit worden in `git` op [Gi
 De output van `git status` ziet er zo uit:
 
 <pre>
-Wouters-MacBook-Air:brainbaking jefklak$ git status
+Wouters-MacBook-Air:brainbaking wgroenev$ git status
 On branch master
 Your branch is up-to-date with 'origin/master'.
 
@@ -151,7 +151,7 @@ Changes not staged for commit:
 De output van `git diff` ziet er zo uit:
 
 <pre>
-    Wouters-MacBook-Air:brainbaking jefklak$ git diff
+    Wouters-MacBook-Air:brainbaking wgroenev$ git diff
 diff --git a/content/teaching/cpp/labo-1.md b/content/teaching/cpp/labo-1.md
 index 654a4f6..11f0597 100644
 --- a/content/teaching/cpp/labo-1.md
@@ -299,7 +299,7 @@ Het CMakeLists.txt ziet er dan als volgt uit:
 cmake_minimum_required(VERSION 3.10)
 project(unittest)
 
-SET(google_test_dir "/Users/jefklak/CLionProjects/googletest-release-1.8.0/googletest")
+SET(google_test_dir "/Users/wgroenev/CLionProjects/googletest-release-1.8.0/googletest")
 include_directories(${google_test_dir}/include)
 set(CMAKE_CXX_STANDARD 11)
 
@@ -348,7 +348,7 @@ TEST(AddTest, ShouldAddOneAndTo) {
 Bovenstaande procedure moet je ook volgen los van CLion. De binary die uit het build proces komt voert alle testen uit (zie main code). Testen worden commandline uitgevoerd:
 
 <pre>
-Wouters-MacBook-Air:unittest jefklak$ ./cmake-build-debug/unittest
+Wouters-MacBook-Air:unittest wgroenev$ ./cmake-build-debug/unittest
 [==========] Running 2 tests from 2 test cases.
 [----------] Global test environment set-up.
 [----------] 1 test from SuiteName
@@ -358,7 +358,7 @@ Wouters-MacBook-Air:unittest jefklak$ ./cmake-build-debug/unittest
 
 [----------] 1 test from AddTest
 [ RUN      ] AddTest.ShouldAddOneAndTo
-/Users/jefklak/CLionProjects/unittest/test.cpp:18: Failure
+/Users/wgroenev/CLionProjects/unittest/test.cpp:18: Failure
       Expected: add(1, 2)
       Which is: 3
 To be equal to: 5

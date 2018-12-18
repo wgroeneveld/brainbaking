@@ -1521,7 +1521,7 @@ Er is een **Jasmine adapter** beschikbaar: https://github.com/ibolmo/jasmine-jst
 
 Het kan ook handig zijn om een **Junit XML Reporter** te gebruiken om bijvoorbeeld voor Hudson het makkelijker te maken om de test output files te verwerken. Er zijn reeds enkele reporter plugins zoals deze beschikbaar, hier: https://github.com/larrymyers/jasmine-reporters
 
-:exclamation: Integratie met Hudson, EnvJS en Rhino ea: zie eigen junit test runner: https://github.com/jefklak/jasmine-junit-runner
+:exclamation: Integratie met Hudson, EnvJS en Rhino ea: zie eigen junit test runner: https://github.com/wgroeneveld/jasmine-junit-runner
 
 ### Andere JS Test frameworks 
 
@@ -1584,7 +1584,7 @@ __Voordeel__: heel snel
 
 __Nadeel__: `Java` ofzoiets nodig om JS te evalueren (**Rhino** of **V8** in C++ van Google), plus kan onregelmatigheden vertonen met hevig gebruik maken van UI frameworks -> dit zou moeten werken allemaal, maar het blijft een gesimuleerde omgeving.
 
-:exclamation: Zie https://github.com/jefklak/jasmine-junit-runner
+:exclamation: Zie https://github.com/wgroeneveld/jasmine-junit-runner
 
 Integreren met hudson als extern commando:
 

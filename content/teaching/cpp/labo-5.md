@@ -103,7 +103,7 @@ Twee van de drie methodes staan buiten de klasse definitie. We maken hier typisc
 Verschillende andere source files kunnen de Getal klasse gebruiken met `#include "getal.h"`. De klasse kan maar 1x gedefiniëerd worden, en 2x de header includen in je programma geeft een compilatiefout:
 
 <pre>
-Wouters-MacBook-Air:c-course-gba jefklak$ g++ -std=c++11 dubbel.cpp getal.o
+Wouters-MacBook-Air:c-course-gba wgroenev$ g++ -std=c++11 dubbel.cpp getal.o
 In file included from dubbel.cpp:4:
 ./getal.h:1:7: error: redefinition of 'Getal'
 class Getal {

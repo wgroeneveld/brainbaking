@@ -327,7 +327,7 @@ int main() {
 De main functie heeft eigenlijk geen weet van `hallo()` omdat die in een andere source file leeft. Dit komt goed als we de machine code samen linken, na het compileren. main.c apart compileren geeft dit:
 
 <pre>
-Wouters-MacBook-Air:cmake-build-debug jefklak$ gcc -c main.c
+Wouters-MacBook-Air:cmake-build-debug wgroenev$ gcc -c main.c
 main.c:5:18: warning: implicit declaration of function 'hallo' is invalid in C99
       [-Wimplicit-function-declaration]
     printf("%s", hallo());
@@ -338,7 +338,7 @@ main.c:5:18: warning: implicit declaration of function 'hallo' is invalid in C99
 Merk de `-c` flag op (compile only). Makkelijk opgelost met een **forward functie declaratie** voor int main: `char* hallo();`. Dit is het cruciaal verschil tussen declaratie en definitie. De problemen zijn echter nog niet opgelost als we dit willen linken zonder hallo.c:
 
 <pre>
-Wouters-MacBook-Air:cmake-build-debug jefklak$ gcc main.o
+Wouters-MacBook-Air:cmake-build-debug wgroenev$ gcc main.o
 Undefined symbols for architecture x86_64:
   "_hallo", referenced from:
       _main in main.o
@@ -404,12 +404,12 @@ cffa edfe 0700 0001 0300 0000 0100 0000
 Prachtig, maar niet erg duidelijk. `nm` helpt:
 
 <pre>
-heykesWouters-MacBook-Air:cmake-build-debug jefklak$ nm hallo.o
+heykesWouters-MacBook-Air:cmake-build-debug wgroenev$ nm hallo.o
 0000000000000038 s EH_frame0
 000000000000000d s L_.str
 0000000000000000 T _hallo
 0000000000000050 S _hallo.eh
-Wouters-MacBook-Air:cmake-build-debug jefklak$ nm main.o
+Wouters-MacBook-Air:cmake-build-debug wgroenev$ nm main.o
 0000000000000060 s EH_frame0
 0000000000000037 s L_.str
                  U _hallo

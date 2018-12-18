@@ -191,7 +191,7 @@ ___
 ### Testen uitvoeren: Cmdline
 
 <pre>
-  Wouters-MacBook-Air:unittest jefklak$ ./cmake-build-debug/unittest
+  Wouters-MacBook-Air:unittest wgroenev$ ./cmake-build-debug/unittest
 [==========] Running 2 tests from 2 test cases.
 [----------] Global test environment set-up.
 [----------] 1 test from SuiteName
@@ -201,7 +201,7 @@ ___
 
 [----------] 1 test from AddTest
 [ RUN      ] AddTest.ShouldAddOneAndTo
-/Users/jefklak/CLionProjects/unittest/test.cpp:18: Failure
+/Users/wgroenev/CLionProjects/unittest/test.cpp:18: Failure
       Expected: add(1, 2)
       Which is: 3
 To be equal to: 5
