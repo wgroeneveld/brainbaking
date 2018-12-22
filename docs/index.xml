@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Wed, 05 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Over analoog en digitaal</title>
+      <link>https://brainbaking.com/essays/over-analoog-en-digitaal/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/essays/over-analoog-en-digitaal/</guid>
+      <description>Eens blazen en hem &amp;ldquo;er uit en weer in steken&amp;rdquo; - aan wat doet deze vreemde uitspraak denken? Zedige kinderen die opgroeiden in de jaren &amp;lsquo;90 denken hopelijk onmiddellijk aan een console cartridge: slecht contact met de console zelf door mogelijke stofjes zorgde er voor dat je console spel niet goed opstartte. De gebruikelijke handeling om het ding terug draaiende te krijgen was de cartridge uit de console trekken, eens goed op de contacten &amp;ldquo;blazen&amp;rdquo;, en hem er goed terug in drukken.</description>
+    </item>
     
     <item>
       <title>Unit Testing PicoBlaze Assembly files</title>
