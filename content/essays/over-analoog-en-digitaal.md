@@ -1,6 +1,7 @@
 ---
 title: 'Over analoog en digitaal'
 date: '2018-12-22'
+bigimg: /img/snes_header.jpg
 subtitle: 'Waarom een fysieke handeling niet vervangbaar is'
 published: true
 ---
@@ -36,7 +37,7 @@ Dat digitale aan de SNES Mini stoort me al vanaf het eerste uur dat ik er mee sp
 
 Hoe meer _luie keuze_ ik heb (een druk op de knop, een selectie uit een menu), hoe minder ik toegewijd ben om een spel van begin tot einde écht te _spelen_. Dit vind ik heel vreemd. Ik ben bijvoorbeeld ook opgegroeid met een Gameboy en tijdens beursbezoekjes schuim ik dan standjes af om herinneringen terug tot leven te laten komen. Die dure heraankopen maken mij blijkbaar wel erg toegewijd. Alle GBA Castlevania's zijn volledig herspeeld. De actie van een fysieke casette in een console te steken en die aan te zetten geeft mij veel meer goesting om er iets langdurig mee te doen dan simpelweg iets te kiezen uit een hoop dingen die reeds beschikbaar zijn. 
 
-Ik begin te twijfelen over console optie 2: zou ik niet beter voor optie 3 kiezen? Dan kan ik nog steeds de fysieke actie uitvoeren, maar heb ik ook save states. Buiten de legale problematiek rond de Retron 5 en de retrofreak (onrechtmatig gebruik van open source emulatie), hervalt het systeem naar optie 2 eenmaal je je cartridge "ooit" in het systeem gestoken hebt. Vanaf dan is de ROM gedownload en heb je gewoon een digitaal bestand dat opgestart wordt. 
+Ik begin te twijfelen over console optie 2: zou ik niet beter voor optie 3 kiezen? Dan kan ik nog steeds de fysieke actie uitvoeren, maar heb ik ook save states. Buiten de legale problematiek rond de Retron 5 en de retrofreak (onrechtmatig gebruik van open source emulatie), hervalt het systeem naar optie 2 eenmaal je je cartridge "ooit" in het systeem gestoken hebt. Vanaf dan is de ROM gedownload en heb je gewoon een digitaal bestand dat opgestart wordt. Het is dus niet enkel de fysieke handeling die mij aanspreekt, want dat kan ik ook bij deze consoles, maar de gedachtegang. Wat gebeurt er als ik dit doe - wordt mijn spel opgestart "zoals het hoort", of wordt een ROM gedownload en dit softwarematig geëmuleerd? Het Classic2Magic[^3] systeem werkt in combinatie met de SNES Mini: toch nog een _cartridge_ gebruiken om een spel op te starten - in je emulatie systeem. Maar waarom zou ik dan niet gewoon de ROM downloaden?
 
 En optie 1, of verder spelen met de oude SNES? Wij waren vroeger eigenlijk MegaDrive fans. Dan zou ik een tweede console zoals de [Analogue Mega SG](https://www.analogue.co/mega-sg/) moeten kopen, én een Super NT. En een HDMI Switch voor op de TV. En plaats maken voor extra kastjes onderin de TV meubel. Dus toch doet het _afgeven van keuze_ (maar spellen op één console, in plaats van mijn gehackte Mini nu) mij iets. Keuze hebben is tof, maar geeft toch geen voldoening en stress. Keuze afgeven is moeilijk. 
 
@@ -46,7 +47,7 @@ Hetzelfde geldt voor muziek, voordat streaming software als Spotify de kroon sta
 
 Volgens mij spelen hier verschillende factoren mee:
 
-1. De handeling op zich (fysiek insteken van de casette)
+1. De (gedachte tot) fysieke handeling op zich
 2. De veelheid of weinigheid aan keuze
 3. De verandering en mentale staat
 4. De financiële investering
@@ -54,12 +55,23 @@ Volgens mij spelen hier verschillende factoren mee:
 Dat laatste is zeker niet onbelangrijk. Als ik zo graag mijn geliefde Turtles IV: Turtles in Time op SNES wens te kopen, zal ik er minstens 45 EUR voor moeten neertellen om een fysieke PAL kopie van de _cartridge_ in handen te krijgen - hetzij via eBay, hetzij via een beurs. Diezelfde ROM is "gratis" verkrijgbaar op bepaalde plaatsen van het Internet. Ik ben een extreme tegenstander van piraterij, gegeven dat de _ontwikkelaars en uitgevers er nog zijn_ om ze financiëel te steunen. Waar gaat die 45 EUR nu naar toe? Naar de smerige standhouder die zijn prijzen artificieel hoog houdt omdat hij goed genoeg weet dat Turtles IV een gewild spel is dat zeer moeilijk te verkrijgen is. Natuurlijk moet er iets tegenover ruilen staan, al dan niet in de vorm van geld. Ik praat alleen in dit geval mijn illegale downloads zeer gemakkelijk goed. 
 
 <center>
+    ![WII Channel](/img/wiichannel.jpg)<br/>
+    <em>Retro Wii kanalen, al dan niet modded[^2]</em>
+</center>
+
+Hoeveel keer koop je een ouder spel dat niet meer uitgegeven wordt opnieuw? Een keer via de 3DS store, een keer via de Wii store, een keer via een Steam collectie. Met de komst van de Nintendo Switch heb ik de intentie om mijn Wii te verkopen - maar de digitaal aangekochte spellen hangen daar aan vast. Kan ik dan het downloaden van een ROM bestand goedpraten? Ik heb dit immers al drie keer gekocht. Ik kan er ook niet aan doen dat Nintendo niet de optie aanbiedt om dit bestand uit mijn Wii te halen... De prijzen op de Wii waren nog gedelijk: 5 EUR voor NES, 8 EUR voor SNES en 10 EUR voor N64 spellen. Maar uiteindelijk worden ze natuurlijk ook geëmuleerd. En uiteindelijk is de Wii ook "gekraakt". 
+
+Ik had met plezier véél meer geld uitgegeven aan retro spellen via het officiëel kanaal als Nintendo de moeite deed om frequenter deze spellen vrij te geven. Ook lang niet alles is beschikbaar. De 3DS shop bijvoorbeeld biedt niet de mogelijkheid om GBA games aan te kopen, terwijl bepaalde _limited editions_ met ingeladen versies van de _Wario Ware_ ROM komen. Als grote handheld gaming fan komt dit aan als een slag in het gezicht. Een loyale fan die duidelijk geen moeite heeft met heraankopen toch nog beroven van opties om nog iets extra te kopen. De afwezigheid van de mogelijkheid om op de nieuwe Nintendo Switch retro games te spelen heeft zo veel fans boos gemaakt. Maar waarom blijven wij dit opnieuw kopen, terwijl de hele Wii schijf vol zit, én ik toch nog op zoek ben naar échte _cartridges_?
+
+Stel dat een online aankoop, bijvoorbeeld vanuit de vroegere Wii Store om een SNES spel te kopen, evenveel zou kosten als de _cartridge_. Welke versie verkies jij dan? Volgens enquêtes, en volgens mezelf, gaat de voorkeur uit naar de fysieke versie. Dat komt omdat wij als mens graag iets in handen hebben, _waar voor ons geld_ willen. Vreemd, gezien het geld dat overhandigd wordt toch ook gewoon bestaat uit 1 en 0? Maar nu geldt het bovenstaande argument niet meer, dus de fincanciële investering als enkele factor beschikt over onvoldoende overtuigingskracht. 
+
+<center>
     ![retrofreak](/img/retrofreak.jpg)
     <em>retrofreak: de alles-in-1 oplossing[^2]</em>
 </center>
 
-En toch geeft het niet zo veel voldoening als de fysieke versie. De retrofreak console ziet er redelijk aantrekkelijk uit en kan énorm veel fysieke formaten aan. Dat zou betekenen dat ik mij niet meer moet inhouden als we nog eens naar een retro beurs gaan: _one ring to rule them all_. Jammer genoeg draait dat op Android en hangen er rechtzaken boven het hoofd van deze consoles. En zou ik dan de ROM op een SD kaart zetten[^1], of van mijn vrouw genoeg geld mogen uitgeven om _cartridges_ te stockeren? Ik heb geen _mancave_, en moet dan ook nog een glazen vitrinekastje kopen om te pronken met mijn dure casettes...
+En toch geeft het niet zo veel voldoening als de fysieke versie. De retrofreak console ziet er redelijk aantrekkelijk uit en kan énorm veel fysieke formaten aan. Dat zou betekenen dat ik mij niet meer moet inhouden als we nog eens naar een retro beurs gaan: _one ring to rule them all_. Jammer genoeg draait dat op Android en hangen er rechtzaken boven het hoofd van deze consoles - om nog maar te zwijgen van de Chinese kwaliteit. En zou ik dan de ROM op een SD kaart zetten[^1], of van mijn vrouw genoeg geld mogen uitgeven om _cartridges_ te stockeren? Ik heb geen _mancave_, en moet dan ook nog een glazen vitrinekastje kopen om te pronken met mijn dure casettes...
 
 [^1]: Ik laat hier nog optie 4 weg: dit is geen console maar een stukje hardware dat toestaat om op een legale manier ROM bestanden te downloaden van je eigen casettes: [Retrode2](http://www.retrode.org). Zij stoppen echter met de productie... 
 [^3]: De combinatie tussen SNES Classic en SNES Mini is mogelijk met het [Classic2Magic](http://classic2magic.com) systeem.
-[^2]: [img src1](https://www.google.be/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjciNrsmrTfAhURmrQKHUvQAakQjhx6BAgBEAM&url=https%3A%2F%2Ftechcrunch.com%2F2018%2F02%2F07%2Fplay-snes-classics-in-the-hd-resolution-of-memory-with-the-super-nt%2F&psig=AOvVaw0asykXP24RowAxW_dieiUx&ust=1545594497024928), [img src2](https://www.google.be/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwikvIahnLTfAhXPJ1AKHcBPBccQjhx6BAgBEAM&url=https%3A%2F%2Fwww.cnet.com%2Fnews%2Fretro-freak-game-console-brings-your-favourite-cartridges-to-life-in-one-place%2F&psig=AOvVaw1R2Li4hqKoFf6a7yQ7owQ9&ust=1545594797348907), [img src3](https://www.google.be/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwitq7ztnLTfAhVQalAKHXK1DvQQjhx6BAgBEAM&url=https%3A%2F%2Fimgur.com%2Fgallery%2FIkmTS&psig=AOvVaw0daJki7fvw4FLTqzx8W-nt&ust=1545595175819442)
+[^2]: [img src1](https://www.google.be/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjciNrsmrTfAhURmrQKHUvQAakQjhx6BAgBEAM&url=https%3A%2F%2Ftechcrunch.com%2F2018%2F02%2F07%2Fplay-snes-classics-in-the-hd-resolution-of-memory-with-the-super-nt%2F&psig=AOvVaw0asykXP24RowAxW_dieiUx&ust=1545594497024928), [img src2](https://www.google.be/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwikvIahnLTfAhXPJ1AKHcBPBccQjhx6BAgBEAM&url=https%3A%2F%2Fwww.cnet.com%2Fnews%2Fretro-freak-game-console-brings-your-favourite-cartridges-to-life-in-one-place%2F&psig=AOvVaw1R2Li4hqKoFf6a7yQ7owQ9&ust=1545594797348907), [img src3](https://www.google.be/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwitq7ztnLTfAhVQalAKHXK1DvQQjhx6BAgBEAM&url=https%3A%2F%2Fimgur.com%2Fgallery%2FIkmTS&psig=AOvVaw0daJki7fvw4FLTqzx8W-nt&ust=1545595175819442), [img src4](https://www.google.be/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwig5Mypx7XfAhVSZFAKHfV2DmUQjhx6BAgBEAM&url=https%3A%2F%2Fwww.howtogeek.com%2F139638%2Fhow-to-play-retro-nes-and-snes-games-on-your-nintendo-wii%2F&psig=AOvVaw1OZoFMMB2JP_zSC8A8Eqmx&ust=1545640836332715)
