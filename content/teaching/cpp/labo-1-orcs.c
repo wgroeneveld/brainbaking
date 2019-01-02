@@ -27,7 +27,7 @@ Orc* generate_orcs(int aantal) {
 }
 
 char* omnom(char zin[]) {
-	char response[strlen(zin)];
+	char* response = malloc(sizeof(char) * strlen(zin));
 	strcpy(response, zin);
 
 	for(int i = 0; i < strlen(response); i++) {
