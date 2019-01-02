@@ -685,7 +685,7 @@ auto pt = puntFn(5);      // ook geldig!
 <pre><code class="language-C">template &lt;typename... Ts&gt; void som(Ts... args) {}
 </code></pre>
 
-<p>Dankzij compiler deductie hoeven we niet alle templates aan te vullen als we hey aanroepen: <code>som(1, 2.0, true);</code> zou hetzelfde zijn als <code>som&lt;int, double, bool&gt;(1, 2.0, true);</code>. Om dit voorbeld te laten werken hebben we echter <strong>recursie</strong> nodig: een functie voor een basisgeval, en een functie voor de rest. Daarom heet dit &ldquo;packing&rdquo; en is <code>...</code> het unpacken van de template arguments.</p>
+<p>Dankzij compiler deductie hoeven we niet alle templates aan te vullen als we het aanroepen: <code>som(1, 2.0, true);</code> zou hetzelfde zijn als <code>som&lt;int, double, bool&gt;(1, 2.0, true);</code>. Om dit voorbeld te laten werken hebben we echter <strong>recursie</strong> nodig: een functie voor een basisgeval, en een functie voor de rest. Daarom heet dit &ldquo;packing&rdquo; en is <code>...</code> het unpacken van de template arguments.</p>
 
 <pre><code class="language-C">template&lt;typename T&gt; T som(T t) { return t; }
 template&lt;typename T, typename... TRest&gt; T som(T first, TRest... args) {

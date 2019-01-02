@@ -424,7 +424,7 @@ Wat nu als je verschillende argumenten nodig hebt die allemaal verschillende typ
 template <typename... Ts> void som(Ts... args) {}
 ```
 
-Dankzij compiler deductie hoeven we niet alle templates aan te vullen als we hey aanroepen: `som(1, 2.0, true);` zou hetzelfde zijn als `som<int, double, bool>(1, 2.0, true);`. Om dit voorbeld te laten werken hebben we echter **recursie** nodig: een functie voor een basisgeval, en een functie voor de rest. Daarom heet dit "packing" en is `...` het unpacken van de template arguments.
+Dankzij compiler deductie hoeven we niet alle templates aan te vullen als we het aanroepen: `som(1, 2.0, true);` zou hetzelfde zijn als `som<int, double, bool>(1, 2.0, true);`. Om dit voorbeld te laten werken hebben we echter **recursie** nodig: een functie voor een basisgeval, en een functie voor de rest. Daarom heet dit "packing" en is `...` het unpacken van de template arguments.
 
 ```C
 template<typename T> T som(T t) { return t; }
