@@ -20,7 +20,14 @@ The problem with educational software engineering research in this area, is that
 
 Simply trying to pin down these terms by defining them seems to be a daunting task that will likely never receive a consensus[^3]. For example, I tried to [define](https://wgroeneveld.github.io/phd/src/definities/) the differences between "skill", "ability", "knowledge" and "competence". It took me more than a week and I gave up: every author gives his or hers own interpretation to these terms. 
 
+<center>
+    <img src="/img/skills.jpg" alt="noncognitive skills" />
+    <em>What to call "noncognitive skills"? - [img source](https://www.npr.org/sections/ed/2015/05/28/404684712/non-academic-skills-are-key-to-success-but-what-should-we-call-them?t=1540302642056)</em>
+</center>
+
 Since my background is with Computer Science and I've been a software engineer for 11 years, I'd like to incorporate this experience into my future work by concretizing these vague "skills" into something that people from the engineering industry understand and can work with. In the end, I'll have to define my own interpretation of the words "lean skills". 
+
+The word _skill_ is arguably not ideal as it may exclude beliefs (mindset) and values, as opposed to a skill that can be learned.[^3] At least it is better than the much more rigid word _trait_. The word _lean_ is also problematic: it may trigger people familiar with _lean manufacturing_ to think only about those principles. While it's intentionally related, I don't want to limit identification to that particular kind of manufacturing or software development. Until I come up with something better, it will have to do. 
 
 ### Knowing what to work with
 
