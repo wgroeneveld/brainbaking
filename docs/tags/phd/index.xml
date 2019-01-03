@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Fri, 19 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/tags/phd/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Ph.D. Thesis: Iteration 2</title>
+      <link>https://brainbaking.com/post/phd-iteration-2/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/phd-iteration-2/</guid>
+      <description>A huge amount of ideas and a quite a few months later, my original proposal, called &amp;ldquo;The disparity between industrial requirements and classic education of modern software engineering.&amp;rdquo;, changed for the better. The approved abstract is called &amp;ldquo;Improving software engineering education by closing the gap with modern non-technical industrial requirements&amp;rdquo;. After struggling to find any focus (and reference material to work with), I now settle with:
+ Mastering Lean Skills in Software Engineering Education</description>
+    </item>
     
     <item>
       <title>The Startup of a Lean Doctorate</title>

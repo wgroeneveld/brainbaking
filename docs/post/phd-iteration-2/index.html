@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="A Ph.D. Thesis: Iteration 2 - On Mastering Lean Skills in Software Engineering Education">
+	<meta content="A Ph.D. Thesis: Iteration 2" property="og:title">
+	<meta content="On Mastering Lean Skills in Software Engineering Education" property="og:description">
+
+
+
+  <meta content="phd" name="keywords">
+
+
+<meta property="og:url" content="https://brainbaking.com/post/phd-iteration-2/" />
+<meta property="og:type" content="website" />
+
+
+
+
+
+  
+    <meta property="og:see_also" content="https://brainbaking.com/post/lean-doctorate/" />
+  
+    <meta property="og:see_also" content="https://brainbaking.com/post/informatics-education-modules/" />
+  
+    <meta property="og:see_also" content="https://brainbaking.com/post/reverse-engineering-a-curriculum/" />
+  
+
+<meta property="article:published_time" content="2019-01-03 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2019-01-03 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="post" />
+
+  <meta property="article:tag" content="phd" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://brainbaking.com/"
+    },
+    "articleSection" : "post",
+    "name" : "A Ph.D. Thesis: Iteration 2",
+    
+      "headline" : "On Mastering Lean Skills in Software Engineering Education",
+    
+    "description" : "A huge amount of ideas and a quite a few months later, my original proposal, called &ldquo;The disparity between industrial requirements and classic education of modern software engineering.&rdquo;, changed for the better. The approved abstract is called &ldquo;Improving software engineering education by closing the gap with modern non-technical industrial requirements&rdquo;. After struggling to find any focus (and reference material to work with), I now settle with:
+ Mastering Lean Skills in Software Engineering Education",
+    
+      "inLanguage" : "en-US",
+    
+    
+      "image": "https://brainbaking.com/img/avatar-icon.png",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https://brainbaking.com/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-01-03 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-01-03 00:00:00 &#43;0000 UTC",
+    "url" : "https://brainbaking.com/post/phd-iteration-2/",
+    "wordCount" : "954",
+    "keywords" : [ "phd","A Ph.D. Thesis: Iteration 2", "post" ]
+}
+</script>
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>A Ph.D. Thesis: Iteration 2</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/llvm.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.47.1" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-45748221-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">A Ph.D. Thesis: Iteration 2</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/post/phd-iteration-2/">A Ph.D. Thesis: Iteration 2</a>
+    </h3>
+    
+
+    
+    
+    
+        <h4>On Mastering Lean Skills in Software Engineering Education</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<span title="Created Date">
+                    <i class='fa fa-calendar'></i>&nbsp;3 January 2019
+                </span>&nbsp;|&nbsp;
+                <span title="Last Modified Date">
+                    <i class='fa fa-calendar-check-o'></i>&nbsp;3 January 2019
+                </span>
+    		</span>
+    	</h5>
+    
+
+
+    
+	   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+    
+    
+        <a href="https://brainbaking.com/tags/phd"><kbd class="item-tag">phd</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>A huge amount of ideas and a quite a few months later, my original <a href="/post/phd-proposal/">proposal</a>, called <em>&ldquo;The disparity between industrial requirements and classic education of modern software engineering.&rdquo;</em>, changed for the better. The approved abstract is called <em>&ldquo;Improving software engineering education by closing the gap with modern non-technical industrial requirements&rdquo;</em>. After struggling to find any focus (and reference material to work with), I now settle with:</p>
+
+<blockquote>
+<p>Mastering Lean Skills in Software Engineering Education</p>
+</blockquote>
+
+<h3 id="defining-what-a-skill-is">Defining what a skill is</h3>
+
+<p>These &ldquo;lean skills&rdquo; refer to the required skillset of modern software engineering practitioners. The skills themselves are not quite modern or new, but the ever evolving software development industry increasinly demands good noncognitive abilities next to conventional cognitive thinking - something that is on the rise for the last 10 years. Identifying non-technical requirements has been done plenty of times before and took on the form of the <a href="https://www.computer.org/web/swebok">SWEBOK</a> model and the like.</p>
+
+<p>The problem with educational software engineering research in this area, is that either the papers are extremely vague, or they are too broad. Radermacher <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> and Sedelmaier <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> for instance identified missing soft skills in engineering education, but those skills do not speak for themselves: &ldquo;project management&rdquo;, &ldquo;personal skills&rdquo;, &ldquo;ethics&rdquo;, &ldquo;oral communication&rdquo;. I tried to create an overview of these papers as an introduction for myself into the topics and research world but ended up frustrated and confused. It also of course consumed some valuable months of my time&hellip;</p>
+
+<p>Simply trying to pin down these terms by defining them seems to be a daunting task that will likely never receive a consensus<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>. For example, I tried to <a href="https://wgroeneveld.github.io/phd/src/definities/">define</a> the differences between &ldquo;skill&rdquo;, &ldquo;ability&rdquo;, &ldquo;knowledge&rdquo; and &ldquo;competence&rdquo;. It took me more than a week and I gave up: every author gives his or hers own interpretation to these terms.</p>
+
+<p>Since my background is with Computer Science and I&rsquo;ve been a software engineer for 11 years, I&rsquo;d like to incorporate this experience into my future work by concretizing these vague &ldquo;skills&rdquo; into something that people from the engineering industry understand and can work with. In the end, I&rsquo;ll have to define my own interpretation of the words &ldquo;lean skills&rdquo;.</p>
+
+<h3 id="knowing-what-to-work-with">Knowing what to work with</h3>
+
+<p>To be able to uniquely contribute to software engineering education research, I want to combine insights from multiple disciplines. I&rsquo;m an avid philosophy and psychology reader and recognize the need for integration of certain key principles from these worlds into a more technical, engineering world.</p>
+
+<p>Let&rsquo;s try to create an overview of important work in each area that would translate well into engineering education:</p>
+
+<h4 id="philosophy">Philosophy</h4>
+
+<ol>
+<li><em>Self-cultivation</em> (Bildung), Humboldt</li>
+<li><em>Virtues</em> and <em>eudaimonia</em>, Aristotle</li>
+<li><em>Self-control</em>, Seneca and Aurelius</li>
+<li><em>How to live</em>, Montaigne (and others)</li>
+</ol>
+
+<p>Avoid emphasis on Metaphysics and (pure) Ethics.</p>
+
+<h4 id="psychology">Psychology</h4>
+
+<ol>
+<li><em>Grit</em>, Duckworth</li>
+<li><em>Flow</em>, Csikszentmihalyi</li>
+<li><em>Mindset</em>, Dweck</li>
+<li><em>Thinking, fast &amp; Flow</em>, Kahneman</li>
+</ol>
+
+<h4 id="software-engineering">Software Engineering</h4>
+
+<ol>
+<li><em>Software craftsmanship</em>, McBreen</li>
+<li><em>Lean software development</em>, Toyota Manufacturing</li>
+<li><em>Extreme Programming</em>, Beck</li>
+<li><em>PeopleWare</em>, DeMarco</li>
+<li><em>Pragmatic Thinking &amp; Learning</em>, Hunt</li>
+</ol>
+
+<p>Almost all works suffer from a number of problems:</p>
+
+<ul>
+<li>Too theoretical (e.g. Metaphysics, theoretical Computer Science)</li>
+<li>Too superficial (e.g. &ldquo;The passionate programmer&rdquo;)</li>
+<li>Too vague (e.g. 95% of all academic papers?)</li>
+<li>Too much usage of buzz-words (e.g. &ldquo;Management 3.0&rdquo;)</li>
+<li>Too little research-based (e.g. &ldquo;Drive&rdquo;)</li>
+<li>&hellip;</li>
+</ul>
+
+<p>It will be about finding the greatest common divisor and getting out of the way of vague or popular terms (&ldquo;business&rdquo;!). As you might have guessed, there are overlappings - the obvious one being <em>PeopleWare</em> as part of engineering and social psychology. Of course, grit and flow are natural evolutions of philosophical insights. There is plenty of techincal work released in the software engineering world based on these insights, although that is not immediately clear.</p>
+
+<h3 id="a-practical-philosphy-for-engineering-education">A Practical Philosphy for Engineering Education</h3>
+
+<p>To be able to effectively master these &ldquo;lean skills&rdquo;, principles from all worlds could be extracted and reformulated into a practical philosophy (course), geared towards (software) engineering students.</p>
+
+<p>This can be as technical as we want it to be. For example, take the excellent idea of studying <a href="https://pragprog.com/book/btlang/seven-languages-in-seven-weeks">7 programmings languages in 7 weeks</a>. To facilitate rapid learning that is required in a modern ever-changing software engineering world, requiring students to adapt to a new language every week would serve the purpose of building resilience to constant change. This exercise will be theoretically substantiated by drawing from philosophical and psychological research. Without this step, students would not have a firm understanding of <a href="post/teaching-philosophy-first/">why this resilience is needed</a>, and they will not be able to translate what they have learned into the real world after graduating.</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph LR;
+    A(Philosophy)
+    B(Psychology)
+    C(Software Engineering)
+    A --> C
+    A -.-> B
+    B --> C
+
+</div>
+
+<p>I have yet to come across a good body of work emerged from within the Software Engineering world that successfully combines these ideas. Engineering research is typically very technical, and engineering education research as stated before either too vague or too pedagogical. Philosophy isn&rsquo;t exactly popular, especially among pragmatic engineers. University faculties do not usually work outside their own safe boundaries.</p>
+
+<p>That said, I&rsquo;m actually still struggling how to integrate what I want to do with what I have to do. Scientific (educational) research needs to contain well-defined questions, substantiated by references to more existing research. It&rsquo;s very easy to fall into the &ldquo;vagueness&rdquo; trap, especially if your thesis subject is too broad.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Radermacher, Alex, and Gursimran Walia. &ldquo;Gaps between industry expectations and the abilities of graduates.&rdquo; Proceeding of the 44th ACM technical symposium on Computer science education. ACM, 2013.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">Sedelmaier, Yvonne, and Dieter Landes. &ldquo;Software engineering body of skills (SWEBOS).&rdquo; Global Engineering Education Conference (EDUCON), 2014 IEEE. IEEE, 2014.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">Duckworth, Angela L., and David Scott Yeager. &ldquo;Measurement matters: Assessing personal qualities other than cognitive ability for educational purposes.&rdquo; Educational Researcher 44.4 (2015): 237-251.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+</ol>
+</div>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header"><i class="fa fa-newspaper-o"></i>&nbsp;Related by Tags</h4>
+
+        <div class="text-justify">
+             <div class="item">
+
+    <h4><a href="/post/lean-doctorate/">The Startup of a Lean Doctorate</a></h4>
+
+    
+    
+    
+        Using agile practices to tacle a long-term research project <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;19 October 2018</span>
+    
+
+</div>
+  <div class="item">
+
+    <h4><a href="/post/informatics-education-modules/">Computer Science learning pathways</a></h4>
+
+    
+    
+    
+        Categorizing essential Computer Science knowledge <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;29 June 2018</span>
+    
+
+</div>
+  <div class="item">
+
+    <h4><a href="/post/reverse-engineering-a-curriculum/">Reverse engineering a curriculum</a></h4>
+
+    
+    
+    
+        Can a unified software engineering philosopy shape the right context in a curriculum? <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;15 June 2018</span>
+    
+
+</div>
+ 
+        </div>
+
+        <hr/>
+
+    
+
+    
+    
+    <h4 class="page-header"><i class="fa fa-comments-o"></i>&nbsp;
+        
+            Join the Discussion on 
+        
+        <a href="https://twitter.com/woutergroenev">Twitter</a>!</h4>
+
+        
+
+    
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
