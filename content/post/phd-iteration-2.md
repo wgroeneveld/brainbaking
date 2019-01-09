@@ -97,4 +97,4 @@ To remind myself of the constant dilemma between **focus** and **exploration**, 
 [^1]: Radermacher, Alex, and Gursimran Walia. "Gaps between industry expectations and the abilities of graduates." Proceeding of the 44th ACM technical symposium on Computer science education. ACM, 2013.
 [^2]: Sedelmaier, Yvonne, and Dieter Landes. "Software engineering body of skills (SWEBOS)." Global Engineering Education Conference (EDUCON), 2014 IEEE. IEEE, 2014.
 [^3]: Duckworth, Angela L., and David Scott Yeager. "Measurement matters: Assessing personal qualities other than cognitive ability for educational purposes." Educational Researcher 44.4 (2015): 237-251.
-[^4]: M Mirzaei, VJ Mabin. "The PhD in light of Project Management." Proceedings of the 2013 Joint NZSA+ORSNZ Conference, 2013. 
+[^4]: Mirzaei, Maryam, and Mabin, Victoria J. "The PhD in light of Project Management." Proceedings of the 2013 Joint NZSA+ORSNZ Conference, 2013. 
