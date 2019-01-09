@@ -31,7 +31,7 @@ The word _skill_ is arguably not ideal as it may exclude beliefs (mindset) and v
 
 ### Knowing what to work with
 
-To be able to uniquely contribute to software engineering education research, I want to combine insights from multiple disciplines. I'm an avid philosophy and psychology reader and recognize the need for integration of certain key principles from these worlds into a more technical, engineering world. 
+To be able to uniquely contribute to software engineering education research, the aim is to combine insights across multiple disciplines. I'm an avid philosophy and psychology reader and recognize the need for integration of certain key principles from these worlds into a more technical, engineering world. 
 
 Let's try to create an overview of important work in each area that would translate well into engineering education:
 
@@ -90,6 +90,11 @@ I have yet to come across a good body of work emerged from within the Software E
 
 That said, I'm actually still struggling how to integrate what I want to do with what I have to do. Scientific (educational) research needs to contain well-defined questions, substantiated by references to more existing research. It's very easy to fall into the "vagueness" trap, especially if your thesis subject is too broad. 
 
+To remind myself of the constant dilemma between **focus** and **exploration**, I'll end with a quote from Maryam Mirzaei's research on PhD research[^4]:
+
+> In fact, figuring out the scope is the prime challenge of completing a PhD. (...) The ambiguity of scope can also manifest itself in lack of positioning. Not having a clear overall argument is an important reason for PhD failure. The project 'thesis', the story and the new idea, spread too widely and too thinly can result in failure. 
+
 [^1]: Radermacher, Alex, and Gursimran Walia. "Gaps between industry expectations and the abilities of graduates." Proceeding of the 44th ACM technical symposium on Computer science education. ACM, 2013.
 [^2]: Sedelmaier, Yvonne, and Dieter Landes. "Software engineering body of skills (SWEBOS)." Global Engineering Education Conference (EDUCON), 2014 IEEE. IEEE, 2014.
 [^3]: Duckworth, Angela L., and David Scott Yeager. "Measurement matters: Assessing personal qualities other than cognitive ability for educational purposes." Educational Researcher 44.4 (2015): 237-251.
+[^4]: M Mirzaei, VJ Mabin. "The PhD in light of Project Management." Proceedings of the 2013 Joint NZSA+ORSNZ Conference, 2013. 
