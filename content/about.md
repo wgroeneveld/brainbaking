@@ -7,17 +7,19 @@ disableComments: true
 <hr/>
 And I have a deep passion to inspire others on everything that drives me. I like to think of myself as one of those _polymaths_ or Rennaissance Men:
 
-> Renaissance man (noun) - a person with many talents or areas of knowledge.
+> Renaissance man (noun) - a person with many talents or areas of knowledge.[^2]
 
-I used to be only good at programming because I thought, as a Master in IT, you specialize instead of generalize. But the more I did with computers, the more my hands itched to do something else. So nowadays I love to go wide and pass on that enthousiasm for knowledge on any level.
+Professionally, I am a PhD researcher at the [Faculty of Engineering Technology](https://iiw.kuleuven.be/english), KU Leuven. I have been an experienced software engineer for 11 years before that, taking on various roles from agile coaching to technical lead. I am not only interested in technical software development, but also in what happens at non-cognitive, human level when developing software together. 
+
+I used to be only good at programming because I thought, as a Computer Scientist, you specialize instead of generalize. But the more I worked with computers, the more my hands itched to do something else. So nowadays I love to go wide and pass on that enthousiasm for knowledge on any level.
 
 Those areas of knowledge include:
 
 #### Software development
 
-* Test your stuff before writing your code! I’m a heavy Test Driven Development (TDD) fanboy and I bark at those who don’t! I teach agile software engineering on multiple occasions, ranging from colleagues to schools.
-* I love dynamic languages. I also love converting the haters to the dark side. I teach javascript as a dynamic and functional language - it helps to create your own funky labs to people get more engaged.
-* Pair programming used as a tool to learn from each other and to improve code quality are two values I believe in.
+* Test your stuff before writing your code! I’m a heavy Test Driven Development (TDD) fan and I bark at those who don’t. I teach agile software engineering techniques, in both industry and academia.
+* I love dynamic languages. I have taught Javascript as a dynamic and functional language. Every excuse to write in something dynamic is a good one.
+* Pair programming used as a tool to learn from each other and to improve code quality are two values I firmly believe in.
 
 Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://github.com/wgroeneveld) or [<i class='fa fa-paperclip'></i>&nbsp;Curriculum Vitae](/files/groeneveldw_cv.pdf) in Dutch.
 
@@ -28,12 +30,13 @@ Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://git
 
 #### Writing and philosophizing
 
-* A [fountain pen addict](/post/fountain-pens-first-look/) and avid [<i class='fa fa-pencil'></i>&nbsp;journaler](/post/journaling-in-practice/)
+* I'm a [fountain pen addict](/post/fountain-pens-first-look/) and avid [<i class='fa fa-pencil'></i>&nbsp;journaler](/post/journaling-in-practice/).
 * This website[^1] is the ideal base for writing down my thoughts about virtually anything, primarly intended to amuse myself and not others.
+* I like to integrate Philosophical and Psychological approaches into my research. 
 
 #### Drawing
 
-* Starting out to [learn](/post/teaching-yourself-to-draw/) how to use ink other than writing. 
+* I'm just starting to [learn](/post/teaching-yourself-to-draw/) how to use ink other than for writing purposes. 
 
 ## Where good ideas come from: Books
 
@@ -49,4 +52,7 @@ These are the latest 12 books I've read:
 </div>
 <script src="https://www.goodreads.com/review/grid_widget/5451893.Wouter's%20bookshelf:%20read?cover_size=medium&hide_link=&hide_title=&num_books=12&order=d&shelf=read&sort=date_added&widget_id=1496758344" type="text/javascript" charset="utf-8"></script>
 
+<p>&nbsp;</p>
+
 [^1]: This website uses an [anonymized IP](https://support.google.com/analytics/answer/2763052?hl=en) form of Google Analytics for the sole purpose of tracking website traffic. 
+[^2]: [https://en.wikipedia.org/wiki/Polymath](https://en.wikipedia.org/wiki/Polymath)
