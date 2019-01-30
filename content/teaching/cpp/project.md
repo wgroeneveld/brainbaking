@@ -6,6 +6,10 @@ disableComments: true
 
 &laquo;&nbsp;[Terug naar Software ontwerp in C/C++](/teaching/cpp)<br/>
 
+## Project resultaten 2018 - 2019
+
+{{< vimeo 314203871 >}}
+
 ## Project opdracht
 
 Om jullie recent bijgeslepen object-geörienteerde technieken te laten zien gaan jullie een **GBA spel** ontwerpen en ontwikkelen in C++11. De focus van de opdracht ligt niet op correcte low-level IO mapping maar op kritisch denken en testen zoals gezien in [labo 7](/teaching/cpp/labo-7). Uiteraard komen zowel pointers en GBA programming technieken van de vroegere labo's, als C++ class inheritance en abstractie lagen uit de latere labo's aan bod. 
