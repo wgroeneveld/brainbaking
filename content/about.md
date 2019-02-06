@@ -1,15 +1,14 @@
 ---
+title: "Hi, I’m Wouter Groeneveld"
 bigimg: /img/About Me.jpg
 disableComments: true
 ---
 
-## Hi, I’m Wouter Groeneveld
-<hr/>
 And I have a deep passion to inspire others on everything that drives me. I like to think of myself as one of those _polymaths_ or Rennaissance Men:
 
 > Renaissance man (noun) - a person with many talents or areas of knowledge.[^2]
 
-Professionally, I am a PhD researcher at the [Faculty of Engineering Technology](https://iiw.kuleuven.be/english), KU Leuven. I have been an experienced software engineer for 11 years before that, taking on various roles from agile coaching to technical lead. I am not only interested in technical software development, but also in what happens at non-cognitive, human level when developing software together. 
+Professionally, I am a PhD researcher at the [Faculty of Engineering Technology](https://iiw.kuleuven.be/english), KU Leuven. I have been an experienced software engineer for 11 years before that, taking on various roles from agile coaching to technical lead. I am not only interested in technical software development, but also in what happens at **non-cognitive, human level** when developing software _together_. 
 
 I used to be only good at programming because I thought, as a Computer Scientist, you specialize instead of generalize. But the more I worked with computers, the more my hands itched to do something else. So nowadays I love to go wide and pass on that enthousiasm for knowledge on any level.
 

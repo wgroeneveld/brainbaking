@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://brainbaking.com/post/competences-and-certificates/</loc>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/phd-iteration-2/</loc>
     <lastmod>2019-01-09T13:46:34+01:00</lastmod>
   </url>
@@ -288,11 +293,6 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/about/</loc>
-    <lastmod>2019-01-16T12:11:50+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://brainbaking.com/teaching/cpp/slides-1/</loc>
   </url>
   
@@ -334,7 +334,7 @@
   
   <url>
     <loc>https://brainbaking.com/</loc>
-    <lastmod>2019-01-09T13:46:34+01:00</lastmod>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -365,6 +365,12 @@
   <url>
     <loc>https://brainbaking.com/tags/c&#43;&#43;/</loc>
     <lastmod>2018-08-06T11:34:08+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/certificates/</loc>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -401,6 +407,12 @@
   <url>
     <loc>https://brainbaking.com/tags/collaboration/</loc>
     <lastmod>2018-04-27T12:00:07+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/competences/</loc>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -495,6 +507,11 @@
     <loc>https://brainbaking.com/tags/groovy/</loc>
     <lastmod>2018-04-27T15:37:08+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/about/</loc>
+    <lastmod>2019-01-16T12:11:50+01:00</lastmod>
   </url>
   
   <url>
@@ -618,7 +635,7 @@
   
   <url>
     <loc>https://brainbaking.com/tags/phd/</loc>
-    <lastmod>2019-01-09T13:46:34+01:00</lastmod>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -713,7 +730,7 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/project/</loc>
-    <lastmod>2018-12-05T11:00:35+01:00</lastmod>
+    <lastmod>2019-01-30T14:52:16+01:00</lastmod>
   </url>
   
   <url>

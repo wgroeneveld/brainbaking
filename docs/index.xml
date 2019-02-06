@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Thu, 03 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 05 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IT Competences and Certificates</title>
+      <link>https://brainbaking.com/post/competences-and-certificates/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/competences-and-certificates/</guid>
+      <description>My research on soft skills in software engineering has brought me to many shady places so far. These places are dark, murky, and carry the rotten smell of mold. Welcome to the wonderful world of &amp;ldquo;you&amp;rsquo;re doing it wrong&amp;ldquo;: professional competence frameworks. To add more strength to my point, the header image of this article is a generic one, grabbed from Pexels, using the search term &amp;ldquo;corporate&amp;rdquo;. Can it be any more enterprise-y?</description>
+    </item>
     
     <item>
       <title>A Ph.D. Thesis: Iteration 2</title>
@@ -571,17 +580,6 @@ There have been a lot of love letters to big cities here on Medium recently. I n
     
     <item>
       <title></title>
-      <link>https://brainbaking.com/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/about/</guid>
-      <description>Hi, I’m Wouter Groeneveld  And I have a deep passion to inspire others on everything that drives me. I like to think of myself as one of those polymaths or Rennaissance Men:
- Renaissance man (noun) - a person with many talents or areas of knowledge.1
- Professionally, I am a PhD researcher at the Faculty of Engineering Technology, KU Leuven. I have been an experienced software engineer for 11 years before that, taking on various roles from agile coaching to technical lead.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://brainbaking.com/teaching/cpp/slides-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
@@ -638,6 +636,17 @@ mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  gr
 Neem ook eens een kijkje bij de Installatieinstructies!
 Problemen met build omgevingen SH.exe was found in your path Fout:
  sh.exe was found in your PATH, here: C:/Program Files/Git/user/bin/sh.exe For MinGW make to work correctly sh.exe must NOT be in your path.  Oorzaak: je Cygwin /bin folder zit in de PATH omgevingsvariabele, terwijl je MinGW gebruikt als compilatieomgeving. Verwijder de Cygwin bin folder.</description>
+    </item>
+    
+    <item>
+      <title>Hi, I’m Wouter Groeneveld</title>
+      <link>https://brainbaking.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/about/</guid>
+      <description>And I have a deep passion to inspire others on everything that drives me. I like to think of myself as one of those polymaths or Rennaissance Men:
+ Renaissance man (noun) - a person with many talents or areas of knowledge.1
+ Professionally, I am a PhD researcher at the Faculty of Engineering Technology, KU Leuven. I have been an experienced software engineer for 11 years before that, taking on various roles from agile coaching to technical lead.</description>
     </item>
     
     <item>
