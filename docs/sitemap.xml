@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://brainbaking.com/post/teaching-oo-with-gba/</loc>
+    <lastmod>2019-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/competences-and-certificates/</loc>
     <lastmod>2019-02-06T15:48:43+01:00</lastmod>
   </url>
@@ -334,7 +339,7 @@
   
   <url>
     <loc>https://brainbaking.com/</loc>
-    <lastmod>2019-02-06T15:48:43+01:00</lastmod>
+    <lastmod>2019-04-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -364,7 +369,7 @@
   
   <url>
     <loc>https://brainbaking.com/tags/c&#43;&#43;/</loc>
-    <lastmod>2018-08-06T11:34:08+02:00</lastmod>
+    <lastmod>2019-04-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -494,6 +499,12 @@
   <url>
     <loc>https://brainbaking.com/tags/functional-programming/</loc>
     <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/gba/</loc>
+    <lastmod>2019-04-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -730,7 +741,7 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/project/</loc>
-    <lastmod>2019-01-30T14:52:16+01:00</lastmod>
+    <lastmod>2019-03-07T08:44:14+01:00</lastmod>
   </url>
   
   <url>
@@ -757,7 +768,7 @@
   
   <url>
     <loc>https://brainbaking.com/tags/teaching/</loc>
-    <lastmod>2018-08-13T14:01:25+02:00</lastmod>
+    <lastmod>2019-04-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

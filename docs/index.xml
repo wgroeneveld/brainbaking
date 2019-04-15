@@ -8,10 +8,20 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Tue, 05 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Teaching Object-Oriented design using the GBA</title>
+      <link>https://brainbaking.com/post/teaching-oo-with-gba/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/teaching-oo-with-gba/</guid>
+      <description>Electrical Engineering students have to work through a programming course in their third year at KU Leuven, a course called &amp;lsquo;Software Design in C/C++&amp;rsquo;. This course is one of the things I inherited from my retired colleague when I started working for the University. As is the case with most programming courses, it&amp;rsquo;s contents was boring as hell.
+So, instead of simply making minor adjustments to the syllabus and calling it a day, in the summer of 2018 I decided to throw everything in the begin and start over - hooray, a greenfield project!</description>
+    </item>
     
     <item>
       <title>IT Competences and Certificates</title>
