@@ -10,7 +10,7 @@ And I have a deep passion to inspire others on everything that drives me. I like
 
 Professionally, I am a PhD researcher at the [Faculty of Engineering Technology](https://iiw.kuleuven.be/english), KU Leuven. I have been an experienced software engineer for 11 years before that, taking on various roles from agile coaching to technical lead. I am not only interested in technical software development, but also in what happens at **non-cognitive, human level** when developing software _together_. 
 
-I used to be only good at programming because I thought, as a Computer Scientist, you specialize instead of generalize. But the more I worked with computers, the more my hands itched to do something else. So nowadays I love to go wide and pass on that enthousiasm for knowledge on any level.
+I used to be only good at programming because I thought, as a Computer Scientist, you specialize instead of generalize. But the more I worked with computers, the more my hands itched to do something else. So nowadays I love to go wide and pass on that enthusiasm for knowledge on any level.
 
 Those areas of knowledge include:
 
@@ -30,7 +30,7 @@ Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://git
 #### Writing and philosophizing
 
 * I'm a [fountain pen addict](/post/fountain-pens-first-look/) and avid [<i class='fa fa-pencil'></i>&nbsp;journaler](/post/journaling-in-practice/).
-* This website[^1] is the ideal base for writing down my thoughts about virtually anything, primarly intended to amuse myself and not others.
+* This website[^1] is the ideal base for writing down my thoughts about virtually anything, primarily intended to amuse myself and not others.
 * I like to integrate Philosophical and Psychological approaches into my research. 
 
 #### Drawing

@@ -12,7 +12,7 @@ published: true
 
 After reading the famed books [The Book of five rings](https://www.goodreads.com/book/show/867247.A_Book_of_Five_Rings) By Miyamoto Musashi and the [Life-giving sword](https://www.goodreads.com/book/show/364734.The_Life_Giving_Sword) By Yagyu Munenori, I started making connections between the teachings of the art of war and the teachings of any other craft. Yagyu clearly mentions the state of mind required to survive in battle can be used in any other profession to your advantage as well. 
 
-The back of the book states that "every manager, seeker of life wisdom and practician of martial arts should use this". I have no clue why only a manager could benefit from the words written in 1643. Yagyū's work is much more zen-inspired than Musashi's and it does require you to see through some technical martial arts terms in orde to see why one could leverage ideas from these Japanese sword experts to your own advantage, in the present - 2017.
+The back of the book states that "every manager, seeker of life wisdom and practician of martial arts should use this". I have no clue why only a manager could benefit from the words written in 1643. Yagyū's work is much more zen-inspired than Musashi's and it does require you to see through some technical martial arts terms in order to see why one could leverage ideas from these Japanese sword experts to your own advantage, in the present - 2017.
 
 ### Learning
 
@@ -27,10 +27,10 @@ This looks like an interpretation of "[Shu - Ha - Ri](https://en.wikipedia.org/w
 In martial arts, there are 3 stages to learning mastery:
 
 1. shu - "obey" - follow the rules until they sink in. You have no idea why, or what you're doing. Like in cooking, you're strictly following a recipe. Like in learning to drive, you're shifting gears but you have to think on how to handle the shift stick.
-2. ha - "detatch" - breaking the rules. After following them, you contemplate on the rules and find loopholes and start to break them down.
+2. ha - "detach" - breaking the rules. After following them, you contemplate on the rules and find loopholes and start to break them down.
 3. ri - "leave" - there are no more techniques, everything has become intuition.
 
-The Shu-Ha-Ri concept may come from martial arts, but it seems to have found it's way to [software development](https://martinfowler.com/bliki/ShuHaRi.html) according to Martin Fowler and Alistair Cockburn. They simply rephrase everything to be applicable to software development. You could go one step further and generalise it into learning **any craft**, not just martial arts or programming.
+The Shu-Ha-Ri concept may come from martial arts, but it seems to have found it's way to [software development](https://martinfowler.com/bliki/ShuHaRi.html) according to Martin Fowler and Alistair Cockburn. They simply rephrase everything to be applicable to software development. You could go one step further and generalize it into learning **any craft**, not just martial arts or programming.
 
 1. I need clear steps in order to do something. I need context.
 2. I am starting to understand the context and can do something myself.
@@ -80,7 +80,7 @@ If I think about software engineering, I can acknowledge that focusing (on one t
 
 In order to move from Ha to Ri, you must not only practice a lot but also understand the why and the how. Yagyū Munenori calls it **seeing the possibilities and intentions**. There are maybe a hundred sword positions but only one will help you win. After learning something, contemplating on what you've learned allows you to unlock it's greater potential. Plato and Aristotle were great Western thinkers and share this vision with their Eastern counterparts. Especially Yagyū talks a lot about the like mindedness of buddhism and martial arts. 
 
-One thing that struck me: masters in martial arts usally became priests after their bloody careers. Warriors seek advice in deeper understanding of everything and they find it with buddhism masters. The greatest export product of Japan is not the dazzling skill of the sword from masters like Musashi, but the enlightening mindset of zen. Why else would a warrior seek advice with a monk, and not a monk seek advice with a warrior? Why else would masters like Yagyū Munenori keep on making comparisons between martial arts and zen? 
+One thing that struck me: masters in martial arts usually became priests after their bloody careers. Warriors seek advice in deeper understanding of everything and they find it with buddhism masters. The greatest export product of Japan is not the dazzling skill of the sword from masters like Musashi, but the enlightening mindset of zen. Why else would a warrior seek advice with a monk, and not a monk seek advice with a warrior? Why else would masters like Yagyū Munenori keep on making comparisons between martial arts and zen? 
 
 I am convinced that in order for you to get your skill level to the next level, you must contemplate on what you have learned. Stop practicing and developing (rule #2) and don't forget understanding (rule #5) and becoming aware (rule #7). Of course all those rules are intertwined within another. 
 
