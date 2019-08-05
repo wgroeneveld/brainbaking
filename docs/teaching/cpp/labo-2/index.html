@@ -67,10 +67,11 @@ In onderstaande schematische voorbeelden zijn de volgende concepten expliciet te
     "datePublished": "2018-10-25 15:45:12 &#43;0200 CEST",
     "dateModified" : "2018-10-25 15:45:12 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-2/",
-    "wordCount" : "1980",
+    "wordCount" : "2018",
     "keywords" : [ "Labo 2: Pointers in C en C&#43;&#43;", "teaching" ]
 }
 </script>
+
 
 
 <script>
@@ -80,6 +81,7 @@ In onderstaande schematische voorbeelden zijn de volgende concepten expliciet te
   ga('send', 'pageview');
 </script>
 <script async src='//www.google-analytics.com/analytics.js'></script>
+
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -139,18 +141,6 @@ In onderstaande schematische voorbeelden zijn de volgende concepten expliciet te
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.53" />
-        
-
-        
-        
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45748221-1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments)};
-          gtag('js', new Date());
-
-          gtag('config', 'UA-45748221-1');
-        </script>
         
     </head>
 
@@ -403,11 +393,13 @@ graph LR;
 
 </div>
 
-<p>Waar wijst een nieuwe pointer naar die nog niet geïnstantieerd is? Naar <code>0</code>:</p>
+<p>Waar wijst een nieuwe pointer naar die nog niet geïnstantieerd is?:</p>
 
 <pre><code class="language-C">int *ptr;
-printf(&quot;%d&quot;, *ptr); // print 0
+printf(&quot;%d&quot;, *ptr); // print -122O4735835
 </code></pre>
+
+<p>Whoeps. Merk op dat, afhankelijk van de compiler C implementatie (VC++, clang, GNU C, &hellip;), een ongeïnitialiseerde pointer naar <code>0</code> <em>kan</em> evalueren. Ga daar in geen geval van uit, en ken altijd de waarde <code>NULL</code> toe: <code>int *ptr = NULL;</code>.</p>
 
 <p><code>NULL</code> is een platform-afhankelijke macro die in C verwijst naar 0, meestal in de vorm van een void pointer. Een <code>void*</code> pointer kan naar eender welk type verwijzen en wordt meestal gebruikt om low-level memory aan te spreken, zoals we zullen zien bij de GBA.</p>
 

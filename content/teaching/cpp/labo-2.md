@@ -111,12 +111,14 @@ graph LR;
     B --> |ref| C[jong<br/>10]
 {{< /mermaid >}}
 
-Waar wijst een nieuwe pointer naar die nog niet geïnstantieerd is? Naar `0`:
+Waar wijst een nieuwe pointer naar die nog niet geïnstantieerd is?:
 
 ```C
 int *ptr;
-printf("%d", *ptr); // print 0
+printf("%d", *ptr); // print -122O4735835
 ```
+
+Whoeps. Merk op dat, afhankelijk van de compiler C implementatie (VC++, clang, GNU C, ...), een ongeïnitialiseerde pointer naar `0` _kan_ evalueren. Ga daar in geen geval van uit, en ken altijd de waarde `NULL` toe: `int *ptr = NULL;`.
 
 `NULL` is een platform-afhankelijke macro die in C verwijst naar 0, meestal in de vorm van een void pointer. Een `void*` pointer kan naar eender welk type verwijzen en wordt meestal gebruikt om low-level memory aan te spreken, zoals we zullen zien bij de GBA.
 
