@@ -447,9 +447,44 @@ We gebruiken de UNIX GNU `gcc` compiler om C soure files om te zetten in binarie
 
 Door het gebrek aan een doelbestandsnaam maakt de compiler een bestand "a.out" dat je kan uitvoeren. Met de "-o" flag kan je dit specifiëren. Heb je iets meer te linken, zet dan alles in een rijtje achter elkaar.
 
-Er zijn echter nog een hoop compiler opties die [hier](https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html) staan waar je eens mee kan spelen.
+Er zijn echter nog veel compiler opties die [hier](https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html) staan, waar je eens mee kan spelen.
 
-### Herhaaldelijk compileren: een scriptje
+### Wat is het verschil tussen GNU GCC en Clang en VS Cl?
+
+De C programmeertaal is door verschillende bedrijven en personen geïmplementeerd: er bestaan dus verschillende compilers op verschillende besturingssystemen, die allemaal een `.c` file omzetten in native binaries voor dat systeem. In een poging om compilers te standardiseren, werd er de **[ANSI C standaard](https://en.wikipedia.org/wiki/ANSI_C)** uitgerold, die beschrijft wat een C compiler moet kunnen en wat niet. 
+
+De bekendste C compilers zijn de GNU GCC compiler (GNU Compiler Collection) en Clang die de LLVM infrastructuur gebruikt. `gcc --version` geeft op mijn MacBook Air het volgende terug:
+
+<pre>
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 6.0 (clang-600.0.56) (based on LLVM 3.5svn)
+Target: x86_64-apple-darwin15.6.0
+Thread model: posix
+</pre>
+
+Dit verraadt dat mijn `gcc` commando _niet_ de GCC, maar de Clang implementatie gebruikt. Dat heeft wel degelijk een **grote impact** op het compileren én uitvoeren van code. Probeer het volgende eens te compileren in GNU gcc:
+
+```C
+#include <stdio.h>
+#include <string.h>
+char* test(char hey[]) {
+    char heykes[strlen(hey)];
+    strcpy(heykes, hey);
+    return heykes;
+}
+
+int main() {
+    printf("%s", test("hoi hoe ist?"));
+}
+```
+
+De fout zit in `test()`, je kan geen lokale variabele als pointer teruggeven, tenzij je die op de heap zet met `malloc()`. De output zal `(null)` (niets) zijn. In Clang is de output `�@Ht�` (ongeldige karakters uit het geheugen). Dat lijkt een klein verschil, maar kan grote gevolgen hebben. 
+
+Wij beperken ons tijdens de lessen tot de GNU gcc compiler, zowel op Windows via MinGW, als op Linux. Nieuwsgierigen kunnen op [https://godbolt.org/](https://godbolt.org/) de disassembly inspecteren van verschillende compilers om zo de nuanceverschillen te ontdekken. 
+
+### Herhaaldelijk compileren
+
+#### Met een scriptje
 
 Het is vervelend om de hele tijd hetzelfde commando te moeten typen, dus een simpel alternatief is je gcc commando in een shell script steken:
 
@@ -458,7 +493,7 @@ Het is vervelend om de hele tijd hetzelfde commando te moeten typen, dus een sim
 clear && gcc -o mijnding source.c && ./mijnding
 ```
 
-### Herhaaldelijk compileren: Makefiles
+#### Met Makefiles
 
 In de C/C++ wereld bestaat er zoiets als een `Makefile` dat definiëert welke source files gecompileerd moeten worden, en in welke volgorde. Dit is handig voor grote applicaties waarbij een overzicht moet bewaard worden.
 
@@ -533,6 +568,8 @@ Ubuntu's `apt-get` package manager heeft niet altijd de laatste versie van CMake
 Je hebt het pointer symbool `*` in de oefeningen enkel nodig om een array terug te geven, zoals de omnom functie. In Java zou dat gewoon `char[] omnom(char[] zin)` zijn - merk op waar de vierkante haakjes precies staan: achter het type! In C is dat achter de naam van de variable.
 
 Hint: denk aan de [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Writing-C.html). De [C++ Style Guide](https://google.github.io/styleguide/cppguide.html) van Google kan je ook eens bekijken. Merk op dat in C methodes _snake-cased_ zijn: `mijn_mooie_methode` - ten opzicht van C++ en Java's _camel-casing_: `mijnMooieMethode`.
+
+Je hoeft nog _geen rekening_ te houden met memory leaks.
 
 C online compileren kan op [rextester.com](http://rextester.com/l/c_online_compiler_clang) of oefenen op [repl.it](https://repl.it/repls/EntirePowerfulAdmins).
 

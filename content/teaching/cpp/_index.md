@@ -9,7 +9,7 @@ disableList: true
     <img src="/img/kul.svg" /><br/>
     <img src="/img/uhasselt.svg" style="width: 165px;"/>
 </span>
-Laatste aanpassingen voor academiejaar _2018 - 2019_.
+Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 ## _Cursus notities_
 
@@ -49,7 +49,7 @@ De hoorcolleges en labo's lopen door elkaar. De theorie die aangeraakt wordt in 
 - **Lesgevers**:<br/>
 Coördinerend Verantwoordelijke: prof. dr. Kris Aerts - <a href="mailto:kris.aerts@kuleuven.be">kris.aerts@kuleuven.be</a><br/>
 Onderwijsassistent: Wouter Groeneveld - <a href="mailto:wouter.groeneveld@kuleuven.be">wouter.groeneveld@kuleuven.be</a>
-- **Kantoor**: [Quadri gebouw](https://www.ucll.be/studeren/student-aan-ucll/campussen/campus-diepenbeek), 1.06 
+- **Kantoor**: Technologiecentrum Diepenbeek, Groep ACRO, D.0.35. 
 - **Verplicht handboek**: [C++ Primer](https://www.goodreads.com/book/show/768080.C_Primer), Stanley B. Lippman
 
 #### Cursusbeschrijving
