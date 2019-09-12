@@ -1,6 +1,7 @@
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
+#include <stdio.h>	// print/in/out
+#include <stdlib.h> // rand() in gcc
+#include <string.h>	// malloc
+#include <time.h>	// rand() in clang
 
 struct Orc {
 	int aanval;
@@ -15,7 +16,7 @@ Orc vecht(Orc aanvaller, Orc verdediger) {
 }
 
 Orc* generate_orcs(int aantal) {
-	Orc leger[aantal];
+	Orc* leger = malloc(sizeof(Orc) * aantal);
 	for(int i = 0; i < aantal; i++) {
 		Orc beest;
 		beest.aanval = rand() % 21;

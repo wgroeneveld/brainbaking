@@ -590,6 +590,15 @@ There have been a lot of love letters to big cities here on Medium recently. I n
     
     <item>
       <title></title>
+      <link>https://brainbaking.com/teaching/cpp/project201819/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/project201819/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://brainbaking.com/teaching/cpp/slides-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
@@ -803,15 +812,13 @@ Voor sprites speelde een tilemap geen rol, voor grote achtergronden wel: het kos
     </item>
     
     <item>
-      <title>Software ontwerp in C/C&#43;&#43;: Project opdracht</title>
+      <title>Software ontwerp in C/C&#43;&#43;: Project opdracht 2019-20</title>
       <link>https://brainbaking.com/teaching/cpp/project/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/cpp/project/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
-Project resultaten 2018 - 2019   Project opdracht - tweede kans Dezelfde minimumvereisten gelden als hieronder. Werk met een nieuwe Github repository, en vertrek opnieuw vanaf de gba-sprite-engine. Geregistreerde tijd bijhouden is niet meer nodig.
-De opdracht is niet vrij te kiezen. Het criteria &amp;lsquo;originaliteit&amp;rsquo; zal beoordeeld worden op de manier waarop je deze vaste opdracht hebt ingekleurd.
-Opdracht beschrijving Ontwerp een Mario Party kloon.</description>
+Project opdracht Meer info volgt in de komende weken.</description>
     </item>
     
   </channel>

@@ -63,10 +63,10 @@ C is een imperatieve programmeertaal. Dat zal je bij het oefenen wel merken: we 
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-12-18 15:29:34 &#43;0100 CET",
-    "dateModified" : "2018-12-18 15:29:34 &#43;0100 CET",
+    "datePublished": "2019-09-12 16:18:53 &#43;0200 CEST",
+    "dateModified" : "2019-09-12 16:18:53 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-1/",
-    "wordCount" : "3268",
+    "wordCount" : "3535",
     "keywords" : [ "Labo 1: Introductie in C", "teaching" ]
 }
 </script>
@@ -680,9 +680,43 @@ graph TD
 
 <p>Door het gebrek aan een doelbestandsnaam maakt de compiler een bestand &ldquo;a.out&rdquo; dat je kan uitvoeren. Met de &ldquo;-o&rdquo; flag kan je dit specifiëren. Heb je iets meer te linken, zet dan alles in een rijtje achter elkaar.</p>
 
-<p>Er zijn echter nog een hoop compiler opties die <a href="https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html">hier</a> staan waar je eens mee kan spelen.</p>
+<p>Er zijn echter nog veel compiler opties die <a href="https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html">hier</a> staan, waar je eens mee kan spelen.</p>
 
-<h3 id="herhaaldelijk-compileren-een-scriptje">Herhaaldelijk compileren: een scriptje</h3>
+<h3 id="wat-is-het-verschil-tussen-gnu-gcc-en-clang-en-vs-cl">Wat is het verschil tussen GNU GCC en Clang en VS Cl?</h3>
+
+<p>De C programmeertaal is door verschillende bedrijven en personen geïmplementeerd: er bestaan dus verschillende compilers op verschillende besturingssystemen, die allemaal een <code>.c</code> file omzetten in native binaries voor dat systeem. In een poging om compilers te standardiseren, werd er de <strong><a href="https://en.wikipedia.org/wiki/ANSI_C">ANSI C standaard</a></strong> uitgerold, die beschrijft wat een C compiler moet kunnen en wat niet.</p>
+
+<p>De bekendste C compilers zijn de GNU GCC compiler (GNU Compiler Collection) en Clang die de LLVM infrastructuur gebruikt. <code>gcc --version</code> geeft op mijn MacBook Air het volgende terug:</p>
+
+<pre>
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 6.0 (clang-600.0.56) (based on LLVM 3.5svn)
+Target: x86_64-apple-darwin15.6.0
+Thread model: posix
+</pre>
+
+<p>Dit verraadt dat mijn <code>gcc</code> commando <em>niet</em> de GCC, maar de Clang implementatie gebruikt. Dat heeft wel degelijk een <strong>grote impact</strong> op het compileren én uitvoeren van code. Probeer het volgende eens te compileren in GNU gcc:</p>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+char* test(char hey[]) {
+    char heykes[strlen(hey)];
+    strcpy(heykes, hey);
+    return heykes;
+}
+
+int main() {
+    printf(&quot;%s&quot;, test(&quot;hoi hoe ist?&quot;));
+}
+</code></pre>
+
+<p>De fout zit in <code>test()</code>, je kan geen lokale variabele als pointer teruggeven, tenzij je die op de heap zet met <code>malloc()</code>. De output zal <code>(null)</code> (niets) zijn. In Clang is de output <code>�@Ht�</code> (ongeldige karakters uit het geheugen). Dat lijkt een klein verschil, maar kan grote gevolgen hebben.</p>
+
+<p>Wij beperken ons tijdens de lessen tot de GNU gcc compiler, zowel op Windows via MinGW, als op Linux. Nieuwsgierigen kunnen op <a href="https://godbolt.org/">https://godbolt.org/</a> de disassembly inspecteren van verschillende compilers om zo de nuanceverschillen te ontdekken.</p>
+
+<h3 id="herhaaldelijk-compileren">Herhaaldelijk compileren</h3>
+
+<h4 id="met-een-scriptje">Met een scriptje</h4>
 
 <p>Het is vervelend om de hele tijd hetzelfde commando te moeten typen, dus een simpel alternatief is je gcc commando in een shell script steken:</p>
 
@@ -690,7 +724,7 @@ graph TD
 clear &amp;&amp; gcc -o mijnding source.c &amp;&amp; ./mijnding
 </code></pre>
 
-<h3 id="herhaaldelijk-compileren-makefiles">Herhaaldelijk compileren: Makefiles</h3>
+<h4 id="met-makefiles">Met Makefiles</h4>
 
 <p>In de C/C++ wereld bestaat er zoiets als een <code>Makefile</code> dat definiëert welke source files gecompileerd moeten worden, en in welke volgorde. Dit is handig voor grote applicaties waarbij een overzicht moet bewaard worden.</p>
 
@@ -771,6 +805,8 @@ add_executable(testje main.cpp biblio.cpp biblio.h dieren.cpp dieren.h)
 <p>Je hebt het pointer symbool <code>*</code> in de oefeningen enkel nodig om een array terug te geven, zoals de omnom functie. In Java zou dat gewoon <code>char[] omnom(char[] zin)</code> zijn - merk op waar de vierkante haakjes precies staan: achter het type! In C is dat achter de naam van de variable.</p>
 
 <p>Hint: denk aan de <a href="https://www.gnu.org/prep/standards/html_node/Writing-C.html">GNU Coding Standards</a>. De <a href="https://google.github.io/styleguide/cppguide.html">C++ Style Guide</a> van Google kan je ook eens bekijken. Merk op dat in C methodes <em>snake-cased</em> zijn: <code>mijn_mooie_methode</code> - ten opzicht van C++ en Java&rsquo;s <em>camel-casing</em>: <code>mijnMooieMethode</code>.</p>
+
+<p>Je hoeft nog <em>geen rekening</em> te houden met memory leaks.</p>
 
 <p>C online compileren kan op <a href="http://rextester.com/l/c_online_compiler_clang">rextester.com</a> of oefenen op <a href="https://repl.it/repls/EntirePowerfulAdmins">repl.it</a>.</p>
 

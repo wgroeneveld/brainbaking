@@ -303,11 +303,21 @@ Opdracht volgt. Overdracht vanaf 12/20
 
 ___
 
-### Evaluatiecriteria?
+### 1/2de Project
 
-Verduidelijkt met voorbeelden. 
+#### Resultaat 2018-19
 
-Info volgt.
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/314203871" width="640" height="428" frameborder="0" allowfullscreen></iframe>
+
+___
+
+### 1/2de Project
+
+#### Evaluatiecriteria?
+
+Studenten evalueren mede-studenten! 
+
+Hoe? Info volgt.
 
 ---
 
