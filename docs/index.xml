@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Mon, 15 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>De zin en onzin van conferenties</title>
+      <link>https://brainbaking.com/essays/de-zin-en-onzin-van-conferenties/</link>
+      <pubDate>Mon, 23 Sep 2019 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/essays/de-zin-en-onzin-van-conferenties/</guid>
+      <description>Bedrijven zien conferenties vaak als een onnodige kost waar hun werknemers nauwelijks worden naar toe gestuurd. Meestal gaat dit keurig af van het jaarlijks opleidingsbudget, ook weer keurig verrekend en verdeeld per persoon. Als Piet graag drie dagen wenst te gaan, en Jan in hetzelfde team ook, ontstaat er al een probleem: wie gaat dan die grote hoeveelheid dagelijkse problemen opkuisen? Er wordt een compromis gesloten: Piet en Jan mogen elk slechts één dag gaan, en elk op één aparte dag van het evenement.</description>
+    </item>
     
     <item>
       <title>Teaching Object-Oriented design using the GBA</title>
@@ -590,15 +599,6 @@ There have been a lot of love letters to big cities here on Medium recently. I n
     
     <item>
       <title></title>
-      <link>https://brainbaking.com/teaching/cpp/project201819/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/teaching/cpp/project201819/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://brainbaking.com/teaching/cpp/slides-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
@@ -809,6 +809,18 @@ Abstracties creëren Als ontwikkelaar wil ik niet altijd bezig zijn met de juist
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++ &amp;raquo;&amp;nbsp;Naar de labo opgave
 Uit labo 4 weten we hoe het VRAM van de GBA in elkaar steekt: het bestaat uit char en screen blocks. Character blocks 0 tot en met 3 vanaf 0x6010000 zijn gereserveerd voor achtergrond lagen: dat is in totaal meer geheugen dan voor sprites. De Gameboy Advance voorziet aparte registers om de 4 achtergrond lagen te configureren.
 Voor sprites speelde een tilemap geen rol, voor grote achtergronden wel: het kost immers minder ruimte om de tile data apart op te slaan en in een map per tile te refereren naar die data.</description>
+    </item>
+    
+    <item>
+      <title>Software ontwerp in C/C&#43;&#43;: Project opdracht 2018-19</title>
+      <link>https://brainbaking.com/teaching/cpp/project201819/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/project201819/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
+Project resultaten 2018 - 2019   Project opdracht - tweede kans Dezelfde minimumvereisten gelden als hieronder. Werk met een nieuwe Github repository, en vertrek opnieuw vanaf de gba-sprite-engine. Geregistreerde tijd bijhouden is niet meer nodig.
+De opdracht is niet vrij te kiezen. Het criteria &amp;lsquo;originaliteit&amp;rsquo; zal beoordeeld worden op de manier waarop je deze vaste opdracht hebt ingekleurd.
+Opdracht beschrijving Ontwerp een Mario Party kloon.</description>
     </item>
     
     <item>
