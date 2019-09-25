@@ -38,6 +38,7 @@ ___
 * Verwijst naar hetzelfde adres in geheugen
 * Andere naam voor zelfde variabele
 * Constante!
+* Dit is **C++ syntax**! `g++` en niet `gcc`
 
 ```C
 int other_variable = 11;
@@ -55,6 +56,8 @@ ___
 * Verwijst naar dynamisch geheugen, **muteerbaar**
 * `string++` = volgend gealloceerde `char`
 * Geheugenadres op stack, variabele op heap
+
+? Zelfde als `char string[] = "bla blie";`?
 
 ___
 
@@ -112,8 +115,10 @@ ___
 
 ### Address-of VS reference type
 
-* `int *int_ptr = &other_int;` = get address of
-* `int &int_ref = other_int;` = declare reference of
+* `int *int_ptr = &other_int;` = get **address** of
+* `int &int_ref = other_int;` = declare **reference** of
+
+`int &int_ref` = C++ syntax!
 
 ___
 
@@ -283,11 +288,31 @@ typedef struct SomeStruct SomeStruct;
 SomeStruct instance = new SomeStruct();
 instance-> x = 5;
 ```
+
+`new` = C++ syntax!
+
 ___
 
-### Maar... With great power... 
+### Maar... With great power... ANSI C style
 
 Geheugen gebruikt? **Zelf opkuisen**!
+
+```C
+void some_function() {
+  SomeStruct instance = malloc(sizeof(SomeStruct));
+}
+// oeps: memory leak! geen manier meer om te verwijderen
+```
+
+=> `free(instance);`
+
+Java heeft **garbage collection**, C/C++ niet.
+
+___
+
+### Maar... With great power... C++ style
+
+Vervang `malloc()` door `new`
 
 ```C
 void some_function() {
@@ -296,9 +321,7 @@ void some_function() {
 // oeps: memory leak! geen manier meer om te verwijderen
 ```
 
-`delete instance;`
-
-Java heeft **garbage collection**, C/C++ niet.
+=> `delete instance;`
 
 ---
 
