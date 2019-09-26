@@ -288,7 +288,7 @@ Vergeet niet dat de eerste regel enkel geldig is in C++.
 2. Jij bent een brave bibliothecaris. En als brave bibliothecaris is het je taak om boeken alfabetisch te sorteren op achternaam. Laat de gebruiker een aantal achternamen ingeven, gescheiden door spatie (tip: [strtok](http://www.cplusplus.com/reference/cstring/strtok/), en druk dan gesorteerd de inventaris af. Uiteraard gebruik je pointers.
   - input: `lenaerts zwanskop aerts groeneveld`
   - output: `aerts groeneveld lenaerts zwanskop`
-3. Ohnee, je broer de stoute bibliothecaris is gearriveerd! Hij maakt een zootje avn de bibliotheek en sorteert graag omgekeerd van Z naar A, de smeerlap. Voorzie naast `void brave_bibliothecaris(char **auteurs, int aantal)` ook een `void stoute_bibliothecaris(char **auteurs, int aantal)` methode. Vraag de gebruiker eerst of hij stout of braaf geweest is. Gebruik functie pointers om te wisselen van bibliothecaris!
+3. Ohnee, je broer de stoute bibliothecaris is gearriveerd! Hij maakt een zootje van de bibliotheek en sorteert graag omgekeerd van Z naar A, de smeerlap. Voorzie naast `void brave_bibliothecaris(char **auteurs, int aantal)` ook een `void stoute_bibliothecaris(char **auteurs, int aantal)` methode. Vraag de gebruiker eerst of hij stout of braaf geweest is. Gebruik functie pointers om te wisselen van bibliothecaris!
   - input: `stout` (enter) `lenaerts zwanskop aerts groeneveld`
   - output: `zwanskop lenaerts groeneveld aerts`
 

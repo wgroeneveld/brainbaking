@@ -653,8 +653,9 @@ mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  gr
       <guid>https://brainbaking.com/teaching/cpp/faq/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
 Neem ook eens een kijkje bij de Installatieinstructies!
+MinGW installatie problemen Error RES Fout op Win omgevingen Zie ook https://sourceforge.net/p/mingw-w64/bugs/413/ - &amp;lsquo;oplossing&amp;rsquo; is een aantal keer hetzelfde bestand opnieuw te proberen downloaden &amp;amp; installeren. Antivirus die moeilijk doet kan ook een probleem zijn.
 Problemen met build omgevingen SH.exe was found in your path Fout:
- sh.exe was found in your PATH, here: C:/Program Files/Git/user/bin/sh.exe For MinGW make to work correctly sh.exe must NOT be in your path.  Oorzaak: je Cygwin /bin folder zit in de PATH omgevingsvariabele, terwijl je MinGW gebruikt als compilatieomgeving. Verwijder de Cygwin bin folder.</description>
+ sh.exe was found in your PATH, here: C:/Program Files/Git/user/bin/sh.</description>
     </item>
     
     <item>

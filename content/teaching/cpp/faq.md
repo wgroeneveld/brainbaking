@@ -8,6 +8,12 @@ disableComments: true
 
 Neem ook eens een kijkje bij de [Installatieinstructies!](/teaching/cpp/installaties)
 
+### MinGW installatie problemen
+
+#### Error RES Fout op Win omgevingen
+
+Zie ook [https://sourceforge.net/p/mingw-w64/bugs/413/](https://sourceforge.net/p/mingw-w64/bugs/413/) - 'oplossing' is een aantal keer hetzelfde bestand opnieuw te proberen downloaden & installeren. Antivirus die moeilijk doet kan ook een probleem zijn. 
+
 ### Problemen met build omgevingen
 
 #### SH.exe was found in your path
