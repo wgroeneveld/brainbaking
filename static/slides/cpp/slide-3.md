@@ -17,7 +17,7 @@ ___
 ### Ontwerp uitwerken: analyses
 
 <pre>
-ANAL#002: vacature bevat vereiste competentiess
+ANALY#002: vacature bevat vereiste competentiess
 
 Beschrijving: een potentiële sollicitant moet matchen met de vereiste competenties
 op een vacature. Het Een vacature kan één of meerdere competenties
@@ -31,6 +31,8 @@ Acceptatiecriteria:
 - Sollicitanten beschikken ook over competenties
 - Het matchen van een vacature op sollicitant gebeurt op basis daarvan
 </pre>
+
+**Beschrijving** & **Context** (1), **Acceptatiecriteria** (2).
 
 Hoe uitwerken tot code? 
 
@@ -80,24 +82,24 @@ ___
 ### Wat is **niet** clean?
 
 ```C
-int process(MyThing* obj, continue = 0) {
+int process(MyThing* obj, int cont = 0) {
   // printf("%s", starting the process");
   if(!obj->generate()) {
     return -1;
   }
   auto result = obj->generate();
-  if(continue) {
+  if(cont) {
     return result->generate();
   }
   return result;
 }
 ```
 
-WTF?
+Wat gebeurt hier? Een gokje?
 
 ___
 
-### Wat is **wel** clean?
+### Wat is **wél** clean?
 
 ```C
 Book& getBookByISBN(int isbn) {
@@ -109,6 +111,10 @@ Book& getBookByISBN(int isbn) {
 }
 ```
 
+Opnieuw:
+
+> Clean code is code that is **easy to understand** (1) and **easy to change** (2).
+
 ___
 
 <img src="/slides/cpp/img/wtf.png" />
@@ -119,13 +125,23 @@ ___
 
 Software **ontwerp** is:
 
-1. analyseren
-2. coderen
-3. testen
-4. onderhouden
-5. deployen
-6. ...
+<div style="width: 40%; float: left;">
+<ol>
+  <li>Plannen</li>
+  <li>Analyseren</li>
+  <li>Designen</li>
+  <li>Implementeren</li>
+  <li>Testen</li>
+  <li>Onderhouden</li>
+  <li>Deployen</li>
+  <li>...</li>
+</ol>
+<br/><br/>
 
+Meer dan enkel #4!
+</div>
+
+<img src="/slides/img/swdev.jpg" style="float: right; width: 50%" />
 ___
 
 ## Software testen
@@ -280,7 +296,12 @@ auto eik = Boom();  // (nog) géén klasse maar een instance
 Enkel **wat nodig is** omvormen!
 
 ```C
-class Eik : public Boom {}; // zou kunnen...
+class Eik : public Boom {
+public:
+  void hakOm();
+  void geefMeststof();
+};
+// zou kunnen, maar allemaal niet nodig!
 ```
 
 ___
@@ -291,6 +312,25 @@ ___
 
 Zie [Refactoring](https://www.goodreads.com/book/show/44936.Refactoring?ac=1&from_search=true) boek.
 
+___
+
+### Code smell voorbeeld: **Duplicatie**
+
+```C
+void processGetCustomerCall(Customer* c) {
+  setCallDone();
+  setUpSession();
+  service->saveCustomer(c);
+}
+int processPostCustomerCall(Customer* c) {
+  setCallDone();
+  setUpSession();
+  return service->saveCustomerWithHash(c);
+}
+```
+
+Generiek maken, methode uittrekken. 
+
 ---
 
 ## OO design "patterns"
@@ -299,7 +339,7 @@ Zie [Design Patterns](https://www.goodreads.com/book/show/85009.Design_Patterns?
 
 ___
 
-### Encapsulatie!
+### Pattern voorbeeld: **Encapsulatie**
 
 ```C
   volatile OAM_ATTR* paddle_sprite = &OAM_MEM[1];
@@ -329,6 +369,14 @@ Géén GBA **internals exposen**: werk high-level.
 ### Wees geen programmeur...
 
 Wees een **ingenieur**.
+
+___
+
+### Maar...
+
+Vermijd **overengineering**!
+
+![overengineering](/slides/img/overengineering.png)
 
 ---
 
