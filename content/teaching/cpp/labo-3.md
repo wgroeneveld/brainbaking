@@ -84,7 +84,7 @@ Prachtig, een rode, groene en blauwe pixel opgelicht!
 
 VRAM is een (short, 16-bit) pointer naar een adres, om de X en Y coördinaten te bepalen gebruiken we een formule `vram[X*WIDTH +Y]`. De oneindige lus zorgt er voor dat het spel niet plots "stopt" - vergeet niet dat er geen OS is, dus zo'n gevaarlijke code moet zelfs op de GBA.
 
-Kleueren zijn binaire nummers. De hoeveelheid aan bits geeft ons een idee hoeveel unieke kleuren we hebben. De originele Gameboy had 2 bits: zwart, wit, en twee schakeringen van grijs tussenin. De GBA heeft er 15 (1 bit ongebruikt), met 5 bits per interval:
+Kleuren worden voorgesteld als een aaneenschakeling van binaire nummers. Het aantal bits geeft ons een idee hoeveel unieke kleuren we hebben. De originele Gameboy had 2 bits: zwart, wit, en twee schakeringen van grijs tussenin (`00`, `01`, `10`, `11`). De GBA heeft er 15 (1 bit ongebruikt), met 5 bits per interval:
 
 {{<mermaid>}}
 graph LR;
