@@ -63,10 +63,10 @@ De GBA is een goede keuze om de kracht (en zwakheden) van C te demonstreren. Er 
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-10-25 15:45:12 &#43;0200 CEST",
-    "dateModified" : "2018-10-25 15:45:12 &#43;0200 CEST",
+    "datePublished": "2019-10-03 10:15:53 &#43;0200 CEST",
+    "dateModified" : "2019-10-03 10:15:53 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-3/",
-    "wordCount" : "2052",
+    "wordCount" : "2060",
     "keywords" : [ "Labo 3: Introductie in GBA Programming", "teaching" ]
 }
 </script>
@@ -386,7 +386,7 @@ graph LR;
 
 <p>Oké, we hebben en &ldquo;spel&rdquo; geschreven met een blauwe achtergrond. Hoe passen we dit aan afhankelijk van een bepaalde toetsencombinatie? Volgens de GBA Keypad input <a href="http://www.akkit.org/info/gbatek.htm#gbakeypadinput">specificaties</a> moeten we hiervoor IO register <code>0x04000130</code> uitlezen.</p>
 
-<p>Bit 6 staat bijvoorbeeld voor &ldquo;up&rdquo;. <a href="https://www.binaryhexconverter.com/binary-to-hex-converter">Geconverteerd van binary naar hex</a> levert <code>1000000</code> (6de bit op 1, beginnend vanaf 0) ons <code>40</code> op. We kunnen key up dus definiëren als <code>#define KEY_UP 0x0040</code>. Je kan ook dynamisch 6 bits shiften: <code>#define KEY_UP (1 &lt;&lt; 6)</code>. Een derde mogelijkheid is in machten van 2 te werken (bits): <code>#define KEY_UP 64</code>.</p>
+<p>Bit 6 staat bijvoorbeeld voor &ldquo;up&rdquo;. <a href="https://www.binaryhexconverter.com/binary-to-hex-converter">Geconverteerd van binary naar hex</a> levert <code>1000000</code>, ofwel <code>40</code> (dus <code>0x40</code>) op (6de bit op 1, beginnend vanaf bit nummer 0 in plaats van 1!). We kunnen key up dus definiëren als <code>#define KEY_UP 0x0040</code>. Je kan ook dynamisch 6 bits shiften: <code>#define KEY_UP (1 &lt;&lt; 6)</code>. Een derde mogelijkheid is in machten van 2 te werken (bits): <code>#define KEY_UP 64</code>.</p>
 
 <p>Het is een goed idee om maar 1x tijdens de game loop alle key states uit te lezen. Een mask die alle input bits checkt is daarvoor nodig:</p>
 

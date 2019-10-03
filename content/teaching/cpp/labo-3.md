@@ -153,7 +153,7 @@ Dit is wat je te zien krijgt:
 
 Oké, we hebben en "spel" geschreven met een blauwe achtergrond. Hoe passen we dit aan afhankelijk van een bepaalde toetsencombinatie? Volgens de GBA Keypad input [specificaties](http://www.akkit.org/info/gbatek.htm#gbakeypadinput) moeten we hiervoor IO register `0x04000130` uitlezen.
 
-Bit 6 staat bijvoorbeeld voor "up". [Geconverteerd van binary naar hex](https://www.binaryhexconverter.com/binary-to-hex-converter) levert `1000000` (6de bit op 1, beginnend vanaf 0) ons `40` op. We kunnen key up dus definiëren als `#define KEY_UP 0x0040`. Je kan ook dynamisch 6 bits shiften: `#define KEY_UP (1 << 6)`. Een derde mogelijkheid is in machten van 2 te werken (bits): `#define KEY_UP 64`.
+Bit 6 staat bijvoorbeeld voor "up". [Geconverteerd van binary naar hex](https://www.binaryhexconverter.com/binary-to-hex-converter) levert `1000000`, ofwel `40` (dus `0x40`) op (6de bit op 1, beginnend vanaf bit nummer 0 in plaats van 1!). We kunnen key up dus definiëren als `#define KEY_UP 0x0040`. Je kan ook dynamisch 6 bits shiften: `#define KEY_UP (1 << 6)`. Een derde mogelijkheid is in machten van 2 te werken (bits): `#define KEY_UP 64`.
 
 Het is een goed idee om maar 1x tijdens de game loop alle key states uit te lezen. Een mask die alle input bits checkt is daarvoor nodig:
 
