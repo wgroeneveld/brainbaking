@@ -813,6 +813,17 @@ Voor sprites speelde een tilemap geen rol, voor grote achtergronden wel: het kos
     </item>
     
     <item>
+      <title>Labo x: Design Patterns: Facade</title>
+      <link>https://brainbaking.com/teaching/ses/facade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/facade/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+&amp;ldquo;Facade&amp;rdquo; - Design Pattern Doelstelling  Scherm een complex stukje software af met behulp van een simpele interface Voorzie éénzelfde interface naar een set van verschillende mogelijke subsystemen. Een Facade is een high-level interface die mogelijks low-level systemen aanspreekt.  Dive Into Design Patterns: Facade
+Voorbeeld Opzet Stel dat we gegevens van de klant moeten versturen naar een overheidsinstantie. Die instantie beschikt jammer genoeg niet over voldoende budgetten om ook een cutting-edge server interface en implementatie aan te bieden.</description>
+    </item>
+    
+    <item>
       <title>Software ontwerp in C/C&#43;&#43;: Project opdracht 2018-19</title>
       <link>https://brainbaking.com/teaching/cpp/project201819/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

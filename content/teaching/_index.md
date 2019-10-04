@@ -14,9 +14,18 @@ Transforming knowledge into well-digestible material is <i class='fa fa-lightbul
     <img src="/img/uhasselt.svg" style="width: 165px;"/>
 </span>
 
-### KU Leuven - Faculty [Engineering Technology](https://iiw.kuleuven.be/english)
+### KU Leuven - Faculty of [Engineering Technology](https://iiw.kuleuven.be/english)
 
 <span></span>
+
+#### 2019 - present
+
+- [Software Engineering Skills](/teaching/ses/)<br/>
+	<small>
+		In this course you will learn the needed skills to successfully create, launch, and maintain a software project, according to the latest industrial practices. On micro level you will learn about properties of data structures and basic algorithms, and on macro level you will get to know how to maintain software, and how to use the right tools for the right job.<br/>
+		Second bachelor year course, specialization Electronics/ICT.  
+	</small>
+
 
 #### 2017 - present
 
