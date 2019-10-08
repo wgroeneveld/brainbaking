@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="Programming: a Creative Cognitive Process - Mapping creativity models to software development">
+	<meta content="Programming: a Creative Cognitive Process" property="og:title">
+	<meta content="Mapping creativity models to software development" property="og:description">
+
+
+
+  <meta content="creativity, phd" name="keywords">
+
+
+<meta property="og:url" content="https://brainbaking.com/post/creative-cognitive-processes/" />
+<meta property="og:type" content="website" />
+
+  <meta property="og:image" content="https://brainbaking.com//img/glasses.jpg" />
+
+
+
+
+
+  
+    <meta property="og:see_also" content="https://brainbaking.com/post/competences-and-certificates/" />
+  
+    <meta property="og:see_also" content="https://brainbaking.com/post/phd-iteration-2/" />
+  
+    <meta property="og:see_also" content="https://brainbaking.com/post/lean-doctorate/" />
+  
+
+<meta property="article:published_time" content="2019-10-08 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2019-10-08 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="post" />
+
+  <meta property="article:tag" content="creativity" />
+
+  <meta property="article:tag" content="phd" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://brainbaking.com/"
+    },
+    "articleSection" : "post",
+    "name" : "Programming: a Creative Cognitive Process",
+    
+      "headline" : "Mapping creativity models to software development",
+    
+    "description" : "My previous studies investigated which non-technical skills are currently being taught in software engineering education, and which are perceived as needed to excel in the industry. We found creativity to be one of the key skills that still seemed to be mostly ignored in higher education (at least in Computing). The term &lsquo;creativity&rsquo; is highly subjective, contextual, and vaguely defined (or not at all), so connecting the dots proves to be quite a challenge.",
+    
+      "inLanguage" : "en-US",
+    
+    
+    	"image": "https://brainbaking.com//img/glasses.jpg",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https://brainbaking.com/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-08 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-10-08 00:00:00 &#43;0000 UTC",
+    "url" : "https://brainbaking.com/post/creative-cognitive-processes/",
+    "wordCount" : "1982",
+    "keywords" : [ "creativity","phd","Programming: a Creative Cognitive Process", "post" ]
+}
+</script>
+
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Programming: a Creative Cognitive Process</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/llvm.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.53" />
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Programming: a Creative Cognitive Process</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+    <div class="jumbotron big-img" style='background-image: url("/img/glasses.jpg");'>
+        <div class="container">
+            &nbsp;
+        </div>
+    </div>
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/post/creative-cognitive-processes/">Programming: a Creative Cognitive Process</a>
+    </h3>
+    
+
+    
+    
+    
+        <h4>Mapping creativity models to software development</h4>
+        <h5>
+        	<span style="color: grey;">
+        		<span title="Created Date">
+                    <i class='fa fa-calendar'></i>&nbsp;8 October 2019
+                </span>&nbsp;|&nbsp;
+                <span title="Last Modified Date">
+                    <i class='fa fa-calendar-check-o'></i>&nbsp;8 October 2019
+                </span>
+    		</span>
+    	</h5>
+    
+
+
+    
+	   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+    
+    
+        <a href="https://brainbaking.com/tags/creativity"><kbd class="item-tag">creativity</kbd></a>
+    
+        <a href="https://brainbaking.com/tags/phd"><kbd class="item-tag">phd</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>My <a href="https://people.cs.kuleuven.be/~wouter.groeneveld/slr/">previous</a> <a href="https://people.cs.kuleuven.be/~wouter.groeneveld/delphi/">studies</a> investigated which non-technical skills are currently being taught in software engineering education, and which are perceived as needed to excel in the industry. We found creativity to be one of the key skills that still seemed to be mostly ignored in higher education (at least in Computing). The term &lsquo;creativity&rsquo; is highly subjective, contextual, and vaguely defined (or not at all), so connecting the dots proves to be quite a challenge.</p>
+
+<p>Software development <em>is</em> creating a software product, line by line. Therefore, software development is seen as one of the most creative endeavors people can embark in. There are no restrictions on physical laws, only the boundaries of your own imagination. And of course processing speed, Amazon Cloud costs, the willingness of others to collaborate, and so forth. But the given flexibility of software engineering is unique compared to other engineering disciplines. In civil engineering, you do not refactor a bridge in a few days, or adjust the angle of suspension hooks in mere seconds after a failing test. Of course, the heavy emphasis on theory and prototyping should help in avoiding these kinds of mistakes, but the point is: we software developers love making them.</p>
+
+<p>In fact, I think we are in love with failure.</p>
+
+<p>If you cannot fail, you cannot learn. And since failure is so easy (and hopefully fixing mistakes is also easy!), developers should love learning. The fact that the software world is ever-evolving does not make things easier. Since we are ever-creating, even in operation modus, the question is: how does creating, or rather <em>creativity</em>, work - applied to the field of software engineering? There is a lot of research on creativity in the field of (cognitive) psychology, resulting in a plethora of theoretical models, of which a few are easily transferable across domains.</p>
+
+<p>One of those models is Amabile&rsquo;s Componential Model of Creativity<sup class="footnote-ref" id="fnref:img-src-https-www-slideshare-net-medikawy-2005-how-to-kill-creativity-in-your-organization-14-knowledgeexibility-imaginationintrinsic-extrinsicThe-threecomponentsof-Creativityexpertisemotivationcreativethinkingskillswhere"><a href="#fn:img-src-https-www-slideshare-net-medikawy-2005-how-to-kill-creativity-in-your-organization-14-knowledgeexibility-imaginationintrinsic-extrinsicThe-threecomponentsof-Creativityexpertisemotivationcreativethinkingskillswhere">0</a></sup>:</p>
+
+<p><center>
+    <img src="/img/creativitymodel.jpg" alt="creativit model" />
+</center></p>
+
+<p>As deceptively simple as this looks, let us zoom in on each component and try to map these to the field of software development.</p>
+
+<h3 id="the-three-components-of-creativity">The Three Components of Creativity</h3>
+
+<h4 id="a-expertise-component">a. Expertise Component</h4>
+
+<p>An &lsquo;expert&rsquo; knows things a junior does not. By knowing, we are talking about several major parts:</p>
+
+<ol>
+<li><strong>Technical knowledge</strong>, (<code>33%</code>) such as:
+
+<ul>
+<li>Programming Languages</li>
+<li>(Enterprise) Patterns</li>
+<li>Principles such as Unit Testing</li>
+<li>Tooling, IDEs, shortcuts, &hellip;</li>
+</ul></li>
+<li><strong>Domain knowledge</strong>, such as:
+
+<ul>
+<li>Product-specific functional information</li>
+<li>Diverse experience (combined with tech. knowledge, <code>18%</code>)</li>
+</ul></li>
+<li><strong>Brilliance</strong>: general intelligence (<code>13%</code>)</li>
+<li><strong>Naivety</strong>: &lsquo;fresh&rsquo;/new to the problem at hand (<code>13%</code>)</li>
+</ol>
+
+<p>Knowing what an Observer pattern is also implies you have the capability to apply it to a given problem. These expertise parts reside in the yellow image, typically not overlapping other components. To be able to speak the language, one has first to learn the language. To learn anything, a certain degree of intelligence is required.</p>
+
+<h4 id="b-motivational-component">b. Motivational Component</h4>
+
+<p>A lack of motivation can be devastating to your mood and your willingness to solve things in the first place. The motivational component contains several layers of philosophical and psychological roots, not limited to simply intrinsic VS extrinsic motivation. This component is not specific too software development and very hard to foster within others (typically it is not sufficient to waive with green paper containing dollar sings&hellip;). <code>40%</code> is related to self-motivation.</p>
+
+<p>Motivation (and to a certain extend, the other components as well) is also influenced by an invisible component, namely <strong>environment</strong>. This could be the company culture you&rsquo;re working in, the mood of your colleagues, or family and friends. <code>30%</code> is related to the qualities of the group you are in, while <code>17%</code> is related to social skills.</p>
+
+<h4 id="c-creative-thinking-skills-component">c. Creative Thinking Skills Component</h4>
+
+<p>This is the most interesting component in my opinion, and also the most severely lacking for a lot of developers. Even if your expertise component is full of technical information, it is not worth anything if you do not know how to combine these using techniques called &lsquo;<em>creative thinking skills</em>&rsquo;. These skills allow you to successfully combine your expertise to hopefully create something new and novel (the classic definition of creativity).</p>
+
+<p>Typical creative skills are idea generation techniques such as <em>brainstorming</em>. However, according to Amabile<sup class="footnote-ref" id="fnref:ama"><a href="#fn:ama">1</a></sup>, this component contains <code>41%</code> personality (persistence, curiosity, energy), and <code>38%</code> special cognitive abilities (described as &lsquo;special talents in problem solving&rsquo;). Changing your personality is more challenging than learning &lsquo;special talents&rsquo;. A. Miller identified cognitive processes associated with creativity, of which these six are the most interesting to look at from our perspective <sup class="footnote-ref" id="fnref:mill"><a href="#fn:mill">2</a></sup>:</p>
+
+<blockquote>
+<h5 id="1-perspective-taking-looking-at-a-problem-from-different-angles">1. <em>Perspective Taking</em>: Looking at a problem from different angles</h5>
+</blockquote>
+
+<p>A classic theoretical example is applying the first step in the computational thinking process by reducing concrete problems (e.g. four colors) into it&rsquo;s abstract counterpart (bintrees, graphs).</p>
+
+<p>A more concrete example could be the following. You are responsible for implementing the generation of certain documents, which employees need to sign (interact with). Since you are used to think in terms of employers, you create a &lsquo;generate&rsquo; button for employers to click on, which will then send the documents to the employee. However, halfway through a colleague stops you and says &lsquo;wait, let us <em>look at the bigger picture</em> here. Is this the right location for the button? Why not let employees pull the documents instead of pushing? We already have such a system, let us find out.&rsquo; You both get up and walk to the domain model poster to re-evaluate what should be done.</p>
+
+<blockquote>
+<h5 id="2-imagery-imagining-potential-solutions-to-explore-the-potential">2. <em>Imagery</em>: Imagining potential solutions to explore the potential</h5>
+</blockquote>
+
+<p>For example, you are creating an API that will be used by other pieces of software within the company. You imagine it could be a simple HTTP POST. But as soon as you do that, you remember that hosting it will prove to be a challenge, and blocking unwanted calls or an overload of them will also cause problems. Then you imagine a service bus could work. Other endpoints could also hook into that. It would be easier to maintain.</p>
+
+<blockquote>
+<h5 id="3-idea-generation-generate-multiple-solutions-for-a-given-problem">3. <em>Idea generation</em>: Generate multiple solutions for a given problem</h5>
+</blockquote>
+
+<p>This one is quite straightforward. &lsquo;Okay, we need to query the customer DB for unknown addresses, but the table is huge. What options do we have?&rsquo; Take out a pencil and write down everything you can come up with. Cache the results after a first run? Create an index? Or cache customer related info at bootstrap? Create a cleanup script to run nightly? &hellip; Of course you are drawing on your expertise component here!</p>
+
+<p>The &lsquo;<em>five why&rsquo;s</em>&rsquo; could also fall within this category, generating different ideas and drilling down until you find the &lsquo;root cause&rsquo; of the problem. It could also be part of no. 4.</p>
+
+<blockquote>
+<h5 id="4-metaphorical-analogical-thinking">4. <em>Metaphorical/Analogical Thinking</em></h5>
+</blockquote>
+
+<p><strong>Connecting the current problem with related ones</strong>:</p>
+
+<p>&lsquo;So we need to create yet another GET service that queries our DB. Wait, <em>haven&rsquo;t we done this before?</em>&rsquo; Taking a look at previous problems and trying to relate it to your current one can yield interesting results, such as reworking the previous one to better fit your current one, or simply using methods/services/&hellip; from another problem that you could not come up with on your own.</p>
+
+<p>Over-familiarization is a well-known trap here. The adept you are at something, the less likely you will look at it differently and the more you will connect your problem with previously solved ones. In the end, everything will be done the same way, without experimenting with different approaches.</p>
+
+<p><strong>Use previously used solutions in a new way</strong>:</p>
+
+<p>Suppose you&rsquo;re really good at Java and you take on a new job as a C# developer. Congrats. Let&rsquo;s create an <code>enum</code>:</p>
+
+<pre><code class="language-C#">enum EmployeeDocumentState {
+    GENERATING,
+    GENERATED,
+    UPLOADED,
+    SIGNED,
+    REJECTED
+}
+</code></pre>
+
+<p>Now let us write some domain-driven code. We need a <code>CanEmployeeInteractWith()</code> method that, depending on certain states, decides if an employee can do things with the document. Whoops. No can do: an <code>enum</code> in C# is essentially an <code>int</code>, inherited from C. In Java, you can write methods on them. Static extensions to the rescue:</p>
+
+<pre><code class="language-C#">static class EmployeeDocumentStateExtensions {
+    public static bool CanEmployeeInteractWith(this EmployeeDocumentState state) {
+        // ...
+    }
+}
+
+var state = EmployeeDocumentState.SIGNED;
+if(state.CanEmployeeInteractWith()) {   // yes!
+    button.enable();
+}
+</code></pre>
+
+<p>In essence, you are drawing on your Java knowledge to enhance your C# code. You could also enhance C <code>struct</code>s with function pointers to emulate objects.</p>
+
+<p><strong>Combining dissimilar concepts into a new idea</strong>:</p>
+
+<p>Drawing from information from outside your own domain could also be useful and generate inventive solutions. In fact that is how Velcro got invented: by studying the abilities of insects to climb walls and &lsquo;stick&rsquo; to material.</p>
+
+<blockquote>
+<h5 id="5-incubation-letting-the-idea-ripen-for-a-while">5. <em>Incubation</em> (letting &lsquo;the idea ripen&rsquo; for a while)</h5>
+</blockquote>
+
+<p>Cognitive processes could be grouped into <strong>intuitive</strong> and <strong>deliberate</strong> processes. Intuitive processes will be very familiar with you. Taking a break from deciphering the problem, for instance, and going for a walk, or implicitly holding off on evaluating your own ideas. Good ideas are like good wine: the longer they ripe, the better they become.</p>
+
+<p>But in the end, your boss expects you to implement that piece of functionality, not to wait for ages until it &lsquo;gets better&rsquo;&hellip;</p>
+
+<blockquote>
+<h5 id="6-flow-automatic-effortless-state-of-mind">6. <em>Flow</em> (automatic, effortless, state-of-mind)</h5>
+</blockquote>
+
+<p>During interviews conducted by A. Miller, people frequently mentioned that they &lsquo;get ideas when relaxed&rsquo;. What they are referring to is the state of <em>flow</em> in which everything seemingly is done without any effort. A lot of psychological research has been dedicated to this topic, and it is a bit less interesting compared to other cognitive processes because it is very hard to pinpoint.</p>
+
+<h3 id="but-what-about-creative-problem-solving">But what about Creative Problem Solving?</h3>
+
+<p>There is some confusion in literature regarding terms such as creative thinking, creative problem solving, and creative coding. To be honest, none of these fit well within the &lsquo;creative thinking skills&rsquo; component, at least in my mind.</p>
+
+<p><strong><em>Creative Coding</em></strong> is an unfortunate term that has nothing to do with problem solving. What? Indeed. Creative coding is a recent phenomenon in which the emphasis is on <em>artful</em> creating, where expression is more relevant than solving things. You use code to express yourself, generating digital graphical &lsquo;art&rsquo;, using programming languages and tools such as <a href="https://processing.org">ProcessingJS</a>.  Students following a creative coding course are encouraged to talk to people outside of their faculty and to experiment with different digital &lsquo;materials&rsquo; (code, languages, visualizations). Creativity is also not assessed as such. It&rsquo;s what would happen if Van Gogh would have access to the V8 engine. <br />
+It has yet to be investigated whether the teaching of artful creative coding will actually enhance practical creative skills.</p>
+
+<p><strong><em>Creative Problem Solving</em></strong> on the other hand does put emphasis on problem solving, but in an inventive way. That is, it uses a model to help you overcome a problem or invent a new product. It&rsquo;s steps are Clarify (1), Ideate (2), Develop (3), and Implement (4). During each of these steps you will be needing different components of Amabile&rsquo;s model. <strong>CDIO</strong> (Conceive, Develop, Implement, Operate) has the same approach. CDIO was invented at MIT to make engineering students more like real-life engineers.</p>
+
+<p><strong><em>Theory of Inventive Problem Solving</em></strong> (TRIZ) is a Russian problem-solving, analysis and forecasting framework derived from studying inventions. In my opinion, it has little to do with creativity, as you are instructed to follow a complex matrix based on previous inventions and patents, and it is very much geared towards physical engineering.</p>
+
+<h3 id="to-conclude">To Conclude&hellip;</h3>
+
+<p>People are not born creative. It takes a lot of hard work, on both the knowledge (expertise in area/domain, creativity skills) and personal skills (self-motivation, brilliance, personality) sides. Our intention is to enhance higher education with the teaching of concrete creativity skills while using programming to tackle a problem. For that the identification of these cognitive processes need to be fleshed out. It also begs the question: how can we evaluate these? I&rsquo;ll have to let this idea mature for a while&hellip;</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:ama">Amabile, Teresa M. &ldquo;Componential theory of creativity.&rdquo; Harvard Business School 12.96 (2012): 1-10.
+ <a class="footnote-return" href="#fnref:ama"><sup>[return]</sup></a></li>
+<li id="fn:mill">Miller, Angie L. &ldquo;A self-report measure of cognitive processes associated with creativity.&rdquo; Creativity Research Journal 26.2 (2014): 203-218.
+ <a class="footnote-return" href="#fnref:mill"><sup>[return]</sup></a></li>
+</ol>
+</div>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header"><i class="fa fa-newspaper-o"></i>&nbsp;Related by Tags</h4>
+
+        <div class="text-justify">
+             <div class="item">
+
+    <h4><a href="/post/competences-and-certificates/">IT Competences and Certificates</a></h4>
+
+    
+    
+    
+        A dark and murky path to tread <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;5 February 2019</span>
+    
+
+</div>
+  <div class="item">
+
+    <h4><a href="/post/phd-iteration-2/">A Ph.D. Thesis: Iteration 2</a></h4>
+
+    
+    
+    
+        On Mastering Lean Skills in Software Engineering Education <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;3 January 2019</span>
+    
+
+</div>
+  <div class="item">
+
+    <h4><a href="/post/lean-doctorate/">The Startup of a Lean Doctorate</a></h4>
+
+    
+    
+    
+        Using agile practices to tacle a long-term research project <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;19 October 2018</span>
+    
+
+</div>
+ 
+        </div>
+
+        <hr/>
+
+    
+
+    <h4 class="page-header">&nbsp;</h4>
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://brainbaking.com/post/creative-cognitive-processes/</loc>
+    <lastmod>2019-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/essays/de-zin-en-onzin-van-conferenties/</loc>
     <lastmod>2019-09-24T11:14:33+02:00</lastmod>
   </url>
@@ -344,7 +349,7 @@
   
   <url>
     <loc>https://brainbaking.com/</loc>
-    <lastmod>2019-09-24T11:14:33+02:00</lastmod>
+    <lastmod>2019-10-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -441,6 +446,12 @@
   <url>
     <loc>https://brainbaking.com/tags/craftsmanship/</loc>
     <lastmod>2018-10-28T16:26:25+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/creativity/</loc>
+    <lastmod>2019-10-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -627,6 +638,7 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/ses/facade/</loc>
+    <lastmod>2019-10-04T14:26:40+02:00</lastmod>
   </url>
   
   <url>
@@ -655,7 +667,7 @@
   
   <url>
     <loc>https://brainbaking.com/tags/phd/</loc>
-    <lastmod>2019-02-06T15:48:43+01:00</lastmod>
+    <lastmod>2019-10-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -745,6 +757,7 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/ses/</loc>
+    <lastmod>2019-10-04T14:26:40+02:00</lastmod>
   </url>
   
   <url>
@@ -792,7 +805,7 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/</loc>
-    <lastmod>2018-12-17T15:33:39+01:00</lastmod>
+    <lastmod>2019-10-04T14:26:40+02:00</lastmod>
   </url>
   
   <url>

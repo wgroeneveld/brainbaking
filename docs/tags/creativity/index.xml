@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Creativity on Brain Baking</title>
+    <link>https://brainbaking.com/tags/creativity/</link>
+    <description>Recent content in Creativity on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    <lastBuildDate>Tue, 08 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://brainbaking.com/tags/creativity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Programming: a Creative Cognitive Process</title>
+      <link>https://brainbaking.com/post/creative-cognitive-processes/</link>
+      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/creative-cognitive-processes/</guid>
+      <description>My previous studies investigated which non-technical skills are currently being taught in software engineering education, and which are perceived as needed to excel in the industry. We found creativity to be one of the key skills that still seemed to be mostly ignored in higher education (at least in Computing). The term &amp;lsquo;creativity&amp;rsquo; is highly subjective, contextual, and vaguely defined (or not at all), so connecting the dots proves to be quite a challenge.</description>
+    </item>
+    
+  </channel>
+</rss>
