@@ -115,6 +115,13 @@ In essence, you are drawing on your Java knowledge to enhance your C# code. You 
 
 Drawing from information from outside your own domain could also be useful and generate inventive solutions. In fact that is how Velcro got invented: by studying the abilities of insects to climb walls and 'stick' to material. 
 
+In Linguistic Creativity, creative patterns are hypothesized to be part of two categories: pattern-forming (following the rules of the language, creating interactions/repetitions) and pattern-reforming (breaking the rules and reshaping it into something new). 
+
+<center>
+  ![Creative Patterns](/img/creativepatterns.jpg)
+  Creative Patterns?
+</center>
+
 > ##### 5. _Incubation_ (letting 'the idea ripen' for a while)
 
 Cognitive processes could be grouped into **intuitive** and **deliberate** processes. Intuitive processes will be very familiar with you. Taking a break from deciphering the problem, for instance, and going for a walk, or implicitly holding off on evaluating your own ideas. Good ideas are like good wine: the longer they ripe, the better they become. 
@@ -132,9 +139,12 @@ There is some confusion in literature regarding terms such as creative thinking,
 **_Creative Coding_** is an unfortunate term that has nothing to do with problem solving. What? Indeed. Creative coding is a recent phenomenon in which the emphasis is on _artful_ creating, where expression is more relevant than solving things. You use code to express yourself, generating digital graphical 'art', using programming languages and tools such as [ProcessingJS](https://processing.org).  Students following a creative coding course are encouraged to talk to people outside of their faculty and to experiment with different digital 'materials' (code, languages, visualizations). Creativity is also not assessed as such. It's what would happen if Van Gogh would have access to the V8 engine. \\
 It has yet to be investigated whether the teaching of artful creative coding will actually enhance practical creative skills. 
 
+**_Creative Computing_** (or _Computational Creativity_) aims to simulate creativity using Artificial Intelligence, rather than stimulating it within the humans that are doing all the programming work. It could require creativity to write algorithms that show 'creative' skills, but the emphasis is on the mechanical part of creativity. AI that creates music or art falls within this category. 
+
 **_Creative Problem Solving_** on the other hand does put emphasis on problem solving, but in an inventive way. That is, it uses a model to help you overcome a problem or invent a new product. It's steps are Clarify (1), Ideate (2), Develop (3), and Implement (4). During each of these steps you will be needing different components of Amabile's model. **CDIO** (Conceive, Develop, Implement, Operate) has the same approach. CDIO was invented at MIT to make engineering students more like real-life engineers.
 
 **_Theory of Inventive Problem Solving_** (TRIZ) is a Russian problem-solving, analysis and forecasting framework derived from studying inventions. In my opinion, it has little to do with creativity, as you are instructed to follow a complex matrix based on previous inventions and patents, and it is very much geared towards physical engineering. 
+
 
 ### To Conclude...
 
