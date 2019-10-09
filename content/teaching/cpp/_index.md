@@ -119,6 +119,11 @@ Een interessante vergelijkende cursus met nadruk op computer architectuur: [Comp
 * [Qt Examples and Tutorials](http://doc.qt.io/qt-5/qtexamplesandtutorials.html)
 * [Qt Class reference](http://doc.qt.io/qt-5/classes.html)
 
+##### Build Tools
+
+* [Pro Git Book](https://git-scm.com/book/en/v2)
+* [CMake Documentation](https://cmake.org/documentation/)
+
 #### Kalender
 
 Zie [collegeroosters UHasselt](http://collegeroosters.uhasselt.be).

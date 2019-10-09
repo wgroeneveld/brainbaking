@@ -83,14 +83,14 @@ ___
 
 ### Nog meer "speciallekes":
 
-* Copy constructoren
+* Copy constructors
 * Operatoren
 
 ...
 
 ___
 
-#### Copy constructoren
+### Copy constructors
 
 ```C
 class Student {
@@ -111,10 +111,12 @@ Student jaak(20);
 Student lowie = jaak;
 ```
 
+1. Wat als `Student(...)` niet voorzien is? 
+2. Moet ik niet `new` gebruiken bij aanmaken van `jaak`?
 
 ___
 
-#### Operatoren
+### Operatoren
 
 
 ```C
@@ -123,7 +125,7 @@ private:
     int leeftijd;
 public:
     Student(int leeftijd) : leeftijd(leeftijd) {}
-    friend bool operator>(const &Student student1, const &Student student2);
+    friend bool operator>(const Student& student1, const Student& student2);
 };
 bool operator>(const Student& student1, const Student& student2) {
     return student1.leeftijd > student2.leeftijd;
@@ -135,6 +137,9 @@ bool operator>(const Student& student1, const Student& student2) {
 Student jaak(20), lowie(10); 
 std::cout << "wie is ouder? " << jaak > lowie;
 ```
+
+1. Wat als `operator>` niet voorzien is? 
+2. Wat is die `const Student&` toch de hele tijd?
 
 ___
 
@@ -168,6 +173,8 @@ public:
 
 ## Templates
 
+In Java: 
+
 ```Java
 public abstract class Item {
     public abstract int getId();
@@ -190,7 +197,7 @@ boekentas.voegToe(new Boek());   // ok
 boekentas.voegToe(new Appel());  // compilation error
 ```
 
-Generics bedoel je?
+"Generics" dus?
 
 ___
 
@@ -325,7 +332,7 @@ Student braveke = new Student();    // favorieteLeerkracht = null
 
 ___
 
-### Meer opletten met class members (pff):
+### Class members in C++ - opletten!
 
 ```C
 class Student {
@@ -334,10 +341,10 @@ private:
 public:
     Student() {}
 };
-Student braveke; // maakt OOK Leerkracht instance aan??
+Student braveke; // maakt OOK Leerkracht instance aan (die niet NULL is)??
 ```
 
-**Oeps!**
+**Oeps!** Wat gebeurt er hier?
 
 ___
 
@@ -387,7 +394,9 @@ public:
 };
 ```
 
-**Geen goed idee**; C++ is pass-by-value! Dus **reference** meegeven:
+**Geen goed idee**; C++ is pass-by-value!
+
+Dus, als **reference** (`&`) meegeven (liefst `const`):
 
 ```C
 Student(Leekracht& favoriete)
@@ -485,15 +494,19 @@ ___
 
 Oefeningen in C++ Primer boek ook maken!
 
-___
+---
 
-### Examen info
+## Examen info
+
+eind jan, 3h tijd. 
 
 * Open boek
 * **Begrijpen**, niet reproduceren
 * Denkvragen oplossen! 
-* **Scenario's**: model uitwerken, klassen skelet uitschrijven
-* **Syntax**
+* **Scenario's**: model uitwerken, klasse skelet uitschrijven
+* Basis **Syntax** uiteraard kennen
+
+Data, meer info, ... via Toledo.
 
 ___
 
@@ -501,6 +514,7 @@ ___
 
 - Syllabus: slides hoorcolleges + labo noties
 - C++ Primer handboek
+- Oefeningen van beiden.
 
 <br/>
 
@@ -508,6 +522,42 @@ ___
 
 - Qt API syntax
 - GBA API & design => deel van project
+
+___
+
+## Project info
+
+Deadline: 1 dag voor examen, 12h 's middags
+
+- Groepen van 2 (3)
+- Git, fork van `gba-sprite-engine`, C++11
+- Volledige vrijheid in opdracht.
+- Tijdsregistratie vereist (onderzoek)
+
+Min. vereisten e.a.:
+https://brainbaking.com/teaching/cpp/project/
+
+___
+
+### Project Evaluatie - elkaar evalueren?
+
+Evaluatieformulier uitgedeeld, met criteria:
+
+> Design (1), Clean Code (2), C++ Conventies (3), Complexiteit (4), Originaliteit (5), UI (6).
+
+= zelfde als lesgevers hanteren. 
+
+Presenteren aan elkaar in **3 minuten**!
+
+Datum, plaats, ... via Toledo. 
+
+___
+
+### Totale Puntenverdeling
+
+* `27%` evaluatie project mede-studenten
+* `23%` evaluatie project docent
+* `50%` evaluatie examen
 
 ---
 
