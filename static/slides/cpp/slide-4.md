@@ -135,7 +135,7 @@ bool operator>(const Student& student1, const Student& student2) {
 
 ```C
 Student jaak(20), lowie(10); 
-std::cout << "wie is ouder? " << jaak > lowie;
+std::cout << "wie is ouder? " << (jaak > lowie);
 ```
 
 1. Wat als `operator>` niet voorzien is? 

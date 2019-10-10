@@ -17,8 +17,8 @@
 
 #define REG_KEY_INPUT (*((volatile uint16 *)0x04000130))
 #define KEY_ANY  0x03FF
-#define KEY_LEFT (1 << 4)
-#define KEY_RIGHT (1 << 5)
+#define KEY_LEFT (1 << 5)
+#define KEY_RIGHT (1 << 4)
 
 #define VELOCITY 2
 
@@ -116,11 +116,11 @@ int main() {
         vsync();
 
         keys = readKeys();
-        if(keys & KEY_RIGHT) {
+        if(keys & KEY_LEFT) {
             px -= VELOCITY;
             if(px < 0) px = 0;
         }
-        if(keys & KEY_LEFT) {
+        if(keys & KEY_RIGHT) {
             px += VELOCITY;
             if(px > (SCREEN_WIDTH - 32)) px = SCREEN_WIDTH - 32;
         }
