@@ -148,8 +148,18 @@ It has yet to be investigated whether the teaching of artful creative coding wil
 
 ### To Conclude...
 
-People are not born creative. It takes a lot of hard work, on both the knowledge (expertise in area/domain, creativity skills) and personal skills (self-motivation, brilliance, personality) sides. Our intention is to enhance higher education with the teaching of concrete creativity skills while using programming to tackle a problem. For that the identification of these cognitive processes need to be fleshed out. It also begs the question: how can we evaluate these? I'll have to let this idea mature for a while...  
+People are not born creative. It takes a lot of hard work, on both the knowledge (expertise in area/domain, creativity skills) and personal skills (self-motivation, brilliance, personality) sides. But this does prove that _creativity_, however it is defined, is **learnable** (and thus, also teachable, hopefully). However, it is only relevant to teach/learn creativity within the context of the domain: _creativity is domain-specific_[^baer]. This is true for each part of the Componential model:
+
+1. **Expertise** is domain-specific by nature. Knowledge about bread baking and fermentation does not really help me solve problems in source code, and knowledge about design patterns does not help me bake a better bread. Baer even postulated that the question should not be _"are you creative?"_ but rather _"are you an expert?"_[^baer]
+2. **Motivation** is domain-specific. My enthousiasm for weeding the garden and planting and harvesting onions does not really help me when my motivation for fixing a bug in software is low. Motivation is not transferrable. 
+3. **Creative Thinking Skills** are domain-specific. Even if _perspective-taking_ or _imagery_ could be applied to all kinds of problems, some domains prefer some creative skills more than others. You also cannot learn 'analogical thinking' without giving domain-specific examples. When applying _perspective-taking_ in bread baking, I might compare rye and wheat bread recipes, or try to combine those. The actions I take are entirely different than when looking at code in another way.
+
+Yes, everything can be abstracted and generalised - but not without paying a price. And yes, polymaths can be _experts_ (or creative? Is this suddenly the same thing?) in multiple domains, but that does not mean they are reusing the same motivation/expertise/skill.
+
+Our ultimate intention is to enhance higher education with the teaching of concrete creativity skills while using programming to tackle a problem. For that the identification of these cognitive processes need to be fleshed out. It also begs the question: how can we evaluate these? I'll have to let this idea mature for a while...  
 
 [^ama]: Amabile, Teresa M. "Componential theory of creativity." Harvard Business School 12.96 (2012): 1-10.
 
 [^mill]: Miller, Angie L. "A self-report measure of cognitive processes associated with creativity." Creativity Research Journal 26.2 (2014): 203-218.
+
+[^baer]: Baer, John. "Is creativity domain speciﬁc." The Cambridge handbook of creativity 321 (2010).
