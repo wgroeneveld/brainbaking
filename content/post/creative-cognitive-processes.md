@@ -109,7 +109,7 @@ if(state.CanEmployeeInteractWith()) {   // yes!
 }
 ```
 
-In essence, you are drawing on your Java knowledge to enhance your C# code. You could also enhance C `struct`s with function pointers to emulate objects. 
+In essence, you are drawing on your Java knowledge to enhance your C# code. I wrote [an article about this](/post/faking-domain-logic/) a few years ago. You could also enhance C `struct`s with function pointers to emulate objects, as [explained in this blog post](/post/domain-driven-design-in-c/). 
 
 **Combining dissimilar concepts into a new idea**: 
 
@@ -130,7 +130,7 @@ But in the end, your boss expects you to implement that piece of functionality, 
 
 > ##### 6. _Flow_ (automatic, effortless, state-of-mind)
 
-During interviews conducted by A. Miller, people frequently mentioned that they 'get ideas when relaxed'. What they are referring to is the state of _flow_ in which everything seemingly is done without any effort. A lot of psychological research has been dedicated to this topic, and it is a bit less interesting compared to other cognitive processes because it is very hard to pinpoint. 
+During interviews conducted by A. Miller, people frequently mentioned that they 'get ideas when relaxed'. What they are referring to is the state of _flow_ in which everything seemingly is done without any effort. A lot of psychological research has been dedicated to this topic, and it is a bit less interesting compared to other cognitive processes because it is very hard to pinpoint - and because it's a bit too far from my core research. 
 
 ### But what about Creative Problem Solving? 
 
@@ -148,9 +148,9 @@ It has yet to be investigated whether the teaching of artful creative coding wil
 
 ### To Conclude...
 
-People are not born creative. It takes a lot of hard work, on both the knowledge (expertise in area/domain, creativity skills) and personal skills (self-motivation, brilliance, personality) sides. But this does prove that _creativity_, however it is defined, is **learnable** (and thus, also teachable, hopefully). However, it is only relevant to teach/learn creativity within the context of the domain: _creativity is domain-specific_[^baer]. This is true for each part of the Componential model:
+People are not born creative. It takes a lot of hard work, on both the knowledge (expertise in area/domain, creativity skills) and personal skills (self-motivation, brilliance, personality) sides. But this does prove that _creativity_, however it is defined, is **learnable** (and thus hopefully also teachable). However, it is only relevant to teach/learn creativity within the context of the domain: _creativity is domain-specific_[^baer]. This is true for each part of the Componential model:
 
-1. **Expertise** is domain-specific by nature. Knowledge about bread baking and fermentation does not really help me solve problems in source code, and knowledge about design patterns does not help me bake a better bread. Baer even postulated that the question should not be _"are you creative?"_ but rather _"are you an expert?"_[^baer]
+1. **Expertise** is domain-specific by nature. Knowledge about bread baking and fermentation does not really help me solve problems in source code, and knowledge about design patterns does not help me bake a better bread. Baer even postulated that the question should not be _"are you creative?"_ but rather _"are you an expert?"_[^baer]. I wonder whether this might mean that the expertise component has a bigger influence on creativity than the others. 
 2. **Motivation** is domain-specific. My enthousiasm for weeding the garden and planting and harvesting onions does not really help me when my motivation for fixing a bug in software is low. Motivation is not transferrable. 
 3. **Creative Thinking Skills** are domain-specific. Even if _perspective-taking_ or _imagery_ could be applied to all kinds of problems, some domains prefer some creative skills more than others. You also cannot learn 'analogical thinking' without giving domain-specific examples. When applying _perspective-taking_ in bread baking, I might compare rye and wheat bread recipes, or try to combine those. The actions I take are entirely different than when looking at code in another way.
 
