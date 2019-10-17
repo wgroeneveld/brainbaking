@@ -125,6 +125,40 @@ class Getal { };
 #endif
 ```
 
+#### Circulaire dependencies
+
+Zoals in veel andere programmeertalen, kan klasse 1 wel naar klasse 2 verwijzen, maar dan niet omgekeerd. Een mooi gesloten lus maken in schemavorm noemen we een **circulaire dependency**: object 1 is afhankelijk van object 2, die op zijn beurt terug afhankelijk is van object 1:
+
+{{<mermaid>}}
+graph LR
+  K1[class 1]
+  K2[class 2]
+  K1 --> K2
+  K2 --> K1q
+{{</mermaid>}}
+
+Het is niet mogelijk om twee klassen naar elkaar te laten verwijzen door middel van een `#ìnclude` statement. De volgende foutboodschap schept hierin genoeg duidelijkheid:
+
+<pre>
+In file included from ./inc2.h:2:
+In file included from ./inc1.h:2:
+In file included from ./inc2.h:2:
+In file included from ./inc1.h:2:
+In file included from ./inc2.h:2:
+In file included from ./inc1.h:2:
+[...]
+./inc2.h:4:7: error: redefinition of 'Inc2'
+class Inc2 {
+      ^
+./inc2.h:4:7: note: previous definition is here
+class Inc2 {
+      ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+</pre>
+
+
+
 #### Inline functies
 
 Waarom is de eerste methode in de body gedeclareerd? Dit is een `inline` functie ([zie doc](https://isocpp.org/wiki/faq/Inline-Functions)). Dit zijn typisch one-liners die vaak aangeroepen worden en door de compiler geoptimaliseerd _kunnen_ worden: de aanroep instructie vervangen door de implementatie, zoals de preprocessor doet met `#define`.

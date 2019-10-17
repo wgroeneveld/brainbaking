@@ -63,10 +63,10 @@ De ++ in C++ De introductie van C++ in 1985 geeft de ervaren C programmeur enkel
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-12-18 15:29:34 &#43;0100 CET",
-    "dateModified" : "2018-12-18 15:29:34 &#43;0100 CET",
+    "datePublished": "2019-10-17 11:16:23 &#43;0200 CEST",
+    "dateModified" : "2019-10-17 11:16:23 &#43;0200 CEST",
     "url" : "https://brainbaking.com/teaching/cpp/labo-5/",
-    "wordCount" : "3092",
+    "wordCount" : "3248",
     "keywords" : [ "Labo 5: Weg met C, Hallo C&#43;&#43;", "teaching" ]
 }
 </script>
@@ -360,6 +360,49 @@ class Getal { };
 
 #endif
 </code></pre>
+
+<h4 id="circulaire-dependencies">Circulaire dependencies</h4>
+
+<p>Zoals in veel andere programmeertalen, kan klasse 1 wel naar klasse 2 verwijzen, maar dan niet omgekeerd. Een mooi gesloten lus maken in schemavorm noemen we een <strong>circulaire dependency</strong>: object 1 is afhankelijk van object 2, die op zijn beurt terug afhankelijk is van object 1:</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph LR
+  K1[class 1]
+  K2[class 2]
+  K1 --> K2
+  K2 --> K1q
+
+</div>
+
+<p>Het is niet mogelijk om twee klassen naar elkaar te laten verwijzen door middel van een <code>#ìnclude</code> statement. De volgende foutboodschap schept hierin genoeg duidelijkheid:</p>
+
+<pre>
+In file included from ./inc2.h:2:
+In file included from ./inc1.h:2:
+In file included from ./inc2.h:2:
+In file included from ./inc1.h:2:
+In file included from ./inc2.h:2:
+In file included from ./inc1.h:2:
+[...]
+./inc2.h:4:7: error: redefinition of 'Inc2'
+class Inc2 {
+      ^
+./inc2.h:4:7: note: previous definition is here
+class Inc2 {
+      ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+</pre>
 
 <h4 id="inline-functies">Inline functies</h4>
 
