@@ -429,9 +429,10 @@ p.98 of [cppdocs](https://en.cppreference.com/w/cpp/container/vector) bevat basi
   * een klasse `Bibliothecaris` die de operaties op de bibliotheek uitvoert
   * `cin >> var` om de boeken van de gebruiker in te lezen.
   * sorteerfuncties van STL
-2. [Orc labo 1 redux](/teaching/cpp/labo-1/#oef): herimplementeer het Orc model in een C++ klasse (opgave 2 en 3). Let op met memory leaks als orcs dood gaan! Hoe ziet de oude C functie `Orc vecht(Orc aanvaller, Orc verdediger)` er nu uit?
+2. GBA games worden vanwege het beperkt geheugen altijd in C in plaats van C++ ontwikkeld. Wij gaan daar geen rekening mee houden, en toch overschakelen. Herimplementeer [deze Download, de opgave van labo 4](/teaching/cpp/labo-4-gba-2.c), in C++. Welke klasses heb je nodig? Denk aan de `paddle`, de `ball`, enzovoort. De C++ nodige cross-compiler is `arm-none-eabi-g++`.
 3. _Extra_: maak een `Dierentuin` klasse. Een dierentuin kan verschillende _dieren_ (`Dier` klasse) ontvangen (`ontvang()` functie). Elk dier heeft een grootte en een naam: Neushoorn(40), Giraf(25), Poema(10). Elke dierentuin heeft x beschikbare ruimte. Wat doet het bestuur van je dierentuin als het te ontvangen dier te groot is? <br/>Bijvoorbeeld: dierentuin(20), leeuw(15) en panda(10). 15 + 10 > 20.
 4. _Extra_: We starten met een taxi bedrijf dat chauffeurs in dienst neemt en wagens koopt om mee rond te rijden. Welke klassen denk je nodig te gaan hebben, en waarom? Teken eerst een model en trek pijlen die relaties voorstellen. Voorzie ook het concept "klant", die kan vervoerd worden. Welke methodes ga je voorzien in je klassen?
+5. _Extra_: [Orc labo 1 redux](/teaching/cpp/labo-1/#oef): herimplementeer het Orc model in een C++ klasse (opgave 2 en 3). Let op met memory leaks als orcs dood gaan! Hoe ziet de oude C functie `Orc vecht(Orc aanvaller, Orc verdediger)` er nu uit?
 
 Vergeet het volgende niet:
 

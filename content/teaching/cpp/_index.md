@@ -98,7 +98,7 @@ Overdracht van het punt op het examen naar de tweede examenkans vanaf 10/20. Er 
 
 #### Meer leermiddelen
 
-Een interessante vergelijkende cursus met nadruk op computer architectuur: [Computer Systems and Architecture](http://cs.umw.edu/~finlayson/class/spring18/cpsc305/) aan de Universiteit Mary Washington. 
+Een interessante vergelijkende cursus met nadruk op computer architectuur: [Computer Systems and Architecture](http://ianfinlayson.net/class/cpsc305/) aan de Universiteit Mary Washington. 
 
 ##### C in-depth
 

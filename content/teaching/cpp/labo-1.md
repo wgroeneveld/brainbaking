@@ -198,7 +198,7 @@ struct Persoon {
     int leeftijd;
     int geslacht;   // geen bool, remember?
     char naam[];
-}
+};
 ```
 
 We kunnen deze structuur gebruiken door aan de members waarden toe te kennen:
@@ -269,7 +269,7 @@ De `#include` statements zorgen voor de juiste inclusies van functies in je prog
 
 struct Persoon {
     int leeftijd;
-}
+};
 int is_oud(struct Persoon p);
 ```
 

@@ -66,7 +66,7 @@ De ++ in C++ De introductie van C++ in 1985 geeft de ervaren C programmeur enkel
     "datePublished": "2018-12-18 15:29:34 &#43;0100 CET",
     "dateModified" : "2018-12-18 15:29:34 &#43;0100 CET",
     "url" : "https://brainbaking.com/teaching/cpp/labo-5/",
-    "wordCount" : "3038",
+    "wordCount" : "3092",
     "keywords" : [ "Labo 5: Weg met C, Hallo C&#43;&#43;", "teaching" ]
 }
 </script>
@@ -675,9 +675,10 @@ tekst[0] = &quot;nul&quot;;           // ok
 <li><code>cin &gt;&gt; var</code> om de boeken van de gebruiker in te lezen.</li>
 <li>sorteerfuncties van STL</li>
 </ul></li>
-<li><a href="/teaching/cpp/labo-1/#oef">Orc labo 1 redux</a>: herimplementeer het Orc model in een C++ klasse (opgave 2 en 3). Let op met memory leaks als orcs dood gaan! Hoe ziet de oude C functie <code>Orc vecht(Orc aanvaller, Orc verdediger)</code> er nu uit?</li>
+<li>GBA games worden vanwege het beperkt geheugen altijd in C in plaats van C++ ontwikkeld. Wij gaan daar geen rekening mee houden, en toch overschakelen. Herimplementeer <a href="/teaching/cpp/labo-4-gba-2.c">deze Download, de opgave van labo 4</a>, in C++. Welke klasses heb je nodig? Denk aan de <code>paddle</code>, de <code>ball</code>, enzovoort. De C++ nodige cross-compiler is <code>arm-none-eabi-g++</code>.</li>
 <li><em>Extra</em>: maak een <code>Dierentuin</code> klasse. Een dierentuin kan verschillende <em>dieren</em> (<code>Dier</code> klasse) ontvangen (<code>ontvang()</code> functie). Elk dier heeft een grootte en een naam: Neushoorn(40), Giraf(25), Poema(10). Elke dierentuin heeft x beschikbare ruimte. Wat doet het bestuur van je dierentuin als het te ontvangen dier te groot is? <br/>Bijvoorbeeld: dierentuin(20), leeuw(15) en panda(10). 15 + 10 &gt; 20.</li>
 <li><em>Extra</em>: We starten met een taxi bedrijf dat chauffeurs in dienst neemt en wagens koopt om mee rond te rijden. Welke klassen denk je nodig te gaan hebben, en waarom? Teken eerst een model en trek pijlen die relaties voorstellen. Voorzie ook het concept &ldquo;klant&rdquo;, die kan vervoerd worden. Welke methodes ga je voorzien in je klassen?</li>
+<li><em>Extra</em>: <a href="/teaching/cpp/labo-1/#oef">Orc labo 1 redux</a>: herimplementeer het Orc model in een C++ klasse (opgave 2 en 3). Let op met memory leaks als orcs dood gaan! Hoe ziet de oude C functie <code>Orc vecht(Orc aanvaller, Orc verdediger)</code> er nu uit?</li>
 </ol>
 
 <p>Vergeet het volgende niet:</p>
