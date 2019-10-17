@@ -833,6 +833,18 @@ Voorbeeld Opzet Stel dat we gegevens van de klant moeten versturen naar een over
     </item>
     
     <item>
+      <title>Software design in C&#43;&#43;</title>
+      <link>https://brainbaking.com/teaching/cpp/en/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/en/</guid>
+      <description>Last changes for academic year 2019 - 2020.
+Course notes This is the English index page, roughly based on the Dutch index, where students can find more information regarding the course itself. All links below contain content in Dutch.
+Project results 2018 - 2019    
+Utilizing the custom-built gba-sprite-engine library residing at  Github. See the README there for more information. The engine tiself uses the Tonc C calls behind the scenes.</description>
+    </item>
+    
+    <item>
       <title>Software ontwerp in C/C&#43;&#43;: Project opdracht 2018-19</title>
       <link>https://brainbaking.com/teaching/cpp/project201819/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
