@@ -14,7 +14,6 @@ De volgende tools worden verwacht geïnstalleerd te worden via de package tool `
 
 * build-essential als gcc/g++ build tools (preinstalled?)
 * git
-* qt5-default en daarna qtcreator
 
 Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren. `sublime-text` (vereist toevoegen van [een repository](https://www.sublimetext.com/docs/3/linux_repositories.html)).
 
@@ -71,8 +70,11 @@ Installeer de XCode toolchain via de Mac Appstore. Daarna kan je je installatie 
 
 ### CMake installeren
 
-Voor OSX via Homebrew: `brew install cmake`. <br/>
-Voor Windows is er [een installer voorzien](https://cmake.org/download/).
+**Opgelet** Wij hebben CMake `3.12` of recenter nodig. Deze versie komt reeds bij CLion `2018.1` of later. Dat betekent dat als je een recente versie van CLion installeert, je _CMake niet meer manueel hoeft te installeren!_ Sla onderstaande stappen dus over indien je CLion installatie recent genoeg is. 
+
+#### CMake voor OSX
+
+Voor OSX via Homebrew: `brew install cmake`. 
 
 #### CMake voor Ubuntu
 
@@ -80,7 +82,7 @@ Ubuntu's `apt-get` package manager heeft niet altijd **de laatste versie** van C
 
 #### CMake voor Windows
 
-De 64-BIT installer is hier te downloaden: [https://cmake.org/download/](https://cmake.org/download/) - wij moeten 3.12 of hoger hebben. Aangeraden is een `%CMAKE_HOME%` omgevingsvariabele te maken. 
+Voor Windows is er [een installer voorzien](https://cmake.org/download/). De 64-BIT installer is hier te downloaden: [https://cmake.org/download/](https://cmake.org/download/) - wij moeten 3.12 of hoger hebben. Aangeraden is een `%CMAKE_HOME%` omgevingsvariabele te maken. 
 
 1. Kies tijdens de installatie **wel** voor "Add CMake to the system PATH for all users". 
 2. Verander je destination folder naar believen

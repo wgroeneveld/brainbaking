@@ -687,7 +687,7 @@ Problemen met build omgevingen SH.exe was found in your path Fout:
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
 Onderstaande instructies gaan uit van Ubuntu als besturingssysteem. Windows of OSX is ook mogelijk, alle tools zijn platformonafhankelijk. Voor Windows installeer je MinGW 64 als compiler toolchain.
 Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de package tool apt-get bij Ubuntu:
- build-essential als gcc/g++ build tools (preinstalled?) git qt5-default en daarna qtcreator  Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren.</description>
+ build-essential als gcc/g++ build tools (preinstalled?) git  Optionele editors (VSCode, Subl) zijn ook via de package tool te installeren.</description>
     </item>
     
     <item>
