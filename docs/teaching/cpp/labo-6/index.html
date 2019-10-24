@@ -66,7 +66,7 @@ mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  gr
     "datePublished": "2019-01-02 11:26:18 &#43;0100 CET",
     "dateModified" : "2019-01-02 11:26:18 &#43;0100 CET",
     "url" : "https://brainbaking.com/teaching/cpp/labo-6/",
-    "wordCount" : "2710",
+    "wordCount" : "2711",
     "keywords" : [ "Labo 6: C&#43;&#43; Class Inheritance, operators en templates", "teaching" ]
 }
 </script>
@@ -333,6 +333,7 @@ public class Vlinder extends Dier {
 <p>De noties van <code>abstract</code>, de <code>@Override</code> annotatie en access modifiers bestaan natuurlijk ook in C++ - zie hoofdstuk 15. Bovenstaande Java code omgezet naar C++:</p>
 
 <pre><code class="language-C">class Voedsel {
+public:
     virtual int voedingswaarde() = 0;
 };
 class Vlees : public Voedsel {

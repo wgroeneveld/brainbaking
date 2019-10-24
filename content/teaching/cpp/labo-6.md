@@ -94,6 +94,7 @@ De noties van `abstract`, de `@Override` annotatie en access modifiers bestaan n
 
 ```C
 class Voedsel {
+public:
     virtual int voedingswaarde() = 0;
 };
 class Vlees : public Voedsel {
