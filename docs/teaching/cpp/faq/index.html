@@ -65,10 +65,10 @@ Problemen met build omgevingen SH.exe was found in your path Fout:
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-09-26 16:25:51 &#43;0200 CEST",
-    "dateModified" : "2019-09-26 16:25:51 &#43;0200 CEST",
+    "datePublished": "2019-11-08 08:53:12 &#43;0100 CET",
+    "dateModified" : "2019-11-08 08:53:12 &#43;0100 CET",
     "url" : "https://brainbaking.com/teaching/cpp/faq/",
-    "wordCount" : "802",
+    "wordCount" : "897",
     "keywords" : [ "FAQ", "teaching" ]
 }
 </script>
@@ -320,6 +320,22 @@ mingw32-make.exe: *** [Makefile:132: all] Error 2
 <li>Je <code>GTEST_DIR</code> omgevingsvariabele staat niet naar de juiste Google Test submap</li>
 <li><code>libgtest.a</code> en <code>libgtest_main.a</code> zitten niet in de build subfolder van de Google Test map</li>
 </ol>
+
+<h4 id="bij-linken-met-google-test-undefined-reference-to-pthread-setspecific">Bij linken met Google Test: undefined reference to `pthread_setspecific&rsquo;</h4>
+
+<p>Fout:</p>
+
+<pre>
+(.text._ZNK7testing8internal11ThreadLocalIPNS_31TestPartResultReporterInterfaceEE16GetOrCreateValueEv[_ZNK7testing8internal11ThreadLocalIPNS_31TestPartResultReporterInterfaceEE16GetOrCreateValueEv]+0x29): undefined reference to `pthread_getspecific'
+/usr/bin/ld: gtest-all.cc:(.text._ZNK7testing8internal11ThreadLocalIPNS_31TestPartResultReporterInterfaceEE16GetOrCreateValueEv[_ZNK7testing8internal11ThreadLocalIPNS_31TestPartResultReporterInterfaceEE16GetOrCreateValueEv]+0x8c): undefined reference to `pthread_setspecific'
+collect2: error: ld returned 1 exit status
+make[2]: *** [test/CMakeFiles/unittest.dir/build.make:314: test/unittest] Error 1
+make[1]: *** [CMakeFiles/Makefile2:146: test/CMakeFiles/unittest.dir/all] Error 2
+</pre>
+
+<p>Komt enkel voor op Linux distributies zoals Ubuntu.</p>
+
+<p>Some Linux distributions seem to miss the default link to pthread that should be added manually in that case. When you see errors like &ldquo;undefined reference to &lsquo;pthread_setspecific&rsquo;&rdquo; while linking Google Test, change target_link_libraries in the CMakeLists.txt file of the subdir test to: <code>target_link_libraries(unittest ${GTEST_LIBRARY}/build/libgtest.a ${GTEST_LIBRARY}/build/libgtest_main.a pthread)</code>.</p>
 
 <h4 id="cmake-check-for-working-c-compiler-broken">CMake: Check for working C++ compiler: broken</h4>
 
