@@ -44,21 +44,19 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://brainbaking.com/"
+         "@id": "https:\/\/brainbaking.com\/"
     },
     "articleSection" : "post",
     "name" : "Introduction to JavaScript",
     
       "headline" : "Writing JS, Pre-ES5 era.",
     
-    "description" : "Javascript Inleiding Primitives Soorten In javascript zijn er slechts 3 primitives:
- string (geassocieerd object: String) boolean (geassocieerd object: Boolean) number (geassocieerd object: Number)  Primitives zijn immutable! Toekennen van properties maakt ook een tijdelijk object aan, dus dit heeft geen nut.
-Soort afchecken Aangezien JS loosely typed is, kunnen we nooit weten wat er nu in var variabele; steekt op een bepaald moment in de code. Om dit op te lossen kan men typeof gebruiken, een functie die een string teruggeeft wat het type van die variabele is.",
+    "description" : "Javascript Inleiding Primitives Soorten In javascript zijn er slechts 3 primitives:\n string (geassocieerd object: String) boolean (geassocieerd object: Boolean) number (geassocieerd object: Number)  Primitives zijn immutable! Toekennen van properties maakt ook een tijdelijk object aan, dus dit heeft geen nut.\nSoort afchecken Aangezien JS loosely typed is, kunnen we nooit weten wat er nu in var variabele; steekt op een bepaald moment in de code. Om dit op te lossen kan men typeof gebruiken, een functie die een string teruggeeft wat het type van die variabele is.",
     
       "inLanguage" : "en-US",
     
     
-      "image": "https://brainbaking.com/img/avatar-icon.png",
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
     
     "author" : {
     	"@type": "Person",
@@ -69,15 +67,15 @@ Soort afchecken Aangezien JS loosely typed is, kunnen we nooit weten wat er nu i
     	"name": "Brain Baking",
     	"logo": {
     		"@type": "ImageObject",
-    		"url": "https://brainbaking.com/img/avatar-icon.png"
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
     	}
 	  },
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "2013",
-    "datePublished": "2013-10-01 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-12-18 15:29:34 &#43;0100 CET",
-    "url" : "https://brainbaking.com/post/introduction-to-js/",
+    "datePublished": "2013-10-01 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2018-12-18 15:29:34 \x2b0100 CET",
+    "url" : "https:\/\/brainbaking.com\/post\/introduction-to-js\/",
     "wordCount" : "8643",
     "keywords" : [ "javascript","Introduction to JavaScript", "post" ]
 }
@@ -151,7 +149,7 @@ Soort afchecken Aangezien JS loosely typed is, kunnen we nooit weten wat er nu i
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.53" />
+ <meta name="generator" content="Hugo 0.59.1" />
         
     </head>
 
@@ -785,7 +783,7 @@ Los dit op met een utility functie:</p>
 
 <p>Om de smeerlapperij van <code>waitsFor()</code> weg te werken kunnen we ook <code>flow.exec</code> gebruiken.</p>
 
-<p>❗️ De laatste stap gaat <strong>altijd</strong> een <code>runs()</code> moeten bevatten voor de reporter om aan te duiden dat assertions uitgevoerd worden, aangezien de <code>exec()</code> functie direct retourneert. Dus moeten we 1x wachten, totdat de hele &ldquo;flow&rdquo; gedaan is. We kunnen dit combineren met BDD en een mini-DSL hierrond schrijven. Resultaat:</p>
+<p>❗ De laatste stap gaat <strong>altijd</strong> een <code>runs()</code> moeten bevatten voor de reporter om aan te duiden dat assertions uitgevoerd worden, aangezien de <code>exec()</code> functie direct retourneert. Dus moeten we 1x wachten, totdat de hele &ldquo;flow&rdquo; gedaan is. We kunnen dit combineren met BDD en een mini-DSL hierrond schrijven. Resultaat:</p>
 
 <pre><code class="language-javascript">function when() {
   var flowDone = false;
@@ -900,7 +898,7 @@ startStuff().done(function() {
 });
 </code></pre>
 
-<p>❗️ Pas op, in de <code>.pipe()</code> functie moet een nieuw <strong>promised object</strong> geretourneerd worden! Dat nieuw object wordt als return value van de vorige pipe gebruikt. Op die manier wordt er dus <em>chaining</em> toegepast.</p>
+<p>❗ Pas op, in de <code>.pipe()</code> functie moet een nieuw <strong>promised object</strong> geretourneerd worden! Dat nieuw object wordt als return value van de vorige pipe gebruikt. Op die manier wordt er dus <em>chaining</em> toegepast.</p>
 
 <h1 id="javascript-inheritance">Javascript Inheritance</h1>
 
@@ -990,7 +988,7 @@ ezeltje.eetIets(); // aha! outputs 'omnom' en 'als ezel fret ik ook nog gras enz
 <li>een nieuwe ezel eet iets via een prototype functie van een lege Vierpotige.</li>
 </ol>
 
-<p>❗️ <strong>Opgelet</strong> Vierpotige.prototype bevat enkel de constructor functie zelf en <em>NIET</em> &ldquo;eetIets&rdquo;, daarom dat we Ezel.prototype gelijk stellen aan een nieuwe lege vierpotige. Dit zou niet werken:</p>
+<p>❗ <strong>Opgelet</strong> Vierpotige.prototype bevat enkel de constructor functie zelf en <em>NIET</em> &ldquo;eetIets&rdquo;, daarom dat we Ezel.prototype gelijk stellen aan een nieuwe lege vierpotige. Dit zou niet werken:</p>
 
 <pre><code class="language-javascript">Ezel.prototype = Vierpotige.prototype;
 new Ezel().eetIets() // kapot
@@ -1006,7 +1004,7 @@ new Ezel().eetIets() // kapot
 ezeltje.verteer()
 </code></pre>
 
-<p>❗️ <strong>Waarschuwing</strong> het prototype van <code>Vierpotige</code> aanpassen past ook elke <code>Ezel</code> instantie aan, dit is énorm gevaarlijk als er publieke properties zoals <code>aantalPoten</code> gedefiniëerd zijn! Want in tegenstelling tot wat velen denken, worden properties <strong>niet</strong> gekopiëerd! Dus dit zou het aantal poten van ALLE ezels aanpassen:</p>
+<p>❗ <strong>Waarschuwing</strong> het prototype van <code>Vierpotige</code> aanpassen past ook elke <code>Ezel</code> instantie aan, dit is énorm gevaarlijk als er publieke properties zoals <code>aantalPoten</code> gedefiniëerd zijn! Want in tegenstelling tot wat velen denken, worden properties <strong>niet</strong> gekopiëerd! Dus dit zou het aantal poten van ALLE ezels aanpassen:</p>
 
 <pre><code class="language-javascript">dier = new Vierpotige();
 Ezel.prototype = dier;
@@ -1030,7 +1028,7 @@ Ezel.prototype.eetIets = function() {
 
 <h5 id="built-in-js-types-extenden">Built-in JS types extenden</h5>
 
-<p>❗️ Extend <strong>nooit</strong> <code>Object.prototype</code>! Waarom? Omdat Eender welk object een instantie van <code>Object</code> is, dus zijn prototype heeft, en met een <code>for(x in prop)</code> deze property nu ineens toegankelijk is voor elk object. Een leeg object <code>{ }</code> wordt verwacht géén properties te hebben!</p>
+<p>❗ Extend <strong>nooit</strong> <code>Object.prototype</code>! Waarom? Omdat Eender welk object een instantie van <code>Object</code> is, dus zijn prototype heeft, en met een <code>for(x in prop)</code> deze property nu ineens toegankelijk is voor elk object. Een leeg object <code>{ }</code> wordt verwacht géén properties te hebben!</p>
 
 <pre><code class="language-javascript">Object.prototype.hack = function() {}
 for(x in {}) {
@@ -1089,11 +1087,11 @@ instanceOf(Ezel, Vierpotige) // true
 <li>De magic property <code>_ _proto_ _</code> wordt intern gezet zodra een prototype wordt toegekend aan een object. Aangezien Ezel zelf ook prototype functies heeft specifiek voor ezels, kunnen we die van Vierpotige niet overriden, maar wel gebruiken.</li>
 </ol>
 
-<p>❗️ Bekijk iets toevoegen via <code>.property</code> als iets toevoegen aan het algemeen prototype object, en iets rechtstreeks toevoegen via een key als iets toevoegen op een instance van dat prototype object. In andere dynamische talen stelt <code>property</code> de <code>metaClass</code> voor, maar JS werkt enkel met functies.</p>
+<p>❗ Bekijk iets toevoegen via <code>.property</code> als iets toevoegen aan het algemeen prototype object, en iets rechtstreeks toevoegen via een key als iets toevoegen op een instance van dat prototype object. In andere dynamische talen stelt <code>property</code> de <code>metaClass</code> voor, maar JS werkt enkel met functies.</p>
 
 <p>De betere oplossing: <strong><code>isPrototypeOf()</code></strong>! Zie magic properties.</p>
 
-<p>❗️ <strong><code>_ _proto_ _</code> is een <strong>instance</strong> property, <code>.prototype</code> een constructor function property</strong></p>
+<p>❗ <strong><code>_ _proto_ _</code> is een <strong>instance</strong> property, <code>.prototype</code> een constructor function property</strong></p>
 
 <h6 id="met-properties">met properties</h6>
 
@@ -1243,16 +1241,17 @@ a.c() ###### &quot;c&quot;;
 
 <p>######= Problemen met mixins ######=</p>
 
-<p>❗️ Dit is géén authentieke multiple inheritance. Hier zijn twee problemen aan gekoppeld:</p>
+<p>❗ Dit is géén authentieke multiple inheritance. Hier zijn twee problemen aan gekoppeld:</p>
 
 <ol>
 <li>Zodra via <code>B.prototype</code> een nieuwe functie toegevoegd wordt, zal C deze <strong>niet</strong> overpakken omdat <code>C.prototype</code> niet <em>gelijk</em> gesteld werd aan die van A of B</li>
-<li>En bijgevolg dus ook de <code>instanceof</code> operator naar de zak is:</li>
-</ol>
+
+<li><p>En bijgevolg dus ook de <code>instanceof</code> operator naar de zak is:</p>
 
 <pre><code class="language-javascript">c instanceof C ###### true
 (c instanceof B || c instanceof A) ###### false
-</code></pre>
+</code></pre></li>
+</ol>
 
 <p>Als dit echt nodig is kan men zoiets zelf implementeren door weer te loopen via <code>for(prop in x.prototype) { ... }</code> en te checken of alle keys voorkomen in een object.</p>
 
@@ -1294,7 +1293,7 @@ Merk op dat hier <code>wootwoot</code> énkel binnen de functie <code>yo()</code
 
 <p>Functies in functies in functies zijn perfect mogelijk, en de binnenste functies hebben toegang tot de scope van alle anderen.</p>
 
-<p>❗️ In tegenstelling tot Java e.a. beschikt JS <strong>niet over block scope</strong>. Dit wil zeggen:</p>
+<p>❗ In tegenstelling tot Java e.a. beschikt JS <strong>niet over block scope</strong>. Dit wil zeggen:</p>
 
 <pre><code class="language-javascript">var f1 = 10;
 function f() {
@@ -1429,7 +1428,7 @@ function Iets(e) {
 
 <p>#####= Private Member variables #####=</p>
 
-<p>❗️ &ldquo;Functies en variabelen in objecten zijn overal en altijd toegankelijk&rdquo;. <strong>DIT IS FOUT</strong>! Bekijk het volgende voorbeeld (zie <a href="http://www.crockford.com/javascript/private.html">private members</a> docs):</p>
+<p>❗ &ldquo;Functies en variabelen in objecten zijn overal en altijd toegankelijk&rdquo;. <strong>DIT IS FOUT</strong>! Bekijk het volgende voorbeeld (zie <a href="http://www.crockford.com/javascript/private.html">private members</a> docs):</p>
 
 <pre><code class="language-javascript">function Func(param) {
    this.publicMember = param;
@@ -1656,7 +1655,7 @@ Zie AOP hieronder voor meer uitleg over anonieme functies.</p>
 
 <p>Zo werken bijvoorbeeld de API en plugins van <strong>jQuery</strong>.</p>
 
-<p>❗️ Anonieme functies declareren en uitvoeren kan op twee manieren in JS: via <code>(function() { ... })()</code> en via <code>(function() { ... }())</code>. Merk het verschil in <strong>haakjes</strong> op. Het resultaat is exact hetzelfde, er is alleen een semantisch verschil, namelijk dat bij de eerste expressie de haakjes de <em>functie expressie</em> vasthoudt, en bij de tweede expressie de <em>call expressie</em> (het resultaat van de functie)</p>
+<p>❗ Anonieme functies declareren en uitvoeren kan op twee manieren in JS: via <code>(function() { ... })()</code> en via <code>(function() { ... }())</code>. Merk het verschil in <strong>haakjes</strong> op. Het resultaat is exact hetzelfde, er is alleen een semantisch verschil, namelijk dat bij de eerste expressie de haakjes de <em>functie expressie</em> vasthoudt, en bij de tweede expressie de <em>call expressie</em> (het resultaat van de functie)</p>
 
 <p>Zie <a href="http://stackoverflow.com/questions/3783007/is-there-a-difference-between-function-and-function">stackoverflow</a> voor meer uitleg - schematisch:</p>
 
@@ -1704,7 +1703,7 @@ Zie AOP hieronder voor meer uitleg over anonieme functies.</p>
 assertEqual('out', f('in'));
 </code></pre>
 
-<p>❗️ Vereist <code>Prototype JS</code>, en <code>JsUnit</code> om de <code>assert</code> functions te kunnen gebruiken</p>
+<p>❗ Vereist <code>Prototype JS</code>, en <code>JsUnit</code> om de <code>assert</code> functions te kunnen gebruiken</p>
 
 <h3 id="gedrag-testen-met-jasmine">Gedrag testen met Jasmine</h3>
 
@@ -1747,7 +1746,7 @@ Frameworks gebruiken zoals <a href="http://pivotal.github.com/jasmine/">Jasmine<
 
 <p>Het kan ook handig zijn om een <strong>Junit XML Reporter</strong> te gebruiken om bijvoorbeeld voor Hudson het makkelijker te maken om de test output files te verwerken. Er zijn reeds enkele reporter plugins zoals deze beschikbaar, hier: <a href="https://github.com/larrymyers/jasmine-reporters">https://github.com/larrymyers/jasmine-reporters</a></p>
 
-<p>❗️ Integratie met Hudson, EnvJS en Rhino ea: zie eigen junit test runner: <a href="https://github.com/wgroeneveld/jasmine-junit-runner">https://github.com/wgroeneveld/jasmine-junit-runner</a></p>
+<p>❗ Integratie met Hudson, EnvJS en Rhino ea: zie eigen junit test runner: <a href="https://github.com/wgroeneveld/jasmine-junit-runner">https://github.com/wgroeneveld/jasmine-junit-runner</a></p>
 
 <h3 id="andere-js-test-frameworks">Andere JS Test frameworks</h3>
 
@@ -1811,7 +1810,7 @@ Frameworks gebruiken zoals <a href="http://pivotal.github.com/jasmine/">Jasmine<
 
 <p><strong>Nadeel</strong>: <code>Java</code> ofzoiets nodig om JS te evalueren (<strong>Rhino</strong> of <strong>V8</strong> in C++ van Google), plus kan onregelmatigheden vertonen met hevig gebruik maken van UI frameworks -&gt; dit zou moeten werken allemaal, maar het blijft een gesimuleerde omgeving.</p>
 
-<p>❗️ Zie <a href="https://github.com/wgroeneveld/jasmine-junit-runner">https://github.com/wgroeneveld/jasmine-junit-runner</a></p>
+<p>❗ Zie <a href="https://github.com/wgroeneveld/jasmine-junit-runner">https://github.com/wgroeneveld/jasmine-junit-runner</a></p>
 
 <p>Integreren met hudson als extern commando:</p>
 
@@ -1834,7 +1833,7 @@ Frameworks gebruiken zoals <a href="http://pivotal.github.com/jasmine/">Jasmine<
 
 <h1 id="pitfalls">Pitfalls</h1>
 
-<p>❗️ Gebruik aub <strong><a href="http://www.jslint.com">JSLint</a></strong> om onderstaande &ldquo;probleempjes&rdquo; makkelijker te kunnen tracen en aanpassen.</p>
+<p>❗ Gebruik aub <strong><a href="http://www.jslint.com">JSLint</a></strong> om onderstaande &ldquo;probleempjes&rdquo; makkelijker te kunnen tracen en aanpassen.</p>
 
 <p><a href="https://developer.mozilla.org/en/JavaScript/Strict_mode">Strict mode</a> in ECMA5 is ook iets héél handig.</p>
 
@@ -2000,7 +1999,7 @@ arr.length = Math.pow(2, 32) - 1; // max allowed
 arr.length++; // RangeError: invalid array length (na lang denken van de parser)
 </code></pre>
 
-<p>❗️ de <code>length</code> property wordt gebruikt door utility functies zoals <code>push</code>, <code>concat</code> etc, dus als deze niet correct werkt zoals hierboven beschreven gebeuren en vreemde dingen!</p>
+<p>❗ de <code>length</code> property wordt gebruikt door utility functies zoals <code>push</code>, <code>concat</code> etc, dus als deze niet correct werkt zoals hierboven beschreven gebeuren en vreemde dingen!</p>
 
 <p>Meer info: zie <a href="http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/">How to subclass an Array</a></p>
 </div>

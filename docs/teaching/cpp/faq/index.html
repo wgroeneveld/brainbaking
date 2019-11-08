@@ -32,23 +32,19 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://brainbaking.com/"
+         "@id": "https:\/\/brainbaking.com\/"
     },
     "articleSection" : "teaching",
     "name" : "FAQ",
     
       "headline" : "FAQ",
     
-    "description" : "&laquo;&nbsp;Terug naar Software ontwerp in C/C++
-Neem ook eens een kijkje bij de Installatieinstructies!
-MinGW installatie problemen Error RES Fout op Win omgevingen Zie ook https://sourceforge.net/p/mingw-w64/bugs/413/ - &lsquo;oplossing&rsquo; is een aantal keer hetzelfde bestand opnieuw te proberen downloaden &amp; installeren. Antivirus die moeilijk doet kan ook een probleem zijn.
-Problemen met build omgevingen SH.exe was found in your path Fout:
- sh.exe was found in your PATH, here: C:/Program Files/Git/user/bin/sh.",
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software ontwerp in C\/C\x2b\x2b\nNeem ook eens een kijkje bij de Installatieinstructies!\nMinGW installatie problemen Error RES Fout op Win omgevingen Zie ook https:\/\/sourceforge.net\/p\/mingw-w64\/bugs\/413\/ - \x26lsquo;oplossing\x26rsquo; is een aantal keer hetzelfde bestand opnieuw te proberen downloaden \x26amp; installeren. Antivirus die moeilijk doet kan ook een probleem zijn.\nProblemen met build omgevingen SH.exe was found in your path Fout:\n sh.exe was found in your PATH, here: C:\/Program Files\/Git\/user\/bin\/sh.",
     
       "inLanguage" : "nl-BE",
     
     
-      "image": "https://brainbaking.com/img/avatar-icon.png",
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
     
     "author" : {
     	"@type": "Person",
@@ -59,16 +55,16 @@ Problemen met build omgevingen SH.exe was found in your path Fout:
     	"name": "Brain Baking",
     	"logo": {
     		"@type": "ImageObject",
-    		"url": "https://brainbaking.com/img/avatar-icon.png"
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
     	}
 	  },
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-11-08 08:53:12 &#43;0100 CET",
-    "dateModified" : "2019-11-08 08:53:12 &#43;0100 CET",
-    "url" : "https://brainbaking.com/teaching/cpp/faq/",
-    "wordCount" : "897",
+    "datePublished": "2019-11-08 08:53:12 \x2b0100 CET",
+    "dateModified" : "2019-11-08 08:53:12 \x2b0100 CET",
+    "url" : "https:\/\/brainbaking.com\/teaching\/cpp\/faq\/",
+    "wordCount" : "1158",
     "keywords" : [ "FAQ", "teaching" ]
 }
 </script>
@@ -141,7 +137,7 @@ Problemen met build omgevingen SH.exe was found in your path Fout:
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.53" />
+ <meta name="generator" content="Hugo 0.59.1" />
         
     </head>
 
@@ -274,6 +270,29 @@ Search fro cygwin1.dll using the WIndows Start->Find/Search facility and delete 
 
 <h3 id="het-project-builden">Het project builden</h3>
 
+<h4 id="google-test-compile-faalt-op-mac">Google Test Compile faalt op Mac</h4>
+
+<p>Fout:</p>
+
+<pre>
+Wouters-Air:build wgroeneveld$ make
+[ 25%] Building CXX object CMakeFiles/gtest.dir/src/gtest-all.cc.o
+In file included from /Users/jefklak/development/KUL/cpp/labo7/googletest/googletest/src/gtest-all.cc:38:
+In file included from /Users/jefklak/development/KUL/cpp/labo7/googletest/googletest/include/gtest/gtest.h:62:
+In file included from /Users/jefklak/development/KUL/cpp/labo7/googletest/googletest/include/gtest/internal/gtest-internal.h:40:
+/Users/jefklak/development/KUL/cpp/labo7/googletest/googletest/include/gtest/internal/gtest-port.h:825:12: error: no
+      member named 'make_tuple' in namespace 'std'
+using std::make_tuple;
+      ~~~~~^
+/Users/jefklak/development/KUL/cpp/labo7/googletest/googletest/include/gtest/internal/gtest-port.h:826:12: error: no
+      member named 'tuple' in namespace 'std'
+using std::tuple;
+      ~~~~~^
+...
+</pre>
+
+<p>Oorzaak: Master branch van Google Test is recent overgeschakeld naar C++11. In hun CMakeLists.txt moet je dit toevoegen: <code>set(CMAKE_CXX_STANDARD 17)</code>. Dan build dir verwijderen en opnieuw <code>cmake</code> voor <code>make</code> uitvoeren.</p>
+
 <h4 id="zeer-veel-google-test-fouten-bij-het-linken">Zeer veel Google Test fouten bij het linken</h4>
 
 <p>Fout:</p>
@@ -298,6 +317,35 @@ C:/Development/github/gba-sprite-engine/test/allocatortest.cpp:79: undefined ref
 <p>Oorzaak: je Google Test libraries zijn gecompileerd met <strong>een andere Toolchain</strong> dan waar je het project mee probeert te compileren! Cygwin VS MinGW problemen.</p>
 
 <p>Oplossing: compileer Google Test opnieuw in dezelfde Toolchain - bijvoorbeeld in MinGW. Ga naar <code>gooletest\googletest\build</code>, verwijder alle bestaande bestanden met <code>rm -rf *</code> en volg opnieuw de <a href="/teaching/cpp/installaties">Installatieinstructies</a>.</p>
+
+<h4 id="cmake-was-unable-to-find-a-build-program-corresponding-to-unix-makefiles">CMake was unable to find a build program corresponding to &ldquo;Unix Makefiles&rdquo;</h4>
+
+<p>Bij uitvoeren CMake commando met het <code>-G</code> argument in Windows omgevingen.</p>
+
+<p>Fout:</p>
+
+<pre>
+C:\Users\x\Documents\3ABA\C en C++\les7\googletest\googletest\build>cmake -G "Unix Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" ./../
+CMake Warning at CMakeLists.txt:54 (project):
+  VERSION keyword not followed by a value or was followed by a value that
+  expanded to nothing.
+
+
+CMake Error: CMake was unable to find a build program corresponding to "Unix Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
+CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
+CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
+-- Configuring incomplete, errors occurred!
+See also "C:/Users/x/Documents/3ABA/C en C++/les7/googletest/googletest/build/CMakeFiles/CMakeOutput.log".
+</pre>
+
+<p>Oorzaken:</p>
+
+<ol>
+<li><code>gcc</code> compiler staat niet in <code>%PATH%</code>, of je voert dit niet uit vanuit de MinGW command prompt.</li>
+<li><code>make</code> commando niet gevonden. In dat geval dien je <code>make-mingw32.exe</code> uit de MinGW install bin directory (bvb. <code>C:\Program Files\mingw-64\mingw64\bin</code>) te kopiëren (naar dezelfde dir) en te hernoemen naar <code>make.exe</code>.</li>
+</ol>
+
+<p>Verwijder de build directory waar CMake files in genereerde, met eventuele <code>CMakeCache.txt</code> files, en voer <code>cmake -G</code> terug uit met de juiste argumenten.</p>
 
 <h4 id="no-rule-to-make-target-ligbtest-a-needed-by-test-unittest-stop">No rule to make target ligbtest.a needed by test/unittest. Stop.</h4>
 

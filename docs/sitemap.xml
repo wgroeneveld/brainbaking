@@ -1,9 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://brainbaking.com/</loc>
+    <lastmod>2019-11-08T08:53:12+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/creativity/</loc>
+    <lastmod>2019-10-11T15:32:22+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/phd/</loc>
+    <lastmod>2019-10-11T15:32:22+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/creative-cognitive-processes/</loc>
+    <lastmod>2019-10-11T15:32:22+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/</loc>
     <lastmod>2019-10-11T15:32:22+02:00</lastmod>
   </url>
   
@@ -13,8 +33,33 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/c&#43;&#43;/</loc>
+    <lastmod>2019-04-15T16:01:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/gba/</loc>
+    <lastmod>2019-04-15T16:01:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/teaching/</loc>
+    <lastmod>2019-04-15T16:01:57+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/teaching-oo-with-gba/</loc>
     <lastmod>2019-04-15T16:01:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/certificates/</loc>
+    <lastmod>2019-02-06T15:48:43+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/competences/</loc>
+    <lastmod>2019-02-06T15:48:43+01:00</lastmod>
   </url>
   
   <url>
@@ -33,6 +78,21 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/assembly/</loc>
+    <lastmod>2018-12-17T15:33:39+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/picoblaze/</loc>
+    <lastmod>2018-12-17T15:33:39+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/unit-testing/</loc>
+    <lastmod>2018-12-17T15:33:39+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/unit-testing-picoblaze-assembly/</loc>
     <lastmod>2018-12-17T15:33:39+01:00</lastmod>
   </url>
@@ -43,8 +103,43 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/braindump/</loc>
+    <lastmod>2018-10-28T16:26:25+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/craftsmanship/</loc>
+    <lastmod>2018-10-28T16:26:25+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/development/</loc>
+    <lastmod>2018-10-28T16:26:25+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/journaling/</loc>
+    <lastmod>2018-10-28T16:26:25+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/agile/</loc>
+    <lastmod>2018-11-15T11:14:56+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/lean-doctorate/</loc>
     <lastmod>2018-11-15T11:14:56+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/tools/</loc>
+    <lastmod>2018-11-15T11:14:56+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/productivity/</loc>
+    <lastmod>2018-08-30T09:50:29+02:00</lastmod>
   </url>
   
   <url>
@@ -55,6 +150,21 @@
   <url>
     <loc>https://brainbaking.com/essays/boeken-die-mij-gevormd-hebben/</loc>
     <lastmod>2018-08-21T15:22:26+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/reading/</loc>
+    <lastmod>2018-08-21T15:22:26+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/c/</loc>
+    <lastmod>2018-08-06T11:34:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/domain-driven-design/</loc>
+    <lastmod>2018-08-06T11:34:08+02:00</lastmod>
   </url>
   
   <url>
@@ -93,6 +203,11 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/philosophy/</loc>
+    <lastmod>2018-06-15T14:01:11+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/teaching-philosophy-first/</loc>
     <lastmod>2018-06-15T14:01:11+02:00</lastmod>
   </url>
@@ -113,8 +228,33 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/functional-programming/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/java/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/collaboration/</loc>
+    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/serendipitous-creativity/</loc>
     <lastmod>2018-04-27T12:00:07+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/concentration/</loc>
+    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/self-improvement/</loc>
+    <lastmod>2019-07-31T09:16:16+02:00</lastmod>
   </url>
   
   <url>
@@ -148,7 +288,17 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/fountain-pens/</loc>
+    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/journaling-in-practice/</loc>
+    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/cooking/</loc>
     <lastmod>2018-04-27T12:00:07+02:00</lastmod>
   </url>
   
@@ -163,6 +313,11 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/learning/</loc>
+    <lastmod>2019-07-31T09:16:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/a-samurai-learning-mindset/</loc>
     <lastmod>2019-07-31T09:16:16+02:00</lastmod>
   </url>
@@ -173,13 +328,43 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/principles/</loc>
+    <lastmod>2017-06-09T16:34:19+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/handing-over-enough-when-inspiring/</loc>
+    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/giving/</loc>
+    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/inspiring/</loc>
     <lastmod>2018-04-27T12:00:07+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/post/teaching-kids-how-to-program/</loc>
     <lastmod>2017-05-25T22:04:53+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/programming/</loc>
+    <lastmod>2017-05-25T22:04:53+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/techorama/</loc>
+    <lastmod>2017-05-25T22:04:53+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/teaching-yourself-to-draw/</loc>
+    <lastmod>2018-04-30T15:34:38+02:00</lastmod>
   </url>
   
   <url>
@@ -193,7 +378,42 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/vb6/</loc>
+    <lastmod>2018-12-05T15:09:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/extjs/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/javascript/</loc>
+    <lastmod>2018-12-18T15:29:34+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/react-in-extjs/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/react/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/csharp/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/scenario-testing/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/webdriver/</loc>
     <lastmod>2018-04-27T15:37:08+02:00</lastmod>
   </url>
   
@@ -203,12 +423,42 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/siesta/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/unit-testing-extjs-ui/</loc>
     <lastmod>2018-04-27T15:37:08+02:00</lastmod>
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/.net/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/memory-management-vs-java/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/clr/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/jvm/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/memory-management/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/code-smells/</loc>
     <lastmod>2018-04-27T15:37:08+02:00</lastmod>
   </url>
   
@@ -223,12 +473,42 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/build-ecosystem/</loc>
+    <lastmod>2018-08-10T09:09:35+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/scons-building/</loc>
     <lastmod>2018-08-10T09:09:35+02:00</lastmod>
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/python/</loc>
+    <lastmod>2018-08-10T09:09:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/metaprogramming/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/metaprogramming-convention-dry/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/mocking/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/reflection/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/closures/</loc>
     <lastmod>2018-04-27T15:37:08+02:00</lastmod>
   </url>
   
@@ -238,13 +518,48 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/groovy/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/integration-testing-sqlite/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/sql/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/sqlite/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/eclipse/</loc>
+    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/visual-studio/</loc>
     <lastmod>2018-04-27T15:37:08+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/post/vstudio-missing-features/</loc>
     <lastmod>2018-04-27T15:37:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/baking/</loc>
+    <lastmod>2018-04-27T19:45:15+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/bread/</loc>
+    <lastmod>2018-04-27T19:45:15+02:00</lastmod>
   </url>
   
   <url>
@@ -268,6 +583,21 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/classes/</loc>
+    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/cmd/</loc>
+    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/dynamiclangs/</loc>
+    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/unix-cmd/</loc>
     <lastmod>2018-05-03T16:09:41+02:00</lastmod>
   </url>
@@ -283,7 +613,17 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/ruby/</loc>
+    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/ruby-classes/</loc>
+    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/scheme/</loc>
     <lastmod>2018-05-03T16:09:41+02:00</lastmod>
   </url>
   
@@ -293,12 +633,27 @@
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/unix/</loc>
+    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/no-vegetarians-do-not-eat-fish/</loc>
     <lastmod>2018-04-27T12:00:07+02:00</lastmod>
   </url>
   
   <url>
+    <loc>https://brainbaking.com/tags/vegetarian/</loc>
+    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brainbaking.com/post/on-finding-your-inner-zen-in-big-cities/</loc>
+    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/tags/zen/</loc>
     <lastmod>2018-04-27T12:00:07+02:00</lastmod>
   </url>
   
@@ -309,179 +664,21 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/slides-1/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/slides-2/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/slides-3/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/slides-4/</loc>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/.net/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/agile/</loc>
-    <lastmod>2018-11-15T11:14:56+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/assembly/</loc>
-    <lastmod>2018-12-17T15:33:39+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/baking/</loc>
-    <lastmod>2018-04-27T19:45:15+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/</loc>
-    <lastmod>2019-10-11T15:32:22+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/braindump/</loc>
-    <lastmod>2018-10-28T16:26:25+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/bread/</loc>
-    <lastmod>2018-04-27T19:45:15+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/build-ecosystem/</loc>
-    <lastmod>2018-08-10T09:09:35+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/c/</loc>
-    <lastmod>2018-08-06T11:34:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/c&#43;&#43;/</loc>
-    <lastmod>2019-04-15T16:01:57+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/certificates/</loc>
-    <lastmod>2019-02-06T15:48:43+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/classes/</loc>
-    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/closures/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/clr/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/cmd/</loc>
-    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/code-smells/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/collaboration/</loc>
-    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/competences/</loc>
-    <lastmod>2019-02-06T15:48:43+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/concentration/</loc>
-    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/cooking/</loc>
-    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/craftsmanship/</loc>
-    <lastmod>2018-10-28T16:26:25+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/creativity/</loc>
-    <lastmod>2019-10-11T15:32:22+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/csharp/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/development/</loc>
-    <lastmod>2018-10-28T16:26:25+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/domain-driven-design/</loc>
-    <lastmod>2018-08-06T11:34:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/dynamiclangs/</loc>
-    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/eclipse/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -496,44 +693,8 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/tags/extjs/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://brainbaking.com/teaching/cpp/faq/</loc>
     <lastmod>2019-11-08T08:53:12+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/fountain-pens/</loc>
-    <lastmod>2017-07-17T21:25:27+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/functional-programming/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/gba/</loc>
-    <lastmod>2019-04-15T16:01:57+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/giving/</loc>
-    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/groovy/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -542,38 +703,8 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/tags/inspiring/</loc>
-    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://brainbaking.com/teaching/cpp/installaties/</loc>
     <lastmod>2019-10-23T11:17:43+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/java/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/javascript/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/journaling/</loc>
-    <lastmod>2018-10-28T16:26:25+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/jvm/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -642,127 +773,13 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/tags/learning/</loc>
-    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/memory-management/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/metaprogramming/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/mocking/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/phd/</loc>
-    <lastmod>2019-10-11T15:32:22+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/philosophy/</loc>
-    <lastmod>2018-06-15T14:01:11+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/picoblaze/</loc>
-    <lastmod>2018-12-17T15:33:39+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/principles/</loc>
-    <lastmod>2017-06-09T16:34:19+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/productivity/</loc>
-    <lastmod>2018-08-30T09:50:29+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/programming/</loc>
-    <lastmod>2017-05-25T22:04:53+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/python/</loc>
-    <lastmod>2018-08-10T09:09:35+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/react/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/reading/</loc>
-    <lastmod>2018-08-21T15:22:26+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/reflection/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/ruby/</loc>
-    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/scenario-testing/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/scheme/</loc>
-    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/self-improvement/</loc>
-    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/siesta/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://brainbaking.com/teaching/cpp/en/</loc>
+    <lastmod>2019-10-17T14:51:22+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/ses/</loc>
     <lastmod>2019-10-04T14:26:40+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/teaching/cpp/en/</loc>
-    <lastmod>2019-10-17T14:51:22+02:00</lastmod>
   </url>
   
   <url>
@@ -786,96 +803,13 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/tags/sql/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/sqlite/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/</loc>
-    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/teaching/</loc>
-    <lastmod>2019-04-15T16:01:57+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://brainbaking.com/teaching/</loc>
     <lastmod>2019-10-04T14:26:40+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://brainbaking.com/tags/teaching-yourself-to-draw/</loc>
-    <lastmod>2018-04-30T15:34:38+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://brainbaking.com/post/</loc>
     <lastmod>2019-10-11T15:18:23+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/techorama/</loc>
-    <lastmod>2017-05-25T22:04:53+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/tools/</loc>
-    <lastmod>2018-11-15T11:14:56+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/unit-testing/</loc>
-    <lastmod>2018-12-17T15:33:39+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/unix/</loc>
-    <lastmod>2018-05-03T16:09:41+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/vb6/</loc>
-    <lastmod>2018-12-05T15:09:33+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/vegetarian/</loc>
-    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/visual-studio/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/webdriver/</loc>
-    <lastmod>2018-04-27T15:37:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://brainbaking.com/tags/zen/</loc>
-    <lastmod>2018-04-27T12:00:07+02:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

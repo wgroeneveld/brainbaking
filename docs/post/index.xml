@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tech Blog on Brain Baking</title>
@@ -8,7 +8,6 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Fri, 11 Oct 2019 15:18:23 +0200</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -329,7 +328,7 @@ Test Driven Development (or TDD), it&amp;rsquo;s one of those buzz words which u
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/post/dynamic-languages/</guid>
       <description>Dynamic Languages: Constructs vergelijken Deze pagina vergelijkt verschillende dynamische talen in een poging om een overzicht te maken tussen de alsmaar groeiende lijst. De meest gebruikte features van zulke talen worden hieronder opgelijst.
-Het verschil tussen MOPs en Prototypal inheritance ❗️ Javascript heeft géén Meta Object Protocol (MOP) dat de taal dynamisch maakt, maar bouwt verder op prototypes. Dat wil zeggen dat het klassieke inheritance systeem niet bestaat in Javascript, maar wel nagebootst kan worden door objecten te laten afleiden van objecten.</description>
+Het verschil tussen MOPs en Prototypal inheritance ❗ Javascript heeft géén Meta Object Protocol (MOP) dat de taal dynamisch maakt, maar bouwt verder op prototypes. Dat wil zeggen dat het klassieke inheritance systeem niet bestaat in Javascript, maar wel nagebootst kan worden door objecten te laten afleiden van objecten.</description>
     </item>
     
     <item>

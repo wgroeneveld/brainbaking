@@ -36,20 +36,19 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://brainbaking.com/"
+         "@id": "https:\/\/brainbaking.com\/"
     },
     "articleSection" : "post",
-    "name" : "C&#43;&#43; Basics",
+    "name" : "C\x2b\x2b Basics",
     
-      "headline" : "C&#43;&#43; basics for a Java developer",
+      "headline" : "C\x2b\x2b basics for a Java developer",
     
-    "description" : "Scope C++ heeft block level scope, net als Java, alleen is het mogelijk om een variabele binnen een for loop dezelfde naam te geven als een die buiten die block gedefiniëerd is, terwijl dat in Java niet gaat:
-int j; for(int i = 0; i &lt; 10; i++) { int j = i + 1; // compile fout in java }  Pointer scope auto_ptr kan gebruikt worden om een pointer automatisch te verwijderen met delete wanneer deze scope verliest - alle andere zaken moet je zelf opkuisen.",
+    "description" : "Scope C\x2b\x2b heeft block level scope, net als Java, alleen is het mogelijk om een variabele binnen een for loop dezelfde naam te geven als een die buiten die block gedefiniëerd is, terwijl dat in Java niet gaat:\nint j; for(int i = 0; i \x26lt; 10; i\x2b\x2b) { int j = i \x2b 1; \/\/ compile fout in java }  Pointer scope auto_ptr kan gebruikt worden om een pointer automatisch te verwijderen met delete wanneer deze scope verliest - alle andere zaken moet je zelf opkuisen.",
     
       "inLanguage" : "en-US",
     
     
-      "image": "https://brainbaking.com/img/avatar-icon.png",
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
     
     "author" : {
     	"@type": "Person",
@@ -60,17 +59,17 @@ int j; for(int i = 0; i &lt; 10; i++) { int j = i + 1; // compile fout in java }
     	"name": "Brain Baking",
     	"logo": {
     		"@type": "ImageObject",
-    		"url": "https://brainbaking.com/img/avatar-icon.png"
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
     	}
 	  },
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "2013",
-    "datePublished": "2013-10-01 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-05-03 16:09:41 &#43;0200 CEST",
-    "url" : "https://brainbaking.com/post/cplusplus-basics/",
+    "datePublished": "2013-10-01 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2018-05-03 16:09:41 \x2b0200 CEST",
+    "url" : "https:\/\/brainbaking.com\/post\/cplusplus-basics\/",
     "wordCount" : "2238",
-    "keywords" : [ "c&#43;&#43;","C&#43;&#43; Basics", "post" ]
+    "keywords" : [ "c\x2b\x2b","C\x2b\x2b Basics", "post" ]
 }
 </script>
 
@@ -142,7 +141,7 @@ int j; for(int i = 0; i &lt; 10; i++) { int j = i + 1; // compile fout in java }
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.53" />
+ <meta name="generator" content="Hugo 0.59.1" />
         
     </head>
 
@@ -258,7 +257,7 @@ for(int i = 0; i &lt; 10; i++) {
 <h3 id="pointer-scope">Pointer scope</h3>
 
 <p><a href="https://en.wikipedia.org/wiki/Auto_ptr">auto_ptr</a> kan gebruikt worden om een pointer automatisch te verwijderen met <code>delete</code> wanneer deze scope verliest - alle andere zaken moet je zelf opkuisen.
-❗️ Dit is deprecated in C++ 11, gebruik <a href="https://en.wikipedia.org/wiki/Smart_pointer#unique_ptr">unique_ptr</a></p>
+❗ Dit is deprecated in C++ 11, gebruik <a href="https://en.wikipedia.org/wiki/Smart_pointer#unique_ptr">unique_ptr</a></p>
 
 <p>Voorbeeld van wikipedia:</p>
 
@@ -339,12 +338,12 @@ int main()
 </code></pre>
 
 <ol>
-<li>Haal <code>virtual</code> weg. 5. <br/><br/>
-Definiëer <code>Complexer</code> zo:</li>
-</ol>
+<li><p>Haal <code>virtual</code> weg. 5. <br/><br/>
+Definiëer <code>Complexer</code> zo:</p>
 
 <pre><code class="language-c">Complexer* complexer = new Complexer();
-</code></pre>
+</code></pre></li>
+</ol>
 
 <p>En het is altijd 10.</p>
 
@@ -492,7 +491,7 @@ private:
 
 <h1 id="mfc">MFC</h1>
 
-<p>❗️ MFC en AFX <a href="http://en.wikipedia.org/wiki/Microsoft_Foundation_Class_Library">is hetzelfde</a>:</p>
+<p>❗ MFC en AFX <a href="http://en.wikipedia.org/wiki/Microsoft_Foundation_Class_Library">is hetzelfde</a>:</p>
 
 <blockquote>
 <p>One interesting quirk of MFC is the use of &ldquo;Afx&rdquo; as the prefix for many functions, macros and the standard precompiled header name &ldquo;stdafx.h&rdquo;. During early development what became MFC was called &ldquo;Application Framework Extensions&rdquo; and abbreviated &ldquo;Afx&rdquo;. The name Microsoft Foundation Classes (MFC) was adopted too late in the release cycle to change these references</p>
@@ -506,7 +505,7 @@ private:
 
 <p>Formatten kan bijvoorbeeld met <code>string.Format(_T(&quot;%s in %d&quot;), otherString, otherDecimal);</code></p>
 
-<p>❗️ Om een string te intialiseren en toe te kennen moet je wel de <code>_T</code> macro gebruiken</p>
+<p>❗ Om een string te intialiseren en toe te kennen moet je wel de <code>_T</code> macro gebruiken</p>
 
 <h5 id="substringen">Substringen</h5>
 
@@ -540,7 +539,7 @@ private:
 
 <p>Meer uitleg hierover: zie <a href="http://support.microsoft.com/kb/161589">http://support.microsoft.com/kb/161589</a></p>
 
-<p>❗️ de Afx resource handle kan <strong>altijd</strong> gewijzigd worden door leuke dingen te doen als:</p>
+<p>❗ de Afx resource handle kan <strong>altijd</strong> gewijzigd worden door leuke dingen te doen als:</p>
 
 <pre><code class="language-c">  HINSTANCE old = AfxGetResourceHandle();
   AfxSetResourceHandle(GetModuleHandle(&quot;andereModule&quot;));
@@ -675,7 +674,7 @@ private:
 
 </code></pre>
 
-<p>❗️ Vergeet niet in de cpp file uw singletonInstance pointer te declareren, anders krijg je linker errors: <code>AddinProcessService* AddinProcessService::singletonInstance;</code></p>
+<p>❗ Vergeet niet in de cpp file uw singletonInstance pointer te declareren, anders krijg je linker errors: <code>AddinProcessService* AddinProcessService::singletonInstance;</code></p>
 
 <p>In UNIX kan men <a href="https://computing.llnl.gov/tutorials/pthreads/">pthreads</a> gebruiken, ongeveer op deze manier:</p>
 
@@ -757,8 +756,8 @@ private:
 <li>Ik wil Native C++ methods kunnen aanroepen vanuit C#. Dit kan met de <code>DllImport</code> attribute.</li>
 <li>Ik wil structs kunnen remarshallen die uit de native code komen. Dit kan met <code>StructLayout</code> en <code>PtrToStructrue</code>.</li>
 <li>Ik wil een char* mappen op een C# string: gebruik <code>[MarshalAsAttribute(UnmanagedType.LPStr)]</code> in uw C# struct.</li>
-<li>Ik wil parameters mee kunnen geven: gebruik de juiste calling method (STD of DECL) instelling, zie <code>CallingConvention</code> op <code>UnmanagedFunctionPointer</code>.</li>
-</ol>
+
+<li><p>Ik wil parameters mee kunnen geven: gebruik de juiste calling method (STD of DECL) instelling, zie <code>CallingConvention</code> op <code>UnmanagedFunctionPointer</code>.</p>
 
 <pre><code class="language-c++">#pragma once
 
@@ -770,8 +769,8 @@ private:
 
 struct MyStruct
 {
-  char* id;
-  char* description;
+char* id;
+char* description;
 };
 
 DllExImport MyStruct* __stdcall GetSignals();
@@ -782,80 +781,81 @@ DllExImport MyStruct* __stdcall GetSignals();
 
 DllExImport MyStruct* __stdcall GetSignals()
 {
-  static MyStruct a[] =
-  {
-    { &quot;id1&quot;, &quot;desc1&quot; },
-    { &quot;id2&quot;, &quot;desc2&quot; },
-    { &quot;id3&quot;, &quot;desc3&quot; }
-  };
-  return a;
+static MyStruct a[] =
+{
+{ &quot;id1&quot;, &quot;desc1&quot; },
+{ &quot;id2&quot;, &quot;desc2&quot; },
+{ &quot;id3&quot;, &quot;desc3&quot; }
+};
+return a;
 }
 </code></pre>
 
 <pre><code class="language-csharp">namespace structArrayImportTest
 {
-    #region
+#region
 
-    using System;
-    using System.Runtime.InteropServices;
+using System;
+using System.Runtime.InteropServices;
 
-    #endregion
+#endregion
 
-    internal class StructImporter
+internal class StructImporter
+{
+    // Charset.Ansi is not needed it seems
+    [DllImport(&quot;kernel32.dll&quot;, EntryPoint = &quot;LoadLibrary&quot;)]
+    private static extern IntPtr LoadLibrary(
+        [MarshalAs(UnmanagedType.LPStr)] string lpLibFileName);
+
+    [DllImport(&quot;kernel32.dll&quot;, EntryPoint = &quot;GetProcAddress&quot;)]
+    private static extern IntPtr GetProcAddress(IntPtr hModule,
+                                                [MarshalAs(UnmanagedType.LPStr)] string lpProcName);
+
+    [DllImport(&quot;kernel32&quot;, SetLastError ###### true, EntryPoint  &quot;GetProcAddress&quot;)]
+    private static extern IntPtr GetProcAddressOrdinal(IntPtr hModule, IntPtr procName);
+
+    [DllImport(&quot;kernel32.dll&quot;, EntryPoint = &quot;FreeLibrary&quot;)]
+    private static extern bool FreeLibrary(int hModule);
+
+    [StructLayout(LayoutKind.Sequential)]
+    public class MyStruct
     {
-        // Charset.Ansi is not needed it seems
-        [DllImport(&quot;kernel32.dll&quot;, EntryPoint = &quot;LoadLibrary&quot;)]
-        private static extern IntPtr LoadLibrary(
-            [MarshalAs(UnmanagedType.LPStr)] string lpLibFileName);
-
-        [DllImport(&quot;kernel32.dll&quot;, EntryPoint = &quot;GetProcAddress&quot;)]
-        private static extern IntPtr GetProcAddress(IntPtr hModule,
-                                                    [MarshalAs(UnmanagedType.LPStr)] string lpProcName);
-
-        [DllImport(&quot;kernel32&quot;, SetLastError ###### true, EntryPoint  &quot;GetProcAddress&quot;)]
-        private static extern IntPtr GetProcAddressOrdinal(IntPtr hModule, IntPtr procName);
-
-        [DllImport(&quot;kernel32.dll&quot;, EntryPoint = &quot;FreeLibrary&quot;)]
-        private static extern bool FreeLibrary(int hModule);
-
-        [StructLayout(LayoutKind.Sequential)]
-        public class MyStruct
-        {
-            [MarshalAsAttribute(UnmanagedType.LPStr)]
-            public string _id;
-            [MarshalAsAttribute(UnmanagedType.LPStr)]
-            public string _description;
-        }
-
-        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-        public delegate IntPtr fGetSignals();
-
-        public fGetSignals GetSignals;
-
-        public void Import()
-        {
-            IntPtr lib = LoadLibrary(@&quot;C:&lt;br/&gt;Users&lt;br/&gt;bkwog&lt;br/&gt;Documents&lt;br/&gt;Visual Studio 2012&lt;br/&gt;Projects&lt;br/&gt;structArrayExportTest&lt;br/&gt;Debug&lt;br/&gt;structArrayExportTest.dll&quot;);
-            // gebruik dumpbin /exports [bla.dll] om ordinal &amp; name van exported functions te bepalen.
-            IntPtr signalsHandle = GetProcAddressOrdinal(lib, new IntPtr(1));
-            GetSignals = (fGetSignals) Marshal.GetDelegateForFunctionPointer(signalsHandle, typeof (fGetSignals));
-            IntPtr myStructs = GetSignals();
-
-            int structSize = Marshal.SizeOf(typeof(MyStruct));
-            Console.WriteLine(structSize);
-
-            for (int i = 0; i &lt; 3; ++i)
-            {
-                // What's the difference between toInt32 &amp; 64 here? Both work...
-                IntPtr data = new IntPtr(myStructs.ToInt64() + structSize * i);
-                MyStruct ms = (MyStruct)Marshal.PtrToStructure(data, typeof(MyStruct));
-
-                Console.WriteLine(&quot;id: &quot; + ms._id + &quot; - descr: &quot; + ms._description );
-            }
-        }
-
+        [MarshalAsAttribute(UnmanagedType.LPStr)]
+        public string _id;
+        [MarshalAsAttribute(UnmanagedType.LPStr)]
+        public string _description;
     }
+
+    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    public delegate IntPtr fGetSignals();
+
+    public fGetSignals GetSignals;
+
+    public void Import()
+    {
+        IntPtr lib = LoadLibrary(@&quot;C:&lt;br/&gt;Users&lt;br/&gt;bkwog&lt;br/&gt;Documents&lt;br/&gt;Visual Studio 2012&lt;br/&gt;Projects&lt;br/&gt;structArrayExportTest&lt;br/&gt;Debug&lt;br/&gt;structArrayExportTest.dll&quot;);
+        // gebruik dumpbin /exports [bla.dll] om ordinal &amp; name van exported functions te bepalen.
+        IntPtr signalsHandle = GetProcAddressOrdinal(lib, new IntPtr(1));
+        GetSignals = (fGetSignals) Marshal.GetDelegateForFunctionPointer(signalsHandle, typeof (fGetSignals));
+        IntPtr myStructs = GetSignals();
+
+        int structSize = Marshal.SizeOf(typeof(MyStruct));
+        Console.WriteLine(structSize);
+
+        for (int i = 0; i &lt; 3; ++i)
+        {
+            // What's the difference between toInt32 &amp; 64 here? Both work...
+            IntPtr data = new IntPtr(myStructs.ToInt64() + structSize * i);
+            MyStruct ms = (MyStruct)Marshal.PtrToStructure(data, typeof(MyStruct));
+
+            Console.WriteLine(&quot;id: &quot; + ms._id + &quot; - descr: &quot; + ms._description );
+        }
+    }
+
 }
-</code></pre>
+}
+</code></pre></li>
+</ol>
 
 <h4 id="calling-convention">Calling convention</h4>
 

@@ -38,20 +38,19 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://brainbaking.com/"
+         "@id": "https:\/\/brainbaking.com\/"
     },
     "articleSection" : "post",
     "name" : "Heavily used Unix Commands",
     
       "headline" : "Unix Commandline stuff in here!",
     
-    "description" : "Binaries zoeken Kan met whereis, maar die zoekt blijkbaar niet in &ldquo;alle&rdquo; binary dirs - enkel degene die geconfigureerd zijn onder:
-sysctl user.cs_path # output: user.cs_path = /usr/bin:/bin:/usr/sbin:/sbin  Shell automatisation Command-line programs feeden kan met het expect tooltje. Bijvoorbeeld, bij het aanloggen in ssh moet je daarna een wachtwoord geven en op enter drukken dat niet als commandline argument meegegeven kan worden. Dit kan je dan zo forceren:",
+    "description" : "Binaries zoeken Kan met whereis, maar die zoekt blijkbaar niet in \x26ldquo;alle\x26rdquo; binary dirs - enkel degene die geconfigureerd zijn onder:\nsysctl user.cs_path # output: user.cs_path = \/usr\/bin:\/bin:\/usr\/sbin:\/sbin  Shell automatisation Command-line programs feeden kan met het expect tooltje. Bijvoorbeeld, bij het aanloggen in ssh moet je daarna een wachtwoord geven en op enter drukken dat niet als commandline argument meegegeven kan worden. Dit kan je dan zo forceren:",
     
       "inLanguage" : "en-US",
     
     
-      "image": "https://brainbaking.com/img/avatar-icon.png",
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
     
     "author" : {
     	"@type": "Person",
@@ -62,16 +61,16 @@ sysctl user.cs_path # output: user.cs_path = /usr/bin:/bin:/usr/sbin:/sbin  Shel
     	"name": "Brain Baking",
     	"logo": {
     		"@type": "ImageObject",
-    		"url": "https://brainbaking.com/img/avatar-icon.png"
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
     	}
 	  },
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "2013",
-    "datePublished": "2013-10-01 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-05-03 16:09:41 &#43;0200 CEST",
-    "url" : "https://brainbaking.com/post/unix-cmd/",
-    "wordCount" : "2027",
+    "datePublished": "2013-10-01 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2018-05-03 16:09:41 \x2b0200 CEST",
+    "url" : "https:\/\/brainbaking.com\/post\/unix-cmd\/",
+    "wordCount" : "2095",
     "keywords" : [ "unix","cmd","Heavily used Unix Commands", "post" ]
 }
 </script>
@@ -144,7 +143,7 @@ sysctl user.cs_path # output: user.cs_path = /usr/bin:/bin:/usr/sbin:/sbin  Shel
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.53" />
+ <meta name="generator" content="Hugo 0.59.1" />
         
     </head>
 
@@ -358,365 +357,424 @@ waarbij ![getal] laatste x commando uitvoert en !! het laatste. Zie `man history
 
 Bewaar dit shell script naar cpi.sh:
 
-```bash
+</code></pre>
+
+<p>bash
 #!/bin/bash
-if [ ! -d &quot;$2&quot; ]; then
-    mkdir -p &quot;$2&quot;
+if [ ! -d &ldquo;$2&rdquo; ]; then
+    mkdir -p &ldquo;$2&rdquo;
 fi
-cp -R &quot;$1&quot; &quot;$2&quot;
+cp -R &ldquo;$1&rdquo; &ldquo;$2&rdquo;</p>
+
+<pre><code>
+`chmod +x cpi.sh` en dan in uw `.bashrc` een link leggen om `cpi` te gebruiken.
+
+### xargs 
+
+Het bovenstaande kan ook uitgevoerd worden met `xargs` en piping. Bijvoorbeeld bepaalde bestanden (niet-recursief) kopiëren naar &quot;tmp&quot;:
+
 </code></pre>
 
-<p><code>chmod +x cpi.sh</code> en dan in uw <code>.bashrc</code> een link leggen om <code>cpi</code> te gebruiken.</p>
+<p>ls | grep .php | xargs -i cp {} ./tmp</p>
 
-<h3 id="xargs">xargs</h3>
+<pre><code>
+Andere interessante opties van xargs:
 
-<p>Het bovenstaande kan ook uitgevoerd worden met <code>xargs</code> en piping. Bijvoorbeeld bepaalde bestanden (niet-recursief) kopiëren naar &ldquo;tmp&rdquo;:</p>
+  * `-ix`: gebruik `{}` (of `x` karakters indien specified) om lijn per lijn de input te vervangen. Het kan zijn dat dit escaped moet worden met backslashen voor de shell!
+  * `-0`: gebruik in combinatie met `-print0` en `find` om het verschil tussen spaties en newlines duidelijk te maken
+  * `-p`: confirm elke actie, interessant bij verwijderen van crutiale files
+  * `-lx`: gebruik maximum x lijnen input per command line. 
+  * `-nx`: gebruik maximum x argumenten per command line.
+  * `-t`: verbose mode (`--verbose` werkt ook)
 
-<pre><code>ls | grep .php | xargs -i cp {} ./tmp
+### sed 
+
+Gebruik `sed` om snel replaces te doen door middel van regex, of door lines te nummeren, ... &lt;br/&gt;&lt;br/&gt;
+Het is ook mogelijk om regex partities te *groeperen*, vergeet niet de haakjes zelf te escapen! Om de gegroepeerde waarde in het &quot;replace&quot; geteelde te gebruiken, moeten we niet `$1` maar `&lt;br/&gt;1` gebruiken. Bijvoorbeeld:
+
 </code></pre>
 
-<p>Andere interessante opties van xargs:</p>
+<p>sed &rsquo;s/<br/>(.*<br/>)/regel:<br/>1/g&rsquo; log.tmp &gt;&gt; $logfile</p>
 
-<ul>
-<li><code>-ix</code>: gebruik <code>{}</code> (of <code>x</code> karakters indien specified) om lijn per lijn de input te vervangen. Het kan zijn dat dit escaped moet worden met backslashen voor de shell!</li>
-<li><code>-0</code>: gebruik in combinatie met <code>-print0</code> en <code>find</code> om het verschil tussen spaties en newlines duidelijk te maken</li>
-<li><code>-p</code>: confirm elke actie, interessant bij verwijderen van crutiale files</li>
-<li><code>-lx</code>: gebruik maximum x lijnen input per command line.</li>
-<li><code>-nx</code>: gebruik maximum x argumenten per command line.</li>
-<li><code>-t</code>: verbose mode (<code>--verbose</code> werkt ook)</li>
-</ul>
+<pre><code>
+Resultaat:
 
-<h3 id="sed">sed</h3>
+  1. Replace x door y via `s/regex/replace/`
+  2. Replace alle gevonden instanties (`g` na expressie)
+  3. Groepeer alles door te zoeken op `.*` en er haakjes rond te plaatsen
+  4. Vervang alles door 'regel:' + alles van de groep
 
-<p>Gebruik <code>sed</code> om snel replaces te doen door middel van regex, of door lines te nummeren, &hellip; <br/><br/>
-Het is ook mogelijk om regex partities te <em>groeperen</em>, vergeet niet de haakjes zelf te escapen! Om de gegroepeerde waarde in het &ldquo;replace&rdquo; geteelde te gebruiken, moeten we niet <code>$1</code> maar <code>&lt;br/&gt;1</code> gebruiken. Bijvoorbeeld:</p>
+Dus prepend elke regel met 'regel:'.
 
-<pre><code>sed 's/&lt;br/&gt;(.*&lt;br/&gt;)/regel:&lt;br/&gt;1/g' log.tmp &gt;&gt; $logfile
+-&gt; Groeperen in sed vereist escaped parentheses, anders matchen we exact `(` in de zoekstring zelf!
+
+##### chainen 
+
+Een keer sed aanroepen en in een sequentie meerdere replaces doen gaat met het `-e` argument (script mode):
+
 </code></pre>
 
-<p>Resultaat:</p>
+<p>cat file | sed -e &rsquo;s/replace/by/g&rsquo; -e &rsquo;s/other/new/g&rsquo;</p>
 
-<ol>
-<li>Replace x door y via <code>s/regex/replace/</code></li>
-<li>Replace alle gevonden instanties (<code>g</code> na expressie)</li>
-<li>Groepeer alles door te zoeken op <code>.*</code> en er haakjes rond te plaatsen</li>
-<li>Vervang alles door &lsquo;regel:&rsquo; + alles van de groep</li>
-</ol>
+<pre><code>
+##### Aan begin van lijnen prependen 
 
-<p>Dus prepend elke regel met &lsquo;regel:&lsquo;.</p>
+Gebruik het symbool '^' om het begin van een lijn te matchen, en '$' om het einde van een lijn te matchen:
 
-<p>-&gt; Groeperen in sed vereist escaped parentheses, anders matchen we exact <code>(</code> in de zoekstring zelf!</p>
-
-<h5 id="chainen">chainen</h5>
-
-<p>Een keer sed aanroepen en in een sequentie meerdere replaces doen gaat met het <code>-e</code> argument (script mode):</p>
-
-<pre><code>cat file | sed -e 's/replace/by/g' -e 's/other/new/g' 
 </code></pre>
 
-<h5 id="aan-begin-van-lijnen-prependen">Aan begin van lijnen prependen</h5>
+<p>cat file | sed &rsquo;s/^<br/>([^=]<br/>)/  *<br/>1/&rsquo;</p>
 
-<p>Gebruik het symbool &lsquo;^&rsquo; om het begin van een lijn te matchen, en &lsquo;$&rsquo; om het einde van een lijn te matchen:</p>
+<pre><code>
+Hier wordt in het begin van elke lijn spatie spatie ster toegevoegd behalve als de lijn begint met het gelijkheidsteken. Omdat we anders het eerste karakter vervangen moeten we die ook capturen! 
 
-<pre><code>cat file | sed 's/^&lt;br/&gt;([^=]&lt;br/&gt;)/  *&lt;br/&gt;1/'
+-&gt; Zoals in eclipse een getal matchen met `&lt;br/&gt;d` werkt niet, daarvoor moet je `[0-9]` gebruiken. 
+
+### uniq 
+
+Vergelijkt een lijn met de volgende en gooit dubbels eruit. Instelbaar met een beperkt aantal parameters. &lt;br/&gt;&lt;br/&gt;
+**adjacent matching lines**, meer kan dit ding niet!
+
+##### sed gebruiken om uniq te emuleren 
+
+Zie http://www.catonmat.net/blog/sed-one-liners-explained-part-three/ voor volledige uitleg
+
 </code></pre>
 
-<p>Hier wordt in het begin van elke lijn spatie spatie ster toegevoegd behalve als de lijn begint met het gelijkheidsteken. Omdat we anders het eerste karakter vervangen moeten we die ook capturen!</p>
+<p>sed &lsquo;$!N; /^<br/>(.*<br/>)<br/>n<br/>1$/!P; D&rsquo;</p>
 
-<p>-&gt; Zoals in eclipse een getal matchen met <code>&lt;br/&gt;d</code> werkt niet, daarvoor moet je <code>[0-9]</code> gebruiken.</p>
+<pre><code>
+##### sed gebruiken om álle dubbels eruit te smijten: buffering 
 
-<h3 id="uniq">uniq</h3>
-
-<p>Vergelijkt een lijn met de volgende en gooit dubbels eruit. Instelbaar met een beperkt aantal parameters. <br/><br/>
-<strong>adjacent matching lines</strong>, meer kan dit ding niet!</p>
-
-<h5 id="sed-gebruiken-om-uniq-te-emuleren">sed gebruiken om uniq te emuleren</h5>
-
-<p>Zie <a href="http://www.catonmat.net/blog/sed-one-liners-explained-part-three/">http://www.catonmat.net/blog/sed-one-liners-explained-part-three/</a> voor volledige uitleg</p>
-
-<pre><code>sed '$!N; /^&lt;br/&gt;(.*&lt;br/&gt;)&lt;br/&gt;n&lt;br/&gt;1$/!P; D'
 </code></pre>
 
-<h5 id="sed-gebruiken-om-álle-dubbels-eruit-te-smijten-buffering">sed gebruiken om álle dubbels eruit te smijten: buffering</h5>
+<p>sed -n &lsquo;G; s/<br/>n/&amp;&amp;/; /^<br/>([ -~]<em><br/>n<br/>).</em><br/>n<br/>1/d; s/<br/>n//; h; P&rsquo;</p>
 
-<pre><code>sed -n 'G; s/&lt;br/&gt;n/&amp;&amp;/; /^&lt;br/&gt;([ -~]*&lt;br/&gt;n&lt;br/&gt;).*&lt;br/&gt;n&lt;br/&gt;1/d; s/&lt;br/&gt;n//; h; P'
+<pre><code>
+### cut 
+
+Een utility command dat meestal gebruikt wordt om lijnen op te splitsen afhankelijk van een __delimiter__. Bijvoorbeeld:
+
 </code></pre>
 
-<h3 id="cut">cut</h3>
+<p>cat test.txt | cut -d &lsquo;|&rsquo; -f 3</p>
 
-<p>Een utility command dat meestal gebruikt wordt om lijnen op te splitsen afhankelijk van een <strong>delimiter</strong>. Bijvoorbeeld:</p>
+<pre><code>
+meest gebruikte opties:
 
-<pre><code>cat test.txt | cut -d '|' -f 3
+  * `-d` verplicht, geef delimiter op
+  * `-f` selecteer enkel deze kolommen
+
+### Combinatievoorbeeld 
+
+Onderstaand script zoekt in de svn log entries met 'jira' of 'hel' (case insensitive, `-i` grep operator) behalve 'gcl' of 'lvm', print context 1 lijn above en 2 lijnen below, filtert dubbels, haalt de derde kolom eruit gesplitst door '|' (datum), vervangt eender welke hoeveelheid '-' door niets en wrap datums beginnende met 2011 met twee = tekens.
+
 </code></pre>
 
-<p>meest gebruikte opties:</p>
-
-<ul>
-<li><code>-d</code> verplicht, geef delimiter op</li>
-<li><code>-f</code> selecteer enkel deze kolommen</li>
-</ul>
-
-<h3 id="combinatievoorbeeld">Combinatievoorbeeld</h3>
-
-<p>Onderstaand script zoekt in de svn log entries met &lsquo;jira&rsquo; of &lsquo;hel&rsquo; (case insensitive, <code>-i</code> grep operator) behalve &lsquo;gcl&rsquo; of &lsquo;lvm&rsquo;, print context 1 lijn above en 2 lijnen below, filtert dubbels, haalt de derde kolom eruit gesplitst door &lsquo;|&rsquo; (datum), vervangt eender welke hoeveelheid &lsquo;-&rsquo; door niets en wrap datums beginnende met 2011 met twee = tekens.</p>
-
-<pre><code class="language-bash">#!/bin/sh
+<p>bash
+#!/bin/sh
 datefrom=2011-02-28
 dateto=2011-03-12
-logfile=/cygdrive/c/opt/wamp/www/wiki/data/wiki/helena/svnlog.txt
+logfile=/cygdrive/c/opt/wamp/www/wiki/data/wiki/helena/svnlog.txt</p>
 
-pushd /cygdrive/c/opt/hudson/jobs/Helena_build/workspace/burgerlijkestand
-echo &quot;### Svn log Helena Trunk &quot; &gt; $logfile
-echo &quot;❗️ periode **[$datefrom - $dateto]**&quot; &gt;&gt; $logfile
-echo &quot;#### Helena Jira's via svn log&quot; &gt;&gt; $logfile
-svn --username######cp8tsc --passwordq3Sp8Phu log -r{$datefrom}:{$dateto} |
-    grep -B 2 -A 1 -i 'HEL-&lt;br/&gt;|jira' |
-    grep -v 'gcl&lt;br/&gt;|lvm' |
-    sed -e 's/-*//' -e 's/r[0-9]* .*(&lt;br/&gt;(.*&lt;br/&gt;)).*/#####&lt;br/&gt;1/g' -e 's/^&lt;br/&gt;([^=]&lt;br/&gt;)/  *&lt;br/&gt;1/' |
-    sed -n 'G; s/&lt;br/&gt;n/&amp;&amp;/; /^&lt;br/&gt;([ -~]*&lt;br/&gt;n&lt;br/&gt;).*&lt;br/&gt;n&lt;br/&gt;1/d; s/&lt;br/&gt;n//; h; P' &gt;&gt; $logfile
-popd
+<p>pushd /cygdrive/c/opt/hudson/jobs/Helena_build/workspace/burgerlijkestand
+echo &ldquo;### Svn log Helena Trunk &rdquo; &gt; $logfile
+echo &ldquo;❗ periode <strong>[$datefrom - $dateto]</strong>&rdquo; &gt;&gt; $logfile
+echo &ldquo;#### Helena Jira&rsquo;s via svn log&rdquo; &gt;&gt; $logfile
+svn &ndash;username######cp8tsc &ndash;passwordq3Sp8Phu log -r{$datefrom}:{$dateto} |
+    grep -B 2 -A 1 -i &lsquo;HEL-<br/>|jira&rsquo; |
+    grep -v &lsquo;gcl<br/>|lvm&rsquo; |
+    sed -e &rsquo;s/-<em>//&rsquo; -e &rsquo;s/r[0-9]</em> .<em>(<br/>(.</em><br/>)).*/#####<br/>1/g&rsquo; -e &rsquo;s/^<br/>([^=]<br/>)/  <em><br/>1/&rsquo; |
+    sed -n &lsquo;G; s/<br/>n/&amp;&amp;/; /^<br/>([ -~]</em><br/>n<br/>).*<br/>n<br/>1/d; s/<br/>n//; h; P&rsquo; &gt;&gt; $logfile
+popd</p>
+
+<pre><code>
+
+# Random commands 
+
+  * `seq 1 10` print in een sequence getalletjes. 
+  * `head` werkt ook in plaats van `tail`, maar zelfs van een lijst - ge kunt `head 1` van een stream dus gebruiken als pop voor een stack.
+  * `ftp -i -n [host] &lt;&lt; FTP_SCRIPT` newline, een hoop commands, en `FTP_SCRIPT` op het laatste = in 1 regel wat op een ftp server doen.
+  * `mail -a [attach]` = in 1 regel als attach iets mailen naar iemand (zie `man`)
+  * `wc` = wordcount; -e  enkel lijnen
+
+## Video converting/concatenating etc 
+
+Met behulp van `ffmpeg` .
+
+#### Concatting 
+
+Alle files die eindigen op mp4:
+
 </code></pre>
 
-<h1 id="random-commands">Random commands</h1>
+<p>ffmpeg -f concat -i &lt;(printf &ldquo;file &lsquo;%s&rsquo;<br/>n&rdquo; ./*.mp4) -c copy output.mp4</p>
 
-<ul>
-<li><code>seq 1 10</code> print in een sequence getalletjes.</li>
-<li><code>head</code> werkt ook in plaats van <code>tail</code>, maar zelfs van een lijst - ge kunt <code>head 1</code> van een stream dus gebruiken als pop voor een stack.</li>
-<li><code>ftp -i -n [host] &lt;&lt; FTP_SCRIPT</code> newline, een hoop commands, en <code>FTP_SCRIPT</code> op het laatste = in 1 regel wat op een ftp server doen.</li>
-<li><code>mail -a [attach]</code> = in 1 regel als attach iets mailen naar iemand (zie <code>man</code>)</li>
-<li><code>wc</code> = wordcount; -e  enkel lijnen</li>
-</ul>
+<pre><code>
+Gaat ook met `mplayer` en de tool `mencoder`:
 
-<h2 id="video-converting-concatenating-etc">Video converting/concatenating etc</h2>
-
-<p>Met behulp van <code>ffmpeg</code> .</p>
-
-<h4 id="concatting">Concatting</h4>
-
-<p>Alle files die eindigen op mp4:</p>
-
-<pre><code>ffmpeg -f concat -i &lt;(printf &quot;file '%s'&lt;br/&gt;n&quot; ./*.mp4) -c copy output.mp4
 </code></pre>
 
-<p>Gaat ook met <code>mplayer</code> en de tool <code>mencoder</code>:</p>
+<p>mencoder -oac pcm -ovc copy -idx -o all.mp4 1.mp4 2.mp4 3.mp4 4.mp4 5.mp4</p>
 
-<pre><code>mencoder -oac pcm -ovc copy -idx -o all.mp4 1.mp4 2.mp4 3.mp4 4.mp4 5.mp4
+<pre><code>
+#### Resizing (compressing) 
+
+Ook met `ffmpeg` - bijvoorbeeld reduceren naar &quot;medium&quot; quality. Neem alle mp4s in folder:
+
 </code></pre>
 
-<h4 id="resizing-compressing">Resizing (compressing)</h4>
+<p>for i in <em>.mp4 ; do ffmpeg -i &ldquo;$i&rdquo; -c:a copy -preset medium &ldquo;${i%.</em>}_medium.${i##*.}&ldquo;; done</p>
 
-<p>Ook met <code>ffmpeg</code> - bijvoorbeeld reduceren naar &ldquo;medium&rdquo; quality. Neem alle mp4s in folder:</p>
+<pre><code>
+Voor meer presets zoals &quot;medium&quot;, zie http://trac.ffmpeg.org/wiki/x264EncodingGuide
 
-<pre><code>for i in *.mp4 ; do ffmpeg -i &quot;$i&quot; -c:a copy -preset medium &quot;${i%.*}_medium.${i##*.}&quot;; done
+# Bash Scripting
+
+
+#### Rerun last command 
+
 </code></pre>
 
-<p>Voor meer presets zoals &ldquo;medium&rdquo;, zie <a href="http://trac.ffmpeg.org/wiki/x264EncodingGuide">http://trac.ffmpeg.org/wiki/x264EncodingGuide</a></p>
+<p>!!</p>
 
-<h1 id="bash-scripting">Bash Scripting</h1>
+<pre><code>
+Joink.
 
-<h4 id="rerun-last-command">Rerun last command</h4>
+#### bash opties uit een shell script halen 
 
-<pre><code>!!
+Gepikt van http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
+
 </code></pre>
 
-<p>Joink.</p>
-
-<h4 id="bash-opties-uit-een-shell-script-halen">bash opties uit een shell script halen</h4>
-
-<p>Gepikt van <a href="http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash">http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash</a></p>
-
-<pre><code class="language-bash">#!/bin/bash
+<p>bash
+#!/bin/bash
 for i in $*
 do
 case $i in
-    -p######*|--prefix*)
-    PREFIX######`echo $i | sed 's/[-a-zA-Z0-9]*//'`
+    -p######<em>|&ndash;prefix</em>)
+    PREFIX######<code>echo $i | sed 's/[-a-zA-Z0-9]*//'</code></p>
 
-    ;;
-    -s######*|--searchpath*)
-    SEARCHPATH######`echo $i | sed 's/[-a-zA-Z0-9]*//'`
-    ;;
-    -l######*|--lib*)
-    DIR######`echo $i | sed 's/[-a-zA-Z0-9]*//'`
-    ;;
-    --default)
-    DEFAULT=YES
-    ;;
-    *)
-            # unknown option
-    ;;
-esac
+<pre><code>;;
+-s######*|--searchpath*)
+SEARCHPATH######`echo $i | sed 's/[-a-zA-Z0-9]*//'`
+;;
+-l######*|--lib*)
+DIR######`echo $i | sed 's/[-a-zA-Z0-9]*//'`
+;;
+--default)
+DEFAULT=YES
+;;
+*)
+        # unknown option
+;;
+</code></pre>
+
+<p>esac
 done
 echo PREFIX = ${PREFIX}
 echo SEARCH PATH = ${SEARCHPATH}
-echo DIRS = ${DIR}
+echo DIRS = ${DIR}</p>
+
+<pre><code>
+Makkelijker dan `getopts()`?
+
+#### Pipen en multiple lines in shell scripts 
+
+Dit is legale shell code:
+
 </code></pre>
 
-<p>Makkelijker dan <code>getopts()</code>?</p>
-
-<h4 id="pipen-en-multiple-lines-in-shell-scripts">Pipen en multiple lines in shell scripts</h4>
-
-<p>Dit is legale shell code:</p>
-
-<pre><code class="language-bash">#!/bin/sh
+<p>bash
+#!/bin/sh
 cat dinges.log |
-  cut -d ' ' -f 3
-  grep 'Exception' |
-  uniq
+  cut -d &lsquo; &rsquo; -f 3
+  grep &lsquo;Exception&rsquo; |
+  uniq</p>
+
+<pre><code>
+De pipe aan het begin van een nieuwe lijn alleszins niet. Ook `&gt;&gt;` of `&gt;` kan niet het begin zijn van een nieuwe lijn, dan wordt een spatie gepiped naar de outputstream.
+
+#### array loops 
+
 </code></pre>
 
-<p>De pipe aan het begin van een nieuwe lijn alleszins niet. Ook <code>&gt;&gt;</code> of <code>&gt;</code> kan niet het begin zijn van een nieuwe lijn, dan wordt een spatie gepiped naar de outputstream.</p>
-
-<h4 id="array-loops">array loops</h4>
-
-<pre><code class="language-bash">names=( Jennifer Tonya Anna Sadie )
+<p>bash
+names=( Jennifer Tonya Anna Sadie )
 for name in ${names[@]}
 do
   echo $name
   # other stuff on $name
-done
+done</p>
+
+<pre><code>
+Ook mogelijk om bvb een counter bij te houden met `for (( i = 0 ; i &lt; ${#names[@]} ; i++ ))`. Array waarde accessen met `${names[$i]}`.
+
+Inline arrays &quot;maken&quot; en over lopen gaat met `for VAR in 'a' 'b' 'c' do ... done`.
+
+##### argumenten samen rapen in een variabele 
+
 </code></pre>
 
-<p>Ook mogelijk om bvb een counter bij te houden met <code>for (( i = 0 ; i &lt; ${#names[@]} ; i++ ))</code>. Array waarde accessen met <code>${names[$i]}</code>.</p>
+<p>bash
+DIR_EXCLUDES=(eclipsecompiled test bin target)
+FILE_EXCLUDES=(messages errors)</p>
 
-<p>Inline arrays &ldquo;maken&rdquo; en over lopen gaat met <code>for VAR in 'a' 'b' 'c' do ... done</code>.</p>
+<p>SEARCH=&ldquo;&rdquo;</p>
 
-<h5 id="argumenten-samen-rapen-in-een-variabele">argumenten samen rapen in een variabele</h5>
-
-<pre><code class="language-bash">DIR_EXCLUDES=(eclipsecompiled test bin target)
-FILE_EXCLUDES=(messages errors)
-
-SEARCH=&quot;&quot;
-
-for FILE_EXCLUDE in ${FILE_EXCLUDES[@]}
+<p>for FILE_EXCLUDE in ${FILE_EXCLUDES[@]}
 do
-  SEARCH=&quot;${SEARCH} -not -name *${FILE_EXCLUDE}*&quot;
+  SEARCH=&ldquo;${SEARCH} -not -name <em>${FILE_EXCLUDE}</em>&ldquo;
 done
 for DIR_EXCLUDE in ${DIR_EXCLUDES[@]}
 do
-  SEARCH=&quot;${SEARCH} -not -path *${DIR_EXCLUDE}*&quot;
-done
+  SEARCH=&ldquo;${SEARCH} -not -path <em>${DIR_EXCLUDE}</em>&ldquo;
+done</p>
+
+<pre><code>
+❗ dit werkt **niet** als er een dubbele quote bij komt kijken in de vorm van `&lt;br/&gt;&quot;` - vreemd? uit te zoeken...
+
+#### Controleren of een string in een variabele steekt 
+
+Zie http://stackoverflow.com/questions/229551/string-contains-in-bash - makkelijkste manieren zijn
+
+##### met grep 
+
 </code></pre>
 
-<p>❗️ dit werkt <strong>niet</strong> als er een dubbele quote bij komt kijken in de vorm van <code>&lt;br/&gt;&quot;</code> - vreemd? uit te zoeken&hellip;</p>
+<p>bash
+if grep -q &lsquo;|&rsquo; &lt;&lt;&lt;$line; then
+  echo &ldquo;jup&rdquo;
+fi</p>
 
-<h4 id="controleren-of-een-string-in-een-variabele-steekt">Controleren of een string in een variabele steekt</h4>
+<pre><code>
+##### met regexp 
 
-<p>Zie <a href="http://stackoverflow.com/questions/229551/string-contains-in-bash">http://stackoverflow.com/questions/229551/string-contains-in-bash</a> - makkelijkste manieren zijn</p>
-
-<h5 id="met-grep">met grep</h5>
-
-<pre><code class="language-bash">if grep -q '|' &lt;&lt;&lt;$line; then
-  echo &quot;jup&quot;
-fi
 </code></pre>
 
-<h5 id="met-regexp">met regexp</h5>
+<p>bash
+if [[ &ldquo;$line&rdquo; =~ &ldquo;|&rdquo; ]]; then
+  echo &ldquo;jup&rdquo;
+fi</p>
 
-<pre><code class="language-bash">if [[ &quot;$line&quot; =~ &quot;|&quot; ]]; then
-  echo &quot;jup&quot;
-fi
+<pre><code>
+#### Loopen over alle lijnen van bepaalde output voor verdere processing 
+
 </code></pre>
 
-<h4 id="loopen-over-alle-lijnen-van-bepaalde-output-voor-verdere-processing">Loopen over alle lijnen van bepaalde output voor verdere processing</h4>
-
-<pre><code class="language-bash">`cat somefile` | while read line
+<p>bash
+<code>cat somefile</code> | while read line
 do
-  echo &quot;lijn $line&quot;
-done
+  echo &ldquo;lijn $line&rdquo;
+done</p>
+
+<pre><code>
+Dit kan ook maar dan moet je de separator variabele voor `for` aanpassen:
+
 </code></pre>
 
-<p>Dit kan ook maar dan moet je de separator variabele voor <code>for</code> aanpassen:</p>
-
-<pre><code class="language-bash">IFS=$'&lt;br/&gt;n'
-for line in `cat somefile`
+<p>bash
+IFS=$&rsquo;<br/>n&rsquo;
+for line in <code>cat somefile</code>
 do
-  echo &quot;lijn $line&quot;
-done
+  echo &ldquo;lijn $line&rdquo;
+done</p>
+
+<pre><code>
+❗ By default splitst for **op spaties**
+
+# Find command 
+
+-&gt; Zie http://northredoubt.com/n/2009/12/30/linuxunixcygwin-find-command/ voor enorm veel uitleg over basics van `find`.
+
+### Finding stuff 
+
 </code></pre>
 
-<p>❗️ By default splitst for <strong>op spaties</strong></p>
+<p>find / -name &ldquo;*.ext&rdquo; -type f -exec [command with args] {} <br/>;</p>
 
-<h1 id="find-command">Find command</h1>
+<pre><code>
+Bovenstaande lijn zoekt in root directory voor alle .ext bestanden (-type f is standaard, `d` staat voor directory etc, zie manual) en pipet alle resultaten naar een bepaald commando achter `-exec`. `{}` Stelt het gevonden bestand voor (full path), `&lt;br/&gt;;` eindigt het exec commando. De puntkomma wordt escaped door die backslash. 
 
-<p>-&gt; Zie <a href="http://northredoubt.com/n/2009/12/30/linuxunixcygwin-find-command/">http://northredoubt.com/n/2009/12/30/linuxunixcygwin-find-command/</a> voor enorm veel uitleg over basics van <code>find</code>.</p>
+❗ - Er moet een **Spatie** tussen `{}` en `&lt;br/&gt;;` komen, anders krijgt men een foutmelding: 
 
-<h3 id="finding-stuff">Finding stuff</h3>
+&gt; find: missing argument to '-exec'
 
-<pre><code>find / -name &quot;*.ext&quot; -type f -exec [command with args] {} &lt;br/&gt;;
+### Includen en excluden: filters 
+
+Ik zoek *.properties behalve die en die file en overal behalve in die en die directory:
+
 </code></pre>
 
-<p>Bovenstaande lijn zoekt in root directory voor alle .ext bestanden (-type f is standaard, <code>d</code> staat voor directory etc, zie manual) en pipet alle resultaten naar een bepaald commando achter <code>-exec</code>. <code>{}</code> Stelt het gevonden bestand voor (full path), <code>&lt;br/&gt;;</code> eindigt het exec commando. De puntkomma wordt escaped door die backslash.</p>
+<p>find . -name &ldquo;*.properties&rdquo; -not -path &ldquo;<em>dir</em>&rdquo; -not -name &ldquo;ugly.properties&rdquo;</p>
 
-<p>❗️ - Er moet een <strong>Spatie</strong> tussen <code>{}</code> en <code>&lt;br/&gt;;</code> komen, anders krijgt men een foutmelding:</p>
+<pre><code>
+`-not` is te combineren met eender wat én te chainen, bijvoorbeeld met `-size` enzo.
 
-<blockquote>
-<p>find: missing argument to &lsquo;-exec&rsquo;</p>
-</blockquote>
+# Greppin' away 
 
-<h3 id="includen-en-excluden-filters">Includen en excluden: filters</h3>
+#### Surrounding lines while greppin' 
 
-<p>Ik zoek *.properties behalve die en die file en overal behalve in die en die directory:</p>
+Dit heet **lines in context** in *man grep*.
 
-<pre><code>find . -name &quot;*.properties&quot; -not -path &quot;*dir*&quot; -not -name &quot;ugly.properties&quot;
 </code></pre>
 
-<p><code>-not</code> is te combineren met eender wat én te chainen, bijvoorbeeld met <code>-size</code> enzo.</p>
+<p>grep -B 3 -A 2 foo README.txt</p>
 
-<h1 id="greppin-away">Greppin&rsquo; away</h1>
+<pre><code>
+Verklaring: Zoek foo in readme.txt met 3 lijnen boven en 2 lijnen onderaan. &lt;br/&gt;&lt;br/&gt;
+Indien aantal lijnen gelijk, gebruik simpelweg `-C [x]`.
 
-<h4 id="surrounding-lines-while-greppin">Surrounding lines while greppin&rsquo;</h4>
+#### Inverse grepping 
 
-<p>Dit heet <strong>lines in context</strong> in <em>man grep</em>.</p>
+##### In file contents 
 
-<pre><code>grep -B 3 -A 2 foo README.txt
+Om te zoeken naar bijvoorbeeld 'hond', maar niet 'kat', moet je inverse zoeken voor kat:
+
 </code></pre>
 
-<p>Verklaring: Zoek foo in readme.txt met 3 lijnen boven en 2 lijnen onderaan. <br/><br/>
-Indien aantal lijnen gelijk, gebruik simpelweg <code>-C [x]</code>.</p>
+<p>cat file | grep &lsquo;hond&rsquo; | grep -v &lsquo;kat&rsquo;</p>
 
-<h4 id="inverse-grepping">Inverse grepping</h4>
+<pre><code>
+#### Finding pattern a OR b 
 
-<h5 id="in-file-contents">In file contents</h5>
+Combineren gaat met het pipe character (escaped) `&lt;br/&gt;|` - voorbeeld zoekt naar hond of kat:
 
-<p>Om te zoeken naar bijvoorbeeld &lsquo;hond&rsquo;, maar niet &lsquo;kat&rsquo;, moet je inverse zoeken voor kat:</p>
-
-<pre><code>cat file | grep 'hond' | grep -v 'kat'
 </code></pre>
 
-<h4 id="finding-pattern-a-or-b">Finding pattern a OR b</h4>
+<p>cat file | grep &lsquo;hond<br/>|kat&rsquo;</p>
 
-<p>Combineren gaat met het pipe character (escaped) <code>&lt;br/&gt;|</code> - voorbeeld zoekt naar hond of kat:</p>
+<pre><code>
+❗ Normale manier is `egrep pattern1|pattern2` gebruiken of `grep -E pattern1|pattern2`.
 
-<pre><code>cat file | grep 'hond&lt;br/&gt;|kat'
+#### Toon meer info bij context 
+
 </code></pre>
 
-<p>❗️ Normale manier is <code>egrep pattern1|pattern2</code> gebruiken of <code>grep -E pattern1|pattern2</code>.</p>
+<p>grep &lsquo;zoekstring&rsquo; file.bla -n -H</p>
 
-<h4 id="toon-meer-info-bij-context">Toon meer info bij context</h4>
+<pre><code>
+Print ook line numbers &amp; filename, vooral handig wanneer dit van een `-exec` commando komt van een search, bijvoorbeeld:
 
-<pre><code>grep 'zoekstring' file.bla -n -H 
 </code></pre>
 
-<p>Print ook line numbers &amp; filename, vooral handig wanneer dit van een <code>-exec</code> commando komt van een search, bijvoorbeeld:</p>
+<p>find . -name &ldquo;*.php&rdquo; -exec grep &lsquo;backlink&rsquo; {} -C 2 -n -H <br/>; &gt; find_backlinks.txt</p>
 
-<pre><code>find . -name &quot;*.php&quot; -exec grep 'backlink' {} -C 2 -n -H &lt;br/&gt;; &gt; find_backlinks.txt
+<pre><code>
+  1. Zoek alle .php files vanaf de current directory
+  2. Zoek in alle gevonden files naar 'backlink'
+  3. Print 2 bovenste en onderste context lijnen af
+  4. Print lijn nummer en prefix met bestandsnaam
+  5. Output alles naar find_backlinks.txt
+
+De `-print` flag bij find print de filename af voor elke gevonden file die naar de `-exec` doorgegeven wordt. 
+
+❗ Onder Solaris een commando uitvoeren met `-exec` moet dit ook nog gewrapped worden met een shell executable, zo:
+
 </code></pre>
 
-<ol>
-<li>Zoek alle .php files vanaf de current directory</li>
-<li>Zoek in alle gevonden files naar &lsquo;backlink&rsquo;</li>
-<li>Print 2 bovenste en onderste context lijnen af</li>
-<li>Print lijn nummer en prefix met bestandsnaam</li>
-<li>Output alles naar find_backlinks.txt</li>
-</ol>
-
-<p>De <code>-print</code> flag bij find print de filename af voor elke gevonden file die naar de <code>-exec</code> doorgegeven wordt.</p>
-
-<p>❗️ Onder Solaris een commando uitvoeren met <code>-exec</code> moet dit ook nog gewrapped worden met een shell executable, zo:</p>
-
-<pre><code>find . -name &quot;*.php&quot; -exec sh -c 'grep -n &quot;backlink&quot; $1' {} {}&lt;br/&gt;; -print
-</code></pre>
+<p>find . -name &ldquo;*.php&rdquo; -exec sh -c &lsquo;grep -n &ldquo;backlink&rdquo; $1&rsquo; {} {}<br/>; -print
+```</p>
 
 <p>Vergeet niet dat grep ook <strong>andere argumenten</strong> (of volgorde) heeft (eerst flags dan search pattern en file, geen -C option etc)!<br/><br/>
 Zie <a href="http://www.compuspec.net/reference/os/solaris/find/find_and_execute_with_pipe.shtml">http://www.compuspec.net/reference/os/solaris/find/find_and_execute_with_pipe.shtml</a> <br/><br/></p>

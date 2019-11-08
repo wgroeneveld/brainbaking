@@ -32,21 +32,19 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://brainbaking.com/"
+         "@id": "https:\/\/brainbaking.com\/"
     },
     "articleSection" : "teaching",
-    "name" : "Labo 8: GBA Programming in C&#43;&#43;: een abstractielaag",
+    "name" : "Labo 8: GBA Programming in C\x2b\x2b: een abstractielaag",
     
-      "headline" : "Labo 8: GBA Programming in C&#43;&#43;: een abstractielaag",
+      "headline" : "Labo 8: GBA Programming in C\x2b\x2b: een abstractielaag",
     
-    "description" : "&laquo;&nbsp;Terug naar Software ontwerp in C/C++ &raquo;&nbsp;Naar de labo opgave
-Het zal je ondertussen wel al duidelijk zijn dat technische details zoals IO pointers en OAM vanuit labo 4 de code er niet bepaald duidelijker op maken. Jammer genoeg voorziet de GBA geen andere mogelijkheden. Een oplossing zal van de ontwikkelaar zelf moeten komen, in de vorm van de principes uit labo 7.
-Abstracties creëren Als ontwikkelaar wil ik niet altijd bezig zijn met de juiste hexadecimale waarde voor IO pointer aan te spreken om een sprite te renderen.",
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software ontwerp in C\/C\x2b\x2b \x26raquo;\x26nbsp;Naar de labo opgave\nHet zal je ondertussen wel al duidelijk zijn dat technische details zoals IO pointers en OAM vanuit labo 4 de code er niet bepaald duidelijker op maken. Jammer genoeg voorziet de GBA geen andere mogelijkheden. Een oplossing zal van de ontwikkelaar zelf moeten komen, in de vorm van de principes uit labo 7.\nAbstracties creëren Als ontwikkelaar wil ik niet altijd bezig zijn met de juiste hexadecimale waarde voor IO pointer aan te spreken om een sprite te renderen.",
     
       "inLanguage" : "nl-BE",
     
     
-      "image": "https://brainbaking.com/img/avatar-icon.png",
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
     
     "author" : {
     	"@type": "Person",
@@ -57,17 +55,17 @@ Abstracties creëren Als ontwikkelaar wil ik niet altijd bezig zijn met de juist
     	"name": "Brain Baking",
     	"logo": {
     		"@type": "ImageObject",
-    		"url": "https://brainbaking.com/img/avatar-icon.png"
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
     	}
 	  },
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2018-12-18 15:29:34 &#43;0100 CET",
-    "dateModified" : "2018-12-18 15:29:34 &#43;0100 CET",
-    "url" : "https://brainbaking.com/teaching/cpp/labo-8/",
+    "datePublished": "2018-12-18 15:29:34 \x2b0100 CET",
+    "dateModified" : "2018-12-18 15:29:34 \x2b0100 CET",
+    "url" : "https:\/\/brainbaking.com\/teaching\/cpp\/labo-8\/",
     "wordCount" : "1641",
-    "keywords" : [ "Labo 8: GBA Programming in C&#43;&#43;: een abstractielaag", "teaching" ]
+    "keywords" : [ "Labo 8: GBA Programming in C\x2b\x2b: een abstractielaag", "teaching" ]
 }
 </script>
 
@@ -139,7 +137,7 @@ Abstracties creëren Als ontwikkelaar wil ik niet altijd bezig zijn met de juist
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.53" />
+ <meta name="generator" content="Hugo 0.59.1" />
         
     </head>
 
@@ -392,14 +390,15 @@ graph TD;
 <li>Exporteer een header file: <code>png2gba -p -t img.png</code></li>
 <li><code>#include &lt;kul.h&gt;</code></li>
 <li>Kopiëer data rechtstreeks naar VRAM met <code>memcpy</code></li>
-<li>Map palet en VRAM index op een OAM object zoals gezien in labo 4</li>
-</ol>
+
+<li><p>Map palet en VRAM index op een OAM object zoals gezien in labo 4</p>
 
 <pre><code class="language-C">void copy_image_data() {
-    memcpy(pal_fg_mem, kul_palette, sizeof(kul_palette));
-    memcpy(&amp;tile_mem[0][0], kul_data, sizeof(kul_data));
+memcpy(pal_fg_mem, kul_palette, sizeof(kul_palette));
+memcpy(&amp;tile_mem[0][0], kul_data, sizeof(kul_data));
 }
-</code></pre>
+</code></pre></li>
+</ol>
 
 <p>OAM attributes maken het eenvoudig om de image horizontaal of verticaal te <em>flippen</em>, bijvoorbeeld bij sprite animaties die naar links of naar rechts lopen. Transformatiematriches zijn nodig om te roteren.</p>
 

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Dynamiclangs on Brain Baking</title>
+    <title>dynamiclangs on Brain Baking</title>
     <link>https://brainbaking.com/tags/dynamiclangs/</link>
-    <description>Recent content in Dynamiclangs on Brain Baking</description>
+    <description>Recent content in dynamiclangs on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
@@ -20,7 +20,7 @@
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/post/dynamic-languages/</guid>
       <description>Dynamic Languages: Constructs vergelijken Deze pagina vergelijkt verschillende dynamische talen in een poging om een overzicht te maken tussen de alsmaar groeiende lijst. De meest gebruikte features van zulke talen worden hieronder opgelijst.
-Het verschil tussen MOPs en Prototypal inheritance ❗️ Javascript heeft géén Meta Object Protocol (MOP) dat de taal dynamisch maakt, maar bouwt verder op prototypes. Dat wil zeggen dat het klassieke inheritance systeem niet bestaat in Javascript, maar wel nagebootst kan worden door objecten te laten afleiden van objecten.</description>
+Het verschil tussen MOPs en Prototypal inheritance ❗ Javascript heeft géén Meta Object Protocol (MOP) dat de taal dynamisch maakt, maar bouwt verder op prototypes. Dat wil zeggen dat het klassieke inheritance systeem niet bestaat in Javascript, maar wel nagebootst kan worden door objecten te laten afleiden van objecten.</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Techorama on Brain Baking</title>
+    <title>techorama on Brain Baking</title>
     <link>https://brainbaking.com/tags/techorama/</link>
-    <description>Recent content in Techorama on Brain Baking</description>
+    <description>Recent content in techorama on Brain Baking</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>

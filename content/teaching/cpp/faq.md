@@ -48,6 +48,29 @@ Oplossingen:
 
 ### Het project builden
 
+#### Google Test Compile faalt op Mac
+
+Fout:
+
+<pre>
+Wouters-Air:build wgroeneveld$ make
+[ 25%] Building CXX object CMakeFiles/gtest.dir/src/gtest-all.cc.o
+In file included from /Users/jefklak/development/KUL/cpp/labo7/googletest/googletest/src/gtest-all.cc:38:
+In file included from /Users/jefklak/development/KUL/cpp/labo7/googletest/googletest/include/gtest/gtest.h:62:
+In file included from /Users/jefklak/development/KUL/cpp/labo7/googletest/googletest/include/gtest/internal/gtest-internal.h:40:
+/Users/jefklak/development/KUL/cpp/labo7/googletest/googletest/include/gtest/internal/gtest-port.h:825:12: error: no
+      member named 'make_tuple' in namespace 'std'
+using std::make_tuple;
+      ~~~~~^
+/Users/jefklak/development/KUL/cpp/labo7/googletest/googletest/include/gtest/internal/gtest-port.h:826:12: error: no
+      member named 'tuple' in namespace 'std'
+using std::tuple;
+      ~~~~~^
+...
+</pre>
+
+Oorzaak: Master branch van Google Test is recent overgeschakeld naar C++11. In hun CMakeLists.txt moet je dit toevoegen: `set(CMAKE_CXX_STANDARD 17)`. Dan build dir verwijderen en opnieuw `cmake` voor `make` uitvoeren.
+
 #### Zeer veel Google Test fouten bij het linken
 
 Fout:
@@ -72,6 +95,33 @@ C:/Development/github/gba-sprite-engine/test/allocatortest.cpp:79: undefined ref
 Oorzaak: je Google Test libraries zijn gecompileerd met **een andere Toolchain** dan waar je het project mee probeert te compileren! Cygwin VS MinGW problemen. 
 
 Oplossing: compileer Google Test opnieuw in dezelfde Toolchain - bijvoorbeeld in MinGW. Ga naar `gooletest\googletest\build`, verwijder alle bestaande bestanden met `rm -rf *` en volg opnieuw de [Installatieinstructies](/teaching/cpp/installaties). 
+
+#### CMake was unable to find a build program corresponding to "Unix Makefiles"
+
+Bij uitvoeren CMake commando met het `-G` argument in Windows omgevingen.
+
+Fout:
+
+<pre>
+C:\Users\x\Documents\3ABA\C en C++\les7\googletest\googletest\build>cmake -G "Unix Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" ./../
+CMake Warning at CMakeLists.txt:54 (project):
+  VERSION keyword not followed by a value or was followed by a value that
+  expanded to nothing.
+
+
+CMake Error: CMake was unable to find a build program corresponding to "Unix Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
+CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
+CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
+-- Configuring incomplete, errors occurred!
+See also "C:/Users/x/Documents/3ABA/C en C++/les7/googletest/googletest/build/CMakeFiles/CMakeOutput.log".
+</pre>
+
+Oorzaken:
+
+1. `gcc` compiler staat niet in `%PATH%`, of je voert dit niet uit vanuit de MinGW command prompt.
+2. `make` commando niet gevonden. In dat geval dien je `make-mingw32.exe` uit de MinGW install bin directory (bvb. `C:\Program Files\mingw-64\mingw64\bin`) te kopiëren (naar dezelfde dir) en te hernoemen naar `make.exe`. 
+
+Verwijder de build directory waar CMake files in genereerde, met eventuele `CMakeCache.txt` files, en voer `cmake -G` terug uit met de juiste argumenten.
 
 #### No rule to make target ligbtest.a needed by test/unittest. Stop.
 
