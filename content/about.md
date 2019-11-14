@@ -25,7 +25,7 @@ Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://git
 #### Baking
 
 * I hold a [professional bread baker's degree](/post/learning-to-become-a-baker/) so naturally I love to think of myself as a real baker. 
-* My passion within baking is [<i class='fa fa-flask'></i>&nbsp;sourdough bread](https://redzuurdesem.be), spreading the word by organizing workshops to repopularize it's use. 
+* My passion within baking is [<i class='fa fa-flask'></i>&nbsp;sourdough bread](https://redzuurdesem.be), spreading the word by organizing workshops to repopularize its use. 
 
 #### Writing and philosophizing
 
