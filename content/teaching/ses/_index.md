@@ -22,6 +22,7 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 ### Extra informatie
 
+1. ['SESsy Library' WebApp installatie & configuratie](/teaching/ses/sessy)
 
 ## Syllabus
 

@@ -833,6 +833,18 @@ Voorbeeld Opzet Stel dat we gegevens van de klant moeten versturen naar een over
     </item>
     
     <item>
+      <title>SESsy Library WebApp</title>
+      <link>https://brainbaking.com/teaching/ses/sessy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/sessy/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
+SESsy Library: Een geïntegreerde oefening Download Locatie: op  Github via https://github.com/wgroeneveld/sessylibrary. Zie README.md op de hoofdpagina. SESsy library is:
+ A Library Management Simulation WebApp for the &amp;lsquo;SES&amp;rsquo; (Software Engineering Skills) course
+ Installatie Download via bovenstaande Github link, of met git clone. Dit is een &amp;ldquo;Gradle&amp;rdquo; project, die de build van ons Java ecosysteem verzorgt. Dat wil zeggen dat het Gradle systeem automatisch libraries (jar bestanden) download van een centrale repository, moesten die nodig zijn.</description>
+    </item>
+    
+    <item>
       <title>Software design in C&#43;&#43;</title>
       <link>https://brainbaking.com/teaching/cpp/en/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
