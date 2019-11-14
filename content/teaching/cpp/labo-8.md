@@ -203,7 +203,7 @@ Er zal dus ook een soort van OAM manager nodig zijn die beide sprites aan elkaar
 
 ## <a name="oef"></a>Labo oefeningen
 
-1. Implementeer bovenstaande technische analyse in C++. Verterk vanuit een [modeloplossing](/teaching/cpp/labo-4-gba-2.c) van labo 4. Bedenk welke verplichte parameters nodig zijn om een sprite "in te laden". Test om te beginnen de C implementatie met de `gcc` compiler met behulp van de Makefile uit [labo 3](/teaching/cpp/labo-3-gba.Makefile).
+1. Implementeer bovenstaande technische analyse in C++. Verterk vanuit deze template: [labo8-gbagplusplus.zip](/teaching/cpp/labo8-gbagplusplus.zip). Dit CMake project bevat een modeloplossing van labo 4. Bedenk welke klasses nodig zijn (zie schema hierboven), en waar welke methodes uit de oplossing van labo 4 terecht moeten komen. 
 2. Voorzie ook een `KeyManager` die inlezen van toetsen abstraheert. Werken met functie pointers als callback methodes is niet nodig.
 
 ## Denkvragen
