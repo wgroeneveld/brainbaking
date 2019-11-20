@@ -39,10 +39,10 @@ Waarbij de diamant blokken abstracte klassen voorstellen.
 
 ### Het achtergrondpalet
 
-Zoals het voorgrondpalet is er maar één palet voor de achtergrond aanwezig bestaande uit 256 kleuren. Om hier mee om te gaan heb je een paar mogelijkheden:
+Juist zoals het voorgrondpalet (adres `0x5000200`) is er maar één palet voor de achtergrond aanwezig bestaande uit 256 kleuren. Om hier mee om te gaan heb je een paar mogelijkheden:
 
-1. Per switch van achtergrond persisteer je een nieuw palet in het geheugen.
-2. Elke achtergrondlaag deelt een palet.
+1. Per verwisseling van achtergrond persisteer je een nieuw palet in het geheugen.
+2. Elke achtergrondlaag deelt hetzelfde palet.
 
 Het adres voor het achtergrondpalet is `0x5000000`.
 
@@ -98,7 +98,7 @@ De waardes zijn referenties naar de tiles in de tileset met `0x0000` als éérst
 
 ### De map laten scrollen
 
-Een tilemap kan best groot worden, en bijna alle 2D platformers of top-down adventure spellen op de GBA hebben een achtergrond die "scrollt". Herinner je het Castlevania voorbeeld uit labo 8:
+Een tilemap kan best groot worden, en bijna alle 2D platformers of top-down adventure spellen op de GBA hebben een achtergrond die "scrollt". Herinner je het Castlevania voorbeeld uit [labo 8](/teaching/cpp/labo-8):
 
 <img src="/img/teaching/aria-of-sorrow.gif" style="width: 100%" class="bordered" />
 
@@ -115,24 +115,64 @@ Om geen random waardes te gebruiken als charblock of screenblock om de tileset e
 {{<mermaid>}}
 graph TD;
   A[MemoryManager]
-  B[BackgroundLayer0]
+  Base{BaseBGLayer}
+  B0[BGLayer0]
+  B1[BGLayer1]
+  B2[BGLayer...]
+  B0 --> Base
+  B1 --> Base
+  B2 --> Base
   C[BackgroundPalette]
   D[Tileset]
   E[Tilemap]
   F["Scroll value(x,y)"]
-  B --> D
-  B --> E
-  B --> F
-  B -.-> A
-  B -.-> C
+  Base --> D
+  Base --> E
+  Base --> F
+  Base -.-> C
 {{< /mermaid >}}
 
-De memory manager en het achtergrondpalet zijn gedeeld tussen de backgroundlayer instanties.
+De memory manager en het achtergrondpalet zijn gedeeld tussen de backgroundlayer instanties. Uit het schema van [labo 8](/teaching/cpp/labo-8) weten we dat een `GBA` klasse nodig is die de memory manager, achtergrondlagen en paletten aanmaakt en gebruikt. <br/>
+In totaal hebben we de volgende gegevens nodig:
+
+De klasse `Palette` met members:
+
+- `unsigned short data[X]` (komt uit tile generator)
+
+De **abstracte** klasse `BaseBGLayer` met members:
+
+- `void scroll(int x, int y)`
+- `int scrollX, scrollY`
+- `unsigned short tileset[X]` (komt uit tile generator)
+- `unsigned short tilemap[X]` (komt uit tile generator)
+- `Palette palette`
+- `unsigned short address`
+
+De concrete implementatie van de base klasse `BGLayer0` met als juiste adres waarde, doorgegeven via de constructor parameter.
+
+De klasse `MemoryManager`, met members:
+
+- `void save(BaseBGLayer bglayer)` (bewaar data in GBA geheugen)
+
+De klasse `GBA`, met members:
+
+- `MemoryManager manager`
+- `void initialize()` (maak nodige instanties aan en roep bewaar op)
+- `void run()` (main game loop)
+- `void vblank()`
+
+De file `main.cpp` met een `main()` functie die de `GBA` klasse activeert.
+
+Vergeet niet te denken aan:
+
+- Accesss modifiers en getters/setters indien nodig.
+- Pointers! Wel/niet/smart pointers/niet?
 
 ## <a name="oef"></a>Labo oefeningen
 
-1. Ontwerp een minimale applicatie die bovenstaande modellen bevat en 1 achtergrondlaag toont. Negeer het scrollen voorlopig nog. Gebruik voor de achtergrond [deze tileset](/teaching/cpp/labo-9-tileset.png). Haal dit door de png2gba tool die we kennen uit labo 8. Verzin je eigen tilemap.
-2. Laat de tilemap scrollen met het GBA keyboard (left, right: -x, +x, up, down: -y, +y). Scrollen wordt door de hardware ondersteund dus gaat héél snel: vertraging inbouwen kan door de CPU wat bezig te houden: `for(int i = 0; i < 4567; i++){}`.
+1. Ontwerp een minimale standaard C++11 applicatie (zonder GBA) die bovenstaande modellen bevat en 1 achtergrondlaag 'toont' (door in de main functie de juiste andere functies aan te spreken, die nog niets doen behalve een simpele `cout`). De focus ligt op het juiste OO ontwerp.<br/>De oefening is geslaagd als bovenstaande methodes zijn geïmplementeerd. 
+2. Converteer bovenstaande standaard C++11 toepassing naar een GBA applicatie door cross-compile CMake flags te gebruiken. Baseer je op de [CMakeLists.txt](https://github.com/wgroeneveld/gba-sprite-engine/blob/master/CMakeLists.txt) van het project. <br/>Gebruik voor de achtergrond [deze tileset](/teaching/cpp/labo-9-tileset.png). Nu gaan we de namaak functies effectief implementeren. Haal de tileset door de png2gba tool die we kennen uit labo 8. Verzin je eigen tilemap.
+3. Laat de tilemap scrollen met het GBA keyboard (left, right: -x, +x, up, down: -y, +y). Scrollen wordt door de hardware ondersteund dus gaat héél snel: vertraging inbouwen kan door de CPU wat bezig te houden: `for(int i = 0; i < 4567; i++){}`.
 
 ## Denkvragen
 

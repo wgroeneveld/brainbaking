@@ -64,7 +64,7 @@
     "datePublished": "2018-11-21 12:20:21 \x2b0100 CET",
     "dateModified" : "2018-11-21 12:20:21 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/cpp\/labo-9\/",
-    "wordCount" : "983",
+    "wordCount" : "1220",
     "keywords" : [ "Labo 9: GBA Programming in C\x2b\x2b: scrolling backgrounds", "teaching" ]
 }
 </script>
@@ -272,11 +272,11 @@ graph TD;
 
 <h3 id="het-achtergrondpalet">Het achtergrondpalet</h3>
 
-<p>Zoals het voorgrondpalet is er maar één palet voor de achtergrond aanwezig bestaande uit 256 kleuren. Om hier mee om te gaan heb je een paar mogelijkheden:</p>
+<p>Juist zoals het voorgrondpalet (adres <code>0x5000200</code>) is er maar één palet voor de achtergrond aanwezig bestaande uit 256 kleuren. Om hier mee om te gaan heb je een paar mogelijkheden:</p>
 
 <ol>
-<li>Per switch van achtergrond persisteer je een nieuw palet in het geheugen.</li>
-<li>Elke achtergrondlaag deelt een palet.</li>
+<li>Per verwisseling van achtergrond persisteer je een nieuw palet in het geheugen.</li>
+<li>Elke achtergrondlaag deelt hetzelfde palet.</li>
 </ol>
 
 <p>Het adres voor het achtergrondpalet is <code>0x5000000</code>.</p>
@@ -333,7 +333,7 @@ De Onderste image is de <strong>tileset</strong>. Selecteer één tile en klik d
 
 <h3 id="de-map-laten-scrollen">De map laten scrollen</h3>
 
-<p>Een tilemap kan best groot worden, en bijna alle 2D platformers of top-down adventure spellen op de GBA hebben een achtergrond die &ldquo;scrollt&rdquo;. Herinner je het Castlevania voorbeeld uit labo 8:</p>
+<p>Een tilemap kan best groot worden, en bijna alle 2D platformers of top-down adventure spellen op de GBA hebben een achtergrond die &ldquo;scrollt&rdquo;. Herinner je het Castlevania voorbeeld uit <a href="/teaching/cpp/labo-8">labo 8</a>:</p>
 
 <p><img src="/img/teaching/aria-of-sorrow.gif" style="width: 100%" class="bordered" /></p>
 
@@ -360,25 +360,75 @@ De Onderste image is de <strong>tileset</strong>. Selecteer één tile en klik d
 	
 graph TD;
   A[MemoryManager]
-  B[BackgroundLayer0]
+  Base{BaseBGLayer}
+  B0[BGLayer0]
+  B1[BGLayer1]
+  B2[BGLayer...]
+  B0 --> Base
+  B1 --> Base
+  B2 --> Base
   C[BackgroundPalette]
   D[Tileset]
   E[Tilemap]
   F["Scroll value(x,y)"]
-  B --> D
-  B --> E
-  B --> F
-  B -.-> A
-  B -.-> C
+  Base --> D
+  Base --> E
+  Base --> F
+  Base -.-> C
 
 </div>
 
-<p>De memory manager en het achtergrondpalet zijn gedeeld tussen de backgroundlayer instanties.</p>
+<p>De memory manager en het achtergrondpalet zijn gedeeld tussen de backgroundlayer instanties. Uit het schema van <a href="/teaching/cpp/labo-8">labo 8</a> weten we dat een <code>GBA</code> klasse nodig is die de memory manager, achtergrondlagen en paletten aanmaakt en gebruikt. <br/>
+In totaal hebben we de volgende gegevens nodig:</p>
+
+<p>De klasse <code>Palette</code> met members:</p>
+
+<ul>
+<li><code>unsigned short data[X]</code> (komt uit tile generator)</li>
+</ul>
+
+<p>De <strong>abstracte</strong> klasse <code>BaseBGLayer</code> met members:</p>
+
+<ul>
+<li><code>void scroll(int x, int y)</code></li>
+<li><code>int scrollX, scrollY</code></li>
+<li><code>unsigned short tileset[X]</code> (komt uit tile generator)</li>
+<li><code>unsigned short tilemap[X]</code> (komt uit tile generator)</li>
+<li><code>Palette palette</code></li>
+<li><code>unsigned short address</code></li>
+</ul>
+
+<p>De concrete implementatie van de base klasse <code>BGLayer0</code> met als juiste adres waarde, doorgegeven via de constructor parameter.</p>
+
+<p>De klasse <code>MemoryManager</code>, met members:</p>
+
+<ul>
+<li><code>void save(BaseBGLayer bglayer)</code> (bewaar data in GBA geheugen)</li>
+</ul>
+
+<p>De klasse <code>GBA</code>, met members:</p>
+
+<ul>
+<li><code>MemoryManager manager</code></li>
+<li><code>void initialize()</code> (maak nodige instanties aan en roep bewaar op)</li>
+<li><code>void run()</code> (main game loop)</li>
+<li><code>void vblank()</code></li>
+</ul>
+
+<p>De file <code>main.cpp</code> met een <code>main()</code> functie die de <code>GBA</code> klasse activeert.</p>
+
+<p>Vergeet niet te denken aan:</p>
+
+<ul>
+<li>Accesss modifiers en getters/setters indien nodig.</li>
+<li>Pointers! Wel/niet/smart pointers/niet?</li>
+</ul>
 
 <h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ol>
-<li>Ontwerp een minimale applicatie die bovenstaande modellen bevat en 1 achtergrondlaag toont. Negeer het scrollen voorlopig nog. Gebruik voor de achtergrond <a href="/teaching/cpp/labo-9-tileset.png">deze tileset</a>. Haal dit door de png2gba tool die we kennen uit labo 8. Verzin je eigen tilemap.</li>
+<li>Ontwerp een minimale standaard C++11 applicatie (zonder GBA) die bovenstaande modellen bevat en 1 achtergrondlaag &lsquo;toont&rsquo; (door in de main functie de juiste andere functies aan te spreken, die nog niets doen behalve een simpele <code>cout</code>). De focus ligt op het juiste OO ontwerp.<br/>De oefening is geslaagd als bovenstaande methodes zijn geïmplementeerd.</li>
+<li>Converteer bovenstaande standaard C++11 toepassing naar een GBA applicatie door cross-compile CMake flags te gebruiken. Baseer je op de <a href="https://github.com/wgroeneveld/gba-sprite-engine/blob/master/CMakeLists.txt">CMakeLists.txt</a> van het project. <br/>Gebruik voor de achtergrond <a href="/teaching/cpp/labo-9-tileset.png">deze tileset</a>. Nu gaan we de namaak functies effectief implementeren. Haal de tileset door de png2gba tool die we kennen uit labo 8. Verzin je eigen tilemap.</li>
 <li>Laat de tilemap scrollen met het GBA keyboard (left, right: -x, +x, up, down: -y, +y). Scrollen wordt door de hardware ondersteund dus gaat héél snel: vertraging inbouwen kan door de CPU wat bezig te houden: <code>for(int i = 0; i &lt; 4567; i++){}</code>.</li>
 </ol>
 
