@@ -19,6 +19,10 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 ### Labo noties
 
 1. [Design Patterns: Facade](/teaching/ses/facade)
+2. [Design Patterns: Dependency Injection](/teaching/ses/di)
+3. [Design Patterns: Singleton](/teaching/ses/singleton)
+4. [Design Patterns: Decorator](/teaching/ses/decorator)
+5. [Design Patterns: Factory](/teaching/ses/factory)
 
 ### Extra informatie
 

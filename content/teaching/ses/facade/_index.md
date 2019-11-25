@@ -18,7 +18,7 @@ disableComments: true
 
 ### Voorbeeld
 
-#### Opzet
+#### 1. Opzet
 
 Stel dat we gegevens van de klant moeten versturen naar een overheidsinstantie. Die instantie beschikt jammer genoeg niet over voldoende budgetten om ook een cutting-edge server interface en implementatie aan te bieden. Het komt er op neer dat we verplicht zijn om tekst bestanden op een FTP server te plaatsen. 
 
@@ -51,7 +51,7 @@ graph LR;
     A --> B
 {{< /mermaid >}}
 
-#### Probleemstelling
+#### 2. Probleemstelling
 
 We verkopen onze software aan een andere partij, die niet alleen met de overheid wenst te communiceren, maar ook met een derde instantie. Deze instantie biedt ons de mogelijkheid aan om de klant in de vorm van XML met een `POST` HTTPS call op te sturen. Onze `ClientFTPSender` is dus niet meer genoeg:
 
@@ -67,7 +67,7 @@ class ClientPOSTSender {
 Deze complexe stukjes software, de `POST` en `FTP` senders, willen we niet langer rechtstreeks aanspreken in de HTTP handler. Het is zo dat afhankelijk van een bepaalde instelling, het ene of het andere gebruikt kan worden. 
 
 
-#### Oplossing
+#### 3. Oplossing
 
 We hebben dus **een facade** nodig, die de juiste delegaties voor ons doorvoert, zoals in het volgende schema:
 
@@ -106,8 +106,7 @@ class UploadClientFacade {
 
 ## <a name="oef"></a>Labo oefeningen
 
-
-* [Download facade-oef1.java hier](/teaching/ses/facade-oef1.java). We modelleren een dierentuin, waarvan een `Chicken` een gegeven klasse is. Elk dier willen we voederen met de `feed()` methode. Let op! Sommige dieren vereisten veel meer aandracht (lees: complexiteit), die we willen wegwerken met het introduceren van een Facade. Voeg klasses `Cow` en `Cat` toe, geef deze ook eten, en verberg dan het voederen in een aparte interface. 
+* [Download IntelliJ facade.zip project hier](/teaching/ses/facade.zip). We modelleren een dierentuin, waarvan een `be.kuleuven.ses.facade.animals.Chicken` een gegeven klasse is. Elk dier willen we voederen met de `feed()` methode. Let op! Sommige dieren vereisten veel meer aandracht (lees: complexiteit), die we willen wegwerken met het introduceren van een Facade. Voeg klasses `be.kuleuven.ses.facade.animals.Cow` en `Cat` toe, geef deze ook eten, en verberg dan het voederen in een aparte interface. 
 
 
 ## Denkvragen
