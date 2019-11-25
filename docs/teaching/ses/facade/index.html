@@ -39,7 +39,7 @@
     
       "headline" : "Labo x: Design Patterns: Facade",
     
-    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\n\x26ldquo;Facade\x26rdquo; - Design Pattern Doelstelling  Scherm een complex stukje software af met behulp van een simpele interface Voorzie éénzelfde interface naar een set van verschillende mogelijke subsystemen. Een Facade is een high-level interface die mogelijks low-level systemen aanspreekt.  Dive Into Design Patterns: Facade\nVoorbeeld Opzet Stel dat we gegevens van de klant moeten versturen naar een overheidsinstantie. Die instantie beschikt jammer genoeg niet over voldoende budgetten om ook een cutting-edge server interface en implementatie aan te bieden.",
+    "description" : "",
     
       "inLanguage" : "nl-BE",
     
@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-10-04 14:26:40 \x2b0200 CEST",
-    "dateModified" : "2019-10-04 14:26:40 \x2b0200 CEST",
+    "datePublished": "2019-11-25 15:06:40 \x2b0100 CET",
+    "dateModified" : "2019-11-25 15:06:40 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/facade\/",
-    "wordCount" : "564",
+    "wordCount" : "569",
     "keywords" : [ "Labo x: Design Patterns: Facade", "teaching" ]
 }
 </script>
@@ -139,6 +139,9 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.59.1" />
         
+        <link href="https://brainbaking.com/teaching/ses/facade/index.xml" rel="alternate" type="application/rss+xml" title="Brain Baking" />
+        <link href="https://brainbaking.com/teaching/ses/facade/index.xml" rel="feed" type="application/rss+xml" title="Brain Baking" />
+        
     </head>
 
     
@@ -197,32 +200,18 @@
         </nav>
 
 
-
-
 <main>
 
-    <a name="top"></a>
-    <div class="item">
-
-    
-    <h3>
-        
-        <a href="/teaching/ses/facade/">Labo x: Design Patterns: Facade</a>
-    </h3>
+	
+	    <h2>
+			<i class='fa '></i>&nbsp;Labo x: Design Patterns: Facade
+		</h2>
+	    <hr/>
     
 
     
-    
-    
-
-
-    
-    
-
-</div>
-
-
-    <br> <div class="text-justify">
+    <div class="text-justify">
+    	
 
 <p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/>
 &raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
@@ -240,7 +229,7 @@
 
 <h3 id="voorbeeld">Voorbeeld</h3>
 
-<h4 id="opzet">Opzet</h4>
+<h4 id="1-opzet">1. Opzet</h4>
 
 <p>Stel dat we gegevens van de klant moeten versturen naar een overheidsinstantie. Die instantie beschikt jammer genoeg niet over voldoende budgetten om ook een cutting-edge server interface en implementatie aan te bieden. Het komt er op neer dat we verplicht zijn om tekst bestanden op een FTP server te plaatsen.</p>
 
@@ -282,7 +271,7 @@ graph LR;
 
 </div>
 
-<h4 id="probleemstelling">Probleemstelling</h4>
+<h4 id="2-probleemstelling">2. Probleemstelling</h4>
 
 <p>We verkopen onze software aan een andere partij, die niet alleen met de overheid wenst te communiceren, maar ook met een derde instantie. Deze instantie biedt ons de mogelijkheid aan om de klant in de vorm van XML met een <code>POST</code> HTTPS call op te sturen. Onze <code>ClientFTPSender</code> is dus niet meer genoeg:</p>
 
@@ -296,7 +285,7 @@ class ClientPOSTSender {
 
 <p>Deze complexe stukjes software, de <code>POST</code> en <code>FTP</code> senders, willen we niet langer rechtstreeks aanspreken in de HTTP handler. Het is zo dat afhankelijk van een bepaalde instelling, het ene of het andere gebruikt kan worden.</p>
 
-<h4 id="oplossing">Oplossing</h4>
+<h4 id="3-oplossing">3. Oplossing</h4>
 
 <p>We hebben dus <strong>een facade</strong> nodig, die de juiste delegaties voor ons doorvoert, zoals in het volgende schema:</p>
 
@@ -347,7 +336,7 @@ graph LR;
 <h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ul>
-<li><a href="/teaching/ses/facade-oef1.java">Download facade-oef1.java hier</a>. We modelleren een dierentuin, waarvan een <code>Chicken</code> een gegeven klasse is. Elk dier willen we voederen met de <code>feed()</code> methode. Let op! Sommige dieren vereisten veel meer aandracht (lees: complexiteit), die we willen wegwerken met het introduceren van een Facade. Voeg klasses <code>Cow</code> en <code>Cat</code> toe, geef deze ook eten, en verberg dan het voederen in een aparte interface.</li>
+<li><a href="/teaching/ses/facade.zip">Download IntelliJ facade.zip project hier</a>. We modelleren een dierentuin, waarvan een <code>be.kuleuven.ses.facade.animals.Chicken</code> een gegeven klasse is. Elk dier willen we voederen met de <code>feed()</code> methode. Let op! Sommige dieren vereisten veel meer aandracht (lees: complexiteit), die we willen wegwerken met het introduceren van een Facade. Voeg klasses <code>be.kuleuven.ses.facade.animals.Cow</code> en <code>Cat</code> toe, geef deze ook eten, en verberg dan het voederen in een aparte interface.</li>
 </ul>
 
 <h2 id="denkvragen">Denkvragen</h2>
@@ -356,16 +345,15 @@ graph LR;
 <li>Op welk moment beslis je dat een Facade écht nodig is? Is het mogelijk om ook een facade te maken zonder bijvoorbeeld nieuwe dieren in oefening 1 of een nieuwe verzendmethode voor de klant bij de probleemstelling?</li>
 <li>Kan een Facade een Facade verbergen? Wanneer is dat nodig, of niet?</li>
 </ul>
-</div>
 
-    
-    
+	</div>
+    <hr/>
+	
 
-    
+	
+	
+	
 
-    <h4 class="page-header">&nbsp;</h4>
-
-    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
 
 </main>
 

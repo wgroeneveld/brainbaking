@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="Java Gradle projecten - Brain Baking">
+	<meta content="Java Gradle projecten - Brain Baking" property="og:title">
+	<meta content="Java Gradle projecten - Brain Baking" property="og:description">
+
+
+
+
+<meta property="og:url" content="https://brainbaking.com/teaching/ses/gradle/" />
+<meta property="og:type" content="website" />
+
+
+
+
+
+<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="teaching" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/brainbaking.com\/"
+    },
+    "articleSection" : "teaching",
+    "name" : "Java Gradle projecten",
+    
+      "headline" : "Java Gradle projecten",
+    
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills\nHelps teams build, automate and deliver better software, faster. Tenminste, toch volgens gradle.org (docs).\nWat is dat, een build tool? Gradle is een build tool die de automatisatie van releasen, builden, testen, configureren, dependencies en libraries managen, \x26hellip; eenvoudiger maakt. Kort gezegd: het maakt het leven van een ontwikkelaar eenvoudiger. In een config bestand genaamd build.gradle schrijft men met Groovy, een dynamische taal bovenop de JVM, op een descriptieve manier hoe Gradle de applicatie moet beheren.",
+    
+      "inLanguage" : "nl-BE",
+    
+    
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "0001",
+    "datePublished": "0001-01-01 00:00:00 \x2b0000 UTC",
+    "dateModified" : "0001-01-01 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/brainbaking.com\/teaching\/ses\/gradle\/",
+    "wordCount" : "390",
+    "keywords" : [ "Java Gradle projecten", "teaching" ]
+}
+</script>
+
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Java Gradle projecten</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/llvm.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Java Gradle projecten</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/ses/gradle/">Java Gradle projecten</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/></p>
+
+<h2 id="helps-teams-build-automate-and-deliver-better-software-faster">Helps teams build, automate and deliver better software, faster.</h2>
+
+<p>Tenminste, toch volgens <a href="https://gradle.org">gradle.org</a> (<a href="https://docs.gradle.org/current/userguide/userguide.html">docs</a>).</p>
+
+<h3 id="wat-is-dat-een-build-tool">Wat is dat, een build tool?</h3>
+
+<p>Gradle is een build tool die de automatisatie van releasen, builden, testen, configureren, dependencies en libraries managen, &hellip; eenvoudiger maakt. Kort gezegd: het maakt het leven van een ontwikkelaar eenvoudiger. In een config bestand genaamd <code>build.gradle</code> schrijft men met Groovy, een dynamische taal bovenop de JVM, op een descriptieve manier hoe Gradle de applicatie moet beheren.</p>
+
+<h4 id="ontleding-van-een-config-file">Ontleding van een config file</h4>
+
+<p>De meest eenvoudige buildfile is terug te vinden in de <a href="/teaching/ses/singleton.zip">singleton oefening</a>:</p>
+
+<pre>
+plugins {
+    id 'java'
+}
+
+group 'be.kuleuven.ses'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.10
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '2.2'
+}
+</pre>
+
+<p>Hier onderscheiden we de volgende zaken:</p>
+
+<ol>
+<li>Het project is een java 10 project (er zijn ook nog andere talen op de JVM)</li>
+<li>Het project komt van <code>be.kuleuven.ses</code>, versie <code>1.0-SNAPSHOT</code>.</li>
+<li>Dependencies downloaden via de <a href="https://mvnrepository.com/repos/central">standaard maven central</a> (ingebouwde URL).
+
+<ul>
+<li>Hiervan moet Gradle <code>juni 4.12</code> downloaden voor de testen</li>
+<li>Hiervan moet Gradle <code>hamcrest-library 2.2</code> downloaden voor de testen</li>
+</ul></li>
+</ol>
+
+<p>Merk op dat een typisch gradle project <strong>geen jars</strong> mee zipt, zoals de oefeningen. Die worden dus automatisch door deze tool gedownload, en in de juiste map geplaatst.</p>
+
+<h4 id="ontleding-van-een-gradle-project-mappenstructuur">Ontleding van een Gradle project mappenstructuur</h4>
+
+<p>Als we kijken naar de bestanden- en mappenstructuur van <a href="/teaching/ses/singleton.zip">singleton oefening</a>, vinden we dit terug:</p>
+
+<pre>
+src
+    main
+        java
+            be.package1
+                ClassMain
+                ClassZ
+    test
+        java
+            be.package1
+                ClassMainTest
+                ClassZTest
+resources
+    css
+    js
+gradle
+    wrapper
+        gradle-wrapper.jar
+        gradle-wrapper.properties
+build.gradle
+gradlew.bat
+gradlew
+settings.gradle
+</pre>
+
+<p>Hier onderscheiden we de volgende zaken:</p>
+
+<ol>
+<li><code>src</code>, in <code>src/main/java</code> en <code>src/test/java</code>, met productie- en testcode gescheiden.</li>
+<li>Eventueel <code>resources</code> voor webapps e.d. (images, css, &hellip;)</li>
+<li><code>gradle</code> map, en executable (<code>gradlew.bat</code> win en shell script voor unix)</li>
+<li><code>gradle</code> settings en build file.</li>
+</ol>
+
+<p>Wat gebeurt er nu precies als je <code>gradlew.bat</code> uitvoert?</p>
+
+<ol>
+<li>Download de juiste versie van Gradle zelf (!! dus installatie is <strong>niet nodig</strong>), afhankelijk van de specificaties in de properties file.</li>
+<li>Download de juiste libraries om het project te kunnen runnen.</li>
+</ol>
+
+<p>Aan deze wrapper kan je commando&rsquo;s meegeven. Bijvoorbeeld, <code>gradlew.bat test</code>:</p>
+
+<pre>
+Wouters-Air:singleton wgroeneveld$ ./gradlew test
+
+> Task :test FAILED
+
+ShoppingCartResourceTest > get_fromMultipleResources_shouldNotIncreaseDBHandleVarCount FAILED
+    java.lang.AssertionError at ShoppingCartResourceTest.java:25
+
+2 tests completed, 1 failed
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///Users/jefklak/development/brainbaking/content/teaching/ses/singleton/build/reports/tests/test/index.html
+</pre>
+</div>
+
+    
+    
+
+    
+
+    <h4 class="page-header">&nbsp;</h4>
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

@@ -18,15 +18,27 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 ### Labo noties
 
-1. [Design Patterns: Facade](/teaching/ses/facade)
-2. [Design Patterns: Dependency Injection](/teaching/ses/di)
-3. [Design Patterns: Singleton](/teaching/ses/singleton)
-4. [Design Patterns: Decorator](/teaching/ses/decorator)
-5. [Design Patterns: Factory](/teaching/ses/factory)
+#### Design Patterns
+
+1. [Facade](/teaching/ses/facade)
+2. [Dependency Injection](/teaching/ses/di)
+3. [Singleton](/teaching/ses/singleton)
+4. [Decorator](/teaching/ses/decorator)
+5. [Factory](/teaching/ses/factory)
+
+#### Software Development Life Cycle
+
+1. Versiebeheer
+2. Management van afhankelijkheden
+3. Debugging & Testing
+4. Bug Tracking (Git Issues)
+5. End 2 end build environments, CI, CD, ...
+6. Soft skills
 
 ### Extra informatie
 
 1. ['SESsy Library' WebApp installatie & configuratie](/teaching/ses/sessy)
+2. [Gradle build tools](/teaching/ses/gradle)
 
 ## Syllabus
 

@@ -2,4 +2,6 @@
 brainbaking.sublime-workspace
 public/
 .idea/
+.gradle/
 out/
+build/

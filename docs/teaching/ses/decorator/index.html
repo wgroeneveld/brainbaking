@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="Labo x: Design Patterns: Decorator - Brain Baking">
+	<meta content="Labo x: Design Patterns: Decorator - Brain Baking" property="og:title">
+	<meta content="Labo x: Design Patterns: Decorator - Brain Baking" property="og:description">
+
+
+
+
+<meta property="og:url" content="https://brainbaking.com/teaching/ses/decorator/" />
+<meta property="og:type" content="website" />
+
+
+
+
+
+<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="teaching" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/brainbaking.com\/"
+    },
+    "articleSection" : "teaching",
+    "name" : "Labo x: Design Patterns: Decorator",
+    
+      "headline" : "Labo x: Design Patterns: Decorator",
+    
+    "description" : "",
+    
+      "inLanguage" : "nl-BE",
+    
+    
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "0001",
+    "datePublished": "2019-11-25 15:06:40 \x2b0100 CET",
+    "dateModified" : "2019-11-25 15:06:40 \x2b0100 CET",
+    "url" : "https:\/\/brainbaking.com\/teaching\/ses\/decorator\/",
+    "wordCount" : "784",
+    "keywords" : [ "Labo x: Design Patterns: Decorator", "teaching" ]
+}
+</script>
+
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Labo x: Design Patterns: Decorator</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/llvm.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        
+        <link href="https://brainbaking.com/teaching/ses/decorator/index.xml" rel="alternate" type="application/rss+xml" title="Brain Baking" />
+        <link href="https://brainbaking.com/teaching/ses/decorator/index.xml" rel="feed" type="application/rss+xml" title="Brain Baking" />
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Labo x: Design Patterns: Decorator</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+	
+	    <h2>
+			<i class='fa '></i>&nbsp;Labo x: Design Patterns: Decorator
+		</h2>
+	    <hr/>
+    
+
+    
+    <div class="text-justify">
+    	
+
+<p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/>
+&raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
+
+<h2 id="decorator-design-pattern"><em>&ldquo;Decorator&rdquo;</em> - Design Pattern</h2>
+
+<h3 id="doelstelling">Doelstelling</h3>
+
+<ul>
+<li>Voeg dynamisch functionaliteit toe als alternatief voor klassieke overerving.</li>
+<li>Gedraagt zich zoals het stukje &lsquo;ingepakte&rsquo; functionaliteit, maar voert extra handelingen uit.</li>
+<li>Wordt in Java altijd via <code>interface</code> implementaties uitegevoerd.</li>
+</ul>
+
+<p><a href="https://sourcemaking.com/design_patterns/decorator">Dive Into Design Patterns: Decorator</a></p>
+
+<h3 id="voorbeeld">Voorbeeld</h3>
+
+<h4 id="1-opzet">1. Opzet</h4>
+
+<p>Stel dat we in een fabriek op plaats X een auto samenstellen. De wagen is een zeer eenvoudige Volkswagen Golf, zonder opties. Op een andere locatie, plaats Y, hebben wij als bedrijf ook fabrieken die sportauto&rsquo;s bouwen (Volkswagen Scirocco) en op plaats Z luxe wagens (Volkswagen Passat).</p>
+
+<pre><code class="language-java">public interface Car {
+    public void assemble(); // build stuff
+}
+</code></pre>
+
+<p>Fabriek X:</p>
+
+<pre><code class="language-java">public class VWGolf implements Car {
+    @Override
+    public void assemble() {
+        System.out.println(&quot;do not forget the steering wheel!&quot;);
+    }
+}
+</code></pre>
+
+<p>Fabriek Y:</p>
+
+<pre><code class="language-java">public class VWScirocco implements Car {
+    @Override
+    public void assemble() {
+        System.out.println(&quot;do not forget lots of turbo!&quot;);
+    }
+}
+</code></pre>
+
+<p>Fabriek Z:</p>
+
+<pre><code class="language-java">public class VWPassat implements Car {
+    @Override
+    public void assemble() {
+        System.out.println(&quot;do not forget all the leather!&quot;);
+    }
+}
+</code></pre>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph TD;
+    A["VW Golf"]
+    B["VW Scirocco"]
+    C["VW Passat"]
+    Z{Car}
+    Z --> A
+    Z --> B
+    Z --> C
+
+</div>
+
+<h4 id="2-probleemstelling">2. Probleemstelling</h4>
+
+<p>De General Manager belt: hij meldt ons vrolijk dat we zijn opgekocht door Geely, een Chinese autofabriekant. De heren in China wensen een mooie combinatie te maken tussen langs de ene kant <strong>luxe</strong>, en langs de andere kant pure <strong>kracht</strong>. Een combinatie van de technologie van fabriek Y en Z, dus. Dit mag <em>enkel op aanvraag</em> gebeuren, en is dus niet simpelweg een nieuwe variant van een VW assemblage, maar een dynamische combinatie, waarbij soms meer luxe en soms meer kracht wordt gevraagd. Dat hangt natuurlijk van de klant af.</p>
+
+<p>We zullen dus een custom optie voorzien:</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph TD;
+    A["VW Golf"]
+    B["VW Scirocco"]
+    C["VW Passat"]
+    D["Custom Car Decorator"]
+    Z{Car}
+    Z --> A
+    Z --> B
+    Z --> C
+    B --> D
+    C --> D
+
+</div>
+
+<h4 id="3-oplossing">3. Oplossing</h4>
+
+<p>Deze custom oplossing is nog steeds een implementatie van de interface <code>Car</code>:</p>
+
+<pre><code class="language-java">public class CustomCarDecorator implements Car {
+    private final List&lt;Car&gt; carsToAssemble;
+
+    public CustomCarDecorator(Car... carTypes) {
+        this.carsToAssemble = Arrays.asList(carTypes);
+    }
+
+    @Override
+    public void assemble() {
+        for(Car car : carsToAssemble) {
+            car.assemble();
+        }
+    }
+}
+</code></pre>
+
+<p>Op deze manier kunnen we zoveel auto types als de klant wenst doorgeven aan de <code>CustomCarDecorator</code> instantie, die netjes in de bestaande fabriek logica past, gegeven de volgende fabriek klasse:</p>
+
+<pre><code class="language-java">public class Factory {
+    public Car create(Car car) {
+        car.assemble();  // works, since it's an interface
+        paint(car);
+        return car;
+    }
+
+    private void paint(Car car) {
+        System.out.println(&quot;painting...&quot;);
+    }
+}
+</code></pre>
+
+<p>Dit werkt enkel en alleen omdat we met een <strong>interface</strong> werken!</p>
+
+<h3 id="eigenschappen-van-dit-patroon">Eigenschappen van dit patroon</h3>
+
+<ul>
+<li>Een Decorator verandert het contract van de interface niet. De interface wordt uitgebreid, zijnde dat bovenstaande <code>CustomCarDecorator</code> extra dingen doet ten opzichte van de standaard VW Golf/andere implementaties.</li>
+<li>Een Decorator kan je gebruiken om extra functionaliteiten toe te voegen zonder aan de klasse structuur grote wijzigingen door te voeren. Gebruik hiervoor, zoals de <code>List&lt;Car&gt; carsToAssemble</code> member variable, <strong>Compositie</strong>, en niet <strong>Inheritance</strong>.</li>
+<li>Een Decorator verandert de flow van de functionaliteit niet: dat doet een <em>Strategy</em> - een decorator voorziet enkel een ander uitzicht. Denk aan een doos in een doos stoppen: daar kan ook stiekem nog een extra doos in worden geplaatst. Maar het blijven dozen.</li>
+</ul>
+
+<h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
+
+<ul>
+<li><a href="/teaching/ses/decorator.zip">Download het IntelliJ decorator-oef1.zip project hier</a>. Dit bevat bovenstaande wagenpark voorbeeld. Hier dien je de volgende dingen nog aan te wijzigen:
+
+<ul>
+<li>Voorzie in de <code>main()</code> methode een nieuwe decorator instantie en geef die mee met de factory. Kijk in de output wat er gebeurt.</li>
+<li>Maak een nieuwe auto implementatie aan, <code>VWPolo</code>. Geef de decorator een Golf en Polo mee. Nu maken we plots iets hoger niveau budget wagens!</li>
+<li>Voorzie een eigen, statische decorator klasse, genaamd <code>PoloGolfDecorator</code>, die altijd bovenstaande wagens (Polo en Golf) combineert. Wat zit er in de klasse? Hoe implementeer je <code>assemble()</code>?</li>
+</ul></li>
+<li>Werk verder op oef1: bouw een nieuwe <code>Factory</code> in Zweden. Deze Factory in Zweden kan veel meer kleuren op het chassis spuiten dan de klassieke Factory. (Verzin iets anders in het <code>println()</code> statement). Wat als een klant een combinatie van deze factory, en de klassieke wenst? Maak een Decorator voor de factories in plaats van de wagens. Test deze in de <code>Main</code> klasse.</li>
+</ul>
+
+<h2 id="denkvragen">Denkvragen</h2>
+
+<ul>
+<li>Stel dat de klant altijd een combinatie van twee bepaalde auto&rsquo;s wenst. Wanneer beslissen we om dit permanent op te nemen in ons repertroire, en er een &ldquo;echte&rdquo; subklasse van te maken, en wanneer houden we het nog op een decorator?</li>
+<li>Op welk patroon trekt dit patroon nog? Waarom? Zie <a href="labo noties index">/teaching/ses</a> pagina.</li>
+<li>Kan je dit ook zonder interfaces doen? Denk na over implementaties in andere programmeertalen.</li>
+</ul>
+
+	</div>
+    <hr/>
+	
+
+	
+	
+	
+
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
