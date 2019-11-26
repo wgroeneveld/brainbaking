@@ -39,7 +39,7 @@
     
       "headline" : "Labo x: Design Patterns: Factory",
     
-    "description" : " \x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\n\x26ldquo;Factory\x26rdquo; - Design Pattern Doelstelling Dive Into Design Patterns: Factory (method)\nVoorbeeld 1. Opzet 2. Probleemstelling 3. Oplossing Eigenschappen van dit patroon Labo oefeningen  Download facade-oef1.java hier. bla  Denkvragen  bla  ",
+    "description" : "",
     
       "inLanguage" : "nl-BE",
     
@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-11-25 15:06:40 \x2b0100 CET",
-    "dateModified" : "2019-11-25 15:06:40 \x2b0100 CET",
+    "datePublished": "2019-11-26 15:48:47 \x2b0100 CET",
+    "dateModified" : "2019-11-26 15:48:47 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/factory\/",
-    "wordCount" : "39",
+    "wordCount" : "556",
     "keywords" : [ "Labo x: Design Patterns: Factory", "teaching" ]
 }
 </script>
@@ -139,6 +139,9 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.59.1" />
         
+        <link href="https://brainbaking.com/teaching/ses/factory/index.xml" rel="alternate" type="application/rss+xml" title="Brain Baking" />
+        <link href="https://brainbaking.com/teaching/ses/factory/index.xml" rel="feed" type="application/rss+xml" title="Brain Baking" />
+        
     </head>
 
     
@@ -197,32 +200,18 @@
         </nav>
 
 
-
-
 <main>
 
-    <a name="top"></a>
-    <div class="item">
-
-    
-    <h3>
-        
-        <a href="/teaching/ses/factory/">Labo x: Design Patterns: Factory</a>
-    </h3>
+	
+	    <h2>
+			<i class='fa '></i>&nbsp;Labo x: Design Patterns: Factory
+		</h2>
+	    <hr/>
     
 
     
-    
-    
-
-
-    
-    
-
-</div>
-
-
-    <br> <div class="text-justify">
+    <div class="text-justify">
+    	
 
 <p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/>
 &raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
@@ -231,39 +220,155 @@
 
 <h3 id="doelstelling">Doelstelling</h3>
 
+<ul>
+<li>Scherm het aanmaken van bepaalde objecten af door middel van overerving en logica, waarbij die logica éénmalig wordt geïmplementeerd, en op een centrale plaats staat.</li>
+<li>Promoot een <em>modulair</em> model door de verantwoordlijkheid van object creatie en object gebruik te scheiden.</li>
+</ul>
+
 <p><a href="https://sourcemaking.com/design_patterns/factory_method">Dive Into Design Patterns: Factory (method)</a></p>
 
 <h3 id="voorbeeld">Voorbeeld</h3>
 
 <h4 id="1-opzet">1. Opzet</h4>
 
+<p>Stel, je wilt aan de kassa van een niet al te grote lokale cinema een film kopen. Stel, de persoon aan de kassa beslist de film, gebaseerd op je leeftijd. Er spelen die avond drie filmen: een kindvriendelijke, eentje voor tieners, en eentje gereserveerd voor volwassenen.</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph TD;
+    A{Ticket}
+    B[FamilyFilm]
+    C[TeenageFilm]
+    D[XRatedFilm]
+    E[TicketSeller]
+    F[Person]
+    A --> B
+    A --> C
+    A --> D
+
+</div>
+
+<p>Waarbij een persoon een bepaalde leeftijd heeft:</p>
+
+<pre><code class="language-java">public class Person {
+    private final int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public Person(int age) {
+        this.age = age;
+    }
+}
+</code></pre>
+
+<p>En de ticket verkoper een ticket verkoopt aan een persoon:</p>
+
+<pre><code class="language-java">public class TicketSeller {
+
+    Ticket buyTicketFor(Person person) {
+        return null;
+    }
+}
+</code></pre>
+
 <h4 id="2-probleemstelling">2. Probleemstelling</h4>
+
+<p>De logica voor het aanmaken van de juiste <code>Ticket</code> subklasse moet op één centrale plaats staan. De ticket verkoper is hier ideaal voor, waarbij met wat simpele logica gebaseerd op <code>person.getAge()</code> de juiste film kan worden aangemaakt. We noemen in dat geval de methode <code>buyTicketFor()</code> een <strong>factory method</strong>.</p>
 
 <h4 id="3-oplossing">3. Oplossing</h4>
 
+<p>Door te controleren op leeftijd kan men de juiste instantie aanmaken en teruggeven. Dit is de verantwoordelijkheid van de ticket seller. Het voordeel is dat je als &ldquo;gebruiker&rdquo; van deze klasse, die de methode <code>buyTicketFor()</code> aanroept, je niet hoeft af te vragen wat er achter de abstracte klasse <code>Ticket</code> zit. Het is een ticket, de code kan verder lopen.</p>
+
+<p>We kunnen dit nog verder drijven door de ticket verkoper zelf ook te laten aanmaken door een &ldquo;factory&rdquo; die bijvoorbeeld de medewerkers van diezelfde lokale cinema inhuurt. Persoon x verkoopt je tickets op basis van je leeftijd, en persoon y op basis van hoeveel geld je op zak hebt.</p>
+
 <h3 id="eigenschappen-van-dit-patroon">Eigenschappen van dit patroon</h3>
+
+<ul>
+<li>Implementaties (van Ticket) zijn verborgen via de Factory Method.</li>
+<li>Logica voor creatie staat op één centrale plaats.</li>
+</ul>
 
 <h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ul>
-<li><a href="/teaching/ses/facade-oef1.java">Download facade-oef1.java hier</a>. bla</li>
+<li><a href="/teaching/ses/factory.zip">Download het IntelliJ factory-oef1.zip project hier</a>. (Dit is een <a href="/teaching/ses/gradle">gradle project</a>) Het project bevat bovenstaande voorbeeld, maar nog niet alles is geïmplementeerd. Voer de unit testen uit in <code>src/main/test</code>: het resultaat zijn gefaalde testen (ROOD). Zorg er voor dat alle testen slagen (GROEN) door het factory patroon te vervolledigen!</li>
+<li>De eerste aanzet is genomen om een nieuw type van <code>TicketSeller</code> aan te maken, door reeds een interface te voorzien. Ontwikkel een <code>MoneyBasedTicketSeller</code>, die gebaseerd op het geld in je portefuille je het juiste ticket bezorgt. Dit betekent dat je in <code>Person</code> dus een nieuwe property nodig hebt. Voorzie ook een nieuwe test klasse, gebaseerd op <code>AgeBasedTicketSellerTest</code>.</li>
 </ul>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph TD;
+    A{Ticket}
+    B[FamilyFilm]
+    C[TeenageFilm]
+    D[XRatedFilm]
+    E{TicketSeller}
+    F[AgeBasedTicketSeller]
+    G[MoneyBasedTicketSeller]
+    A --> B
+    A --> C
+    A --> D
+    E --> F
+    E --> G
+
+</div>
 
 <h2 id="denkvragen">Denkvragen</h2>
 
 <ul>
-<li>bla</li>
+<li>Wat is het verschil tussen een factory en een <a href="/teaching/ses/facade">facade</a> patroon? Wanneer heb ik het ene of het andere nodig?</li>
+<li>Is er een mogelijkheid om <a href="/teaching/ses/di">Dependency Injection</a> en de Factory te combineren, zodat het keyword <code>new</code> niet meer wordt gebruikt in de factory klasse zelf?</li>
 </ul>
-</div>
 
-    
-    
+	</div>
+    <hr/>
+	
 
-    
+	
+	
+	<h4 style="float: left; color: grey;">01-0001</h4>
+	<ul style="text-align: left; float: left; margin-left: 20px; width: 80%; list-style-type: none; border-left: #eee 1px solid;">
+	    
+	    	
+	    	
 
-    <h4 class="page-header">&nbsp;</h4>
+		<li style="margin-bottom: 15px;">
 
-    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+		    <h4>
+		    	<a href="/teaching/ses/factory/build/reports/tests/test/"></a>
+		    </h4>
+	    			    
+		     
+		    <span style="color: lightgrey;">
+		    	<i class='fa fa-calendar'></i>&nbsp;1 January
+		    </span>
+		</li>
+	    
+	</ul>
+	<hr style="clear: both;"/>
+	
+	
+
 
 </main>
 

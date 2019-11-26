@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "0001-01-01 00:00:00 \x2b0000 UTC",
-    "dateModified" : "0001-01-01 00:00:00 \x2b0000 UTC",
+    "datePublished": "2019-11-26 15:48:47 \x2b0100 CET",
+    "dateModified" : "2019-11-26 15:48:47 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/di\/",
-    "wordCount" : "40",
+    "wordCount" : "787",
     "keywords" : [ "Labo x: Design Patterns: Dependency Injection", "teaching" ]
 }
 </script>
@@ -216,32 +216,143 @@
 <p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/>
 &raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
 
-<h2 id="dependency-injection-design-pattern"><em>&ldquo;Dependency Injection&rdquo;</em> - Design Pattern</h2>
+<h2 id="dependency-injection-di-design-pattern"><em>&ldquo;Dependency Injection (DI)&rdquo;</em> - Design Pattern</h2>
 
 <h3 id="doelstelling">Doelstelling</h3>
 
-<p><a href="https://sourcemaking.com/design_patterns/factory_method">Dive Into Design Patterns: Factory (method)</a></p>
+<ul>
+<li>Promoot <em>modulariteit</em> door afhankelijkheden te injecteren, zodat aparte modules eenvoudig inplugbaar zijn in andere productiecode. Op deze manier worden modules ook makkelijker tesbaar.</li>
+<li>Promoot <em>Inversion of Control</em>: een client die services aanroept zou niet mogen weten hoe services worden aangemaakt - deze zou moeten worden &lsquo;geinjecteerd&rsquo;.</li>
+</ul>
+
+<p><a href="https://en.wikipedia.org/wiki/Dependency_injection">Wikipedia: Dependency Injection</a></p>
 
 <h3 id="voorbeeld">Voorbeeld</h3>
 
 <h4 id="1-opzet">1. Opzet</h4>
 
+<p>Als we verder gaan op het voorbeeld van de <a href="/teaching/ses/singleton">singleton</a>, zien we dat een database handle nodig is om shopping cart gegevens op te halen. Hoe deze database wordt aangemaakt, daar heeft een typische API geen kaas van gegeten: daar komt meestal een connection string bij kijken met gebruikersnaam, wachtwoord, en IP adres naar de juiste DB server.</p>
+
+<p>De DB accessor:</p>
+
+<pre><code class="language-java">public class DBHandle {
+    private String connectionString;
+
+    // comes from some config file
+    public DBHandle(String connectionString) {
+        this.connectionString = connectionString;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        // SELECT * FROM ...
+    }
+}
+</code></pre>
+
+<p>Met als REST endpoint:</p>
+
+<pre><code class="language-java">@Path(&quot;/shoppingcart&quot;)
+public class ShoppingResource {
+    @GET
+    public ShoppingCart getCart() {
+        String conStr = ConfigurationManager.getConfig('dbconnection');
+        return new DBHandle(conStr).getShoppingCart();
+    }
+}
+</code></pre>
+
 <h4 id="2-probleemstelling">2. Probleemstelling</h4>
+
+<p>Elke Resource klasse die een <code>DBHandle</code> instance wenst, zal ook via de <code>ConfigurationManager</code> het constructor argument moeten ophalen, om een instantie te kunnen aanmaken. Dit is uiteraard <strong>niet</strong> de juiste manier en introduceert veel duplicatie. Nu is de shopping resource &ldquo;in control&rdquo;, terwijl we in dat geval de Database de controle willen geven: <strong>Inversion of Control</strong> dus.</p>
 
 <h4 id="3-oplossing">3. Oplossing</h4>
 
+<p>Een mogelijke oplossing is een Singleton maken. Maar dan hebben we nog steeds:</p>
+
+<pre><code class="language-java">@Path(&quot;/shoppingcart&quot;)
+public class ShoppingResource {
+    @GET
+    public ShoppingCart getCart() {
+        return DBHandle.getInstance().getShoppingCart();
+    }
+}
+</code></pre>
+
+<p>Als we deze methode willen testen, door <code>getCart()</code> op te roepen, spreken we steeds de échte database aan, wat duidelijk niet het gewenste gedrag is. We willen in dat geval de database <strong>injecteren</strong>. Een tweede stap is om de implementatie te verbergen achter een interface.</p>
+
+<pre><code class="language-java">@Path(&quot;/shoppingcart&quot;)
+public class ShoppingResource {
+    private final DBHandle dbHandle;
+
+    public ShoppingResource(DBHandle handle) {
+        this.dbHandle = handle;
+    }
+
+    @GET
+    public ShoppingCart getCart() {
+        return dbHandle.getShoppingCart();
+    }
+}
+</code></pre>
+
+<p>Nu weet deze klasse niet meer hoe hij de database aanmaakt: hij krijgt dit slechts toegeschoven via de constructor. Uiteraard hebben we het probleem verlegt: wie maakt deze resource klasse aan? Om dit probleem op te lossen zijn er typische Dependency Injection frameworks beschikbaar die objecten in een pool aanmaken en zo injecteren. Voorbeelden hiervan zijn:</p>
+
+<ul>
+<li><a href="https://github.com/google/guice">Google Guice</a></li>
+<li><a href="https://spring.io">Spring Framework</a></li>
+</ul>
+
+<p>Als <code>DBHandle</code> een interface is, kunnen we op een eenvoudige manier een dummy implementatie maken en dit injecteren in de klasse ter test:</p>
+
+<pre><code class="language-java">public class DummyDBHandle implements DBHandle {
+    public boolean called;
+    @Override
+    public ShoppingCart getShoppingCart() {
+        called = true;
+        return null;
+    }
+}
+
+public class ShoppingResourceTest {
+    @Test
+    public void getCart_callsGetShoppingCartFromDb() {
+        DummyDBHandle dbHandle = new DummyDBHandle();
+        ShoppingResource resource = new ShoppingResource(dbHandle);
+        resource.getCart();
+
+        assertThat(dbHandle.called, is(true));
+    }
+}
+</code></pre>
+
+<p>Merk op dat de <code>connectionString</code> van de <code>DBHandle</code> ook via de constructor als argument wordt doorgegeven: dit is evenzeer een vorm van Dependency Injection.</p>
+
 <h3 id="eigenschappen-van-dit-patroon">Eigenschappen van dit patroon</h3>
+
+<ul>
+<li>Geef de verantwoordelijkheid van het <em>aanmaken</em> van een object af. Een instantie wordt geinjecteerd door middel van een constructor of setter.</li>
+<li>Maak van objecten geïsoleerde(re) stukjes code die makkelijker testbaar zijn dan hard gekoppelde objecten.</li>
+</ul>
 
 <h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ul>
-<li><a href="/teaching/ses/facade-oef1.java">Download facade-oef1.java hier</a>. bla</li>
+<li><a href="/teaching/ses/di.zip">Download het IntelliJ di-oef1.zip project hier</a>. (Dit is een <a href="/teaching/ses/gradle">gradle project</a>) Er staan twee TODO items: verwijder eerst de <code>new DBHandle()</code> vanuit de resource klasse, en injecteer het via een constructor argument. Pas dan de unit test aan om de compile fouten te fixen.</li>
+<li>Gebruik een interface om bovenstaande <code>DummyDBHandle</code> in het project te introduceren. Dat wil zeggen, hernoem <code>DBHandle</code> naar <code>DBHandleImplementation</code>, en maak een nieuwe interface genaamd <code>DBHandle</code>. Nu kan je de tweede unit test zoals hierboven toevoegen.</li>
+<li>In plaats van manueel te injecteren, kunnen we deze zaken ook overlaten aan gespecialiseerde frameworks, zoals Google Guice. Bovenstaand project heeft als Gradle dependency een link naar Guice. Neem een kijkje in de <code>ShoppingCartGuiceResource</code> klasse, en probeer dit principe toe te passen op de andere resouce klasse. <code>@Inject</code> verzogt het DI systeem, zonder zelf ergens objecten aan te maken, behalve in de config klasse. Zie ook <a href="https://github.com/google/guice/wiki/GettingStarted">Google Guice: getting started</a>.</li>
+<li><a href="/teaching/ses/sessy">sessy library</a>:
+
+<ol>
+<li>identificeer welke klassen in een DI systeem kunnen worden opgenomen.</li>
+<li>Introduceer een DI systeem: hetzij door Google Guice te gebruiken, hetzij door zelf te injecteren. Waar wordt DI reeds toegepast?</li>
+</ol></li>
 </ul>
 
 <h2 id="denkvragen">Denkvragen</h2>
 
 <ul>
-<li>bla</li>
+<li>Dependency Injection kan via de constructor, via setters (of direct op het veld via reflectie). Wat zijn de voor- en nadelen van via de constructor te werken, ten opzichte van via setters?</li>
+<li>Denk je dat de <code>GuiceConfigModule</code> klasse op termijn niet te groot en verwarrend wordt, als dit constant wordt uitgebreid met nieuwe instanties die geregistreerd worden bij Guice? Wat zou je dan doen om dit tegen te gaan?</li>
 </ul>
 
 	</div>
@@ -249,6 +360,27 @@
 	
 
 	
+	
+	<h4 style="float: left; color: grey;">01-0001</h4>
+	<ul style="text-align: left; float: left; margin-left: 20px; width: 80%; list-style-type: none; border-left: #eee 1px solid;">
+	    
+	    	
+	    	
+
+		<li style="margin-bottom: 15px;">
+
+		    <h4>
+		    	<a href="/teaching/ses/di/build/reports/tests/test/"></a>
+		    </h4>
+	    			    
+		     
+		    <span style="color: lightgrey;">
+		    	<i class='fa fa-calendar'></i>&nbsp;1 January
+		    </span>
+		</li>
+	    
+	</ul>
+	<hr style="clear: both;"/>
 	
 	
 

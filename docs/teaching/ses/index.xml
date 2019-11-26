@@ -19,7 +19,7 @@
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/gradle/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
-Helps teams build, automate and deliver better software, faster. Tenminste, toch volgens gradle.org (docs).
+Helps teams build, automate and deliver better software, faster. Tenminste, toch volgens de gradle.org website.
 Wat is dat, een build tool? Gradle is een build tool die de automatisatie van releasen, builden, testen, configureren, dependencies en libraries managen, &amp;hellip; eenvoudiger maakt. Kort gezegd: het maakt het leven van een ontwikkelaar eenvoudiger. In een config bestand genaamd build.gradle schrijft men met Groovy, een dynamische taal bovenop de JVM, op een descriptieve manier hoe Gradle de applicatie moet beheren.</description>
     </item>
     
@@ -29,17 +29,6 @@ Wat is dat, een build tool? Gradle is een build tool die de automatisatie van re
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/designpattern_template/</guid>
-      <description> &amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
-&amp;ldquo;Factory&amp;rdquo; - Design Pattern Doelstelling Dive Into Design Patterns: Factory (method)
-Voorbeeld 1. Opzet 2. Probleemstelling 3. Oplossing Eigenschappen van dit patroon Labo oefeningen  Download facade-oef1.java hier. bla  Denkvragen  bla  </description>
-    </item>
-    
-    <item>
-      <title>Labo x: Design Patterns: Factory</title>
-      <link>https://brainbaking.com/teaching/ses/factory/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/teaching/ses/factory/</guid>
       <description> &amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
 &amp;ldquo;Factory&amp;rdquo; - Design Pattern Doelstelling Dive Into Design Patterns: Factory (method)
 Voorbeeld 1. Opzet 2. Probleemstelling 3. Oplossing Eigenschappen van dit patroon Labo oefeningen  Download facade-oef1.java hier. bla  Denkvragen  bla  </description>

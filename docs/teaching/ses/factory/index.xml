@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Labo x: Design Patterns: Factory on Brain Baking</title>
+    <link>https://brainbaking.com/teaching/ses/factory/</link>
+    <description>Recent content in Labo x: Design Patterns: Factory on Brain Baking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
+    <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
+    
+	<atom:link href="https://brainbaking.com/teaching/ses/factory/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://brainbaking.com/teaching/ses/factory/build/reports/tests/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/factory/build/reports/tests/test/</guid>
+      <description>Test results - Test Summary    Test Summary       3 tests
+   3 failures
+   0 ignored
+   0.016s duration
+       0% successful
+      Failed tests   Packages   Classes   Failed tests  TicketSellerTest. buyTicket_AsAGrownUp_GetsTheRealDeal   TicketSellerTest. buyTicket_AsAKid_GetsAFamilyTicket   TicketSellerTest.</description>
+    </item>
+    
+  </channel>
+</rss>

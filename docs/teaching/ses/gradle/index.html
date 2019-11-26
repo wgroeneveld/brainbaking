@@ -39,7 +39,7 @@
     
       "headline" : "Java Gradle projecten",
     
-    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills\nHelps teams build, automate and deliver better software, faster. Tenminste, toch volgens gradle.org (docs).\nWat is dat, een build tool? Gradle is een build tool die de automatisatie van releasen, builden, testen, configureren, dependencies en libraries managen, \x26hellip; eenvoudiger maakt. Kort gezegd: het maakt het leven van een ontwikkelaar eenvoudiger. In een config bestand genaamd build.gradle schrijft men met Groovy, een dynamische taal bovenop de JVM, op een descriptieve manier hoe Gradle de applicatie moet beheren.",
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills\nHelps teams build, automate and deliver better software, faster. Tenminste, toch volgens de gradle.org website.\nWat is dat, een build tool? Gradle is een build tool die de automatisatie van releasen, builden, testen, configureren, dependencies en libraries managen, \x26hellip; eenvoudiger maakt. Kort gezegd: het maakt het leven van een ontwikkelaar eenvoudiger. In een config bestand genaamd build.gradle schrijft men met Groovy, een dynamische taal bovenop de JVM, op een descriptieve manier hoe Gradle de applicatie moet beheren.",
     
       "inLanguage" : "nl-BE",
     
@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "0001-01-01 00:00:00 \x2b0000 UTC",
-    "dateModified" : "0001-01-01 00:00:00 \x2b0000 UTC",
+    "datePublished": "2019-11-26 15:48:47 \x2b0100 CET",
+    "dateModified" : "2019-11-26 15:48:47 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/gradle\/",
-    "wordCount" : "390",
+    "wordCount" : "663",
     "keywords" : [ "Java Gradle projecten", "teaching" ]
 }
 </script>
@@ -228,13 +228,24 @@
 
 <h2 id="helps-teams-build-automate-and-deliver-better-software-faster">Helps teams build, automate and deliver better software, faster.</h2>
 
-<p>Tenminste, toch volgens <a href="https://gradle.org">gradle.org</a> (<a href="https://docs.gradle.org/current/userguide/userguide.html">docs</a>).</p>
+<p>Tenminste, toch volgens de <a href="https://gradle.org">gradle.org</a> website.</p>
 
 <h3 id="wat-is-dat-een-build-tool">Wat is dat, een build tool?</h3>
 
 <p>Gradle is een build tool die de automatisatie van releasen, builden, testen, configureren, dependencies en libraries managen, &hellip; eenvoudiger maakt. Kort gezegd: het maakt het leven van een ontwikkelaar eenvoudiger. In een config bestand genaamd <code>build.gradle</code> schrijft men met Groovy, een dynamische taal bovenop de JVM, op een descriptieve manier hoe Gradle de applicatie moet beheren.</p>
 
-<h4 id="ontleding-van-een-config-file">Ontleding van een config file</h4>
+<p>Andere bekende build tools:</p>
+
+<ul>
+<li><code>Maven</code>, <code>Ant</code> (in XML) voor Java</li>
+<li><code>(C/Q)Make</code> (custom config) voor C/C++</li>
+<li><code>yarn</code>, <code>grunt</code>, <code>gulp</code>, (in JS) &hellip; voor JS</li>
+<li><code>nuget</code> (custom config, XML) voor .NET</li>
+</ul>
+
+<p>Naast het beheren van compilaties, verzorgt Gradle ook libraries. Het is dus ook een <em>dependency management</em> systeem, zoals Composer voor PHP of Node Package Manager voor NodeJS.</p>
+
+<h4 id="ontleding-van-een-gradle-config-file">Ontleding van een Gradle config file</h4>
 
 <p>De meest eenvoudige buildfile is terug te vinden in de <a href="/teaching/ses/singleton.zip">singleton oefening</a>:</p>
 
@@ -273,27 +284,32 @@ dependencies {
 
 <p>Merk op dat een typisch gradle project <strong>geen jars</strong> mee zipt, zoals de oefeningen. Die worden dus automatisch door deze tool gedownload, en in de juiste map geplaatst.</p>
 
+<p>Voor het <a href="/teaching/ses/sessy">SESsy Library</a> project wordt ook Gradle gebruikt, en is de config file iets ingewikkelder, door de inclusie van eigen &ldquo;tasks&rdquo;. (te raadplegen op <i class='fa fa-github'></i> <a href="https://github.com/wgroeneveld/sessylibrary/blob/master/build.gradle">Github</a>)</p>
+
 <h4 id="ontleding-van-een-gradle-project-mappenstructuur">Ontleding van een Gradle project mappenstructuur</h4>
 
 <p>Als we kijken naar de bestanden- en mappenstructuur van <a href="/teaching/ses/singleton.zip">singleton oefening</a>, vinden we dit terug:</p>
 
 <pre>
-src
-    main
-        java
-            be.package1
-                ClassMain
-                ClassZ
-    test
-        java
-            be.package1
-                ClassMainTest
-                ClassZTest
-resources
-    css
-    js
-gradle
-    wrapper
+build/
+src/
+    main/
+        java/
+            be/
+                package1/
+                    ClassMain
+                    ClassZ
+    test/
+        java/
+            be/
+                package1/
+                    ClassMainTest
+                    ClassZTest
+resources/
+    css/
+    js/
+gradle/
+    wrapper/
         gradle-wrapper.jar
         gradle-wrapper.properties
 build.gradle
@@ -305,7 +321,8 @@ settings.gradle
 <p>Hier onderscheiden we de volgende zaken:</p>
 
 <ol>
-<li><code>src</code>, in <code>src/main/java</code> en <code>src/test/java</code>, met productie- en testcode gescheiden.</li>
+<li>Broncode (<code>.java</code> bestanden) in <code>src/main/java</code> en <code>src/test/java</code>, met productie- en testcode gescheiden.</li>
+<li>Gecompileerde code (<code>.class</code> bestanden) in de <code>build/</code> (of ook wel <code>out</code>) folder.</li>
 <li>Eventueel <code>resources</code> voor webapps e.d. (images, css, &hellip;)</li>
 <li><code>gradle</code> map, en executable (<code>gradlew.bat</code> win en shell script voor unix)</li>
 <li><code>gradle</code> settings en build file.</li>
@@ -336,6 +353,31 @@ FAILURE: Build failed with an exception.
 Execution failed for task ':test'.
 > There were failing tests. See the report at: file:///Users/jefklak/development/brainbaking/content/teaching/ses/singleton/build/reports/tests/test/index.html
 </pre>
+
+<p>Dit is <strong>exact hetzelfde</strong> als in IntelliJ de testen uitvoeren met de knop &lsquo;Run&rsquo;:</p>
+
+<p><img src="/img/teaching/intellij_run_test.png" /></p>
+
+<h3 id="waarom-een-build-tool-gebruiken">Waarom een build tool gebruiken?</h3>
+
+<p>De grootste voordelen hiervan zijn onder andere:</p>
+
+<ul>
+<li>Een kleine voetafdruk van de broncode (repository). Het is niet nodig om jars als libraries in een <code>lib/</code> folder zelf bij te houden: Gradle doet dit immers voor jou.</li>
+<li>Een project <em>bootstrappen</em> in luttele seconden: download code, voer de Gradle wrapper uit, en alles wordt vanzelf klaargezet (de juiste Gradle versie, de juiste library versies, &hellip;)</li>
+<li>Platform-onafhankelijk processen besturen die altijd op dezelfde manier werken: een taak uitvoeren op mijn PC doet exact hetzelfde als bij jou, dankzij de beschrijving van de stappen in de config file.</li>
+</ul>
+
+<p>Het is bijvoorbeeld bij de oefeningen eenvoudig om een test library als <code>junit</code> mee te leveren, zonder de bestanden zelf aan te leveren, dankzij het regeltje <code>testCompile group: 'junit', name: 'junit', version: '4.12'</code> in de dependencies block.</p>
+
+<h3 id="meer-links-en-tutorials">Meer links en tutorials:</h3>
+
+<ul>
+<li>Officiële Gradle <a href="https://docs.gradle.org/current/userguide/userguide.html">docs</a>.</li>
+<li>Officiële Gradle <a href="https://guides.gradle.org/creating-new-gradle-builds/">guides: creating a new build</a></li>
+<li><a href="https://gist.github.com/jahe/59557d507f43574b0d96">Gradle cheatsheet voorbeeld config file</a></li>
+<li><a href="https://www.polyglotdeveloper.com/cheatsheet/2015-01-08-Gradle-cheatsheet/">Gradle common commands</a></li>
+</ul>
 </div>
 
     

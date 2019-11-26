@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'be.kuleuven.ses'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.10
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '2.2'
+}

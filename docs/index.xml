@@ -644,6 +644,34 @@ There have been a lot of love letters to big cities here on Medium recently. I n
     
     <item>
       <title></title>
+      <link>https://brainbaking.com/teaching/ses/di/build/reports/tests/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/di/build/reports/tests/test/</guid>
+      <description>Test results - Test Summary    Test Summary       1 tests
+   0 failures
+   0 ignored
+   0.014s duration
+       100% successful
+      Packages   Classes   Packages    Package Tests Failures Ignored Duration Success rate     default-package  1 0 0 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://brainbaking.com/teaching/ses/factory/build/reports/tests/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/factory/build/reports/tests/test/</guid>
+      <description>Test results - Test Summary    Test Summary       3 tests
+   3 failures
+   0 ignored
+   0.016s duration
+       0% successful
+      Failed tests   Packages   Classes   Failed tests  TicketSellerTest. buyTicket_AsAGrownUp_GetsTheRealDeal   TicketSellerTest. buyTicket_AsAKid_GetsAFamilyTicket   TicketSellerTest.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://brainbaking.com/teaching/ses/singleton/build/reports/tests/test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
@@ -711,7 +739,7 @@ Basisvereisten De volgende tools worden verwacht geïnstalleerd te worden via de
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/gradle/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
-Helps teams build, automate and deliver better software, faster. Tenminste, toch volgens gradle.org (docs).
+Helps teams build, automate and deliver better software, faster. Tenminste, toch volgens de gradle.org website.
 Wat is dat, een build tool? Gradle is een build tool die de automatisatie van releasen, builden, testen, configureren, dependencies en libraries managen, &amp;hellip; eenvoudiger maakt. Kort gezegd: het maakt het leven van een ontwikkelaar eenvoudiger. In een config bestand genaamd build.gradle schrijft men met Groovy, een dynamische taal bovenop de JVM, op een descriptieve manier hoe Gradle de applicatie moet beheren.</description>
     </item>
     
@@ -852,17 +880,6 @@ Voor sprites speelde een tilemap geen rol, voor grote achtergronden wel: het kos
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/designpattern_template/</guid>
-      <description> &amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
-&amp;ldquo;Factory&amp;rdquo; - Design Pattern Doelstelling Dive Into Design Patterns: Factory (method)
-Voorbeeld 1. Opzet 2. Probleemstelling 3. Oplossing Eigenschappen van dit patroon Labo oefeningen  Download facade-oef1.java hier. bla  Denkvragen  bla  </description>
-    </item>
-    
-    <item>
-      <title>Labo x: Design Patterns: Factory</title>
-      <link>https://brainbaking.com/teaching/ses/factory/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/teaching/ses/factory/</guid>
       <description> &amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
 &amp;ldquo;Factory&amp;rdquo; - Design Pattern Doelstelling Dive Into Design Patterns: Factory (method)
 Voorbeeld 1. Opzet 2. Probleemstelling 3. Oplossing Eigenschappen van dit patroon Labo oefeningen  Download facade-oef1.java hier. bla  Denkvragen  bla  </description>
