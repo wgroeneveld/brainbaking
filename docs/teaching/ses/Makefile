@@ -1,7 +1,7 @@
 .PHONY : clean all
 .DEFAULT_GOAL := all
 
-EXCLUDE=-x \*.idea\* -x \*out\* -x \*build\* -x \*.gradle\*
+EXCLUDE=-x \*.idea\* -x \*out\* -x */build/\* -x */.gradle/\*
 
 zip:
 	zip -r decorator.zip decorator/ $(EXCLUDE)
@@ -13,4 +13,4 @@ zip:
 clean:
 	rm -rf *.zip
 
-all: zip
+all: clean zip
