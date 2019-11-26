@@ -64,7 +64,7 @@
     "datePublished": "2019-11-26 15:48:47 \x2b0100 CET",
     "dateModified" : "2019-11-26 15:48:47 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/factory\/",
-    "wordCount" : "556",
+    "wordCount" : "603",
     "keywords" : [ "Labo x: Design Patterns: Factory", "teaching" ]
 }
 </script>
@@ -304,6 +304,12 @@ graph TD;
 <ul>
 <li><a href="/teaching/ses/factory.zip">Download het IntelliJ factory-oef1.zip project hier</a>. (Dit is een <a href="/teaching/ses/gradle">gradle project</a>) Het project bevat bovenstaande voorbeeld, maar nog niet alles is geïmplementeerd. Voer de unit testen uit in <code>src/main/test</code>: het resultaat zijn gefaalde testen (ROOD). Zorg er voor dat alle testen slagen (GROEN) door het factory patroon te vervolledigen!</li>
 <li>De eerste aanzet is genomen om een nieuw type van <code>TicketSeller</code> aan te maken, door reeds een interface te voorzien. Ontwikkel een <code>MoneyBasedTicketSeller</code>, die gebaseerd op het geld in je portefuille je het juiste ticket bezorgt. Dit betekent dat je in <code>Person</code> dus een nieuwe property nodig hebt. Voorzie ook een nieuwe test klasse, gebaseerd op <code>AgeBasedTicketSellerTest</code>.</li>
+<li><a href="/teaching/ses/sessy">sessy library</a>:
+
+<ol>
+<li>identificeer waar het mogelijk zou zijn om een factory patroon toe te passen. Welke verschillende implementaties delen een gelijke noemer? Waar staat mogelijks creatie logica (dubbel)?</li>
+<li>Pas dit toe door een nieuwe klasse te voorzien die de Factory methode implementeert. Vergeet de unit testen niet!</li>
+</ol></li>
 </ul>
 
 <link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
@@ -344,29 +350,6 @@ graph TD;
     <hr/>
 	
 
-	
-	
-	<h4 style="float: left; color: grey;">01-0001</h4>
-	<ul style="text-align: left; float: left; margin-left: 20px; width: 80%; list-style-type: none; border-left: #eee 1px solid;">
-	    
-	    	
-	    	
-
-		<li style="margin-bottom: 15px;">
-
-		    <h4>
-		    	<a href="/teaching/ses/factory/build/reports/tests/test/"></a>
-		    </h4>
-	    			    
-		     
-		    <span style="color: lightgrey;">
-		    	<i class='fa fa-calendar'></i>&nbsp;1 January
-		    </span>
-		</li>
-	    
-	</ul>
-	<hr style="clear: both;"/>
-	
 	
 
 

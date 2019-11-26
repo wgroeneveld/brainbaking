@@ -1,7 +1,7 @@
 ---
 title: 'Labo x: Design Patterns: Facade'
 accent: "#008eb3"
-disableComments: true
+disableList: true
 ---
 
 &laquo;&nbsp;[Terug naar Software Engineering Skills](/teaching/ses)<br/>

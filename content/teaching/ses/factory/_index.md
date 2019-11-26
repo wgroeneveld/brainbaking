@@ -1,6 +1,7 @@
 ---
 title: 'Labo x: Design Patterns: Factory'
 accent: "#008eb3"
+disableList: true
 ---
 &laquo;&nbsp;[Terug naar Software Engineering Skills](/teaching/ses)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
@@ -79,6 +80,9 @@ We kunnen dit nog verder drijven door de ticket verkoper zelf ook te laten aanma
 
 * [Download het IntelliJ factory-oef1.zip project hier](/teaching/ses/factory.zip). (Dit is een [gradle project](/teaching/ses/gradle)) Het project bevat bovenstaande voorbeeld, maar nog niet alles is geïmplementeerd. Voer de unit testen uit in `src/main/test`: het resultaat zijn gefaalde testen (ROOD). Zorg er voor dat alle testen slagen (GROEN) door het factory patroon te vervolledigen! 
 * De eerste aanzet is genomen om een nieuw type van `TicketSeller` aan te maken, door reeds een interface te voorzien. Ontwikkel een `MoneyBasedTicketSeller`, die gebaseerd op het geld in je portefuille je het juiste ticket bezorgt. Dit betekent dat je in `Person` dus een nieuwe property nodig hebt. Voorzie ook een nieuwe test klasse, gebaseerd op `AgeBasedTicketSellerTest`.
+* [sessy library](/teaching/ses/sessy): 
+    1. identificeer waar het mogelijk zou zijn om een factory patroon toe te passen. Welke verschillende implementaties delen een gelijke noemer? Waar staat mogelijks creatie logica (dubbel)?
+    2. Pas dit toe door een nieuwe klasse te voorzien die de Factory methode implementeert. Vergeet de unit testen niet! 
 
 {{<mermaid>}}
 graph TD;

@@ -1,6 +1,7 @@
 ---
 title: 'Labo x: Design Patterns: Dependency Injection'
 accent: "#008eb3"
+disableList: true
 ---
 &laquo;&nbsp;[Terug naar Software Engineering Skills](/teaching/ses)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
