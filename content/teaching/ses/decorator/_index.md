@@ -143,6 +143,9 @@ Dit werkt enkel en alleen omdat we met een **interface** werken!
     - Maak een nieuwe auto implementatie aan, `VWPolo`. Geef de decorator een Golf en Polo mee. Nu maken we plots iets hoger niveau budget wagens!
     - Voorzie een eigen, statische decorator klasse, genaamd `PoloGolfDecorator`, die altijd bovenstaande wagens (Polo en Golf) combineert. Wat zit er in de klasse? Hoe implementeer je `assemble()`?
 * Werk verder op oef1: bouw een nieuwe `Factory` in Zweden. Deze Factory in Zweden kan veel meer kleuren op het chassis spuiten dan de klassieke Factory. (Verzin iets anders in het `println()` statement). Wat als een klant een combinatie van deze factory, en de klassieke wenst? Maak een Decorator voor de factories in plaats van de wagens. Test deze in de `Main` klasse.
+* [sessy library](/teaching/ses/sessy): 
+    1. identificeer waar jij denkt dat een decorator nodig zou kunnen zijn. Waar zou mogelijks dynamische logica gebruikt kunnen worden?
+    2. Pas het patroon toe waar jij denkt dat het nodig is. 
 
 ## Denkvragen
 

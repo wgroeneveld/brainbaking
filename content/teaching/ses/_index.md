@@ -20,11 +20,11 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 #### Design Patterns
 
-1. [Facade](/teaching/ses/facade)
-2. [Dependency Injection](/teaching/ses/di)
-3. [Singleton](/teaching/ses/singleton)
-4. [Decorator](/teaching/ses/decorator)
-5. [Factory](/teaching/ses/factory)
+1. [Facade](/teaching/ses/facade) ([voorbeeld](/teaching/ses/facade.zip))
+2. [Dependency Injection](/teaching/ses/di) ([voorbeeld](/teaching/ses/di.zip))
+3. [Singleton](/teaching/ses/singleton) ([voorbeeld](/teaching/ses/singleton.zip))
+4. [Decorator](/teaching/ses/decorator) ([voorbeeld](/teaching/ses/decorator.zip))
+5. [Factory](/teaching/ses/factory) ([voorbeeld](/teaching/ses/factory.zip))
 
 #### Software Development Life Cycle
 

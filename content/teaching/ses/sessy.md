@@ -13,7 +13,7 @@ Download Locatie: op <i class='fa fa-github'></i> Github via [https://github.com
 
 ### Installatie
 
-Download via bovenstaande Github link, of met `git clone`. Dit is een "Gradle" project, die de build van ons Java ecosysteem verzorgt. Dat wil zeggen dat het Gradle systeem automatisch libraries (`jar` bestanden) download van een centrale repository, moesten die nodig zijn. Het enige wat jij moet installeren is Java:
+Download via bovenstaande Github link, of met `git clone`. Dit is een ["Gradle" project](/teaching/ses/gradle), die de build van ons Java ecosysteem verzorgt. Dat wil zeggen dat het Gradle systeem automatisch libraries (`jar` bestanden) download van een centrale repository, moesten die nodig zijn. Het enige wat jij moet installeren is Java:
 
 #### Minimum Vereisten
 
