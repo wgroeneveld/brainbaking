@@ -39,7 +39,7 @@
     
       "headline" : "Poll: Ben ik klaar voor mijn examen?",
     
-    "description" : "\x26laquo;\x26nbsp;Terug naar Software ontwerp in C\/C\x2b\x2b\nGa naar pollev.com\/woutergroene532 om mee te doen. De mogelijke antwoorden zijn voor elke snippet hetzelfde:\n Compileert NIET. Compileert, maar runtime ERROR. Runt, maar ONGEWENST gedrag. WERKT zoals verwacht.  Includes en namespaces worden buiten beschouwing gelaten.\nSnippet 1  class Student; class Teacher { private: std::vector\x26lt;Student*\x26gt; students; public: Teacher() { students.push_back(new Student()); } };  Snippet 2  class Student; class Teacher { private: std::vector\x26lt;Student*\x26gt; students; public: Teacher() { students.",
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software ontwerp in C\/C\x2b\x2b\nGa naar pollev.com\/woutergroene532 om mee te doen. De mogelijke antwoorden zijn voor elke snippet hetzelfde:\n Compileert NIET. (Fouten bij gcc commando) Compileert, maar runtime ERROR. (Fouten bij uitvoeren: segfaults e.d.) Runt, maar ONGEWENST gedrag. (Geen fouten maar bugs in gedrag) WERKT zoals verwacht.  Includes en namespaces worden buiten beschouwing gelaten.\nKlik op de snippet headers om de snippet te tonen.\nSnippet 1 class Student; class Teacher { private: std::vector\x26lt;Student*\x26gt; students; public: Teacher() { students.",
     
       "inLanguage" : "nl-BE",
     
@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "0001-01-01 00:00:00 \x2b0000 UTC",
-    "dateModified" : "0001-01-01 00:00:00 \x2b0000 UTC",
+    "datePublished": "2019-11-28 09:18:51 \x2b0100 CET",
+    "dateModified" : "2019-11-28 09:18:51 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/cpp\/poll\/",
-    "wordCount" : "308",
+    "wordCount" : "472",
     "keywords" : [ "Poll: Ben ik klaar voor mijn examen?", "teaching" ]
 }
 </script>
@@ -226,20 +226,22 @@
 
 <p>&laquo;&nbsp;<a href="/teaching/cpp">Terug naar Software ontwerp in C/C++</a><br/></p>
 
-<p>Ga naar <a href="pollev.com/woutergroene532">pollev.com/woutergroene532</a> om mee te doen. De mogelijke antwoorden zijn voor elke snippet hetzelfde:</p>
+<p>Ga naar <a href="https://pollev.com/woutergroene532">pollev.com/woutergroene532</a> om mee te doen. De mogelijke antwoorden zijn voor elke snippet hetzelfde:</p>
 
 <ol>
-<li>Compileert <strong>NIET</strong>.</li>
-<li>Compileert, maar runtime <strong>ERROR</strong>.</li>
-<li>Runt, maar <strong>ONGEWENST</strong> gedrag.</li>
+<li>Compileert <strong>NIET</strong>. (Fouten bij <code>gcc</code> commando)</li>
+<li>Compileert, maar runtime <strong>ERROR</strong>. (Fouten bij uitvoeren: segfaults e.d.)</li>
+<li>Runt, maar <strong>ONGEWENST</strong> gedrag. (Geen fouten maar bugs in gedrag)</li>
 <li><strong>WERKT</strong> zoals verwacht.</li>
 </ol>
 
 <p>Includes en namespaces worden buiten beschouwing gelaten.</p>
 
+<p>Klik op de snippet headers om de snippet te tonen.</p>
+
 <h4 id="snippet-1">Snippet 1</h4>
 
-<pre>
+<pre class="snip snip1">
 class Student;
 
 class Teacher {
@@ -252,9 +254,11 @@ public:
 };
 </pre>
 
+<p>Antwoord: <strong>Compile fout</strong>; forward definition van <code>Student</code> klasse kan, maar <code>new()</code> niet.</p>
+
 <h4 id="snippet-2">Snippet 2</h4>
 
-<pre>
+<pre class="snip snip2">
 class Student;
 
 class Teacher {
@@ -267,22 +271,26 @@ public:
 };
 </pre>
 
+<p>Antwoord: <strong>Werkt</strong>. <code>NULL</code> toevoegen werkt omdat het een pointer naar &lsquo;niets&rsquo; is.</p>
+
 <h4 id="snippet-3">Snippet 3</h4>
 
-<pre>
+<pre class="snip snip3">
 void maths(int* x) {
     x++;
 }
 int main() {
     int one = 0;
-    maths(one);
+    maths(&one);
     return one == 1;
 }
 </pre>
 
+<p>Antwoord: <strong>Onverwacht gedrag</strong>. <code>x++</code> verhoogt het adres van de pointer, niet de eigenlijke waarde: we moeten hier nog <em>dereferencen</em>.</p>
+
 <h4 id="snippet-4">Snippet 4</h4>
 
-<pre>
+<pre class="snip snip4">
 void swap(int* x, int* y) {
     int z = *x;
     *x = *y;
@@ -294,9 +302,11 @@ int main() {
 }
 </pre>
 
+<p>Antwoord: <strong>Werkt</strong>. Tekstboek voorbeeld van waardes swappen.</p>
+
 <h4 id="snippet-5">Snippet 5</h4>
 
-<pre>
+<pre class="snip snip5">
 class X {
 public:
     int i;
@@ -313,9 +323,11 @@ int main() {
 }
 </pre>
 
+<p>Antwoord: <strong>Compile fout</strong>. <code>const</code> betekent dat de waarde van x niet kan wijzigen, dus <code>x.i = 1</code> geeft een fout.</p>
+
 <h4 id="snippet-6">Snippet 6</h4>
 
-<pre>
+<pre class="snip snip6">
 struct dinges {
     void* x;
     void* y;
@@ -328,9 +340,11 @@ int main() {
 }    
 </pre>
 
+<p>Antwoord: <strong>Runtime error</strong>. Na de <code>delete</code> de pointer &lsquo;volgen&rsquo; geeft (onverwachte) problemen.</p>
+
 <h4 id="snippet-7">Snippet 7</h4>
 
-<pre>
+<pre class="snip snip7">
 template&lt;typename T&gt; class Punt {
   private:
    T x, y;
@@ -343,9 +357,11 @@ int main() {
 }    
 </pre>
 
+<p>Antwoord: <strong>Werkt</strong>. Een voorbeeld template klasse.</p>
+
 <h4 id="snippet-8">Snippet 8</h4>
 
-<pre>
+<pre class="snip snip8">
 // in punt.h
 template&lt;typename T&gt; class Punt {
 private:
@@ -364,9 +380,11 @@ int main() {
 }
 </pre>
 
+<p>Antwoord: <strong>Compile fout</strong>. <code>T</code> herhalen in punt.cpp vereist opnieuw de definitie van de template: <code>template&amp;lt;typename T&amp;gt;</code>.</p>
+
 <h4 id="snippet-9">Snippet 9</h4>
 
-<pre>
+<pre class="snip snip9">
 int main() {
     int hoeveel = 0;
     scanf("%d", hoeveel);
@@ -374,9 +392,11 @@ int main() {
 }
 </pre>
 
+<p>Antwoord: <strong>Runtime error</strong>. <code>scanf()</code> verwacht een correct adres, niet de waarde 0, dat buiten het bereik van het programma valt.</p>
+
 <h4 id="snippet-10">Snippet 10</h4>
 
-<pre>
+<pre class="snip snip10">
 class Inception {};
 int main() {
     vector&lt;Inception**&gt; *v;
@@ -388,6 +408,8 @@ int main() {
     v->push_back(y);
 }
 </pre>
+
+<p>Antwoord: <strong>Werkt</strong>. Dubbele pointers zijn Arrays van pointers. Vectoren van dubbele pointers zijn tweedimensionele arrays.</p>
 </div>
 
     

@@ -214,8 +214,9 @@ Voor sprites speelde een tilemap geen rol, voor grote achtergronden wel: het kos
       <guid>https://brainbaking.com/teaching/cpp/poll/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
 Ga naar pollev.com/woutergroene532 om mee te doen. De mogelijke antwoorden zijn voor elke snippet hetzelfde:
- Compileert NIET. Compileert, maar runtime ERROR. Runt, maar ONGEWENST gedrag. WERKT zoals verwacht.  Includes en namespaces worden buiten beschouwing gelaten.
-Snippet 1  class Student; class Teacher { private: std::vector&amp;lt;Student*&amp;gt; students; public: Teacher() { students.push_back(new Student()); } };  Snippet 2  class Student; class Teacher { private: std::vector&amp;lt;Student*&amp;gt; students; public: Teacher() { students.</description>
+ Compileert NIET. (Fouten bij gcc commando) Compileert, maar runtime ERROR. (Fouten bij uitvoeren: segfaults e.d.) Runt, maar ONGEWENST gedrag. (Geen fouten maar bugs in gedrag) WERKT zoals verwacht.  Includes en namespaces worden buiten beschouwing gelaten.
+Klik op de snippet headers om de snippet te tonen.
+Snippet 1 class Student; class Teacher { private: std::vector&amp;lt;Student*&amp;gt; students; public: Teacher() { students.</description>
     </item>
     
     <item>
