@@ -157,7 +157,7 @@ int main() {
 }
 </pre>
 
-Antwoord: **Compile fout**. `T` herhalen in punt.cpp vereist opnieuw de definitie van de template: `template&lt;typename T&gt;`.
+Antwoord: **Compile fout**. `T` herhalen in punt.cpp vereist opnieuw de definitie van de template: `template<typename T>`.
 
 #### Snippet 9
 
