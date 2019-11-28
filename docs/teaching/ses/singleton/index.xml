@@ -18,12 +18,12 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/singleton/build/reports/tests/test/</guid>
-      <description>Test results - Test Summary    Test Summary       2 tests
+      <description>Test results - Test Summary    Test Summary       1 tests
    1 failures
    0 ignored
-   0.017s duration
-       50% successful
-      Failed tests   Packages   Classes   Failed tests  ShoppingCartResourceTest. get_fromMultipleResources_shouldNotIncreaseDBHandleVarCount    Packages    Package Tests Failures Ignored Duration Success rate     default-package  2 1 0 0.</description>
+   0.011s duration
+       0% successful
+      Failed tests   Packages   Classes   Failed tests  ShoppingCartResourceTest. get_fromMultipleResources_shouldNotIncreaseDBHandleVarCount    Packages    Package Tests Failures Ignored Duration Success rate     default-package  1 1 0 0.</description>
     </item>
     
   </channel>
