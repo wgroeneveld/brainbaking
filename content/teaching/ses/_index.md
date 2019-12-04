@@ -20,6 +20,8 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 #### Design Patterns
 
+[Een introductie tot Design Patterns.](/teaching/ses/patterns)
+
 1. [Facade](/teaching/ses/facade) ([voorbeeld](/teaching/ses/facade.zip))
 2. [Dependency Injection](/teaching/ses/di) ([voorbeeld](/teaching/ses/di.zip))
 3. [Singleton](/teaching/ses/singleton) ([voorbeeld](/teaching/ses/singleton.zip))
