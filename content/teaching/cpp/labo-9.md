@@ -79,7 +79,7 @@ Tilemaps leven net zoals de rest wat tiles aanbelangt in het VRAM. Kies een gehe
 
 Een tilemap ontwerpen in notepad is snel vervelend en geeft geen visuele feedback. Er zijn tools op [ROMHacking.net](https://www.romhacking.net/utilities/463/) die (al dan niet specifiek per spel) het ontwerpen vergemakkelijken. De eenvoudigste is [GBA Tile-editor](https://github.com/IanFinlayson/gba-tileeditor):
 
-<img src="/img/teaching/tileeditor.png" />
+<img src="/img/teaching/cpp/tileeditor.png" />
 
 (Voor Windows gebruikers: [Wingrit](https://www.coranac.com/man/grit/html/wingrit.htm)) <br/>
 De Onderste image is de **tileset**. Selecteer één tile en klik dan op een plaats om die tile op de map te doen verschijnen. De editor exporteert de map als een `unsigned short[]`:
@@ -100,7 +100,7 @@ De waardes zijn referenties naar de tiles in de tileset met `0x0000` als éérst
 
 Een tilemap kan best groot worden, en bijna alle 2D platformers of top-down adventure spellen op de GBA hebben een achtergrond die "scrollt". Herinner je het Castlevania voorbeeld uit [labo 8](/teaching/cpp/labo-8):
 
-<img src="/img/teaching/aria-of-sorrow.gif" style="width: 100%" class="bordered" />
+<img src="/img/teaching/cpp/aria-of-sorrow.gif" style="width: 100%" class="bordered" />
 
 Je kan duidelijk zien dat de achtergrond niet alleen bestaat uit verschillende lagen, maar ze ook scrollt afhankelijk van de positie van Soma, het hoofdpersonage. Scrollen in X of Y richting is heel eenvoudig en vereist - verrassing! - manipuleren van een register: van `0x4000010` tot `0x400001e` (+2, beginnen met bg0 x, bg0 y, bg1 x, ...).
 

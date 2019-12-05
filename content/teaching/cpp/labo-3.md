@@ -12,7 +12,7 @@ Je hebt nu een crashcrusus C achter de kiezen met een grondige focus op pointers
 De GBA is een goede keuze om de kracht (en zwakheden) van C te demonstreren. Er is immers géén besturingsyssteem aanwezig. Er zijn géén libraries aanwezig voor memory management, IO, files, error handling, ... Het is een embedded hardware systeem dat een _cross-compiler_ vereist: een compiler op onze PC's dat compileert voor een ander platform en CPU, namelijk een 32-bit [ARM](https://en.wikipedia.org/wiki/ARM_architecture) op 16.78 Mhz.
 
 <center>
-    <img src="/img/teaching/gba.jpg" class="bordered" /><br/>
+    <img src="/img/teaching/cpp/gba.jpg" class="bordered" /><br/>
     Het resultaat van veel hard werk in C (en Assemly)...
 </center>
 
@@ -146,7 +146,7 @@ Een loop over X en Y waardes van het scherm zorgt voor een vrolijke kleur op je 
 Dit is wat je te zien krijgt:
 
 <center>
-    <img src="/img/teaching/mgba_output.png" class="bordered" />
+    <img src="/img/teaching/cpp/mgba_output.png" class="bordered" />
 </center>
 
 ## Keypad input
@@ -202,19 +202,19 @@ Compileren met een cross-compiler gaat, maar de binaries kan je nooit op een and
 De aanschaf van een [EZ-FLASH Omega](http://www.ezflash.cn/product/omega/) bord maakt het mogelijk om met microSD kaarten `.gba` roms in te laden op je Gameboy Advance. Zo'n cartridges bestaan al jaren: vroeger was EZ-Flash IV en Supercard populair. Tegenwoordig kan je met een SD adapter files drag- en droppen.
 
 <center>
-    <img src="/img/teaching/gba_ezflash.png" class="bordered" />
+    <img src="/img/teaching/cpp/gba_ezflash.png" class="bordered" />
 </center>
 
 Het plastieken omhulsel open gevezen geeft zicht op het bord:
 
 <center>
-    <img src="/img/teaching/ezflash.jpg" class="bordered" />
+    <img src="/img/teaching/cpp/ezflash.jpg" class="bordered" />
 </center>
 
 Dit is een deel van [labo 4](/teaching/cpp/labo-4) op de eigenlijke hardware:
 
 <center>
-    <img src="/img/teaching/gba_labo3.gif" style="width: 75%" class="bordered" />
+    <img src="/img/teaching/cpp/gba_labo3.gif" style="width: 75%" class="bordered" />
 </center>
 
 Een EZ-FLASH Omega kaart kost ongeveer €30 op Ebay. Dit is uiteraard volledig vrijblijvend: een minimum vereiste is de werking van je creatie op een emulator. Een rom uitvoeren op de eigenlijke hardware kàn verrassend zijn; sommige emulatoren zijn flexibeler in werking.

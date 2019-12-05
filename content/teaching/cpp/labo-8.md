@@ -135,11 +135,11 @@ In de praktijk wordt art aangeleverd door 2D artiesten die gespecialiseerd zijn 
 
 Gegeven de volgende "pixel art":
 
-<img src="/img/teaching/labo-8-kul.png" />
+<img src="/img/teaching/cpp/labo-8-kul.png" />
 
 Herinner je dat OAM data vaste groottes hebben: we kiezen hier voor 64x32. Hoe verwerken we deze png in de ROM? Emulator screenshot:
 
-<img src="/img/teaching/labo-8-kul-0.png" />
+<img src="/img/teaching/cpp/labo-8-kul-0.png" />
 
 Daar hebben we [png2gba](https://github.com/IanFinlayson/png2gba) voor nodig, die de image omzet naar hexadecimale data. De [broncode van bovenstaande screenshot](/teaching/cpp/labo-8-kulsprite.c) verduidelijkt dit. Op de github pagina staan instructies om het tooltje te compileren.
 
@@ -165,17 +165,17 @@ Emulators zoals mGBA zijn krachtige tools voor de beginnende GBA ontwikkelaar om
 
 Probeer aan de hand van deze animatie maar eens te bepalen welke sprites gebrukt worden, en welke achtergronden:
 
-<img src="/img/teaching/aria-of-sorrow.gif" style="width: 100%" class="bordered" />
+<img src="/img/teaching/cpp/aria-of-sorrow.gif" style="width: 100%" class="bordered" />
 
 Herinner je uit labo 4 dat er 4 VRAM pointers naar achtergrond geheugen is: 4 char blocks. Bovenstaand spel creëert zo de illusie van diepte: verschillende achtergronden schuiven over elkaar met verschillende snelheden (kijk goed naar de maan).
 
 <div class="row">
   <div class="col-md-6">
-      <img src="/img/teaching/aria-of-sorrow-0.png" /><br/>
+      <img src="/img/teaching/cpp/aria-of-sorrow-0.png" /><br/>
       Alles aan
   </div>
   <div class="col-md-6">
-    <img src="/img/teaching/aria-of-sorrow-1.png" /><br/>
+    <img src="/img/teaching/cpp/aria-of-sorrow-1.png" /><br/>
     Sprites (OAM) uit
   </div>
 </div>
@@ -183,11 +183,11 @@ Herinner je uit labo 4 dat er 4 VRAM pointers naar achtergrond geheugen is: 4 ch
 
 <div class="row">
   <div class="col-md-6">
-    <img src="/img/teaching/aria-of-sorrow-2.png" /><br/>
+    <img src="/img/teaching/cpp/aria-of-sorrow-2.png" /><br/>
     bg3 uit
   </div>
   <div class="col-md-6">
-    <img src="/img/teaching/aria-of-sorrow-3.png" /><br/>
+    <img src="/img/teaching/cpp/aria-of-sorrow-3.png" /><br/>
     bg2 uit
   </div>
 </div>
@@ -196,7 +196,7 @@ Uiteindelijk stelt zo'n 2D platformspel niet zo veel voor op gebied van sprite e
 
 Het meeste werk ligt bij de artist. De screenshot linksboven toont de aanwezigheid van 2 personage sprites (Alucard en Soma) en 3 nummer sprites (Healthbar: 3, 2, 0). Toch klopt dit niet helemaal als je graaft in de mGBA sprite explorer:
 
-<img src="/img/teaching/aria-of-sorrow-sprites.png" />
+<img src="/img/teaching/cpp/aria-of-sorrow-sprites.png" />
 
 Soma bestaat uit 2x 64x32 OAM objecten! <br/>
 Er zal dus ook een soort van OAM manager nodig zijn die beide sprites aan elkaar rijgt, zodat in de code en in het spel dit één sprite lijkt te zijn. Dit zijn nog [artefacten van de originele Gameboy](http://gbdev.gg8.se/wiki/articles/GBDK_Sprite_Tutorial).

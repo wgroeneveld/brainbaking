@@ -46,7 +46,7 @@ The syllabus is accessible through the links, although in Dutch.
 
 Especially the live Castlevania demo's were quite appealing to students, showcasing sprite design, different backgrounds, and the palette:
 
-<img src="/img/teaching/aria-of-sorrow.gif" style="width: 100%" class="bordered" />
+<img src="/img/teaching/cpp/aria-of-sorrow.gif" style="width: 100%" class="bordered" />
 
 God I love that game. I'll gladly take every opportunity I have to look and/or play it. 
 

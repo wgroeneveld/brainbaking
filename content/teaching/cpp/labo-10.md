@@ -42,7 +42,7 @@ Qt en GTK zijn _cross-platform_ UI frameworks: die kan je zowel op UNIX als op W
 
 Met als belangrijkste extra's Qt Designer en Qt Creator, de grafische UI designer (zoals je SceneGraph kent van JavaFX) en een hele eigen IDE.
 
-<img src="/img/teaching/qtcreator.png" class="bordered" />
+<img src="/img/teaching/cpp/qtcreator.png" class="bordered" />
 
 ## Een minimale interface ontwerpen
 

@@ -23,7 +23,7 @@ Zoals we zullen zien, bevat C weinig mogelijkheden om declaratief te zijn. C++ i
 
 De C taal is compact, de C++ taal is dat helaas niet. Kijk zelf maar:
 
-<img src="/img/teaching/cppbooks.jpg" class="bordered" />
+<img src="/img/teaching/cpp/cppbooks.jpg" class="bordered" />
 
 Ik neem aan dat ze met '++' het aantal pagina's in handboeken bedoelden. Vergeet niet dat bovenstaande handleiding nog maar een "primer" is.
 
@@ -538,7 +538,7 @@ Ik houd old-school fans niet tegen om Emacs of Vim te gebruiken.
 
 [CLion](https://www.jetbrains.com/clion/) is de perfecte cross-platform en cross-compiler kandidaat om het zware C/C++ ontwikkelwerk van je over te nemen met geïntegreerde debugging, stack inspectie en alles wat men van een IDE verwacht. Dit is gebouwd bovenop IDEA en dus exact hetzelfde als IntelliJ voor Java - inclusief de shortcuts.
 
-<img src="/img/teaching/clion.png" class="bordered" />
+<img src="/img/teaching/cpp/clion.png" class="bordered" />
 
 CLion is niet gratis maar voor studenten wel en erg aan te raden. CLion werkt met CMake: `CMakeLists.txt` bevat instructies om een `Makefile` te genereren:
 

@@ -19,17 +19,17 @@ Een "tile" is een 8x8 bitmap met 4 of 8 bits per pixel (_bpp_): 32 of 64 bytes i
 
 Als je goed kijkt zie je in de eerste screenshot allemaal 8x8 tiles tegen elkaar geplakt die het titel scherm en het Konami logo voorstellen voor het spel Castlevania: Aria of Sorrow:
 
-<img src="/img/teaching/gba-castlevania-tile.jpg" />
+<img src="/img/teaching/cpp/gba-castlevania-tile.jpg" />
 
 Dit is de **tileset**: de unieke collectie van alle 8x8 tiles die we nodig hebben om een achtergrond of sprite te renderen.
 Getekend op het scherm ziet dat er zoals verwacht zo uit:
 
 <div class="row">
     <div class="col-md-6">
-        <img src="/img/teaching/gba-castlevania-title.jpg" style="width: 100%" />
+        <img src="/img/teaching/cpp/gba-castlevania-title.jpg" style="width: 100%" />
     </div>
     <div class="col-md-6">
-        <img src="/img/teaching/gba-castlevania-konami.jpg" style="width: 100%" />
+        <img src="/img/teaching/cpp/gba-castlevania-konami.jpg" style="width: 100%" />
     </div>
 </div>
 
@@ -37,7 +37,7 @@ Om tegen de GBA te zeggen welke tile op welke plaats in het scherm moet komen he
 
 Als we een deeltje van de "a" van Castlevania zoals aangeduid opblazen zie je duidelijk de 8x8 structuur:
 
-<img src="/img/teaching/gba-castlevania-blownup.jpg" />
+<img src="/img/teaching/cpp/gba-castlevania-blownup.jpg" />
 
 Elke zichtbare bit stelt een kleur voor die in het palet is opgeslagen, aangeduid met een nummer als index: de **tileindex**. Merk op dat objecten die je ziet als je een spel speelt bijna altijd bestaan uit verschillende tiles. Elke tile wordt maar één keer opgeslagen en kan oneindig keren herhaald worden in de tile map. Bovenstaande "a" kan ruwweg vertaald worden naar deze tabel (eigen interpretatie):
 
@@ -384,12 +384,12 @@ Oef! Nu kunnen we alles samen rapen. [Download het resultaat hier](/teaching/cpp
 <div class="row">
     <div class="col-md-6">
         <center>
-            <img src="/img/teaching/arkanoid.gif" />
+            <img src="/img/teaching/cpp/arkanoid.gif" />
         </center>
     </div>
     <div class="col-md-6 center-block">
         <center>
-            <img src="/img/teaching/arkanoid-bal.gif" />
+            <img src="/img/teaching/cpp/arkanoid-bal.gif" />
         </center>
     </div>
 </div>

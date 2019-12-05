@@ -278,7 +278,7 @@ Google Test is deel van het xUnit framework dat we kennen in de Java wereld van 
 
 #### In CLion
 
-<img src="/img/teaching/clion_gtest.png" class="bordered" />
+<img src="/img/teaching/cpp/clion_gtest.png" class="bordered" />
 
 Volg de volgende stappen:
 
@@ -438,7 +438,7 @@ Waarvan `BeginZitInInterval` faalt. Verander in de implementatie `>` door `>=` e
 
 De stack bekijken, lokale variabelen inspecteren, ... kennen we van IDEs als NetBeans of IntelliJ. In CLion is dit exact hetzelfde. Zet een breakpoint in productie code en stap er door met de ingebouwde debugging tools:
 
-<img src="/img/teaching/clion_debugging.png" class="bordered" />
+<img src="/img/teaching/cpp/clion_debugging.png" class="bordered" />
 
 #### Handmatig
 

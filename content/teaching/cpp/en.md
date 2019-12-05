@@ -31,7 +31,7 @@ Utilizing the custom-built [gba-sprite-engine](https://github.com/wgroeneveld/gb
 Blue: yes, red: no.
 
 <center>
-    <img src="/img/teaching/gbasurvey_1.png""/>
+    <img src="/img/teaching/cpp/gbasurvey_1.png""/>
 </center>
 
 > [2] How motivated were you during project work?
@@ -39,7 +39,7 @@ Blue: yes, red: no.
 Five-point Likert scale. 1: not at all. 5: extremely. 
 
 <center>
-    <img src="/img/teaching/gbasurvey_2.png""/>
+    <img src="/img/teaching/cpp/gbasurvey_2.png""/>
 </center>
 
 > [3] Did the fact that you are developing on the GBA influence your motivation?
@@ -47,7 +47,7 @@ Five-point Likert scale. 1: not at all. 5: extremely.
 Blue: yes, positive; more motivated than classical assignment. Orange: it did not matter for me. Red: negative; less motivated thatn classical assignment. 
 
 <center>
-    <img src="/img/teaching/gbasurvey_3.png""/>
+    <img src="/img/teaching/cpp/gbasurvey_3.png""/>
 </center>
 
 

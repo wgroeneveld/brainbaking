@@ -54,7 +54,7 @@ Verwijder je oude Cygwin `%PATH%` variabele via start - "Omgevingsvariabelen voo
 
 Ga naar bestand - settings - klik op "Build, Execution, Deployment" - klik op Toolchains:
 
-<img src="/img/teaching/clion_settings_mingw.png" class="bordered" />
+<img src="/img/teaching/cpp/clion_settings_mingw.png" class="bordered" />
 
 Kies in de "Environment" dropdown voor "MinGW" en zet het pad juist naar je installatie folder van MinGW64. Merk op dat onder "C++ Compiler" Een foutboodschap kan verschijnen "For MinGW make to work correctly..." - dit mag je negeren. De C en C++ compilers zelf mag je leeg laten en komen van de CMake instellingen.
 

@@ -178,7 +178,7 @@ ___
 ### Testen uitvoeren: IntelliJ
 
 
-<img src="/img/teaching/intellij_test.png" />
+<img src="/img/teaching/cpp/intellij_test.png" />
 
 ___
 
@@ -237,7 +237,7 @@ ___
 
 ### Testen uitvoeren: CLion
 
-<img src="/img/teaching/clion_gtest.png" />
+<img src="/img/teaching/cpp/clion_gtest.png" />
 
 Ziet er bekend uit? Gebaseerd op zelfde [JetBrains](https://www.jetbrains.com/) platform
 
