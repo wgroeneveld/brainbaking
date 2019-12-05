@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'be.kuleuven'
+version '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()    // 'gradle sourcesJar' task import
+    withJavadocJar()    // 'gradle javadocJar' task import
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.6'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group.toString()
+            version = version
+            artifactId = 'scorebord'
+
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "/Users/wgroeneveld/development/java/maven-repo"
+        }
+    }
+}

@@ -41,8 +41,8 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '2.2'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-library', version: '2.2'
 }
 </pre>
 
@@ -124,7 +124,7 @@ Execution failed for task ':test'.
 
 Dit is **exact hetzelfde** als in IntelliJ de testen uitvoeren met de knop 'Run':
 
-<img src="/img/teaching/intellij_run_test.png" />
+<img src="/img/teaching/ses/intellij_run_test.png" />
 
 ### Waarom een build tool gebruiken?
 
@@ -135,6 +135,58 @@ De grootste voordelen hiervan zijn onder andere:
 - Platform-onafhankelijk processen besturen die altijd op dezelfde manier werken: een taak uitvoeren op mijn PC doet exact hetzelfde als bij jou, dankzij de beschrijving van de stappen in de config file. 
 
 Het is bijvoorbeeld bij de oefeningen eenvoudig om een test library als `junit` mee te leveren, zonder de bestanden zelf aan te leveren, dankzij het regeltje `testCompile group: 'junit', name: 'junit', version: '4.12'` in de dependencies block. 
+
+### Gradle en Maven integratie
+
+Gradle voorziet een plugin genaamd '_maven-publish_' die deze bestanden automatisch aanmaakt. Activeer de plugin en voeg een `publishing` tag toe met de volgende properties:
+
+<pre>
+plugins {
+    id 'java'
+    id 'maven-publish' // toevoegen!
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group.toString()
+            version = version
+            artifactId = 'projectnaam'
+
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "/Users/wgroeneveld/development/java/maven-repo"
+        }
+    }
+}
+</pre>
+
+Deze uitbreiding voegt de target `publish` toe aan Gradle. Dus: `./gradlew publish` publiceert de nodige bestanden in de aangegeven folder. Een Gradle project die daar gebruik van wenst te maken dient enkel een tweede Maven Repository plaats te definiëren:
+
+<pre>
+repositories {
+    mavenCentral()
+    maven {
+        url = "/Users/wgroeneveld/development/java/maven-repo"
+    }
+}
+</pre>
+
+### Welke Task moet ik uitvoeren?
+
+`./gradlew tasks --all` voorziet een overzicht van alle beschikbare taken voor een bepaald Gradle project, opgesplitst per fase (build tasks, build setup tasks, documentation tasks, help tasks, verification tasks). Plugins voorzien vaak extra tasks, zoals bovenstaande maven plugin. 
+
+Belangrijke taken zijn onder andere:
+
+- `test`: voer alle unit testen uit.
+- `clean`: verwijder alle binaries en metadata.
+- `build`: compile en test het project.
+- `publish`: (maven plugin) publiceert naar een repository.
+- `jar`: compile en package in een jar bestand
+- `javadoc`: (plugin) genereert HTML javadoc.
 
 ### Meer links en tutorials:
 
