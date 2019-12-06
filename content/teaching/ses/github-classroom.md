@@ -13,4 +13,8 @@ TODO Links copypasten vanuit Github Classroom.
 
 ### Design Patterns
 
-- [Facade Design Pattern](linkhere)
+1. [Facade](/teaching/ses/facade) 
+2. [Dependency Injection](/teaching/ses/di)
+3. [Singleton](/teaching/ses/singleton)
+4. [Decorator](/teaching/ses/decorator)
+5. [Factory](/teaching/ses/factory)

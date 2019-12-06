@@ -1,3 +1,4 @@
+
 ---
 title: 'Labo x: Design Patterns: Factory'
 accent: "#008eb3"
@@ -78,7 +79,7 @@ We kunnen dit nog verder drijven door de ticket verkoper zelf ook te laten aanma
 
 ## <a name="oef"></a>Labo oefeningen
 
-* [Download het IntelliJ factory-oef1.zip project hier](/teaching/ses/factory.zip). (Dit is een [gradle project](/teaching/ses/gradle)) Het project bevat bovenstaande voorbeeld, maar nog niet alles is geïmplementeerd. Voer de unit testen uit in `src/main/test`: het resultaat zijn gefaalde testen (ROOD). Zorg er voor dat alle testen slagen (GROEN) door het factory patroon te vervolledigen! 
+* Via [<i class='fa fa-github'></i> Github Classroom](/teaching/ses/github-classroom). Het project bevat bovenstaande voorbeeld, maar nog niet alles is geïmplementeerd. Voer de unit testen uit in `src/main/test`: het resultaat zijn gefaalde testen (ROOD). Zorg er voor dat alle testen slagen (GROEN) door het factory patroon te vervolledigen! 
 * De eerste aanzet is genomen om een nieuw type van `TicketSeller` aan te maken, door reeds een interface te voorzien. Ontwikkel een `MoneyBasedTicketSeller`, die gebaseerd op het geld in je portefuille je het juiste ticket bezorgt. Dit betekent dat je in `Person` dus een nieuwe property nodig hebt. Voorzie ook een nieuwe test klasse, gebaseerd op `AgeBasedTicketSellerTest`.
 * [sessy library](/teaching/ses/sessy): 
     1. identificeer waar het mogelijk zou zijn om een factory patroon toe te passen. Welke verschillende implementaties delen een gelijke noemer? Waar staat mogelijks creatie logica (dubbel)?

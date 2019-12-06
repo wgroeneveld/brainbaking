@@ -24,7 +24,7 @@ concept: true
 
 ## <a name="oef"></a>Labo oefeningen
 
-* [Download facade-oef1.java hier](/teaching/ses/facade-oef1.java). bla
+* Via [<i class='fa fa-github'></i> Github Classroom](/teaching/ses/github-classroom). bla
 
 ## Denkvragen
 

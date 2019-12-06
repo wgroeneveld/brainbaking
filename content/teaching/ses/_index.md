@@ -25,8 +25,8 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 1. [Facade](/teaching/ses/facade) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-facade-template))
 2. [Dependency Injection](/teaching/ses/di) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-di-template))
 3. [Singleton](/teaching/ses/singleton) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-singleton-template))
-4. [Decorator](/teaching/ses/decorator) ([voorbeeld](/teaching/ses/decorator.zip))
-5. [Factory](/teaching/ses/factory) ([voorbeeld](/teaching/ses/factory.zip))
+4. [Decorator](/teaching/ses/decorator) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-decorator-template))
+5. [Factory](/teaching/ses/factory) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-factory-template))
 
 #### Software Development Life Cycle
 
