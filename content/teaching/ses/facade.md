@@ -106,7 +106,7 @@ class UploadClientFacade {
 
 ## <a name="oef"></a>Labo oefeningen
 
-* [Download IntelliJ facade.zip project hier](/teaching/ses/facade.zip). We modelleren een dierentuin, waarvan een `be.kuleuven.ses.facade.animals.Chicken` een gegeven klasse is. Elk dier willen we voederen met de `feed()` methode. Let op! Sommige dieren vereisten veel meer aandracht (lees: complexiteit), die we willen wegwerken met het introduceren van een Facade. Voeg klasses `be.kuleuven.ses.facade.animals.Cow` en `Cat` toe, geef deze ook eten, en verberg dan het voederen in een aparte interface. 
+* Via [<i class='fa fa-github'></i> Github Classroom](/teaching/ses/github-classroom). We modelleren een dierentuin, waarvan een `be.kuleuven.ses.facade.animals.Chicken` een gegeven klasse is. Elk dier willen we voederen met de `feed()` methode. Let op! Sommige dieren vereisten veel meer aandracht (lees: complexiteit), die we willen wegwerken met het introduceren van een Facade. Voeg klasses `be.kuleuven.ses.facade.animals.Cow` en `Cat` toe, geef deze ook eten, en verberg dan het voederen in een aparte interface. 
 * [sessy library](/teaching/ses/sessy): 
     1. identificeer waar jij denkt dat een facade nodig zou kunnen zijn. Waar moet logica worden afgeschermd? 
     2. Pas het patroon toe waar jij denkt dat het nodig is. 

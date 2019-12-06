@@ -7,13 +7,13 @@ accent: "#008eb3"
 
 ## Wat is een 'dependency'?
 
-Een dependency, of _afhankelijkheid_, is een externe bibliotheek die jij gebruikt tijdens de ontwikkeling van een toepassing. Tijdens het vak 'Software ontwerp in Java' heb je reeds de volgende externe libraries gebruikt:
+Een dependency, of _afhankelijkheid_, is een externe bibliotheek die wordt gebruikt tijdens de ontwikkeling van een toepassing. Tijdens het vak 'Software ontwerp in Java' zijn reeds de volgende externe libraries gebruikt:
 
 1. [JavaFX](https://openjfx.io)
 2. [Google Gson](https://github.com/google/gson)
 3. [JUnit](https://junit.org/junit5/)
 
-Het gebruiken van zo'n library houdt in dat je een extern bestand, zoals een `.jar` of `.war` bestand, download en koppelt aan je applicatie. In Java koppelen we externe libraries door middel van het `CLASSPATH`: een folder die de compiler gebruikt om te zoeken naar klassen. 
+Het vertrouwen op zo'n library houdt in dat een extern bestand, zoals een `.jar` of `.war` bestand, download en koppelt wordt aan de applicatie. In Java koppelen we externe libraries door middel van het `CLASSPATH`: een folder die de compiler gebruikt om te zoeken naar klassen. 
 
 Serialisatie met behulp van Gson kan op deze manier:
 
@@ -55,9 +55,35 @@ Voor kleine programma's met enkele libraries is dit meer dan voldoende. Het kost
 
 ### De tools (automatisch)
 
+#### Apache Maven
+
+[Maven](https://en.wikipedia.org/wiki/Apache_Maven) is een build tool van de Apache Foundation die zowel de manier waarop de software wordt gecompileerd als zijn afhankelijkheden beheert. Maven is de voorloper van Gradle en bestaat reeds 15 jaar. 
+
+Een Maven project heeft een `pom.xml` bestand (Project Object Model), waarin in XML formaat wordt beschreven hoe de structuur er uit ziet, welke libraries men gebruikt, en zo voort:
+
+```xml
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>my-app</artifactId>
+  <version>1.0</version>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+```
+
+Maven is erg populaire in de Java wereld, waardoor er verschillende servers zijn die deze `pom` bestanden samen met hun libraries beheren, zoals de [Central Maven Repository](https://mvnrepository.com) en de [Google Maven Repository](https://maven.google.com/web/index.html) mirrors. De syntax van het configuratiebestand is echter erg onoverzichtelijk, en er zijn ondertussen betere alternatieven beschikbaar, zoals Gradle.
+
 #### Gradle
 
-Neem dit eerst door: [Meer informatie over Gradle](/teaching/ses/gradle/). 
+Neem dit eerst door: [Meer informatie over Gradle](/teaching/ses/gradle/). <br/>
+Gradle is net zoals Maven een automatisatie tool voor de Java wereld (en daarbuiten), die verder bouwt op de populariteit van Maven door bijvoorbeeld compatibel te zijn met de Repository servers, maar de grootste pijnpunten wegneemt: een slorig configuratiebestand in XML, en complexe command-line scripts.
 
 De volgende procedure volg je als je Gradle dependencies laat beheren:
 
@@ -80,7 +106,7 @@ Voordelen van het gebruik van deze methode:
 
 #### Custom Repository URLs voorzien
 
-Veelgebruikte libraries zijn eenvoudig te vinden via de [Central Maven Repository](https://mvnrepository.com). Wanneer echter een eigen library werd compileerd, die dan in andere projecten worden gebruikt, schiet deze methode tekort: interne libraries zijn uiteraard niet publiek gepubliceerd. 
+Veelgebruikte libraries zijn eenvoudig te vinden via de [Central Maven Repository](https://mvnrepository.com). Wanneer echter een eigen library werd compileerd, die dan in andere projecten worden gebruikt, schiet deze methode te kort: interne libraries zijn uiteraard niet publiek gepubliceerd. 
 
 Gradle voorziet gelukkig genoeg een eenvoudige manier om [repository websites toe te voegen](https://docs.gradle.org/current/userguide/declaring_repositories.html), met de volgende eenvoudige syntax:
 

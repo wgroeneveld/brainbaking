@@ -125,7 +125,7 @@ Merk op dat de `connectionString` van de `DBHandle` ook via de constructor als a
 
 ## <a name="oef"></a>Labo oefeningen
 
-* [Download het IntelliJ di-oef1.zip project hier](/teaching/ses/di.zip). (Dit is een [gradle project](/teaching/ses/gradle)) Er staan twee TODO items: verwijder eerst de `new DBHandle()` vanuit de resource klasse, en injecteer het via een constructor argument. Pas dan de unit test aan om de compile fouten te fixen.
+* Via [<i class='fa fa-github'></i> Github Classroom](/teaching/ses/github-classroom). Er staan twee TODO items: verwijder eerst de `new DBHandle()` vanuit de resource klasse, en injecteer het via een constructor argument. Pas dan de unit test aan om de compile fouten te fixen.
 * Gebruik een interface om bovenstaande `DummyDBHandle` in het project te introduceren. Dat wil zeggen, hernoem `DBHandle` naar `DBHandleImplementation`, en maak een nieuwe interface genaamd `DBHandle`. Nu kan je de tweede unit test zoals hierboven toevoegen. 
 * In plaats van manueel te injecteren, kunnen we deze zaken ook overlaten aan gespecialiseerde frameworks, zoals Google Guice. Bovenstaand project heeft als Gradle dependency een link naar Guice. Neem een kijkje in de `ShoppingCartGuiceResource` klasse, en probeer dit principe toe te passen op de andere resouce klasse. `@Inject` verzogt het DI systeem, zonder zelf ergens objecten aan te maken, behalve in de config klasse. Zie ook [Google Guice: getting started](https://github.com/google/guice/wiki/GettingStarted). 
 * [sessy library](/teaching/ses/sessy): 

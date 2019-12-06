@@ -7,7 +7,7 @@ accent: "#008eb3"
 
 ## SESsy Library: Een geïntegreerde oefening
 
-Download Locatie: op <i class='fa fa-github'></i> Github via [https://github.com/wgroeneveld/sessylibrary](https://github.com/wgroeneveld/sessylibrary). Zie `README.md` op de hoofdpagina. _SESsy_ library is:
+Download Locatie: op <i class='fa fa-github'></i> Github via [https://github.com/KULeuven-Diepenbeek/sessylibrary](https://github.com/KULeuven-Diepenbeek/sessylibrary). Zie `README.md` op de hoofdpagina. _SESsy_ library is:
 
 > A Library Management Simulation WebApp for the 'SES' (Software Engineering Skills) course
 

@@ -22,9 +22,9 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 [Een introductie tot Design Patterns.](/teaching/ses/patterns)
 
-1. [Facade](/teaching/ses/facade) ([voorbeeld](/teaching/ses/facade.zip))
-2. [Dependency Injection](/teaching/ses/di) ([voorbeeld](/teaching/ses/di.zip))
-3. [Singleton](/teaching/ses/singleton) ([voorbeeld](/teaching/ses/singleton.zip))
+1. [Facade](/teaching/ses/facade) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-facade-template))
+2. [Dependency Injection](/teaching/ses/di) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-di-template))
+3. [Singleton](/teaching/ses/singleton) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-singleton-template))
 4. [Decorator](/teaching/ses/decorator) ([voorbeeld](/teaching/ses/decorator.zip))
 5. [Factory](/teaching/ses/factory) ([voorbeeld](/teaching/ses/factory.zip))
 
@@ -41,6 +41,7 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 1. ['SESsy Library' WebApp installatie & configuratie](/teaching/ses/sessy)
 2. [Gradle build tools](/teaching/ses/gradle)
+3. [<i class='fa fa-github'></i> Github Classroom links](/teaching/ses/github-classroom)
 
 ## Syllabus
 

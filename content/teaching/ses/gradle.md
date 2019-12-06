@@ -56,7 +56,7 @@ Hier onderscheiden we de volgende zaken:
 
 Merk op dat een typisch gradle project **geen jars** mee zipt, zoals de oefeningen. Die worden dus automatisch door deze tool gedownload, en in de juiste map geplaatst. 
 
-Voor het [SESsy Library](/teaching/ses/sessy) project wordt ook Gradle gebruikt, en is de config file iets ingewikkelder, door de inclusie van eigen "tasks". (te raadplegen op <i class='fa fa-github'></i> [Github](https://github.com/wgroeneveld/sessylibrary/blob/master/build.gradle))
+Voor het [SESsy Library](/teaching/ses/sessy) project wordt ook Gradle gebruikt, en is de config file iets ingewikkelder, door de inclusie van eigen "tasks". (te raadplegen op <i class='fa fa-github'></i> [Github](https://github.com/KULeuven-Diepenbeek/sessylibrary/blob/master/build.gradle))
 
 #### Ontleding van een Gradle project mappenstructuur
 
