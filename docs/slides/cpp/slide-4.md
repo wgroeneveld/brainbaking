@@ -449,7 +449,7 @@ Zie [college 2](/teaching/cpp/slides-2)
 
 ## C++ en GUI design met Qt
 
-<img src="/img/teaching/qt.svg" style="border: 0; width: 25%" />
+<img src="/img/teaching/cpp/qt.svg" style="border: 0; width: 25%" />
 
 demootje
 

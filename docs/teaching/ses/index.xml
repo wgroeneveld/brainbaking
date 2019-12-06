@@ -13,6 +13,27 @@
     
     
     <item>
+      <title>Dependency Management</title>
+      <link>https://brainbaking.com/teaching/ses/dependency-management/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/dependency-management/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+Wat is een &amp;lsquo;dependency&amp;rsquo;? Een dependency, of afhankelijkheid, is een externe bibliotheek die wordt gebruikt tijdens de ontwikkeling van een toepassing. Tijdens het vak &amp;lsquo;Software ontwerp in Java&amp;rsquo; zijn reeds de volgende externe libraries gebruikt:
+ JavaFX Google Gson JUnit  Het vertrouwen op zo&amp;rsquo;n library houdt in dat een extern bestand, zoals een .jar of .war bestand, download en koppelt wordt aan de applicatie.</description>
+    </item>
+    
+    <item>
+      <title>Een introductie tot design patterns</title>
+      <link>https://brainbaking.com/teaching/ses/patterns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/patterns/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
+Wat is dat, een patroon? Patronen zijn voor het mensenlijk brein eenvoudig herkenbaar: we zien stukjes van iets die we al eens ergens anders gezien hebben. Blokjes op een bepaalde manier ingekleurd, gehaakte patroontjes van een dekbed, Fibonacci spiralen in bloemblaadjes en zaadjes, &amp;hellip; Wanneer we programmeren, geldt dit principe ook: blokken code die herbruikt worden om eenvoudige oplossingen te bieden voor complexe problemen.</description>
+    </item>
+    
+    <item>
       <title>Java Gradle projecten</title>
       <link>https://brainbaking.com/teaching/ses/gradle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -35,13 +56,57 @@ Voorbeeld 1. Opzet 2. Probleemstelling 3. Oplossing Eigenschappen van dit patroo
     </item>
     
     <item>
+      <title>Labo x: Design Patterns: Dependency Injection</title>
+      <link>https://brainbaking.com/teaching/ses/di/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/di/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+&amp;ldquo;Dependency Injection (DI)&amp;rdquo; - Design Pattern Doelstelling  Promoot modulariteit door afhankelijkheden te injecteren, zodat aparte modules eenvoudig inplugbaar zijn in andere productiecode. Op deze manier worden modules ook makkelijker tesbaar. Promoot Inversion of Control: een client die services aanroept zou niet mogen weten hoe services worden aangemaakt - deze zou moeten worden &amp;lsquo;geinjecteerd&amp;rsquo;.  Wikipedia: Dependency Injection
+Voorbeeld 1. Opzet Als we verder gaan op het voorbeeld van de singleton, zien we dat een database handle nodig is om shopping cart gegevens op te halen.</description>
+    </item>
+    
+    <item>
+      <title>Labo x: Design Patterns: Facade</title>
+      <link>https://brainbaking.com/teaching/ses/facade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/facade/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+&amp;ldquo;Facade&amp;rdquo; - Design Pattern Doelstelling  Scherm een complex stukje software af met behulp van een simpele interface Voorzie éénzelfde interface naar een set van verschillende mogelijke subsystemen. Een Facade is een high-level interface die mogelijks low-level systemen aanspreekt.  Dive Into Design Patterns: Facade
+Voorbeeld 1. Opzet Stel dat we gegevens van de klant moeten versturen naar een overheidsinstantie. Die instantie beschikt jammer genoeg niet over voldoende budgetten om ook een cutting-edge server interface en implementatie aan te bieden.</description>
+    </item>
+    
+    <item>
+      <title>Labo x: Design Patterns: Singleton</title>
+      <link>https://brainbaking.com/teaching/ses/singleton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/singleton/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+&amp;ldquo;Singleton&amp;rdquo; - Design Pattern Doelstelling  Vermijd de mogelijkheid tot meervoudige instantiatie van een bepaalde klasse. Er kan altijd maar één bepaalde instantie van bestaan. Voorzie een eenvoudige manier om vanuit eender waar in de code toegang te verkrijgen tot die éne instantie. Encapsuleer logica om deze instantie aan te maken, moest code dit raadplegen en dit toevallig de eerste keer zijn (lazy initialization).</description>
+    </item>
+    
+    <item>
+      <title>Oefenzittingen: Github Clasroom</title>
+      <link>https://brainbaking.com/teaching/ses/github-classroom/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/github-classroom/</guid>
+      <description> &amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
+Onderstaande Github Classroom repositories zijn telkens Gradle Java projecten. Bewkaam jezelf eerst in de basis van Gradle als build tool.
+Labo oefeningen TODO Links copypasten vanuit Github Classroom.
+Design Patterns  Facade Design Pattern  </description>
+    </item>
+    
+    <item>
       <title>SESsy Library WebApp</title>
       <link>https://brainbaking.com/teaching/ses/sessy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/sessy/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
-SESsy Library: Een geïntegreerde oefening Download Locatie: op  Github via https://github.com/wgroeneveld/sessylibrary. Zie README.md op de hoofdpagina. SESsy library is:
+SESsy Library: Een geïntegreerde oefening Download Locatie: op  Github via https://github.com/KULeuven-Diepenbeek/sessylibrary. Zie README.md op de hoofdpagina. SESsy library is:
  A Library Management Simulation WebApp for the &amp;lsquo;SES&amp;rsquo; (Software Engineering Skills) course
  Installatie Download via bovenstaande Github link, of met git clone. Dit is een &amp;ldquo;Gradle&amp;rdquo; project, die de build van ons Java ecosysteem verzorgt. Dat wil zeggen dat het Gradle systeem automatisch libraries (jar bestanden) download van een centrale repository, moesten die nodig zijn.</description>
     </item>

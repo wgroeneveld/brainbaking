@@ -61,8 +61,8 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-11-14 16:41:58 \x2b0100 CET",
-    "dateModified" : "2019-11-14 16:41:58 \x2b0100 CET",
+    "datePublished": "2019-12-05 17:22:51 \x2b0100 CET",
+    "dateModified" : "2019-12-05 17:22:51 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/cpp\/labo-8\/",
     "wordCount" : "1657",
     "keywords" : [ "Labo 8: GBA Programming in C\x2b\x2b: een abstractielaag", "teaching" ]
@@ -378,11 +378,11 @@ graph TD;
 
 <p>Gegeven de volgende &ldquo;pixel art&rdquo;:</p>
 
-<p><img src="/img/teaching/labo-8-kul.png" /></p>
+<p><img src="/img/teaching/cpp/labo-8-kul.png" /></p>
 
 <p>Herinner je dat OAM data vaste groottes hebben: we kiezen hier voor 64x32. Hoe verwerken we deze png in de ROM? Emulator screenshot:</p>
 
-<p><img src="/img/teaching/labo-8-kul-0.png" /></p>
+<p><img src="/img/teaching/cpp/labo-8-kul-0.png" /></p>
 
 <p>Daar hebben we <a href="https://github.com/IanFinlayson/png2gba">png2gba</a> voor nodig, die de image omzet naar hexadecimale data. De <a href="/teaching/cpp/labo-8-kulsprite.c">broncode van bovenstaande screenshot</a> verduidelijkt dit. Op de github pagina staan instructies om het tooltje te compileren.</p>
 
@@ -410,28 +410,28 @@ memcpy(&amp;tile_mem[0][0], kul_data, sizeof(kul_data));
 
 <p>Probeer aan de hand van deze animatie maar eens te bepalen welke sprites gebrukt worden, en welke achtergronden:</p>
 
-<p><img src="/img/teaching/aria-of-sorrow.gif" style="width: 100%" class="bordered" /></p>
+<p><img src="/img/teaching/cpp/aria-of-sorrow.gif" style="width: 100%" class="bordered" /></p>
 
 <p>Herinner je uit labo 4 dat er 4 VRAM pointers naar achtergrond geheugen is: 4 char blocks. Bovenstaand spel creëert zo de illusie van diepte: verschillende achtergronden schuiven over elkaar met verschillende snelheden (kijk goed naar de maan).</p>
 
 <div class="row">
   <div class="col-md-6">
-      <img src="/img/teaching/aria-of-sorrow-0.png" /><br/>
+      <img src="/img/teaching/cpp/aria-of-sorrow-0.png" /><br/>
       Alles aan
   </div>
   <div class="col-md-6">
-    <img src="/img/teaching/aria-of-sorrow-1.png" /><br/>
+    <img src="/img/teaching/cpp/aria-of-sorrow-1.png" /><br/>
     Sprites (OAM) uit
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-6">
-    <img src="/img/teaching/aria-of-sorrow-2.png" /><br/>
+    <img src="/img/teaching/cpp/aria-of-sorrow-2.png" /><br/>
     bg3 uit
   </div>
   <div class="col-md-6">
-    <img src="/img/teaching/aria-of-sorrow-3.png" /><br/>
+    <img src="/img/teaching/cpp/aria-of-sorrow-3.png" /><br/>
     bg2 uit
   </div>
 </div>
@@ -440,7 +440,7 @@ memcpy(&amp;tile_mem[0][0], kul_data, sizeof(kul_data));
 
 <p>Het meeste werk ligt bij de artist. De screenshot linksboven toont de aanwezigheid van 2 personage sprites (Alucard en Soma) en 3 nummer sprites (Healthbar: 3, 2, 0). Toch klopt dit niet helemaal als je graaft in de mGBA sprite explorer:</p>
 
-<p><img src="/img/teaching/aria-of-sorrow-sprites.png" /></p>
+<p><img src="/img/teaching/cpp/aria-of-sorrow-sprites.png" /></p>
 
 <p>Soma bestaat uit 2x 64x32 OAM objecten! <br/>
 Er zal dus ook een soort van OAM manager nodig zijn die beide sprites aan elkaar rijgt, zodat in de code en in het spel dit één sprite lijkt te zijn. Dit zijn nog <a href="http://gbdev.gg8.se/wiki/articles/GBDK_Sprite_Tutorial">artefacten van de originele Gameboy</a>.</p>

@@ -34,7 +34,7 @@ ___
 
 #### Daarom: embedded systems
 
-<img src="/img/teaching/gba.jpg"/>
+<img src="/img/teaching/cpp/gba.jpg"/>
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 ## Hoop syntax leren, hoera!
 
-<img src="/img/teaching/cppbooks.jpg"/>
+<img src="/img/teaching/cpp/cppbooks.jpg"/>
 
 ---
 
@@ -262,7 +262,7 @@ ___
 
 ### Zwaargewicht: CLion
 
-<img src="/img/teaching/clion.png"/>
+<img src="/img/teaching/cpp/clion.png"/>
 
 ___
 
@@ -297,7 +297,7 @@ ___
 - **Samenwerken** aangemoedigd (2 pers.), mag alleen
 - **C++ Gameboy Advance spel** schrijven!
 
-<img src="/img/teaching/aria-of-sorrow.gif" style="width: 50%" s/>
+<img src="/img/teaching/cpp/aria-of-sorrow.gif" style="width: 50%" s/>
 
 Opdracht volgt. Overdracht vanaf 12/20 
 

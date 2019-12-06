@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="Een introductie tot design patterns - Brain Baking">
+	<meta content="Een introductie tot design patterns - Brain Baking" property="og:title">
+	<meta content="Een introductie tot design patterns - Brain Baking" property="og:description">
+
+
+
+
+<meta property="og:url" content="https://brainbaking.com/teaching/ses/patterns/" />
+<meta property="og:type" content="website" />
+
+
+
+
+
+<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="teaching" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/brainbaking.com\/"
+    },
+    "articleSection" : "teaching",
+    "name" : "Een introductie tot design patterns",
+    
+      "headline" : "Een introductie tot design patterns",
+    
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills\nWat is dat, een patroon? Patronen zijn voor het mensenlijk brein eenvoudig herkenbaar: we zien stukjes van iets die we al eens ergens anders gezien hebben. Blokjes op een bepaalde manier ingekleurd, gehaakte patroontjes van een dekbed, Fibonacci spiralen in bloemblaadjes en zaadjes, \x26hellip; Wanneer we programmeren, geldt dit principe ook: blokken code die herbruikt worden om eenvoudige oplossingen te bieden voor complexe problemen.",
+    
+      "inLanguage" : "nl-BE",
+    
+    
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "0001",
+    "datePublished": "2019-12-04 16:55:11 \x2b0100 CET",
+    "dateModified" : "2019-12-04 16:55:11 \x2b0100 CET",
+    "url" : "https:\/\/brainbaking.com\/teaching\/ses\/patterns\/",
+    "wordCount" : "707",
+    "keywords" : [ "Een introductie tot design patterns", "teaching" ]
+}
+</script>
+
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Een introductie tot design patterns</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/llvm.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Een introductie tot design patterns</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/ses/patterns/">Een introductie tot design patterns</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/></p>
+
+<h3 id="wat-is-dat-een-patroon">Wat is dat, een patroon?</h3>
+
+<p>Patronen zijn voor het mensenlijk brein eenvoudig herkenbaar: we zien stukjes van iets die we al eens ergens anders gezien hebben. Blokjes op een bepaalde manier ingekleurd, gehaakte patroontjes van een dekbed, Fibonacci spiralen in bloemblaadjes en zaadjes, &hellip; Wanneer we programmeren, geldt dit principe ook: blokken code die herbruikt worden om eenvoudige oplossingen te bieden voor complexe problemen.</p>
+
+<p><center>
+  <img src="/img/creativepatterns.jpg" alt="Creative Patterns" />
+  Een (creatief) patroon?
+</center></p>
+
+<p>Een <em>pattern</em> is een herkenbaar en herhalende blok van eigenschappen die herbruikt kan worden. In het geval van softwareontwikkeling zijn patterns structuren in code die herbruikt worden om code eenvoudiger, beter leesbaar, en beter in onderhoud te maken. Deze structuren zijn in feite <strong>pre-fab oplossingen</strong> voor gelijkaardige problemen.</p>
+
+<h4 id="ingebouwde-patronen">Ingebouwde patronen</h4>
+
+<p>Een <em>constructor</em> is een begrip in Java dat ook geclassificeerd kan worden als patroon, omdat het constant terugkomt bij de creatie van objecten en een hulpmiddel is dat een bepaalt probleem helpt oplossen: het voert stukjes code uit bij het aanmaken van een object.</p>
+
+<pre><code class="language-java">public class Appel {
+    private int kcal;
+
+    public Appel() {
+        kcal = 160;
+    }
+}
+</code></pre>
+
+<p>Een nieuwe appel aanmaken, <code>Appel jonagold = new Appel();</code> stelt <code>kcal</code> automatisch gelijk aan <code>160</code>. Dit is uiteraard een ingebouwd principe dat deel uitmaakt van de programmeertaal zelf. Dit concept kunnen we verder doortrekken door patronen van oplossingen te maken die het ons makkelijker maakt om toekomstige gelijkaardige problemen aan te pakken.</p>
+
+<h4 id="model-view-controller">Model-View-Controller</h4>
+
+<p>Een van de meest populaire patronen is het Model-View-Controller (<em>MVC</em>) systeem. Dit patroon stelt dat om UI logica eenvoudig te scheiden van domein logica, men drie aparte lagen dient aan te maken.</p>
+
+<ol>
+<li>Het model, het belangrijkste, stelt ons domein voor: de objecten waar het om draait in de applicatie.</li>
+<li>De view, de UI, is de presentatielaag die de gebruiker te zien krijgt als hij de applicatie hanteert. Achterliggend wordt er met model objecten gewerkt.</li>
+<li>De controller verbindt de UI met het model en onderliggende lagen. Events vanuit de UI worden hier bijvoorbeeld opgevangen.</li>
+</ol>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph TD;
+    M[Model]
+    V[View]
+    C[Controller]
+    C --> V
+    V --> M
+    C --> M
+
+</div>
+
+<p>De controller kent zowel de view als het model. De view kent enkel het model. Het model kent niemand buiten zichzelf. Op die manier is het eenvoudig om in de applicatie te migreren naar nieuwe presentatie lagen, zoals van een typische client-server applicatie naar een moderne website, gehost op een (virtuele) server. Dit principe kan telkens opnieuw worden toegepast, voor ontelbare applicaties. Men spreekt hier dus van een herhalend patroon, dat kan helpen bij het oplossen van een probleem.</p>
+
+<h3 id="types-van-patronen">Types van patronen</h3>
+
+<p>Er zijn op elk niveau patronen in code te herkennen. Zoals de constructor aantoont, zijn er op niveau van de compiler en/of taal zelf verschillende patronen die we constant onbewust hanteren:</p>
+
+<ul>
+<li>klasse structuren</li>
+<li>constructors</li>
+<li>properties</li>
+<li>subklassen</li>
+<li>interfacing</li>
+<li>formatting</li>
+<li>threading</li>
+<li>&hellip;</li>
+</ul>
+
+<p>Dit zijn allemaal structuren die in elk programma terug komt.</p>
+
+<p>Op <strong>applicatie niveau</strong>, in de code zelf, zijn er eveneens talloze mogelijkheden. De meest populaire software engineering design patterns zijn beschreven in het boek <a href="https://en.wikipedia.org/wiki/Design_Patterns">Design Patterns: Elements of Reusable Object-Oriented Software</a>. <br/>
+Op <strong>enterprise niveau</strong>, tussen applicaties in, onderscheiden we ook patronen, om bijvoorbeeld efficiënte te communiceren tussen verschillende partijen. Gegevensuitwisseling kan door middel van REST/SOAP/FTP/&hellip; Die vorm van berichtgeving is op zijn beurt weer <em>herbruikbaar</em>.</p>
+
+<p>Voor het vak Software Engineering Skills beperken we ons tot enkele voorbeelden van software design patterns op applicatie niveau. Een overzicht is terug te vinden op de <a href="/teaching/ses">hoofdpagina van het vak</a>.</p>
+
+<h3 id="waarvoor-staat-het-woord-design">Waarvoor staat het woord &lsquo;design&rsquo;?</h3>
+
+<p>Het proces van idee tot software doorloopt verschillende stappen, in verschillende iteraties, waarvan één de <em>design</em> stap:</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph LR;
+    I["Idee  "]
+    D[Design]
+    C[Code]
+    T[Test]
+    De[Deploy]
+    I --> D
+    I --> I
+    D --> C
+    D --> D
+    C --> T
+    C --> C
+    T --> De
+    T --> T
+
+</div>
+
+<p>Nadenken over <strong>het ontwerp</strong> voordat je jezelf overgeeft aan het schrijven van code is een belangrijke stap, zoals we gezien hebben in het vak &lsquo;Software ontwerp in Java&rsquo;. Tijdens het ontwerpen, of nadenken over de oplossing, houden ervaren ontwikkelaars ook al rekening met de welgende patronen. Het is dus belangrijk om te weten dat het gebruiken van patronen zich niet beperkt tot de code schrijven stap.</p>
+</div>
+
+    
+    
+
+    
+
+    <h4 class="page-header">&nbsp;</h4>
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

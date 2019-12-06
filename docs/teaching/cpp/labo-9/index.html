@@ -61,8 +61,8 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-11-20 20:35:08 \x2b0100 CET",
-    "dateModified" : "2019-11-20 20:35:08 \x2b0100 CET",
+    "datePublished": "2019-12-05 17:22:51 \x2b0100 CET",
+    "dateModified" : "2019-12-05 17:22:51 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/cpp\/labo-9\/",
     "wordCount" : "1220",
     "keywords" : [ "Labo 9: GBA Programming in C\x2b\x2b: scrolling backgrounds", "teaching" ]
@@ -315,7 +315,7 @@ display_control = MODE0 | BG0_ENABLE;
 
 <p>Een tilemap ontwerpen in notepad is snel vervelend en geeft geen visuele feedback. Er zijn tools op <a href="https://www.romhacking.net/utilities/463/">ROMHacking.net</a> die (al dan niet specifiek per spel) het ontwerpen vergemakkelijken. De eenvoudigste is <a href="https://github.com/IanFinlayson/gba-tileeditor">GBA Tile-editor</a>:</p>
 
-<p><img src="/img/teaching/tileeditor.png" /></p>
+<p><img src="/img/teaching/cpp/tileeditor.png" /></p>
 
 <p>(Voor Windows gebruikers: <a href="https://www.coranac.com/man/grit/html/wingrit.htm">Wingrit</a>) <br/>
 De Onderste image is de <strong>tileset</strong>. Selecteer één tile en klik dan op een plaats om die tile op de map te doen verschijnen. De editor exporteert de map als een <code>unsigned short[]</code>:</p>
@@ -335,7 +335,7 @@ De Onderste image is de <strong>tileset</strong>. Selecteer één tile en klik d
 
 <p>Een tilemap kan best groot worden, en bijna alle 2D platformers of top-down adventure spellen op de GBA hebben een achtergrond die &ldquo;scrollt&rdquo;. Herinner je het Castlevania voorbeeld uit <a href="/teaching/cpp/labo-8">labo 8</a>:</p>
 
-<p><img src="/img/teaching/aria-of-sorrow.gif" style="width: 100%" class="bordered" /></p>
+<p><img src="/img/teaching/cpp/aria-of-sorrow.gif" style="width: 100%" class="bordered" /></p>
 
 <p>Je kan duidelijk zien dat de achtergrond niet alleen bestaat uit verschillende lagen, maar ze ook scrollt afhankelijk van de positie van Soma, het hoofdpersonage. Scrollen in X of Y richting is heel eenvoudig en vereist - verrassing! - manipuleren van een register: van <code>0x4000010</code> tot <code>0x400001e</code> (+2, beginnen met bg0 x, bg0 y, bg1 x, &hellip;).</p>
 

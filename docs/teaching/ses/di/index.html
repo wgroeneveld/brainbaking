@@ -39,7 +39,7 @@
     
       "headline" : "Labo x: Design Patterns: Dependency Injection",
     
-    "description" : "",
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\n\x26ldquo;Dependency Injection (DI)\x26rdquo; - Design Pattern Doelstelling  Promoot modulariteit door afhankelijkheden te injecteren, zodat aparte modules eenvoudig inplugbaar zijn in andere productiecode. Op deze manier worden modules ook makkelijker tesbaar. Promoot Inversion of Control: een client die services aanroept zou niet mogen weten hoe services worden aangemaakt - deze zou moeten worden \x26lsquo;geinjecteerd\x26rsquo;.  Wikipedia: Dependency Injection\nVoorbeeld 1. Opzet Als we verder gaan op het voorbeeld van de singleton, zien we dat een database handle nodig is om shopping cart gegevens op te halen.",
     
       "inLanguage" : "nl-BE",
     
@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-11-26 16:57:22 \x2b0100 CET",
-    "dateModified" : "2019-11-26 16:57:22 \x2b0100 CET",
+    "datePublished": "2019-12-06 11:14:15 \x2b0100 CET",
+    "dateModified" : "2019-12-06 11:14:15 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/di\/",
-    "wordCount" : "787",
+    "wordCount" : "779",
     "keywords" : [ "Labo x: Design Patterns: Dependency Injection", "teaching" ]
 }
 </script>
@@ -139,9 +139,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.59.1" />
         
-        <link href="https://brainbaking.com/teaching/ses/di/index.xml" rel="alternate" type="application/rss+xml" title="Brain Baking" />
-        <link href="https://brainbaking.com/teaching/ses/di/index.xml" rel="feed" type="application/rss+xml" title="Brain Baking" />
-        
     </head>
 
     
@@ -200,18 +197,32 @@
         </nav>
 
 
+
+
 <main>
 
-	
-	    <h2>
-			<i class='fa '></i>&nbsp;Labo x: Design Patterns: Dependency Injection
-		</h2>
-	    <hr/>
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/ses/di/">Labo x: Design Patterns: Dependency Injection</a>
+    </h3>
     
 
     
-    <div class="text-justify">
-    	
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
 
 <p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/>
 &raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
@@ -337,7 +348,7 @@ public class ShoppingResourceTest {
 <h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <ul>
-<li><a href="/teaching/ses/di.zip">Download het IntelliJ di-oef1.zip project hier</a>. (Dit is een <a href="/teaching/ses/gradle">gradle project</a>) Er staan twee TODO items: verwijder eerst de <code>new DBHandle()</code> vanuit de resource klasse, en injecteer het via een constructor argument. Pas dan de unit test aan om de compile fouten te fixen.</li>
+<li>Via <a href="/teaching/ses/github-classroom"><i class='fa fa-github'></i> Github Classroom</a>. Er staan twee TODO items: verwijder eerst de <code>new DBHandle()</code> vanuit de resource klasse, en injecteer het via een constructor argument. Pas dan de unit test aan om de compile fouten te fixen.</li>
 <li>Gebruik een interface om bovenstaande <code>DummyDBHandle</code> in het project te introduceren. Dat wil zeggen, hernoem <code>DBHandle</code> naar <code>DBHandleImplementation</code>, en maak een nieuwe interface genaamd <code>DBHandle</code>. Nu kan je de tweede unit test zoals hierboven toevoegen.</li>
 <li>In plaats van manueel te injecteren, kunnen we deze zaken ook overlaten aan gespecialiseerde frameworks, zoals Google Guice. Bovenstaand project heeft als Gradle dependency een link naar Guice. Neem een kijkje in de <code>ShoppingCartGuiceResource</code> klasse, en probeer dit principe toe te passen op de andere resouce klasse. <code>@Inject</code> verzogt het DI systeem, zonder zelf ergens objecten aan te maken, behalve in de config klasse. Zie ook <a href="https://github.com/google/guice/wiki/GettingStarted">Google Guice: getting started</a>.</li>
 <li><a href="/teaching/ses/sessy">sessy library</a>:
@@ -354,13 +365,16 @@ public class ShoppingResourceTest {
 <li>Dependency Injection kan via de constructor, via setters (of direct op het veld via reflectie). Wat zijn de voor- en nadelen van via de constructor te werken, ten opzichte van via setters?</li>
 <li>Denk je dat de <code>GuiceConfigModule</code> klasse op termijn niet te groot en verwarrend wordt, als dit constant wordt uitgebreid met nieuwe instanties die geregistreerd worden bij Guice? Wat zou je dan doen om dit tegen te gaan?</li>
 </ul>
+</div>
 
-	</div>
-    <hr/>
-	
+    
+    
 
-	
+    
 
+    <h4 class="page-header">&nbsp;</h4>
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
 
 </main>
 

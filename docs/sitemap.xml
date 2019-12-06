@@ -4,12 +4,12 @@
   
   <url>
     <loc>https://brainbaking.com/</loc>
-    <lastmod>2019-12-02T22:02:58+01:00</lastmod>
+    <lastmod>2019-12-06T11:14:15+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/essays/over-onmiddellijke-voldoening/</loc>
-    <lastmod>2019-12-02T22:02:58+01:00</lastmod>
+    <lastmod>2019-12-03T13:24:54+01:00</lastmod>
   </url>
   
   <url>
@@ -29,7 +29,7 @@
   
   <url>
     <loc>https://brainbaking.com/tags/</loc>
-    <lastmod>2019-10-11T15:32:22+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
@@ -39,22 +39,22 @@
   
   <url>
     <loc>https://brainbaking.com/tags/c&#43;&#43;/</loc>
-    <lastmod>2019-04-15T16:01:57+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/tags/gba/</loc>
-    <lastmod>2019-04-15T16:01:57+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/tags/teaching/</loc>
-    <lastmod>2019-04-15T16:01:57+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/post/teaching-oo-with-gba/</loc>
-    <lastmod>2019-04-15T16:01:57+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
@@ -688,23 +688,23 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/teaching/ses/di/build/reports/tests/test/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://brainbaking.com/teaching/ses/factory/build/reports/tests/test/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://brainbaking.com/teaching/ses/singleton/build/reports/tests/test/</loc>
-    <priority>0</priority>
+    <loc>https://brainbaking.com/teaching/ses/dependency-management/</loc>
+    <lastmod>2019-12-06T11:14:15+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/buildsystems/</loc>
     <lastmod>2018-11-12T10:01:24+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/teaching/ses/patterns/</loc>
+    <lastmod>2019-12-04T16:55:11+01:00</lastmod>
   </url>
   
   <url>
@@ -724,17 +724,17 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/installaties/</loc>
-    <lastmod>2019-10-23T11:17:43+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/ses/gradle/</loc>
-    <lastmod>2019-11-26T15:48:47+01:00</lastmod>
+    <lastmod>2019-12-06T11:14:15+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/labo-10/</loc>
-    <lastmod>2018-10-25T15:45:12+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
@@ -749,7 +749,7 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/labo-1/</loc>
-    <lastmod>2019-10-17T11:16:23+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
@@ -759,12 +759,12 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/labo-3/</loc>
-    <lastmod>2019-10-03T15:33:50+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/labo-4/</loc>
-    <lastmod>2018-10-25T15:45:12+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
@@ -779,17 +779,17 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/labo-7/</loc>
-    <lastmod>2019-11-13T16:38:24+01:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/labo-8/</loc>
-    <lastmod>2019-11-14T16:41:58+01:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/labo-9/</loc>
-    <lastmod>2019-11-20T20:35:08+01:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
@@ -804,12 +804,12 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/ses/di/</loc>
-    <lastmod>2019-11-26T16:57:22+01:00</lastmod>
+    <lastmod>2019-12-06T11:14:15+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/ses/facade/</loc>
-    <lastmod>2019-11-26T16:57:22+01:00</lastmod>
+    <lastmod>2019-12-06T11:14:15+01:00</lastmod>
   </url>
   
   <url>
@@ -819,7 +819,12 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/ses/singleton/</loc>
-    <lastmod>2019-11-26T16:57:22+01:00</lastmod>
+    <lastmod>2019-12-06T11:14:15+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/teaching/ses/github-classroom/</loc>
+    <lastmod>2019-12-06T11:14:15+01:00</lastmod>
   </url>
   
   <url>
@@ -829,17 +834,17 @@
   
   <url>
     <loc>https://brainbaking.com/teaching/ses/sessy/</loc>
-    <lastmod>2019-11-26T15:48:47+01:00</lastmod>
+    <lastmod>2019-12-06T11:14:15+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/cpp/en/</loc>
-    <lastmod>2019-10-17T14:51:22+02:00</lastmod>
+    <lastmod>2019-12-05T17:22:51+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://brainbaking.com/teaching/ses/</loc>
-    <lastmod>2019-11-26T15:48:47+01:00</lastmod>
+    <lastmod>2019-12-06T11:14:15+01:00</lastmod>
   </url>
   
   <url>

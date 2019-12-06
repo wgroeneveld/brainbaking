@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-11-26 15:48:47 \x2b0100 CET",
-    "dateModified" : "2019-11-26 15:48:47 \x2b0100 CET",
+    "datePublished": "2019-12-06 11:14:15 \x2b0100 CET",
+    "dateModified" : "2019-12-06 11:14:15 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/gradle\/",
-    "wordCount" : "663",
+    "wordCount" : "864",
     "keywords" : [ "Java Gradle projecten", "teaching" ]
 }
 </script>
@@ -264,8 +264,8 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '2.2'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-library', version: '2.2'
 }
 </pre>
 
@@ -284,7 +284,7 @@ dependencies {
 
 <p>Merk op dat een typisch gradle project <strong>geen jars</strong> mee zipt, zoals de oefeningen. Die worden dus automatisch door deze tool gedownload, en in de juiste map geplaatst.</p>
 
-<p>Voor het <a href="/teaching/ses/sessy">SESsy Library</a> project wordt ook Gradle gebruikt, en is de config file iets ingewikkelder, door de inclusie van eigen &ldquo;tasks&rdquo;. (te raadplegen op <i class='fa fa-github'></i> <a href="https://github.com/wgroeneveld/sessylibrary/blob/master/build.gradle">Github</a>)</p>
+<p>Voor het <a href="/teaching/ses/sessy">SESsy Library</a> project wordt ook Gradle gebruikt, en is de config file iets ingewikkelder, door de inclusie van eigen &ldquo;tasks&rdquo;. (te raadplegen op <i class='fa fa-github'></i> <a href="https://github.com/KULeuven-Diepenbeek/sessylibrary/blob/master/build.gradle">Github</a>)</p>
 
 <h4 id="ontleding-van-een-gradle-project-mappenstructuur">Ontleding van een Gradle project mappenstructuur</h4>
 
@@ -356,7 +356,7 @@ Execution failed for task ':test'.
 
 <p>Dit is <strong>exact hetzelfde</strong> als in IntelliJ de testen uitvoeren met de knop &lsquo;Run&rsquo;:</p>
 
-<p><img src="/img/teaching/intellij_run_test.png" /></p>
+<p><img src="/img/teaching/ses/intellij_run_test.png" /></p>
 
 <h3 id="waarom-een-build-tool-gebruiken">Waarom een build tool gebruiken?</h3>
 
@@ -369,6 +369,60 @@ Execution failed for task ':test'.
 </ul>
 
 <p>Het is bijvoorbeeld bij de oefeningen eenvoudig om een test library als <code>junit</code> mee te leveren, zonder de bestanden zelf aan te leveren, dankzij het regeltje <code>testCompile group: 'junit', name: 'junit', version: '4.12'</code> in de dependencies block.</p>
+
+<h3 id="gradle-en-maven-integratie">Gradle en Maven integratie</h3>
+
+<p>Gradle voorziet een plugin genaamd &lsquo;<em>maven-publish</em>&rsquo; die deze bestanden automatisch aanmaakt. Activeer de plugin en voeg een <code>publishing</code> tag toe met de volgende properties:</p>
+
+<pre>
+plugins {
+    id 'java'
+    id 'maven-publish' // toevoegen!
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group.toString()
+            version = version
+            artifactId = 'projectnaam'
+
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "/Users/wgroeneveld/development/java/maven-repo"
+        }
+    }
+}
+</pre>
+
+<p>Deze uitbreiding voegt de target <code>publish</code> toe aan Gradle. Dus: <code>./gradlew publish</code> publiceert de nodige bestanden in de aangegeven folder. Een Gradle project die daar gebruik van wenst te maken dient enkel een tweede Maven Repository plaats te definiëren:</p>
+
+<pre>
+repositories {
+    mavenCentral()
+    maven {
+        url = "/Users/wgroeneveld/development/java/maven-repo"
+    }
+}
+</pre>
+
+<h3 id="welke-task-moet-ik-uitvoeren">Welke Task moet ik uitvoeren?</h3>
+
+<p><code>./gradlew tasks --all</code> voorziet een overzicht van alle beschikbare taken voor een bepaald Gradle project, opgesplitst per fase (build tasks, build setup tasks, documentation tasks, help tasks, verification tasks). Plugins voorzien vaak extra tasks, zoals bovenstaande maven plugin.</p>
+
+<p>Belangrijke taken zijn onder andere:</p>
+
+<ul>
+<li><code>test</code>: voer alle unit testen uit.</li>
+<li><code>clean</code>: verwijder alle binaries en metadata.</li>
+<li><code>build</code>: compile en test het project.</li>
+<li><code>publish</code>: (maven plugin) publiceert naar een repository.</li>
+<li><code>jar</code>: compile en package in een jar bestand</li>
+<li><code>javadoc</code>: (plugin) genereert HTML javadoc.</li>
+</ul>
 
 <h3 id="meer-links-en-tutorials">Meer links en tutorials:</h3>
 
