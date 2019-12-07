@@ -30,9 +30,9 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 #### Software Development Life Cycle
 
-1. Versiebeheer
-2. [Dependency Management](/teaching/ses/dependency-management)
-3. Debugging & Testing
+1. [Dependency Management](/teaching/ses/dependency-management)
+2. [Test-Driven Development](/teaching/ses/tdd)
+3. Versiebeheer
 4. Bug Tracking (Git Issues)
 5. End 2 end build environments, CI, CD, ...
 6. Soft skills

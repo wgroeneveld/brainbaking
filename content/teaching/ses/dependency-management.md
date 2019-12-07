@@ -215,7 +215,9 @@ repositories {
 
 Neem dit eerst door: [Meer informatie over Gradle](/teaching/ses/gradle/). 
 
-- Deel 1: <br/>Ontwerp een eenvoudige library die scores kan bijhouden voor bordspelletjes. Deze library kan kan gebruikt worden door toekomstige digitale Java bordspellen. In een Scorebord kan je spelers toevoegen door middel van een naam en een score. Er is een mogelijkheid om de huidige score van een speler op te vragen, en de winnende speler. Deze gegevens worden met behulp van Gson in een `JSON` bestand bewaard, zodat bij het heropstarten van een spel de scores behouden blijven. <br/>De API (publieke methodes) van de library ziet er zo uit:
+### Opgave 1
+
+Ontwerp een eenvoudige library die scores kan bijhouden voor bordspelletjes. Deze library kan kan gebruikt worden door toekomstige digitale Java bordspellen. In een Scorebord kan je spelers toevoegen door middel van een naam en een score. Er is een mogelijkheid om de huidige score van een speler op te vragen, en de winnende speler. Deze gegevens worden met behulp van Gson in een `JSON` bestand bewaard, zodat bij het heropstarten van een spel de scores behouden blijven. <br/>De API (publieke methodes) van de library ziet er zo uit:
 
 ```java
 class Speler {
@@ -240,7 +242,9 @@ Met het commando `gradle jar` creëer je het bestand `scorebord-1.0-SNAPSHOT.jar
 
 Tip: indien de Gralde wrapper een oudere versie aanmaakt (< v6), update met `gradle wrapper --gradle-version 6.0.1`.
 
-- Deel 2: <br/>Maak een nieuw Gradle project aan genaamd _scorebord-darts_, dat bovenstaand scorebord project als een library gaat gebruiken. Bewaar de jar file lokaal in een 'lib' folder en instrueer Gradle zo dat dit als `flatDir` repository wordt opgenomen ([zie boven](#flatdir)). Het tweede project heeft als Artifactid `scorebord-darts`. De klasse `DartsGame` ziet er zo uit:
+### Opgave 2
+
+Maak een nieuw Gradle project aan genaamd _scorebord-darts_, dat bovenstaand scorebord project als een library gaat gebruiken. Bewaar de jar file lokaal in een 'lib' folder en instrueer Gradle zo dat dit als `flatDir` repository wordt opgenomen ([zie boven](#flatdir)). Het tweede project heeft als Artifactid `scorebord-darts`. De klasse `DartsGame` ziet er zo uit:
 
 ```java
 public class DartsGame {
@@ -277,7 +281,13 @@ Execution failed for task ':Main.main()'.
 
 Dit werkt _niet_ omdat we een library gebruiken (ScoreBord), die op zijn beurt een library gebruikt (Gson), die niet in onze huidige Gradle file is gedefiniëerd. Om dit op te lossen dienen we over te schakelen naar een lokale Maven repository, die ook transitieve dependencies automatisch inlaadt. Verwijder de `flatDir` en voeg een lokale maven URL toe. Publiceer in het scorebord project naar diezelfde URL volgens de instructies van de `maven-publish` plugin.
 
-- Deel 3 (extra): <br/>Bovenstaande screenshot geeft aan dat IntelliJ methodes herkent van de `Scorebord` klasse. Er is echter geen javadoc voorzien die uitlegt wat welke parameter doet. Voorzie javadoc bij alle publieke methodes. Dit moet ook mee worden verpakt in het `jar` bestand, zodat het ander project deze kan herkennen. Probeer uit te zoeken wat je hier voor moet doen in het `build.gradle` bestand.
+### Opgave 3 (extra)
+
+Bovenstaande screenshot geeft aan dat IntelliJ methodes herkent van de `Scorebord` klasse. Er is echter geen javadoc voorzien die uitlegt wat welke parameter doet. Voorzie javadoc bij alle publieke methodes. Dit moet ook mee worden verpakt in het `jar` bestand, zodat het ander project deze kan herkennen. Probeer uit te zoeken wat je hier voor moet doen in het `build.gradle` bestand.
+
+### Opgave 4 (extra)
+
+Genereer met behulp van Gradle van de [SESsy library](/teaching/ses/sessy) een dependency tree en inspecteer welke dpendencies transitief zijn en welke direct. 
 
 ## Denkvragen
 

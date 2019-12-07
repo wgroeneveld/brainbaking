@@ -126,11 +126,22 @@ Op die manier is het aanmaken van een `DBHandle` instance beperkt tot de klasse 
 
 ## <a name="oef"></a>Labo oefeningen
 
-* [Download het IntelliJ singleton-oef1.zip project hier](/teaching/ses/singleton.zip). (Dit is een [gradle project](/teaching/ses/gradle)) Hierin is bovenstaande voorbeeld verwerkt, maar nog zonder Singleton... Voer de unit testen uit in `src/main/test`: het resultaat zijn gefaalde testen (ROOD), omdat `DBHandle` verschillende keren wordt aangemaakt. Zorg er voor dat alle testen slagen (GROEN) door het singleton patroon te implementeren! 
-* Pas ook `ShoppingCartResource` aan naar een singleton. Is dat nodig om de database niet te overbelasten, als de andere klasse reeds een singleton is, of niet? 
-* [sessy library](/teaching/ses/sessy): 
-    1. identificeer welke klassen een kans maken om een Singleton te worden. Denk aan bovenstaande voorbeeld. 
-    2. Pas het patroon toe waar jij denkt dat het nodig is. 
+Via [<i class='fa fa-github'></i> Github Classroom](/teaching/ses/github-classroom).
+
+### Opgave 1
+
+Hierin is bovenstaande voorbeeld verwerkt, maar nog zonder Singleton... Voer de unit testen uit in `src/main/test`: het resultaat zijn gefaalde testen (ROOD), omdat `DBHandle` verschillende keren wordt aangemaakt. Zorg er voor dat alle testen slagen (GROEN) door het singleton patroon te implementeren! 
+
+### Opgave 2
+
+Pas ook `ShoppingCartResource` aan naar een singleton. Is dat nodig om de database niet te overbelasten, als de andere klasse reeds een singleton is, of niet? 
+
+### Opgave 3
+
+[sessy library](/teaching/ses/sessy): 
+
+1. identificeer welke klassen een kans maken om een Singleton te worden. Denk aan bovenstaande voorbeeld. 
+2. Pas het patroon toe waar jij denkt dat het nodig is. 
 
 ## Denkvragen
 

@@ -59,7 +59,7 @@ Building and running the Frontend source:
 
 Your project should be running at `http://localhost:8080` now.
 
-### Meer lezen
+### Extra leermateriaal
 
 * [DropWizard: Getting Started](https://dropwizard.io/en/stable/getting-started.html) 
 * [Gradle User Guide](https://docs.gradle.org/current/userguide/)

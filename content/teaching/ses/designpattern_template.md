@@ -24,7 +24,11 @@ concept: true
 
 ## <a name="oef"></a>Labo oefeningen
 
-* Via [<i class='fa fa-github'></i> Github Classroom](/teaching/ses/github-classroom). bla
+Via [<i class='fa fa-github'></i> Github Classroom](/teaching/ses/github-classroom). 
+
+### Opgave 1
+
+bla
 
 ## Denkvragen
 
