@@ -39,7 +39,7 @@
     
       "headline" : "Labo x: Design Patterns: Factory",
     
-    "description" : "",
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\n\x26ldquo;Factory\x26rdquo; - Design Pattern Doelstelling  Scherm het aanmaken van bepaalde objecten af door middel van overerving en logica, waarbij die logica éénmalig wordt geïmplementeerd, en op een centrale plaats staat. Promoot een modulair model door de verantwoordlijkheid van object creatie en object gebruik te scheiden.  Dive Into Design Patterns: Factory (method)\nVoorbeeld 1. Opzet Stel, je wilt aan de kassa van een niet al te grote lokale cinema een film kopen.",
     
       "inLanguage" : "nl-BE",
     
@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-11-26 16:57:22 \x2b0100 CET",
-    "dateModified" : "2019-11-26 16:57:22 \x2b0100 CET",
+    "datePublished": "2019-12-07 10:03:48 \x2b0100 CET",
+    "dateModified" : "2019-12-07 10:03:48 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/factory\/",
-    "wordCount" : "603",
+    "wordCount" : "601",
     "keywords" : [ "Labo x: Design Patterns: Factory", "teaching" ]
 }
 </script>
@@ -139,9 +139,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.59.1" />
         
-        <link href="https://brainbaking.com/teaching/ses/factory/index.xml" rel="alternate" type="application/rss+xml" title="Brain Baking" />
-        <link href="https://brainbaking.com/teaching/ses/factory/index.xml" rel="feed" type="application/rss+xml" title="Brain Baking" />
-        
     </head>
 
     
@@ -200,18 +197,32 @@
         </nav>
 
 
+
+
 <main>
 
-	
-	    <h2>
-			<i class='fa '></i>&nbsp;Labo x: Design Patterns: Factory
-		</h2>
-	    <hr/>
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/ses/factory/">Labo x: Design Patterns: Factory</a>
+    </h3>
     
 
     
-    <div class="text-justify">
-    	
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
 
 <p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/>
 &raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
@@ -301,16 +312,24 @@ graph TD;
 
 <h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
-<ul>
-<li><a href="/teaching/ses/factory.zip">Download het IntelliJ factory-oef1.zip project hier</a>. (Dit is een <a href="/teaching/ses/gradle">gradle project</a>) Het project bevat bovenstaande voorbeeld, maar nog niet alles is geïmplementeerd. Voer de unit testen uit in <code>src/main/test</code>: het resultaat zijn gefaalde testen (ROOD). Zorg er voor dat alle testen slagen (GROEN) door het factory patroon te vervolledigen!</li>
-<li>De eerste aanzet is genomen om een nieuw type van <code>TicketSeller</code> aan te maken, door reeds een interface te voorzien. Ontwikkel een <code>MoneyBasedTicketSeller</code>, die gebaseerd op het geld in je portefuille je het juiste ticket bezorgt. Dit betekent dat je in <code>Person</code> dus een nieuwe property nodig hebt. Voorzie ook een nieuwe test klasse, gebaseerd op <code>AgeBasedTicketSellerTest</code>.</li>
-<li><a href="/teaching/ses/sessy">sessy library</a>:
+<p>Via <a href="/teaching/ses/github-classroom"><i class='fa fa-github'></i> Github Classroom</a>.</p>
+
+<h3 id="opgave-1">Opgave 1</h3>
+
+<p>Het project bevat bovenstaande voorbeeld, maar nog niet alles is geïmplementeerd. Voer de unit testen uit in <code>src/main/test</code>: het resultaat zijn gefaalde testen (ROOD). Zorg er voor dat alle testen slagen (GROEN) door het factory patroon te vervolledigen!</p>
+
+<h3 id="opgave-2">Opgave 2</h3>
+
+<p>De eerste aanzet is genomen om een nieuw type van <code>TicketSeller</code> aan te maken, door reeds een interface te voorzien. Ontwikkel een <code>MoneyBasedTicketSeller</code>, die gebaseerd op het geld in je portefuille je het juiste ticket bezorgt. Dit betekent dat je in <code>Person</code> dus een nieuwe property nodig hebt. Voorzie ook een nieuwe test klasse, gebaseerd op <code>AgeBasedTicketSellerTest</code>.</p>
+
+<h3 id="opgave-3">Opgave 3</h3>
+
+<p><a href="/teaching/ses/sessy">sessy library</a>:</p>
 
 <ol>
 <li>identificeer waar het mogelijk zou zijn om een factory patroon toe te passen. Welke verschillende implementaties delen een gelijke noemer? Waar staat mogelijks creatie logica (dubbel)?</li>
 <li>Pas dit toe door een nieuwe klasse te voorzien die de Factory methode implementeert. Vergeet de unit testen niet!</li>
-</ol></li>
-</ul>
+</ol>
 
 <link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
 <script defer src="/mermaid/mermaid.min.js">
@@ -345,13 +364,16 @@ graph TD;
 <li>Wat is het verschil tussen een factory en een <a href="/teaching/ses/facade">facade</a> patroon? Wanneer heb ik het ene of het andere nodig?</li>
 <li>Is er een mogelijkheid om <a href="/teaching/ses/di">Dependency Injection</a> en de Factory te combineren, zodat het keyword <code>new</code> niet meer wordt gebruikt in de factory klasse zelf?</li>
 </ul>
+</div>
 
-	</div>
-    <hr/>
-	
+    
+    
 
-	
+    
 
+    <h4 class="page-header">&nbsp;</h4>
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
 
 </main>
 

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="Versiebeheer - Brain Baking">
+	<meta content="Versiebeheer - Brain Baking" property="og:title">
+	<meta content="Versiebeheer - Brain Baking" property="og:description">
+
+
+
+
+<meta property="og:url" content="https://brainbaking.com/teaching/ses/versiebeheer/" />
+<meta property="og:type" content="website" />
+
+
+
+
+
+<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="teaching" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/brainbaking.com\/"
+    },
+    "articleSection" : "teaching",
+    "name" : "Versiebeheer",
+    
+      "headline" : "Versiebeheer",
+    
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\nWat is versiebeheer of source control? Source Control is een sleutelbegrip voor ontwikkelteams. Het stelt iedereen in staat om aan dezelfde source file te werken zonder bestanden op- en neer te sturen, voorziet backups, maakt het mogelijk om releases en branches uit te rollen, \x26hellip;\nEen versiebeheer systeem bewaart alle wijzigingen aan (tekst)bestanden. Dat betekent dat eender welke wijziging, door wie dan ook, teruggedraaid kan worden.",
+    
+      "inLanguage" : "nl-BE",
+    
+    
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "0001",
+    "datePublished": "2019-12-10 15:38:04 \x2b0100 CET",
+    "dateModified" : "2019-12-10 15:38:04 \x2b0100 CET",
+    "url" : "https:\/\/brainbaking.com\/teaching\/ses\/versiebeheer\/",
+    "wordCount" : "813",
+    "keywords" : [ "Versiebeheer", "teaching" ]
+}
+</script>
+
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Versiebeheer</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/llvm.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Versiebeheer</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/ses/versiebeheer/">Versiebeheer</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/>
+&raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
+
+<h2 id="wat-is-versiebeheer-of-source-control">Wat is versiebeheer of <em>source control</em>?</h2>
+
+<p><strong><a href="https://en.wikipedia.org/wiki/Version_control">Source Control</a></strong> is een sleutelbegrip voor ontwikkelteams. Het stelt iedereen in staat om aan dezelfde source file te werken zonder bestanden op- en neer te sturen, voorziet backups, maakt het mogelijk om releases en branches uit te rollen, &hellip;</p>
+
+<p>Een versiebeheer systeem bewaart alle <em>wijzigingen</em> aan (tekst)bestanden. Dat betekent dat eender welke wijziging, door wie dan ook, teruggedraaid kan worden. Zonder versiebeheer is het onmogelijk om code op één centrale plaats te bewaren als er met meerdere personen aan wordt gewerkt. Zelfs met maar één persoon is het toch nog steeds sterk aan te raden om te werken met versionering. Fouten worden immers snel gemaakt. Een bewaarde wijziging aan een bestand is permanent op je lokale harde schijf: de volgende dag kan je niet het origineel terug boven halen. Er wordt samen met delta&rsquo;s ook veel metadata bewaard (tijdstippen, commit comments, gebruikers, bestandsgroottes, &hellip;)</p>
+
+<h3 id="waarom-versioneren">Waarom versioneren?</h3>
+
+<p>Dat verduidelijkt Geek &amp; Poke:</p>
+
+<p><center>
+    <img src="/img/teaching/ses/sourcecontrol.jpg" style="width: 70%" />
+</center></p>
+
+<p>Zonder versionering stuurt iedereen e-mail attachments door naar elkaar, in de verwachting een aangepaste versie terug te ontvangen. Maar, wat gebeurt er met:</p>
+
+<ul>
+<li>Conflicten? (iemand wijzigt iets in dezelfde cel als jij)</li>
+<li>Meerdere bestanden? (je ontvangt verschillende versies, welke is nu relevant?)</li>
+<li>Nieuwe bestanden? (je ontvangt aparte bestanden met nieuwe tabbladen)</li>
+<li>Bestandstypes? (iemand mailt een <code>.xslx</code>, iemand anders een <code>.xls</code>)</li>
+<li>&hellip;</li>
+</ul>
+
+<p>Het wordt al snel duidelijk dat het delen van celdata beter wordt overgelaten aan Google Sheets, waar verschillende mensen tegelijkertijd gegevens in kunnen plaatsen. Hetzelfde geldt voor source code: dit wordt beter overgelaten aan een versiebeheer systeem.</p>
+
+<h2 id="in-de-praktijk-git">In de praktijk: Git</h2>
+
+<p>Git is een <em>gedecentraliseerd</em> versiebeheer systeem waarbij de hele repository inclusief historiek lokaal wordt geplaatst zodra een <code>clone</code> commando wordt uitgevoerd. Oudere <em>gecentraliseerde</em> systemen zoals SVN en CVS bewaren (meta-)data op één centrale plaats: de version control server. Voor dit vak wordt resoluut voor git gekozen.</p>
+
+<p>Vanaf nu wordt verondersteld dat labo oefeningen gecommit worden in <code>git</code> op <a href="https://github.com">Github</a>: een zeer populair open source software ontwikkelingsplatform dat gebruiksvriendelijk is. Het <a href="https://git-scm.com/book/en/v2">Pro Git</a> handboek leert je alles over de werking van git.</p>
+
+<h3 id="de-git-workflow">De Git workflow</h3>
+
+<p>Een typische workflow is als volgt:</p>
+
+<ol>
+<li><code>git clone [url]</code>: Maakt een lokale repository aan die je op Github hebt gecreëerd. Het commando maakt een subdirectory aan.</li>
+<li>Doe je programmeerwerk.</li>
+<li><code>git status</code> en <code>git diff</code>: Bekijk lokale changes voordat ze naar de server gaan.</li>
+<li><code>git add [.]</code>: Geef aan welke changes staged worden voor commit</li>
+<li><code>git commit -m [comment]</code>: commit naar je <strong>lokale</strong> repository. Wijzingen moeten nu nog naar de Github server worden gesynchroniseerd.</li>
+<li><code>git push</code>: push lokale commits naar de Github server. Vanaf nu kan eender wie die meewerkt aan deze repository de wijzigingen downloaden op zijn lokaal systeem.</li>
+<li><code>git pull</code>: pull remote changes naar je lokale repository. Wijzigingen moeten altijd eerst gepushed worden voordat iemand anders kan pullen.</li>
+</ol>
+
+<p>De output van <code>git status</code> ziet er zo uit:</p>
+
+<pre>
+Wouters-MacBook-Air:brainbaking wgroenev$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   content/teaching/cpp/labo-1.md
+    modified:   content/teaching/cpp/labo-2.md
+    modified:   content/teaching/cpp/labo-3.md
+    modified:   content/teaching/cpp/labo-4.md
+    modified:   content/teaching/cpp/labo-5.md
+    modified:   content/teaching/cpp/labo-6.md
+    deleted:    docs/CNAME
+    deleted:    docs/essays/i-am-jealous-of-my-dog/index.html
+</pre>
+
+<p>De output van <code>git diff</code> ziet er zo uit:</p>
+
+<pre>
+    Wouters-MacBook-Air:brainbaking wgroenev$ git diff
+diff --git a/content/teaching/cpp/labo-1.md b/content/teaching/cpp/labo-1.md
+index 654a4f6..11f0597 100644
+--- a/content/teaching/cpp/labo-1.md
++++ b/content/teaching/cpp/labo-1.md
+@@ -4,7 +4,7 @@ accent: "#008eb3"
+ disableComments: true
+ ---
+</pre>
+
+<p>Waarbij de <code>+++</code> regels wijzigingen zijn die zijn toegevoegd, en <code>---</code> die zijn verwijderd. Zowel bestanden als regels binnen bestanden zijn zichtbaar in de <em>difference</em> tool.</p>
+
+<h3 id="conflicten-oplossen">Conflicten oplossen</h3>
+
+<p>Zie hoofdstuk 2 van het Pro Git boek.</p>
+
+<h3 id="branches">Branches</h3>
+
+<p>Zie hoofdstuk 3 van het Pro Git boek.</p>
+
+<h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
+
+<ol>
+<li>Maak een Github.com account aan, als je dat nog niet hebt. Download zowel de UI - <a href="https://desktop.github.com">Github Desktop</a> - als de commandline tools <a href="https://gitforwindows.org">Git for Windows</a>, en probeer de <a href="/teaching/ses/sessy">SESsy library</a> te clonen: <code>git clone https://github.com/KULeuven-Diepenbeek/sessylibrary.git</code></li>
+<li>Maak een nieuwe repository aan onder je eigen account. Commit enkele test <code>.java</code> betsanden. Maak een branch, wijzig een bestand, en push dat naar die branch. Probeer daarna de branch terug te mergen met de main branch (= de master).</li>
+<li>Vraag aan je rechterbuur om <em>collaborator</em> te worden op een nieuwe repository. (Github.com -&gt; settings van repository -&gt; Add collaborators). Dit betekent dat die persoon voldoende rechten krijgt om bestanden te wijzigen. Schrijf samen een <code>README.md</code> bestand met een verhaaltje in. De eerste die commit en pusht krijgt zijn wijziging er door, de volgende moet eerst conflicten oplossen.</li>
+</ol>
+
+<h2 id="denkvragen">Denkvragen</h2>
+
+<ul>
+<li>In welk geval is het aanmaken van een branch een goed idee, in plaats van verder te werken op de (enige) master branch? Lees eerst het Pro Git boek hoofdstuk over branches.</li>
+<li>In welk geval is het pushen van wijzigingen vanuit een branch naar de master branch een goed idee? Wanneer niet?</li>
+</ul>
+
+<h2 id="extra-leermateriaal">Extra leermateriaal</h2>
+
+<ul>
+<li><a href="https://git-scm.com/book/en/v2">Pro Git</a> handboek, hoofdstuk 1 tot en met 3.</li>
+</ul>
+</div>
+
+    
+    
+
+    
+
+    <h4 class="page-header">&nbsp;</h4>
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

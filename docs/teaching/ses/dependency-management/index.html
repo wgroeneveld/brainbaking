@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-12-06 11:14:15 \x2b0100 CET",
-    "dateModified" : "2019-12-06 11:14:15 \x2b0100 CET",
+    "datePublished": "2019-12-07 10:03:48 \x2b0100 CET",
+    "dateModified" : "2019-12-07 10:03:48 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/dependency-management\/",
-    "wordCount" : "1826",
+    "wordCount" : "1850",
     "keywords" : [ "Dependency Management", "teaching" ]
 }
 </script>
@@ -455,20 +455,20 @@ repositories {
 
 <p>Neem dit eerst door: <a href="/teaching/ses/gradle/">Meer informatie over Gradle</a>.</p>
 
-<ul>
-<li><p>Deel 1: <br/>Ontwerp een eenvoudige library die scores kan bijhouden voor bordspelletjes. Deze library kan kan gebruikt worden door toekomstige digitale Java bordspellen. In een Scorebord kan je spelers toevoegen door middel van een naam en een score. Er is een mogelijkheid om de huidige score van een speler op te vragen, en de winnende speler. Deze gegevens worden met behulp van Gson in een <code>JSON</code> bestand bewaard, zodat bij het heropstarten van een spel de scores behouden blijven. <br/>De API (publieke methodes) van de library ziet er zo uit:</p>
+<h3 id="opgave-1">Opgave 1</h3>
+
+<p>Ontwerp een eenvoudige library die scores kan bijhouden voor bordspelletjes. Deze library kan kan gebruikt worden door toekomstige digitale Java bordspellen. In een Scorebord kan je spelers toevoegen door middel van een naam en een score. Er is een mogelijkheid om de huidige score van een speler op te vragen, en de winnende speler. Deze gegevens worden met behulp van Gson in een <code>JSON</code> bestand bewaard, zodat bij het heropstarten van een spel de scores behouden blijven. <br/>De API (publieke methodes) van de library ziet er zo uit:</p>
 
 <pre><code class="language-java">class Speler {
-public String getNaam() { }
-public int getScore() { }
+    public String getNaam() { }
+    public int getScore() { }
 }
 public class Scorebord {
-public void voegToe(String x, int huidigeScore) { }
-public int getTotaleScore(String x) { }
-public String getWinnaar() { }
+    public void voegToe(String x, int huidigeScore) { }
+    public int getTotaleScore(String x) { }
+    public String getWinnaar() { }
 }
-</code></pre></li>
-</ul>
+</code></pre>
 
 <p>De klasse <code>Speler</code> is een intern hulpmiddel om te serialiseren. <br/>
 Extra methodes toevoegen mag altijd. De constructor van het scorebord leest automatisch de score van de vorige keer in, als dat bestand bestaat. Denk bij de implementatie aan een collectie om spelers en hun scores bij te houden. Maak via IntelliJ een nieuw <strong>Gradle - Java project</strong>. Groupid: <code>be.kuleuven</code>. Arifactid: <code>scorebord</code>. Vergeet niet op &lsquo;refresh&rsquo; te drukken wanneer je een dependency toevoegt (linksboven op onderstaande screenshot):</p>
@@ -481,15 +481,15 @@ Extra methodes toevoegen mag altijd. De constructor van het scorebord leest auto
 
 <p>Tip: indien de Gralde wrapper een oudere versie aanmaakt (&lt; v6), update met <code>gradle wrapper --gradle-version 6.0.1</code>.</p>
 
-<ul>
-<li><p>Deel 2: <br/>Maak een nieuw Gradle project aan genaamd <em>scorebord-darts</em>, dat bovenstaand scorebord project als een library gaat gebruiken. Bewaar de jar file lokaal in een &lsquo;lib&rsquo; folder en instrueer Gradle zo dat dit als <code>flatDir</code> repository wordt opgenomen (<a href="#flatdir">zie boven</a>). Het tweede project heeft als Artifactid <code>scorebord-darts</code>. De klasse <code>DartsGame</code> ziet er zo uit:</p>
+<h3 id="opgave-2">Opgave 2</h3>
+
+<p>Maak een nieuw Gradle project aan genaamd <em>scorebord-darts</em>, dat bovenstaand scorebord project als een library gaat gebruiken. Bewaar de jar file lokaal in een &lsquo;lib&rsquo; folder en instrueer Gradle zo dat dit als <code>flatDir</code> repository wordt opgenomen (<a href="#flatdir">zie boven</a>). Het tweede project heeft als Artifactid <code>scorebord-darts</code>. De klasse <code>DartsGame</code> ziet er zo uit:</p>
 
 <pre><code class="language-java">public class DartsGame {
-private String player = &quot;jos&quot;;
-public void throwDart() {}
+    private String player = &quot;jos&quot;;
+    public void throwDart() {}
 }
-</code></pre></li>
-</ul>
+</code></pre>
 
 <p>Als de dependencies goed liggen, kan je een nieuw <code>Scorebord</code> aanmaken, en herkent IntelliJ dit met CTRL+Space:</p>
 
@@ -519,9 +519,13 @@ Execution failed for task ':Main.main()'.
 
 <p>Dit werkt <em>niet</em> omdat we een library gebruiken (ScoreBord), die op zijn beurt een library gebruikt (Gson), die niet in onze huidige Gradle file is gedefiniëerd. Om dit op te lossen dienen we over te schakelen naar een lokale Maven repository, die ook transitieve dependencies automatisch inlaadt. Verwijder de <code>flatDir</code> en voeg een lokale maven URL toe. Publiceer in het scorebord project naar diezelfde URL volgens de instructies van de <code>maven-publish</code> plugin.</p>
 
-<ul>
-<li>Deel 3 (extra): <br/>Bovenstaande screenshot geeft aan dat IntelliJ methodes herkent van de <code>Scorebord</code> klasse. Er is echter geen javadoc voorzien die uitlegt wat welke parameter doet. Voorzie javadoc bij alle publieke methodes. Dit moet ook mee worden verpakt in het <code>jar</code> bestand, zodat het ander project deze kan herkennen. Probeer uit te zoeken wat je hier voor moet doen in het <code>build.gradle</code> bestand.</li>
-</ul>
+<h3 id="opgave-3-extra">Opgave 3 (extra)</h3>
+
+<p>Bovenstaande screenshot geeft aan dat IntelliJ methodes herkent van de <code>Scorebord</code> klasse. Er is echter geen javadoc voorzien die uitlegt wat welke parameter doet. Voorzie javadoc bij alle publieke methodes. Dit moet ook mee worden verpakt in het <code>jar</code> bestand, zodat het ander project deze kan herkennen. Probeer uit te zoeken wat je hier voor moet doen in het <code>build.gradle</code> bestand.</p>
+
+<h3 id="opgave-4-extra">Opgave 4 (extra)</h3>
+
+<p>Genereer met behulp van Gradle van de <a href="/teaching/ses/sessy">SESsy library</a> een dependency tree en inspecteer welke dpendencies transitief zijn en welke direct.</p>
 
 <h2 id="denkvragen">Denkvragen</h2>
 

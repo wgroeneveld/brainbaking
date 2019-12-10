@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-12-06 11:14:15 \x2b0100 CET",
-    "dateModified" : "2019-12-06 11:14:15 \x2b0100 CET",
+    "datePublished": "2019-12-07 10:03:48 \x2b0100 CET",
+    "dateModified" : "2019-12-07 10:03:48 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/di\/",
-    "wordCount" : "779",
+    "wordCount" : "785",
     "keywords" : [ "Labo x: Design Patterns: Dependency Injection", "teaching" ]
 }
 </script>
@@ -347,17 +347,29 @@ public class ShoppingResourceTest {
 
 <h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
+<p>Via <a href="/teaching/ses/github-classroom"><i class='fa fa-github'></i> Github Classroom</a>.</p>
+
+<h3 id="opgave-1">Opgave 1</h3>
+
 <ul>
-<li>Via <a href="/teaching/ses/github-classroom"><i class='fa fa-github'></i> Github Classroom</a>. Er staan twee TODO items: verwijder eerst de <code>new DBHandle()</code> vanuit de resource klasse, en injecteer het via een constructor argument. Pas dan de unit test aan om de compile fouten te fixen.</li>
+<li>Er staan twee TODO items: verwijder eerst de <code>new DBHandle()</code> vanuit de resource klasse, en injecteer het via een constructor argument. Pas dan de unit test aan om de compile fouten te fixen.</li>
 <li>Gebruik een interface om bovenstaande <code>DummyDBHandle</code> in het project te introduceren. Dat wil zeggen, hernoem <code>DBHandle</code> naar <code>DBHandleImplementation</code>, en maak een nieuwe interface genaamd <code>DBHandle</code>. Nu kan je de tweede unit test zoals hierboven toevoegen.</li>
-<li>In plaats van manueel te injecteren, kunnen we deze zaken ook overlaten aan gespecialiseerde frameworks, zoals Google Guice. Bovenstaand project heeft als Gradle dependency een link naar Guice. Neem een kijkje in de <code>ShoppingCartGuiceResource</code> klasse, en probeer dit principe toe te passen op de andere resouce klasse. <code>@Inject</code> verzogt het DI systeem, zonder zelf ergens objecten aan te maken, behalve in de config klasse. Zie ook <a href="https://github.com/google/guice/wiki/GettingStarted">Google Guice: getting started</a>.</li>
-<li><a href="/teaching/ses/sessy">sessy library</a>:
+</ul>
+
+<h3 id="opgave-2">Opgave 2</h3>
+
+<p>In plaats van manueel te injecteren, kunnen we deze zaken ook overlaten aan gespecialiseerde frameworks, zoals Google Guice. Bovenstaand project heeft als Gradle dependency een link naar Guice. Neem een kijkje in de <code>ShoppingCartGuiceResource</code> klasse, en probeer dit principe toe te passen op de andere resouce klasse. <code>@Inject</code> verzogt het DI systeem, zonder zelf ergens objecten aan te maken, behalve in de config klasse.</p>
+
+<p>Zie ook <a href="https://github.com/google/guice/wiki/GettingStarted">Google Guice: getting started</a>.</p>
+
+<h3 id="opgave-3">Opgave 3</h3>
+
+<p><a href="/teaching/ses/sessy">sessy library</a>:</p>
 
 <ol>
 <li>identificeer welke klassen in een DI systeem kunnen worden opgenomen.</li>
 <li>Introduceer een DI systeem: hetzij door Google Guice te gebruiken, hetzij door zelf te injecteren. Waar wordt DI reeds toegepast?</li>
-</ol></li>
-</ul>
+</ol>
 
 <h2 id="denkvragen">Denkvragen</h2>
 

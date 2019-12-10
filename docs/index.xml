@@ -654,20 +654,6 @@ There have been a lot of love letters to big cities here on Medium recently. I n
     </item>
     
     <item>
-      <title></title>
-      <link>https://brainbaking.com/teaching/ses/factory/build/reports/tests/test/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/teaching/ses/factory/build/reports/tests/test/</guid>
-      <description>Test results - Test Summary    Test Summary       3 tests
-   3 failures
-   0 ignored
-   0.016s duration
-       0% successful
-      Failed tests   Packages   Classes   Failed tests  TicketSellerTest. buyTicket_AsAGrownUp_GetsTheRealDeal   TicketSellerTest. buyTicket_AsAKid_GetsAFamilyTicket   TicketSellerTest.</description>
-    </item>
-    
-    <item>
       <title>Dependency Management</title>
       <link>https://brainbaking.com/teaching/ses/dependency-management/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -886,7 +872,20 @@ Voor sprites speelde een tilemap geen rol, voor grote achtergronden wel: het kos
       <guid>https://brainbaking.com/teaching/ses/designpattern_template/</guid>
       <description> &amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
 &amp;ldquo;Factory&amp;rdquo; - Design Pattern Doelstelling Dive Into Design Patterns: Factory (method)
-Voorbeeld 1. Opzet 2. Probleemstelling 3. Oplossing Eigenschappen van dit patroon Labo oefeningen  Download facade-oef1.java hier. bla  Denkvragen  bla  </description>
+Voorbeeld 1. Opzet 2. Probleemstelling 3. Oplossing Eigenschappen van dit patroon Labo oefeningen Via  Github Classroom.
+Opgave 1 bla
+Denkvragen  bla  </description>
+    </item>
+    
+    <item>
+      <title>Labo x: Design Patterns: Decorator</title>
+      <link>https://brainbaking.com/teaching/ses/decorator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/decorator/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+&amp;ldquo;Decorator&amp;rdquo; - Design Pattern Doelstelling  Voeg dynamisch functionaliteit toe als alternatief voor klassieke overerving. Gedraagt zich zoals het stukje &amp;lsquo;ingepakte&amp;rsquo; functionaliteit, maar voert extra handelingen uit. Wordt in Java altijd via interface implementaties uitegevoerd.  Dive Into Design Patterns: Decorator
+Voorbeeld 1. Opzet Stel dat we in een fabriek op plaats X een auto samenstellen. De wagen is een zeer eenvoudige Volkswagen Golf, zonder opties.</description>
     </item>
     
     <item>
@@ -912,6 +911,17 @@ Voorbeeld 1. Opzet Stel dat we gegevens van de klant moeten versturen naar een o
     </item>
     
     <item>
+      <title>Labo x: Design Patterns: Factory</title>
+      <link>https://brainbaking.com/teaching/ses/factory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/factory/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+&amp;ldquo;Factory&amp;rdquo; - Design Pattern Doelstelling  Scherm het aanmaken van bepaalde objecten af door middel van overerving en logica, waarbij die logica éénmalig wordt geïmplementeerd, en op een centrale plaats staat. Promoot een modulair model door de verantwoordlijkheid van object creatie en object gebruik te scheiden.  Dive Into Design Patterns: Factory (method)
+Voorbeeld 1. Opzet Stel, je wilt aan de kassa van een niet al te grote lokale cinema een film kopen.</description>
+    </item>
+    
+    <item>
       <title>Labo x: Design Patterns: Singleton</title>
       <link>https://brainbaking.com/teaching/ses/singleton/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -927,10 +937,10 @@ Voorbeeld 1. Opzet Stel dat we gegevens van de klant moeten versturen naar een o
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/github-classroom/</guid>
-      <description> &amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
 Onderstaande Github Classroom repositories zijn telkens Gradle Java projecten. Bewkaam jezelf eerst in de basis van Gradle als build tool.
 Labo oefeningen TODO Links copypasten vanuit Github Classroom.
-Design Patterns  Facade Design Pattern  </description>
+Design Patterns  Facade Dependency Injection Singleton Decorator Factory  Test Driven Development URL</description>
     </item>
     
     <item>
@@ -990,6 +1000,28 @@ Opdracht beschrijving Ontwerp een Mario Party kloon.</description>
       <guid>https://brainbaking.com/teaching/cpp/project/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
 Project opdracht Om jullie recent opgedane object-geörienteerde technieken te toetsen gaan jullie een GBA spel ontwerpen en ontwikkelen in C++11. De focus van de opdracht ligt niet op correcte low-level IO mapping maar op kritisch denken en testen zoals gezien in labo 7. Uiteraard komen zowel pointers en GBA programming technieken van de vroegere labo&amp;rsquo;s, als C++ class inheritance en abstractie lagen uit de latere labo&amp;rsquo;s aan bod.</description>
+    </item>
+    
+    <item>
+      <title>Test Driven Development</title>
+      <link>https://brainbaking.com/teaching/ses/tdd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/tdd/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+Test-Driven Development TDD (Test-Driven Development) is een hulpmiddel bij softwareontwikkeling om minder fouten te maken en sneller fouten te vinden, door éérst een test te schrijven en dan pas de implementatie. Die (unit) test zal dus eerst falen (ROOD), want er is nog helemaal geen code, en na de correcte implementatie uiteindelijk slagen (GROEN).
+mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  graph LR; T{&#34;</description>
+    </item>
+    
+    <item>
+      <title>Versiebeheer</title>
+      <link>https://brainbaking.com/teaching/ses/versiebeheer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/versiebeheer/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+Wat is versiebeheer of source control? Source Control is een sleutelbegrip voor ontwikkelteams. Het stelt iedereen in staat om aan dezelfde source file te werken zonder bestanden op- en neer te sturen, voorziet backups, maakt het mogelijk om releases en branches uit te rollen, &amp;hellip;
+Een versiebeheer systeem bewaart alle wijzigingen aan (tekst)bestanden. Dat betekent dat eender welke wijziging, door wie dan ook, teruggedraaid kan worden.</description>
     </item>
     
   </channel>
