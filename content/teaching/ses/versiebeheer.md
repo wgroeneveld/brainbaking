@@ -1,5 +1,5 @@
 ---
-title: 'Versiebeheer'
+title: 'Versie- en issuebeheer'
 accent: "#008eb3"
 disableList: true
 ---
@@ -87,17 +87,92 @@ Waarbij de `+++` regels wijzigingen zijn die zijn toegevoegd, en `---` die zijn 
 
 ### Conflicten oplossen
 
-Zie hoofdstuk 2 van het Pro Git boek.
+**Lees eerst** hoofdstuk 2 van het Pro Git boek.
 
 ### Branches
 
-Zie hoofdstuk 3 van het Pro Git boek.
+**Lees eerst** hoofdstuk 3 van het Pro Git boek.
+
+Een branch aanmaken kan via het `git branch` commando. Dit geeft een overzicht van beschikbare branches, en met een argument maak je een nieuwe aan. `git checkout` laat je switchen naar die branch. Het `*` symbool duidt de actieve branch aan. Hieronder wordt een nieuwe branch genaamd _bugfixbranch_ aangemaakt nadat git toont dat er geen branches zijn. Daarna wordt er naar die branch overgeschakeld:
+
+<pre>
+Wouters-Air:sessylibrary wgroeneveld$ git branch
+* master
+Wouters-Air:sessylibrary wgroeneveld$ git branch bugfixbranch
+Wouters-Air:sessylibrary wgroeneveld$ git branch
+  bugfixbranch
+* master
+Wouters-Air:sessylibrary wgroeneveld$ git checkout bugfixbranch
+Switched to branch 'bugfixbranch'
+Wouters-Air:sessylibrary wgroeneveld$ git branch
+* bugfixbranch
+  master
+</pre>
+
+Een branch lokaal committen kan altijd, maar een `push` kan de volgende fout geven: _fatal: The current branch bugfixbranch has no upstream branch._ In dat geval dien je de branch 'upstream' te pushen naar de Github server door middel van `git push --set-upstream origin bugfixbranch`.
+
+Na een branch commit is de volgende knop zichtbaar op Github:
+
+<center>
+    <img src="/img/teaching/ses/github_compare.png"/>
+</center>
+
+De **Compare &amp; Pull Request** knop maakt het mogelijk om wijzigingen op de bugfixbranch tot op de master branch te brengen. Dit kan ook via het commando `git merge bugfixbranch` in de master branch. Een demo toont dit aan. Daarna hebben we de branch niet meer nodig: `git branch -d bugfixbranch`. Merk op dat dit enkel _lokaal_ de kopie van de branch verwijderd. De remote, op Github.com, verwijderen, vereist meer werk: `git push origin --delete bugfixbranch`.
+
+## Bug tracking met Github
+
+Enkele 'kleine probleempjes' in software worden al snel een hele berg aan grote problemen als er niet op tijd iets aan wordt gedaan. Bedrijven beheren deze problemen (_issues_) met een bug tracking systeem, waar alle door klant of collega gemeldde fouten van het systeem in worden gelogd en opgevolgd. Op die manier kan een ontwikkelaar op zoek naar werk in deze lijst de hoge prioritaire problemen identificeren, oplossen, en terug koppelen naar de melder. 
+
+{{<mermaid>}}
+graph LR;
+    Bug[Bug discovery]
+    Report[Bug report]
+    Backlog[Bug in backlog met issues]
+    Prio[Bug in behandeling]
+    Fix[Bug fixed]
+    Bug --> Report
+    Report --> Backlog
+    Backlog --> Prio
+    Prio --> Fix
+{{< /mermaid >}}
+
+De inhoud van deze stappen hangt af van bedrijf tot bedrijf, maar het skelet blijft hetzelfde. Bugs worden typisch gereproduceerd door middel van [unit testen](/teaching/ses/tdd) op een **bepaalde git branch** om de bestaande ontwikkeling van nieuwe features niet in de weg te lopen. Wanneer het probleem is opgelost, wordt deze branch gemerged met de _master_ branch:
+
+{{<mermaid>}}
+graph LR;
+    masterx[Master branch x]
+    mastery[Master branch y]
+    bugbranch[Create bug branch]
+    bugfix[Bugfix on branch]
+    masterx --> mastery
+    masterx --> bugbranch
+    bugbranch --> bugfix
+    bugfix --> mastery
+{{< /mermaid >}}
+
+[Github Issues](https://github.com/KULeuven-Diepenbeek/sessylibrary/issues) is een minimalistische feature van Github die het mogelijk maakt om zulke bugs op te volgen. Een nieuw issue openen en een beschrijving van het probleem meegeven (samen met stappen om het te reproduceren), maakt een nieuw item aan dat standaard op '_open_' staat. Dit kan worden toegewezen aan personen, en daarna worden '_closed_', om aan te geven dat ofwel het probleem is opgelost, ofwel het geen echt probleem was. Issues kunnen worden gecategoriseerd door middel van labels. 
 
 ## <a name="oef"></a>Labo oefeningen
 
-1. Maak een Github.com account aan, als je dat nog niet hebt. Download zowel de UI - [Github Desktop](https://desktop.github.com) - als de commandline tools [Git for Windows](https://gitforwindows.org), en probeer de [SESsy library](/teaching/ses/sessy) te clonen: `git clone https://github.com/KULeuven-Diepenbeek/sessylibrary.git`
-2. Maak een nieuwe repository aan onder je eigen account. Commit enkele test `.java` betsanden. Maak een branch, wijzig een bestand, en push dat naar die branch. Probeer daarna de branch terug te mergen met de main branch (= de master).
-3. Vraag aan je rechterbuur om _collaborator_ te worden op een nieuwe repository. (Github.com -> settings van repository -> Add collaborators). Dit betekent dat die persoon voldoende rechten krijgt om bestanden te wijzigen. Schrijf samen een `README.md` bestand met een verhaaltje in. De eerste die commit en pusht krijgt zijn wijziging er door, de volgende moet eerst conflicten oplossen. 
+### Opgave 1
+
+Maak een Github.com account aan, als je dat nog niet hebt. Download de commandline tools [Git for Windows](https://gitforwindows.org), en probeer de [SESsy library](/teaching/ses/sessy) te clonen: `git clone https://github.com/KULeuven-Diepenbeek/sessylibrary.git`. 
+
+Gebruik het Pro Git boek om kennis te maken met basis commando's van git. Het is de bedoeling om de commandline tools te leren kennen, en _niet_ om met Github Desktop te werken. 
+
+### Opgave 2
+
+Kijk naar de [issue lijst van SESsy library](https://github.com/KULeuven-Diepenbeek/sessylibrary/issues). Kies er eentje uit om op te lossen - het maakt niet uit welke. 
+
+Merk op dat, om een issue op te lossen van een repository waar jij geen eigenaar van bent, eerst een eigen kopie hiervan vereist is. Een repository remote kopiëren noemen we een **fork** maken, en kan met het knopje rechtsboven op de Github pagina. Alles inclusief issues worden mee overgenomen. Nadat dit is aangemaakt, zie je de URL wijzigen:
+
+Van github.com/_KULeuven-Diepenbeek_ naar github.com/_uw-gebruikersnaam_.
+
+Nu dien je je eigen fork te clonen, in plaats van het origineel. Verwijder de vorige map en clone je kopie. Vanaf nu is het mogelijk om branches te maken en te pushen. `git push` op de _KULeuven-Diepenbeek_ repository geeft authenticatie fouten. 
+
+### Opgave 3
+
+Vraag aan je rechterbuur om _collaborator_ te worden op een nieuwe repository. (Github.com -> settings van repository -> Add collaborators). Dit betekent dat die persoon voldoende rechten krijgt om bestanden te wijzigen. Schrijf samen een `README.md` bestand met een verhaaltje in. De eerste die commit en pusht krijgt zijn wijziging er door, de volgende moet eerst conflicten oplossen. 
 
 ## Denkvragen
 

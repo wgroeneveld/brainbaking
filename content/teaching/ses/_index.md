@@ -32,10 +32,9 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 1. [Dependency Management](/teaching/ses/dependency-management)
 2. [Test-Driven Development](/teaching/ses/tdd)
-3. [Versiebeheer](/teaching/ses/versiebeheer)
-4. Bug Tracking (Git Issues)
-5. End 2 end build environments, CI, CD, ...
-6. Soft skills
+3. [Versie- en issuebeheer](/teaching/ses/versiebeheer)
+4. End 2 end build environments, CI, CD, ...
+5. Soft skills
 
 ### Extra informatie
 
