@@ -5,9 +5,9 @@
 
 
 
-	<meta name="description" content="Versiebeheer - Brain Baking">
-	<meta content="Versiebeheer - Brain Baking" property="og:title">
-	<meta content="Versiebeheer - Brain Baking" property="og:description">
+	<meta name="description" content="Versie- en issuebeheer - Brain Baking">
+	<meta content="Versie- en issuebeheer - Brain Baking" property="og:title">
+	<meta content="Versie- en issuebeheer - Brain Baking" property="og:description">
 
 
 
@@ -35,9 +35,9 @@
          "@id": "https:\/\/brainbaking.com\/"
     },
     "articleSection" : "teaching",
-    "name" : "Versiebeheer",
+    "name" : "Versie- en issuebeheer",
     
-      "headline" : "Versiebeheer",
+      "headline" : "Versie- en issuebeheer",
     
     "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\nWat is versiebeheer of source control? Source Control is een sleutelbegrip voor ontwikkelteams. Het stelt iedereen in staat om aan dezelfde source file te werken zonder bestanden op- en neer te sturen, voorziet backups, maakt het mogelijk om releases en branches uit te rollen, \x26hellip;\nEen versiebeheer systeem bewaart alle wijzigingen aan (tekst)bestanden. Dat betekent dat eender welke wijziging, door wie dan ook, teruggedraaid kan worden.",
     
@@ -61,11 +61,11 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-12-10 15:38:04 \x2b0100 CET",
-    "dateModified" : "2019-12-10 15:38:04 \x2b0100 CET",
+    "datePublished": "2019-12-13 10:27:49 \x2b0100 CET",
+    "dateModified" : "2019-12-13 10:27:49 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/versiebeheer\/",
-    "wordCount" : "813",
-    "keywords" : [ "Versiebeheer", "teaching" ]
+    "wordCount" : "1417",
+    "keywords" : [ "Versie- en issuebeheer", "teaching" ]
 }
 </script>
 
@@ -82,7 +82,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Versiebeheer</title>
+        <title>Versie- en issuebeheer</title>
         
         <style>
 
@@ -156,7 +156,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Versiebeheer</a>
+                    <a class="navbar-brand visible-xs" href="#">Versie- en issuebeheer</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -207,7 +207,7 @@
     
     <h3>
         
-        <a href="/teaching/ses/versiebeheer/">Versiebeheer</a>
+        <a href="/teaching/ses/versiebeheer/">Versie- en issuebeheer</a>
     </h3>
     
 
@@ -311,19 +311,115 @@ index 654a4f6..11f0597 100644
 
 <h3 id="conflicten-oplossen">Conflicten oplossen</h3>
 
-<p>Zie hoofdstuk 2 van het Pro Git boek.</p>
+<p><strong>Lees eerst</strong> hoofdstuk 2 van het Pro Git boek.</p>
 
 <h3 id="branches">Branches</h3>
 
-<p>Zie hoofdstuk 3 van het Pro Git boek.</p>
+<p><strong>Lees eerst</strong> hoofdstuk 3 van het Pro Git boek.</p>
+
+<p>Een branch aanmaken kan via het <code>git branch</code> commando. Dit geeft een overzicht van beschikbare branches, en met een argument maak je een nieuwe aan. <code>git checkout</code> laat je switchen naar die branch. Het <code>*</code> symbool duidt de actieve branch aan. Hieronder wordt een nieuwe branch genaamd <em>bugfixbranch</em> aangemaakt nadat git toont dat er geen branches zijn. Daarna wordt er naar die branch overgeschakeld:</p>
+
+<pre>
+Wouters-Air:sessylibrary wgroeneveld$ git branch
+* master
+Wouters-Air:sessylibrary wgroeneveld$ git branch bugfixbranch
+Wouters-Air:sessylibrary wgroeneveld$ git branch
+  bugfixbranch
+* master
+Wouters-Air:sessylibrary wgroeneveld$ git checkout bugfixbranch
+Switched to branch 'bugfixbranch'
+Wouters-Air:sessylibrary wgroeneveld$ git branch
+* bugfixbranch
+  master
+</pre>
+
+<p>Een branch lokaal committen kan altijd, maar een <code>push</code> kan de volgende fout geven: <em>fatal: The current branch bugfixbranch has no upstream branch.</em> In dat geval dien je de branch &lsquo;upstream&rsquo; te pushen naar de Github server door middel van <code>git push --set-upstream origin bugfixbranch</code>.</p>
+
+<p>Na een branch commit is de volgende knop zichtbaar op Github:</p>
+
+<p><center>
+    <img src="/img/teaching/ses/github_compare.png"/>
+</center></p>
+
+<p>De <strong>Compare &amp; Pull Request</strong> knop maakt het mogelijk om wijzigingen op de bugfixbranch tot op de master branch te brengen. Dit kan ook via het commando <code>git merge bugfixbranch</code> in de master branch. Een demo toont dit aan. Daarna hebben we de branch niet meer nodig: <code>git branch -d bugfixbranch</code>. Merk op dat dit enkel <em>lokaal</em> de kopie van de branch verwijderd. De remote, op Github.com, verwijderen, vereist meer werk: <code>git push origin --delete bugfixbranch</code>.</p>
+
+<h2 id="bug-tracking-met-github">Bug tracking met Github</h2>
+
+<p>Enkele &lsquo;kleine probleempjes&rsquo; in software worden al snel een hele berg aan grote problemen als er niet op tijd iets aan wordt gedaan. Bedrijven beheren deze problemen (<em>issues</em>) met een bug tracking systeem, waar alle door klant of collega gemeldde fouten van het systeem in worden gelogd en opgevolgd. Op die manier kan een ontwikkelaar op zoek naar werk in deze lijst de hoge prioritaire problemen identificeren, oplossen, en terug koppelen naar de melder.</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph LR;
+    Bug[Bug discovery]
+    Report[Bug report]
+    Backlog[Bug in backlog met issues]
+    Prio[Bug in behandeling]
+    Fix[Bug fixed]
+    Bug --> Report
+    Report --> Backlog
+    Backlog --> Prio
+    Prio --> Fix
+
+</div>
+
+<p>De inhoud van deze stappen hangt af van bedrijf tot bedrijf, maar het skelet blijft hetzelfde. Bugs worden typisch gereproduceerd door middel van <a href="/teaching/ses/tdd">unit testen</a> op een <strong>bepaalde git branch</strong> om de bestaande ontwikkeling van nieuwe features niet in de weg te lopen. Wanneer het probleem is opgelost, wordt deze branch gemerged met de <em>master</em> branch:</p>
+
+<link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+<script defer src="/mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph LR;
+    masterx[Master branch x]
+    mastery[Master branch y]
+    bugbranch[Create bug branch]
+    bugfix[Bugfix on branch]
+    masterx --> mastery
+    masterx --> bugbranch
+    bugbranch --> bugfix
+    bugfix --> mastery
+
+</div>
+
+<p><a href="https://github.com/KULeuven-Diepenbeek/sessylibrary/issues">Github Issues</a> is een minimalistische feature van Github die het mogelijk maakt om zulke bugs op te volgen. Een nieuw issue openen en een beschrijving van het probleem meegeven (samen met stappen om het te reproduceren), maakt een nieuw item aan dat standaard op &lsquo;<em>open</em>&rsquo; staat. Dit kan worden toegewezen aan personen, en daarna worden &lsquo;<em>closed</em>&rsquo;, om aan te geven dat ofwel het probleem is opgelost, ofwel het geen echt probleem was. Issues kunnen worden gecategoriseerd door middel van labels.</p>
 
 <h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
+<h3 id="opgave-1">Opgave 1</h3>
+
+<p>Maak een Github.com account aan, als je dat nog niet hebt. Download de commandline tools <a href="https://gitforwindows.org">Git for Windows</a>, en probeer voor opgave twee de repository &lsquo;ses-issue-sandbox&rsquo; te clonen: <code>git clone https://github.com/KULeuven-Diepenbeek/ses-issue-sandbox.git</code>.</p>
+
+<p>Gebruik het Pro Git boek om kennis te maken met basis commando&rsquo;s van git. Het is de bedoeling om de commandline tools te leren kennen, en <em>niet</em> om met Github Desktop te werken.</p>
+
+<h3 id="opgave-2">Opgave 2</h3>
+
+<p>Kinderen vermaken zichzelf met een dagje aan zee. Het strand verdient extra veel aandacht, maar niet alle kinderen zijn blijkbaar even tevreden met onze implementatie. Kijk naar de <a href="https://github.com/KULeuven-Diepenbeek/ses-issue-sandbox/issues">issue lijst van de repository</a> om te kijken wat de wensen zijn van onze gebruikers.</p>
+
+<p>Kies er eentje uit om op te lossen - het maakt niet uit welke. <strong>Los elke issue op in een aparte branch</strong>! De oplossing bestaat uit twee fases:</p>
+
 <ol>
-<li>Maak een Github.com account aan, als je dat nog niet hebt. Download zowel de UI - <a href="https://desktop.github.com">Github Desktop</a> - als de commandline tools <a href="https://gitforwindows.org">Git for Windows</a>, en probeer de <a href="/teaching/ses/sessy">SESsy library</a> te clonen: <code>git clone https://github.com/KULeuven-Diepenbeek/sessylibrary.git</code></li>
-<li>Maak een nieuwe repository aan onder je eigen account. Commit enkele test <code>.java</code> betsanden. Maak een branch, wijzig een bestand, en push dat naar die branch. Probeer daarna de branch terug te mergen met de main branch (= de master).</li>
-<li>Vraag aan je rechterbuur om <em>collaborator</em> te worden op een nieuwe repository. (Github.com -&gt; settings van repository -&gt; Add collaborators). Dit betekent dat die persoon voldoende rechten krijgt om bestanden te wijzigen. Schrijf samen een <code>README.md</code> bestand met een verhaaltje in. De eerste die commit en pusht krijgt zijn wijziging er door, de volgende moet eerst conflicten oplossen.</li>
+<li>Implementeer de interface <code>Playable</code> door een nieuwe klasse te maken van het object waar het kind mee wenst te spelen aan zee (zie issue).</li>
+<li>Maak een nieuwe instantie aan van dit object in <code>SandboxMain</code>.</li>
 </ol>
+
+<p>Neem een kijkje bij de voorbeeld implementaties <code>SandCastle</code> en <code>BucketOfWater</code>.</p>
+
+<p>Merk op dat je onvoldoende <code>push</code> rechten hebt om lokale wijzigingen aan de repository te uploaden naar de Github server. We geven je nu de status van &lsquo;<em>collaborator</em>&rsquo;, zodat iedereen gemachtigd is om wijzigingen door te voeren.</p>
 
 <h2 id="denkvragen">Denkvragen</h2>
 

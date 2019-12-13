@@ -147,7 +147,7 @@ mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  gr
     </item>
     
     <item>
-      <title>Versiebeheer</title>
+      <title>Versie- en issuebeheer</title>
       <link>https://brainbaking.com/teaching/ses/versiebeheer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
