@@ -156,23 +156,22 @@ graph LR;
 
 ### Opgave 1
 
-Maak een Github.com account aan, als je dat nog niet hebt. Download de commandline tools [Git for Windows](https://gitforwindows.org), en probeer de [SESsy library](/teaching/ses/sessy) te clonen: `git clone https://github.com/KULeuven-Diepenbeek/sessylibrary.git`. 
+Maak een Github.com account aan, als je dat nog niet hebt. Download de commandline tools [Git for Windows](https://gitforwindows.org), en probeer voor opgave twee de repository 'ses-issue-sandbox' te clonen: `git clone https://github.com/KULeuven-Diepenbeek/ses-issue-sandbox.git`. 
 
 Gebruik het Pro Git boek om kennis te maken met basis commando's van git. Het is de bedoeling om de commandline tools te leren kennen, en _niet_ om met Github Desktop te werken. 
 
 ### Opgave 2
 
-Kijk naar de [issue lijst van SESsy library](https://github.com/KULeuven-Diepenbeek/sessylibrary/issues). Kies er eentje uit om op te lossen - het maakt niet uit welke. 
+Kinderen vermaken zichzelf met een dagje aan zee. Het strand verdient extra veel aandacht, maar niet alle kinderen zijn blijkbaar even tevreden met onze implementatie. Kijk naar de [issue lijst van de repository](https://github.com/KULeuven-Diepenbeek/ses-issue-sandbox/issues) om te kijken wat de wensen zijn van onze gebruikers. 
 
-Merk op dat, om een issue op te lossen van een repository waar jij geen eigenaar van bent, eerst een eigen kopie hiervan vereist is. Een repository remote kopiëren noemen we een **fork** maken, en kan met het knopje rechtsboven op de Github pagina. Alles inclusief issues worden mee overgenomen. Nadat dit is aangemaakt, zie je de URL wijzigen:
+Kies er eentje uit om op te lossen - het maakt niet uit welke. **Los elke issue op in een aparte branch**! De oplossing bestaat uit twee fases:
 
-Van github.com/_KULeuven-Diepenbeek_ naar github.com/_uw-gebruikersnaam_.
+1. Implementeer de interface `Playable` door een nieuwe klasse te maken van het object waar het kind mee wenst te spelen aan zee (zie issue).
+2. Maak een nieuwe instantie aan van dit object in `SandboxMain`.
 
-Nu dien je je eigen fork te clonen, in plaats van het origineel. Verwijder de vorige map en clone je kopie. Vanaf nu is het mogelijk om branches te maken en te pushen. `git push` op de _KULeuven-Diepenbeek_ repository geeft authenticatie fouten. 
+Neem een kijkje bij de voorbeeld implementaties `SandCastle` en `BucketOfWater`.
 
-### Opgave 3
-
-Vraag aan je rechterbuur om _collaborator_ te worden op een nieuwe repository. (Github.com -> settings van repository -> Add collaborators). Dit betekent dat die persoon voldoende rechten krijgt om bestanden te wijzigen. Schrijf samen een `README.md` bestand met een verhaaltje in. De eerste die commit en pusht krijgt zijn wijziging er door, de volgende moet eerst conflicten oplossen. 
+Merk op dat je onvoldoende `push` rechten hebt om lokale wijzigingen aan de repository te uploaden naar de Github server. We geven je nu de status van '_collaborator_', zodat iedereen gemachtigd is om wijzigingen door te voeren. 
 
 ## Denkvragen
 
