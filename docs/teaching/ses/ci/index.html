@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="Labo x: Continuous Integration &amp; Deployment - Brain Baking">
+	<meta content="Labo x: Continuous Integration &amp; Deployment - Brain Baking" property="og:title">
+	<meta content="Labo x: Continuous Integration &amp; Deployment - Brain Baking" property="og:description">
+
+
+
+
+<meta property="og:url" content="https://brainbaking.com/teaching/ses/ci/" />
+<meta property="og:type" content="website" />
+
+
+
+
+
+<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="teaching" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/brainbaking.com\/"
+    },
+    "articleSection" : "teaching",
+    "name" : "Labo x: Continuous Integration \x26 Deployment",
+    
+      "headline" : "Labo x: Continuous Integration \x26 Deployment",
+    
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\n1. Continuous Integration (CI) Het softwareontwikkel proces is een continu proces: als een eerste versie van het product klaar is, en wordt overgemaakt aan klanten, volgt het onderhoud en een mogelijke volgende versie. Elke wijziging maakt potentiëel dingen kapot (geminimaliseerd met TDD), of introduceert nieuwe features. Dat betekent dat bij elke wijziging, een computer het hele build proces moet doorlopen om te controleren of er niets stuk is.",
+    
+      "inLanguage" : "nl-BE",
+    
+    
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "0001",
+    "datePublished": "2019-12-16 10:09:18 \x2b0100 CET",
+    "dateModified" : "2019-12-16 10:09:18 \x2b0100 CET",
+    "url" : "https:\/\/brainbaking.com\/teaching\/ses\/ci\/",
+    "wordCount" : "745",
+    "keywords" : [ "Labo x: Continuous Integration \x26 Deployment", "teaching" ]
+}
+</script>
+
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Labo x: Continuous Integration &amp; Deployment</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/llvm.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Labo x: Continuous Integration &amp; Deployment</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/ses/ci/">Labo x: Continuous Integration &amp; Deployment</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/>
+&raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
+
+<h2 id="1-continuous-integration-ci">1. Continuous Integration (CI)</h2>
+
+<p>Het softwareontwikkel proces is een continu proces: als een eerste versie van het product klaar is, en wordt overgemaakt aan klanten, volgt het onderhoud en een mogelijke volgende versie. Elke wijziging maakt potentiëel dingen kapot (geminimaliseerd met <a href="/teaching/ses/tdd">TDD</a>), of introduceert nieuwe features. Dat betekent dat bij <em>elke wijziging</em>, een computer het hele build proces moet doorlopen om te controleren of er niets stuk is. Dit noemen we het &ldquo;<em>integreren</em>&rdquo; van nieuwe code, vandaar de naam.</p>
+
+<h3 id="de-ci-server">De CI Server</h3>
+
+<p>In de praktijk worden aparte servers verantwoordelijk gesteld om regelmatig de hele codebase te downloaden, alles te compileren, en testen uit te voeren. Als iets niet compileert, of een test faalt, rapporteert dit systeem via diverse kanalen aan de ontwikkelaars. Niemand wilt dit in de achtergrond op zijn eigen machine een tweede build systeem geïnstalleerd hebben, die CPU kracht afsnoept van je eigen IDE. De volgende Figuur verduidelijkt de flow:</p>
+
+<p><center>
+    <img src="/img/teaching/ses/devops.jpg" /><br/>
+    <em>Het Continuous Integration build systeem (<a href="https://devopscube.com/continuous-integration-delivery-deployment/" target="_blank">copyright</a>).</em>
+</center></p>
+
+<p>Dit hele proces verloopt volledig automatisch: niemand drukt op een &ldquo;build&rdquo; knop, maar door middel van ingecheckte code wijzigingen (1) start dit systeem. De CI server haalt wijzigingen op (2), build (3) en test (4) om te kunnen rapporteren of dit lukte of niet (5), via verschillende kanalen (6).</p>
+
+<p>De Source Control server, zoals Github.com of een lokale <code>git</code> server, werd reeds besproken in labo &lsquo;<a href="/teaching/ses/versiebeheer">versiebeheer</a>&rsquo;. Er zijn voor Java verschillende populaire CI software systemen:</p>
+
+<ul>
+<li><a href="https://jenkins.io/solutions/java/">Jenkins</a></li>
+<li><a href="www.jetbrains.com/teamcity">TeamCity</a></li>
+<li><a href="https://www.atlassian.com/software/bamboo">Bamboo</a></li>
+<li><a href="https://travis-ci.org">Travis</a></li>
+</ul>
+
+<p>In deze systemen zijn configureerbaar en beschikken over een UI, zoals bijvoorbeeld zichtbaar in de <a href="https://www.jetbrains.com/teamcity/documentation/">TeamCity screencast</a>. Betalende systemen zoals TeamCity en Bamboo zijn erg uitgebreid, maar wij gaan werken met Travis. Travis CI is eenvoudig configureerbaar door middel van een <code>.yml</code> bestand en integreert naadloos (en gratis) met Github.</p>
+
+<h3 id="de-flow-van-een-ci-server">De flow van een CI server</h3>
+
+<p>De <a href="/teaching/ses/sessy">SESsy library</a> git repository bevat een <a href="https://github.com/KULeuven-Diepenbeek/sessylibrary/blob/master/.travis.yml">.travis.yml</a> bestand dat de Travis server instrueert wat te doen op welk moment:</p>
+
+<pre>
+language: java
+
+jdk:
+  - openjdk11
+
+env:
+  - NODE_VERSION="12.10.0"
+
+notifications:
+  email: false
+
+before_install:
+  - nvm install $NODE_VERSION
+  - nvm use $NODE_VERSION
+  - pushd frontend
+  - npm install
+  - mkdir dist
+  - popd
+
+install:
+  - ./gradlew check
+  - ./gradlew frontendSync --stacktrace
+  - ./gradlew shadowJar
+</pre>
+
+<h4 id="1-checkout-code">1. Checkout Code</h4>
+
+<p><code>git clone [repository]</code> (met de juiste branch). Klaar.</p>
+
+<h4 id="2-setup-environment">2. Setup Environment</h4>
+
+<p>Elke build op Travis begint met een <em>clean</em> besturingssysteem (standaard Linux) en gegeven basistools. Dat betekent dat als bepaalde versies van <code>node</code> of Java nodig zijn, deze eerst moeten worden geïnstalleerd. Travis voorziet openJDK versies - de Oracle versies moeten zelf worden afgehaald. Voor SESsy library is ook <code>node</code> vereist die de frontend kan builden.</p>
+
+<p>In <code>before_install</code> plaats je uit te voeren instructies die voor de <code>install</code> stap worden uitgevoerd.</p>
+
+<h4 id="3-build-code">3. Build Code</h4>
+
+<p>Gebruik <a href="/teaching/ses/gradle">Gradle</a> Tasks:</p>
+
+<ol>
+<li><code>check</code> - installeert de juiste Gradle versie, compileert en test.</li>
+<li><code>frontendSync</code> - build met <code>node</code> de frontend en kopiëert naar <code>src/main/resources</code>.</li>
+</ol>
+
+<h4 id="4-test-code">4. Test Code</h4>
+
+<p>Deel van <code>./gradlew check</code>.</p>
+
+<h4 id="5-package-code-upload-artifact">5. Package Code &amp; Upload Artifact</h4>
+
+<p><code>./gradlew shadowJar</code> - package alles, inclusief dependencies, in één grote jarfile.</p>
+
+<p>Zodra één stap mis gaat (zoals een falende test), worden volgende stappen niet uitgevoerd. Als alles goed gaat is de output van het builden de binary die we <em>het artifact</em> noemen, die de huidige buildstamp draagt (meestal een datumcode).</p>
+
+<p>Alle gebuilde artifacts kunnen daarna worden geupload naar een repository server, zoals de Central Maven Repository, of onze eigen artifact server, waar een historiek wordt bijgehouden.</p>
+
+<h4 id="6-publish-results">6. Publish Results</h4>
+
+<p>Op hat dashboard van <a href="https://travis-ci.org">https://travis-ci.org</a> kan je de gepubliceerde resultaten (live) raadplegen:</p>
+
+<p><center>
+    <img src="/img/teaching/ses/travis.png" />
+</center></p>
+
+<h2 id="2-continuous-deployment-cd">2. Continuous Deployment (CD)</h2>
+
+<p>Automatisch code compileren, testen, en packagen, is slechts één stap in het continuous development proces. De volgende stap is deze package ook automatisch <em>deployen</em>, of <em>installeren</em>. Op deze manier staat er altijd de laatste versie op een interne development website, kunnen installaties automatisch worden uitgevoerd op bepaalde tijdstippen, &hellip;</p>
+
+<p>Populaire CD systemen:</p>
+
+<ul>
+<li><a href="https://octopus.com">Octopus Deploy</a></li>
+<li><a href="https://codeship.com">Codeship</a></li>
+<li>Eigen scripts gebaseerd op CI systemen</li>
+<li>Cloud deployment systemen (Amazon AWS, Heroku, Google Apps, &hellip;)</li>
+</ul>
+
+<p>De <code>shadowJar</code> task genereert één <code>jar</code> bestand die uitvoerbaar is (<code>java -jar [filename].jar</code>), en onze DropWizard server lokaal opstart op poort <code>8000</code>. Eender welke server kan dit programma dus op eenvoudige wijze uitvoeren.</p>
+
+<h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
+
+<p>Via <a href="/teaching/ses/github-classroom"><i class='fa fa-github'></i> Github Classroom</a>.</p>
+
+<h3 id="opgave-1">Opgave 1</h3>
+
+<h3 id="opgave-2">Opgave 2</h3>
+
+<h2 id="denkvragen">Denkvragen</h2>
+
+<ul>
+<li>Waarom is het belangrijk om gebuilde artifacts van de CI server bij te houden?</li>
+<li>Wat zijn de voordelen van het werken met een CI en CD systeem, ten opzichte van alles met de hand (of met eigen gemaakte scripts) in te stellen?</li>
+</ul>
+
+<h2 id="extra-leermateriaal">Extra Leermateriaal</h2>
+
+<ul>
+<li><a href="https://martinfowler.com/articles/continuousIntegration.html">Martin Fowler on Continuous Integration</a></li>
+</ul>
+</div>
+
+    
+    
+
+    
+
+    <h4 class="page-header">&nbsp;</h4>
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

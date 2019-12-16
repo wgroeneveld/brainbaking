@@ -45,6 +45,16 @@ Wat is dat, een build tool? Gradle is een build tool die de automatisatie van re
     </item>
     
     <item>
+      <title>Labo x: Continuous Integration &amp; Deployment</title>
+      <link>https://brainbaking.com/teaching/ses/ci/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/ci/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+1. Continuous Integration (CI) Het softwareontwikkel proces is een continu proces: als een eerste versie van het product klaar is, en wordt overgemaakt aan klanten, volgt het onderhoud en een mogelijke volgende versie. Elke wijziging maakt potentiëel dingen kapot (geminimaliseerd met TDD), of introduceert nieuwe features. Dat betekent dat bij elke wijziging, een computer het hele build proces moet doorlopen om te controleren of er niets stuk is.</description>
+    </item>
+    
+    <item>
       <title>Labo x: Design Patterns: (template)</title>
       <link>https://brainbaking.com/teaching/ses/designpattern_template/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -109,6 +119,17 @@ Voorbeeld 1. Opzet Stel, je wilt aan de kassa van een niet al te grote lokale ci
       <guid>https://brainbaking.com/teaching/ses/singleton/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
 &amp;ldquo;Singleton&amp;rdquo; - Design Pattern Doelstelling  Vermijd de mogelijkheid tot meervoudige instantiatie van een bepaalde klasse. Er kan altijd maar één bepaalde instantie van bestaan. Voorzie een eenvoudige manier om vanuit eender waar in de code toegang te verkrijgen tot die éne instantie. Encapsuleer logica om deze instantie aan te maken, moest code dit raadplegen en dit toevallig de eerste keer zijn (lazy initialization).</description>
+    </item>
+    
+    <item>
+      <title>Labo x: Software Management Skills</title>
+      <link>https://brainbaking.com/teaching/ses/management/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/management/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+De chaos van het Werk De technische kant van het ontwikkelproces is slechts één kant van de medaille. De keerzijde bestaat uit het werk beheren en beheersen, zonder ten prooi te vallen aan de grillen van de klant of de chaos van de organisatie ervan.
+Stel, een gemeente vraagt om een nieuwe website te ontwikkelen voor de lokale bibliotheek. Er wordt een vergadering ingepland met stafhouders om samen met jou te beslissen wat de vereisten zijn.</description>
     </item>
     
     <item>
