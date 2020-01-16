@@ -20,7 +20,7 @@ This is the English index page, roughly based on the [Dutch index](/teaching/cpp
 {{< vimeo 314203871 >}}
 <br/>
 
-Utilizing the custom-built [gba-sprite-engine](https://github.com/wgroeneveld/gba-sprite-engine/) library residing at <i class='fa fa-github'></i>  Github. See the README there for more information. The engine tiself uses the [Tonc](https://www.coranac.com/tonc/text/toc.htm) C calls behind the scenes. 
+Utilizing the custom-built [gba-sprite-engine](https://github.com/wgroeneveld/gba-sprite-engine/) library residing at <i class='fa fa-github'></i>  Github. See the README there for more information. The engine itself uses the [Tonc](https://www.coranac.com/tonc/text/toc.htm) C calls behind the scenes. 
 
 #### Survey results
 
@@ -44,7 +44,7 @@ Five-point Likert scale. 1: not at all. 5: extremely.
 
 > [3] Did the fact that you are developing on the GBA influence your motivation?
 
-Blue: yes, positive; more motivated than classical assignment. Orange: it did not matter for me. Red: negative; less motivated thatn classical assignment. 
+Blue: yes, positive; more motivated than classical assignment. Orange: it did not matter for me. Red: negative; less motivated than classical assignment. 
 
 <center>
     <img src="/img/teaching/cpp/gbasurvey_3.png""/>
@@ -63,7 +63,7 @@ Blue: yes, positive; more motivated than classical assignment. Orange: it did no
 1. [Introduction in C](/teaching/cpp/labo-1)
 2. [Pointers in C and C++](/teaching/cpp/labo-2)
 3. [GBA Programming in C: an introduction](/teaching/cpp/labo-3)
-4. [GBA Programming in C: tilesets, a simple game](/teaching/cpp/labo-4)
+4. [GBA Programming in C: tile-sets, a simple game](/teaching/cpp/labo-4)
 5. [Introduction in C++](/teaching/cpp/labo-5)
 6. [C++ Class Inheritance, operators and templates](/teaching/cpp/labo-6)
 7. [Software design: thinking and testing before coding](/teaching/cpp/labo-7)
