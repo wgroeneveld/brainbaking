@@ -50,16 +50,13 @@ Omdat als vereiste elk project op Github leeft kunnen jullie elkaar's repository
 
 Punten worden op twee keer op `/20` gegeven. Eenmalig een globaal cijfer, eenmalig een genormaliseerd cijfer, rekening houdend met de volgende subcriteria en gewichten:
 
-1. `O.5` Design<br/>
+1. `O.4` Design<br/>
 Hoe is je Object-Oriented design en domein model?<br/>
 <span style="color: lightgrey; font-style: italic;">Hoge score: duidelijk herkenbare objecten, terug te vinden in domein model, met gescheiden verantwoordelijkheden.<br/>Lage score: Alles in enkele objecten gestopt, onduidelijk wie wat doet, nauwelijks of geen model. </span>
 2. `O.5` Clean Code<br/>
 Hoe leesbaar is je code?<br/>
 <span style="color: lightgrey; font-style: italic;">Hoge score: eenvoudig begrijpbare variabelen, methodes, klassen. <br/>Lage score: Te veel herlezen is nodig om te begrijpen wat er gebeurt.</span>
-3. `0.1` C++ Conventies <br/>
-Is je code opgebouwd volgens de aangeleerde C++11 standaarden?<br/>
-<span style="color: lightgrey; font-style: italic;">Hoge score: correct gebruik van header/source files, smart pointers, STL, templates, naamgeving conventies hoofdletters. <br/>Lage score: Weinig of geen aangeleerde standaarden van C++11 gebruikt.</span>
-4. `0.3` Complexiteit <br/>
+4. `0.4` Complexiteit <br/>
 Hoe moeilijk heb je het gemaakt?<br/>
 <span style="color: lightgrey; font-style: italic;">Hoge score: gekozen voor een uitdaging in de plaats van een eenvoudige implementatie. <br/>Lage score: Het pad met de kleinste weerstand bewandeld, de lat te laag gelegd.</span>
 5. `0.3` Originaliteit <br/>

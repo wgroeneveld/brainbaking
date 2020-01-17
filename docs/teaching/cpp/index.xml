@@ -228,7 +228,7 @@ Snippet 1 class Student; class Teacher { private: std::vector&amp;lt;Student*&am
       <description>Last changes for academic year 2019 - 2020.
 Course notes This is the English index page, roughly based on the Dutch index, where students can find more information regarding the course itself. All links below contain content in Dutch.
 Project results 2018 - 2019    
-Utilizing the custom-built gba-sprite-engine library residing at  Github. See the README there for more information. The engine tiself uses the Tonc C calls behind the scenes.</description>
+Utilizing the custom-built gba-sprite-engine library residing at  Github. See the README there for more information. The engine itself uses the Tonc C calls behind the scenes.</description>
     </item>
     
     <item>
