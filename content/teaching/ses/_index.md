@@ -13,9 +13,6 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 ## _Cursus notities_
 
-### Hoorcolleges
-
-
 ### Labo noties
 
 #### Design Patterns
@@ -51,9 +48,11 @@ Onderwijsassistent: Wouter Groeneveld - <a href="mailto:wouter.groeneveld@kuleuv
 
 #### Cursusbeschrijving
 
+In dit opleidingsonderdeel leer je de nodige skills om een softwareproject op de wereld te brengen volgens de regels van de kunst en met het aandacht voor de courante industriële praktijk. Op microniveau kom je meer te weten over de eigenschappen van algoritmes en datastructuren zodat je zelf de juiste keuze kan maken wanneer je een algoritme moet implementeren. Op macroniveau zorgen design patterns er voor dat je software beter onderhoudbaar wordt en een structuur heeft die herkenbaar is voor experten. Daarnaast gaan we in op de Software Development Life Cycle en het management van zo'n softwareproject met aandacht voor de juiste tools. 
 
 #### Vereiste voorkennis
 
+Het vak '_Software Ontwerp in Java_' (INF1) dient eerst gevolgd te worden. We gaan uit van een basiskennis Java en object-georienteerd programmeren. Werken met commandline en enige kennis van git is een pluspunt.
 
 #### Doelstellingen
 
@@ -63,9 +62,50 @@ De context en het overzicht worden aangereikt in het hoorcollege.
 
 #### Beoordeling en evaluatie
 
+1. Schriftelijke evaluatie tijdens onderwijsperiode: 50%.
+2. Schriftelijk examen: 50%
+
+Een uitgebreide beschrijving is beschikbaar in de gids van het [Opleidingsonderdeel](https://uhintra03.uhasselt.be/studiegidswww/opleidingsonderdeel.aspx?a=2019&i=4083&n=4&t=01#anker31362). Zie de **kalender** hieronder voor een kort overzicht rond de evaluatie tijdens de onderwijsperiode.
+
 #### Meer leermiddelen
 
+Zie elke sectie '**meer leermateriaal**' in de labo noties voor materiaal per thema.
 
 #### Kalender
 
 Zie [collegeroosters UHasselt](http://collegeroosters.uhasselt.be).
+
+<style>
+table {
+    width: 100%;
+}
+th {
+    border-bottom: 1px solid black;
+}
+td:first-child {
+    border-right: 1px dotted grey;
+}
+</style>
+
+| \# | Onderwerp | Datum | Evaluatie |
+|---|--------|-------|----------|
+| 1 | _HC Introductie_ |  18.02.2020 | / |
+| 2 | Versie- en issuebeheer | 20.02.2020 | / |
+| 3 | Dependency Management | 25.02.2020 | / |
+| 4 | Test-Driven Development: Unit lvl. | 27.02.2020 | / |
+| 5 | Test-Driven Development: E2E lvl. | 03.03.2020 | Github Classroom ex. |
+| 6 | _HC Algoritmes en datastructuren_ |  05.03.2020 | Indienen oefeningen |
+| 7 | _HC Algoritmes en datastructuren_ |  10.03.2020 | Indienen oefeningen |
+| 8 | _HC Algoritmes en datastructuren_ |  12.03.2020 | Indienen oefeningen |
+| 9 | _HC Algoritmes en datastructuren_ |  17.03.2020 | Indienen oefeningen |
+| 10 | TDD met algoritmes (uit VPW '20) | 19.03.2020 | Github Classroom ex. |
+| 11 | Design Patterns: Intro, Facade | 24.03.2020 | Github Classroom ex. |
+| 12 | Design Patterns: DI, Singleton | 26.03.2020 | Github Classroom ex. |
+| 13 | Design Patterns: Decorator, Factory | 31.03.2020 | Github Classroom ex. |
+| 14 | Continuous Integration & Deployment | 02.04.2020 | Github Classroom ex. |
+| 15 | Software Management: the Challenge | 21.04.2020 | Observatie tijdens oefening |
+| 16 | Software Managenent: Scrum | 23.04.2020 | Observatie tijdens oefening |
+| 17 | SESsy Library oefeningen | 28.04.2020 | Github (forked) TODO impl. |
+| 18 | SESsy Library oefeningen | 30.04.2020 | Github (forked) TODO impl. |
+| 19 | ? | 05.05.2020 | / |
+| 20 | ? | 07.05.2020 | / |
