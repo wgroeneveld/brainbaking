@@ -31,9 +31,11 @@ Met IntelliJ: open het project (selecteer de root folder), en klik op 'build'. A
 
 #### Het project (de server) opstarten
 
-**Command-line:** Na het builden van de jar, uitvoeren (in de root folder) met `java -jar build\libs\sessylibrary-1.0-SNAPSHOT-all.jar server app.yml`.
+Er zijn verschillende manieren om de gebuilde `jar` file aan het draaien te brengen:
 
-Met IntelliJ: Menu Run -> Run... Kies voor klasse `be.kuleuven.sessylibrary.SessyLibApplication` en geef als program arguments (NIET VM options) "server app.yml" in. Klik op Apply/Run.
+1. **Command-line Java:** Na het builden van de jar, uitvoeren (in de root folder) met `java -jar build\libs\sessylibrary-1.0-SNAPSHOT-all.jar server app.yml`.
+2. **Command-line Gradle:** (eenvoudiger) `./gradlew serve`. Voert bovenstaande commando uit, reeds door ons zo geconfigureerd. 
+3. **IntelliJ:** Menu Run -> Run... Kies voor klasse `be.kuleuven.sessylibrary.SessyLibApplication` en geef als program arguments (_NIET_ met VM options) "server app.yml" in. Klik op Apply/Run.
 
 De applicatie staat nu live op [http://localhost:8080](http://localhost:8080)!
 

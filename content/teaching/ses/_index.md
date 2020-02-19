@@ -15,23 +15,31 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 ### Labo noties
 
+#### Software Development: Pre-Requirements
+
+3. [Versie- en issuebeheer](/teaching/ses/versiebeheer)
+1. [Dependency Management](/teaching/ses/dependency-management)
+2. [Test-Driven Development](/teaching/ses/tdd): Unit-, Integration- (1) en E2E (2) niveau
+
+#### Algoritmen & Data Structuren
+
+1. Hoorcolleges: zie Toledo Cursusmateriaal
+2. [Test-Driven Development met algoritmes](/teaching/ses/tdd-capita): Capita Selecta
+
 #### Design Patterns
 
 [Een introductie tot Design Patterns.](/teaching/ses/patterns)
 
-1. [Facade](/teaching/ses/facade) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-facade-template))
+1. [Facade](/teaching/ses/facade) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-facade-template)) (1)
 2. [Dependency Injection](/teaching/ses/di) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-di-template))
-3. [Singleton](/teaching/ses/singleton) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-singleton-template))
+3. [Singleton](/teaching/ses/singleton) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-singleton-template)) (2)
 4. [Decorator](/teaching/ses/decorator) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-decorator-template))
-5. [Factory](/teaching/ses/factory) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-factory-template))
+5. [Factory](/teaching/ses/factory) ([<i class='fa fa-github'></i> voorbeeld](https://github.com/KULeuven-Diepenbeek/ses-patterns-factory-template)) (3)
 
-#### Software Development Life Cycle
+#### Software Development: Life Cycle
 
-1. [Dependency Management](/teaching/ses/dependency-management)
-2. [Test-Driven Development](/teaching/ses/tdd)
-3. [Versie- en issuebeheer](/teaching/ses/versiebeheer)
 4. [Continuous Integration &amp; Deployment](/teaching/ses/ci)
-5. [Software Management Skills](/teaching/ses/management)
+5. [Software Management](/teaching/ses/management): Skills (1), Scrum (2)
 
 ### Extra informatie
 

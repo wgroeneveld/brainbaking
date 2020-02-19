@@ -290,7 +290,15 @@ public class Service {
 
 In de test wordt een instantie van `RepositoryForTesting` in service gebruikt in plaats van de effectieve `RepositoryDBImpl`. De test klasse _gedraagt_ zich als een `Repository`, omdat deze de betreffende interface implementeert. De `Service` klasse weet niet welke implementatie van de interface binnen komt: daar kan bij het integration testing handig gebruk van worden gemaakt.
 
-Een werkend voorbeeld hiervan is terug te vinden in de [SESsy library applicatie](/teaching/ses/sessy).
+Een werkend voorbeeld hiervan is terug te vinden in de [SESsy library applicatie](/teaching/ses/sessy). (Demo volgt)
+
+De demo applicatie maakt gebruik van **WebDriver**, een interface die **Selenium** aanstuurt die browsers automatiseert. Op die manier kan men eenvoudig commando's doorsturen zoals surf naar daar, klik hier op, wacht x seconden, verifieer dat hier dat staat, ... Dit is één test scenario in totaal. 
+
+<center>
+    <img src="/img/teaching/ses/selenium.png" class="bordered" />
+</center>
+
+In plaats van dit in (Java) code te schrijven, is het echter ook mogelijk om de [Selenium IDE](https://selenium.dev/selenium-ide/) extentie voor Google Chrome of Mozilla Firefox te gebruiken. Deze browser extentie laat recorden in de browser zelf toe, en vergemakkelijkt het gebruik (er is geen nood meer aan het vanbuiten kennen van zulke commando's). Dit wordt in de praktijk vaak gebruikt door software analisten of testers die niet de technische kennis hebben om te programmeren, maar toch deel zijn van het ontwikkelteam. 
 
 #### 3. End-To-End Testing (ROOD)
 
@@ -368,7 +376,58 @@ De code blijkt reeds **unit testen** te hebben, dus schrijf éérst een falende 
 
 Werk een volledige implementatie van `Periode.overlaptMet()` uit, zoals hierboven uitgelegd. 
 
+### Opgave 4
+
+Dit is een vervolgopgave van de code van **Opgave 1**. Werk verder op dat bestaand project.
+
+Een verkoopster werkt in een (goede) speculaasfabriek. De verkoopster wilt graag 2 EUR aanrekenen per speculaas die de fabriek produceert. 
+Echter, als de klant meer dan 5 stuks verkoopt, mag er een korting van 10% worden aangerekend. 
+
+```java
+    public double verkoop() {
+        var gebakken = speculaasFabriek.bak();
+        // TODO ...
+    }
+```
+
+Je ziet aan bovenstaande code dat de speculaasfabriek instantie wordt gebruikt. We hebben dus eigenlijk **geen controle** op de hoeveelheid speculaas die deze fabriek produceert.
+
+### Unit testen
+
+Hoe kunnen we dan toch nog testen wat we willen testen? Mogelijke scenario's:
+
+1. De fabriek produceert niets. De klant betaalt niets.
+2. De fabriek produceert minder dan 5 speculaasjes. De klant betaalt per stuk, 2 EUR.
+3. De fabriek produceert meer dan 5 stuks. De klant krijgt 10% korting op zijn totaal.
+
+### Hoe controleer ik het gedrag van de fabriek?
+
+Mockito is verreweg het meest populaire Unit Test Framework dat bovenop JUnit wordt gebruikt om heel snel Test Doubles en integratietesten op te bouwen. 
+
+<center>
+    ![Mockito logo](/img/teaching/ses/mockito.png)
+</center>
+
+Gebruik dus hiervoor Mockito, en injecteer een `mock(SpeculaasFabriek.class)` in de verkoopster (de setter is reeds voorzien). 
+
+Lees op [https://site.mockito.org](https://site.mockito.org) **hoe** je het framework moet gebruiken. (Volledige [javadoc](https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html)) Denk aan de volgende zaken:
+
+- Hoe include ik Mockito als een dependency in mijn project?
+- Hoe gebruik ik de API om een Test Double/mock aan te maken?
+- Hoe valideer ik verwachtingen die ik heb van deze Test Double?
+
+### Opgave 5
+
+Gebruik Selenium IDE om een test scenario op te nemen van de SESsy applicatie. Start deze eerst lokaal, en vertrek vanuit het localhost base address [http://localhost:8080/#/](http://localhost:8080/#/). Hanteer de volgende scenario's:
+
+1. Als anoniempje, zoek op 'art', klik op detail, klik op uitlenen. Verifieer dat er een waarschuwingsboodschap verschijnt dat je niet kan uitlenen.
+2. Als slechte uitlener, zoek op 'art', klik op detail, klik op uitlenen. Verifieer dat er een boodschap verschijnt dat het gelukt is, en dat de knop veranderde naar 'Terugbrengen?'. Klik op terugbrengen. Verifieer dat er een boodschap verschijnt dat het gelukt is. 
+3. Als anoniempje, log in (een van beide rollen). Verifieer dat login naar logout verandert. Logout. Verifieer dat logout naar login verandert. 
+
 ## Denkvragen
+
+- Wat doe je met opgenomen test materiaal in Selenium IDE? Hoe integreeg je dit in een build systeen? Met andere woorden, hoe zorg je er voor dat deze testen automatisch draaien, telkens er iets in de code wordt gewijzigd?
+- Hoe vertaal je de Selenium IDE commando's naar WebDriver Java commando's?
 
 ## Extra leermateriaal
 
