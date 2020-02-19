@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-12-07 10:03:48 \x2b0100 CET",
-    "dateModified" : "2019-12-07 10:03:48 \x2b0100 CET",
+    "datePublished": "2020-02-19 15:18:47 \x2b0100 CET",
+    "dateModified" : "2020-02-19 15:18:47 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/tdd\/",
-    "wordCount" : "2571",
+    "wordCount" : "3108",
     "keywords" : [ "Test Driven Development", "teaching" ]
 }
 </script>
@@ -524,7 +524,15 @@ public class Service {
 
 <p>In de test wordt een instantie van <code>RepositoryForTesting</code> in service gebruikt in plaats van de effectieve <code>RepositoryDBImpl</code>. De test klasse <em>gedraagt</em> zich als een <code>Repository</code>, omdat deze de betreffende interface implementeert. De <code>Service</code> klasse weet niet welke implementatie van de interface binnen komt: daar kan bij het integration testing handig gebruk van worden gemaakt.</p>
 
-<p>Een werkend voorbeeld hiervan is terug te vinden in de <a href="/teaching/ses/sessy">SESsy library applicatie</a>.</p>
+<p>Een werkend voorbeeld hiervan is terug te vinden in de <a href="/teaching/ses/sessy">SESsy library applicatie</a>. (Demo volgt)</p>
+
+<p>De demo applicatie maakt gebruik van <strong>WebDriver</strong>, een interface die <strong>Selenium</strong> aanstuurt die browsers automatiseert. Op die manier kan men eenvoudig commando&rsquo;s doorsturen zoals surf naar daar, klik hier op, wacht x seconden, verifieer dat hier dat staat, &hellip; Dit is één test scenario in totaal.</p>
+
+<p><center>
+    <img src="/img/teaching/ses/selenium.png" class="bordered" />
+</center></p>
+
+<p>In plaats van dit in (Java) code te schrijven, is het echter ook mogelijk om de <a href="https://selenium.dev/selenium-ide/">Selenium IDE</a> extentie voor Google Chrome of Mozilla Firefox te gebruiken. Deze browser extentie laat recorden in de browser zelf toe, en vergemakkelijkt het gebruik (er is geen nood meer aan het vanbuiten kennen van zulke commando&rsquo;s). Dit wordt in de praktijk vaak gebruikt door software analisten of testers die niet de technische kennis hebben om te programmeren, maar toch deel zijn van het ontwikkelteam.</p>
 
 <h4 id="3-end-to-end-testing-rood">3. End-To-End Testing (ROOD)</h4>
 
@@ -602,7 +610,65 @@ maar hij heeft geen tijd om dit op te lossen. Nu is het aan jou.</p>
 
 <p>Werk een volledige implementatie van <code>Periode.overlaptMet()</code> uit, zoals hierboven uitgelegd.</p>
 
+<h3 id="opgave-4">Opgave 4</h3>
+
+<p>Dit is een vervolgopgave van de code van <strong>Opgave 1</strong>. Werk verder op dat bestaand project.</p>
+
+<p>Een verkoopster werkt in een (goede) speculaasfabriek. De verkoopster wilt graag 2 EUR aanrekenen per speculaas die de fabriek produceert.
+Echter, als de klant meer dan 5 stuks verkoopt, mag er een korting van 10% worden aangerekend.</p>
+
+<pre><code class="language-java">    public double verkoop() {
+        var gebakken = speculaasFabriek.bak();
+        // TODO ...
+    }
+</code></pre>
+
+<p>Je ziet aan bovenstaande code dat de speculaasfabriek instantie wordt gebruikt. We hebben dus eigenlijk <strong>geen controle</strong> op de hoeveelheid speculaas die deze fabriek produceert.</p>
+
+<h3 id="unit-testen">Unit testen</h3>
+
+<p>Hoe kunnen we dan toch nog testen wat we willen testen? Mogelijke scenario&rsquo;s:</p>
+
+<ol>
+<li>De fabriek produceert niets. De klant betaalt niets.</li>
+<li>De fabriek produceert minder dan 5 speculaasjes. De klant betaalt per stuk, 2 EUR.</li>
+<li>De fabriek produceert meer dan 5 stuks. De klant krijgt 10% korting op zijn totaal.</li>
+</ol>
+
+<h3 id="hoe-controleer-ik-het-gedrag-van-de-fabriek">Hoe controleer ik het gedrag van de fabriek?</h3>
+
+<p>Mockito is verreweg het meest populaire Unit Test Framework dat bovenop JUnit wordt gebruikt om heel snel Test Doubles en integratietesten op te bouwen.</p>
+
+<p><center>
+    <img src="/img/teaching/ses/mockito.png" alt="Mockito logo" />
+</center></p>
+
+<p>Gebruik dus hiervoor Mockito, en injecteer een <code>mock(SpeculaasFabriek.class)</code> in de verkoopster (de setter is reeds voorzien).</p>
+
+<p>Lees op <a href="https://site.mockito.org">https://site.mockito.org</a> <strong>hoe</strong> je het framework moet gebruiken. (Volledige <a href="https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html">javadoc</a>) Denk aan de volgende zaken:</p>
+
+<ul>
+<li>Hoe include ik Mockito als een dependency in mijn project?</li>
+<li>Hoe gebruik ik de API om een Test Double/mock aan te maken?</li>
+<li>Hoe valideer ik verwachtingen die ik heb van deze Test Double?</li>
+</ul>
+
+<h3 id="opgave-5">Opgave 5</h3>
+
+<p>Gebruik Selenium IDE om een test scenario op te nemen van de SESsy applicatie. Start deze eerst lokaal, en vertrek vanuit het localhost base address <a href="http://localhost:8080/#/">http://localhost:8080/#/</a>. Hanteer de volgende scenario&rsquo;s:</p>
+
+<ol>
+<li>Als anoniempje, zoek op &lsquo;art&rsquo;, klik op detail, klik op uitlenen. Verifieer dat er een waarschuwingsboodschap verschijnt dat je niet kan uitlenen.</li>
+<li>Als slechte uitlener, zoek op &lsquo;art&rsquo;, klik op detail, klik op uitlenen. Verifieer dat er een boodschap verschijnt dat het gelukt is, en dat de knop veranderde naar &lsquo;Terugbrengen?&rsquo;. Klik op terugbrengen. Verifieer dat er een boodschap verschijnt dat het gelukt is.</li>
+<li>Als anoniempje, log in (een van beide rollen). Verifieer dat login naar logout verandert. Logout. Verifieer dat logout naar login verandert.</li>
+</ol>
+
 <h2 id="denkvragen">Denkvragen</h2>
+
+<ul>
+<li>Wat doe je met opgenomen test materiaal in Selenium IDE? Hoe integreeg je dit in een build systeen? Met andere woorden, hoe zorg je er voor dat deze testen automatisch draaien, telkens er iets in de code wordt gewijzigd?</li>
+<li>Hoe vertaal je de Selenium IDE commando&rsquo;s naar WebDriver Java commando&rsquo;s?</li>
+</ul>
 
 <h2 id="extra-leermateriaal">Extra leermateriaal</h2>
 

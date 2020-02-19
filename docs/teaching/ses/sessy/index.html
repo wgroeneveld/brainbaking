@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-12-07 10:03:48 \x2b0100 CET",
-    "dateModified" : "2019-12-07 10:03:48 \x2b0100 CET",
+    "datePublished": "2020-02-19 15:18:47 \x2b0100 CET",
+    "dateModified" : "2020-02-19 15:18:47 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/sessy\/",
-    "wordCount" : "370",
+    "wordCount" : "399",
     "keywords" : [ "SESsy Library WebApp", "teaching" ]
 }
 </script>
@@ -256,9 +256,13 @@ Het resultaat is <code>sessylibrary-1.0-SNAPSHOT-all.jar</code> in de <code>buil
 
 <h4 id="het-project-de-server-opstarten">Het project (de server) opstarten</h4>
 
-<p><strong>Command-line:</strong> Na het builden van de jar, uitvoeren (in de root folder) met <code>java -jar build\libs\sessylibrary-1.0-SNAPSHOT-all.jar server app.yml</code>.</p>
+<p>Er zijn verschillende manieren om de gebuilde <code>jar</code> file aan het draaien te brengen:</p>
 
-<p>Met IntelliJ: Menu Run -&gt; Run&hellip; Kies voor klasse <code>be.kuleuven.sessylibrary.SessyLibApplication</code> en geef als program arguments (NIET VM options) &ldquo;server app.yml&rdquo; in. Klik op Apply/Run.</p>
+<ol>
+<li><strong>Command-line Java:</strong> Na het builden van de jar, uitvoeren (in de root folder) met <code>java -jar build\libs\sessylibrary-1.0-SNAPSHOT-all.jar server app.yml</code>.</li>
+<li><strong>Command-line Gradle:</strong> (eenvoudiger) <code>./gradlew serve</code>. Voert bovenstaande commando uit, reeds door ons zo geconfigureerd.</li>
+<li><strong>IntelliJ:</strong> Menu Run -&gt; Run&hellip; Kies voor klasse <code>be.kuleuven.sessylibrary.SessyLibApplication</code> en geef als program arguments (<em>NIET</em> met VM options) &ldquo;server app.yml&rdquo; in. Klik op Apply/Run.</li>
+</ol>
 
 <p>De applicatie staat nu live op <a href="http://localhost:8080">http://localhost:8080</a>!</p>
 
