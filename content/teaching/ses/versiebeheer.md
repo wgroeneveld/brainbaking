@@ -156,7 +156,7 @@ graph LR;
 
 ### Opgave 1
 
-Maak een Github.com account aan, als je dat nog niet hebt. Download de commandline tools [Git for Windows](https://gitforwindows.org), en probeer voor opgave twee de repository 'ses-issue-sandbox' te clonen: `git clone https://github.com/KULeuven-Diepenbeek/ses-issue-sandbox.git`. 
+Maak een Github.com account aan, als je dat nog niet hebt. Download de commandline tools [https://git-scm.com/downloads](https://git-scm.com/downloads), de officiele distributie, multiplatform, en probeer voor opgave twee de repository 'ses-issue-sandbox' te clonen: `git clone https://github.com/KULeuven-Diepenbeek/ses-issue-sandbox.git`. 
 
 Gebruik het Pro Git boek om kennis te maken met basis commando's van git. Het is de bedoeling om de commandline tools te leren kennen, en _niet_ om met Github Desktop te werken. 
 
