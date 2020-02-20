@@ -9,5 +9,4 @@ disableList: true
 
 ## Een algoritme ontwerpen gebaseerd op Test Scenarios
 
-
-
+TODO

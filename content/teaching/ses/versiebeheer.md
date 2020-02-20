@@ -35,7 +35,15 @@ Het wordt al snel duidelijk dat het delen van celdata beter wordt overgelaten aa
 
 Git is een _gedecentraliseerd_ versiebeheer systeem waarbij de hele repository inclusief historiek lokaal wordt geplaatst zodra een `clone` commando wordt uitgevoerd. Oudere _gecentraliseerde_ systemen zoals SVN en CVS bewaren (meta-)data op één centrale plaats: de version control server. Voor dit vak wordt resoluut voor git gekozen. 
 
-Vanaf nu wordt verondersteld dat labo oefeningen gecommit worden in `git` op [Github](https://github.com): een zeer populair open source software ontwikkelingsplatform dat gebruiksvriendelijk is. Het [Pro Git](https://git-scm.com/book/en/v2) handboek leert je alles over de werking van git. 
+Onderstaande Figuur geeft het verschil weer tussen een _gecentraliseerd_ versioneringssysteem, zoals SVN, CVS en MS SourceSafe, en een _gedecentraliseerd_ systeem, zoals Git. Elke gebuiker heeft een kopie van de volledige repository op zijn lokale harde schijf staan. Bij SVN communiceren 'working copies' met de server. Bij Git communiceren repositories (inclusief volledige history) met eender welke andere repository. 'Toevallig' is dat meestal een centrale server, zoals [Github.com](https://github.com), [Gitlab.com](https://gitlab.com) of [BitBucket.com](https://bitbucket.com). 
+
+<center>
+    ![SVN VS Git](/img/teaching/ses/svngit.png)
+</center>
+
+([Image Src](http://sgdev-blog.blogspot.com/2014_03_01_archive.html))
+
+Vanaf nu wordt verondersteld dat labo oefeningen gecommit worden in `git` op [Github.com](https://github.com): een zeer populair open source software ontwikkelingsplatform dat gebruiksvriendelijk is. Het [Pro Git](https://git-scm.com/book/en/v2) handboek leert je alles over de werking van git. 
 
 ### De Git workflow
 
@@ -181,4 +189,4 @@ Merk op dat je onvoldoende `push` rechten hebt om lokale wijzigingen aan de repo
 ## Extra leermateriaal
 
 - [Pro Git](https://git-scm.com/book/en/v2) handboek, hoofdstuk 1 tot en met 3.
-
+- [Code Forest: Git VS SVN](https://www.codeforest.net/git-vs-svn)

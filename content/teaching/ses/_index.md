@@ -43,6 +43,7 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 
 ### Extra informatie
 
+1. [Gëinstalleerde Software - een overzicht](/teaching/ses/software)
 1. ['SESsy Library' WebApp installatie & configuratie](/teaching/ses/sessy)
 2. [Gradle build tools](/teaching/ses/gradle)
 3. [<i class='fa fa-github'></i> Github Classroom links](/teaching/ses/github-classroom)

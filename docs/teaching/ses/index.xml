@@ -34,6 +34,18 @@ Wat is dat, een patroon? Patronen zijn voor het mensenlijk brein eenvoudig herke
     </item>
     
     <item>
+      <title>Gebruikte Software</title>
+      <link>https://brainbaking.com/teaching/ses/software/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/software/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
+Voor deze cursus werken we met Java en met Git. Dat betekent dat een JDK (en de Gradle build tool) en een Git client de enige vereisten zijn.
+Onderstaande lijst kan helpen bij het installeren en configureren van zulke tools:
+Commandline Tools  git-scm gradle  Om vlot met unix-like command lines te werken op een Windows machine, raden we één van de volgende toolchain aan:</description>
+    </item>
+    
+    <item>
       <title>Java Gradle projecten</title>
       <link>https://brainbaking.com/teaching/ses/gradle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -173,8 +185,8 @@ mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  gr
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/tdd-capita/</guid>
-      <description> &amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
-Een algoritme ontwerpen gebaseerd op Test Scenarios </description>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+Een algoritme ontwerpen gebaseerd op Test Scenarios TODO</description>
     </item>
     
     <item>

@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-12-13 10:27:49 \x2b0100 CET",
-    "dateModified" : "2019-12-13 10:27:49 \x2b0100 CET",
+    "datePublished": "2020-02-19 15:26:55 \x2b0100 CET",
+    "dateModified" : "2020-02-19 15:26:55 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/versiebeheer\/",
-    "wordCount" : "1419",
+    "wordCount" : "1495",
     "keywords" : [ "Versie- en issuebeheer", "teaching" ]
 }
 </script>
@@ -257,7 +257,15 @@
 
 <p>Git is een <em>gedecentraliseerd</em> versiebeheer systeem waarbij de hele repository inclusief historiek lokaal wordt geplaatst zodra een <code>clone</code> commando wordt uitgevoerd. Oudere <em>gecentraliseerde</em> systemen zoals SVN en CVS bewaren (meta-)data op één centrale plaats: de version control server. Voor dit vak wordt resoluut voor git gekozen.</p>
 
-<p>Vanaf nu wordt verondersteld dat labo oefeningen gecommit worden in <code>git</code> op <a href="https://github.com">Github</a>: een zeer populair open source software ontwikkelingsplatform dat gebruiksvriendelijk is. Het <a href="https://git-scm.com/book/en/v2">Pro Git</a> handboek leert je alles over de werking van git.</p>
+<p>Onderstaande Figuur geeft het verschil weer tussen een <em>gecentraliseerd</em> versioneringssysteem, zoals SVN, CVS en MS SourceSafe, en een <em>gedecentraliseerd</em> systeem, zoals Git. Elke gebuiker heeft een kopie van de volledige repository op zijn lokale harde schijf staan. Bij SVN communiceren &lsquo;working copies&rsquo; met de server. Bij Git communiceren repositories (inclusief volledige history) met eender welke andere repository. &lsquo;Toevallig&rsquo; is dat meestal een centrale server, zoals <a href="https://github.com">Github.com</a>, <a href="https://gitlab.com">Gitlab.com</a> of <a href="https://bitbucket.com">BitBucket.com</a>.</p>
+
+<p><center>
+    <img src="/img/teaching/ses/svngit.png" alt="SVN VS Git" />
+</center></p>
+
+<p>(<a href="http://sgdev-blog.blogspot.com/2014_03_01_archive.html">Image Src</a>)</p>
+
+<p>Vanaf nu wordt verondersteld dat labo oefeningen gecommit worden in <code>git</code> op <a href="https://github.com">Github.com</a>: een zeer populair open source software ontwikkelingsplatform dat gebruiksvriendelijk is. Het <a href="https://git-scm.com/book/en/v2">Pro Git</a> handboek leert je alles over de werking van git.</p>
 
 <h3 id="de-git-workflow">De Git workflow</h3>
 
@@ -432,6 +440,7 @@ graph LR;
 
 <ul>
 <li><a href="https://git-scm.com/book/en/v2">Pro Git</a> handboek, hoofdstuk 1 tot en met 3.</li>
+<li><a href="https://www.codeforest.net/git-vs-svn">Code Forest: Git VS SVN</a></li>
 </ul>
 </div>
 
