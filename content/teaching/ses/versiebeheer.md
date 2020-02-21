@@ -127,6 +127,15 @@ Na een branch commit is de volgende knop zichtbaar op Github:
 
 De **Compare &amp; Pull Request** knop maakt het mogelijk om wijzigingen op de bugfixbranch tot op de master branch te brengen. Dit kan ook via het commando `git merge bugfixbranch` in de master branch. Een demo toont dit aan. Daarna hebben we de branch niet meer nodig: `git branch -d bugfixbranch`. Merk op dat dit enkel _lokaal_ de kopie van de branch verwijderd. De remote, op Github.com, verwijderen, vereist meer werk: `git push origin --delete bugfixbranch`.
 
+#### Ik zie niet alle branches, hoe komt dat?
+
+Een `git pull` commando zal soms in de console 'new branch [branchnaam]' afdrukken, maar toch zal je deze niet tot je beschikking hebben met het `git branch` commando. Dat komt omdat branches dan ook nog (lokaal) **getracked** moeten worden:
+
+1. Controleer welke branch je lokaal wilt volgen met `git branch -r`
+2. Selecteer een bepaalde branch, waarschijnlijk `origin/[naam]`
+3. Track die branch lokaal met `git branch --track [naam] origin/[naam]`
+4. Vanaf nu kan je ook switchen naar die branch, controleer met `git branch`
+
 ## Bug tracking met Github
 
 Enkele 'kleine probleempjes' in software worden al snel een hele berg aan grote problemen als er niet op tijd iets aan wordt gedaan. Bedrijven beheren deze problemen (_issues_) met een bug tracking systeem, waar alle door klant of collega gemeldde fouten van het systeem in worden gelogd en opgevolgd. Op die manier kan een ontwikkelaar op zoek naar werk in deze lijst de hoge prioritaire problemen identificeren, oplossen, en terug koppelen naar de melder. 

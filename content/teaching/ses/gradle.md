@@ -41,7 +41,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.2'
     testImplementation group: 'org.hamcrest', name: 'hamcrest-library', version: '2.2'
 }
 </pre>
@@ -51,8 +51,13 @@ Hier onderscheiden we de volgende zaken:
 1. Het project is een java 10 project (er zijn ook nog andere talen op de JVM)
 2. Het project komt van `be.kuleuven.ses`, versie `1.0-SNAPSHOT`.
 3. Dependencies downloaden via de [standaard maven central](https://mvnrepository.com/repos/central) (ingebouwde URL).
-    - Hiervan moet Gradle `juni 4.12` downloaden voor de testen
+    - Hiervan moet Gradle `junit-jupiter-api 5.5.2` downloaden voor de testen
     - Hiervan moet Gradle `hamcrest-library 2.2` downloaden voor de testen
+
+Dependencies vallen (meestal) in twee categorieën:
+
+1. `implementation` (productie dependencies)
+2. `testImplementation` (test dependencies)
 
 Merk op dat een typisch gradle project **geen jars** mee zipt, zoals de oefeningen. Die worden dus automatisch door deze tool gedownload, en in de juiste map geplaatst. 
 
@@ -175,18 +180,70 @@ repositories {
 }
 </pre>
 
+### Gradle en JUnit integratie
+
+JUnit 5 splitst de test library op in een aantal submodules, waarvan er twee belangrijke zijn die we nodig hebben om te testen:
+
+1. `junit-jupiter-api` - nodig om testen te SCHRIJVEN (de API waar `@BeforeEach` e.a. in zitten)
+2. `junit-jupiter-engine` - nodig om testen UIT TE VOEREN (cmdline interface)
+
+Aangezien Gradle verschillende test bibliotheken ondersteund, zoals ook TestNG, dient men in de Gradle build file ondersteuning voor elk framework te activeren. Dit is _enkel nodig bij cmdline uitvoeren van de testen_. Als je beslist om enkel binnen IntelliJ testen uit te voeren, verzorgt IntelliJ zelf dit, en is de jupiter-engine ook niet nodig. 
+
+<pre>
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+}
+
+dependencies {
+    // for WRITING tests, this will suffice:
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.2'
+    // for RUNNING tests (cmdline, without IntelliJ), this is also needed:
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.2'
+}
+</pre>
+
+Optionele test libraries zoals Hamcrest en Selenium/WebDriver kunnen daarna ook worden toegevoegd onder de `testImplementation` groep.
+
 ### Welke Task moet ik uitvoeren?
 
 `./gradlew tasks --all` voorziet een overzicht van alle beschikbare taken voor een bepaald Gradle project, opgesplitst per fase (build tasks, build setup tasks, documentation tasks, help tasks, verification tasks). Plugins voorzien vaak extra tasks, zoals bovenstaande maven plugin. 
 
 Belangrijke taken zijn onder andere:
 
-- `test`: voer alle unit testen uit.
+- `test`: voer alle unit testen uit. Een rapport hiervan is beschikbaar op build/reports/tests/test/index.html.
 - `clean`: verwijder alle binaries en metadata.
 - `build`: compile en test het project.
 - `publish`: (maven plugin) publiceert naar een repository.
 - `jar`: compile en package in een jar bestand
-- `javadoc`: (plugin) genereert HTML javadoc.
+- `javadoc`: (plugin) genereert HTML javadoc. Een rapport hiervan is beschikbaar op build/docs/javadoc/index.html.
+
+Onderstaande screenshot is een voorbeeld van een Unit Test HTML rapport voor de SESsy library:
+
+<center>
+    ![Gradle test report](/img/teaching/ses/gradle-testreports.png)
+</center>
+
+### Ik wil meer output bij het uitvoeren van mijn tasks!
+
+De standaard output geeft enkel weer of er iets gelukt is of niet:
+
+<pre>
+Wouters-Air:sessylibrary wgroeneveld$ ./gradlew shadowjar
+
+BUILD SUCCESSFUL in 9s
+3 actionable tasks: 1 executed, 2 up-to-date
+</pre>
+
+Meer informatie kan met de volgende parameters:
+
+- `--info`, output LogLevel `INFO`. Veel irrelevante info wordt ook getoond.
+- `--warning-mode all`, toont detail informatie van warning messages
+- `--stacktrace`, toont de detail stacktrace bij exceptions
+
+### De Gradle (wrapper) Upgraden
+
+Indien de Gralde wrapper een oudere versie aanmaakt (< v6), update met `gradle wrapper --gradle-version 6.0.1`. Gradle versie `6` of groter is vereist voor JDK `13` of groter. 
 
 ### Meer links en tutorials:
 

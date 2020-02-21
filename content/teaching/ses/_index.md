@@ -18,7 +18,7 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 #### Software Development: Pre-Requirements
 
 3. [Versie- en issuebeheer](/teaching/ses/versiebeheer)
-1. [Dependency Management](/teaching/ses/dependency-management)
+1. [Dependency Management](/teaching/ses/dependency-management) & de [Gradle Build Tool](/teaching/ses/gradle/)
 2. [Test-Driven Development](/teaching/ses/tdd): Unit-, Integration- (1) en E2E (2) niveau
 
 #### Algoritmen & Data Structuren

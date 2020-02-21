@@ -5,6 +5,8 @@ accent: "#008eb3"
 &laquo;&nbsp;[Terug naar Software Engineering Skills](/teaching/ses)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
 
+Lees ook: [Meer uitleg over de Gradle build tool](/teaching/ses/gradle/).
+
 ## Wat is een 'dependency'?
 
 Een dependency, of _afhankelijkheid_, is een externe bibliotheek die wordt gebruikt tijdens de ontwikkeling van een toepassing. Tijdens het vak 'Software ontwerp in Java' zijn reeds de volgende externe libraries gebruikt:
@@ -82,7 +84,8 @@ Maven is erg populaire in de Java wereld, waardoor er verschillende servers zijn
 
 #### Gradle
 
-Neem dit eerst door: [Meer informatie over Gradle](/teaching/ses/gradle/). <br/>
+**Belangrijk**: neem dit eerst door - [Meer informatie over Gradle](/teaching/ses/gradle/). 
+
 Gradle is net zoals Maven een automatisatie tool voor de Java wereld (en daarbuiten), die verder bouwt op de populariteit van Maven door bijvoorbeeld compatibel te zijn met de Repository servers, maar de grootste pijnpunten wegneemt: een slorig configuratiebestand in XML, en complexe command-line scripts.
 
 De volgende procedure volg je als je Gradle dependencies laat beheren:
@@ -217,7 +220,7 @@ Neem dit eerst door: [Meer informatie over Gradle](/teaching/ses/gradle/).
 
 ### Opgave 1
 
-Ontwerp een eenvoudige library die scores kan bijhouden voor bordspelletjes. Deze library kan kan gebruikt worden door toekomstige digitale Java bordspellen. In een Scorebord kan je spelers toevoegen door middel van een naam en een score. Er is een mogelijkheid om de huidige score van een speler op te vragen, en de winnende speler. Deze gegevens worden met behulp van Gson in een `JSON` bestand bewaard, zodat bij het heropstarten van een spel de scores behouden blijven. <br/>De API (publieke methodes) van de library ziet er zo uit:
+Ontwerp een eenvoudige library genaamd '_scorebord_' die scores kan bijhouden voor bordspelletjes. Deze library kan kan gebruikt worden door toekomstige digitale Java bordspellen. In een Scorebord kan je spelers toevoegen door middel van een naam en een score. Er is een mogelijkheid om de huidige score van een speler op te vragen, en de winnende speler. Deze gegevens worden met behulp van Gson in een `JSON` bestand bewaard, zodat bij het heropstarten van een spel de scores behouden blijven. <br/>De API (publieke methodes) van de library ziet er zo uit:
 
 ```java
 class Speler {
@@ -240,11 +243,11 @@ Extra methodes toevoegen mag altijd. De constructor van het scorebord leest auto
 
 Met het commando `gradle jar` creëer je het bestand `scorebord-1.0-SNAPSHOT.jar` in de `build/libs` folder. 
 
-Tip: indien de Gralde wrapper een oudere versie aanmaakt (< v6), update met `gradle wrapper --gradle-version 6.0.1`.
+Tip: indien de Gralde wrapper een oudere versie aanmaakt (< v6), update met `gradle wrapper --gradle-version 6.0.1`. Gradle versie `6` of groter is vereist voor JDK `13` of groter. 
 
 ### Opgave 2
 
-Maak een nieuw Gradle project aan genaamd _scorebord-darts_, dat bovenstaand scorebord project als een library gaat gebruiken. Bewaar de jar file lokaal in een 'lib' folder en instrueer Gradle zo dat dit als `flatDir` repository wordt opgenomen ([zie boven](#flatdir)). Het tweede project heeft als Artifactid `scorebord-darts`. De klasse `DartsGame` ziet er zo uit:
+Maak een nieuw Gradle project aan genaamd '_scorebord-darts_', dat bovenstaand scorebord project als een library gaat gebruiken. Bewaar de jar file lokaal in een 'lib' folder en instrueer Gradle zo dat dit als `flatDir` repository wordt opgenomen ([zie boven](#flatdir)). Het tweede project heeft als Artifactid `scorebord-darts`. De klasse `DartsGame` ziet er zo uit:
 
 ```java
 public class DartsGame {
