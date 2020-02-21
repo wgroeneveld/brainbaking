@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-12-06 11:14:15 \x2b0100 CET",
-    "dateModified" : "2019-12-06 11:14:15 \x2b0100 CET",
+    "datePublished": "2020-02-21 11:05:15 \x2b0100 CET",
+    "dateModified" : "2020-02-21 11:05:15 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/gradle\/",
-    "wordCount" : "864",
+    "wordCount" : "1170",
     "keywords" : [ "Java Gradle projecten", "teaching" ]
 }
 </script>
@@ -264,7 +264,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.2'
     testImplementation group: 'org.hamcrest', name: 'hamcrest-library', version: '2.2'
 }
 </pre>
@@ -277,9 +277,16 @@ dependencies {
 <li>Dependencies downloaden via de <a href="https://mvnrepository.com/repos/central">standaard maven central</a> (ingebouwde URL).
 
 <ul>
-<li>Hiervan moet Gradle <code>juni 4.12</code> downloaden voor de testen</li>
+<li>Hiervan moet Gradle <code>junit-jupiter-api 5.5.2</code> downloaden voor de testen</li>
 <li>Hiervan moet Gradle <code>hamcrest-library 2.2</code> downloaden voor de testen</li>
 </ul></li>
+</ol>
+
+<p>Dependencies vallen (meestal) in twee categorieën:</p>
+
+<ol>
+<li><code>implementation</code> (productie dependencies)</li>
+<li><code>testImplementation</code> (test dependencies)</li>
 </ol>
 
 <p>Merk op dat een typisch gradle project <strong>geen jars</strong> mee zipt, zoals de oefeningen. Die worden dus automatisch door deze tool gedownload, en in de juiste map geplaatst.</p>
@@ -409,6 +416,33 @@ repositories {
 }
 </pre>
 
+<h3 id="gradle-en-junit-integratie">Gradle en JUnit integratie</h3>
+
+<p>JUnit 5 splitst de test library op in een aantal submodules, waarvan er twee belangrijke zijn die we nodig hebben om te testen:</p>
+
+<ol>
+<li><code>junit-jupiter-api</code> - nodig om testen te SCHRIJVEN (de API waar <code>@BeforeEach</code> e.a. in zitten)</li>
+<li><code>junit-jupiter-engine</code> - nodig om testen UIT TE VOEREN (cmdline interface)</li>
+</ol>
+
+<p>Aangezien Gradle verschillende test bibliotheken ondersteund, zoals ook TestNG, dient men in de Gradle build file ondersteuning voor elk framework te activeren. Dit is <em>enkel nodig bij cmdline uitvoeren van de testen</em>. Als je beslist om enkel binnen IntelliJ testen uit te voeren, verzorgt IntelliJ zelf dit, en is de jupiter-engine ook niet nodig.</p>
+
+<pre>
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+}
+
+dependencies {
+    // for WRITING tests, this will suffice:
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.2'
+    // for RUNNING tests (cmdline, without IntelliJ), this is also needed:
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.2'
+}
+</pre>
+
+<p>Optionele test libraries zoals Hamcrest en Selenium/WebDriver kunnen daarna ook worden toegevoegd onder de <code>testImplementation</code> groep.</p>
+
 <h3 id="welke-task-moet-ik-uitvoeren">Welke Task moet ik uitvoeren?</h3>
 
 <p><code>./gradlew tasks --all</code> voorziet een overzicht van alle beschikbare taken voor een bepaald Gradle project, opgesplitst per fase (build tasks, build setup tasks, documentation tasks, help tasks, verification tasks). Plugins voorzien vaak extra tasks, zoals bovenstaande maven plugin.</p>
@@ -416,13 +450,42 @@ repositories {
 <p>Belangrijke taken zijn onder andere:</p>
 
 <ul>
-<li><code>test</code>: voer alle unit testen uit.</li>
+<li><code>test</code>: voer alle unit testen uit. Een rapport hiervan is beschikbaar op build/reports/tests/test/index.html.</li>
 <li><code>clean</code>: verwijder alle binaries en metadata.</li>
 <li><code>build</code>: compile en test het project.</li>
 <li><code>publish</code>: (maven plugin) publiceert naar een repository.</li>
 <li><code>jar</code>: compile en package in een jar bestand</li>
-<li><code>javadoc</code>: (plugin) genereert HTML javadoc.</li>
+<li><code>javadoc</code>: (plugin) genereert HTML javadoc. Een rapport hiervan is beschikbaar op build/docs/javadoc/index.html.</li>
 </ul>
+
+<p>Onderstaande screenshot is een voorbeeld van een Unit Test HTML rapport voor de SESsy library:</p>
+
+<p><center>
+    <img src="/img/teaching/ses/gradle-testreports.png" alt="Gradle test report" />
+</center></p>
+
+<h3 id="ik-wil-meer-output-bij-het-uitvoeren-van-mijn-tasks">Ik wil meer output bij het uitvoeren van mijn tasks!</h3>
+
+<p>De standaard output geeft enkel weer of er iets gelukt is of niet:</p>
+
+<pre>
+Wouters-Air:sessylibrary wgroeneveld$ ./gradlew shadowjar
+
+BUILD SUCCESSFUL in 9s
+3 actionable tasks: 1 executed, 2 up-to-date
+</pre>
+
+<p>Meer informatie kan met de volgende parameters:</p>
+
+<ul>
+<li><code>--info</code>, output LogLevel <code>INFO</code>. Veel irrelevante info wordt ook getoond.</li>
+<li><code>--warning-mode all</code>, toont detail informatie van warning messages</li>
+<li><code>--stacktrace</code>, toont de detail stacktrace bij exceptions</li>
+</ul>
+
+<h3 id="de-gradle-wrapper-upgraden">De Gradle (wrapper) Upgraden</h3>
+
+<p>Indien de Gralde wrapper een oudere versie aanmaakt (&lt; v6), update met <code>gradle wrapper --gradle-version 6.0.1</code>. Gradle versie <code>6</code> of groter is vereist voor JDK <code>13</code> of groter.</p>
 
 <h3 id="meer-links-en-tutorials">Meer links en tutorials:</h3>
 

@@ -39,7 +39,7 @@
     
       "headline" : "Dependency Management",
     
-    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\nWat is een \x26lsquo;dependency\x26rsquo;? Een dependency, of afhankelijkheid, is een externe bibliotheek die wordt gebruikt tijdens de ontwikkeling van een toepassing. Tijdens het vak \x26lsquo;Software ontwerp in Java\x26rsquo; zijn reeds de volgende externe libraries gebruikt:\n JavaFX Google Gson JUnit  Het vertrouwen op zo\x26rsquo;n library houdt in dat een extern bestand, zoals een .jar of .war bestand, download en koppelt wordt aan de applicatie.",
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\nLees ook: Meer uitleg over de Gradle build tool.\nWat is een \x26lsquo;dependency\x26rsquo;? Een dependency, of afhankelijkheid, is een externe bibliotheek die wordt gebruikt tijdens de ontwikkeling van een toepassing. Tijdens het vak \x26lsquo;Software ontwerp in Java\x26rsquo; zijn reeds de volgende externe libraries gebruikt:\n JavaFX Google Gson JUnit  Het vertrouwen op zo\x26rsquo;n library houdt in dat een extern bestand, zoals een .",
     
       "inLanguage" : "nl-BE",
     
@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-12-07 10:03:48 \x2b0100 CET",
-    "dateModified" : "2019-12-07 10:03:48 \x2b0100 CET",
+    "datePublished": "2020-02-21 11:05:15 \x2b0100 CET",
+    "dateModified" : "2020-02-21 11:05:15 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/dependency-management\/",
-    "wordCount" : "1850",
+    "wordCount" : "1875",
     "keywords" : [ "Dependency Management", "teaching" ]
 }
 </script>
@@ -227,6 +227,8 @@
 <p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/>
 &raquo;&nbsp;<a href="#oef">Naar de labo opgave</a></p>
 
+<p>Lees ook: <a href="/teaching/ses/gradle/">Meer uitleg over de Gradle build tool</a>.</p>
+
 <h2 id="wat-is-een-dependency">Wat is een &lsquo;dependency&rsquo;?</h2>
 
 <p>Een dependency, of <em>afhankelijkheid</em>, is een externe bibliotheek die wordt gebruikt tijdens de ontwikkeling van een toepassing. Tijdens het vak &lsquo;Software ontwerp in Java&rsquo; zijn reeds de volgende externe libraries gebruikt:</p>
@@ -306,8 +308,9 @@ Main.java:3: error: cannot find symbol
 
 <h4 id="gradle">Gradle</h4>
 
-<p>Neem dit eerst door: <a href="/teaching/ses/gradle/">Meer informatie over Gradle</a>. <br/>
-Gradle is net zoals Maven een automatisatie tool voor de Java wereld (en daarbuiten), die verder bouwt op de populariteit van Maven door bijvoorbeeld compatibel te zijn met de Repository servers, maar de grootste pijnpunten wegneemt: een slorig configuratiebestand in XML, en complexe command-line scripts.</p>
+<p><strong>Belangrijk</strong>: neem dit eerst door - <a href="/teaching/ses/gradle/">Meer informatie over Gradle</a>.</p>
+
+<p>Gradle is net zoals Maven een automatisatie tool voor de Java wereld (en daarbuiten), die verder bouwt op de populariteit van Maven door bijvoorbeeld compatibel te zijn met de Repository servers, maar de grootste pijnpunten wegneemt: een slorig configuratiebestand in XML, en complexe command-line scripts.</p>
 
 <p>De volgende procedure volg je als je Gradle dependencies laat beheren:</p>
 
@@ -457,7 +460,7 @@ repositories {
 
 <h3 id="opgave-1">Opgave 1</h3>
 
-<p>Ontwerp een eenvoudige library die scores kan bijhouden voor bordspelletjes. Deze library kan kan gebruikt worden door toekomstige digitale Java bordspellen. In een Scorebord kan je spelers toevoegen door middel van een naam en een score. Er is een mogelijkheid om de huidige score van een speler op te vragen, en de winnende speler. Deze gegevens worden met behulp van Gson in een <code>JSON</code> bestand bewaard, zodat bij het heropstarten van een spel de scores behouden blijven. <br/>De API (publieke methodes) van de library ziet er zo uit:</p>
+<p>Ontwerp een eenvoudige library genaamd &lsquo;<em>scorebord</em>&rsquo; die scores kan bijhouden voor bordspelletjes. Deze library kan kan gebruikt worden door toekomstige digitale Java bordspellen. In een Scorebord kan je spelers toevoegen door middel van een naam en een score. Er is een mogelijkheid om de huidige score van een speler op te vragen, en de winnende speler. Deze gegevens worden met behulp van Gson in een <code>JSON</code> bestand bewaard, zodat bij het heropstarten van een spel de scores behouden blijven. <br/>De API (publieke methodes) van de library ziet er zo uit:</p>
 
 <pre><code class="language-java">class Speler {
     public String getNaam() { }
@@ -479,11 +482,11 @@ Extra methodes toevoegen mag altijd. De constructor van het scorebord leest auto
 
 <p>Met het commando <code>gradle jar</code> creëer je het bestand <code>scorebord-1.0-SNAPSHOT.jar</code> in de <code>build/libs</code> folder.</p>
 
-<p>Tip: indien de Gralde wrapper een oudere versie aanmaakt (&lt; v6), update met <code>gradle wrapper --gradle-version 6.0.1</code>.</p>
+<p>Tip: indien de Gralde wrapper een oudere versie aanmaakt (&lt; v6), update met <code>gradle wrapper --gradle-version 6.0.1</code>. Gradle versie <code>6</code> of groter is vereist voor JDK <code>13</code> of groter.</p>
 
 <h3 id="opgave-2">Opgave 2</h3>
 
-<p>Maak een nieuw Gradle project aan genaamd <em>scorebord-darts</em>, dat bovenstaand scorebord project als een library gaat gebruiken. Bewaar de jar file lokaal in een &lsquo;lib&rsquo; folder en instrueer Gradle zo dat dit als <code>flatDir</code> repository wordt opgenomen (<a href="#flatdir">zie boven</a>). Het tweede project heeft als Artifactid <code>scorebord-darts</code>. De klasse <code>DartsGame</code> ziet er zo uit:</p>
+<p>Maak een nieuw Gradle project aan genaamd &lsquo;<em>scorebord-darts</em>&rsquo;, dat bovenstaand scorebord project als een library gaat gebruiken. Bewaar de jar file lokaal in een &lsquo;lib&rsquo; folder en instrueer Gradle zo dat dit als <code>flatDir</code> repository wordt opgenomen (<a href="#flatdir">zie boven</a>). Het tweede project heeft als Artifactid <code>scorebord-darts</code>. De klasse <code>DartsGame</code> ziet er zo uit:</p>
 
 <pre><code class="language-java">public class DartsGame {
     private String player = &quot;jos&quot;;

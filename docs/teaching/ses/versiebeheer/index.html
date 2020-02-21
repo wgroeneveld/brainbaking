@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2020-02-19 15:26:55 \x2b0100 CET",
-    "dateModified" : "2020-02-19 15:26:55 \x2b0100 CET",
+    "datePublished": "2020-02-21 11:05:15 \x2b0100 CET",
+    "dateModified" : "2020-02-21 11:05:15 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/versiebeheer\/",
-    "wordCount" : "1495",
+    "wordCount" : "1582",
     "keywords" : [ "Versie- en issuebeheer", "teaching" ]
 }
 </script>
@@ -350,6 +350,17 @@ Wouters-Air:sessylibrary wgroeneveld$ git branch
 </center></p>
 
 <p>De <strong>Compare &amp; Pull Request</strong> knop maakt het mogelijk om wijzigingen op de bugfixbranch tot op de master branch te brengen. Dit kan ook via het commando <code>git merge bugfixbranch</code> in de master branch. Een demo toont dit aan. Daarna hebben we de branch niet meer nodig: <code>git branch -d bugfixbranch</code>. Merk op dat dit enkel <em>lokaal</em> de kopie van de branch verwijderd. De remote, op Github.com, verwijderen, vereist meer werk: <code>git push origin --delete bugfixbranch</code>.</p>
+
+<h4 id="ik-zie-niet-alle-branches-hoe-komt-dat">Ik zie niet alle branches, hoe komt dat?</h4>
+
+<p>Een <code>git pull</code> commando zal soms in de console &lsquo;new branch [branchnaam]&rsquo; afdrukken, maar toch zal je deze niet tot je beschikking hebben met het <code>git branch</code> commando. Dat komt omdat branches dan ook nog (lokaal) <strong>getracked</strong> moeten worden:</p>
+
+<ol>
+<li>Controleer welke branch je lokaal wilt volgen met <code>git branch -r</code></li>
+<li>Selecteer een bepaalde branch, waarschijnlijk <code>origin/[naam]</code></li>
+<li>Track die branch lokaal met <code>git branch --track [naam] origin/[naam]</code></li>
+<li>Vanaf nu kan je ook switchen naar die branch, controleer met <code>git branch</code></li>
+</ol>
 
 <h2 id="bug-tracking-met-github">Bug tracking met Github</h2>
 

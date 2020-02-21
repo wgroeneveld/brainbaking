@@ -19,8 +19,9 @@
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/dependency-management/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
+Lees ook: Meer uitleg over de Gradle build tool.
 Wat is een &amp;lsquo;dependency&amp;rsquo;? Een dependency, of afhankelijkheid, is een externe bibliotheek die wordt gebruikt tijdens de ontwikkeling van een toepassing. Tijdens het vak &amp;lsquo;Software ontwerp in Java&amp;rsquo; zijn reeds de volgende externe libraries gebruikt:
- JavaFX Google Gson JUnit  Het vertrouwen op zo&amp;rsquo;n library houdt in dat een extern bestand, zoals een .jar of .war bestand, download en koppelt wordt aan de applicatie.</description>
+ JavaFX Google Gson JUnit  Het vertrouwen op zo&amp;rsquo;n library houdt in dat een extern bestand, zoals een .</description>
     </item>
     
     <item>
