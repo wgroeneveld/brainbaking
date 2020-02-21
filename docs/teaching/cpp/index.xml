@@ -220,18 +220,6 @@ Snippet 1 class Student; class Teacher { private: std::vector&amp;lt;Student*&am
     </item>
     
     <item>
-      <title>Software design in C&#43;&#43;</title>
-      <link>https://brainbaking.com/teaching/cpp/en/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
-      <guid>https://brainbaking.com/teaching/cpp/en/</guid>
-      <description>Last changes for academic year 2019 - 2020.
-Course notes This is the English index page, roughly based on the Dutch index, where students can find more information regarding the course itself. All links below contain content in Dutch.
-Project results 2018 - 2019    
-Utilizing the custom-built gba-sprite-engine library residing at  Github. See the README there for more information. The engine itself uses the Tonc C calls behind the scenes.</description>
-    </item>
-    
-    <item>
       <title>Software ontwerp in C/C&#43;&#43;: Project opdracht 2018-19</title>
       <link>https://brainbaking.com/teaching/cpp/project201819/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -251,6 +239,15 @@ Opdracht beschrijving Ontwerp een Mario Party kloon.</description>
       <guid>https://brainbaking.com/teaching/cpp/project/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software ontwerp in C/C++
 Project opdracht Om jullie recent opgedane object-geörienteerde technieken te toetsen gaan jullie een GBA spel ontwerpen en ontwikkelen in C++11. De focus van de opdracht ligt niet op correcte low-level IO mapping maar op kritisch denken en testen zoals gezien in labo 7. Uiteraard komen zowel pointers en GBA programming technieken van de vroegere labo&amp;rsquo;s, als C++ class inheritance en abstractie lagen uit de latere labo&amp;rsquo;s aan bod.</description>
+    </item>
+    
+    <item>
+      <title>Sparking Creativity with the Game Boy Advance</title>
+      <link>https://brainbaking.com/teaching/cpp/sigcse2020/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/cpp/sigcse2020/</guid>
+      <description>Poster Abstract  Numerous studies have shown that Game-Based Learning positively impacts educational effectiveness and student motivation. However, according to Amabile&amp;rsquo;s Componential Model of Creativity, motivation is only one aspect of creativity, next to expertise and creative skills. Therefore, we looked beyond motivational aspects in order to amplify all dimensions of creativity. In a &amp;lsquo;Software Design in C++&amp;rsquo; course at our local faculty of Engineering Technology, students learn to apply high-level object-oriented software development techniques on low-level embedded hardware.</description>
     </item>
     
   </channel>

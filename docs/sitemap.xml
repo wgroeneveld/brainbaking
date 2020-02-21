@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://brainbaking.com/</loc>
-    <lastmod>2020-02-21T11:05:15+01:00</lastmod>
+    <lastmod>2020-02-21T12:28:54+01:00</lastmod>
   </url>
   
   <url>
@@ -853,11 +853,6 @@
   </url>
   
   <url>
-    <loc>https://brainbaking.com/teaching/cpp/en/</loc>
-    <lastmod>2020-01-16T11:37:44+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://brainbaking.com/teaching/ses/</loc>
     <lastmod>2020-02-21T11:05:15+01:00</lastmod>
   </url>
@@ -880,6 +875,11 @@
   <url>
     <loc>https://brainbaking.com/teaching/java/</loc>
     <lastmod>2018-12-18T09:27:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brainbaking.com/teaching/cpp/sigcse2020/</loc>
+    <lastmod>2020-02-21T12:28:54+01:00</lastmod>
   </url>
   
   <url>
