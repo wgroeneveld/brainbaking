@@ -187,7 +187,9 @@ mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true } });  gr
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/tdd-capita/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
-Een algoritme ontwerpen gebaseerd op Test Scenarios TODO</description>
+Test-First Een algoritme ontwerpen Neem eerst de volgende noties terug door:
+ Test Driven Development principes  Labo oefeningen Opgave 1 TODO
+Opgave 2 TODO</description>
     </item>
     
     <item>
