@@ -61,10 +61,10 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2020-02-21 11:05:15 \x2b0100 CET",
-    "dateModified" : "2020-02-21 11:05:15 \x2b0100 CET",
+    "datePublished": "2020-02-26 11:50:56 \x2b0100 CET",
+    "dateModified" : "2020-02-26 11:50:56 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/dependency-management\/",
-    "wordCount" : "1877",
+    "wordCount" : "1908",
     "keywords" : [ "Dependency Management", "teaching" ]
 }
 </script>
@@ -262,7 +262,7 @@ Main.java:3: error: cannot find symbol
   location: class Main
 </pre>
 
-<p>De klasse <code>Gson</code> is immers iets dat we niet hebben zelfgemaakt, maar wensen te importeren via het <code>import com.google.gson.*;</code> statement. Er is een manier nodig om de <a href="https://mvnrepository.com/artifact/com.google.code.gson/gson/2.8.6">gedownloade library</a> te linken met onze bestaande code: <code>javac -cp gson-2.8.6.jar Main.java</code>.</p>
+<p>De klasse <code>Gson</code> is immers iets dat we niet hebben zelfgemaakt, maar wensen te importeren via het <code>import com.google.gson.*;</code> statement. Er is een manier nodig om de <a href="https://mvnrepository.com/artifact/com.google.code.gson/gson/2.8.6">gedownloade library</a> te linken met onze bestaande code: <code>javac -cp gson-2.8.6.jar Main.java</code>. Het programma uitvoeren kan met <code>java -cp gson-2.8.6.jar:. Main</code>. Er worden dus 2 zaken aan het classpath meegegeven: de Google jar, en de huidige directory (<code>.</code>), om <code>Main.class</code> terug te vinden.</p>
 
 <p>De dependency in bovenstaand voorbeeld is <code>gson-2.8.6.jar</code>. Een gemiddelde Java applicatie heeft <strong>meer dan 10 dependencies!</strong> Het beheren van deze bestanden en de verschillende versies (major, minor, revision) geeft vaak conflicten die beter beheerd kunnen worden door tools dan door de typische vergeetachtigheid van mensen.</p>
 
@@ -480,9 +480,9 @@ Extra methodes toevoegen mag altijd. De constructor van het scorebord leest auto
     <img src="/img/teaching/ses/gradle-refresh.png" />
 </center></p>
 
-<p>Met het commando <code>gradle jar</code> creëer je het bestand <code>scorebord-1.0-SNAPSHOT.jar</code> in de <code>build/libs</code> folder.</p>
+<p>Met het commando <code>gradlew jar</code> creëer je het bestand <code>scorebord-1.0-SNAPSHOT.jar</code> in de <code>build/libs</code> folder.</p>
 
-<p>Tip: indien de Gralde wrapper een oudere versie aanmaakt (&lt; v6), update met <code>gradle wrapper --gradle-version 6.0.1</code>. Gradle versie <code>6</code> of groter is vereist voor JDK <code>13</code> of groter.</p>
+<p>Tip: indien de Gralde wrapper een oudere versie aanmaakt (&lt; v6), update met <code>gradlew wrapper --gradle-version 6.0.1</code>. Gradle versie <code>6</code> of groter is vereist voor JDK <code>13</code> of groter.</p>
 
 <h3 id="opgave-2">Opgave 2</h3>
 

@@ -39,7 +39,7 @@ Main.java:3: error: cannot find symbol
   location: class Main
 </pre>
 
-De klasse `Gson` is immers iets dat we niet hebben zelfgemaakt, maar wensen te importeren via het `import com.google.gson.*;` statement. Er is een manier nodig om de [gedownloade library](https://mvnrepository.com/artifact/com.google.code.gson/gson/2.8.6) te linken met onze bestaande code: `javac -cp gson-2.8.6.jar Main.java`.
+De klasse `Gson` is immers iets dat we niet hebben zelfgemaakt, maar wensen te importeren via het `import com.google.gson.*;` statement. Er is een manier nodig om de [gedownloade library](https://mvnrepository.com/artifact/com.google.code.gson/gson/2.8.6) te linken met onze bestaande code: `javac -cp gson-2.8.6.jar Main.java`. Het programma uitvoeren kan met `java -cp gson-2.8.6.jar:. Main`. Er worden dus 2 zaken aan het classpath meegegeven: de Google jar, en de huidige directory (`.`), om `Main.class` terug te vinden.
 
 De dependency in bovenstaand voorbeeld is `gson-2.8.6.jar`. Een gemiddelde Java applicatie heeft **meer dan 10 dependencies!** Het beheren van deze bestanden en de verschillende versies (major, minor, revision) geeft vaak conflicten die beter beheerd kunnen worden door tools dan door de typische vergeetachtigheid van mensen. 
 
@@ -241,9 +241,9 @@ Extra methodes toevoegen mag altijd. De constructor van het scorebord leest auto
     <img src="/img/teaching/ses/gradle-refresh.png" />
 </center>
 
-Met het commando `gradle jar` creëer je het bestand `scorebord-1.0-SNAPSHOT.jar` in de `build/libs` folder. 
+Met het commando `gradlew jar` creëer je het bestand `scorebord-1.0-SNAPSHOT.jar` in de `build/libs` folder. 
 
-Tip: indien de Gralde wrapper een oudere versie aanmaakt (< v6), update met `gradle wrapper --gradle-version 6.0.1`. Gradle versie `6` of groter is vereist voor JDK `13` of groter. 
+Tip: indien de Gralde wrapper een oudere versie aanmaakt (< v6), update met `gradlew wrapper --gradle-version 6.0.1`. Gradle versie `6` of groter is vereist voor JDK `13` of groter. 
 
 ### Opgave 2
 
