@@ -64,7 +64,7 @@
     "datePublished": "2020-02-21 11:05:15 \x2b0100 CET",
     "dateModified" : "2020-02-21 11:05:15 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/dependency-management\/",
-    "wordCount" : "1875",
+    "wordCount" : "1877",
     "keywords" : [ "Dependency Management", "teaching" ]
 }
 </script>
@@ -304,7 +304,7 @@ Main.java:3: error: cannot find symbol
 &lt;/project&gt;
 </code></pre>
 
-<p>Maven is erg populaire in de Java wereld, waardoor er verschillende servers zijn die deze <code>pom</code> bestanden samen met hun libraries beheren, zoals de <a href="https://mvnrepository.com">Central Maven Repository</a> en de <a href="https://maven.google.com/web/index.html">Google Maven Repository</a> mirrors. De syntax van het configuratiebestand is echter erg onoverzichtelijk, en er zijn ondertussen betere alternatieven beschikbaar, zoals Gradle.</p>
+<p>Maven is erg populair in de Java wereld, waardoor er verschillende servers zijn die deze <code>pom</code> bestanden samen met hun libraries beheren, zoals de <a href="https://mvnrepository.com">Central Maven Repository</a> en de <a href="https://maven.google.com/web/index.html">Google Maven Repository</a> mirrors. De syntax van het configuratiebestand is echter erg onoverzichtelijk, en er zijn ondertussen betere alternatieven beschikbaar, zoals Gradle.</p>
 
 <h4 id="gradle">Gradle</h4>
 
@@ -337,7 +337,7 @@ dependencies {
 
 <h4 id="custom-repository-urls-voorzien">Custom Repository URLs voorzien</h4>
 
-<p>Veelgebruikte libraries zijn eenvoudig te vinden via de <a href="https://mvnrepository.com">Central Maven Repository</a>. Wanneer echter een eigen library werd compileerd, die dan in andere projecten worden gebruikt, schiet deze methode te kort: interne libraries zijn uiteraard niet publiek gepubliceerd.</p>
+<p>Veelgebruikte libraries zijn eenvoudig te vinden via de <a href="https://mvnrepository.com">Central Maven Repository</a>. Wanneer echter een eigen library werd gecompileerd, die dan in andere projecten worden gebruikt, schiet deze methode tekort: interne libraries zijn uiteraard niet op een publieke server gepubliceerd.</p>
 
 <p>Gradle voorziet gelukkig genoeg een eenvoudige manier om <a href="https://docs.gradle.org/current/userguide/declaring_repositories.html">repository websites toe te voegen</a>, met de volgende eenvoudige syntax:</p>
 

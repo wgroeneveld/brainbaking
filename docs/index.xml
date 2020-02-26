@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>wouter.groeneveld@gmail.com (Wouter Groeneveld)</managingEditor>
     <webMaster>wouter.groeneveld@gmail.com (Wouter Groeneveld)</webMaster>
-    <lastBuildDate>Mon, 02 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://brainbaking.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Five reasons why agile and academia don&#39;t go together</title>
+      <link>https://brainbaking.com/post/agile-academia/</link>
+      <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/post/agile-academia/</guid>
+      <description>I wish the word &amp;ldquo;don&amp;rsquo;t&amp;rdquo; in the title of this post could go away, but after years of trying, I have to say it cannot. There are so many aspects of the academic world that speak against agility that I had to make the conscious choice to reduce the list to five big reasons why I think both do not converge well. Remember that this is my own subjective opinion, and perhaps also meant to utter some well-meant critique, but by no means a one-sided rant: I have spent rather large parts of my career on both sides.</description>
+    </item>
     
     <item>
       <title>Over Onmiddellijke Voldoening</title>
