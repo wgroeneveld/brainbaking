@@ -64,7 +64,7 @@
     "datePublished": "2020-02-27 14:29:31 \x2b0100 CET",
     "dateModified" : "2020-02-27 14:29:31 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/tdd\/",
-    "wordCount" : "3121",
+    "wordCount" : "3131",
     "keywords" : [ "Test Driven Development", "teaching" ]
 }
 </script>
@@ -591,7 +591,10 @@ De methode, in de klasse <code>Speculaas</code>, zou er zo uit moeten zien:</p>
 <p>Er is een foutje geslopen in de login module, waardoor Abigail nog steeds kan inloggen, maar Jos plots niet meer. De senior programmeur in ons team heeft de bug geïdentificeerd en beweert dat het in een stukje <em>oude code</em> zit,
 maar hij heeft geen tijd om dit op te lossen. Nu is het aan jou.</p>
 
-<pre><code class="language-java">public static boolean control(String username) {
+<pre><code class="language-java">import java.util.regex.Pattern;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
+
+public static boolean control(String username) {
     Pattern pattern = Pattern.compile(&quot;^(?=[a-z]{2})(?=.{4,26})(?=[^.]*\\.?[^.]*$)(?=[^_]*_?[^_]*$)[\\w.]+$&quot;, CASE_INSENSITIVE);
     return pattern.matcher(username).matches();
 }
@@ -603,7 +606,10 @@ maar hij heeft geen tijd om dit op te lossen. Nu is het aan jou.</p>
 
 <p>Een tweede bug wordt gemeld: URL verificatie features werken plots niet meer. Deze methode faalt steeds, ook al zijn er reeds unit testen voorzien. Het probleem is dat <strong>HTTPS</strong> URLs met een SSL certificaat niet werken. Je onderzocht de URL verificatie code en vond de volgende verdachte regels:</p>
 
-<pre><code class="language-java">public static boolean verifyUrl(String url) {
+<pre><code class="language-java">import java.util.regex.Pattern;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
+
+public static boolean verifyUrl(String url) {
     Pattern pattern = Pattern.compile(&quot;http:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&amp;//=]*)&quot;, CASE_INSENSITIVE);
     return pattern.matcher(url).matches();
 }

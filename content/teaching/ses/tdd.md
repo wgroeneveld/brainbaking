@@ -354,6 +354,9 @@ Er is een foutje geslopen in de login module, waardoor Abigail nog steeds kan in
 maar hij heeft geen tijd om dit op te lossen. Nu is het aan jou.
 
 ```java
+import java.util.regex.Pattern;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
+
 public static boolean control(String username) {
     Pattern pattern = Pattern.compile("^(?=[a-z]{2})(?=.{4,26})(?=[^.]*\\.?[^.]*$)(?=[^_]*_?[^_]*$)[\\w.]+$", CASE_INSENSITIVE);
     return pattern.matcher(username).matches();
@@ -367,6 +370,9 @@ Deze functie geeft `true` terug als Abigail probeert in te loggen, en `false` al
 Een tweede bug wordt gemeld: URL verificatie features werken plots niet meer. Deze methode faalt steeds, ook al zijn er reeds unit testen voorzien. Het probleem is dat **HTTPS** URLs met een SSL certificaat niet werken. Je onderzocht de URL verificatie code en vond de volgende verdachte regels:
 
 ```java
+import java.util.regex.Pattern;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
+
 public static boolean verifyUrl(String url) {
     Pattern pattern = Pattern.compile("http:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)", CASE_INSENSITIVE);
     return pattern.matcher(url).matches();
