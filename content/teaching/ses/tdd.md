@@ -7,6 +7,9 @@ disableList: true
 &laquo;&nbsp;[Terug naar Software Engineering Skills](/teaching/ses)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
 
+> <i class="fa fa-question-circle" aria-hidden="true"></i>
+ Wat is de beste manier om het aantal bugs in code te reduceren?
+
 ## Test-Driven Development
 
 TDD (Test-Driven Development) is een hulpmiddel bij softwareontwikkeling om minder fouten te maken en sneller fouten te vinden, door éérst een test te schrijven en dan pas de implementatie. Die (unit) test zal dus eerst **falen** (ROOD), want er is nog helemaal geen code, en na de correcte implementatie uiteindelijk **slagen** (GROEN). 

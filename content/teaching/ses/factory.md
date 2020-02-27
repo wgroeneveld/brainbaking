@@ -1,6 +1,5 @@
-
 ---
-title: 'Labo x: Design Patterns: Factory'
+title: 'Design Patterns: Factory'
 accent: "#008eb3"
 disableList: true
 ---

@@ -1,5 +1,5 @@
 ---
-title: 'Labo x: Software Management Skills'
+title: 'Software Management Skills'
 accent: "#008eb3"
 disableList: true
 ---

@@ -1,5 +1,5 @@
 ---
-title: 'Labo x: Design Patterns: (template)'
+title: 'Design Patterns: (template)'
 accent: "#008eb3"
 concept: true
 ---

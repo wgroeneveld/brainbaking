@@ -1,5 +1,5 @@
 ---
-title: 'Labo x: Design Patterns: Facade'
+title: 'Design Patterns: Facade'
 accent: "#008eb3"
 disableList: true
 ---

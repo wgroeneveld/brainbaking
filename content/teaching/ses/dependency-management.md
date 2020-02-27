@@ -2,10 +2,14 @@
 title: 'Dependency Management'
 accent: "#008eb3"
 ---
+
 &laquo;&nbsp;[Terug naar Software Engineering Skills](/teaching/ses)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
 
 Lees ook: [Meer uitleg over de Gradle build tool](/teaching/ses/gradle/).
+
+> <i class="fa fa-question-circle" aria-hidden="true"></i>
+ Wat is de beste manier om afhankelijkheden te beheren?
 
 ## Wat is een 'dependency'?
 

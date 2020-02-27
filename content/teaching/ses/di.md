@@ -1,5 +1,5 @@
 ---
-title: 'Labo x: Design Patterns: Dependency Injection'
+title: 'Design Patterns: Dependency Injection'
 accent: "#008eb3"
 disableList: true
 ---

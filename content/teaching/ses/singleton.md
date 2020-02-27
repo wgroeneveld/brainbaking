@@ -1,5 +1,5 @@
 ---
-title: 'Labo x: Design Patterns: Singleton'
+title: 'Design Patterns: Singleton'
 accent: "#008eb3"
 disableList: true
 ---

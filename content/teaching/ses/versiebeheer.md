@@ -7,6 +7,9 @@ disableList: true
 &laquo;&nbsp;[Terug naar Software Engineering Skills](/teaching/ses)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
 
+> <i class="fa fa-question-circle" aria-hidden="true"></i>
+ Wat is de beste manier om source code te bewaren?
+
 ## Wat is versiebeheer of _source control_?
 
 **[Source Control](https://en.wikipedia.org/wiki/Version_control)** is een sleutelbegrip voor ontwikkelteams. Het stelt iedereen in staat om aan dezelfde source file te werken zonder bestanden op- en neer te sturen, voorziet backups, maakt het mogelijk om releases en branches uit te rollen, ...

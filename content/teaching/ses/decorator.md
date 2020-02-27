@@ -1,5 +1,5 @@
 ---
-title: 'Labo x: Design Patterns: Decorator'
+title: 'Design Patterns: Decorator'
 accent: "#008eb3"
 disableList: true
 ---
