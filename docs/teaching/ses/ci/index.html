@@ -5,9 +5,9 @@
 
 
 
-	<meta name="description" content="Labo x: Continuous Integration &amp; Deployment - Brain Baking">
-	<meta content="Labo x: Continuous Integration &amp; Deployment - Brain Baking" property="og:title">
-	<meta content="Labo x: Continuous Integration &amp; Deployment - Brain Baking" property="og:description">
+	<meta name="description" content="Continuous Integration &amp; Deployment - Brain Baking">
+	<meta content="Continuous Integration &amp; Deployment - Brain Baking" property="og:title">
+	<meta content="Continuous Integration &amp; Deployment - Brain Baking" property="og:description">
 
 
 
@@ -35,9 +35,9 @@
          "@id": "https:\/\/brainbaking.com\/"
     },
     "articleSection" : "teaching",
-    "name" : "Labo x: Continuous Integration \x26 Deployment",
+    "name" : "Continuous Integration \x26 Deployment",
     
-      "headline" : "Labo x: Continuous Integration \x26 Deployment",
+      "headline" : "Continuous Integration \x26 Deployment",
     
     "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\n1. Continuous Integration (CI) Het softwareontwikkel proces is een continu proces: als een eerste versie van het product klaar is, en wordt overgemaakt aan klanten, volgt het onderhoud en een mogelijke volgende versie. Elke wijziging maakt potentiëel dingen kapot (geminimaliseerd met TDD), of introduceert nieuwe features. Dat betekent dat bij elke wijziging, een computer het hele build proces moet doorlopen om te controleren of er niets stuk is.",
     
@@ -61,11 +61,11 @@
     "accountablePerson" : "Wouter Groeneveld",
     "copyrightHolder" : "Wouter Groeneveld",
     "copyrightYear" : "0001",
-    "datePublished": "2019-12-16 10:09:18 \x2b0100 CET",
-    "dateModified" : "2019-12-16 10:09:18 \x2b0100 CET",
+    "datePublished": "2020-02-27 14:29:31 \x2b0100 CET",
+    "dateModified" : "2020-02-27 14:29:31 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/ci\/",
-    "wordCount" : "745",
-    "keywords" : [ "Labo x: Continuous Integration \x26 Deployment", "teaching" ]
+    "wordCount" : "904",
+    "keywords" : [ "Continuous Integration \x26 Deployment", "teaching" ]
 }
 </script>
 
@@ -82,7 +82,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Labo x: Continuous Integration &amp; Deployment</title>
+        <title>Continuous Integration &amp; Deployment</title>
         
         <style>
 
@@ -156,7 +156,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Labo x: Continuous Integration &amp; Deployment</a>
+                    <a class="navbar-brand visible-xs" href="#">Continuous Integration &amp; Deployment</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -207,7 +207,7 @@
     
     <h3>
         
-        <a href="/teaching/ses/ci/">Labo x: Continuous Integration &amp; Deployment</a>
+        <a href="/teaching/ses/ci/">Continuous Integration &amp; Deployment</a>
     </h3>
     
 
@@ -342,6 +342,23 @@ install:
 <p>Via <a href="/teaching/ses/github-classroom"><i class='fa fa-github'></i> Github Classroom</a>.</p>
 
 <h3 id="opgave-1">Opgave 1</h3>
+
+<h4 id="1-1-de-calculator-app">1.1 De Calculator app</h4>
+
+<p>Ontwerp een command-line interface programma, getiteld &lsquo;calculator&rsquo;, dat twee argumenten inleest die terecht komen in de <code>main()</code> methode, en de sommatie ervan afdrukt:</p>
+
+<p><code>java -cp . Calculator 1 4</code> print <code>5</code> in <code>stdout</code>.</p>
+
+<p>Uiteraard gebruiken we hier Gradle voor. Zet de berekening in een aparte methode, die ook <em>getest</em> werd. Voorzie dus ook Enkele eenvoudige unit testen in <code>src/main/test</code>.</p>
+
+<h4 id="1-2-de-app-builden-op-travis">1.2 De app builden op Travis</h4>
+
+<p>Nadat de code voor 1.1 werd gecommit en gepushed op je Git repository, is de volgende stap dit project automatisch te builden op een server, zoals Travis. Om dit te activeren moeten er twee stappen worden uitgevoerd:</p>
+
+<ol>
+<li>Activeer je repository door op <a href="travis-ci.org">travis-ci.org</a> in te loggen met je Github account, de repository terug te zoeken in de lijst door op <code>+</code> te drukken links, en de slider naar rechts te zetten, zodat Travis changes detecteert.</li>
+<li>Voorzie een <code>.travis.yml</code> bestand waarin staat beschreven op welke manier je project moet worden gebuild.</li>
+</ol>
 
 <h3 id="opgave-2">Opgave 2</h3>
 
