@@ -9,18 +9,5 @@ Onderstaande Github Classroom repositories zijn telkens Gradle Java projecten. B
 
 ## <a name="oef"></a>Labo oefeningen
 
-TODO Links copypasten vanuit Github Classroom.
-
-### Design Patterns
-
-1. [Facade](/teaching/ses/facade) 
-2. [Dependency Injection](/teaching/ses/di)
-3. [Singleton](/teaching/ses/singleton)
-4. [Decorator](/teaching/ses/decorator)
-5. [Factory](/teaching/ses/factory)
-
-### Test Driven Development
-
-URL
-
+- 27/02/2020: TDD Opgave 1: [https://classroom.github.com/a/WT_nzKGM](https://classroom.github.com/a/WT_nzKGM)
 
