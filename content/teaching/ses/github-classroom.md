@@ -10,4 +10,5 @@ Onderstaande Github Classroom repositories zijn telkens Gradle Java projecten. B
 ## <a name="oef"></a>Labo oefeningen
 
 - 27/02/2020: TDD Opgave 1: [https://classroom.github.com/a/WT_nzKGM](https://classroom.github.com/a/WT_nzKGM)
+- 05/03/2020: TDD Opgave 4 & 5: [https://classroom.github.com/a/M24O57aU](https://classroom.github.com/a/M24O57aU)
 
