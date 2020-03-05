@@ -204,7 +204,7 @@ public void testMethod() {
 
 Wanneer de **Arrange** stap dezelfde is voor een serie van testen, kunnen we dit veralgemenen naar een `@Before` methode, die voor het uitvoeren van bepaalde of alle testen wordt uitgevoerd. Op dezelfde manier kan data worden opgekuist na elke test met een `@After` methode - dit noemt men de _teardown_ stap. 
 
-JUnit 4 en JUnit 5 verschillen hierin op niveau van gebruik. Raadpleeg [de documentatie](https://junit.org/junit5/docs/current/user-guide/) voor meer informatie. Voorbeelden zijn terug te vinden in de [SESsy Library applicatie](/teaching/ses/sessy).
+JUnit 4 en JUnit 5 verschillen hierin op niveau van gebruik. Vanaf JUnit 5 werkt men met `@BeforeEach`/`@BeforeAll`. Raadpleeg [de documentatie](https://junit.org/junit5/docs/current/user-guide/) voor meer informatie over het verschil tussen each/all en tussen v4/v5. Voorbeelden van JUnit 5 testen zijn terug te vinden in de [SESsy Library applicatie](/teaching/ses/sessy).
 
 ### Soorten van Testen
 
@@ -217,15 +217,7 @@ Er zijn drie grote types van testen:
 
 #### 1. Unit Testing (GROEN)
 
-Een unit test test zaken op _individueel niveau_, per klasse dus. De methodes van de `Periode` klasse testen zijn unit testen: er zijn geen andere klasses mee gemoeid. De meeste testen zijn unit testen. Hoe kleiner het blokje op bovenstaande figuur, hoe beter de F.I.R.S.T. principes kunnen nageleefd worden. Immers, hoe meer systemen opgezet moeten worden voordat het assertion framework zijn ding kan doen, hoe meer tijd verloren, en hoe meer tijd de test in totaal nodig heeft om zijn resultaat te verwerken. 
-
-Typische eigenschappen van unit testen:
-
-- Onafhankelijk van externen. (db, webservice, ...)
-- Snel!
-- Véél testen.
-- Test Happy Path & Edge Cases.
-- "Actieve vijand van de code".
+Een unit test test zaken op _individueel niveau_, per klasse dus. De methodes van de `Periode` klasse testen zijn unit testen: er zijn geen andere klasses mee gemoeid. De meeste testen zijn unit testen. Hoe kleiner het blokje op bovenstaande figuur, hoe beter de **F.I.R.S.T. principes** kunnen nageleefd worden. Immers, hoe meer systemen opgezet moeten worden voordat het assertion framework zijn ding kan doen, hoe meer tijd verloren, en hoe meer tijd de test in totaal nodig heeft om zijn resultaat te verwerken. 
 
 #### 2. Integration Testing (ORANJE)
 
@@ -293,15 +285,7 @@ public class Service {
 
 In de test wordt een instantie van `RepositoryForTesting` in service gebruikt in plaats van de effectieve `RepositoryDBImpl`. De test klasse _gedraagt_ zich als een `Repository`, omdat deze de betreffende interface implementeert. De `Service` klasse weet niet welke implementatie van de interface binnen komt: daar kan bij het integration testing handig gebruk van worden gemaakt.
 
-Een werkend voorbeeld hiervan is terug te vinden in de [SESsy library applicatie](/teaching/ses/sessy). (Demo volgt)
-
-De demo applicatie maakt gebruik van **WebDriver**, een interface die **Selenium** aanstuurt die browsers automatiseert. Op die manier kan men eenvoudig commando's doorsturen zoals surf naar daar, klik hier op, wacht x seconden, verifieer dat hier dat staat, ... Dit is één test scenario in totaal. 
-
-<center>
-    <img src="/img/teaching/ses/selenium.png" class="bordered" />
-</center>
-
-In plaats van dit in (Java) code te schrijven, is het echter ook mogelijk om de [Selenium IDE](https://selenium.dev/selenium-ide/) extentie voor Google Chrome of Mozilla Firefox te gebruiken. Deze browser extentie laat recorden in de browser zelf toe, en vergemakkelijkt het gebruik (er is geen nood meer aan het vanbuiten kennen van zulke commando's). Dit wordt in de praktijk vaak gebruikt door software analisten of testers die niet de technische kennis hebben om te programmeren, maar toch deel zijn van het ontwikkelteam. 
+Een werkend voorbeeld hiervan is terug te vinden in de [SESsy library applicatie](/teaching/ses/sessy). 
 
 #### 3. End-To-End Testing (ROOD)
 
@@ -316,6 +300,13 @@ Typische eigenschappen van end-to-end testen:
 
 Een werkend voorbeeld hiervan is terug te vinden in de [SESsy library applicatie](/teaching/ses/sessy).
 
+De SESsy applicatie maakt gebruik van **WebDriver**, een interface die **Selenium** aanstuurt die browsers automatiseert. Op die manier kan men eenvoudig commando's doorsturen zoals surf naar daar, klik hier op, wacht x seconden, verifieer dat hier dat staat, ... Dit is één test scenario in totaal. 
+
+<center>
+    <img src="/img/teaching/ses/selenium.png" class="bordered" />
+</center>
+
+In plaats van dit in (Java) code te schrijven, is het echter ook mogelijk om de [Selenium IDE](https://selenium.dev/selenium-ide/) extentie voor Google Chrome of Mozilla Firefox te gebruiken. Deze browser extentie laat recorden in de browser zelf toe, en vergemakkelijkt het gebruik (er is geen nood meer aan het vanbuiten kennen van zulke commando's). Dit wordt in de praktijk vaak gebruikt door software analisten of testers die niet de technische kennis hebben om te programmeren, maar toch deel zijn van het ontwikkelteam. 
 
 ## <a name="oef"></a>Labo oefeningen
 
@@ -432,6 +423,10 @@ Gebruik Selenium IDE om een test scenario op te nemen van de SESsy applicatie. S
 1. Als anoniempje, zoek op 'art', klik op detail, klik op uitlenen. Verifieer dat er een waarschuwingsboodschap verschijnt dat je niet kan uitlenen.
 2. Als slechte uitlener, zoek op 'art', klik op detail, klik op uitlenen. Verifieer dat er een boodschap verschijnt dat het gelukt is, en dat de knop veranderde naar 'Terugbrengen?'. Klik op terugbrengen. Verifieer dat er een boodschap verschijnt dat het gelukt is. 
 3. Als anoniempje, log in (een van beide rollen). Verifieer dat login naar logout verandert. Logout. Verifieer dat logout naar login verandert. 
+
+**Bewaar dit scenario, opgenomen met de Selenium IDE, in bestand _opgave5.html_** in de root van deze repository. 
+
+Je zal voor deze opgave dus de lokale [SESsy applicatie](/teaching/ses/sessy) moeten starten, en de Selenium (Google Chrome) plugin moeten installeren. 
 
 ## Denkvragen
 

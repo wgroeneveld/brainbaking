@@ -64,7 +64,7 @@
     "datePublished": "2020-02-27 16:39:14 \x2b0100 CET",
     "dateModified" : "2020-02-27 16:39:14 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/tdd\/",
-    "wordCount" : "3131",
+    "wordCount" : "3160",
     "keywords" : [ "Test Driven Development", "teaching" ]
 }
 </script>
@@ -438,7 +438,7 @@ public void testMethod() {
 
 <p>Wanneer de <strong>Arrange</strong> stap dezelfde is voor een serie van testen, kunnen we dit veralgemenen naar een <code>@Before</code> methode, die voor het uitvoeren van bepaalde of alle testen wordt uitgevoerd. Op dezelfde manier kan data worden opgekuist na elke test met een <code>@After</code> methode - dit noemt men de <em>teardown</em> stap.</p>
 
-<p>JUnit 4 en JUnit 5 verschillen hierin op niveau van gebruik. Raadpleeg <a href="https://junit.org/junit5/docs/current/user-guide/">de documentatie</a> voor meer informatie. Voorbeelden zijn terug te vinden in de <a href="/teaching/ses/sessy">SESsy Library applicatie</a>.</p>
+<p>JUnit 4 en JUnit 5 verschillen hierin op niveau van gebruik. Vanaf JUnit 5 werkt men met <code>@BeforeEach</code>/<code>@BeforeAll</code>. Raadpleeg <a href="https://junit.org/junit5/docs/current/user-guide/">de documentatie</a> voor meer informatie over het verschil tussen each/all en tussen v4/v5. Voorbeelden van JUnit 5 testen zijn terug te vinden in de <a href="/teaching/ses/sessy">SESsy Library applicatie</a>.</p>
 
 <h3 id="soorten-van-testen">Soorten van Testen</h3>
 
@@ -451,17 +451,7 @@ public void testMethod() {
 
 <h4 id="1-unit-testing-groen">1. Unit Testing (GROEN)</h4>
 
-<p>Een unit test test zaken op <em>individueel niveau</em>, per klasse dus. De methodes van de <code>Periode</code> klasse testen zijn unit testen: er zijn geen andere klasses mee gemoeid. De meeste testen zijn unit testen. Hoe kleiner het blokje op bovenstaande figuur, hoe beter de F.I.R.S.T. principes kunnen nageleefd worden. Immers, hoe meer systemen opgezet moeten worden voordat het assertion framework zijn ding kan doen, hoe meer tijd verloren, en hoe meer tijd de test in totaal nodig heeft om zijn resultaat te verwerken.</p>
-
-<p>Typische eigenschappen van unit testen:</p>
-
-<ul>
-<li>Onafhankelijk van externen. (db, webservice, &hellip;)</li>
-<li>Snel!</li>
-<li>Véél testen.</li>
-<li>Test Happy Path &amp; Edge Cases.</li>
-<li>&ldquo;Actieve vijand van de code&rdquo;.</li>
-</ul>
+<p>Een unit test test zaken op <em>individueel niveau</em>, per klasse dus. De methodes van de <code>Periode</code> klasse testen zijn unit testen: er zijn geen andere klasses mee gemoeid. De meeste testen zijn unit testen. Hoe kleiner het blokje op bovenstaande figuur, hoe beter de <strong>F.I.R.S.T. principes</strong> kunnen nageleefd worden. Immers, hoe meer systemen opgezet moeten worden voordat het assertion framework zijn ding kan doen, hoe meer tijd verloren, en hoe meer tijd de test in totaal nodig heeft om zijn resultaat te verwerken.</p>
 
 <h4 id="2-integration-testing-oranje">2. Integration Testing (ORANJE)</h4>
 
@@ -529,15 +519,7 @@ public class Service {
 
 <p>In de test wordt een instantie van <code>RepositoryForTesting</code> in service gebruikt in plaats van de effectieve <code>RepositoryDBImpl</code>. De test klasse <em>gedraagt</em> zich als een <code>Repository</code>, omdat deze de betreffende interface implementeert. De <code>Service</code> klasse weet niet welke implementatie van de interface binnen komt: daar kan bij het integration testing handig gebruk van worden gemaakt.</p>
 
-<p>Een werkend voorbeeld hiervan is terug te vinden in de <a href="/teaching/ses/sessy">SESsy library applicatie</a>. (Demo volgt)</p>
-
-<p>De demo applicatie maakt gebruik van <strong>WebDriver</strong>, een interface die <strong>Selenium</strong> aanstuurt die browsers automatiseert. Op die manier kan men eenvoudig commando&rsquo;s doorsturen zoals surf naar daar, klik hier op, wacht x seconden, verifieer dat hier dat staat, &hellip; Dit is één test scenario in totaal.</p>
-
-<p><center>
-    <img src="/img/teaching/ses/selenium.png" class="bordered" />
-</center></p>
-
-<p>In plaats van dit in (Java) code te schrijven, is het echter ook mogelijk om de <a href="https://selenium.dev/selenium-ide/">Selenium IDE</a> extentie voor Google Chrome of Mozilla Firefox te gebruiken. Deze browser extentie laat recorden in de browser zelf toe, en vergemakkelijkt het gebruik (er is geen nood meer aan het vanbuiten kennen van zulke commando&rsquo;s). Dit wordt in de praktijk vaak gebruikt door software analisten of testers die niet de technische kennis hebben om te programmeren, maar toch deel zijn van het ontwikkelteam.</p>
+<p>Een werkend voorbeeld hiervan is terug te vinden in de <a href="/teaching/ses/sessy">SESsy library applicatie</a>.</p>
 
 <h4 id="3-end-to-end-testing-rood">3. End-To-End Testing (ROOD)</h4>
 
@@ -553,6 +535,14 @@ public class Service {
 </ul>
 
 <p>Een werkend voorbeeld hiervan is terug te vinden in de <a href="/teaching/ses/sessy">SESsy library applicatie</a>.</p>
+
+<p>De SESsy applicatie maakt gebruik van <strong>WebDriver</strong>, een interface die <strong>Selenium</strong> aanstuurt die browsers automatiseert. Op die manier kan men eenvoudig commando&rsquo;s doorsturen zoals surf naar daar, klik hier op, wacht x seconden, verifieer dat hier dat staat, &hellip; Dit is één test scenario in totaal.</p>
+
+<p><center>
+    <img src="/img/teaching/ses/selenium.png" class="bordered" />
+</center></p>
+
+<p>In plaats van dit in (Java) code te schrijven, is het echter ook mogelijk om de <a href="https://selenium.dev/selenium-ide/">Selenium IDE</a> extentie voor Google Chrome of Mozilla Firefox te gebruiken. Deze browser extentie laat recorden in de browser zelf toe, en vergemakkelijkt het gebruik (er is geen nood meer aan het vanbuiten kennen van zulke commando&rsquo;s). Dit wordt in de praktijk vaak gebruikt door software analisten of testers die niet de technische kennis hebben om te programmeren, maar toch deel zijn van het ontwikkelteam.</p>
 
 <h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
@@ -673,6 +663,10 @@ Echter, als de klant meer dan 5 stuks verkoopt, mag er een korting van 10% worde
 <li>Als slechte uitlener, zoek op &lsquo;art&rsquo;, klik op detail, klik op uitlenen. Verifieer dat er een boodschap verschijnt dat het gelukt is, en dat de knop veranderde naar &lsquo;Terugbrengen?&rsquo;. Klik op terugbrengen. Verifieer dat er een boodschap verschijnt dat het gelukt is.</li>
 <li>Als anoniempje, log in (een van beide rollen). Verifieer dat login naar logout verandert. Logout. Verifieer dat logout naar login verandert.</li>
 </ol>
+
+<p><strong>Bewaar dit scenario, opgenomen met de Selenium IDE, in bestand <em>opgave5.html</em></strong> in de root van deze repository.</p>
+
+<p>Je zal voor deze opgave dus de lokale <a href="/teaching/ses/sessy">SESsy applicatie</a> moeten starten, en de Selenium (Google Chrome) plugin moeten installeren.</p>
 
 <h2 id="denkvragen">Denkvragen</h2>
 
