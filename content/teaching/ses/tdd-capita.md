@@ -86,7 +86,9 @@ De input is een bestand dat er zo uit ziet:
 36
 </pre>
 
-De eerste regel beschrijft het aantal kasten dat gevuld moet worden. Voor elke kast dicteert de eerste regel het aantal schoenen, en de volgende regels de schoenmaat. Schoenen met exact dezelfde maat strict kleiner dan maat 38 kunnen op elkaar geplaatst worden om plaats te besparen, met een maximum van 2. Dat betekent dat voor bovenstaand voorbeeld, de eerste kast er zo zou uit zien: `35, 36/36, 37, 38`. (De schoenen mogen dus verhuisd worden van volgorde)
+De eerste regel beschrijft het aantal kasten dat gevuld moeten worden. Voor elke kast dicteert de eerste regel het aantal schoenen, en de volgende regels de schoenmaat voor elke schoen in die kast. Bovenstaande input zegt dus: er zijn 3 kasten, in kast 1 zitten 5 schoenen met maat `36, 37, 35, 36, 38`, in kast 2 zitten 2 schoenen met maat `38, 38`, ...
+
+Schoenen met exact dezelfde maat strikt kleiner dan maat 38 kunnen op elkaar geplaatst worden om plaats te besparen, met een maximum van 2. Dat betekent dat voor bovenstaand voorbeeld, de eerste kast er zo zou uit zien: `35, 36/36, 37, 38`. (De schoenen mogen dus verhuisd worden van volgorde)
 
 De output ziet er zo uit:
 
