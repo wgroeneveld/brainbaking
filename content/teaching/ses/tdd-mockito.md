@@ -145,3 +145,8 @@ public class DieHardInADeepenBeekTests {
 Het geheim zit hem in de `mock()` en `when()` methodes, waarmee we het gedrag van de mock implementatie kunnen aansturen. Dit werd vroeger manueel geïmplementeerd, maar die klasses zijn nu niet meer nodig. 
 
 Lees op [https://site.mockito.org](https://site.mockito.org) **hoe** je het framework moet gebruiken. (Klik op de knoppen **WHY** en **HOW** bovenaan! Volledige [javadoc](https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html)) 
+
+### TDD in een groter project
+
+De [SESsy library](/teaching/ses/sessy) webapplicatie bevat ook unit-, integratie- en endtoend-testen die een meer 'real-life' omgeving simuleren met een grotere codebase. Zij die zoeken naar een beter begrip van het concept TDD en de implementatie ervan in de dagelijkse wereld, kunnen daar hun oren en ogen de kost geven. We moedigen tevens het wijzigen van testen aan om te kijken wat er gebeurt!
+
