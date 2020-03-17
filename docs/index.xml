@@ -1052,6 +1052,19 @@ Project opdracht Om jullie recent opgedane object-geörienteerde technieken te t
     </item>
     
     <item>
+      <title>TDD In de praktijk: Mockito</title>
+      <link>https://brainbaking.com/teaching/ses/tdd-mockito/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/tdd-mockito/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
+Mockito is verreweg het meest populaire Unit Test Framework dat bovenop JUnit wordt gebruikt om heel snel Test Doubles en integratietesten op te bouwen.
+ 
+Lees op https://site.mockito.org hoe je het framework moet gebruiken. (Klik op de knoppen WHY en HOW bovenaan! Volledige javadoc) Denk aan de volgende zaken:
+ Hoe include ik Mockito als een dependency in mijn project? Hoe gebruik ik de API om een Test Double/mock aan te maken?</description>
+    </item>
+    
+    <item>
       <title>Test Driven Development</title>
       <link>https://brainbaking.com/teaching/ses/tdd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

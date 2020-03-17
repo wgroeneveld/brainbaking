@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="https://brainbaking.com/css/brainbaking.css">
+
+
+
+	<meta name="description" content="TDD In de praktijk: Mockito - Brain Baking">
+	<meta content="TDD In de praktijk: Mockito - Brain Baking" property="og:title">
+	<meta content="TDD In de praktijk: Mockito - Brain Baking" property="og:description">
+
+
+
+
+<meta property="og:url" content="https://brainbaking.com/teaching/ses/tdd-mockito/" />
+<meta property="og:type" content="website" />
+
+
+
+
+
+<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+<meta property="article:section" content="teaching" />
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/brainbaking.com\/"
+    },
+    "articleSection" : "teaching",
+    "name" : "TDD In de praktijk: Mockito",
+    
+      "headline" : "TDD In de praktijk: Mockito",
+    
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills\nMockito is verreweg het meest populaire Unit Test Framework dat bovenop JUnit wordt gebruikt om heel snel Test Doubles en integratietesten op te bouwen.\n \nLees op https:\/\/site.mockito.org hoe je het framework moet gebruiken. (Klik op de knoppen WHY en HOW bovenaan! Volledige javadoc) Denk aan de volgende zaken:\n Hoe include ik Mockito als een dependency in mijn project? Hoe gebruik ik de API om een Test Double\/mock aan te maken?",
+    
+      "inLanguage" : "nl-BE",
+    
+    
+      "image": "https:\/\/brainbaking.com\/img/avatar-icon.png",
+    
+    "author" : {
+    	"@type": "Person",
+    	"name": "Wouter Groeneveld"
+	  },
+    "publisher": {
+    	"@type": "Organization",
+    	"name": "Brain Baking",
+    	"logo": {
+    		"@type": "ImageObject",
+    		"url": "https:\/\/brainbaking.com\/img/avatar-icon.png"
+    	}
+	  },
+    "accountablePerson" : "Wouter Groeneveld",
+    "copyrightHolder" : "Wouter Groeneveld",
+    "copyrightYear" : "0001",
+    "datePublished": "2020-03-17 19:49:48 \x2b0100 CET",
+    "dateModified" : "2020-03-17 19:49:48 \x2b0100 CET",
+    "url" : "https:\/\/brainbaking.com\/teaching\/ses\/tdd-mockito\/",
+    "wordCount" : "662",
+    "keywords" : [ "TDD In de praktijk: Mockito", "teaching" ]
+}
+</script>
+
+
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-45748221-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TDD In de praktijk: Mockito</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Serif Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+    	--accent: #008eb3;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://brainbaking.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Serif%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/paraiso-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cs.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cpp.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scheme.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/llvm.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">TDD In de praktijk: Mockito</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/post"><i class='fa fa-file-code-o'></i>&nbsp;Tech Blog</a></li>
+                            
+                                <li><a href="/essays"><i class='fa fa-book'></i>&nbsp;Essays</a></li>
+                            
+                                <li><a href="/tags"><i class='fa fa-tags'></i>&nbsp;Tags</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li><a href="/about"><i class='fa fa-user'></i>&nbsp;About Me</a></li>
+                            
+                                <li><a href="/teaching"><i class='fa fa-graduation-cap'></i>&nbsp;Teaching</a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+
+<main>
+
+    <a name="top"></a>
+    <div class="item">
+
+    
+    <h3>
+        
+        <a href="/teaching/ses/tdd-mockito/">TDD In de praktijk: Mockito</a>
+    </h3>
+    
+
+    
+    
+    
+
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>&laquo;&nbsp;<a href="/teaching/ses">Terug naar Software Engineering Skills</a><br/></p>
+
+<p>Mockito is verreweg het meest populaire Unit Test Framework dat bovenop JUnit wordt gebruikt om heel snel Test Doubles en integratietesten op te bouwen.</p>
+
+<p><center>
+    <img src="/img/teaching/ses/mockito.png" alt="Mockito logo" />
+</center></p>
+
+<p>Lees op <a href="https://site.mockito.org">https://site.mockito.org</a> <strong>hoe</strong> je het framework moet gebruiken. (Klik op de knoppen <strong>WHY</strong> en <strong>HOW</strong> bovenaan! Volledige <a href="https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html">javadoc</a>) Denk aan de volgende zaken:</p>
+
+<ul>
+<li>Hoe include ik Mockito als een dependency in mijn project?</li>
+<li>Hoe gebruik ik de API om een Test Double/mock aan te maken?</li>
+<li>Hoe valideer ik verwachtingen die ik heb van deze Test Double?</li>
+</ul>
+
+<h3 id="een-interface-mocken-the-hard-way">Een interface &lsquo;mocken&rsquo;: the hard way</h3>
+
+<p>Zoals aangehaald in de <a href="/teaching/ses/tdd">TDD noties</a> kan een eigen implementatie van een interface worden gemaakt die als Test Double werkt (denk aan Arnie&rsquo;s stuntman). Het vervelende is dat deze klasse enkel maar wordt gebruikt in test code, dus niet in productie code. Mockito maakt dit dynamisch aan, zonder dat er ooit het keyword <code>class</code> bij aan de pas komt.</p>
+
+<p><center>
+    <img src="https://wgroeneveld.github.io/tdd-course/img/testdouble.jpg" style="width: 75%; border: 1px solid black;" /><br/>
+    <em>I&rsquo;ll Be Back.</em>
+</center></p>
+
+<p>Stel, Arnold gaat acteren voor de nieuwe film <strong>Die Hard: In A Deepen Beek</strong> (uit in 2025 - Bruce had geen zin meer). Hij moet daarvoor een aantal fantastische stunts uithalen, die hij niet graag zelf zou doen. De volgende interface definieert een &lsquo;Arnold&rsquo;, waarbij <code>doBackFlip()</code> de gevaarlijke stunt is (resultaat is <code>true</code> indien geslaagd):</p>
+
+<pre><code class="language-java">public interface IllBeBack {
+    boolean doBackFlip();
+}
+</code></pre>
+
+<p>De casting crew en de director verwacht dat tijdens een opname 3x een backflip wordt uitgevoerd, en dat die telkens lukt. Indien deze niet lukt, wordt de take opnieuw genomen. De One And Only Arnold had op dat moment een crisisvergadering in Californië en kon niet aanwezig zijn op de set. Gelukkig zijn er lookalikes en stuntmannen genoeg:</p>
+
+<pre><code class="language-java">public class ArnieLookalike implements IllBeBack {
+    @Override
+    public boolean doBackFlip() {
+        return false;
+    }
+}
+
+public class StuntmanArnie implements IllBeBack {
+    @Override
+    public boolean doBackFlip() {
+        return true;
+    }
+}
+</code></pre>
+
+<p>Enkel <code>StuntmanArnie</code> is fysiek krachtig genoeg om consistent de backflip uit te voeren. De lookalike ziet er uit zoals Arnold, maar bakt jammer genoeg van de scene niet zo veel. Hieronder een blueprint van de opname code:</p>
+
+<pre><code class="language-java">public class DieHardInADeepenBeek {
+    private IllBeBack arnoldActor;
+
+    public void setArnoldActor(IllBeBack actor) {
+        this.arnoldActor = actor;
+    }
+
+    public void recordActOne() {
+        boolean succeeded = true;
+        for(int i = 1; i &lt;= 3; i++) {
+            succeeded &amp;= arnoldActor.doBackFlip();
+        }
+
+        if(!succeeded) {
+            throw new RuntimeException(&quot;do that again, please...&quot;);
+        }
+    }
+}
+</code></pre>
+
+<p>De hamvraag is nu: hoe testen we de <strong>logica in <code>recordActOne</code></strong>? Daarvoor zal de backflip soms moeten lukken, en soms ook niet. We hebben dus zowel een <code>ArnieLookalike</code> als <code>StuntmanArnie</code> implementatie nodig:</p>
+
+<pre><code class="language-java">public class DieHardInADeepenBeekTests {
+    @Test(ExpectedException = RuntimeException.class)
+    public void recordActOne_backflipFails_haveToRedoTheWholeThing() {
+        // 1. Arrange
+        var movie = new DieHardInADeepenBeek();
+        var actor = new ArnieLookalike();
+        movie.setArnoldActor(actor);
+
+        // 2. act
+        movie.recordActOne();
+        // 3. assert (in annotation)
+    }
+
+    @Test
+    public void recordActOne_backflipSucceeds_ok() {
+        // 1. Arrange
+        var movie = new DieHardInADeepenBeek();
+        var actor = new StuntmanArnie();
+        movie.setArnoldActor(actor);
+
+        // 2. act
+        movie.recordActOne();
+        // 3. assert
+        assertTrue(true);
+    }
+}
+</code></pre>
+
+<h3 id="een-interface-mocken-the-easy-way">Een interface &lsquo;mocken&rsquo;: the easy way</h3>
+
+<p>In plaats van de <code>ArnieLookalike</code> en <code>StuntmanArnie</code> klasses zelf te maken, kunnen we hier Mockito het zware werk laten doen door gebruik te maken van de <code>mock()</code> methode. De testen worden dan lichtjes anders, omdat we daarin het gedrag van de mock eerst moeten bepalen voordat we naar de act en assert stappen kunnen gaan:</p>
+
+<pre><code class="language-java">public class DieHardInADeepenBeekTests {
+    @Test(ExpectedException = RuntimeException.class)
+    public void recordActOne_backflipFails_haveToRedoTheWholeThing() {
+        // 1. Arrange
+        var movie = new DieHardInADeepenBeek();
+        var actor = mock(IllBeBack.class);
+        when(actor.doBackFlip()).thenReturn(false);
+        movie.setArnoldActor(actor);
+
+        // 2. act
+        movie.recordActOne();
+        // 3. assert (in annotation)
+    }
+
+    @Test
+    public void recordActOne_backflipSucceeds_ok() {
+        // 1. Arrange
+        var movie = new DieHardInADeepenBeek();
+        var actor = mock(IllBeBack.class);
+        when(actor.doBackFlip()).thenReturn(true);
+        movie.setArnoldActor(actor);
+
+        // 2. act
+        movie.recordActOne();
+        // 3. assert
+        assertTrue(true);
+    }
+}
+</code></pre>
+
+<p>Het geheim zit hem in de <code>mock()</code> en <code>when()</code> methodes, waarmee we het gedrag van de mock implementatie kunnen aansturen. Dit werd vroeger manueel geïmplementeerd, maar die klasses zijn nu niet meer nodig.</p>
+
+<p>Lees op <a href="https://site.mockito.org">https://site.mockito.org</a> <strong>hoe</strong> je het framework moet gebruiken. (Klik op de knoppen <strong>WHY</strong> en <strong>HOW</strong> bovenaan! Volledige <a href="https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html">javadoc</a>)</p>
+</div>
+
+    
+    
+
+    
+
+    <h4 class="page-header">&nbsp;</h4>
+
+    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
