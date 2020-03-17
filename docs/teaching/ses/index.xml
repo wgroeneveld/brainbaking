@@ -188,8 +188,7 @@ Stel, een gemeente vraagt om een nieuwe website te ontwikkelen voor de lokale bi
       <guid>https://brainbaking.com/teaching/ses/tdd-capita/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
 Test-First Een algoritme ontwerpen Neem eerst de volgende noties terug door:
- Test Driven Development principes  Labo oefeningen Opgave 1 TODO
-Opgave 2 TODO</description>
+ Test Driven Development principes  Dit labo gaan we ons focussen op het praktisch gebruik van TDD en unit testen ter ondersteuning van het opbouwen van een algoritme, ter oplossing van een probleem. Alle TDD concepten zijn reeds uitgelegd in het Test Driven Development labo. We gaan onmiddellijk verder met de oefeningen:</description>
     </item>
     
     <item>

@@ -39,7 +39,7 @@
     
       "headline" : "Test Driven Development met algoritmes: Capita Selecta",
     
-    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\nTest-First Een algoritme ontwerpen Neem eerst de volgende noties terug door:\n Test Driven Development principes  Labo oefeningen Opgave 1 TODO\nOpgave 2 TODO",
+    "description" : "\x26laquo;\x26nbsp;Terug naar Software Engineering Skills \x26raquo;\x26nbsp;Naar de labo opgave\nTest-First Een algoritme ontwerpen Neem eerst de volgende noties terug door:\n Test Driven Development principes  Dit labo gaan we ons focussen op het praktisch gebruik van TDD en unit testen ter ondersteuning van het opbouwen van een algoritme, ter oplossing van een probleem. Alle TDD concepten zijn reeds uitgelegd in het Test Driven Development labo. We gaan onmiddellijk verder met de oefeningen:",
     
       "inLanguage" : "nl-BE",
     
@@ -64,7 +64,7 @@
     "datePublished": "2020-02-24 10:11:10 \x2b0100 CET",
     "dateModified" : "2020-02-24 10:11:10 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/tdd-capita\/",
-    "wordCount" : "32",
+    "wordCount" : "822",
     "keywords" : [ "Test Driven Development met algoritmes: Capita Selecta", "teaching" ]
 }
 </script>
@@ -235,15 +235,108 @@
 <li><a href="/teaching/ses/tdd">Test Driven Development</a> principes</li>
 </ul>
 
+<p>Dit labo gaan we ons focussen op het praktisch gebruik van TDD en unit testen ter ondersteuning van het opbouwen van een algoritme, ter oplossing van een probleem. Alle TDD concepten zijn reeds uitgelegd in het <a href="/teaching/ses/tdd">Test Driven Development</a> labo. We gaan onmiddellijk verder met de oefeningen:</p>
+
 <h2 id="a-name-oef-a-labo-oefeningen"><a name="oef"></a>Labo oefeningen</h2>
 
 <h3 id="opgave-1">Opgave 1</h3>
 
-<p>TODO</p>
+<h4 id="deel-a">Deel A</h4>
+
+<p>Leo wil graag een boodschap versturen naar Marie, die aan de andere kant van de straat woont. Het probleem is dat Leo zijn berichten vaak worden onderschept door de vervelende buurman Jos. Jos moeit zich graag met het leven van anderen, waar Leo en Marie een stokje voor willen steken.</p>
+
+<p>Ze spreken telefonisch met mekaar af een gedeelde geheime sleutel te gebruiken om geschreven berichten te encoderen, zodat Jos ze niet meer kan lezen. Dit gaat als volgt:</p>
+
+<blockquote>
+<p>Alle letters worden 3 posities naar rechts opgeschoven in het alfabet.</p>
+</blockquote>
+
+<p>Dit wordt ook wel &lsquo;<em>ROT-3</em> encryption&rsquo; genoemd. Enkele voorbeelden:</p>
+
+<ol>
+<li>&ldquo;jos is een loser&rdquo; wordt &ldquo;<em>mrv lv hhq orvhu</em>&ldquo;</li>
+<li>&ldquo;Ik hou van jou, Marie!&rdquo; wordt &ldquo;<em>Ln krx ydq mrx, Pdulh!</em>&ldquo;</li>
+<li>&rdquo;???&rdquo; blijft &ldquo;<em>???</em>&ldquo;</li>
+<li>&rdquo;&rdquo; blijft &ldquo;&rdquo;</li>
+</ol>
+
+<p>Speciale tekens blijven ongewijzigd.</p>
+
+<p>Schrijf <strong>eerst unit testen</strong> voor alle mogelijke gevallen die je kan bedenken, gebaseerd op de voorbeelden, voor de methode <code>String encode(String s)</code>. Pas wanneer alle gevallen door testen zijn bedekt, mag je aan de implementatie beginnen. Re-run de testen tussendoor om jezelf ervan te verzekeren dat je vooruitgang boekt (RED-GREEN-REFACTOR).</p>
+
+<h4 id="deel-b">Deel B</h4>
+
+<p>Na enkele dagen puzzelen heeft Jos ontdekt welk geheim systeem Leo en Marie er op na houden! Marie doet een voorstel tot verstrenging van het systeem, waar Leo onmiddellijk mee akkoord gaat. De extra regel geldt als volgt:</p>
+
+<blockquote>
+<p>Na de ROT-3 verwisselen we de posities voor elk paar karakters in het bericht.</p>
+</blockquote>
+
+<p>Enkele voorbeelden:</p>
+
+<ol>
+<li>&ldquo;jos is een loser&rdquo; wordt &ldquo;<em>rm vvlh qho vruh</em>&ldquo;</li>
+<li>&ldquo;Ik hou van jou, Marie!&rdquo; wordt &ldquo;<em>Ln krx ydq mrx, Pdulh!</em>&ldquo;</li>
+<li>&rdquo;???&rdquo; blijft &ldquo;<em>???</em>&ldquo;</li>
+<li>&rdquo;?!?&rdquo; wordt &ldquo;<em>!??</em>&ldquo;</li>
+<li>&ldquo;jup&rdquo; wordt &ldquo;<em>xms</em>&ldquo;</li>
+<li>&rdquo;&rdquo; blijft &ldquo;&rdquo;</li>
+</ol>
+
+<p>Pas de testen aan en schrijf testen bij waar nodig. Verander dan pas de implementatie. Merk op dat bij een oneven aantal karakters, het laatste karakter niet van plaats wisselt.</p>
 
 <h3 id="opgave-2">Opgave 2</h3>
 
-<p>TODO</p>
+<p>Kristien is een modebewuste vrouw die graag - en regelmatig - nieuwe schoenen koopt. Het probleem is van praktische aard: de schoenenkast geraakt te vol. Ze heeft de opracht gegeven aan haar man om de plaats zo optimaal mogelijk te gebruiken. Op die manier is ze ervan overtuigd dat er nog wel een paar of twee aangeschaft kan worden (waar ze waarschijnlijk gelijk in heeft).</p>
+
+<p>Maak een Java programma dat uit de standard input <code>stdin</code> leest welke schoenen Kristien heeft. Het programma schrijft naar standard output <code>stdout</code> de uitkomst, namelijk wat de afmetingen van de kast zijn zodat alle schoenen netjes passen. Je kan hiervoor het volgende gebruiken:</p>
+
+<pre><code class="language-java">    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // ...
+        System.out.println(&quot;output&quot;);
+</code></pre>
+
+<p>De input is een bestand dat er zo uit ziet:</p>
+
+<pre>
+3
+5
+36
+37
+35
+36
+38
+2
+38
+38    
+2
+36
+36
+</pre>
+
+<p>De eerste regel beschrijft het aantal kasten dat gevuld moet worden. Voor elke kast dicteert de eerste regel het aantal schoenen, en de volgende regels de schoenmaat. Schoenen met exact dezelfde maat strict kleiner dan maat 38 kunnen op elkaar geplaatst worden om plaats te besparen, met een maximum van 2. Dat betekent dat voor bovenstaand voorbeeld, de eerste kast er zo zou uit zien: <code>35, 36/36, 37, 38</code>. (De schoenen mogen dus verhuisd worden van volgorde)</p>
+
+<p>De output ziet er zo uit:</p>
+
+<pre>
+1 15x146
+2 10x76
+3 15x36
+</pre>
+
+<p>Elke regel begint met een volgnummer vanaf 1, voor elke kast, gevolgd door een spatie. Vanaf dan volgen de afmetingen van de kast, gescheiden met &lsquo;x&rsquo;, waarvan bij kast 1 <code>15</code> de hoogte van de kast is (dit is altijd ofwel <code>10</code>, ofwel <code>15</code> als er schoenen op elkaar werden geplaatst), en <code>146</code> de lengte van de kast is.</p>
+
+<p>De lengte van de kast bereken je door de schoenmaten op te tellen: <code>35 + 36 + 37 + 38</code>. Maat <code>36</code> tellen we in de lengte maar éénmalig omdat ze op elkaar liggen. In de tweede kast moeten de schoenen naast elkaar liggen omdat ze te groot zijn, terwijl in de derde kast dit wel op elkaar kan.</p>
+
+<p>Om het Java programma te kunnen draaien en testen kan je (in Unix) het inputbestand lezen via het pipe commando: <code>cat voorbeeld.invoer | java -cp . Main</code>. Vergeet niet het programma eerst te compileren met <code>javac Main.java</code>.</p>
+
+<p>Valideer je programma aan de hand van de voorbeeld invoer hierboven. Schrijf uiteraard eerst unit testen. Dit systeem wordt ook gebruikt bij de <a href="https://www.vlaamseprogrammeerwedstrijd.be/">Vlaamse Programmeerwedstrijd</a>.</p>
+
+<ul>
+<li>Als het programma de verwachte output genereert, kan je je oplossing laten valideren tegen veel meer input: <a href="/teaching/ses/schoenen-input.txt">download schoenen-input.txt hier</a>.</li>
+<li>Als je zelf wilt kijken hoe deze input werd gegenereerd: <a href="/teaching/ses/SchoenenGenerate.java">download SchoenenGenerate.java hier</a>.</li>
+</ul>
 </div>
 
     
