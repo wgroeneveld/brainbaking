@@ -416,6 +416,8 @@ Lees op [https://site.mockito.org](https://site.mockito.org) **hoe** je het fram
 - Hoe gebruik ik de API om een Test Double/mock aan te maken?
 - Hoe valideer ik verwachtingen die ik heb van deze Test Double?
 
+[Het gebruik van Mockito: een uitgewerkt voorbeeld](/teaching/ses/tdd-mockito).
+
 ### Opgave 5
 
 Gebruik Selenium IDE om een test scenario op te nemen van de SESsy applicatie. Start deze eerst lokaal, en vertrek vanuit het localhost base address [http://localhost:8080/#/](http://localhost:8080/#/). Hanteer de volgende scenario's:
