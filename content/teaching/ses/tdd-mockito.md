@@ -35,7 +35,7 @@ public interface IllBeBack {
 }
 ```
 
-De casting crew en de director verwacht dat tijdens een opname 3x een backflip wordt uitgevoerd, en dat die telkens lukt. Indien deze niet lukt, wordt de take opnieuw genomen. De One And Only Arnold had op dat moment een crisisvergadering in Californië en kon niet aanwezig zijn op de set. Gelukkig zijn er lookalikes en stuntmannen genoeg:
+De casting crew en de director verwachten dat tijdens een opname 3x een backflip succesvol wordt uitgevoerd. Indien deze niet lukt, wordt de take opnieuw genomen. Dit manifesteert zich in code in de vorm van een `RuntimeException`. De One And Only Arnold had op dat moment een crisisvergadering in Californië en kon niet aanwezig zijn op de set. Gelukkig zijn er lookalikes en stuntmannen genoeg:
 
 ```java
 public class ArnieLookalike implements IllBeBack {
