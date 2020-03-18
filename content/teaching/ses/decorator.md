@@ -8,6 +8,10 @@ disableList: true
 
 ## _"Decorator"_ - Design Pattern
 
+Begeleidende screencast:
+
+{{< vimeo 398544397 >}}
+
 ### Doelstelling
 
 * Voeg dynamisch functionaliteit toe als alternatief voor klassieke overerving. 

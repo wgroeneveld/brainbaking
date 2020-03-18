@@ -8,6 +8,10 @@ disableList: true
 
 ## _"Singleton"_ - Design Pattern
 
+Begeleidende screencast:
+
+{{< vimeo 398534668 >}}
+
 ### Doelstelling
 
 * Vermijd de mogelijkheid tot meervoudige instantiatie van een bepaalde klasse. Er kan altijd maar één bepaalde instantie van bestaan.

@@ -8,6 +8,10 @@ disableList: true
 
 ## _"Factory"_ - Design Pattern
 
+Begeleidende screencast:
+
+{{< vimeo 398548507 >}}
+
 ### Doelstelling
 
 * Scherm het aanmaken van bepaalde objecten af door middel van overerving en logica, waarbij die logica éénmalig wordt geïmplementeerd, en op een centrale plaats staat. 

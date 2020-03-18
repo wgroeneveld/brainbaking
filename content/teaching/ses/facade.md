@@ -9,6 +9,10 @@ disableList: true
 
 ## _"Facade"_ - Design Pattern
 
+Begeleidende screencast:
+
+{{< vimeo 398523177 >}}
+
 ### Doelstelling
 
 * Scherm een complex stukje software af met behulp van een simpele interface

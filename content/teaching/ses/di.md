@@ -8,6 +8,11 @@ disableList: true
 
 ## _"Dependency Injection (DI)"_ - Design Pattern
 
+Begeleidende screencast:
+
+{{< vimeo 398530942 >}}
+
+
 ### Doelstelling
 
 * Promoot _modulariteit_ door afhankelijkheden te injecteren, zodat aparte modules eenvoudig inplugbaar zijn in andere productiecode. Op deze manier worden modules ook makkelijker tesbaar.
