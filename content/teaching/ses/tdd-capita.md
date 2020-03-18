@@ -55,11 +55,9 @@ Enkele voorbeelden:
 
 Pas de testen aan en schrijf testen bij waar nodig. Verander dan pas de implementatie. Merk op dat bij een oneven aantal karakters, het laatste karakter niet van plaats wisselt.
 
-### Opgave 2
+#### Deel C
 
-Kristien is een modebewuste vrouw die graag - en regelmatig - nieuwe schoenen koopt. Het probleem is van praktische aard: de schoenenkast geraakt te vol. Ze heeft de opracht gegeven aan haar man om de plaats zo optimaal mogelijk te gebruiken. Op die manier is ze ervan overtuigd dat er nog wel een paar of twee aangeschaft kan worden (waar ze waarschijnlijk gelijk in heeft). 
-
-Maak een Java programma dat uit de standard input `stdin` leest welke schoenen Kristien heeft. Het programma schrijft naar standard output `stdout` de uitkomst, namelijk wat de afmetingen van de kast zijn zodat alle schoenen netjes passen. Je kan hiervoor het volgende gebruiken:
+Nu de `encode()` methode correct werd geïmplementeerd, kunnen we ons bezig houden met de manier waarop het programma boodschappen in- en uitleest. Een systeem dat ook wordt gebruikt bij de [Vlaamse Programmeerwedstrijd](https://www.vlaamseprogrammeerwedstrijd.be/), is het inlezen via de standard input `stdin` en uitlezen via standard output `stdout`.  Je kan hiervoor het volgende gebruiken:
 
 ```java
     public static void main(String[] args) {
@@ -67,6 +65,47 @@ Maak een Java programma dat uit de standard input `stdin` leest welke schoenen K
         // ...
         System.out.println("output");
 ```
+
+Lees in de [Scanner Javadoc](https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html) hoe je de volgende regels van `stdin` inleest. 
+
+De input is een bestand (bewaren als `voorbeeld.invoer`) dat er zo uit ziet:
+
+<pre>
+5
+jos is een loser
+Ik hou van jou, Marie!
+???
+?!?
+jup
+</pre>
+
+De eerste regel beschrijft het aantal regels dat encoded moeten worden. Voor elke regel dien je de encode regels van deel B toe te passen. Dit wordt weggeschreven naar `stdout` met behulp van `System.out.println()`.
+
+De output ziet er zo uit:
+
+<pre>
+1 rm vvlh qho vruh
+2 Ln krx ydq mrx, Pdulh!
+3 ???
+4 !??
+5 xms
+</pre>
+
+Elke regel begint met een volgnummer vanaf 1, voor elke versleutelde zin, gevolgd door een spatie. Vanaf dan volgt de versleutelde tekst, volgens dezelfde regels als deel B. 
+
+Om het Java programma te kunnen draaien en testen kan je (in Unix) het inputbestand lezen via het pipe commando: `cat voorbeeld.invoer | java -cp . Main`. Vergeet niet het programma eerst te compileren met `javac Main.java`.
+
+Valideer je programma aan de hand van de voorbeeld invoer hierboven. De unit testen van deel B kan je herbruiken. 
+
+- Als het programma de verwachte output genereert, kan je je oplossing laten valideren tegen veel meer input: [download encoding-input.txt hier](/teaching/ses/encoding-input.txt).
+- Als je zelf wilt kijken hoe deze input werd gegenereerd: [download EncodingGenerate.java hier](/teaching/ses/EncodingGenerate.java).
+
+
+### Opgave 2
+
+Kristien is een modebewuste vrouw die graag - en regelmatig - nieuwe schoenen koopt. Het probleem is van praktische aard: de schoenenkast geraakt te vol. Ze heeft de opracht gegeven aan haar man om nieuwe schoenenkasten te bouwen met de juiste afmetingen. Op die manier is ze ervan overtuigd dat er nog wel een paar of twee aangeschaft kan worden (waar ze waarschijnlijk gelijk in heeft). 
+
+Maak een Java programma dat uit de standard input `stdin` leest welke schoenen Kristien heeft. Het programma schrijft naar standard output `stdout` de uitkomst, namelijk wat de afmetingen van de kast zijn zodat alle schoenen netjes passen. Hanteer dezelfde methode als deel C van opgave 1.
 
 De input is een bestand dat er zo uit ziet:
 
@@ -104,7 +143,7 @@ De lengte van de kast bereken je door de schoenmaten op te tellen: `35 + 36 + 37
 
 Om het Java programma te kunnen draaien en testen kan je (in Unix) het inputbestand lezen via het pipe commando: `cat voorbeeld.invoer | java -cp . Main`. Vergeet niet het programma eerst te compileren met `javac Main.java`.
 
-Valideer je programma aan de hand van de voorbeeld invoer hierboven. Schrijf uiteraard eerst unit testen. Dit systeem wordt ook gebruikt bij de [Vlaamse Programmeerwedstrijd](https://www.vlaamseprogrammeerwedstrijd.be/). 
+Valideer je programma aan de hand van de voorbeeld invoer hierboven. Schrijf uiteraard eerst unit testen. 
 
 - Als het programma de verwachte output genereert, kan je je oplossing laten valideren tegen veel meer input: [download schoenen-input.txt hier](/teaching/ses/schoenen-input.txt).
 - Als je zelf wilt kijken hoe deze input werd gegenereerd: [download SchoenenGenerate.java hier](/teaching/ses/SchoenenGenerate.java).
