@@ -68,7 +68,7 @@ Nu de `encrypt()` methode correct werd geïmplementeerd, kunnen we ons bezig hou
 
 Lees in de [Scanner Javadoc](https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html) hoe je de volgende regels van `stdin` inleest. 
 
-De input is een bestand (bewaren als `voorbeeld.invoer`) dat er zo uit ziet:
+De input is een bestand (bewaren als `voorbeeld.invoer`) ([downloadlink](/teaching/ses/encryption-voorbeeld.txt)) dat er zo uit ziet:
 
 <pre>
 5
@@ -85,7 +85,7 @@ De output ziet er zo uit:
 
 <pre>
 1 rm vvlh qho vruh
-2 Ln krx ydq mrx, Pdulh!
+2 nLk xry qdm xr ,dPlu!h
 3 ???
 4 !??
 5 xms
@@ -107,7 +107,7 @@ Kristien is een modebewuste vrouw die graag - en regelmatig - nieuwe schoenen ko
 
 Maak een Java programma dat uit de standard input `stdin` leest welke schoenen Kristien heeft. Het programma schrijft naar standard output `stdout` de uitkomst, namelijk wat de afmetingen van de kast zijn zodat alle schoenen netjes passen. Hanteer dezelfde methode als deel C van opgave 1.
 
-De input is een bestand dat er zo uit ziet:
+De input is een bestand dat er zo uit ziet ([downloadlink](/teaching/ses/schoenen-voorbeeld.txt)):
 
 <pre>
 3

@@ -31,12 +31,12 @@ public class SchoenenSolution {
 		}
 
 		int hoogte = 10;
-		int lengte = 0
+		int lengte = 0;
 		for(Integer schoen : map.keySet()) {
 			var aantal = map.get(schoen);
-			if(aantal > 1) hoogte = 15;
 			if(schoen < 38 && aantal <= 2) {
 				lengte += schoen;
+				if(aantal > 1) hoogte = 15;
 			} else {
 				lengte += (schoen * aantal);
 			}
