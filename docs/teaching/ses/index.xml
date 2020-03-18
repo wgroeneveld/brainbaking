@@ -55,7 +55,8 @@ Denkvragen  bla  </description>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/decorator/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
-&amp;ldquo;Decorator&amp;rdquo; - Design Pattern Doelstelling  Voeg dynamisch functionaliteit toe als alternatief voor klassieke overerving. Gedraagt zich zoals het stukje &amp;lsquo;ingepakte&amp;rsquo; functionaliteit, maar voert extra handelingen uit. Wordt in Java altijd via interface implementaties uitegevoerd.  Dive Into Design Patterns: Decorator
+&amp;ldquo;Decorator&amp;rdquo; - Design Pattern Begeleidende screencast:
+  Doelstelling  Voeg dynamisch functionaliteit toe als alternatief voor klassieke overerving. Gedraagt zich zoals het stukje &amp;lsquo;ingepakte&amp;rsquo; functionaliteit, maar voert extra handelingen uit. Wordt in Java altijd via interface implementaties uitegevoerd.  Dive Into Design Patterns: Decorator
 Voorbeeld 1. Opzet Stel dat we in een fabriek op plaats X een auto samenstellen. De wagen is een zeer eenvoudige Volkswagen Golf, zonder opties.</description>
     </item>
     
@@ -66,8 +67,8 @@ Voorbeeld 1. Opzet Stel dat we in een fabriek op plaats X een auto samenstellen.
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/di/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
-&amp;ldquo;Dependency Injection (DI)&amp;rdquo; - Design Pattern Doelstelling  Promoot modulariteit door afhankelijkheden te injecteren, zodat aparte modules eenvoudig inplugbaar zijn in andere productiecode. Op deze manier worden modules ook makkelijker tesbaar. Promoot Inversion of Control: een client die services aanroept zou niet mogen weten hoe services worden aangemaakt - deze zou moeten worden &amp;lsquo;geinjecteerd&amp;rsquo;.  Wikipedia: Dependency Injection
-Voorbeeld 1. Opzet Als we verder gaan op het voorbeeld van de singleton, zien we dat een database handle nodig is om shopping cart gegevens op te halen.</description>
+&amp;ldquo;Dependency Injection (DI)&amp;rdquo; - Design Pattern Begeleidende screencast:
+  Doelstelling  Promoot modulariteit door afhankelijkheden te injecteren, zodat aparte modules eenvoudig inplugbaar zijn in andere productiecode. Op deze manier worden modules ook makkelijker tesbaar. Promoot Inversion of Control: een client die services aanroept zou niet mogen weten hoe services worden aangemaakt - deze zou moeten worden &amp;lsquo;geinjecteerd&amp;rsquo;.  Wikipedia: Dependency Injection</description>
     </item>
     
     <item>
@@ -77,8 +78,9 @@ Voorbeeld 1. Opzet Als we verder gaan op het voorbeeld van de singleton, zien we
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/facade/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
-&amp;ldquo;Facade&amp;rdquo; - Design Pattern Doelstelling  Scherm een complex stukje software af met behulp van een simpele interface Voorzie éénzelfde interface naar een set van verschillende mogelijke subsystemen. Een Facade is een high-level interface die mogelijks low-level systemen aanspreekt.  Dive Into Design Patterns: Facade
-Voorbeeld 1. Opzet Stel dat we gegevens van de klant moeten versturen naar een overheidsinstantie. Die instantie beschikt jammer genoeg niet over voldoende budgetten om ook een cutting-edge server interface en implementatie aan te bieden.</description>
+&amp;ldquo;Facade&amp;rdquo; - Design Pattern Begeleidende screencast:
+  Doelstelling  Scherm een complex stukje software af met behulp van een simpele interface Voorzie éénzelfde interface naar een set van verschillende mogelijke subsystemen. Een Facade is een high-level interface die mogelijks low-level systemen aanspreekt.  Dive Into Design Patterns: Facade
+Voorbeeld 1. Opzet Stel dat we gegevens van de klant moeten versturen naar een overheidsinstantie.</description>
     </item>
     
     <item>
@@ -88,7 +90,8 @@ Voorbeeld 1. Opzet Stel dat we gegevens van de klant moeten versturen naar een o
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/factory/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
-&amp;ldquo;Factory&amp;rdquo; - Design Pattern Doelstelling  Scherm het aanmaken van bepaalde objecten af door middel van overerving en logica, waarbij die logica éénmalig wordt geïmplementeerd, en op een centrale plaats staat. Promoot een modulair model door de verantwoordlijkheid van object creatie en object gebruik te scheiden.  Dive Into Design Patterns: Factory (method)
+&amp;ldquo;Factory&amp;rdquo; - Design Pattern Begeleidende screencast:
+  Doelstelling  Scherm het aanmaken van bepaalde objecten af door middel van overerving en logica, waarbij die logica éénmalig wordt geïmplementeerd, en op een centrale plaats staat. Promoot een modulair model door de verantwoordlijkheid van object creatie en object gebruik te scheiden.  Dive Into Design Patterns: Factory (method)
 Voorbeeld 1. Opzet Stel, je wilt aan de kassa van een niet al te grote lokale cinema een film kopen.</description>
     </item>
     
@@ -99,7 +102,8 @@ Voorbeeld 1. Opzet Stel, je wilt aan de kassa van een niet al te grote lokale ci
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/singleton/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
-&amp;ldquo;Singleton&amp;rdquo; - Design Pattern Doelstelling  Vermijd de mogelijkheid tot meervoudige instantiatie van een bepaalde klasse. Er kan altijd maar één bepaalde instantie van bestaan. Voorzie een eenvoudige manier om vanuit eender waar in de code toegang te verkrijgen tot die éne instantie. Encapsuleer logica om deze instantie aan te maken, moest code dit raadplegen en dit toevallig de eerste keer zijn (lazy initialization).</description>
+&amp;ldquo;Singleton&amp;rdquo; - Design Pattern Begeleidende screencast:
+  Doelstelling  Vermijd de mogelijkheid tot meervoudige instantiatie van een bepaalde klasse. Er kan altijd maar één bepaalde instantie van bestaan. Voorzie een eenvoudige manier om vanuit eender waar in de code toegang te verkrijgen tot die éne instantie. Encapsuleer logica om deze instantie aan te maken, moest code dit raadplegen en dit toevallig de eerste keer zijn (lazy initialization).</description>
     </item>
     
     <item>
@@ -141,9 +145,9 @@ Wat is dat, een build tool? Gradle is een build tool die de automatisatie van re
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/github-classroom/</guid>
-      <description> &amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
 Onderstaande Github Classroom repositories zijn telkens Gradle Java projecten. Bewkaam jezelf eerst in de basis van Gradle als build tool.
-Labo oefeningen  27/02/2020: TDD Opgave 1: https://classroom.github.com/a/WT_nzKGM 05/03/2020: TDD Opgave 4 &amp;amp; 5: https://classroom.github.com/a/M24O57aU  </description>
+Labo oefeningen  27/02/2020: TDD Opgave 1: https://classroom.github.com/a/WT_nzKGM 05/03/2020: TDD Opgave 4 &amp;amp; 5: https://classroom.github.com/a/M24O57aU  Design Patterns: Gezien de huidige omstandigheden zijn alle opdrachten publiek beschikbaar gemaakt. Studenten kunnen op hun eigen tempo de design patterns theorie en praktijk afwerken. De deadline voor deze oefeningen staat op maandag 20/04/2020, de dag na de paasvakantie, om 23:00u &amp;rsquo;s avonds.</description>
     </item>
     
     <item>
