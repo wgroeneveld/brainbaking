@@ -47,7 +47,7 @@ Na enkele dagen puzzelen heeft Jos ontdekt welk geheim systeem Leo en Marie er o
 Enkele voorbeelden:
 
 1. "jos is een loser" wordt "_rm vvlh qho vruh_"
-2. "Ik hou van jou, Marie!" wordt "_Ln krx ydq mrx, Pdulh!_"
+2. "Ik hou van jou, Marie!" wordt "_nLk xry qdm xr ,dPlu!h_"
 3. "???" blijft "_???_"
 4. "?!?" wordt "_!??_"
 5. "jup" wordt "_xms_"
@@ -97,8 +97,8 @@ Om het Java programma te kunnen draaien en testen kan je (in Unix) het inputbest
 
 Valideer je programma aan de hand van de voorbeeld invoer hierboven. De unit testen van deel B kan je herbruiken. 
 
-- Als het programma de verwachte output genereert, kan je je oplossing laten valideren tegen veel meer input: [download encoding-input.txt hier](/teaching/ses/encoding-input.txt).
-- Als je zelf wilt kijken hoe deze input werd gegenereerd: [download EncodingGenerate.java hier](/teaching/ses/EncodingGenerate.java).
+- Als het programma de verwachte output genereert, kan je je oplossing laten valideren tegen veel meer input: [download encryption-input.txt hier](/teaching/ses/encryption-input.txt).
+- Als je zelf wilt kijken hoe deze input werd gegenereerd: [download EncryptionGenerate.java hier](/teaching/ses/EncryptionGenerate.java).
 
 
 ### Opgave 2

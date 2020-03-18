@@ -30,7 +30,7 @@ public class EncodingGenerate {
 		try {
 			List<String> lines = new ArrayList<>();
 			lines.add("100");
-			Path file = Paths.get("encoding-input.txt");
+			Path file = Paths.get("encryption-input.txt");
 
 			for(int i = 1; i <= 100; i++) {
 				lines.add(randomZin());
