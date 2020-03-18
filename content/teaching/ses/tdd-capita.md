@@ -23,7 +23,7 @@ Dit labo gaan we ons focussen op het praktisch gebruik van TDD en unit testen te
 
 Leo wil graag een boodschap versturen naar Marie, die aan de andere kant van de straat woont. Het probleem is dat Leo zijn berichten vaak worden onderschept door de vervelende buurman Jos. Jos moeit zich graag met het leven van anderen, waar Leo en Marie een stokje voor willen steken. 
 
-Ze spreken telefonisch met mekaar af een gedeelde geheime sleutel te gebruiken om geschreven berichten te encoderen, zodat Jos ze niet meer kan lezen. Dit gaat als volgt:
+Ze spreken telefonisch met mekaar af een gedeelde geheime sleutel te gebruiken om geschreven berichten te versleutelen, zodat Jos ze niet meer kan lezen. Dit gaat als volgt:
 
 > Alle letters worden 3 posities naar rechts opgeschoven in het alfabet.
 
@@ -36,7 +36,7 @@ Dit wordt ook wel '_ROT-3_ encryption' genoemd. Enkele voorbeelden:
 
 Speciale tekens blijven ongewijzigd. 
 
-Schrijf **eerst unit testen** voor alle mogelijke gevallen die je kan bedenken, gebaseerd op de voorbeelden, voor de methode `String encode(String s)`. Pas wanneer alle gevallen door testen zijn bedekt, mag je aan de implementatie beginnen. Re-run de testen tussendoor om jezelf ervan te verzekeren dat je vooruitgang boekt (RED-GREEN-REFACTOR).
+Schrijf **eerst unit testen** voor alle mogelijke gevallen die je kan bedenken, gebaseerd op de voorbeelden, voor de methode `String encrypt(String s)`. Pas wanneer alle gevallen door testen zijn bedekt, mag je aan de implementatie beginnen. Re-run de testen tussendoor om jezelf ervan te verzekeren dat je vooruitgang boekt (RED-GREEN-REFACTOR).
 
 #### Deel B
 
@@ -57,7 +57,7 @@ Pas de testen aan en schrijf testen bij waar nodig. Verander dan pas de implemen
 
 #### Deel C
 
-Nu de `encode()` methode correct werd geïmplementeerd, kunnen we ons bezig houden met de manier waarop het programma boodschappen in- en uitleest. Een systeem dat ook wordt gebruikt bij de [Vlaamse Programmeerwedstrijd](https://www.vlaamseprogrammeerwedstrijd.be/), is het inlezen via de standard input `stdin` en uitlezen via standard output `stdout`.  Je kan hiervoor het volgende gebruiken:
+Nu de `encrypt()` methode correct werd geïmplementeerd, kunnen we ons bezig houden met de manier waarop het programma boodschappen in- en uitleest. Een systeem dat ook wordt gebruikt bij de [Vlaamse Programmeerwedstrijd](https://www.vlaamseprogrammeerwedstrijd.be/), is het inlezen via de standard input `stdin` en uitlezen via standard output `stdout`.  Je kan hiervoor het volgende gebruiken:
 
 ```java
     public static void main(String[] args) {
@@ -79,7 +79,7 @@ Ik hou van jou, Marie!
 jup
 </pre>
 
-De eerste regel beschrijft het aantal regels dat encoded moeten worden. Voor elke regel dien je de encode regels van deel B toe te passen. Dit wordt weggeschreven naar `stdout` met behulp van `System.out.println()`.
+De eerste regel beschrijft het aantal regels die versleuteld moeten worden. Voor elke regel dien je de `encrypt()` regels van deel B toe te passen. Dit wordt weggeschreven naar `stdout` met behulp van `System.out.println()`.
 
 De output ziet er zo uit:
 
@@ -103,7 +103,7 @@ Valideer je programma aan de hand van de voorbeeld invoer hierboven. De unit tes
 
 ### Opgave 2
 
-Kristien is een modebewuste vrouw die graag - en regelmatig - nieuwe schoenen koopt. Het probleem is van praktische aard: de schoenenkast geraakt te vol. Ze heeft de opracht gegeven aan haar man om nieuwe schoenenkasten te bouwen met de juiste afmetingen. Op die manier is ze ervan overtuigd dat er nog wel een paar of twee aangeschaft kan worden (waar ze waarschijnlijk gelijk in heeft). 
+Kristien is een modebewuste vrouw die graag - en regelmatig - nieuwe schoenen koopt. Het probleem is van praktische aard: de schoenenkast geraakt te vol. Ze heeft de opdracht gegeven aan haar man om nieuwe schoenenkasten te bouwen met de juiste afmetingen. Op die manier is ze ervan overtuigd dat er nog wel een paar of twee aangeschaft kan worden (waar ze waarschijnlijk gelijk in heeft). 
 
 Maak een Java programma dat uit de standard input `stdin` leest welke schoenen Kristien heeft. Het programma schrijft naar standard output `stdout` de uitkomst, namelijk wat de afmetingen van de kast zijn zodat alle schoenen netjes passen. Hanteer dezelfde methode als deel C van opgave 1.
 
