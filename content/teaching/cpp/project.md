@@ -10,7 +10,7 @@ disableComments: true
 
 Dezelfde **minimumvereisten** gelden als de opdracht in eerste kans. Werk met een volledig _nieuwe_ Github repository, en vertrek opnieuw vanaf de `gba-sprite-engine`. Geregistreerde tijd bijhouden is niet meer nodig. 
 
-De opdracht is _niet_ vrij te kiezen. Het criteria 'originaliteit' zal beoordeeld worden op de manier waarop je deze vaste opdracht hebt ingekleurd. 
+De opdracht is _niet_ vrij te kiezen. Het criteria 'originaliteit' zal beoordeeld worden op de manier waarop je deze vaste opdracht hebt ingekleurd. De opdracht is _individueel_ en niet in groep zoals eerste kans. De mondelinge projectverdediging zal ook individueel verlopen. 
 
 #### Opdracht beschrijving
 
