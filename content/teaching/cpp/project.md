@@ -6,7 +6,37 @@ disableComments: true
 
 &laquo;&nbsp;[Terug naar Software ontwerp in C/C++](/teaching/cpp)<br/>
 
-## Project opdracht
+## Project opdracht - tweede kans <br/>Academiejaar 2019 - 2020
+
+Dezelfde **minimumvereisten** gelden als de opdracht in eerste kans. Werk met een volledig _nieuwe_ Github repository, en vertrek opnieuw vanaf de `gba-sprite-engine`. Geregistreerde tijd bijhouden is niet meer nodig. 
+
+De opdracht is _niet_ vrij te kiezen. Het criteria 'originaliteit' zal beoordeeld worden op de manier waarop je deze vaste opdracht hebt ingekleurd. 
+
+#### Opdracht beschrijving
+
+Ontwerp een **Mario Party kloon**. In dit _bordspel_ gaan spelers op een klassieke manier het bord rond om punten te verzamelen. De structuur van het bord is gelijkaardig aan een Ganzenbord spel. Elke plek waar de speler zijn of haar pion terecht komt, brengt een bepaalde actie met zich mee. In Mario Party wordt er meestal een minigame gespeeld, dat indien gewonnen punten oplevert. Hier is een video van de officiële GBA implementatie:
+
+{{< youtube dvC4hgoNOfE >}}
+
+<br/>
+Wat moet minimaal aanwezig zijn?
+
+* Een titelscherm.
+* Een bord. De layout maak je zo simpel of complex als je zelf wenst. 
+* Een pion die de speler voorstelt. De mogelijkheid om vakjes te verschuiven. 
+* Tenminste één (zeer eenvoudig) minigame. De inhoud mag je zelf bepalen. 
+* Zichtbaarheid van de score. 
+
+Wat is optioneel (maar levert extra punten op)?
+
+* Extra spelers in de vorm van AI. 
+* Extra minigames. 
+* Keuze van de pion.
+* Animaties en geluid.
+
+Inleverformaat op dezelfde manier als in de eerste kans. Deadline op vrijdag, 14 augustus 2020, 12u 's middags.
+
+## Project opdracht - eerste kans<br/>Academiejaar 2019 - 2020
 
 Om jullie recent opgedane object-geörienteerde technieken te toetsen gaan jullie een **GBA spel** ontwerpen en ontwikkelen in C++11. De focus van de opdracht ligt niet op correcte low-level IO mapping maar op kritisch denken en testen zoals gezien in [labo 7](/teaching/cpp/labo-7). Uiteraard komen zowel pointers en GBA programming technieken van de vroegere labo's, als C++ class inheritance en abstractie lagen uit de latere labo's aan bod. 
 
