@@ -17,6 +17,8 @@ Dit labo gaan we ons focussen op het praktisch gebruik van TDD en unit testen te
 
 ## <a name="oef"></a>Labo oefeningen
 
+Via [<i class='fa fa-github'></i> Github Classroom](/teaching/ses/github-classroom). Lege projecten, maak zelf in een nieuwe map voor elke opgave een Gradle project aan. 
+
 ### Opgave 1
 
 #### Deel A
