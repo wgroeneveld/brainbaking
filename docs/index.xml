@@ -678,7 +678,8 @@ There have been a lot of love letters to big cities here on Medium recently. I n
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
       <guid>https://brainbaking.com/teaching/ses/ci/</guid>
       <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills &amp;raquo;&amp;nbsp;Naar de labo opgave
-1. Continuous Integration (CI) Het softwareontwikkel proces is een continu proces: als een eerste versie van het product klaar is, en wordt overgemaakt aan klanten, volgt het onderhoud en een mogelijke volgende versie. Elke wijziging maakt potentiëel dingen kapot (geminimaliseerd met TDD), of introduceert nieuwe features. Dat betekent dat bij elke wijziging, een computer het hele build proces moet doorlopen om te controleren of er niets stuk is.</description>
+Begeleidende screencast:
+  1. Continuous Integration (CI) Het softwareontwikkel proces is een continu proces: als een eerste versie van het product klaar is, en wordt overgemaakt aan klanten, volgt het onderhoud en een mogelijke volgende versie. Elke wijziging maakt potentiëel dingen kapot (geminimaliseerd met TDD), of introduceert nieuwe features. Dat betekent dat bij elke wijziging, een computer het hele build proces moet doorlopen om te controleren of er niets stuk is.</description>
     </item>
     
     <item>

@@ -6,6 +6,10 @@ disableList: true
 &laquo;&nbsp;[Terug naar Software Engineering Skills](/teaching/ses)<br/>
 &raquo;&nbsp;[Naar de labo opgave](#oef)
 
+Begeleidende screencast:
+
+{{< vimeo 400180594 >}}
+
 ## 1. Continuous Integration (CI)
 
 Het softwareontwikkel proces is een continu proces: als een eerste versie van het product klaar is, en wordt overgemaakt aan klanten, volgt het onderhoud en een mogelijke volgende versie. Elke wijziging maakt potentiëel dingen kapot (geminimaliseerd met [TDD](/teaching/ses/tdd)), of introduceert nieuwe features. Dat betekent dat bij _elke wijziging_, een computer het hele build proces moet doorlopen om te controleren of er niets stuk is. Dit noemen we het "_integreren_" van nieuwe code, vandaar de naam.
