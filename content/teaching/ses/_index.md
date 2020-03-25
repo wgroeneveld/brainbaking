@@ -113,9 +113,9 @@ td:first-child {
 | 12 | Design Patterns: DI, Singleton | 26.03.2020 | Github Classroom ex. |
 | 13 | Design Patterns: Decorator, Factory | 31.03.2020 | Github Classroom ex. |
 | 14 | Continuous Integration & Deployment | 02.04.2020 | Github Classroom ex. |
-| 15 | Software Management: the Challenge | 21.04.2020 | Observatie tijdens oefening |
-| 16 | Software Managenent: Scrum | 23.04.2020 | Observatie tijdens oefening |
-| 17 | SESsy Library oefeningen | 28.04.2020 | Github (forked) TODO impl. |
-| 18 | SESsy Library oefeningen | 30.04.2020 | Github (forked) TODO impl. |
-| 19 | ? | 05.05.2020 | / |
-| 20 | ? | 07.05.2020 | / |
+| 15 | Software Management: the Challenge | 21.04.2020 | (vervalt) |
+| 16 | Software Managenent: Scrum | 23.04.2020 | (vervalt) |
+| 17 | SESsy Library oefeningen | 28.04.2020 | (vervalt) |
+| 18 | SESsy Library oefeningen | 30.04.2020 | (vervalt) |
+| 19 | Vrij werk aan opdrachten | 05.05.2020 | / |
+| 20 | Vrij werk aan opdrachten | 07.05.2020 | / |

@@ -127,7 +127,17 @@ Pieken _boven_ de groene ideaallijn betekent onverwacht extra werk die niet werd
 
 Een oefening in teamspirit en problem solving: [The Marshmellow Challenge](https://www.tomwujec.com/marshmallowchallenge). Vorm groepen van 3 tot 4 mensen. Elke groep krijgt exact _18 minuten_ om de challenge tot een goed einde te brengen. 
 
+**Voor academiejaar 2019 - 2020**, gezien het afstandsonderwijs, vervalt de fysieke vorm van deze opgave. Bestudeer in de plaats daarvan het onderstaande filmpje van de auteur van The Challenge. Denk ondertussen na over de volgende thema's:
+
+- Hoe werken team dynamics? 
+- Wie zou je welke verantwoordelijkheden geven, moest je zelf The Challenge ondernemen? Waarom?
+- Wat houdt een team tegen om een hogere toren te bouwen dan een ander team?
+
+{{< youtube H0_yKBitO8M >}}
+
 ### Opgave 2
+
+**Voor academiejaar 2019 - 2020** vervalt deze opgave in zijn geheel.
 
 Werk in teams van 5 mensen: 1 product owner, 1 teamleider, 1 customer proxy, 2 ontwikkelaars. Er zijn twee sprints van telkens 30 minuten voorzien, die jullie kunnen inplannen naar eigen goeddunken. De docent fungeert als klant en zal jullie meedelen welk product dient ontwikkeld te worden. Denk aan de volgende stappen om het ontwikkelen tot een goed einde te brengen:
 
