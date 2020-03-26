@@ -144,8 +144,9 @@ Pas ook `ShoppingCartResource` aan naar een singleton. Is dat nodig om de databa
 
 [sessy library](/teaching/ses/sessy): 
 
-1. identificeer welke klassen een kans maken om een Singleton te worden. Denk aan bovenstaande voorbeeld. 
+1. identificeer welke klassen een kans maken om een Singleton te worden. Denk aan bovenstaande voorbeeld. Is er reeds ergens een Singleton patroon geïmplementeerd? 
 2. Pas het patroon toe waar jij denkt dat het nodig is. 
+3. Hoe kan je afleiden welke gebruikte frameworks op bepaalde plekken Singleton klasses hebben?
 
 ## Denkvragen
 

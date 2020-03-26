@@ -42,10 +42,14 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 4. [Continuous Integration &amp; Deployment](/teaching/ses/ci)
 5. [Software Management](/teaching/ses/management): Skills (1), Scrum (2)
 
+#### Aanvullende Oefeningen
+
+1. [De 'SESsy Library' WebApp: uitbreiden](/teaching/ses/sessy-extending)
+
 ### Extra informatie
 
-1. [Gëinstalleerde Software - een overzicht](/teaching/ses/software)
-1. ['SESsy Library' WebApp installatie & configuratie](/teaching/ses/sessy)
+1. [Gebruikte Software: een overzicht](/teaching/ses/software)
+1. [De 'SESsy Library' WebApp: installatie & configuratie](/teaching/ses/sessy)
 2. [Gradle build tools](/teaching/ses/gradle)
 3. [<i class='fa fa-github'></i> Github Classroom links](/teaching/ses/github-classroom)
 

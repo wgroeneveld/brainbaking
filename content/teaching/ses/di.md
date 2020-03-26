@@ -147,8 +147,9 @@ Zie ook [Google Guice: getting started](https://github.com/google/guice/wiki/Get
 
 [sessy library](/teaching/ses/sessy): 
 
-1. identificeer welke klassen in een DI systeem kunnen worden opgenomen. 
-2. Introduceer een DI systeem: hetzij door Google Guice te gebruiken, hetzij door zelf te injecteren. Waar wordt DI reeds toegepast?
+1. Welke klassen worden reeds geïnjecteerd, en op welke manier? (Constructor injectie, setter injectie, ...)
+2. identificeer welke klassen in een DI systeem kunnen worden opgenomen. 
+3. Introduceer een DI systeem: hetzij door Google Guice te gebruiken, hetzij door zelf te injecteren. Waar wordt DI reeds toegepast?
 
 ## Denkvragen
 
