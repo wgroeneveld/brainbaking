@@ -1004,6 +1004,19 @@ Snippet 1 class Student; class Teacher { private: std::vector&amp;lt;Student*&am
     
     <item>
       <title>SESsy Library WebApp</title>
+      <link>https://brainbaking.com/teaching/ses/sessy-extending/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
+      <guid>https://brainbaking.com/teaching/ses/sessy-extending/</guid>
+      <description>&amp;laquo;&amp;nbsp;Terug naar Software Engineering Skills
+SESsy Library Uitbreiden Lees eerst de installatieinstructies.
+Met de SESsy Library WebApp kunnen verstokte lezers (en mensen die boeken nooit terugbrengen) de database van de lokale bibliotheek raadplegen, en eventueel boeken uitlenen. Het is een simpele webapplicatie met een embedded server die standaard op poort 8080 draait, met een minimale front-end interface:
+ 
+De codebase bevat echter nog heel wat lijntjes TODO commentaar die door de luie ontwikkelaars nooit zijn geïmplementeerd.</description>
+    </item>
+    
+    <item>
+      <title>SESsy Library WebApp</title>
       <link>https://brainbaking.com/teaching/ses/sessy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>wouter.groeneveld@gmail.com (Wouter Groeneveld)</author>
