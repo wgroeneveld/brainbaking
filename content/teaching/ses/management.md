@@ -51,6 +51,10 @@ De _backlog_ is een grote lijst van zaken die moeten worden ontwikkeld voordat d
 
 Een product backlog bevat _stories_ die nog niet goed geanalyseerd en beschreven zijn, waarvan moeilijk te zeggen valt hoeveel werk dit effectief kost. Wanneer dit in een iteratie terecht komt, wordt dit nauwer bekeken door het team. De betere beschrijving leidt tot een accurate inschatting, en mogelijks zelfs meerdere backlog items. 
 
+Het volgende filmpje verduidelijkt de rol van de backlog in het team: 
+
+{{< youtube zEHHjNEiCtI >}}
+
 #### 2. Taken
 
 Een _sprint backlog_ item wordt typisch door ontwikkelaars nog verder opgesplitst in kleinere taken om het werk beter te kunnen verdelen. Bijvoorbeeld, de mogelijkheid tot inloggen met eID kan bestaan uit (1) authenticatiestappen en het inlezen van een kaart, en (2) het UI gedeelte waar de gebruiker mee interageert. Misschien beschikt al één teamlid over authenticatie kennis, maar nog niemand weet hoe de UI aan te pakken. In dat geval is taak (1) sneller gedaan dan taak (2). 
@@ -88,6 +92,12 @@ Elke story wordt een '_swimlane_' toegewezen: een horizontale band, die wordt op
 
 Een taak die van Doing naar Done wordt verschoven is daarom niet volledig afgewerkt. Het kan zijn dat de ontwikkeling af is, maar dit nog moet worden nagekeken door een technische collega (to review), of worden getest door de customer proxy (to test), of worden uitgerold naar een interne test- of acceptatieomgeving (to deploy). 
 
+In het volgende filmpje komen verschillende implementaties van persoonlijke scrumborden aan bod, om je een idee te geven van de aanpasbaarheid van zulke borden:
+
+{{< youtube ptezCdBTu6c >}}
+
+Hier wordt het woord _kanban_ gebruikt om aan te geven dat werk wordt gevisualiseerd - maar niet noodzakelijk een deel is van agile softwareontwikkeling of van scrum. Zoals je kan zien is het dus ook een effectieve manier om voor jezelf TODO/DOING/DONE items (school taken, hobby's, ...) op te hangen en dus visueel te maken. 
+
 ## B. Teams managen: Rolverdelingen
 
 Werk verdelen en managen is niet het enige sterkte punt van Scrum. Een efficiënt team opbouwen dat in staat is om verschillende rollen op te nemen is nog een van die punten. Om bovenstaande stories en taken als onderdeel daarvan zo goed mogelijk te kunnen afwerken, dient het werk verdeeld te worden. Hieronder volgt een kort overzicht van de vaakst voorkomende rollen.
@@ -119,7 +129,20 @@ Een tweede taak van de team leider is het opvolgen van vooruitgang van de sprint
     Een voorbeeld _burndown chart_ ([bron](https://de.wikipedia.org/wiki/Burn-Down-Chart)).
 </center>
 
-Pieken _boven_ de groene ideaallijn betekent onverwacht extra werk die niet werd ingepland, waarbij de team leider mogelijk moet ingrijpen. Dalingen _onder_ de groene lijn betekent vlot werk met mogelijkheid tot iets extra buiten de sprint. De team leider overlegt vaak met de Product Owner om de verwachtingen zo goed mogelijk bij de ideaallijn gealigneerd te krijgen. Lees meer over de burndown chart via het extra leermateriaal.
+Pieken _boven_ de groene ideaallijn betekent onverwacht extra werk die niet werd ingepland, waarbij de team leider mogelijk moet ingrijpen. Dalingen _onder_ de groene lijn betekent vlot werk met mogelijkheid tot iets extra buiten de sprint. De team leider overlegt vaak met de Product Owner om de verwachtingen zo goed mogelijk bij de ideaallijn gealigneerd te krijgen. 
+
+Trends in burndown charts evalueren is een belangrijke vaardigheid voor elk lid van het team. Iedereen kan in één oogopslag onmiddellijk zien of het team meer werk heeft gedaan dan initieel ingepland, nog op schema ligt, of erg achter hinkt. Pieken en dalingen in de grafiek zijn duidelijke tekenen van onder- of overschattingen van de story's. In bovenstaande grafiek krijgt het team bijvoorbeeld na dag 4 (X-as) een zware dobber te verwerken dat meer tijd kost dan eerst gedacht, die pas na dag 9 wordt opgelost. Tussen dag 11 en 15 verloopt alles op cruise snelheid - het gaat zelfs lichtjes beter dan verwacht. De grafiek 'remaining effort' is de belangrijkste.
+
+<center>
+    <img src="/img/teaching/ses/burndown2.png" /><br/>
+    Een tweede voorbeeld _burndown chart_ ([bron](http://www.makhfi.com/Scrum/)).
+</center>
+
+Het effect is erg uitgesproken op de tweede grafiek. Op dag 3 valt het team volledig stil (de oorzaak is natuurlijk niet af te lezen, dit kan zowel liggen aan technische problemen als aan bijvoorbeeld ziekte van een aantal programmeurs), wat de scherpe piek verklaart. De rest van de iteratie zwoegt het team om het verloren werk in te halen, wat pas na dag 10 uiteindelijk bijna lukt. 
+
+Deze informatie is erg belangrijk omdat het kan worden gebruikt om toekomstige sprints in te plannen. Grafieken worden ge-extrapoleerd om een betere inschatting te kunnen maken van het toekomstige werk. Een consistent goed presterend team - de remaining effort lijn ligt onder de remaining time - kan in de toekomst bijvoorbeeld meer werk aan binnen dezelfde iteratie. Het is dan aan de team leider om dit naargelang in te plannen.
+
+_Lees meer over de burndown chart via het extra leermateriaal._
 
 ## <a name="oef"></a>Labo oefeningen
 
