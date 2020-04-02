@@ -64,7 +64,7 @@
     "datePublished": "2020-03-20 08:40:19 \x2b0100 CET",
     "dateModified" : "2020-03-20 08:40:19 \x2b0100 CET",
     "url" : "https:\/\/brainbaking.com\/teaching\/ses\/tdd-capita\/",
-    "wordCount" : "1143",
+    "wordCount" : "1346",
     "keywords" : [ "Test Driven Development met algoritmes: Capita Selecta", "teaching" ]
 }
 </script>
@@ -332,6 +332,37 @@ jup
 <li>Als het programma de verwachte output genereert, kan je je oplossing laten valideren tegen veel meer input: <a href="/teaching/ses/encryption-input.txt">download encryption-input.txt hier</a>.</li>
 <li>Als je zelf wilt kijken hoe deze input werd gegenereerd: <a href="/teaching/ses/EncryptionGenerate.java">download EncryptionGenerate.java hier</a>.</li>
 </ul>
+
+<h4 id="java-files-zelf-compileren">Java files zelf compileren</h4>
+
+<p>Zoals je hierboven ziet kan je <code>javac</code> zelf oproepen in plaats van Gradle dit te laten doen. Er zijn echter een paar spelregels die belangrijk zijn als je zelf compileert in combinatie met packages. De <code>-d</code> optie voorziet een output folder, zoals Gradle die in de root een map <code>build/</code> gebruikt voor zijn gecompileerde <code>.class</code> files. Compileer dus altijd <em>vanaf de root folder van je project!</em> Voorbeeld structuur:</p>
+
+<pre>
+build.gradle
+src/
+  main/
+    java/
+       package/
+         Main.java
+</pre>
+
+<p>Compileer in root: <code>javac -d build/ src/main/java/package/Main.java</code>. Dit levert je het volgende op:</p>
+
+<pre>
+build.gradle
+src/
+  main/
+    java/
+       package/
+         Main.java
+build/
+  package/
+    Main.class
+</pre>
+
+<p>Het programma oproepen, ook vanuit de root, kan je met <code>java -cp build/ package.Main</code>. Dus: geef de build map mee met het classpath (1) en voorzie de fully qualified name van de klasse (2), inclusief de package naam. Dit is belangrijk omdat het best zou kunnen dat er verschillende <code>Main</code> klasses in je applicatie bestaan, in verschillende packages.</p>
+
+<p>Gebruik je geen speciale packages (aangeduid in het begin van de java file met <code>package blabla;</code>), dan kan je in dezelfde folder als je source compileren en als classpath de huidige folder, <code>.</code> of <code>./</code>, meegeven. Voor simpele programma&rsquo;s, zoals deze oefeningen, kan dit volstaan.</p>
 
 <h3 id="opgave-2">Opgave 2</h3>
 

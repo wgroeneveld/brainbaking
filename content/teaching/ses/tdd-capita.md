@@ -102,6 +102,36 @@ Valideer je programma aan de hand van de voorbeeld invoer hierboven. De unit tes
 - Als het programma de verwachte output genereert, kan je je oplossing laten valideren tegen veel meer input: [download encryption-input.txt hier](/teaching/ses/encryption-input.txt).
 - Als je zelf wilt kijken hoe deze input werd gegenereerd: [download EncryptionGenerate.java hier](/teaching/ses/EncryptionGenerate.java).
 
+#### Java files zelf compileren
+
+Zoals je hierboven ziet kan je `javac` zelf oproepen in plaats van Gradle dit te laten doen. Er zijn echter een paar spelregels die belangrijk zijn als je zelf compileert in combinatie met packages. De `-d` optie voorziet een output folder, zoals Gradle die in de root een map `build/` gebruikt voor zijn gecompileerde `.class` files. Compileer dus altijd _vanaf de root folder van je project!_ Voorbeeld structuur:
+
+<pre>
+build.gradle
+src/
+  main/
+    java/
+       package/
+         Main.java
+</pre>
+
+Compileer in root: `javac -d build/ src/main/java/package/Main.java`. Dit levert je het volgende op:
+
+<pre>
+build.gradle
+src/
+  main/
+    java/
+       package/
+         Main.java
+build/
+  package/
+    Main.class
+</pre>
+
+Het programma oproepen, ook vanuit de root, kan je met `java -cp build/ package.Main`. Dus: geef de build map mee met het classpath (1) en voorzie de fully qualified name van de klasse (2), inclusief de package naam. Dit is belangrijk omdat het best zou kunnen dat er verschillende `Main` klasses in je applicatie bestaan, in verschillende packages. 
+
+Gebruik je geen speciale packages (aangeduid in het begin van de java file met `package blabla;`), dan kan je in dezelfde folder als je source compileren en als classpath de huidige folder, `.` of `./`, meegeven. Voor simpele programma's, zoals deze oefeningen, kan dit volstaan. 
 
 ### Opgave 2
 
