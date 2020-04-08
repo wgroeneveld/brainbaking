@@ -32,6 +32,9 @@ enableGitInfo = true
   name = "Wouter Groeneveld"
   email = "wouter.groeneveld@gmail.com"
 
+[markup]
+    defaultMarkdownHandler = "blackfriday"
+
 [[menu.main]]
     name = "Tech Blog"
     pre = "<i class='fa fa-file-code-o'></i>"
