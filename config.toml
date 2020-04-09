@@ -2,8 +2,6 @@ languageCode = "en-us"
 title = "Brain Baking"
 baseurl = "https://brainbaking.com/"
 theme = "minimal"
-pygmentsUseClasses = true
-pygmentCodeFences = true
 googleAnalytics = "UA-45748221-1"
 publishDir = "docs"
 enableEmoji = true
@@ -15,6 +13,9 @@ enableGitInfo = true
     tag = "tags"
 
 [params]
+    # disabled to get rid of cloudflare cookies
+    MathJax = false
+
     description = "Freshly baked thought"
     # see single.html, DisqusShortname also needed
     disableComments = true
@@ -22,9 +23,6 @@ enableGitInfo = true
     showBorder = true
     twitter = "woutergroenev"
     backgroundColor = "white"
-    highlight = true
-    highlightStyle = "paraiso-dark"
-    highlightLanguages = ["cs", "cpp", "scheme", "python", "java", "scala", "javascript", "llvm"]
     font = "Source Serif Pro"
     copyright = "No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a>"
 
@@ -32,8 +30,20 @@ enableGitInfo = true
   name = "Wouter Groeneveld"
   email = "wouter.groeneveld@gmail.com"
 
+
 [markup]
-    defaultMarkdownHandler = "blackfriday"
+  defaultMarkdownHandler = "blackfriday"
+  
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "arduino"
+    tabWidth = 4
 
 [[menu.main]]
     name = "Tech Blog"

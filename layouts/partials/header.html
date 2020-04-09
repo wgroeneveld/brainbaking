@@ -6,22 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ .Title }}</title>
         {{ if .Site.Params.favicon }}
-        <link rel="icon" href="{{ .Site.Params.favicon | absURL }}">
+            <link rel="icon" href="{{ .Site.Params.favicon | absURL }}">
         {{ end }}
-        {{ partial "css" . }} {{ partial "js" . }} {{ .Hugo.Generator }}
-        {{ if .RSSLink }}
-        <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-        <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+        {{ partial "css" . }} {{ partial "js" . }} {{ hugo.Generator }}
+        {{ with .OutputFormats.Get "RSS" }}
+            <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="Brain Baking" />
+            <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="Brain Baking" />
         {{ end }}
     </head>
-
-    {{ if .Site.Params.MathJax | default true }}
-    <!-- adds MathJax support -->
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    {{ end }}
-
     <body>
         {{ partial "body-open" . }}
         <nav class="navbar navbar-default navbar-fixed-top">
