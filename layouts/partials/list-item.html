@@ -20,6 +20,9 @@
                 </span>&nbsp;|&nbsp;
                 <span title="Last Modified Date">
                     <i class='fa fa-calendar-check-o'></i>&nbsp;{{ .Lastmod.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+                </span>&nbsp;|&nbsp;
+                <span title="Comments">
+                    <i class="fa fa-comments-o"></i>&nbsp;<a href="{{ .RelPermalink }}#commento"></a>
                 </span>
     		</span>
     	</h5>
