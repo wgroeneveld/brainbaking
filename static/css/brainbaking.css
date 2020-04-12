@@ -9,17 +9,24 @@
   padding: 0 !important;
 }
 
-.commento-root .commento-sort-policy-buttons-container .commento-sort-policy-buttons .commento-sort-policy-button-selected, 
-.commento-root .commento-submit-button,
+.commento-root .commento-submit-button {
+  color: white !important;
+  background: var(--accent) !important;
+}
+
 .commento-root a {
   color: var(--accent) !important;
+}
+
+.commento-root .commento-card .commento-body p {
+  font-size: 14pt !important;  
 }
 
 .commento-root *,
 .commento-root-font * {
   font-family: 'Source Serif Pro', sans-serif !important;
-  font-size: 14pt !important;
   line-height: 1.7 !important;
+  color: #333;
   text-align: left !important;
 }
 
