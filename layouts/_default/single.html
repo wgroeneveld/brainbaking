@@ -30,6 +30,20 @@
 
     {{ end }}
 
+  <!-- commenting part -->
+    {{ if (not .Params.disableComments) }}
+        <h4 class="page-header"><i class="fa fa-comments-o"></i>&nbsp;
+            {{ if eq "essays" .Section }}
+                Discussieer mee
+            {{ else }}
+                Join the Discussion
+            {{ end }}
+        </h4>
+
+        <script defer src="https://commento.brainbaking.com/js/commento.js"></script>
+        <div id="commento"></div>
+
+    {{ end }}
     <h4 class="page-header">&nbsp;</h4>
 
     <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
