@@ -9,16 +9,31 @@
   padding: 0 !important;
 }
 
-.commento-root .commento-submit-button {
+.commento-button {
   color: white !important;
   background: var(--accent) !important;
 }
 
-.commento-root a {
+.commento-twitter-button:before {
+   font-family: FontAwesome;
+   content: "\f099";
+   display: inline-block;
+   padding-right: 3px;
+   vertical-align: middle;
+}
+
+.commento-twitter-button {
+  width: auto !important;
+}
+
+.commento-root a,
+.commento-email-button {
   color: var(--accent) !important;
 }
 
-.commento-root .commento-card .commento-body p {
+.commento-root .commento-card .commento-body p,
+.commento-root textarea,
+.commento-name {
   font-size: 14pt !important;  
 }
 
