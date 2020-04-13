@@ -1,7 +1,7 @@
 ---
 title: "DIY: Hosting stuff on your own VPS"
 date: '2020-04-13'
-subtitle: "Migrating to, securing and backing up your own server."
+subtitle: "Migrating to, securing, and backing up your own server."
 tags:
   - server
   - linux

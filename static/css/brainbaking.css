@@ -14,16 +14,23 @@
   background: var(--accent) !important;
 }
 
+.commento-google-button:before {
+   content: "\f1a0";
+}
+.commento-github-button:before {
+   content: "\f09b";
+}
+.commento-twitter-button:before {
+   content: "\f099";
+}
+.commento-google-button:before,
+.commento-github-button:beforem
 .commento-twitter-button:before {
    font-family: FontAwesome;
-   content: "\f099";
    display: inline-block;
    padding-right: 3px;
    vertical-align: middle;
-}
-
-.commento-twitter-button {
-  width: auto !important;
+   width: auto !important;
 }
 
 .commento-root a,
