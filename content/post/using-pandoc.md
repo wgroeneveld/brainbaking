@@ -11,16 +11,7 @@ tags:
 published: true
 ---
 
-<style>
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid var(--accent);
-}
-</style>
-
-So, [I wrote a book](https://redzuurdesem.be/het-boek/) about sourdough baking. 
+So, [I wrote a book](https://redzuurdesem.be/het-boek/) about bread baking. 
 
 And it did not happen overnight. I started working on the idea in 2017, but was using Google Docs at that time, which frustrated more than it was a joy to work with. GDocs and Word-like processors harass me too much with menu bars, toolbars, collaboration tools, backup capabilities, and so forth - while all I want to do is simply write. In 2018, I rebooted my writing attempt and resorted to my favorite text-editor: Sublime Text. 
 
@@ -274,4 +265,11 @@ Would I employ this toolchain again when writing the next book? Without a doubt.
 
 At least I won't have to start from scratch next time!
 
-
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid var(--accent);
+}
+</style>
