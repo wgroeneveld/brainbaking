@@ -371,6 +371,7 @@ There are still big holes in my security plan. You are welcome to drop a line in
 
 ### Resources
 
+- https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04
 - https://www.nginx.com/blog/monitoring-nginx/
 - https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-as-a-send-only-smtp-server-on-ubuntu-16-04
 - https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-dkim-with-postfix-on-debian-wheezy

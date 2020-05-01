@@ -3,6 +3,8 @@ title: Enhancing the builder pattern with closures
 date: '2013-11-14'
 bigimg: /img/Enhancing the builder pattern with closures.jpg
 subtitle: the trainwreck/builder/chaining pattern can be dangerous and here's why
+aliases:
+    - /enhancing-the-builder-pattern-with-closures/
 tags:
   - closures
   - groovy

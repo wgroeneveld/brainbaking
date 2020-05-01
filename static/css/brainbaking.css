@@ -45,10 +45,13 @@
   color: var(--accent) !important;
 }
 
-.commento-root .commento-card .commento-body p,
-.commento-root textarea,
 .commento-name {
-  font-size: 14pt !important;  
+  font-size: 14pt !important;    
+}
+
+.commento-root .commento-card .commento-body p,
+.commento-root textarea {
+  font-size: 12pt !important;  
 }
 
 .commento-root *,
@@ -57,10 +60,6 @@
   line-height: 1.7 !important;
   color: #333;
   text-align: left !important;
-}
-
-.commento-root .commento-card .commento-name {
-  font-size: 14pt !important;
 }
 
 /** index.html **/

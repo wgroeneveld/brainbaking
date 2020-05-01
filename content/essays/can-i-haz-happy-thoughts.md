@@ -5,6 +5,7 @@ bigimg: /img/Ending your day with happy thoughts.jpg
 url: /post/can-i-haz-happy-thoughts/
 aliases:
     - /ending-your-day-with-happy-thoughts/
+    - /can-i-haz-happy-thoughts/
     - /post/ending-your-day-with-happy-thoughts/
 subtitle: Or how a tiny thing can really help you sleep better
 tags: ['self improvement', 'journaling']
