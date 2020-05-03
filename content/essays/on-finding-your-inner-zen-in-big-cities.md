@@ -4,7 +4,7 @@ bigimg: /img/innerzenheader.jpg
 url: /post/on-finding-your-inner-zen-in-big-cities/
 date: '2013-08-29'
 subtitle: Coping with crowded places when you’re used to peaceful villages
-tags: ['braindump', learning', 'zen' ]
+tags: ['braindump', 'learning', 'zen' ]
 ---
 
 Originally posted on [Medium](https://medium.com/@woutergroenev/on-finding-your-inner-zen-in-big-cities-c2be933114e3).

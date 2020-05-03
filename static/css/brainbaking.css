@@ -241,16 +241,45 @@ main .text-justify blockquote p {
 }
 
 /* --- goodreads widget styles --- */
-.gr_grid_container {
+.goodreadswidget {
+  border-bottom: 3px solid var(--accent);
+  padding: 0px;
+  padding-bottom: 10px;
+}
+
+.goodreadswidget h2 {
+  visibility: hidden;
+  display: none;
+}
+
+.goodreadswidget .gr_grid_branding {
+  padding-right: 20px;
+  font-size: 14pt !important;
+}
+
+@media (min-width: 768px) {
+  .gr_grid_book_container {
+    height: 600px !important;
+  }
 }
 
 .gr_grid_book_container {
-  /* customize book cover container div here */
   float: left;
-  width: 98px;
-  height: 160px;
-  padding: 0px 0px;
-  border: 1px solid black;
-  margin: 5px;
+  width: 25%;
+  height: 300px;
+  padding: 5px;
   overflow: hidden;
+}
+
+.gr_grid_book_container img {
+  width: 100%;
+  height: 100%;
+}
+
+.gr_grid_book_container:hover img {
+    opacity: 0.3;
+}
+
+.gr_grid_book_container img:hover {
+  background: rgba(100, 100, 100, 0.7);
 }

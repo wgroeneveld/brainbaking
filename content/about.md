@@ -37,7 +37,7 @@ Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://git
 
 * I'm just starting to [learn](/post/teaching-yourself-to-draw/) how to use ink other than for writing purposes. 
 
-## Where good ideas come from: Books
+### Where good ideas come from: books
 
 I keep an active <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank"><i class='fa fa-book'></i>&nbsp;Goodreads</a> account where I manage everything I've read and want to read. I invite you to join the community there. Marking a book as read and writing a (short) review never was that satisfying... 
 
@@ -45,13 +45,19 @@ I used to be almost exclusively a fantasy reader. Now I mostly read non-fiction 
 
 These are the latest 12 books I've read:
 
-<div id="gr_grid_widget_1496758344">
+</main>
+<div id="gr_grid_widget_1496758344" class="goodreadswidget">
 </div>
 
-</div>
 <script src="https://www.goodreads.com/review/grid_widget/5451893.Wouter's%20bookshelf:%20read?cover_size=medium&hide_link=&hide_title=&num_books=12&order=d&shelf=read&sort=date_added&widget_id=1496758344" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+[...document.querySelectorAll('.goodreadswidget img')].forEach(img => {
+    img.src = img.src.replace(/_SX[0-9]+_(SY[0-9]+_)*.jpg/, "_S400_.jpg")
+})
+</script>
 
-<p>&nbsp;</p>
+<main>
+<p style="clear: both;">&nbsp;</p>
 
 [^1]: This website uses an [anonymized IP](https://support.google.com/analytics/answer/2763052?hl=en) form of Google Analytics for the sole purpose of tracking website traffic. 
 [^2]: [https://en.wikipedia.org/wiki/Polymath](https://en.wikipedia.org/wiki/Polymath)
