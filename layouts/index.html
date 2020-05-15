@@ -52,7 +52,8 @@
 			    <h4>
 			    	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
 			    </h4>
-			    {{ .Params.subtitle }} <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}</span>
+			    {{ .Params.subtitle }}&nbsp;&nbsp;
+                <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}</span>
 	        {{ end }}
 
 	        <hr/>

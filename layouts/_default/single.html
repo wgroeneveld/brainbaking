@@ -40,9 +40,11 @@
             {{ end }}
         </h4>
 
-        <script defer src="https://commento.brainbaking.com/js/commento.js"></script>
-        <script src="https://commento.brainbaking.com/js/count.js"></script>
-        <div id="commento"></div>
+        {{- if (ne hugo.Environment "development") }}
+            <script defer src="https://commento.brainbaking.com/js/commento.js"></script>
+            <script src="https://commento.brainbaking.com/js/count.js"></script>
+            <div id="commento"></div>
+        {{- end }}
 
     {{ end }}
     <h4 class="page-header">&nbsp;</h4>

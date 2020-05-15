@@ -46,7 +46,7 @@ Onderstaande Figuur geeft het verschil weer tussen een _gecentraliseerd_ version
 
 ([Image Src](http://sgdev-blog.blogspot.com/2014_03_01_archive.html))
 
-Vanaf nu wordt verondersteld dat labo oefeningen gecommit worden in `git` op [Github.com](https://github.com): een zeer populair open source software ontwikkelingsplatform dat gebruiksvriendelijk is. Het [Pro Git](https://git-scm.com/book/en/v2) handboek leert je alles over de werking van git. 
+Vanaf nu wordt verondersteld dat labo oefeningen gecommit worden in `git` op [Github.com](https://github.com): een zeer populair open source software ontwikkelingsplatform dat gebruiksvriendelijk is. Het [Pro Git](https://git-scm.com/book/en/v2) handboek leert je alles over de werking van git. (['git - the simple guide'](http://rogerdudler.github.io/git-guide/) helpt ook)
 
 ### De Git workflow
 
@@ -201,4 +201,5 @@ Merk op dat je onvoldoende `push` rechten hebt om lokale wijzigingen aan de repo
 ## Extra leermateriaal
 
 - [Pro Git](https://git-scm.com/book/en/v2) handboek, hoofdstuk 1 tot en met 3.
+- [git - the simple guide](http://rogerdudler.github.io/git-guide/)
 - [Code Forest: Git VS SVN](https://www.codeforest.net/git-vs-svn)
