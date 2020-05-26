@@ -17,10 +17,7 @@ Voorbeeld: [(S)NES Mini Classic](https://www.nintendo.com/super-nes-classic/)[^3
 3. **Hybride** consoles: emulatie-gebaseerde spelconsoles die toch de fysieke handeling van het "_er weer in steken_" mogelijk maken. Net voor het starten van het spel wordt in de software de ROM van de casette uitgelezen en al dan niet opgeslagen. <br/>
 Voorbeeld: [retrofreak](https://www.cybergadget.co.jp/retrofreak/en.html), Retron 5
 
-<center>
-    ![analogue NT](/img/analoguent.jpg)
-    <em>Analogue Super NT[^2] met 8bitdo bluetooth ontvangers</em>
-</center>
+{{< figure src="/img/analoguent.jpg" title="Analogue Super NT met 8bitdo bluetooth ontvangers" >}}
 
 Allereerst even dit: waarom zou je een nieuwe, _oude_ in feite, console kopen, als je al een originele Super Nintendo bezit? Misschien omdat je van de voordelen van optie 2 en 3 wenst te genieten. Maar waarschijnlijk omwille van HDMI 720p of 1080p capaciteiten die een console van 1990 niet heeft, tenzij je een oude CRT speciaal voor zo'n soort consoles bewaart. Een ander overtuigend argument is de _"region lock"_ van oude consoles: je kan geen Amerikaanse of Japanse _cartridges_ op een Europese console spelen of omgekeerd.
 
@@ -30,10 +27,7 @@ Mijn vrouw heeft van haar jeugd nog een originele SNES console die we ook aanges
 
 Dat digitale aan de SNES Mini stoort me al vanaf het eerste uur dat ik er mee speel: het keuzemenu dat een vrolijk liedje speelt terwijl jij je spel kiest. De vraag is: welk spel? Niet genoeg keuze. Tools als Hackchi2 installeren bevrijdt je Mini van het ronde getal 20 en laat je toe om eender welke ROM die je in je bezit hebt er bij op te proppen. Nog meer keuze. Welk spel? De Hackchi tool heeft addons waarbij emulators van andere consoles geïnstalleerd kunnen worden. Ik kan plots een Playstation 1, DOS(Box) of SEGA MegaDrive spel spelen op mijn Nintendo SNES... Nog meer keuze. Welk spel? 
 
-<center>
-    ![SNES Mini](/img/snesmini.jpg)
-    <em>SNES Origineel en SNES Classic Mini[^2]</em>
-</center>
+{{< figure src="/img/snesmini.jpg" caption="SNES _Origineel_ en SNES _Classic Mini_" >}}
 
 Hoe meer _luie keuze_ ik heb (een druk op de knop, een selectie uit een menu), hoe minder ik toegewijd ben om een spel van begin tot einde écht te _spelen_. Dit vind ik heel vreemd. Ik ben bijvoorbeeld ook opgegroeid met een Gameboy en tijdens beursbezoekjes schuim ik dan standjes af om herinneringen terug tot leven te laten komen. Die dure heraankopen maken mij blijkbaar wel erg toegewijd. Alle GBA Castlevania's zijn volledig herspeeld. De actie van een fysieke casette in een console te steken en die aan te zetten geeft mij veel meer goesting om er iets langdurig mee te doen dan simpelweg iets te kiezen uit een hoop dingen die reeds beschikbaar zijn. 
 
@@ -47,10 +41,7 @@ Hetzelfde geldt voor een e-reader. Ik heb nooit begrepen waarom mensen de intere
 
 Hetzelfde geldt voor muziek, voordat streaming software als Spotify de kroon stak. MP3's downloaden was schering en inslag. Op den duur zit je met gigabytes aan (illegale) bestanden die uit je iPod barsten waarvan je misschien 10 tot 20% vaak herbeluistert. 20 jaar geleden kocht ik CD's die ik weken aan een stuk opnieuw durfde af te spelen, totdat mijn zussen en ouders er gek van werden. Tegenwoordig verzuip ik in de mogelijkheden en voorstellen die Spotify aanreikt. Wat is het gevolg? Mijn jaarlijkse top lijst bevat heel weinig nummers: ik speel telkens opnieuw dezelfde gekende dingen af. 
 
-<center>
-    ![WII Channel](/img/wiichannel.jpg)<br/>
-    <em>Retro Wii kanalen, al dan niet modded[^2]</em>
-</center>
+{{< figure src="/img/wiichannel.jpg" title="Retro Wii kanalen, al dan niet modded" >}}
 
 Volgens mij spelen hier verschillende factoren mee:
 
@@ -63,10 +54,8 @@ Dat laatste is zeker niet onbelangrijk. Als ik zo graag mijn geliefde Turtles IV
 
 Dan vergeet ik nog even de enorme hoeveelheid aan namaak op de markt. Een leek ziet amper het verschil: blauwdrukken van casettes worden zo goed als 1 op 1 nagegoten. Het is precies een sport geworden om dit aan de retro enthousiasteling verpatst te krijgen zonder hij of zij er erg in heeft. Vooral op gebied van Game Boy (Advance) _cartridges_ is het bedroevend gesteld. In sommige gevallen ben je bijna verplicht het open te schroeven om te kijken naar de EEPROM en batterij op het bord. Als je op eBay een Rolex horloge koopt voor $10 wéét je dat dit namaak is. In dat geval is de koper evenzeer aansprakelijk als de verkoper. Maar slimme verkopers bieden hun zaakjes aan in dezelfde prijscategorie. Aan een foto is bijna niet af te leiden of het om een namaak _cartridge_ gaat of niet. Aan "_How to spot fake GBA games in 10 steps_" artikels heb je niets als je vanwege de beperkte beschikbaarheid vanop afstand iets aankoopt. 
 
-<center>
-    <img src="/img/fake-gba.jpg" class="bordered"/><br/>
-    <em>Welke GBA _cartridge_ is hier fake?[^2]</em>
-</center>
+{{< figure src="/img/fake-gba.jpg" title="Welke GBA cartridge is hier fake?" >}}
+
 
 Hoeveel keer koop je een ouder spel dat niet meer uitgegeven wordt opnieuw? Een keer via de 3DS store, een keer via de Wii store, een keer via een Steam collectie. Met de komst van de Nintendo Switch heb ik de intentie om mijn Wii te verkopen - maar de digitaal aangekochte spellen hangen daar aan vast. Kan ik dan het downloaden van een ROM bestand goedpraten? Ik heb dit immers al drie keer gekocht. Ik kan er ook niet aan doen dat Nintendo niet de optie aanbiedt om dit bestand uit mijn Wii te halen... Stel dat het officiëel gekochte digitale spel in ROM formaat af te halen is van je console, is het dan legaal om dit op je SNES Mini te plaatsen? De prijzen op de Wii waren nog gedelijk: 5 EUR voor NES, 8 EUR voor SNES en 10 EUR voor N64 spellen. Maar uiteindelijk worden ze natuurlijk ook geëmuleerd. En uiteindelijk is de Wii ook "gekraakt". 
 
@@ -76,10 +65,7 @@ Het wordt dus een delicate ethische kwestie.
 
 Stel dat een online aankoop, bijvoorbeeld vanuit de vroegere Wii Store om een SNES spel te kopen, evenveel zou kosten als de _cartridge_. Welke versie verkies jij dan? Volgens enquêtes, en volgens mezelf, gaat de voorkeur uit naar de fysieke versie. Dat komt omdat wij als mens graag iets in handen hebben, _waar voor ons geld_ willen. Vreemd, gezien het geld dat overhandigd wordt toch ook gewoon bestaat uit 1 en 0? Maar nu geldt het bovenstaande argument niet meer, dus de fincanciële investering als enkele factor beschikt over onvoldoende overtuigingskracht. 
 
-<center>
-    ![retrofreak](/img/retrofreak.jpg)
-    <em>retrofreak: de alles-in-1 oplossing[^2]</em>
-</center>
+{{< figure src="/img/retrofreak.jpg" title="retrofreak: de alles-in-1 oplossing" >}}
 
 En toch geeft het niet zo veel voldoening als de fysieke versie. De retrofreak console ziet er redelijk aantrekkelijk uit en kan énorm veel fysieke formaten aan. Dat zou betekenen dat ik mij niet meer moet inhouden als we nog eens naar een retro beurs gaan: _one ring to rule them all_. Jammer genoeg draait dat op Android en hangen er rechtzaken boven het hoofd van deze consoles - om nog maar te zwijgen van de Chinese kwaliteit. En zou ik dan de ROM op een SD kaart zetten[^1], of van mijn vrouw genoeg geld mogen uitgeven om _cartridges_ te stockeren? Ik heb geen _mancave_, en moet dan ook nog een glazen vitrinekastje kopen om te pronken met mijn dure casettes...
 

@@ -64,8 +64,44 @@
 
 /** index.html **/
 
-img.bordered {
-  border: 1px solid var(--accent);
+ul {
+  list-style: circle;
+}
+
+div.highlight {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.text-justify img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ccc !important;
+  border-radius: 4px;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+figure img {
+  margin-bottom: 0;
+}
+
+figure {
+  margin-bottom: 1.5em !important;
+}
+
+figure figcaption {
+  margin-top: 1rem !important;  
+}
+
+figure figcaption h4, figure figcaption p {
+  text-align: center;
+  margin-top: 0 !important;
+  font-size: 1.7rem !important; 
+  font-style: italic;
+  font-weight: normal;
+  color: #aaa;
 }
 
 .avatar-container {
@@ -207,7 +243,7 @@ pre {
 @media only screen and (min-width: 768px) {
   /* indien header image, hoogte vergroten */
   .big-img .container {
-    height: 150px;
+    height: 200px;
   }
 }
 

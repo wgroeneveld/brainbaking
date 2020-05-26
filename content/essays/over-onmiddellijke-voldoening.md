@@ -14,10 +14,7 @@ Je _kan_ via Ali Express eender wat bestellen. Dat wordt dan wel drie weken wach
 
 Ik kijk met de ogen van een vijfendertigjarige naar achtjarige kinderen die schreeuwend van hun ouders eisen dat LEGO doos z onmiddellijk MOET worden aangekocht. Betekent dat dat ik als achtjarige nooit schreeuwde en iets graag wilde hebben? Natuurlijk niet, maar mijn ouders gaven me nooit zo snel mijn zin - en maar goed ook. Ik herinner me nog dat ik een of andere plastieken Turtle zelf mocht kiezen, maar dat ik er eerst voldoende over diende na te denken. Na de keuze is er immers geen weg terug: ik kreeg maar één exemplaar. Ik koos uiteindelijk na, volgens mij voldoende, te hebben nagedacht. Twee uur later had ik er al enorme spijt van, en wilde ik dolgraag het andere exemplaar. Ik was oprecht verdrietig, en als ik nu terugdenk aan dat nog glashelder moment, krijg ik het terug warm. Maar ik begreep ook dat ik een keuze had gemaakt, en dat ik onmogelijk beiden kon bezitten. Ik was als kind natuurlijk afhankelijk van het geld en de toestemming van mijn ouders. Die manier van verantwoordelijkheid implementeren lijkt te ontbreken bij velen. Ze willen alles. _Whatever it takes_, zoals de popliedjes zo vrolijk beschrijven. Of, _because you're worth it_. Of we er nu voor moeten schreuwen, dreigen, of twee keer op een webshop voor moeten klikken: ontvangen zullen we - en hoe.
 
-<center>
-    <img src="/img/tnmt.jpg" /><br/>
-    Nostalgie in de vorm van goede of slechte herinneringen?
-</center>
+{{< figure src="/img/tnmt.jpg" title="Nostalgie in de vorm van goede of slechte herinneringen?" >}}
 
 Een speeltje dat niet in de lokale winkels lag kon men vroeger bestellen bij diezelfde handelaar. Dat betekende een week of twee wachten, tot de groothandelaar de juiste zaken terug aanleverde. Ondertussen kon je genieten van iets magisch: _uitkijken naar iets_. Kennen we dat eigenlijk nog? Het enige wat wij momenteel kunnen doen is uitkijken naar bepaalde dagen, want die zijn nog niet beschikbaar op bestelling. Zelfs dat klopt niet helemaal: de feestdagen beginnen elk jaar vroeger dankzij de commerciële mallemolen die ons nog meer opjut om op de 'koop nu' knop te drukken. 
 
@@ -28,10 +25,7 @@ Na een zware werkdag, die ook nog eens eiste dat je de frustrerende files moest 
 Onmiddellijke voldoening heeft ook te maken met de onmiddellijke aanwezigheid van alles, dankzij de hyper verbonden wereld en de 150gr zware apparaatjes die precies een extensie van onze hand geworden zijn. Als we nu op vakantie zijn, kunnen we onmiddellijk de familie kiekjes opsturen, waarvan we uiteraard verwachten dat ze onmiddellijk bekeken worden. Wanneer mijn ouders op vakantie zijn, word ik gebombardeerd met foto's van idyllische landschappen, goedkoop bier, en veel te veel 'selfies'. Daar wordt dan onmiddellijk op gereageerd, liefst met zaken als 'leuk! (hartje) (hartje)', of 'amuseer u, hier is het nog steeds kak!'. 
 Vijfentwintig jaar geleden reden mijn ouders mijn zussen en mij voorbij de Spaanse grens, om een dag later het dorpscentrum in te rijden en peseta's in een telefooncel te steken, hopend op een verbonden lijn die de grootouders geruststellen dat we allemaal nog leven. Vakantiefoto's werden uiteraard pas ontwikkeld na de terugreis. 
 
-<center>
-    <img src="/img/mediamarkt.jpg" width="60%" /><br/>
-    Meer wachten dan nodig? _Ik ben toch niet gek!_
-</center>
+{{< figure src="/img/mediamarkt.jpg" width="60%" title="Meer wachten dan nodig? Ik ben toch niet gek!" >}}
 
 Dat klinkt allemaal redelijk pessimistisch, verlangend naar een vervlogen tijdperk van telefoonkaarten in een pre-Euro zone. In feite wil ik dit zeggen: waarom is het nodig om nutteloze foto's van nietszeggende dingen door te sturen op het moment zelf, in plaats van ter plekke te genieten en het verhaal achteraf te vertellen? Want wat valt er de familie te vertellen bij de thuiskomst, als we heel de rit al veel te intens hebben meegemaakt? 'Oh ja, dat wist ik al, ik zag het op foto x'. Iedereen is al op de hoogte van elkaars reilen en zeilen voordat we mekaar effectief zien. Dat betekent dat er op het moment van weerzien maar bitter weinig te vertellen valt. En dan zijn we verwonderd dat sociale capaciteiten toch niet de grote sterktes van tegenwoordig zijn. 
 

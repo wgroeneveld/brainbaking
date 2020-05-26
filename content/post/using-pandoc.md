@@ -265,11 +265,3 @@ Would I employ this toolchain again when writing the next book? Without a doubt.
 
 At least I won't have to start from scratch next time!
 
-<style>
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid var(--accent);
-}
-</style>

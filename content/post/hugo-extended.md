@@ -42,7 +42,7 @@ Without a preset, there is nothing to do, but without the core and the cli compo
 
 To facilitate easy local debugging in different browsers, I skipped the babel and minify steps using a Hugo directive:
 
-```
+```html
 {{- if (ne hugo.Environment "development") }}
 {{- end }}
 ```
