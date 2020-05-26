@@ -5,6 +5,7 @@ bigimg: /img/brizy.jpg
 subtitle: Shortcodes and custom hacks incoming...
 tags:
   - php
+  - webdesign
   - wordpress
   - brizy
 ---
@@ -77,7 +78,28 @@ Oh, did I mention that I had to style these things myself? Since you can't use t
 
 #### The Category page
 
-Right, "terms" in Wordpress. Are you using tags or categories? Or did you create your own taxonomy? What's with all the complexity when I just want a simple way to sort and organize my blog posts? Here, I used another self-made shortcode, `[show_current_category]`.
+Right, "terms" in Wordpress. Are you using tags or categories? Or did you create your own taxonomy? What's with all the complexity when I just want a simple way to sort and organize my blog posts? Here, I used another self-made shortcode, `[show_current_category]`, that is a wrapper around `[display-posts]` to apply the category filter scraped from the request URL (usually something like `/category/blabla`):
+
+```php
+$show_current_category_in = FALSE;
+function show_current_category_shortcode() { 
+    global $show_current_category_in;
+    if($show_current_category_in == TRUE) return '';
+    $show_current_category_in = TRUE;
+    $cat = str_replace('/', '', str_replace('category', '', $_SERVER['REQUEST_URI']));
+    
+    ob_start();
+    
+    echo "<div class='brz-rich-text'><h2 style='font-family: \'Playfair Display\', serif'>Categorie: $cat</h2></div><hr/>";
+    echo do_shortcode('[display-posts category="' . $cat . '" posts_per_page="100" image_size="thumbnail" include_excerpt="true" excerpt_length="30" include_date="true" category_display="true" category_label="" include_excerpt_dash="false" image_size="medium" date_format="d/m/Y"]');
+    
+    $html = ob_get_contents();
+    ob_end_clean(); 
+    return $html;
+}
+```
+
+I'm ashamed to even post this on the internet. One of the finest hacks I've ever written, I think. The ugly boolean variable is needed because when a Brizy template gets included as part of the results, it triggers the Wordpress function `get_the_excerpt()` from `[display-posts]`. And the excerpt of this category template page includes the show current category shortcode - back to square one. I'm sure there are better ways to do this, but I lost my patience (and temper) trying to debug this mess, pasting `$e = new \Exception; var_dump($e->getTraceAsString());` in random places. 
 
 ### The Wordpress mess
 
@@ -115,13 +137,15 @@ Yup:
 ./3682/assets/images/iW=310&iH=142&oX=0&oY=0&cW=310&cH=142/testlogokristien.png
 ```
 
-Brizy duplicates images from global bocks for each page, and for each page, Brizy duplicates images for each (mobile) device. `26` images for one page id. 
+Brizy duplicates images from global bocks for each page, and for each page, Brizy duplicates images for each (mobile) device used in `srcset` attributes of `img` tags. `26` images for one page ID. 
 
 There goes my [nginx caching strategy](/post/vps). What a mess. Should I write a bash script to create symlinks? That does not change anything for the clientside webbrowser. What a mess. 
 
 ### So, trash Brizy and use something else?
 
-Perhaps. But now that we invested a couple of weeks in this Wordpress + Brizy + custom hacks on my side, my wife is content. She's even thinking about the same setup to port one of her websites from Webnode, a paid and hosted service. It's intuitive to use and it works - for the most part. The shortcodes should not change often, and the blog detail and category brizy templates are not that difficult to maintain if you ignore the errors in the editor. 
+Perhaps. But now that we invested a couple of weeks in this Wordpress + Brizy + custom hacks combination, my wife is content. She's even thinking about using the same setup to port one of her websites from Webnode, a paid and hosted service. It's intuitive to use and it works - for the most part. The shortcodes should not change often, and the blog detail and category brizy templates are not that difficult to maintain if you ignore the errors in the editor. 
+
+Oh, and don't bother paying for the coupled "Optimize Images" [shortpixel.com](https://shortpixel.com/pricing-one-time) plugin thing - simply execute `find . -name "*.jpg" -exec convert {} -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB {} \;`. With complements of Google's [Image Optimization Tips](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization). 
 
 As long as you don't try to peek behind the scenes and into the source code, all is well... 
 

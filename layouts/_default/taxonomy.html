@@ -1,0 +1,45 @@
+{{ partial "header" . }}
+
+<main>
+
+    <h2>
+		<i class='fa fa-tags'></i>&nbsp;Tagged with: <br/>"{{ .Title }}"
+	</h2>
+    <hr/>
+
+    {{ with .Content }}
+    <div class="text-justify">
+    	{{ . }}
+	</div>
+    <hr/>
+	{{ end }}
+
+	{{ range .Data.Pages.GroupByDate "01-2006" "desc" }}
+	<h4 style="float: left; color: grey;">{{ .Key }}</h4>
+	<ul style="text-align: left; float: left; margin-left: 20px; width: 80%; list-style-type: none; border-left: #eee 1px solid;">
+	    {{ range .Pages.ByDate.Reverse }}
+	    	{{ .Date.Format (.Site.Params.dateFormat | default "2 January") | $.Scratch.Set "subtitle" }}
+	    	{{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
+
+		<li style="margin-bottom: 15px;">
+
+		    <h4>
+		    	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+		    </h4>
+	    	{{ with .Params.archived }}
+				<kbd class="item-tag">Archived</kbd>
+	    	{{ end }}		    
+		    {{ .Params.subtitle }} 
+		    <span style="color: lightgrey;">
+		    	<i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}
+		    </span>
+		</li>
+	    {{ end }}
+	</ul>
+	<hr style="clear: both;"/>
+	{{ end }}
+
+
+</main>
+
+{{ partial "footer" . }}

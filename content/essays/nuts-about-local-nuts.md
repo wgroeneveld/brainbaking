@@ -35,8 +35,8 @@ Garlic and onions, as the star vegetable, can be tackled with ease if you grow y
 The hard cheese might be a tough one if you insist on the Parmesan, which is a DOP: __Denominazione di origine protetta__. That means it's called only Parmesan if it's from a specific region Italy. But Belgium and the Netherlands **are** exceptionally good in making cheese, even hard and salty cheeses, like [Friese Nagelkaas](https://nl.wikipedia.org/wiki/Friese_nagelkaas). Of course we said we'll stick to the recipe but instead of using Pecorino, you can try very old Dutch sheep's cheese.<br/>
 'Mozzarella di bufala', one of the tastiest fresh Italian style cheeses, are almost always imported from Italy. But why? If you really bother to look, Belgium makes [it's own mozzarella di bufala](http://www.bufflardenne.be/) (it shouldn't be called that because of the protective DOP label but who cares) and it's simply superior in taste. The only problem is that you'll have to drive to another shop - that might even be outside of your comfort zone.
 
-![Buffl](/img/buffl.jpg)<br/>
-_Real_ local stuff, right here - if you look for it.
+{{< figure src="/img/buffl.jpg" title="Real local stuff, right here - if you look for it." >}}
+
 
 ### Why are all pine nuts from China?
 
@@ -50,8 +50,8 @@ It's a shame that people buy less and less responsible, but go out on restaurant
 
 ### Reintroducing domestic science
 
-![domestic science](/img/domestic.jpg)<br/>
-Image copyright theparkschoolpreston.co.uk
+{{< figure src="/img/domestic.jpg" title="Image copyright theparkschoolpreston.co.uk" >}}
+
 
 Instead of focusing on mathematics, linguistics and economics in schools, let's reintroduce household techniques as an integrated part of our youth's training course. Previously, one of the family members dedicated his/hers (usually the latter) time on grocery shopping, cooking, knowing what's good for you and what's not and knowing what grows in what season. Now, if you're lucky, you or your partner is interested in the subject or you simply like cooking and you'll end up with at least a piece of the puzzle. I was one of those people who had no general idea about seasons. Try gardening, it solves a lot of problems (but introduces new ones like snails). 
 

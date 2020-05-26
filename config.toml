@@ -2,7 +2,6 @@ languageCode = "en-us"
 title = "Brain Baking"
 baseurl = "https://brainbaking.com/"
 theme = "minimal"
-googleAnalytics = "UA-45748221-1"
 publishDir = "docs"
 enableEmoji = true
 enableRobotsTXT = true
@@ -13,6 +12,8 @@ enableGitInfo = true
     tag = "tags"
 
 [params]
+    fathomid = "WNLTO"
+
     # disabled to get rid of cloudflare cookies
     MathJax = false
 
@@ -44,6 +45,16 @@ enableGitInfo = true
     noClasses = true
     style = "arduino"
     tabWidth = 4
+
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    disable = false
+    respectDoNotTrack = false
+    useSessionStorage = false
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true
 
 [[menu.main]]
     name = "Tech Blog"
