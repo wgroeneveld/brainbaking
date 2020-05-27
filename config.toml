@@ -1,7 +1,7 @@
 languageCode = "en-us"
 title = "Brain Baking"
 baseurl = "https://brainbaking.com/"
-theme = "minimal"
+theme = "brainbaking-minimal"
 publishDir = "docs"
 enableEmoji = true
 enableRobotsTXT = true
