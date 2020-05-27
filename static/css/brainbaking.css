@@ -324,6 +324,14 @@ main .text-justify blockquote p {
 	border-bottom: 1px solid var(--accent);
 }
 
+.item-tag {
+    color: var(--accent);
+    background-color: white;
+    border: 1px solid var(--accent);
+    font-size: 1.3rem;
+}
+
+
 /* --- goodreads widget styles --- */
 .goodreadswidget {
   border-bottom: 3px solid var(--accent);
