@@ -1,3 +1,47 @@
+.list {
+  text-align: left;
+  padding-left: 4rem;
+}
+
+.list h2 {
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.list h3 {
+  color: #999;
+}
+
+.list-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-ul li {
+  padding: 1rem;
+}
+
+.list-ul .list-date {
+  font-weight: normal;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  color: white;
+  background-color: var(--accent);
+  border-radius: 2rem;
+  margin-top: 1.5rem;
+  float: left;  
+}
+
+.list-ul div {
+  margin-left: 60px;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+  background-color: white !important;
+  border-color: var(--accent) !important;
+}
+
 /** commento specific **/
 .commento-root .commento-round-check input[type=checkbox]:checked+label:before,
 .commento-root .commento-round-check input[type=radio]:checked+label:before {
