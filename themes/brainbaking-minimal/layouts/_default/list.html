@@ -2,12 +2,57 @@
 
 <main>
 
-    <h2>{{ .Title }}</h2>
+	{{ if .Title }}
+	    <h1>
+			<i class='fa {{ .Params.icontag }}'></i>&nbsp;{{ .Title }}
+		</h1>
+	    <hr/>
+    {{ end }}
 
-    {{ range (.Paginator 5).Pages }} {{ partial "list-item" . }} {{ end }}
+    {{ with .Content }}
+    <div class="text-justify">
+    	{{ . }}
+	</div>
+	{{ end }}
+
+	{{ if (not .Params.disableList) }}
+	<div class="list">
+	{{ range .Paginator.Pages.GroupByDate "2006" "desc" }}
+		<h2>{{ .Key }}</h2>
+
+	    {{ range .Pages.GroupByDate "Jan" }}
+	    	<h3>{{ .Key }}</h3>
+
+	    	<ul class="list-ul">
+	    	{{ range .Pages.ByDate.Reverse }}
+	    		<li>
+					<span class="list-date">{{ .Date.Format ("02") }}</span>
+					<div class="list-title">
+						<h4>
+							<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+						</h4>
+						{{ .Params.subtitle }} 
+					</div>
+					{{ if isset .Params "tags" }}
+						<div class="list-tags">
+							   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+						    {{ range .Params.tags }}
+						        <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}"><kbd class="item-tag">{{ . }}</kbd></a>
+						    {{ end }}
+						</div>
+					{{ end }}
+				</li>
+	    	{{ end }}
+	    	</ul>
+
+	    {{ end }}
+    {{ end }}
+	</div>
+    {{ end }}
+
+{{ template "_internal/pagination.html" . }}
+
 
 </main>
-
-{{ partial "paginator" . }}
 
 {{ partial "footer" . }}
