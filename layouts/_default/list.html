@@ -20,7 +20,7 @@
 	{{ range .Paginator.Pages.GroupByDate "2006" "desc" }}
 		<h2>{{ .Key }}</h2>
 
-	    {{ range .Pages.GroupByDate "January" }}
+	    {{ range .Pages.GroupByDate "Jan" }}
 	    	<h3>{{ .Key }}</h3>
 
 	    	<ul class="list-ul">
