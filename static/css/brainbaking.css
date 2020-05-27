@@ -312,6 +312,11 @@ main .text-justify blockquote p {
   margin: 0 !important;
 }
 
+a:link, a:visited {
+    color: var(--accent) !important;
+}
+
+
 
 .big-img {
   	background: no-repeat center center;
@@ -326,7 +331,7 @@ main .text-justify blockquote p {
 
 .item-tag {
     color: var(--accent);
-    background-color: white;
+    background-color: white !important;
     border: 1px solid var(--accent);
     font-size: 1.3rem;
 }
