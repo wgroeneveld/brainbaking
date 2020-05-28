@@ -1,0 +1,49 @@
+.commento-root
+  textarea
+    font-size: 12pt !important
+
+  .commento-round-check input[type=checkbox]:checked+label:before, .commento-round-check input[type=radio]:checked+label:before 
+    background: var(--accent) !important
+    border: 1px solid var(--accent) !important
+
+  .commento-markdown-help tr td pre 
+    padding: 0 !important
+
+  .commento-card
+    .commento-body
+      p
+        font-size: 12pt !important
+
+.commento-button 
+  color: white !important
+  background: var(--accent) !important
+
+.commento-google-button:before 
+  @extend %fa
+  content: "\f1a0"
+
+.commento-github-button:before 
+  @extend %fa
+  content: "\f09b"
+
+.commento-twitter-button:before 
+  @extend %fa
+  content: "\f099"
+
+.commento-oauth-buttons button 
+  width: auto !important
+
+.commento-root a,
+.commento-email-button 
+  color: var(--accent) !important
+
+.commento-name 
+  font-size: 14pt !important    
+
+.commento-root *,
+.commento-root-font * 
+  font-family: $font-stack !important
+  line-height: 1.7 !important
+  color: $grey
+  text-align: left !important
+

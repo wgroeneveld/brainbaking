@@ -1,127 +1,29 @@
 html body
-  font-family: 'Source Serif Pro', sans-serif
+  font-family: $font-stack
+html, body
+  height: 100%
 
-.list 
-  text-align: left
-  padding-left: 4rem
+body 
+    padding-top: 55px
+    display: flex
+    text-align: center
+    flex-direction: column
 
+.copyright 
+    margin: 15px 0
 
-.list h2 
-  border-top: 1px solid #eee
-  padding-top: 1rem
-
-
-.list h3 
-  color: #999
-
-
-.list-ul 
-  list-style: none
-  margin: 0
-  padding: 0
-  padding-bottom: 4rem
+.navbar-icon 
+    font-size: 125%
+    display: inline-block !important
 
 
-@media (min-width: 768px) 
-  .list h3 
-    float: left
-    margin-top: 1.5rem
-  
-
-  .list-ul 
-    padding-left: 7rem    
-  
+.navbar.navbar-default 
+    border-top: 5px solid var(--accent)
 
 
-.list-ul li 
-  padding: 1rem
+footer 
+    border-bottom: 5px solid var(--accent)
 
-
-.list-ul .list-date 
-  font-weight: normal
-  padding-left: 0.6rem
-  padding-right: 0.6rem
-  color: white
-  background-color: var(--accent)
-  border-radius: 2rem
-  margin-top: 1.5rem
-  float: left  
-
-
-.list-ul div 
-  margin-left: 60px
-
-
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover 
-  background-color: white !important
-  border-color: var(--accent) !important
-
-
-/** commento specific **/
-.commento-root .commento-round-check input[type=checkbox]:checked+label:before,
-.commento-root .commento-round-check input[type=radio]:checked+label:before 
-  background: var(--accent) !important
-  border: 1px solid var(--accent) !important
-
-
-.commento-root .commento-markdown-help tr td pre 
-  padding: 0 !important
-
-
-.commento-button 
-  color: white !important
-  background: var(--accent) !important
-
-
-.commento-google-button:before 
-   content: "\f1a0"
-   font-family: FontAwesome
-   display: inline-block
-   padding-right: 3px
-   vertical-align: middle
-
-.commento-github-button:before 
-   content: "\f09b"
-   font-family: FontAwesome
-   display: inline-block
-   padding-right: 3px
-   vertical-align: middle
-
-.commento-twitter-button:before 
-   content: "\f099"
-   font-family: FontAwesome
-   display: inline-block
-   padding-right: 3px
-   vertical-align: middle
-
-
-.commento-oauth-buttons button 
-  width: auto !important
-
-
-.commento-root a,
-.commento-email-button 
-  color: var(--accent) !important
-
-
-.commento-name 
-  font-size: 14pt !important    
-
-
-.commento-root .commento-card .commento-body p,
-.commento-root textarea 
-  font-size: 12pt !important  
-
-
-.commento-root *,
-.commento-root-font * 
-  font-family: 'Source Serif Pro', sans-serif !important
-  line-height: 1.7 !important
-  color: #333
-  text-align: left !important
-
-
-/** index.html **/
 
 ul 
   list-style: circle
@@ -141,91 +43,43 @@ div.highlight
   margin-top: 1.5em
   margin-bottom: 1.5em
 
-
-figure img 
-  margin-bottom: 0
-
+img 
+    max-width: 100%
 
 figure 
   margin-bottom: 1.5em !important
-
-
-figure figcaption 
-  margin-top: 1rem !important  
-
-
-figure figcaption h4, figure figcaption p 
-  text-align: center
-  margin-top: 0 !important
-  font-size: 1.7rem !important 
-  font-style: italic
-  font-weight: normal
-  color: #aaa
-
-
-.avatar-container 
-  width: 50px
-  margin-left: 45px
-
-.avatar-container  .avatar-img-border 
-  width: 100%
-  border-radius: 50%
-  margin-left: -50%
-  display: inline-block
-  box-shadow: 0 0 8px rgba(0, 0, 0, .8)
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .8)
-  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8)
-
-.avatar-container  .avatar-img 
-  width: 100%
-  border-radius: 50%
-  display: block
-
-
-.intro .freshly-baked 
-  visibility: hidden
-
-
-.intro 
-  margin-top: -150px
-
-
-@media only screen and (min-width: 500px) 
-  .intro .freshly-baked 
-    visibility: visible
-  
-
-
-@media only screen and (min-width: 768px) 
-  .intro 
-    margin-top: -40px
-  
-
-  .avatar-container 
-    width: 100px
-  
-  
-  .avatar-container  .avatar-img-border 
-    width: 100%
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, .8)
-    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8)
-    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .8)
-  
-  
-  .avatar-container  .avatar-img 
-    width: 100%
-  
+  img
+    margin-bottom: 0
+  figcaption 
+    margin-top: 1rem !important
+    h4, p 
+      text-align: center
+      margin-top: 0 !important
+      font-size: 1.7rem !important 
+      font-style: italic
+      font-weight: normal
+      color: #aaa
 
 
 /** general **/
 
-main, blockquote 
+blockquote 
   font-size: 14pt !important
   line-height: 1.7
 
 
+a:link, a:visited 
+    color: var(--accent) !important
+
+a.icon:hover 
+    text-decoration: none
+
+a:hover 
+    color: var(--accent) !important
+
+
 nav 
-  font-family: 'Open Sans', sans-serif !important
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important
   font-size: 14px !important
   line-height: 1.4 !important
 
@@ -283,24 +137,11 @@ pre
     font-size: 10pt !important
   
 
-
-/* -- voor 20'+ breedbeeldschermen */
-@media only screen and (min-width: 1600px) 
-  main 
-    max-width: 930px !important
-	
-
-  .big-img .container 
-    height: 250px !important
-  
-
-
-/* -- voor fatsoenlijke schermen */
-@media only screen and (min-width: 768px) 
-  /* indien header image, hoogte vergroten */
-  .big-img .container 
+.big-img .container 
+  @media (min-width: 768px)
     height: 200px
-  
+  @media (min-width: 1600px) 
+    height: 250px !important
 
 
 blockquote 
@@ -309,19 +150,22 @@ blockquote
 
 
 main 
-	padding-top: 0 !important
+  font-size: 14pt !important
+  line-height: 1.7
+  margin: auto
+  padding: 25px
+  flex: 1 0 auto
+  max-width: 750px
 
+  padding-top: 0 !important
+  @media (min-width: 1600px)
+    max-width: 930px !important
 
-main .text-justify p 
-  margin: 0 0 20px !important
+  .text-justify p 
+    margin: 0 0 20px !important
 
-
-main .text-justify blockquote p 
-  margin: 0 !important
-
-
-a:link, a:visited 
-    color: var(--accent) !important
+  .text-justify blockquote p 
+    margin: 0 !important
 
 
 .big-img 
@@ -335,53 +179,11 @@ a:link, a:visited
   border-bottom: 1px solid var(--accent)
 
 
+.item 
+    padding: 10px 0
+
 .item-tag 
     color: var(--accent)
-    background-color: white !important
+    background-color: white
     border: 1px solid var(--accent)
     font-size: 1.3rem
-
-
-
-/* --- goodreads widget styles --- */
-.goodreadswidget 
-  border-bottom: 3px solid var(--accent)
-  padding: 0px
-  padding-bottom: 10px
-
-
-.goodreadswidget h2 
-  visibility: hidden
-  display: none
-
-
-.goodreadswidget .gr_grid_branding 
-  padding-right: 20px
-  font-size: 14pt !important
-
-
-@media (min-width: 768px) 
-  .gr_grid_book_container 
-    height: 600px !important
-  
-
-
-.gr_grid_book_container 
-  float: left
-  width: 25%
-  height: 300px
-  padding: 5px
-  overflow: hidden
-
-
-.gr_grid_book_container img 
-  width: 100%
-  height: 100%
-
-
-.gr_grid_book_container:hover img 
-    opacity: 0.3
-
-
-.gr_grid_book_container img:hover 
-  background: rgba(100, 100, 100, 0.7)
