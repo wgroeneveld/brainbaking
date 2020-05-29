@@ -1,9 +1,8 @@
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<!-- dismiss expanded navigation bar with click -->
-<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+{{- $mainScriptPath := "js/brainbaking.js" }}
+{{- $scripts := resources.Get $mainScriptPath | resources.ExecuteAsTemplate $mainScriptPath .  }}
+<script src = '{{ $scripts.Permalink }}'></script>
+<script src="/js/brainbaking.js"></script>
 
 {{- if (ne hugo.Environment "development") }}
   <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->

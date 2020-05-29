@@ -5,7 +5,7 @@
     {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") | $.Scratch.Set "subtitle" }}
     {{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
     {{ if isset $.Params "subtitle" }}
-        {{ .Params.subtitle }} <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}</span>
+        {{ .Params.subtitle }} <span style="color: lightgrey;"><svg class='icon icon-text'><use xlink:href='#cal1'></use></svg> {{ $.Scratch.Get "subtitle" }}</span>
     {{ end }}
 
 </div>

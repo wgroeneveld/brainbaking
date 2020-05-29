@@ -13,6 +13,7 @@
         {{ end }}
     </head>
     <body>
+        {{ partial "icons" . }}
         {{ partial "body-open" . }}
         <nav class="navbar navbar-default navbar-fixed-top">
 
@@ -22,7 +23,7 @@
 
                     <a class="navbar-brand visible-xs" href="#">{{ .Title }}</a>
 
-                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                    <button class="navbar-toggle">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>

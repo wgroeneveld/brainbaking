@@ -1,6 +1,6 @@
 ---
 title: Essays
-icontag: fa-book
+icontag: book
 ---
 
 > Filosofie is voor het vinden van een baan misschien het minst bruikbaar van alle studies, maar het is niettemin de beste studie. - Aristoteles

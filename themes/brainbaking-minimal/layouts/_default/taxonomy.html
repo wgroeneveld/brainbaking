@@ -3,7 +3,7 @@
 <main>
 
     <h2>
-		<i class='fa fa-tags'></i>&nbsp;Tagged with: <br/>"{{ .Title }}"
+		<svg class='icon'><use xlink:href='#tag'></use></svg>Tagged with: <br/>"{{ .Title }}"
 	</h2>
 
 	<div class="list">
@@ -25,7 +25,7 @@
 					</div>
 					{{ if isset .Params "tags" }}
 						<div class="list-tags">
-							   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+							   <svg class='icon icon-text'><use xlink:href='#tag'></use></svg>
 						    {{ range .Params.tags }}
 						        <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}"><kbd class="item-tag">{{ . }}</kbd></a>
 						    {{ end }}

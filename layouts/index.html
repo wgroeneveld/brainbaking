@@ -1,7 +1,6 @@
 {{ partial "header" . }}
 
 <main>
-
     <div class="intro">
 
         {{ with .Site.Params.profilePic }} <img class="profile" src="{{ . }}"> {{ end }}
@@ -19,22 +18,22 @@
 		</h1>
 
         <blockquote class="text-justify" style="clear: both;">
-        	<em><i class="fa fa-lightbulb-o"></i>&nbsp;<a href="/">Brain Baking</a>:</em> transforming 
+        	<em><svg class='icon icon-text'><use xlink:href='#bulb'></use></svg><a href="/">Brain Baking</a>:</em> transforming 
         	<span style="white-space: nowrap;">
-        		<i class='fa fa-user'></i>&nbsp;<a href="/about">personal</a>
+        		<svg class='icon icon-text'><use xlink:href='#about'></use></svg><a href="/about">personal</a>
     		</span> thoughts about thoughts into 
     		<span style="white-space: nowrap;">
-        		<i class='fa fa-graduation-cap'></i>&nbsp;<a href="/teaching">well-digestible</a>
+        		<svg class='icon icon-text'><use xlink:href='#teaching'></use></svg><a href="/teaching">well-digestible</a>
     		</span> material. The reflective aroma of burnt nervous tissue. <br/>
         	Includes a crispy crust of relations between 
         	<span style="white-space: nowrap;">
-        		<i class='fa fa-file-code-o'></i>&nbsp;<a href="/post">technology</a>
+        		<svg class='icon icon-text'><use xlink:href='#tech'></use></svg><a href="/post">technology</a>
     		</span>,
     		<span style="white-space: nowrap;">
-        		<i class='fa fa-book'></i>&nbsp;<a href="/essays">philosophy</a>
+        		<svg class='icon icon-text'><use xlink:href='#book'></use></svg><a href="/essays">philosophy</a>
     		</span> and 
     		<span style="white-space: nowrap;">
-        		<i class='fa fa-tags'></i>&nbsp;<a href="/tags">the world</a>
+        		<svg class='icon icon-text'><use xlink:href='#tag'></use></svg><a href="/tags">the world</a>
     		</span>.
         </blockquote>
 
@@ -42,7 +41,7 @@
 
         <div class="freshly-baked">
 	        <h3>
-	        	<i class="fa fa-newspaper-o"></i>&nbsp;{{ markdownify .Site.Params.Description }}:
+	        	<svg class='icon'><use xlink:href='#news'></use></svg>{{ markdownify .Site.Params.Description }}:
 	        </h3>
 
 	        {{ range (.Paginator 1).Pages.ByDate.Reverse }}
@@ -53,16 +52,21 @@
 			    	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
 			    </h4>
 			    {{ .Params.subtitle }}&nbsp;&nbsp;
-                <span style="color: lightgrey;"><i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}</span>
+                <span style="color: lightgrey;"><svg class='icon icon-text'><use xlink:href='#cal1'></use></svg> {{ $.Scratch.Get "subtitle" }}</span>
 	        {{ end }}
 
-	        <hr/>
 	    </div>
 
     </div>
-
-
-
 </main>
 
-{{ partial "footer" . }}
+<footer style="position: fixed; bottom: 0; width: 100%">
+
+    <p class="copyright text-muted">{{ .Site.Params.copyright | default "&copy; All rights reserved. Powered by [Hugo](https://gohugo.io) and [Minimal](https://github.com/calintat/minimal)" | markdownify }}</p>
+
+</footer>
+       
+    </body>
+
+</html>
+

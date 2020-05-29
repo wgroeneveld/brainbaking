@@ -4,7 +4,7 @@
 
 	{{ if .Title }}
 	    <h1>
-			<i class='fa {{ .Params.icontag }}'></i>&nbsp;{{ .Title }}
+      		<svg class='icon'><use xlink:href="#{{ .Params.icontag }}"></use></svg>&nbsp;{{ .Title }}
 		</h1>
 	    <hr/>
     {{ end }}
@@ -28,14 +28,14 @@
 	    		<li>
 					<span class="list-date">{{ .Date.Format ("02") }}</span>
 					<div class="list-title">
-						<h4>
+						<h5>
 							<a href="{{ .RelPermalink }}">{{ .Title }}</a>
-						</h4>
+						</h5>
 						{{ .Params.subtitle }} 
 					</div>
 					{{ if isset .Params "tags" }}
 						<div class="list-tags">
-							   <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+								<svg class='icon icon-inline'><use xlink:href="#tag"></use></svg>&nbsp;
 						    {{ range .Params.tags }}
 						        <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}"><kbd class="item-tag">{{ . }}</kbd></a>
 						    {{ end }}

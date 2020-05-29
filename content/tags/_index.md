@@ -1,6 +1,6 @@
 ---
 title: Tags
-icontag: fa-tags
+icontag: tag
 ---
 
 > The good life is one inspired by love and guided by knowledge. - Russell

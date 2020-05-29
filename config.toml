@@ -22,7 +22,7 @@ enableGitInfo = true
     disableComments = true
     accent = "purple"
     showBorder = true
-    copyright = "No <i class='fa fa-copyright'></i> reserved - sharing is caring. <i class='fa fa-github'></i> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <i class='fa fa-lightbulb-o'></i> <a href='/'>Brain Baking</a>"
+    copyright = "No <i class='fa fa-copyright'></i> reserved - sharing is caring. <svg class='icon icon-small'><use xlink:href='#github'></use></svg> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <svg class='icon icon-small'><use xlink:href='#bulb'></use></svg> <a href='/'>Brain Baking</a>"
 
 [Author]
   name = "Wouter Groeneveld"
@@ -55,31 +55,31 @@ enableGitInfo = true
 
 [[menu.main]]
     name = "Tech Blog"
-    pre = "<i class='fa fa-file-code-o'></i>"
+    pre = "<svg><use xlink:href='#tech'></use></svg> "
     url = "/post"
     weight = 1
 
 [[menu.main]]
     name = "Essays"
-    pre = "<i class='fa fa-book'></i>"
+    pre = "<svg><use xlink:href='#book'></use></svg> "
     url = "/essays"
     weight = 2
 
 [[menu.main]]
     name = "Tags"
-    pre = "<i class='fa fa-tags'></i>"
+    pre = "<svg><use xlink:href='#tag'></use></svg> "
     url = "/tags"
     weight = 3
 
 [[menu.mainright]]
     name = "About Me"
-    pre = "<i class='fa fa-user'></i>" 
+    pre = "<svg><use xlink:href='#about'></use></svg> " 
     url = "/about"
     weight = 4
 
 [[menu.mainright]]
     name = "Teaching"
-    pre = "<i class='fa fa-graduation-cap'></i>"
+    pre = "<svg><use xlink:href='#teaching'></use></svg> "
     url = "/teaching"
     weight = 5
 

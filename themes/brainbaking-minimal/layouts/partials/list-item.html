@@ -3,7 +3,7 @@
     {{ if .Title }}
     <h3>
         {{ with .Params.icontag }}
-            <i class='fa {{ . }}'></i>&nbsp;
+            <svg class='icon'><use xlink:href='#{{ . }}'></use></svg>
         {{ end }}
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </h3>
@@ -16,13 +16,13 @@
         <h5>
             <span style="color: grey;">
                 <span title="Created Date">
-                    <i class='fa fa-calendar'></i>&nbsp;{{ $.Scratch.Get "subtitle" }}
+                    <svg class='icon icon-text'><use xlink:href='#cal1'></use></svg>{{ $.Scratch.Get "subtitle" }}
                 </span>&nbsp;|&nbsp;
                 <span title="Last Modified Date">
-                    <i class='fa fa-calendar-check-o'></i>&nbsp;{{ .Lastmod.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+                    <svg class='icon icon-text'><use xlink:href='#cal2'></use></svg>{{ .Lastmod.Format (.Site.Params.dateFormat | default "2 January 2006") }}
                 </span>&nbsp;|&nbsp;
                 <span title="Comments">
-                    <i class="fa fa-comments-o"></i>&nbsp;<a href="{{ .Permalink }}#commento"></a>
+                    <svg class='icon icon-text'><use xlink:href='#discuss'></use></svg><a href="{{ .Permalink }}#commento"></a>
                 </span>
             </span>
         </h5>
@@ -30,7 +30,7 @@
 
 
     {{ if isset $.Params "tags" }}
-       <i class='fa fa-tags' style='color: grey;'></i>&nbsp;
+       <svg class='icon icon-text'><use xlink:href='#tag'></use></svg>
     {{ end }}
     {{ range .Params.tags }}
         <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}"><kbd class="item-tag">{{ . }}</kbd></a>

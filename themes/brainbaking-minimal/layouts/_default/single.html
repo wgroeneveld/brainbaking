@@ -20,7 +20,7 @@
 
     {{ if $related }}
 
-        <h4 class="page-header"><i class="fa fa-newspaper-o"></i>&nbsp;Related Articles</h4>
+        <h4 class="page-header"><svg class='icon icon-text'><use xlink:href='#news'></use></svg>Related Articles</h4>
 
         <div class="text-justify">
             {{ range $related }} {{ partial "related-item" . }} {{ end }}
@@ -32,7 +32,7 @@
 
   <!-- commenting part -->
     {{ if (not .Params.disableComments) }}
-        <h4 class="page-header"><i class="fa fa-comments-o"></i>&nbsp;
+        <h4 class="page-header"><svg class='icon icon-text'><use xlink:href='#discuss'></use></svg>
             {{ if eq "essays" .Section }}
                 Discussieer mee
             {{ else }}
@@ -49,7 +49,7 @@
     {{ end }}
     <h4 class="page-header">&nbsp;</h4>
 
-    <i class='fa fa-arrow-circle-o-up'></i>&nbsp;<a href="#top">Top</a> 
+    <svg class='icon icon-text'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 
 
 </main>
 

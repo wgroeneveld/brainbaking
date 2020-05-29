@@ -20,16 +20,16 @@ Those areas of knowledge include:
 * I love dynamic languages. I have taught Javascript as a dynamic and functional language. Every excuse to write in something dynamic is a good one.
 * Pair programming used as a tool to learn from each other and to improve code quality are two values I firmly believe in.
 
-Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://github.com/wgroeneveld) or [<i class='fa fa-paperclip'></i>&nbsp;Curriculum Vitae](/files/groeneveldw_cv.pdf) in Dutch.
+Take a look at my [<svg class='icon'><use xlink:href='#github'></use></svg>Github account](https://github.com/wgroeneveld).
 
 #### Baking
 
 * I hold a [professional bread baker's degree](/post/learning-to-become-a-baker/) so naturally I love to think of myself as a real baker. 
-* My passion within baking is [<i class='fa fa-flask'></i>&nbsp;sourdough bread](https://redzuurdesem.be), spreading the word by organizing workshops to repopularize its use. 
+* My passion within baking is [<svg class='icon icon-text'><use xlink:href='#bread'></use></svg>sourdough bread](https://redzuurdesem.be), spreading the word by organizing workshops to repopularize its use. 
 
 #### Writing and philosophizing
 
-* I'm a [fountain pen addict](/post/fountain-pens-first-look/) and avid [<i class='fa fa-pencil'></i>&nbsp;journaler](/post/journaling-in-practice/).
+* I'm a [fountain pen addict](/post/fountain-pens-first-look/) and avid [<svg class='icon icon-text'><use xlink:href='#book'></use></svg>journaler](/post/journaling-in-practice/).
 * This website[^1] is the ideal base for writing down my thoughts about virtually anything, primarily intended to amuse myself and not others.
 * I like to integrate Philosophical and Psychological approaches into my research. 
 
@@ -39,7 +39,7 @@ Take a look at my [<i class='fa fa-github'></i>&nbsp;Github account](https://git
 
 ### Where good ideas come from: books
 
-I keep an active <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank"><i class='fa fa-book'></i>&nbsp;Goodreads</a> account where I manage everything I've read and want to read. I invite you to join the community there. Marking a book as read and writing a (short) review never was that satisfying... 
+I keep an active <a href="https://www.goodreads.com/user/show/5451893-wouter" target="_blank"><svg class='icon'><use xlink:href='#goodreads'></use></svg>Goodreads</a> account where I manage everything I've read and want to read. I invite you to join the community there. Marking a book as read and writing a (short) review never was that satisfying... 
 
 I used to be almost exclusively a fantasy reader. Now I mostly read non-fiction on the most diverse topics, but I do have a soft spot for things like philosophy, art, mindful food and software engineering. 
 
