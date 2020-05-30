@@ -17,9 +17,6 @@
             <span style="color: grey;">
                 <span title="Created Date">
                     <svg class='icon icon-text'><use xlink:href='#cal1'></use></svg>{{ $.Scratch.Get "subtitle" }}
-                </span>&nbsp;|&nbsp;
-                <span title="Last Modified Date">
-                    <svg class='icon icon-text'><use xlink:href='#cal2'></use></svg>{{ .Lastmod.Format (.Site.Params.dateFormat | default "2 January 2006") }}
                 </span>
                 {{ if (not .Params.disableComments) }}
                     &nbsp;|&nbsp;
