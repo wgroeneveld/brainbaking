@@ -76,7 +76,7 @@ The black sketches come from the Cross Concord: look at the thickness of those s
 
 The problem with those nibs is the availability. These are hand crafted by Japanese experts and they are deeply back ordered. Importing from Japan could burn an even greater hole in your wallet: in Belgium import rates go as high as 50%! 
 
-> Mastery is in short supply nowadays, a consequence of our multi-tasking, bucket-listing world. A Microsoft study released this May claims the human attention span is now eight seconds, one second short of a goldfish. Disposable culture may feed the needs of the moment, but still leave the spirit hungry for something more. (Leigh Reyes)
+> Mastery is in short supply nowadays, a consequence of our multi-tasking, bucket-listing world. A Microsoft study released this May claims the human attention span is now eight seconds, one second short of a goldfish. Disposable culture may feed the needs of the moment, but still leave the spirit hungry for something more. <span>Leigh Reyes</span>
 
 #### Pilot Justus 95
 

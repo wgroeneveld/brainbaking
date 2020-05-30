@@ -49,12 +49,7 @@ These are the latest 12 books I've read:
 <div id="gr_grid_widget_1496758344" class="goodreadswidget">
 </div>
 
-<script src="https://www.goodreads.com/review/grid_widget/5451893.Wouter's%20bookshelf:%20read?cover_size=medium&hide_link=&hide_title=&num_books=12&order=d&shelf=read&sort=date_added&widget_id=1496758344" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" charset="utf-8">
-[...document.querySelectorAll('.goodreadswidget img')].forEach(img => {
-    img.src = img.src.replace(/_SX[0-9]+_(SY[0-9]+_)*.jpg/, "_S400_.jpg")
-})
-</script>
+<script src="/js/goodreads.js" type="text/javascript" charset="utf-8"></script>
 
 <main>
 <p style="clear: both;">&nbsp;</p>

@@ -16,7 +16,7 @@ My wife has been blogging on and off for more than five years now, and she's bee
 
 That's where things like Webnode and Wix come in: a lot of illustrators and designers create their own website using **blocks**: they are **page builders**, where drag and dropping is possible and (ugly) CSS/HTML is scaffolded. Since both Webnode and Wix are paid solutions, and both do not enable you to host it yourself, we decided to go for the Wordpress option again, more specifically with a page builder plugin: _[Brizy](https://brizy.io)_.
 
-### "The most user-friendly website builder in town"
+> The most user-friendly website builder in town <span>According to the Brizy website</span>
 
 See for yourself:
 

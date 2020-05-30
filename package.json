@@ -1,0 +1,29 @@
+{
+  "name": "brainbaking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "goodreads-fetch.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6"
+  },
+  "scripts": {
+    "build": "/usr/local/bin/hugo",
+    "install": "node goodreads-fetch.js > static/js/goodreads.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wgroeneveld/brainbaking.git"
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/wgroeneveld/brainbaking/issues"
+  },
+  "homepage": "https://github.com/wgroeneveld/brainbaking#readme"
+}

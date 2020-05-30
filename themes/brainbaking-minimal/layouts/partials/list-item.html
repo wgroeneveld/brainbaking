@@ -9,15 +9,17 @@
     </h1>
     {{ end }}
 
-    {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") | $.Scratch.Set "subtitle" }}
-    {{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
-    {{ if isset $.Params "subtitle" }}
+    
+    {{ if isset .Params "subtitle" }}
         <h2>{{ .Params.subtitle }}</h2>
         <h3>
             <span style="color: grey;">
+                {{ if isset .Params "date" }}
                 <span title="Created Date">
-                    <svg class='icon icon-text'><use xlink:href='#cal1'></use></svg>{{ $.Scratch.Get "subtitle" }}
+                    <svg class='icon icon-text'><use xlink:href='#cal1'></use></svg>
+                    {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
                 </span>
+                {{ end }}
                 {{ if (not .Params.disableComments) }}
                     &nbsp;|&nbsp;
                     <span title="Comments">

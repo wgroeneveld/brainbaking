@@ -6,13 +6,15 @@
 	    <h1>
       		<svg class='icon'><use xlink:href="#{{ .Params.icontag }}"></use></svg>&nbsp;{{ .Title }}
 		</h1>
-	    <hr/>
     {{ end }}
 
-    {{ with .Content }}
-    <div class="text-justify">
-    	{{ . }}
-	</div>
+	{{ if eq .Paginator.PageNumber 1 }}
+	    <hr/>
+	    {{ with .Content }}
+	    <div class="text-justify">
+	    	{{ . }}
+		</div>
+		{{ end }}
 	{{ end }}
 
 	{{ if (not .Params.disableList) }}

@@ -6,5 +6,6 @@ public/
 out/
 build/
 resources/
+node_modules/
 
 *.class

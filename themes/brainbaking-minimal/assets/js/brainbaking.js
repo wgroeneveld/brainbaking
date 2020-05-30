@@ -27,6 +27,13 @@ document.addEventListener("DOMContentLoaded",function() {
 		});
 	})();
 
+	(function goodreads() {
+		if(document.querySelector('.goodreadswidget') === null) return;
+		[...document.querySelectorAll('.goodreadswidget img')].forEach(img => {
+		    img.src = img.src.replace(/_SX[0-9]+_(SY[0-9]+_)*.jpg/, "_S400_.jpg")
+		})
+	})()
+
 	const lightbox = () => {
 		[...document.querySelectorAll('main img')].forEach(el => {
 			if(el.parentNode.nodeName !== 'A') {
