@@ -7,7 +7,6 @@ tags:
   - braindump
   - craftsmanship
   - development
-  - journaling
 published: true
 ---
 

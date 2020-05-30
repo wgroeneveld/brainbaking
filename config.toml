@@ -20,9 +20,10 @@ enableGitInfo = true
     description = "Freshly baked thought"
     # see single.html, DisqusShortname also needed
     disableComments = true
-    accent = "purple"
+    accent = "#008862"
+    accent2 = "#008fb3"
     showBorder = true
-    copyright = "No <i class='fa fa-copyright'></i> reserved - sharing is caring. <svg class='icon icon-small'><use xlink:href='#github'></use></svg> <a href='https://github.com/wgroeneveld/brainbaking/'>Hack away</a>! <svg class='icon icon-small'><use xlink:href='#bulb'></use></svg> <a href='/'>Brain Baking</a>"
+    copyright = "<a href='/no-copyright-no-tracking'>No &copy; and no tracking</a> - sharing is caring. <svg class='icon icon-small'><use xlink:href='#bulb'></use></svg> <a href='/'>Brain Baking</a>. <a href='/index.xml'>RSS Feed</a>."
 
 [Author]
   name = "Wouter Groeneveld"
@@ -44,11 +45,6 @@ enableGitInfo = true
     tabWidth = 4
 
 [privacy]
-  [privacy.googleAnalytics]
-    anonymizeIP = true
-    disable = false
-    respectDoNotTrack = false
-    useSessionStorage = false
   [privacy.youtube]
     disable = false
     privacyEnhanced = true

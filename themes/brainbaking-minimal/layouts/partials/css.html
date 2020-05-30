@@ -2,9 +2,12 @@
 
 :root {
 	--accent: {{ if .Params.accent }}{{ .Params.accent }}{{ else }}{{ .Site.Params.accent }}{{ end }};
+	--accent2: {{ if .Params.accent2 }}{{ .Params.accent2 }}{{ else }}{{ .Site.Params.accent2 }}{{ end }};	
 }
 
 </style>
+
+<link rel = 'stylesheet' href = '/css/simple-lightbox.min.css'>
 
 {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") -}}
 {{- $styles := resources.Get "sass/main.sass" | resources.ExecuteAsTemplate "main.sass" . | resources.ToCSS $options | resources.Fingerprint "sha512" }}

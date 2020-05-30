@@ -3,7 +3,7 @@ title: Essays
 icontag: book
 ---
 
-> Filosofie is voor het vinden van een baan misschien het minst bruikbaar van alle studies, maar het is niettemin de beste studie. - Aristoteles
+> Filosofie is voor het vinden van een baan misschien het minst bruikbaar van alle studies, maar het is niettemin de beste studie. <span>Aristoteles</span>
 
 De essentie van [Brain Baking](/) bevindt zich hier, het bakken van in eerste instantie **mijn** hersenen, met het reflectieve karakter van de filosofie als aroma. Ik schrijf voor mezelf, om mijzelf te helpen anderen te kunnen helpen. _Baked brains_ met een krokante korst zijn goed verteerbare verhoudingen tussen mijzelf en de wereld, geïnspireerd op de Groten als Kant (_Kritik der reinen Vernunft_), Wittgenstein (_tractatus logico-philosophicus_) en Montaigne (_Essais_). 
 

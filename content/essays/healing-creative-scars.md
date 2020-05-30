@@ -5,9 +5,9 @@ bigimg: /img/boekjesheader.png
 url: /post/healing-creative-scars/
 subtitle: My ultimate secret weapon for self improvement
 tags:
-  - learning
-  - self improvement
   - journaling
+  - self improvement
+  - learning
 published: true
 ---
 

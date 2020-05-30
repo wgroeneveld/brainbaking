@@ -15,6 +15,7 @@ pre
 
 body 
   margin: 0
+  min-height: calc(100vh - 55px)
   color: #333
   padding-top: 55px
   display: flex
@@ -55,6 +56,9 @@ main
 
   &-text
     @extend %icon-in-text
+  &-float
+    @extend %icon-in-text
+    float: left
 
   &-inline
     float: left
@@ -112,10 +116,6 @@ a:hover
     text-decoration: underline
 
 
-h1, h2, h3, h4, h5, h6 
-  line-height: 1.8 !important
-  font-weight: bold !important
-
 h4 a 
   font-weight: normal
 
@@ -129,12 +129,6 @@ pre
     height: 200px
   @media (min-width: 1600px) 
     height: 250px !important
-
-
-blockquote 
-  line-height: 1.7
-  color: #888
-  border-left: 5px solid var(--accent) !important
 
 
 main
@@ -167,8 +161,20 @@ main
   border-bottom: 1px solid var(--accent)
 
 
-.item 
-    padding: 10px 0
+.item
+    margin: auto
+    padding-top: 1rem
+    padding-bottom: 1.5rem
+    max-width: 80%
+
+    h1
+      color: var(--accent)
+    h2
+      margin-top: -1rem
+    h2, h3
+      font-weight: normal
+    h3
+      font-size: 1.3rem
 
 kbd
   color: var(--accent)

@@ -25,7 +25,7 @@ Uiteraard pleit ook ik schuldig. Ik heb presentaties gegeven voor volle filmzale
 
 Verhaaltjes vertellen trekt niet alleen kinderen aan, maar doet ook je publiek _opletten_:
 
-> Time after time, when faced with the task of persuading a group of managers... to get enthusiastic about a major change, storytelling was the only thing that worked. (Stephen Denning, The Leader's Guide to Storytelling)
+> Time after time, when faced with the task of persuading a group of managers... to get enthusiastic about a major change, storytelling was the only thing that worked. <span>Stephen Denning, The Leader's Guide to Storytelling</span>
 
 Het '_presenteren voor publiceren_' motto slaat op niets en werkt bovenstaande punten volledig in de hand. Nog niet de helft van de aanvaarde papers zijn interessant genoeg om iets over te vertellen, en dat geldt ook voor mijn eigen werk. Zonder praktische demo's zijn de erg snel op elkaar volgende sessies na een tijdje moeilijker verteerbaar. 
 

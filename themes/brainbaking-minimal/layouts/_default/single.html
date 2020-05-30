@@ -6,17 +6,19 @@
             &nbsp;
         </div>
     </div>
+{{ else }}
+    <div style="padding-top: 3rem">
+    </div>
 {{ end }}
 
+<a name="top"></a>
+{{ partial "list-item" . }}
 <main>
-
-    <a name="top"></a>
-    {{ partial "list-item" . }}
 
     <br> <div class="text-justify">{{ .Content }}</div>
 
     <!-- related posts with the same tags -->
-    {{ $related := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+    {{ $related := first 3 (where (where .Site.RegularPages.ByDate.Reverse ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
 
     {{ if $related }}
 

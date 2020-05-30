@@ -1,31 +1,34 @@
 <div class="item">
 
     {{ if .Title }}
-    <h3>
+    <h1>
         {{ with .Params.icontag }}
             <svg class='icon'><use xlink:href='#{{ . }}'></use></svg>
         {{ end }}
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    </h3>
+        {{ .Title }}
+    </h1>
     {{ end }}
 
     {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") | $.Scratch.Set "subtitle" }}
     {{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
     {{ if isset $.Params "subtitle" }}
-        <h4>{{ .Params.subtitle }}</h4>
-        <h5>
+        <h2>{{ .Params.subtitle }}</h2>
+        <h3>
             <span style="color: grey;">
                 <span title="Created Date">
                     <svg class='icon icon-text'><use xlink:href='#cal1'></use></svg>{{ $.Scratch.Get "subtitle" }}
                 </span>&nbsp;|&nbsp;
                 <span title="Last Modified Date">
                     <svg class='icon icon-text'><use xlink:href='#cal2'></use></svg>{{ .Lastmod.Format (.Site.Params.dateFormat | default "2 January 2006") }}
-                </span>&nbsp;|&nbsp;
-                <span title="Comments">
-                    <svg class='icon icon-text'><use xlink:href='#discuss'></use></svg><a href="{{ .Permalink }}#commento"></a>
                 </span>
+                {{ if (not .Params.disableComments) }}
+                    &nbsp;|&nbsp;
+                    <span title="Comments">
+                        <svg class='icon icon-text'><use xlink:href='#discuss'></use></svg><a href="{{ .Permalink }}#commento"></a>
+                    </span>
+                {{ end }}
             </span>
-        </h5>
+        </h3>
     {{ end }}
 
 

@@ -4,9 +4,9 @@ bigimg: /img/About Me.jpg
 disableComments: true
 ---
 
-And I have a deep passion to inspire others on everything that drives me. I like to think of myself as one of those _polymaths_ or Rennaissance Men:
+And I have a deep passion to inspire others on everything that drives me. I like to think of myself as one of those [_polymaths_](https://en.wikipedia.org/wiki/Polymath) or Rennaissance Men:
 
-> Renaissance man (noun) - a person with many talents or areas of knowledge.[^2]
+> Renaissance man (noun) - a person with many talents or areas of knowledge.
 
 Professionally, I am a PhD researcher at the [Faculty of Engineering Technology](https://iiw.kuleuven.be/english), KU Leuven. I have been an experienced software engineer for 11 years before that, taking on various roles from agile coaching to technical lead. I am not only interested in technical software development, but also in what happens at **non-cognitive, human level** when developing software _together_. 
 
@@ -30,7 +30,7 @@ Take a look at my [<svg class='icon'><use xlink:href='#github'></use></svg>Githu
 #### Writing and philosophizing
 
 * I'm a [fountain pen addict](/post/fountain-pens-first-look/) and avid [<svg class='icon icon-text'><use xlink:href='#book'></use></svg>journaler](/post/journaling-in-practice/).
-* This website[^1] is the ideal base for writing down my thoughts about virtually anything, primarily intended to amuse myself and not others.
+* This website is the ideal base for writing down my thoughts about virtually anything, primarily intended to amuse myself and not others.
 * I like to integrate Philosophical and Psychological approaches into my research. 
 
 #### Drawing
@@ -58,6 +58,3 @@ These are the latest 12 books I've read:
 
 <main>
 <p style="clear: both;">&nbsp;</p>
-
-[^1]: This website uses an [anonymized IP](https://support.google.com/analytics/answer/2763052?hl=en) form of Google Analytics for the sole purpose of tracking website traffic. 
-[^2]: [https://en.wikipedia.org/wiki/Polymath](https://en.wikipedia.org/wiki/Polymath)

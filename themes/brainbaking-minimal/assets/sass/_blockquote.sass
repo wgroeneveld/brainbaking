@@ -1,0 +1,50 @@
+blockquote 
+  font-family: $font-alt-stack
+  @media (min-width: 960px)
+    width: calc(100% - -220px + 0px)
+    margin-left: -90px
+
+  @media (min-width: 1120px)
+    width: calc(100% - -260px + 0px)
+    margin-left: -130px
+
+  opacity: 0.8
+  position: relative
+  quotes: '\201C''\201D''\2018''\2019'
+  margin: 1.2rem 0
+  display: flex
+  flex-flow: row wrap
+  position: relative
+  &::before 
+    mask: url('/img/icons/quote.svg')
+    -webkit-mask:  url('/img/icons/quote.svg')
+    mask-size: cover
+    -webkit-mask-size: cover
+    content: ''
+    display: inline-block
+    background-color: var(--accent)
+    position: absolute
+    width: 40px
+    height: 40px
+    margin-left: -40px
+    margin-top: -10px
+  
+  p
+    @media (min-width: 960px)
+      font-size: 1.8rem !important
+    @media (min-width: 1120px)
+      font-size: 2rem !important
+
+    padding-left: 0.5rem 0 !important
+    font-size: 1.5rem !important
+    letter-spacing: -0.1rem
+    width: 100%
+    font-weight: 300
+    font-style: italic
+
+    span
+      opacity: 0.6
+      font-size: 1.3rem
+      white-space: pre
+      &::before
+        content: '\A -- ';

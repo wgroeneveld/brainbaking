@@ -28,9 +28,9 @@
 	    		<li>
 					<span class="list-date">{{ .Date.Format ("02") }}</span>
 					<div class="list-title">
-						<h5>
+						<h4>
 							<a href="{{ .RelPermalink }}">{{ .Title }}</a>
-						</h5>
+						</h4>
 						{{ .Params.subtitle }} 
 					</div>
 					{{ if isset .Params "tags" }}
