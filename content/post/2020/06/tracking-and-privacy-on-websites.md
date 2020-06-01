@@ -19,7 +19,7 @@ Where do these nasty things come from? Who's keeping an eye on me and should I b
 
 ![](/img/privacy/servers-hln.png)
 
-These servers are serving data when my adblocking system is turned _off_. `tentacles.smartocto.com`? A quick look at that webites says things like "make every story count" and "translate strategy into actionable notifications". Smells like they're shipping off tracking data to one of those analytics companies that live on this kind of shit.
+These servers are serving data when my adblocking system is turned _off_. `tentacles.smartocto.com`? A quick look at that webites says things like "make every story count" and "translate strategy into actionable notifications". Smells like they're shipping off tracking data to one of those analytics companies that feed on the information of others.
 
 Let's try another more authorative news website in Belgium, vrt.be/nws. This time, I let Opera inform me on what was blocked and what was not. It blocks both ads and trackers (image pixels, javascript). 
 
@@ -74,13 +74,16 @@ For Twitter integration on another website of mine called [Jefklak's Retro Game 
 
 There are so many things to take into consideration. I've never given them much thought, until now, and I have to say I'm glad I'm learning. From what I gather so far, the following things need to be taken into consideration:
 
-1. Site speed. People flee after waiting for more than two seconds (I know I do). Compress images, use interlaced mode and cache headers, ...
-2. Responsiveness. Everything should be in relative `rem` and not in absolute `px`, use `srcset` image attributes, write `@media` CSS queries, ...
-3. Security. Use (self-signed) SSL `https://` certificates. Provide base security levels for your [own vps](/post/2020/04/vps). Use honey pots for form submissions.
-4. Continuous integration/deployment. Setup a node/hugo build chain. Make things easy to commit and revert if neccessary. Have a backup plan?
-5. Privacy. Don't track visitors, track traffic instead!
-6. Licences. Which copyright system are you applying? Did you attribute your sources correctly? 
-7. Accessibility. Use contrasting colors, write `alt` tags, ...
+1. **Speed**. People flee after waiting for more than two seconds (I know I do). Compress images, use interlaced mode and cache headers, ...
+2. **Responsiveness**. Everything should be in relative `rem` and not in absolute `px`, use `srcset` image attributes, write `@media` CSS queries, ...
+3. **Design**. People also flee if it's not pleasant to the eyes.
+4. **Security**. Use (self-signed) SSL `https://` certificates. Provide base security levels for your [own vps](/post/2020/04/vps). Use honey pots for form submissions.
+5. **Development**. Continuous integration/deployment - setup a node/hugo build chain. Make things easy to commit and revert if neccessary. Have a backup plan?
+6. **Content**. The most important piece of the puzzle. But what about tags or categories? Files or databases? What about maintainability? Or editors and logins?
+7. **Privacy**. Don't track visitors, track traffic instead!
+8. **Licence**s. Which copyright system are you applying? Did you attribute your sources correctly? 
+9. **SEO**. If your site is not found, tumbleweeds instead of readers start appearing... 
+10. **Accessibility**. Use contrasting colors, write `alt` tags, ...
 
 I haven't looked at that last part yet - _accessibility_. To be continued!
 
