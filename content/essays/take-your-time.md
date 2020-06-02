@@ -1,7 +1,7 @@
 ---
 title: Take your time.
 date: '2018-02-16'
-bigimg: /img/takeyourtime.jpg
+bigimg: takeyourtime.jpg
 url: /post/take-your-time/
 subtitle: Stop rushing. Start watching.
 tags:

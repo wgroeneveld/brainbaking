@@ -1,6 +1,6 @@
 ---
 title: Unit Testing Extjs UI with Siesta
-bigimg: /img/Unit Testing Extjs UI with Siesta.jpg
+bigimg: Unit Testing Extjs UI with Siesta.jpg
 aliases:
     - /unit-testing-extjs-ui-with-siesta/
     - /post/uni-testing-extjs-ui/

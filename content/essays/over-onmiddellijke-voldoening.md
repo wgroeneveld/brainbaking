@@ -1,7 +1,7 @@
 ---
 title: 'Over Onmiddellijke Voldoening'
 date: '2019-12-02'
-bigimg: /img/beren_winkel.jpg
+bigimg: beren_winkel.jpg
 subtitle: Het ik-MOET-het-nu-hebben gevoel zijn zin geven
 published: true
 ---

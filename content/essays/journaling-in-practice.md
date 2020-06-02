@@ -1,7 +1,7 @@
 ---
 title: Journaling in practice
 date: '2017-07-10'
-bigimg: /img/journalingpratice.jpg
+bigimg: journalingpratice.jpg
 url: /post/journaling-in-practice/
 subtitle: My guide to keeping a journal
 tags:

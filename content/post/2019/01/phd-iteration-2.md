@@ -2,7 +2,7 @@
 title: "A Ph.D. Thesis: Iteration 2"
 date: '2019-01-03'
 subtitle: On Mastering Lean Skills in Software Engineering Education
-bigimg: /img/humboldt.jpg
+bigimg: humboldt.jpg
 aliases:
     - /post/phd-iteration-2/
 tags:

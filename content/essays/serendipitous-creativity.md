@@ -1,7 +1,7 @@
 ---
 title: Concentrating on serendipitous creativity
 date: '2018-03-25'
-bigimg: /img/tea.png
+bigimg: tea.png
 url: /post/serendipitous-creativity/
 subtitle: Focused or collaborative attention?
 tags:

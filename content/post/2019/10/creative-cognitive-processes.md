@@ -1,7 +1,7 @@
 ---
 title: 'Programming: a Creative Cognitive Process'
 date: '2019-10-08'
-bigimg: /img/glasses.jpg
+bigimg: glasses.jpg
 aliases:
   - /post/creative-cognitive-processes/
 subtitle: Mapping creativity models to software development

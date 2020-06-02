@@ -1,7 +1,7 @@
 ---
 title: Inventing - for the worse?
 date: '2017-12-30'
-bigimg: /img/craftheader.png
+bigimg: craftheader.png
 url: /post/inventing-for-the-worse/
 subtitle: Is inventing always a good thing?
 tags:

@@ -1,7 +1,7 @@
 ---
 title: Teaching Object-Oriented design using the GBA
 date: '2019-04-15'
-bigimg: /img/gbacarts.jpg
+bigimg: gbacarts.jpg
 aliases:
     - /post/teaching-oo-with-gba/
 subtitle: C++ and a GBA engine. Let's learn to create a game!

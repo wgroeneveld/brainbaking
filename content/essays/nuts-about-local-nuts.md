@@ -1,7 +1,7 @@
 ---
 title: Nuts about local nuts
 date: '2017-07-03'
-bigimg: /img/pines.jpg
+bigimg: pines.jpg
 url: /post/nuts-about-local-nuts/
 subtitle: A case for local food
 tags:

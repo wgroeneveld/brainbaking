@@ -1,7 +1,7 @@
 ---
 title: Page Building with Brizy in Wordpress
 date: '2020-05-26'
-bigimg: ../brizy.jpg
+bigimg: brizy.jpg
 subtitle: Shortcodes and custom hacks incoming...
 tags:
   - php

@@ -1,7 +1,7 @@
 ---
 title: A Decade in the Software Engineering industry
 date: '2018-10-27'
-bigimg: /img/glasses.jpg
+bigimg: glasses.jpg
 aliases:
     - /post/a-decade-in-the-industry/
 subtitle: Everything I've learned in 10 + 1 years

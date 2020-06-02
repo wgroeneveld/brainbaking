@@ -1,9 +1,34 @@
 {{ if .Params.bigimg }}
-    <div class="jumbotron big-img" style='background-image: url("{{.Params.bigimg}}");'>
-        <div class="container">
-            &nbsp;
-        </div>
+	{{- $image := resources.Get (printf "%s%s" "bigimg/" .Params.bigimg ) -}}
+
+	{{ if eq $image nil }}
+	<div style="padding-top: 3rem">
     </div>
+	{{ else }}
+		{{- $imgsmall := $image.Resize "768x jpg q70" }}
+		{{- $imgmedium := $image.Resize "960x jpg q85" }}
+
+		<style>
+			.big-img {
+				background-image: url({{ $imgsmall.RelPermalink }});
+			}
+			@media (min-width: 768px) {
+				.big-img {
+					background-image: url({{ $imgmedium.RelPermalink }});
+				}
+			}
+			@media (min-width: 960px) {
+				.big-img {
+					background-image: url({{ $image.RelPermalink }});
+				}
+			}
+		</style>
+	    <div class="jumbotron big-img">
+	        <div class="container">
+	            &nbsp;
+	        </div>
+	    </div>
+    {{ end }}
 {{ else }}
     <div style="padding-top: 3rem">
     </div>

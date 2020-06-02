@@ -1,6 +1,6 @@
 ---
 title: Unit Testing Stored Procedures
-bigimg: /img/Unit Testing Stored Procedures.jpg
+bigimg: Unit Testing Stored Procedures.jpg
 date: '2013-10-10'
 aliases:
 - /post/unit-testing-stored-procedures/

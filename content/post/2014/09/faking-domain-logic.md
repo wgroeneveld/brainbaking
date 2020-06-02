@@ -1,6 +1,6 @@
 ---
 title: Faking domain logic
-bigimg: /img/Faking domain logic.jpg
+bigimg: Faking domain logic.jpg
 date: '2014-09-23'
 aliases:
   - /post/faking-domain-logic/

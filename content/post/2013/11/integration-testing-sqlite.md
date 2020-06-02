@@ -1,6 +1,6 @@
 ---
 title: Integration Testing with SQLite
-bigimg: /img/Integration Testing with SQLite.jpg
+bigimg: Integration Testing with SQLite.jpg
 aliases:
     - /integration-testing-with-sqlite/
     - /post/integration-testing-sqlite/

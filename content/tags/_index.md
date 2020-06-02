@@ -1,6 +1,6 @@
 ---
 title: Tags
-bigimg: /img/Archive.jpg
+bigimg: Archive.jpg
 icontag: tag
 ---
 

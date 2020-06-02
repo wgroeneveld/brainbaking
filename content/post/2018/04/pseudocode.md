@@ -1,7 +1,7 @@
 ---
 title: Death to pseudocode?
 date: '2018-04-06'
-bigimg: /img/btrees.png
+bigimg: btrees.png
 subtitle: Clean code, pseudocode or real code?
 aliases:
     - /post/pseudocode/

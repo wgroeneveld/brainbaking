@@ -1,6 +1,6 @@
 ---
 title: Domain Driven Design in C
-bigimg: /img/Faking domain logic.jpg
+bigimg: Faking domain logic.jpg
 date: '2018-08-03'
 aliases:
   - /post/domain-driven-design-in-c/

@@ -1,7 +1,7 @@
 ---
 title: 'De zin en onzin van conferenties'
 date: '2019-09-23'
-bigimg: /img/conferenties.jpg
+bigimg: conferenties.jpg
 subtitle: Een verspilling van tijd en middelen, of juist niet?
 published: true
 ---

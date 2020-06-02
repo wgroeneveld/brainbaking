@@ -1,7 +1,7 @@
 ---
 title: The Startup of a Lean Doctorate
 date: '2018-10-19'
-bigimg: /img/lightbulbs.jpg
+bigimg: lightbulbs.jpg
 subtitle: Using agile practices to tacle a long-term research project
 aliases:
     - /post/lean-doctorate/

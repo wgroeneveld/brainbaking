@@ -1,6 +1,6 @@
 ---
 title: Hiding Code Complexity
-bigimg: /img/complexity.png
+bigimg: complexity.png
 aliases:
         - /post/hiding-complexity/
 date: '2018-02-26'

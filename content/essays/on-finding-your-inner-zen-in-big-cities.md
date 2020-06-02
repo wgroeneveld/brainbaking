@@ -1,6 +1,6 @@
 ---
 title: On finding your inner zen in big cities
-bigimg: /img/innerzenheader.jpg
+bigimg: innerzenheader.jpg
 url: /post/on-finding-your-inner-zen-in-big-cities/
 date: '2013-08-29'
 subtitle: Coping with crowded places when you’re used to peaceful villages

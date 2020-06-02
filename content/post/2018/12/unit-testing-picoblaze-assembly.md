@@ -1,6 +1,6 @@
 ---
 title: Unit Testing PicoBlaze Assembly files
-bigimg: /img/Unit Testing Stored Procedures.jpg
+bigimg: Unit Testing Stored Procedures.jpg
 date: '2018-12-05'
 aliases:
   - /post/unit-testing-picoblaze-assembly/

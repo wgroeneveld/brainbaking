@@ -1,6 +1,6 @@
 ---
 title: Custom Webdriver Page Factories
-bigimg: /img/Custom Webdriver Page Factories.jpg
+bigimg: Custom Webdriver Page Factories.jpg
 date: '2014-09-22'
 aliases:
     - /post/custom-webdriver-page-factories/

@@ -1,7 +1,7 @@
 ---
 title: 'Over de inflatie van intellect'
 date: '2018-07-24'
-bigimg: /img/overintellect.jpg
+bigimg: overintellect.jpg
 subtitle: De McDonaldisering van cultuur?
 published: true
 ---

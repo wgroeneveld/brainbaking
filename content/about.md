@@ -1,6 +1,6 @@
 ---
 title: "Hi, I’m Wouter Groeneveld"
-bigimg: /img/About Me.jpg
+bigimg: About Me.jpg
 disableComments: true
 ---
 

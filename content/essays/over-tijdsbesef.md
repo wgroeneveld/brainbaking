@@ -1,7 +1,7 @@
 ---
 title: 'Over tijdsbesef'
 date: '2018-07-10'
-bigimg: /img/overtijdsbesef.jpg
+bigimg: overtijdsbesef.jpg
 subtitle: Beroepen met een ander gevoel van tijd
 published: true
 ---

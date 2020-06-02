@@ -4,7 +4,7 @@ date: '2015-01-14'
 subtitle: What should you do when something goes wrong with your scenario tests
 aliases:
     - /post/webdriver-exception-handling/
-bigimg: /img/Webdriver Exception Handling.jpg
+bigimg: Webdriver Exception Handling.jpg
 tags: [ 'unit testing', 'CSharp', 'webdriver', 'scenario testing' ]
 ---
 

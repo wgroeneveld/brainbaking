@@ -1,6 +1,6 @@
 ---
 title: Migrating from Extjs to React gradually
-bigimg: /img/Migrating from Extjs to React gradually.jpg
+bigimg: Migrating from Extjs to React gradually.jpg
 aliases: 
     - /migrating-from-extjs-to-react-gradually/
     - /post/react-in-extjs/

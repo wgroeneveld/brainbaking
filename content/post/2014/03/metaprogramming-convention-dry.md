@@ -1,6 +1,6 @@
 ---
 title: Metaprogramming instead of duplication
-bigimg: /img/Metaprogramming instead of duplication.jpg
+bigimg: Metaprogramming instead of duplication.jpg
 date: '2014-03-14'
 subtitle: convention over duplication, good or bad?
 tags: [ 'CSharp', 'java', 'metaprogramming', 'reflection', 'unit testing', 'mocking' ]

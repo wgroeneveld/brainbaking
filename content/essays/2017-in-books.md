@@ -1,7 +1,7 @@
 ---
 title: 2017 in books
 date: '2018-01-27'
-bigimg: /img/2017inbooks.png
+bigimg: 2017inbooks.png
 url: /post/2017-in-books/
 subtitle: Pattern recognition in books
 tags:

@@ -1,6 +1,6 @@
 ---
 title: No, vegetarians do not eat fish!
-bigimg: /img/peppersheader.jpg
+bigimg: peppersheader.jpg
 date: '2013-09-06'
 url: /post/no-vegetarians-do-not-eat-fish/
 subtitle: The sad state of knowledge in your typical restaurant

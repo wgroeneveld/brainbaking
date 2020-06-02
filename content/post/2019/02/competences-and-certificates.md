@@ -1,7 +1,7 @@
 ---
 title: IT Competences and Certificates
 date: '2019-02-05'
-bigimg: /img/generic.jpg
+bigimg: generic.jpg
 aliases:
     - /post/competences-and-certificates/
 subtitle: A dark and murky path to tread

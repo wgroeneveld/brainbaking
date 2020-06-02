@@ -1,7 +1,7 @@
 ---
 title: A quick look at 6 fountain pens
 date: '2017-07-18'
-bigimg: /img/6pens.jpg
+bigimg: 6pens.jpg
 aliases:
     - /post/fountain-pens-first-look/
 subtitle: A test drive from a drawing perspective

@@ -1,6 +1,6 @@
 ---
 title: Visual Studio 2012 for Eclipse users
-bigimg: /img/Visual Studio 2012 for Eclipse users.jpg
+bigimg: Visual Studio 2012 for Eclipse users.jpg
 date: '2013-10-14'
 subtitle: Trying to fill the gap of missing features in VStudio.
 tags: [ 'visual studio', 'eclipse']

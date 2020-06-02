@@ -1,7 +1,7 @@
 ---
 title: Ending your day with happy thoughts
 date: '2013-08-13'
-bigimg: /img/Ending your day with happy thoughts.jpg
+bigimg: Ending your day with happy thoughts.jpg
 url: /post/can-i-haz-happy-thoughts/
 aliases:
     - /ending-your-day-with-happy-thoughts/
