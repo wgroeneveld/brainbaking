@@ -73,7 +73,8 @@ Apart from that, I'm relying on the following labels:
 
 ### The _lean_ Tools used to battle with
 
-<img src="/img/acm_notes.jpg" class="bordered" />
+![acm notes](../acm_notes.jpg)
+
 
 #### 1. Use _analog_ tools
 

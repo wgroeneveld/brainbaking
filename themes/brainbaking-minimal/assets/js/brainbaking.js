@@ -27,15 +27,6 @@ document.addEventListener("DOMContentLoaded",function() {
 		});
 	})();
 
-	(function lightbox() {
-		[...document.querySelectorAll('main img')].forEach(el => {
-			if(el.parentNode.nodeName !== 'A') {
-				el.parentNode.innerHTML =  `<a href="${el.src}" class="lbox">${el.outerHTML}</a>`; 
-			} else {
-				el.parentNode.setAttribute('class', 'lbox');				
-			}
-		})
-		const box = new SimpleLightbox('.lbox', { /* options */ });
-	})();
+	const box = new SimpleLightbox('.lbox', { /* options */ });
 
 });

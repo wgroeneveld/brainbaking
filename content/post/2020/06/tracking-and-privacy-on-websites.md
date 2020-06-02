@@ -11,19 +11,19 @@ Thanks to another great "internet stumble", I came across [Laura Kalbag's blog](
 
 Take a look at HLN.be, "Het Laatste Nieuws", a Belgian newspaper website. Opera informs me the SSL certificate is valid:
 
-![](/img/privacy/cookies-hln.png)
+![Cookies on the HLN site](../cookies-hln.png)
 
 Wait, what? **75 cookies in use**? Did I give my consent for every single one of those? You bet I did not! Luckily, I browse with "protection on" these days, and my protection of choice is not an Adblocker plugin using Google Chrome but Opera's built-in security systems. Pay special attention to the console errors in the above screenshot: `net::ERR_BLOCKED_BY_ADBLOCKER`. I do not want to know what happens when I turn it off. 
 
 Where do these nasty things come from? Who's keeping an eye on me and should I be tracking the trackers? Good question. Here's another screenshot of the _Sources_ tab, to get an idea of where all the data (and thus, trackers) are coming from at hln.be:
 
-![](/img/privacy/servers-hln.png)
+![Resources and servers used by the HLN website](../servers-hln.png)
 
 These servers are serving data when my adblocking system is turned _off_. `tentacles.smartocto.com`? A quick look at that webites says things like "make every story count" and "translate strategy into actionable notifications". Smells like they're shipping off tracking data to one of those analytics companies that feed on the information of others.
 
 Let's try another more authorative news website in Belgium, vrt.be/nws. This time, I let Opera inform me on what was blocked and what was not. It blocks both ads and trackers (image pixels, javascript). 
 
-![](/img/privacy/blocks-vrt.png)
+![Opera tracker report of vrt.be](../blocks-vrt.png)
 
 It still contains 12 blocked trackers. Most of those are downright advertisers, but others are more subtle. The most common one is of course _Google Analytics_.
 
@@ -44,7 +44,7 @@ It is unavoidable that these endpoints can get access to your visitor's _referer
 
 I threw out Bootstrap, jQuery, and Font Awesome, and refactored my Hugo theme to utilize [Sass](/post/2020/05/hugo-extended) (reducing the mean load of an uncached page with more than `200kb`!). Next, I threw out Google Analytics in favor for [Fathom](https://usefathom.com), another small and privacy-focused self-hosted go container (netting me another `40kb`). Then, I hosted all third-party libraries I used myself. So rest assured, Google does not know you were here! This is how the Fathom dashboard looks like:
 
-![the Fathom dashboard](/img/privacy/fathom.png)
+![](../fathom.png "The Fathom dashboard")
 
 The commenting system I self-host is Commento, a fast, privacy-focused commenting platform. It does come with cookies if you decide to login, but then again: it’s on my own SSL-verified domain. Disqus, the popular and standard static website commenting system, has been known before to be [coming with hidden costs](https://replyable.com/2017/03/disqus-is-your-data-worth-trading-for-convenience/).
 
@@ -64,7 +64,7 @@ For Facebook integraion on my other website [Red Zuurdesem](https://redzuurdesem
 
 For the "classic" Facebook widget - well, I cheated... by taking a screenshot:
 
-![the Facebook Widget](/img/privacy/fbwidget.png)
+![the Facebook Widget](../fbwidget.png)
 
 Sometimes, the simplest solutions are the best. I bet nobody notices it's static content. I might even go out on a limb here and retake the screenshot once in a while. This gives me the freedom of throwing out the ugly Facebook JS API and token system that has to be renewed every few months (and comes with tons of "free" cookies!). Good riddance.
 

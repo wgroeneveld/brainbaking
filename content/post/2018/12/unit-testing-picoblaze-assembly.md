@@ -68,9 +68,7 @@ As you can see, I've been inspired by other well-known C#/Javascript frameworks 
 
 Assertions like `reg`, `scratchpad`, `port` verify the correct end state of your Assembly file. Seeing a red or green test in your favorite IDE or in the console is a _huge_ improvement over this:
 
-<center>
-    <img src="/img/picoblaze_sim.png" class="bordered" />
-</center>
+![](../picoblaze_sim.png "Simulating hardware in a testbench")
 
 Inspecting a wave form after simulating your hardware configuration in tools like Vivado is a huge pain compared to writing separate test cases in software. I know the Test Bench tooling can be used to write test for your synthesis, but when uploading a bitstream into an FPGA, you never know whether it's the HDL that's incorrect, or the Assembly loaded into it. 
 

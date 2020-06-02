@@ -1,7 +1,7 @@
 ---
 title: Page Building with Brizy in Wordpress
 date: '2020-05-26'
-bigimg: /img/brizy.jpg
+bigimg: ../brizy.jpg
 subtitle: Shortcodes and custom hacks incoming...
 tags:
   - php
@@ -70,7 +70,7 @@ The result is not great. Instead of utilizing URLs such as `/page/2/`, as the de
 
 #### The Blog Detail page
 
-{{< figure src="/img/brizy_invalid.png" title="Did I do something wrong?" >}}
+!["Invalid brizy content"](../brizy_invalid.png "Did I do something wrong?")
 
 A lot of shortcodes are needed here. Blog title, blog contents, blog metadata (the detail footer), blog comment forms, showing a list of categories, a list of most popular or recent posts in the sidebar, ... The problem for my wife is that while designing this page, there are no placeholders available, so it's a bit of a guess how it will turn out to be. 
 

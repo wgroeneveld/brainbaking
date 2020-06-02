@@ -19,7 +19,7 @@ And it did not happen overnight. I started working on the idea in 2017, but was 
 
 To focus on the writing itself, and not the layout and whatnot, I decided to write in Markdown. In a non-fiction book, such as the one I was planning to write, it is important not to overburden readers with flashy layouting - so Markdown's minimalistic approach helped a lot here: underscores to _emphasize_ things is mostly enough. 
 
-![subl](/img/book/makingof-schrijven.png)
+![subl](../makingof-schrijven.png)
 
 ### The toolchain
 
@@ -69,7 +69,7 @@ The first three pages of the book are the cover pages, and they are set:
 
 An optional fourth page, which I included, contains the copyright, edition information, and so forth. Everything is part of `\frontmatter`, and written in LaTex itself. I got inspired by some examples provided by the memoir fellows:
 
-![subl](/img/book/book-coversheet.png)
+![subl](../book-coversheet.png)
 
 The style is called 'Gentle Madness'. I had no intention of pouring hours into making my own original version of something that was already good enough: it's part of the cover pages... You know, the things you flip through, in search for the actual content?
 
@@ -77,7 +77,7 @@ The style is called 'Gentle Madness'. I had no intention of pouring hours into m
 
 As said before, memoir comes with 'batteries included' - and that is definitely the case for chapter styles. I opted for a minimalistic chapter number and a title - that's it:
 
-![subl](/img/book/book-chapter.png)
+![subl](../book-chapter.png)
 
 The tex needed to do that:
 
@@ -127,7 +127,7 @@ Enter the `perpage` package, where footnote numbering can be tampered with, with
 
 The end result looks like this:
 
-![footnotes](/img/book/book-footnotes.png)
+![footnotes](../book-footnotes.png)
 
 For the header and footer, I wanted to maximize the available space on a page. That means only one of both, so no header. It is important to distinguish footer text from chapter text, so I opted to reduce the harshness of the text by using gray and another font type. It can be configured as a separate chapter style, that should distinctively **not** be applied to 'part x' pages:
 
@@ -143,7 +143,7 @@ For the header and footer, I wanted to maximize the available space on a page. T
 
 For citing work, the rough draft employed a dusty academic way (the default way) of doing that: author and year between brackets: 'in research blabla bla (Surname, 2019).' It gave me a headache: it does _not_ read fluently at all. the '\[10\]' thing at the end of a sentence was not that great either. It is non-fiction, but it should not be a boring piece of academic work! In the end, I opted for superscript with a reduced font size:
 
-![cite](/img/book/book-cite.png)
+![cite](../book-cite.png)
 
 I found that citation style in [zotero.org/styles](https://www.zotero.org/styles and https://citationstyles.org/authors/), it's called `the-open-university-numeric-superscript.csl` and added as a parameter in the metadata YML file for pandoc to parse. As you can see from the pandoc command, the `pandoc-citeproc` filter was used - it worked well enough and meant not manually fiddling with bibliography tools.
 
@@ -152,7 +152,7 @@ I found that citation style in [zotero.org/styles](https://www.zotero.org/styles
 
 The problem with using LaTeX and the memoir style is that most of the default settings feel a bit too rigid - too academic. I tried shaving off that word 'academic' as much as possible. For lists, this meant reducing it's complexity to simply a pointer to the page instead of numbering them individually:
 
-![figure](/img/book/book-figures.png)
+![figure](../book-figures.png)
 
 After a lot of stackoverflow hints, I managed to nail it down to:
 
@@ -194,7 +194,7 @@ For 'default' inline figures, that works. However, some figures I wanted spread 
 
 The end result:
 
-![img](/img/book/book-image.png)
+![img](../book-image.png)
 
 Sadly, to make use of the new LaTeX command, I had to interleave it with the rest of the text in my Markdown chapter file. The above screenshot is the result of this:
 
@@ -259,7 +259,7 @@ I found the solution to the problem on another blog and can't remember which one
 
 The end result, at the bottom of the page:
 
-![starbreak](/img/book/book-starbreak.png)
+![starbreak](../book-starbreak.png)
 
 ### The verdict
 

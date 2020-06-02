@@ -97,17 +97,23 @@ img
 
 figure 
   margin-bottom: 1.5em !important
+  margin-left: 0
+  margin-right: 0
   img
     margin-bottom: 0 !important
-  figcaption 
+
+  figcaption
     margin-top: 0.8rem !important
-    h4, p
-      font-size: 1.2rem 
-      text-align: center
-      margin-top: 0 !important
-      font-style: italic
+    font-size: 1.2rem 
+    text-align: center
+    font-style: italic
+    font-weight: normal
+    color: #aaa
+
+    /** Hugo's figure shortcode seems to render h4s sometimes **/
+    h4
+      font-size: 1.2rem
       font-weight: normal
-      color: #aaa
 
 
 /** general **/

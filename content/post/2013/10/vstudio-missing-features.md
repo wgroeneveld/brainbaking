@@ -48,7 +48,7 @@ Other interesting links:
  
 Simply comparing two files within the editor can be a pain - the easiest way to do it in Eclipse is just select both files, rightclick and select "compare". No such option here. You can compare a file with a previous version from TFS, but not two physically different files, weird. Install [VSCommands](http://vscommands.squaredinfinity.com/) and that problem is also solved:
  
-![compare files in vstudio]({{urls.media}}/compare_files_vstudio2012.png)
+![compare files in vstudio](../compare_files_vstudio2012.png)
 
 
 It uses the built-in VS2012 comparison window, which is quite nice.

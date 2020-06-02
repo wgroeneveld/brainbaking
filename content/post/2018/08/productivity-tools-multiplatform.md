@@ -77,9 +77,7 @@ That's simply a matter of configuring your `.bashrc` or `.bash_profile` files - 
 
 OSX's Finder makes it easy to create shortcuts for directories that have been heavily used, like my `~/development` dir where all repositories live. Luckily, Ubuntu's file manger also has this feature:
 
-<center>
-    <img src="/img/files_linux.png" class="bordered" />  
-</center>
+![linux files](../files_linux.png)
 
 ##### Taking screenshots of areas
 

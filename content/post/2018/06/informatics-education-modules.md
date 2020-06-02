@@ -14,10 +14,7 @@ Also worth reading: [Reverse engineering a curriculum](/post/reverse-engineering
 
 I happened to come across a very interesting study path for "game programmers" published at [https://github.com/miloyip/game-programmer](https://github.com/miloyip/game-programmer). It's a nice visual representation of books that help you become a better (game) programmer, starting from zero (game programming for kids) and ending at advanced game physics and Artificial Intelligence. I am not keen on becoming a game programmer but the reason this is interesting is that the author has done a great job trying to categorize the different requirements - what it takes to be a programmer in general. Let's take a closer look at that. 
 
-<center>
-    <img src="/img/miloyip.png" class="bordered"/><br/>
-    <span>A cut-out part of the study path, copyright Milo Yip</span>
-</center>
+![](../miloyip.png "A cut-out part of the study path, copyright Milo Yip")
 
 ## Study paths for any programmer
 
@@ -128,10 +125,7 @@ This clearly suggests a (big?) difference between a developer and an _engineer_.
 - Networking
 - System design, scalability and data handling
 
-<center>
-    <img src="/img/csbooks.jpg" class="bordered"/><br/>
-    <span>Which of these is the most important one?<br/>SICP of course!</span>
-</center>
+![](../csbooks.jpg "Which of these is the most important one? SICP of course!")
 
 It's an unordered list but you can easily map those subjects onto the previous bachelor years. It's a bit more practically oriented though: a lot more in-depth algorithms and less logic, probability and mathematics. Prerequisites are knowing C so imperative programming got you covered. You can read more about his personal story [on Medium](https://medium.freecodecamp.org/why-i-studied-full-time-for-8-months-for-a-google-interview-cc662ce9bb13).
 

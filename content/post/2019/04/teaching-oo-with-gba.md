@@ -48,7 +48,7 @@ The syllabus is accessible through the links, although in Dutch.
 
 Especially the live Castlevania demo's were quite appealing to students, showcasing sprite design, different backgrounds, and the palette:
 
-<img src="/img/teaching/cpp/aria-of-sorrow.gif" style="width: 100%" class="bordered" />
+![Aria of Sorrow](../aria-of-sorrow.gif)
 
 God I love that game. I'll gladly take every opportunity I have to look and/or play it. 
 
@@ -56,9 +56,7 @@ The sprite engine does the heavy lifting in terms of image memory allocation and
 
 The emphasis lies on the _object-oriented_ part of the course title, that is why the design of the game, and game engine, was very important to me. If you are creating a platformer like Mario, and you can jump, grab coins, and squash enemies, then I want to see that reflected in your design. Where is the statement `mario.jump()`, where are the `class Coin` and `class Goomba : public Enemy` definitions? You can extend from the following engine parts:
 
-<center>
-    <img src="https://github.com/wgroeneveld/gba-sprite-engine/raw/master/img/design.png?raw=true" alt="gba-sprite-engine design" />
-</center>
+![gba-sprite-engine design](https://github.com/wgroeneveld/gba-sprite-engine/raw/master/img/design.png?raw=true)
 
 After the oral defense of their game, students completed a short survey that helped me assess what to do with the course during the next academic year. Most students were very enthusiastic regarding the inclusion of the GBA, compared to another dull set of assignments. They also responded positively to the question whether the Game Boy could be used in other courses as well, such as hardware architecture design, or (advanced) chip design (using an FPGA). 
 

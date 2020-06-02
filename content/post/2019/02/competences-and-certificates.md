@@ -35,10 +35,8 @@ First of all, **non-technical** abilities are completely ignored. The CEPIS surv
 Second, **context** is missing. What's an enterprise architect? Does this mean I get to play with toys? Each profile is carefully defined to be applicable for any large company, but yet generic enough to be completely useless. <br/>
 Third, thinking _inside_ the box instead of _outside_ **hurts creativity** enormously. If I'm a test specialist, why wouldn't I be able to do certain tasks of an enterprise architect? These frameworks are still thinking in terms of _functions_, not _roles_. In your daily work as a software developer, you're the architect one day and the tester the next. Or even in a shorter timespan. Yet you never adhere to the rules of a carefully described competence profile. It's simply worthless. 
 
-<center>
-![Does this mean anything to you?](/img/cepis.jpg)<br/>
-Does this mean anything to you?
-</center>
+![](../cepis.jpg "Does this mean anything to you?")
+
 
 * fBOK (_Foundational IT Body of Knowledge_)
 * [SWEBOK](https://www.computer.org/web/swebok) (_Software Engineering Body of Knowledge_). 
@@ -64,9 +62,9 @@ Don't be fooled by the `.org` domain name: you are still heavily encouraged to p
 
 Is programming a craft? Is it a proper _profession_? Dan North [says it isn't](https://dannorth.net/2011/01/11/programming-is-not-a-craft/):
 
-> It would be great if programming were a proper profession, but it isn’t. A profession has a structured model for advancing through levels of skill and ability, be it studying for a law degree and articles (working for a legal practice) or the years of undergraduate and medical training a doctor undertakes before specializing. The latter has clearly-delineated ranks, from junior doctor, via a brutal regime of 80-hour weeks, to constant.
-> 
-> Conversely there is no minimum entry requirement for programming. Some people naturally have a flair for it (two of the best programmers I know never went to college), some teach themselves out of books, others just tinker until they get something working. A programmer’s skill and ability is only as good as their personal reputation: there isn’t an accepted, transferable ranking like there is in a “proper” profession.
+_It would be great if programming were a proper profession, but it isn’t. A profession has a structured model for advancing through levels of skill and ability, be it studying for a law degree and articles (working for a legal practice) or the years of undergraduate and medical training a doctor undertakes before specializing. The latter has clearly-delineated ranks, from junior doctor, via a brutal regime of 80-hour weeks, to constant._
+
+_Conversely there is no minimum entry requirement for programming. Some people naturally have a flair for it (two of the best programmers I know never went to college), some teach themselves out of books, others just tinker until they get something working. A programmer’s skill and ability is only as good as their personal reputation: there isn’t an accepted, transferable ranking like there is in a “proper” profession._
 
 It's a [heated debate](https://lizkeogh.com/2011/01/14/why-i-didnt-sign-the-software-craftsmanship-manifesto/), joined by many well-known technological experts out there. Melissa McEwen goes so far as to call it [the product of a 10-year-old development manifesto](https://qz.com/work/1371151/what-happened-to-software-craftsmanship/). The problems exposed by each of these articles has been tried to mitigate in SEMAT, resulting in something completely different, with it's own set of misery. As Dan said it, these attempts are at risk of letting programmers’ egos run riot - and I've seen that happen all too often when still working in [the industry](/post/a-decade-in-the-industry/).
 

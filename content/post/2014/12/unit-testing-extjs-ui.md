@@ -89,7 +89,8 @@ After that, you can start writing tests. Looking at the examples, the test flow 
 	    );
 	});
 
-![siesta view test in action]({{urls.media}}/siesta.png)
+
+![](../siesta.png "The Siesta view test in action")
 
 Siesta also comes with it's downsides though.
 

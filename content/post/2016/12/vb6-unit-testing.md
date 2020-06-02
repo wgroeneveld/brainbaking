@@ -20,8 +20,7 @@ Public Sub MyTestMethod_WithSomeArg_ShouldReturn45
 End Sub
 ```
 
-![simply vb unit screenshot](/img/simplyvbunit.png)
-
+![simply vb unit screenshot](../simplyvbunit.png)
 
 The test code is very readable thanks to the [NUnit](https://nunit.org/index.php?p=documentation) influence on SimplyVBUnit. The package is very easy to install, but there are a few gotcha's. 
 You need to create a separate VBP file (Visual Basic Project) which acts as your UnitTest project with a reference to the SimplyVBUnit package. That's easy enough, but it's a project. That means it can't reference other projects! Our software is basically one large project with heaps of muddy code. Compiling the EXE and referencing that one is not an option for us. That leaves us with a few alternatives:

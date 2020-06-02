@@ -1,0 +1,10 @@
+{{ if .Params.bigimg }}
+    <div class="jumbotron big-img" style='background-image: url("{{.Params.bigimg}}");'>
+        <div class="container">
+            &nbsp;
+        </div>
+    </div>
+{{ else }}
+    <div style="padding-top: 3rem">
+    </div>
+{{ end }}

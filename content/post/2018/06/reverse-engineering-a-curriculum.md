@@ -42,9 +42,7 @@ A third part of learning is being able to manage the heap of stuff to learn. Not
 
 Mental models are models formed in your mind when you talk about specific parts in the software you know. When communicating to other team members, you need a model to find a common ground to talk about. The problem is that each developer's mental model is potentially incomplete and out of date. 
 
-<center>
-    <img src="/img/curriculum/model.jpg" class="bordered"/>
-</center>
+![mental models](../model.jpg)
 
 > We spend time reconciling our mental models enough to communicate with each other; this is a [coherence penalty](http://www.michaelnygard.com/blog/2018/01/coherence-penalty-for-humans/).
 
@@ -58,9 +56,7 @@ Malleability of software as a material is very understated. The ever faster appl
 
 > There’s something extra special about development teams: software is the most malleable material we’ve ever used in engineering, by thousands of times. There’s nothing else like it, and this changes the meaning of “team.”
 
-<center>
-    <img src="/img/curriculum/idea.jpg" class="bordered" />
-</center>
+![the curriculum idea](../idea.jpg)
 
 It doesn't only change the meaning of team, but also the way you should think about limitations of your own expertise: there is (almost) none - except time constraints that are not relevant here. Emphasis on the creative process with the right help of brainstorming and retrospectives, techniques that can also be rightfully applied within a classroom, guided or not. 
 
@@ -82,9 +78,8 @@ There are many ways to change an educational (master) programme:
 
 Apart from a small portion of every possibility above, my take would be to take the existing courses and integrate the principles we've extracted in part 1. It wouldn't hurt to shake up the contents now and then (1.) or to enabling students by introducing more active ways of lecturing (2.), but let's for now focus on incorporating those principles without changing too much content. 
 
-<center>
-    <img src="/img/curriculum/teach.jpg" class="bordered" />
-</center>
+![teaching curriculum-minded](../teach.jpg)
+
 
 #### A. Create a software engineering philosophy. Teach all courses in context of this shared understanding. 
 

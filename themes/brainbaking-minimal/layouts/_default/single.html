@@ -1,21 +1,22 @@
 {{ partial "header" . }}
 
-{{ if .Params.bigimg }}
-    <div class="jumbotron big-img" style='background-image: url("{{.Params.bigimg}}");'>
-        <div class="container">
-            &nbsp;
-        </div>
-    </div>
-{{ else }}
-    <div style="padding-top: 3rem">
-    </div>
-{{ end }}
+{{ partial "bigimg" . }}
 
-<a name="top"></a>
 {{ partial "list-item" . }}
 <main class="single">
+    <br>
+    <div class="text-justify">
+      <!-- thanks https://www.godo.dev/tutorials/hugo-image-figure-wrap/ -->
+      {{ $reAltIn := "<p><img src=\"([^\"]+)\" alt=\"([^\"]*)\" /></p>" }}
+      {{ $reAltOut := "<figure><a href=\"$1\" class=\"lbox\"><img src=\"$1\" alt=\"$2\"></a></figure>" }}
+      {{ $altContent := .Content | replaceRE $reAltIn $reAltOut | safeHTML }}
 
-    <br> <div class="text-justify">{{ .Content }}</div>
+      {{ $reAltTitleIn := "<p><img src=\"([^\"]+)\" alt=\"([^\"]*)\" title=\"([^\"]+)\" /></p>" }}
+      {{ $reAltTitleOut := "<figure><a href=\"$1\" class=\"lbox\"><img src=\"$1\" alt=\"$3\" title=\"$3\"></a><figcaption>$3</figcaption></figure>" }}
+      {{ $finalContent := $altContent | replaceRE $reAltTitleIn $reAltTitleOut | safeHTML }}
+
+      {{ $finalContent }}
+    </div>
 
     <!-- related posts with the same tags -->
     {{ $related := first 3 (where (where .Site.RegularPages.ByDate.Reverse ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}

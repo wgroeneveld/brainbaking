@@ -22,10 +22,7 @@ The problem with educational software engineering research in this area, is that
 
 Simply trying to pin down these terms by defining them seems to be a daunting task that will likely never receive a consensus[^3]. For example, I tried to [define](https://wgroeneveld.github.io/phd/src/definities/) the differences between "skill", "ability", "knowledge" and "competence". It took me more than a week and I gave up: every author gives his or hers own interpretation to these terms. 
 
-<center>
-    <img src="/img/skills.jpg" alt="noncognitive skills" />
-    <em>What to call "noncognitive skills"? - [img source](https://www.npr.org/sections/ed/2015/05/28/404684712/non-academic-skills-are-key-to-success-but-what-should-we-call-them?t=1540302642056)</em>
-</center>
+![noncognitive skills](../skills.jpg "What to call 'noncognitive skills'?")
 
 Since my background is with Computer Science and I've been a software engineer for 11 years, I'd like to incorporate this experience into my future work by concretizing these vague "skills" into something that people from the engineering industry understand and can work with. In the end, I'll have to define my own interpretation of the words "lean skills". 
 
@@ -95,6 +92,8 @@ That said, I'm actually still struggling how to integrate what I want to do with
 To remind myself of the constant dilemma between **focus** and **exploration**, I'll end with a quote from Maryam Mirzaei's research on PhD research[^4]:
 
 > In fact, figuring out the scope is the prime challenge of completing a PhD. (...) The ambiguity of scope can also manifest itself in lack of positioning. Not having a clear overall argument is an important reason for PhD failure. The project 'thesis', the story and the new idea, spread too widely and too thinly can result in failure. 
+
+[Figure src](https://www.npr.org/sections/ed/2015/05/28/404684712/non-academic-skills-are-key-to-success-but-what-should-we-call-them?t=1540302642056)
 
 [^1]: Radermacher, Alex, and Gursimran Walia. "Gaps between industry expectations and the abilities of graduates." Proceeding of the 44th ACM technical symposium on Computer science education. ACM, 2013.
 [^2]: Sedelmaier, Yvonne, and Dieter Landes. "Software engineering body of skills (SWEBOS)." Global Engineering Education Conference (EDUCON), 2014 IEEE. IEEE, 2014.

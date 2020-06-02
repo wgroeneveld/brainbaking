@@ -21,9 +21,7 @@ If you cannot fail, you cannot learn. And since failure is so easy (and hopefull
 
 One of those models is Amabile's Componential Model of Creativity[^ama] ([img src](https://www.slideshare.net/medikawy_2005/how-to-kill-creativity-in-your-organization/14-knowledgeexibility_imaginationintrinsic_extrinsicThe_threecomponentsof_Creativityexpertisemotivationcreativethinkingskillswhere)):
 
-<center>
-    ![creativit model](/img/creativitymodel.jpg)
-</center>
+![creativit model](../creativitymodel.jpg)
 
 As deceptively simple as this looks, let us zoom in on each component and try to map these to the field of software development.
 
@@ -119,10 +117,8 @@ Drawing from information from outside your own domain could also be useful and g
 
 In Linguistic Creativity, creative patterns are hypothesized to be part of two categories: pattern-forming (following the rules of the language, creating interactions/repetitions) and pattern-reforming (breaking the rules and reshaping it into something new). 
 
-<center>
-  ![Creative Patterns](/img/creativepatterns.jpg)
-  Creative Patterns?
-</center>
+![](../creativepatterns.jpg "Creative Patterns?")
+
 
 > ##### 5. _Incubation_ (letting 'the idea ripen' for a while)
 

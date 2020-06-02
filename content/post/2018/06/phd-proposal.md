@@ -25,9 +25,7 @@ Als software ingenieur met meer dan een [decennium ervaring](/about) heb ik een 
 
 Het traditioneel coachen en lesgeven brengt echter niet altijd even veel op. Dat kan natuurlijk aan mij liggen (de manier waarop), aan het de stof die ik wil overbrengen (het onderwerp) of aan de interesse van het doelpubliek (de ontvanger). Bij veel teams waar ik de afgelopen jaren tijd in heb doorgebracht is het moeilijk om iedereen op dezelfde golflengte te krijgen. 
 
-<center>
-    <img src="/img/sweng_prob.png">
-</center>
+![sw engineering probleem](../sweng_prob.png)
 
 Ik begon mij af te vragen hoe ik het probleem zou kunnen identificeren en hier iets concreet rond doen. De vraag werd een **meta-vraag**: in plaats van te vragen wat te leren begon ik te vragen hoe het leren te leren. Dus: _wat zien we over het hoofd wanneer we toegeven dat software schrijven niet altijd gesmeerd loopt?_
 
@@ -47,10 +45,7 @@ De woorden in de (Engelstalige) titel verklarend:
 
 ## De doelstelling
 
-<center>
-    <a href="/img/phd_summary.jpg"><img src="/img/phd_summary.jpg"></a>
-    Klik om te vergroten.
-</center>
+![phd summary](../phd_summary.jpg "PhD samenvatting. Klik om te vergroten.")
 
 Voordat we die ongelijkheid uit de weg kunnen ruimen moeten we een andere vraag stellen: wat valt er allemaal onder die zogenaamde industriële vereisten? Die eisen kunnen we langs diverse opleidingen plaatsen om een kritische blik te werpen op de inhoud ervan. Als we terugdenken aan de vraag "wat missen we", onderscheiden we[^2] een aantal belangrijke **deelvragen**:
 
@@ -92,9 +87,7 @@ We wensen immers technologie te gebruiken om iets (het domein) uit te drukken, e
 
 Dit probleem beperkt zich echter niet binnen de software ingenieurs maar komt ook terug bij ingenieurs in het algemeen. Ik merk uit mijn ervaring als lesgever dat studenten opdrachten vaak te goed willen doen, en uit mijn ervaring als technische coach dat collega ontwikkelaars dit nog steeds niet hebben afgeleerd. 
 
-<center>
-    <img src="/img/frameworks.jpg">
-</center>
+![frameworks problemen](../frameworks.jpg)
 
 De focus leggen op het _concept_ in plaats van het _framework_ is echter makkelijk gezegd: hoe doe je dat? Waarom zijn hogescholen zo gebrand op praktische voordelen van frameworks die na 2 jaar toch niet meer actueel zijn? Waarom zijn universiteiten zo gebrand op theoretische concepten zonder een praktisch voorbeeld aan te halen? 
 
@@ -104,9 +97,7 @@ Ik wil op zoek gaan naar een goede cocktail van het conceptuele met het praktisc
 
 De metafoor die zegt dat software ontwikkelen een beetje zoals tuinieren is sluit mooi aan met mijn idee. Maar wanneer beslis je om takken weg te knippen en bomen bij te planten? Op welke manier druk je je dan uit? Het "groeien" van software wordt altijd ondersteund door _test-driven development_, zoals het groeien van bomen wordt ondersteund door organische meststoffen. Op die manier reduceer je drastisch het mythische "aantal WTFs per minuut".
 
-<center>
-    <img src="/img/wtfm.jpg"/>
-</center>
+![aantal wtfs per minuut](../wtfm.jpg)
 
 De beschrijving van vereisten met de **natuurlijke taal** in code zorgt voor een belangrijke bijdrage tot onderhoudbaarheid. Concepten die van belang zijn voor je product (zoals een vacature, sollicitatie of contract) moeten dezelfde dingen betekenen in de code zelf. Ik wil hier _Domain-Driven Design_ aanraken, maar er niet helemaal in mee gaan.
 
@@ -135,7 +126,8 @@ Dit concept wil ik graag doortrekken in dit doctoraatsvoorstel. In plaats van ee
 
 Dit sluit beter aan met de _agile proces_ dat ook bij Prato gebruikt wordt om sneller feedback te kunnen verzamelen en ook sneller een meerwaarde te kunnen bieden.
 
-<img src="/img/agile.png"/>
+![het agile proces](../agile.png)
+
 
 ## De toepasbaarheid
 
@@ -177,7 +169,7 @@ Een concreet voorbeeld: het vak "Software ontwerp in Java" leert studenten het _
 
 Dit voorstel past perfect binnen de onderzoeksgroep [LESEC](https://set.kuleuven.be/LESEC):
 
-> **LEUVEN ENGINEERING & SCIENCE EDUCATION CENTER**<br/> A community of researchers and practicioners contributing to the advancement of education in the Science, Engineering & Technology group.<br/>
+> A community of researchers and practicioners contributing to the advancement of education in the Science, Engineering & Technology group.
 This includes R&D and consultancy activities, and the establishment of a network for cooperation and the exchange of experiences.
 
 ## Huidig onderzoek

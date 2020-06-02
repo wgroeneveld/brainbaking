@@ -7,5 +7,6 @@ out/
 build/
 resources/
 node_modules/
+docs/
 
 *.class
