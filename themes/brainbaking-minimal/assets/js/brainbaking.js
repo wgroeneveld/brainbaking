@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded",function() {
 	window._domloaded = true;
 
 	(function sandwich() {
-		var navbar = document.querySelector('.navbar-collapse');
-		var navtoggle = document.querySelector('.navbar-toggle');
-		function navCollapse() {
+		const navbar = document.querySelector('.navbar-collapse');
+		const navtoggle = document.querySelector('.navbar-toggle');
+		const navCollapse = () => {
 			navbar.setAttribute('class', 'navbar-collapse collapse');
 		}
-		function navCollapsing() {
+		const navCollapsing = () => {
 			navbar.setAttribute('class', 'navbar-collapse collapsing');
 		}
 
@@ -27,14 +27,7 @@ document.addEventListener("DOMContentLoaded",function() {
 		});
 	})();
 
-	(function goodreads() {
-		if(document.querySelector('.goodreadswidget') === null) return;
-		[...document.querySelectorAll('.goodreadswidget img')].forEach(img => {
-		    img.src = img.src.replace(/_SX[0-9]+_(SY[0-9]+_)*.jpg/, "_S400_.jpg")
-		})
-	})()
-
-	const lightbox = () => {
+	(function lightbox() {
 		[...document.querySelectorAll('main img')].forEach(el => {
 			if(el.parentNode.nodeName !== 'A') {
 				el.parentNode.innerHTML =  `<a href="${el.src}" class="lbox">${el.outerHTML}</a>`; 
@@ -43,8 +36,6 @@ document.addEventListener("DOMContentLoaded",function() {
 			}
 		})
 		const box = new SimpleLightbox('.lbox', { /* options */ });
-	};
-	lightbox();
-
+	})();
 
 });
