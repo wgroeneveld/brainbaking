@@ -1,9 +1,5 @@
 Brainbaking.com hugo site.
 
-### TODO
-
-- Set Cache-Control on woff2 https://web.dev/uses-long-cache-ttl/
-- Check gzip compression of js/css files
 
 ### Screenshot png - jpg conversion
 

@@ -20,7 +20,7 @@ enableGitInfo = true
     description = "Freshly baked thought"
     # see single.html, DisqusShortname also needed
     disableComments = true
-    accent = "#008862"
+    accent = "#018661"
     accent2 = "#008fb3"
     showBorder = true
     copyright = "<a href='/no-copyright-no-tracking'>No &copy; and no tracking</a> - sharing is caring. <svg class='icon icon-small' width='16' height='16'><use xlink:href='#bulb'></use></svg> <a href='/'>Brain Baking</a>. <a href='/index.xml'>RSS Feed</a>."

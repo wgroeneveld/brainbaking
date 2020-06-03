@@ -1,0 +1,53 @@
+nav
+  svg
+    width: 24px
+    height: 24px
+    float: left
+
+%icon-in-text
+  position: relative
+  top: 5px
+  width: 24px !important
+  height: 24px !important
+
+main
+  p
+    .icon
+      @extend %icon-in-text
+
+  &.single article > p:first-of-type::first-letter
+    font-size: 3.05em
+    font-weight: bold
+    line-height: 1.1em
+    float: left
+    margin-right: 10px
+
+
+  footer
+    margin-top: 3.5rem
+
+
+.icon
+  width: 32px
+  height: 32px
+  padding-right: 0.3rem  
+
+  &-small
+    position: relative
+    top: 2px
+    padding-right: 0.1rem
+    width: 16px !important
+    height: 16px !important
+
+  &-text
+    @extend %icon-in-text
+  &-float
+    @extend %icon-in-text
+    float: left
+
+  &-inline
+    float: left
+    color: #999
+
+a.icon:hover 
+    text-decoration: none

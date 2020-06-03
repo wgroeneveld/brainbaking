@@ -3,8 +3,8 @@
     font-size: 12pt !important
 
   .commento-round-check input[type=checkbox]:checked+label:before, .commento-round-check input[type=radio]:checked+label:before 
-    background: var(--accent) !important
-    border: 1px solid var(--accent) !important
+    background: $accent !important
+    border: 1px solid $accent !important
 
   .commento-markdown-help tr td pre 
     padding: 0 !important
@@ -16,26 +16,14 @@
 
 .commento-button 
   color: white !important
-  background: var(--accent) !important
-
-.commento-google-button:before 
-  @extend %fa
-  content: "\f1a0"
-
-.commento-github-button:before 
-  @extend %fa
-  content: "\f09b"
-
-.commento-twitter-button:before 
-  @extend %fa
-  content: "\f099"
+  background: $accent !important
 
 .commento-oauth-buttons button 
   width: auto !important
 
 .commento-root a,
 .commento-email-button 
-  color: var(--accent) !important
+  color: $accent !important
 
 .commento-name 
   font-size: 14pt !important    

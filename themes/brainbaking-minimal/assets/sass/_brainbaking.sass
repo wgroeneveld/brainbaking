@@ -25,56 +25,6 @@ body
 nav, footer
   font-size: 0.85rem
 
-nav
-  svg
-    width: 24px
-    height: 24px
-    float: left
-
-%icon-in-text
-  position: relative
-  top: 5px
-  width: 24px !important
-  height: 24px !important
-
-main
-  p
-    .icon
-      @extend %icon-in-text
-
-  &.single article > p:first-of-type::first-letter
-    font-size: 3.05em
-    font-weight: bold
-    line-height: 1.1em
-    float: left
-    margin-right: 10px
-
-
-  footer
-    margin-top: 3.5rem
-
-
-.icon
-  width: 32px
-  height: 32px
-  padding-right: 0.3rem  
-
-  &-small
-    position: relative
-    top: 2px
-    padding-right: 0.1rem
-    width: 16px !important
-    height: 16px !important
-
-  &-text
-    @extend %icon-in-text
-  &-float
-    @extend %icon-in-text
-    float: left
-
-  &-inline
-    float: left
-    color: #999
 
 .copyright 
     margin: 15px 0
@@ -88,51 +38,17 @@ div.highlight
   padding-bottom: 1.5rem
 
 
-article img 
-  display: block
-  margin-left: auto
-  margin-right: auto
-  border: 1px solid #ccc !important
-  border-radius: 4px
-  margin-top: 1.5em
-  margin-bottom: 1.5em
-
-img 
-    max-width: 100%
-
-figure 
-  margin-bottom: 1.5em !important
-  margin-left: 0
-  margin-right: 0
-  img
-    margin-bottom: 0 !important
-
-  figcaption
-    margin-top: 0.8rem !important
-    font-size: 1.2rem 
-    text-align: center
-    font-style: italic
-    font-weight: normal
-    color: #aaa
-
-    /** Hugo's figure shortcode seems to render h4s sometimes **/
-    h4
-      font-size: 1.2rem
-      font-weight: normal
-
-
-/** general **/
-
 a:link, a:visited, a
-    color: var(--accent)
-    text-decoration: none
+  color: $accent
+  text-decoration: none
 
-a.icon:hover 
-    text-decoration: none
-
-a:hover 
+  &:hover
     text-decoration: underline
+    color: darken($accent, 10%)
 
+nav
+  a:hover
+    text-decoration: none !important
 
 h4 a 
   font-weight: normal
@@ -140,17 +56,6 @@ h4 a
 
 pre 
   font-size: 1rem !important
-
-
-.big-img
-  .container
-    height: 100px !important
-    @media (min-width: 768px)
-      height: 150px !important
-    @media (min-width: 960px)
-      height: 200px !important
-    @media (min-width: 1600px) 
-      height: 250px !important
 
 
 main
@@ -171,20 +76,12 @@ main
     p
       margin: 0 0 20px !important
 
-  article blockquote p 
-    margin: 0 !important
+    blockquote p 
+      margin: 0 !important
 
-
-.big-img 
-  background: no-repeat center center
-  -webkit-background-size: cover
-  -moz-background-size: cover
-  background-size: cover
-  -o-background-size: cover
-
-  border-top: 2px solid lightgray
-  border-bottom: 1px solid var(--accent)
-
+  &.single
+    article a
+      text-decoration: underline
 
 header
     margin: auto
@@ -193,7 +90,7 @@ header
     max-width: 80%
 
     h1
-      color: var(--accent)
+      color: $accent
     h2
       margin-top: -1rem
     h2, h3
@@ -206,8 +103,8 @@ time
   color: grey
 
 kbd
-  color: var(--accent)
-  border: 1px solid var(--accent)
+  color: $accent
+  border: 1px solid $accent
   font-size: 1rem
   padding: 2px 4px
   border-radius: 3px
