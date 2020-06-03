@@ -1,0 +1,20 @@
+{{ $related := first 3 (where (where .Site.RegularPages.ByDate.Reverse ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+
+{{ if $related }}
+    <h4 class="page-header"><svg class='icon icon-text'><use xlink:href='#news'></use></svg>Related Articles</h4>
+
+    {{ range $related }}
+		<article>
+		    <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+		    {{ if isset $.Params "subtitle" }}
+		        {{ .Params.subtitle }}
+		        <time datetime='{{ .Date.Format "2006-01-02" }}'>
+		        	<svg class='icon icon-text'><use xlink:href='#cal1'></use></svg>
+		        	{{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+		        </time>
+		    {{ end }}
+		</article>
+	{{ end }}
+
+    <hr/>
+{{ end }}

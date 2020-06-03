@@ -2,10 +2,10 @@
 
 {{ partial "bigimg" . }}
 
-{{ partial "list-item" . }}
+{{ partial "single-header" . }}
 <main class="single">
     <br>
-    <div class="text-justify">
+    <article>
       <!-- thanks https://www.godo.dev/tutorials/hugo-image-figure-wrap/ -->
       {{ $reAltIn := "<p><img src=\"([^\"]+)\" alt=\"([^\"]*)\" /></p>" }}
       {{ $reAltOut := "<figure><a href=\"$1\" class=\"lbox\"><img src=\"$1\" alt=\"$2\"></a></figure>" }}
@@ -16,46 +16,14 @@
       {{ $finalContent := $altContent | replaceRE $reAltTitleIn $reAltTitleOut | safeHTML }}
 
       {{ $finalContent }}
-    </div>
+    </article>
 
-    <!-- related posts with the same tags -->
-    {{ $related := first 3 (where (where .Site.RegularPages.ByDate.Reverse ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+    {{ partial "single-related" . }}
+    {{ partial "single-comments" . }}
 
-    {{ if $related }}
-
-        <h4 class="page-header"><svg class='icon icon-text'><use xlink:href='#news'></use></svg>Related Articles</h4>
-
-        <div class="text-justify">
-            {{ range $related }} {{ partial "related-item" . }} {{ end }}
-        </div>
-
-        <hr/>
-
-    {{ end }}
-
-  <!-- commenting part -->
-    {{ if (not .Params.disableComments) }}
-        <h4 class="page-header"><svg class='icon icon-text'><use xlink:href='#discuss'></use></svg>
-            {{ if eq "essays" .Section }}
-                Discussieer mee
-            {{ else }}
-                Join the Discussion
-            {{ end }}
-        </h4>
-
-        {{- if (ne hugo.Environment "development") }}
-            <script defer src="https://commento.brainbaking.com/js/commento.js"></script>
-            <script src="https://commento.brainbaking.com/js/count.js"></script>
-            <div id="commento"></div>
-        {{- else }}
-            (localhost, comments disabled)
-        {{- end }}
-
-    {{ end }}
-    <h4 class="page-header">&nbsp;</h4>
-
-    <svg class='icon icon-text'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 
-
+    <footer>
+      <svg class='icon icon-text'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 
+    </footer>
 </main>
 
 {{ partial "footer.html" . }}

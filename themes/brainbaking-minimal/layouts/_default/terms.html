@@ -1,19 +1,20 @@
 {{ partial "header" . }}
 
 {{ partial "bigimg" . }}
-<main>
+<main class="list">
 
-
-    <h1>
-    	<svg class='icon'><use xlink:href="#{{ .Params.icontag }}"></use></svg>&nbsp;{{ .Title }}
-    </h1>
+	<header>
+	    <h1>
+	    	<svg class='icon'><use xlink:href="#{{ .Params.icontag }}"></use></svg>&nbsp;{{ .Title }}
+	    </h1>
+	</header>
 
     <hr/>
 
     {{ with .Content }}
-    <div class="text-justify">
+    <article>
     	{{ . }}
-	</div>
+	</article>
 	{{ end }}
 
     <div class="list">

@@ -5,17 +5,19 @@
 <main class="list">
 
 	{{ if .Title }}
-	    <h1>
-      		<svg class='icon'><use xlink:href="#{{ .Params.icontag }}"></use></svg>&nbsp;{{ .Title }}
-		</h1>
+		<header>
+		    <h1>
+	      		<svg class='icon'><use xlink:href="#{{ .Params.icontag }}"></use></svg>&nbsp;{{ .Title }}
+			</h1>
+		</header>
     {{ end }}
 
 	{{ if eq .Paginator.PageNumber 1 }}
 	    <hr/>
 	    {{ with .Content }}
-	    <div class="text-justify">
+	    <article>
 	    	{{ . }}
-		</div>
+		</article>
 		{{ end }}
 	{{ end }}
 
@@ -54,9 +56,10 @@
 	</div>
     {{ end }}
 
-{{ template "_internal/pagination.html" . }}
-
-
+	{{ template "_internal/pagination.html" . }}
+	<footer>
+	  <svg class='icon icon-text'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 
+	</footer>
 </main>
 
 {{ partial "footer" . }}

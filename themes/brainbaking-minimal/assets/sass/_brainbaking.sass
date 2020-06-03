@@ -42,12 +42,17 @@ main
     .icon
       @extend %icon-in-text
 
-  &.single .text-justify > p:first-of-type::first-letter
+  &.single article > p:first-of-type::first-letter
     font-size: 3.05em
     font-weight: bold
     line-height: 1.1em
     float: left
     margin-right: 10px
+
+
+  footer
+    margin-top: 3.5rem
+
 
 .icon
   width: 32px
@@ -83,7 +88,7 @@ div.highlight
   padding-bottom: 1.5rem
 
 
-.text-justify img 
+article img 
   display: block
   margin-left: auto
   margin-right: auto
@@ -160,10 +165,13 @@ main
   @media (min-width: 1600px)
     max-width: 930px !important
 
-  .text-justify p 
-    margin: 0 0 20px !important
+  article
+    text-align: justify
+    margin-bottom: 1rem
+    p
+      margin: 0 0 20px !important
 
-  .text-justify blockquote p 
+  article blockquote p 
     margin: 0 !important
 
 
@@ -178,7 +186,7 @@ main
   border-bottom: 1px solid var(--accent)
 
 
-.item
+header
     margin: auto
     padding-top: 1rem
     padding-bottom: 1.5rem
@@ -192,6 +200,10 @@ main
       font-weight: normal
     h3
       font-size: 1.3rem
+      color: grey
+
+time
+  color: grey
 
 kbd
   color: var(--accent)

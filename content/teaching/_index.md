@@ -1,6 +1,6 @@
 ---
 title: 'Teaching'
-icontag: 'fa-graduation-cap'
+icontag: 'teaching'
 accent: "#008eb3"
 disableList: true
 ---
