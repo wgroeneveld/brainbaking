@@ -39,12 +39,12 @@ div.highlight
 
 
 a:link, a:visited, a
-  color: $accent
+  color: var(--accent)
   text-decoration: none
 
   &:hover
     text-decoration: underline
-    color: darken($accent, 10%)
+    color: $grey
 
 nav
   a:hover
@@ -83,6 +83,19 @@ main
     article a
       text-decoration: underline
 
+  &.post article > p:first-of-type::first-letter,
+  &.essays article > p:first-of-type::first-letter
+    font-size: 3.05em
+    font-weight: bold
+    line-height: 1.1em
+    float: left
+    margin-right: 10px
+
+
+  footer
+    margin-top: 3.5rem
+
+
 header
     margin: auto
     padding-top: 1rem
@@ -90,7 +103,7 @@ header
     max-width: 80%
 
     h1
-      color: $accent
+      color: var(--accent)
     h2
       margin-top: -1rem
     h2, h3
@@ -103,8 +116,8 @@ time
   color: grey
 
 kbd
-  color: $accent
-  border: 1px solid $accent
+  color: var(--accent)
+  border: 1px solid var(--accent)
   font-size: 1rem
   padding: 2px 4px
   border-radius: 3px

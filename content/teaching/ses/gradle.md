@@ -5,9 +5,7 @@ accent: "#008eb3"
 
 &laquo;&nbsp;[Terug naar Software Engineering Skills](/teaching/ses)<br/>
 
-## Helps teams build, automate and deliver better software, faster.
-
-Tenminste, toch volgens de [gradle.org](https://gradle.org) website.
+> Helps teams build, automate and deliver better software, faster.<span>volgens de [gradle.org](https://gradle.org) website.</span>
 
 ### Wat is dat, een build tool?
 

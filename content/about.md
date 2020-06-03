@@ -1,6 +1,7 @@
 ---
 title: "Hi, I’m Wouter Groeneveld"
 bigimg: About Me.jpg
+accent: darkred
 disableComments: true
 ---
 
