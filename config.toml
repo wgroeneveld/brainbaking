@@ -23,7 +23,7 @@ enableGitInfo = true
     accent = "#008862"
     accent2 = "#008fb3"
     showBorder = true
-    copyright = "<a href='/no-copyright-no-tracking'>No &copy; and no tracking</a> - sharing is caring. <svg class='icon icon-small'><use xlink:href='#bulb'></use></svg> <a href='/'>Brain Baking</a>. <a href='/index.xml'>RSS Feed</a>."
+    copyright = "<a href='/no-copyright-no-tracking'>No &copy; and no tracking</a> - sharing is caring. <svg class='icon icon-small' width='16' height='16'><use xlink:href='#bulb'></use></svg> <a href='/'>Brain Baking</a>. <a href='/index.xml'>RSS Feed</a>."
 
 [Author]
   name = "Wouter Groeneveld"
@@ -51,31 +51,31 @@ enableGitInfo = true
 
 [[menu.main]]
     name = "Tech Blog"
-    pre = "<svg><use xlink:href='#tech'></use></svg> "
+    pre = "<svg width='24' height='24'><use xlink:href='#tech'></use></svg> "
     url = "/post"
     weight = 1
 
 [[menu.main]]
     name = "Essays"
-    pre = "<svg><use xlink:href='#book'></use></svg> "
+    pre = "<svg width='24' height='24'><use xlink:href='#book'></use></svg> "
     url = "/essays"
     weight = 2
 
 [[menu.main]]
     name = "Tags"
-    pre = "<svg><use xlink:href='#tag'></use></svg> "
+    pre = "<svg width='24' height='24'><use xlink:href='#tag'></use></svg> "
     url = "/tags"
     weight = 3
 
 [[menu.mainright]]
     name = "About Me"
-    pre = "<svg><use xlink:href='#about'></use></svg> " 
+    pre = "<svg width='24' height='24'><use xlink:href='#about'></use></svg> " 
     url = "/about"
     weight = 4
 
 [[menu.mainright]]
     name = "Teaching"
-    pre = "<svg><use xlink:href='#teaching'></use></svg> "
+    pre = "<svg width='24' height='24'><use xlink:href='#teaching'></use></svg> "
     url = "/teaching"
     weight = 5
 

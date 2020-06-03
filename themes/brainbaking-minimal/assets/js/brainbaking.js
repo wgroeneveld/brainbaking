@@ -13,11 +13,10 @@ document.addEventListener("DOMContentLoaded",function() {
 			navbar.setAttribute('class', 'navbar-collapse collapsing');
 		}
 
-		document.querySelector('main').addEventListener('click', function() {
-			navCollapse();
-		})
+		document.querySelector('header').addEventListener('click', navCollapse)
+		document.querySelector('main').addEventListener('click', navCollapse)
 
-		document.querySelector('nav').addEventListener('click', function() {
+		document.querySelector('nav').addEventListener('click', () => {
 			if(window.getComputedStyle(navtoggle)['display'] === 'none') return;
 			if(navbar.getAttribute('class').indexOf('collapsing') >= 0) {
 				navCollapse();

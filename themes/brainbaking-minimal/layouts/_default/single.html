@@ -12,7 +12,7 @@
       {{ $altContent := .Content | replaceRE $reAltIn $reAltOut | safeHTML }}
 
       {{ $reAltTitleIn := "<p><img src=\"([^\"]+)\" alt=\"([^\"]*)\" title=\"([^\"]+)\" /></p>" }}
-      {{ $reAltTitleOut := "<figure><a href=\"$1\" class=\"lbox\"><img src=\"$1\" alt=\"$3\" title=\"$3\"></a><figcaption>$3</figcaption></figure>" }}
+      {{ $reAltTitleOut := "<figure><a href=\"$1\" class=\"lbox\"><img src=\"$1\" alt=\"$3\"></a><figcaption>$3</figcaption></figure>" }}
       {{ $finalContent := $altContent | replaceRE $reAltTitleIn $reAltTitleOut | safeHTML }}
 
       {{ $finalContent }}
@@ -22,7 +22,7 @@
     {{ partial "single-comments" . }}
 
     <footer>
-      <svg class='icon icon-text'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 
+      <svg class='icon icon-text' width='24' height='24'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 
     </footer>
 </main>
 

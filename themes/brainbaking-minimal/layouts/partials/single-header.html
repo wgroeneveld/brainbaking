@@ -15,14 +15,18 @@
         <h3>
             {{ if isset .Params "date" }}
             <time datetime='{{ .Date.Format "2006-01-02" }}'>
-                <svg class='icon icon-text'><use xlink:href='#cal1'></use></svg>
+                <svg class='icon icon-text' width='24' height='24'>
+                    <use xlink:href='#cal1'></use>
+                </svg>
                 {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
             </time>
             {{ end }}
             {{ if (not .Params.disableComments) }}
                 &nbsp;|&nbsp;
                 <span title="Comments">
-                    <svg class='icon icon-text'><use xlink:href='#discuss'></use></svg><a href="{{ .Permalink }}#commento"></a>
+                    <svg class='icon icon-text' width='24' height='24'>
+                        <use xlink:href='#discuss'></use>
+                    </svg><a href="{{ .Permalink }}#commento"></a>
                 </span>
             {{ end }}
         </h3>
@@ -30,7 +34,9 @@
 
 
     {{ if isset $.Params "tags" }}
-       <svg class='icon icon-text'><use xlink:href='#tag'></use></svg>
+       <svg class='icon icon-text' width='24' height='24'>
+        <use xlink:href='#tag'></use>
+        </svg>
     {{ end }}
     {{ range .Params.tags }}
         <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}"><kbd class="item-tag">{{ . }}</kbd></a>

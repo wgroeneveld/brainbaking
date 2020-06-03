@@ -1,8 +1,7 @@
-
+<script defer src='/js/simple-lightbox.min.js'></script>
 {{- $mainScriptPath := "js/brainbaking.js" }}
 {{- $scripts := resources.Get $mainScriptPath | resources.ExecuteAsTemplate $mainScriptPath . | babel | resources.Minify | resources.Fingerprint "sha512" }}
-<script src = '{{ $scripts.Permalink }}'></script>
-<script src = '/js/simple-lightbox.min.js'></script>
+<script defer src='{{ $scripts.Permalink }}'></script>
 
 {{- if (ne hugo.Environment "development") }}
   <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->

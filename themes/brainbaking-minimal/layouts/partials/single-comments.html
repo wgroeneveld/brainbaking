@@ -1,6 +1,9 @@
 {{ if (not .Params.disableComments) }}
     <article>
-        <h4 class="page-header"><svg class='icon icon-text'><use xlink:href='#discuss'></use></svg>
+        <h4 class="page-header">
+            <svg class='icon icon-text' width='24' height='24'>
+                <use xlink:href='#discuss'></use>
+            </svg>
             {{ if eq "essays" .Section }}
                 Discussieer mee
             {{ else }}
@@ -10,7 +13,7 @@
 
         {{- if (ne hugo.Environment "development") }}
             <script defer src="https://commento.brainbaking.com/js/commento.js"></script>
-            <script src="https://commento.brainbaking.com/js/count.js"></script>
+            <script defer src="https://commento.brainbaking.com/js/count.js"></script>
             <div id="commento"></div>
         {{- else }}
             (localhost, comments disabled)
