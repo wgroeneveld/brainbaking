@@ -83,7 +83,7 @@ There are so many things to take into consideration. I've never given them much 
 7. **Privacy**. Don't track visitors, track traffic instead!
 8. **Licence**s. Which copyright system are you applying? Did you attribute your sources correctly? 
 9. **SEO**. If your site is not found, tumbleweeds instead of readers start appearing... 
-10. **Accessibility**. Use contrasting colors, write `alt` tags, ...
+10. **[Accessibility](/post/2020/06/designing-with-accessibility-in-mind)**. Use contrasting colors, write `alt` tags, ...
 
-I haven't looked at that last part yet - _accessibility_. To be continued!
+I haven't looked at that last part yet - _accessibility_. To be continued! (Edit: [continued here](/post/2020/06/designing-with-accessibility-in-mind))
 
