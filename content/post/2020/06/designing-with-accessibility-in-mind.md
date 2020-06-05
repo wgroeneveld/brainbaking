@@ -7,7 +7,7 @@ tags:
   - accessibility
 ---
 
-In my last post about [webdesign](/tags/webdesign) called "[tracking and privacy on websites](post/2020/06/tracking-and-privacy-on-websites/)", I ended with a list of things you need to take into account when building a website - of which **accessibility** is one that is most often overlooked. Something I'm also guilty of. Here's my report of an effort to open up Brain Baking for everyone and to learn how to design websites with accessibility in mind.
+In my last post about [webdesign](/tags/webdesign) called "[tracking and privacy on websites](post/2020/06/tracking-and-privacy-on-websites/)", I ended with a list of things you need to take into account when building a website - of which **accessibility** is one that is most often overlooked. Something I'm also guilty of. Here's my own howto report and effort to open up Brain Baking for everyone, learning how to design websites with accessibility in mind.
 
 ### 1. Use Semantic HTML5 tags
 
@@ -49,7 +49,10 @@ Other things to keep in mind:
 
 - Use `<button/>` when it's a button, not a link. `aria-label` is there for hidden labels such as the sandwich nav-button for mobile browsers on this site.
 - Use labels in forms. Avoid use of placeholder values to label or explain input. 
+- Use descriptive link texts (e.g. not "click here")
 - etc...
+
+Try browsing sites by tabbing. Why don't you try it on this site right here? Did you notice the appearance of the otherwise hidden "skip to content" link before navigation? Keyboard users will otherwise go mad if they have to tab through your nav links again and again. 
 
 ### 2. Respect headings and paragraphs
 
@@ -65,7 +68,7 @@ Chrome Dev Tools makes it very easy to check whether the color you've employed h
 
 ![](../contrast.jpg "The contrast ratio 4.58 is OK according to the standards.")
 
-Furthermore, also deliberately think about your font styling and sizing. Fonts should have a `font-display: swap` CSS attribute to avoid flickering (or not rendering if a `.woff2` file fails to load). Since monitor resolutions are higher than ever, why should you be stuck with `font-size: 12px`? Don't use hard-coded `px` or `pt` but use relative `em` and `rem`, and keep "14pt" as a reference for desktop browsers. I detest websites that still have this incredibly small hard-to-read font that hurts even my eyes.
+Furthermore, deliberately think about your font styling and sizing. Fonts should have a `font-display: swap` CSS attribute to avoid flickering (or not rendering if a `.woff2` file fails to load). Since monitor resolutions are higher than ever, why should you be stuck with `font-size: 12px`? Don't use hard-coded `px` or `pt` but use relative `em` and `rem`, and keep "14pt" as a reference for desktop browsers. I detest websites that still have this incredibly small hard-to-read font that hurts even my eyes.
 
 ### 4. About images... Use `<figure/>`
 
@@ -107,8 +110,16 @@ Also, what doesn't get loaded without JavaScript? Cookies broke? Form submission
 
 ### 6. Don't know what to alter? Use analysis tools.
 
-Besides the websites [www.webaccessibility.com](www.webaccessibility.com) and the [WAVE web accessibility evaluation tool](https://wave.webaim.org), there's actually something better, and it's again built-in into DevTools: it's called **Lighthouse**, and can be booted up in the "Audits" tab. Lighthouse will also tell you what to alter to speed up things, so it's not an "accessibility-only" tool.
+Besides the websites [webaccessibility.com](www.webaccessibility.com) and the [WAVE web accessibility evaluation tool](https://wave.webaim.org), there's actually something better, and it's again built-in into DevTools: it's called **Lighthouse**, and can be booted up in the "Audits" tab. Lighthouse will also tell you what to alter to speed up things, so it's not an "accessibility-only" tool.
 
 ![](../lighthouse.jpg "A Lighthouse report on a Brain Baking article")
 
 Sadly, scoring more than `65%` on accessibility is proving to be difficult, since most issues come from Commento's lack of form labeling and usage of `alt` in avatar images. At least I'm no longer flunked!
+
+If you are interested in trying a screen reader yourself, you can configure [VoiceOver for Mac](https://www.youtube.com/watch?v=5R-6WvAihms) to see how it helps you navigate webpages, or [NVDA for Windows](https://www.youtube.com/watch?v=Jao3s_CwdRU). As the videos I've linked to indicate, navigating by header is extremely important. 
+
+Resources:
+
+* [Web Accessibility Toolkit](https://accessibility.arl.org/standards-best-practices/) - Standards & Best Practices
+* [MDN Web Docs: What is accessibility?](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/What_is_accessibility)
+* [Google Developers: How To Do an Accessibility Review](https://developers.google.com/web/fundamentals/accessibility/how-to-review)
