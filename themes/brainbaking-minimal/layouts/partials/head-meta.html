@@ -49,13 +49,13 @@
          "@id": "{{ .Site.BaseURL }}"
     },
     "articleSection" : "{{ .Section }}",
-    "name" : "{{ .Title }}",
+    "name" : "{{ .Title | safeJS }}",
     {{ if .Params.subtitle }}
-      "headline" : "{{ .Params.subtitle }}",
+      "headline" : "{{ .Params.subtitle | safeJS }}",
     {{ else }}
-      "headline" : "{{ .Title }}",
+      "headline" : "{{ .Title | safeJS }}",
     {{ end }}
-    "description" : "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
+    "description" : "{{ if .Description }}{{ .Description | safeJS }}{{ else }}{{if .IsPage}}{{ .Summary | safeJS }}{{ end }}{{ end }}",
     {{ if isset .Params "language" }}
       "inLanguage" : "{{ .Params.language }}",
     {{ else if eq "essays" .Section }}
@@ -65,8 +65,9 @@
     {{ else }}
       "inLanguage" : "en-US",
     {{ end }}
+    "isFamilyFriendly": "true",
     {{ if .Params.bigimg }}
-    	"image": "{{.Site.BaseURL}}{{ .Params.bigimg }}",
+    	"image": "{{.Site.BaseURL}}bigimg/{{ .Params.bigimg }}",
     {{ else }}
       "image": "{{.Site.BaseURL}}img/avatar-icon.png",
     {{ end }}
@@ -74,22 +75,32 @@
     	"@type": "Person",
     	"name": "{{ .Site.Author.name }}"
 	  },
+    "creator" : {
+        "@type": "Person",
+        "name": "{{ .Site.Author.name }}"
+    },    
     "publisher": {
     	"@type": "Organization",
     	"name": "{{ .Site.Title }}",
+      "url": {{ .Site.BaseURL }},
     	"logo": {
     		"@type": "ImageObject",
-    		"url": "{{.Site.BaseURL}}img/avatar-icon.png"
+    		"url": "{{.Site.BaseURL}}img/avatar-icon.png",
+        "width":"32",
+        "height":"32"   
     	}
 	  },
     "accountablePerson" : "{{ .Site.Author.name }}",
-    "copyrightHolder" : "{{ .Site.Author.name }}",
+    "copyrightHolder" : "{{ .Site.Title }}",
     "copyrightYear" : "{{ .Date.Format "2006" }}",
-    "datePublished": "{{ if isset .Params "date" }}{{ .Date }}{{ else }}{{ .Lastmod }}{{ end }}",
-    "dateModified" : "{{ .Lastmod }}",
+    "dateCreated": "{{ .Date.Format "2006-01-02T15:04:05.00Z" | safeHTML }}",
+    "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05.00Z" | safeHTML }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05.00Z" | safeHTML }}",
     "url" : "{{ .Permalink }}",
     "wordCount" : "{{ .WordCount }}",
-    "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }}"{{ .Title }}", "{{ .Section }}" ]
+    "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }}"{{ .Title }}", "{{ .Section }}" ],
+    "genre" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }}"{{ .Title }}", "{{ .Section }}" ],
+    "articleBody": "{{ .Content | safeJS }}"
 }
 </script>
 
