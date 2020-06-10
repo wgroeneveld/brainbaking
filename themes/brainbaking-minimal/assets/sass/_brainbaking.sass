@@ -79,9 +79,8 @@ main
     blockquote p 
       margin: 0 !important
 
-  &.single
-    article a
-      text-decoration: underline
+    a
+      text-decoration: underline !important
 
   &.post article > p:first-of-type::first-letter,
   &.essays article > p:first-of-type::first-letter
@@ -96,11 +95,14 @@ main
     margin-top: 3.5rem
 
 
+.list-tags
+  a
+    text-decoration: none !important
+
 header
     margin: auto
     padding-top: 1rem
     padding-bottom: 1.5rem
-    max-width: 80%
 
     h1
       color: var(--accent)
@@ -149,6 +151,11 @@ kbd
       transition: left .1s ease-in
 
 
-.sl-counter
-  font-size: 1.2rem !important
-  font-weight: bold
+.sl-wrapper
+  .sl-counter
+    font-weight: bold
+    font-size: 1.2rem !important
+
+  .sl-caption
+    text-align: center
+    background: rgba(0,0,0,0.65) !important

@@ -1,0 +1,6 @@
+<svg class='icon icon-text'><use xlink:href="#tag"></use></svg>
+<span class='list-tags'>
+{{ range first 10 $.Site.Taxonomies.tags.ByCount }}
+    <a href="{{ $.Site.BaseURL }}tags/{{ .Name | urlize }}"><kbd class="item-tag">{{ .Name }}</kbd></a>
+{{ end }}
+</span>

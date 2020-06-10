@@ -62,7 +62,7 @@ enableGitInfo = true
     weight = 2
 
 [[menu.main]]
-    name = "Tags"
+    name = "Archives"
     pre = "<svg width='24' height='24'><use xlink:href='#tag'></use></svg> "
     url = "/tags"
     weight = 3

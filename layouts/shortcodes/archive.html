@@ -1,0 +1,12 @@
+{{ $year := index .Params 0 }}
+
+<div class="list">
+	<h2>{{ $year }}</h2>
+
+	{{ range (where (where $.Site.Pages "Section" "post") ".Params.date.Year" "eq" $year).GroupByDate "Jan" }}
+    	<h3>{{ .Key }}</h3>
+
+		{{ partial "list-ul" . }}
+    {{ end }}
+
+</div>

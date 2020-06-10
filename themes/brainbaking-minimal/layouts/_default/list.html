@@ -21,36 +21,16 @@
 		{{ end }}
 	{{ end }}
 
+
 	{{ if (not .Params.disableList) }}
 	<div class="list">
-	{{ range .Paginator.Pages.GroupByDate "2006" "desc" }}
+
+	{{ range (where .Paginator.Pages ".Params.category" "ne" "archive").GroupByDate "2006" "desc" }}
 		<h2>{{ .Key }}</h2>
 
 	    {{ range .Pages.GroupByDate "Jan" }}
 	    	<h3>{{ .Key }}</h3>
-
-	    	<ul class="list-ul">
-	    	{{ range .Pages.ByDate.Reverse }}
-	    		<li>
-					<span class="list-date">{{ .Date.Format ("02") }}</span>
-					<div class="list-title">
-						<h4>
-							<a href="{{ .RelPermalink }}">{{ .Title }}</a>
-						</h4>
-						{{ .Params.subtitle }} 
-					</div>
-					{{ if isset .Params "tags" }}
-						<div class="list-tags">
-								<svg class='icon icon-inline'><use xlink:href="#tag"></use></svg>&nbsp;
-						    {{ range .Params.tags }}
-						        <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}"><kbd class="item-tag">{{ . }}</kbd></a>
-						    {{ end }}
-						</div>
-					{{ end }}
-				</li>
-	    	{{ end }}
-	    	</ul>
-
+	    	{{ partial "list-ul" . }}
 	    {{ end }}
     {{ end }}
 	</div>

@@ -28,4 +28,43 @@ document.addEventListener("DOMContentLoaded",function() {
 
 	const box = new SimpleLightbox('.lbox', { /* options */ });
 
+	(function() {
+		const $target = document.querySelector('#searchapp');
+		const $pages = document.querySelector('#resultaten .pages');
+		if(!($target && window.searchposts)) return;
+
+		const query = new URLSearchParams(window.location.search);
+		const searchString = query.get('q') || "";
+		document.querySelector('#zoekentxt').value = searchString;
+
+		// Our index uses title as a reference
+		const postsByTitle = window.searchposts.reduce((acc, curr) => {
+		  acc[curr.title] = curr;
+		  return acc;
+		}, {});
+
+		fetch('/js/brainbaking-post.json').then(function (res) {
+		  return res.json();
+		}).then(function (data) {
+		  const index = lunr.Index.load(data);
+		  const matches = index.search(searchString);
+		  const matchPosts = [];
+		  matches.forEach((m) => {
+		    matchPosts.push(postsByTitle[m.ref]);
+		  });
+
+		  $pages.innerHTML = `(${matches.length})`;
+		  if (matchPosts.length > 0) {
+		    $target.innerHTML = matchPosts.filter(p => p).map(p => {
+		      return `<article>
+		        <h3><a href="${p.link}">${p.title}</a></h3>
+		        <p>${p.content}...</p>
+		      </article>`;
+		    }).join('');
+		  } else {
+		    $target.innerHTML = `<article>No relevant search results found.</article>`;
+		  }
+		});
+	})()
+
 });

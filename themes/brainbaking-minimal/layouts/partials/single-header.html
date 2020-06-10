@@ -38,8 +38,10 @@
         <use xlink:href='#tag'></use>
         </svg>
     {{ end }}
-    {{ range .Params.tags }}
-        <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}"><kbd class="item-tag">{{ . }}</kbd></a>
-    {{ end }}
+    <span class='list-tags'>
+        {{ range .Params.tags }}
+            <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}"><kbd class="item-tag">{{ . }}</kbd></a>
+        {{ end }}
+    </span>
 
 </header>
