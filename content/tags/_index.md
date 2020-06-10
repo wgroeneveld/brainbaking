@@ -11,13 +11,13 @@ Not finding what you're looking for? Try browsing the archives:
 ### By search
 
 <form method="get" action="/search" class="search-form">
-  <input id="zoekentxt" placeholder="e.g. 'philosophy'" name="q" type="text" style="width: 56%" />
+  <input id="zoekentxt" aria-label="Search terms" placeholder="e.g. 'philosophy'" name="q" type="text" style="width: 56%" />
   <button type="submit" class="button" style="width: 36%">Search!</button>
 </form>
 
 ### By year
 
-- [2020](/post/2020) ... when I started paying attention to webdesign again
+- [2020](/post/2020) ... when Hugo 0.7 was released and I started paying attention to webdesign
 - [2019](/post/2019) ... when I started taking computing education blogging seriously
 - [2018](/post/2018) ... when my PhD work started and I tried writing essays in Dutch
 - [2017](/post/2017) ... when self-improvement meta-posts started popping up more often

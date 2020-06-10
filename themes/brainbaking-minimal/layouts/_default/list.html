@@ -12,7 +12,9 @@
 		</header>
     {{ end }}
 
-	{{ if eq .Paginator.PageNumber 1 }}
+	{{ $paginator := .Paginate (where .Data.Pages ".Params.category" "ne" "archive") }}
+
+	{{ if eq $paginator.PageNumber 1 }}
 	    <hr/>
 	    {{ with .Content }}
 	    <article>
@@ -23,17 +25,16 @@
 
 
 	{{ if (not .Params.disableList) }}
-	<div class="list">
+		<div class="list">
+		{{ range ($paginator.Pages).GroupByDate "2006" "desc" }}
+			<h2>{{ .Key }}</h2>
 
-	{{ range (where .Paginator.Pages ".Params.category" "ne" "archive").GroupByDate "2006" "desc" }}
-		<h2>{{ .Key }}</h2>
-
-	    {{ range .Pages.GroupByDate "Jan" }}
-	    	<h3>{{ .Key }}</h3>
-	    	{{ partial "list-ul" . }}
+		    {{ range .Pages.GroupByDate "Jan" }}
+		    	<h3>{{ .Key }}</h3>
+		    	{{ partial "list-ul" . }}
+		    {{ end }}
 	    {{ end }}
-    {{ end }}
-	</div>
+		</div>
     {{ end }}
 
 	{{ template "_internal/pagination.html" . }}
