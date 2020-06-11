@@ -26,7 +26,24 @@ document.addEventListener("DOMContentLoaded",function() {
 		});
 	})();
 
-	const box = new SimpleLightbox('.lbox', { /* options */ });
+	new SimpleLightbox('.lbox');
+	new Headroom(document.querySelector(".navbar"), {
+		offset: 100,
+		tolerance: {
+			up: 10,
+			down: 0
+		},
+		classes : {
+	        initial : "headroom",
+	        pinned : "headroom-pinned",
+	        unpinned : "headroom-unpinned",
+	        top : "headroom-top",
+	        notTop : "headroom-not-top",
+	        bottom : "headroom-bottom",
+	        notBottom : "headroom-not-bottom",
+	        frozen: "headroom-frozen"
+	    }
+    }).init();
 
 	(function() {
 		const $target = document.querySelector('#searchapp');

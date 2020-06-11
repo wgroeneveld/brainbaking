@@ -1,0 +1,161 @@
+.headroom
+  will-change: transform
+  transition: transform 200ms linear
+
+  &-pinned
+    transform: translateY(0%)
+
+  &-unpinned
+    transform: translateY(-100%)
+
+
+.navbar-icon 
+    font-size: 125%
+    display: inline-block !important
+
+.navbar-right
+	@media (min-width: 768px)
+		float: right!important
+		margin-right: -15px
+
+nav
+  width: 100%
+  position: fixed
+  top: 0
+  background-color: rgba(243, 243, 243, 0.8)
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important
+  line-height: 1.4 !important
+  min-height: 50px
+  margin-bottom: 0
+  border-top: 5px solid var(--accent)
+
+  a:hover
+  	background-color: #e7e7e7
+  	text-decoration: none
+
+.navbar-nav
+	margin: 7.5px -15px
+	@media (min-width: 768px)
+	    float: left
+	    margin: 0
+
+.navbar-nav>li
+	@media (min-width: 768px)
+    	float: left
+
+.nav
+	padding-left: 0
+	margin-bottom: 0
+	list-style: none
+
+	&>li
+	    position: relative
+	    display: block
+
+.navbar-nav>li>a
+	@media (min-width: 768px)
+		padding-top: 15px
+		padding-bottom: 15px
+	padding: 10px 15px
+	line-height: 20px
+	position: relative
+	display: block
+
+
+.navbar-brand
+  float: left
+  height: 50px
+  font-size: 18px
+  position: relative
+  top: 15px
+  left: 30px
+  line-height: 20px
+  font-weight: bold
+
+
+.navbar-toggle
+  border-color: #ddd
+
+.navbar-toggle 
+  @media (min-width: 768px)
+      display: none
+  position: relative
+  float: right
+  padding: 9px 10px
+  margin-top: 8px
+  margin-right: 15px
+  margin-bottom: 8px
+  background-color: transparent
+  background-image: none
+  border: 1px solid transparent
+  border-radius: 4px
+
+  .icon-bar
+    background-color: #888
+
+  .icon-bar
+    display: block
+    width: 22px
+    height: 2px
+    border-radius: 1px
+
+    &+.icon-bar
+        margin-top: 4px
+
+.navbar-collapse, .navbar-form 
+  border-color: #e7e7e7
+
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header 
+  margin-right: -15px
+  margin-left: -15px
+  @media (min-width: 768px)
+      margin-right: 0
+      margin-left: 0
+
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse 
+  max-height: 340px
+
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse, .navbar-static-top .navbar-collapse 
+  @media (min-width: 768px)
+    padding-right: 0
+    padding-left: 0
+
+.navbar-collapse.collapse 
+  @media (min-width: 768px)
+    display: block!important
+    height: auto!important
+    padding-bottom: 0
+    overflow: visible!important
+
+.navbar-collapse 
+  @media (min-width: 768px)
+    width: auto
+    border-top: 0
+    -webkit-box-shadow: none
+    box-shadow: none
+
+.navbar-collapse 
+  padding-right: 15px
+  padding-left: 15px
+  overflow-x: visible
+  -webkit-overflow-scrolling: touch
+  border-top: 1px solid transparent
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1)
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1)
+
+.collapse 
+  display: none
+
+.collapsing
+  padding-top: 40px
+  animation: 1s fadeIn
+    animation-fill-mode: forwards
+
+
+@keyframes fadeIn
+  0%
+    opacity: 0
+  100%
+    visibility: visible
+    opacity: 1
+
