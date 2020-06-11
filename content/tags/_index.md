@@ -1,5 +1,8 @@
 ---
 title: Archives
+url: /archives/
+aliases:
+    - /tags/
 bigimg: Archive.jpg
 icontag: tag
 ---
@@ -18,10 +21,10 @@ Not finding what you're looking for? Try browsing the archives:
 ### By year
 
 - [2020](/post/2020) ... when Hugo 0.7 was released and I started paying attention to webdesign
-- [2019](/post/2019) ... when I started taking computing education blogging seriously
+- [2019](/post/2019) ... when computing education articles started appearing
 - [2018](/post/2018) ... when my PhD work started and I tried writing essays in Dutch
 - [2017](/post/2017) ... when self-improvement meta-posts started popping up more often
-- [2016](/post/2016) ... when legacy code convinced me to successfully unit test Visual Basic 6
+- [2016](/post/2016) ... when legacy software convinced me to successfully unit test Visual Basic 6 code
 - [2015](/post/2015) ... when I completely forgot about blogging at all
 - [2014](/post/2014) ... when I switched from mostly programming in Java to C# 
 - [2013](/post/2013) ... when this site was a wiki running on pmWiki, and then DokuWiki

@@ -2,8 +2,14 @@
 <html lang="{{ .Site.LanguageCode }}">
     <head>
         {{ partial "head-meta" . }}
-        <title>{{ .Title }}</title>
+        {{ if eq .Title  .Site.Title }}
+            <title>{{ .Title }}</title>
+        {{ else }}
+            <title>{{ .Site.Title }}: {{ .Title }}</title>
+        {{ end }}
         {{ if .Site.Params.favicon }}
+            <link rel="apple-touch-icon" href="{{ .Site.Params.favicon | absURL }}" />
+            <link rel="image_src" href="{{ .Site.Params.favicon | absURL }}">
             <link rel="icon" href="{{ .Site.Params.favicon | absURL }}">
         {{ end }}
         {{ partial "css" . }} {{ partial "js" . }} {{ hugo.Generator }}
@@ -20,7 +26,7 @@
         <nav class="navbar">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">{{ .Title }}</a>
+                    <a class="navbar-brand visible-xs" href="#">{{ .Site.Title }}</a>
 
                     <button class="navbar-toggle" aria-label="navigation toggle">
                         <span class="hidden" aria-hidden="true">navigation toggle</span>
