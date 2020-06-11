@@ -1,5 +1,13 @@
 $grey: #333
 
+@mixin transition($what: all, $time: 0.2s, $how: ease-in-out)
+    -webkit-transition: $what $time $how
+    -moz-transition:    $what $time $how
+    -ms-transition:     $what $time $how
+    -o-transition:      $what $time $how
+    transition:         $what $time $how
+
+
 @import 'fonts'
 @import 'bootstrap-minimal'
 @import 'bootstrap-nav'

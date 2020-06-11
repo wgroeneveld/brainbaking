@@ -1,6 +1,6 @@
 .headroom
   will-change: transform
-  transition: transform 200ms linear
+  @include transition (transform, 0.2s, linear)
 
   &-pinned
     transform: translateY(0%)
