@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded",function() {
 			navbar.setAttribute('class', 'navbar-collapse collapsing');
 		}
 
-		document.querySelector('header').addEventListener('click', navCollapse)
+		const someHeader = document.querySelector('header')
+		if(someHeader) someHeader.addEventListener('click', navCollapse)
 		document.querySelector('main').addEventListener('click', navCollapse)
 
 		document.querySelector('nav').addEventListener('click', () => {
