@@ -146,3 +146,27 @@ Inside generator functions, you can yield other generator function return values
 Lastly, what is that strange `for await` syntax? That's the "idiomatic" way to consume async generator functions. Do I even want to know? Here's the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of), it would take me too far to go into detail. Async iterators are part of ECMAScript 2018 (ES9), that is only 100% supported by the `V8` engine. For those of you who cannot wait, there are always polyfills... 
 
 I have to admit that [keeping up with the ECMA-262 standard](https://itnext.io/status-of-javascript-ecmascript-2019-beyond-5efca6a2d233) is getting extremely challenging... 
+
+### Or would you rather do things in sync?
+
+Most IO functions in Node come with a synchronous counterpart:
+
+```js
+var walk = (dir) => {
+    var results = []
+    var list = fs.readdirSync(dir)
+    list.forEach((fileInList) => {
+        const file = `${dir}/${fileInList}`
+        const stat = fs.statSync(file)
+        if (stat && stat.isDirectory()) { 
+            results = results.concat(walk(file))
+        } else { 
+            results.push(file)
+        }
+    })
+    return results
+}
+```
+
+The proposed solution above is a bit messy, but the key here is `readdirSync()`. That begs the question: why would you do serial actions asynchronous anyway? It's not that we're in need of parallelism here, although you could divide dir scanning into chunks if things get too big. For a simple directory structure, this will more than suffice. If it is the functional _immutability_ you're after, the above can easily be rewritten as such using `filter()`.
+
