@@ -2,11 +2,13 @@
 title: Inventing - for the worse?
 date: '2017-12-30'
 bigimg: craftheader.png
-url: /post/inventing-for-the-worse/
+aliases:
+    - /post/inventing-for-the-worse/
 subtitle: Is inventing always a good thing?
 tags:
-  - self improvement
   - craftsmanship
+categories:
+    - learning
 published: true
 ---
 

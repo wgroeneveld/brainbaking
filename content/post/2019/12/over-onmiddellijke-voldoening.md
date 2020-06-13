@@ -2,8 +2,9 @@
 title: 'Over Onmiddellijke Voldoening'
 date: '2019-12-02'
 bigimg: beren_winkel.jpg
+categories:
+    - braindump
 subtitle: Het ik-MOET-het-nu-hebben gevoel zijn zin geven
-published: true
 ---
 
 Spring jij onmiddellijk in je wagen als die plotse zin in tomatensoep op komt en je zelf niets in huis hebt? 'Snel even een blikje lenen, ik ben zo terug schat!' Het lijkt als een onschuldige actie, maar er schuilt heel wat meer achter deze dorst naar huiselijke soep: alles wat ik niet heb, wil ik, en wel nu dadelijk. 

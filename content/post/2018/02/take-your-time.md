@@ -6,8 +6,8 @@ url: /post/take-your-time/
 subtitle: Stop rushing. Start watching.
 tags:
   - journaling
-  - self improvement
-published: true
+categories:
+    - learning
 ---
 
 "Let's try to keep silent for a minute and enjoy the complete absence of traffic noise!" I yelled to my friends. We were standing on a sandy hill in the middle of national park "Hoge Veluwe". One of our friends, a biologist, enticed us to help him identify animal tracks in the sand. I don't know anything about even-toed ungulates, but I know a bit about the joy of discovery. <br/>

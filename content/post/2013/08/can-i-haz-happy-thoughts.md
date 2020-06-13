@@ -2,12 +2,14 @@
 title: Ending your day with happy thoughts
 date: '2013-08-13'
 bigimg: Ending your day with happy thoughts.jpg
-url: /post/can-i-haz-happy-thoughts/
 aliases:
+    - /post/can-i-haz-happy-thoughts/
     - /ending-your-day-with-happy-thoughts/
     - /can-i-haz-happy-thoughts/
     - /post/ending-your-day-with-happy-thoughts/
 subtitle: Or how a tiny thing can really help you sleep better
+categories:
+    - braindump
 tags: ['self improvement', 'journaling']
 ---
 <div class="summary">

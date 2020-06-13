@@ -4,11 +4,11 @@ date: '2018-03-25'
 bigimg: tea.png
 url: /post/serendipitous-creativity/
 subtitle: Focused or collaborative attention?
+categories:
+    - learning
 tags:
-  - self improvement
   - collaboration
   - concentration
-published: true
 ---
 
 When was the last time you were able to focus well on a difficult task in an office landscape? For long periods of time? Did you manage to finish the task in time? Knowledge workers are increasingly pushed together in large open spaces to promote collaboration and serendipity. But those unplanned happy accidents create another completely unplanned rather unhappy accident: the loss of concentration. According to Cal Newport's "[Deep Work](https://www.goodreads.com/book/show/25744928-deep-work)" term, long uninterrupted hours of concentration manage to get difficult things done - not short bursts of collaboration. He calls those bursts "Shallow Work". Being able to concentrate well for a longer period of time is often needed to solve a complex problem. Problems like these are not uncommon in the software industry where I'm in. Deliberate practice and "flow" are related to Deep Work. The ability to concentrate for longer periods on time is becoming an increasingly rare skill. 

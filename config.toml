@@ -15,6 +15,7 @@ enableGitInfo = true
 [params]
     fathomid = "WNLTO"
     favicon = "/img/avatar-icon.png"
+    pagination = 15
 
     # disabled to get rid of cloudflare cookies
     MathJax = false
@@ -52,15 +53,15 @@ enableGitInfo = true
     privacyEnhanced = true
 
 [[menu.main]]
-    name = "Tech Blog"
-    pre = "<svg width='24' height='24'><use xlink:href='#tech'></use></svg> "
-    url = "/post"
+    name = "Brain Baking:"
+    pre = ""
+    url = "/"
     weight = 1
 
 [[menu.main]]
-    name = "Essays"
+    name = "Blog"
     pre = "<svg width='24' height='24'><use xlink:href='#book'></use></svg> "
-    url = "/essays"
+    url = "/post"
     weight = 2
 
 [[menu.main]]

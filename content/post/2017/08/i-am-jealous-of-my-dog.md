@@ -2,10 +2,11 @@
 title: I'm jealous of my dog
 date: '2017-08-17'
 bigimg: woef.jpg
-url: /post/i-am-jealous-of-my-dog/
+aliases:
+    - /post/i-am-jealous-of-my-dog/
 subtitle: Getting rid of garbage in your head
-tags:
-  - self improvement
+categories:
+  - learning
 published: true
 ---
 

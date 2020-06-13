@@ -1,5 +1,5 @@
 ---
-title: Archives
+title: Baked Archives
 url: /archives/
 aliases:
     - /tags/
@@ -20,11 +20,22 @@ Not finding what you're looking for? Try browsing the archives:
 
 ### By category
 
+`try {`
+
 - [Programming](/categories/programming): Software engineering, programming languages, TDD, DDD, etc
 - [Webdesign](/categories/webdesign): Design, layouting, website generation, privacy, speed, etc
 - [Software](/categories/software): Productivity tools, writing toolchains, etc
 - [Education](/categories/education): Computing education, teaching, PhD work, findings in academica, etc
-- [Braindump](/categories/braindump): A catch-all for random thoughts of the day
+- [Learning](/categories/learning): Self-improvement, meta-learning, reading and journaling, etc
+
+`} catch {`
+
+- [Braindump](/categories/braindump): A _catch-all_ (ha!) for random small and big thoughts of the day
+
+`}`
+
+I also write about retro PC/Handheld gaming and actual _bread baking_ on sister websites of Brain Baking: [Jefklak's Retro Codex](https://jefklakscodex.com) and [Red Zuurdesem](https://redzuurdesem.be), respectively. 
+
 
 ### By year
 

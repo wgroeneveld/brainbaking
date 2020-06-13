@@ -2,8 +2,11 @@
 title: Learning to become a baker
 bigimg: baker.jpg
 date: '2013-10-13'
-url: /post/learning-to-become-a-baker/
+aliases:
+    - /post/learning-to-become-a-baker/
 subtitle: Why there are more and more industrial bakers who don’t care what they sell. 
+categories:
+    - braindump
 tags: ['braindump', 'learning', 'baking', 'bread' ]
 ---
 

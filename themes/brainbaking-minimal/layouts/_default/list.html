@@ -9,10 +9,14 @@
 		    <h1>
 	      		<svg class='icon'><use xlink:href="#{{ .Params.icontag }}"></use></svg>&nbsp;{{ .Title }}
 			</h1>
+		    {{ if isset .Params "subtitle" }}
+		        <h2>{{ .Params.subtitle }}</h2>
+	        {{ end }}
 		</header>
     {{ end }}
 
-	{{ $paginator := .Paginate (where .Data.Pages ".Params.type" "ne" "archive") }}
+
+	{{ $paginator := .Paginate (where .Data.Pages ".Params.type" "ne" "archive") $.Site.Params.pagination }}
 
 	{{ if eq $paginator.PageNumber 1 }}
 	    <hr/>

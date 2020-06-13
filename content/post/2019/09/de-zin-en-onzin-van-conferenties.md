@@ -2,6 +2,8 @@
 title: 'De zin en onzin van conferenties'
 date: '2019-09-23'
 bigimg: conferenties.jpg
+categories:
+    - education
 subtitle: Een verspilling van tijd en middelen, of juist niet?
 published: true
 ---

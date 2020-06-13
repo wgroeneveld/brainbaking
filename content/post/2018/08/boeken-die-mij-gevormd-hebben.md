@@ -3,8 +3,9 @@ title: Boeken die mij gevormd hebben tot wie ik ben
 date: '2018-08-20'
 bigimg: 2017inbooks.png
 subtitle: Deze teksten lieten een blijvende indruk na
+categories:
+    - learning
 tags:
-  - reading
   - journaling
 published: true
 ---

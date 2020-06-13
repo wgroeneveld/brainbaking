@@ -2,17 +2,18 @@
 title: Journaling in practice
 date: '2017-07-10'
 bigimg: journalingpratice.jpg
-url: /post/journaling-in-practice/
+aliases:
+    - /post/journaling-in-practice/
 subtitle: My guide to keeping a journal
+categories:
+    - learning
 tags:
   - journaling
-  - self improvement
-  - learning
   - fountain pens
 published: true
 ---
 
-If you're wondering why you should journal in the first place, then maybe it's a good idea to start reading [here](/post/healing-creative-scars/) and [here](/post/a-samurai-learning-mindset/). 
+If you're wondering why you should journal in the first place, then maybe it's a good idea to start reading ['healing creative scars'](/post/healing-creative-scars/) and ['a samurai learning mindset'](/post/a-samurai-learning-mindset/). 
 
 There are hundreds of resources available on the Internet on how to journal, how to keep a bullet journal, how to index everything, how to getting things done and so forth. The following advice is something that _works for me_ - it might not work for you at all. Don't worry, simply try something else. Journaling should be kept **easy and fun**, otherwise you won't be doing it daily and you won't gain the same amount of satisfaction and things might not get done at all (if that is what you're after).
 

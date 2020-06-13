@@ -5,7 +5,7 @@ aliases:
     - /post/development-principles-in-cooking/
 tags: ['cooking', 'development', 'principles' ]
 categories:
-    - braindump
+    - learning
 published: true
 ---
 

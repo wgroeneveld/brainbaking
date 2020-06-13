@@ -60,10 +60,6 @@
     "description" : {{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }},
     {{ if isset .Params "language" }}
       "inLanguage" : "{{ .Params.language }}",
-    {{ else if eq "essays" .Section }}
-      "inLanguage" : "nl-BE",
-    {{ else if eq "teaching" .Section }}
-      "inLanguage" : "nl-BE",
     {{ else }}
       "inLanguage" : "en-US",
     {{ end }}

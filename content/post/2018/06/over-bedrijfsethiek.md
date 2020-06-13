@@ -2,7 +2,8 @@
 title: 'Over het introduceren van bedrijfsethiek'
 date: '2018-06-11'
 subtitle: Een cultuur aanbrengen en onderhouden
-published: true
+categories:
+    - learning
 ---
 
 Addendum: [7 highly successful software engineering cultures](https://techbeacon.com/lessons-7-highly-successful-software-engineering-cultures) is de moeite om in detail na te lezen, waarbij bedrijven zoals GitLab hun _"Team Handboek"_ open stellen. Het gaat véél verder dan enkel een cultuur: er staat in wanneer aandeelhouders samenkomen, hoe er omgegaan wordt met nieuwe kandidaten en hoe je je verlof dient in te plannen. **Transparantie** zò sterk door de aorta van het bedrijf laten stromen, is zeer bewonderenswaardig. 

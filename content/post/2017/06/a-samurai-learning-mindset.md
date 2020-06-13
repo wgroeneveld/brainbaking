@@ -2,11 +2,11 @@
 title: A samurai learning mindset
 date: '2017-06-20'
 bigimg: musashi.jpg
-url: /post/a-samurai-learning-mindset/
+aliases:
+    - /post/a-samurai-learning-mindset/
 subtitle: Bushido and the ever learning spirit, techniques for 1600 and 2017?
-tags:
-  - learning
-  - self improvement
+categories:
+    - learning
 published: true
 ---
 

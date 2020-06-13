@@ -2,8 +2,11 @@
 title: Healing creative scars
 date: '2017-06-25'
 bigimg: boekjesheader.png
-url: /post/healing-creative-scars/
+aliases:
+    - /post/healing-creative-scars/
 subtitle: My ultimate secret weapon for self improvement
+categories:
+    - learning
 tags:
   - journaling
   - self improvement

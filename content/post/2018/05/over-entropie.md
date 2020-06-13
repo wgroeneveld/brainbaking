@@ -2,7 +2,8 @@
 title: 'Over entropie'
 date: '2018-05-20'
 subtitle: Hoe gaan wij om met chaos?
-published: true
+categories:
+    - braindump
 ---
 
 Filosofie kan gezien worden als een __poging__ om __dingen__ rondom de mensheid te definiëren. Ik noem het een __poging__, en geen manier, omdat we al duizenden jaren kritiek aan het geven zijn op elkaars definities. Ik noem het __dingen__, en niet zichtbare dingen, omdat juist ongrijpbare dingen ons zo sterk intrigeren dat we ook de nood voelen om daar een theoretische vorm aan te koppelen. 

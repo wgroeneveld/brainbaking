@@ -2,12 +2,13 @@
 title: 'Are you handing over enough when inspiring someone?'
 date: '2017-05-30'
 subtitle: What info to convey, when to stop? 
-url: /post/handing-over-enough-when-inspiring/
+aliases:
+    - /post/handing-over-enough-when-inspiring/
+categories:
+    - education
 tags:
-- teaching
 - inspiring
 - giving
-- braindump
 published: true
 ---
 

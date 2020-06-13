@@ -4,11 +4,7 @@
             <svg class='icon icon-text' width='24' height='24'>
                 <use xlink:href='#discuss'></use>
             </svg>
-            {{ if eq "essays" .Section }}
-                Discussieer mee
-            {{ else }}
-                Join the Discussion
-            {{ end }}
+            Join the Discussion
         </h4>
 
         {{- if (ne hugo.Environment "development") }}

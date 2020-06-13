@@ -2,10 +2,10 @@
 title: Teaching yourself to draw
 date: '2017-02-01'
 subtitle: A year of spilling lots of ink
-url: '/post/teaching-yourself-to-draw/'
-tags:
-- Teaching yourself to draw
-published: true
+aliases:
+    - /post/teaching-yourself-to-draw/
+categories:
+    - learning
 ---
 
 Inspired by Noah Bradley's [Don't go to art school](https://medium.com/i-m-h-o/dont-go-to-art-school-138c5efd45e9#.aul09q3wr) blog at Medium.com. 
