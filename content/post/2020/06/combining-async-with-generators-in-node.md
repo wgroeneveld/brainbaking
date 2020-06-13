@@ -5,6 +5,8 @@ subtitle: "Feel like blowing up your colleagues heads? Use async function*!"
 tags:
   - javascript
   - node
+categories:
+  - programming
 ---
 
 Whizbang time! So, I was in need of a simple resursive Javascript function that iterates over all directories to look for `.md` Markdown files, to feed it to a search indexer. This is a node script my deploy script utilizes when updating this website. My Hugo content directory looks like this nowadays:

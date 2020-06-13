@@ -5,6 +5,8 @@ subtitle: Bridging the gap between software development requirements in the indu
 tags:
   - phd
 published: true
+categories:
+    - education
 aliases: 
     - /proposal/
     - /post/phd-proposal/

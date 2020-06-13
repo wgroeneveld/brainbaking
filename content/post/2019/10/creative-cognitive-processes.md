@@ -8,6 +8,8 @@ subtitle: Mapping creativity models to software development
 tags:
   - creativity
   - phd
+categories:
+  - education
 published: true
 ---
 

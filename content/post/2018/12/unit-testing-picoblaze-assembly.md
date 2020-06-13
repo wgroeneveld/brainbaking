@@ -5,6 +5,8 @@ date: '2018-12-05'
 aliases:
   - /post/unit-testing-picoblaze-assembly/
 subtitle: Writing Psm Assembly test-first, because why wouldn't you?
+categories:
+  - programming
 tags: [ 'unit testing', 'assembly', 'picoblaze']
 ---
 

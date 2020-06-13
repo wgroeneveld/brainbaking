@@ -6,6 +6,8 @@ aliases:
 - /post/unit-testing-stored-procedures/
 subtitle: And a pragmatic guide on how to include them into your build system. 
 tags: [ 'unit testing', 'sql']
+categories:
+    - programming
 ---
 
 This article is based on the notes I've collected on [My Wiki](http://brainbaking.com/wiki/code/db/sql). 

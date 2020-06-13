@@ -6,6 +6,8 @@ aliases:
   - /post/domain-driven-design-in-c/
 subtitle: Who says imperative languages don't do DDD?
 tags: ['domain driven design', 'C', 'C++' ]
+categories: 
+  - programming
 published: true
 ---
 

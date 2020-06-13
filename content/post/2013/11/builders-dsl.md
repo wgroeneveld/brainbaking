@@ -6,6 +6,8 @@ subtitle: the trainwreck/builder/chaining pattern can be dangerous and here's wh
 aliases:
     - /enhancing-the-builder-pattern-with-closures/
     - /post/builders-dsl/
+categories:
+    - programming
 tags:
   - closures
   - groovy

@@ -9,6 +9,9 @@ tags:
   - teaching
   - gba
   - C++
+categories:
+    - education
+    - programming
 published: true
 ---
 

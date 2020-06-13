@@ -6,9 +6,10 @@ aliases:
   - /post/hugo-extended/
 tags:
   - hugo
-  - webdesign
   - babel
   - sass
+categories:
+  - webdesign
 published: true
 ---
 

@@ -6,10 +6,11 @@ aliases:
     - /post/a-decade-in-the-industry/
 subtitle: Everything I've learned in 10 + 1 years
 tags:
-  - braindump
   - craftsmanship
   - development
 published: true
+categories:
+    - braindump
 ---
 
 It never occurred to me that an article like this might be very informative for those interested in knowing how things work in the software engineering industry. Google's related results to "10 years in IT industry" are rather depressing: "what to do after 10 years of experience", "career options after 10 years", "how to survive industry after 10 years", "best career path after 10 years". It seems to suggest you're done after _"grinding to level 10"_ - time to boot up another character build? I don't know - there's a plethora of options available to you, as long as you're creative enough to see them. 

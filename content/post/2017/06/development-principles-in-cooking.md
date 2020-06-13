@@ -4,6 +4,8 @@ date: '2017-06-09'
 aliases:
     - /post/development-principles-in-cooking/
 tags: ['cooking', 'development', 'principles' ]
+categories:
+    - braindump
 published: true
 ---
 

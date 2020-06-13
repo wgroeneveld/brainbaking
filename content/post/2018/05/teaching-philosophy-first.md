@@ -6,6 +6,8 @@ tags:
 - teaching
 - philosophy
 published: true
+categories:
+    - education
 aliases: ["/post/teaching-by-philosophy"]
 ---
 

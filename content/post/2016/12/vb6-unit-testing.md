@@ -4,6 +4,8 @@ subtitle: 'Even older 4GL languages have unit testing capabilities'
 date: '2016-12-27'
 aliases:
     - /post/vb6-unit-testing/
+categories:
+    - programming
 tags: [ 'unit testing', 'VB6' ]
 ---
 

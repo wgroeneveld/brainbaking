@@ -4,6 +4,8 @@ date: '2020-04-13'
 subtitle: "Migrating to, securing, and backing up your own server."
 aliases:
     - /post/vps/
+categories:
+    - webdesign
 tags:
   - server
   - linux

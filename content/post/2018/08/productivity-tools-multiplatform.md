@@ -7,6 +7,8 @@ subtitle: Matching my most frequently used tools on OSX, Linux and Windows
 tags:
   - Productivity
   - tools
+categories:
+    - software
 published: true
 ---
 

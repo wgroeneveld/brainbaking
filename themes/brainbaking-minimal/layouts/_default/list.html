@@ -12,7 +12,7 @@
 		</header>
     {{ end }}
 
-	{{ $paginator := .Paginate (where .Data.Pages ".Params.category" "ne" "archive") }}
+	{{ $paginator := .Paginate (where .Data.Pages ".Params.categories" "ne" "archive") }}
 
 	{{ if eq $paginator.PageNumber 1 }}
 	    <hr/>

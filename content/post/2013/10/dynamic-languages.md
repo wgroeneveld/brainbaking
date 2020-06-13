@@ -9,7 +9,9 @@ tags = [
     "dynamiclangs"
 ]
 date = "2013-10-01"
+categories = ["programming"]
 +++
+
 ## Dynamic Languages: Constructs vergelijken 
 
 Deze pagina vergelijkt verschillende dynamische talen in een poging om een overzicht te maken tussen de alsmaar groeiende lijst. De meest gebruikte features van zulke talen worden hieronder opgelijst.

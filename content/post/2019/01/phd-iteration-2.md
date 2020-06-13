@@ -7,6 +7,8 @@ aliases:
     - /post/phd-iteration-2/
 tags:
   - phd
+categories:
+    - education
 published: true
 ---
 

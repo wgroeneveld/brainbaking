@@ -3,8 +3,9 @@ title: "Designing websites with accessibility in mind"
 date: '2020-06-04'
 subtitle: "A little bit of effort makes your site more inclusive for everyone."
 tags:
-  - webdesign
   - accessibility
+categories:
+  - webdesign
 ---
 
 In my last post about [webdesign](/tags/webdesign) called "[tracking and privacy on websites](post/2020/06/tracking-and-privacy-on-websites/)", I ended with a list of things you need to take into account when building a website - of which **accessibility** is one that is most often overlooked. Something I'm also guilty of. Here's my own howto report and effort to open up Brain Baking for everyone, learning how to design websites with accessibility in mind.

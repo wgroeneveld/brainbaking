@@ -5,6 +5,8 @@ aliases:
     - /unit-testing-extjs-ui-with-siesta/
     - /post/uni-testing-extjs-ui/
 date: '2014-12-23'
+categories:
+    - programming
 subtitle: An attempt to replace instable Webdriver tests with Siesta UI tests
 tags: [ 'unit testing', 'javascript', 'extjs', 'siesta']
 ---

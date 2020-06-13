@@ -10,6 +10,8 @@ tags:
   - pandoc
   - markdown
   - latex
+categories:
+  - software
 published: true
 ---
 

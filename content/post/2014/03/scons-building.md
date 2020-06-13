@@ -4,6 +4,8 @@ bigimg: Bye autotools hello Scons.jpg
 date: '2014-03-26'
 subtitle: Building C++ projects with Scons
 tags: [ 'C++', 'python', 'build ecosystem' ]
+categories:
+    - programming
 ---
 
 Remember this? 

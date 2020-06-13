@@ -5,6 +5,8 @@ date: '2014-09-22'
 aliases:
     - /post/custom-webdriver-page-factories/
 subtitle: Wrapping WebElements to reduce boilerplate clutter
+categories:
+    - programming
 tags: ['unit testing', 'java', 'CSharp', 'webdriver', 'scenario testing' ]
 ---
 The problem: Webdriver elements returned by `driver.FindElement()` are too generic. There're the `Text`, `SendKeys()` and `Click()` methods/properties (depending your on C#/Java implementation). The solution is to simply wrap all elements inside custom HTML objects which contain specific methods like `ShouldContainValue` or `Type` (okay, that's a one-to-one mapping with `SendKeys()`, but it's a lot less technical!). Instead of

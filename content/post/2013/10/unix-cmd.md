@@ -8,6 +8,7 @@ tags = [
     "cmd"
 ]
 date = "2013-10-01"
+categories = [ "software" ]
 +++
 
 ### Binaries zoeken 

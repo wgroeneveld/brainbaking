@@ -5,9 +5,9 @@ aliases:
     - /post/teaching-kids-how-to-program/
 subtitle: Usable tips also applyable to grownups?
 tags:
-- teaching
-- programming
 - techorama
+categories:
+    - education
 published: true
 ---
 

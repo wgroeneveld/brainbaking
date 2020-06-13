@@ -9,6 +9,8 @@ tags:
   - competences
   - certificates
   - phd
+categories:
+    - education
 published: true
 ---
 

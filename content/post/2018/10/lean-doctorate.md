@@ -9,6 +9,8 @@ tags:
   - phd
   - tools
   - agile
+categories:
+    - education
 published: true
 ---
 

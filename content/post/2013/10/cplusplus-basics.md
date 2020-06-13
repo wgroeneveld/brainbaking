@@ -7,6 +7,7 @@ tags = [
     "c++"
 ]
 date = "2013-10-01"
+categories = ["programming"]
 +++
 
 ## Scope 

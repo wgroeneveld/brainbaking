@@ -3,8 +3,9 @@ title: "Tracking and privacy concerns on websites"
 date: '2020-06-01'
 subtitle: "I redesigned Brain Baking to get rid of trackers!"
 tags:
-  - webdesign
   - privacy
+categories:
+  - webdesign
 ---
 
 Thanks to another great "internet stumble", I came across [Laura Kalbag's blog](https://laurakalbag.com/) and her stance on [privacy and tracking](https://laurakalbag.com/i-dont-track-you/). She's been giving talks on the subject and created ad- and track-blocking software. Ever since the European GDPR, cookie banners have annoyed website visitors, but how many of us simply press "Accept, now get on with it"? I did a few experiments, and the results are downright **scary**. 

@@ -10,6 +10,7 @@ enableGitInfo = true
 
 [taxonomies]
     tag = "tags"
+    category = "categories"    
 
 [params]
     fathomid = "WNLTO"

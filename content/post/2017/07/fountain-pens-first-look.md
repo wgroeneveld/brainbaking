@@ -7,6 +7,8 @@ aliases:
 subtitle: A test drive from a drawing perspective
 tags:
   - fountain pens
+categories:
+    - braindump
 published: true
 ---
 

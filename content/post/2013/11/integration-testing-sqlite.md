@@ -5,6 +5,8 @@ aliases:
     - /integration-testing-with-sqlite/
     - /post/integration-testing-sqlite/
 date: '2013-11-04'
+categories:
+    - programming
 subtitle: Decoupling your integrated database environment from your development.
 tags: [ 'unit testing', 'sql', 'CSharp', 'sqlite' ]
 ---

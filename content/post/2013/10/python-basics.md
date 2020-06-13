@@ -9,6 +9,7 @@ tags = [
     "classes"
 ]
 date = "2013-10-01"
+categories = ["programming"]
 +++
 
 Handy links:

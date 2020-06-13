@@ -6,6 +6,8 @@ aliases:
     - /post/react-in-extjs/
 date: '2016-01-26'
 subtitle: Migrating from Extjs to React gradually
+categories:
+    - programming
 tags: [ 'javascript', 'extjs', 'react' ]
 ---
 

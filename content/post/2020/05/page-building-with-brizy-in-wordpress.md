@@ -5,9 +5,10 @@ bigimg: brizy.jpg
 subtitle: Shortcodes and custom hacks incoming...
 tags:
   - php
-  - webdesign
   - wordpress
   - brizy
+categories:
+  - webdesign
 ---
 
 As you may have read, I'm quite the [Hugo.io fan](/post/hugo-extended) and I build all my websites using this static website generator. As cool and tech-savvy it is, projects like [forestry.io](https://forestry.io/) exist to leverage Hugo's powers into the world of teams an non-technical bloggers. However, it still requires things like _committing_ and does not come with a lot of custom design options. 

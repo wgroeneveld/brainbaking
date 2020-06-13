@@ -5,9 +5,10 @@ subtitle: "Iterative methods in the academic world? Nope."
 aliases:
     - /post/agile-academia/
 tags:
-  - phd
   - agile
   - development
+categories:
+  - education
 published: true
 ---
 

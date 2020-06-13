@@ -5,6 +5,8 @@ date: '2014-09-23'
 aliases:
   - /post/faking-domain-logic/
 subtitle: Using C# extensions to create the illusion of domain logic
+categories:
+  - programming
 tags: ['domain driven design', 'CSharp', 'code smells' ]
 ---
 

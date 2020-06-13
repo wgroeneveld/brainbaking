@@ -8,7 +8,9 @@ tags = [
     "classes"
 ]
 date = "2013-10-01"
+categories = ["programming"]
 +++
+
 # Ruby Classes 
 
 ### Closures and lambda's 

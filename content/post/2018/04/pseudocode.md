@@ -5,6 +5,8 @@ bigimg: btrees.png
 subtitle: Clean code, pseudocode or real code?
 aliases:
     - /post/pseudocode/
+categories:
+    - programming
 tags:
   - java
   - functional programming

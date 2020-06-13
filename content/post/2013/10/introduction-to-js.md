@@ -7,7 +7,9 @@ tags = [
     "javascript"
 ]
 date = "2013-10-01"
+categories = ["programming"]
 +++
+
 # Javascript Inleiding 
 
 ### Primitives 

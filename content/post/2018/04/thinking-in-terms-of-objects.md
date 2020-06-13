@@ -5,7 +5,9 @@ aliases:
 - /post/thinking-in-terms-of-objects/
 subtitle: "An introduction to software design in terms of objects"
 tags:
-- teaching
+  - teaching
+categories:
+  - programming
 published: true
 ---
 

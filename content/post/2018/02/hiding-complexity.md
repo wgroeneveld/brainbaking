@@ -5,6 +5,8 @@ aliases:
         - /post/hiding-complexity/
 date: '2018-02-26'
 subtitle: Do make it easy to read. Don't expose inner workings.
+categories: 
+        - programming
 tags: ['domain driven design' ]
 ---
 

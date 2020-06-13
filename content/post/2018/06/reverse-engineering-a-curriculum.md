@@ -7,6 +7,8 @@ aliases:
 tags:
 - teaching
 - phd
+categories:
+    - education
 published: true
 ---
 
