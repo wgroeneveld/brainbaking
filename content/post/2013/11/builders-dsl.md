@@ -24,35 +24,39 @@ This post is inspired by Venkat Subramaniam's [Devoxx 2013 talk Thinking Functio
 
 For years, I've been using the builder pattern to quickly create new objects to be inserted into the database or to inject our domain objects with the required data. We started with so called "Object Mothers", static methods which simply create and fill up an object, passing in a huge amount of parameters. That quickly became very cumbersome to work with. Most of the time, the code will  look like this, whether it's C# or Java doesn't really matter:
 
-    public class UserBuilder
+```java
+public class UserBuilder
+{
+    private UserType_V1_0 type = UserType_V1_0.Administrator;
+    private string code = "code";
+
+    public User_V1_0 Build()
     {
-        private UserType_V1_0 type = UserType_V1_0.Administrator;
-        private string code = "code";
-
-        public User_V1_0 Build()
-        {
-            User_V1_0 user = new User_V1_0(code, "name", type, "id", "campusId", true);
-            return user;
-        }
-
-        public UserBuilder WithCode(string code)
-        {
-            this.code = code;
-            return this;
-        }
-
-        public UserBuilder WithType(UserType_V1_0 type)
-        {
-            this.type = type;
-            return this;
-        }
+        User_V1_0 user = new User_V1_0(code, "name", type, "id", "campusId", true);
+        return user;
     }
+
+    public UserBuilder WithCode(string code)
+    {
+        this.code = code;
+        return this;
+    }
+
+    public UserBuilder WithType(UserType_V1_0 type)
+    {
+        this.type = type;
+        return this;
+    }
+}
+```
 
 Used this way:
 
-      var user = new UserBuilder()
-        .withCode("AB")
-        .Build();
+```java
+  var user = new UserBuilder()
+    .withCode("AB")
+    .Build();
+```
 
 Okay, what's happening here?
 
@@ -66,45 +70,49 @@ I've never given it much thought, but yes, there are some problems with this imp
   
 Using a lambda to pass in the work on our builder might solve this:
 
-    public class UserBuilder
+```java
+public class UserBuilder
+{
+    private UserType_V1_0 type = UserType_V1_0.Administrator;
+    private string code = "code";
+
+    private UserBuilder()
     {
-        private UserType_V1_0 type = UserType_V1_0.Administrator;
-        private string code = "code";
-
-        private UserBuilder()
-        {
-        }
-
-        private User_V1_0 Build()
-        {
-            return new User_V1_0(code, "name", type, "id", "campusId", true);
-        }
-
-        public static User_V1_0 Build(Func<UserBuilder, UserBuilder> block)
-        {
-            var builder = new UserBuilder();
-            block(builder);
-            return builder.Build();
-        }
-
-        public UserBuilder WithCode(string code)
-        {
-            this.code = code;
-            return this;
-        }
-
-        public UserBuilder WithType(UserType_V1_0 type)
-        {
-            this.type = type;
-            return this;
-        }
     }
+
+    private User_V1_0 Build()
+    {
+        return new User_V1_0(code, "name", type, "id", "campusId", true);
+    }
+
+    public static User_V1_0 Build(Func<UserBuilder, UserBuilder> block)
+    {
+        var builder = new UserBuilder();
+        block(builder);
+        return builder.Build();
+    }
+
+    public UserBuilder WithCode(string code)
+    {
+        this.code = code;
+        return this;
+    }
+
+    public UserBuilder WithType(UserType_V1_0 type)
+    {
+        this.type = type;
+        return this;
+    }
+}
+```
 
 Used this way:
 
-      var user = UserBuilder.Build(_ =>
-        _.WithCode("AB")
-    		   .withType(UserType_V1_0.NursingStaff));
+```java
+  var user = UserBuilder.Build(_ =>
+    _.WithCode("AB")
+		   .withType(UserType_V1_0.NursingStaff));
+```
 
 Notice that using the character `_` is a convention if there's only one parameter for the lambda, it could also be called "builder" but we still need to use this, as `block(builder)` passes in the temp created builder. What did we solve? 
 
@@ -115,18 +123,22 @@ Notice that using the character `_` is a convention if there's only one paramete
 
 In Groovy (the devoxx example), we can cleverly use the `.delegate` mechanism to eliminate the need to chain at all. Groovy also reduces the syntax noise a bit (brackets, semicolons). We could create a `Build` method like this:
 
-      public static User_V1_0 Build(block) {
-        new UserBuilder().with block;
-        // does the same as cloning the block, assigning it with .delegate and executing it. 
-      }
+```java
+  public static User_V1_0 Build(block) {
+    new UserBuilder().with block;
+    // does the same as cloning the block, assigning it with .delegate and executing it. 
+  }
+```
 
 Used this way:
 
-      UserBuilder.Build {
-    	 Code "AB" // Same as Code("AB");
-    	 Type UserType_V1_0.NursingStaff
-      }
-  
+```java
+  UserBuilder.Build {
+	 Code "AB" // Same as Code("AB");
+	 Type UserType_V1_0.NursingStaff
+  }
+```
+
 How does this work?
 
   - The `Code()` method does not exist in our block closure, but we assign a delegate to it: our temp lexically scoped `UserBuilder` instance - that's where the method lives. When the code is executed, Groovy first looks for a method within the block, and then tries to fetch it via the delegate. 
@@ -139,39 +151,43 @@ In Javascript, you can also manage to do something like that using `.prototype` 
 
 Of course, builders are completely redundant in JS. Just create a `JSON` object using `{ key: value }`. Done. But this principle might be interesting for things like creating a "mailer" - as in the devoxx 2013 example:
 
-    var mailerPrototype = {
-        from: function() { console.log("from"); },
-        to: function() { console.log("to"); },
-        sub: function() { console.log("sub"); },
-        body: function() { console.log("body"); },
-        send: function() { console.log("sending..."); }
-    };
+```javascript
+var mailerPrototype = {
+    from: function() { console.log("from"); },
+    to: function() { console.log("to"); },
+    sub: function() { console.log("sub"); },
+    body: function() { console.log("body"); },
+    send: function() { console.log("sending..."); }
+};
 
-    var mailer = function() {};
-    mailer.mail = function(block) {
-        // .prototype magic happens inside Object.create()
-        block.apply(Object.create(mailerPrototype));
-    }
+var mailer = function() {};
+mailer.mail = function(block) {
+    // .prototype magic happens inside Object.create()
+    block.apply(Object.create(mailerPrototype));
+}
 
-    // this still sucks, I don't want to use 'this.', can use chaining... 
-    mailer.mail(function() {
-        this.from("me@gmail.com");
-        this.to("you@gmail.com");
-        this.sub("this is my subject");
-        this.body("hello");
-        this.send();
-    });
-
+// this still sucks, I don't want to use 'this.', can use chaining... 
+mailer.mail(function() {
+    this.from("me@gmail.com");
+    this.to("you@gmail.com");
+    this.sub("this is my subject");
+    this.body("hello");
+    this.send();
+});
+```
+`
 You'll still need `this.`, sadly. This is not needed in Groovy:
 
-    mailer.mail {
-        from "me@gmail.com"
-        to "you@gmail.com"
-        sub "this is my subject"
-        body "hello"
-        send()
-    }
-
+```javascript
+mailer.mail {
+    from "me@gmail.com"
+    to "you@gmail.com"
+    sub "this is my subject"
+    body "hello"
+    send()
+}
+```
+`
 Now **that** looks readable. To be able to create something like that, a language has to:
 
   - have functions as first-class citizens.
