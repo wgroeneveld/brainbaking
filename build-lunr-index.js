@@ -48,8 +48,7 @@ function makeIndex(posts) {
 
 async function run() {
   const posts = await loadPostsWithFrontMatter(`${__dirname}/content/post`);
-  const essays = await loadPostsWithFrontMatter(`${__dirname}/content/essays`);
-  const index = makeIndex(posts.concat(essays));
+  const index = makeIndex(posts);
   console.log(JSON.stringify(index));
 }
 
