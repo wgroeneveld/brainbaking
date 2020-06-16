@@ -51,5 +51,6 @@ I also write about retro PC/Handheld gaming and actual _bread baking_ on sister 
 
 ### By tag
 
+The following tags are the most used in my writing: {{< popular-categories >}}. 
 
 Behold a list of alphabetically sorted tags used in every article on this very website. Related articles share a set of tags. 

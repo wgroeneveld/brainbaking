@@ -21,6 +21,17 @@
                 {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
             </time>
             {{ end }}
+            {{ if isset .Params "categories" }}
+                &nbsp;|&nbsp;
+                <span title="Categories">
+                    <svg class='icon icon-text' width='24' height='24'>
+                        <use xlink:href='#folder'></use>
+                    </svg>
+                    {{ range .Params.categories }}
+                        <a href="/categories/{{ . }}">{{ . }}</a> 
+                    {{ end }}
+                </span>
+            {{ end }}
             {{ if (not .Params.disableComments) }}
                 &nbsp;|&nbsp;
                 <span title="Comments">

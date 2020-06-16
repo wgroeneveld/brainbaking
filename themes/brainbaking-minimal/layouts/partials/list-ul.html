@@ -9,14 +9,21 @@
 				</h4>
 				{{ .Params.subtitle }} 
 			</div>
-			{{ if isset .Params "tags" }}
-				<div class="list-tags">
-						<svg class='icon icon-inline'><use xlink:href="#tag"></use></svg>&nbsp;
+			<div class="list-tags">
+				{{ if isset .Params "categories" }}
+					<svg class='icon icon-text icon-gray'><use xlink:href="#folder"></use></svg>
+					{{ range .Params.categories }}
+						<a href="{{ site.BaseURL }}categories/{{ . | urlize }}">{{ . }}</a>
+					{{ end }}
+					&nbsp;
+				{{ end }}
+				{{ if isset .Params "tags" }}
+					<svg class='icon icon-text icon-gray'><use xlink:href="#tag"></use></svg>&nbsp;
 				    {{ range .Params.tags }}
 				        <a href="{{ site.BaseURL }}tags/{{ . | urlize }}"><kbd class="item-tag">{{ . }}</kbd></a>
 				    {{ end }}
-				</div>
-			{{ end }}
+				{{ end }}
+			</div>
 		</li>
 	{{ end }}
 	</ul>

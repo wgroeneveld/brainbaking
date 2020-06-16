@@ -12,11 +12,6 @@ categories:
     - braindump
 tags: ['self improvement', 'journaling']
 ---
-<div class="summary">
-Past new year, I stopped promising silly things to myself. “This year, I’ll for sure go jogging several times a week!” — or “This year, I’ll really get into learning another language!”. We all know how these things go. Not that I made something up on the very day, these ideas are usually carefully crafted in my sketchbook and are lingering there to be exposed and finally executed.
-</div>
-
-Originally posted on [Medium](https://medium.com/writers-on-writing/6a9dbf4d8212).
 
 Past new year, I stopped promising silly things to myself. “This year, I’ll for sure go jogging several times a week!” — or “This year, I’ll really get into learning another language!”. We all know how these things go. Not that I made something up on the very day, these ideas are usually carefully crafted in my sketchbook and are lingering there to be exposed and finally executed.
 
@@ -39,3 +34,5 @@ In my experience, mindfully going through your day and thinking about what you l
 So, thank you internet for all those amazing blogs and great ideas, even if it’s as simple as writing down what you liked that day.
 
 Oh, and here’s a pro-tip: use a pencil.That way, you can write while lying down in your bed.
+
+Originally posted on [Medium](https://medium.com/writers-on-writing/6a9dbf4d8212).
