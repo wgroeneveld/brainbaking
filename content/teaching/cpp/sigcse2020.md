@@ -1,5 +1,6 @@
 ---
 title: 'Sparking Creativity with the Game Boy Advance'
+subtitle: 'Presented at SIGCSE 2020, Portland, OR, USA'
 accent: "#008eb3"
 disableComments: true
 disableList: true
@@ -9,18 +10,14 @@ disableList: true
 
 ### Poster Abstract
 
-> Numerous studies have shown that Game-Based Learning positively impacts educational effectiveness and student motivation. However, according to Amabile's Componential Model of Creativity, _motivation_ is only one aspect of creativity, next to _expertise_ and _creative skills_. Therefore, we looked beyond motivational aspects in order to amplify all dimensions of creativity. In a 'Software Design in C++' course at our local faculty of Engineering Technology, students learn to apply high-level object-oriented software development techniques on low-level embedded hardware. By introducing the Game Boy Advance (GBA), a 32-bit handheld released by Nintendo in 2001, students not only need the domain-specific technical _expertise_ and _motivation_ to succeed, but also the right _creative skills_ to cope with the limitations of this embedded system that has only 96kb of VRAM. We focused the labs on stimulating these creative problem-solving techniques. Results are promising: students were highly motivated and creative output was distinctly increased; but technical expertise was still lacking during examination. Further work involves investigating the impact of peer-assessment on all aspects of creativity.
+Numerous studies have shown that Game-Based Learning positively impacts educational effectiveness and student motivation. However, according to Amabile's Componential Model of Creativity, _motivation_ is only one aspect of creativity, next to _expertise_ and _creative skills_. Therefore, we looked beyond motivational aspects in order to amplify all dimensions of creativity. In a 'Software Design in C++' course at our local faculty of Engineering Technology, students learn to apply high-level object-oriented software development techniques on low-level embedded hardware. By introducing the Game Boy Advance (GBA), a 32-bit handheld released by Nintendo in 2001, students not only need the domain-specific technical _expertise_ and _motivation_ to succeed, but also the right _creative skills_ to cope with the limitations of this embedded system that has only 96kb of VRAM. We focused the labs on stimulating these creative problem-solving techniques. Results are promising: students were highly motivated and creative output was distinctly increased; but technical expertise was still lacking during examination. Further work involves investigating the impact of peer-assessment on all aspects of creativity.
 
-Groeneveld, W., Aerts, K. (2020). Sparking Creativity with the Game Boy Advance. In: Proceeding of the 51th ACM technical symposium on computer science education. Presented at the SIGCSE '20, Potrland, OR, USA, 11 Mar 2020-14 Mar 2020.
+_Groeneveld, W., Aerts, K. (2020). Sparking Creativity with the Game Boy Advance. In: Proceeding of the 51th ACM technical symposium on computer science education. Presented at the SIGCSE '20, Portland, OR, USA, 11 Mar 2020-14 Mar 2020._
 
 - [Download the Poster Paper](https://lirias.kuleuven.be/retrieve/552354).
 - [Download the Poster itself](/files/sigcse2020-poster.pdf).
 
-Poster preview:
-
-<center>
-    <img src="/files/sigcse2020-poster-preview.png" class="bordered" />
-</center>
+![](/files/sigcse2020-poster-preview.png "Poster preview, click to enlarge")
 
 ### Project results 2018 - 2019
 
