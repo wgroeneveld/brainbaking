@@ -5,6 +5,8 @@ bigimg: conferenties.jpg
 categories:
     - education
 subtitle: Een verspilling van tijd en middelen, of juist niet?
+tags:
+    - conference
 published: true
 ---
 Bedrijven zien conferenties vaak als een onnodige kost waar hun werknemers nauwelijks worden naar toe gestuurd. Meestal gaat dit keurig af van het jaarlijks opleidingsbudget, ook weer keurig verrekend en verdeeld per persoon. Als Piet graag drie dagen wenst te gaan, en Jan in hetzelfde team ook, ontstaat er al een probleem: wie gaat dan die grote hoeveelheid dagelijkse problemen opkuisen? Er wordt een compromis gesloten: Piet en Jan mogen elk slechts één dag gaan, en elk op één aparte dag van het evenement. Misschien is Piet blij, omdat het thema hem dit jaar toch niet lag en hij gewoon een dag niet wou werken. De kans is even groot dat hij niet blij is, omdat hij terecht wou bijleren van experten in zijn vakgebied die binnen het bedrijf nog nauwelijks te vinden zijn. 
