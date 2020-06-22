@@ -30,44 +30,44 @@ The question is then, what would I be looking for? This research tried to examin
 
 The paper contains an interesting discussion on the vote for C# instead of C++, as of course Unity always wins in educational contexts over the Unreal engine. However, what I found the most interesting, combined with words in the closing keynote, was perhaps the fact that there are so many distinct Computer Science-related degrees out there. 
 
-A Computer Game BA is multi-disciplinary in nature: arts, design, programming, ... Our faculty of Engineering Technology delivers engineers who can specialize in Electronics/ICT. Then there's a more theoretical Computer Science degree, but in Leuven, you can also go for a Software Engineering approach without resorting to a bachelor of applied informatics. That begs the question:
+A Computer Game BA is multi-disciplinary in nature: arts, design, programming, ... Our faculty of Engineering Technology delivers engineers who can specialize in Electronics/ICT. Then there's a more theoretical Computer Science degree, but you can also go for a masters in Software Engineering - or on bachelor level, applied informatics. That begs the question:
 
 > In any CS degree, is there enough space to learn something well? 
 
 If you get to see a bit of game programming, a bit of AI, and a bit of design, are you a jack of all trades, or a jack of no trades at all? The same could be said for our own students, since the first year is shared across all engineering students, and packed with general courses (almost) devoid of computing...  
 
-The more specialized - and complex - the Computing world gets (according to Matti Tedre, every decade), the more difficult it will be to deliver students capable of doing exactly whatever the industry requires. Instead, I think we should focus on abstract thinking skills, and use Capita Selecta to let them have a taste of the possiblities. In the closing keynote, Matti anecdotally brings up old ACM SIGCSE Bulletins, concluding that the discussions we're having today in CSEd are still the same discussions almost 40 years ago:
+The more specialized and complex the Computing world gets (according to Matti Tedre, every decade), the more difficult it will be to deliver students capable of doing whatever the industry requires. Instead, I think we should focus on abstract thinking skills, and use Capita Selecta to let them have a taste of the possiblities. In the closing keynote, Matti anecdotally brings up old ACM SIGCSE Bulletins, concluding that the discussions we're having today in the field of CSEd. are still the same discussions from almost 40 years ago:
 
-- What should we teach students?
-- Which programming language is better to learn than others?
+- _What should we teach students?_
+- _Which programming language is better to learn than others?_
 
-That keynote was awesome, not only because of the contents, but also because of the 'augmented reality'-enabled joke:
+That keynote was awesome, not only because of it's contents, but also because of the 'augmented reality'-enabled joke:
 
 ![](../augmented.jpg "Matti's Augmented Reality slides")
 
-At least we got the feeling of looking at it from an audience. 
+At least we got the feeling of looking at slides from an audience. 
 
 #### [A feedback-oriented platform for programming practice](https://dl.acm.org/doi/pdf/10.1145/3341525.3393996)
 
-An interesting tool developed at Los Andes in Colombia to cope with submissions of 900+ students and deliver a deliberate practice platform that can scale up when needed. I'm drawn to this because of the use of Docker and the philosophy of automation. However, I can't help but wonder:
+An interesting tool developed at Los Andes in Colombia to cope with submissions of 900+ students and to deliver a deliberate practice platform that can scale up when needed. I'm drawn to this because of the use of Docker and the philosophy of automation. However, I can't help but wonder:
 
 > Why does everybody have to keep on reinventing the wheel?
 
 There are so many tools out there, including this one, that has not been tailored for usage outside of the context. It's a "_scratch your own itch_" project, which is great, but when a paper like this gets accepted, it suddenly stands in the spotlight, potentially becoming of use for other universities. And that ultimately rarely happens. There are exceptions, where it's well-marketed and matured, like BlueJ for instance.
 
-I've come across papers before that employed a home-brewed piece of technology for their method that I wanted to use too, but was out of luck because I could not find a download link or more info. Simply making these things a bit more visible on the Internet would do wonders. I wonder why more people in the industry are automatically - and intentionally - giving back to the community, compared to people in academia. That might be a bold (and possibly wrong) statement; it's a gut feeling. 
+I've come across papers before that employed a home-brewed piece of technology for their method that I wanted to use too, but was out of luck because I could not find a download link or more info. Simply making these things a bit more visible on the Internet would do wonders. I wonder why more people in the industry are automatically - and intentionally - giving back to the community, compared to people in academia. That might be a bold (and possibly wrong) statement; it's a gut feeling. Let's be honest here, publishing a paper about a tool without **releasing** the tool is not exactly giving back to the community. 
 
-Same feeling with the [Postponing the Concept of Class When Introducing OOP](https://dl.acm.org/doi/pdf/10.1145/3341525.3387369) paper: why invent a prototype-based language (Wolluk) instead of reusing Javascript? That almost seems ridiculous considering graduates will have to learn JS anyway!
+Same feeling with the [Postponing the Concept of Class When Introducing OOP](https://dl.acm.org/doi/pdf/10.1145/3341525.3387369) paper: why invent a prototype-based language (Wolluk) instead of reusing Javascript? That almost seems ridiculous considering graduates will have to learn JS anyway! Why? Explore [The State of Javascript 2019](https://stateofjs.com) - that's why.
 
 #### [Twenty-Four Years of ITiCSE Authors](https://dl.acm.org/doi/pdf/10.1145/3341525.3387387)
 
-A _bibliometric_ paper - another new term I've learned - concerned the last 24 years of published papers at ITiCSE by Simon. Why is this interesting? Because it's a big **wake-up call for Belgium**! ITiCSE is the highest-rated European conference on Computing Education, and we're one of the worst scoring countries:
+A _bibliometric_ paper - another new term I've learned - concerned the last 24 years of published papers at ITiCSE by Simon. This is interesting Because it's a big **wake-up call for Belgium**! ITiCSE is the highest-rated European conference on Computing Education, and we're one of the worst scoring countries:
 
 ![Number of papers, including fractional contributions, from each country](../countries-iticse.jpg)
 
-That means Belgium submitted **two papers** in the last twenty-four years to a highly rated computing education conference. Two. 2. Can you believe that? Looking at our neighbors: Netherlands 21, Germany 55, France 16. _Whoops_. I could go ahead and look up the data for the SIGCSE Technical Symposium, but I'm pretty sure things are even worse there as it's generally regarded as a USA-heavy conference (and they are planning to do something about that).
+Belgian universities submitted **two papers** in the last twenty-four years to a highly rated computing education conference. Two. 2. Can you believe that? Looking at our neighbors: Netherlands 21, Germany 55, France 16. _Whoops_. I could go ahead and look up the data for the SIGCSE Technical Symposium, but I'm pretty sure things are even worse there as it's generally regarded as a USA-heavy conference (and they are planning to do something about that).
 
-At least the year `2020` proved to be an exception: my supervisor Joost and I both published a paper, cranking up the number to a whopping four, thereby leaving Cyrpus and Romania behind - given they did not publish anything this year.
+At least the year `2020` proved to be an exception: my supervisor Joost and I both published a paper, cranking up the number to a whopping four, thereby leaving Cyrpus and Romania behind - given they did not publish anything this year. The acceptance rate this year was barely `27%` but that's not an excuse.
 
 It's very sad to see that Computing Education has not been recognized as a true discipline in Belgium. At my university, we have a small research group dedicated to that (OVI), but compared to [other KU Leuven CS research groups](https://wms.cs.kuleuven.be/cs/onderzoek), it could almost be called redundant. That said, if it were not for CSEd, other CS disciplines would not be academic disciplines right now... It's about time somebody rings the bell! 
 
@@ -79,7 +79,7 @@ To again quote Matti Tedre's amazing closing keynote:
 
 I'll sum it up with a screenshot:
 
-![zoom](../zoom.jpg)
+![](../zoom.jpg "That 10x20 white space? That's the slides.")
 
 Yeah. Zoom connection issues, especially when presenters switched. It wasn't bad but I did experience this multiple times. Having to navigate in-between sessions was especially confusing, hopping back and forth between Moodle and Zoom. There was no central hub available (besides the somewhat clumsy Moodle), meaning these things were not possible:
 
@@ -88,19 +88,19 @@ Yeah. Zoom connection issues, especially when presenters switched. It wasn't bad
 - Looking around and seeing who's attending in Zoom Webinars. What's up with that? I had the feeling like I was watching alone... 
 - When a session ended, 'returning somewhere' for a chat.
 
-It was okay for a first attempt, but to be honest, using a more community-based hub such as Slack or Discord instead of having to go to Moodle would certainly make it easier to get the 'conference-vibe'. Remember mIRC back in the day? If you joined a channel, you could see stuff happening. Now, I couldn't. 
+It was okay for a first attempt, but to be honest, using a more community-based hub such as Slack or Discord instead of having to go to Moodle would certainly make it easier to get the 'conference-vibe'. Remember _mIRC_ back in the day? If you joined a channel, you could see stuff happening. Now, I couldn't. 
 
-The organization did their best, I think partly participants (like myself) are to blame: 300+ registered, barely anything moving on the forums. How is that possible? A lot of open sessions and poster sessions were empty: authors waiting for questions that never came. Of course in a digital world it's easier to get distracted or to quietly slip off to do something else.
+The organization did their best, I think partly participants (like myself) are to blame: 300+ registered, barely anything moving on the forums. How is that possible? Some virtual open sessions and most poster sessions were almost empty: authors waiting for questions that never came. Of course in a digital world it's easier to get distracted or to quietly slip off to do something else.
 
 ### Closing thoughts
 
-Do not mention "computational thinking" in ACM conferences. I seemed to unleash quite a chain of reactions in the open discussion talks doing that - it should be called "_algorithmic thinking_" now? I don't get why that would make things clear. It's as vague as the first term, you just sidestepped the 30 or so definitions already present in literature, congrats. 
+Do not mention "_computational thinking_" in ACM conferences. I seemed to unleash quite a chain of reactions in the open discussion talks doing that - it should be called "_algorithmic thinking_" now? I don't get why that would make things clear. It's as vague as the first term, you just sidestepped the 30 or so definitions already present in literature, congrats. 
 
 Another just as vague concept: using [notational machines](https://www.felienne.com/archives/6375) in teaching. I'm still trying to wrap my mind on the concept - the paper that tried to clear things up was not particularly helpful... To be honest, I think a bit of industry-experience I carry around, also called _pragmatism_, would do wonders here. Insert random [Too Far Gif](https://tenor.com/view/the-office-steve-carell-michael-scott-too-far-road-trip-problems-gif-4412706) here:
 
 ![took it too far](../toofar.gif)
 
-Another interesting discussion on why we should stop teaching low level concepts (programming) compared to other fields took place in the closing keynote. According to Matti:
+Another interesting discussion on why we should stop teaching low level concepts (programming) compared to other fields took place in the closing keynote. According to Matti Tedre:
 
 > Programming is a really clumsy way to interact with a computer.
 
