@@ -45,6 +45,7 @@ Laatste aanpassingen voor academiejaar _2019 - 2020_.
 #### Aanvullende Oefeningen
 
 1. [De 'SESsy Library' WebApp: uitbreiden](/teaching/ses/sessy-extending)
+2. [Taken SES: 2de kans](/teaching/ses/2de-kans)
 
 ### Extra informatie
 

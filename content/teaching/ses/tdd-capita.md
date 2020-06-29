@@ -1,5 +1,6 @@
 ---
-title: 'Test Driven Development met algoritmes: Capita Selecta'
+title: 'Test Driven Development met algoritmes'
+subtitle: 'Capita Selecta'
 accent: "#008eb3"
 disableList: true
 ---
@@ -179,3 +180,48 @@ Valideer je programma aan de hand van de voorbeeld invoer hierboven. Schrijf uit
 
 - Als het programma de verwachte output genereert, kan je je oplossing laten valideren tegen veel meer input: [download schoenen-input.txt hier](/teaching/ses/schoenen-input.txt).
 - Als je zelf wilt kijken hoe deze input werd gegenereerd: [download SchoenenGenerate.java hier](/teaching/ses/SchoenenGenerate.java).
+
+### Opgave 3: Tweede Kans
+
+ESA heeft een robot op Mars geplaatst om te zoeken naar de meest geschikte plaats om een marsbasis op te bouwen. De robot krijgt telkens een sequentie van instructies die leiden naar een nieuwe plaats. Elke instructie is een letter: `'S'` (stap vooruit), `'L'` (draai links) of `'R'` (draai rechts). 
+
+Elke instructiesequentie komt in de buffer van de robot terecht en wordt, voor hij kan worden uitgevoerd, teruggestuurd naar de aarde om deze te controleren en te corrigeren. Er komen immers vaak communicatiefouten voor. De enige mogelijke correcties zijn verwisselingen binnen de buffer. ESA heeft ons gevraagd om een programma te schrijven om de nodige correcties te bepalen.  Een correctie wordt aangegeven door de plaatsen in de buffer waarvoor de inhoud moet verwisseld worden.  Daartoe worden de plaatsen in de buffer genummerd als A, B, C, ... 
+
+Een correctie BF verwisselt de inhouden van plaats B en plaats F. Een rij correcties, bv. `ACBE`, verwisselt de inhouden van A en C, daarna de inhouden van B en E. Als er meerdere mogelijkheden bestaan om de ontvangen sequentie te
+transformeren (enkel via verwisselingen!), neem dan de kortste (= minst aantal verwisselingen.) Bij een gelijk aantal verwisselingen neem dan de alfabetisch eerste (AB komt voor BA dus nemen we AB, een rij die begint met BD komt voor een rij die begint met DF.)
+
+#### Invoer
+
+De eerste regel van de invoer bevat het aantal te verbeteren instructies. Daarna volgen per geval telkens 2 regels. De eerste regel bevat de instructies die de robot ontvangen heeft  en de tweede regel bevat de correcte instructielijst. Beiden bevatten minstens 2 instructies en maximum 26 instructies. De enige instructies die kunnen voorkomen zijn `'S'`, `'L'` en `'R'`.
+
+<pre>
+3
+SLSLSR
+SSLLRS
+SS
+RR
+SSLLRR
+SSLLRR
+</pre>
+
+#### Uitvoer
+
+Voor elk geval antwoord je met één enkele regel. Deze bevat het volgnummer van het testgeval, gevolgd door één spatie, gevolgd door:
+
+- indien geen verwisselingen nodig zijn: _correct_;
+- indien geen correctie mogelijk is: _onmogelijk_;
+- anders: de verwisselingen die in de buffer moeten gebeuren (kleinst aantal verwisselingen, bij gelijk aantal alfabetisch eerste.)
+
+<pre>
+1 BCEF
+2 onmogelijk
+3 correct
+</pre>
+
+Elke regel begint met een volgnummer vanaf 1, gevolgd door ...
+
+#### Formaat
+
+Gebruik dezelfde techniek als in Opgave 1C door met `Scanner` van `stdin` data in te lezen. De input zal opnieuw worden gepiped naar je programma. Indien dit niet werkt, of de output niet in het juiste formaat is, resulteert dit automatisch tot een gefaald resultaat. 
+
+Voorzie voor elk mogelijk scenario dat jij kan bedenken **de juiste unit testen**. Deze zullen mee in rekening worden gebracht bij de evaluatie. 

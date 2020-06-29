@@ -12,6 +12,8 @@
     
     {{ if isset .Params "subtitle" }}
         <h2>{{ .Params.subtitle }}</h2>
+    {{ end }}
+    {{ if isset .Params "date" }}
         <h3>
             {{ if isset .Params "date" }}
             <time datetime='{{ .Date.Format "2006-01-02" }}'>
