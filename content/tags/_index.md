@@ -39,7 +39,7 @@ I also write about retro PC/Handheld gaming and actual _bread baking_ on sister 
 
 ### By year
 
-- [2020](/post/2020) ... when Hugo 0.7 was released and I started paying attention to webdesign
+- [2020](/post/2020) ... when I started paying attention to webdesign and wrote a book about bread baking
 - [2019](/post/2019) ... when computing education articles started appearing
 - [2018](/post/2018) ... when my PhD work started and I tried writing essays in Dutch
 - [2017](/post/2017) ... when self-improvement meta-posts started popping up more often
