@@ -1,9 +1,0 @@
-\select@language {english}
-\contentsline {chapter}{Voorwoord}{1}{chapter*.2}
-\contentsline {chapter}{X}{3}{chapter*.3}
-\contentsline {chapter}{De boer, de molenaar en de brouwer}{5}{chapter*.4}
-\contentsline {section}{Nieuwe gedachtes}{5}{section*.5}
-\contentsline {subsection}{Een}{5}{section*.6}
-\contentsline {subsection}{Twee}{6}{section*.7}
-\contentsline {chapter}{Bibliography}{9}{chapter*.8}
-\contentsfinish 
