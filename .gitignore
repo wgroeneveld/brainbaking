@@ -10,3 +10,12 @@ node_modules/
 docs/
 
 *.class
+
+books/**/*.idx
+books/**/*.lof
+books/**/*.log
+books/**/*.toc
+books/**/*.pdf
+books/**/*.lot
+books/**/*.aux
+books/**/boek.tex

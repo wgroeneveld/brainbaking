@@ -15,14 +15,14 @@ class PostProcessor:
 	def replace_citep_with_cite(self):
 		self.filedata = self.filedata.replace('citep{', 'cite{')
 
-	def make_thoughts_of_first_words_of_chapter(self):
+	def make_thoughts_of_first_words_of_piece(self, piece):
 		# chapter starts with \chapter{Voorwoord}\label{voorwoord}} and blank lines
 		# take the first words that do not start with \command{something} and wrap them in \newthought{}
 		lines = self.filedata.splitlines()
 		linenr = 0
 		linenrs = []
 		for line in lines:
-			if "\\chapter{" in line:
+			if "\\" + piece + "{" in line:
 				linenrs.append(linenr)
 			linenr += 1
 		for linenr_to_process in linenrs:
@@ -43,7 +43,8 @@ class PostProcessor:
 		self.replace_citep_with_cite()
 
 		print('... making thoughts of first words')
-		self.make_thoughts_of_first_words_of_chapter()
+		self.make_thoughts_of_first_words_of_piece('chapter')
+		self.make_thoughts_of_first_words_of_piece('section')
 
 		self.save()
 		print('done, written to ' + self.filename)
