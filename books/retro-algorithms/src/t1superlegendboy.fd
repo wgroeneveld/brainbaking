@@ -1,0 +1,19 @@
+\DeclareFontFamily{T1}{SuperLegendBoy}{}
+\DeclareFontShape{T1}{SuperLegendBoy}{m}{n}{
+  <->   T1--SuperLegendBoy
+}{}
+\DeclareFontShape{T1}{SuperLegendBoy}{bx}{n}{
+   <-> ssub * SuperLegendBoy/m/n
+}{}
+\DeclareFontShape{T1}{SuperLegendBoy}{bx}{it}{
+   <-> ssub * SuperLegendBoy/m/n
+}{}
+\DeclareFontShape{T1}{SuperLegendBoy}{m}{it}{
+   <-> ssub * SuperLegendBoy/m/n
+}{}
+\DeclareFontShape{T1}{SuperLegendBoy}{l}{n}{
+   <-> ssub * SuperLegendBoy/m/n
+}{}
+\DeclareFontShape{T1}{SuperLegendBoy}{l}{it}{
+   <-> ssub * SuperLegendBoy/m/n
+}{}

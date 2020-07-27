@@ -1,0 +1,32 @@
+\documentclass[a4paper]{article}
+
+\usepackage[top=10mm,bottom=10mm,left=10mm,right=10mm]{geometry}
+
+\usepackage[T1]{fontenc}
+
+%\usepackage{microtype}
+
+\usepackage{lipsum}
+
+\usepackage[latin]{babel}
+
+\pdfmapfile{fontstruct.map}
+
+\renewcommand\rmdefault{SuperLegendBoy}
+\renewcommand\sfdefault{SuperLegendBoy}
+
+
+\begin{document}
+
+\noindent
+\parbox[t]{\dimexpr.5\linewidth-1ex\relax}
+{%
+  \section{Ubuntu test \textit{foo}}
+
+  \lipsum[1]\textit{\lipsum[1]}
+
+  \fontseries{l}\selectfont\lipsum[1]\textit{\lipsum[1]}
+}
+\hfill
+
+\end{document}

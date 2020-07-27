@@ -1,0 +1,11 @@
+---
+author: "Wouter Groeneveld"
+date: 2019-06-12
+bibliography: boek.bib
+fontfamily: mathpazo
+# rest of metadata now managed by tufte-book
+lang: en
+babel-lang: english
+classoption: symmetric,justified,marginals=raggedouter
+#geometry: paperheight=11in,paperwidth=8.5in,left=1.1in,right=1.1in,top=1.5in,bottom=1.5in
+---

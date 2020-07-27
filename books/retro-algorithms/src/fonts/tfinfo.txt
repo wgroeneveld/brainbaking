@@ -1,0 +1,16 @@
+Family:              Super Legend Boy
+Subfamily:           Regular
+Full name:           Super Legend Boy
+PostScript name:     Super-Legend-Boy
+Version:             Version 1.00;May 7, 2019;FontCreator 11.5.0.2422 64-bit
+Unique ID:           Super Legend Boy:Version 1.00
+Description:         “Super Legend Boy” by Chequered Ink Ltd.
+Designer:            GameDevDan
+Designer URL:        https://fontstruct.com/fontstructors/show/1335351/gamedevdan
+Manufacturer:        https://fontstruct.com
+Vendor URL:          https://fontstruct.com/fontstructions/show/1635018/super-legend-boy
+Copyright:           Copyright Chequered Ink Ltd. 2019
+License URL:         https://chequered.ink/font-license/
+License Description: Chequered Ink Font Licenses
+Sample text:         Five big quacking zephyrs jolt my wax bed
+Vendor ID:           FSTR

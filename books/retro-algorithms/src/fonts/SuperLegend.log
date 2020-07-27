@@ -1,0 +1,44 @@
+otftotfm: glyphlist.txt found with kpathsea at /usr/local/texlive/2018/texmf-dist/fonts/map/glyphlist/glyphlist.txt
+otftotfm: texglyphlist.txt found with kpathsea at /usr/local/texlive/2018/texmf-dist/fonts/map/glyphlist/texglyphlist.txt
+otftotfm: encoding file ec.enc found with kpathsea at /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/ec.enc
+otftotfm: /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/ec.enc:103: warning: bad ligature ('space' has no encoding)
+otftotfm: /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/ec.enc:103: warning: bad ligature ('space' has no encoding)
+otftotfm: /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/ec.enc:114: warning: bad '{}' ('space' has no encoding)
+otftotfm: /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/ec.enc:114: warning: bad '{}' ('space' has no encoding)
+otftotfm: warning: TrueType-flavored font support is experimental
+otftotfm: warning: 'kern' and 'liga' features ignored, not supported by font
+otftotfm: placing encoding files in '/Users/jefklak/Library/texlive/2018/texmf-var/fonts/enc/dvips/lcdftools'
+otftotfm: updating encoding file /Users/jefklak/Library/texlive/2018/texmf-var/fonts/enc/dvips/lcdftools/a_htcixp.enc
+otftotfm: /Users/jefklak/Library/texlive/2018/texmf-var/fonts/enc/dvips/lcdftools/a_htcixp.enc unchanged
+otftotfm: warning: assuming --no-type1 since this font is TrueType-flavored
+otftotfm: placing TFM files in '/Users/jefklak/Library/texlive/2018/texmf-var/fonts/tfm/lcdftools/SuperLegendBoy'
+otftotfm: placing VF files in '/Users/jefklak/Library/texlive/2018/texmf-var/fonts/vf/lcdftools/SuperLegendBoy'
+otftotfm: creating /var/tmp//otftotfm.3fmniI
+otftotfm: running vptovf /var/tmp//otftotfm.3fmniI /Users/jefklak/Library/texlive/2018/texmf-var/fonts/vf/lcdftools/SuperLegendBoy/T1--SuperLegendBoy.vf /Users/jefklak/Library/texlive/2018/texmf-var/fonts/tfm/lcdftools/SuperLegendBoy/T1--SuperLegendBoy.tfm 2>&1
+otftotfm: updating /Users/jefklak/Library/texlive/2018/texmf-var/ls-R for fonts/tfm/lcdftools/SuperLegendBoy/T1--SuperLegendBoy.tfm
+otftotfm: updating /Users/jefklak/Library/texlive/2018/texmf-var/ls-R for fonts/vf/lcdftools/SuperLegendBoy/T1--SuperLegendBoy.vf
+otftotfm: placing TFM files in '/Users/jefklak/Library/texlive/2018/texmf-var/fonts/tfm/lcdftools/SuperLegendBoy'
+otftotfm: creating /var/tmp//otftotfm.l3wEL1
+otftotfm: running pltotf /var/tmp//otftotfm.l3wEL1 /Users/jefklak/Library/texlive/2018/texmf-var/fonts/tfm/lcdftools/SuperLegendBoy/T1--SuperLegendBoy--base.tfm 2>&1
+otftotfm: updating /Users/jefklak/Library/texlive/2018/texmf-var/ls-R for fonts/tfm/lcdftools/SuperLegendBoy/T1--SuperLegendBoy--base.tfm
+otftotfm: ignoring TrueType file ./SuperLegendBoy.ttf found with kpathsea in '.'
+otftotfm: placing TrueType files in '/Users/jefklak/Library/texlive/2018/texmf-var/fonts/truetype/lcdftools/SuperLegendBoy'
+otftotfm: running cp SuperLegendBoy.ttf /Users/jefklak/Library/texlive/2018/texmf-var/fonts/truetype/lcdftools/SuperLegendBoy/SuperLegendBoy.ttf
+otftotfm: updating /Users/jefklak/Library/texlive/2018/texmf-var/ls-R for fonts/truetype/lcdftools/SuperLegendBoy/SuperLegendBoy.ttf
+otftotfm: placing DVIPS map files in '/Users/jefklak/Library/texlive/2018/texmf-var/fonts/map/dvips/lcdftools'
+otftotfm: updating /Users/jefklak/Library/texlive/2018/texmf-var/fonts/map/dvips/lcdftools/lcdftools.map for T1--SuperLegendBoy--base
+otftotfm: /Users/jefklak/Library/texlive/2018/texmf-var/fonts/map/dvips/lcdftools/lcdftools.map unchanged
+otftotfm: updating /Users/jefklak/Library/texlive/2018/texmf-var/fonts/map/dvips/lcdftools/lcdftools.map for T1--SuperLegendBoy
+otftotfm: /Users/jefklak/Library/texlive/2018/texmf-var/fonts/map/dvips/lcdftools/lcdftools.map unchanged
+otftotfm: placing DVIPS updmap files in '/Users/jefklak/Library/texlive/2018/texmf-var/dvips'
+otftotfm: running updmap --nomkmap --enable Map lcdftools.map 1>&2; updmap 1>&2
+updmap [WARNING]: resetting $HOME value (was /Users/jefklak) to root's actual home (/var/root).
+updmap [ERROR]: Either -sys or -user mode is required.
+updmap [ERROR]: In nearly all cases you should use updmap -sys.
+updmap [ERROR]: For special cases see http://tug.org/texlive/scripts-sys-user.html
+updmap [WARNING]: resetting $HOME value (was /Users/jefklak) to root's actual home (/var/root).
+updmap [ERROR]: Either -sys or -user mode is required.
+updmap [ERROR]: In nearly all cases you should use updmap -sys.
+updmap [ERROR]: For special cases see http://tug.org/texlive/scripts-sys-user.html
+otftotfm: warning: 'updmap --nomkmap --enable Map lcdftools.map 1>&2; updmap 1>&2' exited with status 1;
+otftotfm: warning: run it manually to check for errors
