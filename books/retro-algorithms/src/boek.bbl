@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{3}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,5 +11,16 @@ Stuart~E Dreyfus and Hubert~L Dreyfus.
   skill acquisition.
 \newblock Technical report, California Univ Berkeley Operations Research
   Center, 1980.
+
+\bibitem[Lengyel(2012)]{lengyel2012mathematics}
+Eric Lengyel.
+\newblock \emph{Mathematics for 3D game programming and computer graphics}.
+\newblock Cengage Learning, 2012.
+
+\bibitem[Microsoft(2018)]{msd3d}
+Microsoft.
+\newblock Pipelines and shaders with direct3d 12, 2018.
+\newblock URL
+  \url{https://docs.microsoft.com/en-us/windows/win32/direct3d12/pipelines-and-shaders-with-directx-12}.
 
 \end{thebibliography}

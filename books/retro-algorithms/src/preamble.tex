@@ -44,9 +44,9 @@
 }
 %%
 % Book metadata
-\title{A Tufte-Style Book\thanks{Thanks to Edward R.~Tufte for his inspiration.}}
-\author[The Tufte-LaTeX Developers]{The Tufte-LaTeX\ Developers}
-\publisher{Publisher of This Book}
+\title{Inside the Game Boy \newline(Advance) Game Loop}
+\author{Wouter Groeneveld}
+\publisher{Brain Baking}
 
 %%
 % Prints a trailing space in a smart way.
@@ -107,11 +107,20 @@
 }
 
 \newcommand\cover[4]{
-  \begin{marginfigure}[5cm] % assumes \cover is called right after a new chapter.
+  \begin{marginfigure}[6cm] % assumes \cover is called right after a new chapter.
     \includegraphics[width=\linewidth]{covers/#1.jpg}
     \caption[Cover art for #1]{\textbf{Developer}: #2 \newline \textbf{Release}: #3 \newline \textbf{Genre}: #4}
   \end{marginfigure}  
 }
+
+%%
+% graphics drawing
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=0.7cm,text centered, draw=black]
+\tikzstyle{box} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1cm,  minimum height=0.7cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 
 %% 
