@@ -1,5 +1,7 @@
 
-## De boer, de molenaar en de brouwer
+# Sprites
+
+## Wario Land 1-4
 
 The pages of a book are usually divided into three major
 sections: the front matter (also called preliminary matter or prelim), the

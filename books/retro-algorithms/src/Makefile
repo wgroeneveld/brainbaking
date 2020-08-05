@@ -14,7 +14,7 @@ all:
 		--metadata-file=metadata.yml \
 		-t latex+smart \
 		--highlight-style=haddock > boek.tex \
-		chapters/intro.md chapters/ch-x.md chapters/ch-sample.md
+		chapters/intro.md chapters/ch-wario.md chapters/ch-x.md
 	python filters/postprocessor.py
 	xelatex boek.tex
 	#bibtex boek

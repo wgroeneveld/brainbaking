@@ -3,12 +3,25 @@ title: te bekijken/zelf proberen
 date: 2020-07-07
 ---
 
+## Brain Baking
+
+[ ] Landingspagina, donate, algemeen download, buy, ...
+[ ] per hoofdstuk:
+    [ ] links naar supplimentary reading materiaal (wat hier verzameld is) of wat referenties zijn die in elk hoofdstuk verschuild zitten?
+    [ ] code examples links Github?
+[ ] conversie C/C++ GBA programming pagina's, naar blog posts of iets wat hier permanent staat? Wat is het verschil... (Aantrekkingskracht site/blog dingen ook te lezen + doneren, https://fabiensanglard.net/gebbdoom/)
 
 ## LaTeX conversie
 
 [X] eerste 3 woorden na \chapter{} en \section{} auto-converten naar \newthought{}
-[ ] Markdown makkelijker maken om images op verschillende plekken toe te voegen zonder syntax van TeX te moeten gebruiken?
-[ ] footnote automatisch converteren naar sidenote
+[X] Markdown makkelijker maken om images op verschillende plekken toe te voegen zonder syntax van TeX te moeten gebruiken?
+[X] footnote automatisch converteren naar sidenote
+
+## Layout
+
+[ ] Chapter nummers genoeg van de kant af https://tex.stackexchange.com/questions/96090/formatting-subsections-and-chapters-in-tufte-book
+[ ] 'Part x' pagina's: over hele breedte een mooie image?
+[ ] sidenotes raggedouter werkt niet goed precies
 
 ## Images
 

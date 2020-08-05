@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{4}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,6 +11,11 @@ Stuart~E Dreyfus and Hubert~L Dreyfus.
   skill acquisition.
 \newblock Technical report, California Univ Berkeley Operations Research
   Center, 1980.
+
+\bibitem[Jia et~al.(2008)Jia, Zhang, and Jing]{jia2008modified}
+Yin-Liang Jia, Huan-Chun Zhang, and Ya-Zhi Jing.
+\newblock A modified bresenham algorithm of line drawing [j].
+\newblock \emph{Journal of Image and Graphics}, 1, 2008.
 
 \bibitem[Lengyel(2012)]{lengyel2012mathematics}
 Eric Lengyel.

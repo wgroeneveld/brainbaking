@@ -44,7 +44,7 @@
 }
 %%
 % Book metadata
-\title{Inside the Game Boy \newline(Advance) Game Loop}
+\title{Inside the Game Boy Game Loop}
 \author{Wouter Groeneveld}
 \publisher{Brain Baking}
 
@@ -75,12 +75,36 @@
 
 % set chapter/section/quote styles to retro font
 \usepackage{sectsty}
+\partfont{\retro}
 \chapterfont{\retro}
 \sectionfont{\retro}
 \subsectionfont{\retro}
 \AtBeginEnvironment{quote}{\retro}
 
 \renewcommand{\labelitemi}{$\circ$}
+
+%%
+% styling section/chapter/subsection/...
+\usepackage{xcolor}
+\definecolor{gb0}{HTML}{19380F}
+\definecolor{gb1}{HTML}{306130}
+\definecolor{gb2}{HTML}{8BAC12}
+\definecolor{gb3}{HTML}{9BBD16}
+\usepackage{lipsum}
+
+% 0 = part/chapter nums. 1 = section, 2 = subsection, -1 = disable.
+\setcounter{secnumdepth}{0}
+
+% chapter format
+\titleformat{\chapter}%
+  {\Huge\retro\itshape\color{gb1}}% format applied to label+text
+  {\llap{\colorbox{gb0}{\parbox{10.5cm}{\hfill\itshape\Huge\color{white}\thechapter}}}}% label
+  {8pt}% horizontal separation between label and title body
+  {}% before the title body
+  []% after the title body
+
+% set captions of figures to italic
+% \setcaptionfont{\itshape}
 
 % ================
 % = Images Setup =

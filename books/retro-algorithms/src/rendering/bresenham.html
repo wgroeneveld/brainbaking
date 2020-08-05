@@ -1,0 +1,57 @@
+
+<canvas id="grid"></canvas>
+<script type="text/javascript">
+// the canvas logic should be done once somewhere else 
+var w = document.body.clientWidth;
+var h = document.body.clientHeight;
+// grid step
+var step = 100; 
+var canvasElementId = 'grid';
+
+
+var canvas = document.getElementById(canvasElementId);
+// this is how you resize the canvas
+canvas.width  = w;
+canvas.height = h;
+
+var ctx = canvas.getContext('2d');
+
+var drawGrid = function() {
+    ctx.beginPath(); 
+    for (var x=0;x<=w;x+=step) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, h);
+    }
+    // set the color of the line
+    ctx.strokeStyle = 'rgb(0,0,0)';
+    ctx.lineWidth = 1;
+    // the stroke will actually paint the current path 
+    ctx.stroke(); 
+    // for the sake of the example 2nd path
+    ctx.beginPath(); 
+    for (var y=0;y<=h;y+=step) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(w, y);
+    }
+    // set the color of the line
+    //ctx.strokeStyle = 'rgb(20,20,20)';
+    ctx.stroke(); 
+};
+
+var bresenham = function() {
+	const coords = [
+		{x: 1, y: 1},
+		{x: 2, y: 1},
+		{x: 3, y: 2}
+	];
+
+	ctx.fillStyle='rgb(210, 210, 210)';
+	coords.forEach(coord => {
+		ctx.fillRect((coord.x * step) + 1, (coord.y * step) + 1, step - 2, step - 2);
+	});
+}
+
+
+drawGrid();
+bresenham();
+</script>
