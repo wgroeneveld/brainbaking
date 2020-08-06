@@ -75,3 +75,13 @@ X eens RenderDoc https://github.com/baldurk/renderdoc gebruiken in Win om een sp
 
 - Video tutorial: https://www.youtube.com/watch?v=HQYsFshbkYw (heeft ook nog veel andere gerelateerde zaken)
 - Build engine internals https://fabiensanglard.net/duke3d/build_engine_internals.php - mooi verschil tussen Portal rendering en BSP rendering uitgelegd
+
+## Andere boeken te bekijken?
+
+- https://www.chriskohler.biz/power-up-chris-kohler-2016/
+- https://www.amazon.com/Untold-History-Japanese-Game-Developers-ebook/dp/B00Q93N29I
+- http://iwataasks.nintendo.com
+- https://www.goodreads.com/book/show/34376766-blood-sweat-and-pixels?ac=1&from_search=true&qid=zVIQDAnAQy&rank=1
+- https://www.resetera.com/threads/artbooks-gaming-books-ot-a-new-era-a-new-shelf.1086/page-90#post-41465034
+- https://readonlymemory.vg/shop/book/britsoft-an-oral-history/
+- https://readonlymemory.vg/shop/book/japansoft-an-oral-history/

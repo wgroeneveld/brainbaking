@@ -6,5 +6,5 @@ fontfamily: mathpazo
 # rest of metadata now managed by tufte-book
 lang: en
 babel-lang: english
-classoption: symmetric,justified,marginals=raggedouter
+classoption: justified,symmetric,marginals=raggedright
 ---

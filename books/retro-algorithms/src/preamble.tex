@@ -43,8 +43,8 @@
   bottom=15mm
 }
 %%
-% Book metadata
-\title{Inside the Game Boy Game Loop}
+% Book metadata (there's no subtitle, redefine it right after \maketitle)
+\title{Inside the Game Boy \newline Game Loop \newline {\Huge Retro Programming Techniques \newline Explained}}
 \author{Wouter Groeneveld}
 \publisher{Brain Baking}
 
@@ -73,24 +73,28 @@
 % \usepackage{xeCJK}
 % \setCJKmainfont[BoldFont=STHeiti,ItalicFont=STKaiti]{STSong}
 
+\usepackage{xcolor}
+\definecolor{gb0}{HTML}{19380F}
+\definecolor{gb1}{HTML}{306130}
+\definecolor{gb2}{HTML}{8BAC12}
+\definecolor{gb3}{HTML}{9BBD16}
+
 % set chapter/section/quote styles to retro font
 \usepackage{sectsty}
 \partfont{\retro}
 \chapterfont{\retro}
 \sectionfont{\retro}
 \subsectionfont{\retro}
-\AtBeginEnvironment{quote}{\retro}
+%\AtBeginEnvironment{quote}{\retro}
+%\AtEndEnvironment{quote}{}}
+\AtBeginEnvironment{verbatim}{\small}
+%\AtEndEnvironment{quote}{}}
 
 \renewcommand{\labelitemi}{$\circ$}
 
+
 %%
 % styling section/chapter/subsection/...
-\usepackage{xcolor}
-\definecolor{gb0}{HTML}{19380F}
-\definecolor{gb1}{HTML}{306130}
-\definecolor{gb2}{HTML}{8BAC12}
-\definecolor{gb3}{HTML}{9BBD16}
-\usepackage{lipsum}
 
 % 0 = part/chapter nums. 1 = section, 2 = subsection, -1 = disable.
 \setcounter{secnumdepth}{0}
@@ -98,7 +102,7 @@
 % chapter format
 \titleformat{\chapter}%
   {\Huge\retro\itshape\color{gb1}}% format applied to label+text
-  {\llap{\colorbox{gb0}{\parbox{10.5cm}{\hfill\itshape\Huge\color{white}\thechapter}}}}% label
+  {\llap{\colorbox{gb0}{\parbox{4.5cm}{\hfill\itshape\Huge\color{white}\thechapter}}}}% label
   {8pt}% horizontal separation between label and title body
   {}% before the title body
   []% after the title body
@@ -111,6 +115,7 @@
 % ================
 % for png/pdf inclusion (pdfpages: full-page)
 \usepackage{graphicx}
+
 \graphicspath{{img/}}
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
 

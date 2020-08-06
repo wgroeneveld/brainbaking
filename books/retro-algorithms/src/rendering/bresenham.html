@@ -40,15 +40,40 @@ var drawGrid = function() {
 
 var bresenham = function() {
 	const coords = [
-		{x: 1, y: 1},
-		{x: 2, y: 1},
-		{x: 3, y: 2}
+		{x: 1, y: 1, down: false},
+		{x: 2, y: 1, down: true},
+		{x: 3, y: 2, down: false},
+        {x: 4, y: 2, down: false},
+        {x: 5, y: 2, down: true},
+        {x: 6, y: 3, down: false},
+        {x: 7, y: 3, down: false},
+        {x: 8, y: 3, down: false},
 	];
 
-	ctx.fillStyle='rgb(210, 210, 210)';
 	coords.forEach(coord => {
+        ctx.fillStyle= coord.down ? 'rgb(180, 210, 210)' : 'rgb(210, 210, 210)';
 		ctx.fillRect((coord.x * step) + 1, (coord.y * step) + 1, step - 2, step - 2);
 	});
+
+    ctx.beginPath();
+    ctx.moveTo(coords[0].x * step + step / 2, coords[0].y * step + step / 2);
+    ctx.lineWidth = 5;
+    ctx.lineTo(coords[coords.length - 1].x * step + step / 2, coords[coords.length - 1].y * step + step / 2);
+    ctx.stroke();
+
+    coords.forEach(coord => {
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgb(100,0,0)';
+        ctx.arc(coord.x * step + step / 2, coord.y * step + step / 2, 3, 0, 2 * Math.PI);
+        ctx.stroke();
+    });
+
+    ctx.font = "14px Arial";
+    ctx.fillStyle = "gray";
+    ctx.textAlign = "center";    
+    ctx.fillText("(0,0)", 20, 20);
+    ctx.fillText("(0,1)", 20, 120);
+    ctx.fillText("(1,0)", 120, 20);
 }
 
 
