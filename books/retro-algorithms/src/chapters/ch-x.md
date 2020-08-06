@@ -120,7 +120,7 @@ I have implemented a simple version of this concept on the Game Boy Advance. The
 
 ### Drawing lines
 
-Stopping after projecting coordinates onto the screen won't get us very far: without any lines drawn between them, all you can see is mere dots representing an object. While trying to imagine what the object looks like is fun, it's not as much fun as seeing and interacting with the real thing. Thus, the rendered screen coordinates should be connected with lines.
+Stopping after projecting coordinates onto the screen won't get us very far: without any lines drawn between them, all you can see is mere dots representing an object. While trying to imagine what the object looks like is fun, it's not as much fun as seeing and interacting with the real thing. Thus, the rendered screen coordinates should be connected with lines: rasterization. 
 
 \marginfig{cube-vertex-lines.png}{Simply connecting the projected coordinates does not suffice.}{A partially wireframe-rendered cube.}
 
@@ -140,22 +140,20 @@ The trick is coming up with a generic solution that is capable of handling lines
 
 In the following figure, a downward sloping line has been drawn on top of a 2D raster to illustrate which pixels to color on screen. Bresenham came up with an effective way to test whether or not the $y$ coordinate should be increased (thus further lowering the line): by checking the midpoint of the pixel. In this example, the $x$ coordinate always increases by one. This case should be modified for each octant, so you'll first need to figure out in which direction the line will be going. 
 
-If the midpoint of the traversing pixel lies above the circle, such as the colored pixels in the figure, it is time to increase $y$. As long as the midpoint stays below the line, we're safe to continue horizontally. 
+If the midpoint of the traversing pixel lies above the line, such as the colored pixels in the figure, it is time to increase $y$. As long as the midpoint stays below the line, we're safe to continue horizontally. 
 
 [^botr]: In screen space, the top left corner is $(0, 0)$.
 
 ![Midpoints of each pixel are marked with a red circle. All individual colored pixels end up producing the desired line.](bresenham.png)
 
-Bresenham's algorithm is indeed an effective way to draw arbitrary lines, but it tends to produce "jagged" edges. Anti-aliasing, however, is a video memory-intensive process so we're out of luck here. With the low resolution of the Game Boy, it would not have mattered much. To better illustrate the problem, look at the zoomed in battle scenes in the margin. The first is blown up using ImageMagick's `-box` filter, the latter without any filter (producing a form of anti-aliasing by default).
+Bresenham's algorithm is indeed an effective way to draw arbitrary lines, but it tends to produce "jagged" edges. Anti-aliasing, the technique to smooth out a line by rendering multiple pixels per pixel of the final image, is a video memory-intensive process so we're out of luck here. With the low resolution of the Game Boy, it would have resulted in very blurry frames, making the ghosting issue of the original Game Boy seem even more troublesome. Furthermore, as mentioned before, post-processing pixels is out of the question simply because of hardware limitations. 
 
-\marginfig[-10cm]{x-face-alias1.png}{}{Jagged lines in X.}
-
-\marginfig[-2.5cm]{x-face-alias2.png}{The X commander without (jagged) and with (blurred) anti-aliasing. }{The X commander With and without anti-aliasing.}
+\marginfig[-2.5cm]{x-face-alias1.png}{A blown-up screenshot of the commander in X without anti-aliasing: look at all those jaggies!}{The X commander without anti-aliasing.}
 
 Inside the game loop, the downward sloping line, of which the starting and ending coordinates have been projected into 2D screen space, can be drawn like this:
 
 ```
-draw line = 
+draw downward sloping line = 
     for each horizontal pixel:
         increase x by 1
         if the midpoint is above the line:
@@ -165,7 +163,40 @@ draw line =
 
 ### How to get it running on the Game Boy
 
-tricks mentioned by Dylan
+Now that we're experts at projecting 3D models onto a 2D canvas on screen and drawing lines between points to produce something meaningful, the question is: how to cram all this logic into an 8-bit handheld? The answer is rigorously reducing functionality, according to Dylan Cuthbert. 
 
+"I mapped the screen to be a screen buffer - can’t remember the dimensions of it, but not huge." he explains when I ask him how he even managed to manipulate individual pixels. Remember that the GB does not have a bitmap mode - it's designed to work with sprites only!
 
+"Then I transferred that into the character map every frame. I transferred it byte by byte by polling the H-blank flag and only transferring it during that time." This sounds surprisingly similar to the HDMA method we encountered earlier.
+
+"I used a number of techniques to get the speed up, mostly table lookups! Especially for the perspective division and rotation, so sine tables. I didn’t even really use fixed point math as far as I can recall" continues Dylan. "I think the units were just kept small so `1` was quite small. It was just integer math with everything below the fixed point being discarded after multiplies."
+
+Transformation matrices involve $cos(x)$[^cos] and $sin(x)$ calculations, exactly like GBA's affine sprite transformations, except that this time transformations are sadly not hardware-accelerated. Trigonometry _LUTs_ (lookup tables) are well-known techniques to retro coders. Instead of going through type conversions and floating-point functions, you can conserve CPU cycles by spending memory. 
+
+[^cos]: Smart sine tables also house cosine values. Instead of using 360 units for a circle, use a power of two, such as 512. Then, a cosine value is just a shifted sine, and wrapping can be achieved with a few bitmasks. The _Tonc_ documentation provides further implementation details of LUTs. 
+
+Also, note that Dylan avoids dividing by $w$ inside the game loop by creating another LUT especially for this purpose. 
+
+"And most of the 3D is single axis rotation with some special cases for two axis - flying things primarily so they can bank and dive." This greatly simplifies the matrix multiplication steps, further unburdening the CPU.
+
+The easiest way to increase the performance of any bitmap-rendered game is to reduce the resolution. X contains a fairly large HUD, where you can keep an eye on your fuel level. However, that is also a neat trick to reduce the CPU load since that part is tile-based and fairly static. Even the arrows explaining the concepts of the game during the tutorial are sprites. 
+
+\begin{figure*}[h]
+  \includegraphics[width=\linewidth]{x-tutorial-tiles.png}
+\end{figure*}
+
+As expected, everything that makes up the HUD is present in the tilemap, from altitude measures to numbers and text. The blank spots in between the Japanese symbols constantly change as new bytes from the buffer are copied over. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics{x-tutorial.png}
+    \caption{The X tutorial scene. Note the repeating pattern in the 5 parts
+    of the dotted line leading up to the arrow.}
+\end{figure}
+
+The more Dylan explained and the more I dug around in mGBA inspecting the game's internals, the more I sympathized with this man. My simple 3D demos programmed in C++ on the GBA already made me sweaty - I couldn't bear to think having to do that in assembly! When asked how Dylan coped with structuring code, his response was quite pragmatic.
+
+"It’s all machine code so data driven - although I had some simple data structures for convenience that could equate to C style structures but the Z80 isn’t good for accessing that kind of organization of data so yeah..." What are you going to do?
+
+I used one trick in the tunnels to ‘clip’ the tunnel segments to the next segment  and make them look solid
 
