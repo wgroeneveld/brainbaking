@@ -91,7 +91,7 @@ Then (3), since now our camera is correctly positioned, all that is left is proj
 
 \marginfig{babylon-projection.png}{Projecting using perspective division. The further back, the smaller on the target screen.}{Projecting using perspective division.}
 
-The best way to visualize the difference between these two projections is to think about parallel lines. Go outside and take a look at the left and right side of the road. At the horizon, these lines seem to intersect. In Cartesian space[^cart], that usually does a good job at describing 2D and 3D objects, this is very difficult to express. The Cartesian space is a coordinate system you are probably very familiar with in 2D: two axes that form perpendicularly oriented lines. It was named after the brilliant French philosopher and mathematician René Descartes.
+The best way to visualize the difference between these two projections is to think about parallel lines. Go outside and take a look at the left and right side of the road. At the horizon, these lines seem to intersect. In Cartesian space, that usually does a good job at describing 2D and 3D objects, this is very difficult to express. The Cartesian space is a coordinate system you are probably very familiar with in 2D: two axes that form perpendicularly oriented lines. It was named after the brilliant French philosopher and mathematician René Descartes.
 
 However great Descartes was, Cartesian coordinates help little when trying to project two parallel lines merging at the horizon. How about the rather unusable $(\infty, \infty$)? The solution is to introduce $w$ so that $(x, y)$ becomes $(x, y, w)$. These are called Homogeneous coordinates, something invented by August Ferdinand Möbius to help calculating graphics in projective space. Möbius introduced one more dimension to N-dimensional coordinates, allowing us to express the concept of infinity as $(x, y, 0)$.
 
@@ -213,7 +213,7 @@ The more Dylan explained and the more I poked around in mGBA inspecting the game
 
 "It’s all machine code so data driven - although I had some simple data structures for convenience that could equate to C style structures but the Z80 isn’t good for accessing that kind of organization of data so yeah..." What are you going to do?
 
-\marginfig{x-tunnel.png}{The impressive tunnel sequences comes with an equally impressive soundtrack by Japanese composer Kazumi Totaka.}{The impressive tunnel sequence in X.}
+\marginfig{x-tunnel.png}{The impressive tunnel sequences come with an equally impressive soundtrack by Japanese composer Kazumi Totaka - his first game in a slew of many great Nintendo titles to come, including Animal Crossing and Luigi's Mansion.}{The impressive tunnel sequence in X.}
 
 "I did use one trick in the tunnels to clip the tunnel segments to the next segment  and make them look solid" recounts Dylan. The claustrophobic vibe, a pleasantly upbeat soundtrack and a fixed but fast speed that requires concentration all make up for one of the most exciting parts of the game. 
 
@@ -231,7 +231,7 @@ Nintendo's involvement and interest in the X project ultimately paved the way fo
 
 [^sfx]: During development, it was codenamed "_MARIO_" (Mathematical, Argonaut, Rotation, & Input/Output).
 
-\marginfig{starfox.jpg}{"Do a barrel roll!" Sure thing, Peppy. }{Star Fox on SNES.}
+\marginfig{starfox.jpg}{Peppy's iconic "Do a barrel roll!" exclamation from Star Fox even caused a giggle with Google engineers. Try typing it in Google Search.}{Star Fox on SNES.}
 
 In 1990, Argonaut Games demoed a version of a Starglider NES port to Nintendo. Impressed with the work, and in need of help for their launch title Pilotwings, Nintendo asked polygon experts Argonaut how to correctly rotate planes in their game. Because of severe hardware limitations, they ran out of memory before a frame could be drawn. Jez San proposed to solder a 3D chip directly onto the cartridge PCB that could do the necessary math. 
 
@@ -245,8 +245,23 @@ Instead of designing hardware first and writing software for it, Starfox and the
 
 [^doomsnes]: Read more about the birth of DOOM on the SNES in Fabien Sanglard's excellent _Game Engine Black Book: DOOM_. 
 
-Randal Linden, the developer behind the SNES port of DOOM, released it's source code in 2020 on Github at [https://github.com/RandalLinden/DOOM-FX](https://github.com/RandalLinden/DOOM-FX). If you're feeling particularly adventurous on an early Sunday morning, you can try to wade through the assembly lines to discover how the Super FX chip was programmed. 
+Randal Linden, the developer of DOOM FX on SNES, released it's source code in 2020 on Github at [https://github.com/RandalLinden/DOOM-FX](https://github.com/RandalLinden/DOOM-FX). If you're feeling particularly adventurous on an early Sunday morning, you can try to wade through the assembly lines to discover how the Super FX chip was programmed. 
 
 Ultimately, little games made use of either GSU chip since it greatly increased manufacturing costs and even MSRP. Only 5 games would use the first iteration: Dirt Racer, Dirt Trax FX, Star Fox, Stunt Race FX and Vortex. Even less games would use the GSU-2 chip: DOOM, Yoshi's Island and Winter Gold. 
 
-X on the Game Boy is a landmark in gaming. Without X, there would be no Star Fox franchise, no DOOM on an early Nintendo console, and a pretty crappy version of Yoshi's Island. 
+X on the Game Boy is a landmark in gaming. No single Game Boy (Color) game would come near matching it's polygon processing power. Without X, there would be no Star Fox franchise, no DOOM on an early Nintendo console, and a pretty crappy version of Yoshi's Island. 
+
+\newpage
+
+### What's outside the game loop?
+
+* A few prepared lookup tables that hold pre-calculated data such as sine, cosine and perspective division values.
+* Vertex data of each object in the game world, for each level. 
+* A screen buffer where the graphics are drawn to. 
+
+### What's inside the game loop?
+
+* A software pipeline rendering mechanism that is able to transform 3D object coordinates into 2D screen data, updating the screen buffer between frames.
+* Rasterization of simple triangles by efficiently drawing lines between two arbitrary points, based on the midpoint of each pixel. 
+* Several optimization tricks that help reduce the CPU load, such as looking up values in LUTs, hidden surface removal, clipping, reducing the resolution, restricting rotations and keeping the math as simple as possible (e.g. no floating points). 
+* A fast way to copy over the screen buffer at the right moment, avoiding flickering effects. 
