@@ -5,6 +5,12 @@
 
 Blabla game boy righthand page
 
+\begin{figure*}[h!]
+    \centering
+    \includegraphics{ch-handheld/sales.png}
+    \caption{Console sales blabla}
+\end{figure*}
+
 ### The Game Boy Family
 
 Blabla gameboy
@@ -13,7 +19,7 @@ Blabla gameboy
 
 \begin{figure}[h!]
     \centering
-    \includegraphics{hw-gbpocket.jpg}
+    \includegraphics{ch-handheld/hw-gbpocket.jpg}
     \caption{Game Boy Pocket.}
 \end{figure}
 
@@ -21,7 +27,7 @@ Blabla gameboy
 
 \begin{figure}[h!]
     \centering
-    \includegraphics{pcb-gbpocket.jpg}
+    \includegraphics{ch-handheld/pcb-gbpocket.jpg}
     \caption{Game Boy Pocket PCB.}
 \end{figure}
 
@@ -39,7 +45,7 @@ nog iets?
 
 \begin{figure}[h!]
     \centering
-    \includegraphics{hw-gba.jpg}
+    \includegraphics{ch-handheld/hw-gba.jpg}
     \caption{Game Boy Advance.}
 \end{figure}
 
@@ -47,7 +53,7 @@ nog iets?
 
 \begin{figure}[h!]
     \centering
-    \includegraphics{pcb-gba.jpg}
+    \includegraphics{ch-handheld/pcb-gba.jpg}
     \caption{Game Boy Advance PCB.}
 \end{figure}
 

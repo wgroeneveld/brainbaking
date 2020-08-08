@@ -22,9 +22,9 @@ After deciding to make something on the most popular handheld of the nineties, t
 > "We hacked together a Game Boy development kit with a camera pointed at the Game Boy. We took a cartridge — I think a Tetris cartridge — and unscrewed it all. We connected up wires to chips and connected them to this circuit board one of the guys had at Argonaut made. They'd gotten into circuit printing and were printing the circuit boards in this bath full of acid."
 
 
-![Starglider 2 on the ZX Spectrum. Source: https://spectrumcomputing.co.uk/](starglider2.png)
+![Starglider 2 on the ZX Spectrum. Source: https://spectrumcomputing.co.uk/](ch-x/starglider2.png)
 
-\marginfig[-3.85cm]{starglider2_amiga.png}{Actually, Starglider 2 should look like this, showcasing flat shaded colored polygons.}{Starglider 2 on Amiga}
+\marginfig[-3.85cm]{ch-x/starglider2_amiga.png}{Actually, Starglider 2 should look like this, showcasing flat shaded colored polygons.}{Starglider 2 on Amiga}
 
 Argonaut's Starglider combined with Dylan's knowledge of ZX assembly programming and 3D graphics thus somehow successfully morphed into a Game Boy game. but how is that technically possible? Compared to relatively powerful machines such as the Amiga and the Atari ST, Nintendo's original handheld machine was meager and low on memory. Exactly like Sinclair's microcomputers, performance was sacrificed for affordability. 
 
@@ -32,7 +32,7 @@ Screenshots showcasing different versions of Starglider 2 should clarify what "_
 
 Reduce the palette of 15 shades to only four shades of gray and you've got something quite similar to X, including the stuttering frame rate. In order to get a playable frame rate, a lot of optimization cuts had to be made: no textures let alone filled polygons, only a few objects rendered at once, and a limited amount of rotation. 
 
-\marginfig{x.png}{X on the Game Boy.}{A screenshot of X}
+\marginfig{ch-x/x.png}{X on the Game Boy.}{A screenshot of X}
 
 I ask Dylan if any 2.5D rendering techniques such as raycasting were involved.
 
@@ -60,9 +60,9 @@ Suppose we want to render a simple _cube_. A cube is a simple _polyhedron_, or a
 
 Our cube contains eight very simple vertices: `(-1, 1, 1)`, `(1, 1, 1)`, `(-1, -1, 1)`, `(-1, -1, -1)`, `(-1, 1, -1)`, `(1, 1, -1)`,`(1, -1, 1)`, `(1, -1, -1)`. These numbers may be confusing because when we draw a cube on a piece of paper, we unconsciously project the object onto a 2D space and flatten the model. In front view, you will probably draw a big square partially obfuscated by a smaller square inside.
 
-\marginfig[-2.2cm]{babylon-screen-box.png}{A cube displayed in model space.}{A rendered cube in model space.}
+\marginfig[-2.2cm]{ch-x/babylon-screen-box.png}{A cube displayed in model space.}{A rendered cube in model space.}
 
-\marginfig[-0.2cm]{babylon-world-boxes.png}{Multiple projected cubes in world space.}{Multiple projected cubes in world space.}
+\marginfig[-0.2cm]{ch-x/babylon-world-boxes.png}{Multiple projected cubes in world space.}{Multiple projected cubes in world space.}
 
 The above 3D vertex coordinates are raw _object coordinates_ in model space, with their initial position and orientation before any transformation is applied. In order to calculate the window or _screen coordinates_, a number of operations are performed.
 
@@ -89,7 +89,7 @@ Next (2), we need to find an efficient way to project the world onto the screen.
 
 Then (3), since now our camera is correctly positioned, all that is left is projecting what the camera 'catches' of the game world onto the screen. But before we can do that, we first have to project from view space to _projection space_ using yet another transformation matrix. This space allows us to quickly discard polygons that fall outside the camera view area, a process called _clipping_. The projection matrix defines the viewing volume. There are two common ways to project from view space into projection space: orthographic projection and perspective projection. orthographic projection is used in 2D gaming with 3D engines where there's no dynamic depth. In perspective projection, clipped coordinates have to be divided by a depth factor $w$, hence it's name _perspective division_. 
 
-\marginfig{babylon-projection.png}{Projecting using perspective division. The further back, the smaller on the target screen.}{Projecting using perspective division.}
+\marginfig{ch-x/babylon-projection.png}{Projecting using perspective division. The further back, the smaller on the target screen.}{Projecting using perspective division.}
 
 The best way to visualize the difference between these two projections is to think about parallel lines. Go outside and take a look at the left and right side of the road. At the horizon, these lines seem to intersect. In Cartesian space, that usually does a good job at describing 2D and 3D objects, this is very difficult to express. The Cartesian space is a coordinate system you are probably very familiar with in 2D: two axes that form perpendicularly oriented lines. It was named after the brilliant French philosopher and mathematician René Descartes.
 
@@ -114,7 +114,7 @@ render 3D coordinates =
             flatten to 2D screen coordinates
 ```
 
-\marginfig{cube-points.png}{Rendered screen coordinates of cube vertices in front view. Can you spot the cube? How about with your eyes squinted?}{Rendered screen coordinates of a cube.}
+\marginfig{ch-x/cube-points.png}{Rendered screen coordinates of cube vertices in front view. Can you spot the cube? How about with your eyes squinted?}{Rendered screen coordinates of a cube.}
 
 I have implemented a simple version of this concept on the Game Boy Advance. The GBA allows me to program in C++ instead of assembly, making the code easier to read and understand. The rendered figures in the margin are screenshots taken from that demo. You can take a look at the matrix transformations in `gba_engine.cpp` at [https://github.com/wgroeneveld/gba-bitmap-engine/](https://github.com/wgroeneveld/gba-bitmap-engine/).
 
@@ -122,11 +122,11 @@ I have implemented a simple version of this concept on the Game Boy Advance. The
 
 Stopping after projecting coordinates onto the screen won't get us very far: without any lines drawn between them, all you can see is mere dots representing an object. While trying to imagine what the object looks like is fun, it's not as much fun as seeing and interacting with the real thing. Thus, the rendered screen coordinates should be connected with lines: rasterization. 
 
-\marginfig{cube-vertex-lines.png}{Simply connecting the projected coordinates does not suffice.}{A partially wireframe-rendered cube.}
+\marginfig{ch-x/cube-vertex-lines.png}{Simply connecting the projected coordinates does not suffice.}{A partially wireframe-rendered cube.}
 
 However, simply connecting the dots will not suffice. Remember that in order to minimize the amount of vertices for a model, we only defined eight coordinates for our cube? Connecting eight points on a piece of paper does not produce a nice-looking cube. Wireframe rendering means rendering a model by drawing the outlines of multiple smaller shapes using the simplest possible 2D geometric shape: a _triangle_. 
 
-\marginfig{cube-orig.png}{The same wireframe-rendered cube in front view using triangular faces. A lot less strain for our imagination. Notice that the 'X' in the front is a result of the back-faces also being drawn, while in reality they are mostly invisible.}{A wireframe-rendered cube using triangular faces.}
+\marginfig{ch-x/cube-orig.png}{The same wireframe-rendered cube in front view using triangular faces. A lot less strain for our imagination. Notice that the 'X' in the front is a result of the back-faces also being drawn, while in reality they are mostly invisible.}{A wireframe-rendered cube using triangular faces.}
 
 3D modeling tools can automatically break down an object into triangular faces. A face is internally represented an index pointing to three vertices of a model. A square can be divided into two triangles by drawing a single diagonal line, forming two faces. Since we have six squares to cover in a cube, we've got 12 faces in total to define. 
 
@@ -144,11 +144,11 @@ If the midpoint of the traversing pixel lies above the line, such as the colored
 
 [^botr]: In screen space, the top left corner is $(0, 0)$.
 
-![Midpoints of each pixel are marked with a red circle. All individual colored pixels end up producing the desired line.](bresenham.png)
+![Midpoints of each pixel are marked with a red circle. All individual colored pixels end up producing the desired line.](ch-x/bresenham.png)
 
 Bresenham's algorithm is indeed an effective way to draw arbitrary lines, although it tends to produce "jagged" edges. Anti-aliasing, the technique to smooth out a line by rendering multiple pixels per pixel of the final image, is a video memory-intensive process so we're out of luck here. With the low resolution of the Game Boy, it would have resulted in very blurry frames, making the ghosting issue of the original Game Boy seem even more troublesome. Furthermore, as mentioned before, post-processing pixels is out of the question simply because of hardware limitations. 
 
-\marginfig[-2.5cm]{x-face-alias1.png}{A blown-up screenshot of the commander in X emphasizes the lack of anti-aliasing: look at all those jaggies!}{The X commander without anti-aliasing.}
+\marginfig[-2.5cm]{ch-x/x-face-alias1.png}{A blown-up screenshot of the commander in X emphasizes the lack of anti-aliasing: look at all those jaggies!}{The X commander without anti-aliasing.}
 
 Inside the game loop, the downward sloping line, of which the starting and ending coordinates have been projected into 2D screen space, can be drawn like this:
 
@@ -164,7 +164,7 @@ draw downward sloping line =
 
 Merely converting vertex data to screen data and drawing triangles would end up in a big mess of intersecting lines if a lot of models are visible on screen. After all, polygons that end up at the back of other polygons, and therefore are hidden to the player, should not be drawn. This is called the _visibility problem_ in 3D computer graphics.
 
-\marginfig{x-visibility.png}{Polygons are simply overdrawn in X.}{Polygons are simply overdrawn in X.}
+\marginfig{ch-x/x-visibility.png}{Polygons are simply overdrawn in X.}{Polygons are simply overdrawn in X.}
 
 The simplest solution to the problem is to be inspired by one of the most likable media personalities of the eighties and nineties: the painter Bob Ross. His joyful and soothing instructions guide you towards your first success in oil painting. Attentive viewers of his _The Joy of Painting_ TV show will notice that he always starts with the mountains, gradually working his way towards the foreground. The end result is always a stunning canvas consisting of a few overlapping layers of oil, painted in less than thirty minutes.
 
@@ -197,12 +197,12 @@ Also, note that Dylan avoids dividing by $w$ inside the game loop by creating an
 The easiest way to increase the performance of any bitmap-rendered game is to reduce the resolution. X contains a fairly large HUD, where you can keep an eye on your fuel level. It's also a neat trick to reduce the CPU load since that part is tile-based and fairly static. Even the arrows explaining the concepts of the game during the tutorial are sprites. 
 
 \begin{figure*}[h]
-  \includegraphics[width=\linewidth]{x-tutorial-tiles.png}
+  \includegraphics[width=\linewidth]{ch-x/x-tutorial-tiles.png}
 \end{figure*}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics{x-tutorial.png}
+    \includegraphics{ch-x/x-tutorial.png}
     \caption{The X tutorial scene (left) and the active tileset (above). Note the repeating pattern in the 5 parts
     of the dotted line leading up to the arrow, pointing at your current speed (HIGH). \newline The gray spots in between the Japanese symbols in the tileset constantly change as new bytes from the buffer are copied over.}
 \end{figure}
@@ -213,7 +213,7 @@ The more Dylan explained and the more I poked around in mGBA inspecting the game
 
 "It’s all machine code so data driven - although I had some simple data structures for convenience that could equate to C style structures but the Z80 isn’t good for accessing that kind of organization of data so yeah..." What are you going to do?
 
-\marginfig{x-tunnel.png}{The impressive tunnel sequences come with an equally impressive soundtrack by Japanese composer Kazumi Totaka - his first game in a slew of many great Nintendo titles to come, including Animal Crossing and Luigi's Mansion.}{The impressive tunnel sequence in X.}
+\marginfig{ch-x/x-tunnel.png}{The impressive tunnel sequences come with an equally impressive soundtrack by Japanese composer Kazumi Totaka - his first game in a slew of many great Nintendo titles to come, including Animal Crossing and Luigi's Mansion.}{The impressive tunnel sequence in X.}
 
 "I did use one trick in the tunnels to clip the tunnel segments to the next segment  and make them look solid" recounts Dylan. The claustrophobic vibe, a pleasantly upbeat soundtrack and a fixed but fast speed that requires concentration all make up for one of the most exciting parts of the game. 
 
@@ -231,13 +231,13 @@ Nintendo's involvement and interest in the X project ultimately paved the way fo
 
 [^sfx]: During development, it was codenamed "_MARIO_" (Mathematical, Argonaut, Rotation, & Input/Output).
 
-\marginfig{starfox.jpg}{Peppy's iconic "Do a barrel roll!" exclamation from Star Fox even caused a giggle with Google engineers. Try typing it in Google Search.}{Star Fox on SNES.}
+\marginfig{ch-x/starfox.jpg}{Peppy's iconic "Do a barrel roll!" exclamation from Star Fox even caused a giggle with Google engineers. Try typing it in Google Search.}{Star Fox on SNES.}
 
 In 1990, Argonaut Games demoed a version of a Starglider NES port to Nintendo. Impressed with the work, and in need of help for their launch title Pilotwings, Nintendo asked polygon experts Argonaut how to correctly rotate planes in their game. Because of severe hardware limitations, they ran out of memory before a frame could be drawn. Jez San proposed to solder a 3D chip directly onto the cartridge PCB that could do the necessary math. 
 
 Since the aging NES console was on the verge of being replaced by the SNES, Nintendo briefly considered to package the Super FX with their new machine. Alas, time constraints prevented that from happening. Imagine what the 16-bit war would have been like if the SNES motherboard came with a Super FX chip preinstalled! Instead of SEGA's popular TV commercial _Genesis Does What Nintendon't_, it could have been _Nintendoes what Genesis doesn't_... 
 
-![The PCB of a PAL version of Yoshi's Island, with the GSU-2 in the middle, flanked by the 2 MB ROM on the left and the 256 KB frame buffer and save game SRAM on the upper right.](pcb-yoshi.jpg)
+![The PCB of a PAL version of Yoshi's Island, with the GSU-2 in the middle, flanked by the 2 MB ROM on the left and the 256 KB frame buffer and save game SRAM on the upper right.](ch-x/pcb-yoshi.jpg)
 
 Since the SNES itself still only supports sprite modes, the Super FX chip draws polygons to a frame buffer in the extra RAM that also sits on the PCB of the cartridge. Similarly to Dylan's frame buffer copy technique in X, DMA is used to transfer the contents to the video memory of the SNES itself. 
 

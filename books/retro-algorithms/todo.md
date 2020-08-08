@@ -22,6 +22,7 @@ date: 2020-07-07
 [ ] Chapter nummers genoeg van de kant af https://tex.stackexchange.com/questions/96090/formatting-subsections-and-chapters-in-tufte-book
 [ ] 'Part x' pagina's: over hele breedte een mooie image?
 [ ] sidenotes raggedouter werkt niet goed precies
+[ ] 'chapter-x' refs maken
 
 ## Images
 

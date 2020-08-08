@@ -14,12 +14,12 @@ date: 2020-07-06
 - the 100 greatest retro videogames: inside stories behind the... https://www.amazon.com/100-Greatest-Retro-Videogames-Stories/dp/1787393089/ref=pd_sbs_14_20?_encoding=UTF8&pd_rd_i=1787393089&pd_rd_r=d8025da1-2615-46bc-81e6-681fffbab3d7&pd_rd_w=erL93&pd_rd_wg=ccz87&pf_rd_p=d28ef93e-22cf-4527-b60a-90c984b5663d&pf_rd_r=FZ0GKGJH8W9FM327N0YC&psc=1&refRID=FZ0GKGJH8W9FM327N0YC (iets technisch ook in?)
 - The nostaliga's nerd retro tech https://www.amazon.com/Nostalgia-Nerds-Retro-Tech-Computer/dp/1781575703/ref=pd_sim_14_4/134-3297224-5452414?_encoding=UTF8&pd_rd_i=1781575703&pd_rd_r=0772372e-6f4f-4812-b14c-e954e2759b03&pd_rd_w=xnROo&pd_rd_wg=OX60F&pf_rd_p=3c412f72-0ba4-4e48-ac1a-8867997981bd&pf_rd_r=CE160RDZ44SNX3ZN2BG7&psc=1&refRID=CE160RDZ44SNX3ZN2BG7 geen technische HW/SW details... 
 - 1001 vieo games you must play before you die - video channel van kerel die ze allemaal aan het afgaan is: https://www.youtube.com/c/GamingJay1001/videos
-- https://gbdev.io/pandocs/
+- Game Boy Technical reference pandoc https://gbdev.io/pandocs/
+- Game Boy: Complete Technical Reference https://github.com/Gekkio/gb-ctr
 - https://gekkio.fi/blog/2015/mooneye-gb-cartridge-analysis-fortress-of-fear/
-- https://gbhwdb.gekkio.fi/cartridges/
-- https://github.com/Gekkio/gb-ctr
-- https://flashcartdb.com/index.php/Main_Page
-- http://www-cs-students.stanford.edu/~amitp/gameprog.html
+- cartridge photos (quality issues): https://gbhwdb.gekkio.fi/cartridges/
+- Game Boy Flash carts: https://flashcartdb.com/index.php/Main_Page
+- Game Programming info (algoritmitc, a lot) http://www-cs-students.stanford.edu/~amitp/gameprog.html
 - retro computer game design and programming books pdf's https://archive.org/details/RetroGameDesignAndProgrammingBooks
 - Nostalgia GB Perfect Guide https://ia801000.us.archive.org/23/items/perfectguidegb/Perfect%20Guide%20GB%20懐かしゲームボーイパーフェクトガイド.pdf (jap)
 - Game Boy World/Works Jeremy Parish https://www.gameboyworks.com/about-game-boy-world/

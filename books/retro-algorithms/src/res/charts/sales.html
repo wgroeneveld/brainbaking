@@ -1,0 +1,242 @@
+<html>
+
+<head>
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+
+<title>Graph</title>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin-left: 10px;
+}
+
+#chartdiv {
+  height: 900px;
+}
+
+.text-warning {
+  font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div class="container">
+</div>
+
+
+<p>
+	<div id="chartdiv"></div>
+</p>
+
+
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+window.data = [{
+  "console": "Game Boy family",
+  "year": 1989,
+  "sales": 118.69,
+  "type": "handheld"
+}, {
+  "console": "GBA family",
+  "year": 2001,
+  "sales": 81.51,
+  "type": "handheld"  
+}, {
+  "console": "DS family",
+  "year": 2004,
+  "sales": 154.02,
+  "type": "handheld"  
+}, {
+  "console": "3DS family",
+  "year": 2011,
+  "sales": 75.77,
+  "type": "handheld"  
+}, {
+  "console": "SNES",
+  "year": 1990,
+  "sales": 49.1,
+  "type": "cosole"  
+}, {
+  "console": "NES",
+  "year": 1983,
+  "sales": 61.91,
+  "type": "console"  
+}, {
+  "console": "SEGA Genesis/MegaDrive",
+  "year": 1988,
+  "sales": 35,
+  "type": "console"  
+}, {
+  "console": "SEGA Game Gear",
+  "year": 1990,
+  "sales": 10.62,
+  "type": "handheld"  
+}, {
+  "console": "Atari Lynx",
+  "year": 1989,
+  "sales": 1,
+  "type": "handheld"  
+}, {
+  "console": "PlayStation 2",
+  "year": 2000,
+  "sales": 155,
+  "type": "console"  
+}, {
+  "console": "PlayStation",
+  "year": 1994,
+  "sales": 102.49,
+  "type": "console"  
+}, {
+  "console": "N-Gage",
+  "year": 2003,
+  "sales": 3,
+  "type": "handheld"  
+}, {
+  "console": "Nintendo 64",
+  "year": 1996,
+  "sales": 32.93,
+  "type": "console"  
+}, {
+  "console": "GameCube",
+  "year": 2001,
+  "sales": 21.74,
+  "type": "console"  
+}, {
+  "console": "Playstation Portable",
+  "year": 2004,
+  "sales": 81,
+  "type": "handheld"  
+}, {
+  "console": "Playstation Vita",
+  "year": 2011,
+  "sales": 12.5,
+  "type": "handheld"  
+}, {
+  "console": "Xbox",
+  "year": 2001,
+  "sales": 24,
+  "type": "console"  
+}];
+
+data.forEach(d => {
+  d.console = `${d.console} (${d.year})`
+})
+data = data.sort((a, b) => {
+  return a.year >= b.year ? 1 : -1;
+})
+
+chart.data = data;
+
+// Create axes
+
+/*
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "console";
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.renderer.minGridDistance = 30;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "sales";
+series.dataFields.categoryX = "console";
+series.name = "Sales";
+series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
+series.columns.template.fillOpacity = .8;
+
+var columnTemplate = series.columns.template;
+columnTemplate.strokeWidth = 0;
+columnTemplate.strokeOpacity = 1;
+*/
+
+chart.padding(40, 40, 40, 40);
+
+var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.dataFields.category = "console";
+categoryAxis.renderer.inversed = true;
+categoryAxis.renderer.grid.template.disabled = true;
+//categoryAxis.renderer.minGridDistance = 100;
+categoryAxis.renderer.minWidth = 120;
+
+var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+valueAxis.min = 0;
+
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.categoryY = "console";
+series.dataFields.valueX = "sales";
+series.tooltipText = "{valueX.value}"
+series.columns.template.strokeOpacity = 0;
+series.columns.template.column.cornerRadiusBottomRight = 5;
+series.columns.template.column.cornerRadiusTopRight = 5;
+
+
+var labelBullet = series.bullets.push(new am4charts.LabelBullet())
+labelBullet.label.horizontalCenter = "left";
+labelBullet.fontSize = 20;
+labelBullet.label.dx = 5;
+labelBullet.label.fill = am4core.color("white");
+labelBullet.label.text = "{values.valueX.workingValue}";
+labelBullet.locationX = 1;
+
+categoryAxis.sortBySeries = series;
+
+var columnTemplate = series.columns.template;
+columnTemplate.adapter.add("fill", function(fill, target) {
+  return target.dataItem.dataContext.type === "handheld" ? am4core.color("#306130") : am4core.color("#8BAC12")
+})
+//columnTemplate.height = 100;
+//columnTemplate.maxHeight = 50;
+
+chart.exporting.menu = new am4core.ExportMenu();
+
+// appeared also works, but is fired AFTER animations
+series.events.on('shown', () => {
+  [ "Game Boy", "GBA" ].forEach(tohilight => {
+    [...document.querySelectorAll('text')]
+      .find(t => t.innerHTML.indexOf(tohilight) >= 0)
+      .classList.add('text-warning')
+    })
+})
+
+
+}); // end am4core.ready()
+</script>
+
+
+<span class="text-warning">&nbsp;</span>
+
+    <hr style="clear: both;" />
+
+    <footer class="page-footer bg-light font-small pt-4">
+      <div class="container">
+        <div class="row">
+          <div class="footer-copyright text-center py-3 col-sm">
+          </div>
+      </div>
+    </footer>  
+
+</body>
+</html>
