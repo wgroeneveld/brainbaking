@@ -5,6 +5,7 @@
 
 Blabla game boy righthand page
 
+\label{sales}
 \begin{figure*}[h!]
     \centering
     \includegraphics{ch-handheld-gb/sales.png}
