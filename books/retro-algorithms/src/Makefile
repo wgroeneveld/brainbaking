@@ -12,7 +12,7 @@ all:
 		--metadata-file=metadata.yml \
 		-t latex+smart \
 		--highlight-style=haddock > boek.tex \
-		chapters/intro.md chapters/ch-handheld.md chapters/ch-wario.md chapters/ch-x.md
+		chapters/intro.md chapters/ch-handheld-gb.md chapters/ch-handheld-gba.md chapters/ch-wario.md chapters/ch-x.md
 	python res/pandoc/postprocessor.py
 	xelatex boek.tex
 	#bibtex boek
