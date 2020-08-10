@@ -7,7 +7,7 @@
 
 The early nineties was a golden age for gaming, not only on handhelds. Lucky gamers with access to more powerful hardware could mess around in 3D environments, something that was deemed impossible on the Game Boy. That is, until Jez San and Dylan Cuthbert of Argonaut Games decided it would be cool to program a 3D space simulator for the GB. The result is _X_, a stellar achievement released in 1992 running on one of the weakest pieces of hardware imaginable at that time.
 
-To be fair, that's not the whole story. Argonaut Games was already well-known for their 3D space combat simulators _Starglider_ and it's successor _Starglider 2_, published in 1986 and 1988. Starglider 2 was released on Amiga, Atari ST, MS-DOS, Macintosh, and the ZX Spectrum. The latter platform is highly interesting to us, because the Spectrum is based on a Zilog Z80 CPU running at 3.5 MHz - it has close similarities with the Game Boy's hardware, and thus, it's limitations. 
+To be fair, that's not the whole story. Argonaut Games was already well-known for their 3D space combat simulators _Starglider_ and its successor _Starglider 2_, published in 1986 and 1988. Starglider 2 was released on Amiga, Atari ST, MS-DOS, Macintosh, and the ZX Spectrum. The latter platform is highly interesting to us, because the Spectrum is based on a Zilog Z80 CPU running at 3.5 MHz - it has close similarities with the Game Boy's hardware, and thus, its limitations. 
 
 Dylan kindly agreed to chat a bit about his experience creating X, and he indeed confirms that 8-bit assembly programming on UK's beloved _Speccy_ was something he could do with his eyes closed. 
 
@@ -66,7 +66,7 @@ Our cube contains eight very simple vertices: `(-1, 1, 1)`, `(1, 1, 1)`, `(-1, -
 
 The above 3D vertex coordinates are raw _object coordinates_ in model space, with their initial position and orientation before any transformation is applied. In order to calculate the window or _screen coordinates_, a number of operations are performed.
 
-First (1), all cube models have to be put in the same space, the _world space_. To convert from model space to world space, vertices are translated by multiplying them with the ModelWorld matrix. Since every model has it's own position and orientation in the world, they all have different ModelWorld matrices. A box in model space is just a single box - where do you want to place it in the game world? To the left of that tree? Or a little further away, slightly rotated? That's the world space. Designing single models in 3D computer graphics software toolsets such as Blender stay within the confinements of model space. Once a level designer places it into the game world, probably using a game editor, it's in world space.
+First (1), all cube models have to be put in the same space, the _world space_. To convert from model space to world space, vertices are translated by multiplying them with the ModelWorld matrix. Since every model has its own position and orientation in the world, they all have different ModelWorld matrices. A box in model space is just a single box - where do you want to place it in the game world? To the left of that tree? Or a little further away, slightly rotated? That's the world space. Designing single models in 3D computer graphics software toolsets such as Blender stay within the confinements of model space. Once a level designer places it into the game world, probably using a game editor, it's in world space.
 
 \marginnote[-1.1cm]{
     \begin{tikzpicture}[node distance=1.5cm]
@@ -87,7 +87,7 @@ First (1), all cube models have to be put in the same space, the _world space_. 
 
 Next (2), we need to find an efficient way to project the world onto the screen. As a gamer, you cannot see the entire game world: your view is limited to where the camera points at. That camera can be arbitrarily oriented in space to catch only a glimpse of the enticing game world. To keep the math (and matrices) in check, it is a lot simpler if the camera is centered in the origin and looks down one of the three axes. This intermediate _view space_ step does exactly that: repositioning everything using a view matrix to make things simpler. In practice, step one and two are executed with one single transformation matrix called the ModelView matrix.  
 
-Then (3), since now our camera is correctly positioned, all that is left is projecting what the camera 'catches' of the game world onto the screen. But before we can do that, we first have to project from view space to _projection space_ using yet another transformation matrix. This space allows us to quickly discard polygons that fall outside the camera view area, a process called _clipping_. The projection matrix defines the viewing volume. There are two common ways to project from view space into projection space: orthographic projection and perspective projection. orthographic projection is used in 2D gaming with 3D engines where there's no dynamic depth. In perspective projection, clipped coordinates have to be divided by a depth factor $w$, hence it's name _perspective division_. 
+Then (3), since now our camera is correctly positioned, all that is left is projecting what the camera 'catches' of the game world onto the screen. But before we can do that, we first have to project from view space to _projection space_ using yet another transformation matrix. This space allows us to quickly discard polygons that fall outside the camera view area, a process called _clipping_. The projection matrix defines the viewing volume. There are two common ways to project from view space into projection space: orthographic projection and perspective projection. orthographic projection is used in 2D gaming with 3D engines where there's no dynamic depth. In perspective projection, clipped coordinates have to be divided by a depth factor $w$, hence its name _perspective division_. 
 
 \marginfig{ch-x/babylon-projection.png}{Projecting using perspective division. The further back, the smaller on the target screen.}{Projecting using perspective division.}
 
@@ -217,39 +217,47 @@ The more Dylan explained and the more I poked around in mGBA inspecting the game
 
 "I did use one trick in the tunnels to clip the tunnel segments to the next segment  and make them look solid" recounts Dylan. The claustrophobic vibe, a pleasantly upbeat soundtrack and a fixed but fast speed that requires concentration all make up for one of the most exciting parts of the game. 
 
-Sadly, X was never released outside of Japan. Although the game was fully localized and ready to be shipped under the name _Lunar Chase_, it apparently never did[^floating]. Presumably, American retailers preferred simple 2D-like games that were selling like hot cakes instead of a nerdy 3D game that looked to intricate for kids to handle. The huge popularity of the Game Boy meant it was not the ideal platform for experimentation. Of course, in Japan, anything stamped with a Nintendo logo sells like hot cakes. 
+Sadly, X was never released outside of Japan. Although the game was fully localized and ready to be shipped under the name _Lunar Chase_, it apparently never did[^floating]. Presumably, American retailers preferred simple 2D-like games that were selling like hot cakes instead of a nerdy 3D game that looked too intricate for kids to handle. The huge popularity of the Game Boy meant it was not the ideal platform for experimentation. Of course, in Japan, anything stamped with a Nintendo logo sells like hot cakes. 
 
 [^floating]: An English tech demo of X is still floating around the internet. 
 
 ### The legacy of X
 
-Perhaps the most impressive feat of X is it's 3D rendering without any dedicated hardware to support it. Early fully 3D polygon-based simulation games such as Hard Drivin' on Arcade boasted some serious muscle under the hood. Atari's Hard Drivin' ran on an early version of the first dedicated polygonal 3D graphics board destined for Namco's racing game Winning Run, called System 21 or better yet, the "Polygonizer". The three stacked PCBs accommodated six different processors, of which several dedicated to handle rendering, geometry and physics[^retro205].
+Perhaps the most impressive feat of X is its 3D rendering without any dedicated hardware to support it. Early fully 3D polygon-based simulation games such as Hard Drivin' on Arcade boasted some serious muscle under the hood. Atari's Hard Drivin' ran on an early version of the first dedicated polygonal 3D graphics board destined for Namco's racing game Winning Run, called System 21 or better yet, the "Polygonizer". The three stacked PCBs accommodated six different processors, of which several dedicated to handle rendering, geometry and physics[^retro205].
 
 [^retro205]: Source: Retro Gamer 205. Namco and Atari were sister companies at that time, so the system was co-developed.
 
-Nintendo's involvement and interest in the X project ultimately paved the way for Star Fox (or Starwing in Europe), another Argonaut masterpiece that came with filled polygons more akin to Starglider 2 on the Amiga. That would not have been possible without the onboard "Super FX"[^sfx] RISC co-processor that also was conceived by the guys at Argonaut. Nintendo's then new _Super_ NES was still quite weak compared to home computers of the early nineties. 
-
-[^sfx]: During development, it was codenamed "_MARIO_" (Mathematical, Argonaut, Rotation, & Input/Output).
+Nintendo's involvement and interest in the X project ultimately paved the way for Star Fox (or Starwing in Europe), another Argonaut masterpiece that came with filled polygons more akin to Starglider 2 on the Amiga. That would not have been possible without the onboard "Super FX" RISC co-processor that also was conceived by the guys at Argonaut. Nintendo's then new _Super_ NES was still quite weak compared to home computers of the early nineties. 
 
 \marginfig{ch-x/starfox.jpg}{Peppy's iconic "Do a barrel roll!" exclamation from Star Fox even caused a giggle with Google engineers. Try typing it in Google Search.}{Star Fox on SNES.}
 
 In 1990, Argonaut Games demoed a version of a Starglider NES port to Nintendo. Impressed with the work, and in need of help for their launch title Pilotwings, Nintendo asked polygon experts Argonaut how to correctly rotate planes in their game. Because of severe hardware limitations, they ran out of memory before a frame could be drawn. Jez San proposed to solder a 3D chip directly onto the cartridge PCB that could do the necessary math. 
 
+The development of the chip itself was outsourced to Flare Technology, the same company behind the Atari Jaguar, the first so-called "64-bit"[^64b] video game system released in 1993. Ben Cheese, one of the co-founders of the British hardware company that worked with Argonaut on the Super FX, was a former engineer at Sinclair Research. And now we're back at the ZX Spectrum! During development, the chip was codenamed "_MARIO_" (Mathematical, Argonaut, Rotation, & Input/Output).
+
+[^64b]: Only the memory bus was 64-bit. The rest was an unpleasant mess of exotic 16/32-bit processors only few game companies ever managed to tame. It did not come as a surprise that Atari pulled the plug three years later. 
+
 Since the aging NES console was on the verge of being replaced by the SNES, Nintendo briefly considered to package the Super FX with their new machine. Alas, time constraints prevented that from happening. Imagine what the 16-bit war would have been like if the SNES motherboard came with a Super FX chip preinstalled! Instead of SEGA's popular TV commercial _Genesis Does What Nintendon't_, it could have been _Nintendoes what Genesis doesn't_... 
 
-![The PCB of a PAL version of Yoshi's Island, with the GSU-2 in the middle, flanked by the 2 MB ROM on the left and the 256 KB frame buffer and save game SRAM on the upper right.](ch-x/pcb-yoshi.jpg)
+The Super FX chip draws polygons to a frame buffer in the extra RAM, that also sits on the PCB of the cartridge: a smart way to circumvent the sprite modes of the console. Similarly to Dylan's frame buffer copy technique in X, DMA is used to transfer the contents to the video memory of the SNES itself. 
 
-Since the SNES itself still only supports sprite modes, the Super FX chip draws polygons to a frame buffer in the extra RAM that also sits on the PCB of the cartridge. Similarly to Dylan's frame buffer copy technique in X, DMA is used to transfer the contents to the video memory of the SNES itself. 
-
-Instead of designing hardware first and writing software for it, Starfox and the Super FX chip were developed the other way around. This enabled the developers to optimize the chip to their needs to really take advantage of it's capabilities. A second version of the chip, labeled GSU (Graphics Support Unit) 2, running at twice the clock speed of it's predecessor (21.4 MHz), eventually made it possible to port DOOM to the SNES - after still making heavy compromises[^doomsnes]. It was also used to help with the calculation of 2D sprite transformations in Yoshi's Island, six years before the GBA was conceived. 
+Instead of designing hardware first and writing software for it, Starfox and the Super FX chip were developed the other way around. This enabled the developers to optimize the chip to their needs to really take advantage of its capabilities. A second version of the chip, labeled GSU (Graphics Support Unit) 2, running at twice the clock speed of its predecessor (21.4 MHz), eventually made it possible to port DOOM to the SNES - after still making heavy compromises[^doomsnes]. It was also used to help with the calculation of 2D sprite transformations in Yoshi's Island, six years before the GBA was conceived. 
 
 [^doomsnes]: Read more about the birth of DOOM on the SNES in Fabien Sanglard's excellent _Game Engine Black Book: DOOM_. 
 
-Randal Linden, the developer of DOOM FX on SNES, released it's source code in 2020 on Github at [https://github.com/RandalLinden/DOOM-FX](https://github.com/RandalLinden/DOOM-FX). If you're feeling particularly adventurous on an early Sunday morning, you can try to wade through the assembly lines to discover how the Super FX chip was programmed. 
+![The PCB of a PAL version of Yoshi's Island, with the GSU-2 in the middle, flanked by the 2 MB ROM on the left and the 256 KB frame buffer and save game SRAM on the upper right.](ch-x/pcb-yoshi.jpg)
+
+Randal Linden, the developer of DOOM FX on SNES, released the source code in 2020 on Github at [https://github.com/RandalLinden/DOOM-FX](https://github.com/RandalLinden/DOOM-FX). If you're feeling particularly adventurous on an early Sunday morning, you can try to wade through the assembly lines to discover how the Super FX chip was programmed. 
 
 Ultimately, little games made use of either GSU chip since it greatly increased manufacturing costs and even MSRP. Only 5 games would use the first iteration: Dirt Racer, Dirt Trax FX, Star Fox, Stunt Race FX and Vortex. Even less games would use the GSU-2 chip: DOOM, Yoshi's Island and Winter Gold. 
 
-X on the Game Boy is a landmark in gaming. No single Game Boy (Color) game would come near matching it's polygon processing power. Without X, there would be no Star Fox franchise, no DOOM on an early Nintendo console, and a pretty crappy version of Yoshi's Island. 
+X on the Game Boy is a landmark in gaming. No single Game Boy (Color) game would come close to its polygon processing power. Without X, there would be no Star Fox franchise, no DOOM on an early Nintendo console, and a crappy version of Yoshi's Island. 
+
+In 2001, Dylan Cuthbert founded Q-Games, a game company that would end up producing the lovely _PixelJunk_ games, a sequel to Star Fox on the Nintendo DS called _Star Fox Command_, and _X-Scape_[^xsc], the spiritual successor to X on DSiWare. Q-Games is even credited with 3D Graphics Technology in the _About PS3_ section of the Sony PlayStation 3 OS. 
+
+In the end, flexing those assembly polygon muscles did pay off rather well.
+
+[^xsc]: To keep up with the name ambiguity, X-Scape is known as _X Returns_ in Japan and _3D Space Tank_ in Europe.
 
 \newpage
 

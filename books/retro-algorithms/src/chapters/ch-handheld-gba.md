@@ -33,7 +33,7 @@ Inspecting the lifespan of the Nintendo handhelds yields a few interesting facts
 
 The Game Boy Advance was only two years old when it got it's first revision, the SP - that's a lot quicker than the Game Boy Pocket. That faster cadence was maintained when looking at the Nintendo DS and 3DS. However, the total lifespan of the GBA - apart from the eccentric GB Micro - was much shorter than the GB family: the GBA came in 2001 and went in 2004 as the DS was released. 
 
-However, Nintendo did not at all drop support for the GBA. Then why would a company release another handheld that poses a threat to its own product? An IGN press report from November 2003 sheds some light on this[^ign03]:
+And yet, Nintendo did not at all drop support for the GBA. Then why would a company release another handheld that poses a threat to its own product? An IGN press report from November 2003 sheds some light on this[^ign03]:
 
 [^ign03]: Source: [https://www.ign.com/articles/2003/11/14/nintendo-going-back-to-the-basics](https://www.ign.com/articles/2003/11/14/nintendo-going-back-to-the-basics).
 
