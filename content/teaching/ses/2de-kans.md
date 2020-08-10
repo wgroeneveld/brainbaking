@@ -9,6 +9,8 @@ disableList: true
 
 Deze taken fungeren als vervanger voor taak 1, 2, 3 in eerste kans. Een alternatieve taak voor taak 4, 5 in functie van backtracking/verdeel en heers zal los hiervan **ook nog worden uitgedeeld**. Samen met onderstaande taken vormt dit opnieuw `50%` van de punten voor het vak in tweede kans. 
 
+**Deadline**: Zie toldeo - vrijdag 14/08/2020, 12u 's middags.
+
 ### Opgave 1: TDD
 
 ESA heeft een robot op Mars geplaatst om te zoeken naar de meest geschikte plaats om een marsbasis op te bouwen. De robot krijgt telkens een sequentie van instructies die leiden naar een nieuwe plaats. Elke instructie is een letter: `'S'` (stap vooruit), `'L'` (draai links) of `'R'` (draai rechts). 
