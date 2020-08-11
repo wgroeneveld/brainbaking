@@ -18,6 +18,7 @@ date: 2020-07-06
 - Game Boy: Complete Technical Reference https://github.com/Gekkio/gb-ctr
 - https://gekkio.fi/blog/2015/mooneye-gb-cartridge-analysis-fortress-of-fear/
 - cartridge photos (quality issues): https://gbhwdb.gekkio.fi/cartridges/
+- hardware photos: https://gbhwdb.gekkio.fi/consoles/mgl/L10010466.html
 - Game Boy Flash carts: https://flashcartdb.com/index.php/Main_Page
 - Game Programming info (algoritmitc, a lot) http://www-cs-students.stanford.edu/~amitp/gameprog.html
 - retro computer game design and programming books pdf's https://archive.org/details/RetroGameDesignAndProgrammingBooks

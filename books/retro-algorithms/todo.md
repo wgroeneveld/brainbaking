@@ -11,6 +11,10 @@ date: 2020-07-07
     [ ] code examples links Github?
 [ ] conversie C/C++ GBA programming pagina's, naar blog posts of iets wat hier permanent staat? Wat is het verschil... (Aantrekkingskracht site/blog dingen ook te lezen + doneren, https://fabiensanglard.net/gebbdoom/)
 
+## Engels
+
+[X] it's - its
+
 ## LaTeX conversie
 
 [X] eerste 3 woorden na \chapter{} en \section{} auto-converten naar \newthought{}
@@ -23,6 +27,7 @@ date: 2020-07-07
 [ ] 'Part x' pagina's: over hele breedte een mooie image?
 [ ] sidenotes raggedouter werkt niet goed precies
 [ ] 'chapter-x' refs maken
+[ ] elke game name ref in _italics_ - overal hetzelfde?
 
 ## Images
 
