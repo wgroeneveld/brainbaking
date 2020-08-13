@@ -1,5 +1,6 @@
 \hypersetup{colorlinks}
 \usepackage{etoolbox}
+\usepackage{tcolorbox}
 
 %% 
 % xelatex tufte fixes 
@@ -73,6 +74,7 @@
 % \usepackage{xeCJK}
 % \setCJKmainfont[BoldFont=STHeiti,ItalicFont=STKaiti]{STSong}
 
+
 \usepackage{xcolor}
 \definecolor{gb0}{HTML}{19380F}
 \definecolor{gb1}{HTML}{306130}
@@ -138,7 +140,7 @@
 
 \newcommand\cover[4]{
   \begin{marginfigure}[6cm] % assumes \cover is called right after a new chapter.
-    \includegraphics[width=\linewidth]{covers/#1.jpg}
+    \includegraphics[width=\linewidth]{covers/#1}
     \caption[Cover art for #1]{\textbf{Developer}: #2 \newline \textbf{Release}: #3 \newline \textbf{Genre}: #4}
   \end{marginfigure}  
 }
@@ -152,6 +154,9 @@
 \tikzstyle{box} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1cm,  minimum height=0.7cm, text centered, draw=black]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
+% thank you https://github.com/fabiensanglard/gebbdoom/blob/master/src/mystyle.sty 
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
 
 %% 
 % background test (use \BgThispage on page if 'some' option enabled)

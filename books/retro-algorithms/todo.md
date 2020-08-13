@@ -51,10 +51,16 @@ date: 2020-07-07
 
 - sdks? https://www.retroreversing.com/official-gameboy-software-dev-kit/ en hardware kits? https://www.retroreversing.com/game-boy-advance-development-kit/
 
+Analogue pocket 2021 ook vermelden!
+
 ## Hoofdstukken/ideeën nog uit te werken
 
 - sound/music? beeps van GB vs GBA, sound channel, hoe werkt dat?
+    + http://www.herbertweixelbaum.com/comparison.htm waveforms difference, introduceren? - zie discography, 8-bit operators zit er ook in; lijkt me zeker een hoofdstuk waard indien iemand kunnen interviewen en uitleggen hoe dit technisch werkt?
+    + nanoloop tegoei leren kennen. => Analogue Pocket tussenkabels??
 - network play? infrared port, link cable, ... ?
+
+
 
 ## 2D sprite engine samples
 

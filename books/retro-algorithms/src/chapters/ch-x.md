@@ -3,7 +3,7 @@
 
 ## X
 
-\cover{x}{Argonaut Games}{1992 (JPN)}{Space combat simulator}
+\cover{x.jpg}{Argonaut Games}{1992 (JPN)}{Space combat simulator}
 
 The early nineties was a golden age for gaming, not only on handhelds. Lucky gamers with access to more powerful hardware could mess around in 3D environments, something that was deemed impossible on the Game Boy. That is, until Jez San and Dylan Cuthbert of Argonaut Games decided it would be cool to program a 3D space simulator for the GB. The result is _X_, a stellar achievement released in 1992 running on one of the weakest pieces of hardware imaginable at that time.
 

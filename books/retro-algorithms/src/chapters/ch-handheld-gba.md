@@ -29,9 +29,9 @@ Blabla tijd
     \caption[Console release timelines]{The lifespan of Nintendo handhelds and consoles. First group (lightgreen): the Game Boy family. Second group (darkgreen): the Game Boy Advance family. Consoles are marked in orange. The Nintendo 3DS (not pictured) saw the light in 2011.}
 \end{figure*}
 
-Inspecting the lifespan of the Nintendo handhelds yields a few interesting facts. In 1996, Nintendo released the Game Boy Pocket to bridge the gap between a future colorized version of the Game Boy, not to be released until two years later, and the original version. This did significantly prolong the lifespan of the Game Boy, by then already going strong for seven years. The frequent hardware revision strategy became common for all Nintendo handhelds. One year later, in 1997, Nintendo's competitor Sega would throw in the towel by discontinuing the Game Gear. 
+Inspecting the lifespan of the Nintendo handhelds yields a few interesting facts. The clever decision to engineer revisions of the original hardware significantly prolonged the lifespan of the Game Boy, by then already going strong for seven years. The frequent hardware revision strategy became common for all Nintendo handhelds. 
 
-The Game Boy Advance was only two years old when it got it's first revision, the SP - that's a lot quicker than the Game Boy Pocket. That faster cadence was maintained when looking at the Nintendo DS and 3DS. However, the total lifespan of the GBA - apart from the eccentric GB Micro - was much shorter than the GB family: the GBA came in 2001 and went in 2004 as the DS was released. 
+The Game Boy Advance was only two years old when it got it's first revision, the SP - that's a lot quicker than the seven year gap between the original and the Pocket. That faster cadence was maintained when looking at the Nintendo DS and 3DS. However, the total lifespan of the GBA - apart from the eccentric GB Micro - was much shorter than the GB family: the GBA came in 2001 and went in 2004 as the DS was released. 
 
 And yet, Nintendo did not at all drop support for the GBA. Then why would a company release another handheld that poses a threat to its own product? An IGN press report from November 2003 sheds some light on this[^ign03]:
 

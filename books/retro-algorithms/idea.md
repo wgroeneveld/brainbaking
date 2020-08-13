@@ -82,10 +82,11 @@ Groot probleem: scope, begrijpbaarheid?
 - gbc: bios pre-set palette for gb games, otherwise default, or press while booting https://en.wikipedia.org/wiki/Game_Boy_Color#cite_note-16
 - gbc: Hicolour "exploit"! https://romhack.github.io/doc/gbcHiColour/ 2000+/tegelijk.  the fish files, Alone in the Dark: The New Nightmare, crystalis. Hoe? palette manipulation during hblank - every scanline can have it's own set of 8 palettes/line, 8 colors/palette, 144 scanlines = 2304 colors. cannon fodder gbc intro. uses lots of CPU cycles - best for static backgrounds. alone in the dark, intro/outros. test drive le mans, wacky races. "mode 7 prequel"
 - MULTIPLAYER: link cable, syncing, hoe? zie warlocked; DOOM Co-OP GBA
-- super game boy SNES: speciale games hier ook voor gemaakt (logo op cartridge) bvb donkey kong; zit dat in ROM? https://www.youtube.com/watch?v=JU5OBrDlOR8 8:37
+- super game boy SNES: speciale games hier ook voor gemaakt (logo op cartridge) bvb donkey kong; zit dat in ROM? https://www.youtube.com/watch?v=JU5OBrDlOR8 8:37 => v2 japan-only, oscillator onboard om alles op 59.7Hz te draaien ipv vanuit clock van PAL (50)/NTSC (60!) Volledige technische specificatie op https://gbdev.io/pandocs/#sgb-functions (BGB Win emulator heeft SGB packet transfer info? te testen!)
 - "interrupting the game loop": cheat systems; game genie ea die registers veranderen --> HOE? https://www.youtube.com/watch?v=C86OsYRACTM
 - SNES: backgrounds https://www.youtube.com/watch?v=5SBEAZIfDAg 3:49 mode2 kan apart verticaal scrollen per column ipv "gewoon" -> HDMA op GB(A) https://www.coranac.com/tonc/text/dma.htm zie https://www.youtube.com/watch?v=zjQik7uwLIQ 0:46 - palette cycling, background scrolling, horizontal oscillation, vertical oscillation, transparency, interleaved oscillation
 - GBA CPU: ARM7TDMI (Thumb instr. Debug port, fast Multiplier, enhamced Ias?) RISC. ARM pipeline ipv traditional Fetch, decode, execute? https://www.youtube.com/watch?v=mpNWEbZdXNw 2:32. 256KB WRAM. 96KB VRAM vs 16 bij GBC. bitmap modes als eerste. KLOPT DIT? X op GB?
+- http://www.hdmyboy.com/play/
 
 HDMA: zelfs Link's Awakening introductie... https://kemenaran.winosx.com/posts/links-awakening-rendering-the-opening-cutscene/ regen = random geplaatste 'sprites' Prehistorik Man https://www.youtube.com/watch?v=zQE1K074v3s 10:45
 
