@@ -135,7 +135,32 @@ Besides the nostalgic value, the Gray Brick was quickly ditched in favor for the
 - Object layer 0: \colorbox{ml2obj00}{\texttt{0xFFFFFF}}, \colorbox{ml2obj01}{\texttt{0xFF7300}}, \colorbox{ml2obj02}{\textcolor{white}{\texttt{0x944200}}}, \colorbox{ml2obj03}{\textcolor{white}{\texttt{0x000000}}}
 - Object layer 1: \colorbox{ml2obj10}{\texttt{0xFFFFFF}}, \colorbox{ml2obj11}{\texttt{0x63A5FF}}, \colorbox{ml2obj12}{\textcolor{white}{\texttt{0x0000FF}}}, \colorbox{ml2obj13}{\textcolor{white}{\texttt{0x000000}}}
 
-If the BIOS did not recognize a game cartridge, a default palette configuration was used instead. However, players could also influence the configuration by pressing a combination of certain buttons while the Game Boy was booting and the Nintendo logo was being displayed. Twelve palette configurations are stored next to the hash table for the player to manually select, of which six were unique to the manual selection. Try it yourself by pressing \rightarrow, \circled{B} + \uparrow, \circled{\small A} + \uparrow, \leftarrow, or \circled{B} + \downarrow .
+If the BIOS did not recognize a game cartridge, a default palette configuration was used instead. However, players could also influence the configuration by pressing a combination of certain buttons while the Game Boy was booting and the Nintendo logo was being displayed. Twelve palette configurations are stored next to the hash table for the player to manually select, of which six were unique to the manual selection. Try it yourself by pressing \rightarrow, \circled{B} + \uparrow, \circled{\small A} + \uparrow, \leftarrow, or \circled{B} + \downarrow . You should immediately see its effect on the logo screen since the background colors change. Even the word "COLOR" in the logo advertised the capabilities: each letter represents one of the five color flavors in which the GBC was sold: Berry (C), Grape (O), Kiwi (L), Dandelion (O), Teal (R). Strangely enough, the translucent purple one does not fit in that row. Limited edition colors would also follow soon. 
+
+\marginfig{ch-handheld-gb/gbcolorlogo.png}{The Game Boy Color Logo.}{The Game Boy Color Logo.}
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics{ch-handheld-gb/color-ml2.jpg}
+    \caption{Super Mario Land 2 cover art in original colors.}
+\end{figure}
+
+\marginfig[-14.4cm]{ch-handheld-gb/color-ml2-4.jpg}{Super Mario Land 2 cover art in 4-color grayscale (GB) mode.}{Super Mario Land 2 cover art in GB mode.}
+
+The Game Boy Color uses a 15-bit RGB color palette, where five bits are used to represent red, green, and blue values (e.g. `10011`), yielding `32.768` unique colors in total ($(2^5)^3$). 15-bit RGB palettes were quite popular: the SNES, Nintendo DS (for 2D output), Sega 32X, GBA, PS1 (for 3D textures) all had a color depth of 15-bit. In practice, most devices restrict the amount of colors to be used at the same time due to memory limitations. For the SNES, most games use 256-color mode. For the GBC, only 56 distinct colors could be employed for transparent GBC-only cartridges. As we will discover later, there is a way around this limitation.  
+
+adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf 
+
+
+adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf 
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics{ch-handheld-gb/color-ml2-56.jpg}
+    \caption{Super Mario Land 2 cover art in 56-color (GBC) mode.}
+\end{figure}
+
+
 
 ### The Game Boy CPU Architecture
 
