@@ -26,7 +26,9 @@ The ones with the PhD and tenured professorship status, and the ones that work f
 
 ### 2. Isolation
 
-Lortie's research in 1975 already concluded that teaching is marked by _privatism_: you do your thing, I do my thing - let's not interfere. You want me to use your tool? I'd rather not. Mine is better. I'm used to this one. Does this sound familiar? Cookson described it as:
+Lortie's research in 1975 already concluded that teaching is marked by _privatism_: you do your thing, I do my thing - let's not interfere. You want me to use your tool? I'd rather not. Mine is better. I'm used to this one. Does this sound familiar? 
+
+Cookson described it teaching (in higher education) as:
 
 > ...one of the most social occupations, but also one of the most isolating professions. <span>Cookson (2007)</span>
 
@@ -42,7 +44,7 @@ After reading this, I simply felt very sad. It (again) made me seriously doubt m
 
 ### Collaboration?
 
-I once spoke to [Wim Bollen](https://www.ductu.be/about) of Ductu about collaborating. "_Teamwork_", a fancy word that is likely to pop up in any business-related contemporary article, is something we loved to complain about when I worked as a software engineer. Working together is certainly challenging, but Wim identified interesting nuances in "collaboration": he called 90% of what everyone thinks is collaborating, _co-working_. You do this, I do that, and in the end, we'll throw stuff together. Done. 
+I once spoke to [Wim Bollen](https://www.ductu.be/about) of Ductu about collaborating. "_Teamwork_", a fancy word that is likely to pop up in any business-related contemporary article, is something we also loved to complain about in the industry, when I worked as a software engineer. Working together is certainly challenging, but Wim identified interesting nuances in "collaboration": he called 90% of what everyone thinks is collaborating, _co-working_. You do this, I do that, and in the end, we'll throw stuff together. Done. 
 
 This is exactly the well-employed strategy in the academic world when researchers (including myself) claim to have collaborated with someone. In Elseviers' [A brief guide to research collaboration for the young scholar](https://www.elsevier.com/connect/a-brief-guide-to-research-collaboration-for-the-young-scholar) (I wonder if 35 still counts as a young scholar?) presents a few synonyms:
 
