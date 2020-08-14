@@ -55,3 +55,41 @@ Future work: texturizing - I'm curious to see at what rate we could get a simple
 
 Check out the source code here: https://github.com/wgroeneveld/gba-bitmap-engine/
 
+### Unit testing GBA BIOS functions
+
+Tonc's library functions, which sometimes act as BIOS wrappers, are forward-declared in header files. A square root function, `u32 Sqrt(u32 num16fx)`, for instance, does not calculate anything: rather, it executes a BIOS interrupt call. 
+
+Since GTest cannot cross-compile, let alone execute BIOS interrupts, I needed a way around this. Simply using my own implementation by defining `Sqrt` suffices thanks to the linker:
+
+```c
+namespace externMath {
+
+#include <math.h>
+
+    float root(float num) {
+        return sqrt(num);
+    }
+
+}
+
+u32 Sqrt(u32 num16fx) {
+    float numfloat = num16fx / ( (float)( 1<<16 ));
+    return float2fx(externMath::root(numfloat));
+}
+```
+
+Instead of a BIOS call, I leave it up to the `math.h` default sqrt implementation.
+
+Sometimes, that does not suffice. In `tonc_math.h`, some forward-declared functions are also defined, in which case GTest will panick. For that, I resorted to `#ifndef` statements. The result is a bit of a mess, but it works:
+
+```c
+#include <libgba-bitmap-engine/gba/tonc_types.h>
+#ifdef CODE_COMPILED_AS_PART_OF_TEST
+    #include <libgba-bitmap-engine/gba/tonc_math_stub.h>
+#else
+    #include <libgba-bitmap-engine/gba/tonc_math.h>
+#endif
+```
+
+Since I did not want to change the tonc files itself, constructs like the above sometimes appear in the engine header files when referencing tonc files. Interested readers can always plow through the C++ files in the Github repository. 
+
