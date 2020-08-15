@@ -7,9 +7,9 @@
 
 The original Game Boy (GB), codenamed Dot Matrix Game (DMG) or more lovingly called the _Gray Brick_, was not Nintendo's first electronic gaming handheld if you take the Game & Watch series into account. Still, it was the first breed of a new generation of handheld gaming _consoles_: a piece of machinery that enabled swapping game cartridges on the go. And those four AA batteries made sure you could stay on the go for as long as 15 hours - I hope you brought your spare set. 
 
-It was released in April 1989 in Japan and after hitting the U.S. shelves two months later, the system sold a million units within a few weeks. Early adopters in Europe were better off importing as it took more than one year to arrive there! Nintendo quickly realised that the Game Boy was going to be a huge hit - and there was (almost) nobody there to stop them. 
+It was released in April 1989 in Japan and after hitting the U.S. shelves two months later, the system sold a million units within a few weeks. Early adopters in Europe were better off importing as it took more than one year to arrive there! Nintendo quickly realised that the Game Boy was going to be a huge hit, and there was (almost) nobody there to stop them. 
 
-Colored Game Boy casings were only offered six years after the original release, under the "Play It Loud!" campaign. It was purely a cosmetic change that would carry over to later revisions in the Game Boy family. According to Ars Technica, there are six major reasons why it performed so well over the course of its lifespan[^ars]:
+Colored Game Boy casings were only offered six years after the original release, under the "_Play It Loud!_" campaign. It was purely a cosmetic change that would carry over to later revisions in the Game Boy family. According to Ars Technica, there are six major reasons why it performed so well over the course of its lifespan[^ars]:
 
 [^ars]: Source: [https://arstechnica.com/gaming/2019/04/game-boy-20th-anniversary/](https://arstechnica.com/gaming/2019/04/game-boy-20th-anniversary/).
 
@@ -26,7 +26,7 @@ The seventh reason might be overlooked by Ars Technica: _Robustness_. U.S. Polic
 
 \marginfig[-2cm]{ch-handheld-gb/gulfwar.png}{The Gulf War Game Boy still plays Tetris!}{The Gulf War Game Boy.}
 
-I can't recall the number of times I dropped my Game Boy (or one of my sisters - whoops!): down the stairs at home "by accident" or on the concrete at school in a blind rage because of that annoying water level. Back then, instead of scraping together shattered glass and calling a cellphone repair shop, I simply had to dust off the front and maybe look around for the cartridge. 
+I can't recall the number of times I dropped my (or one of my sisters) Game Boy: down the stairs at home "by accident" or on the concrete at school in a blind rage because of that annoying water level. Back then, instead of scraping together shattered glass and calling a cellphone repair shop, I simply had to dust off the front and maybe look around for the cartridge. 
 
 To prove just how successful the Game Boy family would become, let us take a look at a console sales chart. What immediately becomes apparent is that the PlayStation 2 sits on the throne, very closely followed by the Nintendo DS family. The Game Boy family "only" comes in third, selling close to 119 million units in total since 1989 (including the Pocket and Color revisions). 
 
@@ -48,7 +48,7 @@ Technically, the Game Boy was a bit less exciting:
 | _Specification_ | _Value_                                      |
 |-----------------|----------------------------------------------|
 | CPU             | 8-bit Sharp LR35902 at 4.19 MHz (Z80-based)  |
-| Memory          | 8 KB work RAM, 8 KB video RAM, 256 bytes ROM |
+| Memory          | 8 KB work WRAM, 8 KB video VRAM, 256 bytes ROM |
 | Cartridges      | 32 KB to 8 MB                                |
 | Screen          | 160 width x 144 height (10:9 aspect ratio)   |
 | Colors          | 2-bit (4 shades of "olive green")            |
@@ -81,17 +81,12 @@ The best part of the Pocket was not the weight, but the screen: `48.5 mm` width 
 
 Under the hood, besides the screen and power supply, the technical capabilities remained unchanged. 
 
-A slightly modified version called the _Game Boy Light_ sadly only really saw 'the light' in Japan, in April 1998, only five months before the arrival of the Game Boy Color. I am sure the system would have sold overseas xjust as crazy as the other machines, since it was the first Nintendo handheld to feature an electroluminescent backlit screen. European gamers like myself had to wait until 2006 to get their hands on the GBA SP AGS-101, the second backlit Game Boy model ever created. 
-
-The GB Light's power source were two AA batteries instead of the AAA of the pocket, good for the same twelve hours of gameplay with the backlight turned on. Visually, the BG Light and the GB Pocket look the same, except that the back of the GB Light is slightly thicker to accommodate the bigger batteries. The PCB layout is identical to the Pocket.
-
-
 \newpage
 
 \begin{figure}[h!]
     \centering
     \includegraphics{ch-handheld-gb/hw-gbpocket.jpg}
-    \caption[The Game Boy Pocket.]{The Game Boy Pocket. Early versions came without the "power" indicating LED, that was reintroduced later due to public demand. As usual, limited editions with special colors were also issued. This European model is from 1997.}
+    \caption[The Game Boy Pocket.]{The Game Boy Pocket. Early versions came without the "power" indicating LED, that was reintroduced later due to public demand. As usual, limited editions with special colors were also issued. The depicted European model is from 1997. \newline A slightly modified version called the \emph{Game Boy Light} sadly only really saw 'the light' in Japan, in April 1998, only five months before the arrival of the Game Boy Color. I am sure the system would have sold overseas just as crazy as the other machines, since it was the first Nintendo handheld to feature an electroluminescent backlit screen. European gamers like myself had to wait until 2006 to get their hands on the GBA SP AGS-101, the second backlit Game Boy model ever created. \newline The GB Light's power source were two AA batteries instead of the AAA of the pocket, good for the same twelve hours of gameplay with the backlight turned on. Visually, the BG Light and the GB Pocket look the same, except that the back of the GB Light is slightly thicker to accommodate the bigger batteries. The printed circuit board (PCB) layout is identical to the Pocket.}
 \end{figure}
 
 \newpage
@@ -99,7 +94,7 @@ The GB Light's power source were two AA batteries instead of the AAA of the pock
 \begin{figure}[h!]
     \centering
     \includegraphics{ch-handheld-gb/pcb-gbpocket.jpg}
-    \caption{The main board viewed from the back of the Game Boy Pocket. An aluminum piece that is part of the plastic housing, not depicted here, shields the CPU chip (CPU-MGB) from signals coming from the cartridge when inserted into the black slot. \newline The clock speed is regulated by the crystal on the left of the CPU that reads 4.1943 (MHz). The smaller chip on the upper left is the LCD regulator (DMG-REG), while the one on the lower right is the amplifier (AMP-MGB). \newline Compared to the PCB of the original Game Boy, there's only one visible SHARP 8 KB (64K) SRAM chip. Another 8 KB video RAM was embedded in the CPU casing. \newline Two potentiometers regulate the volume (gray wheel) and screen contrast (black wheel).}
+    \caption{The main board viewed from the back of the Game Boy Pocket. An aluminum piece that is part of the plastic housing, not depicted here, shields the CPU chip (CPU-MGB) from signals coming from the cartridge when inserted into the black slot. \newline The clock speed is regulated by the crystal on the left of the CPU that reads 4.1943 (MHz). The smaller chip on the upper left is the LCD regulator (DMG-REG), while the one on the lower right is the amplifier (AMP-MGB). \newline Compared to the PCB of the original Game Boy, there's only one visible SHARP 8 KB (64K) SRAM chip. Another 8 KB video RAM was embedded in the CPU casing. \newline Two potentiometers regulate the volume (gray wheel) and screen contrast (black wheel). \newline The mono sound output generated by the speaker on the bottom left could be overcome by a headphone jack that does output in stereo. }
 \end{figure}
 
 ### The Game Boy Color
@@ -135,7 +130,7 @@ Besides the nostalgic value, the Gray Brick was quickly ditched in favor for the
 - Object layer 0: \colorbox{ml2obj00}{\texttt{0xFFFFFF}}, \colorbox{ml2obj01}{\texttt{0xFF7300}}, \colorbox{ml2obj02}{\textcolor{white}{\texttt{0x944200}}}, \colorbox{ml2obj03}{\textcolor{white}{\texttt{0x000000}}}
 - Object layer 1: \colorbox{ml2obj10}{\texttt{0xFFFFFF}}, \colorbox{ml2obj11}{\texttt{0x63A5FF}}, \colorbox{ml2obj12}{\textcolor{white}{\texttt{0x0000FF}}}, \colorbox{ml2obj13}{\textcolor{white}{\texttt{0x000000}}}
 
-If the BIOS did not recognize a game cartridge, a default palette configuration was used instead. However, players could also influence the configuration by pressing a combination of certain buttons while the Game Boy was booting and the Nintendo logo was being displayed. Twelve palette configurations are stored next to the hash table for the player to manually select, of which six were unique to the manual selection. Try it yourself by pressing \rightarrow, \circled{B} + \uparrow, \circled{\small A} + \uparrow, \leftarrow, or \circled{B} + \downarrow . You should immediately see its effect on the logo screen since the background colors change. Even the word "COLOR" in the logo advertised the capabilities: each letter represents one of the five color flavors in which the GBC was sold: Berry (C), Grape (O), Kiwi (L), Dandelion (O), Teal (R). Strangely enough, the translucent purple one does not fit in that row. Limited edition colors would also follow soon. 
+If the BIOS did not recognize a game cartridge, a default palette configuration was used instead. However, players could also influence the configuration by pressing a combination of certain buttons while the Game Boy was booting and the Nintendo logo was being displayed. Twelve palette configurations are stored next to the hash table for the player to manually select, of which six were unique to the manual selection. Try it yourself by pressing \rightarrow, \circled{B} + \uparrow, \circled{\small A} + \uparrow, \leftarrow, or \circled{B} + \downarrow . You should immediately see its effect on the logo screen since the background colors change. Even the word "_COLOR_" in the logo advertised the capabilities as each letter represents one of the five color flavors in which the GBC was sold: Berry (C), Grape (O), Kiwi (L), Dandelion (O), Teal (R). Strangely enough, the translucent purple one does not fit in that row. Limited edition colors would also follow soon. 
 
 \marginfig{ch-handheld-gb/gbcolorlogo.png}{The Game Boy Color Logo.}{The Game Boy Color Logo.}
 
@@ -145,28 +140,62 @@ If the BIOS did not recognize a game cartridge, a default palette configuration 
     \caption{Super Mario Land 2 cover art in original colors.}
 \end{figure}
 
-\marginfig[-14.4cm]{ch-handheld-gb/color-ml2-4.jpg}{Super Mario Land 2 cover art in 4-color grayscale (GB) mode.}{Super Mario Land 2 cover art in GB mode.}
-
-The Game Boy Color uses a 15-bit RGB color palette, where five bits are used to represent red, green, and blue values (e.g. `10011`), yielding `32.768` unique colors in total ($(2^5)^3$). 15-bit RGB palettes were quite popular: the SNES, Nintendo DS (for 2D output), Sega 32X, GBA, PS1 (for 3D textures) all had a color depth of 15-bit. In practice, most devices restrict the amount of colors to be used at the same time due to memory limitations. For the SNES, most games use 256-color mode. For the GBC, only 56 distinct colors could be employed for transparent GBC-only cartridges. As we will discover later, there is a way around this limitation.  
-
-adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf 
-
-
-adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf adfadfaf 
+\marginfig[-14.2cm]{ch-handheld-gb/color-ml2-4.jpg}{Super Mario Land 2 cover art in 4-color grayscale (simulated GB) mode.}{Super Mario Land 2 cover art in GB mode.}
 
 \begin{figure}[t!]
-    \centering
+    \centering  
     \includegraphics{ch-handheld-gb/color-ml2-56.jpg}
-    \caption{Super Mario Land 2 cover art in 56-color (GBC) mode.}
+    \caption{Super Mario Land 2 cover art in 56-color (simulated GBC) mode. Note the lack of subtle shades in Mario's face and the bottom of his shoe.}
 \end{figure}
 
+The Game Boy Color uses a 15-bit RGB color palette, where five bits are used to represent red, green, and blue values, yielding `32.768` unique colors in total ($(2^5)^3$). 15-bit RGB palettes were quite popular: the SNES, Nintendo DS (for 2D output), Sega 32X, GBA, PS1 (for 3D textures) all had a color depth of 15-bit. In practice, most devices restrict the amount of colors to be used at the same time due to memory limitations. For the SNES, most games use 256-color mode[^snescolor]. For the GBC, only 56 distinct colors could be employed for transparent GBC-only cartridges. As we will discover later, there is a way around this limitation.  
 
+[^snescolor]: Sega's MegaDrive/Genesis a used 9-bit palette with usually only up to 61 colors visible at once without special effects. The Game Gear employed a 12-bit palette with 32 different colors on-screen. The Game Boy Color almost doubled that amount, although admittedly Sega did beat Nintendo to the colored market by eight years! 
+
+In addition to the joy of fiddling with Nintendo's proprietary Link Cables to play Tetris against each other, you could now use the new infrared port to exchange and unlock special items. Sadly, only a few (17) games ended up supporting the functionality, and it was later dropped with the Game Boy Advance. Pokémon players rejoiced while others shrugged: merely exchanging high scores isn't all that exciting. Wireless communication technology wasn't yet cheaply available and gamers had to wait until the Nintendo DS to comfortably compete without an excess of too short cables attached. 
+
+Technically, the Game Boy Color looked remarkably similar to its predecessor:
+
+| _Specification_ | _Value_                                           |
+|-----------------|---------------------------------------------------|
+| CPU             | 8-bit Sharp LR35902 at 4.19/8.39 MHz              |
+| Memory          | 32 KB work WRAM, 16 KB video VRAM                 |
+| Cartridges      | 32 KB to 8 MB                                     |
+| Screen          | 160 width x 144 height (10:9 aspect ratio)        |
+| Colors          | 15-bit                                            |
+| Audio           | Two pulse wave generators, one 4-bit wave sample channel, 1 noise generator |
+| Audio output    | handheld: mono. headphones: stereo.               |
+
+Recycling the PCB of the Pocket and the CPU of the original GB again significantly reduced manufacturing costs. The CPU itself could run at twice the speed of the original (for GBC-only games) but only the oscillating crystal itself was changed, "overlocking" the older configuration. The memory size was quadrupled for the work RAM and doubled for the VRAM since storing 15-bit palette data required much more space. Game developers could choose not to take advantage of the increased clock speed and memory size by releasing black cartridges that could also run on the original GB.
 
 ### The Game Boy CPU Architecture
 
-- https://www.slideshare.net/TomaszRkawek/emulating-game-boy-in-java
-- https://medium.com/@raphaelstaebler/building-a-gameboy-from-scratch-part-2-the-cpu-d6986a5c6c74
+\begin{figure}[h!]
+    \centering
+    \includegraphics{ch-handheld-gb/gbarchitecture.png}
+    \caption{A simplified schematic of the Game Boy hardware architecture. The Audio Processing Unit (APU), Central Processing Unit (CPU), and Picture Processing Unit (PPU) are embedded in the DMG-CPU casing. Not all cartridges contain batteries that power SRAM. }
+\end{figure}
 
-cycles/MHz, PPU/APU/CPU/... fetch/decode/... 
+While the CPU is indeed the "central" processing unit, it delegates audio and picture processing to the corresponding subsystems, also embedded within the DMG-CPU casing. Graphics calculations are done in the CPU, but the PPU is responsible for converting the stored graphics from the VRAM to pixels on the screen itself. The inner workings of the PPU is explained in chapter TODO-ref.
+
+The same applies for the audio: the CPU reads data from the ROM and can apply transformations to it before sending it off to the APU. Its job is to mix different channels and convert them from digital to analog. Then, after the amplifier adjusts the volume depending on the value of the potentiometer (the volume wheel), the audio signal is played by either the mono speaker or the stereo headset. How audio works is explained in chapter TODO-ref.
+
+At any given time, these subsystems[^subs] can cause the CPU to _interrupt_ its current work and execute a special subroutine. Interrupts allow developers to program special effects by hooking into the hardware internals. For example, when a frame is rendered, the PPU emits a "_v-blank_" (vertical blank) event, signaling that it is done rendering. This can be listened to in order to quickly write to VRAM after the PPU is done. Modifying VRAM in-between rendering can cause flickering on screen. Other uses of interrupts include synchronization of linked Game Boys, timers that can be programmed, and listening for button presses. 
+
+[^subs]: Subsystems not depicted in the schematic are the timer, the memory bank controller (MBC), the serial port, and the direct memory access (DMA) mechanic. These will be discussed later. 
+
+In essence, the Game Boy uses a simple hardware architecture. The CPU has access to pretty much all subsystems through a concept called _memory-mapped IO_: reading certain parts of the memory results in reading certain states of subsystems. There are no device drivers and there is no operating system managing resources for multiple programs. In fact, the only program running at a given time will be the game you booted up - after the BIOS handed over the controls, that is. 
+
+Since the Sharp CPU is an 8-bit processor, it can only access and process 8 bits of data at one time. However, in order to directly access any subsystem through the memory-mapped system, it uses a 16-bit address bus. That means `65.536` positions of memory can be directly accessed: from `$0000` to `$FFFF`\sidenote[9][-1.6cm]{Instead of
+  working with long binary numbers, most Game Boy programming happened
+  using hexadecimal values, preprended by \texttt{\$} or \texttt{0x}.
+  \texttt{\$FFFF} equals \texttt{1111111111111111}, sixteen enabled bits
+  or \texttt{65535} in decimal.}. The full address space looks like this:
+
+\begin{figure*}[h!]
+    \centering
+    \includegraphics{ch-handheld-gb/gbmemmap.png}
+    \caption{A visual representation of the 16-bit address space.}
+\end{figure*}
 
 

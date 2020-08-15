@@ -46,6 +46,12 @@ cartridge reader:
 - https://www.gbxcart.com ready-made, populair, niet duur
 - https://git.phenomic.net/PHENOM/Gameboy-Color-Cart-Reader zelf maken met microcontroller en custom board in EAGLE
 - disassembling GBC ROM https://www.chibiakumas.com/z80/Gameboy.php
+- https://www.copetti.org/projects/consoles/ super boeiend en duidelijke uitleg over architectuur, geluid, sprites, ... capabilities of any console
+
+## Development kits
+
+- https://rust-console.github.io/gba/ rust op gba
+- devkitpro etc?
 
 ## Game Design
 

@@ -39,6 +39,7 @@ date: 2020-07-07
 - games mentioned index
 - "with contributions of ... " = héél belangrijk, ook naar commerce. 
 - Further reading indien meer interesse: in tech. detail (1) en voor andere retro consoles (2). plus voornamelijk website (zie hieronder) linken!
+- bij gb cartridges hoofdstuk: top 50 gb(c)(a) game length volgens howlongtobeat; meegeven in appendix (lijst)
 
 ## Supplementary material 
 
