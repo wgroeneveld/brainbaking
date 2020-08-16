@@ -173,7 +173,7 @@ Recycling the PCB of the Pocket and the CPU of the original GB again significant
 \begin{figure}[h!]
     \centering
     \includegraphics{ch-handheld-gb/gbarchitecture.png}
-    \caption{A simplified schematic of the Game Boy hardware architecture. The Audio Processing Unit (APU), Central Processing Unit (CPU), and Picture Processing Unit (PPU) are embedded in the DMG-CPU casing. Not all cartridges contain batteries that power SRAM. }
+    \caption{A simplified schematic of the Game Boy hardware architecture. The Audio Processing Unit (APU), Central Processing Unit (CPU), and Picture Processing Unit (PPU) are embedded in the DMG-CPU casing. Optional components on the cartridge, such as the battery that powers SRAM and the Memory Bank Controller (MBC), are marked orange. Based on Rodrigo Copetti's Game Boy Diagram.}
 \end{figure}
 
 While the CPU is indeed the "central" processing unit, it delegates audio and picture processing to the corresponding subsystems, also embedded within the DMG-CPU casing. Graphics calculations are done in the CPU, but the PPU is responsible for converting the stored graphics from the VRAM to pixels on the screen itself. The inner workings of the PPU is explained in chapter TODO-ref.
@@ -182,7 +182,7 @@ The same applies for the audio: the CPU reads data from the ROM and can apply tr
 
 At any given time, these subsystems[^subs] can cause the CPU to _interrupt_ its current work and execute a special subroutine. Interrupts allow developers to program special effects by hooking into the hardware internals. For example, when a frame is rendered, the PPU emits a "_v-blank_" (vertical blank) event, signaling that it is done rendering. This can be listened to in order to quickly write to VRAM after the PPU is done. Modifying VRAM in-between rendering can cause flickering on screen. Other uses of interrupts include synchronization of linked Game Boys, timers that can be programmed, and listening for button presses. 
 
-[^subs]: Subsystems not depicted in the schematic are the timer, the memory bank controller (MBC), the serial port, and the direct memory access (DMA) mechanic. These will be discussed later. 
+[^subs]: Subsystems not depicted in the schematic are the timer, the serial port, and the direct memory access (DMA) mechanic. These will be discussed later. 
 
 In essence, the Game Boy uses a simple hardware architecture. The CPU has access to pretty much all subsystems through a concept called _memory-mapped IO_: reading certain parts of the memory results in reading certain states of subsystems. There are no device drivers and there is no operating system managing resources for multiple programs. In fact, the only program running at a given time will be the game you booted up - after the BIOS handed over the controls, that is. 
 
@@ -195,7 +195,46 @@ Since the Sharp CPU is an 8-bit processor, it can only access and process 8 bits
 \begin{figure*}[h!]
     \centering
     \includegraphics{ch-handheld-gb/gbmemmap.png}
-    \caption{A visual representation of the 16-bit address space.}
+    \caption{A visual representation of the 16-bit address space. Based on DuoDreamer's DreamScape Game Boy Memory Map.}
 \end{figure*}
 
+\definecolor{memmap0}{HTML}{CE48AF}
+\definecolor{memmap1}{HTML}{7436A5}
+\definecolor{memmap2}{HTML}{BF58FE}
+\definecolor{memmap3}{HTML}{EE7D33}
+\definecolor{memmap4}{HTML}{F5B233}
+\definecolor{memmap5}{HTML}{FDE033}
+\definecolor{memmap6}{HTML}{FDF47C}
+
+- \colorbox{memmap0}{\textcolor{white}{\texttt{\$0000-\$00FF}}}: _Interrupt table_. The first 255 bytes in the address space are reserved for managing interrupts. For example, if you write a certain address to `$0040`, which is the v-blank interrupt, the CPU will jump to that location and execute a piece of code after the PPU declares it is done writing all pixels to the screen for a single frame.
+- \colorbox{memmap1}{\textcolor{white}{\texttt{\$0100-\$014F}}}: _Cartridge header area_. These addresses allow the developer to access the cartridge and retrieve metadata: game name, cartridge type, ROM/RAM size, color mode, ... \newline Address `$0104` should point to the Nintendo logo present on the cartridge[^revcopy]. It was Nintendo's attempt to prevent unauthorized publishers from releasing games on the Game Boy, as the logo is a registered trademark. Upon booting the GB, the BIOS will check if the logo is present. If it is not, it will simply hang after displaying the logo on screen and the game will not start. 
+- \colorbox{memmap2}{\textcolor{white}{\texttt{\$0150-\$7FFF}}}: _Cartridge ROM_. When the BIOS is done checking the integrity of the inserted game, it hands over control by starting execution at `$0100`, which usually contains a jump to `$0150`: the first line of code of the game itself. 
+- \colorbox{memmap3}{\texttt{\$8000-\$9FFF}}: _VRAM_. Tiles and background data used by the PPU to draw the screen is accessible via these addresses. 
+- \colorbox{memmap4}{\texttt{\$A000-\$BFFF}}: _Cartridge RAM_. This RAM is external and optional. If a GB game allows you to save and load your progress, these addresses are used to to it. 
+- \colorbox{memmap5}{\texttt{\$C000-\$FDFF}}: _WRAM_. Address space used to store temporary variables. Your score, amount of lives, current level number, ... 
+- \colorbox{memmap6}{\texttt{\$FE00-\$FFFF}}: _Various_, including sprite RAM and hardware IO registers. Instead of waiting for certain interrupts to occur, you can also poll IO ports directly. This is a very dense area: almost every bit has a special meaning. 
+
+[^revcopy]: These simple checks did not prevent hackers from reverse-engineering software in order to copy the logo data. In the early nineties, multiple lawsuits concerning similar copyright infringements were filed: Accolade copied the trademark security system of the Sega Genesis/MegaDrive and Atari copied the NES "checking integrated circuit" (CIC) chip. These cases proved to be influential in how reverse engineering with unlicensed products is perceived in issues involving copyright. 
+
+This memory map method allows developers to easily load any kind of data using the correct address within the 16-bit range. Want to check if the player pressed \circled{\small A}? Read the first bit at `$FF00`. Want to read graphics data from the cartridge and write it to VRAM in order to display it? Read from `$2FF0` and write to `$9000`. Every single action involves an address. 
+
+You might be wondering how the ROM space can fit inside the rather small 32 KB space at `$0150-$7FFF`, or how the 32 KB WRAM of the GBC can fit inside the tiny space at `$C000-$FDFF`. The answer is it does not fit. Instead, the Game Boy uses _banking switching_: a technique to dynamically reconfigure certain address space blocks to map other portions of memory. 
+
+The cartridge ROM blocks are split in two: the first 16 KB (called bank $0$) is fixed, while the second part (bank $n$) is dynamic. Some games like Tetris do not need bank switching as their ROM footprint is small enough to fit inside the address space. Most games are bigger than 32 KB and can grow up to 8 MB. The part responsible for switching out banks in the second part is called the _Memory Bank Controller_ (MBC), a chip on the cartridge and not the Game Boy PCB itself. Different versions of these chips exist as we will see in chapter TODO-ref.  
+
+Ordering the MBC to switch to a certain bank is a matter of writing to... read-only memory? For example, to read the next 16 KB positioned at bank 5, we load the value `5` into destination `$2000` (that lies within cartridge ROM address space). The MBC intercepts this useless attempt to write to read-only memory and switches banks instead.
+
+For the Game boy Color, the whole VRAM address space is also banked. There are two 8 KB VRAM banks available since the Color contains twice the amount of video memory. The second half (4 KB) of the WRAM address space is also banked where you can choose to map one of the seven banks of 4 KB each, covering 32 KB in total.
+
+\begin{figure*}[h!]
+    \centering
+    \includegraphics{ch-handheld-gb/gbmemmapbank.png}
+    \caption{Memory banking on the 16-bit address space. Light green memory portions (VRAM, WRAM) are only available for the Game Boy Color.}
+\end{figure*}
+
+https://www.slideshare.net/TomaszRkawek/emulating-game-boy-in-java
+
+https://www.copetti.org/projects/consoles/game-boy/
+
+http://gameboy.mongenel.com/dmg/asmmemmap.html
 
