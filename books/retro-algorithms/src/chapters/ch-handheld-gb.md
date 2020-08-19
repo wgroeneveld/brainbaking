@@ -206,7 +206,7 @@ Since the Sharp CPU is an 8-bit processor, it can only access and process 8 bits
 \definecolor{memmap5}{HTML}{FDE033}
 \definecolor{memmap6}{HTML}{FDF47C}
 
-- \colorbox{memmap0}{\textcolor{white}{\texttt{\$0000-\$00FF}}}: _Interrupt table_. The first 255 bytes in the address space are reserved for managing interrupts. For example, if you write a certain address to `$0040`, which is the v-blank interrupt, the CPU will jump to that location and execute a piece of code after the PPU declares it is done writing all pixels to the screen for a single frame.
+- \colorbox{memmap0}{\textcolor{white}{\texttt{\$0000-\$00FF}}}: _Interrupt tables_. The first 255 bytes in the address space are reserved for managing interrupts. For example, if you write a certain address to `$0040`, which is the v-blank interrupt, the CPU will jump to that location and execute a piece of code after the PPU declares it is done writing all pixels to the screen for a single frame.
 - \colorbox{memmap1}{\textcolor{white}{\texttt{\$0100-\$014F}}}: _Cartridge header area_. These addresses allow the developer to access the cartridge and retrieve metadata: game name, cartridge type, ROM/RAM size, color mode, ... \newline Address `$0104` should point to the Nintendo logo present on the cartridge[^revcopy]. It was Nintendo's attempt to prevent unauthorized publishers from releasing games on the Game Boy, as the logo is a registered trademark. Upon booting the GB, the BIOS will check if the logo is present. If it is not, it will simply hang after displaying the logo on screen and the game will not start. 
 - \colorbox{memmap2}{\textcolor{white}{\texttt{\$0150-\$7FFF}}}: _Cartridge ROM_. When the BIOS is done checking the integrity of the inserted game, it hands over control by starting execution at `$0100`, which usually contains a jump to `$0150`: the first line of code of the game itself. 
 - \colorbox{memmap3}{\texttt{\$8000-\$9FFF}}: _VRAM_. Tiles and background data used by the PPU to draw the screen is accessible via these addresses. 
@@ -232,9 +232,53 @@ For the Game boy Color, the whole VRAM address space is also banked. There are t
     \caption{Memory banking on the 16-bit address space. Light green memory portions (VRAM, WRAM) are only available for the Game Boy Color.}
 \end{figure*}
 
-https://www.slideshare.net/TomaszRkawek/emulating-game-boy-in-java
+\newpage
 
-https://www.copetti.org/projects/consoles/game-boy/
+### Processing Instructions
 
-http://gameboy.mongenel.com/dmg/asmmemmap.html
+As soon as you power on your Game Boy until the batteries are run out or you're tired of playing, the CPU executes a sequence of 8-bit instructions. When looking at the address space, we know instructions start at `$0000` and continue into the BIOS area to display the logo, eventually ending up in the cartridge ROM. But what exactly is an instruction and how does the CPU process it?
+
+Imagine you are configuring the GPS of your car. Usually, it is a simple matter of entering the destination address, maybe followed by the option to take the most economical route. "Go to Brussels" is a very high-level instruction that the GPS breaks down into low-level instructions: "Drive straight ahead here", "Turn left there".  
+
+\marginfig{ch-handheld-gb/2goombas.png}{}{Two Goombas from Super Mario Land 2.}
+
+Sadly, instructing the Game Boy to "draw two Goombas", a high-level instruction, simply does not work: it is not familiar with drawing, nor with a Goomba. Instead, game programmers tell the CPU what to do using special machine codes. These low-level instructions can manipulate _registers_ in order to do something. Drawing a Goomba requires a staggering amount of instructions: copy a value from cartridge ROM into a register, increase the value of the address pointer to copy the next value, copy all these Goomba parts into VRAM using the same sluggish procedure, and so on. 
+
+An example of a Game Boy instruction is `01111000` (`$78`). It tells the CPU to copy the value of register B into register A. Fortunately, programmers do not need to memorize each bit: instead, they write what is called _assembly_ code `LD A,B`[^ld] instead. Coding in assembly is the most basic (and perhaps also the most exhausting) way to write programs. More modern machines, including the Game Boy Advance, allow game developers to write code in higher level programming languages that is compiled into low level machine code[^gbacode]. Instead of having to yell "Turn left! Go Right!", which might "drive" a competent driver mad, you could say "follow this national road until we reach the next village". That way, less instructions are needed to arrive at Brussels.
+
+[^ld]: Read as "load in A the value of register B". The destination register is always mentioned first. 
+
+[^gbacode]: This is not entirely correct: you can write GB games in C instead of assembly thanks to SDCC (Small Device C Compiler), an ANSI C compiler that can target the Game Boy platform. These tools are usually made by fans who reverse-engineer the hardware. 
+
+Every CPU comes with its own instruction set that programmers need to master. The Game Boy CPU instruction set[^cmds] is a mix between the Zilog Z80 and the Intel 8080. Instructions cover loading values into registers (e.g. hard-coded numbers, from addresses, or from other registers), arithmetics, jumping to certain addresses, and so forth. 
+
+[^cmds]: Eight bits give us $2^8$ (256 or `$FF`) possible instructions or "opcodes" - without counting the special `CB` codes.
+
+In order to calculate something, the CPU needs a place to quickly and temporary store stuff, separate from RAM. These 16-bit places are called registers. The memory chip acts like a cupboard. In order to have dinner, you take out the plates and put them on the table. Only then the cutlery and plates become something to interact with for your guests. The CPU can only perform arithmetics on values stored in register `A`. 
+
+\marginfig{ch-handheld-gb/gbregisters.png}{Available registers in the Game Boy CPU. The \texttt{SP} (Stack Pointer) and \texttt{PC} (Program Counter) registers cannot be split up. The \texttt{HL} register is used to point at an address in the memory map.}{Registers of the Game Boy.}
+
+Some registers can be split in two separate 8-bit registers when more space is needed. Others need to keep their 16-bit length in order to point to certain addresses in memory space. Otherwise, we would not be able to reach the second half of the memory space. 
+
+But how exactly are instructions processed and where do they come from? Any CPU follows a simple cycle of actions in order to process instructions: _fetch_ the instruction, _decode_ the instruction, and _execute_ the instruction. 
+
+1. _Fetch_ the next available instruction where the special Program Counter (`PC`) register is currently pointing at. The `PC` could contain `$3000`, an address that lies within bank `0` of the cartridge ROM. Any fetch instruction looks at the `PC` value and simply fetches eight bits at that location. 
+2. _Decode_. Great, we've got `01111000`, now what? The CPU needs to figure out (decode) what each unique combination of bits should do. Some operations take arguments, in which case we also need the fetch the next 8 bits. After we know what to do, we can safely increase the `PC` value for the next fetch.
+3. _Execute._ So, `01111000` was fetched and deciphered. Now we need to actually do something: load the value of register B into A. Depending on the instruction, the execution time varies. 
+
+### A "bit" about the speed of the CPU
+
+In theory, the Game Boy runs at a speed of 4.19 MHz. However, since we know that instructions take a while to go through the fetch/decode/execute cycle, the actual execution time of an instruction becomes slower. On the Game Boy, any instruction takes at least four clock cycles to execute, bringing the effective CPU speed closer to 1 MHz. 
+
+What is a megahertz anyway? Hertz is a unit of _frequency_, defined as one cycle per second. One MHz equals $10^6$ Hz. Sine waves, light flashes, musical tones, and clock speeds of oscillating crystals on PCB boards: they all have their own rhythm or frequency. The refresh rate of your TV, for instance 60 Hz, means it will display an image 60 times per second. 
+
+The crystal on the circuit board dictates how "frequent" the CPU can process instructions. The instruction processing speed is also expressed in _clock cycles_. An instruction that takes four cycles means that the frequency wave of the crystal[^rate] has gone up and down four times before the instruction was successfully processed. 
+
+[^rate]: Going at a rate of 4.19 MHz or 4190000 Hz or 0,00000023866348 seconds or 239 nanoseconds. 
+
+\begin{figure*}[h!]
+    \centering
+    \includegraphics{ch-handheld-gb/gbclockcycle.png}
+    \caption{Total console units in millions sold, based on historical data from Nintendo, Gamespot and Wikipedia. Handhelds in dark green, TV consoles in light green.}
+\end{figure*}
 

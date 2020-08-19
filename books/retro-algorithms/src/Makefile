@@ -12,12 +12,13 @@ all:
 		--metadata-file=metadata.yml \
 		-t latex+smart \
 		--highlight-style=haddock > boek.tex \
-		chapters/intro.md chapters/ch-handheld-gb.md chapters/ch-handheld-gba.md chapters/ch-wario.md chapters/ch-x.md
+		chapters/ch-handheld-gb.md
 	python res/pandoc/postprocessor.py
 	xelatex boek.tex
 	#bibtex boek
 	#xelatex boek.tex
 	#echo "-- DONE"
+	#chapters/intro.md chapters/ch-handheld-gb.md chapters/ch-handheld-gba.md chapters/ch-wario.md chapters/ch-x.md
 
 pages:
 	exiftool boek.pdf | grep 'Page Count'
