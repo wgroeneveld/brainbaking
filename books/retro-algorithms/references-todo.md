@@ -62,3 +62,8 @@ cartridge reader:
 - gamasutra
 - gameinternals.com
 
+## Retro advertisements
+
+- http://gameboyoriginal.blogspot.com
+- https://www.retromags.com/forums/topic/5201-hardware-accessories/
+
