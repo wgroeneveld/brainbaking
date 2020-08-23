@@ -41,7 +41,7 @@ Before the rise of the PS2, the Game Boy would be the best selling gaming device
 
 The main competitors of the Game Boy dangle at the bottom of the chart. The Atari Lynx barely sold one million units and the Game Gear managed to grab about `8%` of the handheld market share. 
 
-In 2003, Nokia thought it was a good idea to compete with the Game Boy Advance. Why carry both a cellphone and a gaming device when one can be both, right? The result was a phone/game device that did neither well. The project was quickly abandoned two years later. Who would have thought that gamers dislike having to pry out the battery each time they want to swap game cartridges. 
+In 2003, Nokia thought it was a good idea to compete with the Game Boy Advance. Why carry both a cellphone and a gaming device when one can be both, right? The result was the N-Gage, a phone/game device that did neither well. The project was quickly abandoned two years later. Who would have thought that gamers dislike having to pry out the battery each time they want to swap game cartridges. 
 
 Technically, the Game Boy was a bit less exciting:
 
@@ -286,11 +286,17 @@ The fewer available resources such as a low clock rate, the more important it be
 
 ### Game Boy Accessories
 
-Secretly playing in bed at night was out of the question with the Game Boy. Without a proper light source, it was nearly impossible to play. Companies like Hori and Joyplus quickly responded by flooding the market with an abundance of accessories. Light attachments, magnifying glasses, stereo speaker attachments that required another two AA batteries, battery packs: you name it, they've got it. 
+Secretly playing in bed at night was out of the question with the Game Boy. Without a proper light source, it was nearly impossible to distinguish friend from foe in-game. Companies like Hori and Joyplus quickly responded by flooding the market with an abundance of accessories, of which some required even more batteries.  
 
-One particular accessory stands out as the all-in-one solution. Perhaps the ultimate way to play the Game Boy is the _Handy Boy_. An advertisement claims that you should not settle for less:
+One particular accessory stands out as the all-in-one solution. Perhaps the ultimate way to play the Game Boy is the _Handy Boy_. An advertisement claims that you should not settle for less[^handyboy]:
+
+[^handyboy]: Image source: [Retromags.com](https://retromags.com).
 
 > _Fully loaded_. It's the stereo-amplifying, screen magnifying, night lighting, fire button enlarging, thumb stick controlling, compacting easy carrying accessory for your Game Boy - whew! Try saying that three times fast - it's a mouthful! But that's what you get when you have it all. Other Game Boy accessories leave you with nothin' to say. Hey, there's only one worth talkin' about. _Handy Boy - don't settle for less._
+
+Besides that mouthful, there's a rechargeable battery pack, a solar charger, more screen-related attachments like the Nuby Boy, the Light Boy, and the Light Magic, ways to cheat using Action Replay or Game Genie adapters (see chapter TODO-ref), Link Cables and 4-player adapters (see chapter TODO-ref), more external sound amplifiers, a camera, a printer, an FM radio receiver,  the Work Boy for those spreadsheet fans, the Barcode Boy to scan random articles in the hope of playing certain mini-games, a sonar to detect fish underwater, and even Singer's Game Boy Sewing Machine[^agvnacc]!
+
+[^agvnacc]: I highly recommend you to watch the Angry Video Game Nerd inspect these gadgets, at [https://www.youtube.com/watch?v=EEzJH90h3aA](https://www.youtube.com/watch?v=EEzJH90h3aA). The result is, as expected, hilarious. 
 
 The portability of the handheld was also questioned as dragging accessories, cartridges and batteries around proved to be quite a challenge. The solution to this problem is of course more accessories: waist bags and shoulder bags for the quick field trip and bigger plastic Game Boy travel cases that can harbor lots of goodies for the sleepover. 
 
@@ -306,6 +312,7 @@ At least GB "LAN" parties did not involve hauling twenty kilogram CRT screens fr
 \newpage
 
 \BgThispage
+\mbox{}
 
 \newpage
 

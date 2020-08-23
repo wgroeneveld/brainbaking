@@ -52,6 +52,11 @@ Hoofdstukken based on Game Programming Algorithms and Techniques:
 
 ### Versimpeld; games
 
+[ ] Een of ander te moeilijk spel met Action Replay en Game Genie? - "interrupting the game loop": cheat systems; game genie ea die registers veranderen --> HOE? https://www.youtube.com/watch?v=C86OsYRACTM
+
+https://www.youtube.com/watch?v=NJZ3keMXKH4 12:47 adres. Code: XX YY ZZZZ (origineel nummer, aangepast nummer, adres ZZZZ $C108 -> leuk om in address space te refereren zoals CH1). Apart hoofdstuk aan wijden of niet?. Sommigen hebben blijkbaar ook flash rom. hi-res picture. sommigen inline memory dump games ram! (Xterminator, action replay 4 "MAX")
+Is idd mogelijk om de boel te doen glitchen, 37:40 TNMT3; 7 levens terwijl er maar 5 mogelijk zijn in de bar = window kapot. Zelfs "save states", 8 K rom
+
 [ ] Sprites
     [ ] Sprites intro (Wario 1-4)
     [ ] Sprites advanced (Castlevania DoS)
@@ -93,22 +98,28 @@ Hoofdstukken based on Game Programming Algorithms and Techniques:
 - Memory mapped IO = things appear to the CPU as if they were memory. just read from 16-bit address space
 - No OS. Assmebly, C, C++, layers ...
 - BIOS https://gossipfunda.com/gba-bios/ https://mgba.io/2017/06/30/cracking-gba-bios/ checksum, nintendo logo = first anti-piracy tool - twee dingen: nintendo logo check (GBC checks less) + header checksum https://gbdev.io/pandocs/#the-cartridge-header en https://www.youtube.com/watch?v=HyzD8pNlpwI 19:53 nintendo could control which games were released. copymark en trademark voilation indien meegenomen. checksum header: don't blow into the pins?. nintendo logo on the screen - NO cleanup: do something with it (some games)
-- VSyncing; scanlines; hier of in Wario land? 
 - historiek/vgl met bestaande HW/andere consoles, porting
 - similarities (S)NES, ed
 - on-system IRAM/WRAM/VRAM next to catrdige ROM/RAM http://problemkaputt.de/gbatek.htm#gbamemorymap
-- GB: 160x144, 4 colors (2 bits), 8x8 tilebased, 20x18 on-screen (32x32 in ram: 256 - scrolling! wraps around! draw columns faster than viewport scrolls - in off-screen area of viewport scrolls https://www.youtube.com/watch?v=HyzD8pNlpwI 32:59; in 2 dimensions zoals DK land) tiles, 40 sprites (10/line), 8Kb VRAM (4k bg, 4k sprites --> overlap!! speciale flags voor; overlappende tekening in boek!), 1k bg map, 1k window map) 2 layers: bg/'window' (no translucency - overlays - for score on bottom/right of screen.). 3de laag = 'sprites'. OAM map. sprites can be 16px in height. wel translucency. flip bits. 2 palettes omdat 1 bit verknoeid is door translucency. sprite drawing priority: array in memory, earlies = draws over
 - modding: backlit, battery pack, ... 
+
+Eerder in Game-specifieke stukken zoals Wario: 
+
+- GB: 160x144, 4 colors (2 bits), 8x8 tilebased, 20x18 on-screen (32x32 in ram: 256 - scrolling! wraps around! draw columns faster than viewport scrolls - VSyncing; scanlines; hier of in Wario land? 
+- in off-screen area of viewport scrolls https://www.youtube.com/watch?v=HyzD8pNlpwI 32:59; in 2 dimensions zoals DK land) tiles, 40 sprites (10/line), 8Kb VRAM (4k bg, 4k sprites --> overlap!! speciale flags voor; overlappende tekening in boek!), 1k bg map, 1k window map) 2 layers: bg/'window' (no translucency - overlays - for score on bottom/right of screen.). 3de laag = 'sprites'. OAM map. sprites can be 16px in height. wel translucency. flip bits. 2 palettes omdat 1 bit verknoeid is door translucency. sprite drawing priority: array in memory, earlies = draws over
 - LCD: 60x/sec redraw lines - race game https://www.youtube.com/watch?v=HyzD8pNlpwI 41:11 different parts of the screen behave differently. vblank interrupts LYC, scrollen op juiste moment. 
 - "Mode 7" voor GB: SCX https://www.youtube.com/watch?v=HyzD8pNlpwI 44:05
-- PPU timing: 20 clocks oam search, 43 pixel transfer, 51 h-blank (144 lines) 17,556 clocks/screen, 1.048.576 clock speed: 59.7 Hz refersh rate. 1140 clocks on vblank. shadow OAM nodig en kopieren dan
+- PPU timing: 20 clocks oam search, 43 pixel transfer, 51 h-blank (144 lines) 17,556 clocks/screen, 1.048.576 clock speed: 59.7 Hz refersh rate. 1140 clocks on vblank. shadow OAM nodig en kopieren dan. Refereer naar CH1 waar memory space en CPU clock speed werd uitgelegd. 
 
 #### 3. The Cartridges 
+
+!! Icoontjes die ge op dozen/cartridges tegenkomt uitleggen (bvb official game boy video link game pak, super game boy, ...)
 
 - ROM/RAM. Access times, VS CD-ROM
 - 'Memory bank controllers' https://gbdev.io/pandocs/#the-cartridge-header
 - Save states: https://zork.net/~st/jottings/GBA_saves.html uniek voor elke cartridge...  https://gekkio.fi/blog/2015/mooneye-gb-gameboy-cartridge-types/ memory 'banking' tekening/uitleg + reden?
 - GBA Video Cartridges? https://en.wikipedia.org/wiki/Game_Boy_Advance_Video
+- GB MegaMem savegame backup cartridge
 - Extra sensoren analogue-digital convertor? https://www.reddit.com/r/Gameboy/comments/3o10rk/full_list_of_gameboy_and_gba_games_with/
     - Boktai: The Sun Is in Your Hand; lightsensor rom hack: https://github.com/Prof9/Boktai-Solar-Sensor-Patches/blob/master/Source/b1u.asm hoe werkt die interface? hoe lees je een sensor in vanuit programma?
     - Kirby Tilt 'n Rumble; gyro (Ook Wario Ware: Twisted!, Yoshi Topsy-Turvy)
@@ -116,6 +127,7 @@ Hoofdstukken based on Game Programming Algorithms and Techniques:
     - Game Boy Camera (apart boek zelfs; retro HW algorithms? zoveel details; CCD cell https://gbdev.gg8.se/wiki/articles/Gameboy_Camera dingen zoals https://petapixel.com/2017/07/05/guy-photographed-moon-jupiter-game-boy-camera/ en http://ekeler.com/game-boy-camera-canon-ef-mount/)
     - Harvest Moon: RTC
     - Tamagochi https://steemkr.com/gaming/@donpepe/weird-game-boy-cartridges-part-2
+    - Robopon GB https://www.youtube.com/watch?v=Uch-ZWrScuY
 
 ### Part II: The Games & Their Algorithms
 
@@ -172,6 +184,8 @@ Waarom niet Tetris? Limieten GBA VS GB? Mr. Do?
 > Q1. How does the enemy find my location? 
 
 (vragen meer concreet richten ipv "how does pathfinding work"? -> engagement++)
+
+Origine: Game Boy Wars (GB, GBC, JPN-only) https://www.youtube.com/watch?v=Uch-ZWrScuY - eigenlijk Famicom Wars (turbo optie betere AI? opties verschillende CPU levels)
 
 - Pathfinding A* (eerst Dijkstra, easy opl maar duur)
 - travelling salesman problem?
