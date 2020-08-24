@@ -5,7 +5,7 @@
 
 \cover{gbconsole.png}{Nintendo}{1989}{Handheld game console}
 
-The original Game Boy (GB), codenamed Dot Matrix Game (DMG) or more lovingly called the _Gray Brick_, was not Nintendo's first electronic gaming handheld if you take the Game & Watch series into account. Still, it was the first breed of a new generation of handheld gaming _consoles_: a piece of machinery that enabled swapping game cartridges on the go. And those four AA batteries made sure you could stay on the go for as long as 15 hours - I hope you brought your spare set. 
+The original Game Boy (GB), codenamed Dot Matrix Game (`DMG`) or more lovingly called the _Gray Brick_, was not Nintendo's first electronic gaming handheld if you take the Game & Watch series into account. Still, it was the first breed of a new generation of handheld gaming _consoles_: a piece of machinery that enabled swapping game cartridges on the go. And those four AA batteries made sure you could stay on the go for as long as 15 hours - I hope you brought your spare set. 
 
 It was released in April 1989 in Japan and after hitting the U.S. shelves two months later, the system sold a million units within a few weeks. Early adopters in Europe were better off importing as it took more than one year to arrive there! Nintendo quickly realised that the Game Boy was going to be a huge hit, and there was (almost) nobody there to stop them. 
 

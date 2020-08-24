@@ -113,11 +113,11 @@ The screen of the Game Boy Color could already handle 15-bit RGB values but the 
 
 Instead of waiting seven years to redesign the first Advanced model, The Game Boy Advance "SP" (codenamed `AGS`) was released only two years after the original GBA. The fairly new horizontal layout was promptly thrown out of the window in favor of a model that resembles the Game Boy Color, except that the clamshell design enabled you to fold it in half. A closed GBA SP, measuring only about `8.4` cm, was finally the ultimate pocketable gaming machine.
 
-According to Nintendo, the redesign was issued to address two major complaints of the original design. First, it was supposedly uncomfortable to use, hence the new layout. In practice, most players complained that it was in fact the SP model that hurt your hands, locking your fingers in a cramped position because of the new clamshell design. 
+According to Nintendo, the redesign was issued to address two major complaints of the original design. First, it was supposedly uncomfortable to use, hence the new layout. In practice, most players complained that it was in fact the SP model that hurt their hands, locking fingers in a cramped position because of the new clamshell design. 
 
 Second, the complaints about the contrast of the screen were finally taken into account. Well, not entirely. The first SP model (`AGS-001`) included an internal front-light that could be toggled on and off. It acts as a Game Boy with an embedded Light Boy accessory. The result was better than the first GBA, but still not great, as frontlit LCD screens tend to have washed out colors. Fortunately, the revised revision (`AGS-101`) finally included a proper backlit screen - although you had to wait another two years for that, and Europeans were disadvantaged again with the extremely limited availability. 
 
-Under the hood, the SP remained identical to the original GBA. 
+The GBA SP ended an era of hauling a slew of AA (or, in the case of the Pocket, AAA) batteries together with your favorite handheld system. An integrated rechargeable lithium-ion battery compartment was finally introduced, that, according to the official specifications, should keep you busy up to eighteen hours, provided the screen light is disabled. The comfort that was gained with the charging system was suddenly lost once you wanted to plug in your headphones: the headphone jack disappeared, in favor of an awkward adapter - to be bought separately, of course - that plugs into the same AC port as the power charger. Without even more adapters, it was impossible to use headphones and charge the system simultaneously. Take that, spare AA batteries. 
 
 ### The Game Boy Micro
 
@@ -125,11 +125,28 @@ In 2005, Nintendo brought back the horizontal layout by introducing the Game Boy
 
 \begin{figure}[h!]
     \centering
-    \includegraphics{ch-handheld-gba/gbscreensizes.png}
-    \caption{A comparison of Game Boy Screen sizes. Dimensions in millimeter. GBA aspect ratios are \texttt{3:2}, while GB aspect ratios are approximately \texttt{10:9}}.
+    \includegraphics[width=0.59\columnwidth]{ch-handheld-gba/gbscreensizes.png}
+    \caption{A comparison of Game Boy screen sizes (actual size). Dimensions in millimeter. GBA aspect ratios are \texttt{3:2} (in purple), while GB aspect ratios are approximately \texttt{10:9} (in orange for GBC, in gray for Pocket and Classic).}
 \end{figure}
 
+Roughly one third of the screen size disappeared. However, the reduced size did deliver extremely crisp images as the pixels per inch or PPI increased from 99 to 144. Together with a nice and bright backlit screen, the Micro almost creates the illusion of being able to play GBA games at High Definition image quality. Oh, and the headphone jack returned. 
+
+Is this the one Game Boy system to rule them all? That depends on whether or not backwards compatibility is high on your priority list, as Nintendo decided, for the very first time in their handheld division, to drop support for older Game Boy cartridges. It might not come to a big surprise considering the physical size of the machine. A small portion of the 8-bit Sharp CPU is still present since GBA games could make use of its 4-channel APU.
+
+\begin{figure*}[ht!]
+    \centering
+    \includegraphics[width=0.9\columnwidth]{ch-handheld-gba/gbconsolesizes.png}
+    \caption{A comparison of Game Boy device sizes (actual size). Dimensions in millimeter.}
+\end{figure*}
+
+
 ### The Game Boy Advance CPU Architecture
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics{ch-handheld-gba/gba-architecture.png}
+    \caption{A simplified schematic of the Game Boy Advance hardware architecture. Memory components are marked in orange (BIOS ROMs not depicted). Components are connected with a hybrid 8-bit (GBC ROM, SRAM) Based on Rodrigo Copetti's Game Boy Diagram.}
+\end{figure}
 
 arch dinges enzo bla
 

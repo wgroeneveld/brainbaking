@@ -25,6 +25,7 @@ date: 2020-07-06
 - Nostalgia GB Perfect Guide https://ia801000.us.archive.org/23/items/perfectguidegb/Perfect%20Guide%20GB%20懐かしゲームボーイパーフェクトガイド.pdf (jap)
 - Game Boy World/Works Jeremy Parish https://www.gameboyworks.com/about-game-boy-world/
 - Retronauts podcast https://retronauts.com
+- Game Boy DMA explanation https://exez.in/gameboy-dma
 
 ## data leaks, hacks, ...
 

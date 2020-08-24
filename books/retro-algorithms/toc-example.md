@@ -31,7 +31,7 @@ Hoofdstukken based on Game Programming Algorithms and Techniques:
     [ ] Transformations (texture mapping?)
 [ ] Input => WEGlaten; hoort bij hardware
 [ ] Sound => ??? !!! 
-    [ ] Basic Sound (GB coproc. waveforms?)
+    [ ] Basic Sound (GB coproc. waveforms?) - gba mixing = CPU-intensitive, there was no 'sound chip'!  https://www.neogaf.com/threads/game-boy-advance-sound-hardware-what-the-hell-nintendo.759027/page-2
     [ ] 3D Sound
 [ ] Physics
     [ ] Planes, rays, line segments
@@ -53,6 +53,8 @@ Hoofdstukken based on Game Programming Algorithms and Techniques:
 ### Versimpeld; games
 
 [ ] Een of ander te moeilijk spel met Action Replay en Game Genie? - "interrupting the game loop": cheat systems; game genie ea die registers veranderen --> HOE? https://www.youtube.com/watch?v=C86OsYRACTM
+
+[ ] network: 4 player adapter ding?
 
 https://www.youtube.com/watch?v=NJZ3keMXKH4 12:47 adres. Code: XX YY ZZZZ (origineel nummer, aangepast nummer, adres ZZZZ $C108 -> leuk om in address space te refereren zoals CH1). Apart hoofdstuk aan wijden of niet?. Sommigen hebben blijkbaar ook flash rom. hi-res picture. sommigen inline memory dump games ram! (Xterminator, action replay 4 "MAX")
 Is idd mogelijk om de boel te doen glitchen, 37:40 TNMT3; 7 levens terwijl er maar 5 mogelijk zijn in de bar = window kapot. Zelfs "save states", 8 K rom
@@ -102,6 +104,8 @@ Is idd mogelijk om de boel te doen glitchen, 37:40 TNMT3; 7 levens terwijl er ma
 - similarities (S)NES, ed
 - on-system IRAM/WRAM/VRAM next to catrdige ROM/RAM http://problemkaputt.de/gbatek.htm#gbamemorymap
 - modding: backlit, battery pack, ... 
+- launch titles! Circle of the Moon; launch title: shows GBA capabilities. exceeds any 16-bit cv; and you can hold it in your hands? gba launch titles VS gb launch titles = huge "jump" - since dreamcast/ps2; ook niet-first parties
+- GBA: kwaliteit kleurenscherm beter dan GBC; minimizes motion blur ed maar nog steeds geen backlit. grootste nadeel; zie castlevania. (afterburner). => daardoor veel te hoge contrast-game dingen zoals Harmony of Dissonance. Foto nemen met GBA zonder mod die bepaalde castlevania (donkere) area toont?
 
 Eerder in Game-specifieke stukken zoals Wario: 
 
@@ -118,10 +122,10 @@ Eerder in Game-specifieke stukken zoals Wario:
 - ROM/RAM. Access times, VS CD-ROM
 - 'Memory bank controllers' https://gbdev.io/pandocs/#the-cartridge-header
 - Save states: https://zork.net/~st/jottings/GBA_saves.html uniek voor elke cartridge...  https://gekkio.fi/blog/2015/mooneye-gb-gameboy-cartridge-types/ memory 'banking' tekening/uitleg + reden?
-- GBA Video Cartridges? https://en.wikipedia.org/wiki/Game_Boy_Advance_Video
+- GBA Video Cartridges? https://en.wikipedia.org/wiki/Game_Boy_Advance_Video zie ook https://mgba.io/2015/10/20/dumping-the-undumped/ - is blijkbaar iets bank-achtig. Zelf ene kopen en foto nemen? 
 - GB MegaMem savegame backup cartridge
 - Extra sensoren analogue-digital convertor? https://www.reddit.com/r/Gameboy/comments/3o10rk/full_list_of_gameboy_and_gba_games_with/
-    - Boktai: The Sun Is in Your Hand; lightsensor rom hack: https://github.com/Prof9/Boktai-Solar-Sensor-Patches/blob/master/Source/b1u.asm hoe werkt die interface? hoe lees je een sensor in vanuit programma?
+    - Boktai: The Sun Is in Your Hand; lightsensor rom hack: https://github.com/Prof9/Boktai-Solar-Sensor-Patches/blob/master/Source/b1u.asm hoe werkt die interface? hoe lees je een sensor in vanuit programma? Achtergrondinfo: https://mgba.io/2015/10/20/dumping-the-undumped/
     - Kirby Tilt 'n Rumble; gyro (Ook Wario Ware: Twisted!, Yoshi Topsy-Turvy)
     - Robopon infrared
     - Game Boy Camera (apart boek zelfs; retro HW algorithms? zoveel details; CCD cell https://gbdev.gg8.se/wiki/articles/Gameboy_Camera dingen zoals https://petapixel.com/2017/07/05/guy-photographed-moon-jupiter-game-boy-camera/ en http://ekeler.com/game-boy-camera-canon-ef-mount/)
@@ -155,6 +159,8 @@ Eerder in Game-specifieke stukken zoals Wario:
 - Enemy design: palette swapping
 - Entering other areas: clear cache; unique designs. Ander VB: Legend of Zelda. Seamless worlds zoals Dungeon Siege niet mogelijk, wel groter dan 64x64 (apart HF van maken met apart spel?)
 - Background layers; illusion 3D
+
+aria's engine re-use (klopt dit?): Shaman king master of spirits https://www.youtube.com/watch?v=cPycf-0vv90 4:32 dark filter
 
 #### Yoshi's Island 
 
