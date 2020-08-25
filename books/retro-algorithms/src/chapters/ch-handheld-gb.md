@@ -290,7 +290,7 @@ Secretly playing in bed at night was out of the question with the Game Boy. With
 
 One particular accessory stands out as the all-in-one solution. Perhaps the ultimate way to play the Game Boy is the _Handy Boy_. An advertisement claims that you should not settle for less[^handyboy]:
 
-[^handyboy]: Image source: [Retromags.com](https://retromags.com).
+[^handyboy]: Image courtesy of [Retromags.com](https://retromags.com) curator Phillyman.
 
 > _Fully loaded_. It's the stereo-amplifying, screen magnifying, night lighting, fire button enlarging, thumb stick controlling, compacting easy carrying accessory for your Game Boy - whew! Try saying that three times fast - it's a mouthful! But that's what you get when you have it all. Other Game Boy accessories leave you with nothin' to say. Hey, there's only one worth talkin' about. _Handy Boy - don't settle for less._
 
