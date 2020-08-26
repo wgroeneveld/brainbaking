@@ -174,6 +174,7 @@ Recycling the PCB of the Pocket and the CPU of the original GB again significant
     \centering
     \includegraphics{ch-handheld-gb/gbarchitecture.png}
     \caption{A simplified schematic of the Game Boy hardware architecture. The Audio Processing Unit (APU), Central Processing Unit (CPU), and Picture Processing Unit (PPU) are embedded in the DMG-CPU casing. Optional components on the cartridge, such as the battery that powers SRAM and the Memory Bank Controller (MBC), are marked orange. Based on Rodrigo Copetti's Game Boy Diagram.}
+    \label{gbarchitecture}
 \end{figure}
 
 While the CPU is indeed the "central" processing unit, it delegates audio and picture processing to the corresponding subsystems, also embedded within the DMG-CPU casing. Graphics calculations are done in the CPU, but the PPU is responsible for converting the stored graphics from the VRAM to pixels on the screen itself. The inner workings of the PPU is explained in chapter TODO-ref.
@@ -244,6 +245,8 @@ Imagine you are configuring the GPS of your car. Usually, it is a simple matter 
 
 Sadly, instructing the Game Boy to "draw two Goombas", a high-level instruction, simply does not work: it is not familiar with drawing, nor with a Goomba. Instead, game programmers tell the CPU what to do using special machine codes. These low-level instructions can manipulate _registers_ in order to do something. Drawing a Goomba requires a staggering amount of instructions: copy a value from cartridge ROM into a register, increase the value of the address pointer to copy the next value, copy all these Goomba parts into VRAM using the same sluggish procedure, and so on. 
 
+\label{ldgb}
+
 An example of a Game Boy instruction is `01111000` (`$78`). It tells the CPU to copy the value of register B into register A. Fortunately, programmers do not need to memorize each bit: instead, they write what is called _assembly_ code `LD A,B`[^ld] instead. Coding in assembly is the most basic (and perhaps also the most exhausting) way to write programs. More modern machines, including the Game Boy Advance, allow game developers to write code in higher level programming languages that is compiled into low level machine code[^gbacode]. Instead of having to yell "Turn left! Go Right!", which might "drive" a competent driver mad, you could say "follow this national road until we reach the next village". That way, less instructions are needed to arrive at Brussels.
 
 [^ld]: Read as "load in A the value of register B". The destination register is always mentioned first. 
@@ -261,6 +264,8 @@ In order to calculate something, the CPU needs a place to quickly and temporary 
 Some registers can be split in two separate 8-bit registers when more space is needed. Others need to keep their 16-bit length in order to point to certain addresses in memory space. Otherwise, we would not be able to reach the second half of the memory space. 
 
 But how exactly are instructions processed and where do they come from? Any CPU follows a simple "machine cycle" of actions in order to process instructions: _fetch_ the instruction, _decode_ the instruction, and _execute_ the instruction. 
+
+\label{fetch-decode-execute}
 
 1. _Fetch_ the next available instruction where the special Program Counter (`PC`) register is currently pointing at. The `PC` could contain `$3000`, an address that lies within bank `0` of the cartridge ROM. Any fetch instruction looks at the `PC` value and simply fetches eight bits at that location. 
 2. _Decode_. Great, we've got `01111000`, now what? The CPU needs to figure out (decode) what each unique combination of bits should do. Some operations take arguments, in which case we also need the fetch the next 8 bits. After we know what to do, we can safely increase the `PC` value for the next fetch.

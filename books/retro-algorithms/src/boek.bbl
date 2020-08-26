@@ -1,24 +1,14 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Jia et~al.(2008)Jia, Zhang, and Jing]{jia2008modified}
-Yin-Liang Jia, Huan-Chun Zhang, and Ya-Zhi Jing.
-\newblock A modified bresenham algorithm of line drawing [j].
-\newblock \emph{Journal of Image and Graphics}, 1, 2008.
-
-\bibitem[Lengyel(2012)]{lengyel2012mathematics}
-Eric Lengyel.
-\newblock \emph{Mathematics for 3D game programming and computer graphics}.
-\newblock Cengage Learning, 2012.
-
-\bibitem[Microsoft(2018)]{msd3d}
-Microsoft.
-\newblock Pipelines and shaders with direct3d 12, 2018.
-\newblock URL
-  \url{https://docs.microsoft.com/en-us/windows/win32/direct3d12/pipelines-and-shaders-with-directx-12}.
+\bibitem[Shen and Lipasti(2013)]{shen2013modern}
+John~Paul Shen and Mikko~H Lipasti.
+\newblock \emph{Modern processor design: fundamentals of superscalar
+  processors}.
+\newblock Waveland Press, 2013.
 
 \end{thebibliography}

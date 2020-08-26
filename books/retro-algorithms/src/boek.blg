@@ -3,47 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: boek.aux
 The style file: plainnat.bst
 Database file #1: boek.bib
-Warning--entry type for "msd3d" isn't style-file defined
---line 8 of file boek.bib
-You've used 3 entries,
+You've used 1 entry,
             2773 wiz_defined-function locations,
-            607 strings with 5241 characters,
-and the built_in function-call counts, 1039 in all, are:
-= -- 83
-> -- 50
-< -- 2
-+ -- 18
-- -- 15
-* -- 67
-:= -- 171
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 13
-chr.to.int$ -- 3
-cite$ -- 6
-duplicate$ -- 55
-empty$ -- 96
-format.name$ -- 18
-if$ -- 211
+            597 strings with 4959 characters,
+and the built_in function-call counts, 390 in all, are:
+= -- 28
+> -- 21
+< -- 1
++ -- 7
+- -- 6
+* -- 25
+:= -- 67
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 4
+chr.to.int$ -- 1
+cite$ -- 2
+duplicate$ -- 20
+empty$ -- 33
+format.name$ -- 9
+if$ -- 76
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 3
-newline$ -- 23
-num.names$ -- 12
-pop$ -- 34
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 13
 preamble$ -- 1
-purify$ -- 11
+purify$ -- 4
 quote$ -- 0
-skip$ -- 43
+skip$ -- 16
 stack$ -- 0
-substring$ -- 6
-swap$ -- 3
+substring$ -- 2
+swap$ -- 1
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 28
+type$ -- 6
 warning$ -- 0
-while$ -- 9
+while$ -- 3
 width$ -- 0
-write$ -- 44
-(There was 1 warning)
+write$ -- 19

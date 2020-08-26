@@ -223,11 +223,11 @@ Sadly, X was never released outside of Japan. Although the game was fully locali
 
 ### The legacy of X
 
-Perhaps the most impressive feat of X is its 3D rendering without any dedicated hardware to support it. Early fully 3D polygon-based simulation games such as Hard Drivin' on Arcade boasted some serious muscle under the hood. Atari's Hard Drivin' ran on an early version of the first dedicated polygonal 3D graphics board destined for Namco's racing game Winning Run, called System 21 or better yet, the "Polygonizer". The three stacked PCBs accommodated six different processors, of which several dedicated to handle rendering, geometry and physics[^retro205].
+Perhaps the most impressive feat of X is its 3D rendering without any dedicated hardware to support it. Early fully 3D polygon-based simulation games such as _Hard Drivin'_ on Arcade boasted some serious muscle under the hood. Atari's _Hard Drivin'_ ran on an early version of the first dedicated polygonal 3D graphics board destined for Namco's racing game _Winning Run_, called System 21 or better yet, the "Polygonizer". The three stacked PCBs accommodated six different processors, of which several dedicated to handle rendering, geometry and physics[^retro205].
 
 [^retro205]: Source: Retro Gamer 205. Namco and Atari were sister companies at that time, so the system was co-developed.
 
-Nintendo's involvement and interest in the X project ultimately paved the way for Star Fox (or Starwing in Europe), another Argonaut masterpiece that came with filled polygons more akin to Starglider 2 on the Amiga. That would not have been possible without the onboard "Super FX" RISC co-processor that also was conceived by the guys at Argonaut. Nintendo's then new _Super_ NES was still quite weak compared to home computers of the early nineties. 
+Nintendo's involvement and interest in the X project ultimately paved the way for _Star Fox_ (or _Starwing_ in Europe), another Argonaut masterpiece that came with filled polygons more akin to Starglider 2 on the Amiga. That would not have been possible without the onboard "Super FX" RISC co-processor that also was conceived by the guys at Argonaut. Nintendo's then new _Super_ NES was still quite weak compared to home computers of the early nineties. 
 
 \marginfig{ch-x/starfox.jpg}{Peppy's iconic "Do a barrel roll!" exclamation from Star Fox even caused a giggle with Google engineers. Try typing it in Google Search.}{Star Fox on SNES.}
 
@@ -241,7 +241,7 @@ Since the aging NES console was on the verge of being replaced by the SNES, Nint
 
 The Super FX chip draws polygons to a frame buffer in the extra RAM, that also sits on the PCB of the cartridge: a smart way to circumvent the sprite modes of the console. Similarly to Dylan's frame buffer copy technique in X, DMA is used to transfer the contents to the video memory of the SNES itself. 
 
-Instead of designing hardware first and writing software for it, Starfox and the Super FX chip were developed the other way around. This enabled the developers to optimize the chip to their needs to really take advantage of its capabilities. A second version of the chip, labeled GSU (Graphics Support Unit) 2, running at twice the clock speed of its predecessor (21.4 MHz), eventually made it possible to port DOOM to the SNES - after still making heavy compromises[^doomsnes]. It was also used to help with the calculation of 2D sprite transformations in Yoshi's Island, six years before the GBA was conceived. 
+Instead of designing hardware first and writing software for it, Starfox and the Super FX chip were developed the other way around. This enabled the developers to optimize the chip to their needs to really take advantage of its capabilities. A second version of the chip, labeled GSU (Graphics Support Unit) 2, running at twice the clock speed of its predecessor (21.4 MHz), eventually made it possible to port _DOOM_ to the SNES - after still making heavy compromises[^doomsnes]. It was also used to help with the calculation of 2D sprite transformations in _Yoshi's Island_, six years before the GBA was conceived. 
 
 [^doomsnes]: Read more about the birth of DOOM on the SNES in Fabien Sanglard's excellent _Game Engine Black Book: DOOM_. 
 

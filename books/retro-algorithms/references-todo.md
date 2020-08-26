@@ -48,6 +48,7 @@ cartridge reader:
 - https://git.phenomic.net/PHENOM/Gameboy-Color-Cart-Reader zelf maken met microcontroller en custom board in EAGLE
 - disassembling GBC ROM https://www.chibiakumas.com/z80/Gameboy.php
 - https://www.copetti.org/projects/consoles/ super boeiend en duidelijke uitleg over architectuur, geluid, sprites, ... capabilities of any console
+- Game Developers Conference feb/maart 1996 archive.org artikel nalezen?
 
 ## Development kits
 

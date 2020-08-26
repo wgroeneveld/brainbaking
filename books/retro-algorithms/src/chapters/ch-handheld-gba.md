@@ -7,7 +7,7 @@ Jumping from the fourth generation of video game consoles directly to the sixth,
 
 By the year 2001, Nintendo would have complete control over the handheld gaming market. It would take three more years before Sony decided to take a cut with their PlayStation Portable, mainly intended to compete with the Nintendo DS, a seventh generation video game console.
 
-The third major Game Boy revision indeed again proved to be a smashing hit, breaking various sales records during its relatively short lifespan. In the United Kingdom, the GBA sold four times as much units in its first first week of release as the PlayStation 2[^gbasales]. Although Gunpei Yoko's "_Lateral Thinking with Withered Technology_" design philosophy was still applied (the system was still cheap: priced at `$99.99`[^gbapr]), it was clear that the technical specifications of the GBA were put into the spotlight. Why else would you name something "_Advance_" or put "_32 bit_" on the box? It almost feels like a poor apology: "We're really sorry about the Game Boy Color. This time, the model is really advanced, we promise!"
+The third major Game Boy revision indeed again proved to be a smashing hit, breaking various sales records during its relatively short lifespan. In the United Kingdom, the GBA sold four times as much units in its first first week of release as the PlayStation 2[^gbasales]. Although Gunpei Yoko's "_Lateral Thinking with Withered Technology_" design philosophy was still applied (the system was still cheap: priced at `$99.99`[^gbapr]), it was clear that the technical specifications of the GBA were put into the spotlight. Why else would you name something "_Advance_" or put "_32 bit_" on the box? It almost feels like a poor apology: "We're sorry about the Game Boy Color. This time, the model really is advanced, we promise!"
 
 [^gbasales]: Source: [http://www.eurogamer.net/articles/article_30834](http://www.eurogamer.net/articles/article_30834).
 
@@ -25,13 +25,13 @@ It becomes even more obvious when looking at a selection of the system's launch 
 
 Next to showcasing the GBA's strengths, the games also showed its biggest weakness: there was still no backlit screen. This became especially painful for Castlevania fans like me: the grim setting did not exactly benefit from highly contrasting colors like the more cheerful Super Mario Advance did. Without a proper light source, this often resulted in a dark gooey mess that made an already punishing difficulty even more frustrating. Complaints about the contrast even made Konami go all out on the colors for their the next GBA Castlevania game, _Harmony of Dissonance_, that was criticized for... it's too bright color palette. 
 
-This problem was not new, but made even more pressing since, compared to its predecessor, the palette size dramatically increased and the picture resolution was boosted by 66%. These features delivered sharp pictures with little motion blur - as long as you could see what you were doing. Circle of the Moon did age beautifully, provided you play it on a more modern system that enables you to see the eminent dangers in the castle corridors. 
+This problem was not new but made even more pressing since, compared to its predecessor, the palette size dramatically increased and the picture resolution was boosted by 66%. These features delivered sharp pictures with little motion blur - as long as you could see what you were doing. _Circle of the Moon_ did age beautifully, provided you play it on a more modern system that enables you to easily spot the eminent dangers in the castle corridors. 
 
-Instead of only attracting newcomers to the handheld gaming scene, engineers at Nintendo made sure to keep their regular customers happy as well by shipping the hardware with a second CPU: the well-known Sharp LR35902. This enabled GBA machines to play GB and GBC games with little compromises. Since the GBA screen is horizontally-oriented and the original Game Boy was not, players are given the option to either play at the intended aspect ratio or to stretch the image to fill the GBA's screen by pressing \circled{L} or \circled{R}. Both options come at a cost: either the actual image size is smaller than the original handheld, or the image is blurry. 
+Instead of only attracting newcomers to the handheld gaming scene, engineers at Nintendo made sure to keep their regular customers happy as well by shipping the hardware with a second CPU: the trusty old Sharp LR35902. This enabled GBA machines to play GB and GBC games with little compromises. Since the GBA screen is horizontally-oriented and the original Game Boy was not, players were given the option to either play at the intended aspect ratio or to stretch the image to fill the GBA's screen by pressing \circled{L} or \circled{R}. Both options come at a cost: either the actual image size is smaller than the original handheld, or the image is blurry. 
 
-Backwards compatibility was, and still is, a huge selling point. In the fall of 2001, home console players would be left in the cold as Nintendo finally switched from cartridge-based games on the N64 to mini-DVDs on the GameCube. Fortunately, Nintendo handheld consoles were consistently developed with compatibility in mind: the GBC plays GB games, the GBA plays GB and GBC games, the Nintendo DS plays GBA games, and the Nintendo 3DS plays DS games[^3dsemu]. 
+Backwards compatibility was, and still is, a huge selling point. In the fall of 2001, home console players would be left in the cold again as Nintendo finally switched from cartridge-based games on the N64 to mini-DVDs on the GameCube. Fortunately, Nintendo handheld consoles were consistently developed with compatibility in mind: the GBC plays GB games, the GBA plays GB and GBC games, the Nintendo DS plays GBA games, and the Nintendo 3DS plays DS games[^3dsemu]. 
 
-[^3dsemu]: In addition, the Nintendo 3DS eShop sold various older handheld games. And yes, the Goomba Color emulator technically allows you to play GB/GBC games on your DS using a GBA flash cart. 
+[^3dsemu]: In addition, the Nintendo 3DS eShop sold various older handheld games. And yes, the Goomba Color emulator technically allows you to play GB/GBC games on your Game Boy Micro or Nintendo DS using a GBA flash cart. 
 
 Inspecting the lifespan of the Nintendo handhelds yields a few interesting facts. The clever decision to engineer revisions of the original hardware significantly prolonged the lifespan of the Game Boy, by then already going strong for seven years. The frequent hardware revision strategy became common for all Nintendo handhelds. 
 
@@ -148,11 +148,65 @@ Is this the one Game Boy system to rule them all? That depends on whether or not
     \caption{A simplified schematic of the Game Boy Advance hardware architecture. Memory components are marked in orange (BIOS ROMs not depicted). Components are connected with a hybrid 8-bit (GBC ROM, SRAM) Based on Rodrigo Copetti's Game Boy Diagram.}
 \end{figure}
 
-arch dinges enzo bla
+Twelve years of technological progress since the original Game Boy is clearly reflected in the GBA architecture. For example, the meager 8KB RAM module that used to sit on the PCB next to the CPU has now been partially embedded by splitting RAM into bigger IWRAM (Internal Work RAM) and EWRAM (External Work RAM) chunks, thus enabling faster data access speeds. 
+
+The presence of the 8-bit Sharp CPU did not mean work could be offloaded to this co-processor. It was only there to make sure the machine was backwards compatible with older game cartridges. However, programmers could still access the older CPU's APU unit to produce retro sounds. A hardware cartridge selector switch determines which CPU and BIOS to activate. 
+
+Even if the CPU can indeed work with 32-bit data without consuming extra cycles, most components, including most memory blocks (except IWRAM), are connected to the central system using only a 16-bit bus. This decision, and the absence of a proper music chip, further reduced manufacturing costs.
+
+Another difference compared to the GB schematic on page \pageref{gbarchitecture} is the lack of a MBC component on GBA cartridges[^mbcgba]. The full 32 MB ROM data is mapped onto the address space without having to read in chunks of a few kilobytes. The GBA still relies on the memory-mapped IO concept and there is, for better or for worse, still no Operating System to deal with. The address space did increase from 16-bit (`$0000` to `$FFFF` on the GB) to 32-bit (`$00000000` to `$FFFFFFFF`) to accommodate the increased size of most subsystems. The full address space looks like this:
+
+[^mbcgba]: There is (of course) one exception, as we will see in chapter TODO-ref. 
+
+\begin{figure*}[h!]
+    \centering
+    \includegraphics{ch-handheld-gba/gbamemmap.png}
+    \caption{A visual representation of the GBA's 32-bit address space. Based on DuoDreamer's DreamScape Game Boy Memory Map.}
+\end{figure*}
+
+- \colorbox{memmap1}{\textcolor{white}{\texttt{\$00000000-\$00003FFF}}} - 16 KB, 32-bit: _System ROM_, containing the BIOSes and special system functions that could be executed (such as calculating the square root) but not read.  
+- \colorbox{memmap5}{\texttt{\$02000000-\$02030000}} - 256 KB, 16-bit: _EWRAM_. Address space used to store temporary variables, external to the CPU.
+- \colorbox{memmap5}{\texttt{\$03000000-\$03007FFF}} - 32 KB, 32-bit: _IWRAM_. Faster but smaller RAM to store temporary variables, internal to the CPU.
+- \colorbox{memmap6}{\texttt{\$04000000-\$040003FF}} - 1 KB, 16-bit: _IO Registers_. Various external inputs and interrupts can be controlled here. This is a very dense area: almost every bit has a special meaning. 
+- \colorbox{memmap3}{\texttt{\$05000000-\$070003FF}} - 98 KB, 16-bit: _VRAM_. The first kilobyte stores two palettes of 256 color entries. The last kilobyte contains object data. The rest of the 96 KB is reserved for tiles and background data used by the PPU to draw the screen. 
+- \colorbox{memmap2}{\textcolor{white}{\texttt{\$08000000-\$????????}}} - ?? KB, 16-bit: _Cartridge ROM_, that can take up to 32 MB in space, 16 times the depicted purple block. The same anti-piracy protection persisted that required game developers to license and store the Nintendo logo at a specific location. 
+- \colorbox{memmap4}{\texttt{\$0E000000-\$????????}} - ?? KB, 8-bit: _Cartridge RAM_. This RAM is external and optional. Contrary to most older GB games, GBA games almost always come equipped with a RAM chip, on average about 64 KB. 
+
+In essence, programming on the GBA did not differ much from the GB. It was still a machine that required you to fiddle with addresses. Fortunately, this time, it came with the advantages of software development in the early twenty-first century: high level programming languages, proper debug tools, better compilers and documentation, and last but not least: internet access in case things go awry. 
+
+Games were written in the C programming language, so developers were finally relieved of constructing intricate but tiresome assembly routines. Sadly, the latter statement turned out to be too good to be true.
 
 ### Processing Instructions
 
-Plus, a "bit" about the speed of the CPU; hier ook nodig?
+The Game Boy Advance CPU chip came with a few perks that were absolutely essential to master. Instead of its older brother, the 8-bit Sharp CPU, the 32-bit ARM7TDMI RISC[^risc] CPU did not come equipped with one but with two instruction sets! 
+
+[^risc]: The ARM core is a _Reduced Instruction Set Computer_ (RISC): a core with a small, highly optimized instruction set that consumes only one clock cycle per instruction, as opposed to the _Complex Instruction Set Computer_ (CISC) Game Boy instruction set, that consumes at least four cycles. Although sometimes more RISC instructions are needed to perform the same action as a single CISC instruction. 
+
+The ARM company created their own standard instruction set for all ARM CPUs, thoughtfully called the _ARM_ instruction set. The CPU understands 32-bit _A32_ instructions, which is an ARM dialect in pre-ARMV8 architectures. Instead of the 8-bit Game Boy load instruction `LD A,B` on page \pageref{ldgb}, we now write `LDR A,B`. The result is the same: `LD` (load) or `LDR` (Load RegisteR[^armreg]) are just verbs of different languages. Since the ARM core is much more advanced than the older Sharp core, its instruction set is more powerful. 
+
+[^armreg]: The ARM7 processor has 16 32-bit registers available. 
+
+However, ARM code translates into 32 occupied bits. That is a lot on a limited machine. `00010111000000000001100000000111` is just one instruction. To increase the code density, programmers could decide to use the second available instruction set instead, called _Thumb_ mode. These Thumb instructions are a subset of ARM: everything that can be expressed as Thumb can also be written as ARM, but not (that easily) the other way around. Thumb instructions only occupy 16 bits, half of the size of ARM code. 
+
+The most compelling reason to use Thumb was not its reduced size, but its increased speed while accessing 16-bit bus subsystems such as EWRAM. The problem with using a 32-bit based instruction set such as ARM is that everything will be expressed as 32-bit data. That means 16-bit data will get converted into 32-bit data, wasting a precious cycle in the process. Since most GBA subsystems have 16-bit buses, it only makes sense to use a 16-bit instruction set: Thumb. 
+
+In practice, both ARM and Thumb saw its use. Most C code would get compiled into Thumb assembly, after which hand optimizing crucial sections will be done in ARM, also making use of the 32-bit IWRAM. Creating games that brought out the best of the GBA ultimately required proficiency of three programming languages: C, ARM assembly, and Thumb assembly. 
+
+Another big advantage of the ARM7TDMI[^otherusesarm] core is the embedded three-stage pipeline. Remember the fetch/decode/execute machine cycle from page \pageref{fetch-decode-execute}? That is a sequential process: the next fetch will have to wait until the decode and execute steps have been completed. With instruction pipelining, parallelism can be achieved on a single processor. 
+
+The idea is simple: keep all parts of the CPU as busy as possible. Once the first instruction has been fetched, it can be decoded. But the part responsible for fetching should not idle: instead, it can already fetch the second instruction, and so forth. Pipelining significantly reduces throughput time, as visible in the figure below. 
+
+Pipelining instructions comes with its own set of problems. For instance, what if the second instruction is dependent on the output of the first? There are multiple workarounds possible that go far beyond the scope of this book. Curious minds can further explore processor architectures in _Modern Processor Design_ [@shen2013modern]. Pipelining is also easier to achieve on the GBA than on the GB since a RISC processor guarantees each execute block will take only one cycle. 
+
+[^otherusesarm]: Interesting other uses of the ARM7 processor include: a Nintendo DS sound output and Wi-Fi support co-processor, the Sega Dreamcast sound chip, and two ARM7TDMI-derived CPUs inside  1st to 5th generation Apple iPods.
+
+\begin{figure*}[h!]
+    \centering
+    \includegraphics{ch-handheld-gba/gbapipelining.png}
+    \caption{A three-stage instruction pipeline model: the second instruction starts its fetching procedure while the first is still decoding.}
+\end{figure*}
+
+
 
 ### Game Boy Advance Accessories
 
