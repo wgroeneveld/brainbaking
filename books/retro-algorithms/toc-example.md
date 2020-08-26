@@ -3,6 +3,11 @@ title: Table of Contents sample
 date: 2020-07-01
 ---
 
+Aanduidingen:
+"-" = Gewone opsomming
+"V" = Na schrijven hoofdstuk herbekijken en afvinken
+"X" = Na schrijven hoofdstuk herbekijken en expres weglaten
+
 ## Bemerkingen
 
 - Deel II/III opdeling 2D/3D niet geweldig; wat doen met bvb Advance Wars waarbij pathfinding in geen van beiden past? => wel logische hoofdstuk-opvolgingen maken, eerst basic 2D, dan basic 3D, dan more advanced 
@@ -94,18 +99,18 @@ Is idd mogelijk om de boel te doen glitchen, 37:40 TNMT3; 7 levens terwijl er ma
 
 #### 2. The Handheld
 
-- what's '8-bit CPU'? 16-bit? -> 16-bit address space: 64KB. registers ook iets van zeggen? te diep? https://www.youtube.com/watch?v=RZUDEaLa5Nw 3:39. instructions: total control over system. also, gigantic pain to do simple things. no names, ...
-- GB -> GBC: 10yrs. 16kb ram, maar 2x8 VRAM BANK
-- Mhz, cycles, ARM, ... 
-- Memory mapped IO = things appear to the CPU as if they were memory. just read from 16-bit address space
-- No OS. Assmebly, C, C++, layers ...
-- BIOS https://gossipfunda.com/gba-bios/ https://mgba.io/2017/06/30/cracking-gba-bios/ checksum, nintendo logo = first anti-piracy tool - twee dingen: nintendo logo check (GBC checks less) + header checksum https://gbdev.io/pandocs/#the-cartridge-header en https://www.youtube.com/watch?v=HyzD8pNlpwI 19:53 nintendo could control which games were released. copymark en trademark voilation indien meegenomen. checksum header: don't blow into the pins?. nintendo logo on the screen - NO cleanup: do something with it (some games)
-- historiek/vgl met bestaande HW/andere consoles, porting
-- similarities (S)NES, ed
-- on-system IRAM/WRAM/VRAM next to catrdige ROM/RAM http://problemkaputt.de/gbatek.htm#gbamemorymap
-- modding: backlit, battery pack, ... 
-- launch titles! Circle of the Moon; launch title: shows GBA capabilities. exceeds any 16-bit cv; and you can hold it in your hands? gba launch titles VS gb launch titles = huge "jump" - since dreamcast/ps2; ook niet-first parties
-- GBA: kwaliteit kleurenscherm beter dan GBC; minimizes motion blur ed maar nog steeds geen backlit. grootste nadeel; zie castlevania. (afterburner). => daardoor veel te hoge contrast-game dingen zoals Harmony of Dissonance. Foto nemen met GBA zonder mod die bepaalde castlevania (donkere) area toont?
+V what's '8-bit CPU'? 16-bit? -> 16-bit address space: 64KB. registers ook iets van zeggen? te diep? https://www.youtube.com/watch?v=RZUDEaLa5Nw 3:39. instructions: total control over system. also, gigantic pain to do simple things. no names, ...
+V GB -> GBC: 10yrs. 16kb ram, maar 2x8 VRAM BANK
+V Mhz, cycles, ARM, ... 
+V Memory mapped IO = things appear to the CPU as if they were memory. just read from 16-bit address space
+V No OS. Assmebly, C, C++, layers ...
+V BIOS https://gossipfunda.com/gba-bios/ https://mgba.io/2017/06/30/cracking-gba-bios/ checksum, nintendo logo = first anti-piracy tool - twee dingen: nintendo logo check (GBC checks less) + header checksum https://gbdev.io/pandocs/#the-cartridge-header en https://www.youtube.com/watch?v=HyzD8pNlpwI 19:53 nintendo could control which games were released. copymark en trademark voilation indien meegenomen. checksum header: don't blow into the pins?. nintendo logo on the screen - NO cleanup: do something with it (some games)
+V historiek/vgl met bestaande HW/andere consoles, porting
+V similarities (S)NES, ed
+V on-system IRAM/WRAM/VRAM next to catrdige ROM/RAM http://problemkaputt.de/gbatek.htm#gbamemorymap
+V modding: backlit, battery pack, ... 
+V launch titles! Circle of the Moon; launch title: shows GBA capabilities. exceeds any 16-bit cv; and you can hold it in your hands? gba launch titles VS gb launch titles = huge "jump" - since dreamcast/ps2; ook niet-first parties
+V GBA: kwaliteit kleurenscherm beter dan GBC; minimizes motion blur ed maar nog steeds geen backlit. grootste nadeel; zie castlevania. (afterburner). => daardoor veel te hoge contrast-game dingen zoals Harmony of Dissonance. Foto nemen met GBA zonder mod die bepaalde castlevania (donkere) area toont?
 
 Eerder in Game-specifieke stukken zoals Wario: 
 

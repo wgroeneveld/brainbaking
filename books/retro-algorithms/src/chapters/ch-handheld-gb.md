@@ -217,6 +217,8 @@ Since the Sharp CPU is an 8-bit processor, it can only access and process 8 bits
 
 [^revcopy]: These simple checks did not prevent hackers from reverse-engineering software in order to copy the logo data. In the early nineties, multiple lawsuits concerning similar copyright infringements were filed: Accolade copied the trademark security system of the Sega Genesis/MegaDrive and Atari copied the NES "checking integrated circuit" (CIC) chip. These cases proved to be influential in how reverse engineering with unlicensed products is perceived in issues involving copyright. 
 
+\marginfig{ch-handheld-gb/x-nintendo-logo.png}{Fun fact: the PPU did not clear VRAM after displaying the Nintendo logo. Many games played with it, adding various effects, such as this fading one as seen in in \emph{X} (see chapter \ref{ch-x}). }{.}
+
 This memory map method allows developers to easily load any kind of data using the correct address within the 16-bit range. Want to check if the player pressed \circled{\small A}? Read the first bit at `$FF00`. Want to read graphics data from the cartridge and write it to VRAM in order to display it? Read from `$2FF0` and write to `$9000`. Every single action involves an address. 
 
 You might be wondering how the ROM space can fit inside the rather small 32 KB space at `$0150-$7FFF`, or how the 32 KB WRAM of the GBC can fit inside the tiny space at `$C000-$FDFF`. The answer is it does not fit. Instead, the Game Boy uses _banking switching_: a technique to dynamically reconfigure certain address space blocks to map other portions of memory. 

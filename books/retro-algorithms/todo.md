@@ -28,18 +28,20 @@ date: 2020-07-07
 [ ] sidenotes raggedouter werkt niet goed precies
 [ ] 'chapter-x' refs maken
 [ ] elke game name ref in _italics_ - overal hetzelfde?
+[ ] background-image (GB acc.) header none 
 
 ## Images
 
-[ ] script/automate convert img/x.png -filter box -resize 1000 imgprod/x.png
+[X] script/automate convert img/x.png -filter box -resize 1000 imgprod/x.png (done manually)
 
 ## Inhoud
 
-- appendix maken van terminology (polygon, vertex, pixel, rasterization, aliasing, moiré, camera, frostrum, ... ) bvb vertex shader = routines done to move and color triangles) zie techspot artikel
-- games mentioned index
+- appendix maken van terminology (polygon, vertex, pixel, rasterization, aliasing, moiré, camera, frostrum, ... ) bvb vertex shader = routines done to move and color triangles) zie techspot artikel -> moet dit?
+- games mentioned index -> veralgemenen naar top20/50/... GB, GBC, GBA games
+    + Metacritic score
+    + Howlongtobeat score
 - "with contributions of ... " = héél belangrijk, ook naar commerce. 
 - Further reading indien meer interesse: in tech. detail (1) en voor andere retro consoles (2). plus voornamelijk website (zie hieronder) linken!
-- bij gb cartridges hoofdstuk: top 50 gb(c)(a) game length volgens howlongtobeat; meegeven in appendix (lijst)
 
 ## Supplementary material 
 
