@@ -20,7 +20,7 @@ Transforming knowledge into well-digestible material is <i class='fa fa-lightbul
 
 #### 2019 - present
 
-- [Software Engineering Skills](/teaching/ses/)<br/>
+- [Software Engineering Skills](https://kuleuven-diepenbeek.github.io/ses-course/)<br/>
 	<small>
 		In this course you will learn the needed skills to successfully create, launch, and maintain a software project, according to the latest industrial practices. On micro level you will learn about properties of data structures and basic algorithms, and on macro level you will get to know how to maintain software, and how to use the right tools for the right job.<br/>
 		Second bachelor year course, specialization Electronics/ICT.  
@@ -29,13 +29,13 @@ Transforming knowledge into well-digestible material is <i class='fa fa-lightbul
 
 #### 2017 - present
 
-- [Software design in Java](/teaching/java/)<br/>
+- Software design in Java<br/>
 	<small>
 		The fundamentals of software design thought in Java. We use JavaFX as a prime example to explain the concept of dividing big problems into subproblems and thinking about who needs to do what (Model View Controller)<br/>
 		Industrial engineers with and without IT specialization both follow this course. 
 	</small>
 
-- [Software design in C/C++](/teaching/cpp/)<br/>
+- [Software design in C/C++](https://kuleuven-diepenbeek.github.io/cpp-course/)<br/>
 	<small>
 		The fundamentals of software design thought in C++ which touches upon three concepts: embedded system development in C, object-oriented design in C++ and software design principles.<br/>
 		Third bachelor year course, specialization Electronics/ICT.  
