@@ -164,7 +164,7 @@ Another difference compared to the GB schematic on page \pageref{gbarchitecture}
     \caption{A visual representation of the GBA's 32-bit address space. Based on DuoDreamer's DreamScape Game Boy Memory Map.}
 \end{figure*}
 
-- \colorbox{memmap1}{\textcolor{white}{\texttt{\$00000000-\$00003FFF}}} - 16 KB, 32-bit: _System ROM_, containing the BIOSes and special system functions that could be executed (such as calculating the square root) but not read.  
+- \colorbox{memmap1}{\textcolor{white}{\texttt{\$00000000-\$00003FFF}}} - 16 KB, 32-bit: _System ROM_, containing the BIOSes and special system functions that could be executed (such as DMA and calculating the square root) but not read.  
 - \colorbox{memmap5}{\texttt{\$02000000-\$02030000}} - 256 KB, 16-bit: _EWRAM_. Address space used to store temporary variables, external to the CPU.
 - \colorbox{memmap5}{\texttt{\$03000000-\$03007FFF}} - 32 KB, 32-bit: _IWRAM_. Faster but smaller RAM to store temporary variables, internal to the CPU.
 - \colorbox{memmap6}{\texttt{\$04000000-\$040003FF}} - 1 KB, 16-bit: _IO Registers_. Various external inputs and interrupts can be controlled here. This is a very dense area: almost every bit has a special meaning. 
@@ -206,9 +206,12 @@ Pipelining instructions comes with its own set of problems. For instance, what i
     \caption{A three-stage instruction pipeline model: the second instruction starts its fetching procedure while the first is still decoding.}
 \end{figure*}
 
-
+Paragraaf om het technisch stuk af te sluiten (devkitpro ed, sdks, homebrew, etc vermelden)
 
 ### Game Boy Advance Accessories
 
 acc dinges enzo bla
+
+afterburner
+
 

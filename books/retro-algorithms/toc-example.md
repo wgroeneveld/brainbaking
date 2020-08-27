@@ -300,7 +300,22 @@ https://web.archive.org/web/20190210151024/https://www.usgamer.net/articles/dyla
 
 ### Part III: The Aftermath
 
-- Retro on Tap: emulation (and legal concerns) https://brainbaking.com/post/2018/12/over-analoog-en-digitaal/
+Eerder Als tussendoortje?
+
+- Retro on Tap: emulation (and legal concerns)
+    + https://brainbaking.com/post/2018/12/over-analoog-en-digitaal/
+    + "Space Shifting" in music industsry considered legal ("Fair Use")
+    + https://www.howtogeek.com/262758/is-downloading-retro-video-game-roms-ever-legal/#:~:text=Emulators%20are%20legal%20to%20download,be%20made%20for%20fair%20use.
+    + https://www.nintendo.com/corp/legal.jsp
+
+> Can I Download a Nintendo ROM from the Internet if I Already Own the Authentic Game?
+
+There is a good deal of misinformation on the Internet regarding the backup/archival copy exception. It is not a "second copy" rule and is often mistakenly cited for the proposition that if you have one lawful copy of a copyrighted work, you are entitled to have a second copy of the copyrighted work even if that second copy is an infringing copy.
+
+The backup/archival copy exception is a very narrow limitation relating to a copy being made by the rightful owner of an authentic game to ensure he or she has one in the event of damage or destruction of the authentic.
+
+Therefore, whether you have an authentic game or not, or whether you have possession of a Nintendo ROM for a limited amount of time, i.e. 24 hours, it is illegal to download and play a Nintendo ROM from the Internet.
+
 - emulation => iets voor part III, zo snel mogelijk met games beginnen
     + hardware emulation (Jo contribution?)
     + software emulation (mGBA author contribution?)
