@@ -206,12 +206,22 @@ Pipelining instructions comes with its own set of problems. For instance, what i
     \caption{A three-stage instruction pipeline model: the second instruction starts its fetching procedure while the first is still decoding.}
 \end{figure*}
 
-Paragraaf om het technisch stuk af te sluiten (devkitpro ed, sdks, homebrew, etc vermelden)
+Thanks to the rise of online communities, the Game Boy Advance "homebrew" development scene is still thriving. Toolchains such as devkitPro make it easy for enthusiasts to create GBA games using newer multi-paradigm programming languages like Rust and C++. This makes the GBA an excellent choice for learning both about hardware architecture and software development: its predecessor lacked software development tools and its successor increased the hardware complexity. 
 
 ### Game Boy Advance Accessories
 
-acc dinges enzo bla
+Hardware accessory producers rejoiced every time Nintendo released a new revision of their popular Game Boy franchise, and the release of the GBA was no different. Since it took two years for Nintendo to ship a GBA with any kind of screen light, different "Afterburner" products sold well. With these modification kits, you could install a frontlight on your GBA yourself, although sometimes soldering and tinkering with the plastic housing was required. 
 
-afterburner
+The _Pokémon FireRed/LeafGreen_ GBA remakes included an official Wireless Adapter that finally got rid of the Link Cable, allowing players to catch 'em all without catching each other. More than thirty players could simultaneously join a lobby to battle or trade. In the end, only a few games supported Wireless play, since it was released in 2004, the same year as the Nintendo DS launched.  Many accessories, including this one, were incompatible with the smaller Game Boy Micro. 
+
+\marginfig{ch-handheld-gba/wireless.jpg}{If you squint your eyes, the Wireless Adapter even looks like a Pokémon. }{.}
+
+A successor to the SNES' Super Game Boy called the _Game Boy Player_ allowed you to play GB, GBC, and GBA games on your GameCube[^gbagc]. Some games even provided force feedback through the GameCube controllers. The _Nintendo GameCube Game Boy Advance Cable_ was an equally impressive way to connect the GBA to the GC, allowing you to play minigames or even use the GBA as an extra screen for a second player. 
+
+[^gbagc]: In case you don't own a GameCube: the unofficial _Super Retro Advance_ cartridge allows you to play GBA games on your SNES. It has its own separate composite-video only output. You've been warned. A (very expensive) Nintendo 64 solution also exists, called _Wide Boy 64_.
+
+Then there's the e-Reader, a Game Changer that lets you put three games in it and change on-the-fly, the obligatory cheat device, a Japan-only cartridge that lets you play movies and music from an SD card called _Play-Yan_, a car charger, and a battery replacement kit. 
+
+There was sadly nothing that could top the original Game Boy's Sonar Sensor... 
 
 
