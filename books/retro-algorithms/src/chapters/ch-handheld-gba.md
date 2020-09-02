@@ -164,6 +164,14 @@ Another difference compared to the GB schematic on page \pageref{gbarchitecture}
     \caption{A visual representation of the GBA's 32-bit address space. Based on DuoDreamer's DreamScape Game Boy Memory Map.}
 \end{figure*}
 
+\definecolor{memmap0}{HTML}{CE48AF}
+\definecolor{memmap1}{HTML}{7436A5}
+\definecolor{memmap2}{HTML}{BF58FE}
+\definecolor{memmap3}{HTML}{EE7D33}
+\definecolor{memmap4}{HTML}{F5B233}
+\definecolor{memmap5}{HTML}{FDE033}
+\definecolor{memmap6}{HTML}{FDF47C}
+
 - \colorbox{memmap1}{\textcolor{white}{\texttt{\$00000000-\$00003FFF}}} - 16 KB, 32-bit: _System ROM_, containing the BIOSes and special system functions that could be executed (such as DMA and calculating the square root) but not read.  
 - \colorbox{memmap5}{\texttt{\$02000000-\$02030000}} - 256 KB, 16-bit: _EWRAM_. Address space used to store temporary variables, external to the CPU.
 - \colorbox{memmap5}{\texttt{\$03000000-\$03007FFF}} - 32 KB, 32-bit: _IWRAM_. Faster but smaller RAM to store temporary variables, internal to the CPU.
@@ -206,7 +214,9 @@ Pipelining instructions comes with its own set of problems. For instance, what i
     \caption{A three-stage instruction pipeline model: the second instruction starts its fetching procedure while the first is still decoding.}
 \end{figure*}
 
-Thanks to the rise of online communities, the Game Boy Advance "homebrew" development scene is still thriving. Toolchains such as devkitPro make it easy for enthusiasts to create GBA games using newer multi-paradigm programming languages like Rust and C++. This makes the GBA an excellent choice for learning both about hardware architecture and software development: its predecessor lacked software development tools and its successor increased the hardware complexity. 
+My colleague Dr. Jo Vliegen loves explaining pipelining with the help of an analogy every student at our faculty so far recognized: your mother doing laundry. In the above figure, replace "Fetch" with washing, "Decode" with drying, and "Execute" with ironing. The GBA CPU (or should we call it mom?) is able to put clothes from the washing machine directly into the dryer, enabling a second batch to be immediately washed. In the meantime, dried clothes can be ironed. The original Game Boy puts clothes in the washing machine and waits for the program to finish. It then transfers them to the dryer to wait some more. Hopefully it is clear that the GBA mother is a lot more efficient in doing laundry! 
+
+Thanks to the rise of online communities, the Game Boy Advance "homebrew" development scene is still thriving. Toolchains such as devkitPro make it easy for enthusiasts to create GBA games using newer multi-paradigm programming languages like Rust and C++. This makes the GBA an excellent choice for learning about both hardware architecture and software development: its predecessor lacked software development tools and its successor increased the hardware complexity. 
 
 ### Game Boy Advance Accessories
 
@@ -214,7 +224,7 @@ Hardware accessory producers rejoiced every time Nintendo released a new revisio
 
 The _Pokémon FireRed/LeafGreen_ GBA remakes included an official Wireless Adapter that finally got rid of the Link Cable, allowing players to catch 'em all without catching each other. More than thirty players could simultaneously join a lobby to battle or trade. In the end, only a few games supported Wireless play, since it was released in 2004, the same year as the Nintendo DS launched.  Many accessories, including this one, were incompatible with the smaller Game Boy Micro. 
 
-\marginfig{ch-handheld-gba/wireless.jpg}{If you squint your eyes, the Wireless Adapter even looks like a Pokémon. }{.}
+\marginfig{ch-handheld-gba/wireless.jpg}{If you squint your eyes, the Wireless Adapter even looks like a Pokémon.}{.}
 
 A successor to the SNES' Super Game Boy called the _Game Boy Player_ allowed you to play GB, GBC, and GBA games on your GameCube[^gbagc]. Some games even provided force feedback through the GameCube controllers. The _Nintendo GameCube Game Boy Advance Cable_ was an equally impressive way to connect the GBA to the GC, allowing you to play minigames or even use the GBA as an extra screen for a second player. 
 
