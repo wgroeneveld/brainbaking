@@ -128,7 +128,7 @@ Eerder in Game-specifieke stukken zoals Wario:
 - 'Memory bank controllers' https://gbdev.io/pandocs/#the-cartridge-header
 - Save states: https://zork.net/~st/jottings/GBA_saves.html uniek voor elke cartridge...  https://gekkio.fi/blog/2015/mooneye-gb-gameboy-cartridge-types/ memory 'banking' tekening/uitleg + reden?
 - GBA Video Cartridges? https://en.wikipedia.org/wiki/Game_Boy_Advance_Video zie ook https://mgba.io/2015/10/20/dumping-the-undumped/ - is blijkbaar iets bank-achtig. Zelf ene kopen en foto nemen? 
-- GB MegaMem savegame backup cartridge
+- GB Mega Memory Card savegame backup cartridge
 - Extra sensoren analogue-digital convertor? https://www.reddit.com/r/Gameboy/comments/3o10rk/full_list_of_gameboy_and_gba_games_with/
     - Boktai: The Sun Is in Your Hand; lightsensor rom hack: https://github.com/Prof9/Boktai-Solar-Sensor-Patches/blob/master/Source/b1u.asm hoe werkt die interface? hoe lees je een sensor in vanuit programma? Achtergrondinfo: https://mgba.io/2015/10/20/dumping-the-undumped/
     - Kirby Tilt 'n Rumble; gyro (Ook Wario Ware: Twisted!, Yoshi Topsy-Turvy)
