@@ -15,11 +15,11 @@ What better birthday present to wish for as rapidly too old growing nostalgic co
 - [AMD 80486DX](https://en.wikipedia.org/wiki/Intel_80486) CPU chip, `40 MHz`.
 - Cirrus Logic (837) [CL-542X-VLB-U](http://www.vgamuseum.info/index.php/component/k2/item/135-cirrus-logic-cl-gd5426) `1 MB` VLB VGA card (expandable up to 2 MB)
 - `8 MB` FPM DRAM fitted in eight SIMM slots
-- `200 MB` HDD and a 1.4 MB floppy reader
+- [Conner CFS210A](https://www.computerhope.com/hdd/hdd0018.htm) `213 MB` HDD and a 1.4 MB floppy reader
 
 When I turned it on, I was greeted with the blue Award BIOS 4.5 screen, and it started calculating the RAM width. Wow, it does still work! **CMOS FAILURE. DEFAULT SETTINGS USED.** Whoops. Luckily, the HDD auto-detect BIOS feature still worked, and Windows 3.1 still booted. The HDD did not lose data, and most floppy's that came with the PC still contain their original data. 
 
-Then I started wondering, what if I tried to upgrade the PC, just for the fun of it? DOOM could technically run, the VLB bus is very fast and 8 MB would be more than enough. A piece of junk for one person, a toy to learn from for another one. 
+Then I started wondering, what if I tried to upgrade the PC, just for the fun of it? DOOM could technically run, the VLB bus is very fast and 8 MB would be more than enough. A piece of junk for one person, a toy to fiddle with and learn from for another. 
 
 ### Challenge 1: The CMOS Battery
 
@@ -35,7 +35,7 @@ A lazy do-it-yourself way to solder on plus and minus at pin one and four, respe
 
 These tower PCs from yesteryear seemed to produce an awful lot of sound, compared to my passive MacBook Air from 2012. I still had a "silent" Nexus `12 V` fan lying around, so I simply decided to open up the power supply and switch fans. The result is astonishing: the Nexus is almost inaudible! 
 
-Alas, the major source of noise seems to not come from the voltage supplier, but the hard disk itself: not only the bleeps and bloops from a 24 year old disc, but mostly the spinning headers itself. I might try to look around for a silent model, I have not yet inspected the HDD make and year.
+Alas, the major source of noise seems to not come from the voltage supplier, but the hard disk itself: not only the bleeps and bloops from a 24 year old disc, but mostly the spinning headers itself. I might try to look around for a silent model, or even investigate how to [use flash cards](https://dfarq.homeip.net/sd-to-ide-performance/) with the 40-pin legacy IDE interface.
 
 ### Challenge 3: The DX2 Upgrade
 
@@ -61,6 +61,8 @@ We're in business! VGA output on the 20" widescreen also works. The faster respo
 
 ### Challenge 4: Sound
 
-As for future work, the PC seems to lack any sound card. The PC speaker bleeps grow old very quickly, and I'd love to get to play Bobby Prince's Duke Nukum II soundtrack. I want to get my hands on a Creative Soundblaster AWE32 (not the budget 16-bit things), but that will possibly involve more eBay scouring. These cards are still ridiculously expensive: the Cirrus Logic VGA card currently installed costs on average 70 EUR!
+As for future work, the PC seems to lack any sound card. The PC speaker bleeps grow old very quickly, and I'd love to get to play Bobby Prince's Duke Nukum II soundtrack. I want to get my hands on a Creative Sound Blaster Pro 2 (not the budget 16-bit things), but that will possibly involve more eBay scouring. These cards are still ridiculously expensive: the Cirrus Logic VGA card currently installed costs on average 70 EUR!
+
+Peeking at other retro enthusiast blogs, it seems like [USB Floppy emulators](https://dfarq.homeip.net/gotek-floppy-emulator-for-retro-pcs/) exist, HDDs are being replaced with SD/CompactFlash cards, [ISA RJ-45 network cards](https://dfarq.homeip.net/using-an-ne2000-network-card-in-dos/) are begin screwed in, [more L2 cache is being installed](https://www.youtube.com/watch?v=e4rw3d7mu28), and so forth. So many more fun things to do!
 
 To be continued... 
