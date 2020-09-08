@@ -87,6 +87,7 @@ Under the hood, besides the screen and power supply, the technical capabilities 
     \centering
     \includegraphics{ch-handheld-gb/hw-gbpocket.jpg}
     \caption[The Game Boy Pocket.]{The Game Boy Pocket. Early versions came without the "power" indicating LED, that was reintroduced later due to public demand. As usual, limited editions with special colors were also issued. The depicted European model is from 1997. \newline A slightly modified version called the \emph{Game Boy Light} sadly only really saw 'the light' in Japan, in April 1998, only five months before the arrival of the Game Boy Color. I am sure the system would have sold overseas just as crazy as the other machines, since it was the first Nintendo handheld to feature an electroluminescent backlit screen. European gamers like myself had to wait until 2006 to get their hands on the GBA SP AGS-101, the second backlit Game Boy model ever created. \newline The GB Light's power source were two AA batteries instead of the AAA of the pocket, good for the same twelve hours of gameplay with the backlight turned on. Visually, the BG Light and the GB Pocket look the same, except that the back of the GB Light is slightly thicker to accommodate the bigger batteries. The printed circuit board (PCB) layout is identical to the Pocket.}
+    \label{gbp}
 \end{figure}
 
 \newpage
@@ -222,6 +223,8 @@ Since the Sharp CPU is an 8-bit processor, it can only access and process 8 bits
 This memory map method allows developers to easily load any kind of data using the correct address within the 16-bit range. Want to check if the player pressed \circled{\small A}? Read the first bit at `$FF00`. Want to read graphics data from the cartridge and write it to VRAM in order to display it? Read from `$2FF0` and write to `$9000`. Every single action involves an address. 
 
 You might be wondering how the ROM space can fit inside the rather small 32 KB space at `$0150-$7FFF`, or how the 32 KB WRAM of the GBC can fit inside the tiny space at `$C000-$FDFF`. The answer is it does not fit. Instead, the Game Boy uses _banking switching_: a technique to dynamically reconfigure certain address space blocks to map other portions of memory. 
+
+\label{mbc}
 
 The cartridge ROM blocks are split in two: the first 16 KB (called bank $0$) is fixed, while the second part (bank $n$) is dynamic. Some games like Tetris do not need bank switching as their ROM footprint is small enough to fit inside the address space. Most games are bigger than 32 KB and can grow up to 8 MB. The part responsible for switching out banks in the second part is called the _Memory Bank Controller_ (MBC), a chip on the cartridge and not the Game Boy PCB itself. Different versions of these chips exist as we will see in chapter TODO-ref.  
 
