@@ -20,7 +20,7 @@ It might indeed be quite a _nerdy_ pleasure, but the difference is profound. Lis
 
 `€53` excluding shipping and a few days later, it arrived from a German eBay seller cleverly named "Electronics Recycling". I wish there were more actual stores like that. Installing the DOS drivers is quite easy; `SBBASIC.EXE` from [Phil's Computer Lab](philscomputerlab.com/creative-labs-drivers.html) takes care of everything, including modifying `AUTOEXEC.BAT`. The jumpers were configured to address `240`, IRQ `5`, DMA `1` and HDMA `5`. I left them there. 
 
-Perhaps the most compelling part of the above photograph is the strange petite daughter board on the top right that is attached to the Sound Blaster. It uses the wave table MIDI header port. Since actual retro Creative Wave Blaster boards are very scarce (+€300 on eBay), the internet handed me a Belgian alternative: the **Dream Blaster S2** from [Serdaco BVBA](serdashop.com). New hardware for old hardware because - why not? The S2 is the cheapest option available (`€34`). Since I never used external synthesis before and Phil's review on YouTube was laudatory, I got ahead and clicked buy. Belgian money well-spent. 
+Perhaps the most compelling part of the above photograph is the strange petite daughter board on the top right that is attached to the Sound Blaster. It uses the wave table MIDI header port. Since actual retro Creative Wave Blaster boards are very scarce (+€300 on eBay), the internet handed me a Belgian alternative: the **Dream Blaster S2** from [Serdaco BVBA](https://www.serdashop.com). New hardware for old hardware because - why not? The S2 is the cheapest option available (`€34`). Since I never used external synthesis before and Phil's review on YouTube was laudatory, I got ahead and clicked buy. Belgian money well-spent. 
 
 Of course, not every game supports wave tables or even has MIDI music. As a test, I recorded and edited a few samples from Rise of the Triad. Each video contains three parts:
 
@@ -58,4 +58,4 @@ Of course, this is just a sample of a single game. Other DOS MIDI masterpieces i
 - Lode Runner: The Legend Returns on Win 3.1
 - ...
 
-This Sound Blaster 16 has made me childishly happy. Now where are all those floppy's?
+This Sound Blaster 16 has made me childishly happy.  Now where are all those floppy's?
