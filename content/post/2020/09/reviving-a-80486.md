@@ -3,10 +3,10 @@ title: "Reviving an old 80486 PC"
 date: '2020-09-03'
 subtitle: "24 years later, does it still work?"
 tags:
+  - 486
   - retro
-  - hardware
 categories:
-  - braindump
+  - hardware
 ---
 
 What better birthday present to wish for as rapidly too old growing nostalgic computer nerd than a too old PC? "_Here, take this. At least now we don't have to haul it to the container park!_" And what exactly is _this_?

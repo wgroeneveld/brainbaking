@@ -25,6 +25,7 @@ Not finding what you're looking for? Try browsing the archives:
 - [Programming](/categories/programming): Software engineering, programming languages, TDD, DDD, etc
 - [Webdesign](/categories/webdesign): Design, layouting, website generation, privacy, speed, etc
 - [Software](/categories/software): Productivity tools, writing toolchains, etc
+- [Hardware](/categories/hardware): Disassembling retro machines, cartridges, circuit boards, etc
 - [Education](/categories/education): Computing education, teaching, PhD work, findings in academica, etc
 - [Learning](/categories/learning): Self-improvement, meta-learning, reading and journaling, etc
 

@@ -5,6 +5,7 @@ bigimg: snes_header.jpg
 subtitle: 'Waarom een fysieke handeling niet vervangbaar is'
 categories:
     - braindump
+    - hardware
 published: true
 ---
 

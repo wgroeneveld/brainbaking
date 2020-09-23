@@ -1,12 +1,12 @@
 ---
-title: "A 486 Upgrade: Sound Blaster 16"
+title: "486 Upgrade 1: Sound Blaster 16"
 date: '2020-09-18'
 subtitle: "A Classic ISA sound card, including MIDI daughter board!"
 tags:
+  - 486
   - retro
-  - hardware
 categories:
-  - braindump
+  - hardware
 bigimg: sndblaster.jpg
 ---
 
@@ -20,7 +20,7 @@ It might indeed be quite a _nerdy_ pleasure, but the difference is profound. Lis
 
 `€53` excluding shipping and a few days later, it arrived from a German eBay seller cleverly named "Electronics Recycling". I wish there were more actual stores like that. Installing the DOS drivers is quite easy; `SBBASIC.EXE` from [Phil's Computer Lab](philscomputerlab.com/creative-labs-drivers.html) takes care of everything, including modifying `AUTOEXEC.BAT`. The jumpers were configured to address `240`, IRQ `5`, DMA `1` and HDMA `5`. I left them there. 
 
-Perhaps the most compelling part of the above photograph is the strange petite daughter board on the top right that is attached to the Sound Blaster. It uses the wave table MIDI header port. Since actual retro Creative Wave Blaster boards are very scarce (+€300 on eBay), the internet handed me a Belgian alternative: the **Dream Blaster S2** from [Serdaco BVBA](https://www.serdashop.com). New hardware for old hardware because - why not? The S2 is the cheapest option available (`€34`). Since I never used external synthesis before and Phil's review on YouTube was laudatory, I got ahead and clicked buy. Belgian money well-spent. 
+Perhaps the most compelling part of the above photograph is the strange petite daughter board on the top right that is attached to the Sound Blaster. It uses the wave table MIDI header port. Since actual retro Creative Wave Blaster boards are very scarce (+€300 on eBay), the internet handed me a Belgian alternative: the **Dream Blaster S2** from [Serdaco BVBA](https://www.serdashop.com). New hardware for old hardware because - why not? The S2 is the cheapest option available (`€34`). Since I never used external synthesis before and Philq's review on YouTube was laudatory, I got ahead and clicked buy. Belgian money well-spent. 
 
 Of course, not every game supports wave tables or even has MIDI music. As a test, I recorded and edited a few samples from Rise of the Triad. Each video contains three parts:
 
@@ -34,7 +34,7 @@ The result: (_dial up your volume! I recorded with my smartphone on purpose, I d
 
 {{< video "/vid/rottsnd-apogee.mp4" >}}
 
-The difference is huge, and I couldn't wipe that grin off my face - even with just the Sound Blaster, I just _love_ that intro. This brings back so many fond memories. Notice the subtle differences in the background with the S2! And yes, my VGA card and CPU can barely handle the game. An issue for a future blog post. 
+The difference is huge, and I couldn't wipe that grin off my face - even with just the Sound Blaster, I just _love_ that intro. This brings back so many fond memories. Notice the subtle differences in the background with the S2! And yes, my VGA card and CPU can barely handle the game. An issue for a future blog post[^perf]. 
 
 Let's continue to the ROTT main menu and loading screen:
 
@@ -50,7 +50,7 @@ The music continues on to the gameplay:
 
 {{< video "/vid/rottsnd-gameplay.mp4" >}}
 
-You can see that the PC clearly is not up to the task and even shows several dips in music and sound FX playback while firing missiles. I did temporarily resocket the motherboard with the DX40 CPU. All options are set to maximum, I do not care for graphics performance just yet. 
+You can see that the PC clearly is not up to the task and even shows several dips in music and sound FX playback while firing missiles. I did temporarily resocket the motherboard with the DX40 CPU. All options are set to maximum, I do not care for graphics performance just yet[^perf]. 
 
 Of course, this is just a sample of a single game. Other DOS MIDI masterpieces include:
 
@@ -59,3 +59,23 @@ Of course, this is just a sample of a single game. Other DOS MIDI masterpieces i
 - ...
 
 This Sound Blaster 16 has made me childishly happy.  Now where are all those floppy's?
+
+---
+
+In case anyone wants to jumper the PC Speaker pins on their Sound Blaster, configure them as follows: ([src](https://www.vogons.org/viewtopic.php?f=9&t=18283&p=131727&hilit=sound%20blaster%20speaker#p131727)):
+
+Sound Blaster:
+```
+Pin 1 = +5V
+Pin 2 = Speaker
+```
+IBM PC:
+```
+Pin 1 = Speaker
+Pin 2 = None/Key
+Pin 3 = Ground (No need to connect)
+Pin 4 = +5V
+```
+
+
+[^perf]: It turns out that I forgot that the _TURBO_ pins were jumpered on themotherboard, but the button was not pressed. Without _TURBO_, the performance is comparable to a 386. Ouch, what a stupid mistake to make! Thanks [VOGONS community](https://www.vogons.org/viewtopic.php?f=46&t=76632) for the hints. 
