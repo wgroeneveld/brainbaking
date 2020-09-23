@@ -1,7 +1,6 @@
 ---
 title: "486 Upgrade 2: The SD Card HDD"
 date: '2020-09-23'
-concept: true
 subtitle: "Getting tired of loud hard drives? Here's a flash solution."
 tags:
   - 486
