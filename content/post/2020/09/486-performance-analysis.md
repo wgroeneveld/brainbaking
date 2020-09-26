@@ -3,6 +3,11 @@ title: 'An am486 Performance Analysis'
 subtitle: "DX-40 VS DX2-66. What's it like, pressing that Turbo button?"
 bigimg: gtacrash.jpg
 date: 2020-09-26
+tags:
+  - 486
+  - retro
+categories:
+  - hardware
 ---
 
 After the [Sound Blaster](/post/2020/09/486-upgrade-sound-blaster) and [SD-to-IDE](/post/2020/09/486-upgrade-sd-hdd) upgrades, it was time to do a decent performance analysis on the vintage DOS computer I now proudly own. The [original 80486 blog post](/post/2020/09/reviving-a-80486) mentioned a CPU upgrade from DX40 to DX2-66 MHz, but how big is this performance gain in practice? Let's install Dosbench and find out. 
