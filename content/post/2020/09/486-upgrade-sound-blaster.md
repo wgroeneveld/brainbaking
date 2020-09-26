@@ -60,6 +60,10 @@ Of course, this is just a sample of a single game. Other DOS MIDI masterpieces i
 
 This Sound Blaster 16 has made me childishly happy.  Now where are all those floppy's?
 
+Right, here:
+
+![](../dosgames.jpg "A photograph of my 2006 desk with retro DOS manuals")
+
 ---
 
 In case anyone wants to jumper the PC Speaker pins on their Sound Blaster, configure them as follows: ([src](https://www.vogons.org/viewtopic.php?f=9&t=18283&p=131727&hilit=sound%20blaster%20speaker#p131727)):
@@ -77,5 +81,6 @@ Pin 3 = Ground (No need to connect)
 Pin 4 = +5V
 ```
 
+Note that some static noise will inevitably make it to your boxes if you do decide to connect the motherboard pins to the Sound Blaster. That's part of the charm!
 
 [^perf]: It turns out that I forgot that the _TURBO_ pins were jumpered on themotherboard, but the button was not pressed. Without _TURBO_, the performance is comparable to a 386. Ouch, what a stupid mistake to make! Thanks [VOGONS community](https://www.vogons.org/viewtopic.php?f=46&t=76632) for the hints. 
