@@ -20,6 +20,12 @@ It might indeed be quite a _nerdy_ pleasure, but the difference is profound. Lis
 
 `€53` excluding shipping and a few days later, it arrived from a German eBay seller cleverly named "Electronics Recycling". I wish there were more actual stores like that. Installing the DOS drivers is quite easy; `SBBASIC.EXE` from [Phil's Computer Lab](philscomputerlab.com/creative-labs-drivers.html) takes care of everything, including modifying `AUTOEXEC.BAT`. The jumpers were configured to address `240`, IRQ `5`, DMA `1` and HDMA `5`. I left them there. 
 
+---
+
+**Edit** 2020-09-29: After having trouble with [sound FX in Mystic Towers](https://www.vogons.org/viewtopic.php?f=7&p=897873), I closed JP12 and JP13 on the card to change the address to `220` - the most universally accepted `BLASTER` address. Apparently, parts of the Mystic Towers code hard coded the address. Halloween Harry also refused to work on another address. After the change, Adlib-compatible games stopped playing sound until IRQ was set to `7` using `DIAGNOSE.EXE`.
+
+---
+
 Perhaps the most compelling part of the above photograph is the strange petite daughter board on the top right that is attached to the Sound Blaster. It uses the wave table MIDI header port. Since actual retro Creative Wave Blaster boards are very scarce (+€300 on eBay), the internet handed me a Belgian alternative: the **Dream Blaster S2** from [Serdaco BVBA](https://www.serdashop.com). New hardware for old hardware because - why not? The S2 is the cheapest option available (`€34`). Since I never used external synthesis before and Philq's review on YouTube was laudatory, I got ahead and clicked buy. Belgian money well-spent. 
 
 Of course, not every game supports wave tables or even has MIDI music. As a test, I recorded and edited a few samples from Rise of the Triad. Each video contains three parts:
@@ -80,6 +86,8 @@ Pin 2 = None/Key
 Pin 3 = Ground (No need to connect)
 Pin 4 = +5V
 ```
+
+See [all CT2290 jumper configurations](https://stason.org/TULARC/pc/sound-cards-multimedia/CREATIVE-LABS-INC-Sound-card-SOUNDBLASTER-16-PRO-C.html).
 
 Note that some static noise will inevitably make it to your boxes if you do decide to connect the motherboard pins to the Sound Blaster. That's part of the charm!
 
