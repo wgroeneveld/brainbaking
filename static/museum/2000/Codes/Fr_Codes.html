@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Codes');
+	</SCRIPT>
+	<BASE TARGET="mainCodes">
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightClick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+
+<!-- einde no rightclick -->
+
+
+</HEAD>
+
+<BODY BGCOLOR="CCEE00">
+	&nbsp;&nbsp;<B><U>Modules:</U></B><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./CaptureScreen.html">CaptureScreen</A><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./GlassForm.html">GlassifyForm</A><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./Explode.html">Explode</A><BR>
+	&nbsp;&nbsp;<B><U>Klassen:</U></B><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./CreateElipses.html">CreateElipses</A><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./OwnMsgBox.html">OwnMsgBox</A><BR>
+	<BR>
+</BODY>
+</HTML>

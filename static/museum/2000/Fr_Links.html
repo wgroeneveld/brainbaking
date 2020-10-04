@@ -1,0 +1,208 @@
+<html>
+<head>
+<!-- styles -->
+	<SCRIPT SRC="./stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Links');
+	</SCRIPT>
+	<BASE TARGET="main">
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightCLick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+<!-- einde noright click -->
+
+
+<!-- Cookie aantal keren bezocht -->
+
+
+<script LANGUAGE="JavaScript">
+<!--
+
+var tegroot = false
+
+function BakKoekje(naam, waarde, tht, waar, domein, veiligheid) {
+         var HuidigeKoekje = naam + "=" + escape(waarde) +
+               ((tht) ? "; expires=" + tht.toGMTString() : "") +
+               ((waar) ? "; path=" + waar : "") +
+               ((domein) ? "; domain=" + domein : "") +
+              ((veiligheid) ? "; secure" : "")
+         if (!tegroot || (naam + "=" + escape(waarde)).length <= 4000)
+            document.cookie = HuidigeKoekje
+         else
+            if (confirm("Koekje past niet en zal gedeeltelijk worden opgegeten!"))
+               document.cookie = HuidigeKoekje
+}
+
+function PakKoekje(naam) {
+  var prefix = naam + "="
+  var koekjeStartIndex = document.cookie.indexOf(prefix)
+  if (koekjeStartIndex == -1)
+             return null
+     var koekjeEindeIndex = document.cookie.indexOf(";", koekjeStartIndex + prefix.length)
+   if (koekjeEindeIndex == -1)
+		koekjeEindeIndex = document.cookie.length
+	return unescape(document.cookie.substring(koekjeStartIndex + prefix.length, koekjeEindeIndex))
+}
+
+function EetKoekjeOp(naam, waar, domein)
+{
+  if (PakKoekje(naam))
+  {
+    document.cookie = naam + "=" +
+    ((waar) ? "; path=" + waar : "") +
+    ((domein) ? "; domain=" + domein : "") +
+    "; expires=Thu, 01-Jan-70 00:00:01 GMT"
+  }
+}
+
+function thtDatum(date)
+{
+  var dat = new Date(0)
+  var tijd = dat.getTime()
+  if (tijd > 0)
+    date.setTime(date.getTime() - tijd)
+}
+
+var nu = new Date()
+thtDatum(nu)
+nu.setTime(nu.getTime() + 365 * 24 * 60 * 60 * 1000)
+var bezoekjes = PakKoekje("margro")
+
+if (!bezoekjes)
+  bezoekjes = 1
+else
+  bezoekjes = parseInt(bezoekjes) + 1
+
+
+// -->
+</script>
+
+<!-- einde cookie -->
+
+
+</head>
+<BODY>
+
+<!-- Statusbar Ticker -->
+
+<script>
+
+var DatumNu = "06/01/2001"
+
+  <!-- Hide from old browsers
+  message     = "Welkom op de aWhile-Soft site!^" +
+                "Laatst updated " + DatumNu + "^" +
+                "Kijk eens bij het laatste nieuws om de veranderingen te zien.^" +
+                "Source codes: gratis volledige Visual Basic code stukken... Go and get it!^" +
+                "(C) 2000  - 2001 *aquilla* / aWhile-Soft^" +
+                "^"
+
+  scrollSpeed = 20
+  lineDelay   = 1800
+  txt         = ""
+
+  function scrollText(pos) {
+    if (message.charAt(pos) != '^') {
+      txt    = txt + message.charAt(pos)
+      status = txt
+      pauze  = scrollSpeed
+    }
+    else {
+      pauze = lineDelay
+      txt   = ""
+      if (pos == message.length-1) pos = -1
+    }
+    pos++
+    setTimeout("scrollText('"+pos+"')",pauze)
+  }
+
+  // Unhide -->
+scrollText(0)
+  </script>
+<!--                   -->
+
+<A HREF="./Nieuws/Nieuws.html">Laatste nieuws:</A><BR>
+	&nbsp;&nbsp;Niet veel meer<BR>
+	&nbsp;&nbsp;Nieuwe website (vervolg)<BR>
+	&nbsp;&nbsp;Merry Christmas!!<BR>
+	&nbsp;&nbsp;AutoUnPack grote update<BR>
+	&nbsp;&nbsp;DirPrinter<BR>	
+
+<A HREF="./Software/software.html">Software</A><BR>
+<A HREF="./Codes/codes.html">Source Code</A><BR>
+	&nbsp;&nbsp;Modules<BR>
+	&nbsp;&nbsp;Klassen<BR>
+	&nbsp;&nbsp;Formulier codes<BR>
+<A HREF="./Links/Links.html">Links:</A><BR>
+	&nbsp;&nbsp;Visual Basic<BR>
+	&nbsp;&nbsp;Java + JavaScripts<BR>
+
+<HR WIDTH="100%">
+<a href="Information.html"><B>Bezochte keren:</B></A><BR>
+<SCRIPT>
+BakKoekje("aWhileSoft", bezoekjes, nu)
+document.write(bezoekjes + " keer.")
+
+if(bezoekjes==10) {
+ alert("Bedankt voor de vele bezoeken aan mijn site!")
+}
+if(bezoekjes==20) {
+ alert("Bedankt voor de vele bezoeken aan mijn site!")
+}
+
+</SCRIPT>
+<HR WIDTH="100%">
+
+<!-- Statistiek Bravenet -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<CENTER>
+<script type="text/javascript" language="JavaScript">var site="sm4awhilesoft"</script>
+<script type="text/javascript" language="JavaScript1.2" src="http://sm4.sitemeter.com/js/counter.js?site=sm4awhilesoft">
+</script>
+<noscript>
+<a href="http://sm4.sitemeter.com/stats.asp?site=sm4awhilesoft" target="_top">
+<img src="http://sm4.sitemeter.com/meter.asp?site=sm4awhilesoft" alt="Site Meter" border=0></a>
+</noscript>
+<!-- Copyright (c)2000 Site Meter -->
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+</CENTER>
+<!--                           -->
+<HR WIDTH="100%">
+
+<A HREF="http://www.deep-software.com">[deep]software</A><BR>
+<SCRIPT>
+user = "wouter.groeneveld";
+site = "belgacom.net";
+
+document.write('<a href=\"mailto:' + user + '@' + site + '\">');
+document.write('Mail me' + '</a>');
+</SCRIPT>
+<HR WIDTH="100%">
+
+<A HREF="./home.html"><IMG SRC="Logo_s.gif" border="0" BORDER="0" ALT="Logo"></A><BR>
+<HR WIDTH="100%">
+
+</body>
+</html>

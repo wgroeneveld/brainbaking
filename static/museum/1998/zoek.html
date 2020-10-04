@@ -1,0 +1,146 @@
+<html>
+<head>
+<style>
+<!-- Hide style for old browsers __ THIS STYLE SHOULD BE INSIDE HEAD OF DOCUMENT __
+BODY          {font-family:Verdana,Arial , Trebuchet MS;font-size="16"}
+A:link    {text-decoration: underline; color: #FF0000}
+A:visited {text-decoration: underline; color: #0000FF}
+A:hover   {text-decoration: none; color: #00ff00}
+A:active  {text-decoration: underline; color: #Fonts (seperate with comma)}
+-->
+</style>
+<title>Zoekmachines</title>
+</head>
+<body>
+<body background="achtergrond2.gif">
+<font face="Trebuchet MS">
+<center>
+<h3>Wie zoekt, die vindt...</h3>
+<script>
+print1="";
+print2="";
+print3="";
+today = new Date();
+weekday = today.getDay();
+if (weekday == 6) print1='Zaterdag';
+if (weekday == 0) print1='Zondag';
+if (weekday == 1) print1='Maandag';
+if (weekday == 2) print1='Dinsdag';
+if (weekday == 3) print1='Woensdag';
+if (weekday == 4) print1='Donderdag';
+if (weekday == 5) print1='Vrijdag';
+month = today.getMonth();
+if (month == 0) print2='Januari';
+if (month == 1) print2='Februari';
+if (month == 2) print2='Maart';
+if (month == 3) print2='April';
+if (month == 4) print2='Mei';
+if (month == 5) print2='Juni';
+if (month == 6) print2='Juli';
+if (month == 7) print2='Augustus';
+if (month == 8) print2='September';
+if (month == 9) print2='Oktober';
+if (month == 10) print2='November';
+if (month == 11) print2='December';
+date = today.getDate();
+year=today.getYear();
+document.write (print1,',', date, ' ',print2,',19',year);
+</script><p>
+<script>
+var MAX_ENGINES = 35;
+var tp='';
+var tpp='';
+var find = 'hunt';
+var hold=0;
+var hold2=0;
+var gog=0;
+var ap='';
+function MakeArray(n) {
+for (var i = 1; i <= n; i++) {
+this[i] = 0;
+}
+this.maxlen = n;
+this.len = 0;
+return this;
+}
+var engs = new MakeArray(MAX_ENGINES);
+function find_substring(needle, haystack) {
+var i, needlen = needle.length, haylen = haystack.length;
+for (i=0; i<=haylen-needlen; i++) {
+if (needle == haystack.substring(i,i+needlen))
+return i;
+}
+return false;
+}
+function Engine(name, opts, home, search) {
+var gotcha = find_substring(find, search);
+this.name = name;
+this.opts = opts;
+this.home = home;
+this.pre_gotcha = search.substring(0,gotcha);
+this.post_gotcha= search.substring(gotcha+find.length, search.length);
+}
+function Add(name, opts, home, search) {
+engs.len++;
+if (engs.len <= engs.maxlen) {
+engs[engs.len] = new Engine(name, opts, home, search)
+}
+else {
+alert ('Better increase MAX_ENGINES: ' + engs.Len + '>' + engs.maxlen)
+}
+}
+function DisplayForm() {
+document.writeln('<CENTER><FORM Name=Gotchaform OnSubmit="HandleForm(this); return false">');
+document.writeln('<strong>Zoek voor:</strong>&nbsp;<INPUT size=30 name="query">');
+document.writeln('&nbsp;<strong>met</strong>&nbsp;<SELECT name="service">');
+for (i=1; i <= engs.len; i++) {
+document.writeln("<OPTION " + engs[i].opts + "> " + engs[i].name);
+}
+document.writeln('</SELECT> <input type=submit value="Zoek"><br>');
+document.writeln('</FORM> </CENTER>');
+document.Gotchaform.query.focus()
+}
+function HandleForm(form){
+var i, newq="", oldq=form.query.value;
+for (i=0; i<oldq.length; i++) {  // compress [ ]+ into \+
+var thischar = oldq.charAt(i);
+if (thischar =="+")newq += "%2B";
+else
+if (thischar != ' ')
+newq += thischar;
+else if (lastchar != ' ')
+newq += '+';
+lastchar = thischar;
+}
+var eng = engs[1+form.service.selectedIndex];
+// Window
+search=window.open(newq ? eng.pre_gotcha + newq + eng.post_gotcha : eng.home,"SmartSearch","scrollbars=yes,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,resizable=yes,width='100%',hight='100%'");
+}
+Add("World - AltaVista","SELECTED","http://altavista.digital.com/","http://altavista.digital.com/cgi-bin/query?pg=q&what=web&fmt=d&q=hunt");
+Add("World - AltaVista (UseNet)","","http://altavista.digital.com/","http://altavista.digital.com/cgi-bin/query?pg=q&what=news&fmt=d&q=hunt" );
+Add("World - Yahoo!","","http://www.yahoo.com/","http://search.yahoo.com/bin/search?p=hunt" );
+Add("World - DejaNews","","http://www.dejanews.com/","http://search.dejanews.com/nph-dnquery.xp?query=hunt&defaultOp=AND&svcclass=dncurrent&maxhits=25");
+Add("World - HotBot","","http://www.search.hotbot.com","http://www.search.hotbot.com/search.html?MT=hunt&DC=25");
+Add("World - Infoseek UltraSmart","","http://www.infoseek.com/Home?pg=Home.html&sv=A2","http://www.infoseek.com/Titles?qt=hunt&col=WW&sv=A2");
+Add("World - Excite","","http://www.excite.com/","http://www.excite.com/search.gw?searchType=Concept&search=hunt&category=default");
+Add("World - Infoseek (Usenet)","","http://www.infoseek.com","http://www.infoseek.com/Titles?qt=hunt&col=NN&sv=A2");
+Add("World - Lycos","","http://www.lycos.com/","http://www.lycos.com/cgi-bin/pursuit?query=hunt&backlink=639");
+Add("World - Magellan","","http://www.mckinley.com/","http://www.mckinley.com/extsearch.cgi?query=hunt");
+Add("World - OpenText","","http://search.opentext.com","http://search.opentext.com/omw/simplesearch?SearchFor=hunt&mode=and");
+Add("World - WebCrawler","","http://webcrawler.com/","http://webcrawler.com/cgi-bin/WebQuery?searchText=hunt&maxHits=25");
+Add("World - Yahoo (PixSearch)","","http://ipix.yahoo.com/","http://ipix.yahoo.com/cgi-bin/y-new/keyword_search.cgi?db=%2Fdata%2Fglobal_keyword&q=hunt");
+// Software
+Add("Software - ZDNet","","http://www.zdnet.com/","http://www6.zdnet.com/cgi-bin/texis/swlib/hotfiles/search.html?Usrt=rel&Usrchtype=simple&Utext=hunt");
+Add("Software - DaveCentral","","http://www.davecentral.com/","http://www.davecentral.com/cgi-bin/search.pl?query=hunt");
+Add("Software - Filez","","http://www.filez.com/","http://filez.com/cgi/filez.cgi?query=hunt&type=All+Files&hits=50&domain=World&doit=Search/");
+Add("Software - Shareware.com","","http://www.shareware.com/","http://search.shareware.com/code/engine/Find?logop=and&cfrom=quick&orfile=True&hits=25&search=hunt&category=All-Categories");
+Add("Software - PC game finder","","http://www.pcgame.com/","http://www.pcgame.com/finder/search.cgi?key=hunt");
+// Denmark
+Add("Denmark - AltaVista (DK)","","http://altavista.telia.com/cgi-bin/telia","http://www.danielsen.com/cgi/thornew.cgi?country=danmark&cnt=50&q=hunt");
+Add("Denmark - Jubii","","http://www.jubii.dk/","http://soeg.jubii.dk/resultat.asp?startnummer=1&antalresultater=30&soegeord=hunt");
+Add("Denmark - Thor","","http://www.danielsen.com/thor/","http://www.danielsen.com/cgi/thornew.cgi?country=danmark&cnt=50&q=hunt");
+DisplayForm();
+</script><br>Typ hetgene wat je zoekt in de box en klik op zoek. Wil je een andere zoekmachine, 
+klik dan op het pijltje naar onder en kies een andere. Veel genot!
+</body>
+</html>

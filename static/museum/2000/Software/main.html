@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Software');
+	</SCRIPT>
+	<BASE TARGET="mainSoftware">
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightCLick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+<!-- einde noright click -->
+
+</HEAD> 
+
+<BODY BGCOLOR="CCEE00" OnLoad="expandText('expand',-3,9,1,20);">
+
+<!-- uitgerektetekst -->
+<SCRIPT LANGUAGE="JavaScript">
+ie4 = ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4 ))
+<!--
+function expandText(which, start, finish, step, speed){
+  if (ie4){
+    if (start < finish){ 
+      document.all(which).style.letterSpacing = start+"px";  
+      start=start+step; 
+      setTimeout("expandText('"+which+"',"+start+","+finish+","+step+","+speed+")",speed);
+    }	
+  }
+}
+//-->
+</SCRIPT>
+
+<FONT COLOR="660000">
+<SPAN ID="expand"><CENTER><H4>Software</H4></CENTER></SPAN>
+</FONT>
+<P>
+<FONT COLOR="000000">
+In deze selectie kan men mijn zelfgemaakte software downloaden. <BR><BR>
+</FONT><FONT COLOR="AA0000">Voordat je alles download, kan je best eens eerst <A HREF="dll.html"><B>hier</B></A> kijken als je geen VB6 runtime DLL hebt en niet genoeg OCX versies. <BR><BR></FONT>
+<FONT COLOR="000000">
+Als je in de linkerkolom één van de applicaties/toepassingen/programma's uitkiest, zie je dat er ook uitleg, een screenshot en de grootte in KB uitgedrukt bijstaat.
+<BR>wil je je commentaar of suggestie(s) kwijt? Of is het een bug die je liever niet ziet? Mail gerust naar mij (linkerframe). Of bereik me via ICQ (78822034) die er al lang af ligt... Soms zet ik die er terug op, 
+maar de laatste tijd zeker niet. Yust mail.</P>
+<P>
+<HR WIDTH="100%">
+</BODY>
+</HTML>

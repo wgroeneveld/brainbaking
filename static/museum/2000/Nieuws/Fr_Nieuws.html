@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Nieuws');
+	</SCRIPT>
+	<BASE TARGET="mainNieuws">
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightCLick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+<!-- einde noright click -->
+
+
+</HEAD>
+
+<BODY BGCOLOR="CCEE00">
+	</P><P>&nbsp;&nbsp;<B>Laatste Nieuws:</B><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./main.html#item6">Nieuw Programma</A><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./main.html#item5">Niet veel meer</A><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./main.html#item1">Nieuwe website (vervolg)</A><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./main.html#item2">Merry X-mas</A><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./main.html#item3">AutoUnPack 3.1.2</A><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./main.html#item4">DirPrinter 2.3.0</A><BR>
+	<P>&nbsp;&nbsp;<B>Ouder Nieuws:</B><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./OudNiews.html#item1">Nieuwe website!</A><BR>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./OudNiews.html#item2">aWhile Installer</A><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./OudNiews.html#item3">Nieuwe Ideeën</A><BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="./OudNiews.html#item4">Tickin' Netwerk</A><BR>
+
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,54 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	//background: #d9c19c;
+	font-family: Tahoma, sans-serif;
+	color: #222222;
+	font-size : small;
+}
+
+#logoLINUX {
+	color: #C4C2A3;
+	font-size: 3em;
+	font-weight: bold;
+	text-align: center;
+	background: #748C65; // url(images/tux.png) no-repeat bottom right;
+	padding: 20px;
+	margin: 0px;
+	border-top: 2px dotted #526A43;
+	border-left: 2px dotted #526A43;
+	border-right: 2px dotted #526A43;
+
+}
+
+#logoLINUX:hover {
+	background: #859D76;
+}
+
+#logoGAMES {
+	color: #C4C2A3;
+	font-size: 3em;
+	font-weight: bold;
+	text-align: center;
+	background: #66847d; //url(images/snes.png) no-repeat bottom right;
+	padding: 20px;
+	margin: 0px;
+	border-top: 2px dotted #526A43;
+	border-left: 2px dotted #526A43;
+	border-right: 2px dotted #526A43;
+}
+
+#logoGAMES:hover {
+	background: #77958e;
+}
+
+.sub { 
+	font-size: medium;
+}
+
+
+* img {border: none}
+* a:link,
+* a:visited {font-weight: bold; color: #30345D; text-decoration: none}
+* a:hover {color: #61617A; text-decoration: underline}
+

@@ -1,0 +1,87 @@
+<html>
+<head>
+
+<BASE TARGET="main">
+
+<script LANGUAGE="JavaScript1.2" SRC="vergroot.js"></script>
+<script LANGUAGE="JavaScript1.2" SRC="knopbalk.js"></script>
+<script LANGUAGE="JavaScript1.2">
+/*
+
+var wnd = false;
+function loadCustom() {
+  if(!wnd) wnd = window.open("example.html","width=140,height=130,resizable=no,toolbars=no,scrollbars=no");
+}
+*/
+
+
+function Knoppenbalk() {
+  if(!document.all) document.all = document.layers;
+  g = new Knopbalk(document.all.knopbalk, document.all.knopbalkCol);
+  g.setFont("<FONT FACE='Tahoma,Verdana,Arial' SIZE=2 COLOR='FFFFFF'>","</FONT>");
+  g.Name = "NavigatieBalk";
+  g.baseHREF = "./";
+  g.collapsedBgImg = null;
+  g.collapsedBgColor = "#0022AA";
+  g.sideWidth = 8;
+  g.addItem("Home", "./home.html", 55, "SET_text"); 
+  g.addItem("Software","./Software/software.html", 65, "SET_text");
+  g.addItem("Laatste Nieuws","./Nieuws/Nieuws.html", 102, "SET_text");
+  g.addItem("Source Codes","./Codes/codes.html",100, "SET_text");
+  g.addItem("Links","./Links/Links.html",55,"SET_text");
+  g.addItem("Maaskant Software (WMS)","http://vbhp.cjb.net/",169,"SET_text");
+  g.addItem("Mail me", "mailto:wouter.groeneveld@belgacom.net", 64, "SET_text");
+  g.build();
+}
+</script>
+<style TYPE="text/css">
+#knopbalk { position: absolute; }
+#knopbalk1 { position: absolute; }
+#knopbalkCol { position: absolute; }
+#text0 { position: absolute; }
+#text1 { position: absolute; }
+</style>
+
+<!-- META tags -->
+
+	<META NAME="KEYWORDS" CONTENT="visual basic, vb, VB6, vb 6, vb5, visual basic 5, awhile, awhile soft, software, programming, source code, visual basic code, download vb code, wouter, wouter groeneveld;">
+	<META NAME="DESCRIPTION" CONTENT="aWhile-Soft Homepage, selfmade Visual Basic Software and some Source Codes of VB">
+	<META NAME="LANGUAGE" CONTENT="NL">
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightCLick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+<!-- einde noright click -->
+
+
+</head>
+<body bgcolor="#0022AA" ONLOAD="Knoppenbalk()">
+<Center>
+	<div ID="knopbalk" NAME="knopbalk"></div>
+	<div ID="knopbalk1" NAME="knopbalk1"></div>
+	<div ID="knopbalkCol" NAME="knopbalkCol"></div>
+<br>
+</Center>
+</body>
+<!-- einde document -->
+</html>

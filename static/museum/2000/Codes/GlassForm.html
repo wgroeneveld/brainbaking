@@ -1,0 +1,74 @@
+<HTML>
+<HEAD><TITLE>GlassForm Module</TITLE>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Codes');
+	</SCRIPT>
+	<BASE TARGET="mainCodes">
+
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightClick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+
+<!-- einde no rightclick -->
+
+</HEAD>
+
+<BODY BGCOLOR="CCEE00">
+<CENTER>
+<A HREF="./Download/GlassFormM.bas"><H4>GlassForm Module</H4></A>
+</CENTER>
+<P>Om de module te downloaden, klik je het beste op de titel. (in .Bas vorm). Deze module werd gemaakt in Visual Basic 6, maar is ook VB4 32-BIT, VB5 & VB6 compatibel. Dat zijn ze trouwens allemaal...(Ongeveer 6 KB)</P>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Gebruik:</U></CENTER><BR>
+</FONT><FONT COLOR="0000AA">
+GlassifyForm [Form]<BR>
+LET OP!<BR>
+<BR>
+de instellingen van het formulier moeten er zo uit zien:<BR>
+PaletteMode = 1<BR>
+Left = 0 (of 1 voor een verschuivend effect)<BR>
+ScaleLeft = 0<BR>
+ScaleMode = 3 (Pixel)<BR>
+ScaleTop = 0<BR>
+Top moet ingevuld zijn<BR>
+
+</P></FONT>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Verschillende Routines:</U></CENTER><BR>
+<OL>
+</FONT><FONT COLOR="0000AA">
+ <LI><B>GlassifyForm</B> - Maak een bep. formulier transparant
+</OL>
+</P></FONT>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Uitleg bij API Declaraties:</U></CENTER><BR>
+<OL>
+</FONT><FONT COLOR="0000AA">
+ <LI><B>CreateRectRgn</B> - Maak een rechthoek met bep. afmetingen
+ <LI><B>CombineRgn</B> - Combineer de verschillende afmetingen
+ <LI><B>SetWindowRgn</B> - Gebruik de afmetingen in het venster
+
+<BR>
+<HR WIDTH="50%"></FONT>
+</BODY>
+</HTML>

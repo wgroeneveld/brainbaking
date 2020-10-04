@@ -1,0 +1,83 @@
+<HTML>
+<HEAD><TITLE>Capture Screen Module</TITLE>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Codes');
+	</SCRIPT>
+	<BASE TARGET="mainCodes">
+
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightClick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+
+<!-- einde no rightclick -->
+
+</HEAD>
+
+<BODY BGCOLOR="CCEE00">
+<CENTER>
+<A HREF="./Download/CaptureScreen.bas"><H4>Capture Screen Module</H4></A>
+</CENTER>
+<P>Om de module te downloaden, klik je het beste op de titel. (in .Bas vorm). Deze module werd gemaakt in Visual Basic 6, maar is ook VB4 32-BIT, VB5 & VB6 compatibel. Dat zijn ze trouwens allemaal...(Ongeveer 14 KB)</P>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Gebruik:</U></CENTER><BR>
+</FONT><FONT COLOR="0000AA">
+Set [Picture].Picture = CaptureScreen()   (of een van de andere routines zie onderaan)
+</P></FONT>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Verschillende Routines:</U></CENTER><BR>
+<OL>
+</FONT><FONT COLOR="0000AA">
+ <LI><B>CreateBitmapPicture</B>   - Maakt een picture Object van een Bitmap bestand of palet.
+ <LI><B>CaptureWindow</B>         - Captures elk gegeven venster.
+ <LI><B>CaptureActiveWindow</B>   - Captures alleen het actief venster.
+ <LI><B>CaptureForm</B>           - Captures het hele formulier.
+ <LI><B>CaptureClient</B>         - Captures een client 'area' in een formulier.
+ <LI><B>CaptureScreen</B>         - Captures het hele scherm.
+ <LI><B>PrintPictureToFitPage</B> - Print elk picture zo groot mogelijk.
+</OL>
+</P></FONT>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Uitleg bij API Declaraties:</U></CENTER><BR>
+<OL>
+</FONT><FONT COLOR="0000AA">
+ <LI><B>CreateCompatibleBitmap</B> - Maakt een bitmap compatibel met het gespecialiseerde 'Device Context' (DC)
+ <LI><B>GetDeviceCaps</B> - Retourneert gespecialiseerde informatie over die device.
+ <LI><B>GetSystemPaletteEntries</B> -  Retourneert een bep. aantal paletten van het systeem geassocieerd met de specifieke DC.
+ <LI><B>CreateCompatibleDC</B> - Maakt een compatibele DC in het geheugen aan met de specifieke devices
+ <LI><B>CreatePalette</B> - Maakt een logisch palet aan.
+ <LI><B>SelectPalette</B> -  Selecteert een logisch palet.
+ <LI><B>SelectObject</B> - Selecteert een object in de DC
+ <LI><B>BitBlt</B> - een Bit-Clock transfer van de kleur overeenstemmend met bron DC (Source) in bestemming DC (Dest.)
+ <LI><B>GetWindowDC</B> - Retourneert de DC van het hele venster
+ <LI><B>GetDC</B> - Retourneert de DC van een speciaal gebied, nl. 'Client area' (zie CaptureClient)
+ <LI><B>ReleaseDC</B> - Bevrijd de DC van het geheugen om door andere programma's gebruikt te worden.
+ <LI><B>DeleteDC</B> - Verwijderd een gekozen DC
+ <LI><B>GetWindowRect</B> - Retourneert de dimensie van een 'rectanlge' van het scherm
+ <LI><B>GetDesktopWindow</B> - Retourneert een opdracht naar de Desktop Window
+ <LI><B>GetForeGroundWindow</B> - Retourneert een opdracht naar het voorliggende venster
+ <LI><B>OleCreatePictureIndirect</B> - Maakt een nieuw object, overeenstemmend met de PICTUREDESC structuur
+</OL></FONT><FONT COLOR="000000">
+<BR>
+<HR WIDTH="50%"></FONT>
+</BODY>
+</HTML>

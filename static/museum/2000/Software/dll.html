@@ -1,0 +1,73 @@
+<HTML>
+<HEAD><TITLE>Nodige systeembestanden voor mijn software</TITLE>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Software');
+	</SCRIPT>
+	<BASE TARGET="mainCodes">
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightCLick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+<!-- einde noright click -->
+
+</HEAD>
+
+<BODY BGCOLOR="CCEE00">
+<CENTER>
+<H4>Runtime DLL en sommige OCX bestanden</H4></A>
+</CENTER>
+<P>Als je nog geen Msvbvm60.dll hebt, is het sterk aangeraden dit hieronder (zie tabel) te downloaden, want anders zal geen één programma werken... 
+Sommige OCX bestanden die zich hieronder bevinden heb je bij sommige programma's nodig. Als je Office of iets anders op je PC hebt geïnstalleerd is dat normaal geen probleem.
+ Kijk voor alle zekerheid eens na of je er hebt in je Systeem dir van Windows.
+</P>
+<P>
+<CENTER><TABLE BORDER="2" CELLPADDING="2" CELLSPACING="2">
+<TR><TD><B>Naam bestand</B></TD>
+<TD><B>Informatie</B></TD>
+<TD><B>Grootte in KB</B></TD>
+</TR><TR><TD><A HREF="./Download/Msvbvm60.zip">Msvbvm60.dll</A></TD>
+<TD>MS VB6 Runtime DLL (NODIG)</TD>
+<TD>737 KB</TD></TR>
+<TR><TD><A HREF="./Download/Comctl32.zip">Comctl32.ocx</A></TD>
+<TD>MS Common ActiveX Control v. 6.2</TD>
+<TD>236 KB</TD></TR>
+<TR><TD><A HREF="./Download/Comdlg32.zip">Comdlg32.ocx</A></TD>
+<TD>MS Common Dialog Control</TD>
+<TD>63 KB</TD></TR>
+<TR><TD><A HREF="./Download/Mswinsck.zip">Mswinsck.ocx</A></TD>
+<TD>MS Winsock Control (alleen voor Tickin')</TD>
+<TD>56 KB</TD></TR>
+<TR><TD><A HREF="./Download/Tabctl32.zip">Tabctl32.ocx</A></TD>
+<TD>TabStrip Control 32-BIT</TD>
+<TD>108 KB</TD></TR>
+</TABLE></CENTER>
+</P><P><FONT COLOR="660000">
+Als je een bep. bestand wilt downloaden, moet je gewoon op de naam klikken.
+ Opgelet: Mswinsck.ocx is alleen voor Tickin' (Netwerk) nodig! en Msvbvm60.dll heb je altijd nodig! voor elk programma dus.
+ Kopiëer elk systeembesand naar het systeem van windows na het unzippen.
+</FONT></P><P>
+<HR WIDTH="50%"></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Links');
+	</SCRIPT>
+
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightClick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+
+<!-- einde no rightclick -->
+
+</HEAD>
+<BODY BGCOLOR="CCEE00" OnLoad="expandText('expand',-3,9,1,20);">
+
+<!-- uitgerektetekst -->
+<SCRIPT LANGUAGE="JavaScript">
+ie4 = ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4 ))
+<!--
+function expandText(which, start, finish, step, speed){
+  if (ie4){
+    if (start < finish){ 
+      document.all(which).style.letterSpacing = start+"px";  
+      start=start+step; 
+      setTimeout("expandText('"+which+"',"+start+","+finish+","+step+","+speed+")",speed);
+    }	
+  }
+}
+//-->
+</SCRIPT>
+
+<FONT COLOR="7700AA">
+<SPAN ID="expand"><CENTER><H3>Links</H3></CENTER></SPAN>
+</FONT>
+<P>
+<FONT COLOR="000000">
+Hier zijn een paar interessante links te vinden over Visual Basic, JavaScript, Java Applets, ... </P>
+<P><CENTER><TABLE BORDER="1">
+<TR WIDTH="50%"><TD><B>Visual Basic Links</B></TD><TD><B>Java Links</B></TD><TD><B>Andere</B></TD></TR>
+<TRWIDTH="50%"><TD><A HREF="http://www.sourcecodeplanet.com">SourceCodePlanet</A></TD><TD><A HREF="http://www.javascript.com">JavaScript.Com</A></TD><TD><A HREF="http://www.altavista.com">AltaVista Zoekacties</A></TD></TR>
+<TRWIDTH="50%"><TD><A HREF="http://www.vbwire.com">VB Wire</A></TD><TD><A HREF="http://javascript.internet.com/">JavaScript Source</A></TD><TD><A HREF="http://www.gamespot.com">Gaming Revieuws</A></TD></TR>
+<TRWIDTH="50%"><TD><A HREF="http://www.vbworld.com">VB World</A></TD><TD><A HREF="http://www.dynamicdrive.com/">Dynamic Drive</A></TD><TD><A HREF="http://theonering.net">In de ban van de Ring</A></TD></TR>
+<TRWIDTH="50%"><TD><A HREF="http://www.benneke.com">Benneke De Beer</A></TD><TD><A HREF="http://www.dynamicdrive.com/">Dynamic Drive</A></TD><TD><A HREF="http://wouter.awhilesoft.com">Persoonlijke site</A></TD></TR>
+<TRWIDTH="50%"><TD><A HREF="http://www.deep-software.com">[deep]software</A></TD><TD><A HREF="http://www.dynamicdrive.com/">Dynamic Drive</A></TD></TR>
+
+
+</TABLE></CENTER></P>
+<P><HR WIDTH="90%"></P>
+</BODY>
+</HTML>

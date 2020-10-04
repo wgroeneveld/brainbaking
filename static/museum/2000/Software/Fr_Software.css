@@ -1,0 +1,50 @@
+BODY  {
+	background-color : #00FFFF;
+	color : #000000;
+	font-size : 10pt;
+	font-family : Tahoma, Verdana, Arial, Helvetica, "MS Sans Serif";
+	margin : 5px;
+}
+
+A  {
+	color : #000000;
+	font-family : Tahoma, Verdana, Arial, Helvetica, "MS Sans Serif";
+	font-weight : none;
+	text-decoration : none;
+	line-height : 16pt;
+}
+
+A:Visited  {
+	color : #000000;
+}
+
+A:Active  {
+	color : #660000;
+}
+
+A:Hover  {
+	color : #660000;
+}
+
+A.headlines  {
+	color : #000000;
+	font-weight : normal;
+	text-decoration : none;
+	line-height : 10pt;
+}
+
+HR  {
+	color : #000000;
+	height : 1px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+
+TD  {
+	font-size : 8pt;
+	font-family : Tahoma, Verdana, Arial, Helvetica, "MS Sans Serif";
+}
+
+TD.filler {
+	height : 100%;
+}

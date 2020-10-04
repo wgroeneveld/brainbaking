@@ -1,0 +1,316 @@
+<HTML>
+<head><title>Java script rekenmachine</title>
+</head>
+<body background="geel.gif">
+<body bgcolor="ffffff" link="ffff00" text="ff0000"><p><center><h2>
+<font face="Trebuchet MS">Java script: rekenmachine</center></h2></p><p><center>
+<SCRIPT LANGUAGE="LiveScript">  
+var acc = 0;            
+var oper = " ";         
+var startnum = true;    
+var decpoint = false;   
+var errorstate = false;
+ MAXLEN = 14;
+ function IsNumeric(num) 
+ {    var idx = 0;
+      var ch = "";
+      var foundpoint = false;
+      for (idx = 0; idx < num.length; idx++) {
+      ch = num.substring(idx, idx +1 );
+      if ((ch < "0") || (ch > "9")) {
+        if ((ch == ".") && (!foundpoint)) {
+          foundpoint = true;
+          continue;
+        } else {
+          if ((ch == "-") && (idx == 0)) {
+            continue;
+          }
+        }
+        return false;
+      }
+    } // for idx
+
+    return true;
+  }
+
+  //
+  // ContainsChar - check if a string contains a certain char
+  //
+  function ContainsChar(str, ch) {
+    var idx;
+
+    for (idx = 0; idx < str.length; idx++) {
+      if (str.substring(idx, idx + 1) == ch) {
+        return true;
+      }
+    }   // for idx
+
+    return false;
+  }
+
+  //
+  // ContainsDecimalPoint - check if a number string contains a decimal point
+  //
+  function ContainsDecimalPoint(num) {
+    return ContainsChar(num, ".");
+  }
+
+  //
+  // DisplayChanged - the display was explicitly changed, so check if it is valid
+  //
+  function DisplayChanged(form, display) {
+    if (!errorstate) {
+      if (IsNumeric(display.value)) {
+       display.defaultValue = display.value;
+        startnum = false;
+        decpoint = ContainsDecimalPoint(display.value);
+      } else {
+        alert("You must enter a numeric value here.");
+        display.value = display.defaultValue;
+      }
+    } else {   // errorstate
+      alert('An error has occured. Press the "AC" button.');
+    }
+  }
+
+  //
+  // NumPressed - a digit button was pressed, add it to the current display
+  //
+  function NumPressed(form, digit) {
+    if (!errorstate) {
+      if ((digit !=0) || (form.display.value != "0")) {
+        if (startnum) {   // need to put a new number on the display (e.g. after "=")
+          form.display.value = eval(digit);
+        } else {
+          if (form.display.value.length < MAXLEN) {
+            form.display.value = form.display.value + digit;
+          }   // enough room to put new digit
+        }   // add the digit
+
+        startnum = false;
+        form.display.defaultValue = form.display.value;
+      }   // not trying to add leading zeros
+    } else {   //errorstate
+      alert('An error has occured. Please press the "AC" button');
+    }
+  }
+
+  //
+  // ChangeSign - "+/-" button was pressed, change sign of current display
+  //
+  function ChangeSign(form) {
+    if (!errorstate) {
+      if (form.display.value != "0") {
+        if (eval(form.display.value) < 0) {   // negative no problem
+          form.display.value = 0 - eval(form.display.value);
+        } else {   // positive, make sure it's not too long
+          if (form.display.value.length < MAXLEN)
+            form.display.value = 0 - eval(form.display.value);
+        }   // positive
+
+        form.display.defaultValue = form.display.value;
+        startnum = false;
+      }   // not 0, can be negated
+    } else {   // errorstate
+      alert('An error has occured. Please press the "AC" button');
+    }
+  }
+
+  //
+  // PointPressed - the decimal dot was pressed, add it to number and start putting disits after it
+  //
+  function PointPressed(form) {
+    if (!errorstate) {
+      if ((!decpoint) && (form.display.value.length < MAXLEN - 1)) {
+        form.display.value = form.display.value + ".";
+        form.display.defaultValue = form.display.value;
+        decpoint = true;
+        startnum = false;
+      }   // decimal point not already present
+    } else {   // errorstate
+      alert('An error has occured. Please press the "AC" button');
+    }
+  }
+
+  //
+  // ClearAll - "AC" button was pressed, restart the calculator
+  //
+  function ClearAll(display) {
+    display.value = "0";
+    display.defaultValue = "0";
+    decpoint = false;
+    acc = 0;
+    oper = " ";
+    startnum = true;
+    errorstate = false;
+  }
+
+  //
+  // ClearNum - "C" button was pressed, clear only current number on display
+  //
+  function ClearNum(display) {
+    if (!errorstate) {
+      display.value = "0";
+      display.defaultValue = "0";
+      decpoint = false;
+      startnum = true;
+    } else {   // errorstate
+      alert('An error has occured. Please press the "AC" button');
+    }
+  }
+
+  //
+  // RemoveZeros - remove leading zeros after a decimal point from a number string
+  //
+  function RemoveZeros(num) {
+    var idx;
+
+    if (ContainsChar(num, ".")) {
+      idx = num.length - 1;
+      ch = num.substring(idx, idx + 1);
+      while((idx > 0) && (ch == "0")) {
+        idx--;
+        ch = num.substring(idx, idx + 1);
+      }
+      num = num.substring(0, idx + 1);
+
+      // get rid of a trailing decimal point, if it remained hanging after the torture ...
+      if (num.substring(num.length - 1, num.length) == ".") {
+        num = num.substring(0, num.length - 1)
+      }
+    }   // num contains a decimal point
+
+    return num;
+  }
+
+  //
+  // CalcDisplay - calculate the new display using the accumulator and the previous operator
+  //
+  function CalcDisplay(display) {
+    if (oper == "+") {
+      display.value = acc + eval(display.value);
+    } else if (oper == "-") {
+      display.value = acc - eval(display.value);
+    } else if (oper == "*") {
+      display.value = acc * eval(display.value);
+    } else if (oper == "/") {
+      if (display.value == "0") {
+        display.value = "ERROR !"
+        errorstate = true;
+      } else { 
+        display.value = acc / eval(display.value);
+      }
+    }
+
+    if (!errorstate) {
+      if ((eval(display.value) >= eval("1e" + MAXLEN)) || (eval(display.value) <= eval("-1e" + (MAXLEN - 1)))) {
+        display.value = "ERROR !";
+        errorstate = true;
+      } else {
+        if (!ContainsChar(display.value, "e")) {   // not exponential format
+           if (display.value.length > MAXLEN) {
+            // number is in permited range, so extra digits are after decimal point
+            // truncate extra digits
+            display.value = display.value.substring(0, MAXLEN);
+            // get rid of a hanging decimal point
+            if (display.value.substring(MAXLEN - 1, MAXLEN) == ".") {
+              display.value = display.value.substring(0, MAXLEN - 1);
+            } else {
+              // get rid of trailing zeros
+              display.value = RemoveZeros(display.value);
+            }
+          }   // string too long
+        } else {   // exponential format
+          // Numbers smaller than 0.00001 are represented in exponential notation by the browser.
+          // A piece of code to translate them to fix notation should be put here.
+          // This is getting *much* too boring for me, so I leave it as is.
+          // If anyone has the will power to write it, I'll be glad to include it ...
+        }   // exponential format
+      }   // not too high or low
+    }   // no error yet (division by zero)
+    display.defaultValue = display.value;
+  }
+
+  //
+  // OperPressed - calculate the new display and move it to the accumulator
+  //
+  function OperPressed(form, newoper) {
+    if (!errorstate) {
+      CalcDisplay(form.display);
+      oper = newoper;
+      acc = eval(form.display.value);
+      startnum = true;
+      decpoint = false;
+    } else {   // errorstate
+      alert('An error has occured. Please press the "AC" button');
+    }
+  }
+
+  //
+  // CalcResult - the "=" button was pressed, put result on display
+  //
+  function CalcResult(form) {
+    if (!errorstate) {
+      CalcDisplay(form.display);
+      oper = " ";
+      acc = 0;
+      startnum = true;
+      decpoint = false;
+    } else {   // errorstate
+      alert('An error has occured. Please press the "AC" button');
+    }
+  }
+
+// End of hiding script from browsers which do not support it. -->
+</SCRIPT>
+
+
+
+<FORM>
+<TABLE BORDER=2>
+<TR>
+<TD ALIGN=MIDDLE>
+  <INPUT TYPE="text" SIZE=15 NAME="display" VALUE="0" ONCHANGE="DisplayChanged(this.form, this.form.display)">
+</TD>
+</TR>
+<TR>
+<TD>
+  <TABLE BORDER=1>
+    <TR>
+      <TD> <INPUT TYPE="RADIO" CHECKED ONCLICK="history.go(-1)"> </TD>
+      <TD> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" C " ONCLICK="ClearNum(this.form.display)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE="AC" ONCLICK="ClearAll(this.form.display)"> </TD>
+    </TR>
+    <TR>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" 1 " ONCLICK="NumPressed(this.form, 1)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" 2 " ONCLICK="NumPressed(this.form, 2)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" 3 " ONCLICK="NumPressed(this.form, 3)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" + " ONCLICK='OperPressed(this.form, "+")'> </TD>
+    </TR>
+    <TR>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" 4 " ONCLICK="NumPressed(this.form, 4)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" 5 " ONCLICK="NumPressed(this.form, 5)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" 6 " ONCLICK="NumPressed(this.form, 6)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE="  - " ONCLICK='OperPressed(this.form, "-")'> </TD>
+    </TR>
+    <TR>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" 7 " ONCLICK="NumPressed(this.form, 7)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" 8 " ONCLICK="NumPressed(this.form, 8)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" 9 " ONCLICK="NumPressed(this.form, 9)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" X " ONCLICK='OperPressed(this.form, "*")'> </TD>
+    </TR>
+    <TR>
+      <TD> <INPUT TYPE="BUTTON" VALUE="+/-" ONCLICK="ChangeSign(this.form)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE=" 0 " ONCLICK="NumPressed(this.form, 0)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE="  . " ONCLICK="PointPressed(this.form)"> </TD>
+      <TD> <INPUT TYPE="BUTTON" VALUE="  / " ONCLICK='OperPressed(this.form, "/")'> </TD>
+    </TR>
+    <TR ALIGN=CENTER>
+      <TD COLSPAN=4> <INPUT TYPE="BUTTON" VALUE="   =   " ONCLICK="CalcResult(this.form)"> </TD>
+    </TR>
+  </TABLE>
+</TD>
+</TR>
+</TABLE></body>
+</HTML>

@@ -1,0 +1,262 @@
+<html>
+
+<head>
+
+<title>Perspicacity Headliner</title>
+
+
+<style type="text/css"><!--
+  .stHeadliner {font-family: courier new, monospace;
+                font-size: 12pt;
+                font-weight: bold;
+                font-style: italic;
+                background: red;
+                color: white;
+                vertical-align: middle
+                text-transform: capitalize;
+                text-align: center}
+
+  input {cursor: hand}
+-->
+</style>
+<!--
+IE4 has got a nice feature of specifying which cursor to show if pointing at the
+button
+{ cursor: auto | crosshair | default | hand | move | e-resize | ne-resize | nw-resize
+|
+  n-resize | se-resize | sw-resize | s-resize | w-resize | text | wait | help}
+-->
+
+<link rev="made" href="mailto:w_groeneveld@hotmail.com">
+</head>
+
+<body onLoad="StartHeadliner()" bgcolor="yellow"
+text="marine">
+
+<script language="JavaScript">
+<!--
+js_vers = 1.0;
+// -->
+</script>
+<script language="JavaScript1.2">
+<!--
+js_vers = 1.2;
+// -->
+</script>
+
+<script language="JavaScript">
+<!-- start hide
+
+typeWriterWait=90
+blinkTextWait=1000
+blinkSpacesWait=300
+blinkMax=6
+expandWait=100
+scrollWait=90
+scrollWidth=40
+randomLines=false
+
+lineMax=5
+lines=new Array(lineMax)
+function Line(text, url, frame, type, wait) {
+	this.text=text
+	this.url=url
+	this.frame=frame
+	this.Display=type
+	this.wait=wait
+}
+
+// Define the lines as follows (text to display, url or mailto, frame name, which effect, time to wait after displaying)
+// See the headliner.txt for more info on this variables
+lines[1]=new Line("Hallo, de eerste lijn flikkerd voorbij...", "java2.html", "top", Blink, 500)
+lines[2]=new Line("Deze lijn is veel langer om laten te zien!!", "java2.html", "frame_name2", Scroll, 1000)
+lines[3]=new Line("De derde lijn staat stil...", "java.html", "frame_name3", Static, 2500)
+lines[4]=new Line("Wat doet deze lijn hier???", "http://www.geocities.com/Area51/Dimension/5228/Anneleen.zip", "new_window", Expand, 2000)
+lines[5]=new Line("Klik nu om me te mailen.", "mailto:w_groeneveld@hotmail.com?subject=The Headliner&cc=w_groeneveld@hotmail.com", "", TypeWriter, 1500)
+
+lineText=""
+timerID=null
+timerRunning=false
+spaces=""
+charNo=0
+charMax=0
+charMiddle=0
+lineNo=0
+lineWait=0
+
+function StringFill(c, n) {
+	s=""
+	while (--n >= 0) {
+		s+=c
+	}
+	return s
+}
+
+function getRandomInteger(max)
+{
+	n=Math.floor(Math.random() * max + 1)
+	return n
+}
+
+function GotoUrl(url, frame) {
+	if (frame != '') {
+		if (frame == 'self') {
+			self.location.href=url
+		}
+		else if (frame == 'parent') {
+			parent.location.href=url
+		}
+		else if (frame == 'top') {
+			top.location.href=url
+		}
+		else {
+			s=eval(top.frames[frame])
+			if (s != null) {
+				top.eval(frame).location.href=url
+			}
+			else {
+				/*ndow.open(url, frame, "toolbar=yes,status=yes,scrollbars=ye*/;
+			}
+		}
+	}
+	else {
+		window.location.href=url
+	}
+}
+
+function Static() {
+	document.formDisplay.buttonFace.value=this.text
+	timerID=setTimeout("ShowNextLine()", this.wait)
+}
+
+function TypeWriter() {
+	lineText=this.text
+	lineWait=this.wait
+	charMax=lineText.length
+	TextTypeWriter()
+}
+
+function TextTypeWriter() {
+	if (charNo <= charMax) {
+		document.formDisplay.buttonFace.value=lineText.substring(0, charNo)
+		charNo++
+		timerID=setTimeout("TextTypeWriter()", typeWriterWait)
+	}
+	else {
+		charNo=0
+		timerID=setTimeout("ShowNextLine()", lineWait)
+	}
+}
+
+function Blink() {
+	lineText=this.text
+	charMax=lineText.length
+	spaces=StringFill(" ", charMax)
+	lineWait=this.wait
+	TextBlink()
+}
+
+function TextBlink() {
+	if (charNo <= blinkMax * 2) {
+		if ((charNo % 2) == 1) {
+			document.formDisplay.buttonFace.value=lineText
+			blinkWait=blinkTextWait
+		}
+		else {
+			document.formDisplay.buttonFace.value=spaces
+			blinkWait=blinkSpacesWait
+		}
+		charNo++
+		timerID=setTimeout("TextBlink()", blinkWait)
+	}
+	else {
+		charNo=0
+		timerID=setTimeout("ShowNextLine()", lineWait)
+	}
+}
+
+function Expand() {
+	lineText=this.text
+	charMax=lineText.length
+	charMiddle=Math.round(charMax / 2)
+	lineWait=this.wait
+	TextExpand()
+}
+
+function TextExpand() {
+	if (charNo <= charMiddle) {
+		document.formDisplay.buttonFace.value=lineText.substring(charMiddle - charNo, charMiddle + charNo)
+		charNo++
+		timerID=setTimeout("TextExpand()", expandWait)
+	}
+	else {
+		charNo=0
+		timerID=setTimeout("ShowNextLine()", lineWait)
+	}
+}
+
+function Scroll() {
+	spaces=StringFill(" ", scrollWidth)
+	lineText=spaces+this.text
+	charMax=lineText.length
+	lineText+=spaces
+	lineWait=this.wait
+	TextScroll()
+}
+
+function TextScroll() {
+	if (charNo <= charMax) {
+		document.formDisplay.buttonFace.value=lineText.substring(charNo, scrollWidth+charNo)
+		charNo++
+		timerID=setTimeout("TextScroll()", scrollWait)
+	}
+	else {
+		charNo=0
+		timerID=setTimeout("ShowNextLine()", lineWait)
+	}
+}
+
+function StartHeadliner() {
+  if (js_vers > 1.0) {
+	StopHeadliner()
+	timerID=setTimeout("ShowNextLine()", 2000)
+	timerRunning=true
+  }
+}
+
+function StopHeadliner() {
+	if (timerRunning) { 
+		clearTimeout(timerID)
+		timerRunning=false
+	}
+}
+
+function ShowNextLine() {
+	if (randomLines) {
+		lineNo=getRandomInteger(lineMax)
+	}
+	else {
+		(lineNo < lineMax) ? lineNo++ : lineNo=1
+	}
+	lines[lineNo].Display()
+}
+
+function LineClick(lineNo) {
+	document.formDisplay.buttonFace.blur()
+	if (lineNo > 0) {
+		GotoUrl(lines[lineNo].url, lines[lineNo].frame)
+	}
+	return false
+}
+
+with (document) {
+	write('<center>')
+	write('<form name="formDisplay"> <input class="stHeadliner" type="button" name="buttonFace"')
+	write('value="Wouterke Groeneveld (dat ben ik)" onClick="LineClick(lineNo)">')
+	write('</input>', '</form>', '</center>')
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #D1D99C;
+	font-family: Tahoma, sans-serif;
+	color: #222222;
+	font-size : small;
+}
+
+.bg {
+	background-image: url('tux_bg.gif');
+	background-position: center center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+#logo {
+	color: #C4C2A3;
+	font-size: 3em;
+	font-weight: bold;
+	text-align: center;
+	background: #748C65 url(/museum/2004/tux.png) no-repeat bottom right;
+	padding: 20px;
+	margin: 0px;
+	border-bottom: 2px dotted #526A43;
+}
+
+
+.sub { 
+	font-size: medium;
+}
+
+#main {
+	padding: 20px;
+	background: #D1D99C;
+}
+
+#nav {
+	float: left;
+	width: 200px;
+	text-align: center;
+}
+
+#code {
+	margin-left: 25px;
+	margin-right: 25px;
+	border: 1px dotted #333333;
+	background: #E2EAAD;
+	margin-top: 10px;
+	font-family: monospace;
+}
+
+.article {
+	margin-left: 25px;
+	margin-right: 25px;
+	border: 1px dotted #333333;
+	border-bottom: none;
+	border-top: none;
+	background: #E2EAAD;
+}
+
+.article .under {
+	text-align: right;
+	margin-top: 10px;
+	border-bottom: 1px dotted #333333;
+}
+
+.article .midden {
+	margin-left: 10px;
+}
+
+.article .up {
+	font-weight: bold;
+	font-size: large;
+	border-top: 1px dotted #333333;
+}
+
+#nav .current {
+	background: #B3D99C;
+	padding: 10px 20px;
+	border: 1px dotted #666;
+	border-bottom: none;
+	text-align: left;
+	font-weight: bold;
+}
+
+#nav .item {
+	background: #94B381;
+	padding: 10px 20px;
+	border: 1px dotted #666;
+	border-bottom: none;
+	text-align: left;
+	font-weight: bold;
+	color: #DEFF89;
+}
+
+#nav .subitem {
+	background: #83A270;
+	padding: 10px 30px;
+	border: 1px dotted #666;
+	border-bottom: none;
+	text-align: left;
+	font-weight: italic;
+	color: #EEEEEE;
+	cursor: hand;
+}
+
+
+#nav .item:hover {
+	background: #B3D99C;
+	color: #333333;
+}
+
+#hoofd {
+	position: absolute;
+	left: 220px;
+	top: 130px;
+	padding: 20px;
+	background: #D1D99C;
+}
+
+input, textarea, select 
+{
+	background-color: #D0E8B6; 
+	border-right:1px solid #B0C694; 
+	border-left:1px solid #B0C694; 
+	border-top:1px solid #B0C694; 
+	border-bottom:1px solid #B0C694; 
+	font-family: Verdana, Tahoma, Arial; 
+	font-size: 11px; 
+	font-weight: bold; 
+	color: darkgreen; 
+}
+
+
+h2 {
+	border-bottom: 2px solid #526A43; 
+	font-size: 2em;
+	margin-top: 10px;
+	align: 10px;
+	font-weight: bold;
+	color: #111111;
+}
+
+
+span.image_row {
+	float: left;
+}
+
+span.image_row img {
+	margin: 10px;
+}
+
+div.image_row {
+	display: block;
+	text-align: center;
+}
+
+div.image_row img {
+	margin: 10px;
+}
+
+* img {border: none}
+* a:link,
+* a:visited {font-weight: bold; color: #30345D; text-decoration: none}
+* a:hover {color: #61617A; text-decoration: underline}

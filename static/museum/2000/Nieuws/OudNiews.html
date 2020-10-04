@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Nieuws');
+	</SCRIPT>
+	<BASE TARGET="mainSoftware">
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightCLick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+<!-- einde noright click -->
+
+
+</HEAD> 
+<BODY BGCOLOR="CCEE00" OnLoad="expandText('expand',-3,9,1,20);">
+
+<!-- uitgerektetekst -->
+<SCRIPT LANGUAGE="JavaScript">
+ie4 = ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4 ))
+<!--
+function expandText(which, start, finish, step, speed){
+  if (ie4){
+    if (start < finish){ 
+      document.all(which).style.letterSpacing = start+"px";  
+      start=start+step; 
+      setTimeout("expandText('"+which+"',"+start+","+finish+","+step+","+speed+")",speed);
+    }	
+  }
+}
+//-->
+</SCRIPT>
+
+<FONT COLOR="006600">
+<SPAN ID="expand"><CENTER><H3>Oud Nieuws</H3></CENTER></SPAN>
+</FONT>
+
+<P>
+<TABLE ALGIN="CENTER" CELLSPACING="4" CELLPADDING="4" BORDER="0">
+<TR BGCOLOR="999999" ALIGN="CENTER"><TD>
+<A NAME="item1"></A><B>Nieuwe website!</B></TD>
+<TD><A NAME="item2"></A><B>aWhile Installer</B></TD>
+</TR>
+<TR><TD WIDTH="50%">Jaja, eindelijk is het zover! De nieuwe website is af..
+Voor een groot stuk toch, niet? Volledig aangepast aan de
+snelhied van een 56. KB modem. Nu gaat die toch sneller
+dan mijn persoonlijke site vol met Applets en grote afbeeldingen, 
+Dat was uiteraard de bedoeling. Ik heb de site nogal 'zakelijk' Aangekleed (geen achtergrond etc) maar Dat is 
+ eens iets anders hè. Ik ben nog altijd aan het zoeken voor stomme JS scripts af te halen.
+ Afin, Veel surfgenot nu!</TD>
+<TD>
+Dit is een Automatisch installatieprogramma waar nog druk aan gewerkt wordt.
+Er zijn verschillende features aan vast gebonden, zoals registreren van 10 ocx/dll-en, invoegen van .reg bestand, 
+snelkoppelingen maken, compilen (uiteraard, anders heeft het niet veel zin), en splitten in 1.44 MB voor diskettes.
+Alleen het installatie-onderdeel is af, de compiler moet ik nog maken. ik heb niet genoeg tijd, dat is het. maar heb een beetje geduld, OK? 
+Ik wil alleen nog bij het installatie-stuk een hele map kopiëren, maar dat lukt me alleen met windows dialoog, en dan kan ik 
+niet na elk bestand mijn ProgressBar laten vooruit gaan he! dat heeft niet veel zin. Als je suggesties hebt, mail me dan aub! ik ben 
+daar al 10 jaar op aant wachten... Nee overdreven. Yust mailing, OK? Thx :-)
+</TD></TR>
+<TR BGCOLOR="999999" ALIGN="CENTER"><TD>
+<A NAME="item3"></A><B>Nieuwe Ideeën</B></TD>
+<TD><A NAME="item4"></A><B>Tickin' Netwerk</B></TD>
+</TR>
+<TR><TD WIDTH="50%">Nieuwe ideeën, en nogal veel tegelijk om die direct naar praktijk om te zetten hoor! <BR>
+1) Ten eerste dacht ik aan 'NetComMaster' te maken, een Netwerk Master programma waarbij je een computer via het netwerk 
+beheerd. Handig... <BR>
+2) TexTor: de nieuwere versie van TypBlock 2, maar daar moet dan wel veel aan gesleuteld worden. Zo'n programma als WOut met zijn WMS Notes 
+zal het nooit worden (spijtig, want dat is mooi he) ik doe mijn best hoor, eenvoudige tekstverwerking is genoeg.<BR>
+3) een programma om alle eigenschappen van je computer te lezen. Niet moeilijk, maar wel veel API Declaraties nodig.... 
+we zien wel of dit ooit verwezenlijkt wordt. Gewoon een uitgebreidt FrmInfo Scherm.</TD>
+<TD>Tickin' is ondertussen al tamelijk bekend, dus nu een Tickin' Netwerk versie, werkend met de WinSock OCX ActiveX Control. Eenvoudiger als 
+met al die classen zitten te prullen... Maar het is nog niet correct: de stappen, en als jij per ongeluk zet voor de andere speler, aanvaard de computer dat! 
+Niet mooi, maar moeilijk voorkoombaar. Ik heb echt geen tijd jong, leren enzo (rotschool) ik wil informatica! Pff da is ook zever, want de leraar 
+informatica lach ik gewoon uit! Die weet nergens niets van, alleen zijn lessen... LOL :-)
+</TD></TR>
+</TABLE></P>
+<P>
+<HR WIDTH="100%">
+</BODY>
+</HTML>

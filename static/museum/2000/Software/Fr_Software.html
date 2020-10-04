@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Software');
+	</SCRIPT>
+	<BASE TARGET="mainSoftware">
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightCLick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+<!-- einde noright click -->
+
+
+</HEAD>
+
+<BODY BGCOLOR="CCEE00">
+	&nbsp;&nbsp;<A HREF="./AutoUnPack.html">AutoUnPack</A><BR>
+        &nbsp;&nbsp;<A HREF="./Tickin.html">Tickin'</A><BR>
+	&nbsp;&nbsp;<A HREF="./DirPrinter.html">DirPrinter</A><BR>
+	&nbsp;&nbsp;<A HREF="./PWLDecoder.html">PWL Decoder</A><BR>
+	&nbsp;&nbsp;<A HREF="./WindowBlocker.html">WindowBlocker</A><BR>
+<BR>
+</BODY>
+</HTML>

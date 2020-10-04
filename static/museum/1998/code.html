@@ -1,0 +1,144 @@
+<html>
+<head><title>Downloads</title>
+</head>
+<body>
+<body background="back.gif">
+<p>
+<center><img src="logo_top.gif"></center><br>
+<marquee><h2><center><font name="Verdana">Scource Codes</font></center></h2></marquee>
+</p>
+<p>
+<center><strong>Hieronder vind je een aantal gebruikersvolle codes van Visual Basic.</strong>
+<br>
+<center><strong>Om deze codes te kunnen gebruiken, moet je simpelweg de tekst op je web-bwrowser kopiëren, en in een formulier of een module zetten.</strong>
+<br><br></center><img src="bol.gif">
+<center><b>Hier is een code om je form te centreren (zet het in de form_load of declareer het in een module)
+<center></b><br><i>Dim x, y<br>
+        x = (Screen.Width - aForm.Width) / 2<br>
+        y = (Screen.Height - aForm.Height) / 2<br>
+        aForm.Move x, y<br>
+<br></i>
+<b>Een module om een Random getal te maken</b><br><br>
+<i>Function MaakGetal(ByVal MHoogste As Long, ByVal MLaagste As Long) As Long<br>
+Randomize<br>
+MaakGetal = Int((MHoogste - MLaagste + 1) * Rnd + MLaagste)<br>
+Exit Function<br>
+MaakGetalErr:<br>
+x = MsgBox("Error - Verkeerde nummeriek invoer" & Chr(10) & "Modulenaam MaakGetal", vbCritical, Title:="Error nr. 1")<br>
+Exit Function<br>
+End Function<br>
+<br>
+'gebruik: (lbuitkgetal is een label die de uitkomst toont)<br>
+'lbuitkgetal = MaakGetal(12, 58)<br>
+'je komt dan minimaal 12 uit, maximaal 58!!??<br></i>
+<br><br><b>Een module om een UserName van de persoon vast te krijgen</b><br><br>
+<i>Declare Function GetUserName Lib "advapi32.dll" Alias "GetUserNameA" (ByVal lpBuffer As String, nSize As Long) As Long<br>
+<br>
+'functie:<br>
+'dit moet ook nog in de form!<br>
+'Private Function UserName() As String<br>
+'Const UNLEN = 256   ' Max user name length.<br>
+'Dim user_name As String<br>
+'Dim name_len As Long<br>
+'<br>
+'    user_name = Space$(UNLEN + 1)<br>
+'    name_len = Len(user_name)<br>
+'   If GetUserName(user_name, name_len) = 0 Then<br>
+'        UserName = "<unknown>"<br>
+'    Else<br>
+'        UserName = Left$(user_name, name_len - 1)<br>
+'    End If<br>
+'End Function<br>
+'<br>
+'en gebruik:<br>
+'[label].Caption =  UserName()</i><br><br>
+<b>Module om te kijken of een Dir wel bestaat...</b><br><br>
+<i>Public Function DirExists(ByVal sDirName As String) As Boolean<br>
+    Dim sDir As String<br>
+    On Error Resume Next<br>
+    DirExists = False<br>
+    sDir = Dir$(sDirName, vbDirectory)<br>
+    If (Len(sDir) > 0) And (Err = 0) Then<br>
+        DirExists = True<br>
+    End If<br>
+    <br>
+'gebruik: (lbJa is een label die alleen True of False ziet)<br>
+'lbJa = DirExists("c:\")<br>
+    <br>
+End Function<br></i><br>
+<b>Een zelfgemaakte module om wisselkoersen te berekenen. Wel eenvoudig, maar dat geeft toch niet, hé?</b><br><br>
+Global Const MODULENAAM = "GelbBereken"<br>
+
+'Land = string, hoeveelheid = long<br>
+'Invoergeld = "A" of "B"<br>
+<br>
+'---------------------------------------------------------------<br>
+'          Gemaakt door Wouter Groeneveld op 10/05/1999        -<br>
+'            Deze module (GeldBereken) kan de wisselkoersen    -<br>
+'                 Van verschillende landen maken               -<br>
+'        (c) Copyright 1999-1999 [WGP] Software (versie 1.0.1) -<br>
+'---------------------------------------------------------------<br>
+Function GeldBereken(ByVal Hoeveelheid As Long, ByVal Land As String, ByVal InvoerGeld As String) As Long<br>
+On Error GoTo GeldBerekenErr<br>
+Dim ErrorNr As Byte<br>
+If InvoerGeld = "A" Then GoTo AnderLand<br>
+If InvoerGeld = "B" Then GoTo BelgLand<br>
+If InvoerGeld <> "A" And "B" Then<br>
+ErrorNr = 1<br>
+GoTo GeldBerekenErr<br>
+End If<br>
+Exit Function<br>
+BelgLand:<br>
+Select Case Land<br>
+Case "Amerika"<br>
+GeldBereken = Hoeveelheid * 38<br>
+Case "Euro"<br>
+GeldBereken = Hoeveelheid * 40.3399<br>
+Case "Spanje"<br>
+GeldBereken = Hoeveelheid * 0.2425<br>
+Case Else<br>
+ErrorNr = 2<br>
+GoTo GeldBerekenErr<br>
+End Select<br>
+Exit Function<br>
+AnderLand:<br>
+Select Case Land<br>
+Case "Amerika"<br>
+GeldBereken = Hoeveelheid / 38<br>
+Case "Euro"<br>
+GeldBereken = Hoeveelheid / 40.3399<br>
+Case "Spanje"<br>
+GeldBereken = Hoeveelheid / 0.2425<br>
+Case Else<br>
+ErrorNr = 2<br>
+GoTo GeldBerekenErr<br>
+End Select<br>
+Exit Function<br>
+GeldBerekenErr:<br>
+If ErrorNr = 1 Then<br>
+x = MsgBox("Error - Verkeerde invoer INVOERGELD" & Chr(10) & "Modulenaam " & MODULENAAM, vbCritical, Title:="Error nr. 1")<br>
+Exit Function<br>
+End If<br>
+If ErrorNr = 2 Then<br>
+x = MsgBox("Error - Verkeerde invoer LAND" & Chr(10) & "Modulenaam " & MODULENAAM, vbCritical, Title:="Error nr. 2")<br>
+Exit Function<br>
+End If<br>
+x = MsgBox("Error!", vbCritical, Title:=MODULENAAM & "error")<br>
+End Function<br>
+<br>
+'gebruik: (txt... zijn textboxen!)<br>
+<br>
+'Private Sub Command1_Click()<br>
+'Dim uitkomst As Long<br>
+'uitkomst = GeldBereken(txtHoeveelheid, txtLand, txtInvoer)<br>
+'lbuitk = uitkomst<br>
+'End Sub<br></i>
+<br>
+<b>Dat is het voorlopig...</b>
+</center>
+</p>
+<p><center><img src="logo_wgp.gif"><br>[WGP] software (c) copyright 1999 - 1999
+</center></p>
+<p><center><img src="lijn.gif"><br></center></p>
+</body>
+</html>

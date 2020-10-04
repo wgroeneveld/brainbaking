@@ -1,0 +1,62 @@
+<html>
+<head>
+<script>
+var curmes = 0
+var a = 0
+var counter = 0
+var message = new Array()
+message[0] = "Welkom op wouter zijn cole page..."
+var temp = ""
+function typew()
+{
+a = a + 1
+check()
+window.status = message[curmes].substring(0, a)
+if(a == message[curmes].length + 5)
+{
+curmes = curmes + 1
+a = 0
+}
+if(curmes > 0)
+{
+curmes = 0
+}
+counter = setTimeout("typew()", 100)
+}
+function check()
+{
+if(a <= message[curmes].length)
+{
+if(message[curmes].substring(a, a + 1) == "")
+{
+a = a + 1
+check()
+}
+}
+}
+</script>
+<meta name="keywords" content="java, java-script, animated gifs, gif, games, catz2, catz 2, cheats, cheat codes, cheat, Wouter, Wouter Groeneveld, spelletjes, leuke spelletjes, game-boy, gameboy, WGP, Visual Basic, VB, visual basic code, visual basic scource">
+<meta name="description" content="Welkom Op Wouter zijn site. Klik hier voor Visual Basic, games, cheats, java, animated gifs, om een gameboy te kopen (tweedehands), en nog veel meer.....">
+<META NAME="author" CONTENT="Wouter Groeneveld - w_groeneveld@hotmail.com">
+<META NAME="publisher" CONTENT="Wouter Groeneveld - w_groeneveld@hotmail.com">
+<META NAME="copyright" CONTENT="(c) 1998-1999 Wouter Groeneveld">
+<META NAME="language" CONTENT="NL">
+<META NAME="robots" CONTENT="ALL">
+<title>Wouter zijn Site: VB, games, mezelf, ...</title>
+</head>
+<body>
+<body background ="papier.gif">
+<body onload=typew()>
+<bgsound src="muziek.mid" loop=infinite>
+<center>
+<p><h2><font face="Trebuchet MS" color="0f000f">Welkom!</h2></p>
+</font><font face="Trebuchet MS" color="0000ff"><marquee>Kies een van de onderstaande linken om door te gaan.</marquee></font><font face="Trebuchet MS" color="000000">
+<table><tr><td>
+<p><a href="indexvb.html"><img src="button.gif" border=0></a></td><td>   <img src="vb.jpg"></td><td>Visual basic
+</td><tr><td><a href="indexgames.html"><img src="button.gif" border=0></a></td><td>   <img src="tweety.gif"></td><td>Games & cheatcodes
+
+</td></tr></table>
+<p><a href="javascript:window.close()">Sluit dit venster</a></p>
+<p><center><img src="bar2.gif">
+</body>
+</html>

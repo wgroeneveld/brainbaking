@@ -1,0 +1,81 @@
+<HTML>
+<HEAD><TITLE>Explode Module</TITLE>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Codes');
+	</SCRIPT>
+	<BASE TARGET="mainCodes">
+
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightClick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+
+<!-- einde no rightclick -->
+
+</HEAD>
+
+<BODY BGCOLOR="CCEE00">
+<CENTER>
+<A HREF="./Download/FormEffects.bas"><H4>FormExplode;Implode Module</H4></A>
+</CENTER>
+<P>Om de module te downloaden, klik je het beste op de titel. (in .Bas vorm). Deze module werd gemaakt in Visual Basic 6, maar is ook VB4 32-BIT, VB5 & VB6 compatibel. Dat zijn ze trouwens allemaal...(Ongeveer 6 KB)</P>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Gebruik:</U></CENTER><BR>
+</FONT><FONT COLOR="0000AA">
+Private Sub Command1_Click()<BR>
+    Call ImplodeForm(Me, 2, 500, 1)<BR>
+    End<BR>
+    Set Form1 = Nothing<BR>
+End Sub<BR>
+<BR>
+Private Sub Form_Load()<BR>
+Call ExplodeForm(Me, 1000)<BR>
+End Sub<BR>
+
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)<BR>
+Call ImplodeForm(Me, 2, 500, 1)<BR>
+End Sub<BR>
+
+</P></FONT>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Verschillende Routines:</U></CENTER><BR>
+<OL>
+</FONT><FONT COLOR="0000AA">
+ <LI><B>ExplodeForm</B> - Laat het formulier bij afsluiten 'exploderen'
+ <LI><B>ImplodeForm</B> - Laat het formulier bij afsluiten 'imploderen'
+</OL>
+</P></FONT>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Uitleg bij API Declaraties:</U></CENTER><BR>
+<OL>
+</FONT><FONT COLOR="0000AA">
+ <LI><B>SetBkColor</B> - kies een specifierende bk-kleur voor dezer routine
+ <LI><B>ReleaseDC</B> - Bevrijd de DC van het geheugen om door andere programma's gebruikt te worden. 
+ <LI><B>GetDC</B> - Retourneert de DC van een speciaal gebied, nl. 'Client area' (zie CaptureClient) 
+ <LI><B>Rectangle</B> - Maak een rechthoek
+ <LI><B>CreateSolidBrush</B> - Maak een gevoelige borstel rond een bep. voorwerp en bep. kleur
+ <LI><B>DeleteObject</B> - Selecteer een object
+</OL></FONT><FONT COLOR="000000">
+<BR>
+<HR WIDTH="50%"></FONT>
+</BODY>
+</HTML>

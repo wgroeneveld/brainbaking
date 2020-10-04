@@ -1,0 +1,35 @@
+BODY  {
+	background-color : #00FFFF;
+	color : #000000;
+	font-size : 10pt;
+	font-family : Tahoma, Verdana, Arial, Helvetica, "MS Sans Serif";
+	margin : 5px;
+}
+
+A  {
+	color : #000000;
+	font-family : Tahoma, Verdana, Arial, Helvetica, "MS Sans Serif";
+	font-weight : bold;
+	text-decoration : none;
+	line-height : 10pt;
+}
+
+
+HR  {
+	color : #000000;
+	height : 1px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+
+BODY  {
+scrollbar-face-color: #11AA11; 
+scrollbar-shadow-color: #FFFFFF; 
+scrollbar-highlight-color: #FFFFFF; 
+scrollbar-3dlight-color: #11AA11;
+scrollbar-darkshadow-color: #FFFFFF; 
+scrollbar-track-color: #FFFFFF; 
+scrollbar-arrow-color: #0000BB; 
+font-family: Verdana, Arial, Helvetica, sans-serif; 
+text-decoration: none
+}

@@ -1,0 +1,39 @@
+<html>
+<head><title>aWhile Software homepage</title>
+
+<!-- CheckParent -->
+	<SCRIPT LANGUAGE="JavaScript">
+	function checkParent() {
+	 if (parent != self)
+	  top.location.href = self.location.href
+	}
+	</SCRIPT>
+<!-- einde CheckParent -->
+
+<!-- Netscape of explorer? -->
+<SCRIPT LANGUAGE="JavaScript">
+	if(navigator.appName == 'Netscape') {
+	alert('Het is aangeraden om deze website met Internet Explorer te bekijken, want Netscape 4.x ondersteunt slecht stylesheets.');
+	}
+</SCRIPT>
+<!-- einde netscape/explorer test -->
+
+</head>
+
+<FRAMESET ROWS="23,*" COLS="100%" FRAMEBORDER="0" FRAMESPACING="0" BORDER="0">
+	<FRAME NAME="Fr_Boven" SRC="Fr_boven.html" SCROLLING="NO" NORESIZE>
+	
+                 <FRAMESET COLS="140,*" ROWS="100%" FRAMEBORDER="0" FRAMESPACING="0" BORDER="0">
+		<FRAME NAME="Fr_Links" SRC="Fr_Links.html" SCROLLING="NO" NORESIZE>
+		<FRAME NAME="main" SRC="home.html" SCROLLING="AUTO" NORESIZE>
+	</FRAMESET>
+
+</FRAMESET>
+<noframes>
+Were sorry but youve reached a web site that uses frames.  You will need a
+frames-enabled browser in order to view the site.
+</noframes>
+
+<body>
+</body>
+</html>

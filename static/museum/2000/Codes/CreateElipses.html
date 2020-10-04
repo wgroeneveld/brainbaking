@@ -1,0 +1,113 @@
+<HTML>
+<HEAD><TITLE>CreateElipses Klasse</TITLE>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Codes');
+	</SCRIPT>
+	<BASE TARGET="mainCodes">
+
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightClick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+
+<!-- einde no rightclick -->
+
+</HEAD>
+
+<BODY BGCOLOR="CCEE00">
+<CENTER>
+<A HREF="./Download/CreateElipses.cls"><H4>Create Elipses Klasse</H4></A>
+</CENTER>
+<P>Om de module te downloaden, klik je het beste op de titel. (in .cls vorm). Deze module werd gemaakt in Visual Basic 6, maar is ook VB4 32-BIT, VB5 & VB6 compatibel. Dat zijn ze trouwens allemaal...(Ongeveer 15 KB)</P>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Gebruik:</U></CENTER><BR>
+</FONT><FONT COLOR="0000AA">
+
+Private Sub Form_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)<BR>
+  <BR>
+Dim GDIEllipse As CGDIEllipse<BR>
+Set GDIEllipse = New CGDIEllipse<BR>
+<BR>
+  With GDIEllipse<BR>
+  <BR>
+     Draw a hatched green circle<BR>
+    .Left = ScaleX(X, vbTwips, vbPixels) - 100<BR>
+    .Top = ScaleY(Y, vbTwips, vbPixels) - 100<BR>
+  .Right = ScaleX(X, vbTwips, vbPixels)<BR>
+  .Bottom = ScaleY(Y, vbTwips, vbPixels)<BR>
+  <BR>
+  .BorderColor = vbYellow<BR>
+  .BorderWidth = 1<BR>
+  .FillColor = vbGreen<BR>
+  .BrushStyle = ebsBS_HATCHED<BR>
+    .HatchStyle = ehsHS_DIAGCROSS<BR>
+.ForegroundMixMode = eroR2_COPYPEN<BR>
+  .PenStyle = epsPS_DASH<BR>
+    <BR>
+  Draw the ellipse. See also Draw3DEllipse<BR>
+    .DrawEllipse Me.hdc<BR>
+    <BR>
+    ' Draw a 3D Oval<BR>
+    .Left = ScaleX(X, vbTwips, vbPixels)<BR>
+    .Top = ScaleY(Y, vbTwips, vbPixels)<BR>
+    .Right = ScaleX(X, vbTwips, vbPixels) + 100<BR>
+    .Bottom = ScaleY(Y, vbTwips, vbPixels) + 75<BR>
+   <BR>
+    .PenStyle = epsPS_SOLID<BR>
+    .Draw3DEllipse Me.hdc, vb3DShadow, vb3DHighlight<BR>
+      <BR>
+ End With<BR>
+
+End Sub<BR>
+
+<BR>
+Private Sub Form_Load()<BR>
+Call ExplodeForm(Me, 1000)<BR>
+End Sub<BR>
+
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)<BR>
+Call ImplodeForm(Me, 2, 500, 1)<BR>
+End Sub<BR>
+
+</P></FONT>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Verschillende Routines:</U></CENTER><BR>
+</FONT><FONT COLOR="0000AA">
+Die zijn er veel te veel, zijt blij dat ik het gebruik al helemaal heb uitgeschreven! 
+</P></FONT>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Uitleg bij API Declaraties:</U></CENTER><BR>
+<OL>
+</FONT><FONT COLOR="0000AA">
+ <LI><B>CreateBrushIndirect</B> - Maak een borstel van indirecte kleuren aan
+ <LI><B>CreatePen</B> - Maak een 'Pen' aan
+ <LI><B>SetROP2</B> - ?? Mail me als je het weet aub
+ <LI><B>GetROP2</B> - ?? Mail me als je het weet aub
+ <LI><B>SelectObject</B> - Selecteer een object
+ <LI><B>DeleteObject</B> - verwijder een object
+ <LI><B>Ellipse</B> - het belangrijkste: maak een vorm van een elipse
+ <LI><B>GetSysColor</B> - Zet de systeem kleuren in een variabele
+</OL></FONT><FONT COLOR="000000">
+<BR>
+<HR WIDTH="50%"></FONT>
+</BODY>
+</HTML>

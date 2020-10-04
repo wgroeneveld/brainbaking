@@ -1,0 +1,67 @@
+<HTML>
+<HEAD><TITLE>AutoUnPack programma</TITLE>
+<!-- styles -->
+	<SCRIPT SRC="./../stylesheetselector.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		CSSFileSelector('./Fr_Software');
+	</SCRIPT>
+	<BASE TARGET="mainSoftware">
+
+<!-- No RightClick -->
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function right(e) {
+if (navigator.appName == 'Netscape' && 
+(e.which == 3 || e.which == 2))
+return false;
+else if (navigator.appName == 'Microsoft Internet Explorer' && 
+(event.button == 2 || event.button == 3)) {
+alert("U hebt geen toestemming om 'RightCLick' te gebruiken.");
+return false;
+}
+return true;
+}
+
+document.onmousedown=right;
+document.onmouseup=right;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (document.layers) window.captureEvents(Event.MOUSEUP);
+window.onmousedown=right;
+window.onmouseup=right;
+//  End -->
+</SCRIPT>
+<!-- einde noright click -->
+
+</HEAD>
+
+<BODY BGCOLOR="CCEE00">
+<CENTER>
+<A HREF="./Download/AutoUnPack.zip"><H4>AutoUnPack</H4></A>
+</CENTER>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Download:</U></CENTER><BR>
+<A HREF="./Download/AutoUnPack.zip"><IMG SRC="./../computer.gif" BORDER="0" ALT="computer"> Download hier of klik op de computer of op de titel</A></P>
+<P><FONT COLOR="000000" SIZE="2"><CENTER><U>Beschrijving:</U></CENTER><BR>
+AutoUnPack is een handig programma waarmee je automatisch een heleboel zip/ace/rar bestanden tegelijk kunt unpacken. Dat zegt de naam al zelf.
+<BR>Om de gebruiker het nog gemakkelijker te maken, heb ik in de windows verkenner een optie ingeschakeld dat je [rechtermuisknop] op een map je kan kiezen voor "AutoUnPack...'" 
+Dat betekend dat die map automatisch zonder enige moeite unpacked wordt. Handig, niet? Deze optie kan men ook uitschakelen via de opties.<BR>
+Er is ook een optie dat je elk zip/ace/rar bestand apart in een map steekt die genaamd is naar de naam van het pack-bestand. Ook dat kan men uitschakelen via de opties.<BR>
+Laatst is er bijgekomen dat je ook .ZIP bestanden kan lezen voor ze uit te pakken, dat is wel soms handig. Verder eindelijk een ErrorHandling en integratie met [deep]software.
+</P>
+<P><CENTER><U>Laatste Versie:</U></CENTER><BR>
+3.1.3
+</P>
+<P><CENTER><U>Grootte:</U></CENTER><BR>
+Zipped: 230 KB<BR>
+UnZipped: 484 KB</P>
+<P><CENTER><U>Externe bestanden:</U></CENTER><BR>
+<OL>
+ <LI><B>UnAce.dll</B> - de UnAce DLL die nodig is bij ace bestanden.<BR>
+ <LI><B>UnRar.dll</B> - de UnRar DLL die nodig is bij rar bestanden <BR>
+ <LI><B>UnZip.dll</B> - de UnZip DLL die nodig is bij zip bestanden<BR>
+</OL>
+</P><P><CENTER><U><A HREF="Shots/AutoUnPack.gif"><B>ScreenShot</B></A>
+</U></CENTER>
+</P><P>
+<HR WIDTH="50%"></P></FONT>
+</BODY>
+</HTML>

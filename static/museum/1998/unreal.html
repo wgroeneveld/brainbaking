@@ -1,0 +1,174 @@
+<html>
+<head>
+<style>
+<!-- Hide style for old browsers __ THIS STYLE SHOULD BE INSIDE HEAD OF DOCUMENT __
+BODY          {font-family:Verdana,Arial , Trebuchet MS;font-size="16"}
+A:link    {text-decoration: underline; color: #FF0000}
+A:visited {text-decoration: underline; color: #0000FF}
+A:hover   {text-decoration: none; color: #ffffff}
+A:active  {text-decoration: underline; color: #Fonts (seperate with comma)}
+-->
+</style>
+<title>
+Unreal game
+</title>
+</head>
+<body>
+<body background="brick.gif" link=ff00ff vlink=ff00ff alink=ff00ff>
+<center>
+<script language="JavaScript">
+alert("Opgepast! Niet voor kleine kidjes...")
+</script>
+<script language="JavaScript">
+unreal_site=window.open("http://www.unreal.com","Unreal_site","toolbar=1,location=0,status=1,menubar=0,scrollbars=1,resizable=1,fullscreen");
+</script>
+<img src="unreal_logo.gif">
+</center>
+<p>
+<font face="trebuchet MS" color=ffff0f>
+<img src="unr1.gif" align="right">
+<b>Er is weeral een fantastishe shoot-'m-up game uit: Unreal.<br>
+Al heb je 380 mb nodig op je C-schijf, <br>toch is het en blijft het een pijl in de roos.
+Als 'ie zo nog doorgaat stoot Unreal nog weleens Quake II van de troon...<br>
+Aan de de prachtige beelden en geluiden kun je niet weerstaan!
+</font>
+</b>
+</p>
+<p>
+<font face="trebuchet MS" color=fffe5b size=2>
+<img src="unr2.gif" align="left">
+Deze game is niet zomaar een game. Ze heeft iets heel aparts...<br>
+je wordt eraan verslaafd! En elk level kan je zelf ineen steken.<br>
+Met de speciale Unreal-editor. (ook voor professionele mensen)<br>
+Iedereen kan zijn favoriete speler kiezen: een man met een pet, een stoere vrouw, <br>
+Een spierbundel, noem maar op... Als er een level te saai wordt, waarom maak je dan niet je eigen monster?
+Daar bestaan cheat codes toch voor, of niet? Als je geen wapens hebt of niet veel energie meer;
+typ dan toch rustig een code in!
+<p>
+<img src="unr3.jpg" align="right">
+Hierboven zie je een vrouw (de speler) die een monster ontwijkt. Met dit spel kun je dus ook zwemmen.
+Juist! Ook hoog springen, door de muren lopen, vliegen, ...<br>
+Rechts zie je een kleine screenshot van iemand die een monster "de kop af knalt" met nogal wat bloed.
+Dit spel is ook bestemd (geschikt) voor kinderen <b>boven de 18 jaar! </b> Ik zeg er wel niet bij dat ik nog maar 13 ben...
+(OEPS)
+<p>
+<font face="trebuchet MS" color=ff00ff size=4>
+<a href="codeunr.txt">klik hier</a></font>
+<font face="trebuchet MS" color=fffe5b size=2>
+Om de zgn. codes van Unreal af te halen.</font>
+<br>
+<font face="trebuchet MS" color=ff00ff size=4>
+<a href="http://downloads.unreal.com/UnrealBeta219.zip">Klik hier</a></font>
+<font face="trebuchet MS" color=fffe5b size=2>
+Om dit fantastisch spel te downloaden.
+<p><b>
+<a href="http://www.planetunreal.com/">http://www.planetunreal.com/</a><br>
+<a href="http://www.unreal.com/">http://www.unreal.com/</a><br>
+<a href="http://www.unrealed.net/">http://www.unrealed.net/</a><br>
+<img src="uam.gif" align="right">
+<a href="http://www.freshmeat.org/unreal/">http://www.freshmeat.org/unreal/</a><br>
+<a href="http://www.unrealnation.com/">http://www.unrealnation.com/</a><br>
+<br>
+<br>
+</b>
+Enkele andere Unreal-sites.<br><script>
+var MAX_ENGINES = 35;
+var tp='';
+var tpp='';
+var find = 'hunt';
+var hold=0;
+var hold2=0;
+var gog=0;
+var ap='';
+function MakeArray(n) {
+for (var i = 1; i <= n; i++) {
+this[i] = 0;
+}
+this.maxlen = n;
+this.len = 0;
+return this;
+}
+var engs = new MakeArray(MAX_ENGINES);
+function find_substring(needle, haystack) {
+var i, needlen = needle.length, haylen = haystack.length;
+for (i=0; i<=haylen-needlen; i++) {
+if (needle == haystack.substring(i,i+needlen))
+return i;
+}
+return false;
+}
+function Engine(name, opts, home, search) {
+var gotcha = find_substring(find, search);
+this.name = name;
+this.opts = opts;
+this.home = home;
+this.pre_gotcha = search.substring(0,gotcha);
+this.post_gotcha= search.substring(gotcha+find.length, search.length);
+}
+function Add(name, opts, home, search) {
+engs.len++;
+if (engs.len <= engs.maxlen) {
+engs[engs.len] = new Engine(name, opts, home, search)
+}
+else {
+alert ('Better increase MAX_ENGINES: ' + engs.Len + '>' + engs.maxlen)
+}
+}
+function DisplayForm() {
+document.writeln('<CENTER><FORM Name=Gotchaform OnSubmit="HandleForm(this); return false">');
+document.writeln('<strong>Zoek voor:</strong>&nbsp;<INPUT size=30 name="query" value="unreal">');
+document.writeln('&nbsp;<strong>met</strong>&nbsp;<SELECT name="service">');
+for (i=1; i <= engs.len; i++) {
+document.writeln("<OPTION " + engs[i].opts + "> " + engs[i].name);
+}
+document.writeln('</SELECT> <input type=submit value="Zoek"><br>');
+document.writeln('</FORM> </CENTER>');
+document.Gotchaform.query.focus()
+}
+function HandleForm(form){
+var i, newq="", oldq=form.query.value;
+for (i=0; i<oldq.length; i++) {  // compress [ ]+ into \+
+var thischar = oldq.charAt(i);
+if (thischar =="+")newq += "%2B";
+else
+if (thischar != ' ')
+newq += thischar;
+else if (lastchar != ' ')
+newq += '+';
+lastchar = thischar;
+}
+var eng = engs[1+form.service.selectedIndex];
+// Window
+search=window.open(newq ? eng.pre_gotcha + newq + eng.post_gotcha : eng.home,"SmartSearch","scrollbars=yes,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,resizable=yes,width='100%',hight='100%'");
+}
+Add("World - AltaVista","SELECTED","http://altavista.digital.com/","http://altavista.digital.com/cgi-bin/query?pg=q&what=web&fmt=d&q=hunt");
+Add("World - AltaVista (UseNet)","","http://altavista.digital.com/","http://altavista.digital.com/cgi-bin/query?pg=q&what=news&fmt=d&q=hunt" );
+Add("World - Yahoo!","","http://www.yahoo.com/","http://search.yahoo.com/bin/search?p=hunt" );
+Add("World - DejaNews","","http://www.dejanews.com/","http://search.dejanews.com/nph-dnquery.xp?query=hunt&defaultOp=AND&svcclass=dncurrent&maxhits=25");
+Add("World - HotBot","","http://www.search.hotbot.com","http://www.search.hotbot.com/search.html?MT=hunt&DC=25");
+Add("World - Infoseek UltraSmart","","http://www.infoseek.com/Home?pg=Home.html&sv=A2","http://www.infoseek.com/Titles?qt=hunt&col=WW&sv=A2");
+Add("World - Excite","","http://www.excite.com/","http://www.excite.com/search.gw?searchType=Concept&search=hunt&category=default");
+Add("World - Infoseek (Usenet)","","http://www.infoseek.com","http://www.infoseek.com/Titles?qt=hunt&col=NN&sv=A2");
+Add("World - Lycos","","http://www.lycos.com/","http://www.lycos.com/cgi-bin/pursuit?query=hunt&backlink=639");
+Add("World - Magellan","","http://www.mckinley.com/","http://www.mckinley.com/extsearch.cgi?query=hunt");
+Add("World - OpenText","","http://search.opentext.com","http://search.opentext.com/omw/simplesearch?SearchFor=hunt&mode=and");
+Add("World - WebCrawler","","http://webcrawler.com/","http://webcrawler.com/cgi-bin/WebQuery?searchText=hunt&maxHits=25");
+Add("World - Yahoo (PixSearch)","","http://ipix.yahoo.com/","http://ipix.yahoo.com/cgi-bin/y-new/keyword_search.cgi?db=%2Fdata%2Fglobal_keyword&q=hunt");
+// Software
+Add("Software - ZDNet","","http://www.zdnet.com/","http://www6.zdnet.com/cgi-bin/texis/swlib/hotfiles/search.html?Usrt=rel&Usrchtype=simple&Utext=hunt");
+Add("Software - DaveCentral","","http://www.davecentral.com/","http://www.davecentral.com/cgi-bin/search.pl?query=hunt");
+Add("Software - Filez","","http://www.filez.com/","http://filez.com/cgi/filez.cgi?query=hunt&type=All+Files&hits=50&domain=World&doit=Search/");
+Add("Software - Shareware.com","","http://www.shareware.com/","http://search.shareware.com/code/engine/Find?logop=and&cfrom=quick&orfile=True&hits=25&search=hunt&category=All-Categories");
+Add("Software - PC game finder","","http://www.pcgame.com/","http://www.pcgame.com/finder/search.cgi?key=hunt");
+// Denmark
+Add("Denmark - AltaVista (DK)","","http://altavista.telia.com/cgi-bin/telia","http://www.danielsen.com/cgi/thornew.cgi?country=danmark&cnt=50&q=hunt");
+Add("Denmark - Jubii","","http://www.jubii.dk/","http://soeg.jubii.dk/resultat.asp?startnummer=1&antalresultater=30&soegeord=hunt");
+Add("Denmark - Thor","","http://www.danielsen.com/thor/","http://www.danielsen.com/cgi/thornew.cgi?country=danmark&cnt=50&q=hunt");
+DisplayForm();
+</script>
+
+<p>
+<center><img src="skaarj.gif"> <img src="vlees.gif"></center>
+</font>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<html>
+<head>
+<script>
+var tick;
+function stop() {
+clearTimeout(tick);
+}
+function usnotime(){
+var ut=new Date();
+var h,m,s;
+var time='';
+h=ut.getHours();
+m=ut.getMinutes();
+s=ut.getSeconds();
+if(s<=9) s='0'+s;
+if(m<=9) m='0'+m;
+if(h<=9) h='0'+h;
+time+=h+':'+m+':'+s;
+document.rclock.rtime.value=time;
+tick=setTimeout('usnotime()',1000);
+}
+</script>
+<script language="javascript">
+<!--
+
+{
+
+  mezelfon = new Image(92, 16); mezelfon.src = "mezelf_l.jpg";
+  mezelfoff = new Image(92, 16); mezelfoff.src = "mezelf_d.jpg";
+  linkson = new Image(92, 16); linkson.src = "links_l.jpg";
+  linksoff = new Image(92, 16); linksoff.src = "links_d.jpg";
+  javaon = new Image(92, 16); javaon.src = "java_l.jpg";
+  javaoff = new Image(92, 16); javaoff.src = "java_d.jpg";
+  mailon = new Image(92, 16); mailon.src = "mail_l.jpg";
+  mailoff = new Image(92, 16); mailoff.src = "mail_d.jpg";
+  zoekon = new Image(92, 16); zoekon.src = "zoek_l.jpg";
+  zoekoff = new Image(92, 16); zoekoff.src = "zoek_d.jpg";
+  gaston = new Image(92, 16); gaston.src = "gast_l.jpg";
+  gastoff = new Image(92, 16); gastoff.src = "gast_d.jpg";
+}
+
+function licht(imgName)
+{
+  imgOn = eval (imgName + "on.src");
+  document [imgName].src = imgOn;
+}
+
+function donker(imgName)
+{
+  imgOff = eval (imgName + "off.src");
+  document [imgName].src = imgOff;
+}
+
+-->
+</script>
+<title>frame</title>
+</head>
+<body>
+<body onload='usnotime()' onunload='stop()'>
+<body background="worms2.gif">
+<center><form name="rclock">
+<input type="text" name="rtime" size="8">
+<table>
+<tr><td valign=top>
+<a href="mezelf2.html" target="basis" onMouseover = "licht('mezelf')" onMouseout = "donker('mezelf')">
+<img src="mezelf_d.jpg" border=0 name="mezelf" alt="Mezelf en m'n familie"></a><br>
+<a href="top100.htm" target="basis" onMouseover = "licht('links')" onMouseout = "donker('links')">
+<img src="links_d.jpg" border=0 name="links" alt="links naar andere pages"></a><br>
+<a href="java2.html" target="basis" onMouseover = "licht('java')" onMouseout = "donker('java')">
+<img src="java_d.jpg" border=0 name=java alt="java script"></a><br>
+<a href=mailto:w_groeneveld@hotmail.com onMouseover = "licht('mail')" onMouseout = "donker('mail')">
+<img src="mail_d.jpg" border=0 name="mail" alt="Mail me eens een briefje!"></a><br>
+<a href="zoek.html" target="basis" onMouseover = "licht('zoek')" onMouseout = "donker('zoek')">
+<img src="zoek_d.jpg" border=0 name="zoek" alt="Zoekmachines"></a><br>
+<a href="gastboek.htm" target="basis" onMouseover = "licht('gast')" onMouseout = "donker('gast')">
+<img src="gast_d.jpg" border=0 name="gast" alt="Het gastenboek"></a><br>
+</td></tr></table>
+<center><img
+src=http://Counter.telecom.at/allworld/Count.cgi?df=w_groeneveld@hotmail.com>
+</center>
+</body>
+</html>
