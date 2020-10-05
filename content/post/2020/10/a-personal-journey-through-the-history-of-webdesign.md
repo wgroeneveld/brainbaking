@@ -26,7 +26,7 @@ The following techniques were considered cool back then:
 - Make things pop! Use background images, GIFs, add snow flake JS code when appropriate, spam `<marquee/>`, `<bgsound/>`, and `<font/>`. 
 - Pre-process graphics in _Corel Draw_ (remember that?)
 
-### [2000](/): Macromedia Flash, Cookies
+### [2000](/museum/2000): Macromedia Flash, Cookies
 
 Since 1998, the popularity of Macromedia Flash exploded. The simplicity involved in creating morphing shapes allowed any website owner to have a classic but fancy "intro page", before continuing on to "index2.html". Since then, Flash was thé thing to include in any site. That was before 2005 when adobe decided to buy Macromedia. Before Sublime Text, there was another brilliant piece of Macromedia software: _DreamWeaver_. 
 
