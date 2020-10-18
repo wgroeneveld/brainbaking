@@ -9,7 +9,7 @@ categories:
 date: 2020-10-17
 ---
 
-After the previous month's [reviving of a 80486 PC](/post/2020/09/reviving-a-80486/), including [upgrade 1](/post/2020/09/486-upgrade-sd-hdd/) and [upgrade 2](/post/2020/09/486-upgrade-sound-blaster/), it is time to revisit the last decent DOS-based Windows operating system: Windows 98 Second Edition. Earlier, I admitted the `66MHz` DX2 processor just wasn't good enough for Duke3D and Quake. I do have a Windows XP box (meat for another blog post), so I wanted to build something in-between. And yes, I will happily ignore the existence of Windows Me(h).
+After the previous months' [reviving of a 80486 PC](/post/2020/09/reviving-a-80486/), including [upgrade 1](/post/2020/09/486-upgrade-sd-hdd/) and [upgrade 2](/post/2020/09/486-upgrade-sound-blaster/), it is time to revisit the last decent DOS-based Windows operating system: Windows 98 Second Edition. Earlier, I admitted the `66MHz` DX2 processor just wasn't good enough for Duke3D and Quake. I do have a Windows XP box (meat for another blog post), so I wanted to build something in-between. And yes, I will happily ignore the existence of Windows Me(h).
 
 The 486 PC is able to run games from the early eighties to 1995. My Windows XP machine is a late WinXP era PC that is able to play games up to 2011. I needed something that sits comfortably in between these two timelines. The original Pentium CPU wasn't on my mind since a fast 486 (DX4) is able to beat it. As a kid, in the year 2000 I was a proud owner of a newly released AMD Athlon Thunderbird `1GHz`, upgrading from a Pentium II. It was the year of the Gigahertz barrier breach:
 
