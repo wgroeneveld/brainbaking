@@ -1,6 +1,11 @@
 ---
 title: Building an Athlon Windows 98 Retro PC
 subtitle: "Gaming from Quake to Quake III: Arena!"
+tags:
+  - win98
+  - retro
+categories:
+  - hardware
 date: 2020-10-17
 ---
 
