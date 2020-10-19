@@ -13,7 +13,6 @@ enableGitInfo = true
     category = "categories"    
 
 [params]
-    fathomid = "WNLTO"
     favicon = "/img/avatar-icon.png"
     pagination = 15
 
