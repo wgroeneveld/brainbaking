@@ -30,13 +30,13 @@ Another old and very much yellowed PC tucked away in a storage area brought salv
 It is important to take a moment to look at various motherboard features, such as the interfacing support. I found another old board with one ISA-slot, but it only supports socket-A CPUs up to `1.0GHz`. Do I really need an ISA-based Sound Blaster in this PC? The 486 will more than suffice for OPL3/WaveTable music. In the end, I chose a board that supports both DDR and SD (but not both), and went with the latter. This is what I managed to scrape together:
 
 - AMD [Athlon XP Thoroughbred](https://nl.wikipedia.org/wiki/Athlon_XP) 2200+ underclocked at `1.35GHz`
-- Gigabyte K7 motherboard (2xUSB1.1, whoop-whoop!)
+- Gigabyte/ECS [K7S5A](https://soggi.org/motherboards/ecs-elitegroup/K7S5A.htm) motherboard (2xUSB1.1 and another USB1.1 header, wow!)
 - 2x`256MB` PC133 Geil SD-RAM
 - Seagate Barracuda 7200rpm `80GB` IDE
 - [nVidia Riva TNT2 M64](https://www.techpowerup.com/gpu-specs/riva-tnt2-m64.c1304) OEM AGP graphics card
 - Creative [Sound Blaster PCI Vibra 128](https://en.wikipedia.org/wiki/Sound_Blaster#Fifth_generation_Sound_Blasters,_PCI_cards,_multi-channel_and_F/X) (fifth gen.) - included with case
 - A generic Realtek Ethernet RJ-45/Coax jack PIC network card
-- [AOpen HQ45 ATX mid tower](https://www.cnet.com/products/aopen-hq45-mid-tower-atx-series/) with a newer `240W` PSU - `€50`
+- [AOpen HQ45 ATX mid tower](https://www.cnet.com/products/aopen-hq45-mid-tower-atx-series/) with a newer `250W` PSU - `€50`
 
 Although some of the cards aren't exactly something to write home about (A GeForce 3 Ti200 I once owned would also be authentic), they will do just fine until I come across something better. Ebay is sometimes too depressing: instant gratification at the cost of steep shipping prices. 
 
@@ -59,3 +59,5 @@ I decided to also install the [Unofficial Win98SE Service Pack](http://htasoft.c
 The Pinnacle PCTV Rave PCI tuner card I once had installed in a case such as this one refused to work on Win98, while it works flawlessly on the WinXP machine. I do have to admit that back in the day I quickly switched from Win98/Me to NT4/2000 after being fed up with the frequent crashes, odd error messages on bootup/shutdown and general unstableness of the operating system. Even simply uninstalling stuff like the Pinnacle software and drivers caused problems after rebooting. The hardware specs certainly can handle Win2000/XP but solely for nostalgic reasons, I wanted one PC with Win9x. 
 
 The [MS Plus!](https://en.wikipedia.org/wiki/Microsoft_Plus!) themes still make me smile. Who doesn't like wiggling his mouse pointer all day if it's an animated bee, or hearing the startup/shutdown jungle noise? The first thing I did after the video/audio drivers was of course installing [Wizardry 8](https://jefklakscodex.com/tags/wizardry8/), my all-time favorite PC RPG, released in 2001.  Now, on to GOG.com/my gaming rack to fetch Unreal Tournament/Diablo II/GTA2/Baldur's Gate/Might and Magic VIII and others!
+
+Looking for more pictures of retro setups? Browse through Reddits' [Retro Battle Stations](www.reddit.com/r/retrobattlestations/) page.
