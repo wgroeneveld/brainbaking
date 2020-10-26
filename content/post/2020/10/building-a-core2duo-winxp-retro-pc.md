@@ -35,7 +35,7 @@ When I rescued the PC from a dusty closet earlier this month, I went over the op
 The biggest disadvantage is the whiny tiny fan that loves to make a LOT of noise - not exactly what I was aiming for. A `5V` molex mod luckily shut it up. Also, buying a 8800GTS would force me to upgrade my `350W` PSU. The full build looks like this:
 
 - Intel [Core2Duo](https://nl.wikipedia.org/wiki/Intel_Core_2) E6550@`2.3 GHz`
-- [MSI G33M MS-7357](https://www.cpu-upgrade.com/mb-MSI/G33M_(MS-7357).html) DDR2 micro-motherboard, PCI-E `1x`
+- [MSI G33M MS-7357](https://www.cpu-upgrade.com/mb-MSI/G33M_(MS-7357).html) DDR2 micro-motherboard, PCI-E 1.0
 - 2x`1 GB` Geil Dual Channel DDR2-RAM
 - Seagate [Barracuda 7200.10 RPM](https://nl.hddzone.com/seagate-st3320620as-harde-schijf-pcb/) `320 GB` HDD
 - AMD Radeon HD5570
@@ -55,7 +55,7 @@ Simply put: it's great. Until your heart desires playing The Witcher 2 on a dece
 
 ![](../winxp3-aoe3.jpg "Age of Empires III, everything maxed, on 1680x1050: above 60FPS.")
 
-Even DScaler 4.x coupled with my trusty Pinnacle PCTV Rave PCI TV-Card works like a charm, connecting the Composite output of my GameCube to the system. That's how I played console games in 2003... Fortunately, nowadays we can safely replace a blurry mess with razor-sharp pixels outputted by FPGA-powered projects like Carby or the [EON GCHD Mk-II](https://www.eongaming.tech/product-page/gchd-mk-ii-hdmindigo) adapter. That means I moved my trusty silver GameCube to a newer HDMI-enabled screen. I might try HDMI PCI-E capture cards next in this build, but the motherboard is only capable of PCI-E `1x` speeds. 
+Even DScaler 4.x coupled with my trusty Pinnacle PCTV Rave PCI TV-Card works like a charm, connecting the Composite output of my GameCube to the system. That's how I played console games in 2003... Fortunately, nowadays we can safely replace a blurry mess with razor-sharp pixels outputted by FPGA-powered projects like Carby or the [EON GCHD Mk-II](https://www.eongaming.tech/product-page/gchd-mk-ii-hdmindigo) adapter. That means I moved my trusty silver GameCube to a newer HDMI-enabled screen. I might try HDMI PCI-E capture cards next in this build, but the motherboard is only capable of PCI-E 1.0 speeds (`250 MB`/s per pin instead of PCI-E 2.0's `500 MB`). 
 
 After installing some games and tweaking Windows a bit:
 
