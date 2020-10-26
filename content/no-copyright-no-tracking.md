@@ -20,7 +20,7 @@ Of course I would be really grateful if you would still attribute Brain Baking a
 
 Who doesn't like cookies? I'm [a baker](https://redzuurdesem.be/) - I would know. Well, I don't like cookies on websites, because they rise privacy concerns. That is why, inspired by [Laura Kalbag's "I don't track you"](https://laurakalbag.com/i-dont-track-you/) philosophy, I do everything I can to _not_ track you, but to track **traffic** instead. 
 
-I achieved this by ditching Google Analytics and hosting third-party libraries myself. So _rest assured_, Google does not know you were here! Instead, I use [Fathom](https://usefathom.com), a simple and privacy-focused analytics system that is self-hosted. It does require one simple cookie but it's on my own SSL-verified domain. 
+I achieved this by ditching Google Analytics and hosting third-party libraries myself. So _rest assured_, Google does not know you were here! Instead, I use [GoatCounter](https://www.goatcounter.com), a simple and privacy-focused analytics system that is self-hosted. It does _not_ require any cookie and runs on my own SSL-verified domain. 
 
 The commenting system I self-host is [Commento](https://www.commento.io), a fast, privacy-focused commenting platform. It does come with cookies if you decide to login, but again: it's on my own SSL-verified domain. 
 
