@@ -3,6 +3,7 @@ title: "486 Upgrade 1: Sound Blaster 16"
 date: '2020-09-18'
 subtitle: "A Classic ISA sound card, including MIDI daughter board!"
 tags:
+  - soundblaster  
   - 486
   - retro
 categories:
@@ -90,5 +91,11 @@ Pin 4 = +5V
 See [all CT2290 jumper configurations](https://stason.org/TULARC/pc/sound-cards-multimedia/CREATIVE-LABS-INC-Sound-card-SOUNDBLASTER-16-PRO-C.html).
 
 Note that some static noise will inevitably make it to your boxes if you do decide to connect the motherboard pins to the Sound Blaster. That's part of the charm!
+
+**Addendum**, 6th of November 2020: The VOGONS [Grand OPL3 Comparison](https://sites.google.com/site/soundcardcomparison/) website ([original forum post](https://www.vogons.org/viewtopic.php?f=62&t=32933)) has this to say about the SB16 CT2290: 
+
+> It has one of the best FM sound i have heard so far. Very clean output, wide and clear spectrum range. The FM out of this card will please your ears. 
+
+You can download the [sample pack](https://dl.dropbox.com/u/43851675/CT2290/CT2290.zip) and compare it with other CT SB cards on the site. 
 
 [^perf]: It turns out that I forgot that the _TURBO_ pins were jumpered on themotherboard, but the button was not pressed. Without _TURBO_, the performance is comparable to a 386. Ouch, what a stupid mistake to make! Thanks [VOGONS community](https://www.vogons.org/viewtopic.php?f=46&t=76632) for the hints. 
