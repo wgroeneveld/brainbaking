@@ -1,6 +1,10 @@
 ---
 title: 'Personal Desktop Screenshots of Olde'
 subtitle: 'The result of HDD Treasure diving'
+tags:
+  - linux
+categories:
+  - software
 date: 2020-11-01
 ---
 

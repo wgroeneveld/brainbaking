@@ -21,7 +21,7 @@ I've been doing some research on the Sound Blaster family, and Wikipedia [summar
 4. The _AWE32_ (1994) and _AWE64_ (1996) digital sample-based synthesis cards;
 5. The PCI cards; roughly divided in _PCI128_/_AudioPCI_ and _Live!_ (1998), the _Audigy_ (2001), and the _X-Fi_ (2005).
 
-My [WinXP retro machine](/post/2020/10/building-a-core2duo-winxp-retro-pc/) never housed a soundcard: instead, it was the first PC I built that relied on embedded, onboard audio, coming from the motherboard. The [MSI MS-7357](https://www.manualslib.com/manual/709493/Msi-Ms-7357-V1-X.html?page=75#manual) mobo has a Realtek ALC888 audio chip soldered on that is capable enough in its own right. However, it pales in comparison with the Sound Blaster X-Fi or _eXtreme Fidelity_.
+My [WinXP retro machine](/post/2020/10/building-a-core2duo-winxp-retro-pc/) never housed a soundcard: instead, it was the first PC I built that relied on embedded, onboard audio, coming from the motherboard. The [MSI MS-7357](https://www.manualslib.com/manual/709493/Msi-Ms-7357-V1-X.html?page=75#manual) mobo has a Realtek `ALC888` audio chip soldered on that is capable enough in its own right. However, it pales in comparison with the Sound Blaster X-Fi or _eXtreme Fidelity_.
 
 ![](../xfi.jpg "The Sound Blaster X-Fi PCI Xtreme Music Edition.")
 
@@ -47,15 +47,15 @@ For example, this is a short Unreal Tournament 2004 clip, where audio hardware a
 
 {{< video "/vid/ut2004_withoutbass.mp4" >}}
 
-Next, I switched on _Bass Boost_ and the X-Fi _Crystallizer_. Notice the bassy "thuds" when clicking on the buttons in the upper menu. It sounds very hollow on my MacBook, but the difference is there:
+However feeble my attempt to capture the deltas, nobody will deny the superiority of EAX-enhanced sound. Next, I switched on _Bass Boost_ and the X-Fi _Crystallizer_. Notice the bassy "thuds" when clicking on the buttons in the upper menu. It sounds very hollow on my MacBook, but the difference is there:
 
 {{< video "/vid/ut2004_withbass.mp4" >}}
 
-When actually playing, the game sounds absolutely _fantastic_! The difference is even more pronounced when plugging in high quality headphones. At the moment, I don't have a box surround system plugged in, but the X-Fi CMSS 3D virtualization does a great job in giving the illusion of being fully immersed in the sound and music. 
+When actually playing, the game sounds absolutely _fantastic_! The difference is even more pronounced when plugging in high quality headphones, thanks to the CMSS-3D feature of the sound card: the X-Fi 3D virtualization does a great job in giving the illusion of being fully immersed in the sound and music. Admittedly, the difference between the Realtek and the X-Fi, without relying on the added features, is far from mind-blowing. As [Tom's Hardware](https://www.tomshardware.com/reviews/high-end-pc-audio,3733-19.html) already pointed out (in 2014), _anything above $2 buys more features, not better quality_. CMSS 3D and EAX do add to the total quality, though. 
 
 #### FPS Performance
 
-According to hardware reviews such as [Guru 3D](https://www.guru3d.com/articles-pages/sound-blaster-x-fi-titanium-hd-review,1.html), the fast `EMU20K1` chip should even give a graphics performance boost: less work for your CPU to be done. However, I measured FPS on multiple games, and I could not see a substantial fluctuation between normal audio or hardware-enabled audio. That might be because my system is already quite powerful for a 2005 computer, or because the Realtek chip does the job good enough, or because the games are programmed the way they are.
+According to hardware reviews such as [Guru 3D](https://www.guru3d.com/articles-pages/sound-blaster-x-fi-titanium-hd-review,1.html), the fast `EMU20K1` chip should even give a graphics performance boost: less work for your CPU to be done. However, I measured FPS on multiple games, and I could not see a substantial fluctuation between normal (embedded) audio or hardware-enabled (X-Fi) audio. That might be because my system is already quite powerful for a 2005 computer, or because the Realtek chip does the job good enough, or because the games are programmed the way they are.
 
 <script type='text/javascript' src='/js/amcharts4core.js'></script>
 <script type='text/javascript' src='/js/amcharts4charts.js'></script>
@@ -69,7 +69,15 @@ The real gain is proper EAX support, superior IN/OUT ports, bass boost, virtual 
 
 ![](../xfitools.jpg "A bunch of Creative Tools to fiddle with various settings.")
 
+Listen to a [DOOM general MIDI sample](https://forums.overclockers.com.au/threads/my-386-time-machine-project-so-far.902342/page-16#post-12708395) recorded by Phils Computer Lab to convince yourself that the X-Fi is very capable of pulling off DOS music tricks. I myself will resort to my other retro Win98/486 PCs for that. 
+
 I can happily conclude that the PCI slot will remain to be occupied by the X-Fi card, and the embedded audio will remain to be disabled. If it was all worth it for casual games such as playing _Plants VS Zombies_ without headphones, I don't know... But for a few (European) bucks, why wouldn't you? Grab them now before they become as scarce as the upper tier Sound Blaster 16 cards!
+
+More information:
+
+- LGR [X-Fi Platinum XP Upgrade](https://www.youtube.com/watch?v=-TpGtrhpDuI&t=326s)
+- Phils Computer Lab [Sound Blaster X-Fi MB3](https://www.youtube.com/watch?v=gSBMrHfsXjE) review
+- `AD_EXT` [pinout scheme](https://pinouts.ru/Audio-Video-Hardware/sb_audigy2_ad_ext_pinout.shtml). It is possible to tap into SPDIF, MIDI, and GP signals separately. Note that your front panel headphone jack will likely pick up static noise except if it's wired directly onto the Sound Blaster using these pins. Another reason to buy the drive bay!
 
 <script>
 am4core.ready(function() {
