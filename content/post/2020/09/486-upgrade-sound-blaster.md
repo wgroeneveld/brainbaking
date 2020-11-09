@@ -59,6 +59,16 @@ The music continues on to the gameplay:
 
 You can see that the PC clearly is not up to the task and even shows several dips in music and sound FX playback while firing missiles. I did temporarily resocket the motherboard with the DX40 CPU. All options are set to maximum, I do not care for graphics performance just yet[^perf]. 
 
+I isolated the Rise of the Triad gameplay music tracks by recording using my [X-Fi WinXP card](/post/2020/11/winxp-upgrade-sound-blaster-xfi). With SB16 Sound Blaster music option (daughterboard disabled):
+
+{{< audio "/audio/ROTT_sb16.mp3" >}}
+
+With WaveBlaster music option (daughterboard enabled):
+
+{{< audio "/audio/ROTT_waveblaster.mp3" >}}
+
+_Oh my_ indeed!
+
 Of course, this is just a sample of a single game. Other DOS MIDI masterpieces include:
 
 - The Monkey Island games;

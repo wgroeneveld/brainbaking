@@ -55,7 +55,7 @@ When actually playing, the game sounds absolutely _fantastic_! The difference is
 
 #### FPS Performance
 
-According to hardware reviews such as [Guru 3D](https://www.guru3d.com/articles-pages/sound-blaster-x-fi-titanium-hd-review,1.html), the fast `EMU20K1` chip should even give a graphics performance boost: less work for your CPU to be done. However, I measured FPS on multiple games, and I could not see a substantial fluctuation between normal (embedded) audio or hardware-enabled (X-Fi) audio. That might be because my system is already quite powerful for a 2005 computer, or because the Realtek chip does the job good enough, or because the games are programmed the way they are.
+According to hardware reviews such as [Guru 3D](https://www.guru3d.com/articles_pages/x_fi_xtreme_music_sound_blaster_review,1.html), the fast `EMU20K1` chip should even give a graphics performance boost: less work for your CPU to be done. However, I measured FPS on multiple games, and I could not see a substantial fluctuation between normal (embedded) audio or hardware-enabled (X-Fi) audio. That might be because my system is already quite powerful for a 2005 computer, or because the Realtek chip does the job good enough, or because the games are programmed the way they are.
 
 <script type='text/javascript' src='/js/amcharts4core.js'></script>
 <script type='text/javascript' src='/js/amcharts4charts.js'></script>
@@ -69,7 +69,19 @@ The real gain is proper EAX support, superior IN/OUT ports, bass boost, virtual 
 
 ![](../xfitools.jpg "A bunch of Creative Tools to fiddle with various settings.")
 
-Listen to a [DOOM general MIDI sample](https://forums.overclockers.com.au/threads/my-386-time-machine-project-so-far.902342/page-16#post-12708395) recorded by Phils Computer Lab to convince yourself that the X-Fi is very capable of pulling off DOS music tricks. I myself will resort to my other retro Win98/486 PCs for that. 
+To convince the reader that the X-Fi is very capable of pulling off DOS music tricks, by configuring games to use _"GENERAL MIDI"_, here are some Rise of the Triad music samples originating from my [SB16 article](/post/2020/09/486-upgrade-sound-blaster). Recorded on my 486 with SB16 Sound Blaster music option:
+
+{{< audio "/audio/ROTT_sb16.mp3" >}}
+
+The same SB16, with the S2 WaveBlaster daughterboard enabled:
+
+{{< audio "/audio/ROTT_waveblaster.mp3" >}}
+
+On WinXP with the X-Fi and General MIDI, using sound font "[ChromiumRevA](https://www.philscomputerlab.com/general-midi-and-soundfonts.html)":
+
+{{< audio "/audio/ROTT_XFi_Chorium.mp3" >}}
+
+_Oh my, oh my_. I'm not sure whether I prefer this over the S2, but it might convince me to occasionally play older games in DOSBox again! There are more cool sound fonts available, there is no definitive version, it all depends on the game. 
 
 I can happily conclude that the PCI slot will remain to be occupied by the X-Fi card, and the embedded audio will remain to be disabled. If it was all worth it for casual games such as playing _Plants VS Zombies_ without headphones, I don't know... But for a few (European) bucks, why wouldn't you? Grab them now before they become as scarce as the upper tier Sound Blaster 16 cards!
 
