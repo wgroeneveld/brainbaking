@@ -69,7 +69,7 @@ The real gain is proper EAX support, superior IN/OUT ports, bass boost, virtual 
 
 ![](../xfitools.jpg "A bunch of Creative Tools to fiddle with various settings.")
 
-To convince the reader that the X-Fi is very capable of pulling off DOS music tricks, by configuring games to use _"GENERAL MIDI"_, here are some Rise of the Triad music samples originating from my [SB16 article](/post/2020/09/486-upgrade-sound-blaster). Recorded on my 486 with SB16 Sound Blaster music option:
+To convince the reader that the X-Fi is very capable of pulling off DOS music tricks, by configuring games to use _"GENERAL MIDI"_, here are some Rise of the Triad music samples originating from my [SB16 article](/post/2020/09/486-upgrade-sound-blaster). Recorded with the X-Fi, on my 486 with the SB16 Sound Blaster music option:
 
 {{< audio "/audio/ROTT_sb16.mp3" >}}
 
