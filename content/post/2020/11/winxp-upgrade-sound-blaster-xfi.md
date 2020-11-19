@@ -89,7 +89,7 @@ More information:
 
 - LGR [X-Fi Platinum XP Upgrade](https://www.youtube.com/watch?v=-TpGtrhpDuI&t=326s)
 - Phils Computer Lab [Sound Blaster X-Fi MB3](https://www.youtube.com/watch?v=gSBMrHfsXjE) review
-- `AD_EXT` [pinout scheme](https://pinouts.ru/Audio-Video-Hardware/sb_audigy2_ad_ext_pinout.shtml). It is possible to tap into SPDIF, MIDI, and GP signals separately. Note that your front panel headphone jack will likely pick up static noise except if it's wired directly onto the Sound Blaster using these pins. Another reason to buy the drive bay!
+- `AD_EXT` [pinout scheme](https://pinouts.ru/Audio-Video-Hardware/sb_audigy2_ad_ext_pinout.shtml) - the same as Audigy's `AUD_EXT`. It is possible to tap into SPDIF, MIDI, and GP signals separately. Note that your front panel headphone jack will likely pick up static noise except if it's wired directly onto the Sound Blaster using these pins. Another reason to buy the drive bay!
 
 <script>
 am4core.ready(function() {

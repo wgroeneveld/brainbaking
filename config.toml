@@ -10,7 +10,7 @@ enableGitInfo = true
 
 [taxonomies]
     tag = "tags"
-    category = "categories"    
+    category = "categories"
 
 [params]
     favicon = "/img/avatar-icon.png"

@@ -98,7 +98,7 @@
     "dateModified": {{ .Lastmod.Format $ISO8601 }},
     "url" : {{ .Permalink }},
     "wordCount" : "{{ .WordCount }}",
-    "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }}"{{ .Title }}", "{{ .Section }}" ]
+    "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}{{ . }},{{ end }}{{ end }}{{ .Title }}, {{ .Section }} ]
 }
 </script>
 
