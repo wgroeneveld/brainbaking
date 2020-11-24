@@ -28,7 +28,10 @@
     {{- $imgsmall := $image.Resize "768x jpg q70" }}
     {{- $imgmedium := $image.Resize "960x jpg q85" }}
 
-    <meta property="og:image" content="{{.Site.BaseURL}}{{ $imgsmall.RelPermalink }}" />
+    <meta property="og:image" content="{{ $imgsmall.RelPermalink }}" />
+    <meta property="og:image:width" content="{{ $imgsmall.Width }}" />
+    <meta property="og:image:height" content="{{ $imgsmall.Height }}" />
+    
     <style>
       .big-img {
         background-image: url({{ $imgsmall.RelPermalink }}) !important;
