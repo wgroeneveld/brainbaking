@@ -11,11 +11,11 @@ categories:
 bigimg: audigy.jpg
 ---
 
-My initial [Windows 98SE retro PC build](/post/2020/10/building-an-athlon-win98-retro-pc) came with a free [Ensoniq AudioPCI](https://en.wikipedia.org/wiki/Sound_Blaster#Ensoniq_AudioPCI-based_cards) based card, a cheap 1998 OEAM alternative to the AWE64 or the Sound Blaster Live! line. The Sound Blaster PCI128 or _Vibra128_ is basically the same card, as it contains a Creative AudioPCI chip. The card is good enough if you're not picky, but it comes with a few major downsides:
+My initial [Windows 98SE retro PC build](/post/2020/10/building-an-athlon-win98-retro-pc) came with a free [Ensoniq AudioPCI](https://en.wikipedia.org/wiki/Sound_Blaster#Ensoniq_AudioPCI-based_cards) based card, a cheap 1998 OEM alternative to the _AWE64_ or the _Sound Blaster Live!__ line. The Sound Blaster PCI128 or _Vibra128_ is basically the same card, as it contains a Creative AudioPCI chip. The card is good enough if you're not picky, but it comes with a few major downsides:
 
 1. No external header pins for those cool looking `5.2"` audio drive bays;
 2. No EAX support for games;
-3. Horribly - just _horrible_ Sound Blaster 16 (SB16) DOS emulation;
+3. Horrible, _horrible_ Sound Blaster 16 (SB16) DOS emulation (see below);
 4. No digital audio out;
 5. Analog audio out is not that great.
 

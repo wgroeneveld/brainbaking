@@ -22,7 +22,29 @@
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:type" content="{{ if .Params.type }}{{ .Params.type }}{{ else }}website{{ end }}" />
 {{ if .Params.bigimg }}
-  <meta property="og:image" content="{{.Site.BaseURL}}{{ .Params.bigimg }}" />
+  {{- $image := resources.Get (printf "%s%s" "bigimg/" .Params.bigimg ) -}}
+  {{ if eq $image nil }}
+  {{ else }}
+    {{- $imgsmall := $image.Resize "768x jpg q70" }}
+    {{- $imgmedium := $image.Resize "960x jpg q85" }}
+
+    <meta property="og:image" content="{{.Site.BaseURL}}{{ $imgsmall.RelPermalink }}" />
+    <style>
+      .big-img {
+        background-image: url({{ $imgsmall.RelPermalink }}) !important;
+      }
+      @media (min-width: 768px) {
+        .big-img {
+          background-image: url({{ $imgmedium.RelPermalink }}) !important;
+        }
+      }
+      @media (min-width: 960px) {
+        .big-img {
+          background-image: url({{ $image.RelPermalink }}) !important;
+        }
+      }
+    </style>
+  {{ end }}
 {{ end }}
 <!-- zie sidebar.html, zelfde logica gebruikt -->
 {{ $related := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
