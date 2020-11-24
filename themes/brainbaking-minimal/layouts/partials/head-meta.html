@@ -124,3 +124,14 @@
 }
 </script>
 
+<!-- twitter cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}">
+{{ if .Params.bigimg }}
+  {{- $image := printf "%s%s" "bigimg/" .Params.bigimg -}}
+  <meta name="twitter:image" content="{{ $image | absURL }}">
+{{ else }}
+  <meta name="twitter:image" content="{{ $logo | absURL }}">
+{{ end }}
+<meta name="twitter:image:alt" content="{{ .Params.subtitle }}">
