@@ -147,7 +147,7 @@ For citing work, the rough draft employed a dusty academic way (the default way)
 
 ![cite](../book-cite.png)
 
-I found that citation style in [zotero.org/styles](https://www.zotero.org/styles and https://citationstyles.org/authors/), it's called `the-open-university-numeric-superscript.csl` and added as a parameter in the metadata YML file for pandoc to parse. As you can see from the pandoc command, the `pandoc-citeproc` filter was used - it worked well enough and meant not manually fiddling with bibliography tools.
+I found that citation style in [zotero.org/styles](https://www.zotero.org/styles) and [https://citationstyles.org/authors/](https://citationstyles.org/authors/), it's called `the-open-university-numeric-superscript.csl` and added as a parameter in the metadata YML file for pandoc to parse. As you can see from the pandoc command, the `pandoc-citeproc` filter was used - it worked well enough and meant not manually fiddling with bibliography tools.
 
 
 ### Figures and lists
