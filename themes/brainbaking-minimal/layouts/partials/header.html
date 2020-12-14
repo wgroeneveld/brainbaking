@@ -5,7 +5,7 @@
         {{ if eq .Title  .Site.Title }}
             <title>{{ .Title }}</title>
         {{ else }}
-            <title>{{ .Site.Title }}: {{ .Title }}</title>
+            <title>{{ .Title }} | {{ .Site.Title }}</title>
         {{ end }}
         {{ if .Site.Params.favicon }}
             <link rel="apple-touch-icon" href="{{ .Site.Params.favicon | absURL }}" />

@@ -3,14 +3,15 @@
 <link rel="canonical" href="{{ .Permalink }}">
 
 <!-- meta data tags, open graph -->
+{{ $isHomePage := eq .Title .Site.Title }}
 {{ if .Params.subtitle }}
-	<meta name="description" content="{{ .Title }} - {{ .Params.subtitle }}">
-	<meta content="{{ .Title }}" property="og:title">
-	<meta content="{{ .Params.subtitle }}" property="og:description">
+	<meta name="description" content="{{.Title}}. {{ .Params.subtitle }}. {{ .Summary | safeHTML }}">
+	<meta content="{{ .Title }} - {{ .Params.subtitle }}" property="og:title">
+	<meta content="{{ .Summary | safeHTML }}" property="og:description">
 {{ else }}
-	<meta name="description" content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}">
-	<meta content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}" property="og:title">
-	<meta content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}" property="og:description">
+	<meta name="description" content="{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}">
+	<meta content="{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}" property="og:title">
+	<meta content="{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}" property="og:description">
 {{ end }}
 
 {{ if .Keywords }}

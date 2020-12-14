@@ -1,6 +1,6 @@
 <figure>
 	<a href="{{ .Destination | safeURL }}" class="lbox">
-		<img src="{{ .Destination | safeURL }}" {{ with .Text }} alt="{{ . }}"{{ end }} {{ with .Title}} title="{{ . }}"{{ end }}>
+		<img class="lazyload" data-src="{{ .Destination | safeURL }}" {{ with .Text }} alt="{{ . }}"{{ end }} {{ with .Title}} title="{{ . }}"{{ end }}>
 	</a>
 	{{ with .Title }}
 		<figcaption>{{ . }}</figcaption>
