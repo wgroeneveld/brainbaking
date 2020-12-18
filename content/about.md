@@ -9,7 +9,7 @@ disableComments: true
 ## ... Baker
 
 * I hold a [professional bread baker's degree](/post/learning-to-become-a-baker/) so naturally I love to think of myself as a real baker. I highly respect the craft and enjoy kneading dough with my hands.
-* I specialize in _sourdough bread_, as you can read in my [bread baking blog](https://redzuurdesem.be). I love to rekindle the interest in sourdough by organizing workshops. 
+* I specialize in _sourdough bread_, as you can read at my [bread baking blog](https://redzuurdesem.be). I love to rekindle the interest in sourdough by organizing workshops. 
 * I've written a book on [the science of sourdough bread](https://redzuurdesem.be/het-boek).
 
 ## ... Researcher
@@ -35,7 +35,7 @@ disableComments: true
 
 * Transforming knowledge into well-digestible material is my mission. As they say: _the best way to learn something is to teach it_ - I couldn't agree more.
 * Besides various formal [teaching assignments](/teaching/) at KU Leuven, I've also coached software developers in different companies, and occasionally organize bread baking workshops.
-* I also enjoy public speaking. 
+* I also like public speaking.
 
 ---
 
