@@ -19,7 +19,9 @@ What's a bullshit job, you ask? I'm pretty sure everybody instinctively knows wh
 
 You know, the sort of very useful governmental paper pushing that is required when registering a travel passport, making a complaint, or trying to convince your bank employee that no, you're not going to take that extra insurance. There are obvious examples, but as I read the book, and as David also admitted, very large portions of virtually _any job_ contain bullshit parts. And bullshit percentages are increasing at an alarming rate. 
 
-There's also a theory on why society does not object to bullshit jobs. According to Graeber, social value and pay are inversely correlated: hospital cleaners and garbage collectors contribute to our social structure, but barely get paid anything, while corporate lawyers effectively hurt our social culture, and get a paid royal amount for doing so. There seem to be papers on the discussion of jobs and their (perceived?) social value, of which a few are referenced in the book. 
+There is, however, one small but important detail present in the definition: it is **the employee** him/herself who cannot justify the existence. I'm not entirely convinced that this is the only kind of bullshit job. Imagine a HR advisor that admits his/her job is useless: bullshit job. Imagine another HR advisor who thinks he/she's doing incredible valuable work, while in fact, it's the same bullshit. Does the latter mean the job is not a bullshit job? We all know a lot of people in denial working bullshit jobs... 
+
+The theory on why society does not object to bullshit jobs is also worth looking at. According to Graeber, social value and pay are inversely correlated: hospital cleaners and garbage collectors contribute to our social structure, but barely get paid anything, while corporate lawyers effectively hurt our social culture, and get a paid royal amount for doing so. There seem to be papers on the discussion of jobs and their (perceived?) social value, of which a few are referenced in the book. 
 
 <script type='text/javascript' src='/js/amcharts4core.js'></script>
 <script type='text/javascript' src='/js/amcharts4charts.js'></script>
@@ -105,6 +107,8 @@ createChart("jobdiv", [{
 }); // end am4core.ready()
 </script>
 
+Isn't that something - research that claims researchers produce the most valuable output (economically speaking) for society?
+
 ### Bullshit in the software engineering industry
 
 In my [a decade in the industry](/post/2018/10/a-decade-in-the-industry/) post, I reflect on ten years as an agile software developer working for various privately held companies. After reading bullshit jobs, a lot of _'shit'_ I've done there can be easily categorized as bullshit:
@@ -121,6 +125,8 @@ Let's be honest. A lot of 'Scrum Best Practices' are totally bullshit. We never 
 - Writing business reports that are never read;
 - ...
 
+To anyone who isn't familiar with [The Dilbert Principle](https://en.wikipedia.org/wiki/Dilbert_principle): promoting incompetent people to management to get them out of the workflow fits perfectly with this theme. 
+
 A social value of `0`, according to the above graph, is in my opinion dependent on what kind of software you're creating. In general, being a software developer for a large company does not necessarily entail virtuous behavior, nor does it mean finding meaning. So I quit and joined the academic world to teach undergraduates how to do a bullshit job.
 
 ### Bullshit in computing academia
@@ -136,7 +142,7 @@ Now that I'm an academic, I'm not particularly better off. In fact, if I look ar
 
 The supply and demand of administrative services has risen up to `+240%` between 1985 and 2005 (p. 161), meaning both industry and academia are heavily burdened by paper pushing. These _'strategic vision documents'_ aren't going to write themselves, you know! David admits that his tenure as a professor in reality entails that about `50%` of his job is total and utter bullshit (p. 263). That is not something to look forward to.
 
-The question is, is a professor a schoolteacher (social value `+1`), a researcher (social value `+9`), or a manager (`-0.8`)? Furthermore, I've read a lot of published research that can be safely called bullshit. Simply reducing a job or even entire sector to a financial number to see if it adds or subtracts from the economy overall seems to be bullshit too.
+The question is, is a professor a schoolteacher (social value `+1`), a researcher (social value `+9`), or a manager (`-0.8`)? Furthermore, I've read a lot of published research that can safely be called bullshit. Simply reducing a job or even entire sector to a financial number to see if it adds or subtracts from the economy overall seems to be bullshit too.
 
 ### Coping with bullshit jobs 
 
