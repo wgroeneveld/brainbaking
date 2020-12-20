@@ -127,6 +127,8 @@ Let's be honest. A lot of 'Scrum Best Practices' are totally bullshit. We never 
 
 To anyone who isn't familiar with [The Dilbert Principle](https://en.wikipedia.org/wiki/Dilbert_principle): promoting incompetent people to management to get them out of the workflow fits perfectly with this theme. 
 
+> Leadership is nature's way of removing morons from the productive flow <span>Dogbert (Dilbert)
+
 A social value of `0`, according to the above graph, is in my opinion dependent on what kind of software you're creating. In general, being a software developer for a large company does not necessarily entail virtuous behavior, nor does it mean finding meaning. So I quit and joined the academic world to teach undergraduates how to do a bullshit job.
 
 ### Bullshit in computing academia
