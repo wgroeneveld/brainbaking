@@ -6,6 +6,7 @@ aliases:
     - /post/agile-academia/
 tags:
   - agile
+  - academia
   - development
 categories:
   - education
