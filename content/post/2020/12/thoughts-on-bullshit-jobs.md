@@ -23,89 +23,9 @@ There is, however, one small but important detail present in the definition: it 
 
 The theory on why society does not object to bullshit jobs is also worth looking at. According to Graeber, social value and pay are inversely correlated: hospital cleaners and garbage collectors contribute to our social structure, but barely get paid anything, while corporate lawyers effectively hurt our social culture, and get a paid royal amount for doing so. There seem to be papers on the discussion of jobs and their (perceived?) social value, of which a few are referenced in the book. 
 
-<script type='text/javascript' src='/js/amcharts4core.js'></script>
-<script type='text/javascript' src='/js/amcharts4charts.js'></script>
-<script type='text/javascript' src='/js/amcharts4animated.js'></script>
-
 This is a summary of the social value breakdown, found in a 2017 study, categorized by jobs ([Taxation and the Allocation of Talent](https://www.journals.uchicago.edu/doi/abs/10.1086/693393?casa_token=46Fn4qTkh1cAAAAA:aR3HQynt1SCG2WjPx1eh2GSkxaciKEmGYgIrmB9te230mEyN2MCBGzpjzBLseSGfmRKPMQUl4ow) by Lockwoot et al.):
 
-<div id="jobdiv" style="width: 100%; height: 500px"></div>
-
-<script>
-am4core.ready(function() {
-
-am4core.useTheme(am4themes_animated);
-
-function createChart(divid, data) {
-    var chart = am4core.create(divid, am4charts.XYChart);
-    chart.data = data;
-
-    chart.padding(40, 40, 40, 40);
-
-    var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.dataFields.category = "config";
-    categoryAxis.renderer.inversed = true;
-    categoryAxis.renderer.grid.template.disabled = true;
-    //categoryAxis.renderer.minGridDistance = 100;
-    categoryAxis.renderer.minWidth = 120;
-
-    var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
-    //valueAxis.min = 0;
-
-    var series = chart.series.push(new am4charts.ColumnSeries());
-    series.dataFields.categoryY = "config";
-    series.dataFields.valueX = "val";
-    series.tooltipText = "{valueX.value}"
-    series.columns.template.strokeOpacity = 0;
-    series.columns.template.column.cornerRadiusBottomRight = 5;
-    series.columns.template.column.cornerRadiusTopRight = 5;
-
-    var labelBullet = series.bullets.push(new am4charts.LabelBullet())
-    labelBullet.label.horizontalCenter = "left";
-    labelBullet.fontSize = 20;
-    labelBullet.label.dx = 5;
-    labelBullet.label.fill = am4core.color("white");
-    labelBullet.label.text = "{values.valueX.workingValue}";
-    labelBullet.locationX = 1;
-
-    categoryAxis.sortBySeries = series;
-
-    var columnTemplate = series.columns.template;
-    columnTemplate.adapter.add("fill", function(fill, target) {
-      return am4core.color("#018660")
-    })
-}
-
-createChart("jobdiv", [{
-      "config": "researchers",
-      "val": 9
-    }, {
-      "config": "schoolteachers",
-      "val": 1
-    }, {
-      "config": "engineers",
-      "val": 0.2
-    }, {
-      "config": "consultants, IT professionals",
-      "val": 0
-    }, {
-      "config": "lawyers",
-      "val": -0.2
-    }, {
-      "config": "advertisers, marketing",
-      "val": -0.3
-    }, {
-      "config": "managers",
-      "val": -0.8
-    }, {
-      "config": "financial sector",
-      "val": -1.5
-    }]
-    );
-
-}); // end am4core.ready()
-</script>
+![Taxation and the Allocation of Talent](../taxationchart.jpg)
 
 Isn't that something - research that claims researchers produce the most valuable output (economically speaking) for society?
 

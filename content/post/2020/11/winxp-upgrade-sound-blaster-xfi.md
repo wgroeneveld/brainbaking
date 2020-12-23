@@ -57,13 +57,9 @@ When actually playing, the game sounds absolutely _fantastic_! The difference is
 
 According to hardware reviews such as [Guru 3D](https://www.guru3d.com/articles_pages/x_fi_xtreme_music_sound_blaster_review,1.html), the fast `EMU20K1` chip should even give a graphics performance boost: less work for your CPU to be done. However, I measured FPS on multiple games, and I could not see a substantial fluctuation between normal (embedded) audio or hardware-enabled (X-Fi) audio. That might be because my system is already quite powerful for a 2005 computer, or because the Realtek chip does the job good enough, or because the games are programmed the way they are.
 
-<script type='text/javascript' src='/js/amcharts4core.js'></script>
-<script type='text/javascript' src='/js/amcharts4charts.js'></script>
-<script type='text/javascript' src='/js/amcharts4animated.js'></script>
-
 To be fair, there was a _slight_ performance gain:
 
-<div id="aoediv" style="width: 100%; height: 500px"></div>
+![xfi performance chart](../xfiperformance.jpg)
 
 The real gain is proper EAX support, superior IN/OUT ports, bass boost, virtual 3D audio stuff, etc ... The card software even lets you choose something called "_Sound Banks_" for MIDI synthesizing if that's your thing or if you plan to emulate an ISA Sound Blaster card in Win9x compatibility mode:
 
@@ -91,66 +87,3 @@ More information:
 - Phils Computer Lab [Sound Blaster X-Fi MB3](https://www.youtube.com/watch?v=gSBMrHfsXjE) review
 - `AD_EXT` [pinout scheme](https://pinouts.ru/Audio-Video-Hardware/sb_audigy2_ad_ext_pinout.shtml) - the same as Audigy's `AUD_EXT`. It is possible to tap into SPDIF, MIDI, and GP signals separately. Note that your front panel headphone jack will likely pick up static noise except if it's wired directly onto the Sound Blaster using these pins. Another reason to buy the drive bay!
 
-<script>
-am4core.ready(function() {
-
-am4core.useTheme(am4themes_animated);
-
-function createChart(divid, data) {
-    var chart = am4core.create(divid, am4charts.XYChart);
-    chart.data = data;
-
-    chart.padding(40, 40, 40, 40);
-
-    var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.dataFields.category = "config";
-    categoryAxis.renderer.inversed = true;
-    categoryAxis.renderer.grid.template.disabled = true;
-    //categoryAxis.renderer.minGridDistance = 100;
-    categoryAxis.renderer.minWidth = 120;
-
-    var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
-    valueAxis.min = 0;
-
-    var series = chart.series.push(new am4charts.ColumnSeries());
-    series.dataFields.categoryY = "config";
-    series.dataFields.valueX = "val";
-    series.tooltipText = "{valueX.value}"
-    series.columns.template.strokeOpacity = 0;
-    series.columns.template.column.cornerRadiusBottomRight = 5;
-    series.columns.template.column.cornerRadiusTopRight = 5;
-
-    var labelBullet = series.bullets.push(new am4charts.LabelBullet())
-    labelBullet.label.horizontalCenter = "left";
-    labelBullet.fontSize = 20;
-    labelBullet.label.dx = 5;
-    labelBullet.label.fill = am4core.color("white");
-    labelBullet.label.text = "{values.valueX.workingValue}";
-    labelBullet.locationX = 1;
-
-    categoryAxis.sortBySeries = series;
-
-    var columnTemplate = series.columns.template;
-    columnTemplate.adapter.add("fill", function(fill, target) {
-      return am4core.color("#018660")
-    })
-}
-
-createChart("aoediv", [{
-      "config": "Age of Empires III, Realtek",
-      "val": 62
-    }, {
-      "config": "Age of Empires III, Creative X-Fi",
-      "val": 66
-    }, {
-      "config": "UT2004, Realtek",
-      "val": 163
-    }, {
-      "config": "UT2004, Creative X-Fi",
-      "val": 165
-    }]
-    );
-
-}); // end am4core.ready()
-</script>

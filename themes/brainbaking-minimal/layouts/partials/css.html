@@ -9,3 +9,8 @@
 {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") -}}
 {{- $styles := resources.Get "sass/main.sass" | resources.ExecuteAsTemplate "main.sass" . | resources.ToCSS $options | resources.Fingerprint "sha512" }}
 <link rel = 'stylesheet' href = '{{ $styles.Permalink }}' integrity = '{{ $styles.Data.Integrity }}'>
+
+<!-- preload fetches for _fonts.sass -->
+<link rel='preload' href='/css/Metropolis-Light.woff2' as='font' type="font/woff2" crossorigin>
+<link rel='preload' href='/css/sourceserifpro-latin-700.woff2' as='font' type="font/woff2" crossorigin>
+<link rel='preload' href='/css/sourceserifpro-latin.woff2' as='font' type="font/woff2" crossorigin>

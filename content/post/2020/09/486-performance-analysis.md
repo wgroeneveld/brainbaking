@@ -23,13 +23,9 @@ The system under test specs can be [found here](/post/2020/09/reviving-a-80486/)
 
 It can indeed be problematic to compare the output of various benchmarks - these might be nothing more than meaningless metrics. However, it's still fun to see bars and numbers appearing on your VGA screen and on the internet, and to try and compare them anyway. Phil's [DOS Benchmark Pack](https://www.philscomputerlab.com/dos-benchmark-pack.html) was used to carry out most of these. 
 
-<script type='text/javascript' src='/js/amcharts4core.js'></script>
-<script type='text/javascript' src='/js/amcharts4charts.js'></script>
-<script type='text/javascript' src='/js/amcharts4animated.js'></script>
-
 #### 3DBench FPS
 
-<div id="3dbenchdiv" style="width: 100%; height: 500px"></div>
+![3DBench FPS chart](../3dbench.jpg)
 
 The first thing to note here is the power of the Turbo button! Without these wires jumpered on the motherboard (and the button enabled), the overall power of your PC drops by almost two thirds or `66%`. Also, the DX2, which has a `40%` faster CPU in terms of raw power, only speeds up about `13.5%` for this 3D test. Still, it tops the "magic" 30 FPS limit!
 
@@ -37,13 +33,13 @@ Back in the day, anyone who was able to run a game at 30 frames per second was a
 
 #### PCPBench FPS
 
-<div id="pcpbenchdiv" style="width: 100%; height: 500px"></div>
+![PCPBench FPS chart](../pcpbench.jpg)
 
 The small performance gain trend continues. I must admit that I am a bit disappointed, although I do realise that these benchmarks are usually VGA-intensitive. Since older games are software-accelerated, I hoped simply swapping out the CPU would net a bigger speed increase. 
 
 #### Topbench scores
 
-<div id="topbenchdiv" style="width: 100%; height: 500px"></div>
+![Topbench chart](../topbenchchart.jpg)
 
 Since I'm running `EMM386.EXE` with the extended `RAM` switch, `/p` was needed to force execution of the tests. The Topbench marks are missing from Phil's sheet. I had high hopes for this test as it's a general score that totals performance (MemTest, MemEA, Opcodes, VidMem, 3DGames). Sadly, the DX2-66 only gave a boost of about `10%`. It might again prove that the old motherboard is not up to snuff. Trying to force the motherboard bus speed into a CPU`/3` rate in the BIOS settings instead of the auto-detected `/4` does not change anything in various benchmarks I re-ran. Same thing with `UNIVBE` VESA 2 drivers. The cache writeback wait state is set on `2`, and a setting of `0` refuses to boot. 
 
@@ -104,8 +100,10 @@ am4core.ready(function() {
 am4core.useTheme(am4themes_animated);
 
 function createChart(divid, data) {
+
     var chart = am4core.create(divid, am4charts.XYChart);
     chart.data = data;
+  chart.exporting.menu = new am4core.ExportMenu();
 
     chart.padding(40, 40, 40, 40);
 
