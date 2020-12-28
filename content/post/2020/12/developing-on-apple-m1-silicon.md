@@ -2,7 +2,7 @@
 title: "Programming on the Apple M1 Silicon"
 date: '2020-12-27'
 bigimg: macbookairs.jpg
-subtitle: "Is early adopting a good idea as a software developer?"
+subtitle: "Is early adoption a good idea as a software developer?"
 tags:
   - apple
   - macbook air
@@ -54,8 +54,9 @@ Still on Rosetta - but development on the way:
 - [Clipy](https://github.com/Clipy/Clipy) clipboard utility, the upgraded ClipMenu one. [Alfred](https://www.alfredapp.com/) is a bit too bloated for me, but it's M1 ready, if you think Spotlight isn't enough.
 - Hopefully Opera someday soon. 
 - [Sublime Text 3](https://www.sublimetext.com/3). Preview builds of Visual Studio code are already released.
+- [Evernote](https://discussion.evernote.com/forums/topic/131507-apple-silicon-m1-version-of-evernote-10/). It runs on Electron, a known-to-be CPU hungry JS shell. The Rosetta one works, but is a bit sluggish and uses a significant amount of battery.
 
-[Spotify is a mess](https://www.reddit.com/r/spotify/comments/jyrsxw/when_will_spotify_support_the_new_m1_macbooks/), according to some, while others claim that Rosetta is "good enough". I'd like to run as much stuff as possible native, I guess we'll have to wait. 
+[Spotify is a mess](https://www.reddit.com/r/spotify/comments/jyrsxw/when_will_spotify_support_the_new_m1_macbooks/), according to some, while others claim that Rosetta is "good enough". I'd like to run as much stuff as possible native, I guess we'll have to wait. For now, "it just works", but as Evernote, is far from optimized.
 
 ![](../mbairsvs.jpg "Left: M1 MacBook Air 2020. Right: x86_64 MacBook Air 2012. Note the differences in screen size. The Gold is a bit more Pink than I'd like, but it's growing on me!")
 
