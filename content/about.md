@@ -37,6 +37,8 @@ disableComments: true
 * Besides various formal [teaching assignments](/teaching/) at KU Leuven, I've also coached software developers in different companies, and occasionally organize bread baking workshops.
 * I also like public speaking.
 
+You can reach me via e-mail: <a class="meel">say hello</a>.
+
 ---
 
 ## What's a _multiclass_?

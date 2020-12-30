@@ -13,6 +13,7 @@ enableGitInfo = true
     category = "categories"
 
 [params]
+    level = 35
     favicon = "/img/avatar-icon.png"
     pagination = 15
 

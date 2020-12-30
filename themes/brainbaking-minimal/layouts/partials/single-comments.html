@@ -4,15 +4,24 @@
             <svg class='icon icon-text' width='24' height='24'>
                 <use xlink:href='#discuss'></use>
             </svg>
-            Join the Discussion
+            Bio and Support
         </h4>
 
-        {{- if (ne hugo.Environment "development") }}
-            <script defer src="https://commento.brainbaking.com/js/commento.js"></script>
-            <script defer src="https://commento.brainbaking.com/js/count.js"></script>
-            <div id="commento"></div>
-        {{- else }}
-            (localhost, comments disabled)
-        {{- end }}
+        <div class="avatar">
+            <img class="lazyload" data-src="/img/avatar.jpg" alt="Me!" />
+        </div>
+        <div class="support">
+            <p>
+                I'm Wouter, a level {{ .Site.Params.level }} <em>Brain Baker</em>, and I love the smell of freshly baked thoughts (and bread) in the morning. I sometimes convince others to bake their brain (and bread) too.
+                Read more <a href="/about">about me here</a>.
+            </p>
+            <p>
+                If you found this article amusing and/or helpful, you can <a href="https://ko-fi.com/woutergroeneveld"><strong>buy me a coffee</strong></a> - although I'm more of a tea fan myself. I also like to hear your feedback via e-mail: <a class="meel">say hello</a>. Thanks!
+            </p>
+            <noscript>
+                JavaScript is disabled. I use it to obfuscate my e-mail, keeping spambots at bay. <br/>
+                Reach me using: [firstname] on this domain.
+            </noscript>
+        </div>
     </article>
 {{ end }}

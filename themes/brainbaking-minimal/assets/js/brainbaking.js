@@ -46,6 +46,15 @@ document.addEventListener("DOMContentLoaded",function() {
 	    }
     }).init();
 
+	const meel = document.querySelector('.meel');
+	const enc = "<o ofwo-zopsz='aowz orrfsgg' vfst='aowzhc:kcihsf@pfowbpoywbu.qca'>kcihsf@pfowbpoywbu.qca</o>  <o ofwo-zopsz='sbqfmdhwcb DUD ysm' vfst='vhhdg://ysmg.cdsbdud.cfu/jyg/j1/pm-twbusfdfwbh/24O319TO8708OP6961997205S66Q99941091O46R' hwhzs='Sbqfmdh aowzg kwhv am UDU ysm'><gju qzogg='wqcb wqcb-hslh' kwrhv='24' vswuvh='24'><igs lzwby:vfst='#zcqy'></igs></gju></o>"
+
+	if(meel) {
+		meel.addEventListener('click', function() {
+			meel.innerHTML = enc.replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+12)?c:c-26);});
+		})
+	}
+
 	(function() {
 		const $target = document.querySelector('#searchapp');
 		const $pages = document.querySelector('#resultaten .pages');
