@@ -2,6 +2,7 @@
 title: Digitizing journals using DEVONthink
 subtitle: Migrating from Evernote to a secure and decentralized solution
 date: 2021-01-01
+bigimg: devonexport.jpg
 categories:
     - learning
 tags:

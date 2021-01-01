@@ -55,6 +55,7 @@ Still on Rosetta - but development on the way:
 - Hopefully Opera someday soon. 
 - [Sublime Text 3](https://www.sublimetext.com/3). Preview builds of Visual Studio code are already released.
 - [Evernote](https://discussion.evernote.com/forums/topic/131507-apple-silicon-m1-version-of-evernote-10/). It runs on Electron, a known-to-be CPU hungry JS shell. The Rosetta one works, but is a bit sluggish and uses a significant amount of battery.
+- Update jan. 2021: The latest [GIMP](https://www.gimp.org/downloads/) 2.10 is finally released for OSX, but there are known Big Sur issues. I didn't run into a single one. 
 
 [Spotify is a mess](https://www.reddit.com/r/spotify/comments/jyrsxw/when_will_spotify_support_the_new_m1_macbooks/), according to some, while others claim that Rosetta is "good enough". I'd like to run as much stuff as possible native, I guess we'll have to wait. For now, "it just works", but as Evernote, is far from optimized.
 
