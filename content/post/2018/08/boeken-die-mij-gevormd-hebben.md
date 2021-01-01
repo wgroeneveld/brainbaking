@@ -5,8 +5,6 @@ bigimg: 2017inbooks.png
 subtitle: Deze teksten lieten een blijvende indruk na
 categories:
     - learning
-tags:
-  - journaling
 published: true
 ---
 
