@@ -34,14 +34,6 @@
                     {{ end }}
                 </span>
             {{ end }}
-            {{ if (not .Params.disableComments) }}
-                &nbsp;|&nbsp;
-                <span title="Comments">
-                    <svg class='icon icon-text' width='24' height='24'>
-                        <use xlink:href='#discuss'></use>
-                    </svg><a href="{{ .Permalink }}#commento"></a>
-                </span>
-            {{ end }}
         </h3>
     {{ end }}
 

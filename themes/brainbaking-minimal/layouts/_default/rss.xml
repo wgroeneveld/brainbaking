@@ -55,7 +55,7 @@
             </p>
           {{ end }}
 
-          {{ $content | safeHTML }}
+          {{ $content }}
           ]]>
       </description>
     </item>
