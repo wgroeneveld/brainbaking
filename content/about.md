@@ -37,7 +37,13 @@ disableComments: true
 * Besides various formal [teaching assignments](/teaching/) at KU Leuven, I've also coached software developers in different companies, and occasionally organize bread baking workshops.
 * I also like public speaking.
 
-You can reach me via e-mail: <a class="meel">say hello</a>.
+---
+
+If you found my work amusing and/or helpful, you can [buy me a coffee](https://ko-fi.com/woutergroeneveld) - if you don't mind I'll use it to drink a cup of tea instead. I also like to hear your feedback via (encrypted) e-mail: <a class="meel">say hello</a>. Thanks!
+
+<a href='https://ko-fi.com/woutergroeneveld'>
+    <img height='36' style='border:0px !important;height:36px;' src='/img/kofi.png' border='0' alt='Buy Me a Coffee' />
+</a>
 
 ---
 

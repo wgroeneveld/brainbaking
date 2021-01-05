@@ -56,6 +56,10 @@
           {{ end }}
 
           {{ $content }}
+
+          <p>
+            By <a href="/about">{{ .Site.Author.name }}</a> on {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}.
+          </p>
           ]]>
       </description>
     </item>
