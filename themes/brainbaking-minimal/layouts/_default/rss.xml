@@ -43,13 +43,19 @@
           <category>{{ . }}</category>
         {{ end }}
       {{ end }}
+
+      {{ $lazyLoadImg := "<img class=\"lazyload\" data-src=" }}
+      {{ $eagerLoadImg := "<img src=" }}
+      {{ $content := .Content | replaceRE $lazyLoadImg $eagerLoadImg | safeHTML }}      
       <description>
           {{ `<![CDATA[ ` | safeHTML }}
           {{ if .Params.bigimg }}
-            <img align="left" hspace="5" src="{{ $baseurl }}bigimg/{{ .Params.bigimg }}"/>
+            <p>
+              <img align="left" hspace="5" src="{{ $baseurl }}bigimg/{{ .Params.bigimg }}"/>
+            </p>
           {{ end }}
 
-          {{ .Summary | html }}
+          {{ $content | safeHTML }}
           ]]>
       </description>
     </item>
