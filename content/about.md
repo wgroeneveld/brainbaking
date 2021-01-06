@@ -45,6 +45,12 @@ If you found my work amusing and/or helpful, you can [buy me a coffee](https://k
     <img height='36' style='border:0px !important;height:36px;' src='/img/kofi.png' border='0' alt='Buy Me a Coffee' />
 </a>
 
+<noscript>
+    JavaScript is disabled. I use it to obfuscate my e-mail, keeping spambots at bay. <br/>
+    Reach me using: <code>[firstname] at [this-domain] dot [you-know]</code>.
+</noscript>
+
+
 ---
 
 ## What's a _multiclass_?
