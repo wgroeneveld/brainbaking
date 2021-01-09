@@ -55,6 +55,8 @@ Do not forget the `<noscript/>` tag in case JavaScript is disabled or the visito
 
 I know the documentation mentions `render-image.rss.xml` as a separate RSS renderer, but it [as reported](https://discourse.gohugo.io/t/how-does-render-image-rss-xml-work/29935) before, it currently does not work (v0.79.1).
 
+**Update, 9 Jan. 2021**: It seems that the RSS reader [Feedly](https://feedly.com/) processes `<noscript/>` tags, resulting in two displayed images instead of one. Another `replaceRE` to replace the tag fixes that, although it's starting to get messy... 
+
 ## Featured images in RSS feeds
 
 I still wasn't satisfied. Some blog posts use a "big image" (or "featured image" masthead), that is part of the article header, and is currently not shown in the RSS reader. After inspecting the RSS specifications, it seems that a `<img/>` tag in the description is the only way to do it (provided a `CDATA` wrapper is present), as opposed to twitter cards that have a dedicated tag for this. So, the above description tag was extended, and now looks like this:
