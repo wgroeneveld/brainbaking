@@ -57,6 +57,8 @@ Still on Rosetta - but development on the way:
 - [Evernote](https://discussion.evernote.com/forums/topic/131507-apple-silicon-m1-version-of-evernote-10/). It runs on Electron, a known-to-be CPU hungry JS shell. The Rosetta one works, but is a bit sluggish and uses a significant amount of battery.
 - Update jan. 2021: The latest [GIMP](https://www.gimp.org/downloads/) 2.10 is finally released for OSX, but there are known Big Sur issues. I didn't run into a single one. 
 
+Update 12 jan. 2021: Sublime [Build Systems](https://www.sublimetext.com/docs/3/build_systems.html) still use `/bin/bash` to execute the `exec_cmd` or `cmd` commands. This means that your `$PATH` will be screwed up. There are a couple of options to mitigate this. Fiddling with the internal `exec.py` file did not work for me. In the end, I simply re-created a `.bash_profile` file in my home dir to set the path for Sublime Text 3 builds. Using [Terminus](https://github.com/randy3k/Terminus) does not help. 
+
 [Spotify is a mess](https://www.reddit.com/r/spotify/comments/jyrsxw/when_will_spotify_support_the_new_m1_macbooks/), according to some, while others claim that Rosetta is "good enough". I'd like to run as much stuff as possible native, I guess we'll have to wait. For now, "it just works", but as Evernote, is far from optimized.
 
 ![](../mbairsvs.jpg "Left: M1 MacBook Air 2020. Right: x86_64 MacBook Air 2012. Note the differences in screen size. The Gold is a bit more Pink than I'd like, but it's growing on me!")
