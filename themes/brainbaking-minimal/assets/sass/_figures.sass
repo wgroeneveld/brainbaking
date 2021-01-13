@@ -10,12 +10,29 @@ article img
 img 
     max-width: 100%
 
+@mixin img-float
+  border: none !important
+  margin-top: 0
+  max-width: 40%
+  @media (min-width: 768px)
+    max-width: 50% !important
+  @media (min-width: 960px)
+    height: 65% !important
+  @media (min-width: 1600px) 
+    height: 100% !important    
+
 figure 
   margin-bottom: 1.5em !important
   margin-left: 0
   margin-right: 0
   img
     margin-bottom: 0 !important
+  img[src*='#left']
+    @include img-float
+    float: left
+  img[src*='#right']
+    @include img-float
+    float: right 
 
   figcaption
     margin-top: 0.8rem !important
