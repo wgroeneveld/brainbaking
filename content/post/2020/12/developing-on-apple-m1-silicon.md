@@ -48,10 +48,11 @@ Already running native:
 
 - The [Brave](https://brave.com/) nightly build. Most Chromium-based browsers work.
 - [Rectangle](https://rectangleapp.com/), the upgraded Spectacle one.
+- [Alfred](https://www.alfredapp.com/) - of course! I became a convert after fiddling with it, replacing Spotlight and Clipy (see below).
 
 Still on Rosetta - but development on the way:
 
-- [Clipy](https://github.com/Clipy/Clipy) clipboard utility, the upgraded ClipMenu one. [Alfred](https://www.alfredapp.com/) is a bit too bloated for me, but it's M1 ready, if you think Spotlight isn't enough.
+- [Clipy](https://github.com/Clipy/Clipy) clipboard utility, the upgraded ClipMenu one.  
 - Hopefully Opera someday soon. 
 - [Sublime Text 3](https://www.sublimetext.com/3). Preview builds of Visual Studio code are already released.
 - [Evernote](https://discussion.evernote.com/forums/topic/131507-apple-silicon-m1-version-of-evernote-10/). It runs on Electron, a known-to-be CPU hungry JS shell. The Rosetta one works, but is a bit sluggish and uses a significant amount of battery.
