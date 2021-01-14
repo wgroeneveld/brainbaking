@@ -59,7 +59,10 @@ You might have noticed the increased usage of the word _quickly_. I have the fee
 
 This section of the book is a toned-down version of Cal Newport's [Deep Work](https://www.goodreads.com/book/show/25744928-deep-work?from_search=true&from_srp=true&qid=sGwpE3mzlh&rank=1). He shows that tools like TeakUI for Windows XP (Hah! Remember that?) can de-clutter your Windows setup, creating more room in your head for actual ideas. Use virtual desktops, use _Distraction Free Modes_, such as Sublime Text's `⇧+⌘+⌥+F`.
 
+Speaking of de-cluttering: I try to reduce the amount of visible icons in the top right menu bar as much as possible. I've seen Mac owners that install a bunch of tools that eat up so many clean menu space that the program menu and the icons almost touch each other. Horrible. Having more stuff on screen makes me anxious and reduces my productivity, instead of increasing it. The Spotlight search icon and Alfred hat can be hidden (check). Things I regularly use are kept visible, such as a dedicated Bluetooth icon. In Big Sur, I also re-enabled the visible percentage of battery life.
+
 An ex-colleague of mine used the Pomodoro technique and installed a small application that reminds him when to take a break and when to push on. Of course, you could track all these things and have it draw fancy graphs for you to marvel at (how bad you did that day). There is a plethora of apps for this at your disposal, but I personally never used any. 
+
 
 ### 3. Automation
 
@@ -71,7 +74,9 @@ Another thing Neal was advocating for: use a _real_ programming language when sc
 
 ![](../icon-firefox.png#right)
 
-In 2010, Selenium and WebDriver was thé tool to automate your browser, and to write acceptance tests with. Nowadays, we have [Cypress](https://www.cypress.io/) and others that are gaining popularity. One thing that struck me in that Devoxx presentation was, why limit the usage of these tools to your workday? They can also be useful to automate mundane things such as form completions - outside of the enterprise application you're working on. [Tampermonkey](https://www.tampermonkey.net/scripts.php) and [MonkeyScripts](https://monkeyscripts.org/) also fall into this category. Think about it - how many hours a day do you spend on a computer? I bet 80% of that time, you have at least one tab open in a browser, looking for something (shady?). Do not overlook your browser habits when thinking about automation. 
+In 2010, Selenium and WebDriver was thé tool to automate your browser, and to write acceptance tests with. Nowadays, we have [Cypress](https://www.cypress.io/) and others that are gaining popularity. One thing that struck me in that Devoxx presentation was, why limit the usage of these tools to your workday? They can also be useful to automate mundane things such as form completions - outside of the enterprise application you're working on. [Tampermonkey](https://www.tampermonkey.net/scripts.php) and [MonkeyScripts](https://monkeyscripts.org/) also fall into this category. 
+
+Think about it - how many hours a day do you spend on a computer? I bet 80% of that time, you have at least one tab open in a browser, looking for something (shady?). Do not overlook your browser habits when thinking about automation. A recent one I discovered myself lately: in Firefox, there's a "[search for text](https://support.mozilla.org/en-US/kb/accessibility-features-firefox-make-firefox-and-we?redirectslug=Accessibility&redirectlocale=en-US) as you start typing" option that allows me to completely omit pressing `⌘+F`. 
 
 ### 4. Canonicality
 
@@ -89,7 +94,7 @@ _Learn to get to know your tools._ Do not just "use" them - understand them, cli
 
 ![](../icon-sublime.png#right)
 
-Talking about editors: pick one and dive deep - it's as simple as that. Editors come and go, but Vi and Emacs will probably stay forever, so both are a solid choice - if you can muster chewing through thick guides and a _very_ steep learning curve. In 2012, I gave up on Vi (sorry, I'm a softie) and bought Sublime Text together with my first MacBook - probably the best decisions I've made that year. Funnily enough, eight years later, I'm still learning new Sublime tricks. Admittedly, it takes a lot of effort to deliberately learn new things when actually you want to concentrate at the task at hand. A few recent things I've learned:
+Talking about editors: pick one and dive deep - it's as simple as that. Editors come and go, but Vi and Emacs will probably stay forever, so both are a solid choice - if you can muster chewing through thick guides and a _very_ steep learning curve. In 2012, I gave up on Vi (sorry, I'm a softie) and bought [Sublime Text](https://www.sublimetext.com/) together with my first MacBook - probably the best decisions I've made that year. Sublime is available on any platform. Funnily enough, eight years later, I'm still learning new Sublime tricks. Admittedly, it takes a lot of effort to deliberately learn new things when actually you want to concentrate at the task at hand. A few recent things I've learned:
 
 - `⌘+B` to build a Markdown file using Pandoc and a custom Makefile. 
 - `^+⌘+T` as a custom shortcut that opens a new tab in the current path using the Terminus plugin. Thanks, [OdatNurd](https://www.youtube.com/watch?v=mV0ghkMwTQc)!
