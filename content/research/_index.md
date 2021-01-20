@@ -56,7 +56,7 @@ Co-authored with [Brett Becker](http://www.brettbecker.com/). Brett and I curate
 
 Our first exiting results of student motivation and creative problem solving using the GBA sprite engine (see below) were summarized in this poster. We used Amabile's Creativity Model (_motivation_, _creative skills_, _expertise_) and did expert assessments.
 
-But most of all, we just wanted to show off what kinds of games our students made during the first year. There's a video available in the poster page. Data and details: [see SIGCSE 2020 poster page](/teaching/cpp/sigcse2020/).
+But most of all, we just wanted to show off what kinds of games our students made during the first year. There's a video available in the poster page. Data and details: [see SIGCSE 2020 poster](https://dl.acm.org/doi/abs/10.1145/3328778.3372606).
 {{% /col %}}
 {{% col %}}
 ![](/files/sigcse2020-poster-preview.png "Poster preview, click to enlarge")

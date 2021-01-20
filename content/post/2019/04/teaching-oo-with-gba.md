@@ -15,7 +15,7 @@ categories:
 published: true
 ---
 
-Electrical Engineering students have to work through a programming course in their third year at KU Leuven, a course called '[Software Design in C/C++](/teaching/cpp/)'. This course is one of the things I inherited from my retired colleague when I started working for the University. As is the case with most programming courses, it's contents was _boring as hell_. 
+Electrical Engineering students have to work through a programming course in their third year at KU Leuven, a course called '[Software Design in C/C++](https://kuleuven-diepenbeek.github.io/cpp-course/)'. This course is one of the things I inherited from my retired colleague when I started working for the University. As is the case with most programming courses, it's contents was _boring as hell_. 
 
 So, instead of simply making minor adjustments to the syllabus and calling it a day, in the summer of 2018 I decided to throw everything in the begin and start over - hooray, a _greenfield_ project! This was one of the rare opportunities for me to do so as most other courses are taught together with others. This one wasn't, I also had to lecture theory and administer exams. coincidentally, also in that very same summer, I re-found my love for the retro Game Boy, and started wondering how to program games for it. My knowledge of C and C++ was limited to a few years of practical use in the industry, working on administrative Windows MFC applications.
 
@@ -37,15 +37,15 @@ All those things are extras, the main point of the course is to learn object-ori
 
 To ease their pain, I created a concept framework in `C++`, called '[<i class='fa fa-github'></i>&nbsp;gba-sprite-engine](https://github.com/wgroeneveld/gba-sprite-engine/)' (available on GitHub through that link), which students had to fork, compile, and use for their projects. It comes equipped with a few demo projects, and throughout the different labs, we worked our way through the GBA's conceptual hardware model, using the following outlines as a guideline:
 
-1. [Introduction in C](/teaching/cpp/labo-1)
-2. [Pointers in C and C++](/teaching/cpp/labo-2)
-3. [GBA Programming in C: an introduction](/teaching/cpp/labo-3)
-4. [GBA Programming in C: tilesets, a simple game](/teaching/cpp/labo-4)
-5. [Introduction in C++](/teaching/cpp/labo-5)
-6. [C++ Class Inheritance, operators and templates](/teaching/cpp/labo-6)
-7. [Software design: thinking and testing before coding](/teaching/cpp/labo-7)
-8. [GBA Programming in C++: an abstraction layer](/teaching/cpp/labo-8)
-9. [GBA Programming in C++: scrolling backgrounds](/teaching/cpp/labo-9)
+1. [Introduction in C](https://kuleuven-diepenbeek.github.io/cpp-course/c/labo-1/)
+2. [Pointers in C and C++](https://kuleuven-diepenbeek.github.io/cpp-course/c/labo-2/)
+3. [GBA Programming in C: an introduction](https://kuleuven-diepenbeek.github.io/cpp-course/gba-in-c/labo-3/)
+4. [GBA Programming in C: tilesets, a simple game](https://kuleuven-diepenbeek.github.io/cpp-course/gba-in-c/labo-4/)
+5. [Introduction in C++](https://kuleuven-diepenbeek.github.io/cpp-course/cpp/labo-5/)
+6. [C++ Class Inheritance, operators and templates](https://kuleuven-diepenbeek.github.io/cpp-course/cpp/labo-6/)
+7. [Software design: thinking and testing before coding](https://kuleuven-diepenbeek.github.io/cpp-course/cpp/labo-7/)
+8. [GBA Programming in C++: an abstraction layer](https://kuleuven-diepenbeek.github.io/cpp-course/gba-in-cpp/labo-8/)
+9. [GBA Programming in C++: scrolling backgrounds](https://kuleuven-diepenbeek.github.io/cpp-course/gba-in-cpp/labo-9/)
 
 The syllabus is accessible through the links, although in Dutch. 
 
