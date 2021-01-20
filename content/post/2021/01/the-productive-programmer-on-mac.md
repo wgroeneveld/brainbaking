@@ -4,6 +4,7 @@ subtitle: "A tribute to the ideas of Neal Ford"
 date: 2021-01-13
 tags:
   - productivity
+keywords: [productivity, the productive programmer, neal ford, productivity tools macos, programming productively, productivity mac, iterm, alfred, sublime text]
 categories:
   - programming
 ---
@@ -57,7 +58,7 @@ You might have noticed the increased usage of the word _quickly_. I have the fee
 
 > The higher level of concentration, the denser the ideas. <span>Neal Ford</span>
 
-This section of the book is a toned-down version of Cal Newport's [Deep Work](https://www.goodreads.com/book/show/25744928-deep-work?from_search=true&from_srp=true&qid=sGwpE3mzlh&rank=1). He shows that tools like TeakUI for Windows XP (Hah! Remember that?) can de-clutter your Windows setup, creating more room in your head for actual ideas. Use virtual desktops, use _Distraction Free Modes_, such as Sublime Text's `⇧+⌘+⌥+F`.
+This section of the book is a toned-down version of Cal Newport's [Deep Work](https://www.goodreads.com/book/show/25744928-deep-work?from_search=true&from_srp=true&qid=sGwpE3mzlh&rank=1). He shows that tools like TweakUI for Windows XP (Hah! Remember that?) can de-clutter your Windows setup, creating more room in your head for actual ideas. Use virtual desktops, use _Distraction Free Modes_, such as Sublime Text's `⇧+⌘+⌥+F`.
 
 Speaking of de-cluttering: I try to reduce the amount of visible icons in the top right menu bar as much as possible. I've seen Mac owners that install a bunch of tools that eat up so many clean menu space that the program menu and the icons almost touch each other. Horrible. Having more stuff on screen makes me anxious and reduces my productivity, instead of increasing it. The Spotlight search icon and Alfred hat can be hidden (check). Things I regularly use are kept visible, such as a dedicated Bluetooth icon. In Big Sur, I also re-enabled the visible percentage of battery life.
 

@@ -7,6 +7,7 @@ categories:
     - learning
 tags:
   - journaling
+keywords: [devonthink, digitizing journals, digitalizing journals, from evernote to devonthink, scanning journals, tagging journals, scanning hand-written journals]
 ---
 
 In 2017, I wrote a practical [guide to keeping a journal](post/2017/07/journaling-in-practice/), which also contained a digitalizing part involving Evernote. Since then, a few things happened that ultimately made me close my Evernote account for good, and resort to other methods I'd like to explain here.

@@ -5,6 +5,7 @@ date: 2021-01-05
 tags:
   - hugo
   - rss
+keywords: [hugo, rss, lazy image loading, lazy loading, rss images, hugo rss images, hugo noscript]
 categories:
   - webdesign
 ---
