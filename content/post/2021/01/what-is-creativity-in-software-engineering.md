@@ -61,7 +61,7 @@ If creativity is the brew of different inputs, then you better be inputting a lo
 
 ### 3. Communication
 
-Many people think falsely that creativity is a very personal matter: the lone genius creating away of having awesome thought after thought. Yet it is usual within [the Camerata](https://jessitron.com/2020/12/26/purple-developer/) where the magic happens: the group of like-minded people that share ideas, in a liquid network, as in Steven Johnson's [Where Good Ideas Come From](https://www.goodreads.com/book/show/8034188). 
+Many people falsely assume that creativity is a very personal matter: the lone genius creating away of having awesome thought after thought. Yet it is usual within [the Camerata](https://jessitron.com/2020/12/26/purple-developer/) where the magic happens: the group of like-minded people that share ideas, in a liquid network, as in Steven Johnson's [Where Good Ideas Come From](https://www.goodreads.com/book/show/8034188). 
 
 Rubber ducking is all good, but it's better to do it with a colleague: the sensible or insensible response might trigger a thought in your brain and end up helping your creative process. Rubber ducks don't talk back, as far as I know. 
 
@@ -77,7 +77,7 @@ Next time your team members complain about yet another constraint, tell them the
 
 ### 5. Critical Thinking
 
-Criticizing others' ideas (_"That ain't gonna work!"_) is easy. Coming up with good alternatives yourself is not. Separating the wheat from the chaff, in terms of conceptual ideas you and your team has on this one programming problem, is very important. My ex-colleagues usually neatly summarized this as: _"don't ASS-ume, you make an ass out of u and me"_. This was said quite often, for example when we assumed the `NullPointerException` was because of `x`, without digging deeper first. 
+Criticizing others' ideas (_"That ain't gonna work!"_) is easy. Coming up with good alternatives yourself is not. Separating the wheat from the chaff, in terms of conceptual ideas you and your team has on this one programming problem, is very important. My ex-colleagues neatly summarized this as: _"don't ASS-ume, you make an ass out of u and me"_. This was said quite often, for example when we assumed the `NullPointerException` was because of `x`, without digging deeper first. 
 
 Of course, the cause turned out to be a combination of `y` and `z`.
 
