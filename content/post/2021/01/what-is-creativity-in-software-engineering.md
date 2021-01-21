@@ -104,4 +104,4 @@ I remember our boss being very angry because we were letting off steam by playin
 
 ## Future Work
 
-There are many more variables involving creativity and sparking that creative _flow_ (how to assess it, what are some limitations, what are motivations to be creative, ...). We're planning on using the above dimensions to create a small survey in order to test how creatively students approach a programming project. I think we can safely assume that there is still a lot of unexplored ground to cover, and I love that - it means we can contribute something useful! 
+There are many more variables involving creativity and sparking that creative _flow_ (how to assess it, what are some limitations, what are motivations to be creative, ...). We're planning on using the above dimensions to create a small survey in order to test how creatively students approach a programming project. I think we can safely presume that there is still a lot of unexplored ground to cover, and I love that - it means we can contribute something useful! 
