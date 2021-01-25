@@ -166,7 +166,7 @@ Alternative options are [Parallels](https://www.parallels.com/blogs/parallels-de
 
 As of now, there is no possibility for me to run my virtual image of Linux for the Operating Systems course I'm teaching. I guess I'll be using a Dell laptop for this purpose... I don't mind, my 2012 MacBook Air didn't have the required memory to comfortably work with it anyway, so I already resorted to another machine.
 
-**Edit 25 jan. 20121**: Eleanor pointed me towards a gist to get [qemu running on M1](https://gist.github.com/niw/e4313b9c14e968764a52375da41b4278). This means it is possible to run Windows 10 and Ubuntu Server on your ARM Mac! 
+**Edit 25 jan. 20121**: Eleanor pointed me towards a gist to get [qemu running on M1](https://gist.github.com/niw/e4313b9c14e968764a52375da41b4278). This means it is possible to run Windows 10 and Ubuntu Server on your ARM Mac! On performance: A simple factorial program in ghci is noticeably faster on Ubuntu (ARM64) via qemu than on MacOS via Rosetta.
 
 ## So... Is it worth it?
 
