@@ -70,6 +70,12 @@ h4 a
 pre 
   font-size: 1rem !important
 
+// fix FF letter float - https://stackoverflow.com/questions/6737175/firefox-specific-margin
+@-moz-document url-prefix()
+  main
+    &.post article > p:first-of-type::first-letter,
+    &.essays article > p:first-of-type::first-letter
+      margin-top: 10px    
 
 main
   display: block

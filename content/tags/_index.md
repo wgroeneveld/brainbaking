@@ -40,6 +40,7 @@ I also write about retro PC/Handheld gaming and actual _bread baking_ on sister 
 
 ### By year
 
+- [2021](/post/2021) ... when I got that shiny new M1 MacBook Air
 - [2020](/post/2020) ... when I paid attention to webdesign and wrote a book about baking
 - [2019](/post/2019) ... when computing education articles started appearing
 - [2018](/post/2018) ... when my PhD work started and I tried writing essays in Dutch
