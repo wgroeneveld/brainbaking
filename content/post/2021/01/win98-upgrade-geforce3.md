@@ -25,7 +25,7 @@ The TNT2 was never intended to be a big performer: the 1998 3Dfx Voodoo 2 and Vo
 
 I have fond memories of the floating 3Dfx logo. I remember my dad flashing our Voodoo card in order to overclock it, an attempt that ended with smoke coming out of a capacitor. We brought it back to the store, and when the guy behind the counter asked whether or not we flashed the thing, my dad said "of course not!". We promptly got a new one. However, until I can get hold of a Voodoo card at a fair price, I decided to resort to Nvidia's budget version of the GeForce 3 instead, that I found for only `€30`. The Ti 200 was basically a pumped-up GeForce 2 with `64MB` and a clock rate of `200MHz`. To me, it felt a bit more historically accurate compared to a high-end Ti 500 - although you can [overclock the card](https://www.philscomputerlab.com/geforce3-ti-200.html) by adding active cooling. As a fan of _silent_ PCs, I was keen on keeping the cooling as passive as possible. The result is a massive (well, for that time) black block on top of the GPU:
 
-![](../geforcevsriva.jpg "The MSI/Medion GeForce 3 Ti200 card.")
+![](../geforcevsriva.jpg "The GeForce 3 (left) compared to the TNT2 (right).")
 
 Note that the GeForce3 has multiple video-out ports: a VGA one and an S-Video one - of course both still analog. Fitting the card inside your case can be a bit challenging if you didn't do proper cable management (whoops), as it's both longer and higher than its predecessor. My card was branded _MEDION_ (by the German supermarket _ALDI_), but it's essential an _MSI_, so I don't care. It probably came from one of those cheap (but pretty good) MEDION computer builds. I got it from a friendly German IT parts recycler at eBay. 
 
