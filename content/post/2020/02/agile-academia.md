@@ -122,7 +122,7 @@ And that could not be more wrong. Yes, academics regularly work together, and ye
 
 Even in the industry, HR experts declare that research work is mostly carried out alone, depicting the lone researcher in a white coat, tucked away in his lab, experimenting with perhaps chemical flasks? The stereotype of the programmer sitting in a basement typing like a maniac, all by himself, has been replaced by the lone researcher. Nowadays, programmers program in teams. Sure, researchers are part of a research group, and sure, they proudly self-declare they're part of a team. But that team does not know what effectively working together is, they merely collaborate now and then. This claim will no doubt upset people, unable to understand the difference, until also worked for a few years in the industry. 
 
-# So, what do I do about it?
+## So, what do I do about it?
 
 Not much, honestly. With enough critical mass, a company culture can be turned around. But given the sheer size of something like a University, do not get your hopes up. Instead, try do work with what you've got/can find. That does not mean you should blindly accept all reasons why agile and academia don't go together. Here are a few tips for each reason: 
 

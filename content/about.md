@@ -29,7 +29,7 @@ disableComments: true
 
 * I'm a [fountain pen addict](/post/fountain-pens-first-look/) and avid [<svg class='icon icon-text'><use xlink:href='#book'></use></svg>journaler](/post/journaling-in-practice/). I love jotting down stuff.
 * [This blog](/post) is the ideal place to write down my _freshly baked thoughts_ about virtually anything, primarily intended to amuse myself, and hopefully also others.
-* Oh, and as said, I've published a book on [the science of sourdough bread](https://redzuurdesem.be/het-boek) and occasionally take part in [National Novel Writing Months](https://nanowrimo.org) - withing varying results.
+* Oh, and as said, I've published a book on [the science of sourdough bread](https://redzuurdesem.be/het-boek) and occasionally take part in [National Novel Writing Months](https://nanowrimo.org) - with varying results.
 
 ## ... Teacher
 

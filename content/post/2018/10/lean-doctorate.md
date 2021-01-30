@@ -8,15 +8,23 @@ aliases:
 tags:
   - phd
   - tools
+  - academia
   - agile
 categories:
     - education
 published: true
 ---
 
+
 At the start of my doctoral study, things are a bit _woozy_. The use of that word "bit" may be the inverse of exaggeration: shaping an abstract idea into a malleable and well-defined project is a process that can easily take up months. After that you still have to "start" actually doing stuff in context of your invented project! Most doctorates are classical examples of a **waterfall** process: come up with an abstract, do your (and a lot of) literature study, reach certain milestones. It's clearly visible in the [Arenberg Doctoral School Roadmap](https://set.kuleuven.be/phd/roadmap.htm).
 
 As an _agile_ software engineer, that uncertainty leaves me with an unpleasant feeling as I struggle to define clear goals on a weekly basis. Sprints of 2 or 3 weeks are out of the question... Are they? Why should they be? A quick "_agile doctorate_" lookup in Google Scholar nets me academic papers like [An Agile Approach to the Doctoral Dissertation Process](http://csis.pace.edu/~ctappert/srd2015/2015PDF/d4.pdf) and [The Conclusion](http://csis.pace.edu/~ctappert/srd2016/2016PDF/a3.pdf). The only problem with these papers is that they propose to change the formula all together in an experimental context. There is - surprisingly - next to nothing academically published about someone's PhD process in an iterative or _agile_ way! 
+
+---
+
+**Update, 30 Jan. 2021**: I'm about 2.5 years in, and due to [the way academia works](/post/2020/02/agile-academia/), I've had to thoroughly readjust the way I'm used to working. _"Early feedback"_ (see below) and all that is great, provided it is possible. I learned the hard way that it [is not](/post/2020/02/agile-academia/). Frustratingly enough, that means that my work also resembles a waterfall process, even though I try to keep it from becoming like the Niagara Falls. 
+
+---
 
 ### How to be an Agile Academic
 
