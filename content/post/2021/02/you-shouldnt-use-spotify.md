@@ -8,7 +8,7 @@ categories:
   - braindump
 ---
 
-Ruben Schade recently posted on his lovely micro-blog [Rubenerd](https://rubenerd.com/) that [you shouldn't use Spotify](https://rubenerd.com/going-to-shadu/). That was new to me. I've been a (paid) Spotify user since 2012, but I honestly never focused my critical thinking on why it is or is not a good service. I was intrigued by that short sentence, that was hastily mentioned without any context. So I started digging. 
+Ruben Schade recently posted on his lovely micro-blog [Rubenerd](https://rubenerd.com/) that [you shouldn't use Spotify](https://rubenerd.com/going-to-shadu/). That was new to me. I've been a (paid) Spotify user since 2014, but I honestly never focused my critical thinking on why it is or is not a good service. I was intrigued by that short sentence, that was hastily mentioned without any context. So I started digging. 
 
 ## Part I: Streaming or Downloading
 
@@ -24,21 +24,21 @@ The difference is ridiculous. Simply staggering. I implore you to take a look at
 
 There are [many blog posts](https://radarradio.net/blog/why-i-dont-use-spotify) entitled _"why I don't use Spotify"_, and there are just as many statements from streaming companies claiming that comparing streaming with buying is like comparing apples with oranges. And they are probably both right. Still, it breaks my heart that I used to think that streaming [Into Bass and Time](https://switchstancerecordings.bandcamp.com/album/into-bass-and-time) from Ancient Astronauts would support the guys. It does, but barely. And my hard-earned money also ends up in the pockets of other artists. 
 
-Spotify used to stream pirated copies of music based on peer-to-peer networks. Only after a few years, they started "sobering up", but still proudly claim that streaming music (on a free account) is the best alternative to illegally downloading music - and it seems to [really reduce piracy](https://www.engadget.com/2015-10-28-spotify-piracy-study.html) - but at a (steep) cost. 
+Spotify used to stream pirated copies of music based on peer-to-peer networks. Only after a few years, they started "sobering up", but still proudly claim that streaming music (on a free account) is the best alternative to illegally downloading music - and it seems to really [slightly reduce piracy](https://www.engadget.com/2015-10-28-spotify-piracy-study.html) - but at a (steep) cost. 
 
 ## Part II: Consumers' Critical Thinking
 
 Sometimes, I think that _critical thinking_ every single second in your live on every single thing you do (or do not do) can be very, very tiresome. I have to think critically when at work, when buying groceries at the store, when buying a new laptop, when looking in the fridge and cooking, and apparently, also when putting on some music. 
 
-That got me thinking (urgh). Why does our society provide options that are decidedly **unfair**?[^unfair] If there was only Fair Trade chocolate in the supermarket, I couldn't buy stuff that exploits African farmers. If there was only the option to buy from a fair streaming service, I wouldn't need to fry my brains trying to trace my subscription money. Granted, it is very frustrating to see so many big companies who are _not_ as transparent as for instance Bandcamp's policy. 
+That got me thinking (urgh). Why does our society provide options that are decidedly **unfair**?[^unfair] If there was only Fair Trade chocolate in the supermarket, I couldn't buy stuff that exploits African farmers. If there was only the option to buy from a fair streaming service, I wouldn't need to fry my brains trying to trace my subscription money. Granted, it is very frustrating to see so many big companies who are _not_ as transparent as for instance Bandcamp's open policy. 
 
 [^unfair]: The answer is capitalism. Everyone wants _free stuff_, and when they can't, they want the cheapest option, thereby forgetting to pay the creator.
 
-The same is true for games. Do I buy them on Steam or Good Old Games? Should I wait for a [Humble Bundle](https://www.humblebundle.com/about?hmb_source=navbar) that also donates to charities? 
+The same is true for games. Do I buy them on Steam or Good Old Games? Should I wait for a [Humble Bundle](https://www.humblebundle.com/about?hmb_source=navbar) that also donates to charities? Do the developers offer a way to directly buy from them? 
 
-The same is true for books. Did you know that on average, the profit margin of a physical book is `10%`? I earn about `€3` for each sale, and my book costs `€28.50`. Of course, [The Book Depository](https://www.bookdepository.com/) and Amazon put even more pressure on that retail price and even dare to undercut the market (while in Belgium, that is illegal). Fabian Sanglard's [Doom Game Engine Book](https://fabiensanglard.net/gebbdoom/) fares off worse: `$.159` of the `$54` goes to him. Luckily, he told me that many people make great use of the Paypal donate button. The only _fair_ publisher I know of is [The Pragmatic Bookshelf](https://pragprog.com/become-an-author/), which state they pay out a royalty of `50%`. _"Far more than the industry standards"_. Indeed. 
+The same is true for books. Did you know that on average, the profit margin of a physical book is less than `10%`? I earn about `€3` for each sale, and my book costs `€28.50`. Of course, [The Book Depository](https://www.bookdepository.com/) and Amazon put even more pressure on that retail price and even dare to undercut the market (which is [illegal in Belgium](https://www.boekenprijs.be/over-site)). Fabian Sanglard's [Doom Game Engine Book](https://fabiensanglard.net/gebbdoom/) fares off much worse: `$1.59` of the `$54` goes to him. Luckily, he told me that many people make great use of the Paypal donate button. The only _fair_ publisher I know of is [The Pragmatic Bookshelf](https://pragprog.com/become-an-author/), which state they pay out a royalty of `50%`. _"Far more than the industry standards"_. Indeed. 
 
-![](../profit.jpg "A breakdown of a typical book sale. ")
+![](../profit.jpg "A simplified breakdown of my book profit margin. ")
 
 That got me thinking again (it's starting to hurt). Why are many **artists** - that create original, creative material, in some way or another - mistreated in our society? David Graeber's [Bullshit Jobs](/post/2020/12/thoughts-on-bullshit-jobs/) also talks about this. Service jobs (Hello consultants and lawyers) earn millions, while many artists struggle to survive. Granted, even though Taylor Swift [pulled her songs](https://www.rollingstone.com/music/music-news/taylor-swift-abruptly-pulls-entire-catalog-from-spotify-55523/) from Spotify in 2014 (and re-uploaded them later...), I highly doubt she's struggling - but many small artists are. I'd love to be a full-time writer, but it is hardly feasible when writing about obscure subjects in a language other than English. 
 
