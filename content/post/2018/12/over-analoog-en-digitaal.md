@@ -3,6 +3,8 @@ title: 'Over analoog en digitaal'
 date: '2018-12-22'
 bigimg: snes_header.jpg
 subtitle: 'Waarom een fysieke handeling niet vervangbaar is'
+tags:
+    - games
 categories:
     - braindump
     - hardware
