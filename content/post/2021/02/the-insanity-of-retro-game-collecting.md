@@ -15,7 +15,7 @@ As you might have read in the [You Shouldn't Use Spotify](/2021/02/you-shouldnt-
 
 ![](../valuegamenow.jpg "Castlevania Dawn of Sorrow price evolution at Game Value Now")
 
-The game was released in 2005. Ten years later, one paid on average `$20` for it - about half of the new price. Since then, prices have gone up. And up. And up. The last sudden big spark is the COVID-effect on game collecting: almost any well-received retro game suddenly costs about a third more than it used to be. Thank you, boredom. The effect isn't that dramatic for Dawn of Sorrow since DS games are "relatively new". However, if you take a look at its older brother, [Aria of Sorrow](https://gamevaluenow.com/gameboy-advance/Castlevania-Aria-of-Sorrow?gameid=167) for the Game Boy Advance, a complete set sets you back for almost `$160` - that is four times as much as the original price! Baffling.
+The game was released in 2005. Ten years later, one paid on average `$20` for it - about half of the new price. Since then, prices have gone up. And up. And up. The last sudden big spark is the COVID-effect on game collecting: almost any well-received retro game suddenly costs about a third more than it used to be. Thank you, boredom. The effect isn't that dramatic for Dawn of Sorrow since DS games are "relatively new". However, if you take a look at its older brother, [Aria of Sorrow](https://gamevaluenow.com/gameboy-advance/Castlevania-Aria-of-Sorrow?gameid=167) for the Game Boy Advance, a complete box sets you back for almost `$160` - that is four times as much as the original price! Baffling.
 
 As mentioned in [Nintendo Life's article](https://www.nintendolife.com/news/2021/02/soapbox_retro_nintendo_games_cost_too_much_but_nostalgia_is_expensive) "_Retro Nintendo Games Cost Too Much, But Nostalgia Is Expensive_, even GameCube games, that until recently were fairly affordable, have suddenly become (too) expensive. Why would you pay more than the original price for Smash Brothers Melee when the latest installment is available on the Nintendo Switch, and the gameplay is the same? Nostalgia indeed does seem to come at a steep price. 
 
@@ -49,7 +49,7 @@ Disney has a special strategy devoted to bringing classic animated videos back t
 
 ![](../nostalgia_gamecubecrt.jpg "A part of my 2007 GameCube collection. Even a mediocre game like Wario World, which saw a Player's Choice re-release, goes for $56 nowadays!")
 
-## Okay, so let's buy then digitally!
+## Okay, so let's buy them digitally!
 
 This remark misses the point. First, retro game collecting is mainly a physical act. For this reason, most serious game collectors wouldn't even consider downloading ROMs - legal or otherwise For this very same reason, I completely detest the trend towards digital gaming. Second, many games are simply not for sale anymore. Of course, many big publishers smell money when they look at their old game collection, and love to periodically re-release old stuff for us suckers to double-dip - no questions asked. But many of the best games have had their prime time, and are unlikely to see the light again, due to legal issues, defunct companies, missing source code, ... As you might have guessed, these games are especially expensive in the second hand market. 
 
