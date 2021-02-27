@@ -35,21 +35,24 @@ disableComments: true
 
 * Transforming knowledge into well-digestible material is my mission. As they say: _the best way to learn something is to teach it_ - I couldn't agree more.
 * Besides various formal [teaching assignments](/teaching/) at KU Leuven, I've also coached software developers in different companies, and occasionally organize bread baking workshops.
-* I also like public speaking.
 
 ---
 
-If you found my work amusing and/or helpful, you can [buy me a coffee](https://ko-fi.com/woutergroeneveld) - if you don't mind I'll use it to drink a cup of tea instead. I also like to hear your feedback via (encrypted) e-mail: <a class="meel">say hello</a>. Thanks!
-
-<a href='https://ko-fi.com/woutergroeneveld'>
+<a href='https://ko-fi.com/woutergroeneveld' class='inmargin'>
     <img height='36' style='border:0px !important;height:36px;' src='/img/kofi.png' border='0' alt='Buy Me a Coffee' />
 </a>
+
+If you found my work amusing and/or helpful, you can [buy me a coffee](https://ko-fi.com/woutergroeneveld) - if you don't mind I'll use it to drink a cup of tea instead. I also like to hear your feedback via:
+
+- <svg class='icon icon-text'><use xlink:href='#discuss'></use></svg>Mastodon: [@wouter@chat.brainbaking.com](https://chat.brainbaking.com/@wouter)
+- <svg class='icon icon-text'><use xlink:href='#mail'></use></svg>(encrypted) e-mail: <a class="meel">say hello</a>. 
 
 <noscript>
     JavaScript is disabled. I use it to obfuscate my e-mail, keeping spambots at bay. <br/>
     Reach me using: <code>[firstname] at [this-domain] dot [you-know]</code>.
 </noscript>
 
+Thanks!
 
 ---
 

@@ -1,23 +1,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="{{ .Permalink }}">
+<link rel="me" title="Mastodon" href="{{ .Site.Author.mastodonlink }}" />
+<link rel="author" href="{{ .Site.BaseURL }}humans.txt" type="text/plain" />
 
 <!-- meta data tags, open graph -->
 {{ $isHomePage := eq .Title .Site.Title }}
 {{ if .Params.subtitle }}
-	<meta name="description" content="{{.Title}}. {{ .Params.subtitle }}. {{ .Summary | safeHTML }}">
-	<meta content="{{ .Title }} - {{ .Params.subtitle }}" property="og:title">
-	<meta content="{{ .Summary | safeHTML }}" property="og:description">
+<meta name="description" content="{{.Title}}. {{ .Params.subtitle }}. {{ .Summary | safeHTML }}">
+<meta content="{{ .Title }} - {{ .Params.subtitle }}" property="og:title">
+<meta content="{{ .Summary | safeHTML }}" property="og:description">
 {{ else }}
-	<meta name="description" content="{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}">
-	<meta content="{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}" property="og:title">
-	<meta content="{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}" property="og:description">
-{{ end }}
-
-{{ if .Keywords }}
-  <meta content="{{ delimit .Keywords ", " }}" name="keywords">
+<meta name="description" content="{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}">
+<meta content="{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}" property="og:title">
+<meta content="{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}" property="og:description">
+{{ end }}{{ if .Keywords }}
+<meta content="{{ delimit .Keywords ", " }}" name="keywords">
 {{ else if .Params.tags }}
-  <meta content="{{ delimit .Params.tags ", " }}" name="keywords">
+<meta content="{{ delimit .Params.tags ", " }}" name="keywords">
 {{ end }}
 
 <meta property="og:url" content="{{ .Permalink }}" />

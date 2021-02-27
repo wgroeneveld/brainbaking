@@ -21,16 +21,16 @@ enableGitInfo = true
     MathJax = false
 
     description = "Freshly baked thought"
-    # see single.html, DisqusShortname also needed
-    disableComments = true
     accent = "#018661"
     accent2 = "purple"
     showBorder = true
-    copyright = "<a href='/no-copyright-no-tracking'>No &copy; and no tracking</a> - sharing is caring. <svg class='icon icon-small' width='16' height='16'><use xlink:href='#bulb'></use></svg> <a href='/'>Brain Baking</a>. <a href='/index.xml'>RSS Feed</a>."
+    copyright = "<a href='/no-copyright-no-tracking'>No &copy; and no tracking</a> - sharing is caring. <svg class='icon icon-small' width='16' height='16'><use xlink:href='#bulb'></use></svg> <a href='/'>Brain Baking</a>. <svg class='icon icon-small' width='16' height='16'><use xlink:href='#news'></use></svg><a href='/index.xml'>RSS Feed</a>."
 
 [Author]
   name = "Wouter Groeneveld"
   email = "wouter@brainbaking.com"
+  mastodon = "@wouter@chat.brainbaking.com"
+  mastodonlink = "https://chat.brainbaking.com/@wouter"
 
 
 [markup]

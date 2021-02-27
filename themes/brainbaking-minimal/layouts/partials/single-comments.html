@@ -1,5 +1,5 @@
 {{ if (not .Params.disableComments) }}
-    <article>
+    <article class="h-card">
         <h4 class="page-header">
             <svg class='icon icon-text' width='24' height='24'>
                 <use xlink:href='#discuss'></use>
@@ -9,17 +9,17 @@
 
         <div class="avatar">
             <noscript>
-                <img src="/img/avatar.jpg" alt="Me!" />
+                <img class="u-photo" src="{{ .Site.BaseURL }}/img/avatar.jpg" alt="A photo of Me!" />
             </noscript>                 
-            <img class="lazyload" data-src="/img/avatar.jpg" alt="Me!" />
+            <img class="lazyload" data-src="{{ .Site.BaseURL }}/img/avatar.jpg" alt="A photo of Me!" />
         </div>
         <div class="support">
-            <p>
-                I'm Wouter, a level {{ .Site.Params.level }} <em>Brain Baker</em>, and I love the smell of freshly baked thoughts (and bread) in the morning. I sometimes convince others to bake their brain (and bread) too.
-                Read more <a href="/about">about me here</a>.
+            <p class="p-note">
+                I'm <span class="p-name">{{ .Site.Author.name }}</span>, a level {{ .Site.Params.level }} <em>Brain Baker</em>, and I love the smell of freshly baked thoughts (and bread) in the morning. I sometimes convince others to bake their brain (and bread) too.
+                Read more <a class="u-url u-uid" href="{{ .Site.BaseURL }}about">about me here</a>.
             </p>
             <p>
-                If you found this article amusing and/or helpful, you can <a href="https://ko-fi.com/woutergroeneveld"><strong>buy me a coffee</strong></a> - although I'm more of a tea fan myself. I also like to hear your feedback via e-mail: <a class="meel">say hello</a>. Thanks!
+                If you found this article amusing and/or helpful, you can <a rel="me" href="https://ko-fi.com/woutergroeneveld"><strong>buy me a coffee</strong></a> - although I'm more of a tea fan myself. I also like to hear your feedback via <svg class='icon icon-text'><use xlink:href='#discuss'></use></svg><a rel="me" class="u-url" href="{{ .Site.Author.mastodonlink }}">Mastodon</a> or <svg class='icon icon-text'><use xlink:href='#mail'></use></svg><a class="meel">e-mail</a>. Thanks!
             </p>
             <noscript>
                 JavaScript is disabled. I use it to obfuscate my e-mail, keeping spambots at bay. <br/>

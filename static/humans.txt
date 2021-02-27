@@ -1,0 +1,28 @@
+/*
+ * humans.txt : The people behind sites!
+ * http://humanstxt.org
+ */
+
+
+/* TEAM */
+
+   Writer:      Wouter Groeneveld
+     Site:      https://brainbaking.com
+     Mastodon:  https://chat.brainbaking.com/@wouter
+     Location:  Belgium
+
+
+/* THANKS */
+
+   Hosting: ovh.net
+
+
+/* SITE */
+
+   Language:   English
+
+   Standards:  HTTP/2, CSS3, RSS 2.0.1
+   Doctype:    HTML5 (Polyglot)
+   Server:     Ubuntu, nginx
+   Generator:  hugo
+   Editor:     Sublime Text 3
