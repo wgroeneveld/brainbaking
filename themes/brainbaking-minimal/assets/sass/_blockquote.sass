@@ -1,13 +1,26 @@
+@mixin block-960
+  width: calc(100% - -220px + 0px)
+  margin-left: -90px
+
+@mixin block-1120
+  width: calc(100% - -260px + 0px)
+  margin-left: -130px
+
+header
+  @media (min-width: 960px)
+    @include block-960
+
+  @media (min-width: 1120px)
+    @include block-1120
+
 blockquote 
   font-family: $font-alt-stack
   margin-left: 3rem
   @media (min-width: 960px)
-    width: calc(100% - -220px + 0px)
-    margin-left: -90px
+    @include block-960
 
   @media (min-width: 1120px)
-    width: calc(100% - -260px + 0px)
-    margin-left: -130px
+    @include block-1120
 
   opacity: 0.8
   position: relative

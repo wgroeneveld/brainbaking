@@ -1,7 +1,7 @@
 <header>
 
     {{ if .Title }}
-    <h1>
+    <h1 class="p-name">
         {{ with .Params.icontag }}
             <svg class='icon'><use xlink:href='#{{ . }}'></use></svg>
         {{ end }}
@@ -16,11 +16,13 @@
     {{ if isset .Params "date" }}
         <h3>
             {{ if isset .Params "date" }}
-            <time datetime='{{ .Date.Format "2006-01-02" }}'>
+            <time datetime='{{ .Date.Format "2006-01-02" }}' class="dt-published">
                 <svg class='icon icon-text' width='24' height='24'>
                     <use xlink:href='#cal1'></use>
                 </svg>
-                {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+                <a class="u-url" href="{{ .RelPermalink }}">
+                    {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+                </a>
             </time>
             {{ end }}
             {{ if isset .Params "categories" }}
@@ -30,7 +32,7 @@
                         <use xlink:href='#folder'></use>
                     </svg>
                     {{ range .Params.categories }}
-                        <a href="/categories/{{ . }}">{{ . }}</a> 
+                        <a class="p-category u-url" href="/categories/{{ . }}">{{ . }}</a> 
                     {{ end }}
                 </span>
             {{ end }}

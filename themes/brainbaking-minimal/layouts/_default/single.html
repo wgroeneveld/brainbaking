@@ -2,20 +2,21 @@
 
 {{ partial "bigimg" . }}
 
-{{ partial "single-header" . }}
-<a id="top"></a>
 <main class="single {{ .Section }}">
-    <br>
-    <article>
-      {{ .Content | safeHTML }}
-    </article>
+	<article class="h-entry">
+		{{ partial "single-header" . }}
+		<a id="top"></a>
+	    <div class="e-content content">
+	  		{{ .Content | safeHTML }}
+	  	</div>
+	</article>
 
     {{ partial "single-related" . }}
     {{ partial "single-comments" . }}
 
-    <footer>
-      <svg class='icon icon-text' width='24' height='24'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 
-    </footer>
+	<footer>
+	  <svg class='icon icon-text' width='24' height='24'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 
+	</footer>
 </main>
 
 {{ partial "footer.html" . }}

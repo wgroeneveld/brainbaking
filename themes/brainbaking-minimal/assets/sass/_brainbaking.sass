@@ -73,8 +73,7 @@ pre
 // fix FF letter float - https://stackoverflow.com/questions/6737175/firefox-specific-margin
 @-moz-document url-prefix()
   main
-    &.post article > p:first-of-type::first-letter,
-    &.essays article > p:first-of-type::first-letter
+    &.post .content > p:first-of-type::first-letter
       margin-top: 10px    
 
 
@@ -90,6 +89,14 @@ main
   @media (min-width: 1600px)
     max-width: 930px !important
 
+  &.post .content > p:first-of-type::first-letter
+      font-size: 3.05em
+      font-weight: bold
+      line-height: 1.1em
+      float: left
+      margin-right: 10px
+
+
   article
     text-align: left
     margin-bottom: 1rem
@@ -102,13 +109,11 @@ main
     a
       border-bottom: 1px solid var(--accent)
 
-  &.post article > p:first-of-type::first-letter,
-  &.essays article > p:first-of-type::first-letter
-    font-size: 3.05em
-    font-weight: bold
-    line-height: 1.1em
-    float: left
-    margin-right: 10px
+      &:link:hover, &:visited:hover
+        border-bottom: 1px solid white
+        border-radius: 1px
+        color: white
+        background-color: var(--accent)
 
 
   footer
@@ -128,9 +133,10 @@ main
     text-decoration: none !important
 
 header
+    text-align: center
     margin: auto
     padding-top: 1rem
-    padding-bottom: 1.5rem
+    padding-bottom: 3rem
 
     h1
       color: var(--accent)
