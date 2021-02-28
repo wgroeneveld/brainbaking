@@ -31,6 +31,7 @@ enableGitInfo = true
   email = "wouter@brainbaking.com"
   mastodon = "@wouter@chat.brainbaking.com"
   mastodonlink = "https://chat.brainbaking.com/@wouter"
+  githublink = "https://github.com/wgroeneveld"
 
 
 [markup]
