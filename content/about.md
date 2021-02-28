@@ -15,7 +15,7 @@ disableComments: true
 ## ... Researcher
 
 * I am a PhD researcher at the [Faculty of Engineering Technology](https://iiw.kuleuven.be/english), KU Leuven. 
-* My [academic research](/research) focuses on identifying and amplifying non-technical skills in software engineering education, primarily targetting _creative problem solving_.
+* My [academic research](/projects#research) focuses on identifying and amplifying non-technical skills in software engineering education, primarily targetting _creative problem solving_.
 * I mainly employ qualitative methods and prefer to mix disciplines such as computing education, cognitive psychology, and architecture.
 
 ## ... Programmer
@@ -34,7 +34,7 @@ disableComments: true
 ## ... Teacher
 
 * Transforming knowledge into well-digestible material is my mission. As they say: _the best way to learn something is to teach it_ - I couldn't agree more.
-* Besides various formal [teaching assignments](/teaching/) at KU Leuven, I've also coached software developers in different companies, and occasionally organize bread baking workshops.
+* Besides various formal [teaching assignments](/projects#teaching) at KU Leuven, I've also coached software developers in different companies, and occasionally organize bread baking workshops.
 
 ---
 

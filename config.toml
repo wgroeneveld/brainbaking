@@ -74,12 +74,6 @@ enableGitInfo = true
     url = "/archives"
     weight = 3
 
-[[menu.main]]
-    name = "Research"
-    pre = "<svg width='24' height='24'><use xlink:href='#bulb'></use></svg> "
-    url = "/research"
-    weight = 4
-
 [[menu.mainright]]
     name = "About Me"
     pre = "<svg width='24' height='24'><use xlink:href='#about'></use></svg> " 
@@ -87,8 +81,8 @@ enableGitInfo = true
     weight = 5
 
 [[menu.mainright]]
-    name = "Teaching"
-    pre = "<svg width='24' height='24'><use xlink:href='#teaching'></use></svg> "
-    url = "/teaching"
+    name = "Projects"
+    pre = "<svg width='24' height='24'><use xlink:href='#bulb'></use></svg> "
+    url = "/projects"
     weight = 6
 
