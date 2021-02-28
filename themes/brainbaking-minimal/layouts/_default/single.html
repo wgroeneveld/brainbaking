@@ -4,8 +4,8 @@
 
 <main class="single {{ .Section }}">
 	<article class="h-entry">
-		{{ partial "single-header" . }}
 		<a id="top"></a>
+		{{ partial "single-header" . }}
 	    <div class="e-content content">
 	  		{{ .Content | safeHTML }}
 	  	</div>
