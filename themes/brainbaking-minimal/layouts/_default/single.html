@@ -9,10 +9,10 @@
 	    <div class="e-content content">
 	  		{{ .Content | safeHTML }}
 	  	</div>
+    	{{ partial "single-comments" . }}
 	</article>
 
     {{ partial "single-related" . }}
-    {{ partial "single-comments" . }}
 
 	<footer>
 	  <svg class='icon icon-text' width='24' height='24'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 

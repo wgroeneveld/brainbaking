@@ -19,8 +19,10 @@
             <time datetime='{{ .Date.Format "2006-01-02" }}' class="dt-published">
                 <svg class='icon icon-text' width='24' height='24'>
                     <use xlink:href='#cal1'></use>
-                </svg>                
-                {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+                </svg>
+                <a class="u-url u-uid" href="{{ .RelPermalink }}">
+                    {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+                </a>
             </time>
             {{ end }}
             {{ if isset .Params "categories" }}
@@ -36,10 +38,6 @@
             {{ end }}
         </h3>
     {{ end }}
-    <a rel="author" class="p-author h-card u-url u-uid" href="{{ .RelPermalink }}">
-        {{ $.Site.Author.name }}
-    </a>
-
 
     {{ if isset $.Params "tags" }}
        <svg class='icon icon-text' width='24' height='24'>

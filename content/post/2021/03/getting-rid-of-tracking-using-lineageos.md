@@ -80,9 +80,12 @@ A few other apps I regularly use that worked flawlessly on LineageOS:
 
 - Firefox Mobile with the [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/) plugin
 - Goodreads
-- [FreeOTP](https://freeotp.github.io/)
+- [FreeOTP](https://freeotp.github.io/)[^otp]
 - Bandcamp ([You Shouldn't Use Spotify](/2021/02/you-shouldnt-use-spotify/))
 - Spotify (Don't believe everything I write)
+- [AnySoftKeyboard](https://anysoftkeyboard.github.io/)
+
+[^otp]: Backup your settings before reinstalling your phone! I locked myself out of my Paypal account because of that... 
 
 After stress testing LineageOS for two weeks, I can safely say I'm impressed. Even the battery life somewhat improved. Granted, I am not a heavy smartphone user. I hate carrying the thing around and sometimes "forget" it, much to my wife's frustration. But still - I thought getting rid of Google Calendar and others would involve more headaches. I have deleted most e-mails, all my photos, calendar items, and contacts from my Google account, and have not regretted it once. However, _do not delete your entire Google account_. It now serves as a good spam e-mail address! Give those pesky car salesman your GMail address and they'll think they've got you. Ha!
 
