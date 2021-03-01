@@ -8,9 +8,9 @@ categories:
   - learning
 ---
 
-Since dipping my toes into the subject of [privacy](/tags/privacy), I kept on exploring more opportunities to take back my own data. This started quite innocent with a few [changes to this site](/post/2020/06/tracking-and-privacy-on-websites/), that evolved into taking great care [not to spill my data](/post/2021/01/digitizing-journals-using-devonthink/) to "the cloud". Thank you, [Laura](https://laurakalbag.com) and [Daniel](https://ineed.coffee). It seems that a pattern emerges here. Consistently pulling the plug - I love it. 
+Since dipping my toes into the subject of [privacy](/tags/privacy), I kept on exploring more opportunities to take back my own data. This started out quite innocent with a few [changes to this site](/post/2020/06/tracking-and-privacy-on-websites/), that evolved into taking great care [not to spill my data](/post/2021/01/digitizing-journals-using-devonthink/) to "the cloud". Thank you, [Laura](https://laurakalbag.com) and [Daniel](https://ineed.coffee). It seems that a pattern emerges here. Consistently pulling the plug - I love it. 
 
-Since January this year, I migrated form GMail to [ProtonMail](https://protonmail.com) and took that opportunity to finally settle with a short address my own domain. The trouble is, simply installing the ProtonMail app on Android does next to nothing if you contacts and address book is still managed by Google. After importing the contacts into Proton, it is still a hassle to create a new one without opening the secure app. So, it was time to go cold turkey on this one. _Project Exit Google_. To do that, I needed more than a secure e-mail provider. I needed a whole new OS. _Enter [LineageOS](https://lineageos.org/)_.
+Since January this year, I migrated form GMail to [ProtonMail](https://protonmail.com) and took that opportunity to finally settle with a short address my own domain. The trouble is, simply installing the ProtonMail app on Android does next to nothing if your contacts and address book is are managed by Google. After importing the contacts into Proton, it is still a hassle to create a new one without opening the secure app. So, it was time to go cold turkey on this one. _Project Exit Google_. To do that, I needed more than a secure e-mail provider. I needed a whole new OS. _Enter [LineageOS](https://lineageos.org/)_.
 
 > LineageOS is a privacy-focused open source Android OS. 
 
@@ -33,13 +33,13 @@ Unfortunately, I first got stuck in a boot loop due to incompatible TWRP/Lineage
 
 ## 2. It boots. Now what?
 
-Great!
+Great! Did you setup encryption settings?
 
 ![](../lineage-splash.jpg "My Lineage Home Screen.")
 
-Now all we need to do is to find decent replacements for Google's convenient services and apps. Don't get me wrong, I love Google products. I just don't like the free tracking that comes with it. I've read bloggers complaining about "going back to the Dark Ages" because of that (sorry, can't find the link anymore). Fortunately, using LineageOS feels far from being stuck with secondary-choice material. 
+Now all we need to do is to find decent replacements for Google's convenient services and apps. Don't get me wrong, I love Google products. I just don't like the free tracking that comes with it. I've read bloggers complaining about "going back to the Dark Ages" because of the loss of Google fluff. Fortunately, using LineageOS feels far from being stuck with secondary-choice material. 
 
-As you can see from the screenshot above, you can still install any software you'd like, although some might not work that perfectly, since the Google Play store is gone. ProtonMail's push notifications don't work, for instance - but that is a good thing, right? Instead, Lineage relies on the [Aurora Store](https://auroraoss.com/) and of course [F-Droid](https://f-droid.org/en/packages/). The first is an anonymous shell on top of the Play Store, and the latter... well, is kind of the junkyard, since sadly not many developers choose to push to the F-Droid repository. Of course, installing a downloaded `.apk` file works just as well. Yes, both stores will still auto-update your apps. Yes, your favorite banking app still works (at least mine does).
+Lineage is basically a cleaned-up vanilla Android. As you can see from the screenshot above, you can still install any software you'd like, although some might not work that perfectly, since the Google Play store is gone. ProtonMail's push notifications don't work, for instance - but that is a good thing, right? Instead, Lineage relies on the [Aurora Store](https://auroraoss.com/) and of course [F-Droid](https://f-droid.org/en/packages/). The first is an anonymous shell on top of the Play Store, and the latter... well, is kind of the junkyard, since sadly not many developers choose to push to the F-Droid repository. Of course, installing a downloaded `.apk` file works just as well. Yes, both stores will still auto-update your apps. Yes, your favorite banking app still works (at least mine does).
 
 ### Privacy-aware communication apps
 
@@ -49,7 +49,9 @@ Below is a list of apps I've tried and now rely on:
 - _Email_: the ProtonMail app (although honestly not that great)
 - _Social Media_: [Tusky](https://tusky.app/) is a great Mastodon client!
 
-I also use Proton to manage my contacts. After importing from my Google Account before installing Lineage, I now can import/export using a `vCard` file. The process is not automated, but hey. New contacts by default reside in the smartphone, all I need to do is now and then pressing "import" again. Bye bye, Google-kept sensitive data of all my friends and family. 
+I also use Proton to manage my contacts. After importing from my Google Account before installing Lineage, I now can import/export using a `vCard` file (although Lineage's default Contact app did not understand `v4.0`: simply replace all occurrences of `4` to `3` in the file itself). The process is not automated, but hey. New contacts by default reside in the smartphone, all I need to do is now and then pressing "import" again. Bye bye, Google-kept sensitive data of all my friends and family[^cont]. 
+
+[^cont]: Note that using WhatsApp (or even Signal, for that matter) also means that _all_ your contacts are sent to their servers. Try this: open up the WhatsApp settings `->` Account `->` Request account info.
 
 ### Privacy-aware Google Maps alternatives
 
@@ -79,9 +81,9 @@ A few other apps I regularly use that worked flawlessly on LineageOS:
 - Firefox Mobile with the [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/) plugin
 - Goodreads
 - [FreeOTP](https://freeotp.github.io/)
-- Bandcamp
-- Spotify
+- Bandcamp ([You Shouldn't Use Spotify](/2021/02/you-shouldnt-use-spotify/))
+- Spotify (Don't believe everything I write)
 
-After stress testing LineageOS for more than a week, I can safely say I'm impressed. Even the battery life somewhat improved. Granted, I am not a heavy smartphone user, but still - I thought getting rid of Google Calendar and others would involve more headaches. I have deleted most e-mails, all my photos, calendar items, and contacts from my Google account, and have not regretted it once. However, _do not delete your entire Google account_. It now serves as a good spam e-mail address! Give those pesky car salesman your GMail address and they'll think they've got you. Ha!
+After stress testing LineageOS for two weeks, I can safely say I'm impressed. Even the battery life somewhat improved. Granted, I am not a heavy smartphone user. I hate carrying the thing around and sometimes "forget" it, much to my wife's frustration. But still - I thought getting rid of Google Calendar and others would involve more headaches. I have deleted most e-mails, all my photos, calendar items, and contacts from my Google account, and have not regretted it once. However, _do not delete your entire Google account_. It now serves as a good spam e-mail address! Give those pesky car salesman your GMail address and they'll think they've got you. Ha!
 
 If you also experimented with the OS, let me know what you think of Lineage. Which programs did not work that well? Did you experience any trouble with the Google withdrawal plan? [Toot me](https://chat.brainbaking.com/@wouter)!
