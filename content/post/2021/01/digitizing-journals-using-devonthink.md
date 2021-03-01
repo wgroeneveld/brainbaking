@@ -7,6 +7,7 @@ categories:
     - learning
 tags:
   - journaling
+  - privacy
 keywords: [devonthink, digitizing journals, digitalizing journals, from evernote to devonthink, scanning journals, tagging journals, scanning hand-written journals]
 ---
 
