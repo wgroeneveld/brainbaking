@@ -13,6 +13,8 @@ Not finding what you're looking for? Try browsing the archives:
 
 ### By search
 
+Use `*` to partially match terms.
+
 <form method="get" action="/search" class="search-form">
   <input id="zoekentxt" aria-label="Search terms" placeholder="e.g. 'philosophy'" name="q" type="text" style="width: 56%" />
   <button type="submit" class="button" style="width: 36%">Search!</button>
