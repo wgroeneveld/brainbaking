@@ -33,7 +33,7 @@ Unfortunately, I first got stuck in a boot loop due to incompatible TWRP/Lineage
 
 ## 2. It boots. Now what?
 
-Great! Did you setup encryption settings?
+Great! Did you configure encryption settings?
 
 ![](../lineage-splash.jpg "My Lineage Home Screen.")
 
@@ -58,7 +58,7 @@ I also use Proton to manage my contacts. After importing from my Google Account 
 - _City navigation_: [HERE WeGo](https://wego.here.com/) worked great and has an acceptable privacy policy.
 - _Hiking_: [OsmAnd](https://osmand.net/) uses Open Streetmap data and has the ability to seamlessly download map data. It's not great for in-car use, though.
 
-I thought finding a decent alternative was going to be difficult, but I was pleasantly surprised by these two. Give them both a go, even if you're on the vanilla Android OS! 
+I thought finding a decent alternative was going to be difficult, but I was pleasantly surprised by these two. Give them both a go, even if you're on the vanilla Android OS! If all else fails, you can still surf to maps.google.com.
 
 ### A privacy-aware Google Calendar alternative
 

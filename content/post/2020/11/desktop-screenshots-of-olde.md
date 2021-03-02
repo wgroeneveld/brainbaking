@@ -61,6 +61,6 @@ In 2012, I bought a MacBook Air to carry with me on the train ride to work. It c
 
 ![](/img/desktopshots/osx.jpg "OSX 10.11, 11/2020")
 
-Besides throwing away illegal `.mp3` files in favor for a Spotify subscription, I also traded in (g)Vim for Sublime Text 3 because I was never that good at Vi's shortcut scheme anyway. I still have installed and occasionally work on Linux distributions but can't bring myself to put in enough time to decently configure it. Instead, a quick Ubuntu install does the job. It's far from amazing or my golden "FVWM Years", but again: it works. 
+I recently [Upgraded to a M1 Silicon MacBook](/post/2020/12/developing-on-apple-m1-silicon/). Besides throwing away illegal `.mp3` files in favor for a Spotify subscription, I also traded in (g)Vim for Sublime Text 3 because I was never that good at Vi's shortcut scheme anyway. I still have installed and occasionally work on Linux distributions but can't bring myself to put in enough time to decently configure it. Instead, a quick Ubuntu install does the job. It's far from amazing or my golden "FVWM Years", but again: it works. 
 
 And that's good enough for me, in 2020. 

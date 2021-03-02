@@ -45,7 +45,7 @@ disableComments: true
 If you found my work amusing and/or helpful, you can [buy me a coffee](https://ko-fi.com/woutergroeneveld) - if you don't mind I'll use it to drink a cup of tea instead. I also like to hear your feedback via:
 
 - <svg class='icon icon-text'><use xlink:href='#discuss'></use></svg>Mastodon: [@wouter@chat.brainbaking.com](https://chat.brainbaking.com/@wouter)
-- <svg class='icon icon-text'><use xlink:href='#mail'></use></svg>(encrypted) e-mail: <a class="meel">say hello</a>. 
+- <svg class='icon icon-text'><use xlink:href='#mail'></use></svg>(encrypted) e-mail: <span class="link meel">say hello</span>. 
 
 <noscript>
     JavaScript is disabled. I use it to obfuscate my e-mail, keeping spambots at bay. <br/>

@@ -26,9 +26,6 @@ nav, footer
   font-size: 0.85rem
   z-index: 9
 
-.meel
-  cursor: pointer
-
 .support
   font-size: 1rem
   noscript
@@ -54,7 +51,8 @@ div.highlight
   padding-bottom: 1.5rem
 
 
-a:link, a:visited, a
+a, a:visited, .link
+  cursor: pointer
   color: var(--accent)
   text-decoration: none
 
@@ -106,10 +104,10 @@ main
     blockquote p 
       margin: 0 !important
 
-    a
+    a, .link
       border-bottom: 1px solid var(--accent)
 
-      &:link:hover, &:visited:hover
+      &:hover, &:visited:hover
         border-bottom: 1px solid white
         border-radius: 1px
         color: white
