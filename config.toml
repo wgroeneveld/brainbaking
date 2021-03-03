@@ -20,11 +20,11 @@ enableGitInfo = true
     # disabled to get rid of cloudflare cookies
     MathJax = false
 
-    description = "Freshly baked thought"
+    description = "Freshly baked thoughts"
     accent = "#018661"
     accent2 = "purple"
     showBorder = true
-    copyright = "<a href='/no-copyright-no-tracking'>No &copy; and no tracking</a> - sharing is caring. <svg class='icon icon-small' width='16' height='16'><use xlink:href='#bulb'></use></svg> <a href='/'>Brain Baking</a>. <svg class='icon icon-small' width='16' height='16'><use xlink:href='#news'></use></svg><a href='/index.xml'>RSS Feed</a>."
+    copyright = "<a href='/no-copyright-no-tracking'>No &copy; and no tracking</a> - sharing is caring. <svg class='icon icon-small' width='16' height='16'><use xlink:href='#bulb'></use></svg> <a href='/'>Brain Baking</a>. <svg class='icon icon-small' width='16' height='16'><use xlink:href='#news'></use></svg><a href='/post/index.xml'>RSS Feed</a>."
 
 [Author]
   name = "Wouter Groeneveld"
@@ -69,10 +69,16 @@ enableGitInfo = true
     weight = 2
 
 [[menu.main]]
+    name = "Notes"
+    pre = "<svg width='24' height='24'><use xlink:href='#tech'></use></svg> "
+    url = "/notes"
+    weight = 3
+
+[[menu.main]]
     name = "Archives"
     pre = "<svg width='24' height='24'><use xlink:href='#tag'></use></svg> "
     url = "/archives"
-    weight = 3
+    weight = 4
 
 [[menu.mainright]]
     name = "About Me"

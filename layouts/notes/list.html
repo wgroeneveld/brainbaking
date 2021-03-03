@@ -1,0 +1,49 @@
+{{ partial "header" . }}
+
+{{ partial "bigimg" . }}
+<a id="top"></a>
+<main class="list">
+
+	<header>
+	    <h1>
+      		<svg class='icon'><use xlink:href="#{{ .Params.icontag }}"></use></svg>&nbsp;{{ .Title }}
+		</h1>
+	</header>
+
+
+	{{ $paginator := .Paginate (where .Data.Pages ".Params.type" "ne" "archive") $.Site.Params.pagination }}
+
+	{{ if eq $paginator.PageNumber 1 }}
+	    <hr/>
+	    {{ with .Content }}
+	    <article>
+	    	{{ . }}
+		</article>
+		{{ end }}
+	{{ end }}
+
+
+	{{ if (not .Params.disableList) }}
+		<div class="tootlist">
+		{{ range ($paginator.Pages).GroupByDate "2006" "desc" }}
+			<h2>{{ .Key }}</h2>
+
+		    {{ range .Pages.GroupByDate "January" }}
+		    	<h3>{{ .Key }}</h3>
+
+				{{ range .Pages.ByDate.Reverse }}
+					{{ partial "toot" . }}
+				{{ end }}
+
+		    {{ end }}
+	    {{ end }}
+		</div>
+		{{ template "_internal/pagination.html" . }}
+    {{ end }}
+
+	<footer>
+	  <svg class='icon icon-text' width='24' height='24'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 
+	</footer>
+</main>
+
+{{ partial "footer" . }}

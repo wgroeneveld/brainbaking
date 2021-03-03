@@ -1,50 +1,78 @@
 {{ partial "header" . }}
 
-<main>
-    <div class="intro">
+<main class="intro">
 
-        {{ with .Site.Params.profilePic }} <img class="profile" src="{{ . }}"> {{ end }}
+    {{ with .Site.Params.profilePic }} <img class="profile" src="{{ . }}"> {{ end }}
 
-        <h1 style="color: #555">
-        	<span style="float: left;">Brain</span>
-			<div class="avatar-container" style="float: left;">
-			  <div class="avatar-img-border">
-		          <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
-		              <img class="avatar-img" src="/img/avatar-icon.png" alt="{{ .Site.Title }}" />
-		          </a>
-			  </div>
-			</div>
-			<span style="float: left;">Baking</span>
-		</h1>
+    <h1 style="color: #666">
+    	<span style="float: left;">Brain</span>
+		<div class="avatar-container" style="float: left;">
+		  <div class="avatar-img-border">
+	          <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
+	              <img class="avatar-img" src="/img/avatar-icon.png" alt="{{ .Site.Title }}" />
+	          </a>
+		  </div>
+		</div>
+		<span style="float: left;">Baking</span>
+        <div class="subtitle">
+            <span class="phonetic">
+                /breɪn ˈbeɪkɪŋ/
+            </span>
+            <span class="noun">
+                Noun
+            </span>
+        </div>
+	</h1>
 
-        <blockquote class="text-justify" style="clear: both;">
-        	<em><svg class='icon icon-float'><use xlink:href='#bulb'></use></svg><a href="/">Brain Baking</a>:</em>&nbsp;transforming&nbsp;
-        	<span style="white-space: nowrap;">
-        		<svg class='icon icon-float'><use xlink:href='#about'></use></svg><a href="/about">personal</a>&nbsp;
-    		</span> thoughts about thoughts into&nbsp;
-    		<span style="white-space: nowrap;">
-        		<svg class='icon icon-float'><use xlink:href='#teaching'></use></svg><a href="/teaching">well-digestible</a>
-    		</span> material. The reflective aroma of burnt nervous tissue. 
-        	Includes a crispy crust of relations between &nbsp;
-        	<span style="white-space: nowrap;">
-        		<svg class='icon icon-float'><use xlink:href='#tech'></use></svg><a href="/post">technology</a>
-    		</span>,&nbsp;
-    		<span style="white-space: nowrap;">
-        		<svg class='icon icon-float'><use xlink:href='#book'></use></svg><a href="/post">philosophy</a>
-    		</span>&nbsp;and&nbsp;
-    		<span style="white-space: nowrap;">
-        		<svg class='icon icon-float'><use xlink:href='#tag'></use></svg><a href="/archives">the world</a>
-    		</span>.
-        </blockquote>
+    <blockquote class="text-justify" style="clear: both;">
+    	<em><a href="/">Brain Baking</a>:</em>&nbsp;transforming&nbsp;
+    	<span style="white-space: nowrap;">
+    		<svg class='icon icon-float'><use xlink:href='#about'></use></svg><a href="/about">personal</a>&nbsp;
+		</span> thoughts about thoughts into&nbsp;
+		<span style="white-space: nowrap;">
+    		<svg class='icon icon-float'><use xlink:href='#bulb'></use></svg><a href="/projects">well-digestible</a>
+		</span> material. The reflective aroma of burnt nervous tissue. 
+    	Includes a crispy crust of relations between &nbsp;
+    	<span style="white-space: nowrap;">
+    		<svg class='icon icon-float'><use xlink:href='#tech'></use></svg><a href="/notes">technology</a>
+		</span>,&nbsp;
+		<span style="white-space: nowrap;">
+    		<svg class='icon icon-float'><use xlink:href='#book'></use></svg><a href="/post">philosophy</a>
+		</span>&nbsp;and&nbsp;
+		<span style="white-space: nowrap;">
+    		<svg class='icon icon-float'><use xlink:href='#tag'></use></svg><a href="/archives">the world</a>
+		</span>.
+    </blockquote>
 
-        <hr/>
+    <hr/>
 
-        <div class="freshly-baked">
-	        <h3>
-	        	<svg class='icon'><use xlink:href='#news'></use></svg>{{ markdownify .Site.Params.Description }}:
-	        </h3>
+    <h2><a href="/about" alt="go to the about page"><svg class='icon'><use xlink:href='#about'></use></svg></a>About the Head Brain Baker</h2>
+    <article class="p-author h-card">
+        <div class="avatar">
+            <img class="u-photo" src="{{ .Site.BaseURL }}/img/avatar.jpg" alt="A photo of Me!" />
+        </div>
+        <p class="p-note">
+            Hey! I'm <a class="p-name u-uid u-url" href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a> <span class="pronoun">(<span class="p-x-pronoun-nominative p-pronoun-nominative">he</span>/<span class="p-pronoun-oblique p-x-pronoun-oblique">him</span>/<span class="p-pronoun-possessive p-x-pronoun-possessive">his</span>)</span>, a level {{ .Site.Params.level }} <em class="p-job-title">Brain Baker</em> living in <span class="p-locality">Belgium</span>. I currently find myself teaching, writing, programming, researching, and of course baking bread! <em>Brain Baking</em> is my way to inspire myself and others to ponder and learn. Read more <a class="u-url" href="about">about me here</a>.
+        </p>
+        <p>
+            If you found my bakings amusing and/or helpful, you can <a rel="me" href="https://ko-fi.com/woutergroeneveld"><strong>buy me a coffee</strong></a> - if you don't mind I'll use it to enjoy a cup of tea instead. I also like to hear about your bakings via <svg class='icon icon-text'><use xlink:href='#discuss'></use></svg><a rel="me" class="u-url" href="{{ .Site.Author.mastodonlink }}">Mastodon</a> or <svg class='icon icon-text'><use xlink:href='#mail'></use></svg><span class="link meel">e-mail</span>. Thanks!
+        </p>        
+    </article>
 
-	        {{ range (.Paginator 1).Pages.ByDate.Reverse }}
+    <article>
+        Below is a list of recent <em>freshly baked thoughts</em> (<a href="/post">blog posts</a>) and <em>half-baked ideas</em> (<a href="/notes">notes</a>). You can also search through the <a href="/archives">archives</a> or <svg class='icon icon-text'><use xlink:href='#news'></use></svg><a href="/index.xml">subscribe</a> to all content. Have fun!
+    </article>
+    <hr/>
+
+    <h2><a href="/post" alt="go to all blog posts"><svg class='icon'><use xlink:href='#news'></use></svg></a>New {{ markdownify .Site.Params.Description }}</h2>
+    <p>
+        <a href="/post/index.xml">Subscribe to the <svg class='icon icon-small' width='16' height='16'><use xlink:href='#news'></use></svg>Blog post feed</a>.
+    </p>
+
+    <div class="freshly-baked">
+        {{ $paginator := .Paginate (where .Site.Pages "Type" "post") 4 }}
+        {{ range $paginator.Pages.ByDate.Reverse }}
+            <article>
 		    	{{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") | $.Scratch.Set "subtitle" }}
 		    	{{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
 
@@ -53,16 +81,28 @@
 			    </h4>
 			    {{ .Params.subtitle }}&nbsp;&nbsp;
                 <span style="color: lightgrey;"><svg class='icon icon-text'><use xlink:href='#cal1'></use></svg> {{ $.Scratch.Get "subtitle" }}</span>
-	        {{ end }}
-
-	    </div>
-
+            </article>
+        {{ end }}
     </div>
+    <hr/>
+
+    <h2><a href="/notes" alt="go to all notes"><svg class='icon'><use xlink:href='#discuss'></use></svg></a>New Half-baked ideas</h2>
+    <p>
+        <a href="/notes/index.xml">Subscribe to the <svg class='icon icon-small' width='16' height='16'><use xlink:href='#news'></use></svg>Notes feed</a> or <a href="{{ .Site.Author.mastodonlink }}">Follow me on Mastodon</a>.
+    </p>
+
+    <div class="new-notes notes tootlist">
+        {{ $pag := first 4 (where .Site.Pages.ByDate.Reverse "Type" "notes") }}
+        {{ range $pag }}
+            {{ partial "toot" . }}
+        {{ end }}
+    </div>
+
+    <hr/>
 </main>
 
-<footer style="position: fixed; bottom: 0; width: 100%">
-
-    <p class="copyright text-muted">{{ .Site.Params.copyright | default "&copy; All rights reserved. Powered by [Hugo](https://gohugo.io) and [Minimal](https://github.com/calintat/minimal)" | markdownify }}</p>
+<footer>
+    <p class="copyright text-muted">{{ .Site.Params.copyright | markdownify }}</p>
 
 </footer>
        

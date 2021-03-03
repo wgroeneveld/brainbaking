@@ -26,5 +26,10 @@
   "bugs": {
     "url": "https://github.com/wgroeneveld/brainbaking/issues"
   },
-  "homepage": "https://github.com/wgroeneveld/brainbaking#readme"
+  "homepage": "https://github.com/wgroeneveld/brainbaking#readme",
+  "dependencies": {
+    "ent": "^2.2.0",
+    "fast-xml-parser": "^3.18.0",
+    "got": "^11.8.2"
+  }
 }

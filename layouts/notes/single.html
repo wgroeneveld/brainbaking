@@ -1,0 +1,48 @@
+{{ partial "header" . }}
+
+{{ partial "bigimg" . }}
+
+<main class="single {{ .Section }}">
+	<article class="h-entry">
+		<a id="top"></a>
+		<header>
+			<h1>
+				Half-Baked Thought
+			</h1>
+		    <h2 class="p-name">
+		        {{ substr .Title 0 50 }}...
+		    </h2>
+			    
+	        <h3>
+	            <time datetime='{{ .Date.Format "2006-01-02" }}' class="dt-published">
+	                <svg class='icon icon-text' width='24' height='24'>
+	                    <use xlink:href='#cal1'></use>
+	                </svg>
+	                <a class="u-url u-uid" href="{{ .RelPermalink }}">
+	                    {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+	                </a>
+	            </time>
+                &nbsp;|&nbsp;
+                <span title="Categories">
+                    <svg class='icon icon-text' width='24' height='24'>
+                        <use xlink:href='#folder'></use>
+                    </svg>
+                    <a class="p-category u-url" href="/notes">notes</a> 
+                </span>
+	        </h3>
+		</header>
+		<div class="inmargin">
+			<a rel="author" href="{{ .Site.BaseURL }}about">
+				<img class="u-photo" src="{{ .Site.BaseURL }}/img/avatar.jpg" alt="A photo of Me!" />
+			</a>
+		</div>
+	    <div class="e-content content toot">
+	  		{{ .Content | safeHTML }}
+	  	</div>
+
+	  	<hr/>
+	  	Also posted <svg class='icon icon-text' width='16' height='16'><use xlink:href='#discuss'></use></svg><a href="{{ .Params.source }}" rel="syndication" class="u-syndication">on Mastodon</a> by <a rel="author" href="{{ .Site.BaseURL }}about">{{ .Site.Author.name }}</a>.
+	</article>
+</main>
+
+{{ partial "footer.html" . }}

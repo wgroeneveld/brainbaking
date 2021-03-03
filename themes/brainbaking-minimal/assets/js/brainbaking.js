@@ -56,6 +56,14 @@ document.addEventListener("DOMContentLoaded",function() {
 		})
 	}
 
+	(function makeTootClickable() {
+		[...document.querySelectorAll('.toot')].forEach(toot => {
+			toot.addEventListener('click', function() {
+				window.location.href = this.querySelector('.permalink').href
+			})
+		})
+	})();
+
 	(function() {
 		const $target = document.querySelector('#searchapp');
 		const $pages = document.querySelector('#resultaten .pages');

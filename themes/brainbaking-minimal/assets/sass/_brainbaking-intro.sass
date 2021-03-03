@@ -1,28 +1,59 @@
+.pronoun
+  color: grey
+
 .intro 
-    transform: translateY(22vh)
+    padding-top: 3rem !important
 
+    h1, h2
+      color: $grey
 
-.intro > h1 
-    color: #212121
-    font-size: 8vh
+    h2
+      font-size: 4vh
+
+.intro > h1
+    text-shadow: #bbbbbb 0 4px 5px
+    font-size: 5vh
+    @media (min-width: 560px)
+      font-size: 8vh
     @media (min-width: 768px)
+      font-size: 9vh
+    @media (min-width: 1200px)
+      font-size: 10vh
+    @media (min-width: 1600px)
       font-size: 12vh
 
+    .subtitle
+      font-size: 1rem
+      float: right
+      clear: both
+      margin-right: 3rem
+      margin-top: -2.5rem
+      margin-bottom: 4rem
 
-.intro > h2 
-    color: #757575
-    font-size: 3vmin
+      .noun
+        font-style: italic
 
+        &::before
+          content: ";"
 
 .intro > .profile 
     width: 10vh
     height: 10vh
     border-radius: 50%
 
-.avatar-container 
-  width: 100px
-  margin-left: 45px
+.avatar-container
+  width: 50px
+  margin-left: 25px
   margin-top: 1rem
+  @media (min-width: 560px)  
+    width: 66px
+    margin-left: 45px
+  @media (min-width: 768px)
+    width: 75px
+  @media (min-width: 1200px)
+    width: 80px
+  @media (min-width: 1600px)
+    width: 100px
 
   .avatar-img-border 
     width: 100%
@@ -37,8 +68,13 @@
     width: 100%
     border-radius: 50%
     display: block
+    animation: rotate 2s infinite
+    -webkit-animation: rotate 5s infinite
 
-.intro
-  margin-top: -150px
-  @media (min-width: 768px) 
-    margin-top: -100px
+    @-webkit-keyframes rotate
+      100%
+        transform: rotate(360deg)
+      
+    @keyframes rotate
+      100%
+        transform: rotate(360deg)

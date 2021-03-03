@@ -1,0 +1,17 @@
+<article class="h-entry">
+	<div class="content toot">
+		<div class="e-content">
+			{{ .Content }}
+		</div>
+		<div class="meta">
+			<time datetime='{{ .Date.Format "2006-01-02" }}' class="dt-published">
+				<svg class='icon icon-text' width='24' height='24'>
+                    <use xlink:href='#cal1'></use>
+                </svg>								
+				{{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+			</time>
+			&nbsp;|&nbsp;
+			<a href="{{ .RelPermalink }}" class="permalink">Permalink</a>
+		</div>
+	</div>
+</article>
