@@ -8,7 +8,7 @@
 				<svg class='icon icon-text' width='24' height='24'>
                     <use xlink:href='#cal1'></use>
                 </svg>								
-				{{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+				{{ .Date.Format "2 Jan 2006, 15:04" }}
 			</time>
 			&nbsp;|&nbsp;
 			<a href="{{ .RelPermalink }}" class="permalink">Permalink</a>

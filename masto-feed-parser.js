@@ -39,7 +39,7 @@ function convertAtomItemToMd(item) {
   const mddata = `---
 source: "${item.url}"
 title: "${item.title}"
-date: ${item.year}-${item.month}-${item.day}
+date: "${item.year}-${item.month}-${item.day}T${strpad(item.date.getHours())}:${strpad(item.date.getMinutes())}:${strpad(item.date.getSeconds())}"
 ---
 
 ${item.content}
@@ -65,7 +65,7 @@ ${item.content}
     const date = new Date(item.published)
     const year = date.getFullYear()
     const month = strpad(date.getMonth() + 1)
-    const day = strpad(date.getDay() + 1)
+    const day = strpad(date.getDate())
 
     return { 
       title: ent.decode(item.title), // summary (cut-off) of content
