@@ -4,11 +4,26 @@
 			{{ .Content }}
 		</div>
 		<div class="meta">
-			<time datetime='{{ .Date.Format "2006-01-02" }}' class="dt-published">
+			<time datetime='{{ .Date.Format "2006-01-02T15:04:00" }}' class="dt-published">
 				<svg class='icon icon-text' width='24' height='24'>
                     <use xlink:href='#cal1'></use>
-                </svg>								
-				{{ .Date.Format "2 Jan 2006, 15:04" }}
+                </svg>
+
+				<!-- ty, https://kodify.net/hugo/date-time/relative-age-hugo/ -->
+				{{ $ageDays := div (sub now.Unix .Date.Unix) 86400 }}
+				{{ $ageMonths := div (sub now.Unix .Date.Unix) 2592000 }}
+
+				{{ if eq $ageDays 0 }}
+					Today
+				{{ else if lt $ageDays 31 }}
+				    {{ $ageDays }}
+			        {{ cond (eq $ageDays 1) "day" "days"}}
+			        ago
+				{{ else }}
+				    {{ $ageMonths }}
+			        {{ cond (eq $ageMonths 1) "month" "months" }}
+			        ago
+				{{ end }}
 			</time>
 			&nbsp;|&nbsp;
 			<a href="{{ .RelPermalink }}" class="permalink">Permalink</a>

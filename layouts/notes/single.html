@@ -14,7 +14,7 @@
 		    </h2>
 			    
 	        <h3>
-	            <time datetime='{{ .Date.Format "2006-01-02" }}' class="dt-published">
+	            <time datetime='{{ .Date.Format "2006-01-02T15:04:00" }}' class="dt-published">
 	                <svg class='icon icon-text' width='24' height='24'>
 	                    <use xlink:href='#cal1'></use>
 	                </svg>
@@ -29,6 +29,13 @@
                     </svg>
                     <a class="p-category u-url" href="/notes">notes</a> 
                 </span>
+			  	{{ with .Params.context }}
+			  		&nbsp;|&nbsp;
+                    <svg class='icon icon-text' width='24' height='24'>
+                        <use xlink:href='#discuss'></use>
+                    </svg>
+			  		<a href="{{ . }}">In reply to</a><br/>
+			  	{{ end }}                
 	        </h3>
 		</header>
 		<div class="inmargin">
@@ -41,7 +48,7 @@
 	  	</div>
 
 	  	<hr/>
-	  	Also posted <svg class='icon icon-text' width='16' height='16'><use xlink:href='#discuss'></use></svg><a href="{{ .Params.source }}" rel="syndication" class="u-syndication">on Mastodon</a> by <a rel="author" href="{{ .Site.BaseURL }}about">{{ .Site.Author.name }}</a>.
+	  	Also posted <svg class='icon icon-text' width='16' height='16'><use xlink:href='#discuss'></use></svg><a href="{{ .Params.source }}" rel="syndication" class="u-syndication">on Mastodon</a> by <a rel="author" class="p-author h-card" href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a>.
 	</article>
 </main>
 

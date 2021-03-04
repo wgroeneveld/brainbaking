@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "/usr/local/bin/hugo",
-    "install": "node goodreads-fetch.js > static/js/goodreads.js && node build-lunr-index.js > static/js/brainbaking-post.json"
+    "install": "node masto-feed-parser.js && node goodreads-fetch.js > static/js/goodreads.js && node build-lunr-index.js > static/js/brainbaking-post.json"
   },
   "repository": {
     "type": "git",
