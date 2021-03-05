@@ -20,26 +20,23 @@
 	    	{{ . }}
 		</article>
 		{{ end }}
-	{{ end }}
+	{{ end }}	
 
+	<div class="tootlist">
+	{{ range ($paginator.Pages).GroupByDate "2006" "desc" }}
+		<h2>{{ .Key }}</h2>
 
-	{{ if (not .Params.disableList) }}
-		<div class="tootlist">
-		{{ range ($paginator.Pages).GroupByDate "2006" "desc" }}
-			<h2>{{ .Key }}</h2>
+	    {{ range .Pages.GroupByDate "January" }}
+	    	<h3>{{ .Key }}</h3>
 
-		    {{ range .Pages.GroupByDate "January" }}
-		    	<h3>{{ .Key }}</h3>
+			{{ range .Pages.ByDate.Reverse }}
+				{{ partial "toot" . }}
+			{{ end }}
 
-				{{ range .Pages.ByDate.Reverse }}
-					{{ partial "toot" . }}
-				{{ end }}
-
-		    {{ end }}
 	    {{ end }}
-		</div>
-		{{ template "_internal/pagination.html" . }}
     {{ end }}
+	</div>
+	{{ template "_internal/pagination.html" . }}
 
 	<footer>
 	  <svg class='icon icon-text' width='24' height='24'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 

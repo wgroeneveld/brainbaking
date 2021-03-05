@@ -15,7 +15,7 @@ enableGitInfo = true
 [params]
     level = 35
     favicon = "/img/avatar-icon.png"
-    pagination = 15
+    pagination = 30
 
     # disabled to get rid of cloudflare cookies
     MathJax = false
