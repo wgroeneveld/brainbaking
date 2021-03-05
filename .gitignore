@@ -19,3 +19,10 @@ books/**/*.pdf
 books/**/*.lot
 books/**/*.aux
 books/**/boek.tex
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
