@@ -8,7 +8,8 @@ const fsp = require('fs').promises;
 	console.log("1. parsing Mastodon RSS feed...")
 	await mastodon.parseFeed({
 		notesdir: `${__dirname}/content/notes`,
-		url: "https://chat.brainbaking.com/users/wouter/feed"
+		url: "https://chat.brainbaking.com/users/wouter/feed",
+		utcOffset: "+01:00"
 	})
 
 	// 2. update goodreads JS widget
