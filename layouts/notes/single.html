@@ -39,8 +39,8 @@
 	        </h3>
 		</header>
 		<div class="inmargin">
-			<a rel="author" class="p-author h-card" href="{{ .Site.BaseURL }}about">
-				<img class="u-photo" src="{{ .Site.BaseURL }}/img/avatar.jpg" alt="A photo of Me!" />
+			<a rel="author" class="p-author h-card" href="{{ .Site.BaseURL }}">
+				<img class="u-photo" src="{{ .Site.BaseURL }}/img/avatar.jpg" alt="{{ .Site.Author.name }}" />
 			</a>
 		</div>
 	    <div class="e-content content toot">
@@ -48,7 +48,7 @@
 	  	</div>
 
 	  	<hr/>
-	  	Also posted <svg class='icon icon-text' width='16' height='16'><use xlink:href='#discuss'></use></svg><a href="{{ .Params.source }}" rel="syndication" class="u-syndication">on Mastodon</a> by <a rel="author" class="p-author h-card" href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a>.
+	  	Also posted <svg class='icon icon-text' width='16' height='16'><use xlink:href='#discuss'></use></svg><a href="{{ .Params.source }}" rel="syndication" class="u-syndication">on Mastodon</a> by <a rel="author" href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a>.
 	</article>
 </main>
 
