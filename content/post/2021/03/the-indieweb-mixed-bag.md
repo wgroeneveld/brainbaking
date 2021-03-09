@@ -56,8 +56,18 @@ Okay, so now, I can answer the _why_. Not because it will be heavily used, or th
 
 Still, once I more or less finished a first revision of my own toolset (sending is up next), I felt a bit empty inside. What's the point? Who will _webmention_ me anyway? Those few other tech-related cooler bloggers? If you pay attention to the webmentions on other sites, you'll notice that `95%` of them are Twitter feeds, probably converted into webmentions by services like [brid.gy](https://brid.gy/). My point is that as far as **usability** goes, the IndieWeb standard completely falls apart. Sure, decentralization is the future. That's why I try to host and own my own data such as my [Mastodon Instance](https://chat.brainbaking.com/) - and that's the philosophy of the IndieWeb. 
 
-But I can't ask my wife to stop posting on Instagram because she's giving her data away?[^data] I can't ask her to post it on her own Wordpress-site, after installing a bunch of barely working POSSES-related plug-ins? And I can't ask visitors of my own site to "webmention me!" if they don't have a site? 
+But I can't ask my wife to stop posting on Instagram because she's giving her data away? I can't ask her to post it on her own Wordpress-site, after installing a bunch of barely working POSSES-related plug-ins? And I can't ask visitors of my own site to "webmention me!" if they don't have a site? 
 
 Feel free to prove me wrong, though. Why don't you webmention this article?
 
-[^data]: One of the key properties of POSSE-ing is that you include a url-shortened reference to the original article, like so: `(short.co 34yf1)`. Having to put up with visible junk metadata on Twitter is also a big concern for me. Without it, you won't know if it's POSSE or PESOS. Aren't you still giving your data away either way?
+## Who owns what data?
+
+One of the key properties of POSSE-ing is that you include a url-shortened reference to the original article, like so: `(short.co 34yf1)`. Having to put up with visible junk metadata on Twitter is also a big concern for me. The theory behind it is good and logical, but without the silos supporting it, the implementation is just awful. Furthermore, without a reference, you won't know if it's POSSE or PESOS. Aren't you still giving your data away either way? On [Micro.blog](https://help.micro.blog/2018/twitter-differences/)'s help page, they explain the difference between Micro.blog and Twitter like so:
+
+> But when you use Twitter, your content stays at Twitter. At Micro.blog, you can write short posts that appear in the Micro.blog timeline, as well as on your own blog that you control.
+
+But almost everyone who uses webmention uses it to syndicate replies from others to their site, after POSSE-ing their microblog contents to Twitter. Just for the record: I use PESOS on my [fleeting notes](/notes), because it's coming from my own Mastodon/Pleroma instance anyway. 
+
+So, in essence, you're still sending out data to big "evil" third party silos - possibly including media. That means from thereon, a snapshot of that data does _NOT_ belong to you anymore. You just gave it away! I [can't wrap my head](/notes/2021/02/27h17m51s39/) around that. Again, I think the _Own Your Data_ philosophy is great, and I fully support it. Otherwise, I wouldn't have taken the trouble to [install LineageOS](/post/2021/03/getting-rid-of-tracking-using-lineageos/). 
+
+Maybe, a part of the blog technology fatigue is because of our own fanaticism... 
