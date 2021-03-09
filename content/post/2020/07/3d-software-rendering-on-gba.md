@@ -21,14 +21,9 @@ But GBA MODE 0-1-2 is not the only possibility to write a GBA game. There's also
 
 How do you render things in 3D without hardware acceleration, and without an FPU on the circuit board that handles `float` digits, taken into account the (mostly) 16-BIT bus rate and 16Mhz CPU? Well... It does not exactly produce 30+ FPS:
 
-{{< row >}}
-{{% col %}}
 ![](https://github.com/wgroeneveld/gba-bitmap-engine/raw/master/img/monkey.gif?raw=true "Wireframing 507 vertices and 968 faces")
-{{% /col %}}
-{{% col %}}
+
 ![octahedron](https://github.com/wgroeneveld/gba-bitmap-engine/raw/master/img/raster.gif?raw=true "Trying to rasterize the same thing")
-{{% /col %}}
-{{< wor >}}
 
 Drawing a lot of lines is not exactly something the GBA loves to do. And I did use [tonclib's optimized routines](https://www.coranac.com/tonc/text/toc.htm) after a failed attempt to implement Bresenham myself. MODE4 has weird byte-write requirements and you can optimize DMA writing of horizontal lines. 
 
@@ -38,14 +33,9 @@ I intended to design the engine again as high-level as possible taking advantage
 
 Reverting to a simple box sped up the FPS:
 
-{{< row >}}
-{{% col %}}
 ![](https://github.com/wgroeneveld/gba-bitmap-engine/raw/master/img/wired2.gif?raw=true "A BabylonJS-exported Box. (including a bug)")
-{{% /col %}}
-{{% col %}}
+
 ![](https://github.com/wgroeneveld/gba-bitmap-engine/raw/master/img/octa.gif?raw=true "A rasterized octahedron, with back-face culling.")
-{{% /col %}}
-{{< wor >}}
 
 Even calculating the frames per second is a pain. What's a "second"? Okay, so we need a hardware timer interrupt. When does this thing overflow? How many cycles does the CPU take before that happens? Are you seriously using the divide operator instead of `fxdiv()`?
 

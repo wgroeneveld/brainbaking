@@ -9,7 +9,9 @@
 	    <div class="e-content content">
 	  		{{ .Content | safeHTML }}
 	  	</div>
+	  	
     	{{ partial "single-comments" . }}
+    	{{ partial "single-webmentions" . }}
 	</article>
 
     {{ partial "single-related" . }}

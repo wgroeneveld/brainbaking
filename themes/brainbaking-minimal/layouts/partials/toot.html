@@ -4,10 +4,10 @@
 			{{ .Content }}
 		</div>
 		<div class="meta">
+			<svg class='icon icon-text' width='24' height='24'>
+                <use xlink:href='#cal1'></use>
+            </svg>
 			<time datetime='{{ .Date.Format "2006-01-02T15:04:00" }}' class="dt-published">
-				<svg class='icon icon-text' width='24' height='24'>
-                    <use xlink:href='#cal1'></use>
-                </svg>
 
 				<!-- ty, https://kodify.net/hugo/date-time/relative-age-hugo/ -->
 				{{ $ageDays := div (sub now.Unix .Date.Unix) 86400 }}

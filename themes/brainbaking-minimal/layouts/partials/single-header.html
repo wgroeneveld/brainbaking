@@ -16,10 +16,10 @@
     {{ if isset .Params "date" }}
         <h3>
             {{ if isset .Params "date" }}
+            <svg class='icon icon-text' width='24' height='24'>
+                <use xlink:href='#cal1'></use>
+            </svg>
             <time datetime='{{ .Date.Format "2006-01-02" }}' class="dt-published">
-                <svg class='icon icon-text' width='24' height='24'>
-                    <use xlink:href='#cal1'></use>
-                </svg>
                 <a class="u-url u-uid" href="{{ .RelPermalink }}">
                     {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
                 </a>
