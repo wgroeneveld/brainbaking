@@ -35,7 +35,7 @@ I like the idea of webmentions, because as an academic, I also like the idea of 
 
 ## So don't do it!
 
-I wrote about my [Facebook PESOS attempt](http://localhost:1313/post/2020/06/tracking-and-privacy-on-websites/) before. I'd love to POSSE, but some questions that are posted there simply don't make it back, and as a community maintainer, I simply sometimes need to be there, even if I really, really hate that. 
+I wrote about my [Facebook PESOS attempt](/post/2020/06/tracking-and-privacy-on-websites/) before. I'd love to POSSE, but some questions that are posted there simply don't make it back, and as a community maintainer, I simply sometimes need to be there, even if I really, really hate that. 
 
 **Blog comments**, another big debate. My evolution from Disqus to Commento to nothing to Mastodon to Webmentions says it all[^comm]: it's a hassle. People like [Evan Sheehan](https://darthmall.net/weblog/webmentions/) add a small form to each page where webmentions can be requested - although they should be sent automatically. But what about "normal", non-tech savvy people? What if they want to comment? Oh, they can just use [commentpara.de](https://commentpara.de/). Well, that doesn't work, and I've tried it - and it's another external liability. 
 
