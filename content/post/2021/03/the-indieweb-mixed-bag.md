@@ -56,7 +56,7 @@ Okay, so now, I can answer the _why_. Not because it will be heavily used, or th
 
 Still, once I more or less finished a first revision of my own toolset (sending is up next), I felt a bit empty inside. What's the point? Who will _webmention_ me anyway? Those few other tech-related cooler bloggers? If you pay attention to the webmentions on other sites, you'll notice that `95%` of them are Twitter feeds, probably converted into webmentions by services like [brid.gy](https://brid.gy/). My point is that as far as **usability** goes, the IndieWeb standard completely falls apart. Sure, decentralization is the future. That's why I try to host and own my own data such as my [Mastodon Instance](https://chat.brainbaking.com/) - and that's the philosophy of the IndieWeb. 
 
-But I can't ask my wife to stop posting on Instagram because she's giving her data away? I can't ask her to post it on her own Wordpress-site, after installing a bunch of barely working POSSES-related plug-ins? And I can't ask visitors of my own site to "webmention me!" if they don't have a site? 
+But I can't ask my wife to stop posting on Instagram because she's giving her data away? I can't ask her to post it on her own Wordpress-site, after installing a bunch of [barely working](https://kevq.uk/removing-support-for-the-indieweb/) POSSES-related plug-ins? And I can't ask visitors of my own site to "webmention me!" if they don't have a site? 
 
 Feel free to prove me wrong, though. Why don't you webmention this article?
 
