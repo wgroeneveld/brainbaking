@@ -1453,7 +1453,7 @@ __metadata:
     "@babel/cli": ^7.8.4
     "@babel/core": ^7.9.6
     "@babel/preset-env": ^7.10.1
-    jam-my-stack: ^1.0.4
+    jam-my-stack: ^1.0.6
   languageName: unknown
   linkType: soft
 
@@ -1743,6 +1743,13 @@ __metadata:
   dependencies:
     assert-plus: ^1.0.0
   checksum: 5959409ee42dc4bdbf3fa384b801ece580ca336658bb0342ffab0099b3fc6bf9b3e239e1b82dcc4fcaeee315353e08f2eae47b0928a6a579391598c44958afa1
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.10.4":
+  version: 1.10.4
+  resolution: "dayjs@npm:1.10.4"
+  checksum: 3b7bb2232fff808209870bc72d4b2000941a1aa45f0226e2907f9dd1dda306d4b3a1eb9058450fd2c324b01a007a37809ac6f9b525806a86902c55e2934cd5d5
   languageName: node
   linkType: hard
 
@@ -2699,18 +2706,18 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jam-my-stack@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "jam-my-stack@npm:1.0.4"
+"jam-my-stack@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "jam-my-stack@npm:1.0.6"
   dependencies:
+    dayjs: ^1.10.4
     ent: ^2.2.0
     fast-xml-parser: ^3.18.0
     got: ^11.8.2
     howlongtobeat: ^1.3.1
     lunr: ^2.3.9
-    moment: ^2.29.1
     parser-front-matter: ^1.6.4
-  checksum: 9962c87f145ff83aa85b11e9b0072c0f6541049039783bd4e3a363e86083430e25a6acf027a61579a05375db10beafd2f1cb27eef47bbaa4d7b504b24dd5901f
+  checksum: a02edc71292ef92ed011b3198e31b54518f388c7f6331ff73bee7a7e2df3303233f0e8bf2f8a647850472505b2dfd894715be1f352d861bf40733514831e6459
   languageName: node
   linkType: hard
 
@@ -3068,13 +3075,6 @@ fsevents@^1.2.7:
   bin:
     mkdirp: bin/cmd.js
   checksum: 1aa3a6a2d7514f094a91329ec09994f5d32d2955a4985ecbb3d86f2aaeafc4aa11521f98d606144c1d49cd9835004d9a73342709b8c692c92e59eacf37412468
-  languageName: node
-  linkType: hard
-
-"moment@npm:^2.29.1":
-  version: 2.29.1
-  resolution: "moment@npm:2.29.1"
-  checksum: 86729013febf7160de5b93da69273dd304d674b0224f9544b3abd09a87671ddd2cdd57598261ce57588910d63747ffd5590965e83c790d8bf327083c0e0a06e0
   languageName: node
   linkType: hard
 

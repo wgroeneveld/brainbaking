@@ -25,6 +25,6 @@
   },
   "homepage": "https://brainbaking.com",
   "dependencies": {
-    "jam-my-stack": "^1.0.4"
+    "jam-my-stack": "^1.0.6"
   }
 }

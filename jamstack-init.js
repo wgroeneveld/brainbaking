@@ -1,5 +1,5 @@
 
-const { mastodon, goodreads, lunr } = require('jam-my-stack');
+const { mastodon, goodreads, lunr, webmention } = require('jam-my-stack');
 const fsp = require('fs').promises;
 
 
@@ -24,6 +24,10 @@ const fsp = require('fs').promises;
 		`${__dirname}/content/notes`])
 	await fsp.writeFile(`${__dirname}/static/js/brainbaking-post.json`, JSON.stringify(index), 'utf-8')
 
+	// 4. get webmentions
+	console.log("4. Fetching webmentions that aren't likes...")
+	const mentions = await webmention.getWebmentions("brainbaking.com")
+	await fsp.writeFile(`${__dirname}/data/webmentions.json`, mentions.filter(m => m.content && m.type !== "like"), 'utf-8')
 
 	console.log("-- all done!")
 })()
