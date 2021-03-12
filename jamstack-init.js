@@ -9,7 +9,7 @@ const fsp = require('fs').promises;
 	await mastodon.parseFeed({
 		notesdir: `${__dirname}/content/notes`,
 		url: "https://chat.brainbaking.com/users/wouter/feed",
-		utcOffset: "+01:00"
+		utcOffset: 60
 	})
 
 	// 2. update goodreads JS widget
@@ -28,7 +28,8 @@ const fsp = require('fs').promises;
 	// 4. get webmentions
 	console.log("4. Fetching webmentions that aren't likes...")
 	const mentions = await webmention.getWebmentions("brainbaking.com")
-	await fsp.writeFile(`${__dirname}/data/webmentions.json`, mentions.filter(m => m.content && m.type !== "like"), 'utf-8')
+	const json = JSON.stringify(mentions.filter(m => m.content && m.type !== "like"))
+	await fsp.writeFile(`${__dirname}/data/webmentions.json`, json, 'utf-8')
 
 	console.log("-- all done!")
 })()

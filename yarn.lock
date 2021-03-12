@@ -1453,7 +1453,7 @@ __metadata:
     "@babel/cli": ^7.8.4
     "@babel/core": ^7.9.6
     "@babel/preset-env": ^7.10.1
-    jam-my-stack: ^1.0.6
+    jam-my-stack: ^1.0.7
   languageName: unknown
   linkType: soft
 
@@ -2706,9 +2706,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jam-my-stack@npm:^1.0.6":
-  version: 1.0.6
-  resolution: "jam-my-stack@npm:1.0.6"
+"jam-my-stack@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "jam-my-stack@npm:1.0.7"
   dependencies:
     dayjs: ^1.10.4
     ent: ^2.2.0
@@ -2717,7 +2717,7 @@ fsevents@^1.2.7:
     howlongtobeat: ^1.3.1
     lunr: ^2.3.9
     parser-front-matter: ^1.6.4
-  checksum: a02edc71292ef92ed011b3198e31b54518f388c7f6331ff73bee7a7e2df3303233f0e8bf2f8a647850472505b2dfd894715be1f352d861bf40733514831e6459
+  checksum: 572b8f6ec0c2998e2977c8b7e63e9a58f5290911a8767a5cdaac9f998c26566b4eaa276ef8b194da097098d94c614abaa550d4e7b22502b00ba32710834efb9b
   languageName: node
   linkType: hard
 
