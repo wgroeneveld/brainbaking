@@ -10,7 +10,9 @@ categories:
 
 Since dipping my toes into the subject of [privacy](/tags/privacy), I kept on exploring more opportunities to take back my own data. This started out quite innocent with a few [changes to this site](/post/2020/06/tracking-and-privacy-on-websites/), that evolved into taking great care [not to spill my data](/post/2021/01/digitizing-journals-using-devonthink/) to "the cloud". Thank you, [Laura](https://laurakalbag.com) and [Daniel](https://ineed.coffee). It seems that a pattern emerges here. Consistently pulling the plug - I love it. 
 
-Since January this year, I migrated form GMail to [ProtonMail](https://protonmail.com) and took that opportunity to finally settle with a short address my own domain. The trouble is, simply installing the ProtonMail app on Android does next to nothing if your contacts and address book is are managed by Google. After importing the contacts into Proton, it is still a hassle to create a new one without opening the secure app. So, it was time to go cold turkey on this one. _Project Exit Google_. To do that, I needed more than a secure e-mail provider. I needed a whole new OS. _Enter [LineageOS](https://lineageos.org/)_.
+Since January this year, I migrated form GMail to [ProtonMail](https://protonmail.com) and took that opportunity to finally settle with a short address my own domain. The trouble is, simply installing the ProtonMail app on Android does next to nothing if your contacts and address book is are managed by Google. After importing the contacts into Proton, it is still a hassle to create a new one without opening the secure app. So, it was time to go cold turkey on this one. _Project Exit Google_. To do that, I needed more than a secure e-mail provider. I needed a whole new OS[^others]. _Enter [LineageOS](https://lineageos.org/)_.
+
+[^others]: Others have solved this issue by trading Android [for iOS](https://kevq.uk/why-im-ditching-android). I think that's a bit ridiculous. Sure, Apple is less keen on making money through advertising than Google, but don't tell me iCloud services won't track you. Still, idle Android phones [send data to Google ten times more often](https://www.bleepingcomputer.com/news/google/idle-android-phones-send-data-to-google-ten-times-more-often-than-ios-devices-to-apple/) than iOS devices to Apple.
 
 > LineageOS is a privacy-focused open source Android OS. 
 
@@ -51,7 +53,7 @@ Below is a list of apps I've tried and now rely on:
 
 I also use Proton to manage my contacts. After importing from my Google Account before installing Lineage, I now can import/export using a `vCard` file (although Lineage's default Contact app did not understand `v4.0`: simply replace all occurrences of `4` to `3` in the file itself). The process is not automated, but hey. New contacts by default reside in the smartphone, all I need to do is now and then pressing "import" again. Bye bye, Google-kept sensitive data of all my friends and family[^cont]. 
 
-[^cont]: Note that using WhatsApp (or even Signal, for that matter) also means that _all_ your contacts are sent to their servers. Try this: open up the WhatsApp settings `->` Account `->` Request account info.
+[^cont]: Note that using WhatsApp also means that _all_ your contacts are sent to their servers. Try this: open up the WhatsApp settings `->` Account `->` Request account info. This is [not the case with Signal](https://signal.org/legal/)!
 
 ### Privacy-aware Google Maps alternatives
 
