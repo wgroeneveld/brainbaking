@@ -14,6 +14,12 @@ categories:
 
 Just a quick one I wanted to get out there in case you are, like me, using [Hugo](/post/2020/05/hugo-extended/) to power a blog. Apparently, in 2017, the default [behavior changed](https://discourse.gohugo.io/t/full-text-rss-feed/8368/3) from using the `.Content` to the `.Summary` variable in the default [rss.xml](https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/rss.xml). 
 
+---
+
+**Update, 12 March 2021**: This article officially became obsolete! Just use `loading="lazy"` - a lot less complicated and already [decent browser support](/notes/2021/03/12h18m06s14/). Yay for upgrades!
+
+---
+
 What's the big deal? I had no idea, until I started using a proper RSS reader today - the open source [NetNewsWire](https://ranchero.com/netnewswire/) for Mac. This is what your RSS feed will look like:
 
 ![](../netnewswire.jpg "My Apple M1 article in an RSS reader. Where's all the text?")
@@ -87,4 +93,4 @@ Scrolling down also reveals properly loaded images, hooray! Do not forget to add
 <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="Brain Baking" />
 ```
 
-Enjoy my RSS feed at [/index.xml](/index.xml).
+[Enjoy my RSS feeds](/subscribe)!
