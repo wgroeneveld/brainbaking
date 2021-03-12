@@ -43,11 +43,15 @@ Enough investigation, time for some introspection. What happens when I expose th
 
 It is unavoidable that these endpoints can get access to your visitor's _referer_ URL, and possibly the IP. That means loading a static resource such as a `.woff2` font or a `.css` stylesheet actually comes **at a cost** - the cost of giving away your wherabouts. Time for some refactoring. 
 
-I threw out Bootstrap, jQuery, and Font Awesome, and refactored my Hugo theme to utilize [Sass](/post/2020/05/hugo-extended) (reducing the mean load of an uncached page with more than `200kb`!). Next, I threw out Google Analytics in favor for [Fathom](https://usefathom.com), another small and privacy-focused self-hosted go container (netting me another `40kb`). Then, I hosted all third-party libraries I used myself. So rest assured, Google does not know you were here! This is how the Fathom dashboard looks like:
+I threw out Bootstrap, jQuery, and Font Awesome, and refactored my Hugo theme to utilize [Sass](/post/2020/05/hugo-extended) (reducing the mean load of an uncached page with more than `200kb`!). Next, I threw out Google Analytics in favor for [Fathom](https://usefathom.com)[^updf], another small and privacy-focused self-hosted go container (netting me another `40kb`). Then, I hosted all third-party libraries I used myself. So rest assured, Google does not know you were here! This is how the Fathom dashboard looks like:
+
+[^updf]: Since 2021, I've migrated to a self-hosted GoatCounter instance, getting rid of all client-side tracking cookies.
 
 ![](../fathom.jpg "The Fathom dashboard")
 
-The commenting system I self-host is Commento, a fast, privacy-focused commenting platform. It does come with cookies if you decide to login, but then again: it’s on my own SSL-verified domain. Disqus, the popular and standard static website commenting system, has been known before to be [coming with hidden costs](https://replyable.com/2017/03/disqus-is-your-data-worth-trading-for-convenience/).
+The commenting system I self-host is Commento[^updc], a fast, privacy-focused commenting platform. It does come with cookies if you decide to login, but then again: it’s on my own SSL-verified domain. Disqus, the popular and standard static website commenting system, has been known before to be [coming with hidden costs](https://replyable.com/2017/03/disqus-is-your-data-worth-trading-for-convenience/).
+
+[^updc]: Since 2021, I've decided to stop using commenting systems. One less thing to worry about. If you like to comment, simply use Mastodon or e-mail instead.
 
 > Is Your Data Worth Trading for Convenience?
 

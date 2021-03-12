@@ -1,9 +1,0 @@
----
-source: "https://chat.brainbaking.com/objects/b60e1777-50e0-4c9a-a378-30790ebc3559"
-context: ""
-title: "@eli_oat a serious fire destroyed the data center of my VPS last night: https://twitter.com/oleso..."
-date: "Invalid Date-Invalid Date-Invalid DateTInvalid Date"
----
-
-<span class="h-card"><a class="u-url mention" data-user="A54Sl2iQIm74acQBwu" href="https://dog.estate/@eli_oat" rel="ugc">@<span>eli_oat</span></a></span> a serious fire destroyed the data center of my VPS last night: <a href="https://twitter.com/olesovhcom/status/1369478732247932929" rel="ugc">https://twitter.com/olesovhcom/status/1369478732247932929</a> - guess what I did NOT backup: my Mastodon instance. What a disaster. No idea if things get pushed back to this new instance. Just wanting to see if your instance recognizes this username, cause it&#39;s a fresh install?
-  

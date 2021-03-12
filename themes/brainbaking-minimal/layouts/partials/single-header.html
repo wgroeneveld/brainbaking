@@ -1,22 +1,22 @@
 <header>
 
     {{ if .Title }}
-    <h1 class="p-name">
+    <h1 class="p-name" id="header">
         {{ with .Params.icontag }}
-            <svg class='icon'><use xlink:href='#{{ . }}'></use></svg>
+            <svg class='icon'><title>page type</title><use xlink:href='#{{ . }}'></use></svg>
         {{ end }}
         {{ .Title }}
     </h1>
-    {{ end }}
-
-    
+    {{ end }}    
     {{ if isset .Params "subtitle" }}
-        <h2>{{ .Params.subtitle }}</h2>
+        <h2 class="p-summary">{{ .Params.subtitle }}</h2>
     {{ end }}
+    
     {{ if isset .Params "date" }}
         <h3>
             {{ if isset .Params "date" }}
             <svg class='icon icon-text' width='24' height='24'>
+                <title>published icon</title>
                 <use xlink:href='#cal1'></use>
             </svg>
             <time datetime='{{ .Date.Format "2006-01-02" }}' class="dt-published">
@@ -29,6 +29,7 @@
                 &nbsp;|&nbsp;
                 <span title="Categories">
                     <svg class='icon icon-text' width='24' height='24'>
+                        <title>category icon</title>
                         <use xlink:href='#folder'></use>
                     </svg>
                     {{ range .Params.categories }}
@@ -41,7 +42,8 @@
 
     {{ if isset $.Params "tags" }}
        <svg class='icon icon-text' width='24' height='24'>
-        <use xlink:href='#tag'></use>
+            <title>tags icon</title>
+            <use xlink:href='#tag'></use>
         </svg>
     {{ end }}
     <span class='list-tags'>

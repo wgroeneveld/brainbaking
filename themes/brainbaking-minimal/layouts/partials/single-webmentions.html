@@ -1,45 +1,47 @@
+{{ if (not .Params.disableComments) }}
 
+	{{ $mentions := (where .Site.Data.webmentions "target" "==" $.RelPermalink) }}
 
-{{ $mentions := (where .Site.Data.webmentions "target" "==" $.RelPermalink) }}
+	{{ if $mentions }}
+		<h4 class="page-header">
+		    <svg class='icon icon-text' width='24' height='24'>
+		    	<title>Discussion</title>
+		        <use xlink:href='#discuss'></use>
+		    </svg>
+		    Mentions and Replies
+		</h4>
 
-{{ if $mentions }}
-	<h4 class="page-header">
-	    <svg class='icon icon-text' width='24' height='24'>
-	        <use xlink:href='#discuss'></use>
-	    </svg>
-	    Mentions and Replies
-	</h4>
-
-	<dic class="tootlist">
-	{{ range $mentions }}
-		<div class="u-comment h-cite toot">
-		  <p class="p-content p-name">
-		  	{{ .content | safeHTML }}
-		  </p>
-		  <div class="meta">
-			<svg class='icon icon-text' width='24' height='24'>
-                <use xlink:href='#cal1'></use>
-            </svg>		  	
-		    <time class="dt-published" datetime="{{ .published }}">
-		    	{{ .published }}
-		    </time>
-		    &nbsp;|&nbsp;by&nbsp;
-			  <a rel="author" class="u-author h-card u-url" href="{{ .source }}">
-			  	{{ $name := .author.name | safeHTML }}
-			  	{{ if isset .author "picture" }}
-			  		<div class="avatar">
-			  			<img class="u-photo" src="{{ .author.picture | safeHTML }}" alt="{{ $name }}" />
-			  		</div>
-			  	{{ else }}
-			  		<div class="avatar">
-			  			<img class="u-photo" src="/img/avatar-anonymous.jpg" alt="{{ $name }}" />
-			  		</div>
-			  	{{ end }}
-			  	{{ $name }}
-			  </a>		    
-		  </div>
-	 </div>
+		<div class="tootlist" style="margin-bottom: -3rem">
+		{{ range $mentions }}
+			<article class="u-comment h-cite toot">
+			  <p class="p-content p-name">
+			  	{{ .content | safeHTML }}
+			  </p>
+			  <div class="meta">
+				<svg class='icon icon-text' width='24' height='24'>
+	                <use xlink:href='#cal1'></use>
+	            </svg>		  	
+			    <time class="dt-published" datetime="{{ .published }}">
+			    	{{ .published }}
+			    </time>
+			    &nbsp;|&nbsp;by&nbsp;
+				  <a rel="author" class="u-author h-card u-url" href="{{ .source }}">
+				  	{{ $name := .author.name | safeHTML }}
+				  	{{ if isset .author "picture" }}
+				  		<div class="avatar">
+				  			<img class="u-photo" src="{{ .author.picture | safeHTML }}" alt="{{ $name }}" />
+				  		</div>
+				  	{{ else }}
+				  		<div class="avatar">
+				  			<img class="u-photo" src="/img/avatar-anonymous.jpg" alt="{{ $name }}" />
+				  		</div>
+				  	{{ end }}
+				  	{{ $name }}
+				  </a>		    
+			  </div>
+		 </article>
+		{{ end }}
+		</div>
+		<br/>
 	{{ end }}
-	</div>
-	<br/>
 {{ end }}

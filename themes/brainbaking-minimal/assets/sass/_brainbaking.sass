@@ -70,22 +70,23 @@ pre
 
 // fix FF letter float - https://stackoverflow.com/questions/6737175/firefox-specific-margin
 @-moz-document url-prefix()
-  main
+  article
     &.post .content > p:first-of-type::first-letter
       margin-top: 10px    
 
-
-main
+article, main.intro, main.list, main.notes, .txtblock
+  margin: auto
+  flex: 1 0 auto
   display: block
   line-height: 1.7
-  margin: auto
-  padding: 25px
-  flex: 1 0 auto
   max-width: 750px
 
-  padding-top: 0 !important
   @media (min-width: 1600px)
     max-width: 930px !important
+
+article
+  margin-bottom: 1rem
+  text-align: left
 
   &.post .content > p:first-of-type::first-letter
       font-size: 3.05em
@@ -94,28 +95,20 @@ main
       float: left
       margin-right: 10px
 
+  p
+    margin: 0 0 20px !important
 
-  article
-    text-align: left
-    margin-bottom: 1rem
-    p
-      margin: 0 0 20px !important
+  blockquote p 
+    margin: 0 !important
 
-    blockquote p 
-      margin: 0 !important
+  a, .link
+    border-bottom: 1px solid var(--accent)
 
-    a, .link
-      border-bottom: 1px solid var(--accent)
-
-      &:hover, &:visited:hover
-        border-bottom: 1px solid white
-        border-radius: 1px
-        color: white
-        background-color: var(--accent)
-
-
-  footer
-    margin-top: 3.5rem
+    &:hover, &:visited:hover
+      border-bottom: 1px solid white
+      border-radius: 1px
+      color: white
+      background-color: var(--accent)
 
   .inmargin
     display: none
@@ -128,6 +121,21 @@ main
 
     @media (min-width: 1600px)
       right: calc(-700px + 50vw)
+
+
+.belowsingle
+  background-color: $belowsingle
+  border-top: 3px solid var(--accent)
+  margin-top: 4rem
+
+  .page-header
+    border-bottom: 1px solid $lightgrey
+
+
+article hr, main.intro hr
+    margin-top: 60px
+    margin-bottom: 60px
+
 
 .list-tags
   a
@@ -151,6 +159,11 @@ header
     h3
       font-size: 1.3rem
       color: grey
+
+main
+  footer
+    padding-top: 2rem
+    padding-bottom: 2rem
 
 time
   color: grey
@@ -204,9 +217,8 @@ kbd
     background: rgba(0,0,0,0.65) !important
 
 
-article hr, main.intro hr
-    margin-top: 60px
-    margin-bottom: 60px
-
 .page-header
     margin-top: 60px
+
+.nowrap
+  white-space: nowrap

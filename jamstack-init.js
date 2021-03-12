@@ -15,6 +15,7 @@ const fsp = require('fs').promises;
 	// 2. update goodreads JS widget
 	console.log("2. Updating Goodreads Widget...")
 	const widget = await goodreads.createWidget("https://www.goodreads.com/review/grid_widget/5451893.Wouter's%20bookshelf:%20read?cover_size=medium&hide_link=&hide_title=&num_books=12&order=d&shelf=read&sort=date_added&widget_id=1496758344")
+	widget.replaceAll("src=", "class=\"lazyload\" data-src=")
 	await fsp.writeFile(`${__dirname}/static/js/goodreads.js`, widget, 'utf-8')
 
 	// 3. build Lunr index

@@ -1,24 +1,30 @@
 {{ partial "header" . }}
 
-{{ partial "bigimg" . }}
+<main class="h-entry">
+	{{ partial "bigimg" . }}
 
-<main class="single {{ .Section }}">
-	<article class="h-entry">
-		<a id="top"></a>
+	<article class="single {{ .Section }}">
 		{{ partial "single-header" . }}
 	    <div class="e-content content">
 	  		{{ .Content | safeHTML }}
 	  	</div>
-	  	
-    	{{ partial "single-comments" . }}
-    	{{ partial "single-webmentions" . }}
 	</article>
+		  	
+	<div class="belowsingle">
+		<div class="txtblock">
+	    	{{ partial "single-comments" . }}
+	    	{{ partial "single-webmentions" . }}
 
-    {{ partial "single-related" . }}
+			{{ partial "single-related" . }}
 
-	<footer>
-	  <svg class='icon icon-text' width='24' height='24'><use xlink:href='#up'></use></svg><a href="#top">Top</a> 
-	</footer>
+			<footer>
+			  <svg class='icon icon-text' width='24' height='24'>
+			  	<title>Back to top</title>
+			  	<use xlink:href='#up'></use>
+			  </svg><a href="#header">Top</a> 
+			</footer>
+		</div>
+	</div>
 </main>
 
 {{ partial "footer.html" . }}

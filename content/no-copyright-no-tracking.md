@@ -22,8 +22,6 @@ Who doesn't like cookies? I'm [a baker](https://redzuurdesem.be/) - I would know
 
 I achieved this by ditching Google Analytics and hosting third-party libraries myself. So _rest assured_, Google does not know you were here! Instead, I use [GoatCounter](https://www.goatcounter.com), a simple and privacy-focused analytics system that is self-hosted. It does _not_ require any cookie and runs on my own SSL-verified domain. 
 
-The commenting system I self-host is [Commento](https://www.commento.io), a fast, privacy-focused commenting platform. It does come with cookies if you decide to login, but again: it's on my own SSL-verified domain. 
-
-When a YouTube video is embedded into one of these pages, it will run in "no cookie" mode. That means content will be served from youtube-nocookie.com, preventing Google from tracking my visitors. 
+There is no commenting system anymore. One less thing to be worried about. Simply reply via e-mail or Mastodon instead. There are no YouTube-embedded videos that come with free tracking cookies. 
 
 Read more about how tracking works in [this blog post](/post/2020/06/tracking-and-privacy-on-websites/).
