@@ -9,7 +9,8 @@ const fsp = require('fs').promises;
 	await mastodon.parseFeed({
 		notesdir: `${__dirname}/content/notes`,
 		url: "https://chat.brainbaking.com/users/wouter/feed",
-		utcOffset: 60
+		utcOffset: 60,
+		titleCount: 50
 	})
 
 	// 2. update goodreads JS widget

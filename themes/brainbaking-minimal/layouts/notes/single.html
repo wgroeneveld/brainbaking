@@ -10,7 +10,7 @@
 				Half-Baked Thought
 			</h1>
 		    <h2 class="p-name">
-		        {{ substr .Title 0 50 }}...
+		        {{ .Title | safeHTML }}
 		    </h2>
 			    
 	        <h3>
